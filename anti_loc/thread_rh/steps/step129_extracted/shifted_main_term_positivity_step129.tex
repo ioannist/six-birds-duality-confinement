@@ -1,0 +1,209 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs,geometry,mathtools}
+\geometry{margin=1in}
+\title{Step 129: Shifted Main-Term Positivity Audit}
+\author{RH membrane / source-coercivity route}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{gate}{Gate}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 128 identified Bui--Pratt--Robles--Zaharescu's twisted second moment as the first serious external theorem platform for the source-weighted matrix lower-frame import.  Step 129 audits the main term itself.  The question is not whether the published theorem gives a scalar asymptotic; it does.  The membrane question is whether the main term defines a uniformly positive coefficient-space operator.
+
+The target source-frame inequality is
+\[
+G_{q,w}\succeq \gamma_q H_q,
+\qquad \gamma_q\to\infty,
+\]
+where
+\[
+G_{q,w}(m,n)=\sum_{\chi\in\mathcal X_q} w_\chi\chi(n)\overline{\chi(m)},
+\qquad w_\chi=|L(1/2,\chi)|^2
+\]
+for the first import platform.
+
+\section{Imported shifted second-moment theorem}
+Let $q$ be prime, restrict to even primitive characters, and put
+\[
+A(\chi)=\sum_{a\le q^\kappa}\frac{\alpha_a\chi(a)}{\sqrt a}.
+\]
+Bui--Pratt--Robles--Zaharescu prove an asymptotic formula for
+\[
+I_{\alpha,\beta}
+=\frac{1}{\varphi^+(q)}\sum_{\chi\bmod q}^{+}
+L\left(\frac12+\alpha,\chi\right)
+L\left(\frac12+\beta,\overline\chi\right)|A(\chi)|^2
+\]
+for arbitrary coefficients $\alpha_a\ll a^\varepsilon$, in the range
+\[
+\kappa<\frac12+\frac1{202}=\frac{51}{101}.
+\]
+The main term has two shifted pieces:
+\[
+\zeta(1+\alpha+\beta)
+\sum_{da,db\le q^\kappa\atop (a,b)=1}
+\frac{\alpha_{da}\overline{\alpha_{db}}}{d a^{1+\beta}b^{1+\alpha}}
+\]
+plus
+\[
+\mathcal X_q(\alpha,\beta)
+\zeta(1-\alpha-\beta)
+\sum_{da,db\le q^\kappa\atop (a,b)=1}
+\frac{\alpha_{da}\overline{\alpha_{db}}}{d a^{1-\alpha}b^{1-\beta}},
+\]
+with power-saving error.  Here
+\[
+\mathcal X_q(\alpha,\beta)=
+\left(\frac q\pi\right)^{-(\alpha+\beta)}
+\frac{\Gamma\left(\frac{1/2-\alpha}{2}\right)\Gamma\left(\frac{1/2-\beta}{2}\right)}
+{\Gamma\left(\frac{1/2+\alpha}{2}\right)\Gamma\left(\frac{1/2+\beta}{2}\right)}.
+\]
+
+\section{The unshifted main kernel}
+To audit source positivity, pass to the symmetric limiting path $\alpha=\beta=z\to0$.  Write
+\[
+C_q:=\log\frac q\pi+2\gamma+\psi\left(\frac14\right),
+\]
+where $\psi=\Gamma'/\Gamma$.  Then pole cancellation in
+\[
+\zeta(1+2z)+\mathcal X_q(z,z)\zeta(1-2z)
+\]
+and the opposite first-order motion of the two coefficient sums gives the finite limiting main form
+\[
+\boxed{
+M_q(\alpha)=
+\sum_{da,db\le q^\kappa\atop (a,b)=1}
+\frac{\alpha_{da}\overline{\alpha_{db}}}{dab}
+\left(C_q-\log(ab)\right).
+}
+\]
+Equivalently, for $m=da$, $n=db$, and $d=(m,n)$,
+\[
+\boxed{
+M_q(\alpha)=
+\sum_{m,n\le q^\kappa}
+\alpha_m\overline{\alpha_n}
+\frac{(m,n)}{mn}
+\left(C_q-\\log\frac{mn}{(m,n)^2}\right).
+}
+\]
+This is the shifted main-term kernel to be audited.
+
+\begin{warning}[Sign convention]
+The displayed constant depends on the normalization of the completed factor and on the symmetric limiting path.  What is invariant for the source-frame audit is the kernel structure:
+\[
+\frac{(m,n)}{mn}\left(\text{log conductor} - \log\frac{mn}{(m,n)^2}+O(1)\right).
+\]
+The exact constant must be taken from the imported theorem's normalization when this is used as a formal source certificate.
+\end{warning}
+
+\section{Lower-frame audit}
+Let
+\[
+H_q(\alpha)=\sum_{n\le L}\frac{|\alpha_n|^2}{n}
+\]
+be the natural coefficient norm induced by $A(\chi)=\sum \alpha_n\chi(n)/\sqrt n$.  The desired main-term lower-frame statement is
+\[
+\boxed{
+M_q(\alpha)\ge c_0\log q\, H_q(\alpha)
+\quad\forall \alpha\in\mathbb C^{[1,L]}.
+}
+\]
+Equivalently,
+\[
+\lambda_{\min}\left(H_q^{-1/2}M_qH_q^{-1/2}\right)
+\ge c_0\log q.
+\]
+
+\subsection{Easy subcritical window}
+For $L\le q^\kappa$ with $\kappa<1/2$, one may hope to prove a diagonal-dominance style lower bound because
+\[
+\log\frac{mn}{(m,n)^2}\le 2\log L\le 2\kappa\log q.
+\]
+The diagonal term contains $C_q\sim \log q$.  This suggests a conservative lower-frame window of size roughly
+\[
+(1-2\kappa)\log q
+\]
+before off-diagonal corrections and constants.
+
+\begin{warning}[Beyond the half barrier]
+The imported BPRZ theorem is useful precisely because it reaches
+\[
+\kappa<\frac{51}{101}>\frac12.
+\]
+In this range, diagonal dominance alone is no longer a satisfactory proof of a lower frame.  The off-diagonal main terms are load-bearing.  The positivity audit must use the exact main kernel, not just its diagonal.
+\end{warning}
+
+\section{Accepted import criterion}
+The BPRZ asymptotic becomes a membrane source certificate if the following records are earned.
+
+\begin{gate}[M1: shifted-limit legality]
+The passage $(\alpha,\beta)\to(0,0)$ is performed inside the theorem's uniform shift range, with pole cancellation audited and all constants matched.
+\end{gate}
+
+\begin{gate}[M2: main-kernel lower eigenvalue]
+The limiting kernel $M_q$ satisfies
+\[
+M_q\succeq c_0\log q\,H_q
+\]
+uniformly over the residual coefficient class.
+\end{gate}
+
+\begin{gate}[M3: subordinate error]
+The BPRZ power-saving error is uniform in coefficient vectors in a norm strong enough to give
+\[
+|E_q(\alpha)|\le \varepsilon_q c_0\log q\,H_q(\alpha),
+\qquad \varepsilon_q<1.
+\]
+\end{gate}
+
+\begin{gate}[M4: parity/primitive sector]
+Even-character restriction, primitive-character restriction, and principal-character removal are recorded as finite sector gates and not hidden in the source frame.
+\end{gate}
+
+\begin{gate}[M5: visibility coupling]
+The residual coefficient map satisfies
+\[
+R_N^*H_qR_N\succeq c_{\rm hyb,N}G_{R,N}
+\]
+with a visibility floor or a quantified defect.
+\end{gate}
+
+\begin{gate}[M6: completed promotion]
+Finite coefficient windows promote through the fixed/exhaustive residual-tail ledger.
+\end{gate}
+
+\section{Conditional source theorem}
+If M1--M6 hold, then
+\[
+G_{q,w}\succeq \gamma_qH_q,
+\qquad \gamma_q\asymp \log q,
+\]
+and hence
+\[
+R_N^*G_{q,w}R_N
+\succeq
+\gamma_qc_{\rm hyb,N}G_{R,N}.
+\]
+If $c_{\rm hyb,N}\ge c_*>0$ and $q_N\to\infty$, then
+\[
+\gamma_qc_{\rm hyb,N}\to\infty.
+\]
+This gives the residual source-coercivity growth required by the membrane route, subject to completed-tail promotion.
+
+\section{Verdict}
+The shifted main term is the right object.  It is not merely a scalar moment.  After pole cancellation, it becomes a concrete positive-kernel candidate:
+\[
+\frac{(m,n)}{mn}
+\left(C_q-\log\frac{mn}{(m,n)^2}\right).
+\]
+The main unresolved mathematical question is whether this kernel has a uniform lower eigenvalue of order $\log q$ on the residual coefficient class in the full length range needed by the Müntz/Burnol shadow.  For $\kappa<1/2$ this is plausible by simpler positivity mechanisms.  For $\kappa>1/2$ it is a genuine operator-valued import from the twisted-second-moment theorem.
+
+\end{document}

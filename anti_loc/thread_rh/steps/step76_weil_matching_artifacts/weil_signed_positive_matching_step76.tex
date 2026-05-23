@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Step 76: Signed-to-Positive Weil Matching Gate}
+\author{Formed-Layer Membrane / RH Construction Notes}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\Ccore}{\mathcal C^-_{\log}}
+\newcommand{\VEF}{\mathcal E}
+\newcommand{\qcmp}{q_{\rm cmp}}
+\newcommand{\qZ}{q_Z}
+\newcommand{\qW}{q_W}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Step 75 proposed a log-side Weil core and candidate positive feature slots for the completed carrier: prime-power, archimedean/gamma, pole/completion, and tail. Step 76 isolates the exact signed-to-positive matching gate required to turn a classical signed explicit formula into the Douglas domination
+\[
+  \AZ\preceq\Kcmp.
+\]
+The main result is not an RH proof. It is a necessary-and-sufficient operator-form criterion: a signed explicit-formula identity earns the membrane bridge only when it can be regrouped into positive carrier features and a positive closable residual form on the completed anti-invariant response space. Trace equality, finite test positivity, or signed accounting do not suffice.
+\end{abstract}
+
+\section{Setup: the bridge to be matched}
+Let $Y^-$ be the completed anti-invariant response space, or a dense form core $\Ccore\subset Y^-$. Let
+\[
+  V_Z:Y^-\to\mathcal Z,
+  \qquad
+  \AZ=V_Z^*V_Z
+\]
+be the zero-side anti-invariant displacement readout. Let
+\[
+  W_{\rm cmp}:Y^-\to\mathcal E_{\rm cmp},
+  \qquad
+  \Kcmp=W_{\rm cmp}^*W_{\rm cmp}
+\]
+be the completed carrier feature map. The RH O1 bridge is
+\[
+  \AZ\preceq\Kcmp.
+\]
+By Douglas factorization, this is equivalent to the existence of a contraction
+\[
+  V_Z=T W_{\rm cmp},\qquad \|T\|\le1.
+\]
+
+The proposed completed feature map has four upstream-visible slots:
+\[
+  W_{\rm cmp}=\begin{bmatrix}
+  W_{\rm pr}\\ W_\infty\\ W_{\rm pole}\\ W_{\rm tail}
+  \end{bmatrix},
+\]
+corresponding to prime-power, archimedean/gamma, pole/completion, and support/tail records. The central issue is that the classical explicit formula is signed, while $W_{\rm cmp}^*W_{\rm cmp}$ must be positive.
+
+\section{Signed explicit-formula matching}
+\begin{definition}[Signed explicit-formula datum]
+A signed explicit-formula datum on a core $\Ccore$ is a sesquilinear identity
+\[
+  \VEF[f,g]=\VEF_{\rm pr}[f,g]+\VEF_\infty[f,g]+\VEF_{\rm pole}[f,g]+\VEF_{\rm tail}[f,g]-\VEF_Z[f,g]=0
+\]
+for $f,g\in\Ccore$, together with visibility records for every term.
+\end{definition}
+
+\begin{definition}[Positive feature matching]
+A signed explicit-formula datum admits a positive feature matching if there are positive forms
+\[
+  q_{\rm pr},\quad q_\infty,
+  \quad q_{\rm pole},\quad q_{\rm tail},
+  \quad q_{\rm rep}\succeq0
+\]
+on $\Ccore$ such that:
+\begin{enumerate}[label=(\roman*)]
+\item each $q_\bullet$ is represented by an upstream-visible feature map $W_\bullet$ or by an explicitly declared defect budget;
+\item the completed carrier form is
+\[
+  \qcmp=q_{\rm pr}+q_\infty+q_{\rm pole}+q_{\rm tail}+q_{\rm rep};
+\]
+\item the zero-side displacement form is
+\[
+  \qZ[f]=\|V_Zf\|^2;
+\]
+\item the signed explicit-formula identity agrees with the polarization of
+\[
+  \qW=\qcmp-\qZ;
+\]
+\item $\qW\succeq0$ on the core and has a closable extension to the completed response space.
+\end{enumerate}
+The term $q_{\rm rep}$ is permitted only when its construction is upstream-visible and does not depend on the target zero-confinement conclusion.
+\end{definition}
+
+\begin{theorem}[Signed-to-positive matching gate]
+Assume $\Ccore$ is a form core for the completed response space and the forms above are closable. A signed explicit-formula datum earns the Douglas bridge
+\[
+  \AZ\preceq\Kcmp
+\]
+if and only if it admits a positive feature matching with
+\[
+  \qcmp-\qZ\succeq0
+\]
+on the completed domain.
+Equivalently, there exists a contraction $T$ such that
+\[
+  V_Z=T W_{\rm cmp},\qquad \|T\|\le1.
+\]
+\end{theorem}
+
+\begin{proof}
+If $\qcmp-\qZ\succeq0$, then for every $y$ in the completed form domain,
+\[
+  \|V_Zy\|^2\le\|W_{\rm cmp}y\|^2.
+\]
+This is precisely the Loewner inequality $V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}$ in form sense. Douglas factorization then gives a contraction $T$ with $V_Z=T W_{\rm cmp}$.
+Conversely, if such $T$ exists, then
+\[
+  \|V_Zy\|^2=\|TW_{\rm cmp}y\|^2\le\|W_{\rm cmp}y\|^2,
+\]
+so $\qcmp-\qZ\succeq0$. The feature matching condition is exactly the requirement that the signed explicit formula be represented by the polarization of this positive residual form using upstream-visible feature slots.
+\end{proof}
+
+\section{The constructive gap}
+\begin{obligation}[O1 matching obligation]
+To instantiate the RH bridge on the log-side core, one must construct:
+\[
+  W_{\rm pr},\quad W_\infty,
+  \quad W_{\rm pole},\quad W_{\rm tail}
+\]
+and, if necessary, an upstream-positive residual feature $W_{\rm rep}$ such that
+\[
+  \qcmp=\|W_{\rm pr}\cdot\|^2+\|W_\infty\cdot\|^2+\|W_{\rm pole}\cdot\|^2+\|W_{\rm tail}\cdot\|^2+\|W_{\rm rep}\cdot\|^2
+\]
+and
+\[
+  \qcmp[f]-\qZ[f]
+\]
+is exactly the completed Weil residual form on $\Ccore$ and is nonnegative.
+\end{obligation}
+
+\begin{warning}[Weil positivity versus constructive matching]
+Full Weil positivity on the exact completed anti-invariant response space is equivalent to the Douglas domination once the residual form has been identified with $\qcmp-\qZ$. However, this is not yet a constructive positive feature representation. A proof that merely states positivity of a signed form may be equivalent in strength to RH; the membrane framework demands the stronger audit object: upstream-visible positive features with bridge, tail, and null-mode records.
+\end{warning}
+
+\section{No-overread lemmas}
+\begin{lemma}[Trace equality does not imply domination]
+There exist positive matrices $A,K\succeq0$ with $\operatorname{tr}A=\operatorname{tr}K$ but $A\npreceq K$.
+\end{lemma}
+\begin{proof}
+Take
+\[
+  A=\begin{pmatrix}2&0\\0&0\end{pmatrix},
+  \qquad
+  K=\begin{pmatrix}1&0\\0&1\end{pmatrix}.
+\]
+Both have trace $2$, but $A-K=\operatorname{diag}(1,-1)$ has a positive eigenvalue, so $A\npreceq K$.
+\end{proof}
+
+\begin{lemma}[Finite-core positivity without a core record is support-only]
+Let $Y$ be infinite-dimensional and $\mathcal C_N\subset Y$ finite-dimensional. Positivity of $\qcmp-\qZ$ on each fixed $\mathcal C_N$ does not imply positivity on the completed space unless the $\mathcal C_N$ form an exhaustive form core with tail control.
+\end{lemma}
+
+\begin{proof}
+Choose a vector $e$ outside the tested subspace and define a negative residual on $\operatorname{span}\{e\}$ while keeping the residual positive on the tested subspace. Every finite check passes until $e$ is included. Without an exhaustive/tail record, this is a hidden-support defect.
+\end{proof}
+
+\begin{lemma}[Tautological residual repair]
+Given $A,K\succeq0$, the choice
+\[
+  R=(A-K)_+
+\]
+forces
+\[
+  A\preceq K+R.
+\]
+This is a valid mathematical budget repair but not a proof-strengthening carrier construction unless $R$ is upstream-visible and non-target-selected.
+\end{lemma}
+
+\section{Status classification}
+The signed-to-positive matching gate assigns the following statuses:
+\begin{center}
+\begin{tabular}{ll}
+\hline
+Record & Status if missing\\
+\hline
+Positive prime feature & incomplete carrier feature\\
+Positive gamma feature & incomplete completion record\\
+Pole/null feature & failed null-mode legality\\
+Tail/support feature & moving-ledger support-only\\
+Residual positivity & O1 bridge failed\\
+Form-core completion & finite-test support-only\\
+Upstream visibility & smuggled repair\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+The central RH task is now a signed-to-positive matching problem: convert the signed completed explicit formula into a positive feature representation whose residual is a nonnegative closable form on the full anti-invariant response space. Only then does Weil positivity become the Douglas bridge required by the membrane framework.
+
+\end{document}

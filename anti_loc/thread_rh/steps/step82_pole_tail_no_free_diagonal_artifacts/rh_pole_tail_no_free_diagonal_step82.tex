@@ -1,0 +1,179 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\newcommand{\Hc}{\mathcal H}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\Apr}{d_{{\rm pr},L}}
+\newcommand{\qpr}{q_{{\rm pr},L}}
+\newcommand{\qsgn}{q_{{\rm sgn},L}}
+\newcommand{\qtail}{q_{{\rm tail},L}}
+\newcommand{\qpole}{q_{{\rm pole},L}}
+\newcommand{\qinfty}{q_{\infty}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+
+\title{Step 82: Pole/Tail Balance and the No-Free-Diagonal Gate}
+\author{Six Birds formed-layer membrane project}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 77--81 rewrote the prime and gamma slots of the completed Weil-side candidate as positive paired-difference features.  The prime slot obeys
+\[
+\qpr[f]=P_{{\rm pr},L}(h_f)+\Apr\|f\|^2,
+\qquad
+\Apr=2\sum_a w_{a,L}.
+\]
+The gamma slot admits a positive paired-difference symbol plus a constant.  The remaining question is whether pole/completion and tail/support slots can lawfully pay the signed-to-positive balance on the completed anti-invariant core.
+
+This note records the main obstruction:
+\[
+\boxed{\text{finite-rank pole/completion features cannot pay a full-core diagonal bill.}}
+\]
+On an infinite-dimensional core, any nonzero scalar diagonal coercivity must come from a full-rank/tail/coercive source, a quotient/gating record, or a renormalized paired representation.  It cannot be silently supplied by finitely many pole vectors.
+
+\section{Set-up}
+Let \(\Hc^-\) be the completed anti-invariant response/core Hilbert space.  A candidate completed positive carrier is written
+\[
+q_{{\rm cmp},L}[f]
+= \qpr[f]+\qinfty[f]+\qpole[f]+\qtail[f].
+\]
+The signed completed Weil expression is formally
+\[
+\qsgn[f]
+= P_{{\rm pr},L}(h_f)+R^{\rm sgn}_{\infty,L}[f]
++R^{\rm sgn}_{{\rm pole},L}[f]+R^{\rm sgn}_{{\rm tail},L}[f].
+\]
+A signed-to-positive matching record is a lower bound
+\[
+q_{{\rm cmp},L}[f]-\qsgn[f]\ge -e_L[f]
+\]
+with a declared nonnegative defect form \(e_L\).  The exact Douglas gate needs the defect to vanish after completion or be carried in the obstruction budget.
+
+\section{Finite rank cannot pay a full diagonal}
+
+\begin{theorem}[No-free-diagonal theorem]
+Let \(\Hc\) be infinite-dimensional and let \(P\ge0\) be a finite-rank positive operator.  Then for every \(\delta>0\),
+\[
+P\nsucceq \delta I_{\Hc}.
+\]
+Equivalently, for every \(\delta>0\) there is a unit vector \(f\in\Hc\) such that
+\[
+\langle f,Pf\rangle=0<\delta\|f\|^2.
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(P\) has finite rank, \(\Ker P\) is infinite-dimensional.  Choose a unit vector \(f\in\Ker P\). Then \(\langle f,Pf\rangle=0\), while \(\delta\|f\|^2=\delta>0\).
+\end{proof}
+
+\begin{corollary}[Pole slot limitation]
+A pole/completion feature of the form
+\[
+W_{{\rm pole}}f=(\langle f,p_1\rangle,\ldots,\langle f,p_m\rangle)
+\]
+with
+\[
+\qpole[f]=\sum_{r=1}^m |\langle f,p_r\rangle|^2
+\]
+cannot dominate \(\delta\|f\|^2\) on an infinite-dimensional anti-invariant core.  It can only pay finitely many completion/null/endpoint directions unless paired with a full-rank tail or a quotient that removes the complement from scope.
+\end{corollary}
+
+\begin{warning}[Finite windows are not the full core]
+On a finite-dimensional truncated core, a finite-rank pole feature may dominate a diagonal if it spans the whole truncated core.  This is a finite-window statement.  It promotes to the completed core only with a uniform lower-frame/tail record.
+\end{warning}
+
+\section{Tail/coercive payment criterion}
+
+\begin{theorem}[Pole plus tail diagonal payment]
+Let \(\Hc=\Hc_P\oplus\Hc_Q\), with \(P\) and \(Q\) the orthogonal projections. Suppose
+\[
+\qpole[f]\ge \delta_P\|Pf\|^2,
+\qquad
+\qtail[f]\ge \delta_Q\|Qf\|^2.
+\]
+Then
+\[
+\qpole[f]+\qtail[f]
+\ge \min(\delta_P,\delta_Q)\|f\|^2.
+\]
+In particular, a full diagonal payment on the completed core requires a full-sector lower frame: finite pole vectors can cover \(\Hc_P\), but the infinite complement \(\Hc_Q\) requires a tail/coercive source.
+\end{theorem}
+
+\begin{proof}
+Immediate from the orthogonal decomposition:
+\[
+\qpole[f]+\qtail[f]\ge \delta_P\|Pf\|^2+\delta_Q\|Qf\|^2
+\ge \min(\delta_P,\delta_Q)(\|Pf\|^2+\|Qf\|^2).
+\]
+\end{proof}
+
+\section{The diagonal-growth obstruction}
+
+\begin{proposition}[Naive prime repair obstructs budget collapse]
+Assume the completed candidate currency contains a diagonal term
+\[
+\alpha_L I_{\Hc^-}\preceq \Kcmp_L
+\]
+on a fixed nonzero anti-invariant response space, with \(\alpha_L>0\).  Then
+\[
+\|\Kcmp_L\|\ge \alpha_L.
+\]
+Consequently, \(\Kcmp_L\to0\) in operator norm is impossible unless \(\alpha_L\to0\) or the response space itself is lawfully gated/quotiented so that the diagonal is not present on the limiting carrier.
+\end{proposition}
+
+\begin{proof}
+For any unit \(f\), \(\langle f,\Kcmp_L f\rangle\ge \alpha_L\). Taking the supremum over unit vectors gives \(\|\Kcmp_L\|\ge \alpha_L\).
+\end{proof}
+
+\begin{corollary}[Prime diagonal warning]
+If the prime positive feature is used in the separated form
+\[
+\qpr=P_{{\rm pr},L}+\Apr\|f\|^2,
+\]
+and \(\Apr\) grows with the cutoff, then the separated diagonal is incompatible with anti-invariant budget collapse on a fixed full core unless it is neutralized by a lawful paired-completion representation, absorbed into a quotient/nonclaim, or balanced by a full-sector signed-to-positive matching record that does not leave \(\Apr I\) in the final currency.
+\end{corollary}
+
+\section{Paired representation rule}
+
+\begin{definition}[Paired feature representation]
+A signed-to-positive matching is \emph{paired} if it constructs the final positive form directly as a nonnegative quadratic form without leaving separated infinite or cutoff-growing diagonal terms as independent spendable currency.
+\end{definition}
+
+\begin{proposition}[No separated-infinite-diagonal spending]
+Let
+\[
+q[f]=\int \kappa(a)\|\tau_a f-f\|^2\,da
+\]
+with \(\int \kappa(a)\,da=\infty\), but \(q[f]<\infty\) on a smooth core because \(\|\tau_a f-f\|^2=O(a^2)\) near zero.  Then the expression
+\[
+q[f]=2\left(\int \kappa(a)\,da\right)\|f\|^2-2\Re\int \kappa(a)\langle \tau_a f,f\rangle\,da
+\]
+is not a lawful decomposition into two finite carrier currencies.  The form is lawful only as the paired difference form unless a renormalization record is supplied.
+\end{proposition}
+
+\section{RH status after this gate}
+The completed zeta feature package must satisfy one of the following:
+\begin{enumerate}[label=(\alph*)]
+\item a direct paired positive representation of the entire completed Weil form, avoiding separated diagonal artifacts;
+\item a pole-plus-tail lower-frame record that covers every anti-invariant direction on the completed core;
+\item a quotient/gating/nonclaim record that removes uncovered directions from the claimed layer; or
+\item an explicit signed-to-positive defect budget carried into the root-composite obstruction ledger.
+\end{enumerate}
+The finite-rank pole slot alone is insufficient to pay a full-core diagonal repair.  The tail/support slot or a full paired renormalized representation is therefore load-bearing.
+
+\section{Nonclaim boundary}
+This note does not prove RH.  It does not prove that the completed Weil form admits a positive feature representation.  It proves only that a finite-rank pole/completion feature cannot by itself supply uniform diagonal coercivity on an infinite-dimensional anti-invariant core, and that separated diagonal terms must be audited rather than treated as free currency.
+
+\end{document}

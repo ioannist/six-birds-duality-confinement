@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\title{Step 149: Source Audit Budget Theorem or Obstruction}
+\author{Riemann--Membrane Construction Notes}
+\date{May 2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\XiG}{\Xi_{\mathrm{GCD}}}
+\newcommand{\XiBO}{\Xi_{B\to\Omega}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 148 showed that a positive weighted residual ledger can be made trace-class and separating, but that trace-class status alone is not source compatibility.  The missing condition is a source audit budget:
+\[
+  \frac{\tr(F_N^\Omega K_R^\omega)}{\Lambda_N^\Omega}\longrightarrow 0,
+\]
+or a logically equivalent collapse-level upper estimate.  Step 149 makes this precise and records the obstruction: no fixed positive ledger can have a sublinear source exposure under a growing lower frame unless the residual ledger has already collapsed.
+
+\section{Objects carried from Steps 144--148}
+Let \(H_R\) be the completed Burnol/Sonine residual carrier and \(G_R\) its reference positive form.  Let
+\[
+  K_R^\omega=(D_R^\omega)^*D_R^\omega\in\mathcal S_1(H_R),
+  \qquad K_R^\omega\ge 0,
+\]
+be the fixed weighted residual zero ledger from Step 147.  The \(\Omega\)-compatible restricted source frame is denoted
+\[
+  F_N^\Omega\ge 0,
+\]
+and its effective source strength is
+\[
+  \Lambda_N^\Omega
+  = \gamma_{q_N}
+    (1-\epsilon_{B\to\Omega,N}^2)
+    (1-\delta_{R,K,N}^2),
+  \qquad \Lambda_N^\Omega\to\infty.
+\]
+The finite-window lower frame, including declared source defects, has the form
+\begin{equation}\label{eq:lower-frame-defect}
+  F_N^\Omega + E_N^\Omega \succeq \Lambda_N^\Omega G_R,
+  \qquad E_N^\Omega\ge0.
+\end{equation}
+The completed residual tail is
+\[
+  T_N=I-P_N,
+  \qquad \tr(T_NK_R^\omega T_N)\to0
+\]
+whenever the Burnol/Sonine residual windows are fixed/exhaustive.
+
+\section{Source exposure}
+\begin{definition}[source exposure]
+The source exposure of the weighted residual ledger is
+\[
+  B_N^\omega:=\tr(F_N^\Omega K_R^\omega).
+\]
+If
+\[
+  K_R^\omega=\sum_z \omega_z q_z^2 |y_z\rangle\langle y_z|,
+\]
+where \(z=(\rho,k)\), \(q_z=\Re\rho-1/2\), and \(y_z=\Pi_RY^a_{\rho,k}\), then
+\begin{equation}\label{eq:source-exposure-expanded}
+  B_N^\omega
+  =\sum_z \omega_zq_z^2\langle F_N^\Omega y_z,y_z\rangle.
+\end{equation}
+Thus source compatibility is a source--evaluator response envelope, not merely a height-weight summability condition.
+\end{definition}
+
+\section{No-free-budget theorem}
+\begin{theorem}[no free source budget]\label{thm:no-free}
+Assume \eqref{eq:lower-frame-defect}.  Then every fixed positive trace-class residual ledger satisfies
+\begin{equation}\label{eq:budget-lower}
+  B_N^\omega + \tr(E_N^\Omega K_R^\omega)
+  \ge
+  \Lambda_N^\Omega\tr(G_RK_R^\omega).
+\end{equation}
+Consequently, if
+\[
+  \frac{B_N^\omega}{\Lambda_N^\Omega}\to0,
+  \qquad
+  \frac{\tr(E_N^\Omega K_R^\omega)}{\Lambda_N^\Omega}\to0,
+\]
+then
+\[
+  \boxed{\tr(G_RK_R^\omega)=0.}
+\]
+\end{theorem}
+
+\begin{proof}
+Taking the trace of \eqref{eq:lower-frame-defect} against \(K_R^\omega\ge0\) gives
+\[
+  \tr(F_N^\Omega K_R^\omega)+\tr(E_N^\Omega K_R^\omega)
+  \ge
+  \Lambda_N^\Omega\tr(G_RK_R^\omega),
+\]
+which is \eqref{eq:budget-lower}.  Divide by \(\Lambda_N^\Omega\) and pass to the limit.
+\end{proof}
+
+\begin{corollary}[obstruction form]\label{cor:obstruction}
+If
+\[
+  m_\omega:=\tr(G_RK_R^\omega)>0
+\]
+and
+\[
+  \tr(E_N^\Omega K_R^\omega)=o(\Lambda_N^\Omega),
+\]
+then
+\[
+  \liminf_{N\to\infty}\frac{B_N^\omega}{\Lambda_N^\Omega}\ge m_\omega.
+\]
+Thus a sublinear source audit budget is impossible for a nonzero fixed residual ledger.
+\end{corollary}
+
+\section{Collapse-level upper budgets}
+The source audit budget can be phrased through any independent upper envelope
+\[
+  B_N^\omega\le U_N^\omega.
+\]
+Combining with Theorem~\ref{thm:no-free} yields:
+
+\begin{theorem}[source audit collapse theorem]\label{thm:source-audit-collapse}
+Suppose \eqref{eq:lower-frame-defect} holds, the residual tail is fixed/exhaustive, and there is an independent source exposure upper envelope satisfying
+\[
+  \frac{U_N^\omega}{\Lambda_N^\Omega}\to0,
+  \qquad
+  \frac{\tr(E_N^\Omega K_R^\omega)}{\Lambda_N^\Omega}\to0.
+\]
+Then
+\[
+  \tr(G_RK_R^\omega)=0.
+\]
+If the weights \(\omega_z\) are strictly positive on all visible residual zero directions, this forces
+\[
+  \Re\rho=\frac12
+\]
+for every zero direction visible in \(H_R\).
+\end{theorem}
+
+\begin{warning}[why this is not a harmless estimate]
+The estimate \(U_N^\omega=o(\Lambda_N^\Omega)\) is already a collapse-level certificate.  It cannot be treated as a routine source-normalization or as a consequence of trace-class weighting alone.  If the residual ledger is nonzero, the lower frame itself forces \(B_N^\omega\) to grow at least like \(\Lambda_N^\Omega\tr(G_RK_R^\omega)\).
+\end{warning}
+
+\section{Evaluator-response envelope}
+Using \eqref{eq:source-exposure-expanded}, a source audit budget can be attempted through shellwise evaluator response bounds.  Let \(\mathcal Z_j\) be dyadic height shells and write
+\[
+  S_N(z):=\langle F_N^\Omega y_z,y_z\rangle.
+\]
+If an independent theorem supplies
+\[
+  S_N(z)\le U_N(z),
+\]
+then
+\[
+  B_N^\omega\le \sum_z\omega_zq_z^2U_N(z).
+\]
+A successful source audit budget therefore requires
+\begin{equation}\label{eq:evaluator-budget}
+  \sum_z\omega_zq_z^2U_N(z)=o(\Lambda_N^\Omega).
+\end{equation}
+But the lower-frame theorem simultaneously implies
+\[
+  S_N(z)+\langle E_N^\Omega y_z,y_z\rangle
+  \ge
+  \Lambda_N^\Omega\|y_z\|_{G_R}^2.
+\]
+Thus \eqref{eq:evaluator-budget} can only hold if the visible weighted off-critical residual mass vanishes.
+
+\section{Three route statuses}
+Step 149 leaves three lawful outcomes.
+
+\subsection*{Collapse certificate}
+One proves an independent sublinear source exposure:
+\[
+  B_N^\omega=o(\Lambda_N^\Omega).
+\]
+Then the weighted residual ledger collapses.
+
+\subsection*{Linear exposure}
+One proves only
+\[
+  B_N^\omega=O(\Lambda_N^\Omega).
+\]
+This is compatible with nonzero residual mass and gives no collapse.
+
+\subsection*{Uncontrolled exposure}
+If
+\[
+  B_N^\omega/\Lambda_N^\Omega
+\]
+is unbounded or unavailable, the source-frame route remains finite-window support only.
+
+\section{Conclusion}
+The source audit budget theorem is not another routine analytic input.  Under a growing lower frame, a sublinear source exposure is equivalent to the desired residual collapse.  The next constructive problem is therefore not merely to choose faster-decaying fixed weights, and not to renormalize the ledger with \(N\), but to identify an independent source-evaluator response mechanism that forces the exposure ratio to vanish.  If no such mechanism exists, the source route has reached a genuine completed-ledger obstruction.
+
+\end{document}

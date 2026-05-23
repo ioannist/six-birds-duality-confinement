@@ -1,0 +1,126 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\HBN}{H_{\mathrm{BN}}}
+\newcommand{\MBN}{M_{\mathrm{BN}}}
+\newcommand{\XiBN}{\Xi_{\mathrm{BN}}}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\rhoa}{\rho_a}
+\newcommand{\CRE}{\mathrm{CRE}}
+\newcommand{\CRCFT}{\mathrm{CRCFT}}
+
+\title{Step 193: Beurling--Nyman Carrier Pivot}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_BN\_CRCFT\_TE}}.
+\]
+
+The Beurling--Nyman carrier is a new classically-RH-equivalent carrier with a different attack shape from Burnol/Sonine.  It nevertheless lands in \(\CRCFT\)-TE: the closure condition is exactly target-equivalent to RH.
+
+\section*{Inherited Audit}
+
+The inherited records contain only sparse Beurling--Nyman references: a Step 93 warning that small carriers are underpowered against the de Branges/Baez--Duarte/Bombieri wall, and the Step 193 manager rationale in the cascade map.  No accepted BN carrier package was inherited.  This step therefore declares the carrier directly from the classical Beurling--Nyman literature.
+
+\section*{Carrier Declaration}
+
+Let
+\[
+\HBN=L^2(0,1)
+\]
+with Lebesgue measure.  For \(0<a\le 1\), define
+\[
+\rho_a(t)=\left\{\frac{a}{t}\right\}-a\left\{\frac{1}{t}\right\},
+\qquad 0<t<1,
+\]
+where \(\{x\}\) is the fractional part.  Let
+\[
+\MBN=\overline{\operatorname{span}\{\rho_a:0<a\le1\}}^{\,L^2(0,1)}.
+\]
+The parent residual is
+\[
+\XiBN=(I-P_{\MBN})\one,
+\]
+and its scalar defect is
+\[
+\delta_{\mathrm{BN}}^2
+=
+\|\XiBN\|_2^2
+=
+\inf_{f\in\MBN}\|\one-f\|_2^2.
+\]
+
+\section*{Classical Criterion}
+
+The Beurling--Nyman theorem states:
+\[
+\XiBN=0
+\quad\Longleftrightarrow\quad
+\one\in\MBN
+\quad\Longleftrightarrow\quad
+\mathrm{RH}.
+\]
+Thus the carrier is \(\CRE\).  Baez--Duarte's strengthening permits restricting the approximation family to countable arithmetic parameter families, in particular integer-dilation versions of the criterion.
+
+\section*{Gram Matrix Subinterface}
+
+For a finite set \(A=\{a_1,\dots,a_N\}\subset(0,1]\), set
+\[
+G_A(i,j)=\langle \rho_{a_i},\rho_{a_j}\rangle_{L^2(0,1)}
+=
+\int_0^1
+\left(\left\{\frac{a_i}{t}\right\}-a_i\left\{\frac1t\right\}\right)
+\left(\left\{\frac{a_j}{t}\right\}-a_j\left\{\frac1t\right\}\right)
+\,dt.
+\]
+Also
+\[
+b_A(i)=\langle \one,\rho_{a_i}\rangle
+=a_i\log(1/a_i).
+\]
+When \(G_A\) is invertible, the finite-window distance is
+\[
+\delta_A^2
+=
+1-b_A^*G_A^{-1}b_A,
+\]
+and in general \(G_A^{-1}\) is replaced by the Moore--Penrose inverse \(G_A^\dagger\).
+
+The Mellin transform identity behind the criterion is
+\[
+\int_0^1 \rho_a(t)t^{s-1}\,dt
+=
+\frac{a-a^s}{s}\zeta(s),
+\]
+with the usual meromorphic interpretation at \(s=1\).  This identity explains why the closure of \(\one\) by the \(\rho_a\)'s is a zeta-zero statement.
+
+The matrix elements are computable: one may partition \((0,1)\) at the breakpoints \(a_i/n\), \(a_j/m\), \(1/n\), or use the arithmetic formulas developed in the Baez--Duarte literature.  Hence this is not a missing-kernel CTMT blocker.
+
+\section*{CRCFT Classification}
+
+The natural BN finite-window computations are matrix computations, but the matrix entries themselves are available.  The hard assertion is
+\[
+\inf_A \delta_A^2=0
+\]
+over an exhausting family of parameters.  By the Beurling--Nyman theorem this is equivalent to RH.  Therefore the framework mode is:
+\[
+\boxed{\CRCFT\text{-TE}.}
+\]
+The Gram system is a computational subinterface, not a CTMT-stuck terminal missing record.
+
+\section*{Dichotomy Update}
+
+The BN carrier is the sixth CRE carrier tested.  It confirms the Dichotomy pattern: a fresh CRE carrier with a different shape still falls into a CRCFT foreclosure mode, here target-equivalence.
+
+\section*{Nonclaim}
+
+This step does not establish RH and does not close \(\XiBN\).  It only classifies the carrier and records the finite Gram-matrix structure.
+
+\end{document}
+

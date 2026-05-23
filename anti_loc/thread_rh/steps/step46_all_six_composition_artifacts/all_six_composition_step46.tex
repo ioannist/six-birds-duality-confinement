@@ -1,0 +1,313 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{remark}{Remark}
+
+\title{Step 46: All-Six Record Composition and Propagation for Anti-Localization Membranes}
+\author{Six Birds Anti-Localization Program}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+The preceding step defined an accepted anti-localization membrane as an exact-six record with channels
+\[
+P_1,\ldots,P_6
+\]
+for rewrite/gauge, feasibility/channelization, route/holonomy, staging/refinement, packaging/canonicalization, and audit/currency.  This note proves the corresponding composition law: accepted membranes compose only through bridges whose response maps, energy maps, budgets, and all six channel defects compose with explicit accounting.
+
+This is not a simulation theorem. It is the proof-level statement that an anti-localization membrane is functorial only in an audited category of carriers and all-six records.
+
+\section{Currency records}
+
+\begin{definition}[Membrane record]
+A finite membrane record is a tuple
+\[
+\mathsf{AL}=(E,C,L,Y,\Theta,\mathsf P_1,\ldots,\mathsf P_6,\mathsf N),
+\]
+where $E$ is the exact packaged coordinate carrier, $C\succeq0$ is the packaged audit, $L:E\to Y$ is the native probe family, $\Theta\succeq0$ is the response budget, and $\mathsf P_i$ are the six channel records.  Assuming null-mode legality, its currency matrix is
+\[
+K=L C^\dagger L^*.
+\]
+The record is budget-accepted when
+\[
+K\preceq \Theta.
+\]
+\end{definition}
+
+\begin{definition}[All-six bridge]
+A bridge
+\[
+\mathsf B: \mathsf{AL}\to\mathsf{AL}'
+\]
+consists of a carrier map $P:E'\to E$, a response map $A:Y\to Y'$, and a nonnegative residual currency $E_B\succeq0$ such that
+\[
+C'\succeq P^*CP,
+\]
+and
+\[
+L'=ALP+R,
+\qquad
+R(C')^\dagger R^*\preceq E_B.
+\]
+It also carries six channel bridge records
+\[
+\mathsf B_i:\mathsf P_i\to\mathsf P_i',\qquad i=1,\dots,6,
+\]
+each with status accepted or a named downgrade, and with a response-side defect contribution $E_{B,i}\succeq0$ such that
+\[
+E_B\preceq \sum_{i=1}^6 E_{B,i}.
+\]
+\end{definition}
+
+\section{One-step transfer}
+
+\begin{theorem}[Exact all-six transfer]
+Assume $C'\succeq P^*CP$ and $L'=ALP$. Then
+\[
+K'=L'(C')^\dagger(L')^*\preceq A K A^*.
+\]
+Consequently, if $K\preceq\Theta$ and
+\[
+A\Theta A^*\preceq\Theta',
+\]
+then $K'\preceq\Theta'$.
+\end{theorem}
+
+\begin{proof}
+For any $y'\in Y'$, put $g'=(L')^*y'=P^*L^*A^*y'$. The capacity of $y'^*L'$ on $(E',C')$ is
+\[
+\langle g',(C')^\dagger g'\rangle
+=
+\sup_{u'\ne0}\frac{|\langle y',L'u'\rangle|^2}{\langle u',C'u'\rangle}.
+\]
+Since $C'\succeq P^*CP$, every $u'$ satisfies
+\[
+\langle u',C'u'\rangle\ge \langle Pu',CPu'\rangle.
+\]
+Also $L'u'=ALPu'$. Hence
+\[
+\frac{|\langle y',L'u'\rangle|^2}{\langle u',C'u'\rangle}
+\le
+\frac{|\langle A^*y',LPu'\rangle|^2}{\langle Pu',CPu'\rangle}
+\le
+(A^*y')^*K(A^*y').
+\]
+Taking the supremum gives
+\[
+y'^*K'y'\le y'^*AKA^*y'
+\]
+for all $y'$, so $K'\preceq AKA^*$. The budget conclusion follows by Loewner transitivity.
+\end{proof}
+
+\begin{theorem}[Defective all-six transfer]
+Assume
+\[
+L'=ALP+R,
+\qquad
+R(C')^\dagger R^*\preceq E_B,
+\]
+and $C'\succeq P^*CP$. Then for every $t>0$,
+\[
+\boxed{
+K'\preceq (1+t)AKA^*+(1+t^{-1})E_B.
+}
+\]
+Thus if
+\[
+(1+t)A\Theta A^*+(1+t^{-1})E_B\preceq\Theta',
+\]
+then $K'\preceq\Theta'$.
+\end{theorem}
+
+\begin{proof}
+For any $u'\in E'$ and $y'\in Y'$,
+\[
+\langle y',L'u'\rangle
+=
+\langle A^*y',LPu'\rangle+
+\langle y',Ru'\rangle.
+\]
+The scalar inequality
+\[
+|a+b|^2\le(1+t)|a|^2+(1+t^{-1})|b|^2
+\]
+gives, after dividing by $\langle u',C'u'\rangle$ and taking suprema,
+\[
+y'^*K'y'\le (1+t)y'^*AKA^*y'+(1+t^{-1})y'^*E_By'.
+\]
+Since this holds for every $y'$, the Loewner inequality follows.
+\end{proof}
+
+\section{Composition}
+
+\begin{theorem}[Two-step composition]
+Let
+\[
+\mathsf{AL}_1\xrightarrow{(A_{12},E_{12})}\mathsf{AL}_2
+\xrightarrow{(A_{23},E_{23})}\mathsf{AL}_3
+\]
+be defective membrane bridges satisfying
+\[
+K_2\preceq A_{12}K_1A_{12}^*+E_{12},
+\]
+\[
+K_3\preceq A_{23}K_2A_{23}^*+E_{23}.
+\]
+Then the composed bridge has response map
+\[
+A_{13}=A_{23}A_{12}
+\]
+and accumulated defect
+\[
+E_{13}=A_{23}E_{12}A_{23}^*+E_{23},
+\]
+with
+\[
+\boxed{
+K_3\preceq A_{13}K_1A_{13}^*+E_{13}.
+}
+\]
+If
+\[
+A_{13}\Theta_1A_{13}^*+E_{13}\preceq \Theta_3,
+\]
+then the membrane budget transfers from stage $1$ to stage $3$.
+\end{theorem}
+
+\begin{proof}
+Substitute the first inequality into the second:
+\[
+K_3\preceq A_{23}(A_{12}K_1A_{12}^*+E_{12})A_{23}^*+E_{23}.
+\]
+Collect terms to obtain the stated expression. The budget assertion follows by transitivity.
+\end{proof}
+
+\begin{corollary}[Path composition]
+For a chain
+\[
+\mathsf{AL}_0\to\mathsf{AL}_1\to\cdots\to\mathsf{AL}_n
+\]
+with maps $A_j:Y_j\to Y_{j+1}$ and defects $E_j\succeq0$, define
+\[
+A_{i:n}=A_{n-1}\cdots A_i,
+\qquad A_{n:n}=I.
+\]
+Then
+\[
+K_n\preceq A_{0:n}K_0A_{0:n}^*+
+\sum_{j=0}^{n-1} A_{j+1:n}E_jA_{j+1:n}^*.
+\]
+Thus the path is accepted if the right-hand side is below $\Theta_n$ and every channel bridge $P_i$ has accepted composed status.
+\end{corollary}
+
+\section{All-six status composition}
+
+\begin{definition}[Channelwise composition status]
+Each channel $P_i$ carries a status in
+\[
+\{	exttt{accepted},\texttt{support\_only},\texttt{local\_only},\texttt{failed\_defect},\texttt{smuggled},\texttt{overread},\texttt{outside\_scope}\}.
+\]
+A composed record is accepted only if every channel composes as accepted and the accumulated response-side defect is inside budget. Otherwise the membrane status is the meet of the channel statuses and the budget status.
+\end{definition}
+
+\begin{theorem}[All-six record composition]
+Let $\mathsf{AL}_0\to\cdots\to\mathsf{AL}_n$ be a chain of all-six membrane records. Suppose:
+\begin{enumerate}[label=(\roman*)]
+\item every bridge has accepted $P_1,\ldots,P_6$ channel records;
+\item each bridge satisfies a currency transfer inequality
+\[
+K_{j+1}\preceq A_jK_jA_j^*+E_j;
+\]
+\item the accumulated defect obeys
+\[
+A_{0:n}\Theta_0A_{0:n}^*+
+\sum_{j=0}^{n-1}A_{j+1:n}E_jA_{j+1:n}^*
+\preceq \Theta_n;
+\]
+\item null-mode legality and nonclaim boundaries are preserved.
+\end{enumerate}
+Then $\mathsf{AL}_n$ is an accepted membrane record. In particular, every native recombination at stage $n$ is priced by $\Theta_n$.
+\end{theorem}
+
+\begin{proof}
+By path composition,
+\[
+K_n\preceq A_{0:n}K_0A_{0:n}^*+
+\sum_{j=0}^{n-1}A_{j+1:n}E_jA_{j+1:n}^*.
+\]
+Since $K_0\preceq\Theta_0$, the right-hand side is bounded by the accumulated budget expression in (iii), hence by $\Theta_n$. Channel acceptance, null-mode legality, and nonclaim preservation are exactly the remaining gates needed to upgrade the matrix inequality to an accepted all-six membrane record.
+\end{proof}
+
+\section{Propagation under summable defects}
+
+\begin{theorem}[Uniform propagation by summable bridge defects]
+Suppose all stages share a common response space and
+\[
+K_{j+1}\preceq (1+\varepsilon_j)K_j+D_j,
+\]
+where
+\[
+\prod_{j=0}^{\infty}(1+\varepsilon_j)\le P<\infty,
+\qquad
+\sum_{j=0}^{\infty}D_j\preceq D_\infty.
+\]
+If
+\[
+P(K_0+D_\infty)\preceq\Theta,
+\]
+then
+\[
+K_j\preceq\Theta
+\]
+for every $j$.
+\end{theorem}
+
+\begin{proof}
+Iterating the recurrence gives
+\[
+K_n\preceq \left(\prod_{r=0}^{n-1}(1+\varepsilon_r)\right)K_0
++
+\sum_{j=0}^{n-1}\left(\prod_{r=j+1}^{n-1}(1+\varepsilon_r)\right)D_j.
+\]
+Each product is bounded by $P$, so
+\[
+K_n\preceq P K_0+P\sum_{j=0}^{n-1}D_j\preceq P(K_0+D_\infty)\preceq\Theta.
+\]
+\end{proof}
+
+\begin{warning}[Non-summable defects]
+If the defect series is not summable, every finite stage can be accepted while the predictive membrane fails. For example, $K_{j+1}=K_j+j^{-1/2}$ gives finite $K_j$ for each $j$ but unbounded predictive currency.
+\end{warning}
+
+\section{Public shadow and hidden-kernel overread}
+
+\begin{proposition}[Public shadows do not reverse-transfer]
+Let $F:Y\to Z$ be a public readout. If $K_Y\preceq\Theta_Y$, then
+\[
+F K_Y F^*\preceq F\Theta_YF^*.
+\]
+The converse fails whenever $F$ has a hidden kernel. In particular, a public-shadow membrane is not an intrinsic membrane unless a reconstruction bridge and defect budget are supplied.
+\end{proposition}
+
+\begin{proof}
+The forward implication is congruence monotonicity. For the converse, take $Y=\mathbb R^2$, $F=(1,0)$, and $K_Y=\operatorname{diag}(1,M)$ with $M\gg1$. The public currency is $1$, but the intrinsic currency has largest eigenvalue $M$.
+\end{proof}
+
+\section{Interpretation}
+
+The composition theorem turns the all-six record from a static certificate into a propagation law. A formed layer's membrane can pass through exactification, protocol surfaces, public readouts, refinements, and strict extensions only when all six channels compose and all defects are paid in the response-side currency. Without this theorem, a membrane at one carrier could be silently overread as a membrane at another.
+
+\end{document}

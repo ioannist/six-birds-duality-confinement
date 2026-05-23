@@ -1,0 +1,115 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs,geometry}
+\geometry{margin=1in}
+
+\title{Step 199: Beurling--Nyman Harmonic Chain Extension to \(N=2000\)}
+\author{six-birds-foundations-iii}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Target}
+
+This step extends the Step 195 Beurling--Nyman harmonic-chain numerical
+experiment.  For \(A_N=\{1/k:1\le k\le N\}\), the finite defect is
+\[
+  \delta_{A_N}^2=1-b_N^*G_N^\dagger b_N.
+\]
+The Gram entries use the arithmetic formula
+\[
+  G_{p,q}
+  =
+  \sum_{n\ge1}
+  \frac{((n\bmod p)/p)((n\bmod q)/q)}{n(n+1)}.
+\]
+
+\section*{Method}
+
+The scalar setup uses \texttt{mpmath} at 80 decimal digits.  The Gram matrix
+is built by the Step 195 vectorized arithmetic series, truncated at
+\[
+  X_{\max}=40000,
+\]
+giving a per-entry tail bound \(2.5\times10^{-5}\).  The active matrix drops
+the zero atom \(p=1\), then uses a symmetric eigen-pseudoinverse with
+\[
+  \mathrm{rcond}=10^{-12}.
+\]
+
+A full \(2000\times2000\) arbitrary-precision \texttt{mpmath} SVD was not
+computationally feasible in this runtime.  Therefore this run is a
+Step-195-comparable extension with an explicit \(N=1000\) calibration, not a
+full high-precision dense-SVD certification.
+
+\section*{Computed Data}
+
+\begin{center}
+\begin{tabular}{rrrrr}
+\toprule
+\(N\) & \(\delta_{A_N}^2\) & \(\delta_{A_N}^2\log N\) & rank & condition proxy\\
+\midrule
+1000 & 0.00646330050366617 & 0.0446468981738479 & 999 & \(5.0051\times10^6\)\\
+1500 & 0.00611039863611640 & 0.0446866918788952 & 1499 & \(1.2654\times10^7\)\\
+2000 & 0.00592901311818050 & 0.0450658503926355 & 1999 & \(2.4906\times10^7\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The \(N=1000\) calibration differs from the Step 195 value by
+\[
+  -8.09304602769102\times 10^{-5}
+\]
+in \(\delta^2\).  This is consistent with the larger truncation bound and the
+changed active-matrix eigensolver.
+
+\section*{Updated Decay Fit}
+
+Combining inherited Step 195 values through \(N=1000\) with the new
+\(N=1500,2000\) values gives:
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+model & range & \(C\) & exponent / spread\\
+\midrule
+\(\delta^2\log N\) mean & \(N=200,500,1000,1500,2000\) & 0.0456632443937048 & spread 0.000926351\\
+\(C/(\log N)^\alpha\) & \(N\ge20\) & 0.0547051524798759 & \(\alpha=1.096343229\)\\
+recent \(C/(\log N)^\alpha\) & \(N\ge200\) & 0.0606633898663218 & \(\alpha=1.15047847\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Comparison with Step 195}
+
+Step 195 reported a tail mean
+\[
+  \delta^2\log N\approx0.0467
+\]
+over \(N=80,\ldots,1000\), and a fit
+\[
+  \delta^2\sim C/(\log N)^\alpha,\qquad
+  C\approx0.054,\quad \alpha\approx1.09.
+\]
+The extended data keep the same structure.  The updated all-tail fit gives
+\[
+  C\approx0.0547,\qquad \alpha\approx1.096.
+\]
+The direct values \(\delta^2\log N\) at \(N=1500,2000\) remain near
+\[
+  0.045.
+\]
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_BN\_N2000\_consistent}.}
+\]
+
+The extension to \(N=2000\) confirms the slow-log decay pattern seen in Step
+195, subject to the recorded truncation and dense-linear-algebra caveat.  It
+is consistent with the Baez--Duarte RH-conditional Beurling--Nyman behavior.
+It does not prove the infinite Beurling--Nyman closure or RH.
+
+\end{document}
+

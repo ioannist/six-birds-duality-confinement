@@ -1,0 +1,555 @@
+                                                                                                                      math.NT/9811040
+arXiv:math/9811040v2 [math.NT] 22 Nov 1998
+
+
+
+
+                                               SPECTRAL ANALYSIS OF THE LOCAL CONDUCTOR OPERATOR
+
+
+
+                                                                                Jean-François Burnol
+                                                                                   November 1998
+
+
+                                             The conductor operator acts on a function through multiplying it with the logarithm of the
+                                             norm of the variable both in position and in momentum space and adding the outcomes. It
+                                             makes sense at each completion of an arbitrary number field and arose in previous papers
+                                             by the author where it was shown to be intimately connected with the Explicit Formula
+                                             of Analytic Number Theory. I complete here its spectral analysis: the conclusion is that
+                                             the local contribution to the Explicit Formula expressed as an integral over the critical
+                                             line is completely equivalent to, indeed precisely realizes this spectral analysis. In this
+                                             picture the inversion is related to complex conjugation, the additive Fourier transform is
+                                             closely related to the Tate-Gel’fand-Graev Gamma function on the critical line, and the
+                                             conductor operator itself is just the logarithmic derivative of the Gamma function, again
+                                             on the critical line, acting as a multiplier. From this one gets that the conductor operator
+                                             is not only dilation and Fourier invariant, which was obvious, but also inversion invariant.
+                                             In this manner, an operator theoretic and spectral interpretation of each local contribution
+                                             to the Explicit Formula on the critical line has been obtained.
+
+
+
+
+                                             62 rue Albert Joly
+                                             F-78000 Versailles
+                                             France
+
+
+                                             jf.burnol@dial.oleane.com
+
+                                                                                          1
+TABLE OF CONTENTS
+
+
+The conductor operator and the Explicit Formula
+
+
+The discrete spectrum of the p−adic conductor operator
+
+
+The continuous spectrum of the p−adic conductor operator
+
+
+The Poisson summation formula from a local functional equation
+
+
+Intrinsic spectral analysis in the general case
+
+
+References
+
+
+
+
+                                        2
+The conductor operator and the Explicit Formula
+
+
+Ever since Tate’s Thesis [1] there has always been a tension between the additive and
+multiplicative structures in the adelic approach to the Riemann Zeta function and its
+(abelian) generalizations. Tate gave a proof of the Functional Equation which reduced it
+to a statement about the additive Fourier transform of a multiplicatively homogeneous
+distribution. His proof uses the (adelic) Poisson summation formula as a tool. Although
+one can in turn deduce the classical Poisson formula from the Functional Equation it would
+be misleading to identify it as the true meaning of the Functional Equation.
+
+
+In a paper dating back to about the same period Weil [2] showed that the contributions to
+one side of the Explicit Formulae of Analytic Number Theory could be indexed in terms
+of the various completions ν of the number field K and furthermore that they truly had
+their natural home on the multiplicative groups Kν× . But his “finite part” symbol left the
+comparison between archimedean and finite primes in an unsatisfactory state. And the
+ramified primes also required a tailor-made derivation.
+
+
+It is fair to say that close to fifty years after the appearance of these works, their proper
+unification is still a job for the future, with the Riemann Hypothesis at stake.
+
+
+A great step forward was accomplished by Haran [3] who, for the Riemann Zeta function,
+was able to give to all Weil local terms an exactly identical formulation. He discovered
+that although the analytical origin of these local terms give them at their birth the shape
+of a multiplicative convolution, they also exist as an additive convolution. In [4] I have
+shown how to prove Haran’s Theorem for the general Dirichlet-Hecke L-series in a direct
+manner which does not necessitate to differentiate among finite and infinite, ramified and
+non-ramified primes. In the course of this derivation one encounters an interesting operator
+which I have called the conductor operator, because it computes the conductor of a ramified
+character when it is applied to a test-function with this homogeneity. In this paper I give
+the complete spectral analysis of this operator. In a way the job has already been done
+in [4] and the only problem here is to give proper names to the various elements of the
+Explicit Formula. Indeed I will show that the local term of the Explicit Formula at the
+place ν actually is the spectral analysis of the conductor operator on Kν . This only works
+
+
+                                             3
+when the Explicit Formula is expressed as an integral over the critical line Re(s) = 12 ,
+which thus appears in a natural manner here.
+
+
+So let K be a number field and ν one of its places, either finite or archimedean, with
+completion Kν . The conductor operator H acts as an unbounded operator in L2 (Kν , dt),
+but I will leave its exact domain of definition unspecified for the moment. For the time
+being we will consider its action on the space S0 (Kν ) of Schwartz-Bruhat ϕ(t) that are
+identically 0 in a neighborhood of the origin and of compact support. We take dt to be
+the additive Haar measure which is self-dual for the duality corresponding to the additive
+character λ(t) = exp(2πi{T rKν /Q (t)}) at a finite place, λ(t) = exp(−2πit) at a real place,
+                                   p
+
+λ(z) = exp(−2πi(z + z)) at a complex place. The module |x| of x ∈ Kν is defined so that
+d(xt) = |x|dt, x 6= 0, |0| = 0. It can be computed as |N ormKν /Q (x)|p at a finite place,
+                                                                      p
+
+with |p|p = p1 , as the usual absolute value on R, as the square of the usual absolute value
+on C. At a finite place the module of any uniformizer of the ring of local integers is 1/q
+with q being the cardinality of the residue field (which is a power of the prime number
+p over which ν lies). One also denotes by δ the differental exponent at the finite place ν
+which is such that the volume of the ring of integers is q −δ/2 . The Fourier transform is
+taken with respect to the basic additive character chosen above.
+
+
+The conductor operator is defined as follows:
+                                                                   
+                    H(ϕ)(t) = log(|t|) ϕ(t) + F log(|ξ|) F −1(ϕ)(ξ) (t)
+
+The right-hand side is at any rate a continuous function which belongs to L2 (Kν , dt). It
+is a simple exercise to check:
+
+
+Theorem: H commutes with the Fourier transform and with the isometric action of the
+multiplicative group ϕ(t) 7→ Rx (ϕ)(t) = |x|−1/2 ϕ(t/x).
+
+                                            1
+There is also the Inversion I : ϕ 7→ (t 7→ |t| ϕ( 1t )) which acts on the domain and (isometri-
+cally) on the target.
+
+
+Theorem: H commutes with the inversion I.
+
+
+This is less obvious, but will appear so once the spectral analysis of H is completed. The
+
+                                              4
+main tool for this analysis is the explicit formula of [4], which is a straightforward derivation
+from the fundamental relation between homogeneous distributions ([1], [5], [6]):
+
+                             F (χ(x)|x|s−1 ) = Γ(χ, s)χ−1 (y)|y|−s
+
+Here χ is a multiplicative (quasi-)character and χ(x)|x|s−1 and χ−1 (y)|y|−s are considered
+as (tempered) distributions on Kν . The function Γ(χ, s) of the character χ is meromorphic
+with respect to the complex parameter s and of course depends on them only through their
+combination χ(x)|x|s . It is analytic and non-vanishing in the critical strip, and is periodic
+              2πi
+with period log(q) if ν is finite. It also has the following properties
+
+                               Γ(χ, s) · Γ(χ−1 , 1 − s) = χ(−1)
+
+                                    Γ(χ, s) = χ(−1)Γ(χ, s)
+                                     ′
+The related function Λ(χ, s) = − ΓΓ(χ,s)
+                                   (χ,s)
+                                         satisfies
+
+                                   Λ(χ, s) = Λ(χ−1 , 1 − s)
+
+                                         Λ(χ, s) = Λ(χ, s)
+
+Assuming from now on that χ is a unitary character we get
+                                            1            2
+                                 Re(s) =      ⇒ |Γ(χ, s)| = 1
+                                            2
+                              1
+                         Re(s) =⇒ Λ(χ, s) = Λ(χ, s) and is real
+                              2
+For χ a ramified character with conductor exponent c Tate [1] computed its Gamma
+function to be simply q (c+δ)s up to a multiplicative constant whose exact value doesn’t
+concern us here. So, for a ramified character
+
+                                   Λ(χ, s) = −(c + δ) log(q)
+
+For a smooth function g with compact support on (0, ∞) its Mellin Transform gb(s) is
+defined as                                    Z ∞
+                                                               du
+                                    gb(s) =           g(u)us
+                                              0                 u
+Starting with such a g and a unitary character χ and defining ϕ(t) = g(|t|)χ−1 (t) for t 6= 0,
+ϕ(0) = 0, the explicit formula [4] now stands as (t 6= 0)
+                                     Z
+                                  1
+                   H(ϕ)(t) = −                 g (s)Λ(χ, s)|t|−sχ−1 (t) ds
+                                               b
+                                 2πi Re(s)=1/2
+
+                                                  5
+The discrete spectrum of the p-adic conductor operator
+
+
+For concreteness I will first elucidate the spectrum of the conductor operator over Qp . As
+it commutes with averaging over the units one can split the discussion between the ramified
+and the non-ramified spectrum. It will turn out that this is also the decomposition between
+the discrete and the continuous parts of the spectrum.
+
+
+First the ramified spectrum: from what precedes
+
+                                        H(ϕ)(t) = c log(p) ϕ(t)
+
+if ϕ has the homogeneity of a ramified character with conductor exponent c. Hence:
+
+
+Theorem: The ramified part of the spectrum is purely discrete. It has infinite multiplicity
+and support {log(p), 2 log(p), 3 log(p), . . .} if p > 2, {2 log(2), 3 log(2), . . .} if p = 2.
+
+
+The continuous spectrum of the p-adic conductor operator
+
+
+We can now restrict H to the invariant part L2inv (Qp ) spanned by functions depending
+only on the norm |t|. Let’s first evaluate H(θ) for θ the characteristic function of the
+units. For this one can use the Fourier transform G of − log(|x|) which was determined by
+Vladimirov [7] (see also [4])
+                                  Z                               Z                      !
+                     log(p)                               dt                 dt 1
+             G(ϕ) =                         (ϕ(t) − ϕ(0))     +         ϕ(t)    + ϕ(0)
+                    1 − 1/p           |t|≤1               |t|     |t|>1      |t| p
+
+and the outcome for H(θ)(t) = log(|t|)θ(t) − (G ∗ θ)(t) is
+
+                                  (|t| < 1)     H(θ)(t) = − log(p)
+                                  (|t| = 1)     H(θ)(t) = 0
+                                                              log(p)
+                                  (|t| > 1)     H(θ)(t) = −
+                                                                |t|
+
+By dilation invariance one has H(θi )(t) = H(θ)(pi t) for θi (t) = θ(pi t). So the matrix
+elements of H in the orthogonal basis {θi , i ∈ Z} depend only on i − j. An orthonormal
+basis of L2inv (Qp ) is given by the functions
+
+                                 ηi (t) = (1 − 1/p)−1/2 p−i/2 θ(pi t)
+
+                                                    6
+and the matrix elements of H in this basis are
+                       (i 6= j)   Hij = < Hηi |ηj > = − log(p) p−|i−j|/2
+                       (i = j)    Hii = < Hηi |ηi > = 0
+                                                          dθ
+We can now use the isometry from L2inv (Qp ) to L2 (S 1 , 2π ) which sends ηi to ei (z) : z 7→ z i .
+Under this isometry one deduces from the above results that H is transported to the
+                                                         z
+                                                                         P
+multiplication operator with the function −2 log(p) Re( √p−z ) = − log(p) i6=0 p−|i|/2 ei (z).
+                                                                        z
+The image of the unit circle under the homographic transformation z 7→ √p−z is again a
+                                        √
+circle (with center at 1/(p − 1), radius p/(p − 1)) so that:
+
+
+Theorem: The conductor operator is bounded on L2inv (Qp ) and has a purely continuous
+spectrum with support [ −2√log(p)
+                           p−1 ,
+                                  +2 log(p)
+                                   √
+                                     p+1 ].
+
+
+
+The inversion simply exchanges ηi with η−i so that it is transported to the isometry of
+L2 (S 1 ) given by f (z) 7→ f (z). Hence:
+
+
+Theorem: H commutes with the inversion I.
+
+
+The proof of the following statement is left to the reader.
+
+
+Theorem: The Fourier transform on L2inv (Qp ) is mapped to the unitary operator on
+L2 (S 1 ) given by                             √
+                                                 p−z
+                                      f (z) 7→ √     f (z)
+                                                 p−z
+
+                                                     P
+Hint: one starts from F (θ) = − p1 θ1 + (1 − p1 )     i≤0 θi .
+
+
+
+Before reworking the previous paragraphs into more intrinsic terms, I will make an aparté
+on one approach, certainly very well-known, to the Poisson summation formula.
+
+
+The Poisson summation formula from a local functional equation
+
+
+Let x > 1, Lx (s) = 1/(1 − x−s ), Λx (s) = −L′x (s)/Lx (s) = log(x) x−s /(1 − x−s ).
+                                                          X
+                          Re(s) > 0 ⇒ Λx (s) = log(x)         x−ks
+                                                                 k≥1
+
+
+                                                 7
+                                    Λx (s) + Λx (−s) = − log(x)
+
+For a smooth function g with compact support on (0, ∞) the first of these equations and
+Mellin inversion implies
+                             Z                                           X
+                        1
+                                           gb(s)Λx (s) ds = log(x)             g(xk )
+                       2πi       Re(s)=1                                 k>0
+
+
+while the second equation (functional equation) gives
+                Z                                       Z
+           1                                 1
+                         gb(s)Λx (s) ds = −                           gb(−s)(Λx (s) + log(x)) ds
+          2πi   Re(s)=−1                    2πi             Re(s)=1
+                                                                               X
+                                             = − log(x)g(1) − log(x)                 g(xk )
+                                                                               k<0
+
+                               2πi
+The poles of Λx (s) are at j log(x) , j ∈ Z with residue +1 so that one obtains in the end
+
+                                       X                 X              2πi
+                             log(x)           g(xk ) =         g (j
+                                                               b             )
+                                                                      log(x)
+                                       k∈Z               j∈Z
+
+
+which is one formulation of Poisson summation formula.
+
+
+Intrinsic spectral analysis in the general case
+
+
+We go back to the general number field K and its completion Kν (archimedean or finite).
+We choose the multiplicative Haar measure d∗ x on Kν× to assign a volume of 1 to the units
+if ν is finite, and to be mapped to du/u under x 7→ u = |x| for an archimedean place. For
+                                                    dx
+the positive constant α chosen such that d∗ x = α−2 |x| the maps
+
+                                                         p
+                                    ϕ(t) 7→ {x 7→ α           |x|ϕ(x)}
+
+
+                                   f (x) 7→ {t 7→ α−1 |t|−1/2 f (t)}
+
+establish a unitary isomorphism between L2 (Kν , dt) and L2 (Kν× , d∗ x).
+
+
+If we transport the conductor operator from L2 (Kν , dt) to L2 (Kν× , d∗ x) we find that its
+dilation invariance becomes a commutation property with the multiplicative translations
+on Kν× . Hence, by the well-known generalization of Fourier Theory, H can be completely
+
+                                                    8
+analyzed in terms of the (unitary) characters of that locally compact abelian group. Al-
+though it is naturally defined in additive terms, its analysis proceeds in multiplicative
+terms.
+
+
+So let Sν be the dual of Kν× , that is the locally compact abelian group of unitary multi-
+plicative characters. For a finite place Sν is the union of countably many circles indexed
+by the characters of the compact subgroup of units, for the real place it is the union of
+two real lines indexed by the trivial and the sign characters, for the complex place it is the
+union of countably many real lines indexed by the characters of the unit circle.
+
+
+There is a unique Haar measure µ on Sν so that the inversion formula of Fourier Theory
+and then the Plancherel identity hold:
+                                                      Z
+                                           f (χ) =              f (x)χ(x) d∗ x
+                                                          Kν×
+                                                      Z
+                                           f (x) =             f (χ) χ(x) dµ(χ)
+                                                          Sν
+                            Z                         Z
+                                          2   ∗
+                                     |f (x)| d x =             |f (χ)|2 dµ(χ)
+                            Kν×                           Sν
+
+
+
+                                              1
+Under these isometries the Inversion ϕ(t) 7→ |t| ϕ( 1t ) on L2 (Kν , dt) (f (x) 7→ f (1/x) on
+L2 (Kν× , d∗ x)) becomes the operation of complex conjugation
+
+                                              f (χ) 7→ f (χ)
+
+It is also interesting to look at the fate of the additive Fourier Transform F . First trans-
+ported to L2 (Kν× , d∗ x) it maps the function f (x) (chosen “smooth” with compact support)
+                           p
+to the function F (x) = |x| F (|x|−1/2 f (x)). This implies:
+                      Z                           Z
+                                       ∗      −2
+            F (χ) =         F (x)χ(x) d x = α          F (|t|−1/2 f (t)) χ(t)|t|−1/2 dt
+                      Kν×                                   Kν
+                                                  Z
+                                −2
+                   F (χ) = α         Γ(χ, 1/2)            |t|−1/2 f (t) χ(1/t)|t|−1/2 dt
+                                                  Kν
+
+                                        F (χ) = Γ(χ, 1/2) f (χ)
+
+
+We have obtained the first statements of:
+
+                                                      9
+Theorem: Under the isomorphims L2 (Kν , dt) ∼ L2 (Kν× , d∗ x) ∼ L2 (Sν , dµ) the inversion
+is transported to the unitary
+                                              f (χ) 7→ f (χ)
+
+and the additive Fourier transform is transported to the unitary
+
+
+                                f (χ) 7→ F (χ) = Γ(χ, 1/2) f (χ)
+
+
+while the conductor operator is transported to the hermitian operator
+
+
+                             f (χ) 7→ F (χ) = −Λ(χ, 1/2) f (χ)
+
+
+
+Corollary: The conductor operator commutes with the inversion.
+
+
+Proof (of Corollary): Λ(χ, 1/2) = Λ(χ, 1/2).
+
+
+Proof (of Theorem): We start with the explicit formula of [4]
+                                         Z
+                                1
+                   H(ϕ)(t) = −                           g (s)Λ(χ, s)|t|−sχ−1 (t) ds
+                                                         b
+                               2πi           Re(s)=1/2
+
+
+where χ is a unitary character, g is smooth with compact support on (0, ∞), and ϕ(t) =
+                                       p
+g(|t|)χ−1 (t). Let’s write now f (x) = |x|g(|x|)χ−1 (x) so that the conductor operator
+transported to Kν× sends f to
+                                    Z
+                               1                                     1
+                    F (x) = −                      gb(s)Λ(χ, s)|x| 2 −s χ−1 (x) ds
+                              2πi    Re(s)=1/2
+
+
+                                Z +∞
+                            1          1          1
+                 F (x) = −          gb( + iτ )Λ(χ, + iτ )|x|−iτ χ−1 (x) dτ
+                           2π    −∞    2          2
+
+Let’s write ωτ (x) = |x|iτ . Then
+                                    Z +∞
+                                1             1             1
+                     F (x) = −             gb( + iτ )Λ(χωτ , ) χωτ (x) dτ
+                               2π       −∞    2             2
+
+We now split the discussion according to whether ν is finite or archimedean.
+
+                                                   10
+                                                       2π
+If ν is finite, we see that the integrand has period log(q) except for gb. The Poisson sum-
+mation formula proven before implies
+                 X              2πi  1                X                1
+                       gb(j         + + iτ ) = log(q)     g(q k ) q k( 2 +iτ )
+                              log(q) 2
+                 j∈Z                                  k∈Z
+                                                      Z
+                                                                        1
+                                             = log(q)      g(|x|)|x| 2 +iτ d∗ x
+                                                                   Kν×
+                                                    = log(q) f (χωτ )
+
+so that we obtain in the end
+                                        Z +      π
+                            log(q)             log(q)                  1
+                  F (x) = −                             f (χωτ )Λ(χωτ , ) χωτ (x) dτ
+                              2π         − log(q)
+                                             π                         2
+
+Starting from                                   Z
+                                          1
+                                g(|x|) =                         g (s)|x|−s ds
+                                                                 b
+                                         2πi        Re(s)=1/2
+
+leads in the same manner to
+                                               Z +     π
+                                      log(q)         log(q)
+                              f (x) =                         f (χωτ ) χωτ (x) dτ
+                                        2π      − log(q)
+                                                    π
+
+
+
+
+This identifies in a concrete way that component of Sν containing χ(1/x) and proves the
+Theorem in the finite case.
+
+
+In the archimedean case we can just identify immediately gb( 12 + iτ ) with f (χωτ ) as the
+multiplicative Haar measure d∗ x has been chosen to be pushed forward to du/u under the
+norm map x 7→ |x|. So the formulae in that case are
+                                        Z +∞
+                                  1                        1
+                       F (x) = −            f (χωτ )Λ(χωτ , ) χωτ (x) dτ
+                                 2π      −∞                2
+                                               Z +∞
+                                          1
+                                 f (x) =                f (χωτ ) χωτ (x) dτ
+                                         2π     −∞
+
+This completes the proof of the Theorem.
+
+
+
+
+                                                        11
+REFERENCES
+[1] J. Tate, Thesis, Princeton 1950, reprinted in Algebraic Number Theory, ed. J.W.S. Cassels and A.
+Fröhlich, Academic Press, (1967).
+[2] A. Weil,“Sur les “formules explicites” de la théorie des nombres premiers”, Comm. Lund (vol dédié
+à Marcel Riesz), (1952).
+[3] S. Haran,“Riesz potentials and explicit sums in arithmetic”, Invent. Math. 101, 697-703 (1990).
+[4] J.F. Burnol, “The Explicit Formula and a Propagator”, electronic manuscript, available at the
+http://xxx.lanl.gov server, math/9809119 (September 1998, revised November 1998)
+[5] I. M. Gel’fand, M. I. Graev, I. I. Piateskii-Shapiro,“Representation Theory and automorphic
+functions”, Philadelphia, Saunders (1969).
+[6] A. Weil,“Fonctions zêtas et distributions”, Séminaire Bourbaki no 312, (1966).
+
+[7] V. S. Vladimirov,“Generalized functions over the fields of p-adic numbers”, Russian Math. Surveys
+43:5, 19-64 (1988).
+
+
+
+
+                                          Jean-François Burnol
+                                             62 rue Albert Joly
+                                             F-78000 Versailles
+                                                  France
+                                        jf.burnol@dial.oleane.com
+                                        November 1998 (revised)
+
+                                                    12
+

@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+\title{Step 115: Zeta-Factorization Attempt for Shifted Boundary Packets}
+\author{RH Membrane Construction Notes}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{gate}{Gate}
+\newcommand{\B}{\mathcal B}
+\newcommand{\E}{\mathcal E}
+\newcommand{\M}{\mathcal M}
+\newcommand{\K}{\mathcal K}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\proj}{\operatorname{proj}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 114 reduced the Burnol/co-Poisson visibility question to the inclusion
+\[
+  \Ran \mathfrak B_{\ell,a}\subseteq P_a=Y_a^\perp,
+\]
+where
+\[
+  \mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty)
+\]
+is the shifted Sonin/prolate boundary packet transported to the Burnol carrier.  This note tests the strongest possible easy certificate for that inclusion: a zeta-factorization of every shifted boundary packet.
+
+The target certificate is
+\[
+  \M(\mathfrak B_{\ell,a}u)(s)=\zeta(s)\alpha_{\ell,u}(s),
+\]
+with the correct Burnol support, pole, endpoint, and trivial-zero records.  If this holds, all nontrivial zero-evaluators annihilate the packet, and the packet lies in the co-Poisson complement.
+
+The outcome is not a proof of factorization.  The result is a precise reduction and a residual: the raw shift mode contributes only a nonvanishing exponential Mellin multiplier, so a \(\zeta\)-factor cannot be created by the shift itself.  Factorization must be supplied by the surrounding projection/synthesis structure, or the residual must be absorbed by Hecke/Dirichlet source coercivity.
+
+\section{Burnol carrier and zero-evaluator map}
+Let \(L_a\) be Burnol's extended Sonine space, \(Y_a\subset L_a\) the closed span of the nontrivial zeta-zero evaluator vectors, and
+\[
+  P_a=Y_a^\perp
+\]
+the Burnol co-Poisson subspace for \(a<1\).  Let
+\[
+  \E_a:L_a\longrightarrow \mathcal Z_a
+\]
+denote the zero-evaluator map
+\[
+  (\E_af)_{\rho,k}=\M(f)^{(k)}(\rho),
+  \qquad 0\le k<m_\rho.
+\]
+Then
+\[
+  P_a=\Ker \E_a.
+\]
+For finite zero windows \(Z_T\), write \(\E_{a,T}\) for the truncated evaluator map.
+
+\begin{definition}[Boundary--co-Poisson residual]
+For a shifted boundary block \(\mathfrak B_{\ell,a}\), define
+\[
+  \Xi^{\rm BC}_{\ell,a}=\mathfrak B_{\ell,a}^*\E_a^*\E_a\mathfrak B_{\ell,a}\succeq0,
+\]
+and its finite-window version
+\[
+  \Xi^{\rm BC}_{\ell,a,T}=\mathfrak B_{\ell,a}^*\E_{a,T}^*\E_{a,T}\mathfrak B_{\ell,a}.
+\]
+\end{definition}
+
+\section{Factorization criterion}
+\begin{theorem}[Zeta-factorization implies co-Poisson inclusion]
+Suppose that for every legal input \(u\) there exists a meromorphic/Hardy-admissible function \(\alpha_{\ell,u}\) such that
+\[
+  \M(\mathfrak B_{\ell,a}u)(s)=\zeta(s)\alpha_{\ell,u}(s),
+\]
+with enough regularity to evaluate at each nontrivial zero \(\rho\) to order \(m_\rho-1\).  Then
+\[
+  \Ran\mathfrak B_{\ell,a}\subseteq P_a.
+\]
+Equivalently,
+\[
+  \Xi^{\rm BC}_{\ell,a}=0.
+\]
+\end{theorem}
+
+\begin{proof}
+For every nontrivial zero \(\rho\) of multiplicity \(m_\rho\), the product \(\zeta(s)\alpha_{\ell,u}(s)\) vanishes at \(s=\rho\) to order at least \(m_\rho\), provided the declared pole records do not cancel the zero.  Thus
+\[
+  \M(\mathfrak B_{\ell,a}u)^{(k)}(\rho)=0,
+  \qquad 0\le k<m_\rho.
+\]
+Hence \(\E_a\mathfrak B_{\ell,a}u=0\) for every legal \(u\), so \(\Ran\mathfrak B_{\ell,a}\subseteq\Ker\E_a=P_a\).  The residual identity is immediate.
+\end{proof}
+
+\begin{theorem}[Inclusion is equivalent to zero-evaluator annihilation]
+For any bounded legal boundary block \(\mathfrak B_{\ell,a}\),
+\[
+  \Ran\mathfrak B_{\ell,a}\subseteq P_a
+  \quad\Longleftrightarrow\quad
+  \E_a\mathfrak B_{\ell,a}=0
+  \quad\Longleftrightarrow\quad
+  \Xi^{\rm BC}_{\ell,a}=0.
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(P_a=\Ker\E_a\), the first two statements are identical.  The third is equivalent because
+\[
+  \langle u,\Xi^{\rm BC}_{\ell,a}u\rangle=\|\E_a\mathfrak B_{\ell,a}u\|^2.
+\]
+\end{proof}
+
+\section{The log-shift does not create the zeta factor}
+Let \(F(y)\) be the logarithmic model of a multiplicative function, with Mellin/Fourier convention
+\[
+  \M F(s)=\int_\mathbb R F(y)e^{(1/2-s)y}\,dy.
+\]
+For a shift \((\tau_\ell F)(y)=F(y-\ell)\),
+\[
+  \M(\tau_\ell F)(s)=e^{(1/2-s)\ell}\M F(s).
+\]
+The multiplier \(e^{(1/2-s)\ell}\) is entire and nonvanishing.  Therefore the shift itself cannot introduce zeros at the nontrivial zeros of \(\zeta\).
+
+\begin{warning}[No automatic factorization from shifts]
+The raw finite-place log-shift modes \(\tau_{\log p}\) cannot by themselves produce a factor \(\zeta(s)\).  Any factorization
+\[
+  \M(P_\infty\tau_\ell(I-P_\infty)u)(s)=\zeta(s)\alpha_{\ell,u}(s)
+\]
+must come from the surrounding Sonin/prolate projection geometry, co-Poisson synthesis, or an additional source/descent record.  It is not a consequence of multiplicative translation.
+\end{warning}
+
+\section{Attempt status for one prime shift}
+For \(\ell=\log p\), the finite local-factor expansion contributes shifted modes
+\[
+  \tau_{k\log p},\qquad k\in\mathbb Z\setminus\{0\}.
+\]
+Testing the primitive mode \(\ell=\log p\), the strongest factorization attempt would require
+\[
+  \E_aJ_aP_\infty\tau_{\log p}(I-P_\infty)=0.
+\]
+The available structure gives:
+\begin{itemize}[leftmargin=2em]
+  \item Burnol co-Poisson atoms have Mellin transforms with a zeta factor, hence lie in \(P_a\).
+  \item The raw log-shift has only a nonvanishing exponential Mellin multiplier.
+  \item The archimedean Sonin/prolate projection is a support/Fourier-cutoff object, not visibly a co-Poisson synthesis map.
+  \item Step 104 found noncompact boundary packets under nonzero shifts; Step 105 showed compact repair cannot remove their essential class.
+\end{itemize}
+Thus the factorization route is not closed by existing structure.  The remaining exact object is
+\[
+  \Xi^{\rm BC}_{\log p,a}=\mathfrak B_{\log p,a}^*\E_a^*\E_a\mathfrak B_{\log p,a}.
+\]
+
+\section{Residual source absorption}
+If the factorization route fails, the source route must absorb the residual.  The required theorem shape is:
+\[
+  \Xi^{\rm BC}_{S,a,+}\preceq F_n+E_n,
+\]
+where
+\[
+  F_n=\sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega.
+\]
+If additionally
+\[
+  F_n\succeq \Lambda_n(\Theta_0^-)^{-1},
+  \qquad \Lambda_n\to\infty,
+\]
+and the defects vanish in the fixed/exhaustive ledger sense, then the boundary residual is source-absorbed.
+
+\section{All-six record for the factorization gate}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Channel & Required record & Status after Step 115\\
+\midrule
+P1 rewrite & log-shift to Mellin multiplier & exact, nonzero multiplier only\\
+P2 feasibility & Burnol support/pole/null legality & declared, not fully discharged\\
+P3 route & Sonin shift route vs co-Poisson route & obstructed unless annihilation holds\\
+P4 staging & finite zero windows with tail & needed for finite tests\\
+P5 packaging & Burnol \(L_a,Y_a,P_a\) carrier & accepted as target carrier\\
+P6 audit & \(\Xi^{\rm BC}\) residual/source absorption & active gate\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+The zeta-factorization route for a raw shifted boundary packet is not earned.  It reduces to the exact annihilation condition
+\[
+  \E_a\mathfrak B_{\log p,a}=0.
+\]
+Since the shift supplies only a nonvanishing exponential Mellin multiplier, any \(\zeta\)-factor must come from co-Poisson synthesis or a deeper semilocal projection identity.  In its absence, the load-bearing target becomes source absorption of
+\[
+  \Xi^{\rm BC}_{\log p,a}.
+\]
+
+\end{document}

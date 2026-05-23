@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Capacity}{\operatorname{Cap}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\K}{\mathsf K}
+\newcommand{\Th}{\Theta}
+\newcommand{\Def}{\mathsf D}
+
+\title{Step 28: Critical-Pair and Recombination Witnesses for Probe-Family Anti-Localization}
+\author{Anti-localization working notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+Steps 23--26 upgraded scalar probe capacity to a matrix-valued native probe-family currency
+\[
+  \K_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*,
+\]
+and made the accepted anti-localization condition the Loewner budget
+\[
+  \K_{C,\Gamma}(L)\preceq \Th .
+\]
+This note proves that every failure of this budget has a concrete recombination witness.  In Six Birds language, these witnesses are the critical pairs of the anti-localization completion problem.  A scalar or diagonal audit fails precisely because it misses one of these critical pairs.
+
+\section{Setup}
+Let $Y$ be a finite-dimensional response space, $L:H\to Y$ a declared native probe family, $\mathcal F=\Ran \Gamma$ a formed exact packaged carrier, and $C_\Gamma=\Gamma^*C\Gamma\succeq0$ the packaged audit form.  Assume null-mode legality:
+\[
+  L_\Gamma|_{\ker C_\Gamma}=0 .
+\]
+Then
+\[
+  \K:=\K_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*\succeq0
+\]
+is the family compliance or shadow-value matrix.  Let $\Th\succeq0$ be the declared response budget, and set
+\[
+  \Def:=\K-\Th .
+\]
+The accepted family anti-localization gate is
+\[
+  \Def\preceq0.
+\]
+For $y\in Y$, the scalar recombination probe is
+\[
+  \ell_y(u)=\langle y,Lu\rangle.
+\]
+By the probe-family currency theorem,
+\[
+  \Capacity_C(\ell_y;\Ran\Gamma)=y^*\K y.
+\]
+
+\section{Critical-pair witnesses}
+
+\begin{definition}[recombination witness]
+A vector $y\in Y$ is a recombination witness against the budget $\Th$ if
+\[
+  y^*(\K-\Th)y>0 .
+\]
+Its excess is
+\[
+  \operatorname{exc}(y)=\frac{y^*\K y}{y^*\Th y}-1
+\]
+when $y^*\Th y>0$, and $+\infty$ when $y^*\Th y=0<y^*\K y$.
+\end{definition}
+
+\begin{theorem}[witness theorem]
+The family anti-localization gate fails if and only if there is a recombination witness:
+\[
+  \K\npreceq\Th
+  \quad\Longleftrightarrow\quad
+  \exists y\in Y:\ y^*(\K-\Th)y>0 .
+\]
+Moreover, the maximum normalized violation over $\|y\|=1$ is
+\[
+  \lambda_{\max}(\K-\Th).
+\]
+If $\Th\succ0$, the maximum relative violation is
+\[
+  \lambda_{\max}\bigl(\Th^{-1/2}\K\Th^{-1/2}\bigr)-1 .
+\]
+\end{theorem}
+
+\begin{proof}
+The first equivalence is the definition of the Loewner order: $\Def\preceq0$ if and only if $y^*\Def y\le0$ for every $y$.  Failure therefore produces $y$ with positive quadratic form.  The two maximization statements are the Rayleigh--Ritz variational characterization of the largest eigenvalue, applied to $\Def$ and to $\Th^{-1/2}\K\Th^{-1/2}-I$.
+\end{proof}
+
+\begin{definition}[support-minimal critical pair]
+Assume a distinguished declared coordinate/frame of probes in $Y$.  For $S\subset\{1,\ldots,m\}$, write $\Def_S$ for the principal compression of $\Def$ to $S$.  A nonempty $S$ is a support-minimal critical pair, or simply minimal witness support, if
+\[
+  \lambda_{\max}(\Def_S)>0
+\]
+but
+\[
+  \lambda_{\max}(\Def_T)\le0
+  \qquad
+  \text{for every proper }T\subsetneq S.
+\]
+A vector $y$ supported on $S$ with $y^*\Def y>0$ is a critical-pair witness.
+\end{definition}
+
+\begin{theorem}[minimal witness existence]
+If $\K\npreceq\Th$ then at least one support-minimal critical pair exists.  If $S$ is support-minimal, then $\Def_S$ has exactly one positive eigenvalue.
+\end{theorem}
+
+\begin{proof}
+Choose any witness support $S_0$ with $\lambda_{\max}(\Def_{S_0})>0$ and minimize cardinality among all such supports.  This gives support minimality.  If $\Def_S$ had two positive eigenvalues, then by Cauchy interlacing every principal submatrix of size $|S|-1$ would have at least one positive eigenvalue.  That contradicts support minimality.  Hence $\Def_S$ has exactly one positive eigenvalue.
+\end{proof}
+
+\section{Two-anchor and cyclic witnesses}
+
+\begin{theorem}[two-anchor criterion]
+Let $S=\{i,j\}$ and
+\[
+  \Def_S=
+  \begin{pmatrix}
+    a & c\\
+    \overline c & b
+  \end{pmatrix}
+\]
+with $a\le0$ and $b\le0$, so both scalar probes pass.  Then $S$ is a two-anchor critical pair if and only if
+\[
+  |c|^2>ab .
+\]
+Equivalently,
+\[
+  \det \Def_S<0.
+\]
+In that case the positive witness is the phase-aligned recombination of the two probes, with phase chosen to match $c$.
+\end{theorem}
+
+\begin{proof}
+A $2\times2$ Hermitian matrix with both diagonal entries nonpositive has a positive eigenvalue if and only if its determinant is negative.  Since $\det\Def_S=ab-|c|^2$, this is equivalent to $|c|^2>ab$.  The eigenvector for the positive eigenvalue phase-aligns the two anchors with the off-diagonal entry $c$.
+\end{proof}
+
+\begin{theorem}[minimal $k$-cycle family]
+For $k\ge2$, let
+\[
+  \Def_k=-I_k+c(J_k-I_k),
+\]
+where $J_k$ is the all-ones matrix.  If
+\[
+  \frac1{k-1}<c\le \frac1{k-2}
+\]
+with the right-hand condition omitted for $k=2$, then $\Def_k$ is a support-minimal $k$-anchor witness: every proper principal submatrix is negative semidefinite, while
+\[
+  \lambda_{\max}(\Def_k)=-1+c(k-1)>0.
+\]
+The normalized all-ones vector is the unique positive witness direction.
+\end{theorem}
+
+\begin{proof}
+The eigenvalues of $-I_k+c(J_k-I_k)$ are $-1+c(k-1)$ in the all-ones direction and $-1-c$ with multiplicity $k-1$.  A principal submatrix of size $r$ has largest eigenvalue $-1+c(r-1)$.  Under the stated condition this is positive at $r=k$ and nonpositive for $r\le k-1$.
+\end{proof}
+
+\section{Protocol-marked and predictive witnesses}
+
+\begin{definition}[protocol-marked witness]
+Suppose $Y=\bigoplus_{p\in\mathcal P}Y_p$ is a protocol or route decomposition.  A witness $y$ is protocol-marked if it has nonzero components in at least two $Y_p$'s.
+\end{definition}
+
+\begin{theorem}[protocol-local gates miss mixed critical pairs]
+Let $\Def=\K-\Th$ be written in protocol blocks $\Def^{pq}:Y_q\to Y_p$.  If every diagonal block satisfies
+\[
+  \Def^{pp}\preceq0
+\]
+but $\Def\npreceq0$, then every support-minimal witness crosses at least two protocol blocks.  Thus the failure is invisible to route-local budgets and is detected only by the stacked protocol-family matrix.
+\end{theorem}
+
+\begin{proof}
+If a support-minimal witness were contained in a single protocol block $Y_p$, it would witness $\Def^{pp}\npreceq0$, contradicting the diagonal block gate.  Therefore every minimal witness uses at least two protocol blocks.
+\end{proof}
+
+\begin{definition}[predictive witness]
+For a refinement-indexed family $\Def_j=\widehat K_j-\Theta$ on a common transported response space, a predictive witness is a pair $(j,y)$ such that
+\[
+  y^*\Def_jy>0 .
+\]
+A persistent predictive witness is a sequence $(j_n,y_n)$ with $j_n\to\infty$ and $y_n^*\Def_{j_n}y_n\to\infty$.
+\end{definition}
+
+\begin{theorem}[predictive witness theorem]
+The predictive anti-localization gate
+\[
+  \widehat K_j\preceq\Theta\qquad\text{for all accepted }j
+\]
+fails if and only if there exists a predictive witness.  The uniform predictive budget fails unboundedly if and only if
+\[
+  \sup_j\lambda_{\max}(\widehat K_j-\Theta)>0
+\]
+is positive; it fails with unbounded excess if and only if the above supremum is $+\infty$.
+\end{theorem}
+
+\begin{proof}
+Apply the finite witness theorem at each accepted refinement level $j$, then take the supremum over $j$.
+\end{proof}
+
+\section{Completion and rewrite interpretation}
+
+\begin{definition}[anti-localization critical-pair completion]
+Given a witness $y$ for $\K\npreceq\Theta$, its critical-pair completion is the extension of the declared probe family by the composite probe
+\[
+  \ell_y=y^*L
+\]
+with declared budget $y^*\Theta y$ and recorded excess
+\[
+  y^*(\K-\Theta)y.
+\]
+\end{definition}
+
+\begin{theorem}[critical-pair completion obligation]
+If a formed closure claims accepted family anti-localization while $y^*(\K-\Theta)y>0$, then at least one of the following must occur for the claim to remain lawful:
+\begin{enumerate}[label=(\roman*)]
+\item the native probe family is rewritten to exclude $y^*L$, with a visibility/nonclaim record;
+\item the package/audit carrier $(\Gamma,C)$ is rewritten so that the new currency matrix $\K'$ satisfies the budget;
+\item the declared budget is raised to include the witness, changing the public claim;
+\item the claim is downgraded to support-only, local-only, or failed-audit.
+\end{enumerate}
+It is not lawful to keep the same family, same carrier, same budget, and accepted status while ignoring the witness.
+\end{theorem}
+
+\begin{proof}
+The witness theorem gives a declared native recombination whose capacity exceeds the stated budget.  Keeping all data fixed would contradict the accepted test-family gate $\K\preceq\Theta$.  The only lawful exits are therefore to change the native family, change the carrier/audit, change the budget/claim, or downgrade the status.
+\end{proof}
+
+\begin{corollary}[critical pairs are complete obstruction records]
+For finite response families, the accepted family anti-localization gate is equivalent to the absence of critical-pair witnesses:
+\[
+  \K\preceq\Theta
+  \quad\Longleftrightarrow\quad
+  \text{there is no support-minimal recombination witness.}
+\]
+Thus the finite critical-pair atlas is complete for family-level failures.
+\end{corollary}
+
+\section{Classification table}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Witness type & mathematical signature & Six Birds reading\\
+\midrule
+scalar & $|S|=1$ & single native probe exceeds budget\\
+two-anchor & $|S|=2$, scalar gates pass & cancellation / relative-cycle witness\\
+cyclic & $|S|\ge3$ minimal & higher recombination cycle\\
+protocol-marked & support crosses route blocks & route-local overclaim\\
+predictive & $(j,y)$ at future refinement & current-only overclaim\\
+shadow & ambient witness lacks bridge & public-shadow overread\\
+post-hoc & selector depends on $S_6$ success & selection trap / smuggling\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Conclusion}
+A family capacity bound is not merely a matrix inequality.  It is a completion statement: all critical pairs generated by native recombinations have been resolved, priced, or excluded with records.  The anti-localization membrane of a formed layer is therefore equivalent to the absence of native critical-pair witnesses under the declared audit.
+
+\end{document}

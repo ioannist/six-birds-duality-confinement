@@ -1,0 +1,273 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{nogo}{No-Go}
+
+\newcommand{\dB}{\mathrm{dB}}
+\newcommand{\HB}{\mathrm{HB}}
+\newcommand{\XiBC}{\Xi_{\mathrm{BC}}}
+\newcommand{\XiHecke}{\Xi_{\mathrm{BC,Hecke}}}
+\newcommand{\XidB}{\Xi_{\dB}}
+\newcommand{\Hzeta}{H(E_\zeta)}
+\newcommand{\Estar}{E^\#}
+
+\title{Step 181: de Branges Carrier Pivot}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{dB\_verdict}=V_{\dB\_\mathrm{target\_equivalent}}.}
+\]
+
+The de Branges carrier can be declared as a typed Hilbert space of entire
+functions, but the RH-relevant choice of Hermite-Biehler data is not free
+carrier data.  Making it legal, or proving the corresponding de Branges
+subspace-chain positivity, is exactly the classical de Branges RH program.
+Thus the pivot yields a new typed no-go:
+\[
+\boxed{\text{de Branges RH-carrier closure target-equivalence / Conrey--Li survival}.}
+\]
+
+\section*{Inherited Records Quoted}
+
+\paragraph{Step 145: Burnol/Sonine carrier.}
+The inherited Burnol/Sonine carrier is not a de Branges carrier package.  The
+record declares
+\[
+L_a\subset L^2(0,\infty;dt)
+\]
+as Burnol's extended Sonine space: functions constant on \((0,a)\) whose
+cosine transform is again constant on \((0,a)\).  It then defines
+\[
+H_R=\overline{\operatorname{span}\{
+\operatorname{Ran}\Pi_{Y_a}\mathfrak B_{\ell,a}:
+\ell\in\mathcal L\setminus\{0\}\}}\subseteq Y_a\subset L_a.
+\]
+This gives a concrete Burnol/Sonine residual carrier, not an explicit
+Hermite-Biehler function \(E\).
+
+\paragraph{Step 153: projected Sonine RKHS and transport.}
+The pulled-evaluator record gives, for \(w\notin\{0,1\}\),
+\[
+[f,Y^a_{w,k}]_{L_a}=M(f)^{(k)}(w), \qquad f\in L_a,
+\]
+and defines the completed Mellin image \(\mathcal L_a^\Gamma\).  Its
+reproducing kernel is recorded by
+\[
+G(w)=\langle G,K_a^\Gamma(\cdot,w)\rangle_{\mathcal L_a^\Gamma}.
+\]
+The transport is
+\[
+T_a:=\mathcal M_\Gamma J_a\mathcal U_\infty^{-1},
+\]
+and the pulled evaluator is
+\[
+\mathcal U_\infty(J_a^*Y^a_{w,k})
+   =T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+\]
+The same record warns that
+\[
+K_a^\Gamma(\cdot,w)=P_{\mathcal L_a^\Gamma}
+K_a^{\Gamma,\mathrm{amb}}(\cdot,w),
+\]
+so the Sonine projection is load-bearing.  Dropping it gives only an ambient
+Hardy-shadow formula.
+
+\paragraph{Step 90 and Step 93: de Branges warning.}
+Step 90 states that de Branges spaces supply Hilbert kernels and positivity
+candidates, but that the needed phase/kernel positivity is essentially the
+hard gate of the de Branges RH program.  Step 93 records the Conrey--Li
+survival test: natural de Branges-type positivity conditions associated with
+\(\xi(s)\) and \(1/\xi(s)\) fail for zeta and Dirichlet \(L\)-functions, so
+any new positivity ansatz must not imply those refuted conditions.
+
+\paragraph{Corpus audit.}
+The local files \texttt{anti\_loc/adequacy.tex} and
+\texttt{anti\_loc/needles.tex} do not contain an accepted de Branges carrier
+package.  They therefore do not supply an inherited \(E_\zeta\), an
+\(H(E_\zeta)\)-to-\(L_a\) bridge, or a completed de Branges residual theorem.
+
+\section*{Classical de Branges Carrier}
+
+\begin{definition}[Hermite-Biehler function and de Branges space]
+Let \(E\) be an entire function and
+\[
+E^\#(z):=\overline{E(\overline z)}.
+\]
+The function \(E\) is Hermite-Biehler when
+\[
+|E(z)|>|E^\#(z)| \qquad (\operatorname{Im}z>0),
+\]
+with the usual no-real-zero and growth hypotheses of the de Branges theory.
+The de Branges space \(H(E)\) is the Hilbert space of entire functions with
+the de Branges norm, and its reproducing kernel is
+\[
+K_E(z,w)=
+\frac{
+E(z)\overline{E(w)}-E^\#(z)\overline{E^\#(w)}
+}{
+2\pi i(\overline w-z)
+}.
+\]
+\end{definition}
+
+The RH-linked entire function is
+\[
+\xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s),
+\qquad
+\Xi(t)=\xi\!\left(\frac12+it\right).
+\]
+A natural de Branges RH carrier would require
+\[
+E_\zeta(z)=A_\zeta(z)-iB_\zeta(z),\qquad A_\zeta(z)=\Xi(z),
+\]
+with \(B_\zeta\) a real entire companion such that \(E_\zeta\) is
+Hermite-Biehler, or a unitarily equivalent normalization.  This declaration is
+conditional: the existence of such \(B_\zeta\), together with the relevant
+chain positivity/order statement, is not inherited free data.
+
+\section*{Operators and Parent Residual}
+
+The typed de Branges carrier supplies the following native objects.
+\[
+\begin{array}{ll}
+S_E & \text{canonical symmetric multiplication }F(z)\mapsto zF(z),\\
+K_E(\cdot,w) & \text{kernel/evaluator vector in }H(E),\\
+P_{\mathrm{chain}}(t) & \text{de Branges subspace-chain projection, if supplied.}
+\end{array}
+\]
+The Burnol commutator
+\[
+C_\ell=(I-P_\infty)M_{m_\ell}P_\infty
+\]
+does not canonically transport to \(H(E_\zeta)\) from the inherited records.
+A bridge from \(L_a\) or \(\XiBC\) to \(\Hzeta\) would be a separate typed
+obligation.
+
+Define the de Branges parent residual \(\XidB\) as the typed defect of the
+RH-specific de Branges structure:
+\[
+\XidB=0
+\quad\Longleftrightarrow\quad
+\text{\(E_\zeta\) is legal Hermite-Biehler and the required chain condition holds.}
+\]
+This is a declaration of the residual, not a proof that the residual vanishes.
+
+\section*{Initial Cascade on \(H(E_\zeta)\)}
+
+\begin{center}
+\begin{tabular}{p{0.13\linewidth}p{0.25\linewidth}p{0.35\linewidth}p{0.18\linewidth}}
+\toprule
+Branch & Name & Target & Status\\
+\midrule
+dB-E & Hermite-Biehler companion legality
+& Construct \(E_\zeta=A_\zeta-iB_\zeta\), \(A_\zeta=\Xi\), with \(E_\zeta\) Hermite-Biehler.
+& target-equivalent\\
+dB-chain & de Branges chain positivity/order
+& Prove the chain condition associated with \(E_\zeta\).
+& target-equivalent\\
+dB-kernel & kernel positivity/source ladder
+& Use \(K_E\) matrices as source positivity.
+& blocked by Conrey--Li survival and public-shadow no-go\\
+dB-bridge & bridge to Burnol/Sonine
+& Compare \(H(E_\zeta)\) with the Burnol/Sonine carrier of \(\XiBC\).
+& no accepted bridge\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+This cascade is not a new non-CTMT attack route.  It does not reach CTMT as
+the primary obstruction because it stops earlier: the RH-specific
+Hermite-Biehler and chain data are already target-equivalent.
+
+\section*{No-Go Transfer Audit}
+
+\begin{center}
+\begin{tabular}{p{0.34\linewidth}p{0.14\linewidth}p{0.42\linewidth}}
+\toprule
+No-go & Transfer & Reason\\
+\midrule
+public-shadow non-promotion & yes
+& naive RKHS/de Branges positivity is a public-shadow shortcut unless carrier-complete records are supplied\\
+finite-window Calkin blindness & yes
+& finite kernel matrices do not decide completed chain positivity\\
+auxiliary-GRH smuggling & yes
+& real-zero or chain positivity for auxiliary entire functions cannot be assumed\\
+incomplete character spectrum support-only & retained
+& source-side no-go remains for any attempted source ladder\\
+scalar identity not carrier identity & yes
+& scalar \(\xi\) identities do not identify \(H(E)\) carriers\\
+ledger-relative Hecke non-comparability & retained
+& no Hecke-to-de-Branges carrier ledger bridge is supplied\\
+Branch C full-carrier ZI-COV(i) foreclosure & retained
+& Burnol/Sonine route-local no-go remains, but does not decide \(H(E)\)\\
+de Branges RH-carrier closure target-equivalence / Conrey--Li survival & new
+& natural de Branges RH positivity/chain closure is target-equivalent or refuted in naive zeta RKHS forms\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{nogo}[de Branges target-equivalence no-go]
+Under the inherited records, closure of the natural RH-linked de Branges
+carrier residual \(\XidB\) is target-equivalent to RH and cannot be used as an
+independent adequacy route.
+\end{nogo}
+
+\begin{proof}
+The only RH-relevant de Branges carrier declared in this step is an
+\(H(E_\zeta)\) whose real part is \(\Xi\), up to harmless normalization:
+\[
+E_\zeta=A_\zeta-iB_\zeta,\qquad A_\zeta=\Xi.
+\]
+For this to be a valid carrier, \(E_\zeta\) must be Hermite-Biehler and must
+satisfy the de Branges chain/order condition required by the classical RH
+program.  Classical de Branges theory supplies the kernel and ordered
+subspace formalism, but it does not make this RH-specific positivity free.
+The de Branges RH program identifies exactly these structural conditions as
+the hard RH content.
+
+The inherited source audit also blocks the naive kernel-positivity shortcut:
+Conrey--Li refutes natural de Branges-type positivity conditions associated
+with \(\xi(s)\) and \(1/\xi(s)\).  Therefore an argument that simply promotes
+zeta RKHS positivity would violate the inherited public-shadow and
+Conrey--Li survival constraints.
+
+Finally, Step 145 and Step 153 give Burnol/Sonine \(L_a\), \(T_a\), and the
+projected Sonine kernel \(K_a^\Gamma\), but they do not give an explicit
+\(E_\zeta\), an \(H(E_\zeta)\)-to-\(L_a\) bridge, or an equality of residuals.
+Thus \(\XidB=0\) is not an independent closure of \(\XiBC\); it is the
+classical de Branges RH structural condition restated as a typed residual.
+\end{proof}
+
+\section*{Classical Theorems Cited}
+
+\begin{itemize}
+\item L. de Branges, \emph{Hilbert Spaces of Entire Functions}, 1968:
+Hermite-Biehler spaces, reproducing kernels, and de Branges subspace ordering.
+\item de Branges RH program papers, 1986 and later: RH-related formulation by
+de Branges chain/positivity conditions for zeta-related entire functions.
+\item J. B. Conrey and X.-J. Li, 2000: counterexamples to natural
+de Branges-type positivity conditions for zeta and Dirichlet \(L\)-functions.
+\end{itemize}
+
+\section*{Nonclaim Boundary}
+
+This step does not prove RH, does not assume RH, and does not close
+\(\XiBC\), \(\XiHecke\), or \(\XidB\).  It does not assume the existence of a
+Hermite-Biehler \(E_\zeta\) with \(A_\zeta=\Xi\), does not use de Branges
+chain positivity as a tool, and does not adopt the naive zeta RKHS positivity
+conditions warned against by Conrey--Li.  The result is a typed target-
+equivalence no-go for the natural de Branges RH carrier closure.
+
+\end{document}

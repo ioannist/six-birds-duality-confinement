@@ -1,0 +1,70 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\title{Step 101: Semilocal $\Delta_S$ Compactness Test}
+\author{Six Birds / RH Membrane Program}
+\date{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The hybrid semilocal route has reduced the active obstruction to
+\[
+  \Delta_S=q_{\mathrm{Weil},S}-q_{\mathrm{pos},S}
+\]
+on the semilocal anti-invariant response space
+\[
+  Y_S^- = L^2(\mathbb R,dm_S)^-, \qquad
+  dm_S(\xi)=\left|\prod_{v\in S}L_v\left(\frac12-i\xi\right)\right|^2d\xi .
+\]
+This note asks whether $\Delta_S^+$ is compact, compact-after-quotient, tail-defect-only, or a genuine infinite-dimensional obstruction.
+
+\section{Elementary compactness gates}
+\begin{lemma}[bounded transport preserves compactness]
+If $K$ is compact and $A,B$ are bounded operators, then $AKB$ is compact.
+\end{lemma}
+\begin{proof}
+The compact operators form a closed two-sided ideal in $\mathcal B(H)$.
+\end{proof}
+
+\begin{lemma}[multiplication no-go]
+Let $(X,\mu)$ be non-atomic. If $M_m$ is compact on $L^2(X,\mu)$, then $m=0$ a.e.
+\end{lemma}
+\begin{proof}
+If $|m|>\varepsilon$ on a set of positive measure, split that set into infinitely many disjoint positive-measure pieces $E_j$. The normalized indicators $e_j$ form an orthonormal sequence and $\|M_m e_j\|\ge\varepsilon$, so $M_m e_j$ has no norm-convergent subsequence.
+\end{proof}
+
+\section{Semilocal consequence}
+For finite $S$, the local Euler-factor product
+\[
+  A_S(\xi)=\prod_{p\in S_f}L_p(1/2-i\xi)
+\]
+is bounded and bounded away from zero on the real line. Thus changing from $dm_\infty$ to $dm_S$ is a bounded invertible, indeed unitary after the correct weighting, transport between response geometries. Compactness of an already compact archimedean residual is preserved.
+
+However, the raw multiplier deformation $M_{|A_S|^2-1}$ is not compact on a fixed non-atomic $L^2$ space unless it vanishes. Therefore compactness of $\Delta_S$ is not automatic.
+
+\section{The real compactness target}
+The load-bearing semilocal residual is
+\[
+  \mathcal R_S=U_S P_S U_S^{-1}-P_\infty,
+\]
+where $P_\infty$ is the archimedean Sonin/prolate compression and $P_S$ is the semilocal compression/projection. The compactness gate is
+\[
+  \mathcal R_S\in\mathcal K(Y^-_\infty)
+\]
+or stronger, Hilbert--Schmidt after quotient.
+
+\begin{theorem}[Step 101 dichotomy]
+The semilocal cross-term $\Delta_S^+$ is accepted as compact only if its finite-place multiplier sector cancels, is paired into a compact semilocal prolate/Sonin residual, is removed by a lawful quotient, or is absent from the exact decomposition. If a positive essential-norm sector remains, compact finite-window absorption cannot close the RH bridge; the surviving sector must be charged by a full Hecke/Dirichlet source lower frame.
+\end{theorem}
+
+\section{Strategic verdict}
+The archimedean piece is compact-after-quotient by the imported Connes--Consani mechanism. The semilocal finite-place cross-term is not compact-certified. The next construction target is the exact operator formula for $\mathcal R_S$ and its compact/Hilbert--Schmidt status.
+
+\end{document}

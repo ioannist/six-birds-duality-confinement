@@ -1,0 +1,218 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs,geometry}
+\geometry{margin=1in}
+
+\title{Step 201: Burnol \(\kappa\) Operationalization}
+\author{six-birds-foundations-iii}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_kappa\_inherited\_branch\_AB\_attempted}.}
+\]
+
+The manager-led paper-fetch audit of 2026-05-16 supplies the external Burnol
+records that were missing in Steps 177--180 and 191--192.  The old statement
+``stuck at \(\kappa\)'' is lifted at the \(\kappa\)-level.  Branches A and B
+do not close in this step; instead, new downstream residuals are exposed.
+
+\section*{Paper-Grounded Inherited Records}
+
+The following records are inherited from the manager-led audit, not from
+training memory.
+
+\begin{enumerate}
+\item Burnol 2004 (math/0112254), Definition 6.1:
+\[
+  L_a^\Gamma \equiv K_\lambda
+  =
+  L^2((\lambda,\infty),dt)
+  \cap
+  F_+\bigl(L^2((\lambda,\infty),dt)\bigr),
+  \qquad a=\lambda>0.
+\]
+
+\item Burnol 2004, Theorem 6.10:
+\[
+  A_\infty(s)=\pi^{-s/2}\Gamma(s/2),\qquad
+  M(f)(s)=\pi^{-s/2}\Gamma(s/2)\widehat f(s),
+\]
+where
+\[
+  \widehat f(s)=\int_0^\infty f(t)t^{-s}\,dt.
+\]
+
+\item Burnol 2002 (math/0208121), Theorem 4:
+\[
+\pi_\lambda(f)
+=f-\left[(1-D_\lambda)^{-1}P_\lambda(f)-F_\lambda F_+(f)\right]
+-F_+\left[(1-D_\lambda)^{-1}P_\lambda F_+(f)-F_\lambda(f)\right],
+\]
+where \(P_\lambda\) projects onto \(L^2(-\lambda,\lambda)\),
+\[
+  F_\lambda=P_\lambda F_+P_\lambda,\qquad D_\lambda=F_\lambda^2.
+\]
+The manager audit records that \(D_\lambda\) may be represented by the
+Dirichlet sinc kernel
+\[
+  \frac{\sin(2\pi\lambda(x-y))}{\pi(x-y)}
+\]
+on the even subspace.
+
+\item Burnol 2002, Corollary 5:
+\[
+f=F_+f\Longrightarrow
+\pi_\lambda(f)=f-(1+F_+)(1+F_\lambda)^{-1}P_\lambda(f),
+\]
+\[
+f=-F_+f\Longrightarrow
+\pi_\lambda(f)=f-(1-F_+)(1-F_\lambda)^{-1}P_\lambda(f).
+\]
+
+\item Burnol 2002, Theorem 8:
+\[
+  E_\lambda(w)=
+  \pi^{-w/2}\Gamma(w/2)
+  \left[
+    \lambda^{1/2-w}
+    +
+    \frac{\sqrt\lambda}{2}
+    \int_\lambda^\infty
+      \bigl(\psi_+^\lambda(t)-\psi_-^\lambda(t)\bigr)t^{-w}\,dt
+  \right],
+\]
+with
+\[
+\psi_+^\lambda(t)
+ =
+2\cos(2\pi\lambda t)
+-
+F_+\left[
+(1+F_\lambda)^{-1}P_\lambda(2\cos(2\pi\lambda y))
+\right](t),
+\]
+\[
+\psi_-^\lambda(t)
+ =
+2\cos(2\pi\lambda t)
++
+F_+\left[
+(1-F_\lambda)^{-1}P_\lambda(2\cos(2\pi\lambda y))
+\right](t).
+\]
+
+\item Burnol 2002, equation 1:
+\[
+K_a^\Gamma(z,w)
+\equiv
+K_{B(E_\lambda)}(z,w)
+=
+\frac{
+E_\lambda(z)\overline{E_\lambda(w)}
+-
+E_\lambda(1-z)\overline{E_\lambda(1-w)}
+}{z+w-1}.
+\]
+\end{enumerate}
+
+\section*{Derivation of \(\kappa\)}
+
+Step 152--153 gives
+\[
+  T_a=M_\Gamma J_aU_\infty^{-1}.
+\]
+Therefore
+\[
+  T_a^*=(U_\infty^{-1})^*J_a^*M_\Gamma^*.
+\]
+With \(K_a^\Gamma\) now explicit, the pulled evaluator is
+\[
+  \kappa_{a,w,k}(\tau)
+  =
+  \left(
+  T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w)
+  \right)(1/2+i\tau).
+\]
+For the Step 164 finite carrier \(a=\lambda=1/2\), \(k=0\), and
+\(\rho_i\in\{\rho_1,\rho_2,\rho_3\}\),
+\[
+  \kappa_i(\tau)=
+  \left(
+  T_{1/2}^*K_{1/2}^\Gamma(\cdot,\rho_i)
+  \right)(1/2+i\tau).
+\]
+
+\section*{Branch B SL164.1}
+
+Because \(T_a\) is the inherited unitary transport, the Gram entries are now
+symbolic closed forms:
+\[
+  G_{ij}=\langle \kappa_i,\kappa_j\rangle
+  =
+  K_{1/2}^\Gamma(\rho_j,\rho_i)
+\]
+up to the inherited convention for linearity of the inner product.  Thus
+\[
+  e_i=\frac{\kappa_i}{\sqrt{G_{ii}}}.
+\]
+The finite commutator matrix is
+\[
+  c_{ij}(\ell)
+  =
+  \left\langle
+    e_i,(I-P_\infty)M_{m_\ell}P_\infty e_j
+  \right\rangle,
+  \qquad
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+Using Step 173's \(K_\infty^{op}\), this becomes an explicit double
+operator integral in the Mellin boundary variable.  The finite residual
+\(\Xi_{\mathrm{matrix\_source}}\) is therefore no longer blocked by
+missing \(\kappa\), but it is not numerically decided here.  The new
+sub-residual is certified evaluation of \(E_{1/2}\), the
+\((1\pm F_\lambda)^{-1}\) resolvents, and the \(K_\infty^{op}\) commutator
+integrals.
+
+\section*{Branch A G2--G5}
+
+For \(H_\eta=\overline{\mathrm{span}\{\eta^a_{\rho,k}\}}\), each evaluator
+has the explicit transported form above.  Matrix entries of the active
+Calkin object are
+\[
+  \langle \eta_i,C_\ell P_\eta\eta_j\rangle
+  =
+  \langle
+  \kappa_i,(I-P_\infty)M_{m_\ell}P_\infty\kappa_j
+  \rangle.
+\]
+Hence the matrix-entry attack is no longer blocked by \(\kappa\).
+However, Branch A closure requires a completed Calkin conclusion:
+\[
+  C_\ell P_\eta\in K_\eta
+  \quad\text{or}\quad
+  \|q_\eta(C_\ell P_\eta)\|>0,
+\]
+or the original G2--G5 bridge theorem.  The explicit formula exposes the
+new tasks: summability of the infinite matrix, a compactness theorem, a
+positive essential-norm Weyl sequence, or a faithful boundary-symbol theorem.
+
+\section*{CTMT Re-Evaluation}
+
+Branch A and Branch B are no longer CTMT-stuck at \(\kappa\).  Their
+\(\kappa\)-level terminality is lifted.  CTMT itself remains valid: it now
+records a resolved terminality instance that produced deeper sub-residuals.
+Branch C remains CTMT-foreclosed-numerical and is unchanged by the new
+Burnol records.
+
+\section*{Nonclaim}
+
+This step does not prove RH, close \(\Xi_{BC}\), close Branch A, close Branch
+B, or weaken Branch C's numerical foreclosure.  It advances Path 1 from
+``blocked at \(\kappa\)'' to ``\(\kappa\) available; downstream gates open.''
+
+\end{document}
+

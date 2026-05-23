@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\Thetaa}{\Theta^-}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{Step 89: Source-Coercivity Route for the Zeta Low-Frequency Gate}
+\author{Six Birds / Formed-Layer Membrane Theory Working Note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 85--88 showed that paired prime/gamma positivity is not enough for an RH-style membrane: paired shift/CND features vanish at the legal low-frequency point.  Anti-invariance and fixed-locus separation do not by themselves remove that soft mode.  Step 88 left two serious options: prove a uniform primitive/cancellation theorem for the zero-side readout, or pursue source coercivity.
+
+This note pursues the second option.  Its purpose is not to prove RH.  It formulates the exact low-frequency source-coercivity record that the completed zeta carrier would need, and separates genuine proof-strengthening sources from scoped quotients, public shadows, and paired-shift positivity alone.
+
+\section{Abstract low-frequency source record}
+Let \(Y^-\) be the anti-invariant response space, let \(L^-_\Gamma:E\to Y^-\) be the declared anti-invariant native response, and let \(C_\Gamma\succeq0\) be the exact packaged audit on the legal quotient.
+
+\begin{definition}[source record]
+A source record \(s\) consists of a visible response map
+\[
+Q_s:Y^-\to Z_s,
+\]
+a positive response budget \(\Theta_s\succ0\), a strength \(\lambda_s>0\), and a positive audit contribution \(D_s\succeq0\), such that
+\[
+D_s\succeq \lambda_s (Q_sL^-_\Gamma)^*\Theta_s^{-1}(Q_sL^-_\Gamma).
+\]
+The response-side coverage form of a family \(\mathcal S\) is
+\[
+F_{\mathcal S}=\sum_{s\in\mathcal S}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+\end{definition}
+
+\begin{theorem}[source-frame coercivity]
+If
+\[
+F_{\mathcal S}\succeq \Lambda(\Theta_0^-)^{-1},
+\]
+then the extended audit
+\[
+C_\Gamma^+=C_\Gamma+\sum_sD_s
+\]
+satisfies
+\[
+C_\Gamma^+\succeq \Lambda (L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma.
+\]
+Consequently, under null-mode legality,
+\[
+\K_-^+=L^-_\Gamma(C_\Gamma^+)^\dagger(L^-_\Gamma)^*\preceq \Lambda^{-1}\Theta_0^-.
+\]
+Thus \(\Lambda_n\to\infty\) implies anti-invariant budget collapse.
+\end{theorem}
+
+\begin{proof}
+By the source records,
+\[
+\sum_sD_s\succeq \sum_s\lambda_s(L^-_\Gamma)^*Q_s^*\Theta_s^{-1}Q_sL^-_\Gamma=(L^-_\Gamma)^*F_{\mathcal S}L^-_\Gamma.
+\]
+The lower-frame hypothesis gives
+\[
+\sum_sD_s\succeq \Lambda(L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma.
+\]
+Adding \(C_\Gamma\succeq0\) preserves the inequality.  The capacity bound follows from the standard coercive domination lemma: if \(C\succeq \Lambda L^*\Theta^{-1}L\), then \(LC^\dagger L^*\preceq \Lambda^{-1}\Theta\) on the legal quotient.
+\end{proof}
+
+\section{Why paired shift positivity does not provide the source frame}
+A paired translation-invariant shift feature has symbol
+\[
+\Psi(\xi)=c\xi^2+2\int(1-\cos(a\xi))\,\mu(da),\qquad c\ge0,\ \mu\ge0.
+\]
+Then \(\Psi(0)=0\).  Hence it cannot dominate the identity on any response family that includes the legal zero.
+
+\begin{proposition}[no full-sector source frame from pure paired shifts]
+Let \(Y^-=L^2(I)\) for any interval \(I\) containing \(0\), and let \(C\) be multiplication by a CND shift symbol \(\Psi\) with \(\Psi(0)=0\).  Then no \(\Lambda>0\) satisfies
+\[
+C\succeq \Lambda I_{Y^-}.
+\]
+\end{proposition}
+
+\begin{proof}
+Take normalized packets with Fourier support concentrated in \(|\xi|<\eps\). Since \(\Psi(\xi)\to0\) as \(\xi\to0\), their \(C\)-energy tends to zero while their \(L^2\)-norm is one. Thus the lower bound fails.
+\end{proof}
+
+\section{Three possible source-coercivity statuses for zeta}
+For the completed zeta carrier, the source-coercivity route must fall into one of the following statuses.
+
+\subsection{Full-sector source frame}
+A genuine RH-strength source record proves
+\[
+F_{\mathcal S,n}\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty,
+\]
+on the full anti-invariant response sector.  This is proof-strengthening.  It yields
+\[
+\K_n^-\preceq \Lambda_n^{-1}\Theta_0^-.
+\]
+Together with explicit-formula domination and fixed/exhaustive ledger squeeze, this gives exact fixed-locus confinement.
+
+\subsection{Quotient/source frame}
+A source may prove coercivity only after removing \(|\xi|<\delta_n\) or another low-frequency legal sector.  This gives a scoped membrane.  It becomes full only with a vanishing tail/exhaustivity record for the removed sector.
+
+\subsection{Partial character hardening}
+A source family may harden some anti-invariant characters or some low-frequency bands.  This is useful but not enough.  If there exists a nonzero \(y\in Y^-\) with \(Q_sy=0\) for all accepted sources, then no source growth on those records charges \(y\).  The status is \texttt{character\_hole} or \texttt{partial\_source\_support}.
+
+\section{Candidate zeta source families and gate status}
+\begin{center}
+\begin{tabular}{p{0.26\linewidth}p{0.30\linewidth}p{0.32\linewidth}}
+\hline
+Candidate & What it can plausibly supply & Gate status \\
+\hline
+Paired prime/gamma shifts & positive paired CND carrier & positive but not full-sector coercive; vanishes at legal zero \\
+Pole/completion finite rank & pole/null/endpoint correction & cannot dominate infinite complement \\
+Dirichlet/Hecke/automorphic auxiliary sources & possible character-frame coverage & promising but strict-extension and no-smuggling records required \\
+Truncated zero/prime windows & finite-stage support evidence & moving-ledger support unless tail/exhaustivity is proved \\
+Explicit quotient/gap & scoped coercivity away from low frequency & not full RH without vanishing excluded-sector tail \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Source coercivity versus cancellation}
+The cancellation route requires a bounded primitive factorization for the zero-side readout:
+\[
+V_Z^*=D H,
+\]
+where \(D\) is a derivative/low-frequency vanishing multiplier and \(H\) is bounded.  Source coercivity instead adds an audit/source ladder satisfying a lower-frame inequality.  These are distinct routes:
+\[
+\text{cancellation: zero-side readout avoids the soft mode,}
+\]
+\[
+\text{coercivity: carrier-side audit prices the soft mode.}
+\]
+For zeta, the source route appears stronger but more demanding: it requires an upstream-visible full-sector source frame rather than a low-frequency cancellation property of \(V_Z\).
+
+\section{Conclusion}
+The source-coercivity route is viable only if the completed zeta ledger supplies an accepted source family whose cumulative response-side frame constant diverges on the full anti-invariant sector.  Paired prime/gamma positivity alone cannot do this, because CND shift features vanish at zero.  Finite-rank pole/completion data cannot do it on an infinite core.  Therefore the serious construction target is an upstream-visible character/source frame, possibly using auxiliary L-functions, Hecke/automorphic data, or another carrier-native strict extension, with no post-hoc selection.
+
+\end{document}

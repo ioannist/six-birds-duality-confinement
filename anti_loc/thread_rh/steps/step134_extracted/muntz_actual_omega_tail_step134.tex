@@ -1,0 +1,114 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry,booktabs,hyperref}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newcommand{\XiG}{\Xi_{\mathrm{GCD}}}
+\newcommand{\Om}{\Omega}
+\title{Step 134: Actual Burnol--M\"untz Seed $\Omega$-Tail Estimate}
+\author{RATCHET / Six Birds RH membrane thread}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 130--133 identified a precise obstruction and a precise possible repair.  The BPRZ shifted second-moment main kernel has squarefree Boolean near-null modes, so it cannot be imported as a lower frame on the unrestricted coefficient space.  But the actual residual coefficient class is not arbitrary: it passes through the zeta/M\"untz incidence convolution.  Step 132 showed that deep Boolean blind modes only see high-divisibility seed coefficients.  Step 133 imported the Heap--Soundararajan $\Omega$-block architecture as the right external analytic-number-theory template.
+
+Step 134 asks whether the \emph{actual} regularized Burnol/M\"untz residual seed coefficients satisfy the required high-$\Omega$ tail estimate.
+
+\section{Finite squarefree model}
+Let $P_y$ be a finite set of primes, and identify squarefree divisors of $\prod_{p\in P_y}p$ with subsets $S\subseteq P_y$.  Let $b(S)$ be the seed coefficient vector.  The finite zeta/incidence convolution is
+\[
+  (Z_y b)(T)=\sum_{S\subseteq T}b(S).
+\]
+For a Boolean blind family $\mathcal B$ with negative-prime supports $A\subseteq P_y$, define the upward closure
+\[
+  \uparrow\mathcal B=\{S\subseteq P_y:\exists A\in\mathcal B,\ A\subseteq S\}.
+\]
+
+\begin{lemma}[Upward-closure identity]
+For every seed $b$,
+\[
+  \Pi_{\mathcal B}Z_yb=\Pi_{\mathcal B}Z_yP_{\uparrow\mathcal B}b.
+\]
+Thus blind-sector mass is controlled exactly by the high-divisibility seed tail.
+\end{lemma}
+
+\begin{corollary}[Block cutoff annihilation]
+Let the prime set be decomposed into blocks $\mathcal P_j$, and let $K_j$ be declared thresholds.  If the seed satisfies
+\[
+  \Omega_j(S):=|S\cap\mathcal P_j|\le K_j\quad\text{for every }j,
+\]
+and every blind mode $A\in\mathcal B$ violates at least one threshold,
+\[
+  |A\cap\mathcal P_j|>K_j\quad\text{for some }j,
+\]
+then
+\[
+  \Pi_{\mathcal B}Z_yb=0.
+\]
+\end{corollary}
+
+\section{Actual-seed tail gate}
+Let $b_N$ denote the actual regularized Burnol/M\"untz residual seed coefficients in a finite window.  Let
+\[
+  P_{\Om\le K}=\prod_j P_{\Om_j\le K_j}
+\]
+be the upstream-declared $\Omega$-block projection.  Define
+\[
+  \tau_{\Om,N}=\frac{\|Z_y(I-P_{\Om\le K})b_N\|}{\|Z_yb_N\|}.
+\]
+Then
+\[
+  \frac{\|\Pi_{\mathcal B}Z_yb_N\|}{\|Z_yb_N\|}\le \tau_{\Om,N},
+\]
+provided $\mathcal B$ is covered by threshold-violating blind modes.
+
+This is the deterministic form of the desired tail estimate.  Heap--Soundararajan-type arguments supply an imported architecture for $\Omega$-block truncation and scalar mean tail bounds, but the membrane route requires the uniform residual operator version
+\[
+  \left\|Z_y(I-P_{\Om\le K})B_NG_{B,N}^{-1/2}\right\|\le \tau_{\Om,N}.
+\]
+This is the true Step 134 analytic obligation.
+
+\section{Incidence amplification gate}
+The incidence map $Z_y$ can amplify coefficient tails.  In raw Boolean $\ell^2$, the one-prime incidence matrix has singular values $\varphi$ and $\varphi^{-1}$, where $\varphi=(1+\sqrt5)/2$.  For $k$ primes this gives condition number $\varphi^{2k}$.  Therefore seed tail smallness must be measured after the lawful response-space weighting, or accompanied by an incidence-conditioning record.
+
+We record the gate as
+\[
+  \|Z_y(I-P_{\Om\le K})b_N\|\le \mathfrak C_{Z,N}\|(I-P_{\Om\le K})b_N\|_{\mathrm{seed}},
+\]
+with a declared bound on $\mathfrak C_{Z,N}$.
+
+\section{Restricted BPRZ salvage}
+Let $K_q$ be the BPRZ GCD--log main kernel.  Assume it satisfies a lower frame on the nonblind residual class:
+\[
+  K_q\succeq \gamma_q I\quad\text{on }(1-\Pi_{\mathcal B})H,
+  \qquad \gamma_q\asymp \log q.
+\]
+If
+\[
+  \|\Pi_{\mathcal B}Z_yb_N\|\le \delta_N\|Z_yb_N\|,
+\]
+then
+\[
+  \langle Z_yb_N,K_qZ_yb_N\rangle
+  \ge \gamma_q(1-\delta_N^2)\|Z_yb_N\|^2.
+\]
+Hence exact suppression $\delta_N\to0$ is sufficient, but a uniform floor $\delta_N\le\delta<1$ can also suffice when $\gamma_q\to\infty$.
+
+\section{Verdict}
+The actual Burnol/M\"untz seed $\Omega$-tail estimate is not closed in full generality.  The finite Boolean mechanism is proved, and the Heap--Soundararajan architecture supplies the right non-smuggled $\Omega$-block template.  But the generic Burnol/M\"untz residual seed is not automatically $\Omega$-truncated.  Therefore the accepted route is conditional on one of:
+\begin{enumerate}
+\item a declared HS-compatible seed/projection with vanishing projection residual;
+\item a uniform positive floor $\tau_{\Om,N}\le\tau<1$ plus diverging source strength;
+\item a separate source-frame record for the remaining $\Xi_{\mathrm{GCD}}$ residual.
+\end{enumerate}
+
+\section{Nonclaim}
+This step does not prove RH, does not prove that the BPRZ theorem gives a full lower frame, and does not prove that generic Burnol/co-Poisson atoms have small high-$\Omega$ tail.  It identifies the exact deterministic tail theorem required to make the restricted BPRZ route lawful.
+
+\end{document}

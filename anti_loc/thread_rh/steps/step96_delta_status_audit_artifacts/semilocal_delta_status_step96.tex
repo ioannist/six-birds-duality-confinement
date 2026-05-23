@@ -1,0 +1,108 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\title{Step 96: Semilocal $\Delta_S$ Status Audit}
+\author{Six Birds / Formed-Layer Membrane RH Program}
+\date{May 2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+After the hybrid reset, the archimedean/gamma slot is imported from the Connes--Consani Sonin/prolate positivity mechanism.  The active semilocal obstruction is
+\[
+  \Delta_S := q_{\mathrm{Weil},S}-q_{\mathrm{pos},S},
+\]
+where $S$ is a finite set of places containing $\infty$, $q_{\mathrm{Weil},S}$ is the actual semilocal Weil form on the semilocal response core, and
+\[
+  q_{\mathrm{pos},S}=q_{\infty}^{\mathrm{CC}}+q_{\mathrm{pr},S}^{\mathrm{pair}}+q_{\mathrm{pole},S}^{+}+q_{\mathrm{tail},S}^{+}
+\]
+is the candidate positive feature package.
+
+This note audits whether $\Delta_S$ is naturally compact/finite-rank, source-absorbable, tail-defect-only, or a genuine infinite-dimensional obstruction.
+
+\section{Imported facts from the Tier-0 literature}
+\begin{enumerate}[label=F\arabic*.]
+\item Connes--Consani's archimedean result gives a positive trace functional $\operatorname{Tr}(\vartheta(f)S)$ associated to Sonin compression and identifies the archimedean obstruction as a trace-remainder. After applying the boundary-condition operator $Q$, the remainder is represented by an operator of the form $-2I+K_I$ with $K_I$ compact, indeed Hilbert--Schmidt on bounded support intervals.
+\item The semilocal prolate paper gives the semilocal Hardy--Titchmarsh transform.  For finite $S$, the response measure is deformed by the finite Euler-factor product
+\[
+  dm_S(s) = \left|\prod_{v\in S} L_v(1/2-is)\right|^2 ds,
+\]
+and the semilocal cyclic pair remains even.  It also gives a Hilbertian isomorphism connecting archimedean and semilocal Sonin spaces.  However, the actual semilocal prolate operator coefficients are deferred.
+\item The finite spectral-triple construction gives finite-dimensional restrictions $QW_\lambda^N$ and self-adjoint rank-one perturbations whose spectra lie on the critical line and numerically approximate zeta zeros.  Its missing step is convergence of regularized determinants / fixed-or-exhaustive promotion to $\Xi$.
+\item The chiral adelic Dirac construction supplies an enlarged carrier with finite-prime truncations, compact arithmetic perturbations under summability, and spectral-shift jumps.  It is a plausible Tier-2 carrier, not automatically a descent proof for the zeta-only carrier.
+\item Conrey--Li show that natural de Branges/RKHS shift-positivity conditions fail for zeta and Dirichlet $L$-functions. Any proposed positive feature package that reduces to those conditions fails the survival audit.
+\end{enumerate}
+
+\section{Status types}
+\begin{definition}[Status types]
+A semilocal cross-term record has one of the following statuses.
+\begin{enumerate}[label=(\roman*)]
+\item \texttt{compact-after-quotient}: after support and boundary/vanishing conditions, the obstruction is compact or Hilbert--Schmidt relative to the relevant form topology.
+\item \texttt{finite-rank-window}: the obstruction is finite-rank on a moving finite window only.
+\item \texttt{source-absorbable}: the positive part of the obstruction is controlled by an upstream-visible source frame.
+\item \texttt{tail-defect}: the obstruction is not killed but is carried by an explicit vanishing tail budget.
+\item \texttt{infinite-obstruction}: the obstruction leaves an uncovered infinite-dimensional positive sector.
+\end{enumerate}
+\end{definition}
+
+\section{Audit decomposition}
+Write schematically
+\[
+  \Delta_S = \Delta_{\infty}^{\mathrm{CC}} + \Delta_{\mathrm{fin},S} + \Delta_{\mathrm{pole},S} + \Delta_{\mathrm{tail},S}.
+\]
+Here $\Delta_{\infty}^{\mathrm{CC}}$ is the residual between the archimedean Weil distribution and the imported Sonin trace feature, $\Delta_{\mathrm{fin},S}$ is the finite-place semilocal measure/injection mismatch, $\Delta_{\mathrm{pole},S}$ records boundary/null/pole corrections, and $\Delta_{\mathrm{tail},S}$ records finite-to-completed promotion.
+
+\begin{proposition}[Archimedean component]
+The archimedean residual has status \texttt{compact-after-quotient}: after the support and vanishing gates, the Connes--Consani trace-remainder becomes a compact/Hilbert--Schmidt correction plus finite-codimension conditioning.  Therefore it is not the load-bearing unresolved infinite-dimensional obstruction in the hybrid route.
+\end{proposition}
+
+\begin{proposition}[Semilocal finite-place component]
+For finite $S$, the semilocal Hardy--Titchmarsh transform gives a common response space and a bounded finite Euler-factor deformation of the archimedean measure.  This makes $\Delta_{\mathrm{fin},S}$ a well-defined semilocal operator/form, but the uploaded semilocal literature does not prove it is compact or finite-rank on the completed anti-invariant core.  Its present status is \texttt{source-absorbable-candidate} or \texttt{tail-defect}, not \texttt{compact-after-quotient}.
+\end{proposition}
+
+\begin{proposition}[Finite spectral-triple windows]
+The finite spectral-triple operators provide \texttt{finite-rank-window} evidence.  They are strong numerical and structural evidence for the finite-source mechanism, but they are not exact RH confinement unless their determinant/zero ledgers promote by a fixed-or-exhaustive squeeze.
+\end{proposition}
+
+\begin{theorem}[Step 96 status theorem]
+The semilocal $\Delta_S$ record has the following audited status.
+\[
+  \boxed{\Delta_S\;\text{is not presently certified as finite-rank or compact on the completed core}.}
+\]
+The archimedean subcomponent is compact-after-quotient by Connes--Consani's result.  The finite-place semilocal cross-term remains an unresolved full-sector object.  It can be accepted only by one of the following additional records:
+\begin{enumerate}[label=(\alph*)]
+\item a semilocal prolate theorem proving compact-after-quotient status for $\Delta_{\mathrm{fin},S}$;
+\item an upstream-visible Hecke/Dirichlet source frame absorbing $\Delta_S^+$ with $\Lambda_n\to\infty$;
+\item a fixed-or-exhaustive tail record proving the finite-window defects vanish on the completed ledger;
+\item a scoped nonclaim that explicitly excludes the unresolved sector.
+\end{enumerate}
+Without one of these records, $\Delta_S$ remains a genuine infinite-dimensional obstruction candidate.
+\end{theorem}
+
+\section{Implications for the RH program}
+The hybrid route should not try to prove that $\Delta_S$ is automatically small merely because the archimedean piece is positive.  The correct next construction target is narrower:
+\[
+  \boxed{\text{prove source absorption or compact-after-quotient for the finite-place semilocal cross-term}.}
+\]
+The most promising path remains a Hecke/Dirichlet source frame:
+\[
+  F_n = \sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega
+  \succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty,
+\]
+with fixed/exhaustive ledger control.
+
+\section{No-overread boundary}
+\begin{warning}
+Finite spectral triples, finite prime truncations, trace positivity, or archimedean positivity alone do not prove $\Delta_S\preceq0$ on the completed zeta carrier.  They are accepted only as finite-window or component records until they discharge a source, compactness, or tail/exhaustivity gate.
+\end{warning}
+
+\end{document}

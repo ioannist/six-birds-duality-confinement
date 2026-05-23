@@ -1,0 +1,69 @@
+{
+  "carrier": {
+    "carrier": "Montgomery pair correlation",
+    "objects": "zeros rho_n=1/2+i gamma_n of zeta, normally assuming RH for the formulation on the line",
+    "normalization": "tilde_gamma=gamma*log(gamma)/(2*pi), mean spacing 1",
+    "pair_count": "R_2(alpha,beta;T)=(1/N(T))*#{(n,m): alpha < tilde_gamma_n-tilde_gamma_m < beta, n!=m}",
+    "GUE_limit": "int_alpha^beta (1-(sin(pi*u)/(pi*u))^2) du",
+    "residual": "Xi_MPC(alpha,beta;T)=|R_2(alpha,beta;T)-GUE_integral(alpha,beta)|",
+    "closure": "lim_{T->infty} Xi_MPC(alpha,beta;T)=0 for all alpha<beta"
+  },
+  "classification": [
+    {
+      "question": "Riemann_RH_Dichotomy",
+      "classification": "outside_scope",
+      "reason": "Montgomery pair correlation is not known equivalent to RH; it is RH-conditional in known theorem ranges."
+    },
+    {
+      "question": "Selberg_Class_Dichotomy_Generalization",
+      "classification": "outside_single_L_RH_analogue",
+      "reason": "This is a zero-correlation residual, not a per-L zero-location residual."
+    },
+    {
+      "question": "Selberg_Class_Cross_Correlation_Extension",
+      "classification": "inside_after_subtype_refinement",
+      "reason": "It is a correlation residual, but zero-level rather than coefficient-level."
+    }
+  ],
+  "subtypes": [
+    {
+      "subtype": "Type Ia",
+      "name": "multi-L coefficient correlations",
+      "examples": "SOC; full Selberg orthonormality",
+      "status": "existing step254/255 subtype"
+    },
+    {
+      "subtype": "Type Ib",
+      "name": "single-L zero correlations",
+      "examples": "Montgomery pair correlation; Hejhal triple correlation",
+      "status": "new step256 refinement"
+    },
+    {
+      "subtype": "Type II",
+      "name": "multi-L or family zero correlations",
+      "examples": "Rudnick-Sarnak n-level correlations; Katz-Sarnak family statistics",
+      "status": "candidate extension lane"
+    }
+  ],
+  "evidence": [
+    {
+      "instance": "SOC off-diagonal coefficient correlation",
+      "step": "254",
+      "subtype": "Type Ia",
+      "status": "open"
+    },
+    {
+      "instance": "full Selberg orthonormality",
+      "step": "255",
+      "subtype": "Type Ia",
+      "status": "open"
+    },
+    {
+      "instance": "Montgomery pair correlation",
+      "step": "256",
+      "subtype": "Type Ib",
+      "status": "open beyond Montgomery RH-conditional range"
+    }
+  ],
+  "final_verdict": "V_montgomery_subtype_refinement"
+}

@@ -1,0 +1,227 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\MGamma}{\mathcal M_\Gamma}
+\newcommand{\Uinf}{\mathcal U_\infty}
+\newcommand{\Kamb}{K_a^{\Gamma,\mathrm{amb}}}
+
+\title{Step 178: Derivation Attempt for \(\kappa_{a,w}\)}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{kappa\_verdict = V\_kappa\_classical\_theorem\_needed}.}
+\]
+
+The target vector is
+\[
+\kappa_{a,w}(\tau)
+=
+\left(T_a^*K_a^\Gamma(\cdot,w)\right)(1/2+i\tau).
+\]
+For \(a=1/2\) and \(w=\rho_1=1/2+14.134725141734693i\), the inherited
+records reduce the problem to one specific missing classical theorem:
+
+\[
+\boxed{
+\text{Burnol's explicit Bessel/Hankel resolvent formula for }
+P_{\mathcal L_a^\Gamma}
+\text{, equivalently }K_a^\Gamma.
+}
+\]
+
+\section{T1. Inherited Records}
+
+Step 145 records the Burnol carrier:
+\[
+L_a\subset L^2(0,\infty;dt)
+\]
+is Burnol's extended Sonine space, consisting of functions constant on
+\((0,a)\) whose cosine transform is also constant on \((0,a)\).
+
+Step 153 records
+\[
+T_a:=\MGamma J_a\Uinf^{-1},
+\]
+and
+\[
+\Uinf(J_a^*Y^a_{w,k})
+=
+T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+\]
+Thus, for \(k=0\),
+\[
+\kappa_{a,w}=T_a^*K_a^\Gamma(\cdot,w).
+\]
+
+Step 153 also records the completed ambient Hardy kernel
+\[
+\Kamb(s,w)
+=
+A_\infty(s)\overline{A_\infty(w)}
+\frac{s}{s-1}\overline{\frac{w}{w-1}}
+\frac{a^{s+\overline w-1}}{s+\overline w-1}.
+\]
+The exact Burnol/Sonine kernel is only given as
+\[
+\boxed{
+K_a^\Gamma(\cdot,w)
+=
+P_{\mathcal L_a^\Gamma}\Kamb(\cdot,w).
+}
+\]
+Step 153 explicitly states that this projection is load-bearing; replacing it
+by the ambient Hardy shadow is not lawful.
+
+Step 152 records the adjoint transport context
+\[
+\mathfrak B_{\ell,a}^*Y^a_{\rho,k}
+=
+(I-P_\infty)\tau_{-\ell}P_\infty J_a^*Y^a_{\rho,k}.
+\]
+Step 113 records Burnol's complement theorem for \(a<1\):
+\[
+Y_a^\perp=P_a.
+\]
+
+A repository search found no root-level \texttt{adequacy.tex} or
+\texttt{needles.tex} files.
+
+\section{T2. Derivation Attempts}
+
+\subsection*{Attack A: Closed-form projected-kernel route}
+
+Starting from Step 153,
+\[
+\kappa_{a,w}
+=
+T_a^*K_a^\Gamma(\cdot,w)
+=
+T_a^*P_{\mathcal L_a^\Gamma}\Kamb(\cdot,w).
+\]
+The ambient kernel \(\Kamb\) is explicit.  Therefore a closed form for
+\(\kappa\) would follow from an explicit formula for
+\[
+P_{\mathcal L_a^\Gamma}\Kamb(\cdot,w).
+\]
+This is precisely the projected Sonine reproducing kernel.  No inherited
+record supplies this projection.
+
+\subsection*{Attack B: Transport-kernel route}
+
+If the adjoint transport had an integral kernel \(T_a^*(\tau,z)\), then
+\[
+\boxed{
+\kappa_{a,w}(\tau)
+=
+\int \overline{T_a(z,\tau)}\,K_a^\Gamma(z,w)\,d\mu_a(z).
+}
+\]
+Substituting the projected kernel gives
+\[
+\kappa_{a,w}(\tau)
+=
+\int \overline{T_a(z,\tau)}
+\left(P_{\mathcal L_a^\Gamma}\Kamb(\cdot,w)\right)(z)
+d\mu_a(z).
+\]
+This is an operational identity, but it is not numerically evaluable because
+neither the \(T_a\) integral kernel nor the projected kernel action is recorded
+in inherited artifacts.
+
+\subsection*{Attack C: Spectral route}
+
+If a Bessel/Hankel spectral theorem supplied an orthonormal basis
+\(\{u_r\}\) of \(\mathcal L_a^\Gamma\), then
+\[
+P_{\mathcal L_a^\Gamma}
+=
+\sum_r |u_r\rangle\langle u_r|
+\]
+and
+\[
+\boxed{
+\kappa_{a,w}(\tau)
+=
+\sum_r
+\langle \Kamb(\cdot,w),u_r\rangle
+(T_a^*u_r)(1/2+i\tau).
+}
+\]
+This is the desired spectral expansion.  It requires the same missing
+classical input: the Bessel/Hankel spectral data for the projected Sonine
+space \(L_a\).
+
+\section{Specific Classical Theorem Needed}
+
+The needed theorem is not generic ``operator theory.'' It is:
+
+\begin{quote}
+Burnol's explicit Bessel/Hankel resolvent formula for the orthogonal
+projection \(P_{\mathcal L_a^\Gamma}\), equivalently the reproducing kernel
+\(K_a^\Gamma=P_{\mathcal L_a^\Gamma}K_a^{\Gamma,\mathrm{amb}}\), for the
+extended Sonine space \(L_a\) at \(a=1/2\).
+\end{quote}
+
+This is the theorem that would turn the ambient Hardy kernel into the legal
+projected Burnol/Sonine kernel and then allow \(T_a^*\) to be applied.
+
+\section{T3--T4. Specialization and Samples}
+
+For
+\[
+a=\frac12,\qquad w=\rho_1=\frac12+14.134725141734693i,
+\]
+the formal expression is
+\[
+\kappa_{1/2,\rho_1}(\tau)
+=
+T_{1/2}^*
+P_{\mathcal L_{1/2}^\Gamma}
+K_{1/2}^{\Gamma,\mathrm{amb}}(\cdot,\rho_1)(1/2+i\tau).
+\]
+No sample values are lawfully computed.  The requested sample set
+\[
+\tau\in\{-14.134725141734693,-5,-1,0,1,5,14.134725141734693\}
+\]
+is recorded in \texttt{kappa\_sample\_values\_step178.csv} with status
+\[
+\texttt{not\_computed\_classical\_projection\_theorem\_needed}.
+\]
+
+\section{T6. \(c_{11}(\log2)\)}
+
+Since \(\kappa_{1/2,\rho_1}\) is not derived, the Step 177 formula
+\[
+c_{11}(\ell)
+=
+\frac{\langle \kappa_1-P\kappa_1,
+M_{m_\ell}P\kappa_1\rangle}{\|\kappa_1\|^2}
+\]
+cannot be evaluated.  The row for \(c_{11}(\log2)\) is recorded in
+\texttt{c\_ij\_attempt\_step178.csv} with status
+\[
+\texttt{not\_attempted\_kappa\_unavailable}.
+\]
+
+\section{Branch B Implication}
+
+Step 178 advances Branch B by replacing the Step 177 transport ambiguity with
+a named classical-content interface.  The exact item needed is the projected
+Sonine reproducing kernel / Bessel-Hankel resolvent theorem.  Until it is
+supplied, SL164.1 and the finite matrix entries remain blocked.
+
+\section{Nonclaim Boundary}
+
+This step does not prove RH, does not close \(\Xi_{\mathrm{BC}}\), does not
+close Branch B, does not compute \(\kappa\), and does not compute
+\(c_{11}(\log2)\).  It does not substitute the ambient Hardy kernel for the
+projected Sonine kernel.
+
+\end{document}

@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Step 222: Cross-Track CTMT Recursion Test on the Hodge Track}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+
+\begin{document}
+\maketitle
+
+\section{Target}
+
+Step 222 tests whether the RH-derived CTMT recursion pattern, already verified structurally on BSD at step 221, also appears on the Hodge track.
+
+\section{Hodge Track State}
+
+The Hodge track records are read-only. The active residual is the structured standard-dictionary residual
+\[
+\Xi_H^{\mathrm{std}}(X^4_{33},2),
+\]
+where
+\[
+X^4_{33}=\{x_0^{33}+\cdots+x_5^{33}=0\}\subset \mathbb P^5_{\mathbb C}.
+\]
+The full residual \(\Xi_H(X^4_{33},2)\) remains open.
+
+The current Hodge cascade is not at terminus. It is in active lane-by-lane closure mode on the alpha-adapted binomial scan. H-46R and H-47R closed the two lowest-degree candidate pairs negatively: their dense-torus components are irreducible and their whole classes are ambient-standard.
+
+\section{Hodge Analog of CTMT}
+
+The Hodge analog is not matrix-element terminality. It is cycle-column terminality.
+
+H-24R declares the lawful column test:
+\[
+P_{A_{\rm std}}
+=
+C_{\rm std}(C_{\rm std}^{*}G_{\rm HR}C_{\rm std})^{\dagger}
+C_{\rm std}^{*}G_{\rm HR},
+\qquad
+\Xi_H^{\rm std}=I-P_{A_{\rm std}}.
+\]
+For a candidate cycle column \(w=[W]\), the repair test is
+\[
+w_{\rm res}=\Xi_H^{\rm std}w.
+\]
+A genuine repair requires an actual algebraic codimension-2 cycle, a cycle-class vector, the Fermat character projector, the Hodge--Riemann metric, nonzero residual projection, and rational/cyclotomic descent.
+
+\section{Literature Audit}
+
+The literature audit distinguishes infrastructure from closure.
+
+Hodge's 1950 ICM article gives the originating problem. Grothendieck's standard conjectures and Kleiman's exposition provide the motivic and algebraic-cycle framework but do not supply the specific degree-33 repair column. Cattani--Deligne--Kaplan prove algebraicity of Hodge loci, which is essential deformation-theoretic infrastructure, but it is not a construction of a fixed cycle column. Shioda, Aoki, da Silva, and Aljovin--Movasati--Villaflor supply Fermat-variety infrastructure, standard-cycle patterns, and algorithmic special cases. These sources do not supply a nonstandard codimension-2 cycle on \(X^4_{33}\) passing the H-24R/H-36R column contract.
+
+\section{Recursion Layers}
+
+The Hodge recursion chain is:
+\[
+\Xi_H^{\rm std}
+\to
+\text{nonstandard repair column}
+\to
+\text{candidate equations/arithmetic support}
+\to
+\text{cycle realization and containment}
+\to
+\text{cycle-class map and Fermat projector}
+\to
+\text{Hodge--Riemann projection and residual quotient}
+\to
+\text{rational/cyclotomic descent and source-quality}
+\to
+\text{lane closure or continuation}.
+\]
+
+This is the CTMT recursion pattern in structural form: a terminal-looking external content gate refines into deeper typed gates after audit.
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{V\_hodge\_CTMT\_recursion\_verified}}
+\]
+
+The framework finding upgrades to \(\texttt{verified-on-3-track-instances}\) in structural form: RH, BSD, and Hodge.
+
+No Hodge theorem or RH theorem is claimed.
+
+\end{document}

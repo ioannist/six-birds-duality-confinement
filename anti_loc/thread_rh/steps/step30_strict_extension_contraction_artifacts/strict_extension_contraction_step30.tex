@@ -1,0 +1,351 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\D}{\mathsf D}
+\newcommand{\Sstate}{\mathsf S}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{Step 30: Strict-Extension Capacity Contraction for Anti-Localization}
+\author{Working note for the Six Birds anti-localization project}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note proves the honest form of Reflexive anti-localization contraction. Fixed-package iteration cannot by itself generate strict capacity contraction: once the exact package, probe family, audit form, and budget are unchanged, the probe-family currency matrix is unchanged. Capacity contraction requires a strict extension: a new lawful audit term, a nontrivial feasible-subcarrier restriction, a package rewrite/canonicalization, a higher-level selector, or a weakened claim/budget. We prove monotonicity and strictness criteria for audit strengthening and feasible-subcarrier restriction, formulate contraction of the witness-defect measure, and record no-go examples showing why generic iteration or monotone improvement does not imply finite completion. The result is a theorem-level version of the corpus insight that anti-localization contraction is strict layer growth, not a re-run of the same closure.
+\end{abstract}
+
+\section{Motivation}
+The previous steps established the probe-family currency matrix
+\[
+  \K_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*,
+  \qquad C_\Gamma=\Gamma^*C\Gamma,\quad L_\Gamma=L\Gamma,
+\]
+and the family anti-localization condition
+\[
+  \K_{C,\Gamma}(L)\preceq \Theta .
+\]
+Step 29 reframed a failure of this inequality as an unresolved critical-pair witness. The present note asks when an iteration of closure moves can genuinely reduce the witness defect.
+
+The answer is deliberately conservative: \emph{same-package iteration saturates}. Strict contraction requires a strict extension record. In Six Birds language, an anti-localization contraction must be charged to a visible channel: audit strengthening, carrier rewrite, feasibility gating, package canonicalization, protocol/route completion, predictive transport, or claim weakening.
+
+\section{Anti-localization states and defects}
+
+\begin{definition}[Finite anti-localization state]
+A finite anti-localization state is a tuple
+\[
+  \Sstate=(E,H,\Gamma,C,L,\Theta,\sigma),
+\]
+where $E$ is a finite-dimensional coordinate space, $\Gamma:E\to H$ is the exact package map, $C\succeq0$ is the audit form on $H$, $L:H\to Y$ is a declared probe-family readout, $\Theta\succeq0$ is the declared family budget on $Y$, and $\sigma$ is an audit/status record. We write
+\[
+  C_\Gamma=\Gamma^*C\Gamma,
+  \qquad L_\Gamma=L\Gamma,
+  \qquad \K(\Sstate)=L_\Gamma C_\Gamma^\dagger L_\Gamma^* .
+\]
+The state is null-legal when $L_\Gamma$ annihilates $\Ker C_\Gamma$.
+\end{definition}
+
+\begin{definition}[Defect and witness measure]
+The anti-localization defect matrix is
+\[
+  \D(\Sstate)=\K(\Sstate)-\Theta.
+\]
+A native critical-pair witness is a vector $y\in Y$ such that
+\[
+  y^*\D(\Sstate)y>0.
+\]
+Useful scalar defect measures include
+\[
+  \mu_{\max}(\Sstate)=\lambda_{\max}(\D(\Sstate))_+,
+\]
+\[
+  \mu_{\Tr}(\Sstate)=\Tr(\D(\Sstate)_+),
+  \qquad
+  \mu_{\mathrm{rank}}(\Sstate)=\operatorname{rank}(\D(\Sstate)_+),
+\]
+where $X_+$ denotes the positive spectral part.
+\end{definition}
+
+\begin{remark}
+The state is witness-complete precisely when $\D(\Sstate)\preceq0$, equivalently $\K(\Sstate)\preceq\Theta$.
+\end{remark}
+
+\section{Fixed-package saturation}
+
+\begin{definition}[Same-package rerun]
+A same-package rerun is a transition
+\[
+  \Sstate\longmapsto \Sstate'
+\]
+that preserves the exact package, audit, probe family, and budget:
+\[
+  \Gamma'=\Gamma,
+  \qquad C'=C,
+  \qquad L'=L,
+  \qquad \Theta'=\Theta,
+\]
+up to unitary coordinate change on $E$ and $Y$ already recorded in $\sigma$.
+\end{definition}
+
+\begin{theorem}[Same-package saturation]
+A same-package rerun cannot change the family currency matrix. More precisely, if $U:E'\to E$ and $V:Y\to Y'$ are unitary coordinate changes with
+\[
+  \Gamma'=\Gamma U,
+  \qquad L'=V L,
+  \qquad \Theta'=V\Theta V^*,
+\]
+then
+\[
+  \K(\Sstate')=V\K(\Sstate)V^*,
+  \qquad
+  \D(\Sstate')=V\D(\Sstate)V^*.
+\]
+Consequently $\mu_{\max}$, $\mu_{\Tr}$, and $\mu_{\mathrm{rank}}$ are unchanged.
+\end{theorem}
+
+\begin{proof}
+We have
+\[
+  C_{\Gamma'}=(\Gamma U)^*C(\Gamma U)=U^*C_\Gamma U,
+\]
+so
+\[
+  C_{\Gamma'}^\dagger=U^*C_\Gamma^\dagger U.
+\]
+Also $L_{\Gamma'}=L'\Gamma'=VL\Gamma U=V L_\Gamma U$. Hence
+\[
+  \K(\Sstate')
+  =V L_\Gamma U\, U^*C_\Gamma^\dagger U\, U^*L_\Gamma^*V^*
+  =V\K(\Sstate)V^*.
+\]
+The defect statement follows from $\Theta'=V\Theta V^*$.
+\end{proof}
+
+\begin{corollary}[No contraction by rechecking]
+If an anti-localization workflow merely recomputes the same exact package, same probe family, same audit form, and same budget, it cannot strictly reduce any unitary-invariant witness defect measure. Apparent improvement under such a rerun is a selection, numerical, or protocol artifact unless a strict extension record is supplied.
+\end{corollary}
+
+\section{Strict extension modes}
+
+\begin{definition}[Strict extension record]
+A transition $\Sstate\to\Sstate^+$ is a strict extension when at least one of the following changes is declared before retesting anti-localization:
+\begin{enumerate}[label=(\roman*)]
+  \item audit strengthening or rewrite: $C^+\ne C$;
+  \item package/feasible-carrier restriction or rewrite: $\Gamma^+\ne\Gamma$ not merely by coordinate change;
+  \item native probe-family completion or lawful exclusion: $L^+\ne L$ with a nonclaim/readout record;
+  \item budget repair: $\Theta^+\ne\Theta$ with explicit weakening or sharpening of the claim;
+  \item protocol/predictive transport extension: response spaces or transports change with a defect ledger.
+\end{enumerate}
+The extension is contractive relative to a defect measure $\mu$ if
+\[
+  \mu(\Sstate^+)<\mu(\Sstate).
+\]
+\end{definition}
+
+\subsection{Audit strengthening}
+
+\begin{theorem}[Loewner contraction under audit strengthening]
+Assume $C_\Gamma\succ0$ on the packaged coordinate space and let $D_\Gamma\succeq0$. Define
+\[
+  C_\Gamma^+=C_\Gamma+D_\Gamma,
+  \qquad
+  \K^+=L_\Gamma(C_\Gamma+D_\Gamma)^{-1}L_\Gamma^*.
+\]
+Then
+\[
+  \boxed{\K^+\preceq \K=L_\Gamma C_\Gamma^{-1}L_\Gamma^*.}
+\]
+Moreover, for a recombination $y$ with $g=L_\Gamma^*y$,
+\[
+  y^*(\K-\K^+)y>0
+\]
+if and only if
+\[
+  D_\Gamma^{1/2}C_\Gamma^{-1}g\ne0.
+\]
+\end{theorem}
+
+\begin{proof}
+For $C\succ0$ and $D\succeq0$,
+\[
+  C^{-1}-(C+D)^{-1}
+  =C^{-1}D^{1/2}\bigl(I+D^{1/2}C^{-1}D^{1/2}\bigr)^{-1}D^{1/2}C^{-1}
+  \succeq0.
+\]
+Multiplying on the left and right by $L_\Gamma$ and $L_\Gamma^*$ gives $\K-\K^+\succeq0$. The quadratic form in direction $y$ equals
+\[
+  \left\|\bigl(I+D^{1/2}C^{-1}D^{1/2}\bigr)^{-1/2}D^{1/2}C^{-1}g\right\|^2,
+\]
+which is strictly positive exactly when $D^{1/2}C^{-1}g\ne0$.
+\end{proof}
+
+\begin{corollary}[Witness resolution by audit strengthening]
+Let $y$ be a witness for $\Sstate$, so $v_y=y^*(\K-\Theta)y>0$. An audit strengthening resolves this witness at fixed budget if
+\[
+  y^*(\K-\K^+)y\ge v_y.
+\]
+It strictly improves the witness defect if the inequality is strict on the current positive eigenspace of $\D$.
+\end{corollary}
+
+\subsection{Feasible-subcarrier restriction}
+
+\begin{theorem}[Capacity contraction under feasible restriction]
+Let $\mathcal F^+\subseteq\mathcal F$ be a lawful feasible-subcarrier restriction with the same audit and probe family. Then for the induced currency matrices on the same response space,
+\[
+  \boxed{\K^+\preceq\K.}
+\]
+Equivalently, for every recombination $y$,
+\[
+  \operatorname{Cap}_{C}(y^*L;\mathcal F^+)
+  \le
+  \operatorname{Cap}_{C}(y^*L;\mathcal F).
+\]
+The inequality is strict for $y$ precisely when no maximizing/minimum-energy representer for the old problem lies in $\mathcal F^+$ modulo legal null directions.
+\end{theorem}
+
+\begin{proof}
+The variational capacity is the supremum of the same Rayleigh quotient over a smaller feasible set. Therefore it cannot increase. The strictness statement is the usual equality condition for restricting the domain of a variational supremum.
+\end{proof}
+
+\begin{remark}[Gating warning]
+Feasible restriction can reduce capacity, but it can also destroy the cycle-supported structure the layer needed. Therefore this theorem is only a contraction theorem, not an automatic admissibility theorem. The restriction still requires a Six Birds gate record.
+\end{remark}
+
+\subsection{Budget repair}
+
+\begin{proposition}[Trivial budget completion]
+For any finite state, the repaired budget
+\[
+  \Theta^+=\Theta+(\K-\Theta)_+
+\]
+satisfies
+\[
+  \K\preceq\Theta^+.
+\]
+Thus every finite state can be completed by sufficiently weakening the claim.
+\end{proposition}
+
+\begin{proof}
+Spectrally, $\K-\Theta\preceq(\K-\Theta)_+$, hence $\K-\Theta^+\preceq0$.
+\end{proof}
+
+\begin{remark}
+Budget repair is completion but not strong anti-localization. It prices the witness by raising the permitted price. It should be recorded as claim weakening unless the new budget is independently mandated by an upstream layer.
+\end{remark}
+
+\section{Defect contraction and termination}
+
+\begin{theorem}[Monotone defect under ordered extension]
+Suppose a strict extension satisfies
+\[
+  \K^+\preceq\K,
+  \qquad
+  \Theta^+\succeq\Theta.
+\]
+Then
+\[
+  \D^+=\K^+-\Theta^+\preceq \D=\K-\Theta.
+\]
+Consequently
+\[
+  \mu_{\max}(\Sstate^+)\le\mu_{\max}(\Sstate),
+\]
+and similarly for any monotone spectral gauge of the positive part.
+\end{theorem}
+
+\begin{proof}
+Immediate from Loewner order. Monotonicity of spectral positive-part gauges follows from standard Loewner monotonicity for the positive spectral excess in finite dimension.
+\end{proof}
+
+\begin{theorem}[Strict-extension finite termination]
+Let
+\[
+  \Sstate_0\to\Sstate_1\to\Sstate_2\to\cdots
+\]
+be an anti-localization completion chain. Suppose there is a well-founded ordered set $(W,<)$ and a measure
+\[
+  \mu:\{\text{states}\}\to W
+\]
+such that every non-complete state admits only accepted strict extension moves with
+\[
+  \mu(\Sstate_{n+1})<\mu(\Sstate_n).
+\]
+Then the chain terminates in finitely many steps at a witness-complete state or at a lawful nonclaim/budget-weakened endpoint.
+\end{theorem}
+
+\begin{proof}
+An infinite chain would produce an infinite strictly descending sequence in a well-founded order, which is impossible.
+\end{proof}
+
+\begin{proposition}[No fixed-package termination theorem]
+There is no theorem of the form ``repeat a fixed package and all anti-localization witnesses eventually disappear.'' Indeed, by same-package saturation the defect is invariant after the package is fixed. More generally, monotone improvement alone does not imply finite termination: the scalar sequence
+\[
+  \K_n=1+\frac1n,
+  \qquad \Theta=1
+\]
+has decreasing positive defect $1/n$ but never completes at any finite $n$.
+\end{proposition}
+
+\section{Strict extension versus apparent contraction}
+
+\begin{definition}[Selection trap]
+An apparent contraction is a selection trap if the new package, probe family, or low-mode selector is chosen using the target $S_6$ success criterion or the witness itself without an upstream declaration. Its status is at most support-only, and if hidden it is smuggled.
+\end{definition}
+
+\begin{proposition}[No contraction credit without a source]
+If a transition decreases $\mu$ but no strict extension source is recorded among $P_1$ rewrite, $P_2$ feasibility, $P_3$ route, $P_4$ staging, $P_5$ packaging, or $P_6$ audit, then the decrease is not an accepted anti-localization contraction. It is a support-only diagnostic or an overread.
+\end{proposition}
+
+\begin{proof}
+This is an admissibility statement rather than an analytic identity. The analytic decrease proves only that some new state has lower defect. Acceptance requires a lawful source for the new state and a record that the selection did not use forbidden target-layer data.
+\end{proof}
+
+\section{Anti-localization contraction theorem}
+
+\begin{theorem}[Strict-extension capacity contraction theorem]
+Let $\Sstate$ be a formed closure/layer with accepted test-family record. Let $\Sstate^+$ be a strict extension satisfying null-mode legality and one of the accepted contraction mechanisms:
+\begin{enumerate}[label=(\alph*)]
+  \item audit strengthening: $C_\Gamma^+=C_\Gamma+D_\Gamma$, $D_\Gamma\succeq0$;
+  \item feasible-subcarrier restriction: $\mathcal F^+\subseteq\mathcal F$ with lawful nonclaim on excluded probes;
+  \item package rewrite/canonicalization with a certified currency comparison $\K^+\preceq\K$;
+  \item predictive/protocol completion with block-family budget comparison $\widehat\K^+\preceq\widehat\K$;
+  \item budget repair $\Theta^+\succeq\Theta$ recorded as claim weakening.
+\end{enumerate}
+If, in addition,
+\[
+  \K(\Sstate^+)\preceq\K(\Sstate),
+  \qquad
+  \Theta^+\succeq\Theta,
+\]
+then every native witness defect is nonincreasing. If a current support-minimal witness $y$ satisfies
+\[
+  y^*\bigl[(\K-\Theta)-(\K^+-\Theta^+)\bigr]y>0,
+\]
+then that witness is strictly weakened. If a well-founded defect measure strictly decreases at each unresolved stage, finite completion follows.
+\end{theorem}
+
+\begin{proof}
+The listed mechanisms either have a proved currency contraction theorem above or require a certified currency comparison as part of their strict extension record. The defect inequality follows from $\K^+\preceq\K$ and $\Theta^+\succeq\Theta$. Strict weakening of a witness is exactly the displayed positive quadratic decrease. Finite completion follows from the well-founded termination theorem.
+\end{proof}
+
+\section{Interpretation}
+The theorem says that anti-localization contraction is not generated by repetition. It is generated by strict extension. In layer language, a formed closure can improve its membrane only by admitting new lawful structure: a stronger audit, a sharper package, a narrower and honest claim, a new predictive transport, or an upstream-forced canonicalization. Otherwise the same probe-family price matrix is simply re-read.
+
+\end{document}

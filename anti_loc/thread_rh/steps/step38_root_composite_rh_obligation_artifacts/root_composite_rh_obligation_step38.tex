@@ -1,0 +1,363 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\E}{\mathsf E}
+\newcommand{\F}{\mathsf F}
+\newcommand{\Thetaop}{\Theta}
+\newcommand{\ran}{\operatorname{Ran}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{Step 38: Root-Composite RH Obligation Theorem\\
+\large Anti-Linear Duality, Explicit-Formula Domination, Character Sources, and Zero Confinement}
+\author{Six Birds anti-localization working notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note assembles the root-composite anti-localization profile into one RH-facing theorem schema.  The point is not to prove RH.  The point is to state precisely which records an RH proof would have to supply in order to turn anti-localization into zero confinement.
+
+The objects are:
+\begin{itemize}[leftmargin=2em]
+  \item an anti-linear involution \(J\), whose fixed locus is the symmetry locus;
+  \item a zero/root ledger \(Z\) with anti-invariant displacement matrix \(\A_Z\);
+  \item a completed explicit-formula domination bridge \(\A_Z\preceq \K^-\);
+  \item a root-composite character-source frame giving \(\K^-\preceq \Lambda^{-1}\Theta_0^-\), up to recorded defects;
+  \item a finite-to-continuum/exhaustivity record which identifies the visible zero ledger with the target zero set.
+\end{itemize}
+
+For the Riemann zeta function, the anti-linear involution is
+\[
+  J(s)=1-\overline{s},
+\]
+whose fixed locus is the critical line
+\[
+  \Fix(J)=\{s:\Re s=1/2\}.
+\]
+
+\section{Anti-linear root ledger}
+
+\begin{definition}[Anti-linear response space]
+Let \(Y_\mathbb R\) be a real Hilbert response space and let \(J:Y_\mathbb R\to Y_\mathbb R\) be an involutive isometry.  Define
+\[
+  Y^+=\ker(I-J),\qquad Y^-=\ker(I+J),
+\]
+and projections
+\[
+  P_\pm=\frac12(I\pm J).
+\]
+The subspace \(Y^-\) is the anti-invariant response sector.
+\end{definition}
+
+\begin{definition}[Zero-side displacement matrix]
+Let \(Z\) be a finite or locally finite visible root/zero ledger with weights \(w_z>0\).  Let \(\psi:Z\to Y_\mathbb R\) be a readout map.  Define the anti-invariant displacement vectors
+\[
+  v_z=P_-\psi(z)\in Y^-.
+\]
+The zero-side displacement matrix is
+\[
+  \A_Z=\sum_{z\in Z} w_z v_zv_z^*.
+\]
+Equivalently, if
+\[
+  V_Z:Y^-\to \ell^2(Z,w),\qquad (V_Zy)(z)=\langle y,v_z\rangle,
+\]
+then
+\[
+  \A_Z=V_Z^*V_Z.
+\]
+\end{definition}
+
+\begin{definition}[Fixed-locus separation]
+The readout \(\psi\) separates the fixed locus at threshold \(\varepsilon>0\) if
+\[
+  \|P_-\psi(z)\|\ge \varepsilon
+\]
+for every visible root with distance at least the corresponding target threshold from \(\Fix(J)\).  In the RH case, a scalar version is
+\[
+  \|P_-\psi(s)\|\simeq |\Re s-1/2|.
+\]
+\end{definition}
+
+\begin{lemma}[Zero displacement detects off-fixed mass]
+For every \(\varepsilon>0\),
+\[
+  \sum_{z:\|v_z\|\ge \varepsilon} w_z
+  \le
+  \varepsilon^{-2}\tr(\A_Z).
+\]
+If \(\psi\) separates the fixed locus and \(\A_Z=0\), then every visible zero lies in \(\Fix(J)\).
+\end{lemma}
+
+\begin{proof}
+Since \(\tr(\A_Z)=\sum_z w_z\|v_z\|^2\), the displayed bound follows by Markov's inequality.  If \(\A_Z=0\), then every term \(w_z\|v_z\|^2\) is zero, hence \(v_z=0\).  Separation then forces each visible zero into the fixed locus.
+\end{proof}
+
+\section{Completed explicit-formula domination}
+
+\begin{definition}[Carrier-side anti-invariant currency]
+Let \(E\) be the exact completed carrier, let \(C_E\succeq0\) be the packaged audit operator, and let
+\[
+  L_E^-:E\to Y^-
+\]
+be the declared anti-invariant probe family.  Under null-mode legality, define
+\[
+  \K^-=(L_E^-)C_E^\dagger(L_E^-)^*.
+\]
+Equivalently, with
+\[
+  W_E=C_E^{\dagger/2}(L_E^-)^*,
+\]
+one has
+\[
+  \K^-=W_E^*W_E.
+\]
+\end{definition}
+
+\begin{definition}[Explicit-formula domination record]
+An exact completed explicit-formula domination record is a contraction \(T:E_\mathrm{cmp}\to \ell^2(Z,w)\), \(\|T\|\le1\), such that
+\[
+  V_Z=T W_E.
+\]
+Equivalently,
+\[
+  \A_Z\preceq \K^-.
+\]
+A defective record has
+\[
+  V_Z=TW_E+R,
+  \qquad \|T\|\le1,
+  \qquad R^*R\preceq E_{\rm EF},
+\]
+where \(E_{\rm EF}\succeq0\) is the explicit-formula defect.
+\end{definition}
+
+\begin{lemma}[Defective domination]
+If
+\[
+  V_Z=TW_E+R,
+  \qquad \|T\|\le1,
+  \qquad R^*R\preceq E_{\rm EF},
+\]
+then for every \(t>0\),
+\[
+  \A_Z\preceq (1+t)\K^-+(1+t^{-1})E_{\rm EF}.
+\]
+\end{lemma}
+
+\begin{proof}
+Use
+\[
+  (a+b)^*(a+b)\le (1+t)a^*a+(1+t^{-1})b^*b
+\]
+with \(a=TW_E\) and \(b=R\).  Since \(T^*T\preceq I\), one has \(W_E^*T^*TW_E\preceq W_E^*W_E=\K^-\).
+\end{proof}
+
+\section{Character-source lower-frame collapse}
+
+\begin{definition}[Character/source record]
+Let \(\mathcal S\) be a finite family of root-composite source records.  A source record
+\[
+  s=(Q_s,\Theta_s,\lambda_s,D_s)
+\]
+consists of an upstream-visible character readout \(Q_s:Y^-\to Z_s\), a positive response budget \(\Theta_s\succ0\), a source strength \(\lambda_s>0\), and an audit contribution \(D_s\succeq0\) such that
+\[
+  D_s\succeq
+  \lambda_s(Q_sL_E^-)^*\Theta_s^{-1}(Q_sL_E^-).
+\]
+Define the response-side source frame
+\[
+  \F_{\mathcal S}=\sum_{s\in\mathcal S}\lambda_sQ_s^*\Theta_s^{-1}Q_s.
+\]
+\end{definition}
+
+\begin{lemma}[Source frame implies anti-invariant coercivity]
+Assume
+\[
+  \F_{\mathcal S}\succeq \Lambda(\Theta_0^-)^{-1}
+\]
+for some \(\Theta_0^-\succ0\) and \(\Lambda>0\).  If
+\[
+  C_E^+=C_E+\sum_sD_s,
+\]
+then
+\[
+  C_E^+\succeq \Lambda(L_E^-)^*(\Theta_0^-)^{-1}L_E^-.
+\]
+Consequently, under null-mode legality,
+\[
+  \K_+^-=(L_E^-) (C_E^+)^\dagger (L_E^-)^*\preceq \Lambda^{-1}\Theta_0^-.
+\]
+\end{lemma}
+
+\begin{proof}
+For every \(u\in E\),
+\begin{align*}
+  \langle u,C_E^+u\rangle
+  &\ge \sum_s\langle u,D_su\rangle \\
+  &\ge \sum_s\lambda_s\langle Q_sL_E^-u,\Theta_s^{-1}Q_sL_E^-u\rangle \\
+  &= \langle L_E^-u,\F_{\mathcal S}L_E^-u\rangle \\
+  &\ge \Lambda\langle L_E^-u,(\Theta_0^-)^{-1}L_E^-u\rangle.
+\end{align*}
+The capacity bound is the usual coercive budget theorem: if \(C\succeq \Lambda L^*\Theta^{-1}L\), then \(LC^\dagger L^*\preceq \Lambda^{-1}\Theta\), provided the probe annihilates legal zero-energy directions.
+\end{proof}
+
+\begin{remark}[Character completeness]
+In the orthogonal character case
+\[
+  Y^- = \bigoplus_{\chi\in\widehat G^-}Y_\chi,
+\]
+with \(Q_\chi=P_\chi\), the lower frame constant is
+\[
+  \Lambda=\min_{\chi\in\widehat G^-}\lambda_\chi
+\]
+when \(\Theta_\chi\) and \(\Theta_0^-
+\) are normalized compatibly.  Therefore every nontrivial anti-invariant character block must be covered.  Trace or invariant-character control alone is not enough.
+\end{remark}
+
+\section{Root-composite RH obligation theorem}
+
+\begin{theorem}[Root-composite zero-confinement obligation]
+Let a completed root-composite ledger supply:
+\begin{enumerate}[label=(O\arabic*),leftmargin=2.5em]
+  \item an anti-linear involution \(J\) and anti-invariant response sector \(Y^-\);
+  \item a visible zero/root ledger \((Z,w,\psi)\) with displacement matrix \(\A_Z\);
+  \item a completed explicit-formula domination record with defect \(E_{\rm EF}\):
+  \[
+    \A_Z\preceq (1+t)\K^-+(1+t^{-1})E_{\rm EF}
+    \quad(t>0);
+  \]
+  \item accepted character/source records with response-frame bound
+  \[
+    \F_{\mathcal S}\succeq \Lambda(\Theta_0^-)^{-1};
+  \]
+  \item source-side residual defect \(E_{\rm src}\succeq0\) such that
+  \[
+    \K^-\preceq \Lambda^{-1}\Theta_0^-+E_{\rm src}.
+  \]
+\end{enumerate}
+Then for every \(t>0\),
+\[
+  \boxed{
+  \A_Z\preceq
+  (1+t)(\Lambda^{-1}\Theta_0^-+E_{\rm src})
+  +(1+t^{-1})E_{\rm EF}.
+  }
+\]
+Consequently, for every \(\varepsilon>0\),
+\[
+  \boxed{
+  \sum_{z:\|P_-\psi(z)\|\ge\varepsilon} w_z
+  \le
+  \varepsilon^{-2}
+  \tr\!\bigl((1+t)(\Lambda^{-1}\Theta_0^-+E_{\rm src})
+  +(1+t^{-1})E_{\rm EF}\bigr).
+  }
+\]
+In the exact case \(E_{\rm EF}=0\), \(E_{\rm src}=0\), this reduces to
+\[
+  \A_Z\preceq \Lambda^{-1}\Theta_0^-.
+\]
+If a strict-extension ladder has \(\Lambda_n\to\infty\) and defects tending to zero in trace, the visible off-fixed mass tends to zero at every positive separation threshold.
+\end{theorem}
+
+\begin{proof}
+Combine defective explicit-formula domination with the source-frame capacity bound.  The off-fixed mass estimate follows from the trace Markov bound in Lemma 1.3.
+\end{proof}
+
+\begin{corollary}[Exact fixed-locus confinement]
+If the exact ledger supplies
+\[
+  \A_Z\preceq\K^-,
+  \qquad
+  \K^-=0,
+\]
+then \(\A_Z=0\).  If the readout \(\psi\) separates the fixed locus, all visible roots lie in \(\Fix(J)\).
+\end{corollary}
+
+\begin{corollary}[RH-shaped conclusion]
+For RH, set
+\[
+  J(s)=1-\overline{s}.
+\]
+Then \(\Fix(J)=\{\Re s=1/2\}\).  If the completed RH ledger supplies all obligations in Theorem 4.1 with \(\Lambda_n\to\infty\), vanishing defects, and a visibility/exhaustivity record for all nontrivial zeros, then every nontrivial zero is confined to the critical line.
+\end{corollary}
+
+\begin{remark}[Nonclaim boundary]
+The corollary is not asserted as an RH proof.  The unresolved obligations are exactly the difficult parts: completed explicit-formula contractive domination, full anti-invariant character-source lower frame, lawful strict-extension strength, null-mode legality, and zero-ledger visibility/exhaustivity.  The theorem says what these records would imply, not that the records have been earned.
+\end{remark}
+
+\section{No-overread gates}
+
+The root-composite RH obligation theorem blocks the following overreads.
+
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{Trace-shadow overread.}  Equality or domination of traces does not imply \(\A_Z\preceq\K^-\).
+  \item \textbf{Invariant-sector overread.}  Control of \(Y^+\) says nothing about \(Y^-\), where off-fixed displacement lives.
+  \item \textbf{Partial-character overread.}  Hardening only some anti-invariant characters leaves an unpriced hidden sector.
+  \item \textbf{Parity-gating overread.}  Declaring the anti-invariant sector outside scope proves a scoped nonclaim, not zero confinement.
+  \item \textbf{Target-selected source overread.}  Sources chosen because they make zero confinement pass are smuggled unless selected by upstream-visible squares before the confinement test.
+\end{enumerate}
+
+\section{Ledger form}
+
+A root-composite RH obligation record may be written as
+\[
+\mathsf{RHRootAL}=
+(J,Y^-,Z,w,\psi,V_Z,\A_Z,E,C_E,L_E^-,\K^-,\mathcal S,\F_\mathcal S,\Lambda,\Theta_0^-,E_{\rm EF},E_{\rm src},\mathsf{Audit}).
+\]
+It is accepted only if each of the following gates is accepted:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Gate & Record & Failure status\\
+\midrule
+Duality & anti-linear \(J\), fixed locus & outside-scope / wrong symmetry\\
+Zero visibility & zero ledger, separation & support-only\\
+Explicit formula & contractive domination & failed-bridge / trace-shadow\\
+Completion & gamma/pole/tail visible & failed-completion\\
+Character frame & full anti-invariant lower frame & partial-character-overread\\
+Coercivity & \(\Lambda\) strong enough & finite-budget-only\\
+Null modes & legal quotient & failed-null-mode\\
+Strict extension & source selected upstream & smuggled if target-selected\\
+Continuum & finite-to-exact promotion & support-only if absent\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+
+The root-composite RH obligation theorem assembles the previous root-composite steps into one implication:
+\[
+\boxed{
+\begin{gathered}
+\text{anti-linear duality}
++\text{zero visibility}
++\text{completed explicit-formula domination}
++\text{character-source lower frame}
++\text{anti-invariant budget collapse} \\
+\Longrightarrow
+\text{zero/root mass confined to the duality fixed locus.}
+\end{gathered}
+}
+\]
+For RH, the fixed locus is the critical line.  The theorem is therefore an exact statement of the remaining root-composite anti-localization obligation, not a proof that the obligation is satisfied.
+
+\end{document}

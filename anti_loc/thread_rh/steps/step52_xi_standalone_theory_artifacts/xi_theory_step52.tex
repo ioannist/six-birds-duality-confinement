@@ -1,0 +1,413 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\providecommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\XiC}{\Xi_C}
+\newcommand{\preceqq}{\preceq}
+\newcommand{\succeqq}{\succeq}
+
+\title{Step 52: Standalone Theory of the Adequacy Residual $\Xi_C(D\mid L)$}
+\author{Six Birds anti-localization workstream}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note isolates the adequacy residual
+\[
+\Xi_C(D\mid L)
+\]
+as a standalone object in formed-layer membrane theory.  If $L$ is the native probe family of a formed closure and $D$ is a claimed layer-dissolving probe family, then $\Xi_C(D\mid L)$ is the Schur residual of $D$ after conditioning on $L$ in the audit geometry $C$.  It is the unique optimal residual currency left after all possible native readout factorizations $D\approx AL$ have been used.  The note proves its Schur-complement formula, optimality, exact adequacy criterion, blind-spot theorem, monotonicity under strict native-family extension, chain rule, predictive residual propagation, and null-mode warnings.  In words: $\Xi_C(D\mid L)$ is the amount of layer-dissolving addressability the layer's own native probes do not yet see.
+\end{abstract}
+
+\section{Setup: legal quotient and currencies}
+
+Let $E$ be a finite-dimensional real or complex Hilbert space and let
+\[
+C=C^*\succeq 0
+\]
+be the audit operator.  We write
+\[
+E_0=(\Ker C)^{\perp},\qquad C_0=C|_{E_0}.
+\]
+On $E_0$, $C_0$ is positive definite after quotienting zero-energy legal modes.  Every probe family in this note is assumed null-legal unless explicitly stated otherwise:
+\[
+L(\Ker C)=0,\qquad D(\Ker C)=0.
+\]
+Thus we can replace $L,D$ by their restrictions $L_0,D_0$ to $E_0$.
+
+\begin{definition}[Native and dissolving currencies]
+Let
+\[
+L_0:E_0\to Y,
+\qquad
+D_0:E_0\to Z
+\]
+be the native and layer-dissolving probe families.  Define
+\[
+K_{LL}=L_0 C_0^{-1}L_0^*,
+\]
+\[
+K_{DL}=D_0 C_0^{-1}L_0^*,
+\qquad
+K_{LD}=K_{DL}^*,
+\]
+and
+\[
+K_{DD}=D_0 C_0^{-1}D_0^*.
+\]
+The native membrane budget controls $K_{LL}$.  The layer-dissolving budget controls $K_{DD}$.
+\end{definition}
+
+The central object of this note is the residual portion of $K_{DD}$ not explained by the native family $L$.
+
+\begin{definition}[Adequacy residual]
+The adequacy residual of $D$ after conditioning on $L$ is
+\[
+\boxed{
+\Xi_C(D\mid L)
+=
+K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}.
+}
+\]
+Here $\dagger$ denotes the Moore--Penrose pseudoinverse.
+\end{definition}
+
+\section{Schur geometry of $\Xi$}
+
+\begin{theorem}[PSD Schur residual]
+The block currency
+\[
+K_{(L,D)}=
+\begin{pmatrix}
+K_{LL}&K_{LD}\\
+K_{DL}&K_{DD}
+\end{pmatrix}
+=
+\begin{pmatrix}L_0\\D_0\end{pmatrix}
+C_0^{-1}
+\begin{pmatrix}L_0\\D_0\end{pmatrix}^*
+\]
+is positive semidefinite, and
+\[
+\Xi_C(D\mid L)
+=
+K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}
+\succeq0.
+\]
+\end{theorem}
+
+\begin{proof}
+The block matrix is a Gram matrix after applying $C_0^{-1/2}$.  Explicitly set
+\[
+\bar L=L_0C_0^{-1/2},\qquad \bar D=D_0C_0^{-1/2}.
+\]
+Then
+\[
+K_{LL}=\bar L\bar L^*,\quad
+K_{DL}=\bar D\bar L^*,\quad
+K_{DD}=\bar D\bar D^*.
+\]
+Let $P_L$ be the orthogonal projection onto $\Ran(\bar L^*)\subset E_0$.  The standard Gram-Schur identity gives
+\[
+\bar D\bar D^*-\bar D\bar L^*(\bar L\bar L^*)^\dagger\bar L\bar D^*
+=
+\bar D(I-P_L)\bar D^*
+\succeq0.
+\]
+This is exactly $\Xi_C(D\mid L)$.
+\end{proof}
+
+\begin{corollary}[Geometric form]
+\[
+\boxed{
+\Xi_C(D\mid L)=\bar D(I-P_L)\bar D^*.
+}
+\]
+Thus $\Xi_C(D\mid L)$ is the currency of $D$ on the $C^{-1}$-geometry complement of the native probe span.
+\end{corollary}
+
+\section{Optimality and unique residual currency}
+
+The residual is not an arbitrary defect term.  It is the unique Loewner-minimal residual left after every native readout factorization has been tried.
+
+\begin{theorem}[Optimal residual identity]
+Let
+\[
+A_*:=K_{DL}K_{LL}^{\dagger}:Y\to Z.
+\]
+Then, for every linear map $A:Y\to Z$,
+\[
+\boxed{
+(D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+=
+\Xi_C(D\mid L)
++(A-A_*)K_{LL}(A-A_*)^*.
+}
+\]
+Consequently,
+\[
+\Xi_C(D\mid L)
+\preceq
+(D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+\]
+for every $A$, with equality for $A=A_*$.
+\end{theorem}
+
+\begin{proof}
+Expand the left-hand side:
+\[
+K_{DD}-AK_{LD}-K_{DL}A^*+AK_{LL}A^*.
+\]
+Using $A_*=K_{DL}K_{LL}^{\dagger}$ and the range identity
+\[
+K_{DL}=K_{DL}K_{LL}^{\dagger}K_{LL},
+\]
+which follows from the Gram-block positivity, this expansion equals
+\[
+K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}
++(A-A_*)K_{LL}(A-A_*)^*.
+\]
+The first term is $\Xi_C(D\mid L)$.
+\end{proof}
+
+\begin{corollary}[Optimal native explanation]
+The map
+\[
+A_*=K_{DL}K_{LL}^{\dagger}
+\]
+is the least-squares/native-currency optimal explanation of the dissolving readout $D$ by the native readout $L$.  The residual currency left after this optimal explanation is exactly $\Xi_C(D\mid L)$.
+\end{corollary}
+
+\begin{remark}[Interpretation]
+$\Xi_C(D\mid L)$ is the layer's blind-spot currency.  It measures the dissolving addressability that remains invisible after the best possible native explanation.  In statistical language, it is a conditional covariance.  In Schur language, it is a Schur complement.  In membrane language, it is the cost of what the layer does not yet know about ways it can be dissolved.
+\end{remark}
+
+\section{Exact adequacy and blind spots}
+
+\begin{theorem}[Exact adequacy criterion]
+The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $\Xi_C(D\mid L)=0$.
+\item There exists $A:Y\to Z$ such that
+\[
+D_0=AL_0.
+\]
+\item $\Ker L_0\subseteq\Ker D_0$.
+\item $\bar D$ vanishes on $\Ker\bar L$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+If $D_0=AL_0$, the optimal residual is zero.  If $\Xi_C(D\mid L)=0$, then $\bar D(I-P_L)\bar D^*=0$, hence $\bar D$ vanishes on $\Ran(I-P_L)=\Ker\bar L$. Since $C_0^{-1/2}$ is invertible on $E_0$, this is equivalent to $\Ker L_0\subseteq\Ker D_0$.  In finite dimension, the kernel inclusion is equivalent to factorization through $L_0$, so $D_0=AL_0$ for some $A$.
+\end{proof}
+
+\begin{corollary}[Blind-spot witness]
+If $\Xi_C(D\mid L)\ne0$, then there is a legal direction $u\in E_0$ such that
+\[
+L_0u=0,
+\qquad
+D_0u\ne0
+\]
+after possibly replacing $u$ by an energy-weighted representative.  If such a direction has small audit energy while $D_0u$ is visible, the dissolving capacity can be large. If $u$ lies in $\Ker C$ and $D u\ne0$, the true variational dissolving capacity is infinite.
+\end{corollary}
+
+\section{Promotion from native membrane to dissolving membrane}
+
+The native membrane controls $K_{LL}$.  The dissolving membrane requires control of $K_{DD}$.  The residual $\Xi$ supplies the exact gap.
+
+\begin{theorem}[Adequacy promotion]
+If
+\[
+K_{LL}\preceq\Theta_Y
+\]
+and
+\[
+\Xi_C(D\mid L)\preceq\Xi_Z,
+\]
+then
+\[
+\boxed{
+K_{DD}\preceq A_*\Theta_YA_*^*+\Xi_Z.
+}
+\]
+In particular, if $\Xi_C(D\mid L)=0$, then the native membrane promotes exactly to the dissolving membrane through $A_*$.
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[
+K_{DD}=A_*K_{LL}A_*^*+\Xi_C(D\mid L).
+\]
+Apply the two assumed Loewner bounds.
+\end{proof}
+
+\begin{remark}[Closure-only scope]
+This theorem does not say that every conceivable substrate probe is priced.  It says that for a formed closure/layer, a native membrane controls layer-dissolving probes exactly to the extent that the dissolving family is adequate through the native family, with residual $\Xi$ paid by an explicit budget.
+\end{remark}
+
+\section{Strict extension and residual monotonicity}
+
+Let $M_0:E_0\to W$ be a newly admitted native probe family, and define the strict native extension
+\[
+L_0^+=\begin{pmatrix}L_0\\M_0\end{pmatrix}.
+\]
+
+\begin{theorem}[Monotonicity under native-family extension]
+\[
+\boxed{
+\Xi_C(D\mid L^+)\preceq \Xi_C(D\mid L).
+}
+\]
+Thus adding lawful native probes can only reduce the adequacy blind spot.
+\end{theorem}
+
+\begin{proof}
+In the geometric form,
+\[
+\Xi_C(D\mid L)=\bar D(I-P_L)\bar D^*.
+\]
+The extended family has
+\[
+\Ran(\bar L^*)\subseteq \Ran((\bar L^+)^*),
+\]
+so
+\[
+I-P_{L^+}\preceq I-P_L.
+\]
+Conjugating by $\bar D$ gives the result.
+\end{proof}
+
+\begin{theorem}[Chain rule for adequacy residual]
+Define conditional blocks given $L$ by taking the Schur residual of the joint family $(D,M)$ after $L$:
+\[
+\begin{pmatrix}
+K_{DD\mid L}&K_{DM\mid L}\\
+K_{MD\mid L}&K_{MM\mid L}
+\end{pmatrix}
+:=
+\Xi_C((D,M)\mid L).
+\]
+Then
+\[
+\boxed{
+\Xi_C(D\mid L,M)
+=
+\Xi_C(D\mid L)
+-
+K_{DM\mid L}K_{MM\mid L}^{\dagger}K_{MD\mid L}.
+}
+\]
+The subtracted term is positive semidefinite.
+\end{theorem}
+
+\begin{proof}
+This is the associativity of Schur complements for a positive block Gram matrix.  Equivalently, first project out $\Ran(\bar L^*)$, then project the residual further onto the span of the residual part of $\bar M^*$.  The second projection subtracts exactly the displayed Schur term.
+\end{proof}
+
+\begin{corollary}[Same-package saturation]
+If $M_0$ is generated by $L_0$, i.e. $M_0=BL_0$ for some $B$, then
+\[
+\Xi_C(D\mid L,M)=\Xi_C(D\mid L).
+\]
+Thus repeating or relabeling the same native family does not improve adequacy.
+\end{corollary}
+
+\section{Predictive residual ladders}
+
+At predictive stage $j$, let
+\[
+L_j:E_j\to Y_j,
+\qquad
+D_j:E_j\to Z_j,
+\qquad
+C_j\succeq0
+\]
+be legal quotient data, and define
+\[
+\Xi_j=\Xi_{C_j}(D_j\mid L_j).
+\]
+Transport residuals into a common dissolving response space by $S_j:Z_j\to Z$:
+\[
+\widehat\Xi_j=S_j\Xi_jS_j^*.
+\]
+
+\begin{theorem}[Predictive adequacy propagation]
+Suppose
+\[
+\widehat\Xi_{j+1}\preceq (1+\varepsilon_j)B_j\widehat\Xi_jB_j^*+E_j
+\]
+with
+\[
+\prod_j(1+\varepsilon_j)<\infty,
+\qquad
+\sum_j E_j\preceq E_\infty
+\]
+in a common response space and with uniformly budgeted $B_j$.  Then the predictive residuals remain uniformly bounded by the transported initial residual plus the summable defect budget.  In the simple case $B_j=I$ and $\prod_j(1+\varepsilon_j)\le P$, one has
+\[
+\boxed{
+\widehat\Xi_n\preceq P(\widehat\Xi_0+E_\infty).
+}
+\]
+\end{theorem}
+
+\begin{proof}
+Iterate the one-step inequality and use monotonicity of Loewner order.  The scalar multiplicative factors collect into the product bound, and the additive terms are bounded by the summable defect budget.
+\end{proof}
+
+\begin{example}[Non-summable residual failure]
+The scalar ladder
+\[
+\Xi_n=1+\sum_{j=1}^n\frac1j
+\]
+has finite residual at every finite stage but no predictive residual membrane.  Thus finite-stage adequacy is not predictive adequacy.
+\end{example}
+
+\section{Null-mode warning}
+
+\begin{proposition}[Fake zero under illegal null coupling]
+If $D(\Ker C)\ne0$, then pseudoinverse formulas may report a finite or even zero residual while the true variational dissolving capacity is infinite.  Therefore null-mode legality is part of the definition of $\Xi_C(D\mid L)$ as a layer-membrane object.
+\end{proposition}
+
+\begin{proof}
+Take $E=\mathbb R^2$, $C=\operatorname{diag}(0,1)$, $L(x_0,x_1)=x_1$, and $D(x_0,x_1)=x_0$.  The pseudoinverse $C^\dagger$ kills the first coordinate, so all pseudoinverse currencies involving $D$ vanish.  But $u=(1,0)$ has zero energy and nonzero dissolving response, so the true capacity of $D$ is infinite.
+\end{proof}
+
+\section{Standalone meaning of $\Xi$}
+
+The object
+\[
+\boxed{\Xi_C(D\mid L)}
+\]
+has several equivalent readings:
+\begin{enumerate}[label=(\alph*)]
+\item the Schur residual of the dissolving currency after conditioning on the native currency;
+\item the unique Loewner-minimal residual after all native factorizations $D\approx AL$;
+\item the currency of the component of $D$ on the $C^{-1}$-orthogonal complement of the native probe span;
+\item the blind spot of the layer's official probes against layer-dissolving probes;
+\item the obstruction to promoting a native membrane into a layer-dissolving membrane.
+\end{enumerate}
+
+This is why $\Xi$ deserves a standalone theory.  It is not merely a bound in a proof.  It is the formal measure of what a formed layer does not yet know about how it can be dissolved.
+
+\end{document}

@@ -1,0 +1,1682 @@
+                                                                                                                                               13-FEB-1999
+                                                                                                                                         math.NT/9902080
+arXiv:math/9902080v1 [math.NT] 13 Feb 1999
+
+
+
+
+                                                          THE EXPLICIT FORMULA AND THE CONDUCTOR OPERATOR
+
+
+
+
+                                                                                         Jean-François Burnol
+                                                                                             February 1999
+
+
+                                             I give a new derivation of the Explicit Formula for an arbitrary number field and abelian Dirichlet-Hecke
+                                             character, which treats all primes in exactly the same way, whether they are discrete or archimedean, and
+                                             also ramified or not. This is followed with a local study of a Hilbert space operator, the “conductor operator”,
+                                             which is expressed as H = log(|x|)+ log(|y|) (where x and y are Fourier dual variables on a ν-adic completion
+                                             of the number field). I also study the commutator operator K = i [log(|y|), log(|x|)] (which shares with H
+                                             the property of complete dilation invariance, and turns out to be bounded), as well as the higher commutator
+                                             operators. The generalized eigenvalues of these operators are given by the derivatives on the critical line
+                                             of the Tate-Gel’fand-Graev Gamma function, which itself is in fact closely related to the additive Fourier
+                                             Transform viewed in multiplicative terms. This spectral analysis is thus a natural continuation to Tate’s
+                                             Thesis in its local aspects.
+
+
+
+
+                                             62 rue Albert Joly
+                                             F-78000 Versailles
+                                             France
+
+                                                                                                    1
+TABLE OF CONTENTS
+
+
+A. Introduction
+
+
+B. Necessary facts from Tate’s Thesis
+
+
+C. The abelian Explicit Formula
+
+
+D. Fourier transform of − log(|y|)
+
+
+E. The Explicit Formula and the conductor operator
+
+
+F. Concrete spectral analysis on Qp
+
+
+G. Transformation Theory and an intrinsic spectral analysis
+
+
+H. More on homogeneous distributions and Gamma functions
+
+
+I. Taking derivatives and getting conductor and commutators
+
+
+J. More on the Hilbert Space story
+
+
+K. Notes
+
+
+References
+
+
+
+
+                                             2
+A. Introduction
+
+
+Ever since Tate’s Thesis [Ta50] (see also [Iw52]) there has always been a tension between the additive and
+multiplicative structures in the adelic approach to the Riemann Zeta function and its (abelian) generaliza-
+tions. Tate gave a proof of the functional equation which reduced it to the computation of the additive
+Fourier transform of a multiplicatively homogeneous distribution.
+
+
+In a paper dating back to about the same period Weil [We52] puts forward an identity
+
+                                           Z(K, χ)(g) = W (K, χ)(g)
+
+which encompasses most abelian “Explicit Formulae”. Here K is a number field, χ a unitary Dirichlet-Hecke
+character on its idele group and g a function on the positive real line, which we will assume to be smooth
+and compactly supported (although Weil considered functions of a much wider class). The left-hand-side
+Z(K, χ)(g) is obtained by adding the values of the Mellin transform
+                                                  Z ∞
+                                                             du
+                                          g (s) =
+                                          b           g(u)us
+                                                   0          u
+of g at the poles (counted with positive multiplicity) and the zeros (counted with negative multiplicities)
+of the L-function L(K, χ, s). The right-hand-side W (K, χ) has an additive decomposition over the prime
+spots of K. Weil discovered that each local term Wν (K, χ) is best seen as the push-forward of a distribution
+Wν (Kν , χν ) from the multiplicative group of the ν−adic field Kν to (0, ∞) (under tν 7→ u = |tν |ν ). Indeed, all
+local terms, archimedean as non-archimedean, take then an (almost) identical functional form, and W (K, χ)
+is thus best seen as a distribution on the (classes of) ideles of K.
+
+
+Some minor differences between our conventions and those of [We52]: our function g is on the positive
+multiplicative group of the reals, not on the additive reals, and we do not shift by 12 the Mellin transform; we
+distribute the discriminant of the number field among its local components instead of keeping it as a multiple
+of the Dirac at 1; we keep the poles and the zeros together on the same side of the Explicit Formulae.
+
+
+Weil’s “Finite Part” symbol hid away some differences between the finite and infinite places and in the
+case of a non-trivial character χ, an important integral expression for the conductor exponents was needed,
+whose proof, perhaps because of its elementary nature, was in fact not spelled out (these integrals have an
+important extension to the non-abelian case [We74]).
+
+
+The situation was improved by Haran [Ha90] who, for the Riemann Zeta function, gave to all Weil local terms
+an exactly identical formulation. He discovered that although they have at birth the shape of a multiplicative
+convolution, they also exist as an additive convolution. He chose to formulate his result in terms of Riesz
+Potentials, emphasizing the associated semi-group, but one can also just state it as
+          “The Explicit Formula is additive convolution with the Fourier Transform of − log(|y|)”.
+
+
+In this paper, I show how to extend Haran’s result to the general Dirichlet-Hecke L-series. The point of this
+is not so much the straightforward check that the Fourier Transform of − log(|y|) does the job in general,
+
+                                                        3
+also at places of ramification, but rather to illustrate the additive-multiplicative tension mentioned above in
+a manner that treats all primes alike. It is also to be noted that Weil’s local terms for archimedean places
+were not finite expressions, but involved limits and that finite expressions were apparently given only later
+([Ba81]; of course this is related to the fact that the class of functions g’s considered in [We52] is much larger
+than the one considered here, which would allow for a very quick computation involving the partial fraction
+expansion of Euler’s Gamma function, as for example in [Ha90]).
+
+
+This derivation of the Explicit Formula gives birth to the “conductor operator”:
+
+                                           H = log(|x|ν ) + log(|y|ν )
+
+I have used the physicist’s notation so that x and y are Fourier dual variables. This operator acts as a
+hermitian (unbounded, but bounded below) operator on the Hilbert space L2 (Kν , dx) of square-integrable
+functions on the local field Kν with respect to the additive measure dx. It will be shown to be essentially self-
+adjoint on the domain consisting of the Bruhat-Schwartz functions, and that the local term of the Explicit
+Formula at the place ν actually is the spectral analysis of the conductor operator on Kν . This only works
+when the Explicit Formula is expressed as an integral over the critical line Re(s) = 21 , which thus appears
+in a natural manner here.
+
+
+The key feature allowing the spectral analysis of H is that it is completely dilation invariant. Let A be
+the operator of multiplication with log(|x|) and B its Fourier conjugate which acts in the y-representation
+                                                             −1/2
+by multiplication with log(|y|). Let U (t) : ϕ(x) 7→ |t|            ϕ( xt ) be the unitary operators of dilation. Then
+U (t) A U (t)−1 = A − log(|t|), U (t) B U (t)−1 = B + log(|t|) so that H is dilation invariant. And the same also
+holds for the commutator operator K = i [B, A].
+
+
+The complete dilation invariance of an operator O means that it first needs to be transported to the mul-
+tiplicative group Kν× for its analysis, and should have there as generalized eigenvectors the multiplicative
+unitary characters χ(t), which from the additive side take the shape χ(x) |x|−1/2 . Thus one expects an
+equation
+                                             −1                            −1
+                                    O(χ(x)        |x|−s ) = O(χ, s) χ(x)        |x|−s
+
+for some “spectral” functions O(χ, s) on the critical line Re(s) = 1/2. One way to understand these equations
+is as an identity of distributions on Kν (for the commutator operator this will be justified only on the
+punctured ν-adics).
+
+
+A most basic dilation invariant unitary is the composition of the additive Fourier Transform with the Inversion
+         1
+φ(x) 7→ |x| φ( x1 ). Its spectral function is the Tate-Gel’fand-Graev Gamma function:
+
+                                                −1                            −1
+                                   (F I)(χ(x)        |x|−s ) = Γ(χ, s) χ(x)        |x|−s
+
+Tate’s Local Functional Equation states that this holds in the full critical strip 0 < Re(s) < 1 as an identity
+of distributions on Kν .
+
+                                                            4
+The spectral function for the conductor operator is found to be:
+                                                        ∂
+                                            H(χ, s) =      log(Γ(χ, s))
+                                                        ∂s
+and the identity makes sense for s in the full critical strip but acquires its Hilbert space spectral interpretation
+only on the critical line. A similar result holds for the commutator operator K = i [B, A]:
+
+                                                           ∂2
+                                          K(χ, s) = −i         log(Γ(χ, s))
+                                                           ∂s2
+which implies that K is bounded.
+
+
+It is found from this that the Inversion commutes with the conductor operator and anti-commutes with the
+commutator operator. Additional comments will be found in the “Notes” section concluding this paper.
+
+
+B. Necessary facts from Tate’s Thesis
+
+
+Let K be a number field, A its adele ring, A× its multiplicative idele group, C = A× /K × its multiplicative
+group of idele classes.
+
+
+On the local completion Kν at the place ν, one makes the following choice of basic additive character:
+
+                                             λ(x) = exp(2πi{Sp(x)})
+
+where Sp is the trace down to Qp (or minus the trace down to R for an archimedean place), and {a} the
+“polar” part of the p−adic number a. The Fourier Transform F (ϕ) of ϕ (also denoted ϕ)
+                                                                                    e is defined through
+           R
+F (ϕ)(y) = Kν ϕ(x)λ(−yx) dx where dx is the unique self-dual additive Haar measure corresponding to the
+choice of λ (so that F F (ϕ)(x) = ϕ(−x)). The ν-adic module of t ∈ Kν× is such that d(tx) = |t|ν dx. If the
+place is finite the module of a uniformizer is q1 with q the cardinality of the residue field. The multiplicative
+                                                       dt
+Haar measure d∗ t on Kν× is that constant multiple of |t| ν
+                                                            such that, at a finite place, the subgroup of units
+has a unit volume, and, at an archimedean place, the push-forward to (0, ∞) under the module is du
+                                                                                                u .
+
+
+
+Let χν : Kν× → U (1) be a local multiplicative unitary character. Let ωs be the local principal character
+                                                                                                                dx
+t 7→ |t|sν , which is unitary for s purely imaginary. For Re(s) > 0, χν (x)ωs (x) is locally integrable against |x|
+hence defines a distribution on Kν :
+                                                           Z
+                                ϕν 7→ Lν (χν ωs )(ϕν ) =          ϕν (t · 1)χν (t)|t|sν d∗ t
+                                                            Kν×
+
+Up to a constant multiple this is the same as the distribution χν (x)|x|νs−1 . It has ([Ta50], see also [We66],
+[GeGrPi69]) a meromorphic continuation to all s, and satisfies:
+
+                                    F (χν (x)|x|νs−1 ) = Γν (χν , s)χ−1      −s
+                                                                     ν (y)|y|ν
+
+
+where the proportionality factor Γν (χν , s) is usually called the ν−adic Tate-Gel’fand-Graev Gamma function.
+Tate tabulated these functions, and the notation separating χν and s was introduced in [GeGrPi69]. As we
+
+                                                           5
+will see this will be rather convenient for us. They are analytic and non-vanishing in the strip 0 < Re(s) < 1,
+                           2πi
+and periodic with period log(q) if ν is finite. Tate also proved the following properties
+
+                                         Γν (χν , s) · Γν (χ−1
+                                                            ν , 1 − s) = χν (−1)
+
+
+                                             Γν (χν , s) = χν (−1)Γν (χν , s)
+                                                         1                2
+                                            Re(s) =        ⇒ |Γν (χν , s)| = 1
+                                                         2
+                                        Γ′ (χ ,s)
+The related function Λν (χν , s) = − Γνν (χνν ,s) satisfies
+
+                                              Λν (χν , s) = Λν (χ−1
+                                                                 ν , 1 − s)
+
+
+                                                    Λν (χν , s) = Λν (χν , s)
+                                             1
+                                  Re(s) =      ⇒ Λν (χν , s) = Λν (χν , s) and is real
+                                             2
+
+
+Let F be a test-function on C, i.e. a finite linear combination of functions g(|t|)χ(t)−1 where |t| is the global
+module, g is a smooth function on (0, ∞) with compact support, and χ is a unitary character on C. The
+Mellin transform of such an F is a function of quasi-characters (continuous homomorphisms c : C → C× )
+defined as                                                    Z
+                                                    Fb(c) =           F (t)c(t) d∗C t
+                                                                  C
+
+The Haar measure d∗C t on C is normalized so that under push-forward under the module to (0, ∞) it is sent
+to du
+    u (the fibers are compact).
+
+
+
+All the Hecke L-functions L(χ, s) can be combined together as one meromorphic function L(c) on the space
+of quasi-characters c, according to the formula L(χωs ) = L(χ, s) (ωs (t) = |t|s ). The multiplicity of L at the
+quasi-character c will be denoted by m(c) (poles counted with positive multiplicities and zeros with negative
+multiplicities). Let:
+                                                               X
+                                            Z(F ) =                           m(c)Fb (c)
+                                                        L(c) = 0 or ∞
+
+
+
+
+Assuming from now on that F (t) = g(|t|)χ(t)−1 , for a given fixed unitary character χ, we see that Fb (c) = b
+                                                                                                             g (s)
+for c = χωs while Fb(c) = 0 for all other quasi-characters c. Writing Z(χ, g) instead of Z(F ) we thus get
+its value as the sum of b
+                        g(s) over the zeros and poles of the L-function L(χ, s), as was considered in the
+Introduction.
+
+
+It is convenient to consider the L-function L(χωs ) not as valued in the complex numbers, but as valued in
+the distributions on the adeles A, in the following manner:
+                                                           Z
+                                         L(χωs )(ϕ) =              ×
+                                                                       ϕ(t · 1)χ(t)|t|s d∗ t
+                                                               A
+                                                                      6
+                                                                                                    Q
+Here the test-function ϕ(x) on the adeles is a finite linear combination of infinite products           ν ϕν (xν ), where
+ϕν depends only on the ν−adic component, is for almost all ν’s the characteristic function of the sub-ring of
+integers in Kν , is for all non-archimedean places locally constant with compact support (Bruhat function),
+and is for archimedean places a Schwartz function. Note that although this defines a distribution on A the
+integral is over A× , not over A. The Haar measure d∗ t (which lives on A× ) is the (restricted) product of the
+local multiplicative Haar measures and it is not the same thing as d∗C t above (which lives on C).
+
+
+In fact this defines directly L(χωs )(ϕ) only for Re(s) > 1, as an absolutely convergent product. Tate obtained
+the analytic continuation to all s and proved the Functional Equation:
+
+                                                  e = L(χ−1 ω1−s )(ϕ)
+                                          L(χωs )(ϕ)
+
+Here ϕ(x)
+     e    is the Fourier transform of ϕ(x) so that the Fourier transform of the distribution L(χωs ) is the
+distribution L(χ−1 ω1−s ).
+
+
+C. The abelian Explicit Formula
+
+                                    Q
+With a suitable test-function ϕ =       ν ϕν the local factors of the Hecke L-function are obtained as
+
+
+                                            Lν (χν , s) = Lν (χν ωs )(f
+                                                                      ϕν )
+
+(they have neither poles nor zeros in Re(s) > 0) while globally
+
+                                               L(χ, s) = L(χωs )(ϕ)
+                                                                 e
+                                                                         Q
+and is thus obtained for Re(s) > 1 as the absolutely convergent product ν Lν (χν , s). For Re(s) < 0
+                                                           Q
+one represents L(χ, s) as the absolutely convergent product ν Mν (χ−1                     −1
+                                                                   ν , 1 − s), where Mν (χν , 1 − s) =
+Lν (χ−1
+     ν ω1−s )(ϕν ) (it has neither pole nor zero in Re(s) < 1). The Gamma function is
+
+                                                             Lν (χν , s)
+                                           Γν (χν , s) =
+                                                           Mν (χ−1
+                                                                ν , 1 − s)
+
+
+
+
+The computation of Z(χ, g) proceeds in the usual way of the calculus of residues as:
+                                               Z
+                                             1
+                                 Z(χ, g) =        gb(s) − d log L(χ, s)
+                                            2πi R
+
+where R is the rectangle with corners 2−i∞, 2+i∞, −1+i∞, −1−i∞. For the necessary discussion allowing
+to discard the horizontal contributions, see [We52].
+
+                                                            Q
+On the vertical line Re(s) = 2 one uses the product             ν Lν (χν , s) to express the integral as a sum of local
+terms. As the local L-functions have no poles or zeros in the half-plane Re(s) > 0, one can shift each local
+term to the line Re(s) = c, where 0 < c < 1. (That g has compact support turns out to imply that there
+are only finitely many non-vanishing terms, but this is not necessary to this argument). On the vertical line
+
+                                                           7
+                                      Q          −1
+Re(s) = −1 one uses the product           ν Mν (χν , 1 − s) to express the integral as a sum of local terms. As the
+local integrands have no poles or zeros in the half-plane Re(s) < 1, one can shift each local term to the same
+line Re(s) = c.
+
+
+Recombining the integrands from the left and the right, we end up with:
+                                                               X
+                                                Z(χ, g) =           Wν (χ, g)
+                                                                ν
+                                                          Z
+                                                     1
+                                      Wν (χ, g) =                       g(s)Λν (χ, s) ds
+                                                                        b
+                                                    2πi       Re(s)=c
+
+                                                              ∂
+                                            Λν (χ, s) = −        log(Γν (χν , s))
+                                                              ∂s
+
+
+This differs from Weil’s method in the way it uses the functional equation but it has the advantage of treating
+all places, ramified or not, alike. The next classical step from then on would be to obtain the inverse Mellin
+transform wν (χ, u) of Λν (χ, s) (in the critical strip), which is a distribution on the positive half-line such
+that                                                     Z ∞
+                                                                  1           du
+                                           Wν (χ, g) =          g( )wν (χ, u)
+                                                          0       u            u
+and then (somewhat surprisingly in the real case and quite surprisingly in the complex case) to realize that
+it comes from Kν× through t 7→ u = |t|ν , and to guess from the functional form of the final archimedean
+results the way to deal with the conductor of the character.
+
+
+Let us now work locally and drop all subscripts ν to lighten the notation. The identities to follow are
+identities of locally integrable functions, taken in the distributional sense, and the parameter s is in the
+critical strip 0 < Re(s) < 1.
+                                      F (χ(y)|y|s−1 ) = Γ(χ, s)χ−1 (x)|x|−s
+                                      
+                  F log |y| χ(y)|y|s−1 = Γ′ (χ, s)χ−1 (x)|x|−s + Γ(χ, s) (− log |x|)χ−1 (x)|x|−s
+                                                                                            
+                    −1               −s              −1      −s                       |y|s−1
+                   χ (x)Λ(χ, s)|x| = − log |x| χ (x)|x| + F − log |y| · χ(y)
+                                                                                     Γ(χ, s)
+We think of these identities as being applied to some given test-function on the ν−adic field and we now want
+                                                                                        1
+                                                                                           R
+to apply a further operation of integration, this time a complex line integral against 2πi   Re(s)=c
+                                                                                                     gb(s) ds, for
+0 < c < 1. One needs a lemma according to which (pointwise in y 6= 0)
+                                  Z
+                             1                         |y|s−1
+                                            g(s)χ(y)
+                                            b                  ds = F −1 (χ−1 (x)g(|x|))(y)
+                            2πi   Re(s)=c              Γ(χ, s)
+
+                                                                                             1
+The integral converges absolutely due to the rapid decrease of gb(s) whereas               Γ(χ,s)   = Γ(χ−1 , 1 − s) (= 1
+on the critical line) is in any case periodic for a finite place, and controlled by the Stirling formula to be
+O(|s|1/2−c ) for a real place, O(|s|1−2c ) for a complex place. So the left-hand-side defines a continuous function
+of y (for y 6= 0) and also a tempered distribution as it is O(|y|c−1 ). Applying both sides to a test function
+we see (using Mellin inversion) that they coincide as distributions hence pointwise (for y 6= 0).
+
+                                                               8
+As everything converges absolutely we are allowed to intervert integrals. Defining
+                                             Z
+                                          1
+                          Wν (χ, g; x) =             g(s)Λν (χ, s)|x|−s
+                                                     b                   −1
+                                                                     ν χν (x) ds
+                                         2πi Re(s)=c
+
+and Fν (x) = g(|x|ν )χ−1
+                      ν (x) (Fν (0) = 0) we obtain (for x 6= 0):
+                                                                                           
+                         Wν (χ, g; x) = − log(|x|ν )Fν (x) + F − log(|y|ν ) · F −1 (Fν )(y)
+
+                            Wν (χ, g; x) = − log(|x|ν )Fν (x) + F (− log(|y|ν )) ∗ Fν (x)
+
+where ∗ is the symbol of additive convolution on Kν . Plugging in x = 1 gives:
+
+                                       Wν (F ) = Wν (χ, g) = (Gν ∗ Fν )(1)
+
+where Gν is the Fourier Transform of − log(|y|ν ) and ∗ is an additive convolution.
+
+
+Theorem C1: For an arbitrary test-function F on the idele classes (a finite linear combination of smooth
+compactly supported functions of the global module twisted with unitary idele class characters), with Fν the
+restriction of F to Kν (taking the value 0 at the origin), and with Gν (x) = F (− log(|y|ν ))
+                                      X                     X
+                                               m(c)Fb (c) =    (Gν ∗ Fν )(1)
+                                    L(c) = 0 or ∞                 ν
+
+
+
+
+Note: for the rational number field and trivial character, this is due to Haran [Ha90], in a distinct but
+directly equivalent formulation.
+
+
+D. Fourier transform of − log(|y|)
+
+
+To put the result in Weil’s form we need to obtain the Fourier transform of − log(|y|). This is a classical
+calculus exercise in the archimedean case (homogeneity alone immediately gives the result away from the
+origin, but we want the exact determination). Over Qp it has been obtained by Vladimirov [Vl88]. It is
+also implicitely contained in Haran’s work. As previously for the Explicit Formula we derive it in a simple
+manner from the properties of homogeneous distributions considered in [We66], [GeGrPi69].
+
+
+Again we work locally, and will drop most ν subscripts to ease up on the notations. Let ∆s be the homo-
+                                                        R
+geneous distribution, given for Re(s) > 0, by ∆s (ϕ) = Kν ϕ(x)|x|s−1 dx. This time we need an explicit
+expression for its analytic continuation around s = 0. Let us (temporarily) pick a specific function ω(x) as
+follows:
+
+
+If ν is finite, we take ω to be the characteristic function of the ring of integers O. Let π be a uniformizer and
+       −1
+q = |π|     (which is also the cardinality of the residue field). Let δ be the differental exponent at ν, which is
+the largest integer such that (x ∈ π −δ O) ⇒ (Sp(x) ∈ Zp ). Then Vol(O) = q −δ/2 , and:
+
+                                                                1 − 1q
+                                              ∆s (ω) = q −δ/2
+                                                                1 − q1s
+
+                                                         9
+So ∆s (ω) has a meromorphic continuation to all s, and around 0:
+
+                                                       R
+                                            ∆s (ω) =     + P (ω) + · · ·
+                                                       s
+                 1− 1
+with R = q −δ/2 log(q)
+                    q
+                       and P (ω) = 12 log(q) · R
+
+
+If ν is real, we take ω(x) = exp(−πx2 ) and then (here Γ is Euler’s Gamma function):
+
+                                                               R
+                                   ∆s (ω) = π −s/2 Γ(s/2) =      + P (ω) + · · ·
+                                                               s
+with R = 2 and P (ω) = − log(π) − γe (γe = −Γ′ (1) = Euler-Mascheroni’s constant)
+
+
+If ν is complex we take ω(z) = exp(−πzz) and recall that |z| means zz, and that the self-dual Haar measure
+for λ(z) = exp(−2πi 2Re(z)) is twice the Lebesgue measure, so that:
+
+                                                               R
+                                    ∆s (ω) = 2π π −s Γ(s) =      + P (ω) + · · ·
+                                                               s
+with R = 2π and P (ω) = −2π(log(π) + γe )
+
+
+The continuation to Re(s) > −1 (to all s if ν is non-archimedean) of ∆s is obtained (for example) by:
+                                                   Z
+                                                                              dx
+                          ∆s (ϕ) = ∆s (ω)ϕ(0) +        (ϕ(x) − ϕ(0)ω(x)) |x|s
+                                                    Kν                        |x|
+
+Hence ∆s has a simple pole at 0 (δ0 = Dirac at 0, not to be confused with the differental exponent!):
+
+                                               R
+                                             ∆s = · δ0 + P + · · ·
+                                               s
+                                                 Z
+                                                                         dx
+                             P (ϕ) = P (ω)ϕ(0) +       (ϕ(x) − ϕ(0)ω(x))
+                                                    Kν                   |x|
+                                             R                      dx
+Adopting the notation Pω for the distribution Kν (ϕ(x) − ϕ(0)ω(x)) |x| , now for an arbitrary test-function
+ω such that ω(0) = 1 we thus see that the “intrinsic finite part” P can be expressed as
+
+                                          P (ϕ) = Pω (ϕ) + P (ω)δ0 (ϕ)
+
+
+
+We know that F (∆s (y)) = Γ(s)∆1−s (x) with Γ(s) the Gamma function for the trivial character. Expanding
+this in powers of ε with s = 1 − ε, we get, on the left hand side:
+
+                                      F (∆1−ε ) = δ0 + εF (− log |y|) + · · ·
+
+On the right hand side, we have, introducing constants γ and τ :
+
+                                          Γ(1 − ε) = γ(ε + τ ε2 + · · ·)
+
+                                                    R
+                                             ∆ε =     · δ0 + P + · · ·
+                                                    ε
+                                                        10
+Hence γR = 1 and the formula for G(x) = F (− log |y|) is:
+
+
+Theorem D1        G = γP + τ δ0 = γPω + (γP (ω) + τ )δ0 = γPω + G(ω)δ0
+
+
+G(ϕ) = γP (ϕ) + τ ϕ(0) is also directly given by:
+                                      Z
+                                                               ∂
+                             G(ϕ) =       (− log |y|) ϕ(y)
+                                                      e dy = −        ∆s (ϕ)
+                                                                          e
+                                       Kν                      ∂s s=1
+
+from which follows G(ϕt ) = G(ϕ) − log(|t|)ϕ(0) for ϕt (x) = ϕ(tx).
+
+
+For all places, the constant γ = 1/R = −Γ′ (1) turns out to be such that the multiplicative Haar measure
+         dt
+                                    R
+d× t = γ |t| on Kν× has the property 1≤|x|<|X| d× t = log(|X|) (with X ∈ Kν , |X| ≥ 1). For a discrete ν it
+assigns a value of log(q) to the volume of the units (d× t = log(q)d∗ t).
+
+
+Let us suppose now that the place ν is non-archimedean. For ω the characteristic function of the integers,
+                                                                          1− 1                 ∂
+                         e (y) = q −δ/2 ω(π δ y) and ∆s (e
+its Fourier transform is ω                               ω ) = q δ(s−1) 1− q1 so that G(ω) = − ∂s s=1
+                                                                                                      ∆s (e
+                                                                                                          ω) =
+                                                                            qs
+log(q)
+ q−1 − δ log(q). So:
+                                                             δ
+                               G(ϕ) = γ · Pω (ϕ) + γ · q − 2 −1 ϕ(0) − δ log(q)ϕ(0)
+
+
+Let us apply this to the characteristic function ψ of the ball of radius 1/q centered at 1: we get G(ψ) =
+      δ
+γ · q − 2 −1 . So it is advantageous to replace ω with ω1 = ω − ψ, and then:
+
+                                         G(ϕ) = γPω1 (ϕ) − δ log(q)ϕ(0)
+
+Going back to Weil’s local term Wν (F ) = (Gν ∗ Fν )(1), this gives:
+                                 Z
+                                                                    dx
+                       Wν (F ) =      (Fν (1 − x) − Fν (1)ω1 (x)) γ     − δ log(q)Fν (1)
+                                   Kν                               |x|
+
+and after the change of variable x 7→ 1 − 1/t, we get:
+
+
+Theorem D2 ([We52])
+                           Z                                     Z
+                                     1              d× t                    1 d× t
+                Wν (F ) =       (Fν ( ) − Fν (1))         +             Fν ( )        − δ log(q)Fν (1)
+                          |t|=1      t            |1 − t|        |t|6=1     t |1 − t|
+
+
+This is Weil’s local term, with the addition of the local component of the discriminant. The integral over
+|t| = 1 for the test-function F (t) = f (|t|)χ−1 (t) gives a non-zero result only if χ is ramified at ν, whereas the
+other integral gives a non-zero result only when χ is non-ramified at ν. We will come back to the ramified
+characters, but first let us examine the local term at an archimedean spot.
+
+
+First we consider a real spot ν.
+For ω(x) = exp(−π x2 ) we evaluated ∆s (ω) = π −s/2 Γ(s/2), R = 2 (so γ = 1/2), and P (ω) = −(log(π) + γe ).
+
+                                                        11
+                                                                          ∂
+          e (and also Γ′ (1/2) = − Γ(1/2)(γe + 2 log(2))) we get G(ω) = − ∂s
+Using ω = ω                                                                  s=1
+                                                                                 ∆s (e
+                                                                                     ω ) = (log(π) + γe +
+2 log(2))/2. From this we get the constant τ = G(ω) − γP (ω) = log(2π) + γe .
+
+
+It is convenient now to choose other functions ω (always obeying the condition ω(0) = 1). For example, we
+can take ω(x) = 1 if |x| < 1, ω(x) = 0 if |x| ≥ 1. (it doesn’t matter that ω is not smooth away from 0). For
+this ω, ∆s (ω) = 2/s, so P (ω) = 0 and G(ω) = τ = log(2π) + γe . So we get:
+                                Z                           Z
+                                                      dx                 dx
+             F (− log |y|)(ϕ) =        (ϕ(x) − ϕ(0))      +        ϕ(x)      + (log(2π) + γe )ϕ(0)
+                                 |x|≤1               2|x|    |x|>1      2|x|
+                                                               dt
+This gives the following expression for the Weil term (d× t = 2|t| ):
+
+
+Theorem D3
+                           Z ∞                             Z 1/2
+                                   1             d× t            1 d× t
+               WR (F ) =       (F ( ) − F (1))         +       F( )        + (log(2π) + γe )F (1)
+                           1/2     t           |1 − t|      −∞   t |1 − t|
+
+
+Choosing ω(x) = sin(πx)/πx whose Fourier transform (as a distribution) is the characteristic function of
+−1/2 ≤ x ≤ 1/2, we get ∆s (e           1
+                            ω ) = 1s 2s−1 hence G(ω) = 1 + log(2) and:
+                                        Z                      
+                                                        sin(πx)    dx
+                  F (− log |y|)(ϕ) =        ϕ(x) − ϕ(0)                + (1 + log(2))ϕ(0)
+                                         R                 πx     2|x|
+This leads to the following expression for Weil’s term:
+                               Z               t      π        
+                                          1     π sin( t )          d× t
+                     WR (F ) =       F  (   ) −            F (1)          + (1 + log(2))F (1)
+                                R×        t       t−1             |1 − t|
+As exp(G(ω)) = 2e, the function ω(x) = sin(2πex)/2πex would lead to a similar expression with no Dirac
+term.
+
+                                 2
+Choosing ω(x) = (sin(πx)/πx) whose Fourier transform is the triangle function x 7→ 1 − |x| for |x| ≤ 1, we
+                 2
+get ∆s (e
+        ω ) = s(s+1) hence G(ω) = 3/2 and:
+                                          Z                        2 !
+                                                            sin(πx)       dx
+                     F (− log |y|)(ϕ) =        ϕ(x) − ϕ(0)                    + (3/2)ϕ(0)
+                                           R                   πx        2|x|
+                                                   t                  !
+                                  Z                        π 2
+                                            1       π sin( t )               d× t
+                      WR (F ) =           F( ) −                   F (1)           + (3/2)F (1)
+                                     R×     t           t−1                |1 − t|
+
+
+Switching to a complex spot ν, we obtained with ω(z) = exp(− πzz): ∆s (ω) = 2π π −s Γ(s), R = 2π,
+γ = 1/2π and P (ω) = −2π(log(π) + γe ). The Fourier transform (recall that dz = 2rdrdθ and |z| = zz) of
+                                                              ∂
+                       ω ) = (4π)1−s Γ(s) and we get G(ω) = − ∂s
+ω(z) is 2ω(2z), so ∆s (e                                         s=1
+                                                                     ∆s (e
+                                                                         ω ) = log(4π) + γe . From this we
+get the constant τ = G(ω) − γP (ω) = 2(log(2π) + γe ). Choosing ω(z) to be the characteristic function of
+the unit disc, we find ∆s (ω) = 2π/s hence P (ω) = 0 and so G(ω) = τ , and the following thus emerges:
+                              Z                            Z
+                                                    dx                  dx
+           F (− log |y|)(ϕ) =        (ϕ(x) − ϕ(0))       +        ϕ(x)       + 2(log(2π) + γe )ϕ(0)
+                               |x|≤1               2π|x|    |x|>1      2π|x|
+
+                                                         12
+This gives the following expression for the Weil term (d× t = drdθ/πr):
+
+
+Theorem D4
+                    Z                                            Z
+                                1             d× t                               1 d× t
+        WC (F ) =           (F ( ) − F (1))         +                          F( )        + 2(log(2π) + γe )F (1)
+                  Re(t)≥1/2     t           |1 − t|                  Re(t)≤1/2   t |1 − t|
+
+
+There are of course countless other possible choices for the function ω and ensuing expressions for WR (F )
+and WC (F ).
+
+
+E. The Explicit Formula and the conductor operator
+
+
+In the remaining sections of this paper we will only consider one place ν of the number field K at a time, and
+we will drop most ν-subscripts from our notations. Let us first return to the local contribution to the Explicit
+Formula at finite place. Let χ be a local, ramified, unitary character (ramified meaning that the restriction
+of χ to |t| = 1 is non-trivial). Let f ≥ 1 be the conductor exponent of χ, that is the smallest positive integer
+such that |1 − t| ≤ q −f ⇒ χ(t) = 1. For q = 2 the smallest possible value of f is 2 whereas for all other q’s
+it is 1. The Gamma function of χ was computed by Tate to be simply q (f +δ)s up to a certain multiplicative
+constant, not important here. So minus its logarithmic derivative is the constant −(f + δ) log(q).
+
+
+Going back to the evaluation of
+                                                     Z
+                                                1
+                              Wν (χ, g; x) =                      g(s)Λν (χ, s)|x|−s
+                                                                  b                  −1
+                                                                                  ν χν (x) ds
+                                               2πi   Re(s)=c
+
+
+this gives Wν (χ, g; x) = −(f + δ) log(q)g(|x|)χ−1 (x), and for F (x) = g(|x|)χ−1 (x) our previous computation
+of Wν (χ, g; x) then gives:
+
+                         −(f + δ) log(q)F (x) = (− log |x|)F (x) + F (− log |y|) ∗ F (x)
+
+Choosing the function g to have its support contained in 1/q < u < q, and such that g(1) = 1, plugging in
+x = 1, and using our evaluation of F (− log |y|), we end up with:
+                                                         Z
+                                                                                d× t
+                               −(f + δ) log(q) =                 (χ(t) − 1)           − δ log(q)
+                                                         |t|=1                |1 − t|
+
+
+                                       R                    d t  ×
+Theorem E1 ([We74]) f log(q) =          |t|=1
+                                                (1 − χ(t)) |1−t|
+
+
+It is not difficult to evaluate directly this integral which is a necessary component of the final result of [We52]
+(perhaps for this reason a proof was omitted there).
+
+
+We now turn to an operator theoretic interpretation of the general local contribution to the Explicit Formula,
+also at archimedean places. For this let L2 be the Hilbert Space of square integrable functions on Kν with
+
+                                                                 13
+respect to the additive Haar measure dx. Let S be the domain of Schwartz-Bruhat functions on Kν , and S0
+the subdomain consisting of functions having compact support and vanishing identically in a neighborhood of
+the origin. We defined in the Introduction the operators A : ϕ(x) 7→ log(|x|) · ϕ(x), B = F AF −1 = F −1 AF .
+The conductor operator is defined on S as follows:
+
+                                                                                    
+                    H(ϕ)(x) = (A + B)(ϕ)(x) = log(|x|) ϕ(x) + F log(|y|) F −1 (ϕ)(y) (x)
+
+
+The right-hand side is at any rate a continuous function which belongs to L2 . There is also the Inversion
+                1
+I : ϕ 7→ (x 7→ |x| ϕ( x1 )) which acts on S0 and (isometrically) on L2 .
+
+
+Theorem E2: The conductor operator H with initial domain S0 is essentially self-adjoint. It is unbounded,
+but bounded below. It commutes with the unitary dilations, the Fourier transform and the Inversion.
+
+
+Let also K = i[B, A].
+
+
+Theorem E3: The commutator operator K with initial domain S0 is essentially self-adjoint. It is bounded.
+It commutes with the unitary dilations and anti-commutes with the Fourier Transform and the Inversion.
+
+
+The remaining sections are devoted to developments including the completion of the proofs of Theorems
+E2 and E3. From the point of view of the Hilbert Space, the crucial thing is of course the proof of the
+self-adjointness of (H, S0 ) and the determination of the full domain D(H) of H. But this we obtain only at
+the very end. In fact the most interesting domain is not S, S0 or D(H) but a fourth one ∆ that has the
+property of being stable under F , A, B, and I. Statements such that “H commutes with the Inversion” are
+to be understood in the mean time to apply to test-functions in S0 .
+
+
+F. Concrete spectral analysis on Qp
+
+
+Let us first elucidate the spectrum of the conductor and commutator operators over Qp using very concrete
+methods. As H and K commute with averaging over the units one can split the discussion between the
+ramified and the non-ramified spectrum.
+
+
+First the ramified spectrum. From the above discussion
+
+
+                                            H(ϕ)(x) = f log(p) ϕ(x)
+
+
+if ϕ has the homogeneity of a ramified character with conductor exponent f . So HA = AH on such ϕ’s and
+BA = (H − A)A = A(H − A) = AB so that K(ϕ) = 0.
+
+
+Theorem F1: The ramified spectrum of the conductor operator is discrete. It has infinite multiplicity and
+support {log(p), 2 log(p), 3 log(p), . . .} if p > 2, {2 log(2), 3 log(2), . . .} if p = 2. The commutator operator
+vanishes on the ramified subspace of L2 .
+
+                                                        14
+We can now restrict H to the invariant part L2inv (Qp ) spanned by functions depending only on the module
+|x|. Let’s first evaluate H(θ) for θ the characteristic function of the units. For this one can use the Fourier
+transform G(x) of − log(|y|) determined above:
+                                              Z                            Z                       !
+                                log(p)                             dx                     dx 1
+                        G(ϕ) =                       (ϕ(x) − ϕ(0))     +             ϕ(x)    + ϕ(0)
+                               1 − 1/p         |x|≤1               |x|         |x|>1      |x| p
+
+and the outcome for H(θ)(x) = log(|x|)θ(x) − (G ∗ θ)(x) is
+
+                                               (|x| < 1)    H(θ)(x) = − log(p)
+                                               (|x| = 1)    H(θ)(x) = 0
+                                                                           log(p)
+                                               (|x| > 1)    H(θ)(x) = −
+                                                                             |x|
+
+By dilation invariance one has H(θi )(x) = H(θ)(pi x) for θi (x) = θ(pi x). So the matrix elements of H in the
+orthogonal basis {θi , i ∈ Z} depend only on i − j. An orthonormal basis of L2inv (Qp ) is given by the functions
+
+                                              ηi (x) = (1 − 1/p)−1/2 p−i/2 θ(pi x)
+
+and the matrix elements of H in this basis are
+
+                                   (i 6= j)       Hij = < Hηi |ηj > = − log(p) p−|i−j|/2
+                                   (i = j)        Hii = < Hηi |ηi > = 0
+
+                                                          dθ
+We can now use the isometry from L2inv (Qp ) to L2 (S 1 , 2π ) which sends ηi to ei (z) : z 7→ z i . Under this
+isometry H is transported to the multiplication operator with the function
+                                                                                    
+                                                                   z     z
+                                         h(z) = − log(p)         √    +√
+                                                                  p−z   p−z
+
+
+
+Theorem F2: The conductor operator is bounded on L2inv (Qp ) and has a continuous spectrum with support
+[ −2√log(p)
+     p−1 ,
+            +2 log(p)
+             √
+               p+1 ].
+
+
+
+Let’s now evaluate K(θ) = i (BA − AB)(θ). As A(θ) = 0 this is just −i A(H(θ)) so
+
+                                         (|x| < 1)      K(θ)(x) = i log(p) log(|x|)
+                                         (|x| = 1)      K(θ)(x) = 0
+                                                                               log(|x|)
+                                         (|x| > 1)      K(θ)(x) = i log(p)
+                                                                                 |x|
+
+
+The matrix elements of K in the orthonormal basis {ηj , j ∈ Z} depend only on j − k and are
+                                           Z
+                        (j 6= k)   Kjk =           Kηj (x)ηk (x) dx = −i (log(p))2 (k − j) p−|k−j|/2
+                                              Qp
+                        (j = k)    Kjj = 0
+
+                                                               15
+Hence K is transported to the multiplication operator with the function
+                                                                   X
+                                              k(z) = i log(p)2            k p−|k|/2 ek (z)
+                                                                   k6=0
+
+                    ∂
+This is −i log(p) z ∂z h(z). So
+                                                                                                 !
+                                                                    √z           √z
+                                                          2           p            p
+                                    k(z) = i log(p)                    z 2 −
+                                                                (1 − p )
+                                                                      √      (1 − √zp )2
+
+A little calculation then completes the proof of the following statement:
+
+
+Theorem F3: The commutator operator is bounded on L2inv (Qp ) and has a continuous spectrum with
+                                          2              2
+support the closed interval [− 2 log(p)
+                                   √
+                                     p  , + 2 log(p)
+                                               √
+                                                 p   ].
+
+
+Before reworking the previous paragraphs into more intrinsic terms, I will make an aparté on one approach,
+certainly very well-known, to the Poisson summation formula.
+
+
+Let u > 1, Lu (s) = 1/(1 − u−s ), Λu (s) = −L′u (s)/Lu (s) = log(u) u−s /(1 − u−s ).
+                                                                                     X
+                                      Re(s) > 0 ⇒ Λu (s) = log(u)                         u−ks
+                                                                                    k≥1
+
+
+                                                 Λu (s) + Λu (−s) = − log(u)
+
+For a smooth function g with compact support on (0, ∞) the first of these equations and Mellin inversion
+implies                                   Z
+                                     1                                                 X
+                                                        gb(s)Λu (s) ds = log(u)              g(uk )
+                                    2πi       Re(s)=1                                  k>0
+
+while the second equation (functional equation) gives
+                       Z                               Z
+                    1                               1
+                                 g(s)Λu (s) ds = −
+                                 b                             gb(−s)(Λu (s) + log(u)) ds
+                   2πi Re(s)=−1                    2πi Re(s)=1
+                                                                       X
+                                               = − log(u)g(1) − log(u)     g(uk )
+                                                                                             k<0
+
+                               2πi
+The poles of Λu (s) are at j log(u) , j ∈ Z with residue +1 so that one obtains in the end
+
+                                                     X                  X             2πi
+                                          log(u)             g(uk ) =         g(j
+                                                                              b            )
+                                                                                    log(u)
+                                                    k∈Z                 j∈Z
+
+
+which is one formulation of Poisson summation formula.
+
+
+G. Transformation Theory and an intrinsic spectral analysis
+
+
+We go back to the general number field K and its completion Kν (archimedean or finite). We chose the
+multiplicative Haar measure d∗ t on Kν× to assign a volume of 1 to the units if ν is finite, and to be mapped
+
+                                                                  16
+                                                                                                      dt
+to du/u under t 7→ u = |t| for an archimedean place. For the positive constant α such that d∗ t = α−2 |t| the
+maps
+                                                              p
+                                               ϕ(x) 7→ {t 7→ α |t|ϕ(t)}
+
+                                            f (t) 7→ {x 7→ α−1 |x|−1/2 f (x)}
+
+establish a unitary isomorphism between L2 (Kν , dx) and L2 (Kν× , d∗ t).
+
+
+If we transport the conductor operator from L2 (Kν , dx) to L2 (Kν× , d∗ t) we find that its dilation invariance
+becomes a commutation property with the multiplicative translations on Kν× . Hence, by the well-known
+generalization of Fourier Theory, H can be completely analyzed in terms of the (unitary) characters of that
+locally compact abelian group. Although it is naturally defined in additive terms, its analysis proceeds in
+multiplicative terms. So let Xν be the dual of Kν× , that is the locally compact abelian group of unitary
+multiplicative characters. For a finite place Xν is the union of countably many circles indexed by the
+characters of the compact subgroup of units, for the real place it is the union of two real lines indexed by
+the trivial and the sign characters, for the complex place it is the union of countably many real lines indexed
+by the characters of the unit circle.
+
+
+There is a unique Haar measure µ on Xν so that the inversion formula of Fourier Theory and then the
+Plancherel identity hold:                                       Z
+                                                    f (χ) =              f (x)χ(t) d∗ t
+                                                                 Kν×
+                                                                Z
+                                                     f (t) =             f (χ) χ(t) dµ(χ)
+                                        Z                       ZXν
+                                              |f (t)|2 d∗ t =            |f (χ)|2 dµ(χ)
+                                        Kν×                      Xν
+
+
+
+                                              1
+Under these isometries the Inversion ϕ(x) 7→ |x| ϕ( x1 ) on L2 (Kν , dx) (f (t) 7→ f (1/t) on L2 (Kν× , d∗ t)) becomes
+the operation of complex conjugation f (χ) 7→ f (χ) (on the underlying space). It is also interesting to look
+at the fate of the additive Fourier Transform F . First transported to L2 (Kν× , d∗ t) it maps f (t) (“smooth”
+                                   p
+with compact support) to F (t) = |t| F (|t|−1/2 f (t)). This implies:
+                             Z                         Z
+                                             ∗     −2
+                     F (χ) =      F (t)χ(t) d t = α       F (|x|−1/2 f (x)) χ(x)|x|−1/2 dx
+                                Kν×                                 Kν
+                                                        Z
+                            F (χ) = α−2 Γ(χ, 1/2)               |x|−1/2 f (x) χ(1/x)|x|−1/2 dx
+                                                          Kν
+
+                                                 F (χ) = Γ(χ, 1/2) f (χ)
+
+
+We have obtained the first statements of:
+
+
+Theorem G1: Under the isometries L2 (Kν , dx) ∼ L2 (Kν× , d∗ t) ∼ L2 (Xν , dµ) the inversion is transported
+to the unitary
+                                                       f (χ) 7→ f (χ)
+
+                                                                17
+and the additive Fourier transform is transported to the unitary
+
+                                                 f (χ) 7→ F (χ) = Γ(χ, 1/2) f (χ)
+
+while the conductor operator is transported to the hermitian operator
+
+                                             f (χ) 7→ F (χ) = −Λ(χ, 1/2) f (χ)
+
+
+
+Corollary: The conductor operator commutes with the inversion.
+
+
+Proof (of Corollary): Λ(χ, 1/2) = Λ(χ, 1/2).
+
+
+Proof (of Theorem): In our derivation of the Explicit Formula we obtained the following: let g be a
+smooth function with compact support on (0, ∞) and Mellin Transform
+                                                                 Z ∞
+                                                                                  du
+                                                       g (s) =
+                                                       b                 g(u)us
+                                                                  0                u
+
+and let χ be a unitary character on Kν× . Then with ϕ(x) = g(|x|)χ−1 (x) for x 6= 0, ϕ(0) = 0, one has for
+x 6= 0                                                     Z
+                                                    1
+                             H(ϕ)(x) = −                                   gb(s)Λ(χ, s)|x|−s χ−1 (x) ds
+                                                   2πi       Re(s)=1/2
+
+
+                          p
+Let’s write now f (t) =    |t|g(|t|)χ−1 (t) so that the conductor operator transported to Kν× sends f to
+                                                       Z
+                                                  1                                     1
+                               F (t) = −                              g (s)Λ(χ, s)|t| 2 −s χ−1 (t) ds
+                                                                      b
+                                                 2πi   Re(s)=1/2
+
+                                                 Z +∞
+                                             1          1          1
+                            F (t) = −                gb( + iτ )Λ(χ, + iτ )|t|−iτ χ−1 (t) dτ
+                                            2π    −∞    2          2
+
+Let’s write ωτ (t) = |t|iτ . Then
+                                                       Z +∞
+                                                  1              1             1
+                                F (t) = −                     gb( + iτ )Λ(χωτ , ) χωτ (t) dτ
+                                                 2π        −∞    2             2
+
+We now split the discussion according to whether ν is finite or archimedean.
+
+                                                       2π
+If ν is finite, we see that the integrand has period log(q) except for b
+                                                                       g. The Poisson summation formula implies
+
+                             X               2πi  1                X                1
+                                    gb(j         + + iτ ) = log(q)     g(q k ) q k( 2 +iτ )
+                                           log(q) 2
+                             j∈Z                                   k∈Z
+                                                                   Z
+                                                                                   1
+                                                          = log(q)      g(|t|)|t| 2 +iτ d∗ t
+                                                                                  Kν×
+                                                                   = log(q) f (χωτ )
+
+                                                                      18
+so that we obtain in the end
+                                                     Z +     π
+                                         log(q)            log(q)                  1
+                            F (t) = −                               f (χωτ )Λ(χωτ , ) χωτ (t) dτ
+                                           2π              π
+                                                       − log(q)                    2
+
+Starting from                                                Z
+                                                        1
+                                         g(|t|) =                             gb(s)|t|−s ds
+                                                       2πi     Re(s)=1/2
+
+leads in the same manner to                                Z +      π
+                                                log(q)            log(q)
+                                   f (t) =                                 f (χωτ ) χωτ (t) dτ
+                                                  2π             π
+                                                             − log(q)
+
+This identifies in a concrete way that component of Xν containing χ(1/t) and proves the Theorem in the
+finite case.
+
+
+In the archimedean case we can just identify immediately gb( 12 + iτ ) with f (χωτ ) as the multiplicative Haar
+measure d∗ t has been chosen to be pushed forward to du/u under the norm map t 7→ |t|. So the formulae in
+that case are                                        Z +∞
+                                                1                     1
+                                F (t) = −             f (χωτ )Λ(χωτ , ) χωτ (t) dτ
+                                               2π−∞                   2
+                                                    Z +∞
+                                                  1
+                                         f (t) =          f (χωτ ) χωτ (t) dτ
+                                                 2π −∞
+This completes the proof of the Theorem G1.
+
+
+H. More on homogeneous distributions and Gamma functions
+
+
+In the previous proof we made a detour through the complex plane. It is possible to proceed in a more
+economical manner, as we will show in the next chapter (I), where we will prove the following identities of
+distributions on the punctured ν-adics (for 0 < Re(s) < 1):
+
+
+
+                                                                             
+                                        −1                     ∂                   −1
+(SH )                          H(χ(x)        |x|−s ) =            log(Γ(χ, s)) χ(x) |x|−s
+                                                               ∂s
+
+                                                                                 
+                                    −1         −s                 ∂2                   −1
+(SK )                      K(χ(x)        |x|        ) = −i            log(Γ(χ, s)) χ(x) |x|−s
+                                                                  ∂s2
+
+
+                                                                                 ∂
+Let us examine here the consequences of these equations. The functions H(χ, s) = ∂s log(Γ(χ, s)) and
+                2
+             ∂
+K(χ, s) = −i ∂s2 log(Γ(χ, s)) have the following properties
+
+
+
+
+                                                H(χ, s) = H(χ−1 , 1 − s)
+
+                                                      H(χ, s) = H(χ, s)
+
+                                                                    19
+                                          1
+                                Re(s) =     ⇒ H(χ, s) = H(χ, s) and is real
+                                          2
+
+                                          K(χ, s) = −K(χ−1 , 1 − s)
+
+                                             K(χ, s) = −K(χ, s)
+
+                                          1
+                               Re(s) =      ⇒ K(χ, s) = −K(χ, s) and is real
+                                          2
+As the Inversion sends a unitary character to its complex conjugate, this implies:
+
+
+Theorem H1: The conductor (resp. commutator) operator commutes (resp. anticommutes) with the
+Inversion.
+
+
+At a finite place the logarithmic derivative of the Gamma function of a ramified character is a constant so
+that the next derivative vanishes. In this manner we recover the result that log(|x|) and log(|y|) commute
+on the ramified part of the Hilbert space. There only remains the invariant part, which is dual to the circle
+of non-ramified unitary characters. The spectral functions of H and K are continuous hence bounded. So
+the commutator operator at a finite place is a bounded hermitian operator, and it remains to check that this
+works for the real and complex places too.
+
+
+For the real (resp. complex) place there is a canonical way to choose a base point χα in each component
+α of Sr = Hom(R× , U (1)) (resp. Sc = Hom(C× , U (1))). One requires χα to be invariant under positive
+dilations, so that for the real place r we have α ∈ {+, −} with χ+ (u) = 1 and χ− (u) = sgn(u) whereas for
+the complex place c we have α = N, N ∈ Z with χN (z) = z N (zz)−N/2 .
+
+
+The associated Gamma functions are
+
+                                                              1       Γ( 2s )
+                                      Γ(χ+ , s) = γ+ (s) = π 2 −s
+                                                                     Γ( 1−s
+                                                                         2 )
+
+
+                                                               1     Γ( s+1
+                                                                         2 )
+                                     Γ(χ− , s) = γ− (s) = i π 2 −s      2−s
+                                                                     Γ( 2 )
+
+                                                                       Γ( |N2 | + s)
+                              Γ(χN , s) = γN (s) = i|N | (2π)1−2s
+                                                                     Γ( |N2 | + 1 − s)
+
+
+In these equations Γ(s) is Euler’s Gamma function. Its logarithmic derivative λ(s) satisfies
+
+                                          Γ′ (s)       1 X 1    1
+                                 λ(s) =          = −γ − − (    − )
+                                          Γ(s)         s    j+s j
+                                                              j≥1
+
+
+                                                           1
+                                             λ(s + 1) =      + λ(s)
+                                                           s
+                                                      20
+The spectral functions on the critical line for H are
+                                                             X                                       
+                          1                           1                       1       4j + 1
+       h+ (τ ) = H(χ+ ,     + iτ ) = − log(π) − γ − 1      +                    −
+                          2                         4 +τ
+                                                         2
+                                                                    j≥1
+                                                                              j   (2j + 21 )2 + τ 2
+                       1                          3                 X 1              4j + 3
+                                                                                                      
+       h− (τ ) = H(χ− , + iτ ) = − log(π) − γ − 9      +                        −
+                       2                        4 + τ2              j≥1
+                                                                              j   (2j + 32 )2 + τ 2
+                                                                                                                          !
+                       1                             |N | + 1         X                        1       j + |N2|+1
+       hN (τ ) = H(χN , + iτ ) = −2 log(2π) − 2γ − |N |+1          +2                            −
+                       2                          (       )2 + τ 2
+                                                               2                         j≥1
+                                                                                               j   (j + |N |+1 )2 + τ 2
+                                                                                                           2
+
+From this we see that they take their minimal values at τ = 0, are even and increase steadily to ∞ when
+|τ | → ∞ (at a logarithmic growth that can also be deduced from Stirling’s Formula). These minimal values
+are
+                                                        1                     π
+                             µ+ = h+ (0) = − log(π) + λ( ) = −(log(8π) + γ) −
+                                                        4                     2
+                                                        3                     π
+                             µ− = h− (0) = − log(π) + λ( ) = −(log(8π) + γ) +
+                                                        4                     2
+                                                                 |N | + 1
+                                  µN = hN (0) = −2 log(2π) + 2λ(          )
+                                                                     2
+                                                                   N
+                                                                   X     1
+                                µ2N = −2(log(8π) + γ) + 2                  1         (N ≥ 0)
+                                                                   j=1
+                                                                       j − 2
+
+                                                                               N
+                                                                               X 1
+                            µ2N +1 = −2(log(8π) + γ) + 4 log(2) + 2                        (N ≥ 0)
+                                                                               j=1
+                                                                                     j
+
+
+Theorem H2: The conductor operator is bounded below.
+
+
+The spectral functions of the commutator operator on the critical line are
+                                                    X      (4j + 1) 2τ
+                                      k+ (τ ) = −
+                                                    j≥0
+                                                        ((2j + 12 )2 + τ 2 )2
+                                                    X      (4j + 3) 2τ
+                                      k− (τ ) = −
+                                                    j≥0
+                                                        ((2j + 32 )2 + τ 2 )2
+                                                    X (2j + |N | + 1) 2τ
+                                      kN (τ ) = −                  |N |+1 2 2 2
+                                                    j≥0 ((j +        2 ) +τ )
+
+From this or from the Stirling Formula one finds that these functions are O( |τ1 | ) when τ → ∞, hence bounded.
+As |kN +2 (τ )| ≤ |kN (τ )| for N ≥ 0 one gets
+
+
+Theorem H3: The commutator operator is bounded.
+
+
+I. Taking derivatives and getting conductor and commutators
+
+
+The basis of the method remains the fundamental Fourier Transform identity
+
+                                      F (χ(y)|y|s−1 ) = Γ(χ, s)χ−1 (x)|x|−s
+
+                                                          21
+We will always take χ to be a unitary character, then for s in the critical strip this has the direct meaning
+that
+                              Z                                  Z
+(IF)                              e(y) χ(y)|y|s−1 dy = Γ(χ, s)
+                                  α                                  α(x) χ−1 (x)|x|−s dx
+                                                                 R
+for any Schwartz-Bruhat function α(x) on Kν and α
+                                                e(y) =               Kν
+                                                                          ϕ(x)λ(−xy) dx its Fourier Transform.
+
+
+Lemma I1: For ϕ(x) a Schwartz-Bruhat function on Kν its convolution B(ϕ) with the Fourier Transform
+                                                  1
+of log(|y|) is a continuous function which is O( |x| ) when |x| → ∞.
+
+
+Proof: As B(ϕ) is the Fourier transform of an L1 function it is continuous. The formula for the Fourier
+transform of log(|y|) was given above. For a finite place it implies that B(ϕ)(x) for |x| large enough is
+             C
+identically |x| for some constant C(ϕ). At the real place we write it as
+                          Z                                Z
+                                                dt                               dt
+            −B(ϕ)(x) =       (ϕ(x − t) − ϕ(x))      +                ϕ(x − t)        + (log(2π) + γ) · ϕ(x)
+                       |t|≤1                   2|t|          |t|>1              2|t|
+
+The first integral is bounded by sup|t|≥|x|−1(|ϕ′ (t)|). For the second integral one first looks at the contribution
+                                                                 1
+of the region of integration |t| > |x|/2 which clearly gives O( |x| ), and then the remaining part is bounded
+by |x| sup|t|≥|x|/2 (|ϕ(t)|) hence with rapid decrease as |x| → ∞. The complex case is similar and left to the
+reader (recall though that |x| then means zz for x = z ∈ C).
+
+
+Lemma I2: The identity for s in the critical strip
+                        Z                              Z
+                           ψ(y) χ(y)|y|s−1 dy = Γ(χ, s) ϕ(x) χ−1 (x)|x|−s dx
+
+where both ϕ(x) and ψ(y) are supposed to be measurable locally integrable functions, tempered as distribu-
+tions, and ψ(y) the Fourier transform of ϕ(x) as a distribution, is valid as soon as both integrals make sense
+as Lebesgue Integrals (that is are absolutely convergent).
+
+
+Proof: One just needs to check that the double integral and change of variables trick of Tate’s Thesis works.
+Let α(x) be a Schwartz-Bruhat function with Fourier Transform α
+                                                              e(y). Starting with
+                              Z                     Z
+                                ψ(y) χ(y)|y|s−1 dy · α(x) χ−1 (x)|x|−s dx
+
+we convert it by Fubini’s Theorem to a double integral and then apply the change of variables y = uv, x = v
+to get                                    Z Z
+                                                ψ(uv)α(v)χ(u)|u|s−1 dudv
+
+Then one evaluates for u 6= 0
+                         Z                    Z             Z
+                                           1      w
+                            ψ(uv)α(v)dv =       ϕ( )e
+                                                    α(w)dw = ϕ(v)e
+                                                                 α(uv) dv
+                                          |u|     u
+so that the double integral becomes
+                                          Z Z
+                                                    α(uv)χ(u)|u|s−1 dudv
+                                                ϕ(v)e
+
+                                                        22
+which is similarly seen (working in reverse) to be
+                                Z                      Z
+                                   e(y) χ(y)|y|s−1 dy · ϕ(x) χ−1 (x)|x|−s dx
+                                   α
+
+We have only used the definition of the Fourier Transform of a distribution and the fact that all integrals
+considered were absolutely convergent, so that the manipulations are allowed by Fubini’s Theorem.
+
+
+Let’s start from the fundamental identity (IF). We are allowed by Lemmas I1 and I2 to do two things: to
+                                                                                                    e
+take its derivative, and on the other hand to apply it directly to the Fourier pair β(x) = B(α)(x), β(y) =
+log(|y|)e
+        α(y). The first operation (with H(χ, s) defined to be the logarithmic derivative of Γ(χ, s)) gives
+                 Z                                 Z                                           Z
+                                                                                                                      χ(y)|y|s−1
+       H(χ, s)         α(x)χ−1 (x)|x|−s dx =               α(x) log(|x|)χ−1 (x)|x|−s dx +             α
+                                                                                                      e(y) log(|y|)              dy
+                 Kν                                   Kν                                         Kν                    Γ(χ, s)
+
+and the second gives:
+                             Z                                            Z
+                                                      χ(y)|y|s−1
+                                      α
+                                      e(y) log(|y|)              dy =              B(α)(x)χ−1 (x)|x|−s dx
+                                 Kν                    Γ(χ, s)            Kν
+
+so that we end up with
+                                          Z                               Z
+(IH)                         H(χ, s)           α(x)χ−1 (x)|x|−s dx =               H(α)(x)χ−1 (x)|x|−s dx
+                                          Kν                                  Kν
+
+Furthermore by Lemma I1, the following integral
+                                        Z
+                                            H(α1 )(x)α2 (x) dx
+                                                           Kν
+
+for two test-functions α1 and α2 is absolutely convergent and easily seen to be
+                                           Z
+                                                α1 (x)H(α2 )(x) dx
+                                                           Kν
+
+so that the Identity (IF) can be interpreted as an identity of distributions
+                                                                             
+                         −1   −s                 −1   −s       ∂                   −1
+(SH )            H(χ(x) |x| ) = H(χ, s) χ(x) |x| =                log(Γ(χ, s)) χ(x) |x|−s
+                                                               ∂s
+
+
+To proceed further we now restrict α(x) to vanish identically in a neighborhood of the origin so that A(α)(x) =
+log(|x|)α(x) is again a Schwartz function. Again on one hand we compute the derivative of (IH)
+                                                 Z
+                                      H ′ (χ, s)   α(x)χ−1 (x)|x|−s dx
+                                                                Kν
+                                 Z                                            Z
+                     = H(χ, s)        α(x) log(|x|)χ−1 (x)|x|−s dx −                H(α)(x) log(|x|)χ−1 (x)|x|−s dx
+                                 Kν                                           Kν
+
+and on the other hand we apply it directly to A(α)(x):
+                        Z                                 Z
+                H(χ, s)    α(x) log(|x|)χ−1 (x)|x|−s dx =                              H(A(α))(x)χ−1 (x)|x|−s dx
+                                     Kν                                           Kν
+
+                                                                     23
+so that we end up with
+                                  Z                                                 Z
+                         ′                            −1            −s
+                       H (χ, s)          α(x)χ             (x)|x|        dx =             ((HA − AH)(α))(x)χ−1 (x)|x|−s dx
+                                   Kν                                                Kν
+
+hence with
+                                                  Z                                             Z
+(IK)                              iH ′ (χ, s)              α(x)χ−1 (x)|x|−s dx =                     (K(α))(x)|x|−s dx
+                                                  Kν                                            Kν
+
+For α1 and α2 vanishing in a neighborhood of the origin one checks easily
+                            Z                          Z
+                                K(α1 )(x)α2 (x) dx = −     α1 (x)K(α2 )(x) dx
+                                             Kν                                            Kν
+
+
+so that we can reinterpret (IK) as an identity of distributions on the punctured ν-adics
+                                                                                                           
+                             −1         −s                               −1         −s       ∂2                  −1
+(SK )              K(χ(x)         |x|        ) = K(χ, s) χ(x)                 |x|        = −i 2 log(Γ(χ, s)) χ(x) |x|−s
+                                                                                             ∂s
+
+
+Let’s now proceed inductively with higher derivatives and hence deduce the spectral analysis of the higher
+commutators K1 = iK = [A, H], KN +1 = [A, KN ] as an identity of distributions on the punctured ν-adics
+                                                                                               
+                                                  −1                         ∂ N +1                   −1
+(SN )                              KN (χ(x)            |x|−s ) =                    log(Γ(χ, s))  χ(x) |x|−s
+                                                                             ∂sN +1
+
+from which the Hilbertian version follows by restriction to the critical line (note that these operators are
+indeed completely dilation invariant as any commutator built with the identity vanishes).
+
+
+We apply the operators KN only to Schwartz functions vanishing identically in a neighborhood of the origin.
+The explicit formula                                                                       
+                                                                X                          N
+                                                  KN =                    (−1)N −j           Aj HAN −j
+                                                                                           j
+                                                               N ≥j≥0
+
+shows that the resulting function is (according to Lemma I1) continuous except perhaps at the origin where it
+                                                                     N
+is O(log(|x|)N ) while at infinity it is O( log(|x|)
+                                               |x|   ) so that Lemma I2 allows to make sense of KN (χ(x)−1 |x|−s )
+as a distribution on the punctured ν−adics and to generalize the method used for H and K.
+
+
+Assuming inductively the validity of:
+                                        Z                           Z
+                      ∂ N +1                       −1     −s        N
+(I(N))                       log(Γ(χ, s))     α(x)χ (x)|x| dx = (−1)      (KN (α))(x)χ−1 (x)|x|−s dx
+                      ∂sN +1               Kν                          Kν
+
+we first compute its derivative
+                                                                Z
+                                              ∂ N +2
+                                                     log(Γ(χ, s))     α(x)χ−1 (x)|x|−s dx =
+                                              ∂sN +2               Kν
+
+                               Z                                          Z
+             ∂ N +1                                 −1        −s          N
+                    log(Γ(χ, s))     α(x) log(|x|)χ    (x)|x|    dx − (−1)      (KN (α))(x) log(|x|)|x|−s dx
+             ∂sN +1               Kν                                         Kν
+
+                                                                                    24
+and then apply (I(N)) to A(α) so that
+           N +2               Z                              Z
+            ∂                            −1     −s        N +1
+                   log(Γ(χ, s))     α(x)χ (x)|x| dx = (−1)         ([A, KN ](α))(x)|x|−s dx
+           ∂sN +2                Kν                             Kν
+
+which is (I(N+1)).
+
+
+As for α1 and α2 two test-functions with support away from the origin
+                        Z                                 Z
+                             KN (α1 )(x)α2 (x) dx = (−1)N    α1 (x)KN (α2 )(x) dx
+                           Kν                                  Kν
+
+this gives the identity of distributions (SN ) on the punctured ν−adics.
+
+
+As we did before for K from the partial fraction expansion of Euler’s Gamma function we see that from the
+Hilbert Space point of view all KN ’s are bounded.
+
+
+J. More on the Hilbert Space story
+
+
+Let ∆ be the domain of functions f (t) such that the unitary dual f (χ) in L2 (Xν , dµ) is of the Schwartz class
+in each component (which means smooth for a finite place as the components are then circles) and non-zero
+in only finitely many components. In the additive picture this translates into : if the place is finite, with q
+the cardinality of the residue field, ∆ consists of functions ϕ(x) = |x|−1/2 F ( log(|x|)
+                                                                                  log(q) ) where the F (n), n ∈ Z
+are the Fourier coefficients of a smooth function on the circle (that is decrease faster than any polynomial in
+|n|−1 ). We also allow twists with multiplicative unitary characters, and then any finite linear combination
+of such building blocks. At the real or complex place this means ϕ(x) = |x|−1/2 F (log(|x|)) or a twist with a
+unitary character, and finite linear combinations, where F is a Schwartz function on R.
+
+
+Theorem J1: The dense subdomain ∆ of L2 (Kν , dx) is stable under the Fourier Transform, A, B, H, K,
+and all higher KN ’s. All commutators on this domain of A and B boil down to the already constructed
+KN ’s.
+
+
+Proof: Clearly this ∆ is stable under multiplication with log(|x|). And it is also stable under additive
+convolution with the Fourier Transform of log(|y|) ! Indeed it is enough to show that it is stable under the
+(additive) Fourier Transform, but the Fourier Transform was seen to act in L2 (Xν , dµ) through a composition
+of Inversion (χ 7→ χ) and multiplication with the Gamma function (seen on the critical line). For a finite
+place the Gamma function is smooth on each component so we are done, for an archimedean place all
+derivatives of Γ(χ, 21 + iτ ) have a growth bounded by a polynomial in log(|τ |). This is seen inductively from
+Γ′ (χ, s) = H(χ, s)Γ(χ, s) as the H term has logarithmic growth and all its derivatives are bounded (as seen
+before, this is easily deduced from the partial fraction expansion of Euler’s Gamma function), whereas Γ(χ, s)
+itself is (of course) of absolute value 1. So multiplying with this leaves the Schwartz space invariant. It only
+remains to show that no new commutator can be built. But obviously [H, KN ] = 0 and [KN , KM ] = 0 from
+the spectral picture. So any commutator built with A’s and B’s can be expressed in terms of A’s and only
+one B, that is it is one of the KN ’s.
+
+                                                       25
+Theorem J2: The domain S0 is a domain of self-adjointness for the symmetric operator H.
+
+
+Proof: The dense domain ∆ is stable under H and in fact H ± i is boundedly invertible on it, so it is
+a domain of self-adjointness for H. To conclude we need to prove that for any f in ∆ we can find f0 in
+S0 making ||f − (H + i)(f0 )|| arbitrarily small (and the same with H − i). This will follow if for any f in
+∆ we can find f0 in S0 making ||(H + i)(f − f0 )|| arbitrarily small. Working in the spectral picture, we
+see that this is clearly possible if the place is non-archimedean as the components of Xν are then compact.
+The only slight difficulty is at an archimedean place, for concreteness let us consider the case of the real
+place and of an even f , the other cases being disposed of similarly. We first bound |h+ (τ ) + i|2 with
+O(1 + τ 2 ). Taking Fourier Transforms then reduces the problem to the question of approximating in the
+         R                      
+sense of R |ψ(a)|2 + |ψ ′ (a)|2 da an arbitrary Schwartz function ψ(a) with a compactly supported one.
+One just takes ψ0 (a) = ρ( Λa )ψ(a) with ρ smooth, ρ(a) = 1 for |a| ≤ 1, ρ(a) = 0 for |a| > 2, and Λ → ∞.
+
+
+If the goal is just to understand H and K in the Hilbert space, the use of the domain ∆ allows for a rather
+expeditious method. For χ a fixed unitary character we parametrize the corresponding component of Xν
+                                                                                             2πi
+through the association of the character χ(u)|u|iτ to the real number τ , taken modulo log(q)      if the place is
+                                                                                           R
+finite. An element f (t) of L (Kν , d t) has a multiplicative Fourier Transform f (χ, τ ) = Kν× f (t)χ(t)|t|iτ d∗ t.
+                             2  × ∗
+
+We can then take the derivative with respect to τ and end up with:
+
+
+Theorem J3: In this picture A is 1i ∂τ
+                                    ∂
+
+
+
+
+We know how the additive Fourier Transform acts:
+                                                             1
+                                         f (χ, τ ) 7→ Γ(χ,     + iτ )f (χ, −τ )
+                                                             2
+The inverse Fourier transform acts as
+                                                         1
+                                     f (χ, τ ) 7→ Γ(χ,     + iτ )χ(−1)f (χ, −τ )
+                                                         2
+so B = F AF −1 maps f (χ, τ ) to
+                 1             1                           1          1           1    ∂
+          Γ(χ,     + iτ )Γ′ (χ, − iτ )χ(−1)f (χ, τ ) + Γ(χ, + iτ )Γ(χ, − iτ )χ(−1) (−1) f (χ, τ )
+                 2             2                           2          2           i    ∂τ
+This can be simplified using Γ(χ, s)Γ(χ−1 , 1 − s) = χ(−1) to
+                                              1                   1 ∂
+                                       H(χ,     + iτ )f (χ, τ ) −      f (χ, τ )
+                                              2                   i ∂τ
+So the spectral function of H = A + B is as was previously found (as H(χ, 12 + iτ ) = H(χ, 21 − iτ )), and all
+commutators follow from Theorem J3 as well.
+
+
+K. Notes
+
+
+A. The material in this paper is covered in my electronic manuscripts [Bu98a], [Bu98b], [Bu98c], where some
+additional comments will be found. A related manuscript is [Bu98d].
+
+                                                           26
+B. The original impetus was the similarity between the local terms of the Explicit Formula and the n-point
+scattering amplitudes of the open string. On the subject of the open string over the p-adic field, I refer the
+reader to the beautiful paper of Zabrodin [Za].
+
+
+C. It is interesting to note that Weil mentions the Fourier Transform of log(|t|) in [We52], in the context of
+applying Parseval’s formula to the integral on the critical line involving the logarithmic derivative of Euler’s
+Gamma function. He says about it that it is a distribution that has been computed by Laurent Schwartz,
+but as far as I know, does not mention the even closer connection with his final result.
+
+
+D. The problem of treating all local terms in the most uniform manner possible has also been addressed
+by Connes [Co98] (among many other things). His method is very geometric and leads to Weil’s terms in
+their original form. One notices a confluence of ideas on the importance of looking at the additive Fourier
+Transform in multiplicative terms. In [Bu99] I apply the Transformation Theory to the calculation of a
+Hilbert trace first evaluated by Connes [Co98].
+
+
+E. In [BeKe98a, BeKe98b], Berry and Keating have applied techniques from mathematical physics to the
+operator H = xp and discovered a connection with the smooth part of the density of zeros of the Riemann
+Zeta function. They emphasize the necessity for this to identify x with −x, p with −p and the role played by
+the Inversion (called by them “quantum exchange”). It is quite satisfying to see that the conductor operator
+log(|x|) + log(|p|) has these symmetries. But the way it exactly relates to the work of Berry and Keating and
+their further stimulating suggestions remains to be clarified. In [Bu99] I show that at a non-archimedean
+place it has an interpretation in terms of scattering.
+
+
+F. The boundedness of the commutator operator should be related to the theory of band-and-time limited
+functions [SP61], mentioned in Connes’s paper. It would also be interesting to know the exact operator norm
+of the commutator operator at the archimedean places.
+
+
+G. The set of global additive characters on the adeles such that the diagonally embedded number field K is
+its own annihilator is a torsor under the multiplicative group K × . The local terms of the Explicit Formula
+are not invariant under such a change (although their sum of course is). So K × is a non-trivial symmetry of
+the Explicit Formula. Another symmetry is the Inversion. It is to be noted that Goldfeld has proposed an
+approach to the Explicit Formula centered around the group generated by K × and the Inversion [Go94].
+
+
+
+
+                                                         27
+REFERENCES
+[Ba81] K. Barner, “On A.Weil’s explicit formula”, Journal für Mathematik Band 323, 139-152, (1981).
+[BeKe98a] M.V. Berry, J.P. Keating, “H = xp and the Riemann zeros”, in “Supersymmetry and trace
+formulae: chaos and disorder”, eds. J.P. Keating, D.E. Khmelnitskii, and I.V. Lerner, Plenum, New York
+(1998)
+[BeKe98b] M.V. Berry, J.P. Keating, “The Riemann zeros and eigenvalue asymptotics”, HP Labora-
+tories Technical Report HPL-BRIMS-98-26 (December 1998)
+[Bu98a] J.F. Burnol, “The Explicit Formula and a Propagator”, math/9809119 (v2 November 1998)
+[Bu98b] J.F. Burnol, “Spectral analysis of the local conductor operator”, math/9811040 (November 1998)
+[Bu98c] J.F. Burnol, “Spectral analysis of the local commutator operators”, math/9812012 (December
+1998)
+[Bu98d] J.F. Burnol, “The Explicit Formula in simple terms”, math/9810169 (v2 November 1998).
+[Bu99] J.F. Burnol, “Scattering on the p−adic field and a trace formula”, math/9901051 (January 1999).
+[Co98] A. Connes, “Trace formula in non-commutative Geometry and the zeros of the Riemann zeta
+function”, math/9811068 (October 1998).
+[GeGrPi69] I. M. Gel’fand, M. I. Graev, I. I. Piateskii-Shapiro,“Representation Theory and auto-
+morphic functions”, Philadelphia, Saunders (1969).
+[Go94] D. Goldfeld, “A spectral interpretation of Weil’s explicit formula”, Lect. Notes Math 1593, p
+135-152, Springer Verlag (1994).
+[Ha90] S. Haran,“Riesz potentials and explicit sums in arithmetic”, Invent. Math. 101, 697-703 (1990).
+[Iw52] K. Iwasawa, “Letter to J. Dieudonné” (1952), in “Zeta Functions in Geometry”, Adv.Stud.Pure
+Math 21 ed. Kurokawa, Sunada, pub. Kinokuniya, (1992).
+[SP61] D. Slepian, H. Pollak,“Prolate spheroidal wave functions, Fourier analysis and uncertainty I”,
+Bell Syst. Tech. J. 40, (1961).
+[Ta50] J. Tate, “Fourier Analysis in Number Fields and Hecke’s Zeta Function”, Princeton 1950, reprinted
+in “Algebraic Number Theory”, ed. J.W.S. Cassels and A. Fröhlich, Academic Press, (1967).
+[Vl88] V. S. Vladimirov,“Generalized functions over the fields of p-adic numbers”, Russian Math. Surveys
+43:5, 19-64 (1988).
+[We52] A. Weil,“Sur les “formules explicites” de la théorie des nombres premiers”, Comm. Lund (vol dédié
+à Marcel Riesz), (1952).
+[We66] A. Weil,“Fonctions zêtas et distributions”, Séminaire Bourbaki no 312, (1966).
+[We74] A. Weil,“Basic Number Theory”, Springer Verlag, 2nd edition, New York(1974).
+[Za89] A. V. Zabrodin,“Non-Archimedean Strings and Bruhat-Tits Trees”, Commun. Math. Phys. 123,
+463-483 (1989).
+
+
+                   Jean-François Burnol, 62 rue Albert Joly, F-78000 Versailles, France
+                                              February 1999
+
+                                                    28
+

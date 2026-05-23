@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Cost}{Cost}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\tr}{tr}
+
+\title{Step 53: Navier Adequacy Demonstration\\
+\large Energy Ledgers, Blow-Up Probes, and the Adequacy Residual $\Xi$}
+\author{RATCHET anti-localization workstream}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose and status}
+
+This note is not a proof of Navier--Stokes regularity and it is not a numerical Six Birds simulation.  It is a symbolic adequacy demonstration: it translates the formed-layer membrane theory into the Navier-facing language of native energy/enstrophy probes versus layer-dissolving concentration probes.
+
+The main point is that classical energy accounting can be correct and still be inadequate for pointwise or scale-local blow-up control.  In the membrane language, the missing quantity is the adequacy residual
+\[
+\Xi_C(D\mid L),
+\]
+which measures the part of a layer-dissolving probe family $D$ invisible to the declared native probe family $L$ under the audit geometry $C$.
+
+\section{General adequacy setup}
+
+Let $E$ be a Hilbert carrier, $C\succeq0$ an audit operator, and work on the legal quotient
+\[
+E_C=(\ker C)^\perp,
+\qquad C_0=C|_{E_C}>0.
+\]
+Let
+\[
+L_0:E_C\to Y,
+\qquad D_0:E_C\to Z
+\]
+be, respectively, the native probe family and a layer-dissolving probe family.  Define
+\[
+K_{LL}=L_0C_0^{-1}L_0^*,
+\qquad
+K_{DL}=D_0C_0^{-1}L_0^*,
+\qquad
+K_{DD}=D_0C_0^{-1}D_0^*.
+\]
+The adequacy residual is
+\[
+\boxed{
+\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}.
+}
+\]
+It is the Schur residual of the dissolving currency after conditioning on native currency.
+
+\begin{theorem}[Adequacy promotion]
+If
+\[
+K_{LL}\preceq \Theta_Y,
+\qquad
+\Xi_C(D\mid L)\preceq \Xi_Z,
+\]
+then, with $A_*=K_{DL}K_{LL}^{\dagger}$,
+\[
+\boxed{
+K_{DD}\preceq A_*\Theta_YA_*^*+\Xi_Z.
+}
+\]
+In particular, a native membrane controls layer-dissolving probes only after adequacy is paid by $\Xi_Z$.
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[
+K_{DD}=K_{DL}K_{LL}^{\dagger}K_{LD}+\Xi_C(D\mid L)=A_*K_{LL}A_*^*+\Xi_C(D\mid L).
+\]
+Using $K_{LL}\preceq\Theta_Y$ and $\Xi_C(D\mid L)\preceq\Xi_Z$ gives the claim.
+\end{proof}
+
+\section{A Sobolev model for localized Navier probes}
+
+Work in a local Euclidean chart or on a periodic box in dimension $d$.  Let the audit be the Sobolev energy
+\[
+\|u\|_{H^s}^2=\int (1+|\xi|^2)^s|\widehat u(\xi)|^2\,d\xi.
+\]
+Let $\varphi\in C_c^\infty(\mathbb R^d)$ be a normalized bump, and define a scale-$r$ localized derivative probe of order $m=|\alpha|$ by
+\[
+D_{x,r}^{\alpha}u
+=
+\int r^{-d}\varphi\!\left(\frac{y-x}{r}\right)\partial^\alpha u(y)\,dy.
+\]
+Up to harmless constants, its capacity under the $H^s$ audit is
+\[
+\operatorname{Cap}_s(D_{x,r}^{\alpha})
+=
+\int |\xi|^{2m}|\widehat\varphi(r\xi)|^2(1+|\xi|^2)^{-s}\,d\xi.
+\]
+
+\begin{theorem}[Localized Sobolev capacity scaling]
+For a localized derivative probe of order $m$ in dimension $d$,
+\[
+\operatorname{Cap}_s(D_{x,r}^{\alpha})
+\begin{cases}
+\asymp r^{2(s-m)-d}, & s<d/2+m,\\
+\asymp \log(1/r), & s=d/2+m,\\
+O(1), & s>d/2+m,
+\end{cases}
+\]
+as $r\downarrow0$, provided the bump is nondegenerate at low frequency.  Consequently, the point-scale derivative readout is bounded on $H^s$ only when
+\[
+\boxed{s>d/2+m.}
+\]
+\end{theorem}
+
+\begin{proof}
+For small $r$, high frequencies dominate when $s\le d/2+m$.  Substitute $\eta=r\xi$ in the principal high-frequency integral:
+\[
+\int |\xi|^{2m}(1+|\xi|^2)^{-s}|\widehat\varphi(r\xi)|^2\,d\xi
+\sim
+r^{2(s-m)-d}\int |\eta|^{2m-2s}|\widehat\varphi(\eta)|^2\,d\eta.
+\]
+The exponent $2(s-m)-d$ gives the power law.  The borderline exponent is zero and produces logarithmic divergence.  If $s>d/2+m$, the point evaluation derivative is a bounded functional on $H^s$ by the same Fourier integral criterion, giving a finite limit.
+\end{proof}
+
+\section{Navier-facing corollaries in dimension three}
+
+For Navier--Stokes in three dimensions, a pointwise velocity probe corresponds to $m=0$, while a pointwise gradient, strain, or vorticity probe corresponds to $m=1$.
+
+\begin{corollary}[Energy/enstrophy blind spots]
+In dimension $d=3$:
+\begin{enumerate}[label=(\roman*)]
+\item The $L^2$ energy audit $s=0$ does not control pointwise velocity probes; scale-$r$ capacity diverges like $r^{-3}$.
+\item The enstrophy/dissipation audit $s=1$ does not control pointwise velocity probes; scale-$r$ capacity diverges like $r^{-1}$.
+\item The enstrophy/dissipation audit $s=1$ does not control pointwise gradient, vorticity, or strain probes; scale-$r$ capacity diverges like $r^{-3}$.
+\item Even an $H^2$ audit does not control pointwise gradient/vorticity probes; the scale-$r$ gradient capacity diverges like $r^{-1}$.
+\item Pointwise gradient/vorticity probes require $s>5/2$.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Apply the previous theorem with $d=3$ and $m=0$ or $m=1$.  The threshold is $s>3/2$ for velocity and $s>5/2$ for gradients.
+\end{proof}
+
+\section{Interpreting $\Xi$ for Navier}
+
+Let $L_j$ denote the declared native probe family at scale $j$: shell energies, filtered velocity observations, enstrophy-like measurements, or other probes admitted by the formed closure.  Let $D_j$ denote the layer-dissolving probes required by a regularity claim: pointwise or scale-local velocity, vorticity, strain, or blow-up-rate readouts.
+
+The adequacy residual
+\[
+\boxed{
+\Xi_{C_j}(D_j\mid L_j)
+}
+\]
+measures the portion of the blow-up readout that is invisible to the native energy/enstrophy/shell ledger.
+
+\begin{proposition}[Energy estimates are not adequacy]
+A bounded native energy/enstrophy membrane
+\[
+K_{L_jL_j}\preceq\Theta_j
+\]
+does not imply a bounded blow-up-probe membrane unless
+\[
+\Xi_{C_j}(D_j\mid L_j)
+\]
+is also bounded, summable, or collapsed by a strict extension.  In particular, if the layer-dissolving probes include pointwise gradient/vorticity probes and the audit regularity satisfies $s\le5/2$ in $d=3$, then the instantaneous Sobolev model gives divergent capacity at vanishing scale.
+\end{proposition}
+
+\begin{proof}
+The promotion theorem gives
+\[
+K_{D_jD_j}\preceq A_j\Theta_jA_j^*+\Xi_{C_j}(D_j\mid L_j).
+\]
+Thus the native membrane contributes only through the factorable part $A_j\Theta_jA_j^*$.  The remaining layer-dissolving currency is exactly $\Xi$.  The Sobolev scaling theorem shows that, for pointwise gradient/vorticity probes under insufficient regularity, the dissolving capacity diverges as scale $r\downarrow0$.  Hence bounded energy/enstrophy accounting alone cannot be an adequacy proof.
+\end{proof}
+
+\section{Strict-extension alternatives}
+
+The symbolic Navier membrane route has several lawful alternatives:
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{Coercive audit extension.} Add a lawful audit source giving sufficient regularity or scale-local coercivity, e.g. a mechanism that effectively prices $H^{5/2+\varepsilon}$-strength gradient readouts.
+\item \textbf{Native-family extension.} Add the relevant localized vorticity/strain probes to the native family, then prove their predictive family currency remains bounded.
+\item \textbf{Parabolic smoothing record.} Use positive-time smoothing only with an audited bridge to the time at which blow-up is claimed; smoothing at fixed positive time does not by itself control instantaneous singularity formation.
+\item \textbf{Nonclaim/gating.} Exclude pointwise blow-up probes from the claim.  This may yield a scoped membrane, but it is not a Navier regularity theorem.
+\end{enumerate}
+
+Each alternative must be recorded as a strict all-six extension.  Repeating the same energy/enstrophy ledger cannot reduce $\Xi$.
+
+\section{Navier obligation ledger}
+
+A Navier-facing formed-layer membrane proof must provide:
+\begin{enumerate}[label=(O\arabic*)]
+\item the exact carrier $E_j$ and legal quotient, including divergence-free and boundary/support records;
+\item the positive audit $C_j$ and null-mode legality;
+\item the native predictive probe family $L_j$;
+\item the layer-dissolving probe family $D_j$ required by the regularity/continuation claim;
+\item an adequacy residual bound $\Xi_{C_j}(D_j\mid L_j)\preceq\Xi_j$;
+\item predictive transport and summable defects for both native and dissolving families;
+\item all-six statuses for rewrite, feasibility, route, staging, packaging, and audit.
+\end{enumerate}
+
+\section{Conclusion}
+
+The $\Xi$-language explains exactly why energy accounting is not enough for Navier-style regularity.  The issue is not that energy estimates are false; it is that the layer-dissolving probes required by blow-up exclusion need not factor through the native energy/enstrophy ledger.  The adequacy residual measures this blind spot.
+
+Thus the Navier-facing membrane obligation is
+\[
+\boxed{
+\text{native membrane}
++
+\Xi\text{-adequacy for blow-up probes}
++
+\text{predictive strict-extension control}
+\Rightarrow
+\text{no blow-up needles}.
+}
+\]
+This note is a symbolic demonstration of the framework's generality, not an NS proof.
+
+\end{document}

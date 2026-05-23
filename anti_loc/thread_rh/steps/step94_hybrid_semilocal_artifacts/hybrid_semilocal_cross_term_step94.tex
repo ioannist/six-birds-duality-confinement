@@ -1,0 +1,219 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs,geometry}
+\geometry{margin=1in}
+\title{Step 94: Importing Archimedean Weil Positivity and Formulating the Semilocal Cross-Term Membrane Problem}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\XiC}{\Xi_C}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\CC}{\mathsf{CC}_\infty}
+
+\begin{document}
+\maketitle
+
+\section{Purpose of this step}
+This step resets the RH construction target after the Tier--0 literature triage.  We do not continue the small paired-carrier route as if the archimedean slot were ours to rebuild.  Instead, we import the Connes--Consani archimedean positivity mechanism as a proven gamma-place record and focus the framework's novel work on the semilocal prime--archimedean cross-term.
+
+The active chain remains
+\[
+\boxed{
+\AZ \preceq \Kcmp \preceq \Theta^-,\qquad \operatorname{tr}\Theta^-\to0
+}
+\]
+plus separating readout, fixed/exhaustive ledger squeeze, and all-six records.  The new strategic decomposition is
+\[
+\boxed{
+\text{archimedean positivity imported}
+\quad +\quad
+\text{prime/Hecke source coercivity for the cross-term}
+\quad +\quad
+\text{tail/exhaustivity}
+.}
+\]
+
+\section{Imported gamma-slot theorem}
+We record the archimedean place as an imported theorem, not as an open slot.
+
+\begin{definition}[Imported archimedean record]
+Let \(\CC\) denote the Connes--Consani archimedean/Sonin positivity record.  In framework terms it provides:
+\begin{enumerate}[label=(\roman*)]
+\item a Hilbert-space model for the archimedean distribution;
+\item a Sonin/prolate compression trace functional that is positive by construction;
+\item a support-and-vanishing gate on the test class;
+\item compact or finite-codimension correction data needed to pass from the positive trace to the archimedean Weil distribution.
+\end{enumerate}
+We treat \(\CC\) as the accepted gamma-slot feature package whenever its stated support, vanishing, and compression hypotheses are satisfied.
+\end{definition}
+
+In the four-feature notation this means
+\[
+W_{\rm cmp}
+=
+\begin{bmatrix}
+W_{\rm pr}\ W_\infty\ W_{\rm pole}\ W_{\rm tail}
+\end{bmatrix}
+\]
+with
+\[
+\boxed{
+W_\infty := W_\infty^{\CC}
+}
+\]
+where \(W_\infty^{\CC}\) is not our bare paired-CND gamma ansatz, but the positive archimedean record imported from the Sonin/prolate compression theorem.
+
+\section{Semilocal cross-term decomposition}
+Let \(S\) be a finite set of places with \(\infty\in S\).  The semilocal Hardy--Titchmarsh transform supplies a finite-place insertion of local Euler factors into the log/Fourier-side response.  Abstractly we write the semilocal response map as
+\[
+\eta_S:Y^-_\infty\longrightarrow Y^-_S,
+\]
+with a finite-place multiplier
+\[
+M_S(s)=\prod_{p\in S\setminus\{\infty\}}L_p(1/2-is).
+\]
+The semilocal quadratic carrier decomposes schematically as
+\[
+q_S[y]
+=
+q_\infty^{\CC}[y]
++
+q_{{\rm pr},S}[y]
++
+q_{{\rm cross},S}[y]
++
+q_{{\rm pole},S}[y]
++
+e_{{\rm tail},S}[y].
+\]
+The term \(q_{{\rm cross},S}\) is the new load-bearing object.  It is not an independent place; it measures the failure of the archimedean compression and finite-prime source package to combine as an accepted positive feature on the completed semilocal response space.
+
+\begin{definition}[Semilocal cross-term membrane defect]
+Let
+\[
+q_{\rm pos,S}[y]
+:=q_\infty^{\CC}[y]+q_{{\rm pr},S}^{+}[y]+q_{{\rm pole},S}^{+}[y]+q_{{\rm tail},S}^{+}[y]
+\]
+be the candidate positive semilocal feature package.  Let \(q_{\rm Weil,S}\) be the signed semilocal Weil form on the same test core.  Define the cross-term defect form by
+\[
+\boxed{
+\Delta_S[y]
+:=q_{\rm Weil,S}[y]-q_{\rm pos,S}[y].
+}
+\]
+The semilocal cross-term gate is accepted if
+\[
+\boxed{
+\Delta_S\preceq E_S,
+\qquad E_S\to0
+}
+\]
+on a fixed or exhaustive response ledger, or if a source-coercivity record absorbs \(\Delta_S\) into a full anti-invariant lower frame.
+\end{definition}
+
+\section{Source-coercive repair of the cross-term}
+Let \(L_S^-\) be the anti-invariant native readout on the semilocal carrier.  A source record is a tuple
+\[
+s=(Q_s,\Theta_s,\lambda_s,D_s)
+\]
+with
+\[
+D_s\succeq
+\lambda_s(Q_sL_S^-)^*\Theta_s^{-1}(Q_sL_S^-).
+\]
+For source families \(\mathcal S_n\), define
+\[
+F_n=
+\sum_{s\in\mathcal S_n}\lambda_sQ_s^*\Theta_s^{-1}Q_s.
+\]
+The source-coercivity gate is
+\[
+\boxed{
+F_n\succeq \Lambda_n(\Theta_0^-)^{-1},
+\qquad \Lambda_n\to\infty.
+}
+\]
+Then
+\[
+\boxed{
+K_n^-:=L_S^- C_{S,n}^{\dagger}(L_S^-)^*
+\preceq \Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n}.
+}
+\]
+Thus semilocal cross-term control may be achieved by a full anti-invariant Hecke/Dirichlet source lower frame, provided that the source family is upstream-visible and not selected after seeing the target zero-confinement inequality.
+
+\section{Membrane and adequacy interface}
+The source-coercivity repair is not enough unless it also upgrades the native membrane to a layer-dissolving membrane.  Let \(D_{\rm off}\) denote the off-critical-zero dissolving readout.  The framework interface is the adequacy residual
+\[
+\boxed{
+\Xi_{C_S}(D_{\rm off}\mid L_S^-)
+=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}.
+}
+\]
+The RH membrane upgrade requires
+\[
+K_{LL}\preceq \Theta_Y,
+\qquad
+\Xi_{C_S}(D_{\rm off}\mid L_S^-)\preceq \Omega_Z,
+\]
+so that
+\[
+K_{DD}\preceq A_*\Theta_YA_*^*+\Omega_Z.
+\]
+This is the point where the Six Birds membrane theory contributes something not present in standard positivity programs: it separates native positivity from adequacy against off-critical-zero probes.
+
+\section{All-six channel record for the hybrid route}
+The hybrid semilocal route is accepted only if it carries all six records:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Primitive & Hybrid record & Failure status\\
+\midrule
+P1 & Mellin/log/Sonin/semilocal rewrite & raw signed explicit formula only\\
+P2 & support, vanishing, null-mode legality & fake zero budget or illegal core\\
+P3 & archimedean route vs semilocal finite-place route & cross-term holonomy defect\\
+P4 & finite-place refinement \(S_n\nearrow\mathcal P\) & moving-window support only\\
+P5 & completed Weil/Sonin/Hecke package & public shadow or incomplete package\\
+P6 & positive trace/source/audit currency & trace equality without Loewner domination\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Hybrid semilocal membrane criterion}
+\begin{theorem}[Hybrid semilocal RH membrane criterion]
+Assume zeta/primes is already a formed closure with native membrane.  Suppose that:
+\begin{enumerate}[label=H\arabic*.]
+\item the archimedean slot is accepted by \(\CC\);
+\item the semilocal prime slot is represented by lawful paired finite-place features;
+\item the semilocal cross-term defect \(\Delta_{S_n}\) is absorbed either by a source lower-frame record with \(\Lambda_n\to\infty\), or by a defect \(E_{{\rm br},n}\to0\);
+\item the adequacy residual satisfies \(\Xi_{C_{S_n}}(D_{\rm off}\mid L_{S_n}^-)\preceq \Omega_n\to0\), or is included in the same collapsing budget;
+\item the zero-side ledger is fixed or exhaustive, with tail \(T_n\to0\);
+\item all six channel records are accepted.
+\end{enumerate}
+Then the completed anti-invariant zero ledger satisfies
+\[
+\AZ\preceq B_n,
+\qquad \operatorname{tr}B_n\to0,
+\]
+so \(\AZ=0\).  Since \(\operatorname{Re}\rho-1/2\) separates the fixed locus of \(s\mapsto1-\bar s\), all visible zeros in the completed ledger lie on the critical line.
+\end{theorem}
+
+\section{Why this avoids the Conrey--Li trap}
+The hybrid route is not a de Branges/RKHS shift-positivity ansatz.  It does not assert that the natural de Branges Hilbert space \(H(E)\) for \(E(z)=\xi(1-iz)\) satisfies a positivity condition of the form \(\Re\langle F(z),F(z+i)\rangle>0\).  Instead, it uses a semilocal Weil/Sonin carrier with explicit support, vanishing, quotient, source, tail, and adequacy records.  Any proposed finite or infinite positivity condition must be tested against the Conrey--Li obstruction by verifying that it is not equivalent to the refuted RKHS positivity.
+
+\section{Immediate construction target}
+The next concrete construction should not be another abstract theorem.  It should extract from the semilocal Hardy--Titchmarsh transform the explicit cross-term operator
+\[
+\boxed{
+\Delta_S=q_{\rm Weil,S}-q_{\rm pos,S}
+}
+\]
+for finite \(S\), identify which parts are already absorbed by \(\CC\), and determine whether Dirichlet/Hecke character source records give a lower frame on the remaining anti-invariant sector.
+
+\end{document}

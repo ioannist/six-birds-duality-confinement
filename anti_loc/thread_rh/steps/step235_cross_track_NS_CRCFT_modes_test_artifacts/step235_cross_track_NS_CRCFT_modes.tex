@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 235: Cross-Track CRCFT Modes on Navier--Stokes Components}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+This step tests whether the CRCFT modes classify the Navier--Stokes residual tree. The modes are:
+\[
+\text{TE},\qquad \text{CTMT},\qquad \text{BF}.
+\]
+In the NS track, CTMT adapts from matrix-element terminality to PDE-estimate terminality.
+
+\section{NS residual structure}
+
+The NS track is diagnostic-complete. The root target is the physical-native adequacy comparison
+\[
+\Xi(D^{\rm BG}\mid L^{\rm phys})\leq \Omega_{\rm BG}.
+\]
+The residual chain recorded in the NS map is
+\[
+\Xi(D^{\rm BG}\mid L^{\rm phys})
+\leadsto
+\Omega_{\rm src}
+\leadsto
+\Omega_{\rm gap}
+\leadsto
+\Omega_{\rm rem}
+\leadsto
+\Omega_{\rm bb}
+\leadsto
+\Omega_{\rm mm}
+\leadsto
+\Omega_{\rm amp}.
+\]
+The remaining external theorem is the sector-matched radius-window estimate
+\[
+\lambda_{J(t)}\rho(t)\geq \kappa\log \lambda_{J(t)}+h(t)
+\]
+on the fixed/exhaustive BG mismatch ledger, together with BKM/BG time integrability.
+
+\section{Mode table}
+
+\begin{center}
+\begin{tabular}{p{0.32\linewidth}p{0.16\linewidth}p{0.42\linewidth}}
+\toprule
+Component & Mode & Reason\\
+\midrule
+EXT1 radius-window product theorem & TE/CTMT & Target-strength final theorem; proof is terminal PDE estimate.\\
+EXT2 BKM/BG time gate & TE & Continuation time class is target-strength.\\
+EXT3 sector match & BF & Candidate sparse/Gevrey sector does not transport unless it matches the BG sector.\\
+EXT4 tail/lift budget & CTMT & Quantitative tail and tangent-lift estimates are terminal.\\
+\(\Omega_{\rm src}\) & BF/CTMT & Raw nonlinear shadows need lawful source-admission decomposition.\\
+\(\Omega_{\rm gap},\Omega_{\rm rem}\) & CTMT & Localization and remainder budgets are terminal PDE components.\\
+\(\Omega_{\rm bb}\) & BF/CTMT & Packing-only transport fails unless amplitude threshold is paid.\\
+\(\Omega_{\rm mm}\) & BF & It is the sector-mismatch bridge failure.\\
+\(\Omega_{\rm amp}\) & TE/CTMT & Final sharp obstruction; closure requires EXT1.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Literature audit}
+
+Beale--Kato--Majda gives the vorticity continuation criterion. Caffarelli--Kohn--Nirenberg gives partial regularity. Constantin--Fefferman supplies geometric depletion criteria. Koch--Tataru gives critical-space well-posedness. Tao's averaged Navier--Stokes blowup and Buckmaster--Vicol weak-solution nonuniqueness provide guardrails. Bradshaw--Grujic and Grujic--Xu provide frequency/sparseness route templates. None supplies the exact EXT1 theorem on the fixed BG mismatch ledger.
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{V\_ns\_CRCFT\_modes\_verified}}
+\]
+
+CRCFT is now verified on four track instances: RH, BSD, Hodge, and NS. No Navier--Stokes proof is claimed.
+
+\end{document}

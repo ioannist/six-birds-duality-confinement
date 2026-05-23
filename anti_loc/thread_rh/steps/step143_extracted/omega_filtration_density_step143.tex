@@ -1,0 +1,184 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+
+\title{Step 143: $\Omega$-Filtration Density Theorem / Obstruction Audit}
+\author{Six Birds / RH Membrane Working Note}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Steps 130--142 reduced the source route to a diagonal density, blind-sector, and shortness problem.
+The unrestricted BPRZ shifted second-moment main kernel is not a full lower frame on the full
+coefficient space.  The source route survives only on a residual coefficient class that avoids the
+GCD-log blind sector.  The proposed repair is to build an $\Omega$-compatible Burnol/Müntz
+dictionary whose regularized Dirichlet shadows obey upstream Heap--Soundararajan block cutoffs.
+
+This note audits whether the $\Omega$-compatible dictionary can be dense in the residual
+Burnol/Sonine windows.
+
+\section{Objects}
+
+Let
+\[
+M_{R,N}:Y_{R,N}\to H_N
+\]
+synthesize a finite residual Burnol/Sonine window, with
+\[
+G_{R,N}=M_{R,N}^{*}M_{R,N}.
+\]
+Let $\mathcal D_{\Omega,K,N}$ be the declared $\Omega$-compatible Burnol/Müntz dictionary at
+cutoff $K$ and residual window $N$, and let $P_{\Omega,K,N}$ be the projection onto its response
+span.
+
+The active density defect is
+\[
+\epsilon_{B\to\Omega,N}(K)
+=
+\left\|(I-P_{\Omega,K,N})M_{R,N}G_{R,N}^{-1/2}\right\|.
+\]
+The corresponding adequacy residual is
+\[
+\Xi_{B\to\Omega,N}(K)
+=
+M_{R,N}^{*}(I-P_{\Omega,K,N})M_{R,N}.
+\]
+
+\section{Relative density theorem}
+
+Let $P_{D,N}$ be the projection onto the declared regularized Dirichlet-readable shadow closure.
+Assume
+\[
+P_{\Omega,K,N}\uparrow P_{D,N}
+\]
+strongly as $K\to\infty$. Then for fixed $N$,
+\[
+\lim_{K\to\infty}
+\left\|(P_{D,N}-P_{\Omega,K,N})M_{R,N}G_{R,N}^{-1/2}\right\|=0.
+\]
+Consequently,
+\[
+\limsup_{K\to\infty}\epsilon_{B\to\Omega,N}(K)
+\le
+\epsilon_{B\to D,N},
+\]
+where
+\[
+\epsilon_{B\to D,N}
+=
+\left\|(I-P_{D,N})M_{R,N}G_{R,N}^{-1/2}\right\|.
+\]
+
+Thus the $\Omega$-filtration does not by itself solve Burnol-to-Dirichlet readability.
+It only says: once a Burnol residual window is Dirichlet-readable, finite $\Omega$ cutoffs can
+exhaust that readable part.
+
+\section{Diagonal ladder theorem}
+
+For growing windows, fixed-$N$ convergence is insufficient.  A lawful ladder requires an upstream
+sequence
+\[
+K_N\to\infty
+\]
+such that
+\[
+\eta_N^{\Omega}
+:=
+\left\|(P_{D,N}-P_{\Omega,K_N,N})M_{R,N}G_{R,N}^{-1/2}\right\|\to0.
+\]
+Then
+\[
+\epsilon_{B\to\Omega,N}(K_N)
+\le
+\epsilon_{B\to D,N}+\eta_N^\Omega.
+\]
+If $\epsilon_{B\to D,N}\to0$, the $\Omega$-compatible dictionary is dense.
+If $\epsilon_{B\to D,N}\le\epsilon_0<1$ and $\eta_N^\Omega\to0$, the dictionary has a positive
+visibility floor.
+
+\section{Shortness and blind-sector constraints}
+
+The ladder is not accepted unless it also satisfies the source shortness bound
+\[
+L_{\mathrm{eff}}(N,K_N)\le q_N^{\theta_{\mathrm{src}}-o(1)}
+\]
+and the GCD-log blind-sector floor
+\[
+\delta_{R_N,K_N,N}<1.
+\]
+Combining the density and blind-sector gates gives the effective source lower-frame floor
+\[
+\Lambda_N^\Omega
+\gtrsim
+\gamma_q
+\left(1-\epsilon_{B\to\Omega,N}(K_N)^2\right)
+\left(1-\delta_{R_N,K_N,N}^{2}\right).
+\]
+If the two factors have a positive lower bound and $\gamma_q\to\infty$, then the finite residual
+source strength diverges, subject to fixed/exhaustive tail promotion.
+
+\section{Obstruction theorem}
+
+Let
+\[
+P_{\Omega,\infty}
+=
+\operatorname*{s-lim}_{K\to\infty}P_{\Omega,K}.
+\]
+If
+\[
+(I-P_{\Omega,\infty})M_R\ne0,
+\]
+then
+\[
+\Xi_{B\to\Omega}
+=
+M_R^{*}(I-P_{\Omega,\infty})M_R
+\]
+is a genuine adequacy residual.  It cannot be removed by increasing the $\Omega$ cutoff.
+It must be source-absorbed by a different source family, compact/tail-paid, or declared as a scoped
+nonclaim.
+
+\section{Interpretation}
+
+The $\Omega$-filtration density theorem gives a useful but limited positive result:
+finite $\Omega$ cutoffs exhaust the Dirichlet-readable part of the residual class.
+The remaining questions are exactly the framework-native gates:
+\[
+\epsilon_{B\to D,N}\quad
+\text{(regularized shadow adequacy)},
+\]
+\[
+K_N\quad
+\text{(diagonal cutoff inside shortness)},
+\]
+\[
+\delta_{R,K,N}\quad
+\text{(GCD-log blind-sector floor)},
+\]
+and completed residual-tail promotion.
+
+\section{Status}
+
+This is not an RH proof. It is the Step-143 reduction:
+\[
+\Omega\text{-density}
+=
+\text{Dirichlet-readable shadow density}
++
+\text{diagonal cutoff/shortness}
++
+\text{blind-sector floor}.
+\]
+
+\end{document}

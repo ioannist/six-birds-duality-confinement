@@ -1,0 +1,3057 @@
+arXiv:1608.01092v1 [math.OA] 3 Aug 2016
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+A. MCKEE, I. G. TODOROV, AND L. TUROWSKA
+
+Contents
+1. Introduction
+2. Schur A-multipliers
+3. Herz-Schur multipliers and transference
+4. Multipliers of the weak* crossed product
+5. Two classes of multipliers
+5.1. Multipliers from the Haagerup tensor product
+5.2. Groupoid multipliers
+6. Convolution multipliers
+References
+
+1
+4
+13
+28
+32
+32
+35
+38
+47
+
+1. Introduction
+The notion of a Schur multiplier has its origins in the work of I. Schur in
+the early 20th century, and is based on entry-wise (or Hadamard) product
+of matrices. More specifically, a bounded function ϕ : N × N → C is called a
+Schur multiplier if (ϕ(i, j)ai,j ) is the matrix of a bounded linear operator on
+ℓ2 whenever (ai,j ) is such. A concrete description of Schur multipliers, which
+found numerous applications thereafter, was given by A. Grothendieck in his
+Résumé [12] (see also [30]). A measurable version of Schur multipliers was
+developed by M. S. Birman and M. Z. Solomyak (see [3] and the references
+therein) and V. V. Peller [28]. More concretely, given standard measure
+spaces (X, µ) and (Y, ν) and a function ϕ : X × Y → C, one defines a
+linear transformation Sϕ on the space of all Hilbert-Schmidt operators from
+H1 = L2 (X, µ) to H2 = L2 (Y, ν) by multiplying their integral kernels by ϕ; if
+Sϕ is bounded in the operator norm (in which case ϕ is called a measurable
+Schur multiplier ), it is extended to the space K(H1 , H2 ) of all compact
+operators from H1 into H2 by continuity. The map Sϕ is defined on the
+space B(H1 , H2 ) of all bounded linear operators from H1 into H2 by taking
+the second dual of the constructed map on K(H1 , H2 ). A characterisation of
+measurable Schur multipliers, extending Grothendieck’s result, was obtained
+in [13] and [28] (see also [17] and [38]). Namely, a function ϕ ∈ L∞ (X ×
+Y ) was shown to be a Schur multiplier ifPand only if ϕ coincides almost
+∞
+everywhere with a function of the form
+k=1 ak (x)bk (y), where (ak )k∈N
+1
+
+2
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+and (bk )k∈N arePfamilies of essentially bounded measurable
+functions such
+P∞
+2 < ∞ and esssup
+2 < ∞.
+that esssupx∈X ∞
+|a
+(x)|
+|b
+(y)|
+y∈Y
+k=1 k
+k=1 k
+Among the large number of applications of Schur multipliers is the description of the space M cb A(G) of completely bounded multipliers (also
+known as Herz-Schur multipliers) of the Fourier algebra A(G) of a locally
+compact group G, introduced by J. de Cannière and U. Haagerup in [7].
+Namely, as shown by M. Bożejko and G. Fendler [5] , M cb A(G) can be
+isometrically identified with the space of all Schur multipliers on G × G of
+Toeplitz type. An alternative proof of this result was given by P. Jolissaint
+[15].
+Herz-Schur multipliers have been highly instrumental in operator algebra
+theory, providing the route to defining and studying a number of approximation properties of group C*-algebras and group von Neumann algebras
+(we refer the reader to [20], [6] and [18]). Here one uses the fact that every
+Herz-Schur multiplier on a locally compact group G gives rise to a (completely bounded) map on the von Neumann algebra VN(G) of G, leaving
+invariant the reduced C*-algebra Cr∗ (G) of G.
+In view of the large number of applications of Herz-Schur multipliers in
+operator algebra theory, it is natural to seek generalisations going beyond
+the context of group algebras. The main goal of this paper is to extend
+the notion of Herz-Schur multipliers to the setting of non-commutative dynamical systems. Given a C*-algebra A, a locally compact group G, and
+an action α of G on A, we define transformations on the (reduced) crossed
+product A⋊r,α G of A by G, which, in the case A = C, reduce to the classical
+Herz-Schur multipliers and, in the case of a discrete group G, to multipliers
+defined recently by E. Bedos and R. Conti in [2]. More generally, we introduce Schur A-multipliers which, in the case A = C, reduce to the classical
+measurable Schur multipliers. In Section 2, we establish a characterisation
+of Schur A-multipliers that generalises the classical description of Schur
+multipliers (Theorem 2.6). We exhibit a large class of Schur A-multipliers
+defined in terms of Hilbert A-bimodules, and show that it exhausts all Schur
+A-multipliers in the case A is finite-dimensional (Theorem 2.7). In Section
+3, we prove a transference theorem in the new setting, identifying isometrically the Hezr-Schur multipliers of the dynamical system (A, G, α) with the
+invariant part of the Schur A-multipliers (see Theorems 3.8 and 3.18). We
+introduce bounded multipliers of (A, G, α) and relate them to Herz-Schur
+(A, G, α)-multipliers, extending a corresponding result from [7]. In Section
+4, we provide a description of a more general and closely related class of multipliers, namely, Herz-Schur multipliers associated with weak* closed crossed
+products, as the commutant of the scalar valued Herz-Schur multipliers associated with elements of M cb A(G) (Theorem 4.3). While in the case A = C
+this description is straightforward, here we need to use structure theory of
+crossed products and some recent results from [1].
+The rest of the paper is devoted to special classes of Herz-Schur multipliers. Namely, in Section 5, we consider multipliers naturally associated
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+3
+
+with the Haagerup tensor product of two copies of A, and multipliers defined on groupoids. In the former case, we relate our notion to examples of
+Herz-Schur multipliers exhibited in [2, Theorem 4.5] in the case of a discrete
+group. In the latter case, we show that completely bounded multipliers of
+the Fourier algebra of a groupoid, defined in [33], form a subclass of the
+class of Herz-Schur multipliers introduced in the present work.
+The results in Section 6 were our original motivation for the present paper. Here, we consider the case of a locally compact abelian group G and its
+canonical action α on the C*-algebra C ∗ (Γ) of the dual group Γ. We focus
+on a special class F(G) of Herz-Schur multipliers, which we call convolution
+multipliers, and its natural subclass Fθ (G) of weak* extendible convolution
+multipliers. We show that the Fourier-Stieltjes algebras B(G) and B(Γ)
+can both be viewed as subspaces of Fθ (G), while Fθ (G) is a subspace of
+their Fubini product. When the crossed product of C ∗ (Γ) ⋊α G is canonically identified with the space K(L2 (G)) of all compact operators on L2 (G),
+the elements u of B(G) give rise to the measurable Schur multipliers corresponding to u via the aforementioned Bożejko-Fendler classical transference
+theorem, while the elements of B(Γ) correspond to a well-known class of
+completely bounded maps, arising from a representation of the measure algebra M (G) of G on K(L2 (G)), studied in a variety of contexts in both
+operator algebra theory and quantum information theory, and by a number
+of authors including F. Ghahramani [11], M. Neufang and V. Runde [24],
+M. Neufang, Zh.-J. Ruan and N. Spronk [25] and E. Størmer [39]. The main
+result of the section are Theorem 6.7 and 6.10, where we identify the set
+Fθ (G), and an associated subset, of convolution multipliers of G as subsets
+of the joint commutant of the two families described above.
+The paper uses various notions from Operator Space Theory; we refer the
+reader to [4], [9], [26] or [31] for the basics. For background and notation on
+crossed products, which will be needed in Sections 3, 5 and 6, we refer the
+reader to [43].
+
+We finish this section with setting some notation. If E and F are vector
+spaces, we let E ⊙ F be their algebraic tensor product. For a Banach space
+X , we let B(X ) (resp. K(X )) be the algebra of all bounded linear (resp.
+compact) operators on X , and denote by IX the identity operator on X . If
+H and K are Hilbert spaces, we denote by H ⊗ K their Hilbertian tensor
+product; for operators S ∈ B(H) and T ∈ B(K), we let S ⊗T be the bounded
+operator on H ⊗ K given by (S ⊗ T )(ξ ⊗ η) = Sξ ⊗ T η. The (norm closed)
+spacial tensor product of two (norm closed) operator spaces U ⊆ B(H) and
+V ⊆ B(K) will be denoted by U ⊗ V. If U and V are weak* closed, their
+¯
+weak* spacial tensor product will be denoted by U ⊗V.
+
+4
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+2. Schur A-multipliers
+Let (X, µ) be a standard measure space; this means that µ is a Radon
+measure with respect to some complete metrisable separable locally compact topology (called an admissible topology) on X. For p = 1, 2 and a
+Banach space E, we write Lp (X, E) for the corresponding Lebesgue space of
+all (equivalence classes of) weakly measurable p-summable E-valued functions on X (see e.g. [43, Appendix B]). If H and K are separable Hilbert
+spaces and E ⊆ B(H, K) is a weak* closed subspace, let L∞ (X, E) be the
+space of all (equivalence classes of) bounded E-valued functions T on X
+such that, for every ξ ∈ H and every η ∈ K, the functions x → T (x)ξ
+and x → T (x)∗ η are weakly measurable. Note that L∞ (X, E) contains all
+bounded weakly measurable functions from X into E. Analogously to [40,
+Chapter IV, Section 7], we often identify an element g of L∞ (X, E) with the
+operator Dg from L2 (X, H) into L2 (X, K) given by (Dg ξ)(x) = g(x)(ξ(x)),
+x ∈ X.
+We write k · kp for the norm on Lp (X, E), p = 1, 2, ∞. In the case E
+coincides with the complex field C, we simply write Lp (X). If f ∈ Lp (X) and
+a ∈ E, we let f ⊗ a ∈ Lp (X, E) be the function given by (f ⊗ a)(x) = f (x)a,
+x ∈ X.
+We fix throughout the section a separable Hilbert space H. For a ∈
+L∞ (X), let Ma ∈ B(L2 (X)) be the operator given by Ma ξ = aξ; set
+DX = {Ma : a ∈ L∞ (X)}.
+Note that the identification L2 (X) ⊗ H ≡ L2 (X, H) yields a unitary equiv¯
+[40, Theorem 7.10].
+alence between L∞ (X, B(H)) and DX ⊗B(H)
+Let (Y, ν) be a(nother) standard measure space. We equip the direct
+products X × Y and Y × X with the corresponding product measures. It is
+easy to see that, if k ∈ L2 (Y × X, B(H)) and ξ ∈ L2 (X, H) then, for almost
+all y ∈ Y , the function x → k(y, x)ξ(x) is weakly measurable; moreover,
+Z
+Z
+kk(y, x)kkξ(x)kdµ(x)
+kk(y, x)ξ(x)kdµ(x) ≤
+X
+
+X
+
+≤ kξk2
+
+(1)
+
+Z
+
+X
+
+1/2
+.
+kk(y, x)k2 dµ(x)
+
+It follows that the formula
+(2)
+
+(Tk ξ)(y) =
+
+Z
+
+k(y, x)ξ(x)dµ(x),
+
+y ∈ Y,
+
+X
+
+defines a (weakly measurable) function Tk ξ : Y → H.
+Lemma 2.1. Let k ∈ L2 (Y × X, B(H)). Equation (2) defines a bounded
+operator Tk : L2 (X, H) → L2 (Y, H) with kTk k ≤ kkk2 . Moreover, Tk = 0 if
+and only if k = 0 almost everywhere.
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+5
+
+Proof. Let ξ ∈ L2 (X, H). Then, by (1),
+Z
+2
+kTk ξ(y)k2 dν(y)
+kTk ξk =
+Y
+Z Z
+≤ kξk22
+kk(y, x)k2 dµ(x)dν(y) = kkk22 kξk22 .
+Y
+
+X
+
+Thus, Tk is bounded and its norm does not exceed kkk2 .
+It is clear that if k = 0 almost everywhere then Tk = 0. Conversely,
+suppose that Tk = 0. Choose a countable dense subset {ei }i∈N of H. If
+ξ ∈ L2 (X) and η ∈ L2 (Y ) then
+Z
+hk(y, x)ei , ej iξ(x)η(y)dxdy = hTk (ξ ⊗ ei ), η ⊗ ej i = 0,
+X×Y
+
+and it follows that hk(y, x)ei , ej i = 0 almost everywhere, for all i, j. Since
+k(y, x) is a bounded operator, k(y, x) = 0 for almost all (x, y).
+
+If M ⊆ B(H) is a C*-subalgebra, let
+S2 (Y × X, M) = {Tk : k ∈ L2 (Y × X, M)}.
+Note that, if w ∈ L2 (Y × X) and a ∈ M then
+(3)
+
+Tw⊗a = Tw ⊗ a.
+
+Letting
+def
+
+K = K(L2 (X), L2 (Y ))
+be the space of all compact operators from L2 (X) into L2 (Y ), we have that
+S2 ⊙ M is norm dense in K ⊗ M (here S2 denotes the space of all HilbertSchmidt opertors from L2 (X) into L2 (Y )). We conclude that S2 (Y × X, M)
+is norm dense in K ⊗ M and equip it with the operator space structure
+arising from its inclusion into K ⊗ M.
+We fix throughout the section a non-degenerate separable C*-algebra A ⊆
+B(H). If B is a(nother) C*-algebra, we denote by CB(A, B) the space of
+all completely bounded linear maps from A into B and write CB(A) =
+CB(A, A). A function ϕ : X × Y → CB(A, B(H)) will be called pointwise
+measurable if, for every a ∈ A, the function (x, y) → ϕ(x, y)(a) from X × Y
+into B(H) is weakly measurable. Let ϕ : X × Y → CB(A, B(H)) be a
+bounded pointwise measurable function. For k ∈ L2 (Y × X, A), let ϕ · k :
+Y × X → B(H) be the function given by
+(ϕ · k)(y, x) = ϕ(x, y)(k(y, x)),
+
+(y, x) ∈ Y × X.
+
+It is easy to show that ϕ · k is weakly measurable; since ϕ is bounded,
+ϕ · k ∈ L2 (Y × X, B(H)) and
+kϕ · kk2 ≤ kϕk∞ kkk2 .
+Let
+Sϕ : S2 (Y × X, A) → S2 (Y × X, B(H))
+
+6
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+be the linear map given by
+Sϕ (Tk ) = Tϕ·k ,
+
+k ∈ L2 (Y × X, A).
+
+By Lemma 2.1, Sϕ is well-defined.
+Definition 2.2. A bounded pointwise measurable map
+ϕ : X × Y → CB(A, B(H))
+will be called a Schur A-multiplier if the map Sϕ is completely bounded.
+It follows from the discussion after Lemma 2.1 that a bounded pointwise
+measurable function ϕ : X × Y → CB(A, B(H)) is a Schur A-multiplier if
+and only if the map Sϕ possesses a completely bounded extension to a map
+from K ⊗ A into K ⊗ B(H) (which will still be denoted by Sϕ ).
+We let S(X, Y ; A) be the space of all Schur A-multipliers and endow it
+with the norm
+(4)
+
+kϕkS = kSϕ kcb ;
+
+it follows from Lemma 2.1 that if Sϕ = 0 then ϕ = 0 almost everywhere,
+and hence (4) indeed defines a norm on S(X, Y ; A).
+Note that Schur C-multipliers coincide with the classical (measurable)
+Schur multipliers [28], [17].
+A special role in our considerations will be played by Schur A-multipliers
+ϕ for which ϕ(x, y) ∈ CB(A) for all (x, y) ∈ X × Y , that is, ones for
+which the range of ϕ(x, y) is in A. In this case, Sϕ is a map on S2 (Y ×
+X, A). We let S0 (X, Y ; A) be the space of all such Schur A-multipliers. The
+next proposition shows that S0 (X, Y ; A) does not depend on the faithful *representation of A.
+Proposition 2.3. Let θ : A → B(K) be a faithful *-representation of A on a
+separable Hilbert space K. A bounded pointwise measurable map ϕ : X×Y →
+CB(A) is a Schur A-multiplier if and only if the (bounded pointwise measurable) map ϕθ : X × Y → CB(θ(A)), given by ϕθ (x, y)(θ(a)) = θ(ϕ(x, y)(a)),
+a ∈ A, is a Schur θ(A)-multiplier. Moreover, kϕkS = kϕθ kS .
+Proof. Let B = θ(A). Note that the map id ⊗θ : K ⊙ A → K ⊙ B given
+by (id ⊗θ)(T ⊗ a) = T ⊗ θ(a) extends to a complete isometry from K ⊗ A
+onto K ⊗ B [4]. Let k ∈ L2 (Y × X, A); then the map kθ = θ ◦ k belongs to
+L2 (Y × X, B). We claim that
+(5)
+
+Tkθ = (id ⊗θ)(Tk ).
+
+To see (5), note first that, by (3), it holds when k = k′ ⊗ a for some k′ ∈
+L2 (Y × X) and a ∈ A; hence, by linearity, it holds if k ∈ L2 (Y × X) ⊙ A.
+By [40, Proposition 7.4], there exists a sequence (ki )i∈N ⊆ L2 (Y × X) ⊙ A
+such that kki − kk2 →i→∞ 0. It follows that kθ ◦ ki − θ ◦ kk2 →i→∞ 0.
+By Lemma 2.1, Tki → Tk and Tθ◦ki → Tθ◦k in the operator norm. Thus,
+(id ⊗θ)(Tki ) → (id ⊗θ)(Tk ) in the operator norm, and we conclude that
+Tkθ = (id ⊗θ)(Tk ).
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+7
+
+By (5),
+(id ⊗θ)(Sϕ (Tk )) = Sϕθ (Tkθ );
+in other words,
+Sϕθ = (id ⊗θ) ◦ Sϕ ◦ (id ⊗θ −1 ).
+It follows that Sϕ is completely bounded if and only if Sϕθ is so and that,
+in this case, kϕkS = kϕθ kS .
+
+Proposition 2.3 allows us to view the elements of S0 (X, Y ; A) independently of the particular faithful representation of A on a separable Hilbert
+space; we will thus in the sequel refer to A-valued Schur A-multipliers without the need to specify a particular representation.
+Lemma 2.4. Let ϕ ∈ S(X, Y ; A). If C ∈ DX , D ∈ DY and T ∈ K ⊗ A
+then
+(6)
+
+Sϕ ((D ⊗ IH )T (C ⊗ IH )) = (D ⊗ IH )Sϕ (T )(C ⊗ IH ).
+
+Proof. By continuity and linearity, it suffices to establish (6) in the case
+T = Tk ⊗ a, where k ∈ L2 (Y × X) and a ∈ A. Assuming that C =
+Mc and D = Md , where c ∈ L∞ (X) and d ∈ L∞ (Y ), we have that both
+Sϕ ((D⊗IH )T (C ⊗IH )) and (D⊗IH )Sϕ (T )(C ⊗IH ) coincide with Tk′ , where
+k′ is the (weakly measurable) function from Y × X into B(H) given by
+k′ (y, x) = c(x)d(y)k(x, y)ϕ(x, y)(a).
+
+Lemma 2.5. Let E and L be separable Hilbert spaces and θ : K(E) ⊗ A →
+B(L) be a non-degenerate *-representation. Then there exists a separable
+Hilbert space K, a unitary operator U : L → E ⊗ K and a non-degenerate
+*-representation ρ : A → B(K) such that
+U θ(b ⊗ a)U ∗ = b ⊗ ρ(a),
+
+b ∈ K(E), a ∈ A.
+
+Proof. Let M (K(E) ⊗ A) be the multiplier algebra of K(E) ⊗ A. There exists
+a unital *-homomorphism θ̂ : M (K(E)⊗A) → B(L) extending θ (see e.g. [27,
+Proposition 3.12.10]). The map x → θ̂(x ⊗ IH ) is clearly a non-degenerate
+*-representation of K(E) on L. Thus, there exists a separable Hilbert space
+K and a unitary operator U : L → E ⊗ K such that
+U θ̂(b ⊗ IH )U ∗ = b ⊗ IK ,
+
+b ∈ K(E).
+
+Let θ̃ : M (K(E) ⊗ A) → B(E ⊗ K) be given by
+θ̃(T ) = U θ̂(T )U ∗ ,
+
+T ∈ M (K(E) ⊗ A).
+
+For a ∈ A and b ∈ K(E), the operators θ̃(b ⊗ IH ) and θ̃(IE ⊗ a) commute.
+It follows that θ̃(IE ⊗ a) = IE ⊗ ρ(a), for some operator ρ(a) ∈ B(K). Since
+
+8
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+θ̃ is a unital *-homomorphism, the map ρ : A → B(K) is easily seen to be a
+non-degenerate *-homomorphism. Moreover, if b ∈ K(E) and a ∈ A then
+U θ(b ⊗ a)U ∗ = U θ̂(b ⊗ IH )θ̂(IE ⊗ a)U ∗ = U θ̂(b ⊗ IH )U ∗ U θ̂(IE ⊗ a)U ∗
+= θ̃(b ⊗ IH )θ̃(IE ⊗ a) = (b ⊗ IK )(IE ⊗ ρ(a)) = b ⊗ ρ(a).
+
+Theorem 2.6. Let ϕ : X × Y → CB(A, B(H)) be a bounded pointwise
+measurable function. The following are equivalent:
+(i) ϕ is a Schur A-multiplier;
+(ii) there exist a separable Hilbert space K, a non-degenerate *-representation ρ : A → B(K), V ∈ L∞ (X, B(H, K)) and W ∈ L∞ (Y, B(H, K)) such
+that, for all a ∈ A,
+ϕ(x, y)(a) = W ∗ (y)ρ(a)V (x),
+for almost all (x, y) ∈ X × Y .
+Proof. (i)⇒(ii) Suppose that ϕ ∈ S(X, Y ; A). Let E = L2 (Y ) ⊕ L2 (X) and
+Φ : K(E) ⊗ A → K(E) ⊗ B(H) be given by
+
+
+ 
+
+x1,1 x1,2
+0 Sϕ (x1,2 ⊗ a)
+(7)
+Φ
+⊗a =
+.
+x2,1 x2,2
+0
+0
+
+It is clear that Φ is a completely bounded map with kΦkcb = kSϕ kcb . By
+the Haagerup-Paulsen-Wittstock Theorem, there exist a Hilbert space L,
+a non-degenerate *-homomorphism θ : K(E) ⊗ A → B(L) and operators
+V0 , W0 ∈ B(E ⊗ H, L) such that
+Φ(T ) = W0∗ θ(T )V0 ,
+
+T ∈ K(E) ⊗ A.
+
+As K(E)⊗A is separable, we may assume that L is separable. By Lemma 2.5,
+there exist a separable Hilbert space K, a unitary operator U : L → E ⊗ K
+and a *-representation ρ : A → B(K) such that
+U θ(b ⊗ a)U ∗ = b ⊗ ρ(a),
+
+b ∈ K(E), a ∈ A.
+
+Let Ŵ = U W0 and V̂ = U V0 . Then
+Φ(b ⊗ a) = Ŵ ∗ (b ⊗ ρ(a))V̂ ,
+
+b ∈ K(E), a ∈ A.
+
+Writing V̂ and Ŵ in two by two matrix form and recalling (7), we conclude
+that there exist bounded operators Ṽ : L2 (X, H) → L2 (X, K) and W̃ :
+L2 (Y, H) → L2 (Y, K) such that
+(8)
+Let
+
+Sϕ (b ⊗ a) = W̃ ∗ (b ⊗ ρ(a))Ṽ ,
+
+b ∈ K, a ∈ A.
+
+def
+
+S = [{T Ṽ L2 (X, H) : T ∈ K(L2 (X)) ⊗ ρ(A)}].
+Clearly, S is invariant under K(L2 (X)) ⊗ ρ(A). Thus, the projection onto S
+has the form IL2 (X) ⊗ E, for some projection E ∈ ρ(A)′ . Moreover,
+(9)
+
+Ṽ = (IL2 (X) ⊗ E)Ṽ .
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+9
+
+Setting ρ̃ = id ⊗ρ (so that ρ̃ is a map from K ⊗ A into K ⊗ B(K)), by (8)
+and (9), we now have
+Sϕ (T ) = W̃ ∗ ρ̃(T )(IL2 (X) ⊗ E)Ṽ ,
+
+(10)
+
+T ∈ K ⊗ A.
+
+Note, further, that if c ∈ L∞ (X) and d ∈ L∞ (Y ) then
+(11)
+
+ρ̃((Md∗ ⊗ IH )T (Mc ⊗ IH )) = (Md∗ ⊗ IK )ρ̃(T )(Mc ⊗ IK ).
+
+Let W = (IL2 (Y ) ⊗ E)W̃ . Since
+ρ̃(T )(IL2 (X) ⊗ E) = (IL2 (Y ) ⊗ E)ρ̃(T ),
+we conclude from (10) that
+Sϕ (T ) = W̃ ∗ (IL2 (Y ) ⊗ E)ρ̃(T )Ṽ = W ∗ ρ̃(T )Ṽ ,
+
+(12)
+
+for every T ∈ K ⊗ A.
+Identities (11) and (12) and Lemma 2.4 imply that
+(13)
+
+W ∗ (Md∗ ⊗ IK )ρ̃(T )Ṽ = (Md∗ ⊗ IH )W ∗ ρ̃(T )Ṽ ,
+
+T ∈ K ⊗ A.
+
+Thus,
+D
+
+E D
+E
+ρ̃(T )Ṽ ξ, (Md ⊗ IK )W η = ρ̃(T )Ṽ ξ, W (Md ⊗ IH )η ,
+
+for all ξ ∈ L2 (X, H) and all η ∈ L2 (Y, H). We conclude that
+
+(IL2 (Y ) ⊗ E)(Md ⊗ IK )W = (IL2 (Y ) ⊗ E)W (Md ⊗ IH )
+and hence (Md ⊗ IK )W = W (Md ⊗ IH ) for all d ∈ L∞ (Y ). It follows easily
+that W ∈ L∞ (Y, B(H, K)) (see [40, Theorem 7.10]). Let now
+def
+
+T = [{T W L2 (Y, H) : T ∈ K(L2 (Y )) ⊗ ρ(A)}].
+The projection onto T has the form IL2 (Y ) ⊗F for some projection F ∈ ρ(A)′ .
+Letting V = (IL2 (X) ⊗ F )Ṽ , and using similar arguments to the ones above,
+one shows that (Mc ⊗ IK )V = V (Mc ⊗ IH ) for all c ∈ L∞ (X) and hence
+that V ∈ L∞ (X, B(H, K)). Note that W = (IL2 (Y ) ⊗ F )W and hence, by
+(12),
+(14) Sϕ (T ) = W ∗ (IL2 (Y ) ⊗ F )ρ̃(T )Ṽ = W ∗ ρ̃(T )(IL2 (Y ) ⊗ F )Ṽ = W ∗ ρ̃(T )V,
+for every T ∈ K ⊗ A.
+Let k ∈ L2 (Y × X) and a ∈ A. For ξ ∈ L2 (X, H) and η ∈ L2 (Y, H) we
+have
+Z Z
+k(y, x)hϕ(x, y)(a)ξ(x), η(y)idµ(x)dν(y).
+(15) hSϕ (Tk ⊗ a)ξ, ηi =
+Y
+
+X
+
+10
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+On the other hand, by (14),
+hSϕ (Tk ⊗ a)ξ, ηi = hW ∗ (Tk ⊗ ρ(a))V ξ, ηi
+= h(Tk ⊗ ρ(a))V ξ, W ηi
+Z Z
+k(y, x)hρ(a)(V (x)ξ(x)), W (y)η(y)idµ(x)dν(y)
+=
+Y X
+Z Z
+k(y, x)hW (y)∗ ρ(a)V (x)ξ(x), η(y)idµ(x)dν(y).
+=
+Y
+
+X
+
+Comparing the last identity with (15) and taking into account that these
+identities hold for all k ∈ L2 (Y × X), we conclude that
+(16)
+hϕ(x, y)(a)ξ(x), η(y)i = hW (y)∗ ρ(a)V (x)ξ(x), η(y)i almost everywhere,
+for all ξ ∈ L2 (X, H) and all η ∈ L2 (Y, H). If the measures µ and ν are finite,
+take ξ = χX ⊗ ξ0 and η = χY ⊗ η0 , where ξ0 , η0 ∈ H. The separability of H
+and (16) imply that
+ϕ(x, y)(a) = W (y)∗ ρ(a)V (x), for almost all (x, y) ∈ X × Y.
+If the measures µ and ν are not finite, the proof is completed by choosing
+increasing sequences (Xn )n∈N and (Yn )n∈N , each of whose terms has finite
+measure, and letting ξ = χXn ⊗ ξ0 and η = χYn ⊗ η0 , with ξ0 , η0 ∈ H.
+(ii)⇒(i) The assumption shows that the mapping Sϕ : S2 (Y × X, A) →
+S2 (Y × X, B(H)) satisfies
+Sϕ (Th ⊗ a) = W ∗ (Th ⊗ ρ(a))V, h ∈ L2 (Y × X), a ∈ A.
+By linearity,
+Sϕ (Tk ) = W ∗ Tρ◦k V,
+
+(17)
+
+whenever k ∈ L2 (Y × X) ⊙ A.
+Let k ∈ L2 (Y × X, A) be arbitrary. By [40, Proposition 7.4], there exists
+a sequence (ki )i∈N ⊆ L2 (Y × X) ⊙ A with kki − kk2 →i→∞ 0. Using (5),
+(17), Lemma 2.1 and the fact that ϕ is bounded, we obtain
+Sϕ (Tk ) =
+
+lim Sϕ (Tki ) = lim W ∗ Tρ◦ki V
+
+i→∞
+∗
+
+i→∞
+
+= W ( lim Tρ◦ki )V = W ∗ ( lim ρ̃(Tki )V = W ∗ ρ̃(Tk )V.
+i→∞
+
+i→∞
+
+Thus, Sϕ has a completely bounded extension to K ⊗ A (namely, the map
+T → W ∗ ρ̃(T ))V ) and hence ϕ is a Schur A-multiplier.
+
+Remarks (i) The proof of Theorem 2.6 shows that if ϕ ∈ S(X, Y ; A) then
+the operator valued functions V and W can be chosen so that
+kϕkS = esssup kW (x)k esssup kV (y)k.
+x∈X
+
+y∈Y
+
+(ii) In the case A = C, Theorem 2.6 reduces to the well-known characterisation of measurable Schur multipliers due to U. Haagerup [13] and V.
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+11
+
+V. Peller [28] (see also [17]). Indeed, in this case, ρ is equal to the identity
+representation of C and hence ϕ has a representation of the form
+(18)
+
+ϕ(x, y) = hw(y), v(x)i,
+
+where v : X → K and w : Y → K are weakly measurable essentially
+bounded functions, for some separable Hilbert space K.
+If, in Theorem 2.6, the operator valued functions V and W can be chosen
+to be weakly measurable, then we will say that the Schur A-multiplier ϕ has
+a weakly measurable representation. In the next theorem we exhibit a class of
+A-valued Schur A-multipliers possessing a weakly measurable representation
+which exhausts all such multipliers in the case A is finite dimensional. Recall
+that a Hilbert A-bimodule is a right Hilbert A-module N , equipped with a
+def
+
+left A-module action given by a · ξ = θ(a)(ξ), a ∈ A, ξ ∈ N , for some *representation θ of A into the C*-algebra of all adjointable operators on N .
+As is customary in the literature on Hilbert modules, we assume linearity on
+the second variable of the A-valued inner product, denoted here by h·|·iA .
+Theorem 2.7. Let A ⊆ B(H) be a separable C*-algebra and ϕ : X ×
+Y → CB(A) be a bounded pointwise measurable function. Consider the
+conditions:
+(i) there exists a countably generated Hilbert A-bimodule N and bounded
+weakly measurable functions v : X → N and w : Y → N such that
+(19)
+
+ϕ(x, y)(a) = hw(y)|a · v(x)iA , for almost all (x, y) ∈ X × Y
+
+for every a ∈ A.
+(ii) ϕ is a Schur A-multiplier possessing a weakly measurable representation.
+Then (i) ⇒ (ii). If A is finite-dimensional then (i) ⇔ (ii).
+Proof. (i)⇒(ii) It follows for instance from [8, Example 2.8] that there exist
+a separable Hilbert space K, an isometry τ : N → B(K) and a faithful *representation π : A → B(K) such that τ (a·z) = π(a)τ (z), τ (z·b) = τ (z)π(b)
+and π(hz1 , z2 iA ) = τ (z1 )∗ τ (z2 ), z, z1 , z2 ∈ N , a, b ∈ A. For all a ∈ A, we
+have that
+π(ϕ(x, y)(a)) = π(hw(x)|a · v(y)iA ) = τ (w(x))∗ π(a)τ (v(y)) a.e.
+Moreover, the maps τ ◦ v and τ ◦ w are weakly measurable. By Theorem 2.6,
+the map ϕπ : X × Y → CB(π(A)), given by ϕπ (x, y)(π(a)) = π(ϕ(x, y)(a)),
+is a Schur π(A)-multiplier. By Proposition 2.3, ϕ is a Schur A-multiplier.
+Assume now that A is finite dimensional. By Proposition 2.3, we may
+identify A with the C*-algebra ⊕m
+k=1 Mnk ⊆ B(H), where Mn denotes, as
+nk
+customary, the n by n matrix algebra and H = ⊕m
+k=1 C , nk ∈ N, k =
+1, . . . , m.
+Suppose that ϕ is a Schur A-multiplier, K is a separable Hilbert space,
+V : X → B(H, K), W : Y → B(H, K) weakly measurable functions, and ρ :
+A → B(K) a non-degenerate *-representation, such that, for every a ∈ A, we
+
+12
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+have ϕ(x, y)(a) = W (y)∗ ρ(a)V (x) for almost all (x, y) ∈ X × Y . The space
+def
+
+B(H, K) is an operator A-bimodule with respect to the actions a·T = ρ(a)T
+def
+
+and T · a = T a, a ∈ A, T ∈ B(H, K).
+Pm Let Pk be the projection in B(H)
+n
+k
+onto the summand C and Ψ(T ) = k=1 Pk T Pk , T ∈ B(H). Clearly, Ψ is
+a completely positive projection from B(H) onto A. We equip B(H, K) with
+∗ T ). As the projections
+the A-valued inner product given by hS, T iA = Ψ(SP
+m
+Pk , k = 1, . . . , m, are mutually orthogonal and
+k=1 Pk = I, we have
+hS, SiA = 0 if and only if S = 0. Moreover,
+hS, T · aiA = Ψ(S ∗ T a) = Ψ(S ∗ T )a = hS, T iA a,
+
+def
+
+and hence N = B(H, K) is a right Hilbert A-module. In addition,
+ha · S, T iA = Ψ(S ∗ ρ(a)∗ T ) = hS, a∗ · T iA ,
+showing that the map θa : S → a · S is adjointable and that the map a → θa
+is a *-representation; thus, N is a Hilbert A-bimodule and ϕ(x, y)(a) =
+hW (x), a · V (x)iA for almost all (x, y) ∈ X × Y . As H is finite dimensional
+and K is separable, N is countably generated.
+
+Let B = B(L2 (X), L2 (Y )) for brevity.
+Proposition 2.8. If ϕ ∈ S(X, Y ; A) then the map Sϕ has a unique ex¯ ∗∗ into
+tension to a completely bounded weak* continuous map from B ⊗A
+¯
+B ⊗B(H).
+Proof. Let P : B(H)∗∗ → B(H) be the canonical projection (that is, the
+adjoint of the inclusion map of the trace class on H into B(H)∗ ). Then the
+∗∗ → B ⊗B(H)
+¯
+¯
+map id ⊗P : B ⊗B(H)
+is weak* continuous and completely
+contractive (see e.g. [4] and [9, Proposition 7.1.6]).
+Let K̃ = K(L2 (Y ) ⊕ L2 (X)) and B̃ = B(L2 (Y ) ⊕ L2 (X)). Write PX (resp.
+PY ) for the projection from L2 (Y ) ⊕ L2 (X) onto L2 (X) (resp. L2 (Y )). Let
+Φ : K̃ ⊗ A → K̃ ⊗ B(H) be given by
+
+
+ 
+
+x1,1 x1,2
+0 Sϕ (x1,2 ⊗ a)
+(20)
+Φ
+⊗a =
+.
+x2,1 x2,2
+0
+0
+By [14, Example 1], given a C ∗ -algebra B, there is a canonical normal *isomorphism
+¯ ∗∗ .
+(21)
+(K̃ ⊗ B)∗∗ ∼
+= B̃⊗B
+
+Hence we may view the second dual Φ∗∗ as a completely bounded map from
+∗∗ , extending Φ. As K̃ ⊗ A is weak* dense in B̃ ⊗A
+¯ ∗∗ to B̃ ⊗B(H)
+¯
+¯ ∗∗ we
+B̃⊗A
+∗∗ such that
+¯ ∗∗ there exists Ψ(T ) ∈ B ⊗B(H)
+¯
+have that for any T ∈ B̃⊗A
+
+
+0 Ψ(T )
+Φ∗∗ (T ) =
+.
+0
+0
+
+In particular,
+
+Φ∗∗ ((PY ⊗ id)T (PX ⊗ id)) =
+
+
+
+
+0 Ψ((PY ⊗ id)T (PX ⊗ id))
+,
+0
+0
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+13
+
+∗∗ is completely bounded
+¯ ∗∗ → B ⊗B(H)
+¯
+and the mapping Ψ̃ = Ψ|B⊗A
+¯ ∗∗ : B ⊗A
+and weak* continuous. Hence the composition
+
+¯ ∗∗ → B ⊗B(H)
+¯
+(id ⊗P ) ◦ Ψ̃ : B ⊗A
+is a completely bounded weak* continuous map, extending Sϕ . The fact
+that this extension is unique follows by weak* density.
+
+We will use the same symbol, Sϕ , to denote the map obtained in Proposition 2.8. We note that if Sϕ satisfies equation (14), that is, if Sϕ (S) =
+W ∗ (id ⊗ρ)(S)V for all S ∈ K ⊗ A, then Sϕ (T ⊗ a) = W ∗ (T ⊗ ρ(a))V for all
+T ∈ B and all a ∈ A∗∗ , where ρ has been canonically extended to A∗∗ .
+While Proposition 2.8 implies that, if ϕ ∈ S0 (X, Y ; A), then the map
+Sϕ on K ⊗ A has a weak* continuous extension to B ⊗ A∗∗ , an analogous
+extension is not guaranteed to exist in representations of A different from
+the universal one. This motivates the following definition.
+Definition 2.9. Let A be a separable C*-algebra and θ be a faithful *representation of A on a separable Hilbert space. An element ϕ ∈ S0 (X, Y ; A)
+will be called a Schur θ-multiplier if the map Sϕθ : K ⊗ θ(A) → K ⊗ θ(A)
+′′ .
+¯
+can be extended to a weak* continuous map on B ⊗θ(A)
+The notion of a Schur θ-multiplier will be used in the subsequent sections.
+3. Herz-Schur multipliers and transference
+In this section, we introduce and study Herz-Schur multipliers of crossed
+products. We assume throughout that G is a locally compact group. Left
+Haar measure on G will be denoted by mG or m and integration with respect
+to mG along the variable s will be denoted by ds. Let λG : G → B(L2 (G))
+−1
+2
+be the left regular representation of G; thus, λG
+t ξ(s) = ξ(t s), ξ ∈ L (G),
+s, t ∈ G. We write Cr∗ (G) (resp. VN(G)) for the reduced group C*-algebra
+(resp. the von Neumann algebra) of G, that is, for the closure in the norm
+topology (resp. in the weak* topology) of λG (L1 (G)). As customary, we let
+A(G) (resp. B(G), Bλ (G)) be the Fourier (resp. the Fourier-Stieltjes, the
+reduced Fourier-Stieltjes) algebra of G. We note the canonical identifications
+A(G)∗ = VN(G), C ∗ (G)∗ = B(G) and Cr∗ (G)∗ = Bλ (G) [10].
+Let A be a separable C*-algebra. In this section, unless otherwise stated,
+H will denote the Hilbert space of the universal representation of A; we
+consider A as a C*-subalgebra of B(H). Let α : G → Aut(A) be a continuous
+(with respect to point-norm topology) group homomorphism; thus, (A, G, α)
+is a C*-dynamical system. The spaceR L1 (G, A) is a *-algebra with respect to
+the product × given by (f × g)(t) = G f (s)αs (g(s−1 t))ds and the involution
+∗ given by f ∗ (s) = ∆(s)−1 αs (f (s−1 )∗ ).
+Let π : A → B(L2 (G, H)) be the *-representation defined by (π(a)ξ)(t) =
+αt−1 (a)(ξ(t)), t ∈ G, and λ : G → B(L2 (G, H)) be the (continuous) unitary
+representation given by (λt ξ)(s) = ξ(t−1 s), s, t ∈ G. Note that
+π(αt (a)) = λt π(a)λ∗t , t ∈ G;
+
+14
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+thus, the pair (π, λ) is a covariant representation of (A, G, α) and hence gives
+rise to a *-representation π ⋊ λ : L1 (G, A) → B(L2 (G, H)) given by
+Z
+π(f (s))λs ds, f ∈ L1 (G, A).
+(π ⋊ λ)(f ) =
+G
+
+The reduced crossed product A ⋊α,r G of A by α is, by definition, the closure
+of (π ⋊ λ)(L1 (G, A)) in the operator norm of B(L2 (G, H)) [27, 7.7.4]. We
+∗
+let A ⋊w
+α,r G be the weak* closure of A ⋊α,r G.
+A bounded function F : G → B(A) will be called pointwise measurable if,
+for every a ∈ A, the map s → F (s)(a) is a weakly measurable function from
+G into A. Suppose that (ρ, τ ) is a covariant representation of the dynamical
+system (A, G, α) on the Hilbert space K. We say that F is (ρ, τ )-fiber
+continuous, if the map
+G → B(K),
+
+s → ρ(F (s)(a))τs ,
+
+is weak* continuous for every a ∈ A. We will say that F is fiber continuous
+if F is (π, λ)-fiber continuous. Note that if F is bounded and point norm
+continuous then it is pointwise measurable and fiber continuous.
+We further say that F is almost (ρ, τ )-fiber continuous if, for every ω ∈
+B(K)∗ and every a ∈ A, the function
+s → hρ(F (s)(a))τs , ωi
+coincides, up to a null set, with a continuous function. Almost (π, λ)-fiber
+continuous functions will be referred to simply as almost fiber continuous.
+For each f ∈ L1 (G, A), let F · f ∈ L1 (G, A) be the function given by
+(F · f )(s) = F (s)(f (s)), s ∈ G. It is easy to see that if F is pointwise
+measurable then F · f is weakly measurable and hence F · f ∈ L1 (G, A)
+for every f ∈ L1 (G, A); in fact, kF · f k1 ≤ kF k∞ kf k1 , where kF k∞ =
+sups∈G kF (s)k.
+Definition 3.1. A pointwise measurable function F : G → CB(A) will be
+called a Herz-Schur (A, G, α)-multiplier if the map
+SF : (π ⋊ λ)(L1 (G, A)) → (π ⋊ λ)(L1 (G, A))
+given by
+SF ((π ⋊ λ)(f )) = (π ⋊ λ)(F · f )
+is completely bounded.
+We denote by S(A, G, α) the set of all Herz-Schur (A, G, α)-multipliers.
+If F ∈ S(A, G, α) then the map SF extends to a completely bounded map
+on A ⋊r,α G. This (unique) extension will be denoted again by SF . We let
+kF km = kSF kcb .
+Remark 3.2. (i) If F1 , F2 ∈ S(A, G, α), letting F1 + F2 : G → CB(A)
+and F1 F2 : G → CB(A) be given by (F1 + F2 )(s) = F1 (s) + F2 (s) and
+(F1 F2 )(s) = F1 (s) ◦ F2 (s), we see that SF1 +F2 = SF1 + SF2 and SF1 F2 =
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+15
+
+SF1 SF2 . Thus, S(A, G, α) is an algebra with respect to the operations just
+defined.
+(ii) Recall that a bounded continuous function u : G → C is called a
+completely bounded (or Herz-Schur ) multiplier [7] of the Fourier algebra
+A(G) of G if uv ∈ A(G) for every v ∈ A(G), and the map mu : v → uv
+on A(G) is completely bounded. The space of all Herz-Schur multipliers of
+A(G) will be denoted as usual by M cb A(G). If u ∈ M cb A(G) then the dual
+Su of mu is a completely bounded (and weak* continuous) linear map on
+G
+the von Neumann algebra VN(G) of G, such that Su (λG
+t ) = u(t)λt , t ∈ G.
+∗
+Moreover, Su leaves the reduced C*-algebra Cr (G) of G invariant, and
+ Z
+Z
+u(s)f (s)λs ds, f ∈ L1 (G).
+f (s)λs ds =
+Su
+G
+
+G
+
+The reduced crossed product of C by the (unique) action α of a locally
+compact group G on C coincides with Cr∗ (G). Identifying B(C) with C in
+the natural way, we have that a bounded continuous function u : G → C is
+a Herz-Schur (C, G, α)-multiplier if and only if u is a Herz-Schur multiplier.
+(iii) Suppose that θ : A → B(K) is a faithful *-representation of A on
+a Hilbert space K. Let π θ : A → B(L2 (G, K)) be given by (π θ (a)ξ)(t) =
+θ(αt−1 (a))(ξ(t)), t ∈ G, while λθ : G → B(L2 (G, K)) be given by (λθt ξ)(s) =
+ξ(t−1 s), s, t ∈ G. Then the pair (π θ , λθ ) is a covariant representation of
+(A, G, α). Since A is assumed to be universally represented, up to a *isomorphism, K is a closed subspace of H that reduces A, π θ (a) is the
+restriction of π(a) to L2 (G, K), while λθs is the restriction of λs to L2 (G, K).
+∗
+w∗
+In the sequel, we let A⋊α,θ G = (π θ ⋊λθ )(A⋊α G) and A⋊w
+α,θ G = A ⋊α,θ G .
+By [27, Theorem 7.7.5], the closure of (π θ ⋊ λθ )(L1 (G, A)) is *-isomorphic
+to A ⋊r,α G and a pointwise measurable function F : G → CB(A) is a
+Herz-Schur (A, G, α)-multiplier if and only if the map
+
+(22)
+
+SFθ : (π θ ⋊ λθ )(f ) 7→ (π θ ⋊ λθ )(F · f )
+
+is completely bounded. Thus, Herz-Schur (A, G, α)-multipliers can be defined starting with any faithful representation of A instead of its universal
+representation.
+In the case A = C, the maps on Cr∗ (G) associated with Herz-Schur multipliers automatically have a weak* continuous extension to (completely
+bounded) maps on the weak* closure VN(G) of Cr∗ (G). Such extension
+is not ensured to exist in the general case – this motivates the following
+definition.
+Definition 3.3. Let A be a separable C*-algebra, K be a Hilbert space and
+θ : A → B(K) be a faithful *-representation. A function F : G → CB(A)
+will be called a θ-multiplier if the map
+ΦθF : π θ (a)λθt 7→ π θ (F (t)(a))λθt , t ∈ G, a ∈ A,
+∗
+
+has an extension to a bounded weak* continuous map on A ⋊w
+α,θ G.
+
+16
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+A θ-multiplier F will be called a Herz-Schur θ-multiplier if the extension
+∗
+of ΦθF to A ⋊w
+α,θ G is completely bounded.
+We note that, in Definition 3.3, we do not require the pointwise measurability of the function F . The weak* continuous extension of the map ΦθF
+therein will still be denoted by the same symbol.
+Remark 3.4. Let A be a separable C*-algebra, K be a Hilbert space and
+θ : A → B(K) be a faithful *-representation. Suppose that F : G → B(A) is
+∗
+w∗
+a bounded map and Φ : A⋊w
+α,θ G → A⋊α,θ G is a bounded weak* continuous
+map such that, for almost all t ∈ G,
+Φ(π θ (a)λθt ) = π θ (F (t)(a))λθt , a ∈ A.
+Then, for any ω ∈ B(L2 (G, K))∗ and f ∈ L1 (G, A), the function s 7→
+hπ θ (F (s)(f (s)))λθs , ωi is measurable, and
+Φ((π θ ⋊ λθ )(f )) = (π θ ⋊ λθ )(F · f ),
+
+f ∈ L1 (G, A).
+
+Proof. Let ω ∈ B(L2 (G, K))∗ and f ∈ L1 (G, A). Since the function s 7→
+hπ θ (f (s))λθs , Φ∗ (ω)i is measurable so is s 7→ hπ θ (F (s)(f (s)))λθs , ωi. We have
+
+ 
+Z
+ Z
+θ
+θ
+θ
+θ
+π (f (s))λs ds, Φ∗ (ω)
+π (f (s))λs ds , ω
+=
+Φ
+Z
+=
+hπ θ (f (s))λθs , Φ∗ (ω)ids
+Z
+=
+hΦ(π θ (f (s))λθs ), ωids
+Z
+=
+hπ θ (F (s)(f (s)))λθs , ωids
+
+Z
+θ
+θ
+π (F (s)(f (s)))λs ds, ω
+=
+= h(π θ ⋊ λθ )(F · f ), ωi.
+
+The claim follows.
+
+
+
+Lemma 3.5. Let θ be a faithful *-representation of A on a Hilbert space K.
+Let F : G → CB(A) be a pointwise measurable map for which there exists
+C > 0 such that
+(23)
+
+k(π θ ⋊ λθ )(F · f )k ≤ Ck(π θ ⋊ λθ )(f )k,
+
+f ∈ L1 (G, A).
+
+For ω ∈ B(L2 (G, K))∗ , let gω (s) = hπ θ (F (s)(a))λθs , ωi, s ∈ G. Then gω
+coincides with an element of Bλ (G) up to a null set.
+Proof. Let π̃ θ be the *-representation of A on L2 (G, K) ⊗ L2 (G) given by
+π̃ θ (a) = π θ (a) ⊗ IL2 (G) , a ∈ A. It is easy to see that the pair (π̃ θ , λθ ⊗ λG )
+is a covariant representation. We first establish the following:
+Claim. The representation π̃ θ ⋊(λθ ⊗λG ) is unitarily equivalent to a direct
+sum of copies of the representation π θ ⋊ λθ .
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+17
+
+Proof of the Claim. Let U1 : L2 (G)⊗L2 (G) → L2 (G, L2 (G)) be the unitary
+operator given by
+2
+U1 (ξ ⊗ η)(s) = ξ(s)λG
+s−1 η, ξ, η ∈ L (G).
+
+Let (ηi )i∈I be an orthonormal basis for L2 (G) and let L2 (G)I be the direct
+sum of I-copies of L2 (G). Let U2 : L2 (G, L2 (G)) → L2 (G)I be the operator
+given by
+U2 f = (gi )i∈I , where gi (s) = hf (s), ηi i, s ∈ G.
+It is easy to see that U2 is a unitary operator. Set U = U2 U1 ; thus, U is a
+unitary operator from L2 (G) ⊗ L2 (G) onto L2 (G)I . For an operator T on
+L2 (G), we shall denote by T ∞ its ampliation on L2 (G)I , given by
+T ∞ (ξi )i∈I = (T ξi )i∈I .
+In what follows we will use some natural identifications: of K⊗L2 (G)⊗L2 (G)
+with L2 (G, K) ⊗ L2 (G), of L2 (G, K)I with L2 (G, K I ), and of K ⊗ L2 (G)I
+with L2 (G, K)I , the latter being given by ξ ⊗ (ξi )∈I → (ξ̃i )i∈I , where ξ˜i (s) =
+ξi (s)ξ
+Let ξ1 ∈ K, ξ2 , ξ3 ∈ L2 (G), a ∈ A and t ∈ G. Let ζi be the function given
+by ζi (s) = ξ2 (s)hξ3 , λG
+s ηi i, s ∈ G. For almost all s ∈ G we have
+G
+(IK ⊗ U )π̃ θ (a)(ξ1 ⊗ λG
+t ξ2 ⊗ λt ξ3 )(s)
+G
+G
+= (θ(αs−1 (a))ξ1 (λG
+t ξ2 )(s)hλs−1 λt ξ3 , ηi i)i∈I
+G
+= (θ(αs−1 (a))ξ1 (λG
+t ξ2 )(s)hξ3 , λt−1 s ηi i)i∈I
+
+= (θ(αs−1 (a))ξ1 λG
+t ζi (s))i∈I
+= π θ (a)∞ (λθt (ξ1 ⊗ ζi )(s))i∈I
+= π θ (a)∞ ((λθt ⊗ IL2 (G) )(IK ⊗ U )ξ1 ⊗ ξ2 ⊗ ξ3 ))(s).
+The calculations imply
+(IK ⊗ U )(π̃ θ ⋊ (λθ ⊗ λG ))(f ) = (π θ ⋊ λθ (f ))∞ (IK ⊗ U ), f ∈ L1 (G, A),
+and the Claim is proved.
+Fix ω ∈ B(L2 (G, H))∗ and write g = gω . Let v ∈ Bλ (G) and w be the
+linear functional on {λG (f ) : f ∈ L1 (G)} given by
+Z
+G
+f (s)g(s)v(s)ds.
+w(λ (f )) =
+G
+
+Let f ∈ L1 (G), a ∈ A and f˜(s) = f (s)a, s ∈ G; clearly, f˜ ∈ L1 (G, A). Fix
+ξ, η ∈ L2 (G) and let ωξ,η ∈ B(L2 (G))∗ be the vector functional given by
+
+18
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+ωξ,η (T ) = hT ξ, ηi, T ∈ B(L2 (G)). Then
+Z
+f (s)hπ θ (F (s)(a))λθs , ωihλG
+hλG (f g)ξ, ηi =
+s ξ, ηids
+G
+
+Z
+θ
+θ
+G
+˜
+(π (F (s)(f (s))) ⊗ IL2 (G) )(λs ⊗ λs )ds, ω ⊗ ωξ,η
+=
+G
+
+Z
+θ
+θ
+G
+˜
+(π̃ (F (s)(f (s))))(λs ⊗ λs )ds, ω ⊗ ωξ,η
+=
+G
+θ
+
+= hπ̃ ⋊ (λθ ⊗ λG )(F · f˜), ω ⊗ ωξ,η i.
+
+Using the Claim, we have
+kλG (f g)k ≤ kωkkπ̃ θ ⋊ (λθ ⊗ λG )(F · f˜)k = kωkk(π θ ⋊ λθ )(F · f˜)k.
+R
+As (π θ ⋊ λθ )(F · f˜) = f (s)π θ (F (s)(a))λθs ds, using (23), we have
+
+kw(λG (f )k ≤ kvkBλ (G) kλG (f g)k ≤ CkωkkvkBλ (G) k(π θ ⋊ λθ )(f˜)k
+Z
+θ
+≤ CkωkkvkBλ (G) π (a) f (s)λθs ds
+Z
+θ
+≤ CkωkkvkBλ (G) kπ (a)k
+f (s)λθs ds
+≤ CkωkkvkBλ (G) kπ θ (a)kkλθ (f )k
+
+= CkωkkvkBλ (G) kπ θ (a)kkλG (f )k.
+R
+Hence, there exists z ∈ Bλ (G) such that ω(λG (f )) = f (s)z(s)ds, f ∈
+L1 (G). It follows that z = vg almost everywhere. As this holds for any
+v ∈ Bλ (G), we have that g is almost everywhere equal to a function from
+Bλ (G) (see [7, Proposition 1.2]).
+
+Remark 3.6. For ω ∈ B(L2 (G, K))∗ , let gω (s) = hπ θ (F (s)(a))λθs , ωi and
+let bω ∈ Bλ (G) be such that bω = gω almost everywhere. If G is second
+countable and K is separable, then under the assumption of the previous
+lemma there exists a null subset N ⊆ G such that gω (t) = bω (t) for any t ∈
+G\N and ω ∈ B(L2 (G, K))∗ . Indeed, in this case we have that B(L2 (G, K)∗
+is separable. Let {ωn : n ∈ N} be a dense subset of B(L2 (G, K)∗ and a ∈ A.
+Let Nn ⊆ G be a null set such that gωn (s) = bωn (s) for all s ∈ G \ Nn , and
+N = ∪n∈N Nn . Clearly, N is a null set. If ω ∈ B(L2 (G, K)∗ , let {ωn(k) }k
+be a subsequence converging to ω in norm. Then {bωn(k) }k is a Cauchy
+sequence of bounded continuous functions: letting C = kωk sups∈G kF (s)k,
+given ε > 0 there exists L ∈ N such that for any l, k > L, we have
+|bωn(k) (t) − bωn(l) (t)| = |gωn(k) (t) − gωn(l) (t)| ≤ Ckωn(k) − ωn(l) k ≤ Cε,
+whenever t ∈ G \ N . As bωn(k) is continuous, |bωn(k) (t) − bωn(l) (t)| < Cε
+for every t ∈ G. Thus, the sequence {bωn(k) }k converges to a continuous
+function, say b. On the other hand, bωn(k) (t) → gω (t) whenever t ∈ G \ N .
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+19
+
+Therefore gω (t) = b(t) for t ∈ G \ N . As bω and b are continuous, and
+bω = gω almost everywhere, we have b = bω , giving the statement.
+For the rest of the section we will assume that G is a second countable
+locally compact group. In this case, the measure space (G, m) is standard.
+If t ∈ G, let us call a Dirac family at t a net (fU )U ⊆ L1 (G) consisting of
+non-negative functions, indexed by the directed set of all open neighbourhoods of t with compact closure, with supp fU ⊆ U and kfU k1 = 1.
+Lemma 3.7. Let (A, G, α) be a C*-dynamical system, F be a Herz-Schur
+(A, G, α)-multiplier, and θ be a faithful *-representation of A on a separable
+Hilbert space K. Then there exists a null set N ⊆ G such that if t ∈ G \ N
+and (fU )U is a Dirac family at t then
+SFθ ((π θ ⋊ λθ )(fU ⊗ a)) →U π θ (F (t)(a))λθt
+in the weak* topology, for every a ∈ A.
+Proof. Let a ∈ A. By Lemma 3.5 and Remark 3.6 there exists a null set
+N ⊆ G such that for any ξ, η ∈ L2 (G, H) there exists a continuous function
+bξ,η : G → C such that
+hπ θ (F (s)(a))λθs ξ, ηi = bξ,η (s)
+
+for all s ∈ G \ N.
+
+Fix ξ, η ∈ L2 (G, H). For t ∈ G \ N , set
+CU = sup |bξ,η (s) − bξ,η (t)|.
+s∈U
+
+Since bξ,η is continuous, CU →U 0. We have
+hSFθ ((π θ ⋊ λθ )(fU ⊗ a))ξ, ηi − hπ θ (F (t)(a))λθt ξ, ηi
+Z
+Z
+hπ θ (F (s)(a))fU (s)λθs ξ, ηids − hπ θ (F (t)(a))fU (s)λθt ξ, ηids
+=
+Z
+≤
+fU (s)|hπ θ (F (s)(a))λθs ξ, ηi − hπ θ (F (t)(a))λθt ξ, ηi|ds
+Z
+Z
+=
+fU (s)|bξ,η (s) − bξ,η (t)|ds ≤ CU fU (s)ds = CU −→ U 0.
+
+The statement follows from the fact that the weak operator topology and
+the weak* topology coincide on bounded sets.
+
+If ϕ : G × G → CB(A) is a bounded pointwise measurable function, let
+T (ϕ) : G × G → CB(A) be the function given by
+T (ϕ)(s, t)(a) = αt (ϕ(s, t)(αt−1 (a))),
+
+a ∈ A.
+
+It is easy to see that, for each a ∈ A, the function (s, t) → T (ϕ)(s, t)(a)
+from G × G into A is bounded and weakly measurable. The inverse T −1
+of T is given by T −1 (ϕ)(s, t)(a) = αt−1 (ϕ(s, t)(αt (a))), a ∈ A. For a map
+F : G → CB(A), let N (F ) : G × G → CB(A) be the function given by
+N (F )(s, t) = F (ts−1 ),
+
+20
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+and
+N (F ) = T −1 (N (F ));
+thus, N (F ) : G × G → CB(A) is the function given by
+N (F )(s, t)(a) = αt−1 (F (ts−1 )(αt (a))),
+
+a ∈ A, s, t ∈ G.
+
+Note that if F is pointwise measurable then so is N (F ).
+The next theorem is a dynamical system version of the well-known description of Herz-Schur multipliers in terms of Schur multipliers [5]. Recall
+that, given a map ϕ : X × Y → CB(A) and a faithful *-representation θ of
+A, we let ϕθ : X × Y → CB(θ(A)) be the map given by ϕθ (x, y)(θ(a)) =
+θ(ϕ(x, y)(a)), a ∈ A. Note that, if ϕ is pointwise measurable then so is ϕθ .
+Theorem 3.8. Let (A, G, α) be a C*-dynamical system and F : G → CB(A)
+be a pointwise measurable map. The following are equivalent:
+(i) F is a Herz-Schur (A, G, α)-multiplier;
+(ii) N (F ) is a Schur A-multiplier.
+Moreover, if (i) holds then kF km = kN (F )kS .
+Proof. (i)⇒(ii) Suppose that F is a Herz-Schur (A, G, α)-multiplier and let
+θ be a faithful *-representation of A on a separable Hilbert space H ′ . By
+the Haagerup-Paulsen-Wittstock Theorem, there exist a separable Hilbert
+space K, a *-representation ρ : A ⋊α,θ G → B(K) and operators V, W :
+L2 (G, H ′ ) → K such that
+(24)
+
+SFθ (T ) = W ∗ ρ(T )V,
+
+T ∈ A ⋊α,θ G,
+
+and kSF kcb = kV kkW k. Let A ⋊α G be the full crossed product of A by
+α, q : A ⋊α G → A ⋊α,θ G be the quotient map and ρ̃ = ρ ◦ q; thus,
+ρ̃ : A ⋊α G → B(K) is a *-representation. Let ρA : A → B(K) be a
+*-representation and ρG : G → B(K) be a strongly continuous unitary
+representation such that ρ̃ = ρA ⋊ ρG . For f ∈ L1 (G, A), we have
+Z
+ρ̃(f ) = ρA (f (s))ρG (s)ds.
+Setting T = (π θ ⋊ λθ )(f ) in equation (24), we have
+Z
+
+Z
+θ
+θ
+∗
+(25)
+π (F (s)(f (s)))λs ds = W
+ρA (f (s))ρG (s)ds V.
+
+Standard arguments show that, if a ∈ A and (fU )U is a Dirac family at the
+point t ∈ G, then
+Z
+(26)
+ρA ((fU ⊗ a)(s))ρG (s)ds −→ U ρA (a)ρG (t)
+
+in the weak operator topology. Taking f = fU ⊗ a in (25) and using Lemma
+3.7, we obtain a null set N such that
+(27)
+
+π θ (F (t)(a))λθt = W ∗ ρA (a)ρG (t)V, for all t ∈ G \ N.
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+21
+
+For s and t in G, let α(s), β(t) ∈ B(L2 (G, H ′ ), K) be given by
+α(s) = ρG (s−1 )V λθs , β(t) = ρG (t−1 )W λθt ;
+then for every ξ ∈ L2 (G, H ′ ), the functions s → α(s)ξ and s → β(s)ξ are
+weakly continuous and hence α and β belong to L∞ (G, B(L2 (G, H ′ ), K)).
+Using (27), for all (s, t) ∈ G × G with ts−1 ∈ G \ N , we obtain
+β(t)∗ ρA (a)α(s) = λθt−1 W ∗ ρG (t)ρA (a)ρG (s−1 )V λθs
+= λθt−1 W ∗ ρA (αt (a))ρG (ts−1 )V λθs
+= λθt−1 π θ (F (ts−1 )(αt (a)))λθts−1 λθs
+= π θ (αt−1 (F (ts−1 )(αt (a))) = π θ (N (F )(s, t)(a)).
+As {(s, t) : ts−1 ∈ N } is a null set for the product measure m × m, by
+Theorem 2.6, N (F ) is a Schur A-multiplier. Moreover,
+esssup kα(s)k = kV k and esssup kβ(t)k = kW k
+s∈G
+
+t∈G
+
+and hence
+(28)
+
+kN (F )kS ≤ kV kkW k = kF km .
+
+(ii)⇒(i) Let θ : A → B(H ′ ) be a faithful *-representation, where H ′ is a
+def
+
+separable Hilbert space. Suppose that ϕ = N (F )θ is a Schur A-multiplier.
+Fix f ∈ Cc (G, A). For ξ ∈ L2 (G, H ′ ), for almost all t ∈ G we have
+Z
+(π θ ⋊ λθ )(f )ξ(t) =
+π θ (f (s))λθs ξ(t)ds
+Z
+=
+θ(αt−1 (f (s)))(λθs ξ(t))ds
+Z
+=
+θ(αt−1 (f (s)))(ξ(s−1 t))ds
+Z
+=
+∆(r)−1 θ(αt−1 (f (tr −1 )))(ξ(r))dr.
+Fix a compact set K ⊆ G. Then the function
+
+(29)
+
+hK : (t, r) → χK×K (t, r)∆(r)−1 θ(αt−1 (f (tr −1 )))
+
+belongs to L2 (G × G, θ(A)). Note that
+(30)
+
+ThK = (MχK ⊗ IH ′ )(π θ ⋊ λθ )(f )(MχK ⊗ IH ′ ).
+
+We have
+ϕ · hK (t, r) = χK×K (t, r)∆(r)−1 θ(αt−1 (F (tr −1 )(αt (αt−1 (f (tr −1 ))))
+= χK×K (t, r)∆(r)−1 θ(αt−1 (F (tr −1 )(f (tr −1 )))).
+Let ξ, η ∈ L2 (G, H ′ ) have compact support and (Kn )∞
+n=1 be an increasing
+K
+(such
+a sequence exists
+sequence of compact sets such that G = ∪∞
+n
+n=1
+
+22
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+since G is second countable and hence σ-compact). Then
+(31)
+Z
+hSϕ (ThKn )ξ, ηi =
+
+Kn ×Kn
+
+∆(r)−1 hθ(αt−1 (F (tr −1 )(f (tr −1 ))))ξ(r), η(t)idrdt.
+
+On the other hand,
+|∆(r)−1 hθ(αt−1 (F (tr −1 )(f (tr −1 ))))ξ(r), η(t)i|
+≤ ∆(r)−1 kF k∞ kf (tr −1 )kkξ(r)kkη(t)k,
+while
+Z
+
+∆(r)−1 kf (tr −1 )kkξ(r)kkη(t)kdrdt = hf ′ ∗ ξ ′ , η ′ i,
+
+G×G
+′
+′
+where f , ξ , η ′ : G → R are the functions given by f ′ (s) = kf (s)k, ξ ′ (s) =
+
+kξ(s)k and η ′ (s) = kη(s)k, s ∈ G. Thus, an application of the Lebesgue
+Dominated Convergence Theorem shows that the right hand side of (31)
+converges to
+Z
+∆(r)−1 hθ(αt−1 (F (tr −1 )(f (tr −1 ))))ξ(r), η(t)idrdt = h(π θ ⋊ λθ )(F ·f ))ξ, ηi;
+thus,
+(32)
+
+lim hSϕ (ThKn )ξ, ηi = h(π θ ⋊ λθ )(F · f )ξ, ηi.
+
+n→∞
+
+By (30), ThKn →n→∞ (π θ ⋊ λθ )(f ) in the weak* topology. It follows that
+|h(π θ ⋊ λθ )(F · f ))ξ, ηi| ≤ lim sup |hSϕ (ThKn )ξ, ηi|
+n∈N
+
+≤ kϕkS kξkkηk lim sup kThKn k
+n∈N
+θ
+
+≤ kϕkS kξkkηkk(π ⋊ λθ )(f )k.
+Thus,
+k(π θ ⋊ λθ )(F · f ))k ≤ kϕkS k(π θ ⋊ λθ )(f )k,
+and hence the map SFθ is bounded. Similar arguments show that, in fact,
+SFθ is completely bounded and kSFθ kcb ≤ kϕkS . By Remark 3.2 (iii), F is a
+Herz-Schur multiplier and
+kF km ≤ kN (F )kS .
+The last inequality and (28) show that kF km = kN (F )kS and the proof is
+complete.
+
+Remark 3.9. In the case A = C, Theorem 3.8 reduces to the classical
+transference theorem for Herz-Schur multipliers [5]: a continuous function
+u : G → C is a Herz-Schur multiplier of A(G) if and only if N (u) is a Schur
+multiplier on G × G.
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+23
+
+Corollary 3.10. Let θ be a faithful *-representation of A on a separable
+Hilbert space and F : G → CB(A) be a pointwise measurable function. The
+following are equivalent:
+(i) F is a Herz-Schur multiplier such that SFθ can be extended to a weak*
+∗
+continuous map on A ⋊w
+α,θ G;
+(ii) there exists a weak* continuous completely bounded linear map Φ on
+∗
+A ⋊w
+α,θ G such that for almost all t ∈ G
+(33)
+
+Φ(π θ (a)λθt ) = π θ (F (t)(a))λθt ,
+
+a ∈ A.
+
+In particular, (i) holds true if N (F ) is a Schur θ-multiplier.
+Proof. (i)⇒(ii) Suppose that F : G → CB(A) is a Herz-Schur multiplier
+∗
+and let Φ be the (unique) weak* continuous extension of SFθ to A ⋊w
+α,θ G.
+By Lemma 3.7, there exists a null set N ⊆ G such that, if (fU )U is a Dirac
+family at t ∈ G \ N then, for every a ∈ A,
+Φ((π θ ⋊ λθ )(fU ⊗ a)) →U π θ (F (t)(a))λθt ,
+while, as can be easily checked,
+(π θ ⋊ λθ )(fU ⊗ a) →U π θ (a)λθt
+(both limits are in the weak operator topology). It follows that (33) holds
+for all t ∈ G \ N .
+(ii)⇒(i) By Remark 3.4, if f ∈ L1 (G, A), then
+ Z
+Z
+θ
+θ
+π θ (F (t)(f (t)))λθt dt,
+π (f (t))λt dt =
+Φ
+G
+
+G
+
+i.e. Φ is a weak* continuous extension of SFθ . Since Φ is completely bounded,
+Remark 3.2 (iii) implies that F ∈ S(G, A, α).
+Suppose that the map SN (F )θ has a weak* continuous extension to a map
+′′ . By the proof of Theorem 3.8, if G = ∪∞ K , where
+¯
+on B(L2 (G))⊗θ(A)
+n=1 n
+Kn is an increasing sequence of compact subsets of G, f ∈ Cc (G, A) and ThK
+is the operator with the kernel hK given by (29), then ThKn → (π θ ⋊ λθ )(f )
+in the weak* topology. As SN (F )θ has a weak* continuous extension, we
+have
+hSN (F )θ (ThKn )ξ, ηi → hSN (F )θ ((π θ ⋊ λθ )(f ))ξ, ηi,
+
+ξ, η ∈ L2 (G, H ′ ).
+
+On the other hand, by (32),
+hSN (F )θ (ThKn )ξ, ηi → hSFθ (π θ ⋊ λθ (f ))ξ, ηi.
+Thus, SFθ is the restriction of SN (F )θ to A ⋊α,θ G, and hence SFθ possesses a
+∗
+weak* continuous extension to A ⋊w
+
+α,θ G.
+Remark 3.11. We remark that if in Corollary 3.10 we assume also that
+F : G → CB(A) is (π θ , λθ )-fiber continuous then condition (ii) is equivalent
+
+24
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+to F being a Herz-Schur θ-multiplier. Therefore, in this case, F is a HerzSchur θ-multiplier if and only if F is a Hez-Schur multiplier such that SFθ
+∗
+possesses a weak*-continuous extension to A ⋊w
+α,θ G.
+Corollary 3.12. Let θ be a faithful *-representation of A on a separable
+Hilbert space and F : G → CB(A) be a Herz-Schur θ-multiplier. Then
+supt∈G kF (t)kcb ≤ kF km .
+Proof. Immediate from Corollary 3.10 and the fact that λθs and π θ are isometries.
+
+An equivariant representation of the dynamical system (A, G, α) on a
+Hilbert A-module N is a pair (ρ, τ ), where ρ : A → L(N ) is a *-representation
+of A on N and τ is a homomorphism from G into the group I(N ) of all
+C-linear, invertible, bounded maps on N , which satisfy:
+(1) ρ(αs (a)) = τ (s)ρ(a)τ (s)−1 for all s ∈ G and a ∈ A;
+(2) αs (hξ, ηiA ) = hτ (s)ξ, τ (s)ηiA , for all s ∈ G and ξ, η ∈ N ;
+(3) τ (s)(ξ · a) = (τ (s)ξ) · a, for all s ∈ G, ξ ∈ N and a ∈ A;
+(4) the map s 7→ τ (s)ξ is continuous for every ξ ∈ N .
+This definition was given in [2] for discrete twisted dynamical systems. An
+example of such an equivariant representation can be obtained as follows.
+Let
+G
+HA
+= {ξ : G → A : ξ(·)∗ ξ(·) ∈ L1 (G, A)}.
+G is a Hilbert A-module with respect to the right action given
+We have that HA
+R
+by (ξ·a)(s) := ξ(s)a and the inner product given by hξ, ηiA = G ξ(s)∗ η(s)ds.
+G is the pair (ρ, τ )
+The regular equivariant representation of (A, G, α) on HA
+given by
+ρ(a)ξ(h) = aξ(h), (τ (t)ξ)(s) = αt (ξ(t−1 s)).
+It is easy to check that (ρ, τ ) satisfies the conditions (1)-(4).
+The following corollary was proved in [2, Theorem 4.8] for discrete dynamical systems using different arguments.
+Corollary 3.13. Let (ρ, τ ) be an equivariant representation of (A, G, α) on
+a countably generated Hilbert A-module N , and let ξ, η ∈ N . Define
+F (t)(a) = hξ, ρ(a)τ (t)ηiA ,
+
+t ∈ G, a ∈ A.
+
+Then F is a Herz-Schur (A, G, α)-multiplier.
+Proof. By Theorem 3.8, it suffices to show that N (F ) is a Schur A-multiplier.
+We have
+N (F )(s, t)(a) = αt−1 (F (ts−1 )(αt (a))) = αt−1 (hξ, ρ(αt (a))τ (ts−1 )ηiA )
+= hτ (t−1 )ξ, τ (t)−1 ρ(αt (a))τ (t)τ (s−1 )ηiA
+= hτ (t−1 )ξ, ρ(a)τ (s−1 )ηiA
+As
+kτ (t)ξk2 = khτ (t)ξ, τ (t)ξiA k = kαt (hξ, ξiA )k = khξ, ξiA k = kξk2
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+for all t ∈ G, the statement follows from Theorem 2.7.
+
+25
+
+
+
+We next identify the Schur multipliers of the form N (F ) as the “invariant”
+part of S0 (G, G; A). Let ρ be the right regular representation of G on L2 (G),
+i.e. (ρr ξ)(s) = ∆(r)1/2 ξ(sr), ξ ∈ L2 (G), s, r ∈ G. Let α̃r = (Adρr ) ⊗ αr ,
+where, as usual, AdU is the map given by AdU (T ) = U T U ∗ ; we have that
+α̃r is a *-automorphism of K(L2 (G)) ⊗ A [16, Theorem 11.2.9].
+Definition 3.14. A Schur A-multiplier ϕ : G × G → CB(A) will be called
+invariant if Sϕ commutes with α̃r for every r ∈ G.
+We denote by Sinv (G, G; A) the set of all invariant Schur A-multipliers.
+If w is a (possibly vector-valued) function defined on G × G, for r ∈ G, we
+let wr be the function given by wr (s, t) = w(sr, tr).
+Lemma 3.15. If k ∈ L2 (G × G, A) then α̃r (Tk ) = Tk̃ , where k̃ ∈ L2 (G ×
+G, A) is given by k̃(t, s) = ∆(r)αr (kr (t, s)), s, t ∈ G.
+Proof. First note that if k ∈ L2 (G × G, A) then k̃ ∈ L2 (G × G, A) and
+kk̃k2 = kkk2 ;
+
+(34)
+indeed,
+kk̃k2 =
+Let
+
+Z
+
+∆2 (r)kαr (k(tr, sr))k2 dtds =
+
+Z
+
+kk(t′ , s′ )k2 dt′ ds′ .
+
+Θ, Θ′ : L2 (G × G, A) → B(L2 (G, H))
+be the maps defined by
+Θ(k) = Tk̃ ,
+
+Θ′ (k) = α̃r (Tk ).
+
+By Lemma 2.1 and (34), Θ and Θ′ are continuous.
+Suppose that k ∈ L2 (G×G, A) is given by k = h⊗a, where h ∈ L2 (G×G)
+and a ∈ A. As ρ∗r ξ(s) = ∆(r)−1/2 ξ(sr −1 ), ξ ∈ L2 (G), s ∈ G, we have
+Z
+∗
+1/2
+∗
+1/2
+(ρr Th ρr ξ)(s) = ∆(r) (Th ρr )ξ(sr) = ∆(r)
+h(sr, x)(ρ∗r ξ)(x)dx
+Z
+Z
+−1
+=
+h(sr, x)ξ(xr )dx = h(sr, yr)ξ(y)∆(r)dy,
+
+that is, ρr Th ρ∗r = Th̃r , where h̃r (t, s) = ∆(r)h(tr, sr), s, t ∈ G. Thus,
+α̃r (Tk ) = α̃r (Th ⊗ a) = Th̃r ⊗ αr (a),
+
+and so Θ′ (k) = Θ(k). As h and a vary, the functions k span a dense subspace
+of L2 (G × G, A), and hence Θ = Θ′ by continuity.
+
+In the proof of Theorem 3.18 below, we will need the following improvement of [41, Lemma 3.9].
+
+26
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+Lemma 3.16. Let X be a separable Banach space and w : G × G → B(X )
+be a bounded function, such that, for every a ∈ X , the function (s, t) →
+w(s, t)(a) is weakly measurable, and wr = w almost everywhere, for every
+r ∈ G. Then there exists a bounded function u : G → B(X ) such that, for
+every a ∈ X , the function s → u(s)(a) is measurable and, up to a null set,
+w = N (u).
+Proof. The map φ : G×G → G×G, given by φ(y, x) = (y, xy), is continuous
+(and hence measurable) and bijective, and Fubini’s Theorem shows that it
+preserves null sets in both directions. By assumption, for all r ∈ G, we have
+that wr (s, x) = w(s, x) for almost all (s, x) ∈ G × G. Thus, wr (φ(s, x)) =
+w(φ(s, x)) for almost all (s, x) ∈ G × G, that is, w(sr, xsr) = w(s, xs) for
+almost all (x, s) ∈ G × G. We claim that w(sr, xsr) = w(s, xs) for almost
+all (x, s, r) ∈ G × G × G. In fact, let S ⊆ X be a countable dense subset.
+For every a ∈ S, we have
+Z
+kw(sr, xsr)(a) − w(s, xs)(a)kdxdsdr
+G×G×G
+
+Z Z
+kw(sr, xsr)(a) − w(s, xs)(a)kdxds dr = 0.
+=
+G
+
+G×G
+
+Thus, there exists a null set Na ⊆ G × G × G such that w(sr, xsr)(a) =
+w(s, xs)(a) for all (x, s, r) 6∈ Na . Let N = ∪a∈S Na . Then w(sr, xsr)(a) =
+w(s, xs)(a) for all (x, s, r) 6∈ N and all a ∈ S. Since w(sr, xsr) and w(s, xs)
+are bounded operators on X , we conclude that w(sr, xsr) = w(s, xs) for all
+(x, s, r) 6∈ N . Thus, there exists s0 ∈ G such that
+(35)
+
+w(s0 r, xs0 r) = w(s0 , xs0 ), for almost all (x, r) ∈ G × G.
+
+For each x ∈ G, let u(x) = w(s0 , xs0 ). Clearly, u : G → B(X ) is a bounded
+function such that, for every a ∈ X , the function x → u(x)(a) is weakly
+measurable. Now (35) implies that w(y, xy) = u(x) for almost all (x, y) ∈
+G × G. Letting ũ : G × G → X be the map given by ũ(s, t) = u(t), we
+thus have that w(y, xy) = ũ(y, x) for almost all (x, y) ∈ G × G. It follows
+that w(φ−1 (y, xy)) = ũ(φ−1 (y, x)) for almost all (x, y) ∈ G × G, that is,
+w(y, x) = u(xy −1 ) for almost all (x, y) ∈ G × G. The proof is complete. 
+Lemma 3.17. Let ϕ ∈ S0 (G, G; A). The following are equivalent:
+(i) ϕ is an invariant Schur A-multiplier;
+(ii) T (ϕ)r = T (ϕ) almost everywhere, for every r ∈ G.
+Proof. Assume that A is faithfully represented on a separable Hilbert space.
+(i)⇒(ii) Let r ∈ G, a ∈ A and k ∈ L2 (G × G). By Lemma 3.15, (Sϕ ◦
+α̃r )(Tk ⊗ a) = Tk1 , where k1 : G × G → A is the function given by
+k1 (t, s) = ∆(r)k(tr, sr)ϕ(s, t)(αr (a)),
+
+s, t ∈ G,
+
+and (α̃r ◦ Sϕ )(Tk ⊗ a) = Tk2 , where k2 : G × G → A is the function given by
+k2 (t, s) = ∆(r)k(tr, sr)αr (ϕ(sr, tr)(a)),
+
+s, t ∈ G.
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+27
+
+By Lemma 2.1, k1 = k2 almost everywhere, and hence
+ϕ(sr, tr)(a) = αr−1 (ϕ(s, t)(αr (a))),
+for almost all (s, t) ∈ G × G. Thus, for every a ∈ A,
+T (ϕ)(sr, tr)(a) = αtr (ϕ(sr, tr)(αr−1 t−1 (a)))
+= αtr (αr−1 (ϕ(s, t)(αr (αr−1 t−1 (a))))
+= αt (ϕ(s, t)(αt−1 (a))) = T (ϕ)(s, t)(a)
+for almost all (s, t) ∈ G × G. Since A is separable, we conclude that
+T (ϕ)(sr, tr) = T (ϕ)(s, t) for almost all (s, t) ∈ G × G.
+(ii)⇒(i) follows by reversing the steps in the previous paragraph and using
+the density in K(L2 (G)) ⊗ A of the linear span of the operators of the form
+Tk ⊗ a, with k ∈ L2 (G × G) and a ∈ A.
+
+Theorem 3.18. The map N is a linear isometry from S(A, G, α) onto
+Sinv (G, G; A).
+Proof. By Theorem 3.8, the map N is a linear isometry from S(A, G, α) into
+S0 (G, G; A). By the definition of N , we have that T (N (F ))r = T (N (F ))
+almost everywhere for every r ∈ G and every F ∈ S(A, G, α). By Lemma
+3.17, the image of N is in Sinv (G, G; A).
+It remains to show that N is surjective. To this end, let θ be a faithful
+*-representation of A on a separable Hilbert space K; we identify A with its
+image θ(A) under θ and let ϕ ∈ Sinv (G, G; A). By Lemmas 3.17 and 3.16,
+there exists a bounded function F : G → B(A) such that N (F ) = T (ϕ)
+almost everywhere and such that, for every a ∈ A, the function s → F (s)(a),
+is weakly measurable. It follows that N (F ) = ϕ almost everywhere. Since
+ϕ(x, y) is completely bounded for all (x, y), we have that F (s) ∈ CB(A) for
+all s ∈ G. As ϕ is a Schur A-multiplier, it follows from the proof of Theorem
+3.8 that the map (π θ ⋊ λθ )(f ) → (π θ ⋊ λθ )(F · f ) on (π θ ⋊ λθ )(L1 (G, A)) is
+completely bounded. By Remark 3.2 (iii), F ∈ S(A, G, α).
+
+We now consider bounded, as opposed to completely bounded, multipliers,
+and use them to characterise Herz-Schur θ-multipliers in the spirit of [7] in
+Proposition 3.19 below. Let Γ be a a locally compact group. For a function
+F : G → CB(A), let F Γ : Γ × G → CB(A) be given by F Γ (x, s) = F (s),
+x ∈ Γ, s ∈ G. If α is an action of G on A, we let αΓ : Γ × G → Aut(A)
+be given by αΓ(x,s) (a) = αs (a), a ∈ A, x ∈ Γ, s ∈ G. We have the following
+characterisation of Herz-Schur θ-multipliers, similar to [7, Theorem 1.6].
+Proposition 3.19. Let F : G → CB(A) and θ : A → B(K) be a faithful
+*-representation. The following are equivalent:
+(i) F is a Herz-Schur θ-multiplier;
+(ii) for each locally compact group Γ, the function F Γ is a θ-multiplier;
+(iii) for Γ = SU (2), the function F Γ is a θ-multiplier.
+
+28
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+Proof. Let π Γ,θ : A → B(L2 (Γ × G, K)) be the *-representation given by
+π Γ,θ (a)ξ(x, t) = αΓ(x−1 ,t−1 ) (a)(ξ(x, t)). Identifying the Hilbert space L2 (Γ ×
+G, K) with L2 (Γ) ⊗ L2 (G, K) in the natural way, we see that
+π Γ,θ (a) = IL2 (Γ) ⊗ π θ (a),
+
+a ∈ A.
+
+On the other hand,
+λθ(x,t) = λΓx ⊗ λθt ,
+
+x ∈ Γ, t ∈ G.
+
+Suppose that f ∈ L1 (Γ × G, A) has the form f (x, s) = g(x)h(s), where
+f ∈ L1 (Γ) and h ∈ L1 (G, A). We have
+Z
+Z
+Γ,θ
+θ
+(g(x)IL2 (Γ) ⊗ π θ (f (s)))(λΓx ⊗ λθs )dxds
+π (f (x, s))λ(x,s) dxds =
+Γ×G
+Γ×G
+
+ Z
+Z
+θ
+θ
+Γ
+(36)
+π (f (s))λs ds .
+g(x)λx dx ⊗
+=
+G
+
+Γ
+
+Thus,
+(37)
+
+∗
+
+∗
+
+w
+¯
+A ⋊w
+αΓ ,θ (Γ × G) = VN(Γ)⊗(A ⋊α,θ G).
+
+(i)⇒(ii) Suppose that F : G → CB(A) is a Herz-Schur θ-multiplier. Since
+∗
+θ
+θ
+θ
+θ
+θ
+the map ΦθF on A ⋊w
+α,θ G, given by ΦF (π (a)λt ) = π (F (t)(a))λt , is completely bounded and weak* continuous, id ⊗ΦθF is a (completely) bounded
+∗
+¯
+map on VN(Γ)⊗(A
+⋊w
+α,θ G) (see e.g. [7, Lemma 1.5]). Moreover,
+(38)
+
+π θ,Γ (F Γ (a))λθ(x,s) = (id ⊗ΦθF )(π θ,Γ (a)λθ(x,s) ).
+
+It follows that the map ΦθF Γ : π θ,Γ (a)λθ(x,s) → π θ,Γ (F Γ (a))λθ(x,s) extends to a
+∗
+(Γ × G); in other words, F Γ is
+bounded weak* continuous map on A ⋊w
+αΓ ,θ
+a θ-multiplier.
+(ii)⇒(iii) is trivial.
+(iii)⇒(i) We have that VN(SU (2)) ≡ ⊕n∈N Mn , where Mn is the n by n
+matrix algebra. Hence
+
+
+∗
+w∗
+∞
+¯
+VN(SU (2))⊗(A
+⋊w
+α,θ G) ≡ ⊕n=1 Mn ⊗ (A ⋊α,θ G) .
+∗
+
+¯
+As ΦθF Γ is a bounded weak* continuous map on VN(SU (2))⊗(A
+⋊w
+α,θ G),
+θ
+θ
+equations (37) and (38) now imply that k idMn ⊗ΦF k ≤ kΦF Γ k for all n and
+hence ΦθF is completely bounded.
+
+4. Multipliers of the weak* crossed product
+In this section, we consider the weak* extendable Herz-Schur multipliers
+introduced in Definition 3.3, and characterise them as the commutator of
+the “scalar valued” multipliers described in Proposition 4.1 below. We fix,
+throughout the section, a C ∗ -dynamical system (A, G, α). As before, A is
+assumed to be separable, while G is assumed to be second countable. If
+θ : A → B(K) is a faithful *-representation, where K is a separable Hilbert
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+29
+
+space, we let αθ : G → Aut(θ(A)) be given by αθt (θ(a)) = θ(αt (a)), t ∈ G,
+a ∈ A. We call α a θ-action, if αθt can be extended to a weak* continuous
+automorphism (which we will denote in the same fashion) of θ(A)′′ , such
+that the map s → αθs (x) from G into θ(A)′′ is weak*-continuous for each
+x ∈ θ(A)′′ .
+Proposition 4.1. Let u : G → C be a bounded continuous function, and let
+Fu : G → CB(A) be given by Fu (t)(a) = u(t)a, a ∈ A, t ∈ G. The following
+are equivalent:
+(i) Fu is a Herz-Schur (A, G, α)-multiplier;
+(ii) u ∈ M cb A(G).
+Moreover, if (i) holds then Fu is a Herz-Schur θ-multiplier for every faithful representation θ of A on a separable Hilbert space.
+Proof. Set F = Fu . We have
+(39)
+
+N (F )(s, t)(a) = u(ts−1 )a, a ∈ A, s, t ∈ G.
+
+We assume, without loss of generality, that A is a non-degenerate C*subalgebra of B(H), for a separable Hilbert space H.
+(i)⇒(ii) By Theorems 2.6 and 3.8, there exist a separable Hilbert space
+K, a non-degenerate *-representation ρ : A → B(K) and elements V, W of
+L∞ (G, B(H, K)) such that
+u(ts−1 )a = W (t)∗ ρ(a)V (s), for almost all s, t ∈ G and all a ∈ A.
+Let (ai )∞
+i=1 be a bounded approximate identity for A. Then, for a unit vector
+ξ ∈ H and every i ∈ N, we have
+hu(ts−1 )ai ξ, ξi = hρ(ai )V (s)ξ, W (t)ξi,
+
+for almost all s, t ∈ G.
+
+Since A ⊆ B(H) is non-degenerate and ρ is a non-degenerate representation,
+passing to a limit along i, we obtain
+u(ts−1 ) = hV (s)ξ, W (t)ξi,
+
+for almost all s, t ∈ G.
+
+By [5], u ∈ M cb A(G).
+(ii)⇒(i) As G is second countable, by [5], there exist weakly measurable
+functions ξ, η : G → ℓ2 such that
+u(ts−1 ) = hξ(s), η(t)i,
+
+for almost all s, t ∈ G.
+
+Let ρ : A → B(H ∞ ) be the countable ampliation of the identity representation of A. Write ξ(s) = (ξi (s))i∈N and η(t) = (ηi (t))i∈N , s, t ∈ G. Let
+V (s) : H → H ∞ (resp. W (t) : H → H ∞ ) be given by V (s) = (ξi (s)IH )i∈N
+(resp. W (t) = (ηi (t)IH )i∈N ). Then V, W ∈ L∞ (G, B(H, H ∞ )) and
+W (t)∗ ρ(a)V (s) =
+
+∞
+X
+
+ξi (s)ηi (t)a = u(ts−1 )a,
+
+i=1
+
+for almost all s, t ∈ G and all a ∈ A. It follows by (39) and Theorems 2.6
+and 3.8 that Fu is a Herz-Schur (A, G, α)-multiplier.
+
+30
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+Now suppose that u ∈ M cb A(G) and denote by Ψu the weak* continuous
+completely bounded map on B(L2 (G)) corresponding to the function u via
+classical transference [5] (see Remark 3.9). Let θ : A → B(K) be a faithful *representation of A, for some separable Hilbert space K. Note that N (F ) is
+a Schur θ-multiplier; indeed, we have that N (F )θ (s, t)(θ(a)) = u(ts−1 )θ(a),
+a ∈ A, and hence SN (F )θ = Ψu |K(L2 (G)) ⊗idθ(A) . It follows that SN (F )θ is the
+restriction to K(L2 (G)) ⊗ θ(A) of the weak* continuous map Ψu ⊗ idθ(A)′′ .
+By Corollary 3.10 and Remark 3.11, Fu is a Herz-Schur θ-multiplier.
+
+∗
+
+In what follows we denote by Suθ the weak* continuous map on A ⋊w
+α,θ G
+arising from the previous proposition.
+It is well-known that an essentially bounded function on G that is invariant under right translations agrees almost everywhere with a constant
+function. The next lemma is a dynamical system version of this fact. For
+a *-representation θ : A → B(K) such that α is a θ-action, let π̄ θ be the
+*-representation of θ(A)′′ on L2 (G, K) given by (π̄ θ (a)ξ)(s) = α−1
+s (a)(ξ(s)),
+a ∈ θ(A)′′ , ξ ∈ L2 (G, K). Recall that if ρ : G → B(L2 (G)) is the right regular representation of G we write α̃r for the map Adρr ⊗ αr on K(L2 (G)) ⊗
+θ(A); we have that the map α̃r can be extended to a weak* continuous map
+′′ , denoted in the same fashion.
+¯
+B(L2 (G)⊗θ(A)
+Lemma 4.2. Let (A, G, α) be a C ∗ -dynamical system and θ : A → B(K) be
+a faithful *-representation, where K is a separable Hilbert space, such that
+α is a θ-action. Then
+(40)
+
+∗
+
+′′
+θ
+′′
+¯
+) ∩ (A ⋊w
+(DG ⊗θ(A)
+α,θ G) = π̄ (θ(A) ).
+
+Proof. Suppose that D belongs to both L∞ (G, θ(A)′′ ) and A ⋊w
+α,θ G. By [23,
+Theorem 1.2, Chapter II], there exists a null set M ⊆ G such that α̃r (D) = D
+whenever r ∈ M c . However, α̃r (D) = Dr , where Dr ∈ L∞ (G, θ(A)′′ ) is
+given by Dr (s) = αr (D(sr)), s ∈ G. Let D̃ ∈ L∞ (G, θ(A)′′ ) be defined by
+D̃(s) = αs (D(s)), s ∈ G. For every r ∈ M c ,
+∗
+
+D̃(sr) = αsr (D(sr)) = αs (αr (D(sr)) = αs (D(s)) = D̃(s), for almost all s.
+As in the proof of Lemma 3.16, there exists s0 ∈ G such that D̃(s0 r) = D̃(s0 )
+for almost all r ∈ G. Thus, there exists a ∈ θ(A)′′ such that D̃(t) = a for
+almost all t ∈ G, and hence D(t) = αt−1 (a) for almost all t ∈ G; in other
+words, D = π̄ θ (a). We thus showed that the intersection on the left hand
+side of (40) is contained in π̄ θ (θ(A)′′ ). The converse inclusion is trivial. 
+Let K be a Hilbert space. If ω ∈ B(H)∗ , we let Lω be the (unique) weak*
+continuous linear map from B(K⊗H) into B(K) such that Lω (b⊗a) = ω(a)b,
+a ∈ B(H), b ∈ B(K). Recall that a weak* closed subspace U ⊆ B(H) is said
+to have property Sσ [19] if
+¯ = {T ∈ B(K)⊗U
+¯ : Lω (T ) ∈ V for all ω ∈ B(H)∗ },
+V ⊗U
+for every weak* closed subspace V ⊆ B(K).
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+31
+
+For the proof of the next theorem, we recall that an operator T ∈ B(L2 (G))
+is said to be supported on a measurable subset E ⊆ G × G if Mχβ T Mχα = 0
+whenever α, β ⊆ G are measurable sets with (α × β) ∩ E = ∅. It is easy
+to see that the space of operators supported on the set {(s, ts) : s ∈ G}
+coincides with DG λG
+t .
+Theorem 4.3. Let (A, G, α) be a C*-dynamical system and θ be a faithful
+*-representation of A on a separable Hilbert space K such that α is a θaction and θ(A)′′ possesses property Sσ . Let Φ be a completely bounded
+∗
+weak* continuous map on A ⋊w
+α,θ G. The following are equivalent:
+(i) ΦSuθ = Suθ Φ for all u ∈ M cb A(G);
+(ii) For each t ∈ G, there exists completely bounded map Ft : θ(A)′′ →
+θ(A)′′ such that Φ(π̄ θ (a)λθt ) = π̄ θ (Ft (a))λθt , a ∈ θ(A)′′ .
+Proof. (i)⇒(ii) Given u ∈ M cb A(G), let Ψu be the weak* continuous completely bounded map on B(L2 (G)) corresponding to the Schur multiplier
+N (u) (see Remark 3.9). We claim that
+(41)
+
+(Lω ◦ Suθ )(T ) = (Ψu ◦ Lω )(T ),
+
+∗
+
+T ∈ A ⋊w
+α,θ G, ω ∈ B(K)∗ .
+
+For S ∈ B(K) and T ∈ B(L2 (G)), we have
+G
+G
+Lω ((S ⊗ T )(IK ⊗ λG
+t )) = ω(S)T λt = Lω (S ⊗ T )λt ;
+
+by weak* continuity, we obtain
+(42)
+
+G
+Lω (R(IK ⊗ λG
+t )) = Lω (R)λt ,
+
+R ∈ B(L2 (G, K)).
+
+On the other hand, if t ∈ G then λθt = IK ⊗ λG
+t , and it follows that
+(43)
+Lω (Suθ (π θ (a)λθt )) = u(t)Lω (π θ (a)λθt ) = u(t)Lω (π θ (a))λG
+t , a ∈ A, t ∈ G.
+Since π θ (a) ∈ L∞ (G, θ(A)′′ ), we have that Lω (π θ (a)) ∈ DG , for every ω ∈
+B(K)∗ . Since Ψu is a DG -bimodule map, using equation (42) we obtain
+(44)
+
+θ
+G
+Ψu (Lω (π θ (a)λθt )) = Ψu (Lω (π θ (a))λG
+t ) = Lω (π (a))Ψu (λt )
+
+= u(t)Lω (π θ (a))λG
+t .
+Equation (41) follows from the weak* continuity of Lω and Suθ (see Proposition 4.1), after comparing (43) and (44).
+Let a ∈ θ(A)′′ , t ∈ G and T = π̄ θ (a)λθt . Set
+J = {u ∈ M cb A(G) : u(t) = 1}.
+If u ∈ J then Suθ (T ) = T and hence, by (41) and the fact that Φ commutes
+with Suθ , we have
+Ψu (Lω (Φ(T ))) = Lω (Φ(T )).
+Thus, for every u ∈ J, the operator Lω (Φ(T )) is u-harmonic in the sense of
+[24]. It follows from [1, Corollary 3.7] that Lω (Φ(T )) is supported on the set
+{(x, y) ∈ G × G : yx−1 ∈ Z}, where Z = {s ∈ G : u(s) = 1, for all u ∈ J}.
+By the regularity of A(G) and the fact that A(G) ⊆ M cb A(G), we have that
+
+32
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+Z = {t} and hence, by (42) and the paragraph before the statement of the
+theorem,
+Lω (Φ(T )λθt−1 ) = Lω (Φ(T ))λG
+t−1 ∈ DG .
+Since this holds for every ω ∈ B(K)∗ and θ(A)′′ is assumed to possess
+′′ .
+¯
+property Sσ , we conclude that Φ(T )λθt−1 ∈ DG ⊗θ(A)
+∗
+θ
+On the other hand, Φ(T )λθt−1 ∈ A ⋊w
+α,θ G. By Lemma 4.2, Φ(T )λt−1 =
+θ
+′′
+θ
+θ
+π̄ (at ) for some at ∈ θ(A) , and hence Φ(T ) = π̄ (at ))λt . Writing Ft (a) =
+at , we have Φ(T ) = π̄ θ (Ft (a)))λθt . The map Ft is linear and completely
+bounded since Φ is so.
+(ii)⇒(i) For t ∈ G and a ∈ θ(A)′′ , we have
+Φ(Suθ (π̄ θ (a)λθt )) = u(t)Φ(π̄ θ (a)λθt ) = u(t)π̄ θ (Ft (a))λθt = Suθ (Φ(π̄ θ (a)λθt )).
+The commutation relations now follow by linearity and weak* continuity.
+
+
+
+5. Two classes of multipliers
+In this section, we describe two special classes of Herz-Schur multipliers
+and relate them to maps that have been studied previously.
+5.1. Multipliers from the Haagerup tensor product. Multipliers of
+the type studied in this subsection have been considered in the case of a
+discrete group in [2]. Let A be a separable non-degenerate C*-subalgebra
+of B(H), where H is a separable Hilbert space, and C∞ (A) be the column operator space over A; thus, P
+the elements of C∞ (A) are the sequences
+∗
+(ai )i∈N ⊆ A such that the series ∞
+i=1 ai ai converges in norm. Recall [4]
+that the
+P Haagerup tensor product A∗⊗h A consists, by definition, of all sums
+u = ∞
+i=1 bi ⊗ ai , where (ai )i∈N , (bi )i∈N ∈ C∞ (A). Let β : X → C∞ (A)
+and γ : Y → C∞ (A) be bounded weakly measurable functions. Write
+β(x) = (βi (x))i∈N , x ∈ X, and γ(y) = (γi (y))i∈N , y ∈ Y . It is clear that, in
+particular, βi ∈ L∞ (X, A) and γi ∈ L∞ (Y, A) for each i ∈ N.
+Let ϕβ,γ : X × Y → A ⊗h A be given by
+(45)
+
+ϕβ,γ (x, y) =
+
+∞
+X
+
+γi (y)∗ ⊗ βi (x),
+
+(x, y) ∈ X × Y.
+
+i=1
+
+Note that A ⊗h A embeds canonically into CB(A); for an element u =
+P
+∞
+of A ⊗h A, the corresponding map Φu : A → A is given
+i=1 bi ⊗ ai P
+by Φu (a) = ∞
+i=1 bi aai , a ∈ A. We thus view ϕβ,γ (x, y) as a completely
+bounded map on A. It is easy to see that the partial sums of (45) define
+weakly measurable functions, and since the convergence of the series is in
+norm, [43, Lemma B.17] shows that the function ϕβ,γ is weakly measurable.
+In particular, ϕβ,γ is pointwise measurable.
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+33
+
+Proposition 5.1. Let β : X → C∞ (A) and γ : Y → C∞ (A) be bounded
+weakly measurable functions. Then ϕβ,γ is a Schur id-multiplier. Moreover,
+(46)
+
+Sϕβ,γ (T ) =
+
+∞
+X
+
+γi∗ T βi ,
+
+T ∈ K ⊗ A,
+
+i=1
+
+where the series converges in norm.
+Proof. First note that
+∞
+X
+
+βi∗ βi
+
+= essupx∈X
+
+∞
+X
+
+βi∗ (x)βi (x) = essupx∈X kβ(x)k2 ,
+
+i=1
+
+i=1
+
+P
+∗
+and that a similar estimate holds for ∞
+i=1 γi γi . It follows that the series
+on the right hand side of (46) converges in norm. Let k ∈ L2 (Y × X, A),
+ξ ∈ L2 (X, H) and η ∈ L2 (Y, H). Then
++
+*∞
+Z
+∞
+X
+X
+∗
+hk(y, x)βi (x)ξ(x), γi (y)η(y)idxdy
+γi Tk βi ξ, η
+=
+X×Y i=1
+
+i=1
+
+=
+
+Z
+
+hϕβ,γ (x, y)(k(y, x))ξ(x), η(y)idxdy
+
+X×Y
+
+= hTϕβ,γ ·k ξ, ηi.
+It follows that ϕβ,γ is a Schur A-multiplier. Identity (46) now follows by
+boundedness. Since the map expressed by the right hand side of (46) is
+weak* extendible, we conclude that ϕβ,γ is in fact a Schur id-multiplier. 
+Recall that a subset E ⊆ G × G is called marginally null if there exists a
+null set M ⊆ G such that E ⊆ (M × G) ∪ (G × M ).
+Proposition 5.2. Let β : X → C∞ (A) and γ : Y → C∞ (A) be bounded
+weakly measurable functions. The following are equivalent:
+(i) there exists F ∈ S(A, G, α) such that SFid coincides with the restriction
+of Sϕβ,γ to A ⋊α,id G;
+(ii) for every a ∈ A, the function ϕa : G × G → A given by
+ϕa (s, t) =
+
+∞
+X
+
+αt (γi (t))∗ aαt (βi (s)), s, t ∈ G,
+
+i=1
+
+has the property that, for every r ∈ G, ϕa (sr, tr) = ϕa (s, t) for almost all
+(s, t).
+Moreover, if (i) holds then the map SFid has an extension to a bounded
+∗
+weak* continuous map on A ⋊w
+α,id G.
+Proof. (i)⇒(ii) By Proposition 5.1, the map Sϕβ,γ has a weak* continuous
+¯ ′′ . Since SFid is the
+extension to a completely bounded map on B(L2 (G))⊗A
+restriction of Sϕβ,γ , it possesses a weak* continuous extension to a completely
+∗
+bounded map on A ⋊w
+α,id G.
+
+34
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+Let a ∈ A and s ∈ G. Note that, if βis ∈ L∞ (G, A) is given by βis (t) =
+s id
+βi (s−1 t), then λid
+s βi = βi λs . By Corollary 3.10, for almost all s ∈ G, we
+have
+!
+∞
+∞
+X
+X
+∗
+∗ id
+id
+id
+γi∗ π id (a)βis , a ∈ A.
+)
+=
+γi π (a)λs βi (λid
+π (F (s)(a)) =
+s
+i=1
+
+i=1
+
+Therefore, if ξ ∈ L2 (G, H) then, for almost all s, t ∈ G, we have
+!
+∞
+X
+γi∗ π id (a)βis ξ (t)
+αt−1 (F (s)(a))(ξ(t)) =
+=
+
+i=1
+∞
+X
+
+γi (t)∗ αt−1 (a)βi (s−1 t)(ξ(t)).
+
+i=1
+
+A standard argument using the separability of H now shows that, for almost
+all s, t ∈ G, we have
+αt−1 (F (s)(a)) =
+
+∞
+X
+
+γi (t)∗ αt−1 (a)βi (s−1 t),
+
+i=1
+
+and, since the series on the right hand side converges is norm,
+(47)
+
+∞
+X
+
+αt (γi∗ (t))aαt (βi (s−1 t)) = F (s)(a),
+
+i=1
+
+i.e. ϕa (t, s−1 t) = F (s)(a) for almost all s, t ∈ G. As the map (s, t) 7→
+(t, s−1 t) is continuous, bijective and preserves null sets in both directions,
+we obtain ϕa (s, t) = F (st−1 )(a) for almost all (s, t) ∈ G × G. Hence, for
+each r ∈ G, ϕa (sr, tr) = ϕa (s, t) almost everywhere on G × G.
+(ii)⇒(i) As γ(t), β(s) ∈ C∞ (A) for all (s, t), we have that
+ϕβ,γ (s, t)(a) = lim
+
+n→∞
+
+n
+X
+
+γi (t)∗ aβi (s)
+
+i=1
+
+in norm and, in particular, ϕβ,γ (s, t)(a) ∈ A for all a ∈ A. Hence
+!
+n
+X
+γi (t)∗ αt−1 (a)βi (s)
+αt (ϕβ,γ (s, t)(αt−1 (a)) = αt lim
+n→∞
+
+=
+=
+
+lim
+
+n→∞
+∞
+X
+i=1
+
+n
+X
+
+i=1
+
+αt (γi (t)∗ )aαt (βi (s))
+
+i=1
+
+αt (γi (t))∗ aαt (βi (s)) = ϕa (s, t).
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+35
+
+Thus T (ϕβ,γ )(s, t)(a) = ϕa (s, t) for all s, t ∈ G. Fix r ∈ G and let S ⊆ A
+be a countable dense subset. Then, for every a ∈ S we have
+T (ϕβ,γ )r (s, t)(a) = T (ϕβ,γ )(sr, tr)(a) = ϕa (sr, tr)
+= ϕa (s, t) = T (ϕβ,γ )(s, t)(a),
+for almost all (s, t) ∈ G × G. It follows that there exists a set E ⊆ G × G
+whose complement is null, such that T (ϕβ,γ )r (s, t)(a) = T (ϕβ,γ )(s, t)(a) for
+all (s, t) and all a ∈ S. Fix (s, t) ∈ E. By the boundedness of the maps
+T (ϕβ,γ )r (s, t) and T (ϕβ,γ )(s, t), we have that
+T (ϕβ,γ )r (s, t)(a) = T (ϕβ,γ )(s, t)(a),
+for all a ∈ A. Thus, T (ϕβ,γ )r = T (ϕβ,γ ) almost everywhere, for all r ∈
+G. By Lemma 3.17, Theorem 3.18 and Proposition 5.1, there exists F ∈
+S(A, G, α) such that N (F ) = ϕβ,γ almost everywhere.
+
+5.2. Groupoid multipliers. In this subsection, we relate Herz-Schur multipliers to the multipliers of the Fourier algebra of a groupoid. We refer the
+reader to [21] and [32] for more details on the background, which we now
+recall.
+Let G be a locally compact group acting on a locally compact Hausdorff
+space X; thus, we are given a map X × G → X, (x, s) → xs, jointly
+continuous and such that x(st) = (xs)t for all x ∈ X and all s, t ∈ G.
+The set G = X × G is a groupoid, where the set G 2 of composable pairs is
+given by G 2 = {[(x1 , t1 ), (x2 , t2 )] : x2 = x1 t1 }, and if [(x1 , t1 ), (x2 , t2 )] ∈ G 2 ,
+the product (x1 , t1 ) · (x2 , t2 ) is defined to be (x1 , t1 t2 ), while the inverse
+(x, t)−1 of (x, t) is defined to be (xt, t−1 ). The domain and range maps are
+given by
+d((x, t)) := (x, t)−1 · (x, t) = (xt, e), r((x, t)) := (x, t) · (x, t)−1 = (x, e).
+The unit space G0 of the groupoid, which is by defnition equal to the common
+image of the maps d and r, can therefore be canonically identified with X.
+Let λ be the left Haar measure on G. The groupoid G can be equipped
+with the Haar system {λx : x ∈ X}, where λx = δx × λ and δx is the point
+mass at x. The space Cc (G) of compactly supported continuous functions
+on G is a ∗-algebra with respect to the convolution product given by
+Z
+(f ∗ g)(x, t) = f (x, s)g(xs, s−1 t)ds,
+and the involution given by f ∗ (x, s) = f (xs, s−1 ). We equip Cc (G) with the
+norm
+
+
+Z
+Z
+kf kI = max
+
+sup
+
+|f |dλx , sup
+
+x∈X
+
+x∈X
+
+|f ∗ |dλx .
+
+The completion of Cc (G) with respect to this norm is denoted by LI (G), and
+its enveloping C ∗ -algebra C ∗ (G) is called the groupoid C ∗ -algebra of G.
+Let A = C0 (X) and αt (a)(x) = a(xt), t ∈ G, x ∈ X. Then α : t 7→ αt is
+a continuous homomorphism from G to Aut(A). Identifying Cc (X × G) =
+
+36
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+Cc (G) with a subspace of Cc (G, A), we see that the ∗-algebra structure on
+Cc (G, A), associated with the action α (see the beginning of Section 3),
+coincides with the one on Cc (G) except for the absence of the modular
+function in the definition of the involution. However, the C ∗ -algebras C ∗ (G)
+and the full crossed product A ⋊α G are isomorphic via the map φ given by
+φ(f )(x, s) = ∆−1/2 (s)f (x, s), f ∈ Cc (X × G). In fact, for f, g ∈ Cc (X × G),
+we have
+Z
+−1/2
+−1/2
+φ(f ∗ g)(x, s) = ∆
+(s)(f ∗ g)(x, s) = ∆
+(s) f (x, t)g(xt, t−1 s)dt,
+while
+
+φ(f ) × φ(g)(x, s) =
+
+Z
+
+φ(f )(x, t)φ(g)(xt, t−1 s)dt
+
+Z
+
+∆−1/2 (t)f (x, t)∆−1/2 (t−1 s)g(xt, t−1 s)dt
+Z
+−1/2
+= ∆
+(s) f (x, t)g(xt, t−1 s)dt;
+
+=
+
+hence, φ(f ∗ g) = φ(f ) × φ(g). In addition,
+
+φ(f ∗ )(x, s) = ∆−1/2 (s)f (xs, s−1 ),
+while
+φ(f )∗ (x, s) = ∆−1 (s)φ(f )(xs, s−1 ) = ∆−1 (s)∆−1/2 (s−1 )f (xs, s−1 )
+= ∆−1/2 (s)f (xs, s−1 ),
+giving φ(f )∗ = φ(f ∗ ). By [21, p. 9], the map φ extends to a *-isomorphism
+from C ∗ (G) onto A ⋊α G.
+Let µ be a measure on X and
+R ν = µ × λ; thus, for a measurable subset
+E of X × G, we have ν(E) = λx (E x )dµ(x) (for x ∈ X,R we have set E x =
+E∩({x}×G)). For a measurable subset E, set ν −1 (E) = λx ((E −1 )x )dµ(x).
+Let Ind(µ) be the *-representation of Cc (G) on L2 (G, ν −1 ) given by
+Z
+(Ind(µ)(f )ξ)(x, t) = f (x, s)ξ(xs, s−1 t)ds, f ∈ Cc (G).
+
+One can check that kInd(µ)(f )k ≤ kf kI [21]; hence Ind(µ) can be extended
+to C ∗ (G).
+If supp µ = X then the map f 7→ Mf , where Mf is the operator of
+multiplication by f on L2 (X, µ), is a faithful *-representation θ of C0 (X).
+The corresponding regular representation π θ ⋊ λθ of the crossed product
+A ⋊α G on L2 (G, L2 (X, µ)) = L2 (X × G, µ × λ) is given by
+Z
+Z
+(π θ ⋊λθ )(f )ξ(x, t) = αt−1 (f (x, s))ξ(x, s−1 t)ds = f (xt−1 , s)ξ(x, s−1 t)ds,
+for f ∈ Cc (X × G) and ξ ∈ L2 (X × G, µ × λ). Let Jξ(x, t) = ξ(xt, t−1 );
+then J is a unitary operator from L2 (G, ν) to L2 (G, ν −1 ) with J −1 η(x, t) =
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+37
+
+η(xt, t−1 ). Let also U ξ(x, t) = ∆−1/2 (t)ξ(x, t−1 ); thus, U is a unitary operator on L2 (G, ν). We have
+Z
+−1 −1
+(U J Ind(µ)(f )JU ξ)(x, t) = f (xt−1 , s)ξ(x, s−1 t)∆−1/2 (s)ds;
+
+we thus see that (π θ ⋊ λθ ) ◦ φ is unitarily equivalent to Ind(µ).
+Let I be the intersection of the kernels of Ind(µ) as µ varies over the
+measures of X. The quotient C ∗ (G)/I is called the reduced C ∗ -algebra of G
+∗ (G). It follows from [21, Proposition 2.17] that Ind(µ)
+and denoted by Cred
+∗ (G) if supp µ = X. Therefore C ∗ (G) is
+is a faithful representation of Cred
+red
+isomorphic to the reduced crossed product C ∗ -algebra of the C ∗ -dynamical
+system (C0 (X), G, α).
+A measure µ on X is called quasi-invariant if the measures ν and ν −1 are
+equivalent. It is known that µ is quasi-invariant if and only if the measures
+µ and µ · s are equivalent for any s ∈ G (here µ · s(E) = µ(Es−1 )). If
+δ(·, s) is the Radon-Nikodym derivative d(µ · s−1 )/dµ and D is the RadonNikodym derivative dν/dν −1 then D(x, s) = ∆(s)/δ(x, s), x ∈ X, s ∈ G
+(see [32, Chapter I, 3.21]). In what follows we will asume that X possesses
+a quasi-invariant measure µ such that supp µ = X.
+The groupoid G equipped with such a measure µ is called a measured
+groupoid [32]. Next we would like to point out a connection between its
+multipliers, studied in [33], and Herz-Schur (C0 (X), G, α)-multipliers.
+The Hilbert space L2 (G, ν) carries a representation Reg of Cc (G) defined
+by
+Z
+(Reg(f )ξ)(x, s) = f (x, t)ξ(xt, t−1 s)D −1/2 (x, t)dt,
+and unitarily equivalent to Ind(µ) via the unitary operator V from L2 (G, ν)
+to L2 (G, ν −1 ) given by V ξ = D 1/2 ξ. The von Neumann algebra VN(G) of G
+is defined to be the bicommutant Reg(Cc (G))′′ [33, 2.1].
+The Fourier algebra A(G) of the measured groupoid G was defined in [33]
+and is, similarly to the case where G is a group, a Banach algebra of complexvalued continuous functions on G. By [33, Propsition 3.1], the operator Mϕ
+of multiplication by ϕ ∈ L∞ (G) is a bounded linear map on A(G) if and
+only if the map Reg(f ) → Reg(ϕf ), f ∈ Cc (G), is bounded. The function
+ϕ is in this case called a multiplier of A(G). If the map Mϕ is moreover
+completely bounded then ϕ is called a completely bounded multiplier of
+A(G). Following [33], we denote by M A(G) (resp. M0 A(G)) the set of all
+multipliers (resp. completely bounded multipliers) of A(G).
+For a bounded continuous function ϕ : X × G → C and t ∈ G, let Fϕ (t)
+be the linear map on C0 (X) given by Fϕ (t)(a)(x) = ϕ(x, t)a(x), a ∈ C0 (X),
+x ∈ X.
+Proposition 5.3. Let ϕ : X × G → C be a bounded continuous function.
+Then
+(i) the map Fϕ is a θ-multiplier if and only if ϕ is a multiplier of A(G);
+
+38
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+(ii) the map Fϕ is a Herz-Schur (C0 (X), G, α)-multiplier if and only if ϕ
+is a completely bounded multiplier of A(G).
+Proof. Both statements follow from the previous paragraphs, Remark 3.2
+(iii), the definition of (Herz-Schur) θ-multipliers and the fact that kReg(f )k =
+k(π θ ⋊ λθ )(φ(f ))k, f ∈ Cc (G).
+
+The following statement gives the result of [33, Proposition 3.8] in case
+G is a locally compact second countable group.
+Corollary 5.4. Let θ : G → C be a bounded continuous function and ϕ :
+X × G → C be the function given by ϕ(x, t) = θ(t). Then ϕ is a completely
+bounded multiplier of A(G) if and only if θ ∈ M cb A(G).
+Proof. The statement follows from Proposition 5.3 and Proposition 4.1.
+
+
+
+The next corollary provides a new description of the completely bounded
+multipliers of A(G). We write H = L2 (X, µ).
+Corollary 5.5. Let ϕ : X × G → C be a bounded continuous function.
+Assume that ϕ is a completely bounded multiplier of A(G). Then there exist
+a separable Hilbert space K and functions V, W ∈ L∞ (G, B(H, K)) such that,
+for almost all s, t ∈ G, we have that W ∗ (t)V (s) ∈ DX and ϕ(xt−1 , ts−1 ) =
+(W ∗ (t)V (s))(x), for almost all x ∈ X.
+Proof. By Proposition 5.3, F = Fϕ is a Herz-Schur (C0 (X), G, α)-multiplier.
+By Theorem 3.8, N (F ) is a Schur C0 (X)-multiplier. We have
+(48)
+
+N (F )(s, t)(a)(x) = ϕ(xt−1 , ts−1 )a(x).
+
+Hence there exist a separable Hilbert space K, a non-degenerate ∗-representation ρ : C0 (X) → B(K) and functions V, W ∈ L∞ (G, B(H, K)) such that
+ϕ(xt−1 , ts−1 )a(x)ξ(x) = W ∗ (t)ρ(a)V (s)ξ(x), a ∈ C0 (X), ξ ∈ L2 (X, µ).
+Taking an approximate unit (an )n∈N of C0 (X) in (48) and letting n → ∞,
+we obtain the statement.
+
+6. Convolution multipliers
+Throughout this section, we will assume that G is an abelian locally compact group, and will write the group operations additively. Let A be a separable C*-algebra and (A, G, α) be a C*-dynamical system. For a measure
+µ ∈ M (G),
+let αµ : A → A be the completely bounded map given by
+R
+αµ (a) = G αr (a)dµ(r) (see [37],[39]).
+
+Definition 6.1. A family Λ = (µt )t∈G , where µt ∈ M (G), t ∈ G, will
+be called a convolution (A, G, α)-multiplier (or simply a convolution multiplier), if the map FΛ : G → CB(A) given by FΛ (t) = αµt , t ∈ G, is a
+Herz-Schur (A, G, α)-multiplier.
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+39
+
+For a convolution multiplier Λ = (µt )t∈G , we let kΛkm = kFΛ km . Since
+G is assumed to be abelian, we have that αµ ◦ αr = αr ◦ αµ for every r ∈ G
+and every µ ∈ M (G). It is well-known that in this case the map αµ : A → A
+lifts to a completely bounded map on th the crossed product; the following
+proposition provides a concrete route to this fact.
+Proposition 6.2. Let µ ∈ M (G), µt = µ for every t ∈ G, and Λ = (µt )t∈G .
+Then Λ is a convolution multiplier and kΛkm ≤ kµk.
+Proof. Note that π(αr (a)) = λr π(a)λ∗r , r ∈ G. Set F = FΛ . If a ∈ A then
+Z
+Z
+λr π(a)λ∗r dµ(r).
+π(αr (a))dµ(r) =
+π(F (s)(a)) = π(αµ (a)) =
+G
+
+G
+
+Hence, if f ∈ L1 (G, A) then
+
+Z
+
+π(F (s)(f (s))λs ds
+
+ZG Z
+∗
+λr π(f (s))λr dµ(r) λs ds
+=
+G
+G
+Z Z
+λr π(f (s))λs λ∗r dsdµ(r)
+=
+
+ZG GZ
+λr
+π(f (s))λs ds λ∗r dµ(r).
+=
+
+SF ((π ⋊ λ)(f )) =
+
+G
+
+G
+
+R
+The claims follow from the fact that the mapping T 7→ λr T λ∗r dµ(r) is
+a completely bounded map on B(L2 (G, H)) with completely bounded norm
+dominated by kµk (see [37]).
+
+In this section, we will be concerned with a special class of convolution
+multipliers, which we now define. Let Γ be the dual group of G. The C*algebra C ∗ (Γ) of Γ is canonically *-isomorphic to its reduced C*-algebra
+Cr∗ (Γ) (see e.g. [27, Theorem 7.3.9]). We let θ : C ∗ (Γ) → B(L2 (Γ)) be the
+associated (faithful) *-representation. An element s ∈ G will be viewed as
+a character (and, in particular, a unimodular function) on Γ. For s ∈ G, let
+αs : λΓ (L1 (Γ)) → λΓ (L1 (Γ)) be the map given by
+αs (λΓ (f )) = λΓ (sf ), f ∈ L1 (Γ).
+Note that, if f ∈ L1 (Γ), s ∈ G and x ∈ Γ, then
+(49)
+
+αs (λΓ (f )) = Ms λΓ (f )M−s .
+
+Thus, αs extends canonically to an automorphism of Cr∗ (Γ). By abuse of
+notation, we consider αs as an automorphism of C ∗ (Γ); thus, (C ∗ (Γ), G, α) is
+a C*-dynamical system. By (49), α is a θ-action. Moreover, by [27, Theorem
+7.7.7], C ∗ (Γ) ⋊α G is *-isomorphic to the C*-subalgebra C ∗ (Γ) ⋊α,θ G of
+B(L2 (G × Γ)).
+Given a bounded measurable function ψ : G × Γ → C and t ∈ G (resp.
+x ∈ Γ), let the function ψt : Γ → C (resp. ψ x : G → C) given by ψt (y) =
+
+40
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+ψ(t, y) (resp. ψ x (s) = ψ(s, x)). We call ψ admissible if ψt ∈ B(Γ) for
+every t ∈ G and supt kψt kB(Γ) < ∞. Assuming that ψ is addmissible, let
+Fψ (t) : Cr∗ (Γ) → Cr∗ (Γ) be the map given by
+Fψ (t)(λΓ (g)) = λΓ (ψt g),
+
+g ∈ L1 (Γ).
+
+By abuse of notation, we consider Fψ (t) as a map on C ∗ (Γ). Set
+F(G) = {ψ : G × Γ → C : ψ is admissible and
+Fψ is a Herz-Schur (C ∗ (Γ), G, α)-multiplier}
+and
+Fθ (G) = {ψ : G × Γ → C : ψ is admissible and
+Fψ is a Herz-Schur θ-multiplier}.
+Clearly, the space F(G) is an algebra with respect to the operations of pointwise addition and multiplication, and Fθ (G) is a subalgebra of F(G). For
+ψ ∈ F(G), let kψkm = kFψ km ,R and use Sψ to denote the map SFψ .
+For µ ∈ M (G), set µ̌(x) = G hx, sidµ(s), x ∈ Γ.
+
+Proposition 6.3. Let ψ : G × Γ → C be an addmissible function. The
+following are equivalent:
+(i) ψ ∈ F(G);
+(ii) for each t ∈ G, there exists µt ∈ M (G) such that ψ(t, x) = µ̌t (x), t ∈
+G, x ∈ Γ, and the family (µt )t∈G is a convolution (C ∗ (Γ), G, α)-multiplier.
+
+Proof. Note that, if µ ∈ M (G) and g ∈ L1 (Γ) then
+
+Z
+Z Z
+Γ
+Γ
+Γ
+(50) αµ (λ (g)) =
+hs, rig(s)λs ds dµ(r)
+αr (λ (g))dµ(r) =
+G
+G
+Z
+µ̌(s)g(s)λΓs ds = λΓ (µ̌g).
+=
+G
+
+(i)⇒(ii) If ψ is admissible then, for every t ∈ G, ψt ∈ B(Γ) and hence,
+by Bochner’s theorem, there exists µt ∈ M (G) such that ψt = µ̌t (see e.g.
+[35, Section I]). It follows from (50) that the family (µt )t∈G is a convolution
+multiplier.
+(ii)⇒ (i) By (50), Fψ (t) = αµt . The claim now follows from the definition
+of a convolution multiplier.
+
+For a family Λ = (µt )t∈G of measures in M (G), let ψΛ : G × Γ → C be
+the function given by ψΛ (t, x) = µ̌t (x). Call Λ admissible if the function ψΛ
+is admissible. By Proposition 6.3, an admissibe family of measures Λ is a
+Herz-Schur (C ∗ (Γ), G, α)-multiplier if and only if ψΛ ∈ F(G). By abuse of
+terminology, we will hence call the elements of F(G) convolution multipliers.
+Corollary 6.4. Let g ∈ L∞ (Γ) and let ψ : G × Γ → C be given by ψ(s, x) =
+g(x), s ∈ G, x ∈ Γ. The following are equivalent:
+(i) ψ ∈ F(G);
+(ii) g ∈ B(Γ).
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+41
+
+Moreover, if (i) holds then ψ ∈ Fθ (G).
+Proof. The equivalence of (i) and (ii) follows from Propositions 6.2 and
+6.3. Suppose that g ∈ B(Γ). Then the map on Cr∗ (Γ) corresponding to
+g via classical transference has a (completely bounded) weak* continuous
+extension Φg : VN(Γ) → VN(Γ). Thus, the restriction of the map Φg ⊗ id
+∗
+θ
+to C ∗ (Γ) ⋊w
+α,θ G is a weak* continuous extension of SFψ . By Remark 3.11,
+Fψ is a Herz-Schur θ-multiplier.
+
+It will be convenient, in the sequel, to denote by Sg the map Sψ , where
+ψ and g are as in Corollary 6.4.
+The rest of the paper will be devoted to properties of the spaces F(G) and
+Fθ (G). In the next theorem, we identify an elementary tensor u ⊗ h, where
+u ∈ B(G) and h ∈ B(Γ), with the function (s, x) → u(s)h(x), s ∈ G, x ∈ Γ.
+Let F(B(G), B(Γ)) be the complex vector space of all separately continuous
+functions ψ : G × Γ → C such that, for every s ∈ G (resp. x ∈ Γ), the
+function ψs : Γ → C (resp. ψ x : G → C) belongs to B(Γ) (resp. B(G)).
+Theorem 6.5. (i)
+
+The inclusions
+
+B(G) ⊙ B(Γ) ⊆ Fθ (G) ⊆ F(B(G), B(Γ))
+hold.
+(ii) Suppose that ψ ∈ Fθ (G). Then kψ x kB(G) ≤ kψkm for every x ∈ Γ
+and kψs kB(Γ) ≤ kψkm for every s ∈ G.
+(iii) Let ψ : G × Γ → C be an admissible function, such that the function
+G → B(Γ), sending s to ψs , is continuous. Suppose that (ψk )k∈N ⊆ F(G),
+supk∈N kψk k∞ < ∞ and ψk → ψ pointwise. Then ψ ∈ F(G).
+Proof. (i) The first inclusion follows from Proposition 4.1 and Corollary 6.4.
+Let ψ ∈ Fθ (G) and fix x ∈ Γ. The map Ψψs corresponding to ψs via
+classical transference satisfies the identities Ψψs (λΓx ) = ψs (x)λΓx , x ∈ Γ.
+Thus
+Φθψ (π̄ θ (λΓx )λθs ) = π̄ θ (ψs (x)λΓx )λθs
+= ψs (x)π̄ θ (λΓx )λθs = π̄ θ (λΓx )(ψ x (s)λG
+s ⊗ I).
+On the other hand,
+π̄ θ (λΓx )λθs = π̄ θ (λΓx )(λG
+s ⊗ I).
+It follows that the map
+x
+G
+λG
+s → ψ (s)λs
+is bounded, and hence ψ x is a Herz-Schur multiplier giving ψ x ∈ B(G). The
+fact that ψs ∈ B(Γ) for every s ∈ G is implicit in the definition of the space
+F(G).
+(ii) The inequalities kψ x kB(Γ) ≤ kψkm , x ∈ Γ, follow from the proof of
+(i). The inequalities kψs kB(Γ) ≤ kψkm , s ∈ G, follow from Corollary 3.12
+and the fact that kψs kB(Γ) = kFψ (s)kcb , s ∈ G.
+
+42
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+(iii) Suppose that kψk k∞ ≤ C for every k ∈ N. Let ξ, η ∈ L2 (G × Γ) and
+f ∈ L1 (G, Cc (Γ)). A direct verification shows that
+hSψθ k ((π θ ⋊ λθ )(f ))ξ, ηi = h(π θ ⋊ λθ )(ψk f )ξ, ηi
+Z
+=
+ht, xiψk (t, y)f (t, y)ξ(s − t, x − y)η(s, x)dsdtdxdy.
+
+On the other hand,
+
+|ht, xiψk (t, y)f (t, y)ξ(s − t, x − y)η(s, x)| ≤ C|f (t, y)||ξ(s − t, x − y)||η(s, x)|,
+and the L1 -norm of the latter function is equal to Ch|f | ∗ |ξ|, |η|i. By the
+Lebesgue Dominated Convergence Theorem,
+(51)
+
+hSψθ k ((π θ ⋊ λθ )(f ))ξ, ηi → h(π θ ⋊ λθ )(ψf )ξ, ηi.
+
+Now let fi,j ∈ L1 (G, Cc (Γ)), i, j = 1, . . . , m. By (51), the operator matrix
+(Sψθ k ((π θ ⋊ λθ )(f )))i,j converges weakly to ((π θ ⋊ λθ )(ψf ))i,j . The fact that
+the map s → ψs is continuous implies that ψ is weakly measurable. Since
+kSψθ k kcb ≤ C for all k, we conclude that ψ ∈ F(G) and that kψkm ≤ C. 
+In view of Theorem 6.5, it is natural to ask the following question.
+Question 6.6. Can Fθ (G) be characterised as a topological closure of B(G)⊙
+B(Γ)?
+Let CBw∗ (C ∗ (Γ) ⋊α,θ G) be the space of all completely bounded maps on
+∗
+C ∗ (Γ) ⋊α,θ G which admit a weak* continuous extension to C ∗ (Γ) ⋊w
+α,θ G.
+Set
+S = {Sψθ : ψ ∈ Fθ (G)}.
+As usual, if J is a family of linear transformations acting on a vector
+space, we denote by J ′ its commutant. We recall that, for g ∈ B(Γ), we let
+Sgθ denote the map on Cr∗ (Γ) given by Sgθ (λΓ (f )) = λΓ (gf ), f ∈ L1 (Γ).
+Theorem 6.7. We have
+(52)
+
+S = CBw∗ (C ∗ (Γ) ⋊α,θ G) ∩ {Suθ , Svθ : u ∈ B(G), v ∈ B(Γ)}′ .
+
+In particular, S is a maximal abelian subalgebra of CBw∗ (C ∗ (Γ) ⋊α,θ G).
+Proof. Note that S is a commutative subalgebra of CBw∗ (C ∗ (Γ) ⋊α,θ G)
+and, by Theorem 6.5 (i), contains the maps of the form Suθ and Svθ , where
+u ∈ B(G) and v ∈ B(Γ). It follows that it is contained in the commutant
+on the right hand side of (52).
+Let A = C ∗ (Γ). To establish the reverse inclusion, suppose that Φ ∈
+CBw∗ (C ∗ (Γ) ⋊α,θ G) commutes with the operators of the form Suθ and Svθ ,
+where u ∈ B(G) and v ∈ B(Γ). Since G is abelian, VN(G) possesses property Sσ (see e.g. [19, Theorem 1.9]). By Theorem 4.3, for each t ∈ G, there
+exists a completely bounded map Ft : VN(Γ) → VN(Γ) such that
+Φ(π̄ θ (a)λθt ) = π̄ θ (Ft (a))λθt ,
+
+a ∈ VN(Γ).
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+43
+
+If v ∈ B(Γ), f ∈ L1 (Γ) and a = λΓ (f ) then
+π̄ θ (Ft (λΓ (vf )))λθt = Φ(Svθ (π̄ θ (a)λθt )) = Svθ (Φ(π̄ θ (a)λθt )) = π̄ θ (vFt (λΓ (f ))λθt .
+Thus, Ft (λΓ (vf )) = vFt (λΓ (f )) for each v ∈ B(Γ). Let F̃t be the restriction
+of Ft to Cr∗ (Γ). Then F̃t∗ is a map on B(Γ). In particular, F̃t∗ (A(Γ)) ⊆ B(Γ)
+and F̃t∗ (vu) = v F̃t∗ (u) for any u ∈ A(Γ) and v ∈ B(Γ). It follows that
+F̃t∗ (u) = ψt u for some function ψt : Γ → C. As ψt u ∈ B(Γ) for all u ∈ A(Γ),
+by [35, Theorem 3.8.1], ψt ∈ B(Γ). Hence, for u ∈ A(Γ), we have
+hFt (λΓ (f )), ui = hλΓ (f ), F̃t∗ (u)i = hλΓ (f ), ψt ui = hλΓ (ψt f ), ui
+and Ft (λΓ (f )) = λΓ (ψt f ). The proof is complete.
+
+
+
+Our next aim is to identify the joint commutant of two families of completely bounded maps on K(L2 (G)), in terms of multipliers of Herz-Schur
+type. Recall that, for a ∈ L∞ (G), we denote by Ma the operator on L2 (G)
+given by Ma f = af , f ∈ L2 (G), and set
+C = {Ma : a ∈ C0 (G)}.
+We let id be the identity representation of C. For t ∈ G, let βt : C0 (G) →
+C0 (G) be given by βt (h)(s) = h(s − t), h ∈ C0 (G). By abuse of notation,
+we denote by βt the corresponding map on the C*-algebra C. Note that
+G
+βt (T ) = λG
+t T λ−t ,
+
+(53)
+
+T ∈ C,
+
+and that (C, G, β) is a C*-dynamical system. Note also that
+(54)
+
+βµ (Ma ) = Mµ∗a ,
+
+µ ∈ M (G), a ∈ L∞ (G).
+
+Note that C ⋊β,id G is a C*-subalgebra of B(L2 (G × G)).
+2
+2
+R Let F : L (G) →1 L (Γ) 2be the Fourier transform, so that Fξ(x) =
+G hx, siξ(s)ds, ξ ∈ L (G) ∩ L (G), x ∈ Γ. Then
+∗ Γ
+F ∗ Mt F = λG
+t and F λ (f )F = Mfˆ,
+
+t ∈ G, f ∈ L1 (Γ),
+R
+where fˆ : G → C is the function given by fˆ(t) = Γ ht, xif (x)dx. In particular, F ∗ Cr∗ (Γ)F = C. Moreover, if f ∈ L1 (Γ) then
+(55)
+
+F ∗ αt (λΓ (f ))F = βt (F ∗ λΓ (f )F),
+
+(56)
+giving
+
+F ∗ αt (T )F = βt (F ∗ T F),
+
+T ∈ Cr∗ (Γ), t ∈ G.
+
+Let F̃ = I ⊗F ∗ ; thus, F̃ is a unitary operator from L2 (G×Γ) onto L2 (G×G).
+It is well-known that
+F̃ (C ∗ (Γ) ⋊α,θ G)F̃ ∗ = C ⋊β,id G.
+Let Λ = (µt )t∈G be a family of measures in M (G), such that the function
+ψΛ is in F(G). Then ψΛ gives rise to a Herz-Schur (C, G, β)-multiplier given
+by
+π(Mĝ )λt = π(F ∗ λΓ (g)F)λt 7→ π(F ∗ Fψt (λΓ (g))F)λt = π(Mµt ∗ĝ )λt .
+
+44
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+This observation was our motivation for the chosen terminology for convolution multipliers. Note that the convolution multipliers are of different
+nature than Herz-Schur (C, G, β)-multipliers considered in Section 5.2.
+The pair (id, λG ) is a covariant representation of (C, G, β) (see (53)); in
+addition, id ⋊λG is a faithful representation of C ⋊β G on L2 (G) and its image
+coincides with the algebra K(L2 (G)) of all compact operators on L2 (G) (see
+[34] and [43]).
+For ψ ∈ F(G), let Eψ : K(L2 (G)) → K(L2 (G)) be the (completely
+bounded) map given by
+Eψ ((id ⋊λG )(F̃ T F̃ ∗ )) = (id ⋊λG )(F̃ Sψθ (T )F̃ ∗ ),
+
+T ∈ C ∗ (Γ) ⋊α,θ G.
+
+We extend Eψ to a weak* continuous map on B(L2 (G)), denoted in the same
+2
+fashion. For r ∈ G, let ρG
+r ∈ B(L (G)) be the corresponding right regular
+2
+G
+unitary on L (G), that is, ρr f (s) = f (s + r), s, r ∈ G, f ∈ L2 (G). For a
+measure µ ∈ M (G), consider the map Θ(µ) ∈ CB(B(L2 (G)), given by
+Z
+G
+T ∈ B(L2 (G)).
+ρG
+(57)
+Θ(µ)(T ) =
+r T ρ−r dµ(r),
+G
+
+It is easy to see that
+Θ(µ)(Ma ) = Mµ·a = Mµ̃∗a , a ∈ L∞ (G),
+R
+where (µ · a)(s) = G a(s + r)dµ(r) and µ̃ is the measure on G given by
+µ̃(E) = µ(−E). Note that Θ(µ) is a VN(G)-bimodule map and leaves DG
+invariant.
+Recall that, for every u ∈ B(G), the function N (u) given by N (u)(s, t) =
+u(t−s), is a Schur multiplier [5] (see also Remrak 3.9). Thus, the corresponding map Ψu : B(L2 (G)) → B(L2 (G)) is a completely bounded DG -bimodule
+map that leaves VN(G) invariant.
+
+(58)
+
+Proposition 6.8. Suppose that µ ∈ M (G) and u ∈ B(G). Let ψµ and ψu be
+the elements of F(G) given by ψµ (s, x) = µ̌(x) and ψu (s, x) = u(s), s ∈ G,
+x ∈ Γ. Then
+(i) Eψµ = Θ(µ̃), and
+(ii) Eψu = Ψu .
+Proof. Let f ∈ Cc (G, Cc (Γ)) be given by f (s) = f0 (s)g, for a certain g ∈
+Cc (Γ) and a certain f0 ∈ Cc (G). Let i : Cc (G, Cc (Γ)) → C ∗ (Γ) ⋊α,θ G be
+the embedding map given by
+Z
+α−t (λΓ (h(s)))λθs ξ(t)ds, ξ ∈ L2 (G × Γ), h ∈ Cc (G × Γ).
+i(h)ξ(t) =
+G
+
+We have
+i(f )ξ(t) =
+
+Z
+
+G
+
+α−t (λΓ (g))f0 (s)λθs ξ(t)ds
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+45
+
+and, by (55) and (56),
+∗
+
+F̃i(f )F̃ ξ(t) =
+(59)
+
+=
+
+Z
+
+ZG
+
+G
+
+=
+
+Z
+
+G
+
+F ∗ α−t (λΓ (g))Ff0 (s)λθs ξ(t)ds
+β−t (F ∗ (λΓ (g))F)f0 (s)λθs ξ(t)ds
+β−t (Mĝ )f0 (s)λθs ξ(t)ds.
+
+Let T, Tµ : G → C be the maps given by T (s) = Mf0 (s)ĝ and Tµ (s) =
+Mf0 (s)µ∗ĝ , s ∈ G; clearly, T, Tµ ∈ L1 (G, C). Let j : L1 (G, C) → C ⋊β,id G be
+the canonical injection. By (59), F̃i(f )F̃ ∗ = j(T ) and F̃ i(ψµ f )F̃ ∗ = j(Tµ ).
+(i) Note that
+Sψθ µ (i(f )) = i(ψµ f ) = i(f0 ⊗ (µ̌g)).
+We have
+Eψµ (Mĝ λG (f0 )) = Eψµ ((id ⋊λG )(j(T ))) = Eψµ ((id ⋊λG )(F̃ i(f )F̃ ∗ ))
+= (id ⋊λG )(F̃ Sψθ µ (i(f ))F̃ ∗ ) = (id ⋊λG )(F̃ i(f0 ⊗ µ̌g)F̃ ∗ )
+= (id ⋊λG )(j(Tµ )) = Mµ∗ĝ λG (f0 ).
+By (58) and the modularity of Θ(µ) over VN(G) we now have
+Eψµ (Mĝ λG (f0 )) = Mµ∗ĝ λG (f0 ) = Mµ̃·ĝ λG (f0 ) = Θ(µ̃)(Mĝ λG (f0 )).
+Since the operators of the form Mĝ λG (f0 ) span a dense subspace of K(L2 (G)),
+it follows that Eψµ = Θ(µ̃).
+(ii) Similarly to (i), we have
+Eψu (Mĝ λG (f0 )) = (id ⋊λG )(F̃ i(uf0 ⊗ g)F̃ ∗ ) = Mĝ λG (uf0 ).
+Since, by [15], λG (uf0 ) = Ψu (λG (f0 )), and Ψu is a C-bimodule map, we
+obtain that Eψu (Mĝ λG (f0 )) = Ψu ((Mĝ λG (f0 )). The statement now follows
+by the density of the linear span of the operators of the form Mĝ λG (f0 ) in
+K(L2 (G)).
+
+Definition 6.9. Let (θ, τ ) be a covariant representation of the dynamical
+system (A, G, α). We say that F : G → CB(A) is a Herz-Schur (θ, τ )multiplier if the map
+θ(a)τs → θ(F (s)(a)τs , s ∈ G, a ∈ A
+can be extended to a weak*-continuous completely bounded map on the weak*
+closed hull of (θ ⋊ τ )(A ⋊α G).
+Let Fid,λG (G) be the set of admissible functions ψ : G × Γ → C such that
+the corresponding Fψ : G → CB(C) is a Herz-Schur (id, λG )-multiplier for
+the dynamical system (C, G, β).
+
+46
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+Theorem 6.10. Let E = {Eψ : ψ ∈ Fid,λG (G)}. Then
+E = CB(K(L2 (G))) ∩ {Θ(µ), Ψu : µ ∈ M (G), u ∈ B(G)}′ .
+In particular, E is a maximal abelian subalgebra of CB(K(L2 (G)).
+Proof. The fact that E is contained in the right hand side follows from the
+fact that E is a commutative subalgebra of CB(K(L2 (G))) and, by Proposition 6.8, contains the maps Θ(µ) and Ψu , where u ∈ B(G) and µ ∈ M (G).
+To prove the reverse inclusion, we modify the arguments in the proof of
+Theorem 4.3. Let Φ ∈ CB(K) commute with Ψu and Θ(µ), for all µ ∈ M (G)
+and all u ∈ B(G). The map Φ has a unique extension to a weak* continuous
+completely bounded map on B(L2 (G)), which will be denoted by the same
+symbol. Let t ∈ G, a ∈ L∞ (G) and T = Ma λG
+t . Set
+J = {u ∈ B(G) : u(t) = 1}.
+Then for u ∈ J we have
+G
+G
+Ψu (Ma λG
+t ) = u(t)Ma λt = Ma λt .
+
+As ΦΨu = Ψu Φ, we obtain
+Ψu (Φ(T )) = Φ(T ).
+By [1] and the remark before Theorem 4.3, we conclude that Φ(T )λG
+−t ∈ DG .
+G
+Therefore, there exists at ∈ L∞ (G) such that Φ(Ma λG
+)
+=
+M
+at λt . Let
+t
+Ft (a) = at , t ∈ G. Then Ft is a linear map on DG . Since Φ is completely
+bounded and weak* continuous, Ft is so, too.
+Since Φ commutes with Θ(µ), µ ∈ M (G), we have
+G
+Φ(Mµ·a λG
+t ) = Mµ·Ft (a) λt ,
+
+giving Ft (µ·a) = µ·Ft (a). The map Ft is the adjoint of a bounded linear map
+Ψt : L1 (G) → L1 (G) such that Ψt (µ ∗ f ) = µ ∗ Ψt (f ), µ ∈ M (G), f ∈ L1 (G).
+By [35, Theorem 3.8], there exists νt ∈ M (G) such that Ft (a) = νt ∗ a,
+a ∈ L∞ (G). Let ψ(t, x) = ν̌t (x), t ∈ G, x ∈ Γ. Then ψ ∈ Fid,λG (G) and Φ is
+the weak* extension of Eψ .
+
+Remark 6.11. Assume G is arbitrary and let βt : C → C be given by
+∗
+G
+βt (Ma ) = λG
+t Ma λt−1 . Then (C, G, β) is a C -dynamical system. For a
+2
+measure µ we consider the map Θ(µ) ∈ CB(L (G)) given by (57). We have
+Θ(µ)(C) ⊆ C. Moreover, for each r ∈ G we have βr ◦ Θ(µ) = Θ(µ) ◦ βr :
+
+Z
+G
+G
+G
+βr (Θ(µ)(Ma )) = λr
+ρs Ma ρs−1 dµ(s) λG
+r −1
+G
+Z
+G
+G
+ρG
+=
+s λr Ma λr −1 ρs−1 dµ(s) = Θ(µ)(βr (Ma )).
+G
+
+Hence Θ(µ) gives rise to a completely bounded map on C ⋊β,r G, i.e. the
+function F , given by F (t)(Ma ) := Θ(µ)(Ma ), is a Herz-Schur (C, G, β)multiplier. For Λ = {µt }t∈G we let FΛ (t)(Ma ) = Θ(µt )(Ma ). The class of
+
+HERZ-SCHUR MULTIPLIERS OF DYNAMICAL SYSTEMS
+
+47
+
+Herz-Schur multipliers FΛ includes the convolution multipliers examined in
+the present section, whose study will be pursued elsewhere.
+Acknowledgement. We would like to thank Sergey Neshveyev and Adam
+Skalski for many helpful conversations during the preparation of this paper.
+References
+[1] M. Anoussis, A. Katavolos and I. G. Todorov, Ideals of the Fourier algebra,
+supports and harmonic operators, to appear in the Math. Proc. Cambridge Plilos.
+Soc.
+[2] E. Bedos and R. Conti, Fourier series and twisted C*-crossed products, J. Fourier
+Anal. Appl 21 (2015), 32-75.
+[3] M. S. Birman and M. Z. Solomyak, Double operator integrals in a Hilbert space,
+Int. Eq. Oper. Th. 47 (2003), no. 2, 131-168.
+[4] D. P. Blecher and C. Le Merdy, Operator algebras and their modules – an operator space approach, Oxford University Press, 2004.
+[5] M. Bożejko and G. Fendler, Herz-Schur multipliers and completely bounded multipliers of the Fourier algebra of a locally compact group, Boll. Un. Mat. Ital. A (6) 2
+(1984), no. 2, 297-302.
+[6] N. P. Brown and N. Ozawa, C*-algebras and finite dimensional approximations,
+American Mathematical Society, 2008.
+[7] J. de Canniere and U. Haagerup, Multipliers of the Fourier algebras of some
+simple Lie groups and their discrete subgroups, Amer. J. Math. 107 (1985), no. 2,
+455-500.
+[8] S. Echterhoff, S. Kaliszewski, J. Quigg, I. Raeburn Naturality and induced
+representations, Bull. Austral. Math. Soc. 61 (2000), no. 3, 415-438.
+[9] E. Effros and Z.-J. Ruan, Operator Spaces, Oxford University Press, 2000.
+[10] P. Eymard, L’algèbre de Fourier d’un groupe localement compact, Bull. Soc. Math.
+France 92 (1964), 181-236.
+[11] F. Ghahramani, Isometric representations of M (G) on B(H), Glasgow Math. J. 23
+(1982), 119-122.
+[12] A. Grothendieck, Résumé de la théorie métrique des produits tensoriels
+topologiques, Boll. Soc. Mat. Sao-Paulo 8 (1956), 1-79.
+[13] U. Haagerup, Decomposition of completely bounded maps on operator algebras, unpublished manuscript.
+[14] T. Huruya, The second dual of a tensor product of C* -algebras, II, Sci. Rep. Niigata
+Univ. Ser. A 11 (1974), 21-23.
+[15] P. Jolissaint, A characterisation of completely bounded multipliers of Fourier algebras, Colloquium Math. 63 (1992) 311-313.
+[16] R. V. Kadison and J. R. Ringrose, Fundamentals of the theory of von Neumann
+algebras II, Academic Press, 1986.
+[17] A. Katavolos and V. I. Paulsen, On the ranges of bimodule projections, Canad.
+Math. Bull. 48 (2005) no. 1, 97-111.
+[18] S. Knudby, The weak Haagerup property, preprint, arXiv 1401.7541.
+[19] J. Kraus, The slice map problem for σ-weakly closed subspaces of von Neumann
+algebras, Trans. Amer. Math. Soc. 279 (1983), no. 1, 357-376.
+[20] U. Haagerup and J. Kraus, Approximation properties for group C*-algebras and
+group von Neumann algebras, Trans. Amer. Math. Soc. 344 (1994), no. 2, 667-699.
+[21] P. S. Muhly and J. N. Renault, C*-algebras of multivariable Wienner-Hopf operators, Trans. Amer. Math. Soc. 274 (1982), no. 1, 1-44.
+[22] P. S. Muhly and B. Solel, Tensor algebras over C*-correspondences: representations, dilations, and C*-envelopes, J. Funct. Anal. 158 (1998), no. 2, 389-457.
+
+48
+
+A. MCKEE, I. TODOROV, AND L. TUROWSKA
+
+[23] Y. Nakagami and M. Takesaki, Duality for crossed products of von Neumann
+algebras, Springer-Verlag, 1979.
+[24] M. Neufang and V. Runde, Harmonic operators: the dual perspective, Math. Z.
+255 (2007), no. 3, 669-690.
+[25] M. Neufang, Z-J. Ruan and N. Spronk, Completely isometric representations of
+b ∗ , Trans. Am. Math. Soc. 360 (2008), no. 3, 1133-1161.
+Mcb A(G) and U CB(G)
+[26] V. I. Paulsen, Completely bounded maps and operator algebras, Cambridge University Press, 2002.
+[27] G. K. Pedersen, C*-algebras and their automorphism groups, Academic Press, 1979.
+[28] V. V. Peller, Hankel operators in the theory of perturbations of unitary and selfadjoint operators, Funct. Anal. Appl. 19 (1985), no. 2, 111-123.
+[29] M. Pimsner, A class of C*-algebras generalizing both Cuntz-Krieger algebras and
+crossed products by Z, “Free Probability Theory” (D. Voiculescu, Ed.), Fields Instit.
+Comm. (1997) 12, 189-212.
+[30] G. Pisier, Similarity problems and completely bounded maps, Springer-Verlag, 2001.
+[31] G. Pisier, Introduction to operator space theory, Cambridge University Press, 2003.
+[32] J. Renault, A groupoid approach to C*-algebras, Springer-Verlag, 1980.
+[33] J. Renault, The Fourier algebra of a measured groupoid and its multipliers, J. Funct.
+Anal. 145 (1997), no. 2, 455-490.
+[34] M. A. Rieffel, On the uniqueness of the Heisenberg commutation relations, Duke
+Math. J. 39 (1972), 745-752.
+[35] W. Rudin, Fourier analysis on groups, John Wiley & Sons, 1990.
+[36] V. S. Shulman, I. G. Todorov and L. Turowska, Closable multipliers, Int. Eq.
+Oper. Th. 69 (2011), no. 1, 29-62.
+[37] R. R. Smith and N. Spronk, Representations of group algebras in spaces of completely bounded maps, Indiana Univ. Math. J. 54 (2005), no. 3, 873-896.
+[38] N. Spronk, Measurable Schur multipliers and completely bounded multipliers of the
+Fourier algebras, Proc. London Math. Soc (3) 89 (2004), 161-192.
+[39] E. Størmer, Regular abelian Banach algebras of linear maps of operator algebras, J.
+Funct. Anal. 37 (1980), no. 3, 331-373.
+[40] M. Takesaki, Theory of operator algebras I, Springer-Verlag, 2003.
+[41] I. G. Todorov and L. Turowska, Sets of p-multiplicity in locally compact groups,
+Studia Math. 226 (2015), 75-93.
+[42] J. Tomiyama, On the projection of norm one in W*-algebras, Proc. Japan Acad. 33
+(1957), no. 10, 608-612.
+[43] D. P. Williams, Crossed products of C*-algebras, American Mathematical Society,
+2007.
+Pure Mathematics Research Centre, Queen’s University Belfast, Belfast
+BT7 1NN, United Kingdom
+E-mail address: amckee240@qub.ac.uk
+Pure Mathematics Research Centre, Queen’s University Belfast, Belfast
+BT7 1NN, United Kingdom
+E-mail address: i.todorov@qub.ac.uk
+Department of Mathematical Sciences, Chalmers University of Technology and the University of Gothenburg, Gothenburg SE-412 96, Sweden
+E-mail address: turowska@chalmers.se
+
+

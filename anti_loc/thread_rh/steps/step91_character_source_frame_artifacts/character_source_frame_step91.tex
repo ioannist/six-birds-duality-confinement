@@ -1,0 +1,122 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\title{Step 91: Dirichlet/Hecke Character-Source Frame Abstraction}
+\author{Six Birds RH Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The paired completed Weil carrier is positive but has a low-frequency soft mode.  Step 89 identified the strongest non-gating route: an upstream-visible source ladder whose cumulative response-side frame charges the full anti-invariant sector.  This note specializes that source route to Dirichlet/Hecke-style character families.
+
+No RH claim is made.  The goal is to state exactly what a character-source family would have to prove.
+
+\section{Source records}
+Let $Y^-$ be the completed anti-invariant response space, with positive reference budget $\Theta_0^-\succ0$.  A character-source record is a tuple
+\[
+  s=(\chi,Q_\chi,\Theta_\chi,\lambda_{\chi,n},D_{\chi,n}),
+\]
+where $Q_\chi:Y^-\to Z_\chi$ is an upstream-visible character readout, $\Theta_\chi\succ0$ is a local source budget, and the audit contribution satisfies
+\[
+  D_{\chi,n}\succeq
+  \lambda_{\chi,n}(Q_\chi L^-)^*\Theta_\chi^{-1}(Q_\chi L^-).
+\]
+Here $L^-$ is the anti-invariant probe family on the zeta carrier.
+
+For a source family $\mathcal X_n$ define the response-side source frame
+\[
+  F_n=\sum_{\chi\in\mathcal X_n}\lambda_{\chi,n}
+  Q_\chi^*\Theta_\chi^{-1}Q_\chi.
+\]
+
+\begin{definition}[Character-source lower frame]
+The family $\mathcal X_n$ has lower-frame constant $\Lambda_n$ relative to $\Theta_0^-$ if
+\[
+  F_n\succeq \Lambda_n(\Theta_0^-)^{-1}.
+\]
+It is collapsing if $\Lambda_n\to\infty$.
+\end{definition}
+
+\section{Frame-to-budget theorem}
+\begin{theorem}[Character-source coercivity]
+Assume the source records are accepted and
+\[
+  F_n\succeq \Lambda_n(\Theta_0^-)^{-1}.
+\]
+Then the extended audit $C_n^+$ satisfies
+\[
+  C_n^+\succeq \Lambda_n (L^-)^*(\Theta_0^-)^{-1}L^-.
+\]
+Consequently, under null-mode legality,
+\[
+  K_n^-:=L^-(C_n^+)^\dagger(L^-)^*\preceq \Lambda_n^{-1}\Theta_0^-.
+\]
+If $\Lambda_n\to\infty$, then $K_n^-\to0$ in Loewner order.
+\end{theorem}
+
+\begin{proof}
+Summing the accepted source inequalities gives
+\[
+  C_n^+\succeq \sum_{\chi\in\mathcal X_n}D_{\chi,n}
+  \succeq (L^-)^*F_nL^-.
+\]
+The lower-frame assumption gives the displayed coercive bound.  The budget bound is the standard coercive-capacity implication: if
+\[
+  C\succeq \Lambda L^*\Theta^{-1}L,
+\]
+then $LC^\dagger L^*\preceq \Lambda^{-1}\Theta$ on the legal quotient.
+\end{proof}
+
+\section{Orthogonal and incomplete character cases}
+\begin{corollary}[Orthogonal character blocks]
+If
+\[
+  Y^- = \bigoplus_{\alpha\in A}Y_\alpha
+\]
+orthogonally and $Q_\alpha=P_\alpha$ are the block projections with $\Theta_\alpha=I$, then
+\[
+  F_n=\sum_{\alpha\in A_n}\lambda_{\alpha,n}P_\alpha.
+\]
+The lower-frame constant on the full space is
+\[
+  \Lambda_n=\min_{\alpha\in A}\lambda_{\alpha,n},
+\]
+with the convention $\lambda_{\alpha,n}=0$ for uncovered blocks.  Thus full budget collapse requires every anti-invariant block to be covered with minimum strength tending to infinity.
+\end{corollary}
+
+\begin{corollary}[Missing character obstruction]
+If there exists $0\ne y\in Y^-$ with $Q_\chi y=0$ for every $\chi\in\mathcal X_n$ and every $n$, then no character-source ladder based on those readouts can collapse the full anti-invariant budget.
+\end{corollary}
+
+\section{Dirichlet/Hecke ladder schema}
+A Dirichlet character-source ladder would consist of conductor-ordered families
+\[
+  \mathcal X_n=\{\chi\text{ primitive Dirichlet character}:\operatorname{cond}(\chi)\le Q_n\},
+\]
+with completed auxiliary $L$-function records, common response space $Y^-$, and readouts $Q_\chi$ declared before the zero-confinement test.
+
+A Hecke character-source ladder replaces conductor-bounded Dirichlet characters by conductor-bounded Hecke characters in a carrier-native adelic package.  This is broader and more plausible for full root-composite coverage, but it carries a larger construction burden.
+
+\section{Acceptance gates}
+The ladder is not accepted merely because characters are natural.  It must pass:
+\begin{enumerate}
+\item upstream visibility: $\mathcal X_n$ is chosen by conductor/refinement, not target zeros;
+\item completed auxiliary carriers: each source has gamma, pole, tail, and null records;
+\item common response space: all $Q_\chi$ act on the same $Y^-$;
+\item lower frame: $F_n\succeq\Lambda_n(\Theta_0^-)^{-1}$;
+\item divergence: $\Lambda_n\to\infty$ or enough to squeeze the zero ledger;
+\item tail/exhaustivity: moving conductor windows have a vanishing uncovered tail;
+\item all-six records: rewrite, feasibility, route, staging, packaging, audit.
+\end{enumerate}
+
+\section{Nonclaims}
+This note does not prove that Dirichlet or Hecke characters satisfy the lower-frame gate for zeta.  It does not prove RH.  It states the exact frame/coercivity obligation a character-source route must discharge.
+
+\end{document}

@@ -1,0 +1,216 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\title{Step 155: \texorpdfstring{$\Xi^{\rm BC}$}{XiBC} Residual Classification}
+\author{Riemann Membrane Construction Notes}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\XiBC}{\Xi^{\rm BC}}
+\newcommand{\Pa}{P_a}
+\newcommand{\Ya}{Y_a}
+\newcommand{\Bell}{\mathfrak B_{\ell,a}}
+\newcommand{\Cell}{C_\ell}
+\newcommand{\etaak}{\eta^a_{w,k}}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+Steps 151--154 pivoted away from the positive source-frame / fixed positive ledger squeeze.  That route became diagnostic because its missing source-budget condition is already collapse-strength.  The current active object is therefore the Burnol/co-Poisson adequacy residual
+\[
+  \XiBC_{\ell,a}=\Bell^*\Pi_{\Ya}\Bell\succeq0,
+\]
+where
+\[
+  \Bell=J_aP_\infty\tau_\ell(I-P_\infty).
+\]
+This note classifies exactly what would be required for this residual to be accepted as closed, paid, or scoped out.
+
+\section{The active residual}
+Burnol's Sonine/co-Poisson carrier gives, for $a<1$,
+\[
+  \Pa=\Ya^\perp,
+\]
+where $\Ya$ is the closed span of the zero-evaluator vectors $Y^a_{\rho,k}$ and $\Pa$ is the co-Poisson subspace.  Hence
+\[
+  \Ran\Bell\subseteq \Pa
+  \quad\Longleftrightarrow\quad
+  \Pi_{\Ya}\Bell=0.
+\]
+If this fails, the exact residual is
+\[
+  \XiBC_{\ell,a}=\Bell^*\Pi_{\Ya}\Bell,
+  \qquad
+  \langle u,\XiBC_{\ell,a}u\rangle=\|\Pi_{\Ya}\Bell u\|^2.
+\]
+
+Step 152--154 rewrote the adjoint obstruction using the pulled evaluator
+\[
+  \eta^a_{w,k}=J_a^*Y^a_{w,k}
+  =T_a^*\partial_{\bar w}^{\,k}K_a^\Gamma(\cdot,w),
+\]
+and the shifted Sonin/prolate commutator block
+\[
+  \Cell=(I-P_\infty)M_{m_\ell}P_\infty,
+  \qquad
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+The direct-exclusion equation is
+\[
+  \boxed{\Cell\eta^a_{\rho,k}=0\quad\forall \rho,k.}
+\]
+No formal property of the raw log-shift implies this equation.  A log-shift only multiplies Mellin transforms by a nonvanishing factor; it does not create a $\zeta$-factor.
+
+\section{Residual-kernel representation}
+Define the residual kernel on the pulled zero-evaluator family by
+\[
+  \mathcal R_\ell((w,k),(z,j))
+  =\langle \Cell\eta^a_{w,k},\Cell\eta^a_{z,j}\rangle.
+\]
+Equivalently,
+\[
+  \mathcal R_\ell((w,k),(z,j))
+  =\left\langle
+    \eta^a_{w,k},
+    P_\infty M_{\overline{m_\ell}}(I-P_\infty)M_{m_\ell}P_\infty
+    \eta^a_{z,j}
+  \right\rangle.
+\]
+Thus $\XiBC$ is a positive Hankel/projection-square residual.  Any claim that it is small, compact, or zero must be a theorem about this kernel or about a lawful co-Poisson factorization.
+
+\section{Classification gates}
+
+\begin{definition}[Exact exclusion]
+The residual is in class $\mathsf E$ if
+\[
+  \XiBC=0.
+\]
+Equivalently, $\Cell\eta^a_{\rho,k}=0$ for every visible zero-evaluator vector.  A sufficient certificate is the co-Poisson factorization
+\[
+  M(\Bell u)(s)=\zeta(s)\alpha_{\ell,u}(s)
+\]
+with all support, pole, endpoint, and Sonine records discharged.
+\end{definition}
+
+\begin{definition}[Compact/tail-payable]
+The residual is in class $\mathsf T$ if there is an upstream-declared completed window ladder $P_N\uparrow I$ on the residual carrier and a fixed positive ledger $K_R$ such that
+\[
+  \tr((I-P_N)\XiBC(I-P_N)K_R)\to0
+\]
+or, more strongly,
+\[
+  \|(I-P_N)\Pi_{\Ya}\Bell\|\to0.
+\]
+This is a genuine tail theorem.  It is not implied by finite-window smallness.
+\end{definition}
+
+\begin{definition}[Non-circular source absorption]
+The residual is in class $\mathsf S$ if there is a source mechanism which absorbs $\XiBC$ without relying on the blocked positive-trace squeeze.  Accepted mechanisms include:
+\begin{enumerate}[label=(\roman*)]
+  \item a signed explicit-formula identity that directly proves cancellation before passing to a positive trace;
+  \item a Plancherel or co-Poisson identity that proves $\Pi_{\Ya}\Bell=0$ on the declared source-readable residual class;
+  \item a source theorem that acts on $\XiBC$ itself and does not require the side budget
+  $\tr(F_NK_R)=o(\Lambda_N)$ after already assuming $F_N\succeq\Lambda_NG_R$.
+\end{enumerate}
+A positive source frame plus a fixed positive ledger is not enough; Step 149--150 show that the missing source-budget condition is already collapse-strength.
+\end{definition}
+
+\begin{definition}[Scoped nonclaim]
+The residual is in class $\mathsf N$ if exact exclusion, tail payment, and non-circular source absorption are all unproved.  Then the theorem may only claim results on the quotient or scoped carrier where $\XiBC$ is declared as an active adequacy residual.
+\end{definition}
+
+\begin{theorem}[Step 155 classification theorem]
+Let $\XiBC\succeq0$ be the Burnol/co-Poisson residual of the shifted boundary block.  A completed RH-directed membrane claim involving this residual must discharge one of the following records:
+\[
+  \boxed{\mathsf E:\ \XiBC=0,}
+\]
+\[
+  \boxed{\mathsf T:\ \XiBC\text{ is compact/tail-payable on a fixed or exhaustive ledger,}}
+\]
+\[
+  \boxed{\mathsf S:\ \XiBC\text{ is absorbed by a non-circular source mechanism,}}
+\]
+or else declare
+\[
+  \boxed{\mathsf N:\ \XiBC\text{ remains a scoped nonclaim residual.}}
+\]
+Moreover, a positive lower-frame source inequality
+\[
+  F_N\succeq\Lambda_NG_R,
+  \qquad \Lambda_N\to\infty,
+\]
+combined with a fixed positive ledger $K_R$ cannot by itself supply the required source budget
+\[
+  \tr(F_NK_R)=o(\Lambda_N)
+\]
+unless the residual ledger has already collapsed:
+\[
+  \tr(G_RK_R)=0.
+\]
+\end{theorem}
+
+\begin{proof}
+The first three alternatives are exactly the three lawful ways to remove a positive adequacy residual from a completed theorem: prove it zero, prove its completed tail vanishes, or prove an independent source identity that pays it without assuming the conclusion.  If none holds, the residual remains in the theorem statement as a nonclaim boundary.  The last assertion follows from positivity:
+\[
+  F_N\succeq\Lambda_NG_R,
+  \quad K_R\succeq0
+  \quad\Rightarrow\quad
+  \tr(F_NK_R)\ge\Lambda_N\tr(G_RK_R).
+\]
+Dividing by $\Lambda_N$ gives the obstruction.
+\end{proof}
+
+\section{Current classification status}
+The present construction has the following status.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Gate & Status & Reason \\
+\midrule
+Exact exclusion $\mathsf E$ & open / not earned & raw shift does not create $\zeta$-factor; commutator residual not formally zero \\
+Compact/tail payment $\mathsf T$ & open / not earned & whole shifted Sonin block has noncompact boundary sector; evaluator-specific compactness still unproved \\
+Source absorption $\mathsf S$ & blocked in positive-trace form & source-budget condition is collapse-strength \\
+Scoped nonclaim $\mathsf N$ & currently active & $\XiBC$ remains the named adequacy residual \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Consequences}
+The positive source-frame route remains useful diagnostically: it identified the GCD-log blind sector, the $\Omega$-compatible dictionary gate, the completed-tail gate, and the source-budget obstruction.  But it no longer looks proof-producing unless a new non-circular source identity appears.
+
+Therefore the most honest current RH-directed conclusion is:
+\[
+  \boxed{\text{The framework has reduced the remaining obstruction to }\XiBC.}
+\]
+A proof-producing continuation must focus on either:
+\begin{enumerate}[label=(\arabic*)]
+  \item co-Poisson factorization of $\Bell$;
+  \item evaluator-specific compactness of $\mathcal R_\ell$;
+  \item a signed/direct source identity for $\XiBC$;
+  \item or a scoped theorem explicitly excluding the unresolved residual from the claim.
+\end{enumerate}
+
+\section{Next step}
+The next constructive step is to stop asking whether $\XiBC$ is generically source-absorbed and instead test whether its kernel is evaluator-specific compact/tail-payable:
+\[
+  \boxed{\mathcal R_\ell((\rho,k),(z,j))
+  =\langle \Cell\eta^a_{\rho,k},\Cell\eta^a_{z,j}\rangle.}
+\]
+The target is a Schatten/tail classification of the pulled evaluator residual kernel.
+
+\end{document}

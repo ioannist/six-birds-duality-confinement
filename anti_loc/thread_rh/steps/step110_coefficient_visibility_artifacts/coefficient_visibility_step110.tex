@@ -1,0 +1,36 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\title{Step 110: Coefficient Visibility Audit for $R_N$}
+\date{May 13, 2026}
+\begin{document}
+\maketitle
+\section{Purpose}
+The boundary source route factors into source strength $\gamma_N$ and coefficient visibility $c_N$. This note isolates $c_N$.
+\section{Objects}
+Let $M_N:Y_{\mathcal B,N}\to H_N^{\rm resp}$ synthesize a finite boundary-packet dictionary, with $G_{\mathcal B,N}=M_N^*M_N$. Let $\mathcal D_N:\mathbb C^{\mathcal N_N}\to H_N^{\rm resp}$ be the short Dirichlet synthesis map and $H_N=\mathcal D_N^*\mathcal D_N$. Define $R_N=\mathcal D_N^\dagger M_N$ and $E_{{\rm coef},N}=(I-P_N)M_N$, where $P_N$ projects onto $\operatorname{Ran}\mathcal D_N$.
+\begin{theorem}[Coefficient visibility identity]
+\[
+R_N^*H_NR_N=M_N^*P_NM_N=G_{\mathcal B,N}-E_{{\rm coef},N}^*E_{{\rm coef},N}.
+\]
+Therefore
+\[
+c_N=\lambda_{\min}\left(G_{\mathcal B,N}^{-1/2}R_N^*H_NR_NG_{\mathcal B,N}^{-1/2}\right)=1-\|E_{{\rm coef},N}G_{\mathcal B,N}^{-1/2}\|^2.
+\]
+\end{theorem}
+\begin{proof}
+Insert $R_N=\mathcal D_N^\dagger M_N$ and $H_N=\mathcal D_N^*\mathcal D_N$. The middle factor $(\mathcal D_N^\dagger)^*\mathcal D_N^*\mathcal D_N\mathcal D_N^\dagger$ is $P_N$.
+\end{proof}
+\begin{theorem}[Finite matrix moment composition]
+If $G_{\mathcal X,N}\succeq\gamma_NH_N$ and $R_N^*H_NR_N\succeq c_NG_{\mathcal B,N}$, then
+\[
+R_N^*G_{\mathcal X,N}R_N\succeq\gamma_Nc_NG_{\mathcal B,N}.
+\]
+\end{theorem}
+\section{Membrane meaning}
+The residual $E_{{\rm coef},N}^*E_{{\rm coef},N}$ is a coefficient-level adequacy residual. If it has a legal unit direction, then the source route has a $\Xi$ blind spot.
+\section{Conclusion}
+The completed route needs $\gamma_Nc_N\to\infty$ plus fixed/exhaustive tail promotion. Heap--Soundararajan moment technology is relevant to $\gamma_N$; the Burnol/Sonine coefficient visibility problem is the separate $c_N$ gate.
+\end{document}

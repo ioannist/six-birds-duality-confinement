@@ -1,0 +1,73 @@
+{
+  "step": 244,
+  "orientation": "synthesis-case-3",
+  "target": "Hecke H1-H5 collective frontier blockage",
+  "gate_summary_table": [
+    {
+      "gate": "H1",
+      "spec": "direct-integral Schur legality",
+      "required_external_content": "completed Hecke response space, full character Plancherel ledger, measurable Schur fields, Moore-Penrose pseudoinverse compatibility, tail/exhaustivity",
+      "verdict": "blocked external",
+      "source_step": 239
+    },
+    {
+      "gate": "H2",
+      "spec": "source lower-frame plus Plancherel tail",
+      "required_external_content": "non-smuggled lower-frame F_n >= Lambda_n (Theta0^-)^{-1}, Lambda_n -> infinity, completed Plancherel tail/exhaustivity",
+      "verdict": "blocked external",
+      "source_step": 240
+    },
+    {
+      "gate": "H3",
+      "spec": "Hecke Calkin bridge",
+      "required_external_content": "completed Hecke Calkin algebra, faithful boundary symbol, normal form with compact remainder, lower-faithfulness, bridge to RH Calkin quotient",
+      "verdict": "blocked external",
+      "source_step": 241
+    },
+    {
+      "gate": "H4",
+      "spec": "per-character finite-carrier diagnostics",
+      "required_external_content": "Hecke kappa_chi,w, P_infty,chi, projected reproducing kernel, lawful finite matrix-source residual",
+      "verdict": "blocked external / diagnostic-only",
+      "source_step": 242
+    },
+    {
+      "gate": "H5",
+      "spec": "auxiliary explicit-formula records",
+      "required_external_content": "normalized EF records per L(s,chi): conductor, gamma, root number, local terms, poles, primitive corrections, tails",
+      "verdict": "blocked external",
+      "source_step": 243
+    },
+    {
+      "gate": "H6",
+      "spec": "zeta-fiber descent to Xi_BC",
+      "required_external_content": "external bridge equality or defect-paid transfer; scalar identity alone insufficient",
+      "verdict": "V-NC bridge failure / CRCFT-BF",
+      "source_step": 168
+    }
+  ],
+  "framework_general_implications": {
+    "frontier_collective_blockage": "When all named support lanes for a sibling carrier are blocked external and the bridge lane is BF/V-NC, the cascade is diagnostic-complete at that frontier.",
+    "CTMT_recursion_connection": "Each Hecke support gate refines into a more specific CTMT-style external requirement.",
+    "Bridge_Impossibility_connection": "Even completed Hecke-side support would not transfer to Xi_BC without H6 bridge equality or defect-paid transfer.",
+    "CRCFT_connection": "H1-H5 are CTMT-style blocked external gates; H6 is BF."
+  },
+  "corpus_pending_status": {
+    "status": "candidate (verified-on-1-cascade-instance) corpus-pending",
+    "scope": "RH-track-specific Hecke lane diagnostic-complete finding",
+    "recommended_targets": [
+      "adequacy.tex",
+      "needles.tex",
+      "paper/sections/RH Hecke lane notes"
+    ]
+  },
+  "retained_nogos": [
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar L-identity is not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness"
+  ],
+  "final_verdict": "V_hecke_frontier_collectively_blocked"
+}

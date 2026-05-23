@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\begin{document}
+
+\section*{Step 217: Wavepacket Weyl Test}
+
+\subsection*{Construction}
+
+Let
+\[
+u_n(\tau)=Z_n^{-1/2}\exp\!\left(-\frac{(\tau-T_n)^2}{2\sigma^2}\right)
+\mathbf 1_{\{|\tau-T_n|<3\sigma\}},
+\]
+with \(T_n=30n\), \(\sigma=1\), and \(Z_n\) chosen so that
+\[
+\|u_n\|_{L^2(d\tau/2\pi)}=1.
+\]
+The tested operator is
+\[
+C_\ell P_\infty=(I-P_\infty)M_{m_\ell}P_\infty,\qquad \ell=\log 2,
+\]
+using the finite Step 173 PSWF/sinc model for \(P_\infty\).
+
+This is not a test of \(C_\ell P_\eta\).  It probes the larger ambient/Sonine projection operator \(C_\ell P_\infty\).
+
+\subsection*{Weak-Null Check}
+
+The packets are disjoint after truncation for spacing \(30\) and \(\sigma=1\).  The numerical maximum pairwise overlap is
+\[
+\max_{i<j}|\langle u_i,u_j\rangle|=0
+\]
+at displayed precision.  Analytically, the untruncated Gaussian overlap between adjacent centers is bounded by \(\exp(-30^2/4)\), before the truncation removes overlap entirely in the finite model.
+
+\subsection*{Norms}
+
+For \(n=1,\ldots,10\),
+\[
+\|C_\ell u_n\|=
+0.264162,\ 0.264780,\ 0.264507,\ 0.266053,\ 0.264949,
+0.264790,\ 0.265199,\ 0.264650,\ 0.265504,\ 0.264970.
+\]
+Thus
+\[
+\min_n\|C_\ell u_n\|=0.2641619334,
+\]
+and with the conservative error budget \(7.5\cdot 10^{-2}\),
+\[
+\delta\ge 0.1891619334.
+\]
+
+\subsection*{Robustness}
+
+The bounded-below behavior persists for \(\sigma=0.5\), \(\ell=\log 3\), \(\ell=1\), and spacings \(10\) and \(50\).  The wider packet \(\sigma=2\) falls into a near-zero/uncertain regime with norms around \(0.047\).
+
+\subsection*{Verdict}
+
+The wavepacket sequence is weakly null by construction and gives a stable lower bound for \(C_\ell P_\infty\) in the primary setting:
+\[
+\boxed{\mathrm{V\_wavepacket\_essential\_obstruction}}.
+\]
+This is a clean ambient operator diagnostic, not a closure or nonclosure theorem for \(C_\ell P_\eta\).
+
+\end{document}

@@ -1,0 +1,342 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Pinf}{P_\infty}
+\newcommand{\Uinf}{\mathcal U_\infty}
+\newcommand{\Mz}{M_\zeta}
+\newcommand{\F}{\mathcal F}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Blegal}{\mathcal B}
+
+\title{Step 173: Attempt to Derive the Mellin Kernel of \(\mathsf P_\infty\)}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{kernel\_verdict = V\_operational\_identity}.}
+\]
+
+No closed elementary two-variable Mellin kernel is obtained.  The attempt does
+derive an exact operational identity for the inherited projection by combining
+the Step 104 two-cutoff Sonin definition with the classical
+Slepian--Pollak PSWF diagonalization of the time-band limiting operator.  The
+identity is explicit enough to define the Mellin-side action of
+\(\Psym=\Uinf S_\lambda\Uinf^{-1}\) as a convergent projection formula.
+
+\section{Inherited Records}
+
+Step 102 identifies \(P_\infty\) as the archimedean Sonin/prolate projection.
+
+Step 104 gives the raw archimedean model:
+\[
+H=L^2(\mathbb R)
+\]
+or the even subspace, with \(P_\lambda\) the spatial cutoff onto
+\[
+I_\lambda=[-\lambda,\lambda],
+\]
+and
+\[
+\widehat P_\lambda=\F^{-1}P_\lambda\F.
+\]
+The Sonin space and projection are
+\[
+\mathcal S_\lambda=\ker P_\lambda\cap\ker\widehat P_\lambda,
+\qquad
+S_\lambda=\operatorname{Proj}_{\mathcal S_\lambda}.
+\]
+With the unitary Fourier convention
+\[
+(\F f)(\xi)=(2\pi)^{-1/2}\int_{\mathbb R}f(x)e^{-ix\xi}\,dx,
+\]
+the two inherited cutoffs have kernels
+\[
+P_\lambda(x,y)=1_{I_\lambda}(x)\delta(x-y),
+\]
+and
+\[
+\widehat P_\lambda(x,y)
+=
+\frac{1}{2\pi}\int_{-\lambda}^{\lambda}e^{i(x-y)\xi}\,d\xi
+=
+\frac{\sin \lambda(x-y)}{\pi(x-y)}
+\]
+with the diagonal value \(\lambda/\pi\).
+
+Step 153 names the Mellin transport:
+\[
+T_a=\mathcal M_\Gamma J_a\Uinf^{-1},
+\]
+where \(\Uinf:H_\infty\to\mathcal H_\infty\) is the archimedean
+Hardy--Titchmarsh/Mellin realization.  In the raw \(L^2(\mathbb R)\) log
+coordinate used by Step 104, the standard Mellin--Plancherel realization is
+the Fourier transform
+\[
+(\Uinf f)(1/2+i\tau)=(2\pi)^{-1/2}\int_{\mathbb R}f(x)e^{-i\tau x}\,dx,
+\]
+up to the completed factors already separated in Step 153.
+
+Step 154 introduces the Mellin-side commutator notation
+\[
+C_\ell=(I-\Pinf)M_{m_\ell}\Pinf
+\]
+and, in completed Mellin variables,
+\[
+\widehat r_{\ell,w,k}
+=(I-\Psym)M_{m_\ell}\Psym T_a^*
+\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+\]
+
+Step 162 records \(P_\infty\) as the archimedean/Sonin projection in the
+Burnol/Sonine pulled-evaluator Hilbert context.  Step 170 records
+\[
+\Psym=\Uinf P_\infty\Uinf^{-1}
+\]
+and explicitly notes that the inherited records do not provide
+\[
+(\Psym F)(s)=\int K_\infty(s,s')F(s')\,d\mu(s').
+\]
+Step 171 reduces the projected zero-jet gate to
+\[
+L_{\rho,k}(G)=
+\langle \Mz G,\Psym y_{\rho,k}\rangle.
+\]
+
+\section{T2a. PSWF Spectral Derivation}
+
+Let
+\[
+P=P_\lambda,\qquad Q=\widehat P_\lambda.
+\]
+Then
+\[
+\mathcal S_\lambda=\ker P\cap\ker Q
+=(\Ran P+\Ran Q)^\perp,
+\]
+so
+\[
+S_\lambda=I-\operatorname{Proj}_{\Ran P+\Ran Q}.
+\]
+The key point is that \(\Ran P\) is orthogonal to
+\[
+(I-P)\Ran Q.
+\]
+Therefore
+\[
+\Ran P+\Ran Q=\Ran P\oplus (I-P)\Ran Q.
+\]
+The projection onto \((I-P)\Ran Q\) is
+\[
+\Pi_{(I-P)QH}
+=(I-P)Q\bigl(Q(I-P)Q\bigr)^{-1}Q(I-P)
+\]
+on \(QH=\Ran Q\).  Hence the exact two-projection identity is
+\[
+\boxed{
+S_\lambda
+=
+I-P
+-
+(I-P)Q\bigl(I_{QH}-QPQ\bigr)^{-1}Q(I-P).
+}
+\tag{1}
+\]
+
+Classical Slepian--Pollak theory diagonalizes the time-band limiting operator
+\[
+QPQ:QH\to QH.
+\]
+Let \(\phi_n^\lambda\in QH\) be the bandlimited PSWF basis and let
+\[
+QPQ\,\phi_n^\lambda=\mu_n^\lambda\phi_n^\lambda,
+\qquad 0<\mu_n^\lambda<1.
+\]
+Then
+\[
+e_n^\lambda
+:=
+\frac{(I-P)\phi_n^\lambda}{\sqrt{1-\mu_n^\lambda}}
+\]
+is an orthonormal basis of \((I-P)QH\), and (1) becomes the strong expansion
+\[
+\boxed{
+S_\lambda
+=
+I-P
+-
+\sum_{n\ge0}
+\frac{|(I-P)\phi_n^\lambda\rangle
+      \langle (I-P)\phi_n^\lambda|}
+     {1-\mu_n^\lambda}.
+}
+\tag{2}
+\]
+This corrects the tempting but wrong ``select eigenvalues near one'' rule.
+The Sonin projection is the complement of both cutoffs.  The PSWF eigenvalues
+enter through \((1-\mu_n^\lambda)^{-1}\), and no finite eigenvalue selection is
+an exact projection.
+
+\section{T2b. Spatial Kernel and Mellin Transport}
+
+Formula (2) gives the spatial distribution kernel
+\[
+\boxed{
+S_\lambda(x,y)
+=
+\delta(x-y)
+-1_{I_\lambda}(x)\delta(x-y)
+-
+\sum_{n\ge0}
+\frac{(1-1_{I_\lambda}(x))\phi_n^\lambda(x)
+      \overline{(1-1_{I_\lambda}(y))\phi_n^\lambda(y)}}
+     {1-\mu_n^\lambda}.
+}
+\tag{3}
+\]
+The series is an operator identity in the strong projection sense.
+
+Transporting by the standard log-Mellin realization gives, for
+\(s=1/2+i\tau\) and \(s'=1/2+i\tau'\),
+\[
+\boxed{
+K_\infty^{\mathrm{op}}(s,s')
+=
+\delta(\tau-\tau')
+-
+\frac{\sin \lambda(\tau-\tau')}{\pi(\tau-\tau')}
+-
+\sum_{n\ge0}\Psi_n^\lambda(s)\overline{\Psi_n^\lambda(s')},
+}
+\tag{4}
+\]
+where
+\[
+\Psi_n^\lambda(s)
+=
+\Uinf\left(\frac{(I-P_\lambda)\phi_n^\lambda}
+{\sqrt{1-\mu_n^\lambda}}\right)(s).
+\]
+Thus
+\[
+\boxed{
+(\Psym F)(s)
+=
+F(s)
+-
+\int \frac{\sin \lambda(\tau-\tau')}{\pi(\tau-\tau')}
+F(1/2+i\tau')\,d\tau'
+-
+\sum_{n\ge0}\Psi_n^\lambda(s)
+\langle F,\Psi_n^\lambda\rangle .
+}
+\tag{5}
+\]
+Equation (5) is the operational Mellin-side identity obtained in this step.
+It is not a closed elementary kernel because the general Mellin transforms of
+the PSWF tails \((I-P_\lambda)\phi_n^\lambda\) are not simplified here.
+
+\section{T2c. Sonine-Side Check}
+
+Step 153's Sonine-side evaluator formula gives
+\[
+\Uinf(J_a^*Y^a_{w,k})
+=
+T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w),
+\]
+but \(K_a^\Gamma\) itself is recorded as a projected Sonine kernel:
+\[
+K_a^\Gamma(\cdot,w)
+=
+P_{\mathcal L_a^\Gamma}K_a^{\Gamma,\mathrm{amb}}(\cdot,w).
+\]
+Therefore the Sonine-side route does not produce a simpler independent
+kernel.  It agrees with (5): \(\Psym y_{\rho,k}\) is obtained by applying the
+PSWF projection identity to the transported evaluator vector.
+
+\section{T2d. Equivalent Operational Identity}
+
+There is also a kernel-free iteration form.  Let
+\[
+E=I-P_\lambda,\qquad F=I-\widehat P_\lambda.
+\]
+The von Neumann alternating projection theorem gives
+\[
+\boxed{
+S_\lambda f
+=
+\lim_{N\to\infty}(EF)^Nf
+}
+\tag{6}
+\]
+strongly in \(L^2(\mathbb R)\).  Since \(E\) and \(F\) have explicit kernels,
+(6) is a second exact operational identity.  Formula (5) is preferred because
+it diagonalizes the noncommuting cross-term through PSWFs.
+
+\section{Verification}
+
+If \(f\in\Ran P_\lambda\), then \(f\perp\mathcal S_\lambda\), so
+\[
+S_\lambda f=0.
+\]
+Formula (1) gives the same conclusion because
+\[
+Q(I-P)f=0,\qquad (I-P)f=0.
+\]
+If \(f\in\mathcal S_\lambda\), then \(Pf=Qf=0\), so every correction term in
+(1) vanishes and \(S_\lambda f=f\).
+
+\section{\texorpdfstring{\(L_{\rho,k}\)}{Lrho k} Data Point}
+
+The operational identity applies to
+\[
+L_{\rho,k}(G)=\langle \Mz G,\Psym y_{\rho,k}\rangle.
+\]
+For the legal zero generator
+\[
+g_0(t)\equiv0,\qquad G_0(s)=\widehat g_0(s)=0,
+\]
+and for
+\[
+\rho_1=\frac12+14.134725\ldots i,\qquad k=0,
+\]
+one obtains the exact data point
+\[
+\boxed{
+L_{\rho_1,0}(G_0)=0.
+}
+\]
+For a nonzero legal generator \(G\), formula (5) gives
+\[
+L_{\rho,k}(G)
+=
+\langle \Mz G,y_{\rho,k}\rangle
+-\langle \Mz G,\Uinf P_\lambda\Uinf^{-1}y_{\rho,k}\rangle
+-\sum_{n\ge0}
+\langle \Mz G,\Psi_n^\lambda\rangle
+\langle \Psi_n^\lambda,y_{\rho,k}\rangle.
+\]
+This is now a concrete PSWF-series evaluation problem rather than an
+undefined projection symbol.
+
+\section{Nonclaim Boundary}
+
+This step does not prove RH, does not prove \(\Xi_{\mathrm{BC}}=0\), does not
+prove full ZI-COV, and does not prove projected jet-surjectivity.  It does not
+replace the inherited Sonin/prolate projection by a zeta-zero spectral
+projection.  It does not weaken public-shadow non-promotion, finite-window
+Calkin blindness, auxiliary-GRH smuggling, incomplete character spectrum
+support-only, scalar identity not carrier identity, or ledger-relative Hecke
+non-comparability.
+
+\end{document}

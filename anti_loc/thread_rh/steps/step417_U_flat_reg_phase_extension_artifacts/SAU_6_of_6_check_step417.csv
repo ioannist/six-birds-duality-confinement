@@ -1,0 +1,7 @@
+gate_id,gate_name,status,evidence
+1,primitive_exclusion,pass,"R_phase_hadamard uses Hadamard local zero geometry; no target transfer or kernel-preserving primitive is added"
+2,dependency_trace,pass,"joint descent depends on R_H_load/R_Z_load, R_regularize, R_crossval, R_phase_hadamard, R_compare, R_operator_audit"
+3,ablation_test,pass,"drop R_phase_hadamard: phase component is absent and joint residual cannot pass as (mag,phase); drop R_crossval: C6 protection removed"
+4,negative_controls,pass,"phase mismatch would contribute positive residual; nonzero mismatch blocks joint pass"
+5,Stage_II_before_target_closure,pass,"Step 415 earned Stage II proper before this phase extension"
+6,no_single_axiom_equivalence,pass,"R_phase_hadamard predicts a sign proxy; it is not equivalent to full H6 closure or operator certification"

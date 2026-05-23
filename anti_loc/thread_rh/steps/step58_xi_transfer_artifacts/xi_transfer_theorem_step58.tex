@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{warning}[theorem]{Warning}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Tr}{tr}
+\newcommand{\XiC}{\Xi_C}
+\newcommand{\K}{\mathsf K}
+\newcommand{\R}{\mathsf R}
+\newcommand{\E}{\mathsf E}
+\newcommand{\pre}{\preceq}
+\newcommand{\suc}{\succeq}
+
+\title{Step 58: Data Processing and Transfer for the Adequacy Residual}
+\author{RATCHET / Six Birds working note}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The adequacy residual
+\[
+  \Xi_C(D\mid L)
+  =K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}
+\]
+measures the part of a layer-dissolving probe family $D$ that is invisible to a native probe family $L$, after passing to the legal energy quotient of the audit $C$.  This note proves data-processing, transfer, and public-shadow theorems for $\Xi_C(D\mid L)$.
+
+The guiding principle is:
+\[
+  \boxed{\text{Blind-spot bounds transfer through lawful bridges, not through visual resemblance.}}
+\]
+A public shadow of $\Xi$ may be small while the full blind spot remains large.
+
+\section{Legal quotient and notation}
+Let $E$ be a finite-dimensional real or complex Hilbert space and let $C=C^*\suc0$.  Put
+\[
+  E_C=(\ker C)^\perp,\qquad C_0=C|_{E_C}>0.
+\]
+All probe families are assumed null-legal unless explicitly stated:
+\[
+  L|_{\ker C}=0,\qquad D|_{\ker C}=0.
+\]
+Write
+\[
+  T_L=L_0C_0^{-1/2},\qquad T_D=D_0C_0^{-1/2},
+\]
+and let $P_L$ be the orthogonal projection onto $\Ran(T_L^*)\subset E_C$.  Then
+\[
+  \Xi_C(D\mid L)=T_D(I-P_L)T_D^*.
+\]
+
+\section{Post-processing the dissolving readout}
+
+\begin{theorem}[Dissolving-readout congruence]
+Let $F:Z\to Z'$ be a response post-processing map.  Then
+\[
+  \Xi_C(FD\mid L)=F\Xi_C(D\mid L)F^*.
+\]
+In particular, if $\Xi_C(D\mid L)\pre \Xi_Z$, then
+\[
+  \Xi_C(FD\mid L)\pre F\Xi_ZF^*.
+\]
+\end{theorem}
+
+\begin{proof}
+Using the projection form,
+\[
+  \Xi_C(FD\mid L)=FT_D(I-P_L)T_D^*F^*=F\Xi_C(D\mid L)F^*.
+\]
+\end{proof}
+
+\begin{warning}[Public-shadow converse fails]
+The implication does not reverse.  A public post-processing $F$ can kill the hidden response direction.  Then $F\Xi F^*$ can vanish even when $\Xi$ is arbitrarily large on $\ker F$.
+\end{warning}
+
+\section{Post-processing the native readout}
+
+\begin{theorem}[Faithful native reparameterization]
+Let $A:Y\to Y'$ be injective.  Then
+\[
+  \Xi_C(D\mid AL)=\Xi_C(D\mid L).
+\]
+More generally, if $A$ is any map, then
+\[
+  \Ran((AL)_0^*)\subseteq \Ran(L_0^*)
+\]
+and therefore
+\[
+  \Xi_C(D\mid AL)\suc \Xi_C(D\mid L).
+\]
+Thus coarsening the native readout can only enlarge the blind spot, while faithful reparameterization preserves it.
+\end{theorem}
+
+\begin{proof}
+Since $(AL)_0^*=L_0^*A^*$, we have $\Ran((AL)_0^*)\subseteq\Ran(L_0^*)$.  Hence $P_{AL}\pre P_L$, so
+\[
+  I-P_{AL}\suc I-P_L,
+\]
+and congruence by $T_D$ gives the monotonicity.  If $A$ is injective in finite dimension, $A^*$ is onto $Y$, hence $\Ran(L_0^*A^*)=\Ran(L_0^*)$ and the projections are equal.
+\end{proof}
+
+\section{Strict native extension}
+This recovers the strict-extension law in transfer language.
+
+\begin{theorem}[Native extension data processing]
+Let
+\[
+  L^+=\begin{bmatrix}L\\M\end{bmatrix}.
+\]
+Then
+\[
+  \Xi_C(D\mid L^+)\pre\Xi_C(D\mid L).
+\]
+Moreover,
+\[
+  \Xi_C(D\mid L,M)
+  =\Xi_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^{\dagger}K_{MD\mid L}.
+\]
+The subtracted term is positive semidefinite.
+\end{theorem}
+
+\begin{proof}
+The span $\Ran(T_{L^+}^*)$ contains $\Ran(T_L^*)$, so $P_{L^+}\suc P_L$.  Thus $I-P_{L^+}\pre I-P_L$.  The Schur-chain formula follows from Schur complement associativity applied to the joint currency of $(D,L,M)$.
+\end{proof}
+
+\section{Exact carrier transfer}
+We now state a carrier-level transfer theorem.  The cleanest exact statement is for a reducing energy bridge.
+
+\begin{definition}[Exact reducing bridge]
+A reducing bridge from $(E,C,L,D)$ to $(E',C',L',D')$ consists of a unitary $U:E'_{C'}\to E_C$ and response maps $A:Y\to Y'$, $B:Z\to Z'$ such that
+\[
+  C'_0=U^*C_0U,
+  \qquad
+  L'_0=A L_0U,
+  \qquad
+  D'_0=B D_0U,
+\]
+with $A$ injective.
+\end{definition}
+
+\begin{theorem}[Exact transfer]
+Under an exact reducing bridge,
+\[
+  \boxed{\Xi_{C'}(D'\mid L')=B\Xi_C(D\mid L)B^*.}
+\]
+Consequently, if $\Xi_C(D\mid L)\pre\Xi_Z$, then
+\[
+  \Xi_{C'}(D'\mid L')\pre B\Xi_ZB^*.
+\]
+\end{theorem}
+
+\begin{proof}
+Since $C_0'^{-1/2}=U^*C_0^{-1/2}U$ on the quotient, we get
+\[
+  T_{L'}=AL_0UU^*C_0^{-1/2}U=A T_L U,
+\]
+and similarly $T_{D'}=B T_DU$.  Since $A$ is injective, $\Ran(T_{L'}^*)=U^*\Ran(T_L^*)$, so
+\[
+  P_{L'}=U^*P_LU.
+\]
+Therefore
+\[
+\begin{aligned}
+  \Xi_{C'}(D'\mid L')
+  &=B T_DU(I-U^*P_LU)U^*T_D^*B^*\\
+  &=B T_D(I-P_L)T_D^*B^*
+  =B\Xi_C(D\mid L)B^*.
+\end{aligned}
+\]
+\end{proof}
+
+\section{Defective dissolving-readout transfer}
+
+\begin{theorem}[Dissolving residual transfer]
+Assume the native part of the bridge is exact as above, but the dissolving readout has a residual
+\[
+  D'_0=B D_0U+R.
+\]
+Let
+\[
+  \Xi_R:=\Xi_{C'}(R\mid L').
+\]
+Then for every $t>0$,
+\[
+  \boxed{
+  \Xi_{C'}(D'\mid L')
+  \pre
+  (1+t)B\Xi_C(D\mid L)B^*+(1+t^{-1})\Xi_R.}
+\]
+\end{theorem}
+
+\begin{proof}
+Write $Q=I-P_{L'}$.  Then
+\[
+  \Xi_{C'}(D'\mid L')=(BT_DU+T_R)Q(BT_DU+T_R)^*.
+\]
+For Hilbert-space vectors/operators, $(X+Y)(X+Y)^*\pre(1+t)XX^*+(1+t^{-1})YY^*$.  Applying this with $X=BT_DUQ$ and $Y=T_RQ$, and using the exact transfer identity for the first term, gives the result.
+\end{proof}
+
+\begin{warning}[Native residuals are worse]
+If the native bridge has a residual $L'_0=AL_0U+R_L$, there is no automatic promotion theorem from the source blind-spot bound alone.  A native residual changes the conditioning projection $P_{L'}$, and therefore it must carry its own adequacy/readout-agreement record.  Treating native residuals as harmless is a public-shadow overread.
+\end{warning}
+
+\section{Bridge composition}
+Exact transfers compose exactly.  Defective dissolving-readout transfers compose with transported residual budgets.
+
+\begin{theorem}[Two-step defective transfer]
+Suppose
+\[
+  \Xi_2\pre(1+t_1)B_{12}\Xi_1B_{12}^*+(1+t_1^{-1})E_{12}
+\]
+and
+\[
+  \Xi_3\pre(1+t_2)B_{23}\Xi_2B_{23}^*+(1+t_2^{-1})E_{23}.
+\]
+Then
+\[
+\boxed{
+\begin{aligned}
+\Xi_3\pre{}&(1+t_2)(1+t_1)B_{23}B_{12}\Xi_1B_{12}^*B_{23}^*\\
+&+(1+t_2)(1+t_1^{-1})B_{23}E_{12}B_{23}^*+(1+t_2^{-1})E_{23}.
+\end{aligned}}
+\]
+\end{theorem}
+
+\begin{proof}
+Substitute the first inequality into the second and use congruence monotonicity.
+\end{proof}
+
+\section{Application to formed-layer membranes}
+If a formed layer has native membrane $K_L\pre\Theta_Y$ and blind-spot residual $\Xi_C(D\mid L)\pre\Xi_Z$, then the dissolving currency satisfies
+\[
+  K_{DD}\pre A_*\Theta_YA_*^*+\Xi_Z.
+\]
+The transfer theorems above specify when this adequacy/membrane package descends to a public shadow, moves across a protocol bridge, or is transported to a refined carrier.  A public shadow bound is support evidence for the full layer only when the shadow map is faithful or when the hidden residual is explicitly budgeted.
+
+\section{Nonclaim boundary}
+The theorems in this note do not claim that a public shadow, visible quotient, or post-processed response family has the same blind spot as the full formed layer.  They claim only that blind-spot budgets transfer through explicit bridges with explicit defect terms.  If a response map forgets hidden dissolving directions, a small public $\Xi$ may coexist with a large intrinsic $\Xi$.
+
+\end{document}

@@ -1,0 +1,36 @@
+{
+  "step": 66,
+  "object": "root_composite_zero_confinement_ledger",
+  "statuses": {
+    "finite_completion": {
+      "sufficient_for_exact_confinement": true,
+      "requirement": "some finite stage proves A_Z = 0 on the completed ledger"
+    },
+    "fixed_ledger": {
+      "sufficient_for_exact_confinement": true,
+      "requirement": "the same completed A_Z is dominated by budgets B_n with tr(B_n)->0"
+    },
+    "exhaustive_ledger": {
+      "sufficient_for_exact_confinement": true,
+      "requirement": "partial ledgers dominate A_Z up to tails T_n with tr(B_n)+tr(T_n)->0"
+    },
+    "moving_ledger_support_only": {
+      "sufficient_for_exact_confinement": false,
+      "failure": "moving finite ledgers have no tail/exhaustivity bridge to a completed A_Z"
+    },
+    "failed_tail": {
+      "sufficient_for_exact_confinement": false,
+      "failure": "the omitted zero-side tail does not vanish"
+    },
+    "failed_visibility": {
+      "sufficient_for_exact_confinement": false,
+      "failure": "the zero readout does not separate the fixed locus"
+    },
+    "failed_budget_collapse": {
+      "sufficient_for_exact_confinement": false,
+      "failure": "EF/source/coercivity obstruction terms fail to vanish"
+    }
+  },
+  "rh_fixed_locus": "Fix(s -> 1 - conjugate(s)) = {Re(s)=1/2}",
+  "optimized_trace_budget": "inf_t tr B_n(t) = (sqrt(a_n)+sqrt(b_n))^2"
+}

@@ -1,0 +1,186 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\dom}{\operatorname{dom}}
+\newcommand{\Sch}{\mathsf{Sch}}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\Wcmp}{W_{\rm cmp}}
+\title{Step 75: A Candidate Log-Side Weil Core and Completion Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The previous step identified the RH Weil--Douglas bridge as a statement on a completed anti-invariant response space.  This note proposes a concrete \emph{log-side candidate core} and records exactly which gates must pass before it becomes an accepted completed response space.  It is a setup note, not a proof of RH and not a proof of the Douglas bridge.
+
+The candidate uses the logarithmic variable
+\[
+  t=\log x,
+\]
+translation operators
+\[
+  (\tau_a f)(t)=f(t+a),
+\]
+and the reflection involution
+\[
+  (Jf)(t)=\overline{f(-t)}.
+\]
+The anti-invariant log-side core is
+\[
+  \mathcal C^-_{\log}:=\{f\in C_c^\infty(\R):Jf=-f\}.
+\]
+This is the candidate response core on which the positive completed feature form should first be built.
+
+\section{Shift feature forms}
+\begin{definition}[positive shift feature]
+Let \(\mu\) be a positive symmetric measure on \(\R\setminus\{0\}\) satisfying
+\[
+  \int_{\R}(1\wedge a^2)\,d\mu(a)<\infty.
+\]
+For \(f\in C_c^\infty(\R)\), define
+\[
+  (W_\mu f)(a,t)=f(t+a)-f(t),
+\]
+viewed in \(L^2(d\mu(a)dt)\), and
+\[
+  q_\mu[f]=\|W_\mu f\|^2
+  =\int_\R\int_\R |f(t+a)-f(t)|^2\,dt\,d\mu(a).
+\]
+The Fourier symbol is
+\[
+  \Psi_\mu(\xi)=\int_\R |e^{ia\xi}-1|^2\,d\mu(a)\ge0.
+\]
+Then
+\[
+  q_\mu[f]=\int_\R \Psi_\mu(\xi)|\widehat f(\xi)|^2\,d\xi
+\]
+up to the chosen Fourier normalization.
+\end{definition}
+
+\begin{proposition}[closable shift form]
+If \(\Psi_\mu\) is finite a.e. and locally bounded with at most polynomial growth, then \(q_\mu\) is closable on \(L^2(\R)\).  Its closure has domain
+\[
+  H_{\Psi_\mu}:=\{f\in L^2(\R):\Psi_\mu^{1/2}\widehat f\in L^2(\R)\}.
+\]
+Moreover \(\mathcal S(\R)\) is a form core; \(C_c^\infty(\R)\) is a form core under the usual cutoff/mollifier approximation hypotheses for the multiplier.
+\end{proposition}
+
+\begin{proof}
+The form is unitarily equivalent under Fourier transform to multiplication by the nonnegative measurable function \(\Psi_\mu\).  Multiplication by \(\Psi_\mu\) defines a closed quadratic form with the stated domain.  Core statements follow by standard spectral cutoff and mollification arguments under the stated regularity/growth assumptions.  The point of this proposition is not to discharge the zeta core; it gives the analytic gate that the candidate slots must satisfy.
+\end{proof}
+
+\section{Candidate completed Weil feature slots}
+The proposed completed carrier-side feature map has four slots:
+\[
+  \Wcmp=
+  \begin{bmatrix}
+  W_{\rm pr}\\ W_\infty\\ W_{\rm pole}\\ W_{\rm tail}
+  \end{bmatrix},
+  \qquad
+  \Kcmp=\Wcmp^*\Wcmp.
+\]
+
+\subsection{Prime-power slot}
+For a support scale \(L\), let \(\alpha_L\) be a declared cutoff.  The finite prime-power feature candidate is
+\[
+  (W_{{\rm pr},L}f)_n(t)=
+  \sqrt{\frac{\Lambda(n)}{\sqrt n}}\,\alpha_L(\log n)\,[f(t+\log n)-f(t)].
+\]
+Its form is positive:
+\[
+  q_{{\rm pr},L}[f]
+  =\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2
+  \|\tau_{\log n}f-f\|_2^2.
+\]
+This is an accepted positive finite feature at fixed \(L\).  The infinite ladder still needs a tail/promotion record.
+
+\subsection{Archimedean slot}
+A formal positive archimedean shift feature is
+\[
+  (W_\infty f)(a,t)=\sqrt{\kappa_\infty(a)}\,[f(t+a)-f(t)],
+\]
+where a candidate kernel has the shape
+\[
+  \kappa_\infty(a)\simeq \frac{1}{2\sinh(|a|/2)}.
+\]
+Near \(a=0\), this behaves like \(|a|^{-1}\), so it is admissible as a difference-form Levy-type kernel because
+\[
+  \int_{|a|<1} a^2|a|^{-1}\,da<\infty.
+\]
+At infinity it decays exponentially.  The positivity of this shift feature is clear once the renormalized kernel is declared.  What remains unearned is the exact matching of this positive feature to the gamma term of the completed explicit formula.
+
+\subsection{Pole/completion slot}
+The pole/completion slot is finite-dimensional:
+\[
+  W_{\rm pole}f=(\langle f,p_1\rangle,\dots,\langle f,p_m\rangle).
+\]
+It handles pole subtraction, completion constraints, and null-mode quotienting.  This slot is not optional: omitting it can create fake zero budgets or illegal null-mode coupling.
+
+\subsection{Tail/support slot}
+The tail slot records omitted shifts, support leakage, cutoff error, and finite-to-completed promotion.  It may be represented by a positive feature map \(W_{{\rm tail},L}\) or by an explicit defect budget \(E_{{\rm tail},L}\).  A finite-window statement is exact only when the fixed-ledger or exhaustive-ledger squeeze gate passes.
+
+\section{Core-to-full Douglas extension}
+Let
+\[
+  q_Z[f]=\|V_Zf\|^2,
+  \qquad
+  q_{\rm cmp}[f]=\|\Wcmp f\|^2.
+\]
+
+\begin{theorem}[core inequality promotes to Douglas bridge]
+Assume:
+\begin{enumerate}[label=(\roman*)]
+\item \(\mathcal C^-_{\log}\) is dense in a completed anti-invariant response space \(Y^-_{\rm full}\);
+\item \(q_{\rm cmp}\) is closable and \(\mathcal C^-_{\log}\) is a form core;
+\item \(q_Z\) is closable relative to the same completion or is bounded by \(q_{\rm cmp}\) on the core;
+\item for all \(f\in\mathcal C^-_{\log}\),
+\[
+  q_Z[f]\le q_{\rm cmp}[f].
+\]
+\end{enumerate}
+Then the inequality extends to \(Y^-_{\rm full}\) and
+\[
+  V_Z^*V_Z\preceq \Wcmp^*\Wcmp.
+\]
+Equivalently, there exists a contraction \(T\) such that
+\[
+  V_Z=T\Wcmp,
+  \qquad \|T\|\le1.
+\]
+\end{theorem}
+
+\begin{proof}
+The form-core hypothesis extends the quadratic inequality from \(\mathcal C^-_{\log}\) to the closed form domain.  The operator inequality follows by the representation theorem for closed positive forms, on the legal quotient.  Douglas factorization gives the contraction equivalence.
+\end{proof}
+
+\section{Status of the candidate}
+The log-side core proposal currently has the following status:
+\[
+\begin{array}{c|c|c}
+\text{slot} & \text{positive feature status} & \text{zeta matching status}\\\hline
+W_{\rm pr} & \text{accepted at finite cutoff} & \text{matching/tail unearned}\\
+W_{\infty} & \text{positive after kernel renormalization} & \text{gamma matching unearned}\\
+W_{\rm pole} & \text{finite positive feature} & \text{pole/null audit required}\\
+W_{\rm tail} & \text{positive or defect slot} & \text{fixed/exhaustive squeeze required}
+\end{array}
+\]
+Thus the candidate defines a credible attack surface for O1, but it is not yet an accepted completed zeta carrier.
+
+\section{Nonclaim boundary}
+This note does not prove RH.  It does not prove Weil positivity.  It does not prove the Douglas bridge.  It does not prove that the log-side core is the unique or correct zeta carrier.  It proposes a concrete candidate response core and states the gates required to promote it to the completed anti-invariant response space.
+
+\end{document}

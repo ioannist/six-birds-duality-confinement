@@ -1,0 +1,35 @@
+{
+  "step": 209,
+  "orientation": "adequacy",
+  "primary_carrier": "Riemann-Siegel Z(t)",
+  "carrier_definition": {
+    "space": "L2_loc(R,dt), or weighted L2(R,w(t)dt) for windowed probes",
+    "native_probes": ["point evaluations Z(t_n)", "sign changes", "zero counts", "Schwartz-windowed counts"],
+    "operator": "multiplication by Z(t) and real projection P_R f=(f+conj(f))/2"
+  },
+  "theta_function": "theta(t)=Im log Gamma(1/4+it/2)-(t/2)log pi",
+  "RH_equivalence_statement": "Z(t) real-valued is a functional-equation identity, not RH. RH is equivalent to Delta_Z(T)=N(T)-N_0(T)=0 for all T, where N_0 counts real zeros of Z(t) on [0,T].",
+  "Hilbert_residual_formulation_attempt": {
+    "ImZ_residual": {
+      "formula": "||Im Z||^2",
+      "status": "degenerate_identity_not_RH"
+    },
+    "zero_count_defect": {
+      "formula": "Delta_Z(T)=N(T)-N_0(T)",
+      "status": "RH_equivalent_counting_residual"
+    },
+    "windowed_distributional_version": {
+      "formula": "<Delta_Z,phi> for separating Schwartz windows phi",
+      "status": "Hilbertized_variant_but_still_target_equivalent"
+    }
+  },
+  "CRE_status": "CRE",
+  "CRCFT_mode_classification": "CRCFT-TE",
+  "Z_verdict": "V_Z_CRCFT_TE",
+  "retained_nogos": [
+    "No retained no-go is weakened.",
+    "No RH proof is claimed.",
+    "Branch B precision limitations remain unaffected."
+  ],
+  "final_verdict": "V_Z_CRCFT_TE"
+}

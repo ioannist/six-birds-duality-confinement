@@ -1,0 +1,68 @@
+{
+  "step": 203,
+  "orientation": "adequacy",
+  "target": "diagonal Gram correction via de Branges L'Hopital + Burnol 2004 [19] dual-system cross-check",
+  "L_Hopital_diagonal_formula": "K(conj(w),w)=E(conj(w))E'(w)+E(w)E'(conj(w))=2 Re(conj(E(w))E'(w)) for Re(w)=1/2; opposite sign tested and rejected by nonnegative norm convention",
+  "dual_system_cross_check_status": "structural_alignment_no_independent_numeric_norm: Burnol 2004 [19] Theorems 3.1 and 3.2 confirm Euclid/bilinear pairing and Z^a minimality context, but do not supply an independent numerical norm at a=1/2",
+  "E_prime_half_values": [
+    {
+      "rho_index": 1,
+      "E_prime": "-0.00002183624935519679 + 0.00001549441691151883 i",
+      "error_bound": "dominant cutoff-derived bound; see CSV"
+    },
+    {
+      "rho_index": 2,
+      "E_prime": "-0.00000001870399815896691 - 0.0000001012853208013310 i",
+      "error_bound": "dominant cutoff-derived bound; see CSV"
+    },
+    {
+      "rho_index": 3,
+      "E_prime": "-0.000000004347113447939253 - 0.000000001201949359545237 i",
+      "error_bound": "dominant cutoff-derived bound; see CSV"
+    }
+  ],
+  "G_diagonal_corrected": [
+    {
+      "rho_index": 1,
+      "G_ii": "6.6615796282861255e-10",
+      "error_bound": "1.9006889884536652e-7"
+    },
+    {
+      "rho_index": 2,
+      "G_ii": "1.2871399524744301e-14",
+      "error_bound": "2.7423487845604914e-9"
+    },
+    {
+      "rho_index": 3,
+      "G_ii": "2.3943351721963607e-17",
+      "error_bound": "2.1180592370278833e-9"
+    }
+  ],
+  "G_matrix_full": {
+    "status": "assembled_with_corrected_diagonal_but_error_dominant",
+    "source": "G_matrix_full_step203.csv"
+  },
+  "c_matrix": {
+    "status": "not_evaluated_certified",
+    "source": "c_matrix_corrected_step203.csv",
+    "reason": "corrected diagonal error bounds dominate and transported kappa/K_infty^op quadrature is not certified"
+  },
+  "xi_matrix_source_value": null,
+  "xi_matrix_source_error": "not_certified",
+  "robustness": {
+    "sign_convention": "plus sign gives nonnegative diagonal for all three zeros; minus sign rejected",
+    "N_resolvent": "160,240,320 stable in displayed digits for diagonal candidates",
+    "dps": "50,70,100 stable in displayed digits under the same finite quadrature",
+    "limitation": "cutoff/log-tail error dominates the diagonal values"
+  },
+  "sign_convention_resolved": "symbolically resolved to plus sign for Burnol 2002 bilinear kernel formula; numerical certification still limited by tail error",
+  "retained_nogos": [
+    "Does not prove RH",
+    "Does not close Xi_BC",
+    "Does not close Branch B",
+    "Does not decide Xi_matrix_source",
+    "Does not weaken Branch C foreclosure or any independent carrier no-go"
+  ],
+  "final_verdict": "V_diagonal_corrected_xi_inconclusive"
+}
+

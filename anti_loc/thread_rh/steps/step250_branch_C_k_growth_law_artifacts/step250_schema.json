@@ -1,0 +1,46 @@
+{
+  "step": 250,
+  "orientation": "adequacy",
+  "target": "Branch C |L|_k growth law",
+  "k_dataset": [
+    {"triple_id": "rho1_G_star", "rho_index": 1, "G_id": "G_star", "k": 0, "L_abs": 0.15109088977378465, "error_bound": 0.00019648066812630189},
+    {"triple_id": "rho1_G_star", "rho_index": 1, "G_id": "G_star", "k": 1, "L_abs": 0.28943580133328961, "error_bound": 0.0000096477715466995265},
+    {"triple_id": "rho1_G_star", "rho_index": 1, "G_id": "G_star", "k": 2, "L_abs": 0.57337228760094350, "error_bound": 0.000011512508330935216},
+    {"triple_id": "rho1_G_star", "rho_index": 1, "G_id": "G_star", "k": 3, "L_abs": 1.1164964358869975, "error_bound": 0.0000093077864837476203},
+    {"triple_id": "rho1_G_star", "rho_index": 1, "G_id": "G_star", "k": 4, "L_abs": 2.2021731760951169, "error_bound": 0.000011531122523832839},
+    {"triple_id": "rho2_G_star", "rho_index": 2, "G_id": "G_star", "k": 0, "L_abs": 0.16664019014408424, "error_bound": 0.00019290106011310255},
+    {"triple_id": "rho2_G_star", "rho_index": 2, "G_id": "G_star", "k": 1, "L_abs": 0.28859154039263868, "error_bound": 0.0000065596609130695406},
+    {"triple_id": "rho2_G_star", "rho_index": 2, "G_id": "G_star", "k": 2, "L_abs": 0.55521908562956279, "error_bound": 0.0000076418752170162857},
+    {"triple_id": "rho2_G_star", "rho_index": 2, "G_id": "G_star", "k": 3, "L_abs": 1.1457543043685279, "error_bound": 0.0000066649434095844050},
+    {"triple_id": "rho2_G_star", "rho_index": 2, "G_id": "G_star", "k": 4, "L_abs": 2.5868233084753922, "error_bound": 0.0000075508099891922361},
+    {"triple_id": "rho1_G_prime", "rho_index": 1, "G_id": "G_prime", "k": 0, "L_abs": 0.21703889910486754, "error_bound": 0.000084315874631991867},
+    {"triple_id": "rho1_G_prime", "rho_index": 1, "G_id": "G_prime", "k": 1, "L_abs": 0.40181676247441539, "error_bound": 0.0000027985543424272984},
+    {"triple_id": "rho1_G_prime", "rho_index": 1, "G_id": "G_prime", "k": 2, "L_abs": 0.75379771319416000, "error_bound": 0.0000031386471790121817},
+    {"triple_id": "rho1_G_prime", "rho_index": 1, "G_id": "G_prime", "k": 3, "L_abs": 1.3778472859409800, "error_bound": 0.0000027105110995550195},
+    {"triple_id": "rho1_G_prime", "rho_index": 1, "G_id": "G_prime", "k": 4, "L_abs": 2.5398826196610593, "error_bound": 0.0000032408874260086263}
+  ],
+  "growth_law_fits": {
+    "models_tested": ["linear", "quadratic", "exponential", "factorial", "affine_factorial", "pochhammer_1k"],
+    "best_by_triple": [
+      {"triple_id": "rho1_G_star", "best_model": "exponential", "rmse": 0.0027407260525861171},
+      {"triple_id": "rho2_G_star", "best_model": "exponential", "rmse": 0.033832498369392811},
+      {"triple_id": "rho1_G_prime", "best_model": "exponential", "rmse": 0.0034951589926299738}
+    ]
+  },
+  "best_fit": "exponential on all three sampled triples",
+  "extrapolation": [
+    {"triple_id": "rho1_G_star", "model": "exponential", "k": 5, "predicted_abs_L": 4.3234886330209017},
+    {"triple_id": "rho1_G_star", "model": "exponential", "k": 10, "predicted_abs_L": 126.44573800646580},
+    {"triple_id": "rho2_G_star", "model": "exponential", "k": 5, "predicted_abs_L": 5.5588060648896880},
+    {"triple_id": "rho2_G_star", "model": "exponential", "k": 10, "predicted_abs_L": 261.85534540395395},
+    {"triple_id": "rho1_G_prime", "model": "exponential", "k": 5, "predicted_abs_L": 4.6814339821888167},
+    {"triple_id": "rho1_G_prime", "model": "exponential", "k": 10, "predicted_abs_L": 99.502193914350897}
+  ],
+  "retained_nogos": [
+    "finite three-triple sample only; no asymptotic theorem claimed",
+    "Branch C foreclosure refinement only; no RH closure claimed",
+    "extrapolations are diagnostic, not theorem-grade",
+    "no retained no-go weakened"
+  ],
+  "final_verdict": "V_branch_C_k_growth_law_exponential"
+}

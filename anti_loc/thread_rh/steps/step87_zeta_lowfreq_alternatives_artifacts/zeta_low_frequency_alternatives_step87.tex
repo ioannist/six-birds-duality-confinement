@@ -1,0 +1,173 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\title{Step 87: Zeta Low-Frequency Alternatives Audit}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+The paired completed Weil feature package has the correct positivity shape only if it is treated as a paired feature, not as separated diagonal bookkeeping.  However every paired shift/CND feature has a legal low-frequency zero.  This note audits the four lawful ways to resolve that zero for the completed zeta carrier.
+
+\[
+\text{quotient/gap},\qquad
+\text{zero-side cancellation},\qquad
+\text{source coercivity},\qquad
+\text{defect/nonclaim}.
+\]
+
+\section{The low-frequency obstruction}
+
+Let
+\[
+q_\Psi[f]=\int_{\mathbb R}\Psi(\xi)|\widehat f(\xi)|^2\,d\xi
+\]
+be a translation-invariant paired feature form with CND symbol
+\[
+\Psi(\xi)=c\xi^2+2\int_{\mathbb R}(1-\cos(a\xi))\,\mu(da),
+\qquad c\ge0,\quad \mu\ge0.
+\]
+
+\begin{lemma}[paired features vanish at zero]
+Every such symbol satisfies
+\[
+\Psi(0)=0.
+\]
+Consequently positivity of the paired feature is not a spectral gap.
+\end{lemma}
+
+\begin{proof}
+Since \(1-\cos(0)=0\), every term in the representation vanishes at \(\xi=0\).
+\end{proof}
+
+\begin{warning}[anti-invariance is not a gap]
+For the log-side involution \(Jf(t)=\overline{f(-t)}\), real anti-invariant functions are odd.  Odd functions can have Fourier mass arbitrarily close to \(\xi=0\).  Therefore the \(J=-1\) sector does not by itself eliminate the low-frequency zero.
+\end{warning}
+
+\section{Alternative I: quotient or gap}
+
+A quotient/gap record excludes a low-frequency sector
+\[
+|\xi|<\varepsilon
+\]
+or quotients a legal null mode.  If the scoped carrier satisfies
+\[
+\Psi(\xi)\ge \lambda_\varepsilon>0
+\qquad (|\xi|\ge \varepsilon),
+\]
+then capacities are bounded on the scoped carrier.
+
+\begin{proposition}[status of gap control]
+Gap control on \( |\xi|\ge \varepsilon\) is a scoped membrane. It promotes to full confinement only if the excluded low-frequency sector has a vanishing tail/exhaustivity record.
+\end{proposition}
+
+\section{Alternative II: zero-side cancellation}
+
+Suppose near a legal zero in dimension \(d\),
+\[
+\Psi(\xi)\gtrsim \rho^{2r}.
+\]
+If the zero-side readout/probe has
+\[
+|\widehat g(\xi)|\lesssim \rho^s,
+\]
+then the local capacity is bounded by
+\[
+\int_0^\epsilon \rho^{2s-2r+d-1}\,d\rho.
+\]
+
+\begin{theorem}[cancellation threshold]
+The local capacity is finite iff
+\[
+s>r-\frac d2.
+\]
+For a one-dimensional shift zero with \(r=1\), the threshold is
+\[
+s>\frac12.
+\]
+\end{theorem}
+
+\begin{proof}
+The integral converges near zero iff the exponent \(2s-2r+d-1\) is greater than \(-1\), equivalently \(s>r-d/2\).
+\end{proof}
+
+For RH this becomes the question whether the zero-side anti-invariant displacement map \(V_Z\) has enough cancellation against the log-side legal zero of the paired carrier.  Separation of the fixed locus by \( \operatorname{Re}s-1/2\) is not the same as low-frequency cancellation on the log-side core.
+
+\section{Alternative III: source coercivity}
+
+A source/coercivity record supplies positive source terms \(D_n\) such that, on the anti-invariant sector,
+\[
+C_{\Gamma,n}+D_n
+\succeq
+\Lambda_n (L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma.
+\]
+Then
+\[
+K_n^- \preceq \Lambda_n^{-1}\Theta_0^-.
+\]
+
+\begin{theorem}[source coercivity collapses low-frequency budget]
+If \(\Lambda_n\to\infty\) and the source records are upstream-visible and cover the full anti-invariant sector, then the carrier-side anti-invariant currency satisfies \(K_n^-\to0\).
+\end{theorem}
+
+This is the strongest non-gating route, but it requires a full-sector character/source lower frame.  Partial character hardening leaves hidden anti-invariant directions.
+
+\section{Alternative IV: defect or nonclaim}
+
+A defect/nonclaim record carries the unresolved low-frequency sector as a positive defect \(E_{\mathrm{low},n}\) or explicitly narrows the claim.  If
+\[
+E_{\mathrm{low},n}\not\to0
+\]
+on a fixed or exhaustive ledger, exact confinement does not follow.
+
+\begin{proposition}[defect floor no-go]
+If
+\[
+\mathsf A_Z\preceq \Lambda_n^{-1}\Theta_0^-+E_{\mathrm{low},n}
+\]
+with \(\Lambda_n\to\infty\) but \(E_{\mathrm{low},n}\to E_\infty\ne0\), then the squeeze proves at most
+\[
+\mathsf A_Z\preceq E_\infty.
+\]
+It does not prove \(\mathsf A_Z=0\).
+\end{proposition}
+
+\section{Classification for the zeta carrier}
+
+\begin{center}
+\begin{tabular}{p{0.2\linewidth}p{0.3\linewidth}p{0.35\linewidth}}
+\hline
+Alternative & What it proves & RH status\\
+\hline
+Quotient/gap & Scoped low-frequency membrane & Full RH only with vanishing excluded-tail record\\
+Cancellation & Full control if \(V_Z\) cancels at legal zero & Plausible but unearned; next symbolic target\\
+Source coercivity & Budget collapse by \(\Lambda_n\to\infty\) & Strongest structural route; hard source-frame construction\\
+Defect/nonclaim & Honest residual or narrower claim & Not RH unless defect vanishes\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+
+The paired prime/gamma carrier is a plausible positive carrier, but it is not yet an RH membrane because it has a low-frequency legal zero. The zeta route must now provide either:
+\[
+\text{low-frequency cancellation of }V_Z,
+\]
+or
+\[
+\text{full-sector source coercivity},
+\]
+or a quotient/tail record strong enough to recover exact fixed/exhaustive confinement.
+
+\end{document}

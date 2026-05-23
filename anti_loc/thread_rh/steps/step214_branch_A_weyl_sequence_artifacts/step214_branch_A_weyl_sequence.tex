@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Step 214: Branch A Weyl Sequence Diagnostic}
+
+We test the sequence
+\[
+  u_n={\kappa_{\rho_n,0}^{1/2}\over \|\kappa_{\rho_n,0}^{1/2}\|},
+  \qquad \rho_n=1/2+i\gamma_n,\quad n=1,\ldots,10.
+\]
+The sampled model is the Burnol-boundary kernel
+\[
+  \kappa_{\rho_n}(\tau)\approx K_{1/2}^{\Gamma}(1/2+i\tau,\rho_n).
+\]
+
+\subsection*{Operator}
+
+The Step 173 finite-grid projection is
+\[
+  Pf=f-\operatorname{sinc}*f-\sum_{j<N}\Psi_j\langle\Psi_j,f\rangle.
+\]
+With \(\ell=\log 2\),
+\[
+  C_\ell f=(I-P)e^{i\ell\tau}Pf.
+\]
+The grid uses 120 Gauss--Legendre nodes in \([-80,80]\) and 24 PSWF terms.
+
+\subsection*{Computed values}
+
+\[
+\begin{array}{c|c|c}
+n&\gamma_n&\|C_\ell u_n\|\\
+\hline
+1&14.134725&1.754930\\
+2&21.022040&1.826719\\
+3&25.010858&0.793454\\
+4&30.424876&1.832451\\
+5&32.935062&1.805318\\
+6&37.586178&1.294356\\
+7&40.918719&1.808568\\
+8&43.327073&1.511756\\
+9&48.005151&1.830200\\
+10&49.773832&1.827074
+\end{array}
+\]
+Thus
+\[
+  \min_{1\le n\le 10}\|C_\ell u_n\|=0.7934538793.
+\]
+With conservative diagnostic error floor \(0.05\), the lower bound is
+\[
+  \delta_{10}\ge 0.7434538793.
+\]
+
+\subsection*{Verdict}
+
+\[
+\boxed{\texttt{V\_branch\_A\_weyl\_essential\_obstruction}}
+\]
+as a finite-grid diagnostic.  It is not yet a full noncompactness theorem:
+one must still prove the sequence is weakly null in the full \(H_\eta\), prove
+the lower bound persists as \(n\to\infty\), and settle the exact transport
+normalization.
+
+\end{document}

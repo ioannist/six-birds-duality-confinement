@@ -1,0 +1,437 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Capacity}{\operatorname{Cap}}
+\providecommand{\Cost}{\operatorname{Cost}}
+\newcommand{\XiC}{\Xi_C(D\mid L)}
+\newcommand{\preceqq}{\preceq}
+\newcommand{\eps}{\varepsilon}
+
+\title{Adequacy Residuals and Blind-Spot Currency\\
+\large A Companion Paper to Formed-Layer Membrane Theory}
+\author{Working draft v0.1}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Formed-layer membrane theory distinguishes a layer's native probe family from a larger family of probes that would dissolve the layer if they were cheaply addressable.  This note isolates the object that measures the difference.  Given an audit energy $C\succeq 0$, a native probe family $L$, and a layer-dissolving probe family $D$, the \emph{adequacy residual}
+\[
+\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}
+\]
+is the Schur complement of dissolving currency after conditioning on native currency.  Equivalently,
+\[
+\Xi_C(D\mid L)=T_D(I-P_L)T_D^*,
+\]
+so it is the component of the dissolving readout invisible to native probes in the energy-dual geometry.  The residual is the unique optimal explanation defect for factorizations $D\approx AL$, vanishes exactly when $\ker L_0\subseteq \ker D_0$ on the legal energy quotient, decreases under lawful strict native-family extension, and obeys data-processing only through audited bridges.  Thus $\Xi_C(D\mid L)$ is the blind-spot currency of a formed layer: what the layer-breaking probes can see that the layer's official native probes cannot.
+\end{abstract}
+
+\section{Purpose and scope}
+
+This companion note extracts the adequacy residual from the larger formed-layer membrane theory.  The main membrane paper studies predictive native probe-family currency matrices
+\[
+K_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*,
+\]
+critical-pair completion, exact-six records, and root-composite obligations.  The present note focuses on one object:
+\[
+\Xi_C(D\mid L),
+\]
+where $L$ is the native probe family of a formed closure/layer and $D$ is a family of layer-dissolving probes.
+
+The guiding interpretation is:
+\[
+\boxed{\Xi_C(D\mid L)=\text{what the dissolving probes can see that the native probes cannot.}}
+\]
+
+This note does not claim that raw substrates have no needles.  It applies only after the carrier, audit, null-mode quotient, native probe family, and dissolving probe family have been declared.  Non-closed artifacts and undeclared probes are outside scope.
+
+\section{Standing hypotheses: the legal energy quotient}
+
+Let $E$ be a finite-dimensional real or complex Hilbert space and let
+\[
+C=C^*\succeq 0
+\]
+be an audit energy.  The legal energy quotient is represented by
+\[
+E_C=(\ker C)^\perp,
+\qquad
+C_0=C|_{E_C}>0.
+\]
+All finite-currency formulas in this note are read on $E_C$.  A probe family $F:E\to Y$ is \emph{null-legal} if
+\[
+F|_{\ker C}=0.
+\]
+For null-legal $F$ we write $F_0=F|_{E_C}$.
+
+\begin{remark}[Null-mode warning]
+If a probe sees a legal zero-energy direction, the variational capacity is infinite even if a pseudoinverse expression appears finite.  Null-mode legality is therefore not a technicality; it is part of the adequacy record.
+\end{remark}
+
+\section{Currency and minimum spend}
+
+Given a null-legal probe family $F:E\to Y$, define its currency matrix
+\[
+K_F=F_0C_0^{-1}F_0^*=FC^\dagger F^*.
+\]
+For a recombination $y\in Y$,
+\[
+\Capacity_C(y^*F)=y^*K_Fy.
+\]
+Thus $K_F$ is the compliance, or response-per-audit-dollar, matrix.
+
+\begin{theorem}[Minimum-spend duality]
+For $z\in Y$ define
+\[
+\Cost_C(z;F)=\inf\{\langle u,Cu\rangle:\ Fu=z\}.
+\]
+Then
+\[
+\Cost_C(z;F)=
+\begin{cases}
+ z^*K_F^\dagger z,& z\in \Ran F_0=\Ran K_F,\\
+ +\infty,& z\notin\Ran F_0.
+\end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+On $E_C$, set $v=C_0^{1/2}u$.  The constraint becomes $F_0C_0^{-1/2}v=z$.  The minimum norm solution has squared norm $z^*(TT^*)^\dagger z$ for $T=F_0C_0^{-1/2}$.  Since $TT^*=K_F$, the result follows.  If $z$ is outside the range there is no feasible $u$.
+\end{proof}
+
+\section{Definition of the adequacy residual}
+
+Let
+\[
+L:E\to Y
+\]
+be the native probe family and let
+\[
+D:E\to Z
+\]
+be a layer-dissolving probe family.  Assume both are null-legal.  Define the block currency matrices
+\[
+K_{LL}=L_0C_0^{-1}L_0^*,
+\qquad
+K_{DL}=D_0C_0^{-1}L_0^*,
+\]
+\[
+K_{LD}=L_0C_0^{-1}D_0^*,
+\qquad
+K_{DD}=D_0C_0^{-1}D_0^*.
+\]
+
+\begin{definition}[Adequacy residual]
+The adequacy residual of $D$ relative to $L$ is
+\[
+\boxed{\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}.}
+\]
+\end{definition}
+
+It is the Schur complement of the native block inside the joint currency matrix
+\[
+\begin{pmatrix}
+K_{LL}&K_{LD}\\
+K_{DL}&K_{DD}
+\end{pmatrix}.
+\]
+
+\section{Projection theorem}
+
+Set
+\[
+T_L=L_0C_0^{-1/2},
+\qquad
+T_D=D_0C_0^{-1/2}.
+\]
+Let $P_L$ be the orthogonal projection onto $\Ran(T_L^*)\subseteq E_C$.
+
+\begin{theorem}[Projection identity]
+\[
+\boxed{\Xi_C(D\mid L)=T_D(I-P_L)T_D^*\succeq 0.}
+\]
+\end{theorem}
+
+\begin{proof}
+Since $K_{LL}=T_LT_L^*$, the operator $T_L^*K_{LL}^\dagger T_L$ is the orthogonal projection onto $\Ran(T_L^*)$.  Therefore
+\[
+K_{DL}K_{LL}^\dagger K_{LD}=T_DT_L^*K_{LL}^\dagger T_LT_D^*=T_DP_LT_D^*.
+\]
+Subtracting from $K_{DD}=T_DT_D^*$ gives the identity.
+\end{proof}
+
+\begin{remark}
+The theorem says that $\Xi_C(D\mid L)$ is the dissolving readout after removing the part explained by native probes in the energy-dual geometry.
+\end{remark}
+
+\section{Optimal residual and exact adequacy}
+
+Define the optimal native explanation map
+\[
+A_*=K_{DL}K_{LL}^\dagger:Y\to Z.
+\]
+
+\begin{theorem}[Optimal residual identity]
+For every linear map $A:Y\to Z$,
+\[
+\boxed{(D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+=\Xi_C(D\mid L)+(A-A_*)K_{LL}(A-A_*)^*.}
+\]
+Consequently, $\Xi_C(D\mid L)$ is the Loewner-minimal residual currency among all attempts to factor $D$ through $L$.
+\end{theorem}
+
+\begin{proof}
+Expand the left side:
+\[
+K_{DD}-AK_{LD}-K_{DL}A^*+AK_{LL}A^*.
+\]
+Insert $A=A_*+B$ and use $A_*K_{LL}=K_{DL}$ on the support of $K_{LL}$, which follows from the Moore--Penrose identities.  The cross terms cancel and the displayed identity remains.
+\end{proof}
+
+\begin{theorem}[Exact adequacy]
+The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $\Xi_C(D\mid L)=0$;
+\item $D_0=A_*L_0$;
+\item there exists $A$ such that $D_0=AL_0$;
+\item $\ker L_0\subseteq \ker D_0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By the projection theorem, $\Xi=0$ iff $T_D=T_DP_L$, i.e. $T_D^*$ lies in the range generated by $T_L^*$, equivalently $D_0$ factors through $L_0$.  The factorization criterion is precisely $\ker L_0\subseteq\ker D_0$.
+\end{proof}
+
+\section{Promotion from native membrane to dissolving membrane}
+
+Suppose the native family has budget
+\[
+K_{LL}\preceq \Theta_Y
+\]
+and the adequacy residual has budget
+\[
+\Xi_C(D\mid L)\preceq \Xi_Z.
+\]
+
+\begin{theorem}[Adequacy promotion]
+\[
+\boxed{K_{DD}\preceq A_*\Theta_YA_*^*+\Xi_Z.}
+\]
+In particular, if $\Xi_C(D\mid L)=0$, native anti-localization transfers exactly to the dissolving family through $A_*$.
+\end{theorem}
+
+\begin{proof}
+The Schur decomposition gives
+\[
+K_{DD}=A_*K_{LL}A_*^*+\Xi_C(D\mid L).
+\]
+Apply the two hypotheses.
+\end{proof}
+
+\section{Strict native extension}
+
+Let $M:E\to W$ be an additional null-legal native probe family and set
+\[
+L^+=\begin{bmatrix}L\\M\end{bmatrix}.
+\]
+The conditional currency of $M$ given $L$ is
+\[
+K_{MM\mid L}=K_{MM}-K_{ML}K_{LL}^\dagger K_{LM},
+\]
+and similarly
+\[
+K_{DM\mid L}=K_{DM}-K_{DL}K_{LL}^\dagger K_{LM}.
+\]
+
+\begin{theorem}[Chain rule for adequacy residuals]
+\[
+\boxed{\Xi_C(D\mid L^+)=\Xi_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^\dagger K_{MD\mid L}.}
+\]
+In particular,
+\[
+\Xi_C(D\mid L^+)\preceq \Xi_C(D\mid L).
+\]
+\end{theorem}
+
+\begin{proof}
+This is the Schur complement chain rule applied to the joint currency block for $(L,M,D)$.  First condition on $L$, then take the Schur complement of the remaining $M$ block inside the residual joint currency of $(M,D)$.
+\end{proof}
+
+\begin{corollary}[Same-family saturation]
+If $M=BL$ for some $B$, then
+\[
+\Xi_C(D\mid[L;M])=\Xi_C(D\mid L).
+\]
+\end{corollary}
+
+\begin{proof}
+If $M=BL$, then $K_{MM\mid L}=0$ and $K_{DM\mid L}=0$.
+\end{proof}
+
+\section{Data processing and transfer}
+
+\begin{theorem}[Dissolving post-processing]
+For a response map $F:Z\to Z'$,
+\[
+\boxed{\Xi_C(FD\mid L)=F\Xi_C(D\mid L)F^*.}
+\]
+\end{theorem}
+
+\begin{proof}
+Apply the definition to $FD$: all $D$-blocks are congruence-transformed by $F$.
+\end{proof}
+
+\begin{theorem}[Native coarsening]
+For a native response map $A:Y\to Y'$,
+\[
+\boxed{\Xi_C(D\mid AL)\succeq \Xi_C(D\mid L).}
+\]
+If $A$ is a faithful reparameterization on $\Ran L_0$, equality holds.
+\end{theorem}
+
+\begin{proof}
+The range of $(AL)_0^*$ is contained in the range of $L_0^*$.  Orthogonal projection onto a smaller explanation subspace leaves a larger residual.
+\end{proof}
+
+\begin{theorem}[Exact reducing bridge]
+Suppose $U:E'_{C'}\to E_C$ is an isometric energy bridge with
+\[
+C'_0=U^*C_0U,
+\quad
+L'_0=AL_0U,
+\quad
+D'_0=BD_0U,
+\]
+where $A$ is faithful on the native range.  Then
+\[
+\boxed{\Xi_{C'}(D'\mid L')=B\Xi_C(D\mid L)B^*.}
+\]
+\end{theorem}
+
+\begin{theorem}[Defective dissolving bridge]
+If
+\[
+D'_0=BD_0U+R
+\]
+and the native bridge is exact, then for every $t>0$,
+\[
+\boxed{\Xi_{C'}(D'\mid L')
+\preceq
+(1+t)B\Xi_C(D\mid L)B^*+(1+t^{-1})\Xi_{C'}(R\mid L').}
+\]
+\end{theorem}
+
+\begin{proof}
+After projecting away the target native explanation space, use
+\[
+(X+Y)(X+Y)^*\preceq (1+t)XX^*+(1+t^{-1})YY^*.
+\]
+\end{proof}
+
+\section{Obstruction and repair calculus}
+
+For a budget $\Omega\succeq0$, define the adequacy defect
+\[
+\Delta_\Xi=\Xi_C(D\mid L)-\Omega.
+\]
+
+\begin{theorem}[Blind-spot witness]
+\[
+\Xi_C(D\mid L)\npreceq \Omega
+\]
+if and only if there exists $z\in Z$ such that
+\[
+\boxed{z^*(\Xi_C(D\mid L)-\Omega)z>0.}
+\]
+The maximum additive violation is $\lambda_{\max}(\Delta_\Xi)$.
+\end{theorem}
+
+\begin{proof}
+This is the spectral characterization of the Loewner order.
+\end{proof}
+
+Lawful repair moves include:
+\begin{enumerate}[label=(\alph*)]
+\item strict native extension, which subtracts a positive Schur term;
+\item bridge repair, which lowers the residual bridge currency;
+\item null-mode repair, which quotients or annihilates illegal zero-energy readout;
+\item budget repair, which weakens the claim but does not reduce the blind spot;
+\item nonclaim/gating, which narrows scope rather than proving adequacy.
+\end{enumerate}
+
+\section{Predictive adequacy ladders}
+
+At stage $j$, let
+\[
+\Xi_j=\Xi_{C_j}(D_j\mid L_j).
+\]
+If transported residuals satisfy
+\[
+\Xi_{j+1}\preceq (1+\eps_j)A_j\Xi_jA_j^*+E_j
+\]
+and the budgets obey the corresponding recurrence, adequacy propagates.  In a common response space, if
+\[
+\prod_j(1+\eps_j)<\infty,
+\qquad
+\sum_j E_j\preceq E_\infty,
+\]
+then predictive adequacy is maintained under a large enough budget.
+
+A stronger collapse condition is
+\[
+\Xi_{j+1}\preceq (1-\alpha_j)\Xi_j+E_j,
+\]
+with
+\[
+\prod_j(1-\alpha_j)=0
+\]
+and controlled accumulated residuals.  This is the strict-extension form of blind-spot elimination.
+
+\section{Examples and application templates}
+
+\paragraph{Navier--Stokes.}
+Let $L$ be energy/enstrophy/shell probes and let $D$ be pointwise concentration, vorticity, strain, or blow-up-rate probes.  Then $\Xi_C(D\mid L)$ measures the blind spot between classical energy accounting and blow-up control.  Energy/enstrophy alone do not adequately price pointwise blow-up probes in three dimensions; strict structure is required.
+
+\paragraph{Root-composite/RH.}
+Let $L$ be completed carrier-side anti-invariant readouts and let $D$ be off-fixed zero displacement readouts.  Then $\Xi_C(D\mid L)$ measures whether zero displacement is fully visible to the completed carrier currency.  The RH-facing obligation is not that $\Xi$ is automatically zero, but that explicit-formula domination and character-source coercivity earn the relevant adequacy and budget records.
+
+\paragraph{Cryptography.}
+Let $L$ be declared adversary/query families and $D$ unknown or extended attack vectors.  Then $\Xi$ is the security blind spot.
+
+\paragraph{Immune systems.}
+Let $L$ be known antigen recognition and $D$ novel pathogen readouts.  Then $\Xi$ is the immune blind spot.
+
+\paragraph{Logic.}
+Let $L$ be the declared proof/axiom readouts and $D$ broader formula-truth probes.  Then $\Xi$ measures the proof system's blind spot relative to the larger dissolving family.
+
+\section{Nonclaims}
+
+This paper does not claim that every raw substrate sees every dissolving probe.  It does not claim $\Xi=0$ generically.  It does not promote a public-shadow residual to an intrinsic residual without a bridge.  It does not say a finite-stage adequacy statement is predictive adequacy.  It states the exact residual, transfer, repair, and strict-extension laws that determine when such claims are valid.
+
+\section{Conclusion}
+
+The adequacy residual
+\[
+\Xi_C(D\mid L)
+\]
+is the blind-spot currency of a formed layer.  It is simultaneously a Schur complement, an optimal residual, a projection onto the part of dissolving readout invisible to native probes, and a monotone target of strict native-family extension.  It supplies the missing bridge between a native anti-localization membrane and a full layer-dissolving membrane.
+
+\end{document}

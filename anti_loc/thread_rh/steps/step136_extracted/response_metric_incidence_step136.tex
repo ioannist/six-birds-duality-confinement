@@ -1,0 +1,157 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Step 136: Response-Metric Normalization for the Incidence Operator}
+\author{Six Birds / RH Membrane Working Notes}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 135 showed that the correct high-divisibility tail is not the raw seed tail, but the response-space tail
+\[
+\tau_{\Omega,N}^{Z}
+=
+\left\|Z_y(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\right\| .
+\]
+The immediate question is whether the Burnol--Müntz/semilocal response metric reduces the raw Boolean amplification
+\[
+\|Z_y\|=\varphi^k,
+\qquad \varphi=\frac{1+\sqrt5}{2},
+\]
+or whether the actual seed tail must beat that full amplification.  Step 136 answers: the natural central-line Dirichlet response metric does reduce the amplification drastically, but does not eliminate it.
+
+\section{Finite squarefree incidence model}
+Let $P_y$ be a finite set of primes.  Identify squarefree divisors of $P_y$ with subsets $S\subseteq P_y$.  Define the incidence, or finite zeta-convolution, operator
+\[
+(Z_yb)(T)=\sum_{S\subseteq T}b(S).
+\]
+Locally, at one prime, the incidence matrix in the ordered basis $(0,1)$ is
+\[
+Z_p=\begin{pmatrix}1&0\\1&1\end{pmatrix}.
+\]
+
+\begin{definition}[Weighted coefficient metric]
+For $\alpha\ge0$, define the squarefree coefficient metric
+\[
+\|b\|_{\alpha}^{2}
+=
+\sum_{S\subseteq P_y}\left(\prod_{p\in S}p^{-\alpha}\right)|b(S)|^2.
+\]
+The case $\alpha=0$ is raw Boolean counting.  The case $\alpha=1$ is the central-line Dirichlet coefficient metric corresponding to polynomials written as $\sum a_n n^{-1/2}\chi(n)$.
+\end{definition}
+
+\section{Local singular value}
+In the normalized $\alpha$-metric, the local matrix is
+\[
+A_{p,\alpha}=W_p^{1/2}Z_pW_p^{-1/2}
+=
+\begin{pmatrix}1&0\\p^{-\alpha/2}&1\end{pmatrix}.
+\]
+Thus its largest singular value is
+\[
+\sigma_+(p,\alpha)
+=
+\frac{\sqrt{4+p^{-\alpha}}+p^{-\alpha/2}}{2}.
+\]
+
+\begin{theorem}[Metric-normalized incidence amplification]
+For the finite incidence operator $Z_y$ on the squarefree cube, acting in the $\alpha$-weighted coefficient metric,
+\[
+\boxed{
+\|Z_y\|_{\alpha\to\alpha}
+=
+\prod_{p\le y}\sigma_+(p,\alpha)
+}
+\]
+where
+\[
+\sigma_+(p,\alpha)=\frac{\sqrt{4+p^{-\alpha}}+p^{-\alpha/2}}{2}.
+\]
+Consequently:
+\[
+\alpha=0:
+\quad
+\|Z_y\|=\varphi^{\pi(y)},
+\]
+\[
+\alpha=1:
+\quad
+\log\|Z_y\|
+=\frac12\sum_{p\le y}p^{-1/2}+O\!\left(\sum_{p\le y}p^{-1}\right)
+=(1+o(1))\frac{\sqrt y}{\log y},
+\]
+\[
+\alpha=2:
+\quad
+\log\|Z_y\|
+=\frac12\sum_{p\le y}p^{-1}+O(1)
+=\frac12\log\log y+O(1),
+\]
+while for $\alpha>2$ the product remains bounded.
+\end{theorem}
+
+\begin{proof}
+The full squarefree incidence operator is the tensor product of the one-prime incidence matrices.  Under the weighted tensor-product metric, each one-prime normalized matrix is $A_{p,\alpha}$.  Tensor-product singular values multiply, giving the exact product formula.  The asymptotics follow from
+\[
+\log\sigma_+(p,\alpha)
+=\frac12p^{-\alpha/2}+O(p^{-\alpha})
+\]
+and the prime number theorem estimates for sums over primes.
+\end{proof}
+
+\section{Interpretation for the membrane route}
+The raw Boolean bound $\varphi^k$ is too pessimistic for the Dirichlet-source problem.  The natural $L$-function coefficient metric is $\alpha=1$, and in that metric the incidence amplification is only
+\[
+\exp\left((1+o(1))\frac{\sqrt y}{\log y}\right).
+\]
+This is a major reduction.  It is not a proof of tail smallness.  It says that a crude tail estimate of the form
+\[
+\|(I-P_{\Omega\le K})B_NG_B^{-1/2}\|\le e^{-cK}
+\]
+would imply
+\[
+\tau_{\\Omega,N}^{Z}
+\lesssim
+\exp\left((1+o(1))\frac{\sqrt y}{\log y}\right)e^{-cK}
+\]
+in the central-line Dirichlet metric.  Thus the seed tail must beat the weighted amplification, unless one uses the sharper blind-projected identity
+\[
+\Pi_{\mathcal B}Z_yB_N
+=
+\Pi_{\mathcal B}Z_y(I-P_{\Omega\le K})B_N,
+\]
+which may be substantially smaller than the full incidence norm.
+
+\section{Response-pulled metric}
+There is a formally perfect metric:
+\[
+\|b\|_{Z,H}^{2}=\|Z_yb\|_{H}^{2}.
+\]
+In that metric, $Z_y$ is an isometry by definition.  This is lawful only if the pulled metric is carried explicitly in the source and tail records.  It does not make the tail vanish; it moves the burden to the projection geometry of $P_{\Omega\le K}$ in the pulled response metric.
+
+\section{Step 136 verdict}
+\[
+\boxed{
+\text{The semilocal/Dirichlet response metric softens incidence amplification but does not remove it.}
+}
+\]
+The next exact target is therefore not the full incidence norm, but the blind-projected norm
+\[
+\boxed{
+\left\|\Pi_{\mathcal B}Z_y(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\right\|.
+}
+\]
+This is the response-metric-correct version of the GCD-log residual gate.
+
+\section{Nonclaim boundary}
+Step 136 does not prove RH, does not prove the actual Burnol/Müntz seed has small high-$\Omega$ tail, and does not prove that BPRZ supplies a full lower frame.  It only replaces the raw Boolean amplification estimate by the metric-correct amplification estimate, and isolates the next blind-projected tail gate.
+
+\end{document}

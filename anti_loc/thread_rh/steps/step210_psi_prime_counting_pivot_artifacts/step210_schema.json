@@ -1,0 +1,26 @@
+{
+  "step": 210,
+  "orientation": "adequacy",
+  "primary_carrier": "Chebyshev ψ + von Koch",
+  "carrier_definition": {
+    "psi": "psi(x)=sum_{p^k<=x} log p = sum_{n<=x} Lambda(n)",
+    "space": "L2_loc(R_+,dx/x) or weighted asymptotic-envelope space",
+    "native_probes": ["psi(x)", "psi(x)-x", "weighted averages"],
+    "dissolving_probes": ["x^(1/2+epsilon)", "sqrt(x) log^2 x"]
+  },
+  "RH_equivalence_statement": "von Koch 1901: psi(x)-x=O(sqrt(x) log^2 x) iff RH; equivalently psi(x)-x=O(x^(1/2+epsilon)) for every epsilon>0.",
+  "CRE_status": "CRE",
+  "CRCFT_mode_classification": "CRCFT-TE",
+  "explicit_formula_decomposition_audit": {
+    "formula": "psi(x)-x=-sum_rho x^rho/rho + log(2pi) - (1/2)log(1-x^{-2})",
+    "CTMT_status": "not_CTMT_primary",
+    "reason": "individual zero terms are computable; closure is global summability/cancellation strong enough for the RH-equivalent von Koch bound"
+  },
+  "psi_verdict": "V_psi_CRCFT_TE",
+  "retained_nogos": [
+    "No retained no-go is weakened.",
+    "No RH proof is claimed.",
+    "Dichotomy coverage is not refuted."
+  ],
+  "final_verdict": "V_psi_CRCFT_TE"
+}

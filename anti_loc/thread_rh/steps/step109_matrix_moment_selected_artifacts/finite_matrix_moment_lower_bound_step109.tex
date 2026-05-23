@@ -1,0 +1,87 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\title{Step 109: Finite Matrix Moment Lower-Bound Prototype}
+\author{RATCHET/Six Birds RH Membrane Program}
+\date{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 108 constructed the finite boundary-packet coefficient problem
+\[
+Y_{\mathcal B,N},\qquad R_N:Y_{\mathcal B,N}\to \mathbb C^{\mathcal N_N},
+\qquad F_{\mathcal B,N}=R_N^*G_{\mathcal X,N}R_N.
+\]
+Step 109 proves the finite matrix theorem that this construction must satisfy before any Heap--Soundararajan-style source strength can become a boundary-sector membrane.
+
+\section{Finite setup}
+Let $(Y,G_B)$ be a finite-dimensional boundary-packet Hilbert space, with
+\[
+\|y\|_B^2=\langle y,G_By\rangle,\qquad G_B\succ0.
+\]
+Let $R:Y\to \mathbb C^{\mathcal N}$ be the coefficient map sending a boundary packet to a short Dirichlet-polynomial coefficient vector. Let $G_X\succeq0$ be the character/source Gram matrix
+\[
+G_X(m,n)=\sum_{\chi\in\mathcal X}\lambda_\chi\chi(n)\overline{\chi(m)}.
+\]
+The induced source frame on boundary space is
+\[
+F_B=R^*G_XR.
+\]
+
+\section{Main theorem}
+\begin{theorem}[Matrix moment lower-frame transfer]
+If
+\[
+G_X\succeq \gamma I_{\mathcal N},\qquad R^*R\succeq cG_B,
+\]
+then
+\[
+\boxed{R^*G_XR\succeq \gamma cG_B.}
+\]
+\end{theorem}
+\begin{proof}
+For every $y\in Y$,
+\[
+\langle y,R^*G_XRy\rangle=\langle Ry,G_XRy\rangle\ge \gamma\|Ry\|^2=\gamma\langle y,R^*Ry\rangle\ge \gamma c\langle y,G_By\rangle.
+\]
+\end{proof}
+
+\begin{theorem}[Defect-paid transfer]
+If
+\[
+G_X\succeq \gamma I-E_G,\qquad R^*R\succeq cG_B-E_R,
+\]
+then
+\[
+\boxed{R^*G_XR\succeq\gamma cG_B-\gamma E_R-R^*E_GR.}
+\]
+\end{theorem}
+
+\section{What Heap--Soundararajan must supply}
+Heap--Soundararajan give a scalar source-strength template through short Dirichlet polynomials and mean-value estimates. The framework translation is the operator-valued matrix moment bound
+\[
+G_X\succeq \gamma I-E_G.
+\]
+This is stronger than one scalar lower moment: it must charge every coefficient recombination visible from the boundary-packet sector.
+
+\section{Coefficient observability}
+The second needed input is
+\[
+R^*R\succeq cG_B-E_R.
+\]
+If $\ker R\neq0$, no character Gram matrix can charge the invisible boundary directions through this route. Thus coefficient visibility is an adequacy gate.
+
+\section{Scalar lower moment is insufficient}
+\begin{proposition}[Rank-one scalar source obstruction]
+If $\dim Y>1$ and $G_X=aa^*$ has rank one, then $R^*G_XR$ has rank at most one. Hence it cannot dominate $cG_B$ for any $c>0$ unless the boundary space is one-dimensional in the visible sector.
+\end{proposition}
+
+\section{Status}
+Step 109 proves the finite matrix transfer theorem. It does not prove the arithmetic lower-frame estimate. The next target is to construct matrix moment estimates for $G_X$ and coefficient observability estimates for $R_N$ on genuine Burnol/Sonine boundary dictionaries.
+\end{document}

@@ -1,0 +1,313 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cA}{\mathcal A}
+\newcommand{\cK}{\mathcal K}
+\newcommand{\Rfin}{\mathrm{Rho}_{\mathrm{fin}}}
+\newcommand{\Afin}{A_{\mathrm{fin}}}
+\newcommand{\Kfin}{K_{\mathrm{fin}}}
+\newcommand{\Heta}{H_{\eta}}
+\newcommand{\Hetarho}{H_{\eta,\rho}}
+\newcommand{\Peta}{P_{\eta}}
+\newcommand{\Petarho}{P_{\eta,\rho}}
+\newcommand{\Cell}{C_{\ell}}
+\newcommand{\minner}[2]{\left\langle #1,#2\right\rangle}
+
+\title{Step 164: Per-Zero Structured-Subspace Decomposition on a Finite Burnol/Sonine Carrier}
+\author{Six Birds RH Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Orientation and Carried Context}
+
+The orientation is adequacy. Smaller \(\Xi^{\mathrm{BC}}\) is good; a
+positive residual records missed adequacy and not separation evidence.
+The active residual carried forward is
+\[
+  \Xi^{\mathrm{BC}} = B^*\Pi_YB.
+\]
+The active global operator is still
+\[
+  \Cell \Peta,\qquad
+  \Cell=(I-P_\infty)M_{m_\ell}P_\infty,\qquad
+  m_\ell(s)=\exp[-\ell(1/2-s)].
+\]
+The present note refines the inherited Burnol/Sonine pulled-evaluator carrier
+by a per-zero finite diagnostic. It does not replace the global residual.
+
+\section*{Typed Declarations D1--D4}
+
+\paragraph{D1. Per-zero subspaces.}
+For every zeta zero \(\rho\) on the critical line, let
+\[
+  \Hetarho
+  :=
+  \overline{\operatorname{span}}
+  \left\{
+    J_a^*Y^a_{\rho,k}
+    :
+    a\in A_{\mathrm{adm}},\ 0\leq k<m_\rho
+  \right\}
+  \subset H.
+\]
+The closure is the Hilbert norm closure in \(H\). The inherited
+Burnol/Sonine admissibility records use scales \(0<a<1\) for which \(J_a\)
+and the zero-evaluator vectors are defined. The legal multiplicity indices
+are \(0\leq k<m_\rho\).
+
+\paragraph{D2. Per-zero projections.}
+Let \(\Petarho\) be the orthogonal projection onto \(\Hetarho\).
+This step uses the inherited mutually orthogonal per-zero working hypothesis:
+\[
+  \Hetarho\perp H_{\eta,\rho'}\qquad(\rho\neq\rho').
+\]
+If this hypothesis is rejected, the overlap becomes a separate contingency
+residual \(\Xi^{\mathrm{orth}}_{\eta,\rho,\rho'}\).
+
+\paragraph{D3. Per-zero algebra.}
+Declare
+\[
+  \cA_{\eta,\rho}
+  :=
+  C^*(P_\infty,M_{m_\ell},\Petarho,I),
+  \qquad
+  \cK_{\eta,\rho}
+  :=
+  \cA_{\eta,\rho}\cap\cK(H).
+\]
+The bridge atlas records the inclusion
+\[
+  \cA_{\eta,\rho}\subset \cA_\eta
+\]
+as a framework declaration for this refinement. No compactness or faithful
+symbol is asserted.
+
+\paragraph{D4. Per-zero quotient object.}
+Declare
+\[
+  q_{\eta,\rho}(\Cell\Petarho)
+  \in
+  \cA_{\eta,\rho}/\cK_{\eta,\rho}.
+\]
+This is only a typed quotient object. It is not asserted to vanish.
+
+\section*{Finite Carrier F1}
+
+No inherited finite record dictates a specific \(N\). The finite carrier is
+therefore declared upstream as the first three positive-ordinate admissible
+critical-line zeros:
+\[
+\begin{aligned}
+  \rho_1 &= \frac12 + 14.134725141734693\,i,\\
+  \rho_2 &= \frac12 + 21.022039638771554\,i,\\
+  \rho_3 &= \frac12 + 25.010857580145688\,i.
+\end{aligned}
+\]
+Set
+\[
+  \Rfin=\{\rho_1,\rho_2,\rho_3\},
+  \qquad
+  \Afin=\{a_0\},\quad a_0=\frac12,
+  \qquad
+  \Kfin=\{0\}.
+\]
+The scale \(a_0=1/2\) satisfies the inherited \(0<a<1\) admissibility.
+The choice \(k=0\) is legal for every zero and does not assume simplicity.
+The finite carrier is
+\[
+  H_{\eta,\mathrm{fin}}
+  =
+  \bigoplus_{\rho\in\Rfin}
+  \operatorname{span}\{\eta^{a_0}_{\rho,0}\},
+  \qquad
+  \eta^a_{\rho,k}:=J_a^*Y^a_{\rho,k}.
+\]
+
+\section*{Matrix-Element Diagnostic F2}
+
+Normalize the finite vectors by
+\[
+  e_i
+  :=
+  \frac{\eta^{a_0}_{\rho_i,0}}
+       {\|\eta^{a_0}_{\rho_i,0}\|},
+  \qquad i=1,2,3.
+\]
+The finite matrix elements are
+\[
+  c_{ij}(\ell)
+  :=
+  \minner{e_i}{\Cell e_j},
+  \qquad
+  1\leq i,j\leq 3.
+\]
+Equivalently,
+\[
+  [\Cell]_{\Rfin}
+  =
+  \begin{pmatrix}
+  c_{11}(\ell)&c_{12}(\ell)&c_{13}(\ell)\\
+  c_{21}(\ell)&c_{22}(\ell)&c_{23}(\ell)\\
+  c_{31}(\ell)&c_{32}(\ell)&c_{33}(\ell)
+  \end{pmatrix}.
+\]
+
+Step 153 gives the pulled-evaluator formula
+\[
+  \eta^a_{w,k}
+  =
+  T_a^*\partial_{\bar w}^{\,k}K_a^\Gamma(\cdot,w),
+\]
+and Step 154 gives
+\[
+  \Cell\eta
+  =
+  (I-P_\infty)M_{m_\ell}P_\infty\eta.
+\]
+Thus, before normalization,
+\[
+  \minner{\eta^{a_0}_{\rho_i,0}}
+          {\Cell\eta^{a_0}_{\rho_j,0}}
+  =
+  \minner{
+    T_{a_0}^*K_{a_0}^\Gamma(\cdot,\rho_i)}
+    {(I-P_\infty)M_{m_\ell}P_\infty
+     T_{a_0}^*K_{a_0}^\Gamma(\cdot,\rho_j)}.
+\]
+This is the structured form available from the inherited carrier records.
+
+\subsection*{Source Ledger}
+
+\begin{center}
+\begin{tabular}{@{}llll@{}}
+\toprule
+ID & Record & Status & Missing content\\
+\midrule
+SL164.1 &
+Exact projected Sonine kernel \(P_{L_a^\Gamma}K_a^\Gamma\) &
+support\_only &
+Exact finite values of \(c_{ij}(\ell)\)\\
+SL164.2 &
+Per-zero mutual orthogonality &
+working hypothesis &
+Local proof of \(\Petarho\Petarho'=0\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Structural Diagnostic F3}
+
+On the declared one-dimensional finite blocks,
+\[
+  \left\|P_{\eta,\rho_i}\Cell P_{\eta,\rho_j}\right\|
+  =
+  |c_{ij}(\ell)|
+  \quad (1\leq i,j\leq3),
+\]
+conditional on the normalized vectors and the imported evaluator record.
+In particular,
+\[
+  \left\|\Cell|_{H_{\eta,\rho_i}^{\mathrm{fin}}}\right\|
+  =
+  |c_{ii}(\ell)|.
+\]
+
+The inherited records do not supply the exact values of \(c_{ij}(\ell)\).
+Therefore the finite carrier does not certify that \(\Cell\) preserves the
+\(\rho\)-grading. It also does not certify a banded, Hilbert--Schmidt
+summable, logarithmically divergent, or otherwise structured off-diagonal
+coupling. The decay question in \(|\rho-\rho'|\) is not classifiable from
+these three symbolic entries without SL164.1.
+
+The diagonal-structure verdict is
+\[
+  \boxed{\texttt{indeterminate-on-fin}.}
+\]
+
+\section*{Sub-Residuals}
+
+The active finite diagnostic sub-residual is
+\[
+  \Xi^{\mathrm{matrix\_source}}_{\ell,\Rfin,\Afin,\Kfin},
+\]
+the exact finite matrix-element source obligation for the projected
+Burnol/Sonine evaluator kernel. It is subordinate to, and does not replace,
+the global \(\Xi^{\mathrm{BC}}\).
+
+Two dormant residuals are named for later dispatch only:
+\[
+  \Xi^{\mathrm{coupling}}_{\ell,\rho,\rho'}
+  \quad\text{and}\quad
+  \Xi^{\mathrm{summability}}_{\ell}.
+\]
+The first activates only if exact off-diagonal entries are computed and
+structurally nonzero. The second activates only if exact rho-diagonal action is
+computed and the completed question reduces to summability over zeros.
+
+\section*{Gate Audit F4}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Gate & Status & Reason\\
+\midrule
+\(G1_\rho\) & framework\_defined &
+\(\cA_{\eta,\rho}/\cK_{\eta,\rho}\) is declared\\
+\(G2_\rho\) & open\_external\_proof &
+Per-rho faithful symbol not supplied\\
+\(G3_\rho\) & open\_external\_proof &
+Per-rho normal form not supplied\\
+\(G4_\rho\) & open\_external\_proof &
+Per-rho lower-faithfulness not supplied\\
+\(G5_\rho\) & open\_external\_proof &
+Per-rho compact remainder not supplied\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+No gate is trivialized by the finite carrier, because diagonal finite-rank
+action is not certified.
+
+\section*{Diagnostic Statement}
+
+Under the inherited Burnol/Sonine pulled-evaluator carrier records and the
+declared finite admissibility \((\Rfin,\Afin,\Kfin)\), the operator \(\Cell\)
+on \(H_{\eta,\mathrm{fin}}\) exhibits the following finite-carrier diagnostic
+structure:
+\begin{enumerate}[label=(\alph*)]
+\item Per-block matrix elements are the symbolic entries
+  \(c_{ij}(\ell)=\langle e_i,\Cell e_j\rangle\), with exact evaluation
+  conditional on SL164.1.
+\item Each per-rho finite block is one-dimensional, but no rho-diagonal action
+  is certified.
+\item Off-diagonal coupling is present only as symbolic entries
+  \(c_{ij}(\ell)\) for \(i\neq j\); no bounded, unbounded, banded, summable, or
+  divergent pattern is classified.
+\item The implication for \(G2_\rho\)--\(G5_\rho\) and global \(G2\)--\(G5\)
+  is source-shaped only: an exact projected-kernel evaluator record or a
+  direct per-rho bridge theorem is needed before the finite diagnostic can
+  distinguish diagonal, coupled, or unstructured behavior.
+\end{enumerate}
+
+The final verdict is
+\[
+  \boxed{\texttt{finite\_carrier\_diagnostic\_indeterminate}.}
+\]
+
+\section*{Nonclaim Boundary}
+
+This diagnostic does not prove RH. It does not prove
+\(\Xi^{\mathrm{BC}}=0\). It does not promote finite-carrier diagnostic content
+to a completed-carrier theorem. It does not prove global or per-rho bridge
+gates \(G2\)--\(G5\). It does not promote public-shadow or finite-window
+support evidence. It does not subsume the global \(\Xi^{\mathrm{BC}}\). It
+does not pivot to a different carrier and does not begin any step 165 lane.
+
+\end{document}

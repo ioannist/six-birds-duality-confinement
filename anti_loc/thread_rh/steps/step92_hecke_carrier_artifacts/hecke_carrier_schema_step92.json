@@ -1,0 +1,32 @@
+{
+  "step": 92,
+  "name": "Hecke/idele-class carrier sketch for character-source route",
+  "objects": {
+    "idele_class_group": "C_Q = A_Q^x / Q^x",
+    "unitary_dual": "hat(C_Q)",
+    "anti_invariant_response_space": "Y^-_Hecke = direct integral over anti-invariant Hecke character spectrum",
+    "character_readouts": "Q_chi : Y^-_Hecke -> Y^-_chi",
+    "source_frame": "F_n = integral/sum lambda_chi,n Q_chi^* Theta_chi^{-1} Q_chi",
+    "source_gate": "F_n >= Lambda_n (Theta_0^-)^{-1}",
+    "budget_collapse": "K^-_n <= Lambda_n^{-1} Theta_0^- + E_src,n"
+  },
+  "routes": {
+    "zeta_carrier_source_surface": {
+      "description": "Keep zeta carrier, add Hecke source surface via bridge B",
+      "required_gate": "B^* F_n B >= Lambda_n (Theta_0^-)^{-1} - E_n",
+      "status": "major_bridge_required"
+    },
+    "enlarged_hecke_carrier": {
+      "description": "Build a direct-integral Hecke carrier with zeta as a fiber/section",
+      "required_gate": "descent from enlarged Hecke membrane to zeta zero ledger",
+      "status": "plausible_strict_extension_program"
+    }
+  },
+  "nonclaims": [
+    "Does not prove RH",
+    "Does not prove GRH",
+    "Does not prove conductor windows exhaust the completed response space",
+    "Does not prove character sources supply full anti-invariant lower frame",
+    "Does not permit target-selected sources"
+  ]
+}

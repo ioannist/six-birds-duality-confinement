@@ -1,0 +1,218 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\ThetaB}{\Theta}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\status}{\mathsf{status}}
+
+\title{Step 45: All-Six-Channel Anti-Localization Record Theorem}
+\author{Six Birds / Anti-Localization Working Notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note upgrades the formed-layer membrane theorem to an exact-six anti-localization judgment.  A scalar, family, or predictive currency bound is not accepted as an anti-localization membrane unless six channel records are present: rewrite/gauge (P1), feasibility/channel (P2), route/holonomy (P3), staging/refinement (P4), packaging/canonicalization (P5), and audit/currency (P6).  The main theorem says that a formed closure with all six accepted records and a completed predictive family currency budget has an accepted membrane and no unresolved native predictive recombination needles.  A separation theorem gives a finite countermodel for the omission of each channel.
+\end{abstract}
+
+\section{Predictive family currency}
+Let $E_j$ be a finite-dimensional coordinate carrier at predictive stage $j$, let
+\[
+  \Gamma_j:E_j\to H_j
+\]
+be the exact package map, let $C_j\succeq0$ be the stage audit, and let
+\[
+  C_{\Gamma,j}=\Gamma_j^*C_j\Gamma_j.
+\]
+Let
+\[
+  L_j:H_j\to Y_j
+\]
+be the declared native probe family and let
+\[
+  R_j:Y_j\to Y
+\]
+transport responses into a common response space.  The transported family currency matrix is
+\[
+  \widehat K_j
+  =R_jL_j\Gamma_j C_{\Gamma,j}^{\dagger}\Gamma_j^*L_j^*R_j^*.
+\]
+The null-mode legality condition is
+\[
+  R_jL_j\Gamma_j v=0\qquad(v\in \Ker C_{\Gamma,j}).
+\]
+When this condition fails, the variational capacity is infinite even if the Moore--Penrose expression hides the problem.
+
+\begin{definition}[Native predictive witness]
+For a declared budget $\ThetaB\succeq0$, a native predictive witness is a pair $(j,y)$ with $y\in Y$ such that
+\[
+  y^*(\widehat K_j-\ThetaB)y>0.
+\]
+It is unresolved if the claim neither prices it by increasing the declared budget, nor repairs the carrier/package/audit, nor excludes it by an explicit nonclaim.
+\end{definition}
+
+\section{The all-six-channel record}
+\begin{definition}[All-six anti-localization record]
+An all-six anti-localization record is a tuple
+\[
+  \AL=(\mathsf C,\{E_j,H_j,\Gamma_j,C_j,L_j,R_j\}_{j\in J},\ThetaB,
+       P_1,P_2,P_3,P_4,P_5,P_6,\mathsf N),
+\]
+where $\mathsf C$ is a formed closure/layer claim, $\mathsf N$ is the nonclaim ledger, and the six channel records have the following meanings.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Channel & Record & Failure if absent\\
+\midrule
+$P_1$ & rewrite/gauge/operator repair & hidden gauge or wrong carrier\\
+$P_2$ & feasibility, channelization, frame, null legality & cancellation or zero-energy needle\\
+$P_3$ & route/holonomy/protocol union & route-local overread\\
+$P_4$ & staging/refinement/predictive transport & future needle\\
+$P_5$ & packaging/canonicalization/lawful witness & post-hoc or public-shadow overread\\
+$P_6$ & audit/currency/budget/witness ledger & diagonal-only or proxy audit\\
+\bottomrule
+\end{tabular}
+\end{center}
+Each channel has a status in a finite status set including
+\[
+  \texttt{accepted},\quad \texttt{support\_only},\quad \texttt{failed},\quad
+  \texttt{local\_only},\quad \texttt{overread},\quad \texttt{outside\_scope}.
+\]
+\end{definition}
+
+The six roles are not independent decorative labels.  They specify which part of the no-needle claim is being controlled.  The earlier capacity components align naturally with only part of this record: feasibility/conditioning is $P_2$, route-union is $P_3$, and sector/refinement structure is $P_4$.  The record is incomplete unless $P_1$, $P_5$, and $P_6$ are also declared.
+
+\section{Acceptance theorem}
+\begin{theorem}[All-six-channel membrane acceptance]
+Let $\AL$ be an all-six anti-localization record.  Suppose:
+\begin{enumerate}[label=(\alph*)]
+\item the closure/layer $\mathsf C$ is formed and the scope is declared;
+\item $P_1,\dots,P_6$ have status \texttt{accepted};
+\item null-mode legality holds at every accepted predictive stage;
+\item the transported family currency satisfies
+\[
+  \widehat K_j\preceq \ThetaB\qquad(j\in J);
+\]
+\item the critical-pair ledger is complete: every detected native witness is priced, repaired, or explicitly excluded.
+\end{enumerate}
+Then the record licenses an accepted anti-localization membrane on the declared closure.  Equivalently,
+\[
+  \sup_{j\in J}\operatorname{Cap}_{C_j}\bigl(y^*R_jL_j;\Ran\Gamma_j\bigr)
+  \le y^*\ThetaB y
+  \qquad (y\in Y),
+\]
+and there are no unresolved native predictive recombination needles.
+\end{theorem}
+
+\begin{proof}
+By the probe-family currency theorem, for every accepted $j$ and every $y\in Y$,
+\[
+  \operatorname{Cap}_{C_j}(y^*R_jL_j;\Ran\Gamma_j)=y^*\widehat K_jy,
+\]
+with the convention that null-mode failure gives infinite capacity.  Null-mode legality rules out the infinite case.  The matrix budget gives
+\[
+  y^*\widehat K_jy\le y^*\ThetaB y
+\]
+for every recombination $y$.  Thus no native recombination is over budget at any accepted predictive stage.  The six accepted channel records certify that this matrix inequality is being asserted on the correct carrier ($P_1$), correct feasible class ($P_2$), correct route/protocol union ($P_3$), correct predictive family ($P_4$), correct packaged witness rather than public shadow ($P_5$), and correct audit/currency ledger ($P_6$).  Completion of the witness ledger eliminates unresolved critical pairs.  This is precisely the accepted membrane claim.\end{proof}
+
+\begin{corollary}[Downgrade rule]
+If one of $P_1,\dots,P_6$ is missing or failed, then the same matrix inequality, even if true in a visible calculation, cannot be upgraded to an accepted all-six membrane claim.  Its strongest honest status is obtained by downgrading to the corresponding scoped claim: support-only, local-only, protocol-only, public-shadow-only, current-only, or failed-audit.
+\end{corollary}
+
+\section{Separation theorem}
+The next result explains why the six records are necessary rather than bureaucratic.
+
+\begin{theorem}[One-channel omission countermodels]
+For each channel $P_i$, there is a finite-dimensional configuration in which the other five roles can be made harmless or formally satisfied, but omitting $P_i$ allows a false anti-localization promotion.
+\end{theorem}
+
+\begin{proof}
+We give explicit witnesses.
+
+\paragraph{Omitting $P_1$ (rewrite/gauge).}
+Let $C_\varepsilon=\operatorname{diag}(\varepsilon,1)$ and $L=(1,0)$.  The semigroup is passive, but
+\[
+  K=L C_\varepsilon^{-1}L^*=\varepsilon^{-1}.
+\]
+As $\varepsilon\downarrow0$, the gauge-aligned slow direction is an arbitrarily cheap needle unless the carrier is rewritten, quotiented, or audited on that direction.
+
+\paragraph{Omitting $P_2$ (feasibility/channel).}
+Let
+\[
+  \psi_\pm=\sqrt{1-\varepsilon^2}e_1\pm\varepsilon e_2,
+  \qquad L=e_2^* ,\qquad C=I.
+\]
+Each channel has tiny probe response, but
+\[
+  \psi_+-\psi_-=2\varepsilon e_2
+\]
+spans the needle direction.  Without a lower frame/conditioning record, branchwise delocalization does not control recombination capacity.
+
+\paragraph{Omitting $P_3$ (route/holonomy).}
+Let two protocols duplicate the same one-dimensional readout.  Each route-local currency is $1$, but the stacked protocol matrix is
+\[
+  \mathbb K=\begin{pmatrix}1&1\\1&1\end{pmatrix}
+\]
+with largest eigenvalue $2$.  Mixed-route recombination violates the route-union claim.
+
+\paragraph{Omitting $P_4$ (staging/refinement).}
+Let
+\[
+  K_j=\begin{pmatrix}1&0\\0&j\end{pmatrix},\qquad \Theta=I.
+\]
+The current stage $j=1$ passes, but the predictive witness $e_2$ violates every fixed budget as $j\to\infty$.
+
+\paragraph{Omitting $P_5$ (packaging/canonicalization).}
+Let the intrinsic response currency be
+\[
+  K_Y=\operatorname{diag}(1,M),\qquad M\gg1,
+\]
+and let the public shadow forget the second coordinate.  The shadow currency is $1$, but the hidden intrinsic direction has capacity $M$.  A public shadow is not a lawful witness without a faithful bridge.
+
+\paragraph{Omitting $P_6$ (audit/currency).}
+Let $H=\mathbb C$, $C=1$, and $Lu=u(1,\dots,1)\in\mathbb C^m$.  Then
+\[
+  K=\mathbf 1\mathbf 1^*.
+\]
+Every diagonal probe has capacity $1$, but the normalized all-ones recombination has capacity $m$.  A diagonal-only or scalar audit misses the family witness.
+
+Each construction is finite-dimensional and therefore shows that the corresponding gate is logically necessary for an accepted all-six membrane claim.\end{proof}
+
+\section{Channel repair map}
+Given a failed channel, the lawful repair is also typed:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Failed channel & Repair & Proof effect\\
+\midrule
+$P_1$ & rewrite/quotient/gauge audit & changes carrier or prices gauge witness\\
+$P_2$ & frame, null quotient, feasible package repair & removes cancellation or zero-energy witness\\
+$P_3$ & route-union/block protocol matrix & prices mixed-route recombinations\\
+$P_4$ & predictive transport/summable defect & blocks future needles\\
+$P_5$ & canonical package/lawful witness bridge & prevents post-hoc and shadow overread\\
+$P_6$ & full Loewner currency and critical-pair ledger & prices all native recombinations\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[Closure-only scope]
+The theorem is explicitly closure/layer scoped.  A raw substrate, provisional package, public shadow, or failed channel record may contain needle-like directions.  That is not a counterexample.  The all-six theorem says only that a formed closure with accepted six-channel records and completed family currency has no unresolved native predictive needles.
+\end{remark}
+
+\end{document}

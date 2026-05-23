@@ -1,0 +1,225 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Fix}{Fix}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\Eef}{E_{\rm EF}}
+\newcommand{\Htest}{\mathcal H_{\rm test}}
+\newcommand{\Ecmp}{\mathcal E_{\rm cmp}}
+
+\title{Step 71: The Weil--Douglas Bridge Gate for the RH Membrane Route}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The formed-layer membrane framework reduces the RH-facing confinement route to
+\[
+  \AZ\preceq \Kcmp\preceq \Theta^- ,
+  \qquad \tr\Theta^-\to0,
+\]
+with a separating anti-invariant zero readout and a fixed or exhaustive zero ledger.
+The first load-bearing construction obligation is the bridge
+\[
+  \AZ\preceq\Kcmp.
+\]
+This note isolates the exact operator-theoretic content of that obligation.  It shows that the desired bridge is not a scalar explicit-formula identity and not a trace equality.  It is a Douglas contractive factorization gate.
+
+\section{Zero-side and carrier-side maps}
+Let $Y^-$ denote the anti-invariant response space for the completed duality.  The zero-side anti-invariant ledger is represented by a map
+\[
+   V_Z:Y^-\longrightarrow \mathcal Z,
+\]
+so that
+\[
+   \AZ=V_Z^*V_Z.
+\]
+The completed carrier-side feature map is required to have the form
+\[
+   W_{\rm cmp}:Y^-\longrightarrow \Ecmp,
+   \qquad
+   \Kcmp=W_{\rm cmp}^*W_{\rm cmp}.
+\]
+In the RH explicit-formula intended application one wants a visible decomposition
+\[
+   W_{\rm cmp}=\begin{bmatrix}
+       W_{\rm pr}\\ W_\infty\\ W_{\rm pole}\\ W_{\rm tail}
+   \end{bmatrix},
+\]
+with
+\[
+   \Kcmp=K_{\rm pr}+K_\infty+K_{\rm pole}+K_{\rm tail}.
+\]
+The terms are named prime-power, archimedean/gamma, pole/completion, and support/tail features.  This is a positive feature decomposition only after each block has been represented as a positive quadratic feature map.
+
+\section{Douglas bridge theorem}
+\begin{theorem}[Weil--Douglas bridge gate]
+Let $V:Y\to\mathcal Z$ and $W:Y\to\mathcal E$ be bounded operators between Hilbert spaces.  The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item $V^*V\preceq W^*W$.
+\item $\|Vy\|\le \|Wy\|$ for every $y\in Y$.
+\item There exists a contraction $T:\overline{\Ran W}\to \overline{\Ran V}$ such that
+\[
+   V=TW.
+\]
+Equivalently, after extending $T$ by zero on $\overline{\Ran W}^{\perp}$, there is a contraction $T:\mathcal E\to\mathcal Z$ with $V=TW$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of (i) and (ii) is immediate from
+\[
+   \|Vy\|^2=\langle y,V^*Vy\rangle,
+   \qquad
+   \|Wy\|^2=\langle y,W^*Wy\rangle.
+\]
+Assume (ii).  Define $T_0$ on $\Ran W$ by $T_0(Wy)=Vy$.  If $Wy=Wy'$, then $W(y-y')=0$, so (ii) gives $V(y-y')=0$; hence $T_0$ is well-defined.  Moreover $\|T_0Wy\|=\|Vy\|\le\|Wy\|$, so $T_0$ is a contraction on $\Ran W$ and extends uniquely to $\overline{\Ran W}$.  This gives (iii).  Conversely, if $V=TW$ with $\|T\|\le1$, then $\|Vy\|\le\|Wy\|$, hence (ii) and (i).
+\end{proof}
+
+\begin{corollary}[RH bridge target]
+The explicit-formula domination obligation
+\[
+   \AZ\preceq\Kcmp
+\]
+is equivalent to constructing a contraction
+\[
+   T:\Ecmp\to\mathcal Z,
+   \qquad
+   V_Z=T W_{\rm cmp}.
+\]
+Thus the bridge is a contractive factorization, not merely equality of scalar trace terms.
+\end{corollary}
+
+\section{From a completed positive form to features}
+\begin{definition}[Completed anti-invariant carrier form]
+A completed anti-invariant carrier form is a positive semidefinite sesquilinear form
+\[
+   Q_{\rm cmp}:Y^-\times Y^-\to\mathbb C
+\]
+with a visible decomposition
+\[
+   Q_{\rm cmp}=Q_{\rm pr}+Q_\infty+Q_{\rm pole}+Q_{\rm tail}
+\]
+whenever the four terms are individually positive or have been grouped into positive feature blocks.  The associated currency is the operator $\Kcmp$ satisfying
+\[
+   Q_{\rm cmp}(y,y')=\langle y,\Kcmp y'\rangle.
+\]
+\end{definition}
+
+\begin{proposition}[Kolmogorov feature realization]
+If $Q_{\rm cmp}\succeq0$ on $Y^-$, then there exists a Hilbert space $\Ecmp$ and a map $W_{\rm cmp}:Y^-\to\Ecmp$ such that
+\[
+   Q_{\rm cmp}(y,y')=\langle W_{\rm cmp}y,W_{\rm cmp}y'\rangle.
+\]
+If $Q_{\rm cmp}=\sum_\alpha Q_\alpha$ with each $Q_\alpha\succeq0$, then one may take
+\[
+   W_{\rm cmp}=\bigoplus_\alpha W_\alpha.
+\]
+\end{proposition}
+
+\begin{proof}
+Take the quotient of $Y^-$ by the null space of $Q_{\rm cmp}$ and complete it in the induced inner product.  The map $W_{\rm cmp}$ sends $y$ to its equivalence class.  For a positive sum, apply the construction to each $Q_\alpha$ and concatenate the feature maps.
+\end{proof}
+
+\begin{theorem}[Positive Weil form implies Douglas gate]
+Suppose a completed carrier form $Q_{\rm cmp}\succeq0$ satisfies
+\[
+   \|V_Z y\|^2\le Q_{\rm cmp}(y,y)
+   \qquad\forall y\in Y^-.
+\]
+Let $W_{\rm cmp}$ be a feature realization of $Q_{\rm cmp}$.  Then there exists a contraction $T$ such that
+\[
+   V_Z=T W_{\rm cmp}.
+\]
+Equivalently,
+\[
+   \AZ\preceq\Kcmp.
+\]
+\end{theorem}
+
+\begin{proof}
+The inequality is exactly $V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}$.  The result follows from the Weil--Douglas bridge gate.
+\end{proof}
+
+\section{Signed explicit formula terms and the completion defect}
+The classical explicit formula is naturally signed: prime-power, gamma, pole, and tail terms enter with different signs depending on the convention and test class.  The membrane route does not accept a signed accounting identity as a positive feature map.
+
+\begin{definition}[Completion defect]
+Given a visible partial feature map $W_{\rm vis}$ and zero readout $V_Z$, define the explicit-formula defect $\Eef\succeq0$ by an admissible inequality
+\[
+   V_Z^*V_Z\preceq W_{\rm vis}^*W_{\rm vis}+\Eef.
+\]
+If $\Eef=0$, the bridge is exact.  If $\Eef\ne0$, it is a quantified allowance for missing gamma, pole, endpoint, support, tail, or positivity-completion data.
+\end{definition}
+
+\begin{proposition}[Defected Douglas bridge]
+If
+\[
+   V_Z=T W_{\rm vis}+R,
+   \qquad \|T\|\le1,
+   \qquad R^*R\preceq\Eef,
+\]
+then for every $s>0$,
+\[
+   \AZ\preceq (1+s)W_{\rm vis}^*W_{\rm vis}+(1+s^{-1})\Eef.
+\]
+\end{proposition}
+
+\begin{proof}
+Use $(a+b)^*(a+b)\preceq (1+s)a^*a+(1+s^{-1})b^*b$ with $a=TW_{\rm vis}$ and $b=R$, then $W_{\rm vis}^*T^*TW_{\rm vis}\preceq W_{\rm vis}^*W_{\rm vis}$.
+\end{proof}
+
+\section{Why trace equality is not enough}
+\begin{proposition}[Trace shadow counterexample]
+There exist $A,K\succeq0$ with
+\[
+   \tr A=\tr K
+\]
+but
+\[
+   A\npreceq K.
+\]
+For example,
+\[
+   A=\begin{pmatrix}2&0\\0&1/2\end{pmatrix},
+   \qquad
+   K=\begin{pmatrix}1&0\\0&3/2\end{pmatrix}
+\]
+have equal trace, but $K-A$ has a negative eigenvalue.
+\end{proposition}
+
+\begin{remark}
+This is the finite-dimensional reason the explicit formula cannot be used merely as total prime/zero trace balance.  The RH membrane route needs Loewner domination in the anti-invariant sector, equivalently a contractive factorization.
+\end{remark}
+
+\section{The first construction target}
+The actual RH construction target can now be stated without framework ambiguity.
+
+\begin{quote}
+Construct an anti-invariant completed test/response space $Y^-$, a zero-side map $V_Z$, and a completed feature map
+\[
+   W_{\rm cmp}=W_{\rm pr}\oplus W_\infty\oplus W_{\rm pole}\oplus W_{\rm tail}
+\]
+from the Weil/Selberg explicit formula such that
+\[
+   V_Z=T W_{\rm cmp},\qquad \|T\|\le1.
+\]
+\end{quote}
+
+This is stronger than writing the explicit formula.  It requires the signed formula to be reorganized as a positive operator-valued feature representation on the anti-invariant response family.
+
+\section{Nonclaim boundary}
+This note does not prove RH.  It does not construct the zeta carrier.  It does not prove Weil positivity in a new form.  It isolates the exact operator gate that a Weil-style construction must satisfy: Douglas-contractive domination of zero-side anti-invariant displacement by completed carrier features.
+
+\end{document}

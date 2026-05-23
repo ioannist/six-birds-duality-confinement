@@ -1,0 +1,84 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\title{Step 138: $\Omega$-Threshold Optimization for Blind-Projected Incidence}
+\author{Six Birds RH Membrane Working Note}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 130--137 reduced the restricted source route to a metric-correct blind-sector estimate. The unrestricted GCD-log lower-frame import is blocked by squarefree Boolean near-null modes, but the actual residual coefficient class may avoid those modes after the zeta/Muentz incidence convolution. Step 138 chooses the threshold variables in a non-smuggled way.
+
+\section{Definitions}
+Let $P_y$ be a finite prime window and let
+\[
+(Z_y b)(T)=\sum_{S\subseteq T}b(S)
+\]
+be the zeta/Muentz incidence operator on squarefree seed coefficients. Let $\mathcal B_R$ be the declared blind Walsh family, for instance modes whose negative-prime set has cardinality at least $R$. Let $P_{\Omega\le K}$ be the upstream-declared seed cutoff.
+
+\begin{definition}[Leakage and tail constants]
+In the source-compatible central-line coefficient metric define
+\[
+L_{R,K}(y)=\|\Pi_{\mathcal B_R}Z_yP_{\Omega\le K}\|,
+\qquad
+T_{R,K}(y)=\|\Pi_{\mathcal B_R}Z_y(I-P_{\Omega\le K})\|.
+\]
+For the actual Burnol/Muentz residual seed window define
+\[
+\sigma_{K,N}=\|(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\|.
+\]
+\end{definition}
+
+\begin{theorem}[Threshold bound]
+For every declared pair $(R,K)$,
+\[
+\|\Pi_{\mathcal B_R}Z_yB_NG_{B,N}^{-1/2}\|
+\le L_{R,K}(y)+T_{R,K}(y)\sigma_{K,N}.
+\]
+Consequently
+\[
+\Xi_{\mathrm{GCD},N}\preceq \delta_{R,K,N}^2G_{B,N},
+\qquad
+\delta_{R,K,N}:=L_{R,K}+T_{R,K}\sigma_{K,N}.
+\]
+\end{theorem}
+
+\begin{proof}
+Decompose the residual seed into low and high $\Omega$ parts:
+\[
+B_N=P_{\Omega\le K}B_N+(I-P_{\Omega\le K})B_N.
+\]
+Apply $\Pi_{\mathcal B_R}Z_y$ and the triangle inequality. The first term is bounded by $L_{R,K}$ after normalization by $G_{B,N}^{-1/2}$; the second is bounded by $T_{R,K}\sigma_{K,N}$. Squaring gives the adequacy residual bound.
+\end{proof}
+
+\begin{theorem}[Restricted source-floor criterion]
+Assume that the GCD-log source kernel has a lower frame on the nonblind sector,
+\[
+K_q\succeq \gamma_q\beta_R I
+\quad\text{on }(I-\Pi_{\mathcal B_R})H,
+\]
+with $\gamma_q\to\infty$ and $\beta_R>0$. If
+\[
+\delta_{R,K,N}\le\delta_0<1,
+\]
+then on the residual coefficient class
+\[
+R_N^*K_qR_N\succeq \gamma_q\beta_R(1-\delta_0^2)G_{B,N}.
+\]
+Thus a positive blind-suppression floor is enough; exact suppression is sufficient but not necessary.
+\end{theorem}
+
+\section{Optimization rule}
+For a declared admissible grid of thresholds, choose $(R,K,y)$ to maximize
+\[
+\mathfrak F(R,K,y)=\beta_R(y,q)\bigl(1-[L_{R,K}(y)+T_{R,K}(y)\sigma_{K,N}]^2\bigr)_+,
+\]
+subject to length, source, and fixed/exhaustive-tail records. This is a threshold-selection rule, not a proof of the seed-tail estimate.
+
+\section{Nonclaim}
+This step does not prove RH, the actual Burnol/Muentz seed tail estimate, or completed source coercivity. It supplies the finite threshold theorem that any such proof must pass.
+\end{document}

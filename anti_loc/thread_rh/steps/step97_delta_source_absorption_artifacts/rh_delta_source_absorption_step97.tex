@@ -1,0 +1,155 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\DeclareMathOperator{Ran}{Ran}
+\DeclareMathOperator{tr}{tr}
+\DeclareMathOperator{supp}{supp}
+\title{Step 97: Hecke/Dirichlet Source Absorption for the Semilocal Cross-Term}
+\author{Six Birds / Formed-Layer Membrane RH Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+The hybrid semilocal route has reduced the active RH obstruction to the positive part of the semilocal mismatch
+\[
+\Delta_S = q_{\mathrm{Weil},S}-q_{\mathrm{pos},S}.
+\]
+Here $q_{\mathrm{pos},S}$ contains the imported Connes--Consani archimedean/Sonin positivity slot, the paired finite-prime slot, and pole/tail slots. The remaining question is whether the positive part
+\[
+\Delta_S^+
+\]
+can be absorbed by an upstream-visible Dirichlet/Hecke character source ladder without smuggling and with enough lower-frame strength to collapse the anti-invariant budget.
+
+This note states the exact theorem shape and records the arithmetic inputs needed to make it true.
+
+\section{Semilocal source records}
+Let $Y_S^-$ be the completed semilocal anti-invariant response space. A source record is a tuple
+\[
+  s=(\omega,Q_\omega,\Theta_\omega,\lambda_{\omega,n},D_\omega),
+\]
+where $\omega$ is a Dirichlet/Hecke character or twist parameter declared upstream, $Q_\omega:Y_S^-\to Z_\omega$ is its response readout, $\Theta_\omega\succcurlyeq0$ is the response budget, $\lambda_{\omega,n}\ge0$ is the stage-$n$ source strength, and $D_\omega\succcurlyeq0$ is the corresponding primal source contribution.
+
+The response-side source frame is
+\[
+  F_n = \sum_{\omega\in\mathcal X_n}
+    \lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega.
+\]
+The lower-frame gate is
+\[
+\boxed{F_n\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty.}
+\]
+
+\section{Absorption of the semilocal cross-term}
+\begin{definition}[Absorption gate]
+The semilocal cross-term is source-absorbed at stage $n$ if there is an explicit defect $E_{\Delta,n}\succeq0$ such that
+\[
+\boxed{\Delta_S^+\preceq F_n+E_{\Delta,n}.}
+\]
+The source is lawful only if $\mathcal X_n,Q_\omega,\Theta_\omega,\lambda_{\omega,n}$ are selected by the upstream semilocal/Hecke carrier and not by the final zero-confinement target.
+\end{definition}
+
+\begin{theorem}[Hecke/Dirichlet source absorption theorem]
+Assume the following records are accepted:
+\begin{enumerate}[label=(\roman*)]
+  \item semilocal Weil extraction on a completed anti-invariant core:
+  \[
+    q_Z[y]\le q_{\mathrm{Weil},S}[y]+e_{\mathrm{Weil},S}[y];
+  \]
+  \item positive package extraction:
+  \[
+    \Delta_S^+\preceq F_n+E_{\Delta,n};
+  \]
+  \item source lower-frame coverage:
+  \[
+    F_n\succeq \Lambda_n(\Theta_0^-)^{-1};
+  \]
+  \item source/primal realization: each source form descends from a positive primal contribution,
+  \[
+    D_\omega\succeq
+    \lambda_{\omega,n}(Q_\omega L_S^-)^*\Theta_\omega^{-1}(Q_\omega L_S^-);
+  \]
+  \item defects are visible and budgeted:
+  \[
+    E_{\mathrm{tot},n}=E_{\mathrm{Weil},S}+E_{\Delta,n}+E_{\mathrm{tail},n}+E_{\mathrm{src},n}.
+  \]
+\end{enumerate}
+Then the enlarged positive carrier
+\[
+q_{\mathrm{hyb},n}=q_{\mathrm{pos},S}+F_n
+\]
+gives the defect-paid bridge
+\[
+\boxed{q_Z[y]\le q_{\mathrm{hyb},n}[y]+E_{\mathrm{tot},n}[y].}
+\]
+Moreover, if the source lower frame is realized in the primal audit $C_n$, then the anti-invariant currency satisfies
+\[
+\boxed{K_n^- = L_S^-C_n^\dagger (L_S^-)^*
+\preceq \Lambda_n^{-1}\Theta_0^-+E_{\mathrm{src},n}.}
+\]
+Consequently, if $\Lambda_n\to\infty$ and the visible defects vanish on a fixed or exhaustive ledger, the anti-invariant budget collapses.
+\end{theorem}
+
+\begin{proof}
+Since $\Delta_S=q_{\mathrm{Weil},S}-q_{\mathrm{pos},S}$, one has
+\[
+q_{\mathrm{Weil},S}\le q_{\mathrm{pos},S}+\Delta_S^+.
+\]
+Combining with the semilocal extraction inequality and the absorption gate gives
+\[
+q_Z\le q_{\mathrm{pos},S}+F_n+E_{\Delta,n}+e_{\mathrm{Weil},S}.
+\]
+Tail and source realization defects are added explicitly. The currency bound follows from the standard source-frame coercivity lemma: if
+\[
+C_n\succeq \sum_\omega D_\omega\succeq (L_S^-)^*F_nL_S^-
+\succeq \Lambda_n(L_S^-)^*(\Theta_0^-)^{-1}L_S^-,
+\]
+then by the variational definition of capacity,
+\[
+L_S^- C_n^\dagger (L_S^-)^*\preceq \Lambda_n^{-1}\Theta_0^-
+\]
+up to declared source defects.\end{proof}
+
+\section{Arithmetic input required}
+The theorem is formal until the following arithmetic records are earned.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Record & Required content & Failure status \\
+\midrule
+A1 & completed Hecke/Dirichlet source carrier & source shadow only \\
+A2 & Plancherel/exhaustive character frame on $Y_S^-$ & finite-window support only \\
+A3 & auxiliary explicit formulas for twists & unsupported source contribution \\
+A4 & domination of $\Delta_S^+$ by source readouts & cross-term unpaid \\
+A5 & source strength growth $\Lambda_n\to\infty$ & bounded budget only \\
+A6 & tail/descent back to zeta ledger & enlarged-carrier nonclaim \\
+A7 & no-smuggling conductor/refinement order & target-selected source \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Failure alternatives}
+If source absorption fails, one of the following must be true.
+\begin{enumerate}[label=\textbf{F\arabic*.}]
+\item The source family misses a nonzero anti-invariant direction: there is $0\ne y\in Y_S^-$ with $Q_\omega y=0$ for all $\omega$.
+\item The lower-frame constants remain bounded: $\sup_n\Lambda_n<\infty$.
+\item The source family covers only moving finite conductor windows and lacks a vanishing tail bridge.
+\item The auxiliary character/twist formulas are not exact carrier records.
+\item The source family is target-selected and therefore smuggled.
+\item The enlarged Hecke carrier does not descend to the zeta zero ledger.
+\end{enumerate}
+
+\section{Strategic consequence}
+The hybrid route does not ask that $\Delta_S\preceq0$ outright. It asks whether the positive part $\Delta_S^+$ is a source-absorbable cross-term. This is the framework's precise contribution: the hard semilocal cross-term is no longer a vague positivity failure, but a named source-frame obligation with explicit failure modes.
+
+\end{document}

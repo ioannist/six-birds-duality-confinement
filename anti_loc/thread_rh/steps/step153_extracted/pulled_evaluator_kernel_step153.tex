@@ -1,0 +1,215 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\title{Step 153: Pulled Zero-Evaluator Kernel Formula}
+\author{RH Membrane / Burnol--Sonin Residual Thread}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 152 reduced direct residual exclusion to the vanishing of
+\[
+  r_{\ell,\rho,k}
+  =
+  (I-P_\infty)[\tau_{-\ell},P_\infty]J_a^*Y^a_{\rho,k}.
+\]
+Step 153 computes the pulled evaluator vector
+\[
+  \eta^a_{\rho,k}:=J_a^*Y^a_{\rho,k}
+\]
+in the archimedean/Sonin model, and rewrites the direct exclusion problem as a reproducing-kernel commutator test.
+
+\section{Burnol/Sonin evaluator setup}
+Let
+\[
+  K=L^2(0,\infty;dt)
+\]
+and let the right Mellin transform be
+\[
+  \widehat f(s)=\int_0^\infty f(t)t^{-s}\,dt,
+  \qquad s=\frac12+i\tau.
+\]
+The completed right Mellin transform is
+\[
+  M(f)(s)=A_\infty(s)\widehat f(s),
+  \qquad
+  A_\infty(s)=\pi^{-s/2}\Gamma(s/2).
+\]
+Burnol's augmented Sonine space is denoted by \(L_a\). For \(w\notin\{0,1\}\), the zero-evaluator vector \(Y^a_{w,k}\in L_a\) is defined by
+\[
+  [f,Y^a_{w,k}]_{L_a}=M(f)^{(k)}(w),
+  \qquad f\in L_a,
+\]
+where Burnol uses the bilinear form
+\[
+  [f,g]=\int_0^\infty f(t)g(t)\,dt.
+\]
+In the Hilbert adjoint formulas below one may either insert the standard conjugation operator or use the analytically dependent bilinear convention. We record both conventions by writing kernels without claiming a post-hoc choice of conjugation.
+
+\section{Mellin-side model of \texorpdfstring{$L_a$}{La}}
+Let \(\mathcal L_a\) be the right-Mellin image of \(L_a\). Burnol's characterization gives the Hardy-type description
+\[
+  F\in \mathcal L_a
+  \quad\Longleftrightarrow\quad
+  F(s)\in \frac{s}{s-1}a^sH^2(\Re s>1/2)
+  \quad\text{and}\quad
+  \chi(s)F(1-s)\in \frac{s}{s-1}a^sH^2(\Re s>1/2),
+\]
+with \(\chi\) the cosine-transform Mellin multiplier.
+Define the completed Mellin image
+\[
+  \mathcal L_a^\Gamma:=A_\infty\mathcal L_a.
+\]
+This is a reproducing-kernel Hilbert space for evaluations away from the pole slots.
+
+\section{The kernel formula}
+Let \(K_a^\Gamma(s,w)\) denote the reproducing kernel of \(\mathcal L_a^\Gamma\), using the Hilbert convention
+\[
+  G(w)=\langle G,K_a^\Gamma(\cdot,w)\rangle_{\mathcal L_a^\Gamma}.
+\]
+Then the completed Mellin representative of the Hilbert evaluator is
+\[
+  \mathcal M_\Gamma(Y^a_{w,k})(s)
+  =
+  \partial_{\overline w}^{\,k}K_a^\Gamma(s,w)
+\]
+under the Hilbert convention, and
+\[
+  \mathcal M_\Gamma(Y^a_{w,k})(s)
+  =
+  \partial_{w}^{\,k}K_a^\Gamma(s,w)
+\]
+under Burnol's analytic bilinear convention.
+
+Let
+\[
+  J_a:H_\infty\longrightarrow L_a
+\]
+be the declared transport from the archimedean/Sonin model into Burnol's carrier. Let
+\[
+  \mathcal U_\infty:H_\infty\to\mathcal H_\infty
+\]
+be the archimedean Hardy--Titchmarsh/Mellin realization, and set
+\[
+  T_a:=\mathcal M_\Gamma J_a\mathcal U_\infty^{-1}.
+\]
+Then the pulled zero-evaluator vector is
+\[
+  \boxed{
+  \mathcal U_\infty(J_a^*Y^a_{w,k})
+  =
+  T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w)
+  }
+\]
+with the analogous \(\partial_w\) formula under the bilinear convention.
+
+\subsection{Ambient Hardy kernel shadow}
+The preceding formula is exact but leaves \(K_a^\Gamma\) as a projected Sonine kernel. For computations it is useful to express it as a projection of an ambient Hardy kernel.
+Let
+\[
+  m_a(s)=\frac{s}{s-1}a^s.
+\]
+Since \(|s/(s-1)|=1\) on \(\Re s=1/2\), the multiplier is unitary up to the constant \(a^{1/2}\). The ambient Hardy kernel for the completed Mellin package is
+\[
+  K^{\Gamma,\mathrm{amb}}_a(s,w)
+  =
+  A_\infty(s)\overline{A_\infty(w)}
+  \frac{s}{s-1}\overline{\frac{w}{w-1}}
+  \frac{a^{s+\overline w-1}}{s+\overline w-1}.
+\]
+Then
+\[
+  \boxed{
+  K_a^\Gamma(\cdot,w)
+  =
+  P_{\mathcal L_a^\Gamma}K^{\Gamma,\mathrm{amb}}_a(\cdot,w)
+  }
+\]
+where \(P_{\mathcal L_a^\Gamma}\) is the orthogonal projection onto the completed Sonine image.
+The projection is load-bearing. Omitting it gives only a public Hardy shadow, not the Burnol/Sonin evaluator.
+
+\section{Commutator residual formula}
+The normalized log-shift is
+\[
+  (\tau_\ell f)(t)=e^{-\ell/2}f(e^{-\ell}t).
+\]
+It acts in right-Mellin variables by
+\[
+  \widehat{\tau_\ell f}(s)=e^{\ell(1/2-s)}\widehat f(s).
+\]
+Therefore \(\tau_{-\ell}\) corresponds to multiplication by
+\[
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+Let
+\[
+  \eta^a_{w,k}:=J_a^*Y^a_{w,k}.
+\]
+In the archimedean spectral model, the direct-exclusion residual is
+\[
+  \boxed{
+  \widehat r_{\ell,w,k}
+  =
+  (I-\mathsf P_\infty)M_{m_\ell}\mathsf P_\infty
+  T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+  }
+\]
+Equivalently,
+\[
+  \boxed{
+  \widehat r_{\ell,w,k}
+  =
+  (I-\mathsf P_\infty)[M_{m_\ell},\mathsf P_\infty]
+  T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+  }
+\]
+Hence
+\[
+  \boxed{
+  H_R=0
+  \iff
+  r_{\ell,\rho,k}=0
+  \quad\forall\ell,\rho,k.
+  }
+\]
+
+\section{Direct-exclusion verdict}
+The raw shift multiplier \(m_\ell(s)\) is nowhere zero. It preserves zero-evaluator labels algebraically through triangular same-zero mixing, but it does not create a zeta factor. Therefore direct exclusion is not automatic.
+
+The commutator residual vanishes only under one of the following lawful mechanisms:
+\begin{enumerate}
+  \item \textbf{Co-Poisson factorization:} \(M(\mathfrak B_{\ell,a}u)(s)=\zeta(s)\alpha_{\ell,u}(s)\), with all support, pole, and endpoint records declared.
+  \item \textbf{Projection reduction:} the pulled evaluator family lies in a reducing sector for \(P_\infty\) under \(M_{m_\ell}\).
+  \item \textbf{Controlled residual:} carry
+  \[
+    \Xi^{\rm BC}_{\ell,a}=\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}
+  \]
+  as an explicit adequacy residual.
+\end{enumerate}
+
+Absent one of these records, the status remains
+\[
+  \boxed{\texttt{direct\_exclusion\_not\_earned}.}
+\]
+
+\section{Next target}
+The next load-bearing question is no longer how to define the pulled evaluator. It is whether the specific projected Sonine kernel satisfies the commutator-vanishing condition. Thus Step 154 should audit
+\[
+  (I-\mathsf P_\infty)M_{m_\ell}\mathsf P_\infty
+  T_a^*\partial_{\overline \rho}^{\,k}K_a^\Gamma(\cdot,\rho)
+  = 0
+\]
+by exploiting either the semilocal prolate projection or the Burnol co-Poisson factorization machinery.
+
+\end{document}

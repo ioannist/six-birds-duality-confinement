@@ -1,0 +1,137 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Ha}{H_a}
+\newcommand{\KG}{K_a^\Gamma}
+\newcommand{\Kamb}{K_a^{\Gamma,\mathrm{amb}}}
+\newcommand{\PL}{P_{\mathcal L_a^\Gamma}}
+\newcommand{\Ainf}{A_\infty}
+\newcommand{\kappaone}{\kappa_{1/2,\rho_1}}
+
+\title{Step 192: Burnol 2006/2008 Extraction Attempt}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_burnol\_2006\_specialization\_fails}}.
+\]
+
+Burnol's 2006/2008 paper is a close analog but does not directly specialize to the Step 153 \(\kappa\)-formula.  The failure is not a missing numerical parameter; it is a carrier and Mellin-normalization mismatch.
+
+\section*{Burnol 2006/2008 Content Used}
+
+Burnol, \emph{Scattering, determinants, hyperfunctions in relation to \(\Gamma(1-s)/\Gamma(s)\)} (arXiv:math/0602425), studies the self-reciprocal transform
+\[
+(\mathcal H f)(x)=\int_0^\infty J_0(2\sqrt{xy})f(y)\,dy.
+\]
+The arXiv abstract states that this transform is isometrically equivalent to the Hankel transform of order zero and is related to functional equations of Dedekind zeta functions of imaginary quadratic fields.  It also states that Fredholm determinants of the kernel \(J_0(2\sqrt{xy})\) on finite intervals \((0,a)\) give coefficients of differential equations whose scattering is related to
+\[
+\frac{\Gamma(1-s)}{\Gamma(s)}.
+\]
+The indexed contents include sections on orthogonal projections and Hilbert-space evaluators, Fredholm determinants and scattering, reproducing kernels for extended spaces, and an appendix on the resolvent of the Dirichlet kernel as a Hilbert-space reproducing kernel.  Equation-level extraction was not available in this step; formulas below marked as Burnol-specific are therefore candidate forms per the paper-level description and require direct full-text verification.
+
+\section*{Inherited Target}
+
+Step 153 fixes the target:
+\[
+\KG(\cdot,w)=\PL\Kamb(\cdot,w),
+\]
+with
+\[
+\Kamb(s,w)=
+\Ainf(s)\overline{\Ainf(w)}
+\frac{s}{s-1}\overline{\frac{w}{w-1}}
+\frac{a^{s+\overline w-1}}{s+\overline w-1},
+\qquad
+\Ainf(s)=\pi^{-s/2}\Gamma(s/2).
+\]
+The desired vector is
+\[
+\kappa_{a,w}(\tau)
+=
+\bigl(T_a^*\KG(\cdot,w)\bigr)(1/2+i\tau).
+\]
+At \(a=1/2\) and \(w=\rho_1\), this is \(\kappaone(\tau)\).
+
+\section*{Specialization Attempt}
+
+\subsection*{T2a: The \(J_0\) Fredholm operator}
+
+Burnol's natural compressed operator is
+\[
+\Ha=P_{(0,a)}\mathcal H P_{(0,a)},
+\qquad
+\Ha(x,y)=J_0(2\sqrt{xy}),\quad x,y\in(0,a).
+\]
+The associated resolvent candidate is
+\[
+R_a(\lambda)= (I-\lambda \Ha)^{-1}\Ha,
+\]
+or equivalently a first Fredholm minor divided by the Fredholm determinant when the inverse exists.  This is the correct object for the \(J_0\)-Hankel scattering problem.
+
+\subsection*{T2b: Carrier identification}
+
+The inherited carrier is not the \(J_0\)-Hankel carrier.  Step 153 uses Burnol's Fourier-cosine/zeta-completed Sonine image \(\mathcal L_a^\Gamma\), with completion factor \(\Ainf(s)=\pi^{-s/2}\Gamma(s/2)\).  Burnol 2006/2008 is tied to the Mellin scattering ratio \(\Gamma(1-s)/\Gamma(s)\).  No inherited record identifies the two carriers by a unitary map preserving the projected kernel:
+\[
+\mathcal L_a^\Gamma
+\stackrel{?}{=}
+\text{Burnol-2006 Hankel extended space}.
+\]
+This is the first failure point.
+
+\subsection*{T2c: Resolvent versus projection}
+
+Even on the \(J_0\)-Hankel side, \(R_a(\lambda)\) is a resolvent, not an orthogonal projection in general.  A projection \(P\) must be self-adjoint and idempotent:
+\[
+P^*=P,\qquad P^2=P.
+\]
+For a generic compact self-adjoint \(\Ha\),
+\[
+\bigl((I-\lambda \Ha)^{-1}\Ha\bigr)^2
+\ne
+(I-\lambda \Ha)^{-1}\Ha.
+\]
+Thus no formal choice of \(\lambda\) can be inserted without a Burnol theorem proving that the corresponding resolvent kernel equals the desired orthogonal projection.  The paper-level description does not supply that theorem for \(\PL\).
+
+\subsection*{T2d: The value \(a=1/2\)}
+
+The scale \(a=1/2\) changes the finite interval in the Fredholm problem.  It does not remove the Mellin multiplier mismatch:
+\[
+\frac{\Gamma(1-s)}{\Gamma(s)}
+\quad\text{versus}\quad
+\pi^{-s/2}\Gamma(s/2)
+\text{ with the Fourier-cosine functional-equation multiplier}.
+\]
+Therefore \(a=1/2\) does not produce \(\PL\Kamb\) by specialization.
+
+\section*{Outcome}
+
+The only lawful formula obtainable from the paper-level content is an analog:
+\[
+\kappa^{H}_{a,w}
+=
+(T^H_a)^*
+\bigl(P^H_a K^{H,\mathrm{amb}}_a(\cdot,w)\bigr),
+\]
+where \(P^H_a\) would be the Hankel-side projection controlled by Burnol's \(J_0\) Fredholm/resolvent machinery.  This is not the Step 153 vector
+\[
+\kappa_{a,w}=T_a^*\PL\Kamb(\cdot,w).
+\]
+
+Hence no sample values of \(\kappaone(\tau)\) are computed, and Branch B's \(c_{11}(\log 2)\) remains unavailable.
+
+\section*{Path 1 Status}
+
+\[
+\boxed{\texttt{path\_1\_status\_after = still\_blocked\_refined}}.
+\]
+
+Burnol 2006/2008 remains useful as a method-template.  A future step would require full-text extraction of the Section 8 reproducing-kernel formulas and a separate theorem identifying the Hankel-side projection with the Fourier-cosine/zeta-completed projection of Step 153.  Without that theorem, direct specialization fails.
+
+\end{document}
+

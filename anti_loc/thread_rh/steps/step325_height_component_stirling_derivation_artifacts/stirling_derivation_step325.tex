@@ -1,0 +1,67 @@
+\section*{Step 325: Stirling derivation attempt for the height component}
+
+We test whether the height component in the Step 324 diagnostic fit
+\[
+  \gamma(T,d)\approx A T^{-1}+B d^\beta,\qquad A_{\rm emp}=4.118,
+\]
+can be derived directly from the gamma factor in
+\[
+  \xi(s)=\frac12 s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s).
+\]
+The Branch C carrier uses
+\[
+  h(s)=\zeta(s)M(G_\star)(s),
+\]
+so rewriting through \(\xi\) gives
+\[
+  h(s)=\frac{2\pi^{s/2}}{s(s-1)\Gamma(s/2)}\xi(s)M(G_\star)(s).
+\]
+
+For \(s=1/2+iT\), Stirling gives
+\[
+\log\Gamma(s/2)
+  =
+  (s/2-1/2)\log(s/2)-s/2+\frac12\log(2\pi)+\frac{1}{6s}
+  +O(s^{-3}).
+\]
+Also
+\[
+  \frac{d^j}{ds^j}\log\Gamma(s/2)
+  =
+  2^{-j}\psi^{(j-1)}(s/2),\qquad j\ge 1.
+\]
+For fixed \(j\) and \(T\to\infty\),
+\[
+  2^{-j}\psi^{(j-1)}(s/2)
+  =
+  O(T^{1-j})
+\]
+with the first phase correction from
+\[
+  \arg(s/2)=\frac{\pi}{2}-\frac{1}{2T}+O(T^{-3}).
+\]
+
+\subsection*{Conclusion of the derivation attempt}
+
+The fixed-order Stirling expansion of the gamma factor produces only ordinary
+\(T^{-1}\), \(T^{-2}\), \(\ldots\) phase/amplitude corrections in the smooth
+prefactor. It does not produce a \(k\log k\) coefficient in
+\(\log|h^{(k)}(\rho)/k!|\). In this calculation the gamma-factor contribution
+to the fitted \(\gamma\)-coefficient is therefore
+\[
+  A_{\Gamma,k\log k}=0.
+\]
+Two natural lower-order scales are visible:
+\[
+  A_{\arg(s/2)}=\frac12,\qquad A_{\rm Bernoulli}=\frac16,
+\]
+but both are an order of magnitude smaller than
+\[
+  A_{\rm emp}=4.118.
+\]
+
+Thus the Step 324 height component is not explained by the local Stirling
+expansion of \(\Gamma(s/2)\) alone. The load-bearing source must involve the
+non-local Taylor coefficient geometry of \(\xi\), the Mellin factor
+\(M(G_\star)\), or the zero-spacing/interference mechanism rather than only the
+gamma factor.

@@ -1,0 +1,136 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
+
+\newcommand{\CRE}{\mathrm{CRE}}
+\newcommand{\CRCFT}{\mathrm{CRCFT}}
+\newcommand{\CTMT}{\mathrm{CTMT}}
+\newcommand{\XiC}{\Xi_C}
+
+\title{Step 187: Framework RH-Carrier Dichotomy Theorem}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{final\_verdict}=V_{\mathrm{dichotomy\_formalized}}.}
+\]
+
+This step formalizes the Framework RH-Carrier Dichotomy as a candidate
+foundational typed condition.  It combines the CRE foreclosure taxonomy
+(\(\CRCFT\)) with the native-closure behavior observed in proved non-CRE RH
+analogs.
+
+\begin{theorem}[Framework RH-Carrier Dichotomy]
+Let \(C\) be a typed primary carrier supporting a residual \(\XiC\) aimed at
+closing an RH-analogous statement for an \(L\)-function or zeta function
+\(L_C\).
+
+\begin{enumerate}
+\item If \(C\) is classically-RH-equivalent, then \(C\) exhibits \(\CRCFT\) in
+at least one of the modes
+\[
+\CRCFT\text{-}\CTMT,\qquad
+\CRCFT\text{-TE},\qquad
+\CRCFT\text{-BF}.
+\]
+The framework output is the typed external-content interface naming the
+precise obstruction.
+\item If \(C\) is non-\(\CRE\), and the RH analog for \(L_C\) has been proved
+with a complete native spectral, cohomological, or algebraic ledger, then the
+framework yields native closure
+\[
+\XiC=0
+\]
+through that ledger.
+\end{enumerate}
+\end{theorem}
+
+\section*{Instance Table}
+
+\begin{center}
+\begin{tabular}{p{0.23\linewidth}p{0.12\linewidth}p{0.19\linewidth}p{0.34\linewidth}p{0.08\linewidth}}
+\toprule
+Carrier & CRE & Outcome & Mode or mechanism & Step\\
+\midrule
+Burnol/Sonine pulled-evaluator & yes & \(\CRCFT\) foreclosure
+& \(\CTMT\): A/B stuck at \(\kappa\); C foreclosed by nonzero \(L_{\rho,k}\)
+& 145,162,173--180\\
+Hecke \(L\)-function carrier & yes & \(\CRCFT\) foreclosure
+& BF: H6 V-NC ledger non-comparability
+& 167--168\\
+de Branges \(H(E_{\rm RH})\) & yes & \(\CRCFT\) foreclosure
+& TE: closure equivalent to RH; Conrey--Li survival
+& 181\\
+Hilbert--Polya / Berry--Keating & yes & \(\CRCFT\) foreclosure
+& BF for standard \(xp\); TE for modified BK
+& 182\\
+Connes adelic / NCG & yes & \(\CRCFT\) foreclosure
+& TE: full trace-formula closure equivalent to RH
+& 184\\
+Selberg/Maass & no & native closure
+& \(\Xi_\Gamma=0\) by full Selberg trace ledger
+& 185\\
+Weil/Deligne function field & no & native closure
+& \(\Xi_{\rm WD}=0\) by Deligne purity and Grothendieck--Lefschetz
+& 186\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Consequence Theorem}
+
+Applied to RH-analogous carriers, the framework discipline produces:
+\begin{itemize}
+\item typed external-content interfaces for CRE carriers, naming the exact
+\(\CRCFT\) obstruction;
+\item native closure certificates for non-CRE carriers whose RH analog is
+proved with a complete native ledger.
+\end{itemize}
+
+In particular, attempting Riemann RH through any tested CRE carrier produces
+only a \(\CRCFT\)-typed foreclosure under inherited records.  A live route to
+Riemann RH would require either a non-CRE carrier whose native closure
+transports to Riemann RH, which is currently absent, or an external theorem
+resolving a \(\CRCFT\)-stuck record such as the Burnol \(\kappa\) theorem.
+
+\begin{conjecture}[Framework RH-Carrier Dichotomy Coverage]
+Every RH-analogous typed carrier is classified by the dichotomy into exactly
+one of \(\CRCFT\) foreclosure or native closure.  No third class exists.
+\end{conjecture}
+
+This is a conjecture, not a theorem.  It is supported by seven carriers:
+five CRE foreclosure instances and two non-CRE native closures.  It is
+refutable by exhibiting an RH-analogous carrier outside both classes.
+
+\section*{Relationship to CTMT and CRCFT}
+
+\(\CTMT\), formalized at Step 180, is the post-reduction matrix-element
+terminus condition.  \(\CRCFT\), formalized at Step 183, contains \(\CTMT\) as
+one foreclosure mode and adds target-equivalence and bridge-failure.  The
+dichotomy is the full carrier-level picture: \(\CRCFT\) is the CRE branch,
+while proved non-CRE analogs close natively.
+
+\section*{Corpus Candidate}
+
+The dichotomy is flagged for future foundational-corpus inclusion in the
+standalone note \texttt{dichotomy\_typed\_condition.md}.  Corpus integration
+is not performed in this step.
+
+\section*{Nonclaim Boundary}
+
+The dichotomy does not prove RH, does not close any Riemann-zeta residual, and
+does not transfer Selberg or Weil/Deligne closure to Riemann RH.  The coverage
+statement is conjectural.
+
+\end{document}

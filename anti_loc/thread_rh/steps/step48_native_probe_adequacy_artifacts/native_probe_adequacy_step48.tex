@@ -1,0 +1,285 @@
+
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newtheorem{example}{Example}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\C}{\mathsf C}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Capop}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+
+\title{Step 48: Native Probe Adequacy and Exhaustivity for Anti-Localization Membranes}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+The formed-layer membrane theorem says that a formed closure has no unresolved
+\emph{native} predictive recombination needles when its transported native
+currency matrices satisfy
+\[
+        \widehat K_j \preceq \Theta .
+\]
+This is not automatically the same as saying that the layer has no
+\emph{layer-dissolving} needles.  A declared native probe family can have blind
+spots.  This note states the adequacy/exhaustivity condition needed to promote
+a native membrane claim to a layer-dissolving membrane claim.
+
+The guiding slogan is:
+\[
+\boxed{\text{no native needles} \Rightarrow \text{no layer-dissolving needles}
+       \text{ only under an adequacy bridge}.}
+\]
+
+\section{Native and dissolving probe families}
+
+\begin{definition}[Packaged energy and native currency]
+Let \(E\) be a finite-dimensional package coordinate space, \(C_\Gamma\succeq0\)
+the packaged audit form, and
+\[
+        L_\Gamma:E\to Y
+\]
+the declared native probe family.  Under null-mode legality
+\(\Ker C_\Gamma \subseteq \Ker L_\Gamma\), the native currency matrix is
+\[
+        K_L = L_\Gamma C_\Gamma^\dagger L_\Gamma^* .
+\]
+\end{definition}
+
+\begin{definition}[Layer-dissolving probe family]
+A layer-dissolving probe family is a readout
+\[
+        D_\Gamma:E\to Z
+\]
+whose responses are claimed to detect all ways of dissolving or breaking the
+formed layer.  The corresponding dissolving currency is
+\[
+        K_D = D_\Gamma C_\Gamma^\dagger D_\Gamma^* ,
+\]
+provided \(\Ker C_\Gamma\subseteq \Ker D_\Gamma\).  If \(D_\Gamma\) sees a
+legal null direction, then its variational capacity is infinite and the
+dissolving claim fails.
+\end{definition}
+
+\begin{definition}[Exact adequacy]
+The native family \(L_\Gamma\) is exactly adequate for \(D_\Gamma\) when there
+exists a declared readout map
+\[
+        A:Y\to Z
+\]
+such that
+\[
+        D_\Gamma = A L_\Gamma .
+\]
+Equivalently, in finite dimension,
+\[
+        \Ker L_\Gamma \subseteq \Ker D_\Gamma .
+\]
+The equivalence is algebraic: \(D_\Gamma\) descends to a linear map on the
+quotient \(E/\Ker L_\Gamma\).
+\end{definition}
+
+\begin{definition}[Defective adequacy]
+A defective adequacy bridge is a decomposition
+\[
+        D_\Gamma = A L_\Gamma + R
+\]
+with declared residual readout \(R:E\to Z\).  The residual currency is
+\[
+        K_R = R C_\Gamma^\dagger R^*
+\]
+under null-mode legality for \(R\).
+\end{definition}
+
+\section{Adequacy transfer}
+
+\begin{theorem}[Exact adequacy transfer]
+Assume \(D_\Gamma=A L_\Gamma\) and null-mode legality.  Then
+\[
+        K_D = A K_L A^* .
+\]
+Consequently, if the native membrane has budget
+\[
+        K_L\preceq \Theta_Y ,
+\]
+then the dissolving family has budget
+\[
+        K_D\preceq A\Theta_Y A^* .
+\]
+\end{theorem}
+
+\begin{proof}
+By direct substitution,
+\[
+K_D = D_\Gamma C_\Gamma^\dagger D_\Gamma^*
+    = A L_\Gamma C_\Gamma^\dagger L_\Gamma^* A^*
+    = A K_L A^* .
+\]
+The budget implication follows by congruence.
+\end{proof}
+
+\begin{theorem}[Defective adequacy transfer]
+Assume
+\[
+        D_\Gamma = A L_\Gamma + R
+\]
+with residual currency \(K_R=R C_\Gamma^\dagger R^*\).  Then for every
+\(t>0\),
+\[
+\boxed{
+        K_D
+        \preceq
+        (1+t)A K_L A^*
+        +
+        (1+t^{-1})K_R .
+}
+\]
+Consequently, if \(K_L\preceq\Theta_Y\) and \(K_R\preceq \Xi\), then
+\[
+\boxed{
+        K_D
+        \preceq
+        (1+t)A\Theta_YA^*
+        +
+        (1+t^{-1})\Xi .
+}
+\]
+\end{theorem}
+
+\begin{proof}
+Let
+\[
+        W_L = L_\Gamma C_\Gamma^{\dagger/2},
+        \qquad
+        W_R = R C_\Gamma^{\dagger/2}.
+\]
+Then
+\[
+        K_D=(AW_L+W_R)(AW_L+W_R)^* .
+\]
+For vectors \(u,v\), the elementary inequality
+\[
+        (u+v)(u+v)^* \preceq (1+t)uu^*+(1+t^{-1})vv^*
+\]
+gives the desired bound after setting \(u=AW_L\) and \(v=W_R\).
+\end{proof}
+
+\section{Blind-spot and null-mode obstruction}
+
+\begin{theorem}[Blind-spot witness]
+If exact adequacy fails, then there exists a vector \(v\in E\) such that
+\[
+        L_\Gamma v=0,\qquad D_\Gamma v\ne0.
+\]
+Thus two package states indistinguishable by the declared native family can be
+distinguished by a layer-dissolving probe.
+\end{theorem}
+
+\begin{proof}
+Exact adequacy is equivalent to \(\Ker L_\Gamma\subseteq\Ker D_\Gamma\).
+Failure of the inclusion gives the witness.
+\end{proof}
+
+\begin{corollary}[Unbounded blind-spot risk]
+If there exists a sequence \(v_n\) such that
+\[
+        L_\Gamma v_n=0,\qquad
+        \langle v_n,C_\Gamma v_n\rangle\to0,\qquad
+        \|D_\Gamma v_n\|\not\to0,
+\]
+then the dissolving capacity is unbounded, even though the native family does
+not see the witness.  If \(v\in\Ker C_\Gamma\) and \(D_\Gamma v\ne0\), then
+the dissolving capacity is infinite.
+\end{corollary}
+
+\section{Adequacy as an anti-localization gate}
+
+\begin{definition}[Adequate membrane record]
+An accepted adequate membrane record consists of:
+\[
+\mathsf{Adeq}=(E,C_\Gamma,L_\Gamma,D_\Gamma,A,R,\Theta_Y,\Xi,\mathsf{Status})
+\]
+with:
+\begin{enumerate}[label=(\alph*)]
+\item formed closure and exact package;
+\item null-mode legality for \(L_\Gamma,D_\Gamma,R\);
+\item a declared native membrane \(K_L\preceq\Theta_Y\);
+\item exact adequacy \(D_\Gamma=AL_\Gamma\), or defective adequacy
+      \(D_\Gamma=AL_\Gamma+R\) with \(K_R\preceq\Xi\);
+\item no-smuggling: \(D_\Gamma,A,R,\Xi\) are declared before using the
+      dissolving conclusion;
+\item nonclaim record if only native, not dissolving, exhaustivity is accepted.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[No layer-dissolving needles from adequate native membrane]
+If an adequate membrane record is accepted and
+\[
+        K_L\preceq \Theta_Y,\qquad K_R\preceq\Xi,
+\]
+then every layer-dissolving recombination \(z\in Z\) has bounded capacity:
+\[
+        \Capop_C(z^*D;\Ran\Gamma)
+        =
+        z^*K_D z
+        \le
+        z^*\bigl[(1+t)A\Theta_YA^*+(1+t^{-1})\Xi\bigr]z
+\]
+for every \(t>0\).  In the exact case \(R=0\), this reduces to
+\[
+        K_D\preceq A\Theta_YA^* .
+\]
+\end{theorem}
+
+\section{Countermodels}
+
+\begin{example}[Native membrane with hidden dissolving probe]
+Let
+\[
+        E=\mathbb R^2,\qquad C_\Gamma=I,\qquad
+        L_\Gamma(x_1,x_2)=x_1,\qquad
+        D_\Gamma(x_1,x_2)=Mx_2 .
+\]
+Then \(K_L=1\), but \(K_D=M^2\).  The native membrane is harmless while the
+dissolving probe can have arbitrarily large capacity.
+\end{example}
+
+\begin{example}[Fake zero budget from missing null-mode legality]
+Let
+\[
+        C_\Gamma=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad
+        L_\Gamma(x_1,x_2)=x_1,\qquad
+        D_\Gamma(x_1,x_2)=x_2.
+\]
+The pseudoinverse expression gives \(D_\Gamma C_\Gamma^\dagger D_\Gamma^*=0\),
+but the variational dissolving capacity is infinite, because \(D_\Gamma\) sees
+a zero-energy direction.  Null-mode legality is therefore a required gate.
+\end{example}
+
+\begin{warning}[Scope]
+This theorem does not say that every nonnative or undeclared probe is safe.  It
+says that a formed closure with an adequate native family has no
+layer-dissolving needles \emph{relative to the declared dissolving family and
+adequacy bridge}.  If the adequacy bridge is absent, the honest status is
+\(\texttt{native\_only}\), \(\texttt{support\_only}\), or
+\(\texttt{failed\_adequacy}\), not accepted layer-dissolving anti-localization.
+\end{warning}
+
+\end{document}

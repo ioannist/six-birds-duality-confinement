@@ -1,0 +1,210 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+\newcommand{\taua}{\tau_a}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\AZ}{\mathsf A_Z}
+
+\title{Step 77: Weil Autocorrelation Lift and Prime-Slot Matching}
+\author{Six Birds / Formed-Layer Membrane Theory}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 76 identified the signed-to-positive matching gate for the RH membrane route.  The present note studies the first concrete matching problem: how the classical Weil autocorrelation substitution turns a zero-side sum into squares, and how the prime-power signed autocorrelation term relates to a positive shift-difference feature.
+
+The main conclusion is that the prime-power slot is naturally positive only after a diagonal completion term is supplied.  Thus the prime slot is not merely the signed prime term of the explicit formula.  It is a positive shift-feature package whose signed autocorrelation part must be matched by a diagonal/completion balance.
+
+\section{Log-side autocorrelation}
+Let
+\[
+  f\in C_c^\infty(\R),
+  \qquad
+  \widetilde f(t)=\overline{f(-t)},
+\]
+and define the additive autocorrelation
+\[
+  h_f(a)=(f*\widetilde f)(a)
+       =\int_{\R} f(u)\overline{f(u-a)}\,du.
+\]
+Equivalently, with the shift convention
+\[
+  (\tau_a f)(t)=f(t+a),
+\]
+one has
+\[
+  h_f(a)=\ip{\tau_a f}{f}.
+\]
+In Fourier variables,
+\[
+  \widehat{h_f}(\xi)=|\widehat f(\xi)|^2.
+\]
+Thus the Weil autocorrelation lift is the passage
+\[
+  h\leadsto h_f=f*\widetilde f,
+\]
+which turns zero-side evaluations into nonnegative squares whenever the zero/readout functional acts linearly on \(f\).
+
+\section{The prime autocorrelation term}
+Fix a finite positive shift measure
+\[
+  \mu_L=\sum_{a\in A_L} w_a\delta_a,
+  \qquad
+  w_a\ge0.
+\]
+For the zeta prime-power candidate, the shifts are
+\[
+  a=\log n,
+  \qquad
+  w_a=w_{n,L}=\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2,
+\]
+with a cutoff/window \(\alpha_L\).
+
+The signed prime autocorrelation expression is
+\[
+  P_L(h_f)
+  =-\sum_{a\in A_L}w_a\bigl(h_f(a)+h_f(-a)\bigr)
+  =-2\operatorname{Re}\sum_{a\in A_L}w_a\ip{\tau_a f}{f}.
+\]
+This is not nonnegative in general.  The positive shift-difference feature is
+\[
+  q_{{\rm pr},L}[f]
+  =\sum_{a\in A_L}w_a\norm{\tau_a f-f}_2^2.
+\]
+Expanding gives
+\[
+  \norm{\tau_a f-f}^2
+  =2h_f(0)-h_f(a)-h_f(-a),
+\]
+therefore
+\[
+  \boxed{
+  q_{{\rm pr},L}[f]
+  =2\Bigl(\sum_{a\in A_L}w_a\Bigr)h_f(0)+P_L(h_f).
+  }
+\]
+Thus the positive prime feature equals the signed prime autocorrelation term plus a diagonal completion term.
+
+\section{Prime-slot diagonal repair}
+\begin{proposition}[minimal diagonal repair for a finite positive prime slot]
+Let
+\[
+  Q_c[f]
+  =c\norm f_2^2-
+    \sum_{a\in A_L}w_a\bigl(h_f(a)+h_f(-a)\bigr).
+\]
+Then \(Q_c[f]\ge0\) for all \(f\in L^2(\R)\) if and only if
+\[
+  c\ge \sup_{\xi\in\R}2\sum_{a\in A_L}w_a\cos(a\xi).
+\]
+Since all weights are nonnegative, the supremum is attained at \(\xi=0\), and hence
+\[
+  \boxed{
+  Q_c\ge0\quad\Longleftrightarrow\quad c\ge2\sum_{a\in A_L}w_a.
+  }
+\]
+For the sharp value \(c=2\sum_a w_a\),
+\[
+  Q_c[f]=\sum_{a\in A_L}w_a\norm{\tau_a f-f}^2.
+\]
+\end{proposition}
+
+\begin{proof}
+By Plancherel,
+\[
+  Q_c[f]=\int_{\R}\left(c-2\sum_aw_a\cos(a\xi)\right)|\widehat f(\xi)|^2\,d\xi.
+\]
+This is nonnegative for all \(f\) exactly when the multiplier is nonnegative for all \(\xi\).  Because \(w_a\ge0\),
+\[
+  2\sum_aw_a\cos(a\xi)\le2\sum_aw_a,
+\]
+with equality at \(\xi=0\).  This proves the criterion.  Substituting the sharp value gives
+\[
+  2\sum_aw_a-2\sum_aw_a\cos(a\xi)
+  =\sum_aw_a|e^{ia\xi}-1|^2,
+\]
+which is the shift-difference feature symbol.
+\end{proof}
+
+\begin{warning}[diagonal completion is not optional]
+The signed prime autocorrelation part alone is not a positive carrier.  The positive prime slot contains a diagonal term
+\[
+  2\Bigl(\sum_a w_a\Bigr)h_f(0),
+\]
+and any attempt to identify the signed prime contribution with a positive feature must account for this diagonal.  In the completed RH ledger, the diagonal balance may be supplied by pole/completion, gamma, support normalization, quotienting, or an explicit tail budget.  It may not be silently omitted.
+\end{warning}
+
+\section{Autocorrelation lift of the zero side}
+Let \(\mathcal Z\) be a zero-side Hilbert ledger and suppose a zero-side readout acts on \(f\) by
+\[
+  (V_Z f)(\rho)=\mathcal E_\rho(f),
+\]
+where \(\mathcal E_\rho\) is a linear evaluation or spectral readout.  The autocorrelation substitution makes the zero-side quadratic expression
+\[
+  q_Z[f]=\norm{V_Z f}_{\mathcal Z}^2.
+\]
+For a discrete weighted zero ledger this has the schematic form
+\[
+  q_Z[f]=\sum_{\rho}w_\rho |\mathcal E_\rho(f)|^2.
+\]
+The RH membrane framework asks for a carrier-side positive feature map \(W_{\rm cmp}\) such that
+\[
+  \boxed{q_Z[f]\le q_{\rm cmp}[f]=\norm{W_{\rm cmp}f}^2}
+\]
+on the completed anti-invariant response space or on a dense form core with closability.
+
+\section{Matching statement}
+The Weil--Douglas bridge can be attempted only after three lifts are made simultaneously:
+\begin{enumerate}[label=(\roman*)]
+  \item zero-side signed sums are lifted to square norms by autocorrelation;
+  \item prime-side signed autocorrelations are lifted to positive shift-difference features by adding the sharp diagonal repair;
+  \item gamma, pole/completion, and tail slots supply the remaining diagonal, null-mode, and support defects needed for the completed formula to match the positive feature package.
+\end{enumerate}
+Thus the feature map has the form
+\[
+  W_{\rm cmp}
+  =
+  \begin{bmatrix}
+  W_{\rm pr}\ W_\infty\ W_{\rm pole}\ W_{\rm tail}
+  \end{bmatrix},
+\]
+and the required bridge is
+\[
+  \boxed{V_Z=T W_{\rm cmp},\qquad \norm T\le1.}
+\]
+Equivalently,
+\[
+  \boxed{V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}.}
+\]
+
+\section{Consequences for the RH construction target}
+The prime-power slot is the easiest positive slot to write down, but matching it to the classical explicit formula introduces a required diagonal accounting term.  Therefore the analytic target is not merely to display the explicit formula.  It is to prove that the completed signed formula admits a positive feature decomposition whose cross terms and diagonal terms match the autocorrelation form.
+
+The active obstruction after this step is:
+\[
+  \boxed{
+  \text{identify the gamma, pole/completion, and tail contributions that exactly repair the prime-slot diagonal and signed-form defects.}
+  }
+\]
+Only after this matching is earned can the Douglas contraction gate be attacked.
+
+\section{Nonclaims}
+This note does not prove RH.  It does not prove Weil positivity.  It does not prove the Douglas bridge.  It proves only the algebraic relation between the autocorrelation lift, the signed prime autocorrelation term, and the positive shift-difference prime feature.  It identifies a necessary diagonal/completion accounting obligation.
+
+\end{document}

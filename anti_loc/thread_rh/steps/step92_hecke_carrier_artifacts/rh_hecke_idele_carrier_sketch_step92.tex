@@ -1,0 +1,168 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\title{Step 92: Hecke/Idele-Class Carrier Sketch for the Character-Source Route}
+\author{Working note}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note specifies the minimal completed carrier objects needed if the RH membrane route is to use a Dirichlet/Hecke character-source ladder to collapse the anti-invariant budget. The aim is not to prove the Riemann Hypothesis. The aim is to decide whether the character-source route can be plugged into the zeta Weil--Douglas bridge, or whether it forces an enlarged completed carrier program.
+
+We assume the zeta/primes layer is already a formed closure with a native membrane. The active RH problem is the layer-dissolving upgrade for off-critical zero probes. In the source-coercivity branch, the desired record is a lower-frame inequality
+\[
+  F_n=\sum_{\chi\in\mathcal X_n}\lambda_{\chi,n}Q_\chi^*\Theta_\chi^{-1}Q_\chi
+  \succeq \Lambda_n(\Theta_0^-)^{-1},
+  \qquad \Lambda_n\to\infty,
+\]
+on the full anti-invariant response space.
+
+\section{Minimal Hecke/idele objects}
+
+\begin{definition}[Hecke source carrier record]
+A Hecke/idele source record for the RH membrane route consists of
+\[
+  \mathsf H=(Y^-_{\mathrm H},\mathcal X,\nu,\{Q_\chi\},\{\Theta_\chi\},\{\lambda_{\chi,n}\},\mathsf{Pl},\mathsf{EF},\mathsf{Tail},\mathsf{Audit}),
+\]
+where:
+\begin{enumerate}[label=(\roman*)]
+\item $Y^-_{\mathrm H}$ is the completed anti-invariant response Hilbert space.
+\item $\mathcal X$ is an upstream-visible Hecke/idele-class character space with measure $\nu$.
+\item $Q_\chi:Y^-_{\mathrm H}\to Z_\chi$ are declared character readouts.
+\item $\Theta_\chi$ are readout budgets.
+\item $\lambda_{\chi,n}\ge0$ are source strengths indexed by a refinement/conductor parameter $n$.
+\item $\mathsf{Pl}$ is a Plancherel/completeness record for the character family.
+\item $\mathsf{EF}$ is an auxiliary explicit-formula record for the family of twisted/completed $L$-functions.
+\item $\mathsf{Tail}$ is a conductor/spectral tail record.
+\item $\mathsf{Audit}$ is the all-six status record.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Hecke source frame]
+Given a finite or measurable character window $\mathcal X_n\subseteq\mathcal X$, define
+\[
+ F_n=\int_{\mathcal X_n}\lambda_{\chi,n} Q_\chi^*\Theta_\chi^{-1}Q_\chi\,d\nu(\chi).
+\]
+The source ladder is a full anti-invariant lower frame if
+\[
+ F_n\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty,
+\]
+on $Y^-_{\mathrm H}$, up to declared vanishing defects.
+\end{definition}
+
+\section{Finite character windows versus completed Hecke space}
+Finite Dirichlet character families at a fixed modulus provide tight frames on a finite quotient. That is useful, but it is not by itself a completed RH membrane source. The RH route needs either:
+\begin{enumerate}[label=(\alph*)]
+\item a fixed completed Hecke/idele character space with Plancherel exhaustivity; or
+\item a sequence of finite conductor windows with a tail bridge
+\[
+ I_{Y^-}\preceq \iota_n F_n \iota_n^* + T_n,
+ \qquad \operatorname{tr}T_n\to0
+\]
+(or the appropriate Loewner/tail variant).
+\end{enumerate}
+Without this, finite conductor checks are moving-window support evidence.
+
+\section{Compatibility with the Weil--Douglas bridge}
+The zeta-only bridge from previous steps seeks
+\[
+  V_Z=T W_{\mathrm{cmp}},\qquad \|T\|\le1,
+\]
+with $W_{\mathrm{cmp}}$ built from prime, gamma, pole/completion, and tail features for the completed zeta carrier.
+
+A Hecke character source ladder can relate to this in two ways.
+
+\begin{definition}[Plug-in source]
+The Hecke ladder is a plug-in source if the source readouts $Q_\chi$ act on the same completed response space $Y^-$ as the zeta Weil--Douglas bridge and the added source forms are upstream-visible strict extensions of the same carrier. In that case, the source forms may contribute to the same anti-invariant budget collapse.
+\end{definition}
+
+\begin{definition}[Enlarged carrier]
+The Hecke ladder is an enlarged-carrier program if the source records require a new response space
+\[
+  Y^-_{\mathrm H}=\int_{\mathcal X}^{\oplus}Y^-_\chi\,d\nu(\chi),
+\]
+with separate auxiliary explicit formulae and a descent/forgetting bridge back to the zeta zero ledger. In that case the route is no longer a local repair of the zeta-only carrier; it is a larger joint completed $L$-function carrier.
+\end{definition}
+
+\begin{proposition}[Decision criterion]
+A Hecke source ladder is a plug-in source only if all of the following hold:
+\begin{enumerate}[label=(\roman*)]
+\item $Q_\chi$ are defined on the same $Y^-$ used by the zeta Douglas bridge.
+\item The source forms are positive carrier-side additions and do not require target-selected zero information.
+\item The character family has a Plancherel/exhaustivity record on $Y^-$.
+\item The auxiliary explicit formulae needed to validate the source are already part of the same all-six carrier record.
+\end{enumerate}
+If any of these fail, the lawful status is enlarged-carrier candidate, not plug-in repair.
+\end{proposition}
+
+\begin{remark}
+This criterion is intentionally strict. A finite set of Dirichlet twists, a trace average over characters, or an observed improvement of a finite source frame does not make a plug-in source. Those are support evidence until the completed response space and tail record are declared.
+\end{remark}
+
+\section{Auxiliary explicit-formula obligation}
+If the source family uses Dirichlet or Hecke characters, then each source record must itself be backed by a completed explicit formula for the relevant twisted $L$-function. Schematically,
+\[
+  \mathrm{EF}_\chi:
+  \quad \text{zero side of }L(s,\chi)
+  \leftrightarrow
+  \text{prime/gamma/conductor/pole side of }L(s,\chi).
+\]
+This creates new obligations:
+\begin{itemize}
+\item conductor-dependent gamma factors;
+\item root-number/parity sectors;
+\item primitive/imprimitive character defects;
+\item conductor-window tails;
+\item possible zeros of auxiliary $L$-functions.
+\end{itemize}
+Thus the Hecke route may be powerful, but it imports a family of completed carriers, not just more prime weights.
+
+\section{The source-frame theorem}
+\begin{theorem}[Hecke source-frame collapse]
+Assume a completed Hecke source record satisfies:
+\begin{enumerate}[label=(\roman*)]
+\item source-frame lower bound
+\[
+ F_n\succeq \Lambda_n(\Theta_0^-)^{-1}-E_{\mathrm{frame},n},
+ \quad \Lambda_n\to\infty;
+\]
+\item vanishing source defect $E_{\mathrm{frame},n}\to0$ in the accepted trace/Loewner sense;
+\item all source forms are upstream-visible positive strict extensions of the carrier;
+\item the zero ledger is fixed or exhaustive.
+\end{enumerate}
+Then the anti-invariant currency satisfies
+\[
+  K_n^-\preceq \Lambda_n^{-1}\Theta_0^- + E_{\mathrm{src},n},
+\]
+with $E_{\mathrm{src},n}\to0$, hence the anti-invariant budget collapses. Combined with the completed explicit-formula domination bridge and separating readout, this gives fixed-locus confinement.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The source-frame lower bound is the response-side version of the coercivity inequality
+\[
+ C_{n}^{+}\succeq \Lambda_n(L^-)^*(\Theta_0^-)^{-1}L^- - \text{defect}.
+\]
+By the standard capacity/currency monotonicity theorem, coercivity gives
+\[
+ K_n^-=L^-(C_n^+)^\dagger(L^-)^*\preceq \Lambda_n^{-1}\Theta_0^-+E_{\mathrm{src},n}.
+\]
+The fixed/exhaustive zero-ledger squeeze then converts budget collapse into exact confinement.
+\end{proof}
+
+\section{Status for RH}
+The Hecke/idele source route is not a small plug-in until the carrier is chosen. With the current zeta-only log Weil core, the most honest status is:
+\[
+ \boxed{\texttt{enlarged\_carrier\_candidate}.}
+\]
+It becomes a plug-in strict-extension source only after a completed response-space bridge proves that the Hecke readouts act on the same anti-invariant zeta response space and supply a full lower frame there.
+
+\section{Nonclaims}
+This note does not prove RH. It does not prove a Hecke lower frame. It does not prove that finite Dirichlet character windows exhaust the completed anti-invariant response space. It does not prove that auxiliary $L$-function explicit formulae can be imported without new defects. It only states the minimal carrier records required for the character-source route to be lawful.
+
+\end{document}

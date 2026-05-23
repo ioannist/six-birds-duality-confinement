@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\XiBC}{\Xi_{\mathrm{BC}}}
+\newcommand{\XiC}{\Xi_C}
+\newcommand{\XiGamma}{\Xi_{\Gamma}}
+\newcommand{\XiWD}{\Xi_{\mathrm{WD}}}
+\newcommand{\CRE}{\mathrm{CRE}}
+\newcommand{\CRCFT}{\mathrm{CRCFT}}
+\newcommand{\CTMT}{\mathrm{CTMT}}
+
+\title{Step 189: Framework Bridge Impossibility Corollary}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{corollary\_verdict}=V_{\mathrm{corollary\_partial}}.}
+\]
+
+The target-entailment bridge impossibility corollary is proved from the Step
+187 Dichotomy and the definition of \(\CRE\).  The stronger claim that every
+such bridge is automatically \(\CRCFT\)-TE requires an exact/minimal bridge
+hypothesis.  Without that hypothesis, the composite is forced into \(\CRCFT\),
+but its mode can be TE, \(\CTMT\), or BF.
+
+\section*{Definitions}
+
+\begin{definition}[Typed bridge to the Riemann residual]
+Let \(C\) be a non-\(\CRE\) RH-analogous carrier with established native
+closure \(\XiC=0\).  A typed bridge \(B:C\to\XiBC\) is a legal collection of
+carrier maps, response maps, energy comparisons, and defect records such that
+closure of \(B\), together with \(\XiC=0\), derives
+\[
+\XiBC=0.
+\]
+\end{definition}
+
+\begin{definition}[Exact/minimal bridge obligation]
+Such a bridge is exact/minimal when the closure condition on \(B\) is
+equivalent to closure of the enriched composite carrier \(C+B\).  Informally,
+there is no additional independent obstruction outside the bridge record.
+\end{definition}
+
+\section*{Corollary}
+
+\begin{corollary}[Framework bridge impossibility for non-CRE to Riemann]
+Let \(C\) be a non-\(\CRE\) RH-analogous carrier with native closure
+\(\XiC=0\).  Let \(B:C\to\XiBC\) be a typed bridge whose closure derives
+\(\XiBC=0\) from \(\XiC=0\).  Then the enriched composite carrier \(C+B\) is
+\(\CRE\), and hence falls under \(\CRCFT\) by the Step 187 Framework
+RH-Carrier Dichotomy.
+
+Consequently, a non-\(\CRE\) native closure cannot be transported to Riemann
+RH as a free non-circular bridge under the framework.  The bridge is itself
+the Riemann-strength obstruction.
+\end{corollary}
+
+\begin{proof}
+The native carrier \(C\) is non-\(\CRE\), and by hypothesis its own residual
+\(\XiC\) is already closed.  The bridge hypothesis says that if \(B\) closes,
+then \(\XiC=0\) transports to
+\[
+\XiBC=0.
+\]
+The residual \(\XiBC\) is the active Riemann-zeta residual target in the
+framework.  Therefore closure of the enriched composite \(C+B\) is a
+Riemann-strength closure obligation.
+
+By the Step 187 definition, any typed carrier whose closure is logically a
+Riemann RH closure target is classically-RH-equivalent.  Hence \(C+B\) is
+\(\CRE\).  The Step 187 Dichotomy then applies: every \(\CRE\) carrier falls
+into \(\CRCFT\), in one of the modes \(\CTMT\), TE, or BF.
+
+Since \(C\) was already closed natively, the newly introduced obstruction is
+localized in the bridge data \(B\).  Thus no inherited non-\(\CRE\) closure can
+serve as a free transport to \(\XiBC=0\); the transport itself is the
+Riemann-strength task.
+\end{proof}
+
+\begin{proposition}[Exact-bridge TE form]
+If, in addition, \(B\) is exact/minimal, then \(B\)-closure is
+\(\CRCFT\)-TE: closing \(B\) is target-equivalent to closing the Riemann
+residual through the composite \(C+B\).
+\end{proposition}
+
+\begin{proof}
+By exactness, \(B\)-closure is equivalent to closure of the composite
+\(C+B\).  By the preceding corollary, closure of \(C+B\) is the
+Riemann-strength closure target.  Hence the bridge obligation is the
+target-equivalent condition in the composite.  This is precisely the
+\(\CRCFT\)-TE mode for an exact bridge.
+\end{proof}
+
+\paragraph{Why the unrestricted TE form is not forced.}
+The Dichotomy only says that a \(\CRE\) composite lies in \(\CRCFT\).  It does
+not say the mode is always TE.  If the bridge construction itself reduces to a
+matrix-element family, the mode can be \(\CTMT\); if the bridge cannot compare
+the ledgers, the mode can be BF.  Therefore the unrestricted statement
+``every bridge is TE'' would require an extra exactness/minimality assumption.
+
+\section*{Specializations}
+
+\subsection*{Selberg/Maass to Riemann}
+
+Step 185 established the native closure
+\[
+\XiGamma=0
+\]
+for the Selberg/Maass carrier by the full Selberg trace ledger.  A bridge
+from this closure to \(\XiBC=0\) would enrich the Selberg carrier into a
+Riemann-strength composite.  By the corollary, that composite is \(\CRE\) and
+therefore \(\CRCFT\).  If the bridge obligation is exact/minimal, it is
+\(\CRCFT\)-TE.
+
+\subsection*{Weil--Deligne to Riemann}
+
+Step 186 established the native closure
+\[
+\XiWD=0
+\]
+by Deligne purity and the Grothendieck--Lefschetz trace formula.  A typed
+function-field-to-number-field bridge deriving \(\XiBC=0\) from this closure
+would likewise make the enriched carrier \(\CRE\).  The same
+\(\CRCFT\)-classification applies, with exact bridges landing in TE.
+
+\section*{Strategic Implication for Riemann RH}
+
+The Step 187 Dichotomy plus this bridge corollary leaves three framework
+paths:
+\begin{enumerate}
+\item \textbf{Path 1.} Resolve a \(\CRCFT\)-stuck record on a \(\CRE\) carrier, such as the
+Burnol projected-kernel \(\kappa\) theorem for Branch A/B, or a valid
+replacement after the Branch C numerical foreclosure.
+\item \textbf{Path 2.} Build a non-\(\CRE\)-to-Riemann bridge.  This is not free transport: by
+the corollary it becomes a \(\CRE/\CRCFT\) obligation, and exact bridge closure
+is TE.
+\item \textbf{Path 3.} Find an in-scope carrier refuting the Dichotomy coverage conjecture.
+No such instance was found through the RMT audit at Step 188.
+\end{enumerate}
+
+\section*{Nonclaim Boundary}
+
+This corollary does not prove RH and does not close \(\XiBC\).  It does not
+transfer Selberg or Weil--Deligne closure to Riemann RH.  It only shows that
+any such transfer bridge becomes the Riemann-strength obstruction under the
+framework.
+
+\end{document}

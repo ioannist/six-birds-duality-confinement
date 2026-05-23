@@ -1,0 +1,50 @@
+{
+  "step": 270,
+  "orientation": "analytical_derivation",
+  "target": "Branch C stationary-phase derivation of polynomial-corrected exponential law",
+  "closed_identity_L_k": {
+    "raw_identity": "delta_Dk=(zeta*M(G))^(k)(rho) by Burnol evaluator + Leibniz rule",
+    "actual_projected_identity": "L_k=delta_Dk-I_k-R_k in the inherited Branch C pipeline",
+    "status": "raw identity established; projected closed identity blocked"
+  },
+  "saddle_point_form": {
+    "cauchy": "h^(k)(rho)=k!/(2*pi*i) integral h(z)/(z-rho)^(k+1) dz",
+    "saddle_equation": "(log h)'(z_*)=(k+1)/(z_*-rho)",
+    "generic_prefactor": "simple saddle gives k^(-1/2) prefactor after scale cancellation",
+    "gap": "must include projection corrections I_k,R_k to predict actual Branch C b,c"
+  },
+  "predicted_b_c": {
+    "b": "undetermined without projected-kernel saddle geometry",
+    "c_baseline": -0.5,
+    "numerical_step269": {
+      "rho1_G_star": {
+        "a": 0.17609673636422168,
+        "b": 0.7496826448932887,
+        "c": -0.2997872225970014,
+        "rmse": 0.01653179838489435
+      },
+      "rho2_G_star": {
+        "a": 0.2069855811384888,
+        "b": 1.0831978784277692,
+        "c": -1.1247707107194447,
+        "rmse": 0.02112656584272654
+      },
+      "rho1_G_prime": {
+        "a": 0.23873706758006671,
+        "b": 0.6440994529632772,
+        "c": -0.13686115110256789,
+        "rmse": 0.015410705658925907
+      }
+    }
+  },
+  "numerical_comparison": {
+    "identity_rows_csv": "closed_identity_step270.csv",
+    "assessment": "raw product derivative is same analytic source term but not equal to projected Branch C L_k"
+  },
+  "retained_nogos": [
+    "No RH proof or Branch C closure claimed.",
+    "No replacement of projected Branch C value by raw Mellin derivative.",
+    "No closed b prediction without a projected-kernel saddle theorem."
+  ],
+  "final_verdict": "V_branch_C_stationary_phase_partial"
+}

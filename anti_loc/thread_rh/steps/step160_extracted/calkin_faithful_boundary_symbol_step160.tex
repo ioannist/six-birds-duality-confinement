@@ -1,0 +1,258 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Step 160: Calkin-Faithful Boundary-Symbol Bridge for \(C_\ell\)}
+\author{Six Birds / RH Membrane Working Note}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{nogo}{No-Go Theorem}
+
+\begin{document}
+\maketitle
+
+\section{Orientation and typed context}
+
+This track is \emph{adequacy-oriented}.  Smaller residual is better:
+\[
+\Xi^{\rm BC}\to 0
+\quad\text{or}\quad
+\Xi^{\rm BC}\preceq \Omega
+\]
+with a declared budget.
+
+The typed context is the Burnol/Sonine pulled-evaluator carrier.  The comparison
+context is the Calkin algebra:
+\[
+\mathcal Q(H):=\mathcal B(H)/\mathcal K(H),
+\qquad q:\mathcal B(H)\to \mathcal Q(H).
+\]
+There is no untyped comparison between the hard-support model, the Hardy/Hankel
+model, and the Burnol/Sonine carrier.
+
+\section{Active residual}
+
+The shifted boundary block is
+\[
+\mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty),
+\]
+and the Burnol/co-Poisson adequacy residual is
+\[
+\Xi^{\rm BC}_{\ell,a}
+=
+\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+Burnol's carrier theorem supplies the criterion:
+\[
+P_a=Y_a^\perp,
+\]
+so exact adequacy is
+\[
+\Pi_{Y_a}\mathfrak B_{\ell,a}=0.
+\]
+After pulling zero-evaluators back to the archimedean/Sonin model, the active
+commutator is
+\[
+C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+\qquad
+m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+Let
+\[
+H_\eta=\overline{\operatorname{span}\{\eta^a_{\rho,k}=J_a^*Y^a_{\rho,k}\}},
+\qquad
+P_\eta=\operatorname{Proj}_{H_\eta}.
+\]
+The compact/tail question is
+\[
+C_\ell P_\eta\stackrel{?}{\in}\mathcal K(H).
+\]
+
+\section{Boundary-symbol bridge}
+
+\begin{definition}[Calkin-faithful boundary-symbol bridge]
+A Calkin-faithful boundary-symbol bridge for \(C_\ell\) on the pulled-evaluator
+context consists of:
+\begin{enumerate}[label=(\roman*)]
+\item a \(C^*\)-algebra \(\mathcal A_\eta\subseteq\mathcal B(H)\) containing
+\(P_\infty,M_{m_\ell},P_\eta\) and the compact ideal \(\mathcal K(H)\cap\mathcal A_\eta\);
+\item a boundary-symbol algebra \(\mathcal S_B\);
+\item a quotient-compatible \(*\)-homomorphism
+\[
+\sigma_B:\mathcal A_\eta\to\mathcal S_B
+\]
+whose kernel on \(\mathcal A_\eta\) is exactly the compact ideal relevant to the
+bridge;
+\item a boundary leakage operator \(W_\ell\), a lower-faithful partial isometry or
+bounded module map \(U_\ell\), and a compact error \(K_\ell\in\mathcal K(H)\) such that
+\[
+C_\ell=U_\ell W_\ell+K_\ell;
+\]
+\item a pulled-evaluator inclusion record for \(P_\eta\), so that
+\[
+\sigma_B(C_\ell P_\eta)=\sigma_B(U_\ell)\sigma_B(W_\ell P_\eta).
+\]
+\end{enumerate}
+The bridge is \emph{Calkin-faithful} if compactness, essential norm, and
+Weyl-sequence statements for \(C_\ell P_\eta\) are equivalent to the corresponding
+statements for the boundary symbol \(\sigma_B(W_\ell P_\eta)\), up to declared
+constants.
+\end{definition}
+
+\begin{theorem}[Conditional boundary-symbol equivalence]
+Assume a Calkin-faithful boundary-symbol bridge exists and that \(U_\ell\) is
+lower-faithful on the boundary range: there are constants \(0<c\le C<\infty\)
+such that in the Calkin algebra
+\[
+c\|q(W_\ell P_\eta)\|\le \|q(U_\ell W_\ell P_\eta)\|
+\le C\|q(W_\ell P_\eta)\|.
+\]
+Then
+\[
+C_\ell P_\eta\in\mathcal K(H)
+\iff
+W_\ell P_\eta\in\mathcal K(H),
+\]
+and more generally
+\[
+c\,\|q(W_\ell P_\eta)\|
+\le
+\|q(C_\ell P_\eta)\|
+\le
+C\,\|q(W_\ell P_\eta)\|.
+\]
+Thus \(\Xi^{\rm BC}\) is compact/tail-payable exactly when the boundary-Weyl
+residual
+\[
+\Xi^{\rm BW}_{\ell,a}=P_\eta W_\ell^*W_\ell P_\eta
+\]
+is compact/tail-payable in the bridge context.
+\end{theorem}
+
+\begin{proof}
+The compact error \(K_\ell\) vanishes under the quotient map \(q\).  Therefore
+\[
+q(C_\ell P_\eta)=q(U_\ell W_\ell P_\eta).
+\]
+Lower-faithfulness supplies the two-sided comparison with \(q(W_\ell P_\eta)\).
+Vanishing in the Calkin algebra is precisely compactness.  The essential-norm
+bounds follow from the same comparison.  Tail-payability then follows from the
+standard compact-exhaustion equivalence:
+\[
+A\in\mathcal K(H)
+\iff
+\|A(I-Q_N)\|\to0
+\]
+for every finite-rank exhaustion \(Q_N\uparrow I\).
+\end{proof}
+
+\section{Framework-derived no-go: public-shadow non-promotion}
+
+\begin{nogo}[Public-shadow bridge no-go]
+Hard-support and Hardy/Hankel computations cannot be promoted to claims about
+\(C_\ell P_\eta\) on the Burnol/Sonine carrier unless a Calkin-faithful bridge is
+provided.
+
+Scope: this forecloses attacks of the form
+\[
+\text{Hardy or hard-support model has compactness/noncompactness}
+\Rightarrow
+C_\ell P_\eta\text{ has compactness/noncompactness}.
+\]
+
+Nonclaim: this does not rule out a true boundary-symbol bridge, a direct
+co-Poisson factorization, a semilocal prolate theorem, or a direct Burnol/Sonine
+Weyl sequence.
+
+Remaining lanes: prove the bridge; construct a pulled-evaluator Weyl sequence;
+prove \(C_\ell P_\eta\in\mathcal K\) directly; or prove exact co-Poisson
+factorization.
+\end{nogo}
+
+\begin{proof}
+Compactness is a statement in the quotient \(\mathcal B(H)/\mathcal K(H)\).  A
+model calculation on a different carrier supplies no map between quotient
+algebras.  Without a quotient-compatible bridge, the model operator and the
+Burnol/Sonine operator can have the same finite-window signatures and even the
+same formal multiplier while differing by an essential operator.  Therefore a
+shadow calculation is non-injective on Calkin data and cannot promote to a
+Burnol/Sonine Calkin conclusion.
+\end{proof}
+
+\section{Framework-derived no-go: finite-window Calkin blindness}
+
+\begin{nogo}[Finite-window Calkin blindness]
+No finite collection of finite-section singular-value audits can certify
+\(C_\ell P_\eta\in\mathcal K\) or \(\|C_\ell P_\eta\|_{\rm e}>0\) on the completed
+carrier.
+
+Scope: this forecloses finite Jacobi/moment/section evidence as a completed
+Calkin certificate.
+
+Nonclaim: an actual completed asymptotic theorem for the finite sections can
+still prove compactness or noncompactness.
+
+Remaining lanes: prove a completed limit theorem, construct a Weyl sequence, or
+prove a compact decomposition.
+\end{nogo}
+
+\begin{proof}
+For any finite-rank projection \(Q_N\), the finite matrix
+\(Q_N A Q_N\) depends only on a finite corner of \(A\).  One may alter \(A\) on
+\(Q_N^\perp H\) by adding either a compact tail or a noncompact essential tail
+without changing that finite corner.  Hence finite-window data is not injective on
+Calkin classes.  A completed theorem must control the tail uniformly, not just
+each finite section.
+\end{proof}
+
+\section{Bridge status after Step 160}
+
+The semilocal Connes--Consani--Moscovici framework gives a Hardy--Titchmarsh
+and semilocal Sonin ambient geometry.  It supplies the correct room in which a
+bridge might live, but the published semilocal results do not, by themselves,
+provide the Calkin-faithful boundary symbol for
+\[
+C_\ell=(I-P_\infty)M_{m_\ell}P_\infty.
+\]
+
+Thus the exact missing external theorem is:
+
+\[
+\boxed{
+\text{Construct }\sigma_B\text{ and prove }
+C_\ell=U_\ell W_\ell+K_\ell,\quad K_\ell\in\mathcal K,
+\text{ on }H_\eta.
+}
+\]
+
+The statement of this theorem is framework-derived analytical structural content;
+the proof is external semilocal/Sonine operator theory.
+
+\section{Content classification}
+
+\begin{itemize}
+\item Predictive structural content: public-shadow promotion and moving-window
+support-only verdicts fire in this track; these are applied framework typed
+conditions.
+\item Analytical structural content: the conditional boundary-symbol equivalence,
+the public-shadow bridge no-go, the finite-window Calkin blindness no-go, and
+the exact missing boundary-symbol theorem statement.
+\item Organizational content: residual tree, bridge atlas, route status, and
+nonclaim boundary records.
+\item Remaining external content: the proof of the Burnol/Sonine Calkin-faithful
+boundary-symbol theorem or the construction of a direct pulled-evaluator Weyl
+sequence.
+\end{itemize}
+
+\section{Next step}
+
+The next step is Step 161: boundary-symbol theorem extraction or no-go scope
+closure.  Target: decide whether existing semilocal Sonin/prolate machinery can
+supply the bridge, or whether the Calkin bridge itself becomes the named external
+leaf.
+\end{document}

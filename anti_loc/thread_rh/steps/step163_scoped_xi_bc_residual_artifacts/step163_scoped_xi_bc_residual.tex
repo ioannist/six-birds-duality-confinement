@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\setlength{\emergencystretch}{2em}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{nogo}{No-Go Theorem}
+\newtheorem{remark}{Remark}
+
+\title{Step 163: Scoped \(\Xi^{\rm BC}\) Adequacy Residual on \(\mathcal A_\eta/\mathcal K_\eta\)}
+\author{Six Birds / RH Membrane Working Note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Inherited typed state}
+
+The track is adequacy-oriented: smaller adequacy residual is better, and a
+positive residual records missed adequacy rather than separation evidence.
+
+The active Burnol/co-Poisson residual is
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  =
+  \mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+The active operator is
+\[
+  C_\ell P_\eta,
+  \qquad
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+  \qquad
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+The pulled-evaluator span is
+\[
+  H_\eta=
+  \overline{\operatorname{span}\{J_a^*Y^a_{\rho,k}\}},
+  \qquad
+  P_\eta=\operatorname{Proj}_{H_\eta}.
+\]
+Step 162 fixed the Calkin context
+\[
+  \mathcal A_\eta=C^*(P_\infty,M_{m_\ell},P_\eta,I)\subseteq\mathcal B(H),
+  \qquad
+  \mathcal K_\eta=\mathcal A_\eta\cap\mathcal K(H),
+\]
+with quotient map
+\[
+  q_\eta:\mathcal A_\eta\to\mathcal A_\eta/\mathcal K_\eta.
+\]
+The completed quotient object is
+\[
+  q_\eta(C_\ell P_\eta)\in\mathcal A_\eta/\mathcal K_\eta.
+\]
+
+\section{Bridge gates}
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Gate & Content & Status\\
+\hline
+G1 & \(\mathcal A_\eta/\mathcal K_\eta\) declared & framework\_defined\\
+G2 & faithful symbol \(\sigma_B\) on \(q_\eta(C_\ell P_\eta)\) & open\_external\_proof\\
+G3 & normal form \(C_\ell=U_\ell W_\ell+K_\ell\) & open\_external\_proof\\
+G4 & lower-faithfulness of \(U_\ell\) on the relevant boundary range & open\_external\_proof\\
+G5 & compact remainder \(K_\ell\in\mathcal K(H)\) & open\_external\_proof\\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Scoped theorem}
+
+\begin{theorem}[Scoped \(\Xi^{\rm BC}\) adequacy residual on \(\mathcal A_\eta/\mathcal K_\eta\)]
+In the inherited Burnol/Sonine pulled-evaluator carrier and the typed Calkin
+context \(\mathcal A_\eta/\mathcal K_\eta\), the following statements hold.
+\begin{enumerate}[label=(\roman*)]
+\item The operator
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  =
+  \mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}
+\]
+is the explicit adequacy residual carried by the current membrane packet.
+
+\item The class \(q_\eta(C_\ell P_\eta)\) is the completed Calkin object whose
+vanishing in \(\mathcal A_\eta/\mathcal K_\eta\) is the compact/tail-payability
+gate for the active residual.
+
+\item Under the split bridge theorem G2--G5, the vanishing of
+\(q_\eta(C_\ell P_\eta)\) is equivalent to the boundary-Weyl compact/tail gate
+\[
+  W_\ell P_\eta\in\mathcal K(H),
+\]
+and hence to compact/tail-payability of
+\[
+  \Xi^{\rm BW}_{\ell,a}=P_\eta W_\ell^*W_\ell P_\eta
+\]
+in the bridge context.
+
+\item Public-shadow non-promotion holds: Hardy/Hankel and hard-support symbol
+computations do not decide \(q_\eta(C_\ell P_\eta)\) without an accepted
+Calkin-faithful bridge into \(\mathcal A_\eta/\mathcal K_\eta\).
+
+\item Finite-window Calkin blindness holds: finite singular-value and
+finite-section evidence does not decide the completed class
+\(q_\eta(C_\ell P_\eta)\).
+
+\item The membrane packet at this carrier is diagnostic-complete: the active
+residual is \(\Xi^{\rm BC}\), the current quotient object is
+\(q_\eta(C_\ell P_\eta)\), and the only open external content at this leaf is
+the split bridge theorem G2--G5.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+For (i), the residual is the Burnol/co-Poisson Schur-complement leftover
+already fixed in the carrier record.  In the adequacy calculus, the residual is
+positive and measures the component of the dissolving probe family not explained
+by the native family.  The projection identity in the adequacy residual
+calculus supplies the residual interpretation: after energy scaling, the
+dissolving readout is projected away from the native explanation space.  Thus
+the displayed \(\Xi^{\rm BC}_{\ell,a}\) is not a new operator introduced in this
+step; it is the inherited explicit adequacy residual.
+
+For (ii), steps 154 and 159 identify the pulled zero-evaluator residual kernel
+with the action of \(C_\ell\) on the pulled-evaluator span \(H_\eta\).  Step 162
+then declares the quotient in which this completed operator must be tested:
+\(\mathcal A_\eta/\mathcal K_\eta\).  Therefore the active completed Calkin
+object is \(q_\eta(C_\ell P_\eta)\), and vanishing of that class is exactly the
+compact/tail-payability gate for the current residual.
+
+For (iii), steps 160 and 161 prove only a conditional bridge equivalence.  If
+G2 supplies a faithful boundary symbol on the declared quotient, G3 supplies
+\(C_\ell=U_\ell W_\ell+K_\ell\), G4 supplies lower-faithfulness of \(U_\ell\) on
+the boundary range relevant to \(H_\eta\), and G5 supplies the compact
+remainder, then the compact part disappears in the quotient and
+lower-faithfulness prevents \(U_\ell\) from killing the boundary class.  Hence
+the Calkin class of \(C_\ell P_\eta\) vanishes exactly when the boundary-Weyl
+gate \(W_\ell P_\eta\in\mathcal K(H)\) holds.  By step 159 this is the same
+conditional reduction from \(\Xi^{\rm BC}\) to
+\(\Xi^{\rm BW}_{\ell,a}=P_\eta W_\ell^*W_\ell P_\eta\).  No gate G2--G5 is
+proved here.
+
+For (iv), the public-shadow no-go from steps 160--162 applies.  A Hardy/Hankel
+or hard-support computation lives in a different comparison context unless a
+quotient-compatible bridge lands in \(\mathcal A_\eta/\mathcal K_\eta\).  Such
+shadow data is non-injective on Calkin classes and cannot be promoted to a
+statement about \(q_\eta(C_\ell P_\eta)\).
+
+For (v), the finite-window Calkin blindness no-go from steps 158 and 160
+applies.  A finite matrix corner or a finite list of singular values can be
+held fixed while the tail is changed.  Since the completed Calkin class is a
+tail statement, finite-window evidence remains moving-window support only until
+a completed tail theorem is supplied.
+
+For (vi), the residual tree at this carrier has been fully named:
+\[
+  \Xi^{\rm BC}
+  \leadsto
+  q_\eta(C_\ell P_\eta)
+  \xrightarrow[\text{conditional}]{\text{G2--G5}}
+  \Xi^{\rm BW},
+\]
+with public-shadow and finite-window shortcuts foreclosed and G2--G5 recorded
+as precise remaining external proof obligations.  This is diagnostic-complete
+in the sense of the construction cheat sheet: the residual is named, all bridge
+statuses are audited, retained no-gos are in the ledger, and the remaining
+external content is exactly stated.
+\end{proof}
+
+\section{Retained no-go records}
+
+\begin{nogo}[Public-shadow non-promotion]
+Hardy/Hankel and hard-support symbol computations cannot decide
+\(q_\eta(C_\ell P_\eta)\) without an accepted bridge into
+\(\mathcal A_\eta/\mathcal K_\eta\).
+\end{nogo}
+
+\noindent\textbf{Scope.} This forecloses routes that promote a public shadow
+directly to a source statement on the Burnol/Sonine pulled-evaluator quotient.
+
+\noindent\textbf{Proof status.} Framework-derived theorem-grade analytical
+structural content inherited from steps 160--162.
+
+\noindent\textbf{Nonclaim.} This does not rule out a true Calkin-faithful
+bridge, a direct pulled-evaluator theorem, shifted co-Poisson factorization, or
+a semilocal prolate theorem.
+
+\begin{nogo}[Finite-window Calkin blindness]
+Finite singular-value or finite-section evidence cannot decide the completed
+Calkin class \(q_\eta(C_\ell P_\eta)\).
+\end{nogo}
+
+\noindent\textbf{Scope.} This forecloses finite-window evidence as a completed
+Calkin certificate.
+
+\noindent\textbf{Proof status.} Framework-derived theorem-grade analytical
+structural content inherited from steps 158 and 160.
+
+\noindent\textbf{Nonclaim.} This does not rule out a completed asymptotic
+tail theorem, a genuine pulled-evaluator Weyl sequence, or a compact
+decomposition on the declared carrier.
+
+\section{Nonclaim boundary}
+
+This theorem does not prove the Riemann hypothesis.  It does not prove
+\(\Xi^{\rm BC}=0\).  It does not prove
+\[
+  C_\ell P_\eta\in\mathcal K(H).
+\]
+It does not prove
+\[
+  \|C_\ell P_\eta\|_{\rm e}>0.
+\]
+It does not accept any bridge source and does not close G2, G3, G4, or G5.  It
+does not promote a public shadow or moving-window record to source status.  It
+does not pivot to a new carrier.
+
+\section{Verdict}
+
+The final verdict of step 163 is
+\[
+  \boxed{\texttt{scoped\_residual\_theorem}.}
+\]
+The current carrier is diagnostic-complete with active residual
+\(\Xi^{\rm BC}\), active quotient object \(q_\eta(C_\ell P_\eta)\), retained
+no-gos, and open external content G2--G5.
+
+\end{document}

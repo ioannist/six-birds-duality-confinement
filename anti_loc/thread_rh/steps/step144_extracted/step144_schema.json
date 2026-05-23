@@ -1,0 +1,18 @@
+{
+  "step": 144,
+  "name": "Completed residual-tail promotion for the Omega-compatible ladder",
+  "main_objects": [
+    "H_R",
+    "G_R",
+    "P_N",
+    "T_N",
+    "K_R",
+    "F_N^Omega",
+    "Lambda_N^Omega"
+  ],
+  "finite_source_strength": "Lambda_N^Omega = gamma_q (1-epsilon^2)(1-delta^2)",
+  "promotion_gate": "F_N^Omega + Lambda_N^Omega T_N >= Lambda_N^Omega G_R",
+  "budget_squeeze": "tr(G_R K_R) <= C_src/Lambda_N^Omega + tr(T_N K_R)",
+  "status_if_tail_fails": "moving_window_support_only",
+  "next_step": "Instantiate H_R, P_N, T_N, K_R on actual Burnol/Sonine residual carrier"
+}

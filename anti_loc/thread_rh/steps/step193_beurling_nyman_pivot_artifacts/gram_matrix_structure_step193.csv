@@ -1,0 +1,8 @@
+object,formula,status,notes
+atom,"rho_a(t)={a/t}-a{1/t}",defined,"0<a<=1"
+Gram_entry,"G_A(i,j)=int_0^1 rho_{a_i}(t)rho_{a_j}(t)dt",computable,"partition by fractional-part breakpoints or use arithmetic formulas"
+target_vector,"b_A(i)=<1,rho_{a_i}>=a_i log(1/a_i)",explicit,"limit at a=1 gives zero"
+finite_distance,"delta_A^2=1-b_A^*G_A^dagger b_A",explicit,"G inverse if independent; Moore-Penrose in general"
+Mellin_transform,"int_0^1 rho_a(t)t^{s-1}dt=((a-a^s)/s)zeta(s)",classical_identity,"explains zeta-zero link"
+infinite_obstruction,"inf_A delta_A^2=0",target_equivalent,"exactly the BN/RH closure condition"
+

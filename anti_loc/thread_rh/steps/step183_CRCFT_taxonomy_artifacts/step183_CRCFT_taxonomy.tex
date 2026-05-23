@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}{Conjecture}
+
+\newcommand{\CRCFT}{\mathrm{CRCFT}}
+\newcommand{\CTMT}{\mathrm{CTMT}}
+\newcommand{\CRE}{\mathrm{CRE}}
+\newcommand{\XiC}{\Xi_C}
+
+\title{Step 183: Classical-RH Carrier Foreclosure Taxonomy}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{final\_verdict}=V_{\mathrm{CRCFT\_formalized}}.}
+\]
+
+This step formalizes the Classical-RH Carrier Foreclosure Taxonomy
+(\(\CRCFT\)) as a candidate foundational typed condition.  It is not a branch
+closeout and not an RH proof.  It is a taxonomy for the typed ways in which
+classical RH-equivalent carriers terminate under the framework discipline.
+
+\begin{definition}[Classical-RH-equivalent carrier]
+A typed primary carrier \(C\) carrying a residual \(\XiC\) aimed at RH is
+classically-RH-equivalent, abbreviated \(\CRE\), when either:
+\begin{enumerate}
+\item \(C\) is one of the named classical RH approaches, such as
+Hilbert--Polya, de Branges, Connes adelic/semilocal, Selberg trace,
+Burnol/Sonine, or Hecke carriers; or
+\item closure of \(\XiC\) is logically equivalent to RH.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Classical-RH Carrier Foreclosure Taxonomy]
+A \(\CRE\) carrier exhibits \(\CRCFT\) when, after the framework's legality,
+carrier, and no-smuggling audits are applied, the attempted closure terminates
+in at least one of the following typed modes:
+\[
+\CRCFT\text{-}\CTMT,\qquad
+\CRCFT\text{-TE},\qquad
+\CRCFT\text{-BF}.
+\]
+\end{definition}
+
+\section*{Modes}
+
+\begin{center}
+\begin{tabular}{p{0.18\linewidth}p{0.24\linewidth}p{0.20\linewidth}p{0.28\linewidth}}
+\toprule
+Mode & Name & Obstruction level & Framework consequence\\
+\midrule
+\(\CRCFT\)-\(\CTMT\) & matrix-element terminus
+& post-reduction
+& identify the carrier-native matrix-element family and its resolution mode\\
+\(\CRCFT\)-TE & target-equivalence
+& pre-reduction
+& central positivity, spectral, or structural condition is RH-equivalent\\
+\(\CRCFT\)-BF & bridge-failure
+& carrier-comparison
+& carrier is non-comparable to the target ledger or has wrong spectral type\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Instances}
+
+\begin{center}
+\begin{tabular}{p{0.22\linewidth}p{0.20\linewidth}p{0.19\linewidth}p{0.27\linewidth}p{0.07\linewidth}}
+\toprule
+Carrier & Route & Mode & Specific obstruction & Step\\
+\midrule
+Burnol/Sonine & Branch A Calkin G2--G5
+& \(\CRCFT\)-\(\CTMT\)-stuck
+& \(\kappa\) vector / Burnol projected-kernel resolvent theorem
+& 179\\
+Burnol/Sonine & Branch B SL164.1
+& \(\CRCFT\)-\(\CTMT\)-stuck
+& same \(\kappa\) vector / projected Sonine kernel theorem
+& 177--178\\
+Burnol/Sonine & Branch C shifted co-Poisson
+& \(\CRCFT\)-\(\CTMT\)-foreclosed-numerical
+& nonzero \(L_{\rho,k}(G)\) across four data points, \(|L|\ge 0.11\)
+& 175--176\\
+Hecke carrier & H6 zeta-fiber descent
+& \(\CRCFT\)-BF
+& V-NC ledger-relative non-comparability
+& 168\\
+de Branges \(H(E_{\rm RH})\)
+& \(\Xi_{\rm dB}\) closure
+& \(\CRCFT\)-TE
+& de Branges RH condition and Conrey--Li survival
+& 181\\
+HP/BK standard \(H_{xp}\)
+& standard spectral ledger
+& \(\CRCFT\)-BF
+& continuous \(\mathbb R\) spectrum; interval spectra arithmetic
+& 182\\
+HP/BK modified
+& cutoff/boundary exact matching
+& \(\CRCFT\)-TE
+& exact matching is a non-inherited HP/RH assertion
+& 182\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{theorem}[CRCFT consequence]
+When a \(\CRE\) carrier \(C\) exhibits \(\CRCFT\) in mode
+\[
+m\in\{\CTMT,\mathrm{TE},\mathrm{BF}\},
+\]
+the framework output is the precise typed obstruction associated with that
+mode:
+\begin{itemize}
+\item for \(m=\CTMT\), the carrier-native matrix-element family and its
+resolution mode;
+\item for \(m=\mathrm{TE}\), the target-equivalence statement showing that
+direct pursuit is structurally circular;
+\item for \(m=\mathrm{BF}\), the bridge-failure statement naming the failed
+carrier-comparison axis.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+This is a synthesis theorem over the recorded instances.  In the Burnol/Sonine
+case the operator reductions reach explicit matrix-element families
+\(\kappa\) or \(L_{\rho,k}(G)\); these are \(\CTMT\) outputs.  In the
+de Branges and modified HP/BK cases, the central condition is already an
+RH-equivalent structural or spectral assertion, so the framework output is the
+target-equivalence no-go.  In the Hecke H6 and standard HP/BK cases, the
+carrier comparison itself fails: either the ledgers are non-comparable or the
+operator has the wrong spectral type.  These three cases exhaust the
+obstruction classes represented by the seven instances and give the stated
+typed outputs.
+\end{proof}
+
+\begin{conjecture}[CRCFT coverage]
+Every classically-RH-equivalent carrier exhibits \(\CRCFT\) in at least one of
+the three modes \(\CTMT\), TE, or BF.  No \(\CRE\) carrier is
+closure-amenable without supplying external content matching at least one of:
+a \(\CTMT\)-resolving classical theorem, a \(\CTMT\)-foreclosing
+counterexample, an RH resolution itself for TE, or a non-inherited carrier
+bridge for BF.
+\end{conjecture}
+
+This is a conjecture, not a theorem.  Its current support is 4 carriers and 7
+instances.  It is refutable by exhibiting a \(\CRE\) carrier with a completed,
+non-target-equivalent, non-\(\CRCFT\) closure.
+
+\section*{Relationship to CTMT}
+
+\(\CTMT\) is the matrix-element-terminus typed condition formalized at Step
+180.  \(\CRCFT\) is broader: it contains \(\CTMT\) as the post-reduction mode
+and adds target-equivalence and bridge-failure for pre-reduction and
+carrier-comparison failures.  The two typed conditions are therefore related
+but distinct.
+
+\section*{Corpus Candidate}
+
+\(\CRCFT\) is flagged for future foundational-corpus inclusion, either as a
+sibling file \texttt{anti\_loc/CRCFT.md} or as an extension to the Step 180
+\texttt{CTMT} note.  Integration is not performed in this step.
+
+\section*{Nonclaim Boundary}
+
+\(\CRCFT\) does not prove RH, does not close any residual, and does not remove
+any retained no-go.  The coverage statement is conjectural.  The taxonomy
+names typed obstruction interfaces; it is not itself a closure mechanism.
+
+\end{document}

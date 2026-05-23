@@ -1,0 +1,37 @@
+{
+  "step": 221,
+  "orientation": "cross-track-framework-validation",
+  "target": "CTMT recursion test on BSD track",
+  "BSD_diagnostic_state": {
+    "status": "diagnostic_complete_not_proof_complete",
+    "source": "anti_loc/thread_bsd/cascade_map_bsd.md and bsd_b52a_extracted records",
+    "defect_equation": "Delta_BSD^BK = E_an/period + E_ht/reg + E_finite + sum_p E_p + E_det"
+  },
+  "BSD_external_theorem_typed": "Construct rho_an/period, rho_ht/reg, rho_finite, rho_p, rho_det into the Bloch-Kato determinant line and prove E_an/period=E_ht/reg=E_finite=E_p=E_det=0 under hypotheses.",
+  "literature_audit_summary": [
+    "Bloch-Kato 1990 supplies motivic Tamagawa-number special-value conjectural home, not global BSD proof.",
+    "Fontaine-Perrin-Riou 1994 refines the cohomological/Bloch-Kato formulation.",
+    "Burns-Flach 2001 supplies determinant functors and ETNC formulation with coefficients.",
+    "Burns-Flach 2006 proves ETNC for Tate motives in abelian settings, not general elliptic curves.",
+    "Kato 2004 supplies Euler-system/Selmer bounds and one divisibility-type input.",
+    "Skinner-Urban 2014 proves Iwasawa-Greenberg Main Conjecture cases under explicit hypotheses.",
+    "Howard 2004 proves one divisibility in a Heegner-point Iwasawa setting.",
+    "Kim 2010 supplies Selmer-variety results for CM elliptic curves, not the determinant-line component-map theorem."
+  ],
+  "recursion_layers_observed": [
+    "BK_component_maps external gate",
+    "Bloch-Kato/ETNC determinant-line target",
+    "Burns-Flach relative K0 / determinant-functor orientation",
+    "p-adic component reduces to Iwasawa main conjecture and control/normalization rows",
+    "Iwasawa layer splits into Kato divisibility, Skinner-Urban complementary divisibility/equality under hypotheses, Howard Heegner one-divisibility rows",
+    "remaining gates: higher-rank cycles, all support primes, finite-source CT-pairing data, E_det trivialization, global audit promotion"
+  ],
+  "framework_finding_upgrade_status": "CTMT recursion upgraded from verified-on-2-instances-same-RH-track to verified-on-2-track-instances in structural-recursion form.",
+  "retained_nogos": [
+    "No BSD proof is claimed.",
+    "No RH proof is claimed.",
+    "BSD public-shadow no-gos remain retained: finite scalar BSD factor noninjective; dim Sha[p] noninjective public shadow of Cassels-Tate pairing.",
+    "Imported theorem rows retain their hypotheses and cannot be promoted silently."
+  ],
+  "final_verdict": "V_bsd_CTMT_recursion_verified"
+}

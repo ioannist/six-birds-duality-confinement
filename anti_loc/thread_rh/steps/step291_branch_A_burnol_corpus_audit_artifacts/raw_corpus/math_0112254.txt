@@ -1,0 +1,2782 @@
+                                                                                 On Fourier and Zeta(s)
+arXiv:math/0112254v6 [math.NT] 11 Mar 2003
+
+
+
+
+                                                                                        Jean-François Burnol
+
+
+                                                       This is the final version for FORUM MATHEMATICUM; October 2002∗
+
+
+
+                                                                                                Abstract
+
+                                                      We study some of the interactions between the Fourier Transform and the Riemann zeta
+                                                   function (and Dirichlet-Dedekind-Hecke-Tate L-functions).
+                                                   MSC: 11M06, 11M26, 42A99; 11R56, 30D99, 46E22, 47A40, 81T99
+
+
+
+                                                   Contents
+                                                   1 Introduction                                                                                     2
+                                                     1.1 A framework for this paper . . . . . . . . . . . . . . . . . . . . . . . . . . . .           2
+                                                     1.2 The contents of this paper . . . . . . . . . . . . . . . . . . . . . . . . . . . . .         3
+                                                     1.3 Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .           5
+
+                                                   2 Explicit Formulae, log |x| + log |y|, adeles, ideles, scattering, causality                      5
+
+                                                   3 Poisson-Tate and a novel relative: co-Poisson                                                   11
+
+                                                   4 More proofs and perspectives on co-Poisson                                                      16
+
+                                                   5 Impact of the Báez-Duarte, Balazard, Landreau and Saias theorem on the
+                                                     so-called Hilbert-Pólya idea                                           26
+                                                                                                              λ
+                                                   6 Sonine spaces of de Branges, novel spaces HPλ , vectors Zρ,k , Krein string
+                                                     of the zeta function                                                        32
+
+                                                   7 Speculations on the zeta function, the renormalization group, duality                           46
+
+                                                   8 References                                                                                      48
+
+                                             Université Lille 1, UFR de Mathématiques, Cité Scientifique M2, F-59655 Villeneuve d’Ascq
+                                             Cedex, France. burnol@agat.univ-lille1.fr
+                                                ∗
+                                                  Jan 2003: identical with Oct 2002 except for the spelling of reminder on page 2 and the amendment of a
+                                             faulty sentence on page 38 (lines 3-4) which gave an incorrect summary of general properties of Krein type spaces.
+                                             Mar 2003: see the added footnote on page 3.
+
+                                                                                                     1
+1     Introduction
+
+1.1   A framework for this paper
+
+The zeta function ζ(s) assumes in Riemann’s paper quite a number of distinct identities: it
+appears there as a Dirichlet series, as an Euler product, as an integral transform, as an Hadamard
+product (rather, Riemann explains how log ζ(s) may be written as an infinite sum involving the
+zeros). . . We retain three such identities and use them as symbolic vertices for a triangle:
+                                                P 1
+                                                         n ns
+                                  Q                                 Q
+                                             s                                1
+                                      ρ (1 − ρ )                          p 1−p−s
+
+
+These formulae stand for various aspects of the zeta function which, for the purposes of this
+manuscript, we may tentatively name as follows:
+                                                   summations
+                                                                   
+                                   zeros                                primes
+Even a casual reading of Riemann’s paper will reveal how much Fourier analysis lies at its heart,
+on a par with the theory of functions of the complex variable. Let us enhance appropriately the
+triangle:                                     P            1
+                                                         n ns
+                                                                   
+                                           Fourier                  Fourier
+                          Q                                              Q
+                                     s                                             1
+                              ρ (1 − ρ )               Fourier                 p 1−p−s
+Indeed, each of the three edges is an arena of interaction between the Fourier Transform, in
+various incarnations, and the Zeta function (and Dirichlet L-series, or even more general number
+theoretical zeta functions.) We thus specialize to a triangle which will be the framework of this
+manuscript:
+
+                                                         P     1
+                                                             n ns
+                                                       summations
+                                                                          
+                           Hilbert spaces
+                            and vectors
+                                                             ?               Adeles
+                                                                            and Ideles
+                                                                                       Q
+         Q          s                                                                            1
+             ρ (1 − ρ )                                                                      p 1−p−s
+                                                   Explicit Formulae
+             zeros                                                                       primes
+
+The big question mark serves as a reminder that we are missing the 2-cell (or 2-cells) which
+would presumably be there if the nature of the Riemann zeta function was really understood.
+
+                                                         2
+1.2    The contents of this paper
+
+The paper contains in particular motivation, proofs, and developments related to a “fairly
+simple” (hence especially interesting) formula1 :
+
+               Z X                  Z                          X g(m/u) Z
+                    g(t/n)                 g(1/x)  2πi ut
+                                 −               dx e      dt =         −   g(y) dy
+                R          |n|           R   |x|                    |u|   R
+                    n6=0                                          m6=0
+
+
+We call this the co-Poisson intertwining formula. The summations are over the non-zero relative
+integers. The formula applies, for example, to a function g(t) of class C ∞ which is compactly
+supported on a closed set not containing the origin. Then the right-hand side is a function in the
+Schwartz class of smooth, rapidly decreasing functions, and the formula exhibits it as the Fourier
+Transform of another Schwartz function. These Schwartz functions have the peculiar property
+of being constant, together with their Fourier transform, in a neighborhood of the origin. A most
+interesting situation arises when the formula constructs square-integrable functions of this type
+and from our discussion of this it will be apparent that, although fairly simple, the co-Poisson
+Formula is related to a framework which is very far from being formal.
+
+Once found, the formula is immediately proven, and in many different ways. Furthermore it
+is one among infinitely many such co-Poisson formulae (it is planned to discuss this further
+in [23]). This prototype is directly equivalent to the functional equation of the Riemann zeta
+function. It has implications concerning the problems of zeros.
+
+We start with a discussion of our previous work [12] [13] [16] on the “Explicit Formulae” and
+the conductor operators log |x|ν + log |y|ν . We also include a description of our work on adeles,
+ideles, scattering and causality [14] [15], which is a first attempt to follow from local to global the
+idea of multiplicatively analysing the additive Fourier transform. This is necessary to explain
+the motivation which has led to a reexamination of the Poisson-Tate summation formula on
+adeles and to the discovery of the related but subtly distinct co-Poisson intertwining.
+
+Both the conductor operators and the co-Poisson intertwining originated from an effort to
+move Tate’s Thesis [43] towards the zeros and the so-called Hilbert-Pólya idea. It is notable
+that the zeros do not show up at all in Tate’s Thesis: the conductor operator results in part
+from a continuation of the local aspects of Tate’s Thesis; the co-Poisson formula results from a
+reexamination of the global aspects of Tate’s Thesis. This reexamination, initially undergone
+during the fall of 1998, shortly after the discovery of the conductor operator, was also in part
+motivated by the preprint version of the work of Connes [25] (extending his earlier Note [24])
+which had just appeared and where a very strong emphasis is put on the so-called Hilbert-Pólya
+idea. As we felt that the symmetries of the local conductor operators should have some bearing
+   1
+    Note added in proofs (March 2003): the formula has in fact been discovered earlier by Duffin and Weinberger
+(Proc. Natl. Acad. Sci. 88 (1991), no. 16, 7348–7350; J. Fourier Anal. Appl. 3 (1997), no. 5, 487–497) and
+should have been referred to here as the “Duffin-Weinberger dualized Poisson formula”. Our whole analysis,
+which relates it to the study of the Riemann zeta function and generalizations, is a novel contribution.
+
+
+                                                      3
+on global constructions we were very much interested by the constructions of Connes, and
+especially by the attempt to realize a cut-off simultaneously in position and momentum. This
+provides an indirect connection with our work, as reported upon here. But our cut-off is (or,
+perhaps better, appears to be) infrared, not ultraviolet. On our first encounter (on the adeles)
+with the formula we call here co-Poisson, we realized that we were constructing distributions for
+which it was easy to compute the Fourier Transform, and that these distributions were formally
+perpendicular to the zeros, but it was not immediately apparent to us that something beyond
+the usual use of the Poisson Formula was at work, as we did not at first understand that there
+was a temperature parameter, and that the Riemann zeta function is associated with a phase
+transition as we vary the temperature below a certain point. So, we left this aside for a while.
+
+A key additional component to our effort came from the Theorem of Báez-Duarte, Balazard,
+Landreau and Saias [3] which is related to the Nyman-Beurling criterion [37, 6] for the va-
+lidity of the Riemann Hypothesis. The link we have established ([18]) between the so-called
+Hilbert-Pólya idea and this important Theorem of Báez-Duarte, Balazard, Landreau and Saias
+leads under a further examination, which is reported upon here, to the consideration of certain
+functions which are meromorphic in the entire complex plane.
+
+This then connects to the mechanism provided by the co-Poisson intertwining for the construc-
+tion of Hilbert Spaces HPλ and Hilbert vectors Zρ,kλ associated with the non-trivial zeros of the
+
+Riemann zeta function. The method applies to Dirichlet L-series as well, and the last theorem
+of this paper is devoted to this. Some importance is ascribed by the author to this concluding
+result, not in itself of course (as many infinitely more subtle results than this one have been
+established on the zeta and L-functions since Riemann’s paper), but rather as a clue which
+could provide inspiration for further endeavours. The light is extremely dim, but it has the
+merit of existence.
+
+The discussion leading to this final result makes use in particular of an important theorem of
+Krein (on entire functions of finite exponential type [33]), and we relate the matter with the
+theory of Krein type spaces as exposed in the book [29] by Dym and McKean. An intriguing
+question arises on the properties of the Krein string which is thus associated with the Riemann
+zeta function. It seems that this Krein string is considered here for the first time, but we add
+immediately that we do not provide anything beyond mentioning it! Rather our technical efforts,
+which are not completely obvious, and not even fairly simple, lead to a realization of the Krein
+type spaces of this very special Krein string as subspaces of certain spaces Kλ (0 < λ < ∞)
+which are involved in a kind of multiplicative spectral (scattering) analysis of the Fourier cosine
+transform. The quotient spaces HPλ (0 < λ < 1) are the spaces we propose as an approximation
+(getting better as λ → 0) to an hypothetical so-called Hilbert-Pólya space.
+
+The ambient spaces Kλ have a realization as Hilbert Spaces of entire functions in the sense of
+de Branges [8]. The co-Poisson formula and the discussion ot the Nyman-Beurling criterion
+both suggest that it is useful to go beyond the framework of entire functions and consider more
+generally certain Hilbert spaces of meromorphic functions, but no general development has been
+attempted here.
+
+
+                                                4
+The spaces Kλ are among the Sonine spaces originally studied in the sixties by de Branges [7],
+V. Rovnyak [39] and J. Rovnyak and V. Rovnyak [40, 41] (the terminology “Sonine spaces of
+entire functions” was introduced in [41]). They are a special instance of the theory of Hilbert
+spaces of entire functions [8]. But it is only for the Sonine spaces associated to the Hankel
+transform of integer orders that the de Branges structure could be explicited in these papers.
+The theory of the Sonine spaces for the cosine and sine transforms is far less advanced. Recently
+though, the author has made some initial progress on this topic ([22]).
+
+As de Branges has considered the use of the general Hankel-Sonine spaces in papers [10, 11]
+(and also in electronically available unpublished manuscripts) where the matter of the Riemann
+Hypothesis is mentioned, it is important to clarify that neither the co-Poisson formula, nor the
+spaces HPλ (0 < λ < 1), Wλ and Wλ′ , nor the vectors Zρ,k   λ for k ≥ 1, have arisen in any of
+
+de Branges’s investigations known to this author (this is said after having spent some time to
+investigate the demands of the situation created by these papers).
+
+The circumstances of the genesis of this paper have led us to devote a special final section, which
+is very brief, to some speculations on the nature of the zeta function, the GUE hypothesis, and
+the Riemann hypothesis.
+
+
+1.3   Acknowledgements
+
+The initial version of the manuscript, containing all essentials, was completed in December
+2001, on the occasion of the author’s “habilitation”, which took place at the University of
+Nice. The author thanks Michel Balazard, Enrico Bombieri, Bernard Candelpergher, Jean-
+Pierre Kahane, Philippe Maisonobe, Michel Miniconi, and Joseph Oesterlé for their contribution
+and/or participation. The author thanks Luis Báez-Duarte for permission to incorporate a
+joint-proof of co-Poisson, and Bernard Candelpergher for permission to incorporate another,
+related, joint-proof of co-Poisson. The author thanks Jean-Pierre Kahane for communicating
+his method of construction of Sonine functions. The author thanks Michel Balazard and Éric
+Saias for general discussion on the zeta function and Sonine functions. The author thanks
+Michael McQuillan for support related to matters of publication.
+
+
+
+2     Explicit Formulae, log |x| + log |y|, adeles, ideles, scattering,
+      causality
+
+Riemann discovered the zeros and originated the idea of counting the primes and prime powers
+(suitably weighted) using them. Indeed this was the main focus of his famous paper. Later a
+particularly elegant formula was rigorously proven by von Mangoldt:
+                 X           1           X Xρ            1
+                       Λ(n) + Λ(X) = X −      − log(2π) − log(1 − X −2 )
+                             2           ρ
+                                           ρ             2
+               1<n<X
+
+                                                5
+Here X > 1 (not necessarily an integer) and Λ(Y ) = log(p) if Y > 1 is a positive power of the prime
+number p, and is 0 for all other values of Y . The ρ’s are the Riemann Zeros (in the critical strip),
+the sum P
+        over them is not absolutely convergent, even after pairing ρ with 1 − ρ. It is defined as
+limT →∞ |Im(ρ)|<T X ρ /ρ.
+
+In the early fifties Weil published a paper [46] on the Riemann-von Mangoldt Explicit Formula,
+and then another one [47] in the early seventies which considered non-abelian Artin (and Artin-
+Weil) L-functions. While elucidating already in his first paper new algebraic structure, he
+did this maintaining a level of generality encompassing in its scope the von Mangoldt formula
+(although it requires some steps to deduce this formula from the Weil explicit formula.) The
+analytical difficulties arising are an expression of the usual difficulties with Fourier inversion.
+The “test-function flavor” of the “Riemann-Weil explicit formula” had been anticipated by
+Guinand [31].
+
+So in our opinion a more radical innovation was Weil’s discovery that the local terms of the
+Explicit Formulae acquire a natural expression on the ν-adics, and that this enables to put the
+real and complex places on a par with the finite places (clearly Weil was motivated by analogies
+with function fields, we do not discuss that here.) Quite a lot of algebraic number theory [48]
+is necessary in Weil’s second paper to establish this for Artin-Weil L-functions.
+
+We stay here at the simpler level of Weil’s first paper and show how to put all places of the
+number field at the same level. It had first appeared in Haran’s work [32] that it was possible
+to formulate the Weil’s local terms in a more unified manner than had originally been done by
+Weil. We show that an operator theoretical approach allows, not only to formulate, but also to
+deduce the local terms in a unified manner. The starting point is Tate’s Thesis [43]. Let K be
+a number field and Kν one of its completions. Let χν : Kν× → S 1 be a (unitary) multiplicative
+character. For 0 < Re(s) < 1 both χν (x)|x|s−1 and χν (x)−1 |x|−s are tempered distributions on
+the additive group Kν and the Tate’s functional equations are the identities of distributions:
+                             Fν (χν (x)|x|s−1 ) = Γ(χν , s)χν (x)−1 |x|−s
+for certain functions Γ(χν , s) analytic in 0 < Re(s) < 1, and meromorphic in the complex plane.
+This is the local half of Tate’s Thesis, from the point of view of distributions. See also [30].
+Implicit in this equation is a certain normalized choice of additive Haar measure on Kν , and
+Fν is the corresponding additive Fourier transform.
+
+Let us view this from a Hilbert space perspective. The quasi-characters χν (x)−1 |x|−s are never
+square-integrable, but for Re(s) = 1/2 they are the generalized eigenvectors arising in   p the
+spectral analysis of the unitary group of dilations (and contractions): φ(x) 7→ φ(x/t)/ |t|ν ,
+x ∈ Kν , t ∈ Kν× . Let Iν be the unitary operator φ(x) 7→ φ(1/x)/|x|ν , and let Γν = Fν · Iν .
+Then:
+                           Γν (χν (x)−1 |x|−s ) = Γ(χν , s)χν (x)−1 |x|−s
+and this says that the χν (x)−1 |x|−s
+                                   ν , for Re(s) = 1/2, are the generalized eigenvectors arising in
+the spectral analysis of the unitary scale invariant operator Γν = Fν · Iν .
+
+The question [12] which leads from Tate’s Thesis (where the zeros do not occur at all) to the
+topic of the Explicit Formulae is: what happens if we take the derivative with respect to s in
+
+                                                  6
+Tate’s functional equations? Proceeding formally we obtain:
+
+    −Γν (log |x|ν χν (x)−1 |x|−s        ′                 −1   −s                             −1
+                              ν ) = Γ (χν , s) · χν (x) |x|ν − Γ(χν , s) log |x|ν · χν (x) |x|ν
+                                                                                                    −s
+
+                                                                                   
+                      −1  −s                   χν (x)−1 |x|−s
+                                                            ν         d
+   log(|x|ν ) · χν (x) |x|ν − Γν log |x|ν                       =        log Γ(χν , s) · χν (x)−1 |x|−s
+                                                                                                     ν
+                                                  Γ(χν , s)           ds
+                                                                               
+                                                                  d
+        log |x|ν − Γν · log |x|ν · Γ−1
+                                    ν     · (χν (x)−1 |x|−s
+                                                         ν )=        log Γ(χν , s) · χν (x)−1 |x|−s
+                                                                                                 ν
+                                                                  ds
+Let Hν be the scale invariant operator log |x|ν − Γν · log |x|ν · Γ−1                              −1
+                                                                   ν = log |x|ν + Fν · log |x|ν · Fν ,
+which we also write symbolically as:
+
+                                        Hν = log |x|ν + log |y|ν
+
+then we see that the conclusion is:
+2.1. Theorem ([12] [13]). The generalized eigenvalues of the conductor operator Hν are the
+logarithmic derivatives of the Tate Gamma functions:
+                                                          
+                               −1   −s     d
+                     Hν (χν (x) |x|ν ) =      log Γ(χν , s) · χν (x)−1 |x|−s
+                                                                          ν
+                                           ds
+
+                                                                               R
+Let g(u) be a smooth function with compact support in R×                b(s) = g(u)us−1 du be its
+                                                                + . Let g
+Mellin transform. Let χ be a unitary character on the idele class group of the number field
+K, with local components χν . Let Z(g, χ) be the sum of the values of b     g(s) at the zeros of the
+(completed) Hecke L-function L(χ, s) of χ, minus the contribution of the poles when χ is a
+principal character (t 7→ |t|−iτ ). Using the calculus of residues we obtain Z(g, χ) as the integral
+of b
+   g(s)(d/ds) log L(χ, s) around the contour of the infinite rectangle −1 ≤ Re(s) ≤ 2. It turns
+out that the compatibility between Tate’s Thesis (local half) and Tate’s Thesis (global half)
+allows to use the functional equation without having ever to write down explicitely all its details
+(such as the discriminant of the number field and the conductor of the character), and leads to:
+2.2. Theorem ([12]). The explicit formula is given by the logarithmic derivatives of the Tate
+Gamma functions:
+                             XZ                              
+                                              d                      |ds|
+                   Z(g, χ) =                     log Γ(χν , s) bg(s)
+                              ν    Re(s)= 1   ds                      2π
+                                                 2
+
+
+
+
+At an archimedean place the values b    g (s) on the critical line give the multiplicative spectral
+decomposition of the function gχ,ν := x 7→ χν (x)−1 g(|x|ν ) on (the additive group) Kν , and,
+after checking normalization details, one finds that the local term has exact value Hν (gχ,ν )(1).
+At a non-archimedean place, one replaces the integral on the full critical line with an integral
+on an interval of periodicity of the Tate Gamma function, and applying Poisson summation
+(in the vertical direction) to b
+                               g(s) to make it periodical as well it is seen to transmute into the
+multiplicative spectral decomposition of the function gχ,ν := x 7→ χν (x)−1 g(|x|ν ) on Kν ! So we
+jump directly from the critical line to the completions of the number field K, and end up with
+the following version of the explicit formula:
+
+                                                     7
+2.3. Theorem ([12] [13]). Let at each place ν of the number field K:
+
+                                      gχ,ν = x 7→ χν (x)−1 g(|x|ν )
+
+on Kν (gχ,ν (0) = 0). Then                         X
+                                       Z(g, χ) =           Hν (gχ,ν )(1)
+                                                       ν
+
+where Hν is the scale invariant operator log |x|ν + log |y|ν acting on L2 (Kν , dxν ).
+
+
+As we evaluate at 1, the “log |x|ν ” half of Hν could be dropped, and we could sum up the
+situation as follows: Weil’s local term is the (additive) Fourier transform of the logarithm !
+This is what Haran had proved ([32], for the Riemann zeta function), except that he formulated
+this in terms of Riesz potentials |y|−s
+                                     ν , and did a separate check for finite places and the infinite
+place that the Weil local terms may indeed be written in this way. The explicit formula as stated
+above with the help of the operator log |x|ν + log |y|ν incorporates in a more visible manner the
+compatibility with the functional equations. Indeed we have
+2.4. Theorem ([12] [13]). The conductor operator Hν commutes with the operator Iν :
+
+                                            Hν · Iν = Iν · Hν
+
+or equivalently as Iν · log |x|ν · Iν = − log |x|ν :
+
+                                 Iν · log |y|ν · Iν = 2 log |x|ν + log |y|ν
+
+
+To see abstractly why this has to be true, one way is to observe that Hν and Γν are simul-
+taneously diagonalized by the multiplicative characters, hence they commute. But obviously
+Hν commutes with Fν so it has to commute with Iν . Later, when dealing with what we call
+“co-Poisson intertwining”, we will see a similar argument in another context.
+
+Let us suppose χν to be ramified (which means not trivial when restricted to the ν-adic units)
+and let f (χν ) be its conductor exponent, eν the number field differental exponent at ν, and qν
+the cardinality of the residue field. In Tate’s Thesis [43], one finds for a ramified character
+                                                           (f (χν )+eν )(s− 12 )
+                                   Γ(χν , s) = w(χν )qν
+
+where w(χν ) is a certain non-vanishing complex number, quite important in Algebraic Number
+Theory, but not here. Indeed we take the logarithmic derivative and find:
+                                 d
+                                    log Γ(χν , s) = (f (χν ) + eν ) log qν
+                                 ds
+So that:
+                   Hν (χ−1                                            −1
+                        ν (x)1|x|ν =1 (x)) = (f (χν ) + eν ) log(qν )χν (x)1|x|ν =1 (x)
+
+which says that ramified characters are eigenvectors of Hν with eigenvalues (f (χν ) + eν ) log qν .
+Hence the name “conductor operator” for Hν . We note that this contribution of the differental
+
+                                                       8
+exponent is there also for a non-ramified character and explains why in our version of the
+Explicit Formula there is no explicit presence of the discriminant of the number field. If we now
+go through the computation of the distribution theoretic additive Fourier transform of log |x|ν
+and compare with the above we end up with a proof [12] of the well-known Weil integral formula
+[46] [47] [48] (Weil writes d× t for log(qν )d∗ t):
+                                              Z
+                                                                 1 − χν (t) ×
+                             f (χν ) log qν =       1|t|ν =1 (t)           d t
+                                                Kν×               |1 − t|ν
+
+
+In Weil’s paper [46] we see that this formula’s rôle has been somewhat understated. Clearly
+it was very important to Weil as it confirmed that it was possible to express similarly all
+contributions to the Explicit Formula: from the infinite places, from finite unramified places,
+and from finite ramified places. Weil leaves establishing the formula to the attentive reader. In
+his second paper [47] he goes on to extend the scope to Artin L-function, and this is far from
+an obvious thing.
+
+Let us now consider the zeta and L-functions from the point of view of Adeles and Ideles.
+Again a major input is Tate’s Thesis. There the functional equations of the abelian L-functions
+are established in a unified manner, but the zeros do not appear at all. It is only recently that
+progress on this arose, in the work of Connes [25]. We have examined this question anew [14] [15],
+from the point of view of the study of the interaction between the additive and multiplicative
+Fourier Transforms [12] [14], which as we saw is a mechanism underlying the operator theoretic
+approach to the explicit formula. This led us to the scattering theory of Lax and Phillips [35]
+and to a formulation of the Riemann Hypothesis, simultaneous for all L-functions, as a property
+of causality [15]
+
+A key theorem from the global half of Tate’s Thesis is the following:
+                               X                 1 X q
+                                    F(ϕ)(qv) =           ϕ( )
+                                                |v|         v
+                                        q∈K                             q∈K
+
+This was called the “Riemann-Roch Theorem” by Tate, but we prefer to call it the Poisson-Tate
+formula (which sounds less definitive, and more to the point). Let us explain the notations:
+K is a number field, ϕ(x) is a function on the adeles A of K (satisfying suitable conditions),
+q ∈ K is diagonally considered as an adele, v ∈ A× is an idele and |v| is its module. Finally F
+is the adelic additive Fourier Transform (we refer to [43] for the details of the normalizations2 ).
+We note that it does not matter if we exchange the ϕ on the right with the F(ϕ) on the left as
+F(F(ϕ))(x) = ϕ(−x) and −1 ∈ K × . A suitable class of functions stable under F for which this
+works is given by the Bruhat-Schwartz functions: finite linear combinations of infinite product
+of local factors, almost all of them being the indicator function of the local ring of integers, in
+the Schwartz class for the infinite places, locally constant with compact support at each finite
+place. To each such function
+                          R    and unitary character χ on the idele class group Tate associates an
+L-function L(χ, ϕ)(s) = ideles ϕ(v)χ(v)|v|s d∗ v, and shows how to choose ϕ so that this coincides
+exactly with the complete Hecke L-function with grossencharakter χ.
+  2
+                                                   R
+      e.g., on R the Fourier transform is ϕ(y)
+                                          e    =       R
+                                                           e2πiyx ϕ(x) dx
+
+                                                                 9
+Let us write E0 (very soon we will switch P to a relatedp
+                                                        E) for the map which to the function
+ϕ(x) on the adeles associates the function q∈K ϕ(qv) |v| on the ideles or even on the idele
+class group CK (ideles quotiented by K × ). This map E0 plays an important rôle in the papers
+of Connes [24] [25] (where it is used under the additional assumption ϕ(0) = 0 = F(ϕ)(0),
+and then coincides with the E we introduce next.) The Poisson-Tate formula tells us that E0
+intertwines the additive Fourier transform with the operator I : g(v) 7→ g(1/v).
+
+                                    (E0 · F)(ϕ) = (I · E0 )(ϕ)
+
+
+If we ([15]) manipulate a little bit the Poisson-Tate formula into:
+           p      X                  1        1 X          q   p Z
+               |v|       F(ϕ)(qv) − p ϕ(0) = p           ϕ( ) − |v|        ϕ(x) dx
+                                     |v|       |v|         v        adeles
+                   q∈K ×                           q∈K ×
+
+
+
+we still have the intertwining property
+
+                                     (E · F)(ϕ) = (I · E)(ϕ)
+
+where we have written E for the map which to ϕ(x) associates
+                                                 R
+                                p    X                   ϕ(x)dx
+                           u 7→ |v|       ϕ(qv) − adeles
+                                                      p
+                                    q∈K ×
+                                                         |u|
+
+on the idele class group (v in the class u).
+                                                                           P
+2.5. Note. Let φ(x) be an even Schwartz function on R. Let F (x) = n≥1 φ(nx). We have
+                    R∞
+limx→0 |x|F (x)R = 0 φ(x) dx. For Re(s)R ∞ > 1 we may intervert the integral with the summation
+                 ∞
+and this gives 0 F (x)xs−1 dx = ζ(s) 0 φ(x)xs−1 dx. The analytic continuation of this formula
+to the critical strip (0 < Re(s) < 1) requires a modification which is due to Müntz (as stated in
+Titchmarsh’s book [45, II.11])
+                     Z ∞          R∞                          Z ∞
+                                    0 φ(y) dy     s−1
+                           F (x) −              x     dx = ζ(s)     φ(x)xs−1 dx
+                      0                x                         0
+
+So it is in truth not the original PoissonR summation but the Müntz-modified Poisson (where one
+takes out φ(0) and replaces it with −( R φ(y) dy)/|x|)) which corresponds to ζ(s) as multiplier.
+The Müntz modification was used by the author in [15] unknowingly of its previous appearance
+in the literature. The author thanks Luis Báez-Duarte for pointing out the reference to the
+section of the book of Titchmarsh where the Müntz formula is discussed.
+
+2.6. Theorem ([15]). For ϕ a Bruhat-Schwartz function E(ϕ) is square-integrable on the idele
+class group CK (for the multiplicative Haar measure d∗ u), and its unitary multiplicative Fourier
+transform, as a function of the unitary characters, coincides up to an overall constant with the
+Tate L-function on the critical line Re(s) = 1/2. The functions E(ϕ) are dense in L2 (CK , d∗ u)
+and E(F(ϕ)) = I(E(ϕ)).
+
+
+                                               10
+                                                       p P
+Connes [24] [25] had already considered the functions |v| q∈K × ϕ(qv) with ϕ(0) = 0 =
+F(ϕ)(0) and he had shown that they are dense in L2 (CK , d∗ u). Let S1 be the set of Bruhat-
+Schwartz functions ϕ(x) which are supported in a parallelepiped P (v) = {∀ν |x|ν ≤ |v|ν } with
+|v| ≤ 1. Let D+ = E(S1 )⊥ and let D− = E(F(S1 ))⊥ . The following holds:
+2.7. Theorem ([15]). The subspaces D+ and D− of the Hilbert space of square-integrable func-
+tions on the idele class group are outgoing and incoming subspaces for a Lax-Phillips scattering
+system, where the idele class group plays the rôle of time. The Riemann Hypothesis for all
+abelian L-functions of K holds if and only if the causality axiom D+ ⊥ D− is satisfied.
+
+
+
+3    Poisson-Tate and a novel relative: co-Poisson
+
+We have already mentioned the Tate L-functions (the integral is absolutely convergent for
+Re(s) > 1):                           Z
+                               L(χ, ϕ)(s) =               ϕ(v)χ(v)|v|s d∗ v
+                                                 ideles
+
+
+Using the Poisson-Tate summation formula, Tate established the analytic continuation and the
+functional equations:
+                            L(χ, F(ϕ))(s) = L(χ−1 , ϕ)(1 − s)
+This follows from an integral representation
+                                         Z                                          
+                      F(ϕ)(0)      ϕ(0)
+ L(χ, ϕ)(s) = Cδχ               −          +        ϕ(v)χ(v)|v|s + F(ϕ)(v)χ(v)−1 |v|1−s d∗ v
+                     s − 1 − iτ   s − iτ     |v|≥1
+
+where C is a certain constant associated to the number field K (and relating the Haar measures
+d∗ v on A× and d∗ u on CK ), and the Kronecker symbol δχ is 1 or 0 according to whether χ(v) =
+|v|−iτ for a certain τ ∈ R (principal unitary character) or not (ramified unitary character). The
+integral over the ideles (this is not an integral over the idele classes) with |v| ≥ 1 is absolutely
+convergent for all s ∈ C.
+
+We recall that we associated to the Bruhat-Schwartz function ϕ(x) on the adeles the square-
+integrable function E(ϕ)(u) on the idele class group CK (with u ∈ CK the class of v ∈ A× ):
+                                                       R
+                                    p      X                   ϕ(x) dx
+                         E(ϕ)(u) = |u|          ϕ(qv) − adeles
+                                                            p
+                                          q∈K ×
+                                                               |u|
+
+The precise relation [15] to the Tate L-functions is:
+                                          Z
+                           L(χ, ϕ)(s) = C     E(ϕ)(u)χ(u)|u|s−1/2 d∗ u
+                                            CK
+
+This integral representation is absolutely convergent for 0 < Re(s) < 1 and we read the func-
+tional equations directly from it and from the intertwining property E · F = I · E.
+
+                                                   11
+Let ∆(u) be the function of u with values in the distributions on the adeles:
+                                                 R             
+                              p     X                   ϕ(x) dx
+             ∆(u)(ϕ) = C ·  |u|         ϕ(qv) − adelesp         = C · E(ϕ)(u)
+                                   q∈K ×                 |u|
+
+
+We will show that it is relevant to look at ∆(u) not as a function in u (which it is from the formula
+above) but as a distribution in u (so that ∆ is a distribution with values in distributions. . . ) It
+takes time to explain why this is not a tautological change of perspective. Basically we shift the
+emphasis from the Poisson-Tate summation [43] [25] [15] which goes from adeles to ideles, to
+the co-Poisson summation which goes from ideles to adeles. The Poisson-Tate summation is a
+function with values in distributions, whereas the co-Poisson-Tate summation is a distribution
+whose values we try to represent as L2 -functions.
+                                                                         ×
+Let g(v) be a compact Bruhat-SchwartzQ function on the idele group A . This is a finite linear
+combination of infinite products v 7→ ν gν (vν ), where almost each component is the indicator
+function of the ν-adic units, the component gν (vν ) at an infinite place is a smooth compactly
+supported function on Kν× , and the components at finite places are locally constant compactly
+supported.
+
+3.1. Definition. The co-Poisson summation is the map E ′ which assigns to each compact
+Bruhat-Schwartz function g(v) the distribution on the adeles given by:
+                       Z        X         p          Z                    Z
+          E ′ (g)(ϕ) =    ϕ(v)      g(qv) |v| d∗ v −     g(v)|v|−1/2 d∗ v   ϕ(x) dx
+                         A×                                   A×                A
+                                  q∈K ×
+
+           Clearly E ′ (g) depends on g(v) only through the function R(g) on CK given by
+3.2. Note. P
+R(g)(u) = q∈K × g(qv), with u ∈ CK the class of v ∈ A× . However, for various reasons (among
+them avoiding the annoying constant C in all our formulae), it is better to keep the flexibility
+provided by g. The function R(g) has compact support. To illustrate this
+                                                                      Q with an example, and
+explain
+      P why the integral  above makes sense, we  take K =  Q, g(v) =    p 1|vp |p =1 (vp ) · g∞ (v∞ ).
+Then q∈Q× g(qv) = g∞ (|v|) + g∞ (−|v|). We may bound this from above by a multiple of |v|
+                                                      R
+(as g∞ has compact support in R× ), and the integral A× ϕ(v)|v|3/2 d∗ v converges absolutely as
+1 < 3/2 (we may take ϕ(x) itself to be an infinite product here.)
+
+3.3. Theorem. The co-Poisson summation intertwines the operator I : g(v) 7→ g(1/v) with
+the additive adelic Fourier Transform F:
+
+                                          F(E ′ (g)) = E ′ (I(g))
+
+Furthermore it intertwines between the multiplicative translations g(v) 7→ g(v/w) p      on ideles
+and the multiplicative translations on adelic distributions D(x) 7→ D(x/w)/ |w|. And the
+distribution E ′ (g) is invariant under the action of the multiplicative group K × on the adeles.
+
+
+
+
+                                                    12
+Proof. We have:
+                  Z         X                   p           Z                                     Z
+ E ′ (g)(ϕ) = C                     ϕ(qv)R(g)(u) |u| d∗ u −                 g(v)|v|−1/2 d∗ v             ϕ(x) dx
+                      CK q∈K ×                                         A×                            A
+                  Z                        !  R                 Z             Z
+                                   ϕ(x) dx
+                             E(ϕ)(u)                p                 g(v)
+            = C               p      +       R(g)(u) |u| d∗ u −       p d∗ v ϕ(x) dx
+                  CK            |u|  |u|                          A×    |v|     A
+                Z                           Z                   Z             Z
+                                      ∗           R(g)(u) ∗            g(v) ∗
+            = C      E(ϕ)(u)R(g)(u) d u + C        p      d u−        p d v       ϕ(x) dx
+                  CK                           CK    |u|           A×    |v|
+                Z
+            = C      E(ϕ)(u)R(g)(u) d∗ u
+                      CK
+
+
+Using the intertwinings E · F = I · E and R(I(g))(u) = R(g)(1/u) we get:
+                                     Z
+                     ′                                1
+                   E (g)(F(ϕ)) = C       E(ϕ)(u)R(g)( ) d∗ u = E ′ (I(g))(ϕ)
+                                      CK             u
+
+which completes the proof of F(E ′ (g)) = E ′ (I(g)). The compatibility with multiplicative
+translations is easy, and the invariance under the multiplication x 7→ qx follows.
+
+3.4. Note. The way the ideles have to act on the distributions on adeles for the intertwining
+suggests some Hilbert space properties of the distribution E ′ (g) (more on this later).
+3.5. Note. The invariance under K × suggests that it could perhaps be profitable to discuss
+E ′ (g) from the point of view of the Connes space A/K × [24] [25].
+
+3.6. Theorem. The following Riemann-Tate formula holds:
+                  Z            X        p         Z          X      p
+        ′                                    ∗
+       E (g)(ϕ) =     F(ϕ)(v)     g(q/v) |v|d v +       ϕ(v)   g(qv) |v|d∗ v
+                       |v|≥1                q∈K ×                            |v|≥1           q∈K ×
+                        Z                                  Z                   Z
+                                               −1/2 ∗
+               −ϕ(0)                g(1/v)|v|       d v−           ϕ(x) dx ·               g(v)|v|−1/2 d∗ v
+                            |v|≥1                              A                   |v|≥1
+
+                                   R
+Proof. From E ′ (g)(ϕ) = C                                ∗
+                                       CK E(ϕ)(u)R(g)(u) d u we get
+                   Z                                               Z
+    ′                                                ∗
+  E (g)(ϕ) = C                 E(ϕ)(u)R(g)(u) d u + C   E(ϕ)(u)R(g)(u) d∗ u
+                   |u|≤1                          |u|≥1
+                 Z                                      Z
+             = C         E(F(ϕ))(u)R(g)(1/u) d∗ u + C        E(ϕ)(u)R(g)(u) d∗ u
+                       |u|≥1                                                |u|≥1
+                   Z                                               Z
+                                        ϕ(0)              ∗
+             = C           E(F(ϕ))(u) + p      R(g)(1/u) d u − ϕ(0)         g(1/v)|v|−1/2 d∗ v
+                   |u|≥1                  |u|                         |v|≥1
+                 Z                 R                           Z   Z
+                                       ϕ(x)  dx
+             + C           E(ϕ)(u) + A p         R(g)(u) d∗ u − ( ϕ)          g(v)|v|−1/2 d∗ v
+                   |u|≥1                 |u|                            |v|≥1
+
+
+                                                         13
+                   Z                      X             p         Z                          X            p
+                                                             ∗
+              =             F(ϕ)(v)               g(q/v) |v|d v +                 ϕ(v)               g(qv) |v|d∗ v
+                    |v|≥1                                                 |v|≥1
+                                         q∈K ×                                               q∈K ×
+                          Z                               Z         Z
+                                               −1/2 ∗
+              − ϕ(0)                  g(1/v)|v|    d v − ( ϕ(x) dx)                          g(v)|v|−1/2 d∗ v
+                              |v|≥1                              A                   |v|≥1
+
+
+which completes the proof.
+
+                                   P             p
+We note that if we replace formally q∈K × g(qv) |v| with χ(v)|v|s we obtain exactly the Tate
+formula for L(χ, ϕ)(s). But some new flexibility arises with a “compact” g(v):
+3.7. Theorem. The following formula holds:
+                 Z             X         p        Z                                            X           p
+       ′                                     ∗
+      E (g)(ϕ) =     F(ϕ)(v)      g(q/v) |v|d v +                                     ϕ(v)            g(qv) |v|d∗ v−
+                       |v|≤1                 q∈K ×                          |v|≤1             q∈K ×
+                          Z                                  Z                   Z
+                                                 −1/2 ∗
+                  −ϕ(0)               g(1/v)|v|       d v−           ϕ(x) dx ·               g(v)|v|−1/2 d∗ v
+                              |v|≤1                              A                   |v|≤1
+
+
+
+Proof. Exactly the same as above exchanging everywhere |u| ≥ 1 with |u| ≤ 1 (we recall that
+R(g) has compact support and also that as we are dealing with a number field |v| = 1 has zero
+measure). This is not possible with a quasicharacter in the place of R(g)(u). Alternatively one
+adds to the previous formula and checks that one obtains 2E ′ (g)(ϕ) (using E ′ (I(g))(F(ϕ)) =
+E ′ (g)(ϕ)).
+
+
+To illustrate some Hilbert Space properties of the co-Poisson summation, we will assume K = Q.
+The components (aν ) of an adele a are written ap at finite places and ar at the real place. We
+have an embedding of the Schwartz Q space of test-functions on R into the Bruhat-Schwartz space
+on A which sends ψ(x) to ϕ(a) = p 1|ap |p ≤1 (ap )·ψ(ar ), and we write ER′ (g) for the distribution
+on R thus obtained from E ′ (g) on A.
+3.8. Theorem. Let g be a compact Bruhat-Schwartz function on the ideles of Q. The co-
+Poisson summation ER′ (g) is a square-integrable function
+                                                        R (with respect to the Lebesgue measure).
+       2              ′
+The L (R) function ER (g) is equal to the constant − A× g(v)|v|    −1/2 d∗ v in a neighborhood of
+the origin.
+
+
+Proof. We may first, without changing anything to ER′ (g), replace g with its average under
+the action of the finite unit ideles, so that it may be assumed invariant. Any such compact
+invariant g isQa finite linear combination of suitable multiplicative translates of functions of the
+type g(v) = p 1|vp |p =1 (vp ) · f (vr ) with f (t) a smooth compactly supported function on R× , so
+that we may assume that g has this form. We claim that:
+                                  Z            X           p
+                                        |ϕ(v)|      |g(qv)| |v| d∗ v < ∞
+                                        A×           q∈Q×
+
+                                                            14
+         P
+Indeed      q∈Q× |g(qv)| = |f (|v|)| + |f (−|v|)| is bounded above by a multiple of |v|. And
+R
+     |ϕ(v)||v|3/2 d∗ v < ∞ for each Bruhat-Schwartz function on the adeles (basically, from
+QA×        −3/2 )−1 < ∞). So
+  p (1 − p
+                             X Z                p         Z
+                                                               g(v) ∗
+                                                                      Z
+                  ′                                   ∗
+                 E (g)(ϕ) =          ϕ(v)g(qv) |v| d v −       p d v      ϕ(x) dx
+                            q∈Q × A×                        A×   |v|    A
+
+                             X Z                    p           Z
+                                                                    g(v)
+                                                                             Z
+              E ′ (g)(ϕ) =                ϕ(v/q)g(v) |v| d∗ v −     p d∗ v           ϕ(x) dx
+                             q∈Q×
+                                     A×                          A×   |v|        A
+                                  Q
+Let us now specialize to ϕ(a) = p 1|ap |p ≤1 (ap ) · ψ(ar ). Each integral can be evaluated as an
+infinite product. The finite places contribute 0 or 1 according to whether q ∈ Q× satisfies
+|q|p < 1 or not. So only the inverse integers q = 1/n, n ∈ Z, contribute:
+                            X Z                p dt         Z
+                                                                 f (t) dt
+                                                                             Z
+                 ′
+               ER (g)(ψ) =           ψ(nt)f (t) |t|       −      p             ψ(x) dx
+                               × R
+                                   ×                 2|t|     R×    |t| 2|t| R
+                             n∈Z
+
+We can now revert the steps, but this time on R× and we get:
+                           Z          X f (t/n) dt          Z                 Z
+                                                                  f (t) dt
+              ER′ (g)(ψ) =      ψ(t)       p       p −            p              ψ(x) dx
+                             R×              |n| 2   |t|      R ×    |t| 2|t| R
+                                     n∈Z×
+
+                                                           p
+Let us express this in terms of α(y) = (f (y) + f (−y))/2 |y|:
+                               Z       X α(y/n)          Z ∞              Z
+                    ′                                           α(y)
+                  ER (g)(ψ) =     ψ(y)             dy −               dy      ψ(x) dx
+                                R             n           0       y         R
+                                            n≥1
+
+So the distribution ER′ (g) is in fact the even smooth function
+                                            X α(y/n) Z ∞ α(y)
+                                 ′
+                               ER (g)(y) =            −          dy
+                                                  n      0     y
+                                               n≥1
+
+As α(y) has compact support in R \ {0}, the summation over n ≥ 1 contains only vanishing
+                                                                   R∞         R
+terms for |y| small enough. So ER′ (g) is equal to the constant − 0 α(y)
+                                                                      y dy = − R×
+                                                                                   f (y) dy
+                                                                                   √           =
+                                                                                      |y| 2|y|
+  R        p
+− A× g(t)/ |t| d∗ t in a neighborhood of 0. To prove that it is L2 , let β(y) be the smooth
+compactly supported function α(1/y)/2|y| of y ∈ R (β(0) = 0). Then (y 6= 0):
+                                          X 1            Z
+                              ′                     n
+                             ER (g)(y) =         β( ) −      β(y) dy
+                                              |y| y        R
+                                                  n∈Z
+
+From the usual Poisson summation formula, this is also:
+                           X           Z              X
+                               γ(ny) −    β(y) dy =     γ(ny)
+                                    n∈Z             R         n6=0
+                R
+where γ(y) = R exp(i 2πyw)β(w) dw is a Schwartz rapidly decreasing function. From this
+formula we deduce easily that ER′ (g)(y) is itself in the Schwartz class of rapidly decreasing
+functions, and in particular it is is square-integrable.
+
+                                                        15
+It is useful to recapitulate some of the results arising in this proof:
+3.9. Theorem. Let g be a compact Bruhat-Schwartz function on the ideles of Q. The co-
+Poisson summation ER′ (g) is an even function on R in the Schwartz class of rapidly decreasing
+functions. It is constant, as well as its Fourier Transform, in a neighborhood of the origin. It
+may be written as
+                                          X α(y/n) Z ∞ α(y)
+                               ′
+                             ER (g)(y) =             −           dy
+                                                 n       0    y
+                                               n≥1
+
+with a function α(y) smooth with compact support away from the origin, and conversely each
+such formula corresponds to the co-Poisson summation       ′
+                                                    R E  ′
+                                                           R (g) of a compact Bruhat-Schwartz
+function on the ideles of Q. The Fourier transform R ER (g)(y) exp(i2πwy) dy corresponds in
+the formula above to the replacement α(y) 7→ α(1/y)/|y|.
+
+Everything has been obtained previously.
+
+
+
+4    More proofs and perspectives on co-Poisson
+
+The intertwining property was proven as a result on the adeles and ideles, but obviously the
+proof can be written directly on R. It will look like this, with ϕ(y) an even Schwartz function
+(and α(y) as above):
+
+              R P
+Proof. From    R     n≥1 |ϕ(ny)||α(y)| dy < ∞:
+                                Z X                       XZ
+                                         ϕ(ny)α(y) dy =              ϕ(ny)α(y) dy
+                                 R n≥1                    n≥1 R
+                               XZ           α(y/n)
+                                                          Z              X α(y/n)
+                           =           ϕ(y)        dy =           ϕ(y)              dy
+                                     R        n               R                n
+                               n≥1                                       n≥1
+
+
+On the other hand applying the usual Poisson summation formula:
+             Z X
+                   ϕ(ny)α(y) dy
+                   R n≥1
+                                                   
+               Z        X F(ϕ)(n/y)
+                                 ϕ(0)    F(ϕ)(0)    α(y) dy
+          =                     −       +
+              R n≥1     |y|          2       2|y|
+            Z X             α(1/y)              Z ∞                   Z ∞
+                                                                              α(y)
+          =         F(ϕ)(ny)           dy − ϕ(0)      α(y) dy + F(ϕ)(0)            dy
+              R n≥1              |y|               0                     0     |y|
+            Z           X α(n/y)             Z ∞                     Z ∞
+                                                                         α(y)
+          =     F(ϕ)(y)            dy − ϕ(0)       α(y) dy + F(ϕ)(0)           dy
+              R             |y|                0                      0   |y|
+                                n≥1
+
+
+                                                     16
+The conclusion being:
+Z        X α(y/n)               Z ∞             Z           X α(n/y)           Z ∞
+                                    α(1/y)
+    ϕ(y)          dy  − F(ϕ)(0)            dy =     F(ϕ)(y)          dy − ϕ(0)     α(y) dy
+  R           n                  0    y           R             |y|             0
+        n≥1                                                    n≥1
+
+which, after exchanging ϕ with F(ϕ), is a distribution theoretic formulation of the intertwining
+property:                                      
+                     X α(y/n) Z ∞ α(y)               X α(n/y) Z ∞
+                 F             −               
+                                             dy =                −     α(y)dy
+                           n       0     y                 |y|      0
+                     n≥1                               n≥1
+
+
+
+
+It is useful to have a version of co-Poisson intertwining without compactness nor smoothness
+conditions:
+4.1. Lemma. Let g(u) be an even measurable function with
+                                        Z ∞
+                                             |g(u)|
+                                                    du < ∞
+                                         0     u
+          P
+The sum n≥1 g(t/n) n   is Lebesgue almost-everywhere absolutely convergent. It is a locally inte-
+grable function of t. It is a tempered distribution.
+
+
+Proof. Let ϕ(t) be an arbitrary even measurable function. One has:
+                       Z ∞X                        Z ∞         X g(t/n)
+                                 |ϕ(nt)||g(t)|dt =      |ϕ(t)|          dt
+                        0 n≥1                       0               n
+                                                               n≥1
+                                                               P
+If we take ϕ(t) to be 1 for |t| ≤ Λ, 0 for |t| > Λ, we have n≥1 |ϕ(nt)| = [Λ/|t|] ≤ Λ/|t|. From
+this:                               Z ΛX
+                                              g(t/n)
+                                                      dt = O(Λ)
+                                     0           n
+                                       n≥1
+                              P
+and this implies that A(t) = n≥1 g(t/n)    is almost everywhere absolutely convergent, that it
+                                   Ru n                                         Ru
+is locally integrable and also that 0 A(t)dt is O(u). So the continuous function 0 A(t)dt is a
+tempered distribution. Hence its distributional derivative A(u) is again a tempered distribution.
+
+
+4.2. Theorem. Let g(t) be an even measurable function with
+                            Z ∞              Z ∞
+                                 |g(t)|
+                                        dt +     |g(t)|dt < ∞
+                              0    t          0
+Then the co-Poisson intertwining
+                                        
+                     X g(t/n) Z ∞ g(u)      X g(n/t) Z ∞
+                 F             −        
+                                       du =         −    g(u)du
+                           n      0 u            t    0
+                      n≥1                              n≥1
+
+holds as an identity of tempered distributions.
+
+                                                  17
+Proof. The proof 3.9 given above applies identically.
+                                           P          To get it started one only has to state
+trivially for ϕ(y) a Schwartz function that n≥1 |ϕ(ny)| is O(1/|y|).
+
+
+So the conclusion is that as soon as the two integrals are absolutely convergent the full co-
+Poisson intertwining makes sense and holds true. If one manages to get more information, the
+meaning of the F will be accordingly improved. For example if one side is in L2 then the
+other side has to be too and the equality holds with F being the Fourier-Plancherel (cosine)
+transform.
+4.3. Note. In this familiar R setting our first modification of the Poisson formula was very
+cosmetic: the Poisson formula told us the equality of two functions and we exchanged a term
+on the left with a term on the right. This was to stay in a Hilbert space, but it remained a
+statement about the equality of two functions (and in the adelic setting, the equality of two
+functions with values in the distributions on the adeles). With the co-Poisson if we were to
+similarly exchange the integral on the left with the integral on the right, we would have to use
+Dirac distributions, and the nature of the identity would change. So the co-Poisson is more
+demanding than the (modified) Poisson. Going from Poisson to co-Poisson can be done in many
+ways: conjugation with I, or conjugation with F, or Hilbert adjoint, or more striking still and
+at the same time imposed upon us from adeles and ideles, the switch from viewing a certain
+quantity as a function (Poisson) to viewing it as a distribution (co-Poisson). The co-Poisson is a
+distribution whose values we try to understand as L2 -functions, whereas the (modified) Poisson
+is a function with values in distributions (bad for Hilbert space).
+
+We state again the important intertwining property as a theorem, with an alternative proof:
+
+4.4. Theorem. Let α(y) be a smooth even function on R with compact support away from the
+origin. Let P ′ (α) be its co-Poisson summation:
+                                          X α(y/n) Z ∞ α(y)
+                                 ′
+                               P (α)(y) =         −         dy
+                                               n    0   y
+                                         n≥1
+
+Then the additive Fourier Transform of P ′ (α) is P ′ (I(α)) with I(α)(y) = α(1/y)/|y|.
+
+
+Proof. Let P be the (modified) Poisson summation on even functions:
+                                                  R∞
+                                        X             α(y) dy
+                             P (α)(y) =   α(ny) − 0
+                                                      |y|
+                                          n≥1
+
+Obviously P ′ = I · P · I. And we want to prove FP ′ = P ′ I. Let us give a formal operator proof:
+
+                           FP ′ = FIP I = P FII = P F = IP = P ′ I
+
+Apart from the usual Poisson summation formula P F = IP the crucial step was the com-
+mutativity of FI and P . This follows from the fact that both operators commute with the
+
+
+                                                18
+multiplicative action of R× , so they are simultaneously diagonalized by multiplicative charac-
+ters, hence they have to commute.
+
+To elucidate this in a simple manner we extend our operators I, F, P and P ′ to a larger class
+of functions, a class stable under all four operators. It is not difficult [15] to show that for each
+Schwartz function β (in particular for β = I(α)) the Mellin Transform of P (β)(y) is:
+                            Z ∞                         Z ∞
+                                P (β)(y)y s−1 dy = ζ(s)      β(y)y s−1 dy
+                             0                            0
+
+initially at least for 0 < Re(s) < 1. Let us consider the class of functions k(1/2 + iτ ) on the
+critical line which decrease faster than any inverse power of τ when |τ | → ∞. On this class of
+functions we define I as k(s) 7→ k(1 − s), P as k(s) 7→ ζ(s)k(s), P ′ as k(s) 7→ ζ(1 − s)k(s), and
+FI as k(s) 7→ γ+ (s)k(s) with γ+ (s) = π −(s−1/2) Γ(s/2)/Γ((1 − s)/2). RThe very crude bound (on
+                                                                             1
+Re(s) = 1/2) |ζ(s)| = O(|s|) (for example, from ζ(s)/s = 1/(s − 1) − 0 {1/t}ts−1 dt) shows that
+it is a multiplier of this class (it is also a multiplier of the Schwartz class from the similar crude
+bounds on its derivatives one obtains from the just given formula). And |γ+ (s)| = 1, so this
+works for it too (and also for the Schwartz class, see [12]). The above formal operator proof is
+now not formal anymore (using, obviously, that the Mellin transform is one-to-one on our α’s).
+The intertwining property for P ′ is equivalent to the intertwining property for P , because both
+are equivalent, but in different ways, to the functional equation for the zeta function.
+
+
+As was stated in the previous proof a function space which is stable under all four operators I,
+F, P and P ′ is the space of inverse Mellin transforms of Schwartzp    functions on the critical line:
+these are exactly the even functions on R with the form k(log |y|)/ |y| where k(a) is a Schwartz
+function of a ∈ R. We pointed out the stability under Fourier
+                                                            p      Transform in [12]. We note that
+                    ′
+although P and P make sense when applied to k(log |y|)/ |y| and that they give a new function
+of this type, this can not always be expressed as in their original definitions, for example because
+the integrals involved have no reason to be convergent (morally they correspond to evaluations
+away from the critical line at 0 and at 1.)
+
+We may also study I, F, P and P ′ as operators on L2 , but some minimal care has to be taken
+because P and its adjoint P ′ are not bounded. Nevertheless they are closed operators and they
+commute with the Abelian von Neumann algebra of bounded operators commuting with R×
+(see [16]). This gives one more method to establish the co-Poisson intertwining as a corollary
+to the Poisson intertwining, as we may go from P F = IP (modified Poisson) to FP ′ = P ′ I
+(co-Poisson) simply by taking Hilbert adjoints: P ′ = P ∗ (and here F is the cosine transform,
+so F ∗ = F):
+                         P F = IP ⇒ (P F)∗ = (IP )∗ ⇒ FP ′ = P ′ I
+It is important to be aware that for this to be correct it is crucial that we are using P to denote,
+not the original Poisson sums, but the Müntz-modified Poisson sums.
+
+Another perspective on co-Poisson comes from a re-examination of the use of the multiplica-
+tive version (now called Mellin) of the Fourier Transform in Riemann’s paper. To establish
+
+                                                 19
+                                                                      R∞
+the functional equation, Riemann uses the left Mellin transform 0 f (u)us−1 du, but when he
+relates
+R∞       the zeros to the primes with an explicit formula he uses the right Mellin transform
+     f (u)u −s du. After all the zeta-function itself is most simply expressed as the right Mellin
+  0
+transform of the sum of the Dirac at the positive integers. We said earlier that the Müntz-
+modified sums corresponded under Mellin Transform to the zeta function ζ(s), but this is using
+the left convention. If, rather, we use the right convention we are bound to associate to ζ(s)
+the co-Poisson sums! If we now ask what the functional equation tells us, then the answer
+is: in particular the co-Poisson intertwining. . . It should be clear from this discussion that the
+co-Poisson intertwining is a formula of the nineteenth century which was discovered at the close
+of the twentieth century.
+
+Immediately after being communicated the co-Poisson formula, Luis Báez-Duarte replied that
+an application of Euler-McLaurin summation establishes the co-Poisson intertwining in a more
+elementary manner, inasmuch as his method uses neither distributions nor Mellin transforms,
+and does not appeal directly to either the Poisson summation formula, nor to the functional
+equation of the Riemann zeta function. Here is the proof emerging from this discussion:
+
+4.5. Theorem (proven jointly with Luis Báez-Duarte). Let g(t) be an (even) function
+                                                                       P          R ∞ g(u)
+of class C 2 which has compact support away from the origin. Then both n≥1 g(t/n)
+                                                                              n − 0    u du
+     P      g(n/t)  R∞                         1
+and n≥1 t − 0 g(u)du are continuous L -functions and the co-Poisson intertwining for-
+mula                                          
+                        X g(t/n) Z ∞ g(u)           X g(n/t) Z ∞
+                   F             −            
+                                             du =              −      g(u)du
+                             n       0    u                 t      0
+                       n≥1                                     n≥1
+
+holds as a pointwise equality and may be established as a corollary to the Euler-McLaurin sum-
+mation formulae.
+
+                                                                                      2
+Proof. Let B(u) be the periodic funtion which on [0, 1) has values u2 − u2 + 12
+                                                                              1
+                                                                                . It is a continuous
+even function, which as is well-known is also expressed as:
+
+                                                     X cos(2πnu)
+                                            B(u) =
+                                                            2π 2 n2
+                                                     n≥1
+
+
+Let f (t) be a C 2 function with compact support away from 0. We have:
+
+
+                      X               Z ∞                  Z ∞                  2
+                                                                             d
+                            f (n) −         f (u)du = −          B(u)                 f (u) du
+                                      0                    0                du
+                      n≥1
+
+
+If we apply this to the function u → f (u/w)/w for w > 0, we obtain:
+
+
+
+
+                                                      20
+X f (n/w)         Z ∞                 Z ∞                  2                            Z ∞                   2
+                                                        d        f (u/w)        1                            d
+              −         f (u)du = −         B(u)                         du = − 2               B(wv)                 f (v) dv
+       w          0                    0               du           w          w           0                dv
+n≥1
+
+
+
+The left-hand side is locally Ra finite sum, hence of class C 2 (and when |w| is sufficiently small
+                                ∞
+it reduces to the constant − 0 f (u)du) and the formula above shows that it is O(1/w2 ) when
+w → ∞. If we only assume f (u) to be bounded but still with compact support away from the
+                       P
+origin then obviously n≥1 f (n/w)w    is at any rate bounded (the number of non-vanishing terms
+being O(w)). We now apply the above formula to g(t) = f (1/t)/t:
+
+
+
+                      X g(t/n)        Z ∞                           Z ∞                  2
+                                            g(1/u)         g(t/u)                     d
+                                  −                du = −         du      B(u)
+                          0 n              0   u              u                      du
+             n≥1
+      X Z ∞ cos(2πnu)  d 2 g(t/u)        X Z ∞ cos(2πtw)  d 2 g(n/w)
+   =−                               du = −                               dw
+         0    2π 2 n2  du       u             0    2π 2 t2     dw    w
+        n≥1                                                         n≥1
+
+
+
+                                                                    P
+At this stage we expand the second derivative and using that n≥1 k(n/w)       w   is bounded with
+                  ′        2 ′′
+k(t) = |g(t)|, |tg (t)|, |t g (t)| we see that dominated convergence applies. So:
+
+
+                            Z ∞                
+                                              2 X
+                                  cos(2πtw)         dg(n/w)
+                      = −                       (           ) dw
+                           0        2π 2 t2        dw  w
+                                                 n≥1
+                          Z ∞             2 X                Z ∞
+                              cos(2πtw)     d        g(n/w)
+                      = −                       (            −     g(α)dα) dw
+                           0     2π 2 t2   dw          w        0
+                                                 n≥1
+                          Z ∞              X g(n/w) Z ∞
+                      = +     2 cos(2πtw)(           −      g(α)dα) dw
+                           0                    w       0
+                                                   n≥1
+
+
+
+                                                                    d P       g(n/w)
+The first integration by parts at the end is justified by limw→∞ dw       n≥1    w   = 0, using that
+P      k(n/w)                                   ′
+  n≥1    w    is bounded with k(t) = |g(t)|, |tg (t)|. So far we have t 6= 0, but the integral being
+dominated we may let t = 0 in the final formula. If we now replace g(t) with g(1/t)/t we get
+the co-Poisson intertwining as a pointwise equality.
+
+
+The
+  Pmost direct attack
+                 P when firstPconfronted with the co-Poisson formula is presumably this:
+F( g(t/n)/n) = F(g)(nξ) = g(m/ξ)/|ξ|, where we first intervert and then apply Poisson.
+This has a number of pitfalls (for whose unraveling the language of distributions is very useful),
+
+                                                            21
+but it is possible to make it work to prove something correct. This proof is a joint-work with
+Bernard Candelpergher, and as in the previous approach it uses only elementary tools and
+especially the (simplest cases of) Euler-McLaurin summation.
+
+4.6. Theorem (proven jointly with Bernard Candelpergher). Let g(t) be an even func-
+                                                                                P     g(t/n)
+tion of class C 2 which has compact support away from the origin. Then both       n≥1   n    −
+R ∞ g(u)        P     g(n/t)   R ∞
+ 0   u du and     n≥1    t   − 0 g(u)du are continuous L1 -functions and the co-Poisson inter-
+twining formula
+                                             
+                      X g(t/n) Z ∞ g(u)            X g(n/t) Z ∞
+                  F               −        du =             −       g(u)du
+                              n      0   u                t       0
+                              n≥1                                     n≥1
+
+holds as a pointwise equality and may be established as a corollary to the Euler-McLaurin sum-
+mation formulae.
+
+
+Proof. We work on (0, ∞). We have (t > 0):
+                          X g(t/n) Z ∞ g(1/u)      X
+                                    −         du =   An (t)
+                               n       0   u
+                                      n≥1                                    n≥1
+
+
+
+with:
+
+                                                                               Z n
+                                      1         g(t/n) g(t/(n − 1))                   g(t/u)
+                             An (t) =                 +                      −               du
+                                      2            n      n−1                     n−1   u
+
+where the term with n − 1 is dropped for n = 1. With k(t) = g(1/t)/t one has:
+
+                                                             Z n                     Z n
+                   1       k(n/t) k((n − 1)/t)                      k(u/t)                              d2 k(u/t)
+        An (t) =                 +                         −               du = −             C2 (u)              du
+                   2         t         t                        n−1   t                 n−1            du2 t
+
+where C2 (u) = ({u}2 − {u})/2. From this:
+
+                                X                     Z ∞
+                                                 1                           u du      1
+                                      |An (t)| ≤ 2             |C2 (u)||k′′ ( )|  = O( 2 )
+                                                 t     0                     t t      t
+                                n≥1
+
+                                                                                   P
+On the other hand for t small enough one has An (t) ≡ 0 for n ≥ 2. So the sum n≥1 An (t) is
+absolutely convergent to an L1 -function and also we can compute its Fourier transform termwise.
+This gives, with e
+                 g = F(g):
+
+
+
+                                                                22
+                X                                                                                Z n                
+                                        g(0) X
+                                       −e                      g(nξ) + e
+                                                               e       g((n − 1)ξ)
+           F(       An (t))(ξ) =            +                                      −                      g(uξ) du
+                                                                                                          e
+                                        2                               2                           n−1
+              n≥1                                  n≥1
+
+
+The appearance of −e   g(0)/2 is from the fact that this time the n − 1 term with n = 1 is to be
+counted in the sum, so we have to compensate for this. The formula holds for all ξ (ξ ≥ 0), in
+particular for ξ = 0 it reads:
+
+                                                                      
+                      Z           X g(t/n)       Z ∞                                      Z ∞
+                                                          g(1/u) 
+                                             −                   du dt = −                        g(v) dv
+                          R            n           0          u                             0
+                              n≥1
+
+
+For ξ > 0 we are R ∞ one step away from co-Poisson, it only remains to apply Poisson to our
+sum (note that 0 ge(uξ) du = 0). But we can also base this on Euler-McLaurin. Indeed with
+B1 (v) = {v} − 12 :
+
+                                                 Z n                           Z n
+                   g(nξ) + e
+                   e       g((n − 1)ξ)                                                             d
+                                       −                     g(uξ) du =
+                                                             e                           B1 (v)      ge(vξ) dv
+                            2                          n−1                         n−1            dv
+
+Hence
+
+                          X                        Z ∞                   Z ∞
+                                                                                              d
+                    F(            An (t))(ξ) = −             g(v) dv +              B1 (v)      ge(vξ) dv
+                                                       0                       0             dv
+                          n≥1
+
+
+Now, from the fact that g is C 2 with compact support, its Fourier transform and all derivatives
+of it are O(1/|ξ|2 ). We may thus use the boundedly convergent expression:
+
+                                                           X − sin(2πmv)
+                                           B1 (v) =
+                                                                     mπ
+                                                           m≥1
+
+
+and then
+
+
+             Z ∞                                                 X Z ∞ − sin(2πmv) d
+                          d
+                   B1 (v) e g(vξ) dv =                 lim                                                 ge(vξ) dv
+              0          dv                        M →∞                    0              mπ          dv
+                                                               1≤m≤M
+                                                                 X         Z ∞
+                                             =         lim             2             cos(2πmv)e
+                                                                                              g (vξ) dv
+                                                   M →∞                        0
+                                                               1≤m≤M
+                                                                 X     g(m/ξ)
+                                             =         lim
+                                                   M →∞                   ξ
+                                                               1≤m≤M
+
+                                                               23
+where Fourier inversion was used (ξ > 0). This completes the proof of co-Poisson. It is also
+interesting to prove in another manner the special formula (ξ = 0):
+
+                                                                  
+                   Z ∞          X g(t/n)         Z ∞                             Z ∞
+                                                        g(1/u)         1
+                                             −                 du dt = −               g(v) dv
+                    0                n             0        u            2        0
+                            n≥1
+
+
+This may be done as follows: first,
+
+                       Z ΛX                   X          Z Λ/n            Z ∞ 
+                                  g(t/n)                                      Λ
+                                         dt =                    g(t)dt =        g(t)dt
+                        0            n                                        t
+                            n≥1                     n≥1 0                  0
+
+
+
+so we are looking at
+
+                               Z ∞                 Z ∞
+                                   Λ
+                         lim −        g(t)dt = − lim     {Λv}h(v)dv
+                        Λ→∞     0  t            Λ→∞ 0
+
+
+with the L1 -function h(v) = g(1/v)/v 2 . It is obvious that
+
+                                                         Z ∞
+                                                                                       B−A
+                   0≤A≤B                 ⇒         lim         {Λv}1A≤v≤B (v)dv =
+                                                 Λ→∞ 0                                  2
+
+so using the density argument from the usual proof of the Riemann-Lebesgue lemma one deduces
+that
+
+                                         Z ∞                           Z ∞
+                                                                   1
+                                   lim           {Λv}h(v)dv =                h(v)dv
+                                  Λ→∞ 0                            2   0
+
+
+for all L1 -functions. One last remark is that at the level of (left) Mellin, co-Poisson is like
+multiplication by ζ(1 − s), so the special formula is just another instance of ζ(0) = − 21 .
+
+
+Here is one last approach to co-Poisson (extracted from a manuscript in preparation [23]). The
+Poisson summation identity is      X               X
+                                       F(f )(n) =      f (m)
+                                             n∈Z                 m∈Z
+
+
+
+
+                                                            24
+It applies in particular to Schwartz functions, and may be written as:
+                                                !
+                                       X            X
+                                  F       δn (x) =      δm (y)
+                                          n∈Z               m∈Z
+
+We take this identity of tempered distributions seriously, on its own, and do not completely
+identify it with the Poisson summation identity. Let t 6= 0 and let us replace x by tx. One has
+δn (tx) = δn/t (x)/|t|. So
+                                           !
+                              X δn/t (x)             1 X     y    X
+                        F                       =        δm ( ) =   δtm (y)
+                                    |t|             |t|      t
+                              n∈Z                     m∈Z         m∈Z
+
+We average these tempered distributions with an integrable weight g(t) (which is compactly
+supported away from the origin) to obtain an identity of tempered distributions:
+                                                 !
+                         XZ           δn/t (x)      XZ
+                     F           g(t)          dt =        g(t)δtm (y) dt
+                                        |t|
+                              n∈Z                           m∈Z
+
+But for n 6= 0 (resp. m 6= 0) and as distributions in x (resp. y):
+                          Z                     Z
+                                  δn/t (x)          n        dα     g( n )
+                             g(t)          dt = g( )δα (x)       = x
+                                     |t|            α        |α|      |x|
+                          Z                    Z                        y
+                                                   β         dβ     g( m  )
+                             g(t)δtm (y) dt = g( )δβ (y)         =
+                                                   m        |m|      |m|
+          R                R                     R                 R
+whereas g(t) δ0|t|
+                 (x)              dt
+                     dt = ( g(t) |t| )δ0 (x) and g(t)δ0 (y) dt = ( g(t)dt)δ0 (y). If we exchange
+sides for the contributions of n = 0 and m = 0 we end up with the co-Poisson intertwining
+as an identity of tempered distributions. This method of multiplicative convolution applies to
+situations where the discreteness of the support of the original distributions applies only at the
+origin. A general discussion is planned in [23].
+
+There is reason to believe that the problem of understanding the spaces of L2 -functions which
+are vanishing together with their Fourier Transform in a neighborhood of the origin, is important
+simultaneously for Analysis and Arithmetic. It is a remarkable ancient discovery of de Branges
+[7] [8] that these spaces have the rich structure which he developed generally in his theory of
+Hilbert Spaces of entire functions: they are among the “Sonine spaces”. The co-Poisson sum-
+mations have the (extended) property of being constant together with their Fourier transform,
+in some neighborhood of the origin, and we will show later (see also [21]) that the zeros of the
+Riemann zeta function are the obstructions for (the square-integrable among) the co-Poisson
+sums to fill up the full spaces of such square-integrable functions.
+
+
+
+
+                                                     25
+5    Impact of the Báez-Duarte, Balazard, Landreau and Saias
+     theorem on the so-called Hilbert-Pólya idea
+
+How could it be important to replace ζ(s) with ζ(1 − s) ? Clearly only if we leave the critical
+line and start paying attention to the difference between the right half-plane Re(s) > 1/2 and
+the left half-plane Re(s) < 1/2. Equivalently if we switch p
+                                                           from the full group of contractions-
+dilations Cλ , 0 < λ < ∞, which acts as φ(x) 7→ φ(x/λ)/ |λ| on even functions on R, or as
+Z(s) 7→ λs−1/2 Z(s) on their Mellin Transforms, to its sub-semi-group of contractions (0 < λ ≤
+1). The contractions act as isometries on the Hardy space H2 (Re(s) > 1/2) or equivalently on
+its inverse Mellin transform the space L2 ((0, 1), dt).
+
+It is a theme contemporaneous to Tate’s Thesis and Weil’s first paper on the explicit formula
+that it is possible to formulate the Riemann Hypothesis in such a semi-group set-up: this is
+due to Nyman [37] and Beurling [6] and builds on the Beurling [5] (and later for the half-
+plane) Lax [34] theory of invariant subspaces of the Hardy spaces. The criterion of Nyman
+reads as follows: the linear combinations of functions t 7→ {1/t} − {a/t}/a, for 0 < a < 1, are
+dense in L2 ((0, 1), dt) if and only if the Riemann Hypothesis holds. It is easily seen that the
+smallest closed subspace containing these functions is stable under contractions, so to test the
+closure property it is only necessary to decide whether the constant function 1 on (0, 1) may be
+approximated. The connection with the zeta function is established through (0 < Re(s) < 1):
+                                       Z ∞
+                                            1             ζ(s)
+                                           { }ts−1 dt = −
+                                        0   t              s
+
+This gives for our functions, with 0 < a < 1 and 0 < Re(s):
+                           Z 1
+                                 1    1 a                      ζ(s)
+                               ({ } − { })ts−1 dt = (as−1 − 1)
+                             0   t    a t                       s
+
+The question is whether the invariant (under contractions) subspace of H2 (Re(s) > 1/2) of linear
+combinations of these Mellin transforms is dense or not. Each zero ρ of ζ(s) in Re(s) > 1/2 is an
+obvious obstruction as (the complex conjugate of) tρ−1 belongs to L2 ((0, 1), dt). The Beurling-
+Lax theory describing the structure of invariant subspaces allows the conclusion in that case
+that there are no other obstructions (we showed [17]Q as an addendum that the norm of the
+orthogonal projection of 1 to the Nyman space is Re(ρ)>1/2 |(1 − ρ)/ρ|, where the zeros are
+counted with their multiplicities). Recently ([2]) Luis Báez-Duarte has shown that the appeal
+to the Beurling-Lax invariant subspace theory could be completely avoided, and furthermore he
+has put the Nyman-Beurling criterion in the stronger form where one applies to the fractional
+part function only integer-ratio contractions.
+
+One could think from our description of the original proof of the Nyman-Beurling criterion
+that the zeros on the critical line are out of its scope, as they don’t seem to play any rôle.
+So it has been a very novel thing when Báez-Duarte, Balazard, Landreau and Saias asked the
+right question and provided a far from obvious answer [3]. First a minor variation is to replace
+the Nyman criterion with the question whether the function 10<t<1 can be approximated in
+
+                                               26
+L2 (0, ∞) with linear combinations of the contractions of {1/t}. Let D(λ) be the Hilbert space
+distance between 10<t<1 and linear combinations of contractions Cθ ({1/t}), λ ≤ θ ≤ 1. The
+Riemann Hypothesis holds if and only if lim D(λ) = 0.
+
+Theorem of Báez-Duarte, Balazard, Landreau and Saias [3]:                     One has the lower
+bound:                                             X 1
+                         lim inf | log(λ)| D(λ)2 ≥
+                                                   ρ
+                                                     |ρ|2
+
+where the sum is over all non-trivial zeros of the zeta function, counted only once independently
+of their multiplicity.
+
+The authors of [3] conjecture that equality holds (also with lim in place of lim inf) when one
+counts the zeros with their multiplicities: our next result shows that their conjecture not only
+implies the Riemann Hypothesis but it also implies the simplicity of all the zeros:
+
+5.1. Theorem ([18]). The following lower bound holds:
+
+                                                            X m2ρ
+                                lim inf | log(λ)| D(λ)2 ≥
+                                                            ρ
+                                                                |ρ|2
+
+
+Our proof relies on the link we have established between the study originated by Báez-Duarte,
+Balazard, Landreau and Saias of the distance function D(λ) and the so-called Hilbert-Pólya
+idea. This idea will be taken here in the somewhat vague acceptation that the zeros of L-
+functions may have a natural interpretation as Hilbert space vectors, eigenvectors for a certain
+self-adjoint operator. If we had such vectors in L2 ((0, ∞), dt), perpendicular to {1/t} and to
+its contractions Cθ ({1/t}), λ ≤ θ ≤ 1 then we would be in position to obtain a lower bound
+for D(λ) from the orthogonal projection of 10<t<1 to the space spanned by the vectors. This
+lower bound would be presumably easily expressed as a sum indexed by the zeros from the fact
+that eigenspaces of a self-adjoint operator are mutually perpendicular. The first candidates are
+t 7→ t−ρ : they satisfy formally the perpendicularity condition to {1/t} and its contractions, but
+they do not belong to L2 . Nevertheless we could be in a position to approximately implement
+the idea if we used instead the square integrable vectors t 7→ t−(ρ−ǫ) 10<t<1 , ǫ > 0, Re(ρ) = 1/2.
+The authors of [3] followed more or less this strategy, but as they did not benefit from exact
+perpendicularity, they had to provide not so easily obtained estimates. It appears that the
+ǫ > 0 does not seem to allow to take easily into account the multiplicities of the zeros. For
+their technical estimates the authors of [3] used to great advantage a certain scale invariant
+operator U , which had been introduced by Báez-Duarte in an earlier paper [1] discussing the
+Nyman-Beurling problem.
+
+How is it possible that the use of this Báez-Duarte operator U (whose definition only relies
+on some ideas of harmonic analysis, and some useful integral formulae, with at first sight no
+arithmetic involved) allows Báez-Duarte, Balazard, Landreau and Saias to make progress on the
+Nyman-Beurling criterion ? We related the mechanism underlying the insightful Báez-Duarte
+construction [1] of the operator U to a construction quite natural in scattering theory and it
+
+                                                27
+appeared then that it was possible to use it (or a variant V ) to construct true Hilbert space
+          λ indexed by s on the critical line, and k ∈ N, having the property of expressing
+vectors Ys,k
+the values of the Riemann zeta function and its derivatives on the critical line as Hilbert space
+scalar products:
+                                      λ        d k s − 1 ζ(s)
+                                (A, Ys,k ) = (− )
+                                               ds     s    s
+                                         ζ(s)
+The additional factors are such that s−1
+                                       s   s belongs to the Hardy space of the right half-plane
+and A(t) is its inverse Mellin transform, an element of L2 ((0, 1), dt). What is more, we can
+replace A with its contractions Cθ (A) as long as λ ≤ θ ≤ 1:
+
+                                            λ            d k s−1/2 s − 1 ζ(s)
+                     λ ≤ θ ≤ 1 ⇒ (Cθ (A), Ys,k ) = (−       ) θ
+                                                         ds          s    s
+
+                              λ which are (exactly, not approximately) perpendicular to A and
+So the only ones among the Ys,k
+                                   λ , ζ(ρ) = 0, k < m (λ < 1). This connects the Nyman-
+its contractions up to λ are the Yρ,k                   ρ
+Beurling criterion with the so-called Hilbert-Pólya idea. From the explicit integral formulae
+                                                                            λ from which the
+of Báez-Duarte for his operator U one can write formulae for the vectors Ys,k
+following asymptotic behavior emerges:
+
+                     lim | log(λ)|−1−k−l · (Ysλ1 ,k , Ysλ2 ,l ) = 0   (s1 6= s2 )
+                     λ→0
+                                                                   1
+                       lim | log(λ)|−1−k−l · (Ys,k
+                                                λ      λ
+                                                   , Ys,l ) =
+                       λ→0                                       k+l+1
+                                               p
+                                    λ = Y λ / | log(λ)| become orthonormal in the limit when
+In particular the rescaled vectors Xs,0    s,0
+λ → 0. The limit can not work inside L2 ((0, ∞)) because this is a separable space ! In fact one
+                                             λ weakly converge to 0 as λ → 0. The theorem 5.1
+shows without difficulty that the vectors Xs,k
+is easily deduced from the above estimates.
+
+We have not explained yet what is U and how the Ys,k  λ are constructed with the help of it. The
+
+Báez-Duarte operator is the unique scale invariant operator with sends {1/t} to its image under
+the time reversal J : ϕ(t) 7→ ϕ(1/t)/t, which is here the function {t}/t. Equivalently at the
+level of the Mellin Transforms, U acts as a multiplicator with multiplier on the critical line
+
+                                          ζ(s)/s   ζ(1 − s) s
+                                U (s) =          =
+                                          ζ(s)/s     ζ(s) 1 − s
+
+
+So this construction is extremely general: as soon as the function A ∈ L2 ((0, ∞), dt) has an
+almost everywhere non-vanishing Mellin transform Z(s) on the critical line (which by a theorem
+of Wiener is equivalent to the fact that the multiplicative translates Cθ (A), 0 < θ < ∞, span
+L2 ) then we may associate to it the scale invariant operator V with acts as Z(s)/Z(s), and
+sends A to its time reversal J(A). We see that V is necessarily unitary. Let us in particular
+suppose that A is in L2 ((0, 1), dt): then J(A) has support in [1, ∞) and the images under V of
+the contractions Cθ (A), λ ≤ θ ≤ 1, being contractions of J(A), will be in L2 ((λ, ∞), dt). In the
+case at hand we have:
+
+                                                  28
+                                                                      3
+                               s − 1 ζ(s)               ζ(1 − s)    s
+                        Z(s) =                  V (s) =
+                                 s    s                   ζ(s)     1−s
+
+The Báez-Duarte operator U and its cousin V depend on ζ(s) only through its functional
+equation, which means that they are associated with the (even) Fourier transform F+ (the
+cosine transform). We can use (almost) the same operators for Dirichlet L-series with an even
+character (with due attention paid to the conductors q > 1), and there are other operators we
+would use for odd characters, associated with the sine transform F− .
+               λ are obtained as follows: we start from | log(t)|k t−(s−ǫ) 1
+The vectors Ys,k                                                            0<t<1 , apply V , restrict
+to [λ, +∞), take the limit which now exists in L as ǫ → 0, and apply V −1 . What happens
+                                                    2
+
+is that V (t−1/2−iτ 10<t<1 ) does not belong to L2 but this is entirely due to its singularity at
+0, which, it turns out, is V (1/2 + iτ )t−1/2−iτ . We would not expect it to be possible that a
+localized singularity would remain localized after the action of F+ but the point is that the
+operator with multiplier ζ(1 − s)/ζ(s) is the composite F+ · I with I(φ)(x) = φ(1/x)/|x|. So
+the singularity is first sent to infinity and F+ puts it back at the origin.
+5.2. Note. Let us denote by L the scale invariant unitary operator with spectral
+                                                                             R t function L(s) =
+s/(s − 1). One has L = 1 − M where M is the Hardy averaging φ(t) 7→ ( 0 φ(u) du)/t. The
+operator V is (−L)3 F+ I = F+ I(−L)3 . One has ILI = L−1 and LL∗ = 1. The operator L
+is “real”, meaning that it commutes with the anti-unitary complex conjugation φ(t) 7→ φ(t).
+One has IV = IF+ I(−L)3 . We will write G+ = IF+ I, so that IV = G+ (−L)3 = (−L)−3 G+ .
+The operator G+ is unitary and satisfies G+2 = 1. The operator G is real. The U operator of
+                                                                   +
+Báez-Duarte is F+ I(−L), so V = U L = L2 U . The operators I, F+ , G+ , U and V are real.
+                                      2
+
+
+
+We now proceed with a more detailed study of the vectors Ys,k  λ , and of their use to express
+
+values of Mellin transforms and their derivatives on and off the critical line as Hilbert space
+scalar products. We established
+
+                                           λ           d k b
+                                     (B, Ys,k ) = (−      ) B(s)
+                                                       ds
+                                                                            R∞
+for the Hardy functions Cθ (A), λ ≤ θ ≤ 1. Their Mellin Transforms 0 Cθ (A)(t)ts−1 dt =
+               ζ(s)
+θ s−1/2 s−1s    s are analytic in the entire complex plane except for a double pole at s = 0. The
+             λ                                                                                  λ ,
+vectors Ys,k are the analytic continuation to Re(s) = 1/2 of vectors with the same definition Yw,k
+Re(w) < 1/2. The above equation has thus its right hand side analytic in s but its left-hand side
+seemingly anti-analytic, as our scalar product is linear in its first factor and conjugate
+                                                                                  R∞         linear
+in its second factor. So we will use rather the euclidean bilinear form [B, C] = 0 B(t)C(t) dt.
+The spaces we consider are stable under complex conjugation B(t) 7→ B(t), and the operators
+we use are real, so statements of perpendicularity may equivalently be stated using either [·, ·]
+or (·, ·). The identity can then be restated for all finite linear combinations B of our Cθ (A)’s,
+λ ≤ θ ≤ 1, as
+                                            Z
+                            λ          d k 1 −w                d kb         
+                       [B, Yw,k ] = (+ )        t B(t) dt = ( ) B(1     − w)
+                                      dw      0               dw
+
+                                                 29
+for Re(w) ≤ 1/2. If we look at the proof of the main theorem in [18] we see that the only
+thing that matters about B is that it should be supported in [0, 1] and that V (B) should be
+supported in [λ, ∞), equivalently that (IV )(B)(t) has support in [0, Λ], Λ = 1/λ. Let us note
+the following:
+
+5.3. Theorem. The real unitary operator IV satisfies (IV )2 = 1.
+
+5.4. Note. In particular IV is what Báez-Duarte calls “a skew-root” [1].
+
+
+Proof. This is clear from the spectral representation
+                                                              3
+                                                ζ(1 − s)    s
+                                        V (s) =
+                                                  ζ(s)     1−s
+
+which shows that IV I = V ∗ .
+
+
+We let Λ = 1/λ and GΛ = IV CΛ = Cλ IV . We note that (GΛ )2 = 1. We also note V GΛ =
+Cλ V IV = Cλ I. Let MΛ = H2 ∩ GΛ (H2 ), where we use the notation H2 = L2 ((0, 1), dt).
+Obviously GΛ (MΛ ) = MΛ . The function A as well as its contractionsR Cθ (A), λ ≤ θ ≤ 1 belong
+                                                                      1
+to MΛ . Indeed GΛ (A) = Cλ (A). We note that the Mellin transform 0 B(t)tw−1 dt of B ∈ MΛ
+is analytic at least in Re(w) > 1/2. Let Qλ be the orthogonal projection to L2 (λ, ∞).
+                           λ , originally defined for Re(w) < 1/2 as
+5.5. Theorem. The vectors Yw,k
+
+                                      V −1 Qλ V (| log(t)|k t−w 10<t<1 )
+
+have (inside L2 ) an analytic continuation in w to the entire complex plane C except at w = 1.
+The Mellin Transform of B ∈ MΛ has an analytic continuation to C \ {0}, with at most a pole
+of order 2 at w = 0. One has for w 6= 1 and k ∈ N:
+
+                                           λ          d kb       
+                                      [B, Yw,k ]=(      ) B(1 − w)
+                                                     dw
+The following functional equation holds:
+
+                                 G\
+                                  Λ (B)(w) = λ
+                                               w−1/2          b − w)
+                                                     V (1 − w)B(1
+
+One has
+                                 ∀B ∈ MΛ      b
+                                              B(−2)   b
+                                                    = B(−4) = ··· = 0
+
+
+Proof. We leave the details of the case k > 0 to the reader. Let first Re(w) > 1/2. We have for
+B ∈ MΛ :             Z     1
+             b
+             B(w) =            B(t)tw−1 dt = [B, tw−1 10<t<1 ] = [V (B), V (tw−1 10<t<1 )]
+                       0
+
+
+
+
+                                                      30
+Writing B = GΛ (C), with C ∈ H2 , we get V (B) = Cλ I(C). So V (B) has its support in [λ, ∞)
+and:                             Z ∞
+                         b
+                         B(w) =      V (B)(u)V (tw−1 10<t<1 )(u) du
+                                    λ
+We will show that V (t w−1 10<t<1 )(u) is analytic, for fixed u, in w ∈ C \ {0} and that it is
+O((1 + | log(u)|)/u) on [λ, ∞), uniformly when w is in a compact subset of C \ {0} (this is one
+logarithm better than the estimate in [18] for Re(1 − w) < 1). We will thus have obtained the
+                                       λ
+analytic continuation of the vectors Y1−w,0 from Re(w) > 1/2 and at the same time the analytic
+                 b
+continuation of B(w) as well as the formula:
+                                                   λ
+                                    w 6= 0 ⇒ [B, Y1−w,0     b
+                                                        ] = B(w)
+
+So the problem is to study the analytic continuation of V (t−z 10<t<1 )(u) from Re(z) < 1/2. If
+we followed the method of [18], we would write V = (1 − M )2 U , compute some explicit formula
+for U (t−z 10<t<1 )(u) and work with it. This works fine for the continuation to Re(z) < 1, but for
+Re(z) ≥ 1 there is a problem with applying M (which we must do before Qλ ) as the singularity
+at 0 is of the kind u−z and is not integrable anymore. So we apply first L2 = (1 − M )2 and only
+later U .
+
+We compute:
+                               R min(1,u) −z
+          −z                    0        t dt     u−z 1u≤1 (u)        1 1u>1 (u)
+   M (t        10<t<1 )(u) =                    =               +
+                                       u              1−z          1−z       u
+                                 −z
+                               u 1u≤1 (u)         1      1u>1 (u)      1 log(u)1u>1 (u)
+  M 2 (t−z 10<t<1 )(u) =                     +                    +
+                                 (1 − z)2      (1 − z)2      u       1−z         u
+                                  z 2                    z 2         1u>1 (u)     1 log(u)1u>1 (u)
+   L2 (t−z 10<t<1 )(u) =               2
+                                         u−z 1u≤1 + (         2
+                                                                − 1)          +
+                               (z − 1)                (z − 1)           u       1−z       u
+
+
+We note that U (1u>1 /u) = U I(1u<1 ) = (M − 1)F+ (1u<1 ) = (M − 1)(sin(2πu)/(πu)) is O(1/u)
+(from the existence of the Dirichlet integral) for u > λ and then that U (log(u)1u>1 /u) =
+U M I(1u<1 ) = M U I(1u<1 ) = M (M − 1)(sin(2πu)/(πu) is O((1 + | log(u)|)/u). Clearly this
+reduces the problem of V (t−z 10<t<1 )(u) to the problem of the analytic continuation and esti-
+mation of U (t−z 10<t<1 )(u). From [3], proof of Lemme 6, one has
+                                                       Z ∞
+                                         sin(2πu)    z                    dt
+                    U (t−z 10<t<1 )(u) =          +        tz−1 sin(2πut)
+                                            πu      πu 1                   t
+and (for example) from [19] we know that the integral is an entire function of z which is O(1/u)
+on [λ, ∞), uniformly in z when |z| is bounded. We also see from this and from the integral
+                  b
+representation of B(w) that it has at most a pole of order 2 at w = 0 (which is z = 1).
+
+The functional equation holds on the critical line from the spectral representation of GΛ = Cλ IV ,
+hence it holds on C by analytic continuation. As V (1 − w) has poles at 1 − w = −2, −4, . . .,
+                                                                        b − w) has to vanish for
+and the left hand side is regular at these values of w it follows that B(1
+1 − w = −2, −4, . . ..
+
+                                                  31
+5.6. Note. The distance function D(λ)2 has two components: one corresponding to the distance
+to the subspace MΛ in H2 and then another one corresponding to the additional distance inside
+this space to the translates Cθ (A), λ ≤ θ ≤ 1. The first step has absolutely no arithmetic, it is
+a problem of analysis. In the second step the orthogonal projections to MΛ of the vectors Yρ,k λ ,
+
+ζ(ρ) = 0, k < mρ are obstructions. When λ → 0 (Λ → ∞) the first contribution is presumably
+                                                          λ will not themselves differ much from
+much smaller than the second, and the original vectors Yρ,k
+their
+ P orthogonal projections to MΛ . This seems to suggest as a plausible thing that the estimate
+( ρ m2ρ /|ρ|2 )/| log(λ)| gives the exact asymptotic decrease of D(λ)2 (under assumption of the
+Riemann Hypothesis).
+
+
+                                                              λ
+6    Sonine spaces of de Branges, novel spaces HPλ , vectors Zρ,k ,
+     Krein string of the zeta function
+
+Let K be the Hilbert space L2 ((0, ∞), dt) ofR complex-valued square-integrable functions on
+                                                   ∞
+(0, ∞) with Hilbertian
+               R∞        scalar product (f, g) = 0 f (t)g(t) dt. We also use the “Euclid” bilinear
+form [f, g] = 0 f (t)g(t) dt. A vector Z(t) is “Euclid-perpendicular” to a subspace H for the
+bilinear form [f, g] if only and if Z(t) is (“Hilbert”)-perpendicular to H for the scalar product
+(f, g) if and only if Z(t) is Hilbert-perpendicular to the complex-conjugated space H. We also
+consider the functions in K as even functions with the definition f (t) = f (|t|) for t < 0.
+
+The Mellin transform (which is taken in the L2 -sense for Re(s) = 21 )
+                                                 Z ∞
+                                         b
+                                f (t) 7→ f (s) =     f (t)t−s dt
+                                                        0
+
+isometrically identifies K with the Hilbert space LR2 (s = 21 + iτ, dτ /2π). The cosine transform
+                                                          ∞
+F+ acts (in the L2 sense) on K as F+ (f )(t) = 2 0 cos(2πtu)f (u)du. It is a real operator.
+One has F+  2 = 1, so K is the orthogonal sum of the subspaces of invariant functions (“self-
+
+reciprocal”) under F+ and the subspaces of anti-invariant (“skew-reciprocal”) functions. The
+operator I is f (t) 7→ f (1/t)/|t|. The composite Γ+ = F+ I is scale invariant so it is diagonalized
+by the Mellin transform: Γ\                     b
+                              + (f )(s) = χ+ (s)f (s). This is also written as
+
+                                       \
+                                       F                  b
+                                        + (f )(s) = χ+ (s)f (1 − s)
+
+The function χ+ (s) is a meromorphic function in the complex plane which is related to the Tate
+Gamma function γ+ (s) through χ+ (s) = γ+ (1 − s) = γ+ (s)−1 . One has:
+
+                                   Γ((1 − s)/2)                πs             ζ(s)
+                χ+ (s) = π s−1/2                = 2s π s−1 sin( )Γ(1 − s) =
+                                      Γ(s/2)                   2            ζ(1 − s)
+
+ So an even function is self-reciprocal under the cosine transform if and only if its right Mellin
+Rtransform
+   ∞
+              satisfies the zeta-functional equation. Under the left Mellin transform f (t) 7→
+            s−1 dt, which is the one usually used in discussing the functional equation, self-reciprocal
+  0  f (t)t
+
+                                                   32
+functions under the cosine transform satisfy the functional equation of ζ(1 − s). The Müntz
+formula [45, II.11] shows that, for suitably regular functions f (t), the scale-invariant operator
+corresponding to ζ(s) when using the left Mellin transform is given explicitely as a modified
+Poisson summation. So the action of the scale invariant operator corresponding to ζ(s) under
+the right Mellin transform is expressed as the co-Poisson summation (when applied to suitably
+regular functions; a more detailed analysis will be given in [23]).
+
+The intertwining property for co-Poisson summations (t > 0):
+
+                                                           
+                            X α(t/n)         Z ∞                         Z ∞
+                                                   α(1/t)  X α(n/t)
+                    F+                −                 dt =        −         α(t) dt
+                                  n          0       t          t        0
+                            n≥1                                 n≥1
+
+
+is an equivalent expression of the zeta-functional equation. It shows how to give examples of
+even functions f (t) which vanish identically in a neighborhood (−λ, λ) of the origin and such
+that their Fourier cosine transform has the same
+                                              R ∞ property. For this
+                                                                 R ∞ we take α(t), smooth with
+support in [λ, Λ] (Λ = 1/λ) and such that 0 α(t) dt = 0 = 0 (α(1/t)/t) dt. A non zero
+function f (t) may be obtained this way only for 0 < λ < 1.
+
+Nevertheless there exists for arbitrary λ > 0 non-zero square integrable even functions f (t)
+vanishing in (0, λ), and such that F+ (f )(t) also vanishes in (0, λ). To the best of the author’s
+knowledge this was first put forward as a fact of special importance in Analysis by de Branges in
+[7]. There, a beautiful isometric expansion of self- and skew-reciprocal functions for the Hankel
+transform of zeroth order is proven. The cosine transform is (essentially) the Hankel transform
+of order − 21 . The sine transform is (essentially) the Hankel transform of order + 21 .
+6.1. Definition. We let Kλ ⊂ K be the Hilbert space of square-integrable (even) functions f (t)
+vanishing in (0, λ), and such that F+ (f )(t) also vanishes in (0, λ).
+
+
+An explicit example of a function having this property, but which is not square-integrable, arises
+from an integral formula of Sonine concerning Bessel functions [42, p. 38]. This example is in
+Titchmarsh’s book on Fourier integrals [44, 9.12.(8)]. The analogous example which is associated
+to the sine transform is a square-integrable (odd) function. The proof given by de Branges for
+existence of an even square-integrable f (t) with the Sonine property appears in [7] on top of
+page 449. He constructs directly its Mellin transform from a trick which makes use of the
+already known non-triviality of the spaces with the Sonine property for the Hankel transform
+of positive order. Here is another trick: we take a non-zero square-integrable odd function g(t)
+which works for the sine transform but with λ′ = λ + 1. Let f (t) = g(t − 1) − g(t + 1). Then f (t)
+is even, and non-trivial. It vanishes on (−λ, +λ) and its Fourier (cosine) transform vanishes on
+(−λ′ , +λ′ ).
+
+Actually the simplest method leading to explicit examples of Sonine functions (in the Schwartz
+class), with arbitrarily large λ, was communicated to the author by Professor Kahane1 : the first
+  1
+      Letter to the author, March 22, 2002
+
+                                                       33
+observation is that it is enough to regularize a tempered distribution having the Sonine property
+to a Schwartz function: additive convolution with a test-function supported in (−ǫ, +ǫ), and
+multiplication with its Fourier (this replaces λ with λ −  Pǫ). The second is that it is easy to
+obtain such distributions from the Poisson distribution n∈Z δ(x − n). As an example of how
+to proceed one may take               Y                X
+                                 x3       (x2 − j 2 )2   δ ′ (x − n)
+                                   1≤j≤N                 n∈Z
+                √
+and √
+    replace x by N x. This gives an even tempered distribution with the Sonine property for
+λ < N . In [23] we use the multiplicative convolution to regularize such distributions and thus
+obtain more general co-Poisson intertwining formulae.
+
+An existence proof of Sonine square-integrable functions is straightforward: it suffices to say
+that L2 (0, λ) + F+ (L2 (0, λ)) is a closed (obviously proper) subspace of L2 (0, ∞). The (thus non
+trivial) perpendicular complement is the space Kλ . That the space sum is closed follows readily
+(see [28, sect 2.9, p. 126-127]) from the fact that the compact operator Pλ F+ Pλ (where Pλ
+is orthogonal projection to L2 (0, λ)) has operator bound strictly less than one (as no function
+can be compactly supported and with its Fourier compactly supported). The next step is to
+actually write down explicitely the associated orthogonal projection. This has led the author
+recently to advances in the theory of the de Branges Sonine spaces ([22]).
+
+De Branges proves that for each f ∈ Kλ its completed (right) Mellin Transform
+                                                     Z ∞
+                                                  s
+                            M (f )(s) := π −s/2 Γ( )     f (t)t−s dt
+                                                  2 λ
+
+is an entire function. The proof (up to a change of variable) appears on page 447 of [7]. We
+gave in [19] another, more elementary, proof. The space of entire functions thus associated to
+Kλ is among the “Sonine spaces” from [8], also studied in [39, 40, 41]. The Sonine spaces are
+Hilbert spaces of entire functions satisfying the axioms of [8]. We will also call Kλ ⊂ L2 (0, ∞)
+a Sonine space.
+6.2. Note. In [8] as well as in other cited references it is the horizontal axis which is the axis of
+symmetry. Comparison with our conventions requires a change of variable (such as s = 12 − 2iz),
+as it is the critical line which we use as the axis of symmetry for the Hilbert spaces of entire
+functions.
+
+So Kλ = L2 ((λ, ∞), dt) ∩ F+ (L2 ((λ, ∞), dt)). The convention in force in this chapter will be to
+use the right Mellin transform:               Z ∞
+                                      b
+                                      f (s) =     f (t)t−s dt
+                                                0
+
+6.3. Theorem. The spaces Kλ are all non-reduced to {0}. The Mellin transforms of elements
+f (t) from Kλ are entire functions with trivial zeros at s = −2n, n ∈ N. The entire functions
+                                                         s
+                                    M (f )(s) = π −s/2 Γ( )fb(s)
+                                                         2
+
+                                                    34
+satisfy the functional equations
+                                   M (F+ (f ))(s) = M (f )(1 − s)
+For each w ∈ C, each k ∈ N, the linear forms f 7→ M (f )(k) (w) are continuous and correspond
+                     λ ∈ K : ∀f ∈ K [f, Z λ ] = M (f )(k) (w).
+to (unique) vectors Zw,k   λ          λ     w,k
+
+
+
+Proof. As we said, most of this is, up to a change of variable, from [7]. The L2 -boundedness
+of the evaluations of the derivatives (k ≥ 1) follow by the Banach-Steinhaus theorem from the
+case k = 0. We provide elementary proofs of all statements in [19].
+
+6.4. Note. Evaluators such as Zw,kλ for k ≥ 1, which are associated to derivatives, do not seem
+
+to have been put to use so far either in the general theory [8], or in the special theory of Sonine
+spaces [7, 10, 11].
+6.5. Note. We have changed our conventions from [19] where we were studying the functions in
+L2 (0, Λ) ∩ IF+ I(L2 (0, Λ)) = I(Kλ ) using left Mellin transforms. Here we study the functions
+from Kλ using the right Mellin transforms. So we deal with exactly the same entire functions
+in the complex plane.
+6.6. Proposition. One has Kλ = ∩µ<λ Kµ and Kλ = ∪µ>λ Kµ . Furthermore L2 ((0, ∞), dt) =
+∪λ>0 Kλ .
+
+
+Proof. Directly from the definition, the Kλ ’s form a decreasing chain as λ → ∞ and the first
+statement holds. Let φ be perpendicular to each Kµ for µ > λ. Then φ ∈ L2 (0, µ) + F+ L2 (0, µ)
+and the decomposition as f µ + gµ is unique. The entire function gµ must then not depend on
+µ > λ, as the difference between two such will be compactly supported, hence zero. Then f µ
+does not depend on µ either and is in L2 (0, λ) and gµ ∈ F+ L2 (0, λ). So Kλ = ∪µ>λ Kµ . The
+same proof shows the last statement.
+                               λ ) = (−1)k Z λ
+6.7. Proposition. One has F+ (Zw,k          1−w,k .
+
+
+                                             λ ), f ] = [Z λ , F (f )] = M (F (f ))(k) (w) =
+Proof. Using the Euclid bilinear form: [F+ (Zw,k          w,k   +            +
+    k      (k)
+(−1) M (f ) (1 − w) from M (F+ (f ))(w) = M (f )(1 − w).
+
+                              λ ] so that the vectors Z λ depend analytically on w. Evaluators
+We use the bilinear form [f, Zw,k                      w,k
+(k = 0) associed to points off the symmetry axis are always non-zero vectors in de Branges
+spaces. Using our elementary techniques we proved a stronger statement in the case at hand:
+                                                       λ
+6.8. Theorem ([19]). Any finite collection of vectors Zw,k is a linearly independent system.
+                           λ
+In particular the vectors Zw,k are all non-vanishing.
+6.9. Note. If we take an arbitrary sequence of distinct complex numbers having an accumulation
+                                      λ will span K . Remarkable orthogonal bases consisting
+point the corresponding evaluators Zw,0               λ
+                λ
+of evaluators Zw,0 exist as a general fact from [8]. Some other non-trivial examples of infinite
+and minimal collection of evaluators are also known [21].
+
+                                                35
+It is useful to have at our disposal “augmented Sonine” spaces Lλ ⊃ Kλ , whose elements’
+(Gamma-completed) Mellin Transforms may have poles at 0 and 1. Let N be the unitary
+invariant operator which, under the right Mellin transform, has spectral function s/(s − 1).
+Explicitely:
+
+                                                        Z ∞
+                                                              f (u)
+                                  N (f )(t) = f (t) −               du
+                                                        t       u
+
+Let Lλ = N · L2 ((λ, ∞), dt) ∩ F+ · N · L2 ((λ, ∞), dt).
+                                                                            R∞
+6.10. Theorem. Let λ > 0. Let f ∈ Lλ . The Mellin transform fb(s) = 0 f (t)t−s dt is an
+analytic function in C \ {1} with at most a pole of order 1 at s = 1. It has trivial zeros at
+s = −2n, n ≥ 1. The function M (f )(s) = π −s/2 Γ(s/2)fb(s), analytic in C \ {0, 1}, satisfies the
+functional equation
+                                M (F+ (f ))(s) = M (f )(1 − s)
+For each w ∈ C \ {0, 1}, each k ∈ N, the linear forms f 7→ M (f )(k) (w) are continuous.
+
+
+Proof. As an intersection Lλ is a closed subspace of L2 ((0, ∞), dt) hence a Hilbert space. The
+square integrable
+                R ∞function f (t) is a constant α(f ) for 0 < t < λ (which is a continuous linear
+                         −s
+form in f ). So 0 f (t)t dt is absolutely convergent and analytic at least for 1/2 < Re(s) < 1.
+In this strip we may write it as:
+                           Z ∞                            Z ∞
+                                      −s     α(f )λ1−s
+                                f (t)t dt =             +      f (t)t−s dt
+                            0                  1−s          λ
+
+which gives its analytic continuation to the right half-plane Re(s) > 1/2 with at most a pole at
+s = 1. Let us also note that the evaluation at these points are clearly continuous for the Hilbert
+structure. We have:
+                       Z ∞                Z ∞
+                            f (t)t−s dt =     F+ (f )(u)F+ (1t>λ t−s )(u) du
+                         λ                 0
+
+We known from [19, Lemme 1.3.] that the function F+ (1t>λ t−s )(u) is an entire function of s,
+which is (uniformly for |s| bounded) O(1/u) on (λ, ∞), and also that it is χ+ (s)us−1 + O(1)
+on (0, λ) (uniformly for Re(s) ≤ 1 − ǫ < 1). Moreover F+ (f )(u) is a constant in the interval
+(0, λ) (from f ∈ Lλ ). Combining these informations we get that the above displayed equation
+has an analytic continuation to the critical strip 0 < Re(s) < 1. In this critical strip we have
+the functional equation:
+                                                   \
+                                     fb(s) = χ+ (s)F+ (f )(1 − s)
+
+as it holds on the critical line. From this we get the analytic continuation of fb(s) to Re(s) < 1.
+We note that χ+ (s) vanishes at s = 0 and that this counterbalances the (possible) pole of
+F\                                                            b
+  + (f )(1 − s). Also this functional equation shows that f (s) vanishes at s = −2n, n ≥ 1. The
+evaluations at points strictly to the right of the critical line are continuous, hence also at points
+to the left, hence everywhere (except of course at s = 0, s = 1, where instead one may consider
+the residues) from the Banach-Steinhaus theorem.
+
+                                                 36
+                                        λ ∈ L which project orthogonally to the evaluators
+There are (for w 6= 0, 1) evaluators Ww,k       λ
+  λ ∈ K . The augmented Sonine spaces L ⊃ K are natural for discussing properties of the
+Zw,k     λ                                   λ     λ
+zeta-function along the lines involving the co-Poisson formula. Here we will stay in the realm
+of the spaces Kλ , using the spaces Lλ as an auxiliary help.
+
+Let 0 < λ < 1 and let Λ = 1/λ. Let α(t) be a smooth function with support in [λ, Λ] and
+                                         P                   RΛ
+let f (t) be the co-Poisson summation n≥1 α(t/n)/n − λ α(t) dt/t. The function f (t) is a
+Schwartz function, hence square-integrable. From the co-Poisson formula it belongs to Lλ . If
+we impose the conditions that α b(0) = 0 = α  b(1) then f (t) belongs to the Sonine space Kλ . At
+the level of Mellin transform, we have fb(s) = ζ(s)bα(s). So f (t) is (Euclid)-perpendicular to the
+              λ , k < m associated with the non-trivial zeros of the Riemann zeta function and
+evaluators Zρ,k         ρ
+with their (eventual) multiplicities. And conversely it follows ([19]) from    b
+                λ
+                                                                            Pf (s) = ζ(s)b α(s) that
+an evaluator Zw,k is (Euclid or Hilbert) perpendicular to all functions n≥1 α(t/n)/n with α
+smooth function with support in [λ, Λ] and α b(0) = 0 = α b(1) if and only if w is a non-trivial zero
+of the zeta function with multiplicity strictly bigger than k.
+
+6.11.
+P     Definition. Let 0 < λ < 1 and Λ = 1/λ. We let Wλ be the closure in K of the functions
+  n≥1 α(t/n)/n, with α(t) smooth with support in [λ, Λ], and such that α
+                                                                       b(0) = 0 = α
+                                                                                  b(1).
+
+6.12. Definition. Let 0 < λ < 1 and Λ = 1/λ. We let Wλ′ be the P        sub-vector space of K
+comprising the square-integrable functions f (t) which may be written as n≥1 α(t/n)/n, where
+α(t) ∈ L1 (λ, Λ) and α
+                     b(0) = 0 = α
+                                b(1).
+
+6.13. Definition. Let 0 < λ < ∞. We let Zλ be the closed subspace of Kλ ⊂ K spanned by the
+            λ , 0 ≤ k < m associated with the non-trivial zeros of the Riemann zeta function
+evaluators Zρ,k            ρ
+and with their (eventual) multiplicities.
+
+
+The main theorem (whose proof takes up the next pages) is:
+
+6.14. Theorem. 1. Let 0 < λ < 1. One has Wλ ⊂ Wλ′ ⊂ Kλ . The subspace Wλ′ is closed
+and equals ∩0<µ<λ Wµ = ∩0<µ<λ Wµ′ . One has Wλ = ∪λ<µ<1 Wµ = ∪λ<µ<1 Wµ′ . One has
+Kλ = Wλ′ ⊥ Zλ .
+2. The set of λ’s for which Wλ ⊂ Wλ′ is a strict inclusion is at most countable.
+3. Let 1 ≤ λ < ∞. One has Kλ = Zλ .
+
+6.15. Definition. Let 0 < λ < 1. We let HPλ be the perpendicular complement in Kλ of Wλ .
+
+
+We thus have HPλ ⊃ Zλ and the question whether this may be strict is interesting (equivalently
+whether Wλ ⊂ Wλ′ may be a strict inclusion). This question is related to the properties of the
+Krein spaces of entire functions of finite exponential type which are associated with the measure
+|ζ( 21 + iτ )|2 dτ /2π on the critical line. From Wλ′ = ∩µ<λ Wµ a strict inclusion may happen only
+for a countable set of λ’s.
+
+As usual our axis of symmetry is the critical line, not the real axis, and we use the Mellin
+transform to define Paley-Wiener functions, not the additive Fourier transform. Let µ be a
+
+                                                 37
+measure on the critical line, and let H = L2 (s = 12 + iτ, dµ). We suppose 1/s ∈ H and
+dµ( 12 + iτ ) = dµ( 12 − iτ ). Let Λ ≥ 1 and let I Λ be the subspace of H of (µ-equivalence classes
+of) functions F (s) which are also entire functions of exponential type at most log(Λ). Let J Λ be
+the subspace of H of functions F (s) which are also entire functions of exponential type strictly
+less than log(Λ) (for Λ = 1 this means J 1 = {0}). It is proven in [29] that I Λ , if it does not
+span H, is a closed subspace. It will then contain the closure of J Λ and the question whether it
+may be strictly larger is subtle. An isometric representation exists, the Krein string, where, if
+the description of the string is complete enough, one may read the answer to the question. We
+do not go into more details and refer the reader to the book [29] which is devoted to the theory
+of the Krein string, and which also contains an introduction to the de Branges theory. The
+following theorem is due to Krein and is also fundamental in the general de Branges theory.
+6.16. Theorem (Krein, [33]). Let F (z) be an entire function which is in the Nevanlinna
+class separately in the half-plane Im(z) > 0 and in the half-plane Im(z) < 0. Then F (z) has
+finite exponential type which is given by the formula
+                                    log |F (iσ)|           log |F (−iσ)|
+                         max(lim sup             , lim sup               )
+                               σ→+∞      σ          σ→+∞         σ
+
+We recall that one possible definition of the Nevanlinna class of a half-plane is as the space
+of quotients of bounded analytic functions. For example it is known that any function in the
+Hardy space of a half-plane is a Nevanlinna function. Krein’s theorem is more complete but we
+only need the result given here. Of course we will be using this theorem with the critical line
+replacing the horizontal axis.
+
+For the following steps we let 0 < λ ≤ 1, Λ = 1/λ, and the notations H, I Λ , J Λ are relative to
+the measure dµ(s) = |ζ(s)|2 dτ /2π on the critical line (s = 21 + iτ ).
+                                                1         dτ
+                                 H = L2 (Re(s) = , |ζ(s)|2 )
+                                                2         2π
+Unfortunately we are unable to describe the associated Krein string. Rather we will explain how
+to isometrically identify the co-Poisson spaces Wλ (resp. Wλ′ ) (here 0 < λ < 1) with subspaces
+of codimension 2 of J Λ (resp. I Λ ). This will be used in the proof of the main theorem 6.14.
+6.17. Lemma. A function G ∈ H is perpendicular to J Λ if and only if it is perpendicular to
+all functions (us − 1)/s for λ ≤ u ≤ Λ. Hence the closure J Λ is also the closure of the finite
+linear combinations (us − 1)/s for λ ≤ u ≤ Λ.
+
+
+Proof. One direction is obvious. Let us now assume that G ⊥ (us − 1)/s for λ ≤ u ≤ Λ. Let
+F ∈ J Λ and let ǫ > 0 be such that the type of F is < log(Λ) − ǫ. We consider
+                                 Z
+                                          eǫs − 1
+                                    F (s)         G(s)|ζ(s)|2 dτ
+                                             s
+If we take F (s) = us with eǫ λ ≤ u ≤ e−ǫ Λ this integral vanishes. Using the Pollard-de Branges-
+Pitt “lemma” (sic) from [29, 4.8., p.108], we deduce that the integral with the original F (s)
+
+                                                38
+vanishes too. Then from |(eǫs − 1)/ǫs| ≤ 2(eǫ/2 − 1)/ǫ and dominated convergence we get the
+desired conclusion.
+
+6.18. Lemma. Let F (s) ∈ I Λ . One has F (s)ζ(s) ∈ N · Λs H2 and also F (1 − s)ζ(s) ∈ N · Λs H2
+(we write H2 for the Hardy space of the right half-plane and we recall that N is the operator of
+multiplication with s/(s − 1).)
+
+
+Proof. The product F (s)ζ(s) belongs to L2 (Re(s) = 1/2, dτ /2π). As I Λ ⊂ J Λ exp(ǫ) for ǫ > 0,
+F (s)ζ(s) is in the closure of finite sums of functions (us − 1)ζ(s)/s for e−ǫ λ ≤ u ≤ e+ǫ Λ. It
+belongs to the closed space N · (eǫ Λ)s H2 as ζ(s)/s itself belongs to N · H2 . We note that this
+space is the image under N of the Mellin transform of L2 ((e−ǫ λ, ∞), dt) so after letting ǫ → 0
+we obtain that F (s)ζ(s) belongs to N · Λs H2 . We note that F (s) → F (1 − s) is an isometry of
+I Λ and the conclusion then follows.
+
+6.19. Theorem. An entire function F (s) belongs to I Λ (i.e. it is in H and of exponential type
+at most log(Λ)) if and only if F (s)ζ(s) is the Mellin transform of an element in Lλ . The space
+I Λ is a closed subspace of H and is isometric through F (s) → ζ(s)F (s) to the subspace of Lλ of
+functions whose Mellin transform vanish at the zeros of the zeta function with at least the same
+multiplicities. For each complex number w the evaluations F 7→ F (w) are continuous linear
+forms on I Λ .
+
+
+Proof. From the lemma ζ(s)F (s) is the Mellin transform of an element of N · L2 ((λ, ∞), dt)
+whose image under F+ also belongs to N ·L2 ((λ, ∞), dt) (as this corresponds to the replacement
+F (s) 7→ F (1 − s)). So the map F (s) → ζ(s)F (s) is an isometric embedding into L        cλ . If an
+element G(s) from L  cλ vanishes at the non-trivial zeros of the zeta function (taking into account
+the multiplicities) then it factorizes as G(s) = F (s)ζ(s) with an entire function F (s) (as G(s)
+also vanishes at the trivial zeros and has at most a pole of order 1 at s = 1). From this, F (s)
+is in the right half-plane in the Nevanlinna class (of quotients of bounded analytic functions)
+because both F (s)ζ(s) and ζ(s) are meromorphic functions in this class. And the same holds in
+the left half-plane, as F+ (G)(s) = F (1 − s)ζ(s). We now use the theorem of Krein 6.16 which
+tells us that the entire function F (s) has finite exponential type given by
+                                    log |F (σ)|           log |F (1 − σ)|
+                         max(lim sup            , lim sup                 )
+                               σ→+∞      σ         σ→+∞          σ
+
+From this formula, and from F (s)ζ(s) ∈ N · Λs H2 , F (1 − s)ζ(s) ∈ N · Λs H2 , and from the fact
+that elements of H2 are bounded in Re(s) ≥ 1/2 + ǫ > 1/2, we deduce that the exponential type
+                                                                                     cλ vanishing
+of F (s) is at most log(Λ). So I Λ is isometrically identified with the functions in L
+at least as ζ(s) does. This space is closed because the evaluators are continuous linear forms
+on Lλ . From this we see that the evaluators F 7→ F (s) are continuous linear forms except
+possibly at the zeros and poles of ζ(s), and the final statement then follows from this and the
+Banach-Steinhaus theorem (as I Λ is a Hilbert space from the preceding).
+
+6.20. Theorem. Let 0 < λ < ∞.
+                λ , k < m , span K if and only if λ ≥ 1.
+1. The vectors Zρ,k      ρ        λ
+
+                                                39
+2. A function α(s) on Re(s) = 1/2 is the Mellin transform of an element of Kλ perpendicular
+to Zλ if and only if:
+      a. It is square integrable on the critical line for dτ /2π.
+      b. One has α(s) = ζ(s)s(s − 1)β(s) with β(s) an entire function of finite exponential type
+at most log(1/λ).
+
+
+Proof. From the existence of Wλ the vectors Zρ,k   λ , k < m , do not span K if λ < 1. Let
+                                                              ρ              λ
+f ∈ (Zλ )⊥ ∩ Kλ . By definition its Mellin transform vanishes at the non-trivial zeros of ζ. It
+also vanishes at the trivial zeros and at 0 so it may be written
+
+                                     fb(s) = s(s − 1)ζ(s)θ(s)
+
+with an entire function θ(s). In the right half-plane θ(s) is in the Nevanlinna class (of quotients
+of bounded analytic functions) because both fb(s) and s(s − 1)ζ(s) are meromorphic in this
+class. From the functional equation one has
+
+                                \
+                                F+ (f )(s) = s(s − 1)ζ(s)θ(1 − s)
+
+So θ(s) is in the Nevanlinna class of the left half-plane. We now use the theorem of Krein 6.16
+and conclude that the entire function θ(s) has finite exponential type which is given as
+
+                                     log |θ(σ)|           log |θ(1 − σ)|
+                          max(lim sup           , lim sup                )
+                                σ→+∞      σ        σ→+∞          σ
+
+This formula (elements of H2 are bounded in Re(s) ≥ 1) shows that the exponential type of θ(s)
+is at most log(1/λ). This shows Zλ = Kλ for λ > 1. Let us prove this also for λ = 1: on the line
+Re(s) = +2 one has fb(s) = O(1) (as it belongs to H2 (Re(s) > 1/2)) hence θ(s) is O(1/s(s − 1)).
+So it is square integrable on this line and by the Paley-Wiener theorem it vanishes identically
+as it is of minimal exponential type.
+
+Conversely, let F (s) = s(s − 1)β(s) be an entire function of finite exponential type at most
+log(1/λ) which is such that α(s) = ζ(s)F (s) is square-integrable on the critical line. From the
+previous theorem F (s) is in the closed subspace I Λ of H and α(s) is the Mellin transform of an
+element f (t) of Lλ . As α(s) is analytic at s = 1 and vanishes at s = 0 one has in fact f ∈ Kλ .
+And α(s) vanishes at the zeros of zeta with at least the same multiplicities, in other words f is
+perpendicular to Zλ .
+
+6.21. Lemma. Any function F in I Λ is O(1) in the closed strip −1 ≤ Re(s) ≤ 2, in particular
+on the critical line.
+
+
+Proof. From the fact that F (s)ζ(s) s−1
+                                     s Λ
+                                         −s is bounded on the line Re(s) = 2 (as it belongs to
+                  2           1
+the Hardy space H (Re(s) > 2 )) one deduces that F (s) is bounded on Re(s) = 2 , hence also
+on Re(s) = −1 (as F (1 − s) also belongs to I Λ .) As it has finite exponential type we may apply
+the Phragmen-Lindelöf theorem to deduce that F (s) is O(1) on this closed vertical strip.
+
+
+                                                40
+6.22. Lemma. Let Λ > 1. Let K Λ be the closure of J Λ in H. Let K0Λ be the subspace of
+functions in K Λ vanishing at 0 and at 1, and similarly let J0Λ be the subspace of J Λ of functions
+vanishing at 0 and at 1. Then K0Λ is the closure of J0Λ .
+
+
+Proof. Let for 1 < µ < Λ:
+                                              (µs/2 − 1)(µs/2 − µ1/2 ) 1
+                                   Aµ (s) =
+                                                log(µ)(1 − µ1/2 )/2 s
+This is an entire function of exponential type log(µ), in H and with Aµ (0) = 1, Aµ (1) = 0. Let
+also Bµ (s) = Aµ (1 − s). Let F ∈ K0Λ and let us write F = lim Fµ with Fµ ∈ J µ , µ < Λ. One
+has Fµ (0) → F (0) = 0 and Fµ (1) → F (1) = 0, because evaluations are continuous linear forms
+on I Λ . So F = lim(Fµ − Fµ (0)Aµ − Fµ (1)Bµ ) (clearly the norms of Aµ and Bµ are bounded as
+µ → Λ).
+
+6.23. Theorem. Let 0 < λ < 1. A function α(s) on Re(s) = 1/2 is the Mellin transform of
+an element of Wλ if and only if:
+1. It is square integrable on the critical line for dτ /2π.
+2. It is in the closure of the square integrable functions α(s) = ζ(s)s(s − 1)β(s) with β(s) an
+entire function of finite exponential type strictly less than log(1/λ).
+
+
+Proof. Let 0 < λ < 1. We have to show W       cλ = K Λ · ζ(s). First let us prove the inclusion
+                                                      0
+W                                                                           b = 0 = φ(0).
+ cλ ⊂ K Λ · ζ(s): let φ(u) be a smooth function with support in [λ, Λ] with φ(1)     b     It is
+        0
+elementary that there exists ψ(u) smooth with support in [λ, Λ] and with φ(s)b = s(s − 1)ψ(s).
+                                                                                          b
+If we now consider for a → 1− the smooth functions φa (u) with support in [λa , Λa ] such that
+ca (s) = s(s − 1)ψ(as)
+φ                b          ca (s)ζ(s) belongs to K Λ · ζ(s) and converge to φ(s)ζ(s)
+                       then φ                                                b        in L2 norm
+                                                          0
+on the critical line as a → 1− .
+
+                                        cλ let F ∈ K Λ . We may approximate F with an element
+For the converse inclusion K0Λ · ζ(s) ⊂ W              0
+of J0Λ , so we may assume F itself to be of positive exponential type log(µ) < log(Λ). Let θ be
+                                                     b
+a smooth function with support in [1/e, e], with θ(1/2)      = 1. Let θbǫ (s) = θ(ǫ(s
+                                                                                b     − 1/2) + 1/2).
+            b
+Let Fǫ = θǫ F . In H the functions Fǫ converge to F . From 6.21 we know that F is O(1) on the
+critical line so the functions Fǫ are O(|s|−N ) for any N ∈ N. From the Paley-Wiener theorem
+they are the Mellin transforms of L2 functions fǫ (t) with support in [e−ǫ µ−1 , eǫ µ]. For ǫ small
+enough this will be included in [λ, Λ]. From the decrease on the critical line the functions fǫ (t)
+are smooth. As fbǫ (0) = 0 = fbǫ (1) this tells us that Fǫ (s)ζ(s) is the Mellin transform of a co-
+Poisson summation of a smooth function, and this implies that F (s)ζ(s) belongs to the (Mellin
+transform of) Wλ , as Wλ is defined as the closure of the co-Poisson summations of smooth
+functions whose Mellin transforms vanish at 0 and at 1.
+
+6.24. Theorem. Let F (s) be an entire function of finite exponential type. Then
+            Z                                       Z
+                      |F (s)|2 |ζ(s)|2 |ds| < ∞ =⇒            |F (s)|2 |ds| < ∞
+                 Re(s)=1/2                                    Re(s)=1/2
+
+
+
+
+                                                     41
+Proof. We want to prove that any function F (s) in I Λ is square-integrable for the Lebesgue
+measure on the critical line. We know from 6.21 that it is O(1) in the closed strip −1 ≤
+Re(s) ≤ 2. From this, if for s in this open strip we express F (s) as a Cauchy integral with
+contributions from the two vertical sides and two horizontal segments, the contribution of the
+horizontal segments will vanish when they go to infinity. So:
+                               Z                     Z
+                                        F (z) |dz|              F (z) |dz|
+                      F (s) =                      −
+                                Re(s)=2 z − s 2π       Re(s)=−1 z − s 2π
+
+On Re(s) = 2, F (s) is square integrable because F (s)ζ(s) s−1
+                                                             s Λ
+                                                                −s is, as it belongs to H2 (Re(s) >
+1                                                         2
+2 ). It is an important fact that Cauchy integrals of L functions on vertical line realize the
+orthogonal projection to the Hardy space of the corresponding half-plane. Hence the first
+integral above defines a function square-integrable on each vertical line Re(s) < 2. And the
+second integral similarly for Re(s) > −1 (F (1 − s) satisfies the same hypotheses as F (s)). So
+F (s) is square-integrable on the critical line (and in fact on each vertical line in the complex
+plane.)
+
+
+The next theorem establishes Kλ = Wλ′ ⊥ Zλ :
+
+6.25. Theorem. Let λ < 1. The                          ⊥
+                                  Pfunctions A(u) in Zλ ∩ Kλ are exactly the square-integrable
+functions which may be written n≥1 g(u/n)/n, with an integrable function g(u) supported in
+                     R∞
+[λ, Λ] and such that 0 g(u)du = gb(0) = 0. The function g(u) is necessarily square-integrable
+                                 R∞
+and necessarily satisfies gb(1) = 0 g(u)
+                                      u du = 0.
+                                                                           P
+6.26. Note. PBy a variant on the Mœbius inversion formula from A(u) = n≥1 g(u/n)/n one
+has g(u) = n≥1 µ(m)A(u/m)/m (and this is a finite sum for each u > 0) in case A (hence g
+and conversely) has support in (λ, ∞). It involves then in a neighborhood of each u > 0 only
+finitely many terms. If g(u) has support in [λ, Λ] we can express it on this interval as a finite
+combination of A(u/m)/m’s. So if A is L2 then g had to be L2 to start with. Also we will see
+                     R∞
+that if A is L2 then 0 g(u) u du necessarily vanishes.
+
+
+
+Proof. Let A ∈ Zλ⊥ ∩ Kλ and α(s) = A(s).   b      We know that α(s) = ζ(s)F (s) with F (s) an
+entire function vanishing at 0 and 1 and of exponential type at most log(Λ). From 6.24 we
+know that F (s) is square-integrable on the critical line for the Lebesgue measure. So the Paley-
+Wiener theorem implies F (s) = b    g(s) with g(u) ∈ L2 ([λ, Λ]). P We have our function g(u) in
+  2
+L (λ, Λ) and we want to show that A(u) is equal to B(u) =              n≥1 g(u/n)/n. From Fubini
+R∞                                      R∞
+            −s                  b               −s
+  λ B(u)u du = ζ(s)b    g (s) = A(s) = λ A(u)u du for Re(s) > 1 and so B(u) = A(u) (almost
+everywhere from the unicity theorem for Fourier transformsP      of L1 -functions). We have shown
+that each A ∈ Zλ⊥ ∩ Kλ may be written (uniquely) as n≥1 g(u/n)/n with g ∈ L2 ((λ, Λ), du),
+gb(0) = gb(1) = 0. So it belongs to Wλ′ .
+                                                               P
+For the converse let g ∈ L2 ((λ, Λ), du) be such that A(u) =   n≥1 g(u/n)/n is square-integrable.
+
+
+
+
+                                                42
+Its distribution theoretic Fourier transform is (from 4.2):
+                                        
+                            X                X
+                       F      g(u/n)/n =        g(n/u)/u − b
+                                                             g(0) + b
+                                                                    g(1)δ0
+                            n≥1                n≥1
+
+
+This distribution must coincide with the function which is the L2 -Fourier transform of A(u)
+and so the square-integrability of A(u) implies the vanishing of gb(1).
+                                                                      P
+If we impose b
+             g(0) = 0 the Fourier transform of A(u) is the function n≥1 g(n/u)/u which again
+vanishes on (0, λ). So A belongs to Kλ . Its Mellin transform is an entire function which by Fubini
+for Re(s) > 1 equals ζ(s)bg (s) hence also everywhere. The vector A(u) is thus perpendicular to
+              λ , which means that A ∈ Z ⊥ . This completes the proof of K = W ′ ⊥ Z .
+the vectors Zρ,k                            λ                                   λ     λ     λ
+
+
+
+We also take note of:
+                               ·
+6.27. Proposition. The map “ ζ(s) ” from Wλ′ to L2 (λ, Λ) is bounded.
+
+
+Proof. Each g(u) is expressed (on (λ, Λ)) as a finite Mœbius sum in terms of the A(u/m)/m’s,
+with a number of summands independent of A.
+
+
+The main theorem sums up almost everything that preceded:
+
+6.28. Theorem (6.14). 1. Let 0 < λ < 1. One has Wλ ⊂ Wλ′ ⊂ Kλ . The subspace Wλ′ is
+closed and equals ∩0<µ<λ Wµ = ∩0<µ<λ Wµ′ . One has Wλ = ∪λ<µ<1 Wµ = ∪λ<µ<1 Wµ′ . One has
+Kλ = Wλ′ ⊥ Zλ .
+2. The set of λ’s for which Wλ ⊂ Wλ′ is a strict inclusion is at most countable.
+3. Let 1 ≤ λ < ∞. One has Kλ = Zλ .
+
+
+Proof. The basic inclusions Wλ ⊂ Wλ′ ⊂ Kλ are a corollary to the co-Poisson intertwining
+formula. One has Kλ = Zλ for λ ≥ 1 from Theorem 6.20. Let 0 < λ < 1. From Theorem
+6.25 we have identified Wλ′ as the perpendicular component in Kλ of Zλ . From Theorem
+6.20 Wλ′ is isometrically identified with the closed subspace of L2 (Re(s) = 12 , |ζ(s)|2 dτ /2π) of
+(restrictions) of entire functions F (s) of exponential type at most log(1/λ) and vanishing at
+0 and at 1. Hence Wλ′ = ∩0<µ<λ Wµ′ . From Theorem 6.23 Wλ is isometrically identified with
+the closure in L2 (Re(s) = 21 , |ζ(s)|2 dτ /2π) of entire functions F (s) of exponential type strictly
+less than log(1/λ) and vanishing at 0 and at 1. Hence Wλ = ∪λ<µ<1 Wµ . Also λ < µ < 1 ⇒
+Wλ ⊃ Wµ′ ⊃ Wµ (the last inclusion as Wµ′ is known to be closed). Hence Wλ = ∪λ<µ<1 Wµ′ .
+Also Wλ′ ⊂ ∩0<µ<λ Wµ . We know Kλ = ∩0<µ<λ Kµ , hence an element f (t) in ∩0<µ<λ Wµ
+belongs to Kλ and has its Mellin transform vanishing at least as the zeta function does. From
+Kλ = Wλ′ ⊥ Zλ it belongs to Wλ′ . Hence Wλ′ = ∩0<µ<λ Wµ . A non-countable set of exceptional
+λ’s contradicts the separability of K.
+
+
+
+                                                 43
+We briefly explain how some of the considerations extend to Dirichlet L-series. For an odd
+character the cosine transform F+ is replaced with the sine transform F− , so we will stick with
+an even (primitive)
+          P          Dirichlet character: χ(−1) = 1. Let us recall the functional equation of
+L(s, χ) = n≥1 χ(n)n−s :
+
+                             L(s, χ) = wχ q −s+1/2 χ+ (s)L(1 − s, χ)
+
+
+where wχ is a certain complex number of modulus 1 and q is the conductor (= period) of the
+primitive character χ. One has wχ = wχ . Tate’s Thesis [43] gives a unified manner of deriving all
+these functional equations as a corollary to the one-and-only Poisson-Tate intertwining formula
+on adeles and ideles (and additional local computations). A reference for the more classical
+approach is, for example, [27] (for easier comparison with the classical formula, we have switched
+from L(χ, s) to L(s, χ)). The Poisson-Tate formula specializes to twisted Poisson summation
+formulae on R, or rather on the even functions on R as we are dealing only with even characters.
+
+Let φ(t) be an even Schwartz function, and let:
+                                              X
+                                 Pχ (φ)(t) =    χ(n)φ(nt)
+                                                  n≥1
+
+
+                                                                                R∞
+We suppose here that χ is not the principal character so there is no term −( 0 φ(u)du)/|t|
+(which was engineered to counterbalance the pole of the Riemann zeta function at s = 1). At
+the level of (right) Mellin transforms Pχ corresponds to multiplication by L(1 − s, χ).
+
+So the composite Pχ F+ = Pχ F+ II acts on right Mellin transforms as:
+
+                  b 7→ L(1 − s, χ)χ+ (s)φ(1
+                  φ(s)                                             b − s)
+                                        b − s) = wχ q s−1/2 L(s, χ)φ(1
+
+and this gives the χ-Poisson intertwining:
+
+                                       Pχ F+ = wχ Dq IPχ
+
+where Dq is the contraction of ratio q which acts through multiplication by q s−1/2 on Mellin
+                          √
+transforms and as f (t) 7→ qf (qt) on L2 (0, ∞). Let us define the χ-co-Poisson Pχ′ on smooth
+even functions compactly supported away from 0 as:
+                                                  X            φ(t/n)
+                                   Pχ′ (φ)(t) =         χ(n)
+                                                                 n
+                                                  n≥1
+
+
+
+We have Pχ′ = IPχ I, and Pχ′ is the scale invariant operator with multiplier (under the right
+Mellin transform) L(s, χ). From the commutativity of Pχ with Γ+ = F+ I and the χ-Poisson
+intertwining we get the χ-co-Poisson intertwining:
+
+                      F+ Pχ′ = F+ IPχ I = Pχ F+ = wχ Dq IPχ = wχ Dq Pχ′ I
+
+                                                  44
+The placement of the operator Dq on the right-side of the Intertwining equation is very im-
+portant ! If the even function α(t) is supported in (0, ∞) on [λ1 , λ2 ] then its χ-co-Poisson
+summation f (t) will be supported in [λ1 , ∞) and the Fourier cosine transform of f (t) will be
+supported in [1/(qλ2 ), ∞). The product of the lower ends of these two intervals is strictly less
+than 1/q (if α is not identically zero). So this means that we obtain (non-zero) functions which
+                                                                              √
+together with their cosine transform are supported in [λ, ∞[ only for λ < 1/ q.
+
+We let Wλχ ⊂ Kλ be the closure of such χ-twisted co-Poisson summations. The Mellin transforms
+of the functions in Wλχ are the functions L(s, χ)bα(s) where α(t) is a smooth function compactly
+                                       √                 λ is (Hilbert-)perpendicular to W χ if and
+supported in [λ, Λ/q] (Λ = 1/λ, Λ > q). A vector Zρ,k                                        λ
+          λ is Euclid-perpendicular to W χ if and only if ρ is a (non-trivial) zero of L(s, χ) of
+only if Zρ,k                                λ
+multiplicity strictly greater than k, if and only ρ is a (non-trivial) zero of L(s, χ) of multiplicity
+strictly greater than k. So:
+                                √               λ ∈ K is perpendicular to W χ if and only if w
+6.29. Theorem. Let λ < 1/ q. A vector Zw,k               λ                        λ
+is a non-trivial zero ρ of the Dirichlet L-function L(s, χ) of multiplicity mρ > k.
+
+
+We conclude with a statement whose analog we have already stated and proven for the Riemann
+zeta function. The proof is only slightly more involved, but as the statement is so important
+we retrace the steps here.
+
+6.30. Theorem. The vectors Zρ,k    λ ∈ K , L(ρ, χ) = 0, 0 ≤ k < m , associated with the non-
+                                          λ                           ρ
+trivial zeros of the Dirichlet L-function (and with their multiplicities) span Kλ if and only if
+        √
+λ ≥ 1/ q.
+
+                                      √                                                    √
+Proof. They can not span if λ < 1/ q from the existence of Wλχ . Let us suppose λ ≥ 1/ q.
+Let fb(s) be the Mellin Transform of an element of Kλ which is (Hilbert)-perpendicular to all
+  λ , L(ρ, χ) = 0 (non-trivial), 0 ≤ k < m . This says that f (s) vanishes at the ρ’s. We know
+Zρ,k                                         ρ
+already that f (s) vanishes at the trivial zeros. So one has:
+
+                                        fb(s) = L(s, χ)θ1 (s)
+
+with an entire function θ1 (s). The image of f under the unitary F+ will be Hilbert-perpendicular
+         λ ) = (−1)k Z λ
+to F+ (Zρ,k             1−ρ,k and so F+ (f ) is Euclid-perpendicular to the vectors associated to
+the 1 − ρ, which are the zeros of L(s, χ), hence:
+
+                                      \
+                                      F+ (f )(s) = L(s, χ)θ2 (s)
+
+with an entire function θ2 (s). From the functional equation:
+
+                                    \
+                                    F                  b
+                                     + (f )(s) = χ+ (s)f (1 − s)
+
+we get
+                             χ+ (s)L(1 − s, χ)θ1 (1 − s) = L(s, χ)θ2 (s)
+
+
+                                                 45
+and combining with
+                                    L(s, χ) = wχ q −s+1/2 χ+ (s)L(1 − s, χ)
+this gives:
+                                         θ1 (1 − s) = wχ q −s+1/2 θ2 (s)
+Using Krein’s theorem [33] we deduce that F (s) = q −(s−1/2)/2 θ1 (s) has finite exponential type
+which is equal to
+                                   log |F (σ)|           log |F (1 − σ)|
+                       max(lim sup             , lim sup                 )
+                             σ→+∞       σ         σ→+∞          σ
+and from L(σ, χ) →σ→+∞ 1 we see that the exponential type of F (s) is at most
+                                       √                 √                   √
+                      max(log(Λ) − log( q), log(Λ) − log( q)) = log(Λ) − log( q)
+                                         √                  √
+This concludes the proof when λ > 1/ q. When λ = 1/ q, we see that q −(s−1/2)/2 θ1 (s)
+has minimal exponential type. But from fb(s) = L(s, χ)θ1 (s) we deduce that θ1 (s) is square-
+integrable on the line Re(s) = 2. By the Paley-Wiener theorem it thus vanishes identically.
+
+
+
+7        Speculations on the zeta function, the renormalization group,
+         duality
+
+We turn now to some speculative ideas concerning the zeta function, the GUE hypothesis and
+the Riemann hypothesis. When we wrote our (unpublished) manuscript “The Explicit formula
+and a propagator” we had already spent some time trying to think about the nature of the zeta
+function. Our conclusion, which had found some kind of support with the conductor operator
+log |x| + log |y|, stands today. The spaces HPλ and especially Theorem 6.30 have given us for
+the first time a quite specific signal that it may hold some value. What is more Theorem 6.30
+has encouraged us into trying to encompass in our speculations the GUE hypothesis1 , and more
+daring and distant yet, the Riemann Hypothesis Herself.
+
+We are mainly inspired by the large body of ideas associated with the Renormalization Group,
+the Wilson idea of the statistical continuum limit, and the unification it has allowed of the
+physics of second-order phase transitions with the concepts of quantum field theory. Our gen-
+eral philosophical outlook had been originally deeply framed through the Niels Bohr idea of
+complementarity, but this is a topic more distant yet from our immediate goals, so we will leave
+this aside here.
+
+We believe that the zeta function is analogous to a multiplicative wave-field renormalization.
+We expect that there exists some kind of a system, in some manner rather alike the Ising
+models of statistical physics, but much richer in its phase diagram, as each of the L-function
+will be associated to a certain universality domain. That is we do not at all attempt at realizing
+the zeta function as a partition function. No the zeta function rather corresponds to some
+    1
+        i.e. the “Montgomery-Dyson proposal” [36] or “Montgomery-Odlyzko law” [38].
+
+                                                       46
+kind of symmetry pattern2 appearing at low temperature. But the other L-functions too may
+themselves be the symmetry where the system gets frozen at low temperature.
+
+Renormalization group trajectories flow through the entire space encompassing all universality
+domains, and perhaps because there are literally fixed points, or another more subtle mechanism,
+this gives rise to sets of critical exponents associated with each domain: the (non-trivial) zeros
+of the L-functions. So there could be some underlying quantum dynamics, but the zeros arise
+at a more classical level3 , at the level of the renormalization group flow.
+
+The Fourier transform as has been used constantly in this manuscript will correspond to a simple
+symmetry, like exchanging all spins up with all spins down. The functional equations reflect
+this simple-minded symmetry and do not have a decisive significance in the phase picture.
+
+But we do believe that some sort of a much more hidden thing exist, a Kramers-Wannier like
+duality exchanging the low temperature phase with a single hot temperature phase, not number-
+theoretical. If this were really the case, some universal properties would hold across all phases,
+reflecting the universality examplified by the GUE hypothesis. Of course the hot phase is then
+expected to be somehow related with quantities arising in the study of random matrices. In
+the picture from Theorem 6.30, λ seems to play the rôle of a temperature (inverse of coupling
+constant).
+
+We expect that if such a duality did reign on our space it would interact in such a manner
+with the renormalization group flow that this would give birth to scattering processes. Indeed
+the duality could be used to compare incoming to outgoing (classical) states. Perhaps the
+constraints related with this interaction would result in a property of causality equivalent to
+the Riemann Hypothesis.
+
+Concerning the duality at this time we can only picture it to be somehow connected with the
+Artin reciprocity law, the ideas of class field theory and generalizations thereof. So here our
+attempt at being a revolutionary ends in utmost conservatism.
+
+B. Riemann, Über die Anzahl der Primzahlen unter einer gegebenen Grösse, Monatsber. Akadem. Berlin,
+671-680, (1859).
+
+N. Bohr, The Philosophical Writings of Niels Bohr, Ox Bow Press, Woodbridge, Connecticut.
+     Volume I: Atomic Theory and the Description of Nature (1934)
+     Volume II: Essays 1932-1957 on Atomic Physics and Human Knowledge (1958)
+     Volume III: Essays 1958-1962 on Atomic Physics and Human Knowledge (1963)
+     Volume IV: Causality and Complementarity, Supplementary papers edited by Jan Faye and Henry
+     J. Folse, (1999).
+   2
+     Of course in statistical physics, symmetry is restored at high temperature and broken at low temperature.
+But this is from a point of view where a continuum is considered more symmetric than a lattice as it has a larger
+symmetry group. So here we are using the word “symmetry” under a more colloquial acceptation.
+   3
+     “classical” in its kinematics: understanding the flow of coupling constants of a quantum theory with infinitely
+many degrees of freedom has become almost synonymous with understanding its “quantum physics”.
+
+
+
+
+                                                        47
+K.G. Wilson, The renormalization group and critical phenomena, Rev. Mod. Phys. 55 (1983), 583-600.
+
+
+
+References
+
+ [1] L. Báez-Duarte, A class of invariant unitary operators, Adv. in Math. 144 (1999), 1-12.
+ [2] L. Báez-Duarte, A strengthening of the Nyman-Beurling criterion for the Riemann Hypothesis,
+     Rendiconti Accademia dei Lincei, to appear.
+ [3] L. Báez-Duarte, M. Balazard, B. Landreau and E. Saias, Notes sur la fonction ζ de Riemann 3,
+     Adv. in Math. 149 (2000), 130-144.
+ [4] M. Balazard, E. Saias, The Nyman–Beurling equivalent form for the Riemann hypothesis, Expo.
+     Math. 18 (2000), 131–138.
+ [5] A. Beurling, On two problems concerning linear transformations in Hilbert space, Acta Mathematica
+     81 (1949), 239–255.
+ [6] A. Beurling, A closure problem related to the Riemann Zeta–function, Proc. Nat. Acad. Sci. 41
+     (1955), 312-314.
+ [7] L. de Branges, Self-reciprocal functions, J. Math. Anal. Appl. 9 (1964) 433–457.
+ [8] L. de Branges, Hilbert spaces of entire functions, Prentice Hall Inc., Englewood Cliffs, 1968.
+ [9] L. de Branges, The Riemann hypothesis for Hilbert spaces of entire functions, Bull. Amer. Math.
+     Soc. (N.S.) 15 (1986), no. 1, 1–17.
+[10] L. de Branges, The convergence of Euler products, J. Funct. Anal. 107 (1992), no. 1, 122–210.
+[11] L. de Branges, A conjecture which implies the Riemann hypothesis, J. Funct. Anal. 121 (1994), no.
+     1, 117–184.
+[12] J.-F. Burnol, The Explicit Formula and a propagator, 21 p., math/9809119 (1998).
+     The Explicit Formula in simple terms, 25 p., math/9810169 (1998).
+     Spectral analysis of the local conductor operator, 12 p., math/9811040 (1998).
+     Spectral analysis of the local commutator operators, 16 p., math/9812012 (1998).
+     The explicit formula and the conductor operator, 28p. math/9902080 (1999).
+[13] J.-F. Burnol, Sur les formules explicites I: analyse invariante, C. R. Acad. Sci. Paris 331 (2000),
+     Série I, 423-428.
+[14] J.-F. Burnol, Scattering on the p-adic field and a trace formula, Int. Math. Res. Not. 2000:2 (2000),
+     57-70.
+[15] J.-F. Burnol, An adelic causality problem related to abelian L−functions, J. Number Theory 87
+     (2001), no. 2, 253-269.
+[16] J.-F. Burnol, Quaternionic gamma functions and their logarithmic derivatives as spectral functions,
+     Math. Res. Lett. 8 (2001), no. 1-2, 209-223.
+[17] J.-F. Burnol, A note on Nyman’s equivalent formulation for the Riemann Hypothesis, in Algebraic
+     Methods in Probability and Statistics, Viana M. & Richards D. eds, Contemp. Math. 287, 23-26,
+     American Mathematical Society, Providence, RI, 2001.
+[18] J.-F. Burnol, A lower bound in an approximation problem involving the zeros of the Riemann zeta
+     function, Adv. in Math. 170 (2002), 56-70.
+
+                                                   48
+[19] J.-F. Burnol, Sur certains espaces de Hilbert de fonctions entières, liés à la transformation de Fourier
+     et aux fonctions L de Dirichlet et de Riemann, C. R. Acad. Sci. Paris 333 (2001), série I, 201-206.
+[20] J.-F. Burnol, On an analytic estimate in the theory of the Riemann Zeta function and a Theorem
+     of Báez-Duarte, math/0202166, February 2002.
+[21] J.-F. Burnol, Two complete and minimal systems associated with the zeros of the Riemann zeta
+     function, math/0203120, March 2002.
+[22] J.-F. Burnol, Sur les “Espaces de Sonine” associés par de Branges à la transformation de Fourier,
+     C. R. Acad. Sci. Paris 335 (2002), série I, 689-692.
+[23] J.-F. Burnol, Co-Poisson intertwining: distribution and function theoretic aspects, in preparation.
+[24] A. Connes, Formule de trace en géométrie non-commutative et hypothèse de Riemann, C. R. Acad.
+     Sci. Paris 323 (1996), Série I, 1231-1236.
+[25] A. Connes, Trace formula in non-commutative Geometry and the zeros of the Riemann zeta function,
+     Selecta Math. (N.S.) 5 (1999) , no. 1, 29–106.
+[26] J. B. Conrey, X-J. Li, A note on some positivity conditions related to zeta and L-functions, Internat.
+     Math. Res. Notices (2000), no. 18, 929–940.
+[27] H. Davenport, Multiplicative number theory, Third edition. Revised and with a preface by Hugh L.
+     Montgomery. Graduate Texts in Mathematics, 74. Springer-Verlag, New York, 2000.
+[28] H. Dym, H.P. McKean, Fourier Series and Integrals, Academic Press, 1972.
+[29] H. Dym, H.P. McKean, Gaussian processes, function theory, and the inverse spectral problem, Proba-
+     bility and Mathematical Statistics, Vol. 31. Academic Press [Harcourt Brace Jovanovich, Publishers],
+     New York-London, 1976.
+[30] I.M. Gel’fand, M.I. Graev, I.I. Piateskii-Shapiro, Representation Theory and automorphic functions,
+     Philadelphia, Saunders (1969).
+[31] A.P. Guinand, A summation formula in the theory of prime numbers, Proc. London Math. Soc. (2)
+     50, (1948), 107–119.
+[32] S. Haran, Riesz potentials and explicit sums in arithmetic, Invent. Math. 101 (1990), 697-703.
+[33] M.G. Krein, Theory of entire functions of exponential type (in Russian), Izv. Akad. Nauk. SSSR,
+     Ser. Mat. 11 (1947), No. 4, 309-326.
+[34] P. Lax, Translation invariant subspaces, Acta Mathematica 101 (1959), 163–178.
+[35] P. Lax, R. S. Phillips, Scattering Theory, (1st ed. 1967), Rev. Ed., Pure and Applied Mathematics,
+     v.26, Academic Press, 1989.
+[36] H. Montgomery, The pair correlation function of zeros of the zeta function, Analytic Number Theory
+     (H. G. Diamond, ed.) Proc. Sympos. Pure Math., 24, Amer. Math. Soc. (1973) 181–193.
+[37] B. Nyman, On the One-Dimensional Translation Group and Semi-Group in Certain Function
+     Spaces, Thesis, University of Uppsala, 1950. 55 pp.
+[38] A. M. Odlyzko, The 1020 th zero of the Riemann zeta function and 70 million of its neighbors, ATT
+     Bell Laboratories preprint, 1989.
+[39] V. Rovnyak, Self-reciprocal functions, Duke Math. J. 33 (1966) 363–378.
+[40] J. Rovnyak, V. Rovnyak, Self-reciprocal functions for the Hankel transformation of integer order,
+     Duke Math. J. 34 (1967) 771–785.
+
+                                                      49
+[41] J. Rovnyak, V. Rovnyak, Sonine spaces of entire functions, J. Math. Anal. Appl. 27 (1969) 68–100.
+[42] N. Sonine, Recherches sur les fonctions cylindriques et le développement des fonctions continues en
+     séries, Math. Ann. 16 (1880), 1–80.
+[43] J. Tate, Fourier Analysis in Number Fields and Hecke’s Zeta Function, Thesis, Princeton 1950, in
+     Algebraic Number Theory, Cassels J.W.S., Fröhlich A. eds., Academic Press, 1967.
+[44] E. C. Titchmarsh, Introduction to the Theory of Fourier Integrals, Clarendon Press, Oxford, 2nd
+     ed., 1948.
+[45] E. C. Titchmarsh, The Theory of the Riemann-Zeta Function, 2nd ed. Edited and with a preface
+     by D. R. Heath-Brown, Clarendon Press, Oxford, 1986.
+[46] A. Weil, Sur les “formules explicites” de la théorie des nombres premiers, Comm. Sem. Math. Univ.
+     Lund (1952) Volume dedicated to Marcel Riesz, 252–265. Oeuvres, Vol. II.
+[47] A. Weil, Sur les formules explicites de la théorie des nombres, Izv. Mat. Nauk. (Ser. Mat.) 36 (1972),
+     3-18. Oeuvres, Vol. III.
+[48] A. Weil, Basic Number Theory, 3rd ed., Springer–Verlag, 1974.
+
+
+
+
+                                                    50
+

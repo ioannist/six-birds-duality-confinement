@@ -1,0 +1,148 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\XiRMT}{\Xi_{\mathrm{RMT}}}
+\newcommand{\CRE}{\mathrm{CRE}}
+
+\title{Step 188: Random Matrix Theory Carrier Pivot}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{RMT\_verdict}=V_{\mathrm{RMT\_outside\_dichotomy\_scope}}.}
+\]
+
+Random Matrix Theory is a statistical evidence and consistency-checking
+carrier for zeta-zero data.  It is not a closure carrier for RH and therefore
+does not refute the Framework RH-Carrier Dichotomy.  Instead it refines the
+domain: the dichotomy applies to RH-analogous closure carriers, not to
+statistical evidence carriers.
+
+\section*{Inherited Record Audit}
+
+The inherited records do not provide an accepted RMT carrier package.  The
+closest local records are the Hilbert--Polya/Berry--Keating pivot and the
+Step 187 dichotomy theorem.  Those records concern spectral closure carriers,
+whereas RMT supplies statistical laws for spectra.  Therefore the RMT carrier
+must be declared directly from the classical RMT literature.
+
+\section*{Carrier Declaration}
+
+\begin{definition}[RMT statistical comparison carrier]
+Let
+\[
+C_{\mathrm{RMT}}(N,T)=(M_N,Z_T),
+\]
+where \(M_N\) is either a GUE Hermitian random matrix or a CUE Haar-random
+unitary matrix, and
+\[
+Z_T=\{\gamma_j:0<\gamma_j\le T\}
+\]
+is the zeta-zero ordinate data after the critical-line normalization has been
+chosen.  The matrix side is scaled to mean spacing one, and the zeta side is
+locally normalized by the usual zero-density factor.
+\end{definition}
+
+The native probes are:
+\begin{itemize}
+\item pair correlation \(R_2\);
+\item \(n\)-level correlations \(R_n\);
+\item nearest-neighbor spacing statistics;
+\item characteristic-polynomial moment statistics.
+\end{itemize}
+The dissolving probes are computed zero ordinates and empirical
+spacing/correlation/moment data.
+
+\section*{RMT Residual}
+
+Define \(\XiRMT\) as a statistical distance between RMT predictions and
+zeta-zero data.  Examples include:
+\[
+\|\rho^{\zeta}_2-\rho^{\mathrm{GUE}}_2\|_{L^2(w)}^2,
+\]
+a Kolmogorov--Smirnov distance for spacing distributions, \(n\)-level
+correlation discrepancy, or moment discrepancy between zeta moments and
+characteristic-polynomial moment predictions.
+
+Thus
+\[
+\XiRMT=0
+\]
+means exact or asymptotic statistical agreement with the chosen random-matrix
+ensemble.  It does not mean that RH has been proved.
+
+\section*{CRE Audit}
+
+\begin{center}
+\begin{tabular}{p{0.30\linewidth}p{0.18\linewidth}p{0.42\linewidth}}
+\toprule
+Question & Answer & Reason\\
+\midrule
+Is \(\XiRMT=0\) equivalent to RH? & no
+& exact GUE/CUE agreement is statistical agreement, not a theorem that all
+zeros lie on the critical line\\
+Does RMT require RH to state cleanly? & yes
+& standard normalized zero statistics use an ordered critical-line sequence
+\(\gamma_j\)\\
+Is RMT a non-CRE proved RH analog? & no
+& it is not the zeta function of a separate object with a proved RH analog\\
+CRE status & not closure carrier
+& RMT is evidence/consistency machinery, not a residual-closing carrier\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Montgomery's pair-correlation theorem/conjecture is not used as an
+unconditional RH proof.  In the standard form relevant here it is conditional
+on RH and restricted test-function support.  Odlyzko's computations are
+powerful numerical evidence, and Keating--Snaith supplies moment predictions,
+but neither is a closure theorem for RH.
+
+\section*{Dichotomy Applicability}
+
+The Step 187 dichotomy classifies typed carriers aimed at closing an
+RH-analogous statement about an \(L\)-function or zeta function.  RMT does not
+define such an \(L_C\) with a native RH statement.  It defines statistical
+comparators for Riemann-zero data.
+
+Therefore
+\[
+\boxed{\text{RMT is outside the dichotomy scope, not a refutation.}}
+\]
+The coverage conjecture remains unchanged on closure carriers, with the
+domain refined to exclude statistical evidence carriers.
+
+\section*{Classical References}
+
+\begin{itemize}
+\item H. Montgomery, 1973, pair correlation of zeta zeros: pair-correlation
+theorem/conjecture in RH-conditional restricted-test context.
+\item A. Odlyzko, numerical computations of high zeta zeros and GUE
+statistics.
+\item J. P. Keating and N. C. Snaith, 2000: CUE characteristic-polynomial
+model for zeta moments.
+\item P. Diaconis and M. Shahshahani, 1994: random unitary matrix trace and
+eigenvalue statistics.
+\end{itemize}
+
+\section*{Nonclaim Boundary}
+
+This step does not prove RH and does not claim that RMT proves or disproves
+RH.  It does not treat pair correlation as an unconditional proof.  It does
+not claim exact GUE/CUE agreement implies RH without a separate critical-line
+theorem.  It only classifies RMT as a statistical evidence carrier outside the
+strict closure-carrier domain of the dichotomy.
+
+\end{document}

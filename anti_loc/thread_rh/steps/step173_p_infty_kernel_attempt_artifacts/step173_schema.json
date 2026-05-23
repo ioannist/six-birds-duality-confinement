@@ -1,0 +1,93 @@
+{
+  "step": 173,
+  "orientation": "adequacy",
+  "gap_attacked": "K_infty(s,s') Mellin kernel of P_infty",
+  "inherited_records": [
+    {
+      "record": "Step102",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step102_projection_residual_artifacts/semilocal_projection_residual_step102.tex",
+      "quoted_form": "P_infty is the archimedean Sonin/prolate projection."
+    },
+    {
+      "record": "Step104",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step104_shifted_sonin_artifacts/shifted_sonin_compactness_step104.tex",
+      "quoted_form": "H=L^2(R); P_lambda is cutoff onto [-lambda,lambda]; Phat_lambda=F^{-1}P_lambda F; S_lambda=ker P_lambda cap ker Phat_lambda; S_lambda is the orthogonal projection onto that space."
+    },
+    {
+      "record": "Step153",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step153_extracted/pulled_evaluator_kernel_step153.tex",
+      "quoted_form": "T_a=M_Gamma J_a U_infty^{-1}; U_infty is the archimedean Hardy--Titchmarsh/Mellin realization; U_infty(J_a^*Y^a_{w,k})=T_a^* partial_{bar w}^k K_a^Gamma(.,w)."
+    },
+    {
+      "record": "Step154",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step154_extracted/projected_sonine_commutator_step154.tex",
+      "quoted_form": "C_l=(I-P_infty)M_{m_l}P_infty; in Mellin variables the residual uses (I-mathsf P_infty)M_{m_l}mathsf P_infty."
+    },
+    {
+      "record": "Step162",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step162_calkin_algebra_source_audit_artifacts/operator_generator_ledger_step162.csv",
+      "quoted_form": "P_infty, archimedean/Sonin projection, Burnol/Sonine pulled-evaluator Hilbert context."
+    },
+    {
+      "record": "Step170",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step170_zi_cov_attack_artifacts/step170_zi_cov_attack.tex",
+      "quoted_form": "mathsf P_infty=U_infty P_infty U_infty^{-1}; inherited records do not give K_infty(s,s')."
+    },
+    {
+      "record": "Step171",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step171_jet_surjectivity_attack_artifacts/step171_jet_surjectivity_attack.tex",
+      "quoted_form": "L_{rho,k}(G)=<M_zeta G, mathsf P_infty y_{rho,k}>; five structural routes reduce to the missing kernel/range-evaluator matrix."
+    }
+  ],
+  "derivation_chain": [
+    {
+      "stage": "T2a",
+      "attempt": "PSWF spectral expansion",
+      "intermediate_result": "S_lambda=I-P-(I-P)Q(I_{QH}-QPQ)^{-1}Q(I-P), with Q=Phat_lambda. PSWFs diagonalize QPQ, giving S_lambda=I-P-sum |(I-P)phi_n><(I-P)phi_n|/(1-mu_n).",
+      "status": "succeeds as exact operational identity"
+    },
+    {
+      "stage": "T2b",
+      "attempt": "Direct integral kernel",
+      "intermediate_result": "Spatial kernel is delta-P_lambda kernel minus the PSWF-tail projection series. The naive inclusion-exclusion delta-P-Q+cross is replaced by the inverse (I_{QH}-QPQ)^{-1}.",
+      "status": "succeeds as distribution/strong-kernel formula"
+    },
+    {
+      "stage": "T2c",
+      "attempt": "Sonine-side formulation",
+      "intermediate_result": "Step153 expresses the evaluator through a projected Sonine kernel K_a^Gamma=P_{L_a^Gamma}K_amb; this does not simplify P_infty further but is compatible with applying the PSWF identity to transported evaluators.",
+      "status": "no independent simpler kernel"
+    },
+    {
+      "stage": "T2d",
+      "attempt": "Equivalent operational identity",
+      "intermediate_result": "Von Neumann alternating projections give S_lambda f=lim_N ((I-P_lambda)(I-Phat_lambda))^N f. The PSWF formula is the preferred diagonalized version.",
+      "status": "succeeds"
+    }
+  ],
+  "kernel_verdict": "V_operational_identity",
+  "explicit_kernel_formula": null,
+  "operational_identity": {
+    "spatial": "S_lambda=I-P_lambda-(I-P_lambda)Phat_lambda(I_{QH}-Phat_lambda P_lambda Phat_lambda)^{-1}Phat_lambda(I-P_lambda)=I-P_lambda-sum_n |(I-P_lambda)phi_n><(I-P_lambda)phi_n|/(1-mu_n).",
+    "mellin": "K_infty^op(s,s')=delta(tau-tau')-sin(lambda(tau-tau'))/(pi(tau-tau'))-sum_n Psi_n(s)conj(Psi_n(s')), Psi_n=U_infty((I-P_lambda)phi_n/sqrt(1-mu_n))."
+  },
+  "pswf_external_theorem_needed": null,
+  "classical_pswf_theorem_invoked": "Slepian-Pollak time-band limiting theorem: QP_lambda Q on the bandlimited subspace QH has the prolate spheroidal wave functions as an orthonormal eigenbasis with eigenvalues 0<mu_n<1 for finite lambda.",
+  "deepest_named_gap": null,
+  "target_equivalence_proof_sketch": null,
+  "L_rho_k_test_evaluation": {
+    "rho": "1/2+14.134725...i",
+    "k": 0,
+    "G_0": "zero legal Burnol generator g_0=0, G_0=0",
+    "value": "L_{rho_1,0}(G_0)=0"
+  },
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability"
+  ],
+  "final_verdict": "V_operational_identity"
+}

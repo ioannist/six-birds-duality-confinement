@@ -1,0 +1,39 @@
+{
+  "step": 34,
+  "name": "Completed explicit-formula bridge decomposition",
+  "status": "proof_schema_not_RH_proof",
+  "spaces": {
+    "Y_minus": "anti-invariant response space for J(s)=1-conj(s)",
+    "Z": "zero-side displacement Hilbert space",
+    "E_pr": "prime-power carrier feature space",
+    "E_infty": "archimedean/gamma feature space",
+    "E_pole": "pole/completion/null-mode feature space",
+    "E_tail": "support/tail/promotion defect feature space"
+  },
+  "maps": {
+    "V_Z": "zero-side anti-invariant readout Y_minus -> Z",
+    "W_pr": "prime-power feature map",
+    "W_infty": "archimedean/gamma feature map",
+    "W_pole": "pole/completion feature map",
+    "W_tail": "support/tail feature map",
+    "W_cmp": "column of all component features",
+    "T": "contractive bridge map with V_Z = T W_cmp",
+    "R": "explicit-formula residual if bridge is defective"
+  },
+  "matrices": {
+    "A_Z": "V_Z^* V_Z",
+    "K_cmp": "W_cmp^* W_cmp = K_pr + K_infty + K_pole + K_tail",
+    "E_EF": "R^* R defect budget",
+    "Theta_minus": "accepted anti-invariant anti-localization budget"
+  },
+  "acceptance": {
+    "exact": "A_Z <= K_cmp and K_cmp <= Theta_minus",
+    "defective": "A_Z <= (1+t)Theta_minus + (1+t^-1)E_EF",
+    "forbidden_overreads": [
+      "trace equality used as domination",
+      "invariant-sector control used as anti-invariant control",
+      "raw prime-only bridge claimed as completed bridge",
+      "missing gamma/pole/tail records hidden as normalization"
+    ]
+  }
+}

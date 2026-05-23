@@ -1,0 +1,337 @@
+                                                                                                                                           15-JULY-1999
+                                                                                                                                       math.NT/9907103
+arXiv:math/9907103v1 [math.NT] 15 Jul 1999
+
+
+
+
+                                                            ADDENDUM TO “QUATERNIONIC GAMMA FUNCTIONS. . . ”
+
+
+
+
+                                                                                         Jean-François Burnol
+                                                                                               July 1999
+
+
+
+
+                                             This note adds three annexes to my previous paper math/9904044
+                                             Annex 1. A sufficient condition for self-adjointness
+                                             Annex 2. Invariant closed operators on locally compact abelian groups
+                                             Annex 3. The trace of Connes for quaternions
+                                             This last item is a minor variation on the evaluation of Connes’s trace (math/9811068), which is explained
+                                             here in the setting of quaternions and can be applied also to any abelian local field.
+
+
+
+
+                                             62 rue Albert Joly
+                                             F-78000 Versailles
+                                             France
+
+                                             Address starting September 1st, 1999:
+
+                                             Université de Nice-Sophia-Antipolis
+                                             Laboratoire J.-A. Dieudonné
+                                             Parc Valrose
+                                             F-06108 Nice Cédex 02
+                                             France
+
+
+                                             The author thanks the “Société de Secours des Amis des Sciences” for financial support during the time this
+                                             work was completed.
+
+                                                                                                    1
+The first two annexes can be read for the most part independently of my previous paper math/9904044, but
+the last one uses its notations with no further explanations.
+
+
+Annex 1. A sufficient condition for self-adjointness
+
+
+Lemma:       Let L be a Hilbert space and G a group of unitary operators on L. Let A be the von Neumann
+algebra of bounded operators commuting with G. Let M be a (possibly unbounded) operator with dense
+domain D. If
+  (1)    A is abelian
+  (2)    M is symmetric
+  (3)    M commutes with the elements of G
+
+
+then M is essentially self-adjoint   •
+
+
+Note:     Condition (3) is to be understood as follows: the dense domain D is stable under G and M (g · ϕ) =
+g · (M (ϕ)) holds for ϕ ∈ D and g ∈ G.
+
+
+Proof:     We first replace (M, D) by its double-adjoint so that we can assume that (M, D) is closed (it is
+easy to check that conditions (2) and (3) remain valid). The problem is to show that it is self-adjoint. Let
+K be the range of the operator M + i. It is a closed subspace of L (as k(M + i)(ϕ)k2 = kM (ϕ)k2 + kϕk2 ,
+and M is closed). Let R be the bounded operator onto D which is orthogonal projection onto K followed
+with the inverse of M + i. It belongs to A, hence commutes with its adjoint R∗ . Any vector ψ in the kernel
+of R is then in the kernel of R∗ (as < R∗ ψ|R∗ ψ > = < ψ|R R∗ ψ > = 0). So ψ belongs to the orthogonal
+complement to the range of R, that is ψ = 0 as the range of R is D. So K = L and in the same manner
+(M − i)(D) = L. By the basic criterion for self-adjointness ([ReSi80]), M is self-adjoint •
+
+
+Example:       The argument leading to the proof of Theorem I shows that the von Neumann algebra of
+bounded operators commuting simultaneously with the left and right actions of the multiplicative quaternions
+on L2 (H, dx) is abelian. So the lemma can be applied to the operator log(|x|) + log(|y|), with initial domain
+the space of Schwartz functions (for example).
+
+
+Annex 2. Invariant closed operators on locally compact abelian groups
+
+
+Let G be a locally compact, Hausdorff, topological abelian group. We refer to [Ru62] for the basics of
+harmonic analysis on G. In particular we have a Haar measure dx and a Hilbert space L = L2 (G, dx). We
+also assume that G is a countable union of subsets with finite measure, so that there exists ψ ∈ L with the
+property ψ(x) 6= 0 (a.e). We will use ψ(x) below.
+
+               b of unitary characters acts on L by multiplication operators (i.e. (χ·ϕ)(x) = χ(x)ϕ(x)), and
+The dual group G
+we are interested in operators (possibly unbounded) that commute with this action (in the sense explained in
+
+
+                                                      2
+Annex 1). The lemma we are aiming at is certainly extremely well-known, but I could not find an appropriate
+reference.
+
+
+Let a(x) be a measurable function on G, not necessarily bounded. Let Da be the domain of elements ϕ
+of L such that a(x)ϕ(x) also belongs to L. And let Ma be the operator with domain Da acting through
+                                                       b and that (Ma , Da ) commutes with G.
+multiplication with a. We note that Da is stable under G                                   b Furthermore
+Da is dense: first it contains
+                                                     ψ(x)
+                                                  p
+                                                   1 + |a(x)|2
+Hence if f is orthogonal to Da then the function defined as
+
+                                                   f (x)ψ(x)
+                                                  p
+                                                   1 + |a(x)|2
+
+belongs to L1 (G, dx) and has a vanishing “Fourier transform”, hence f = 0. It is also clear that (Ma , Da )
+is a closed operator (as a sequence converging in the mean has a pointwise a.e. convergent subsequence).
+One more remark is that if for another function b(x) the operator (Mb , Db ) extends (Ma , Da ), then in fact
+a = b (a.e.) and (Mb , Db ) = (Ma , Da ). Finally we note that the adjoint of (Ma , Da ) is (Ma , Da ). This can
+be seen as follows: Let f (x) be in the domain of the adjoint. There exists then an element θ of L such that
+for any ϕ ∈ Da the equality           Z                        Z
+                                          f (x)a(x)ϕ(x) dx =       θ(x)ϕ(x) dx
+
+holds. This implies that the two functions of L1 (G, dx) given as
+
+                                      f (x)a(x)ψ(x)             θ(x)ψ(x)
+                                      p                and     p
+                                         1 + |a(x)|2            1 + |a(x)|2
+
+have the same Fourier transform, hence are equal almost everywhere. So f ∈ Da and (Ma )∗ (f ) = (Ma )(f )
+
+
+Our “certainly extremely well-known” lemma now reads as:
+
+
+Lemma:                                                                      b Then (M, D) = (Ma , Da ) for a
+               Let (M, D) be a closed operator commuting with the action of G.
+(unique) measurable function a(x) (two such functions being identified if they are equal almost everywhere)•
+
+
+Note:        for a bounded M and G = R, this is proven in the classical reference [StWe73], as a special case
+of a more general statement in Lp spaces. Their proof uses distributions.
+
+
+Proof:       Let us first assume that M is bounded. We then pick as above some ψ(x) non-vanishing almost
+everywhere and define a(x) = M(ψ)(x)
+                                 ψ(x) . Let us consider the domain D consisting of all finite linear combina-
+                       b
+tions of χ(x)ψ(x), χ ∈ G. It is dense by the argument about unicity of Fourier transform in L1 we have used
+many times. Then (M, D) ⊂ (Ma , Da ), hence (Ma , Da ) is also an extension of the closure of (M, D) which
+is (M, L). But this means that Da = L and that M = Ma (as a further token we note that necessarily a is
+essentially bounded)
+
+                                                        3
+The next case is when M is assumed to be self-adjoint. Its resolvents R1 = (M − i)−1 and R2 = (M + i)−1 =
+                                  b Hence they correspond to multiplicators r1 (x) and r2 (x) = r1 (x). The
+R1∗ are bounded and commute with G.
+kernel of R1 is orthogonal to the range of R2 which is all of D, so that it is reduced to {0}. So r1 (x) 6= 0 (a.e.).
+Let f ∈ D and g = M (f ).
+                                               R1 (M (f ) − i f ) = f
+
+                                            r1 (x)(g(x) − i f (x)) = f (x)
+                                                      1 + i r1 (x)
+                                             g(x) =                · f (x)
+                                                         r1 (x)
+
+So (Ma , Da ) is an extension of (M, D) for a(x) = 1+i r1 (x)
+                                                     r1 (x) . Switching to the adjoints we deduce that (M, D)
+is an extension of (Ma , Da ). So all three are equal (and a is real-valued).
+
+
+For the general case we use the theorem of polar decomposition ([ReSi80]). There exists a non-negative self-
+adjoint operator |M | with the same domain as M and a partial isometry U such that M = U |M |. Further
+conditions are satisfied which make |M | and U unique: so they also commute with G. b It follows from
+what was proven previously that (M, D) ⊂ (Ma , Da ) for an appropriate a (the product of the multiplicators
+associated to the self-adjoint |M | and the bounded U ). The adjoint (M ∗ , D∗ ) also has a dense domain
+and commutes with G,  b so in the same manner (M ∗ , D∗ ) ⊂ (Mb , Db ) for an appropriate b. The inclusion
+(Ma , Da ) ⊂ (M ∗ , D∗ ) ⊂ (Mb , Db ) implies b = a and (Ma , Da ) = (M, D)∗∗ . But the double-adjoint coincides
+with the closed operator (M, D) •
+
+
+Note:    it follows that a closed symmetric operator commuting with G   b is self-adjoint, and that a symmetric
+operator with dense domain that commutes with G   b is essentially self-adjoint (alternatively Annex 1 applies
+here).
+
+
+Annex 3. The trace of Connes for quaternions
+
+                                                                                                    R
+Let f (g) be a smooth function with compact support on H× . Let Uf be the bounded operator              f (g)L2 (g) d∗ g
+on L = L2 (H, dx). So                                Z
+                                                                1
+                                      Uf : ϕ(x) 7→       f (g) p ϕ(g −1 x) d∗ g
+                                                                |g|
+The composition Uf F of Uf and the Fourier Transform F acts as
+                                      Z Z
+                                               1
+                            ϕ(x) 7→     f (g) p λ(−g −1 xy)ϕ(y) d∗ g dy
+                                                |g|
+                                        Z Z                               !
+                                    1               1   1
+                                 =√              f( )p          λ(−gxy) dg ϕ(y) dy
+                                   2π 2             g  2π 2 |g|
+                                        Z
+                                    1        g)a (xy)ϕ(y) dy
+                                 =√         I(f
+                                   2π 2
+
+                       g)a is the additive Fourier Transform of the additive representative of I(f )(g) (i.e.
+In this last equation I(f
+f ( g1 ) √ 12 ).
+         2π |g|
+
+
+                                                           4
+                                                                                fΛ PΛ Uf , where P
+Following Connes [Co98], our goal is to compute the trace T (Λ) of the operator P                fΛ =
+F PΛ F −1 and PΛ is the cut-off projection to functions with support in |x| ≤ Λ. Connes evaluated this trace
+not only on a local field, but also in a situation involving his crucial quotient construction (when more than
+one place are considered). I will now explain in the set-up of quaternions a method which would apply
+almost word for word to the simple case of a local field (when the quotient construction is not involved). It
+is a minor variation on Connes’s method, avoids the use of distributional kernels and symbols, and checks
+explicitely that the operator considered is trace-class. Our reference for trace-class operators is [GoKr69].
+
+
+We recall that if A is trace-class then for any bounded B, AB and BA are trace-class and have the same
+trace. Also if K1 and K2 are two Hilbert-Schmidt operators given for example as L2 −kernels k1 (x, y) and
+k2 (x, y) on a measure space (X, dx) then A = K1∗ K2 is trace-class and its trace is the Hilbert-Schmidt scalar
+products of K1 and K2 :                             Z Z
+                                  T r(K1∗ K2 ) =           k1 (x, y) k2 (x, y) dxdy
+
+
+
+The operator PΛ F −1 PΛ is an operator with as kernel a smooth function restricted to a finite box (precisely
+it is λ(xy), |x|, |y| ≤ Λ). Such an operator is trace class, as is well-known (one classical line of reasoning
+is as follows: taking a smooth function ρ(x) with compact support, identically 1 on |x| ≤ Λ, and Qρ the
+multiplication operator with ρ, one has PΛ F −1 PΛ = PΛ Qρ F −1 Qρ PΛ , so that it is enough to prove that
+Qρ F −1 Qρ is trace-class. This operator has a smooth kernel with compact support, so we can put the system
+in a box, and reduce to an operator K with smooth kernel on a torus. Then K = (1 + ∆)−n (1 + ∆)n K
+with ∆ the positive Laplacian. For n large enough, (1 + ∆)−n is trace-class, while (1 + ∆)n K is at any rate
+bounded.)
+
+                     fΛ PΛ Uf = F · PΛ F −1 PΛ · Uf is indeed trace class and
+So Connes’s operator P
+
+                            fΛ PΛ Uf ) = T r(PΛ F −1 PΛ · Uf F ) = T r(PΛ F −1 PΛ · PΛ Uf F PΛ )
+                T (Λ) = T r(P
+
+can be computed as a Hilbert-Schmidt scalar product:
+                                               Z Z
+                                           1                            g)a (xy) dxdy
+                               T (Λ) = √                          λ(xy)I(f
+                                        2π 2          |x|,|y|≤Λ
+
+
+using the change of variable (x, y) 7→ (z = xy, y)
+
+                                       Z                             Z                         !
+                                 √                                                    dy
+                          T (Λ) = 2π 2                 g)a (z)
+                                                  λ(z)I(f                                          dz
+                                                                         |z|        2π 2 |y|
+                                         |z|≤Λ2                           Λ
+                                                                             ≤|y|≤Λ
+
+
+
+                                 √     Z
+(C)                       T (Λ) = 2π 2                                        g)a (z) dz
+                                                    (2 log(Λ) − log(|z|))λ(z)I(f
+                                           |z|≤Λ2
+
+
+With the notation B = log(|z|) = F −1 log(|x|)F and (2 log(Λ) − B)+ = M ax(2 log(Λ) − B, 0), and recalling
+    √
+that 2π 2 is involved in switching from the additive to multiplicative picture, we can conclude:
+
+                                                           5
+Lemma:      fΛ PΛ Uf is trace-class and
+            P
+
+                                   fΛ PΛ Uf ) = (2 log(Λ) − B)+ (I(f ))(1)
+                               T r(P
+                                             = 2 log(Λ)f (1) − H(f )(1) + o(1)
+
+
+For the last line we used that B(I(f ))(1) = H(I(f ))(1) = H(f )(1) as H = log(|x|) + log(|z|) commutes with
+the Inversion I. The error (for Λ → ∞, Λ > 1) is o(1) as it is bounded above by
+                                    √     Z
+                                     2π 2                    g)a (z) dz
+                                                (log(|z|)) I(f
+                                            |z|≥Λ2
+
+     g)a (z) is a Schwartz function.
+and I(f
+
+
+It is interesting to note that in Connes’s paper (in an abelian situation, involving either one place or more
+than one in the context of his quotient) the computation also goes through an intermediate stage essentially
+identical with (C) and that the identification of the constant term H(f )(1) with a quantity related to the
+explicit formula of number theory then requires a further discussion, going through an intermediate stage
+(Weil’s form of the local terms of the explicit formula). The main result of this paper (math/9904044) and
+of the previous one [Bu99] is the direct connection between H and the logarithmic derivatives of the Tate
+Gamma functions (which are involved in the analytic expression of the explicit formula), and allows to avoid
+this “detour”. But Weil’s form seems to play a crucial motivational rôle in Connes’s paper through the
+connection with a fixed point formula.
+
+
+REFERENCES
+
+
+[Bu99] J.F. Burnol, “The Explicit Formula and the conductor operator”, math/9902080 (February 1999).
+
+
+[Co98] A. Connes, “Trace formula in non-commutative Geometry and the zeros of the Riemann zeta
+function”, math/9811068 (November 1998).
+
+
+[GoKr69] I. Ts. Gohberg, M. G.Krein, “Introduction to the theory of linear non-self-adjoint operators”,
+American Mathematical Society, (1969), (original in russian 1965).
+
+
+[ReSi80] M. Reed, B. Simon, “Methods of modern mathematical physics, Vol.1: Functional Analysis”,
+revised and enlarged edition, Academic Press (1980).
+
+
+[Ru62] W. Rudin, “Fourier analysis on groups”, Interscience Publishers, (1962).
+
+
+[StWe73] E. Stein, G. Weiss, “Introduction to Fourier Analysis on Euclidean Spaces”, Princeton Uni-
+versity Press, (1973).
+
+
+Jean-François Burnol, 62 rue Albert Joly, F-78000 Versailles, France, July 1999.
+
+                                                       6
+

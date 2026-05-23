@@ -1,0 +1,7499 @@
+arXiv:math/0311468v3 [math.NT] 16 Mar 2005
+
+On a representation of the idele
+
+lass group related to
+
+primes and zeros of L-fun tions
+
+Ralf Meyer
+Let K be a global eld. Using natural spa es of fun tions on the
+adele ring and the idele lass group of K , we onstru t a virtual representation
+of the idele lass group of K whose hara ter is equal to a variant of the
+Weil distribution that o urs in André Weil's Expli it Formula. Hen e this
+representation en odes information about the distribution of the prime ideals
+of K and is a spe tral interpretation for the poles and zeros of the L-fun tion
+of K . Our onstru tion is motivated by a similar spe tral interpretation by
+Alain Connes.
+Abstra t.
+
+Contents
+
+1.
+
+Introdu tion
+
+2.
+
+Nu learity and summable representations of lo ally
+
+1
+ompa t groups
+
+6
+
+3.
+
+The lo al tra e formula
+
+15
+
+4.
+
+The lo al tra e formula without Hilbert spa es
+
+22
+
+5.
+
+The global dieren e representation
+
+36
+
+6.
+
+The Prime Number Theorem
+
+47
+
+Referen es
+
+52
+
+1. Introdu tion
+Let K be an algebrai
+
+number eld, that is, a nite algebrai
+
+eld of rational numbers Q. Already the
+
+extension of the
+
+ase Q is of great interest. Let P(K) be
+
+the set of pla es of K , that is, equivalen e
+
+lasses of dense embeddings of K into
+
+lo al elds. For instan e, P(Q)
+
+ontains the embeddings of Q into R and into the
+p-adi integers Qp for all prime numbers p. Let AK be the adele ring of K , let A×
+K
+×
+×
+be the idele group and let CK := AK /K
+be the idele lass group of K (see [22℄
+
+tions). For instan e, the group CQ is isomorphi to the dire t
+Q onstru
+×
+×
+Z
+×
+R
+, where p runs through the prime numbers and Zp denotes the
+p p
+multipli ative group of p-adi integers of norm 1.
+×
+Let Ω(CK ) := Hom(CK , C ) be the spa e of quasi- hara ters of CK . We repla e
+the family of L-fun tions L(χ, s) of K asso iated to hara ters χ of CK by a single
+s
+meromorphi fun tion LK : Ω(CK ) → C whi h satises LK (χ|x| ) = L(χ, s) for all
+χ ∈ Cc
+K , s ∈ C. We only work with omplete L-fun tions, that is, we multiply by
+
+for these
+produ t
+
+2000 Mathemati s Subje t Classi ation. 11M26, 22D12 (Primary); 18H10, 43A35, 58B34
+(Se ondary).
+This resear h was supported by the EU-Network Quantum Spa es and Non ommutative Geometry (Contra t HPRN-CT-2002-00280) and the Deuts he Fors hungsgemeins haft (SFB 478).
+1
+
+2
+
+RALF MEYER
+
+appropriate Γ-fun tions for the innite pla es. We let ord(ω, LK ) be the pole order
+of LK at ω . This is positive for poles and negative for zeros of LK .
+A
+
+virtual representation is a pair of representations π± whi h we interpret as
+
+a formal dieren e π+ ⊖ π− . We
+
+onstru t a spe tral interpretation for the poles
+
+and zeros of LK , that is, a virtual representation π of CK whose spe trum
+pre isely of the poles and zeros of the L-fun tion LK . The two poles o
+
+onsists
+
+ur in π+ ,
+
+the zeros in π− . The spe tral multipli ity mult(ω, π) is equal to the pole order
+ord(ω, LK ). Therefore, the hara ter of π is the distribution χπ on CK dened by
+X
+X
+ord(ω, LK ) · fˆ(ω)
+mult(ω, π) · fˆ(ω) =
+χπ (f ) :=
+
+ω∈Ω(CK )
+
+ω∈Ω(CK )
+
+for f ∈ D(CK ), where fˆ denotes the Fourier-Lapla e transform of f . In parti ular,
+the representation π
+
+ontains a spe tral interpretation for the non-trivial zeros of
+
+the ζ -fun tion of K , whi h is Riemann's well-known fun tion for K = Q.
+Our
+
+onstru tion is motivated by Alain Connes' spe tral interpretation for the
+
+zeros of L-fun tions ([4℄).
+zeros o the
+
+There zeros on the
+
+riti al line appear as above, but
+
+riti al line appear as resonan es.
+
+André Weil, a geometri
+
+Given the Expli it Formula of
+
+omputation of the  hara ter in Connes' situation is
+
+therefore equivalent to the Generalized Riemann Hypothesis. Sin e I have not been
+able to do this
+
+omputation, I have developed an alternative spe tral interpretation
+
+that is no longer dire tly related to the Riemann Hypothesis. First we
+
+S -lo al
+
+ase, where we
+
+Connes. Our S -lo al
+In the global
+
+an work in the same Hilbert spa e situation
+
+onsider the
+onsidered by
+
+omputations are, in fa t, essentially equivalent to Connes'.
+
+ase, we deviate from [4℄ and use smaller fun tion spa es instead of
+
+the Hilbert spa es in Connes' setup.
+
+These are no longer biased in favor of the
+
+riti al line, so that all zeros and poles appear in the same way.
+The tra e of a matrix
+
+an be
+
+omputed spe trally as the sum of its eigenvalues
+
+and geometri ally as the sum of its diagonal entries.
+more geometri
+
+Similarly, we have another
+
+formula for χπ (f ). The equivalen e of the two
+
+hara ter formulas
+
+is equivalent to the Expli it Formula of André Weil ([20, 21℄).
+
+It
+
+ontains the
+
+following ingredients. Let DK be the dis riminant of K . For any pla e v of K , we
+×
+×
+write d x for the normalized Haar measure on Kv . The normalization ondition is
+R
+×
+×
+d x = ln |u| for all u ∈ Kv with |u| ≥ 1. Consider the distribution
+that
+1≤|x|<|u|
+W ∈ D′ (CK ) dened by
+
+W (f ) :=
+
+X Z ′ f (x)|x|
+d× x − f (1) · ln DK
+× |1 − x|
+Kv
+
+v∈P(K)
+with
+
+ertain prin ipal values
+
+and hen e to
+
+P
+
+R′
+
+. We prove that W is equal to the
+
+ˆ
+ω∈Ω(CK ) ord(ω, LK ) · f (ω). We
+
+all W the
+
+hara ter of π
+
+(raw) Weil distribution.
+
+The distribution
+
+f 7→ fˆ(|x|−1/2 ) + fˆ(|x|1/2 ) − W (f · |x|−1/2 ) = χπ− (f |x|−1/2 ),
+whi h is usually
+Our
+
+alled Weil distribution, is
+
+alled
+
+modied Weil distribution here.
+
+hara ter formula yields
+
+fˆ(|x|−1/2 ) + fˆ(|x|1/2 ) − W (f · |x|−1/2 ) =
+
+X
+
+mult(ω|x|−1/2 , π− ).
+
+ω∈Ω(CK )
+Hen e the modied Weil distribution is positive denite if and only if the spe trum
+of π− is ontained in the
+|x|1/2 Cc
+K . This is equivalent to the Generalized
+
+riti al line
+
+Riemann Hypothesis. Sin e we
+
+annot prove this positivity, anyway, we have no
+
+reason to modify W . The raw Weil distribution W appears more naturally in our
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+approa h. In addition, it has a good geometri
+
+interpretation in
+
+3
+
+onne tion with a
+
+generalized Lefs hetz formula (see [4℄).
+Although we state most results only for algebrai
+
+number elds, they also work
+
+with small modi ations for global fun tion elds. In that
+
+ase, the representation π
+
+is an admissible representation on a ve tor spa e with a
+
+ountable basis.
+
+For algebrai
+
+number elds, ea h L-fun tion has innitely many zeros, so that
+
+the sum dening the
+
+hara ter is innite. Thus we need analysis in order to dene
+
+and to
+
+hara ter.
+
+ompute the
+
+We
+
+an modify the representation π so that it
+
+lives on a Bana h spa e, even a Hilbert spa e.
+doing so be ause we
+o the
+
+However, there is little point in
+
+annot make it unitary on e there are multiple zeros or zeros
+
+riti al line. Instead, the representation π lives on a nu lear bornologi al
+
+ve tor spa e. We re all some basi
+
+fa ts about nu learity and operators of order 0 in
+
+Se tion 2. There we also dene summable representations of lo ally
+on bornologi al ve tor spa es.
+
+general representation theory works better in that
+develop the basi
+
+ompa t groups
+
+We use bornologies instead of topologies be ause
+ontext (see also [13℄).
+
+We
+
+theory of summable representation, although we need only very
+
+little of it for our spe tral interpretation, be ause we expe t these representations to
+be of independent interest. The only fa ts that we really use are that the
+of a summable representation
+
+an be
+
+hara ter
+
+omputed both spe trally and tra ially.
+
+The representation π is onstru ted as follows. One main ingredient is the spa e
+S(AK ) of Bruhat-S hwartz fun tions on AK (see [1℄). The group A×
+K a ts smoothly
+−1
+on S(AK ) by the representation λg f (x) := f (g
+x). Sin e we want a representation
+of the quotient group CK , we repla e S(AK ) by the oinvariant spa e
+
+H+ := S(AK )/K × ,
+
+(1)
+
+whi h is the quotient of S(AK ) by the losed subspa e generated by elements of
+×
+×
+, f ∈ S(AK ). The representation λ of AK on S(AK )
+
+the form λg f − f with g ∈ K
+
+des ends to a smooth representation of CK on H+ .
+
+We now des ribe H+ more expli itly. Let S be a su iently large nite set of
+×
+pla es. Let ∁S := P(K) \ S and let O
+be the maximal ompa t subgroup of the
+∁S
+×
+S
+∁S -idele group A∁S . Let H+ ⊆ H+ be the subspa e of elements that are invariant
+×
+under the a tion of O . As a smooth representation, H+ is the dire t union of
+∁S
+S
+S
+the subspa es H+ , so that it su es to des ribe those. The spa e H+ arries a
+×
+×
+representation of the S -idele lass group CS := AS /KS .
+×
+Let S(CS ) be the Bruhat-S hwartz algebra of CS . Let |x| : CS → R+ be the
+norm homomorphism on CS . For an interval I ⊆ R, let
+
+S(CS )I := {f : CS → C | f |x|α ∈ S(CS ) for all α ∈ I}.
+= FS be the Fourier transform on AS and dene Jf (x) := |x|−1 f (x−1 ).
+×
+2
+2
+×
+Both F and J are isometries on the Hilbert spa e L (AS , dx) = L (AS , |x| d x).
+×
+Here dx and d x denote suitably normalized Haar measures on the lo ally ompa t
+×
+groups AS and AS , respe tively. The operator F := FJ is alled the equivariant
+∗
+∗
+Fourier transform on AS be ause it is λ-equivariant. Its inverse is F := JF . The
+2
+×
+operator F des ends to a unitary operator on L (CS , |x| d x). This is a bounded
+∗
+operator on S(CS )I for any I ⊆ ]0, ∞[. Similarly, F is a bounded operator on
+S(CS )I for I ⊆ ]−∞, 1[. For I ⊆ ]0, 1[ both F and F∗ are bounded and hen e
+Let F
+
+bornologi al isomorphisms. We let
+
+T (CS ) := S(CS )]0,∞[ ∩ F(S(CS )]−∞,1[ ) =
+
+\
+
+S(CS )α ∩
+
+α>0
+We show that
+
+S ∼
+H+
+= S(AS )/KS× ∼
+= T (CS ).
+
+\
+
+α<1
+
+F(S(CS )α ).
+
+4
+
+RALF MEYER
+
+This is not
+
+ompletely straightforward. Our proof uses total derived fun tors and
+×
+, S(AK )) for n ≥ 1
+
+shows at the same time that the higher group homology Hn (K
+
+vanishes. This is relevant in order to ompute the y li type homology theories of
+×
+S
+rossed produ t K ⋉ S(AK ) (see [14℄). If we dened H+ := T (CS ) right away,
+×
+we ould onstru t our spe tral interpretation without omputing S(AK )/K . We
+the
+
+prefer the above denition be ause we want our
+
+onstru tions to be as
+
+anoni al as
+
+possible.
+Another more trivial ingredient of π is the regular representation of CK on
+
+H− := S(CK )]−∞,∞[ .
+
+(2)
+
+Roughly speaking, π is the dieren e of the representations H+ and H− . However,
+we have to take away a
+
+ommon subrepresentation H+ ∩ H− in order to get a
+
+summable virtual representation.
+
+We do this as follows. The summation map
+P
+Σf (x) :=
+for
+x
+∈
+C
+f
+(ax)
+×
+K , f ∈ S(AK ), des ends to a bounded map
+a∈K
+from H+ to S(CK )]1,∞[ . We shall use the spa e
+
+S(CK )>< := S(CK )]1,∞[ ⊕ S(CK )]−∞,0[ ,
+
+(3)
+
+whi h intentionally leaves out the
+(4)
+
+riti al strip. We dene
+
+i+ : H+ → S(CK )>< ,
+
+f 7→ (Σf, JΣFf ),
+
+i− : H− → S(CK )>< ,
+
+f 7→ (f, f ),
+
+and show that both i+ and i− are CK -equivariant bornologi al embeddings. This
+is non-trivial be ause we left out the
+
+riti al strip in S(CK )>< . In the following,
+
+we view H± as subrepresentations of S(CK )>< via i± . We let
+
+0
+H+
+:= (H+ + H− )/H− ∼
+= H+ /(H+ ∩ H− ),
+H0 := (H+ + H− )/H+ ∼
+= H− /(H+ ∩ H− ).
+−
+
+The regular representations of CK on H± des end to smooth representations π±
+0
+of CK on H± . We all π = π+ ⊖ π− the
+. It is the
+
+global dieren e representation
+
+desired spe tral interpretation for the poles and zeros of LK .
+The Poisson Summation Formula implies that the image of i+ is almost
+
+on-
+
+tained in the image of i− . More pre isely, we nd that
+
+H+ + H− = {(f0 , f1 ) ∈ S(CK )>< | f0 − f1 = c0 − c1 |x|−1 for some c0 , c1 ∈ C}.
+This means that the representation π+ is 2-dimensional and that spec π+ = {1, |x|}.
+These are exa tly the two poles of LK . We identify the spe trum of π− with the
+set of zeros of LK as follows.
+
+The Fourier-Lapla e transform is an isomorphism
+
+from H− onto the spa e of holomorphi fun tions on Ω(CK ) whose restri tion to
+α
+Cc
+K |x| is a S hwartz fun tion for any α ∈ R. The subspa e H− ∩ H+ ⊆ H−
+is mapped to an ideal in this spa e of holomorphi
+
+fun tions.
+
+It
+
+onsists of all
+
+fun tions that have a zero of order at least ord(ω, LK ) at the zeros
+α
+c
+of LK and that, in addition, satisfy some growth onditions on C
+K |x| . This allows
+
+holomorphi
+
+us to identify the spe trum of π− with the zero set of LK .
+
+riti al strip
+
+Hen e the spe trum
+
+ontained in the
+{ω ∈ Ω(CK ) | Re ω ∈ [0, 1]} and has the same
+−1
+symmetries ω 7→ |x|ω
+and ω 7→ ω as the L-fun tion.
+of π is
+
+We prove the summability of π and
+
+ompute its hara ter tra ially using
+
+ertain
+
+auxiliary operators P± on the spa e S(CK )>< . The operator P− is a proje tion onto
+the subspa e H− and P+ is approximately a proje tion onto H+ . It depends on the
+S
+hoi e of a su iently large nite set of pla es S , so that we also denote it by P+ .
+Our
+
+hara ter
+
+omputation has two ingredients.
+
+One of them is purely S -lo al.
+
+lo al
+tra e formula. Its main ingredient is the Fourier transform. Roughly speaking, it
+We dis uss this pie e in Se tions 3 and 4. We
+
+all the resulting formula the
+
+measures the failure of the Poisson Summation Formula in the S -lo al situation.
+
+PRIMES,
+
+In the
+
+S -lo al
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+ase, we
+
+an a tually work in the Hilbert spa e
+
+5
+
+L2 (CS , |x| d× x),
+
+whose Fourier-Lapla e transform is the spa e of square-integrable fun tions on the
+riti al line Re ω = 1/2. The lo al tra e formula on this spa e is essentially due to
+Alain Connes, though his formulation is slightly dierent. However, in the global
+2
+×
+situation we have to use the mu h smaller spa e T (CS ) instead of L (CS , |x| d x).
+Not surprisingly, the tra e does not depend on whi h spa e we use. This means
+that the problem of non- riti al zeros and poles does not yet arise in the S -lo al
+ase.
+
+However, the
+
+hara ter of the global dieren e representation has another
+
+ontribution from the pla es outside S . If we x f ∈ D(CK ), then this
+annihilates f for su iently large S . Thus we
+easily. Nevertheless, it prevents us from
+Our
+
+an get rid of this
+
+ontribution
+
+ontribution rather
+
+ontrolling the position of the zeros.
+
+onstru tion follows the idea of Tate's Thesis ([19℄) somewhat further and
+
+rephrases even more of the theory of L-fun tions in terms of representation theory
+and the Fourier transform.
+
+John Tate proved the meromorphi
+
+ontinuation of
+
+L-fun tions and their fun tional equations in this fashion. We also get a spe tral
+interpretation for the poles and zeros and André Weil's Expli it Formula.
+
+The
+
+appli ation of L-fun tions to prime number theory only uses their poles and zeros.
+The relationship between this spe tral data and prime ideals is en oded by the
+expli it formulas of prime number theory. Hen e it is not surprising that we
+
+an get
+
+the Prime Number Theorem and similar results using the representation π instead
+of L-fun tions. In fa t, we do not even have to dene L-fun tions in order to prove
+the
+
+lassi al Prime Number Theorem. To make this point, we prove an appropriate
+
+generalization of it in the last Se tion 6.
+
+The argument is
+
+losely related to the
+
+proof in [17℄, although it looks rather dierent.
+First we show that spec π−
+
+ontains no points on the boundary of the
+
+riti al
+
+strip. Our argument is a reformulation of an argument by Pierre Deligne ([5℄), whi h
+in turn is an abstra t version of the
+
+lassi al one by Hadamard and de la Vallée
+
+Poussin. I am grateful to Christopher Deninger for pointing out this referen e to
+me. We
+
+larify Deligne's proof slightly by using the Bohr
+
+and the GNS
+
+onstru tion.
+
+ompa ti ation of CK
+
+Then we dedu e the following generalization of the
+
+Prime Number Theorem. We let S be a su iently large nite set of pla es and
+view the set of prime ideals of the ring KS as a dis rete subset of the S -idele lass
+1
+group CS . Let A ⊆ CS be an open subset and let ξ ∈ R≥1 . Let πA (ξ) be the number
+of prime ideals
+
+ontained in A × [1, ξ] ⊆ CS . We show that
+
+πA (ξ) ≈ vol(A) ·
+
+ξ
+ln ξ
+
+for ξ → ∞.
+
+Our argument is optimized to yield this result as qui kly as possible. We do not
+estimate the verti al and horizontal position of the spe trum of π− , so that we get
+no error terms.
+While it is arguable whether repla ing L-fun tions
+
+ompletely by representa-
+
+tions is a good idea in the rather
+
+lassi al situation of the Prime Number Theorem,
+
+a purely representation theoreti
+
+approa h should be valuable in the automorphi
+
+ase. One important feature of our
+
+onstru tions is that we work with all L-fun -
+
+tions simultaneously and thus need not know mu h about the representation theory of CK .
+
+This simplies several statements and proofs.
+
+pli it Formula for a single L-fun tion is more
+for all L-fun tions simultaneously.
+
+For instan e, the Ex-
+
+ompli ated to state than the one
+
+This feature should be ome more relevant in
+
+the automorphi
+
+ase, where we know mu h less about the spa e of automorphi
+
+representations.
+
+While many of our
+
+the automorphi
+
+ase, some new di ulties also arise. Sin e this arti le is already
+
+su iently long and
+later and to
+
+onstru tions
+
+arry over without
+
+ompli ated, I have de ided to leave the automorphi
+
+onsider only representations of the idele
+
+lass group here.
+
+hange to
+ase for
+
+6
+
+RALF MEYER
+
+2. Nu learity and summable representations of lo ally ompa t groups
+We dene smooth summable representations of lo ally
+plete
+
+ompa t groups on
+
+om-
+
+onvex bornologi al ve tor spa es in su h a way that for totally dis onne ted
+
+groups we obtain exa tly the well-known
+
+lass of admissible representations. The
+
+notion of admissible representation that is used in [6℄ for adeli groups over algebrai
+number elds is inappropriate for our purposes. The obje tive of that theory is to
+lassify irredu ible representations. For this it is
+tions by purely algebrai
+o
+
+ur in our tra e
+
+Also, we only
+that the
+
+onvenient to repla e representa-
+
+obje ts. Our task is to make sense of innite sums that
+
+omputations. Thus we
+
+annot avoid doing fun tional analysis.
+
+onsider representations of the idele
+
+lass group, whi h is Abelian, so
+
+lassi ation of irredu ible representations is trivial.
+
+We work with ( omplete
+
+onvex) bornologi al ve tor spa es be ause they pro-
+
+vide the best setting for studying smooth representations of lo ally
+(see [13℄).
+whereas
+
+ompa t groups
+
+Roughly speaking, su h spa es are dire t unions of Bana h spa es
+
+omplete lo ally
+
+onvex topologi al ve tor spa es are inverse limits of Ba-
+
+na h spa es. In both kinds of spa es, all analysis is eventually redu ed to analysis
+in Bana h spa es using the limit stru ture. This is easier in the bornologi al
+
+ase
+
+be ause inverse limits are more subtle than dire t unions. The bornologi al ve tor spa es that we need are either Fré het spa es or stri t dire t unions of Fré het
+spa es, that is, LF-spa es.
+
+For Fré het spa es, the bornologi al and topologi al
+
+ways of doing analysis are equivalent in many respe ts (see [15℄).
+In order to dene summable representations we rst have to dis uss nu lear
+operators and p-summable operators for p < 1.
+
+All this is already
+
+ontained in
+
+Alexander Grothendie k's ground-breaking mémoir [9℄. We briey re all some important ideas from [9℄ for the benet of the reader. We need this mainly in order to
+ompare the spe tral and tra ial
+
+hara ters of a summable representation. Already
+
+for nu lear operators on Bana h spa es it is not always the
+
+ase that the tra e is
+
+equal to the sum of the eigenvalues. For this we need operators of order 0. There is
+no dieren e between nu lear operators and operators of order 0 on nu lear spa es.
+Hen e it is ni e to know that the underlying bornologi al ve tor spa e of a smooth
+summable representation is ne essarily nu lear and regular.
+Smooth summable representations are of some interest in their own right. Many
+things that
+
+an be done with admissible (g, K)-modules
+
+an also be done with
+
+smooth summable representations. This is desirable be ause the latter are more
+dire tly related to the obje ts of interest. Therefore, we develop some general theory
+of smooth summable representations here, although we do not need it for our later
+appli ations. We also dis uss a few issues related to the
+
+lassi ation of irredu ible
+
+representations, but we do not enter this subje t seriously.
+
+2.1. Nu lear operators and operators of order 0. In the following, all
+bornologi al ve tor spa es are ta itly assumed
+with are
+p
+
+onvex.
+
+omplete. Most spa es that we deal
+
+We also allow non- onvex spa es be ause the operator ideals
+
+ℓ (V, W ) for p ∈ ]0, 1[ may fail to be onvex.
+T A disk in a ve tor spa e V is an absolutely onvex subset S ⊆ V su h that
+t>1 tS = S . Given a disk S ⊆ V , we let VS = C · S be its linear span. There is a
+unique norm on VS with losed unit ball S . We always equip VS with this norm.
+The disk S is alled omplete if VS is a Bana h spa e. The ( omplete) disked hull
+of an arbitrary subset is the smallest ( omplete) disk in V that ontains it.
+′
+Let V, W be two onvex bornologi al ve tor spa es. We equip the dual spa e V
+1
+′
+ˆ
+with the equibounded bornology and let ℓ (V, W ) := W ⊗V . Sin e tensor produ ts
+1
+ˆ VT′ , where S and T run
+ommute with dire t limits, we have ℓ (V, W ) = lim WS ⊗
+−
+→
+′
+through the omplete bounded disks in W and V , respe tively. There is a natural
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+7
+
+′ ′
+ˆ T′ ⊆ ℓ1 ((VT′ )′ , WS )
+bounded linear map from V to the Bana h spa e (VT ) and WS ⊗V
+′
+1
+with equality if VT is reexive. Thus the study of ℓ (V, W ) for general onvex
+bornologi al ve tor spa es V and W redu es to the spe ial
+Bana h spa es. Therefore, the results of [9℄
+
+ase where V and W are
+
+an be translated to
+
+onvex bornologi al
+
+ve tor spa es rather easily.
+
+ˆ V
+We denote the element w ⊗ l ∈ W ⊗
+
+′
+
+also in the more suggestive ket-bra
+1
+notation as |wihl|. Let V and W be Bana h spa es. Then ℓ (V, W ) is a Bana h
+1
+spa e as well and any x ∈ ℓ (V, W ) an be written as
+
+x=
+
+(5)
+
+X
+
+λn |wn ihln |
+
+n∈N
+1
+′
+with (λn ) ∈ ℓ (N) and wn ∈ W , ln ∈ V with kwn k = kln k = 1 for all n ∈ N. The
+norm of x is the inmum of k(λn )kℓ1 (N) over all su h presentations of x. If V and W
+are arbitrary
+
+onvex bornologi al ve tor spa es, we have a similar representation
+′
+with bounded sequen es (wn ) and (ln ) in W and V , respe tively. A subset of
+1
+ℓ (V, W ) is bounded if its elements an be represented in this form for two xed
+1
+bounded sequen es (wn ) and (ln ) and with (λn ) in a bounded subset of ℓ (N).
+1
+We an represent elements of ℓ (V, W ) as operators V → W by extending the
+formula |wihl|(v) := w · hl, vi. The rules T ◦ |wihl| := |T wihl| and |wihl| ◦ T :=
+|wihl ◦ T | dene bounded bilinear omposition maps
+
+Hom(W, X) × ℓ1 (V, W ) → ℓ1 (V, X),
+
+ℓ1 (W, X) × Hom(V, W ) → ℓ1 (V, X),
+
+whi h are
+
+1
+ompatible with the representation ℓ (V, W ) → Hom(V, W ). Combining
+
+these two
+
+onstru tions, we
+
+an dene a multipli ation
+
+ℓ1 (W, X) × ℓ1 (V, W ) → ℓ1 (V, X),
+
+|wihl| ◦ |w′ ihl′ | := hl, w′ i · |wihl′ |.
+
+1
+1
+This turns ℓ (V ) := ℓ (V, V ) into a
+
+1
+onvex bornologi al algebra. The tra e on ℓ (V )
+1
+is dened by extending tr(|wihl|) := hl, wi to a bounded linear map ℓ (V ) → C.
+1
+This is an End(V )-bimodule tra e on ℓ (V ), that is, tr(AB) = tr(BA) for all
+1
+A ∈ ℓ (V ), B ∈ End(V ).
+1
+To dene the above algebrai stru ture on ℓ (V ), we only need the anoni al
+′
+pairing V ×V → C. More generally, if we have any (non-zero) bounded bilinear map
+
+ˆ W be omes a onvex bornologi al algebra equipped
+hxy, xyi : W × V → C, then V ⊗
+with a anoni al tra e. For instan e, if V is a smooth representation of a lo ally
+′
+′
+ompa t group G, we may repla e V by the ontragradient Ṽ := smoothG V ,
+′
+′
+where smoothG V denotes the smoothening of V , see [13℄. We dis uss algebras of
+ˆ W in greater detail in Se tion 2.6.
+the form V ⊗
+1
+The range of the representation iV,W : ℓ (V, W ) → Hom(V, W ) is alled the
+spa e of nu lear operators V → W . The main problem with nu lear operators
+is that the representation iV,W need not be faithful. The only thing we know is
+1
+that if iV,W (T ) = 0, then T ◦ S = 0 and S ◦ T = 0 for all S ∈ ℓ (X, V ) and
+1
+S ∈ ℓ (W, X), respe tively. In parti ular, the kernel of iV,V is a nilpotent ideal
+1
+in ℓ (V ). Fortunately, the representation iV,V is faithful if V has Grothendie k's
+approximation property. Sin e all the spa es we need have this property, we may
+1
+sometimes forget about the distin tion between nu lear operators and ℓ (V, W ).
+1
+If V is a Hilbert spa e, then ℓ (V ) is the usual ideal of tra e lass operators.
+Weyl's Tra e Formula asserts that the tra e of a nu lear operator on Hilbert spa e
+is equal to the sum of its eigenvalues. For general V , we do not even know whether
+1
+on eivable that an element of ℓ (V )
+
+the tra e vanishes on Ker iV,V . That is, it is
+
+with non-zero tra e represents the zero operator, so that Weyl's Tra e Formula
+fails rather dramati ally. In order to extend it to operators on bornologi al ve tor
+spa es, we have to restri t attention to operators of order 0. This idea is due to
+Alexander Grothendie k ([9℄).
+
+8
+
+RALF MEYER
+
+p
+Let p ∈ ]0, 1]. If V and W are Bana h spa es, we dene ℓ (V, W ) by requiring
+p
+(λn ) ∈ ℓ (N) in (5). It is no longer a Bana h spa e be ause its unit ball is only
+
+p- onvex. We may hara terize it as the ompleted p- onvex proje tive tensor
+ˆ p V ′ of W and V ′ . We extend ⊗
+ˆ p to omplete onvex bornologi al
+produ t W ⊗
+ˆ p W := lim VS ⊗
+ˆ p WT , where
+ve tor spa es by the usual indu tive limit re ipe, V ⊗
+−→
+S and T run through the omplete bounded disks in V and W , respe tively. Using
+ˆp W → V ⊗
+ˆ q W for p ≤ q , we form the proje tive limit
+the evident maps V ⊗
+ˆ [0] W := lim V ⊗
+ˆ p W . Let ℓp (V, W ) := W ⊗
+ˆ p V ′ and
+V ⊗
+←−
+ˆ [0] V ′ = lim ℓp (V, W ).
+ℓ[0] (V, W ) := W ⊗
+←−
+[0]
+[0]
+p
+Elements of ℓ (V, W ) are alled operators of order 0. The spa es ℓ
+and ℓ
+arry
+1
+the same algebrai stru ture as ℓ . The following theorems are proved by Grothendie k for Bana h spa es. The extension to bornologi al ve tor spa es is easy.
+
+The anoni al map ℓp (V, W ) → Hom(V, W ) is inje tive for all
+onvex bornologi al ve tor spa es V and W if p ∈ ]0, 2/3].
+Theorem 2.1.
+
+[0]
+In parti ular, the representation ℓ (V ) → End(V ) is faithful, so that we
+[0]
+really view elements of ℓ (V ) as operators on V .
+Theorem 2.2.
+
+an
+
+Let S ⊆ ℓ1 (V ) be bounded and let n ≥ 4. Then
+S ◦n := {x1 ◦ · · · ◦ xn | x1 , . . . , xn ∈ S}
+
+is a bounded subset of ℓp (V ) for p = 2/(n − 1).
+′
+′
+If S ⊆ V and T ⊆ V are bounded disks, then the pairing V ×V → C restri ts to
+′
+′
+ˆ
+VS ×VT , so that VS ⊗VT is a Bana h algebra. We also obtain a natural representation
+ˆ T′ → End(VS ). Sin e the kernel of this map is always nilpotent, it is irrelevant
+VS ⊗V
+ˆ VT′ is ontained in
+for spe tral onsiderations. It is lear that the range of VS ⊗
+ˆ VT′
+the ideal of ompa t operators on End(VS ). Hen e elements of the algebra VS ⊗
+have the same spe tral properties as ompa t operators on VS . Their spe trum is
+a dis rete set with 0 as only possible a
+
+umulation point, and ea h non-zero point
+
+in the spe trum is an eigenvalue with nite algebrai
+S
+Ker(T − λ)n ⊆ V is alled the
+
+multipli ity.
+
+The subspa e
+
+generalized eigenspa e of λ. This spa e is nite
+
+dimensional for λ 6= 0 and its dimension
+
+mult(λ, T ) := lim dim Ker(T − λ)n
+n→∞
+
+is
+
+algebrai multipli ity of the eigenvalue λ.
+Theorem 2.3. Let V be a onvex bornologi al ve tor spa e. Then
+
+alled the
+
+tr T =
+
+X
+
+mult(λ, T ) · λ
+
+λ∈C×
+
+for all T ∈ ℓ2/3 (V ). This sum onverges absolutely and uniformly for T in a bounded
+subset of ℓ2/3(V ).
+We all T quasi-nilpotent if it has no non-zero eigenvalues. These operators
+require spe ial attention be ause they tend to
+Theorem 2.4. Let T ∈ ℓ
+tr(T n ) = 0 for all n ∈ N≥1 .
+
+2/3
+
+(V ).
+
+reate trouble.
+
+Then T is quasi-nilpotent if and only if
+
+Theorem 2.5. Let T : V → V be an operator of order 0 and let W ⊆ V
+be a T -invariant losed subspa e. Then the restri tion T |W of T to W and the
+operator T |V /W on V /W indu ed by T are again of order 0 and satisfy
+
+tr T |V = tr T |W + tr T |V /W .
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+9
+
+Furthermore, if T runs through a bounded subset of ℓ[0] (V ), then T |W and T |V /W
+run through bounded subsets of ℓ[0] (W ) and ℓ[0] (V /W ), respe tively.
+The denition of nu lear bornologi al ve tor spa es is dual to the
+
+orresponding
+
+denition for topologi al ve tor spa es.
+Definition 2.6. Let V
+
+be a
+
+omplete
+
+onvex bornologi al ve tor spa e.
+
+It
+
+nu lear if every bounded linear map from a Bana h spa e B into V is
+−1
+nu lear. A sequen e (vn ) in V is alled absolutely summable if (ǫn vn ) is bounded
+1
+for some (ǫn ) ∈ ℓ (N). A subset is alled absolutely summable if it is ontained in
+is
+
+alled
+
+the
+
+omplete disked hull of an absolutely summable sequen e.
+See [10℄ for a dis ussion of nu learity for bornologi al ve tor spa es. It is known
+
+that V is nu lear if and only if any bounded subset of V is absolutely summable.
+If V
+
+is nu lear, then any nu lear map into V
+
+is already of order 0.
+
+Thus any
+
+operator from a Bana h spa e into a nu lear spa e is of order 0.
+
+2.2. The denition of summable representations. Let G be a lo ally
+
+ompa t topologi al group, let V be a ( omplete)
+and let π : G → Aut(V ) be a
+
+onvex bornologi al ve tor spa e
+
+ontinuous group representation with integrated form
+
+∫π : D(G) → End(V ).
+Definition 2.7. We
+
+all π
+
+summable if ∫π is a bounded homomorphism into
+
+the algebra of nu lear operators on V .
+Proposition 2.8. Let G be totally dis onne ted. Then π is smooth and summable if and only if the xed point subspa es V k for ompa t open subgroups k ⊆ G
+are all nite dimensional and V is the bornologi al dire t union of these subspa es.
+Proof. Sin e G is totally dis onne ted, π is smooth if and only if V is the born-
+
+ologi al dire t union of the subspa es V
+
+k
+
+(see [13℄). The subspa e V
+
+k
+
+is the range
+
+of an idempotent in D(G), namely, the normalized Haar measure on k . Summability implies that this proje tion is mapped to a nu lear proje tion on V . This
+k
+means that V
+is nite dimensional. Conversely, sin e D(G) = lim D(G//k), the
+−→
+k
+representation π is summable on e all V
+are nite dimensional.
+
+Thus the underlying bornologi al ve tor spa e V of a smooth summable representation of a totally dis onne ted group automati ally
+
+arries the ne borno-
+
+logythat is, it is the dire t union of its nite dimensional subspa esand the
+representation of G is admissible in the usual sense (see [6℄).
+Definition 2.9. Let π : G → Aut(V ) be a summable representation. Its hara ter is the distribution χπ ∈ D′ (G) dened by χπ (f ) := tr ∫π(f ) for f ∈ D(G).
+Theorem 2.10. Let π be a summable representation. The spe trum of ∫π(f )
+for f ∈ D(G) onsists only of eigenvalues and {0} and all eigenvalues have nite
+algebrai multipli ity. We have
+
+tr ∫π(f ) =
+
+X
+
+mult(λ, ∫π(f ))
+
+λ∈C×
+
+with uniform absolute onverge for f in bounded subsets of D(G).
+This follows immediately from Theorem 2.3 and the following lemma:
+Lemma 2.11. If the representation π is summable, then ∫π is a bounded map
+ˆ [0] smooth V ′ ⊆ ℓ[0] (V ).
+into ℓ[0] (V ) and even into smooth V ⊗
+
+The
+
+smoothening smooth(V ) of π is dened in [13℄.
+
+10
+
+RALF MEYER
+
+Proof. We have to prove that ∫π is a bounded map into
+
+ˆ D(G) V ) ⊗
+ˆ p (D(G) ⊗
+ˆ D(G) V ′ )
+ˆ p smooth(V ′ ) ∼
+smooth(V ) ⊗
+= (D(G) ⊗
+p
+for all p ∈ ]0, 2/3]. Re all that the representation ℓ (V ) → End(V ) is faithful for
+those values of p. Fix su h a p and let n ∈ N be su h that n − 2 ≥ 1 + 2/p. Fix
+a bounded subset S ⊆ D(G). The n-fold onvolution is a bornologi al quotient
+ˆ
+⊗n
+map from D(G)
+onto D(G) by results of [13℄. Hen e S is the image of a bounded
+ˆ
+′
+⊗n
+subset S ⊆ D(G)
+. There exists a bounded disk T ⊆ D(G) su h that all elements
+P
+′
+of S
+an be written as sums
+j∈N λj x0,j ⊗ · · · ⊗ xn+1,j with xi,j ∈ T for all i, j
+p
+and (λj ) in a bounded subset of ℓ (N) (the nu learity of D(G) allows us to hoose
+
+p < 1). Theorem 2.2 implies that the ompositions ∫π(x1,j ) ◦ · · · ◦ ∫π(xn,j ) all lie in
+p
+ˆ p V ′ . Sin e
+some bounded subset of ℓ (V ) = V ⊗
+∫π(f1 ) ◦ |aihl| ◦ ∫π(f2 ) = |∫π(f1 )(a)ih∫π ′ (f2 )(l)|,
+
+(6)
+
+ˆp
+ompositions ∫π(x0,j ) ◦ · · · ◦ ∫π(xn+1,j ) lie in a bounded subset of smooth(V ) ⊗
+smooth(V ′ ). Sin e the latter spa e is p- onvex, we get the assertion.
+
+
+the
+
+Theorem 2.12. Summability is hereditary for smoothenings, ontragradients
+and tensor produ t. Under these operations, the hara ter behaves as follows:
+
+χV = χsmooth V ,
+
+∼
+χV ⊗W
+= χV · χW ,
+ˆ
+
+χṼ = χ̌V ,
+
+where we dene fˇ(g) := f (g −1) for all g ∈ G, f ∈ D(G) and hχ̌V , f i := hχV , fˇi.
+Let W ֌ V ։ V /W be an extension of ontinuous representations. Then V
+is summable if and only if both W and V /W are summable. In this ase, we have
+χV = χW + χV /W .
+V is a summable representation. Lemma 2.11 yields
+[0]
+Ṽ . The integrated forms of both smooth(V )
+an be expressed in terms of ∫π , whi h yields the summability of these
+
+Proof. Suppose that
+
+ˆ
+that ∫π fa tors through smooth(V ) ⊗
+and Ṽ
+
+representations. Summability is hereditary for tensor produ ts be ause there are
+p
+p
+p
+ˆ W ). The hara ter formulas are
+anoni al bilinear maps ℓ (V ) × ℓ (W ) → ℓ (V ⊗
+straightforward to prove.
+Consider now an extension as above.
+
+Suppose rst that
+
+Then W is mapped into itself by ∫π(h) for all h ∈ D(G).
+
+V
+
+is summable.
+
+The operators on W
+
+and V /W indu ed by ∫π are nothing but the integrated forms of the subspa e and
+quotient representations on W and V /W .
+of order 0 by Theorem 2.5.
+
+They are again of order 0 if ∫π(h) is
+
+Therefore, the representations on W and V /W are
+
+summable as well. We also obtain the additivity of the
+Suppose
+
+hara ter.
+
+onversely that the representations on W and V /W are summable. We
+
+laim that V is summable as well. It su es to show that ∫π(f1 ∗ f2 ) is nu lear for
+
+ˆ D(G) D(G) ∼
+all f1 , f2 ∈ D(G) be ause D(G) ⊗
+= D(G). By hypothesis, ∫π(f2 ) indu es
+a nu lear operator on V /W . It is well-known that nu lear operators
+
+an be lifted in
+
+extensions of Bana h spa es. This extends to bornologi al ve tor spa es be ause we
+an fa tor nu lear operators through nu lear operators on Bana h spa es. Hen e
+there exists a nu lear operator X : V /W → V su h that P ◦ X = ∫π(f2 ), where P
+denotes the
+
+anoni al proje tion V
+
+→ V /W . We write
+
+∫π(f1 ∗ f2 ) = ∫π(f1 ) ◦ (∫π(f2 ) − X ◦ P ) + ∫π(f1 ) ◦ X ◦ P.
+By
+
+onstru tion, the range of ∫π(f2 ) − X ◦ P is
+
+ontained in W . Sin e the repre-
+
+sentation on W is summable, ∫π(f1 ) ◦ (∫π(f2 ) − X ◦ P ) is nu lear. Sin e X is also
+nu lear, we get the desired nu learity of ∫π(f1 ∗ f2 ).
+
+
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+11
+
+2.3. Summable representations of Abelian groups. Let G be an Abelian
+
+ompa t group. Let Ω(G) be the spa e of quasi- hara ters of G. For any
+ω ∈ Ω(G), we let C(ω) be the orresponding 1-dimensional representation of G.
+The Fourier-Lapla e transform f 7→ fˆ maps D(G) to a ertain algebra of holomorphi fun tions on Ω(G). We say that a summable representation π : G → Aut(V )
+ontains the quasi- hara ter ω if there exists an equivariant map C(ω) → V . The
+spe trum spec π of π is the set of all quasi- hara ters ontained in V . (This deni-
+
+lo ally
+
+tion is only reasonable for summable representations!)
+
+We all the representation π quasi-nilpotent if ∫π(f ) is quasi-nilpotent for all
+f ∈ D(G). If π is quasi-nilpotent, then it annot ontain any quasi- hara ter,
+that is, spec π = ∅. Conversely, if π is not quasi-nilpotent, then spec π 6= ∅. To
+prove this, pi k f ∈ D(G) for whi h ∫π(f ) : V → V is not quasi-nilpotent. That is,
+∫π(f ) has a non-zero eigenvalue λ. The λ-eigenspa e of ∫π(f ) is nite dimensional
+and G-invariant be ause G is Abelian. Hen e π has nite dimensional invariant
+subspa es. Standard linear algebra yields that π ontains some quasi- hara ter.
+Any nite dimensional subrepresentation W ⊆ V has a Jordan-Hölder series,
+whose subquotients are of the form C(ω) for quasi- hara ters ω . The algebrai
+multipli ity mult(ω, π) of a quasi- hara ter ω in the representation π is dened as
+the maximal number of times C(ω) o urs as a subquotient in su h a Jordan-Hölder
+series. This multipli ity is nite for all ω ∈ Ω(G) be ause
+X
+mult(λ, ∫π(f )) =
+mult(ω, π)
+
+{ω∈Ω(G)|fˆ(ω)=λ}
+
+for all f ∈ D(G). Hen e the tra e formula of Theorem 2.10
+
+χπ (f ) := tr ∫π(f ) =
+
+(7)
+
+X
+
+an be rewritten as
+
+mult(ω, π) · fˆ(ω).
+
+ω∈Ω(G)
+
+2.4. Properties of summable representations. If a bornologi al ve tor
+spa e
+
+arries a smooth and summable group representation, then it
+
+annot be
+
+om-
+
+pletely arbitrary. Most importantly, the spa e V must be nu lear, so that there is
+no dieren e between nu lear operators and operators of order 0. The results of
+this se tion are not relevant for our number theoreti
+
+appli ations be ause there the
+
+properties that we show to hold in general are easy to verify dire tly. Nevertheless,
+it seems worthwhile to in lude them here together with our dis ussion of summable
+representations. The proof requires the following preparatory lemma.
+
+Let X, V, W be onvex bornologi al ve tor spa es. Suppose X to be
+ˆ 1/3 W be a bounded linear map and let S ⊆ X be bounded.
+nu lear. Let φ : X → V ⊗
+Then φ(S) is ontained in the omplete disked hull of {vm ⊗ wn | m, n ∈ N} with
+absolutely summable sequen es (vn ) and (wn ) in V and W , respe tively.
+Lemma 2.13.
+
+Proof. Let p = 1/3. Sin e X is nu lear, there are a bounded sequen e (xn )
+p
+in X and (ǫn ) ∈ ℓ (N) su h that S is ontained in the disked hull of (ǫn xn ). Sin e
+P
+ˆ p W , we have φ(xn ) =
+λn,j vj ⊗ wj with
+the sequen e φ(xn ) is bounded in V ⊗
+P
+p
+j |λn,j | ≤ 1 for all n ∈ N and bounded sequen es (vj ) and (wj ) in V and W ,
+
+respe tively. Hen e φ(ǫn xn ) is ontained in the omplete disked hull of the set of
+p
+p
+p
+p
+elementary tensors (λn,j ǫn vj ) ⊗ (λn,j ǫn wj ). Our onstru tion guarantees that the
+p
+p
+p
+p
+bisequen e (λn,j ǫn ) is absolutely summable. Therefore, the bisequen es (λn,j ǫn vj )
+p
+p
+and (λn,j ǫn wj ) in V and W are absolutely summable.
+
+Theorem 2.14. Let π : G → Aut(V ) be smooth and summable. Then V is
+regular and nu lear. For any smooth ompa t subgroup k ⊆ G, the k-xed point
+subspa e V k ⊆ V is bornologi ally metrizable.
+
+12
+
+RALF MEYER
+
+Proof. If V fails to be regular, then there is v ∈ V with l(v) = 0 for all
+l ∈ V ′ . Hen e T (v) = 0 for all T ∈ ℓ1 (V ), so that ∫π(f )(v) = 0 for all f ∈ D(G).
+This is impossible for a ontinuous representation. For any bounded subset S ⊆ V ,
+′
+′′
+there are bounded subsets S ⊆ D(G), S ⊆ V su h that S is ontained in the
+′
+′′
+omplete disked hull of ∫π(S )(S ). Re all that ∫π is a bounded map from D(G) to
+ˆ [0] V ′ by Lemma 2.11. Sin e D(G) is nu lear, Lemma 2.13 yields that ∫π(S ′ )
+V ⊗
+′
+is ontained in the omplete disked hull of (|vm ihvn |)m,n for absolutely summable
+′
+′
+sequen es (vm ) and (vn ) in V and V , respe tively. It follows that the given set S
+is absorbed by the omplete disked hull of (vm ). That is, any bounded subset of V
+is absolutely summable. This implies that V is nu lear.
+Let L ⊆ G be a ompa t neighborhood of the identity in G su h that kLk = L
+and let E0 (L//k) ⊆ D(G) be the subspa e of k -biinvariant fun tions supported in L.
+ˆ k → V k is a bornologi al quotient map be ause
+The restri tion of ∫π to E0 (L//k) ⊗V
+ˆ V → V onstru ted in [13℄ an evidently be hosen
+the linear se tion for ∫π : D(G) ⊗
+k
+k
+into E0 (L//K, V ). The spa e E0 (L//k) is a Fré het spa e equipped
+to map V
+
+with the pre ompa t bornology. Hen e it is bornologi ally metrizable by [15℄. Let
+
+(Sn )n∈N be a sequen e of bounded subsets of V . For ea h n ∈ N, there are bounded
+′
+′′
+disks Sn ⊆ E0 (L//k) and Sn ⊆ V su h that Sn is ontained in the omplete disked
+′
+′′
+′
+hull of ∫π(Sn )(Sn ). Sin e E0 (L//k) is metrizable, there is a bounded disk S that
+′
+′
+′
+absorbs all Sn . Hen e we may assume that Sn = S for all n ∈ N. There are
+′
+′
+′
+bounded disks T ⊆ V , T ⊆ V so that ∫π(S ) is ontained in the omplete disked
+′
+′
+′′
+′
+′′
+hull of |T ihT |. Hen e Sn ⊆ ∫π(S )(Sn ) ⊆ T hT , Sn i. That is, all Sn are absorbed
+by T . This means that V is bornologi ally metrizable.
+
+It would be ni e if one
+
+ould show that the spa es V
+
+k
+
+for a smooth and sum-
+
+mable representation are nu lear Fré het spa es equipped with the von Neumann
+bornology. Although this happens in the examples that I know of, I have no idea
+how to prove this in general.
+Proposition 2.15. Let V be a smooth summable representation. Then the
+natural map from V to its double ontragradient is a bornologi al isomorphism.
+Proof. The integrated form of the
+
+ontragradient representation Ṽ is up to
+
+the ree tion h 7→ ȟ the same as the integrated form of V itself. Thus the integrated
+form of the double
+
+ontragradient W is equal to the integrated form of V . Hen e
+
+ˆW
+the integrated form D(G) ⊗
+
+→ W of the double
+
+ontragradient representation
+
+ˆ Ṽ ⊗
+ˆ W and hen e through the in lusion map V
+fa tors through V ⊗
+
+→ W . Sin e
+→ W.
+Sin e V is regular, this map is inje tive, hen e a bornologi al isomorphism.
+
+
+the map D(G, W ) → W is a bornologi al quotient map, so is the map V
+
+2.5. Quasi-nilpotent representations.
+Definition 2.16. A summable representation π : G → Aut(V ) is
+
+nilpotent if ∫π(f ) is quasi-nilpotent for all f ∈ D(G).
+
+alled
+
+quasi-
+
+If G is totally dis onne ted, then the zero representation is the only quasiontinuous representation of G: in this ase, the operators
+∫π(f ) have nite rank and hen e must vanish on e they are quasi-nilpotent.
+
+nilpotent summable
+
+Proposition 2.17.
+
+if its hara ter vanishes.
+
+A summable representation is quasi-nilpotent if and only
+
+Proof. Sin e a quasi-nilpotent operator has no non-zero eigenvalues, a quasi-
+
+nilpotent representation must have hara ter 0.
+Conversely, if χπ = 0, then
+tr ∫π(f )n = 0 for all f ∈ D(G), n ∈ N. This implies that ∫π(f ) is quasi-nilpotent
+by Theorem 2.4.
+
+
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+Together with Theorem 2.12, this
+hereditary for smoothenings,
+
+13
+
+riterion implies that quasi-nilpoten e is
+
+ontragradients, tensor produ ts, subrepresentations,
+
+quotients and extensions.
+Proposition 2.18. Let π : G → Aut(V ) be a summable representation. Then
+there are losed G-invariant subspa es N0 ⊆ V0 ⊆ V su h that N0 and V /V0 are
+quasi-nilpotent and the quotient V0 /N0 is orthogonal to all quasi-nilpotent summable
+representations in the sense that
+
+HomG (V0 /N0 , N ) ∼
+=0
+
+HomG (N, V0 /N0 ) ∼
+= 0,
+
+for all quasi-nilpotent summable representations N .
+Proof. Let V0 ⊆ V be the
+
+losed subspa e that is generated by the generalized
+
+eigenspa es of the operators ∫π(f ) with f
+subspa e is
+
+learly G-invariant. By
+
+∫π(f ) on V are already
+
+∈ D(G) for non-zero eigenvalues. This
+
+onstru tion, all the generalized eigenspa es of
+
+ontained in V0 .
+
+Hen e the spe tral
+
+omputation of the
+
+tra e of ∫π(f ) yields the same answer for V0 and V . Thus V0 and V have the same
+hara ter, so that the
+
+hara ter of V /V0 vanishes. Thus V /V0 is quasi-nilpotent.
+
+Suppose that f : V0 → N is an equivariant map to some quasi-nilpotent representation N . Then f maps generalized eigenspa es of ∫π(f ) again to generalized
+eigenspa es. Sin e ∫π(f ) is quasi-nilpotent on N , it has no non-zero eigenvalues and
+hen e f must vanish on generalized eigenspa es of ∫π(f ) for non-zero eigenvalues.
+Thus f must vanish on V0 .
+subspa e N0 ⊆ V0 may be.
+We let W
+also for the
+
+A fortiori, any map V0 /N0 → N vanishes, whatever the
+
+= V0 to simplify our notation. We
+
+an do the above
+
+onstru tion
+
+ontragradient representation π̃ : G → Aut(W̃ ) and obtain a
+
+ertain
+
+subspa e W̃0 ⊆ W̃ . We let N0 be the set of v ∈ W whi h are orthogonal to W̃0 , that
+is, l(v) = 0 for all l ∈ W̃0 . This is a
+
+losed G-invariant subspa e. Proposition 2.15
+
+implies that we have the usual duality between subrepresentations/quotients of W
+
+and quotients/subrepresentations of W̃ . Sin e Ñ0 ∼
+= W̃ /W̃0 is quasi-nilpotent, N0
+
+The ontragradient of V0 /N0 is isomorphi to W̃0 . If
+f : N → V0 /N0 is any G-equivariant bounded map, then its ontragradientwhi h
+is a map from W̃0 to Ñ vanishes by onstru tion of W̃0 be ause Ñ is quasinilpotent. Therefore, the map f vanishes as well. Thus the ltration N0 ⊆ V0 ⊆ V
+has the desired properties.
+
+is quasi-nilpotent as well.
+
+In this way, we
+
+an split o the quasi-nilpotent part of a summable representa-
+
+tion. I do not know whether our spe tral interpretation for the zeros of L-fun tions
+has a quasi-nilpotent part.
+
+2.6. Notions of irredu ibility. A representation is alled irredu ible if it has
+no
+
+losed invariant subspa es. We may want to
+
+summable representations of a lo ally
+
+lassify the irredu ible, smooth,
+
+ompa t group G.
+
+However, we must ex-
+
+lude irredu ible quasi-nilpotent representations. For example, R has irredu ible
+quasi-nilpotent representations be ause there exist operators on innite dimensional
+Bana h spa es without invariant subspa es. However, we
+
+ertainly have no hope of
+
+lassifying su h operators.
+Lemma 2.19 (S hur's Lemma). Let π : G → Aut(V ) be an irredu ible summable
+representation that is not quasi-nilpotent. Then any G-equivariant operator V → V
+must be a onstant multiple of the identity operator.
+Proof. Let T : V
+
+→ V be an operator that
+
+ommutes with π(G) and hen e
+
+with ∫π(D(G)). Sin e π is not quasi-nilpotent, there is f ∈ D(G) for whi h ∫π(f )
+has a non-zero eigenvalue λ.
+
+The
+
+orresponding eigenspa e is nite dimensional
+
+be ause ∫π(f ) is nu lear. It is T -invariant be ause T
+
+ommutes with ∫π(f ). The
+
+14
+
+RALF MEYER
+
+restri tion of T to this subspa e has an eigenvalue c ∈ C. Sin e π is irredu ible, the
+kernel of T − c
+The
+
+
+
+annot be a proper subspa e, that is, T = c · idV .
+
+onverse of S hur's Lemma only holds for unitary representations. It is
+2
+with trivial ommutant.
+
+easy to nd redu ible representations of Z on C
+Let Z(G) be the
+lently, the
+
+enter of the
+
+ategory of smooth representations or, equiva-
+
+enter of the multiplier algebra of D(G) (see [13℄). It a ts on any smooth
+
+representation by
+
+entral module homomorphisms.
+
+enter for totally dis onne ted groups. If G is a
+
+It is equal to the Bernstein
+
+onne ted Lie group, then Z(G)
+
+ontains the
+
+enter of the universal enveloping algebra of G.
+
+to Z(G) for
+
+onne ted
+
+omplex Lie groups with trivial
+
+The latter is equal
+
+enter and also for groups
+
+like PSl(n, R). If π is irredu ible and S hur's Lemma applies, then Z(G) a ts by
+multiples of idV . Thus we obtain a
+
+hara ter of π.
+
+hara ter on Z(G), whi h we
+
+all the
+
+entral
+
+Re all that the integrated form of a smooth summable representation π is a
+
+ˆ Ṽ by Lemma 2.11.
+bounded homomorphism ∫π : D(G) → V ⊗
+Definition 2.20. A smooth summable representation π is
+
+ˆ Ṽ .
+redu ible if ∫π is a bornologi al quotient map onto V ⊗
+
+alled
+
+strongly ir-
+
+It is well-known that irredu ible admissible representations of totally dis onne ted groups are strongly irredu ible. It is not so
+groups.
+
+We
+
+lear what happens for general
+
+ertainly have to ex lude quasi-nilpotent representationswhi h do
+
+not exist in the totally dis onne ted
+
+asein order to get a true statement.
+
+We use the following notion of Morita equivalen e for bornologi al algebras. It is
+the straightforward extension of the
+
+orresponding Bana h spa e theory from [7, 8℄.
+
+ˆA A ∼
+self-indu ed if A ⊗
+= A. A bornologi al left
+ˆA V ∼
+module V over a self-indu ed bornologi al algebra A is alled essential if A ⊗
+=
+V . Two self-indu ed bornologi al algebras A and B are alled Morita equivalent if
+A bornologi al algebra A is
+
+alled
+
+there exist an essential bornologi al A, B -bimodule P and an essential bornologi al
+
+ˆB Q ∼
+ˆA P ∼
+B, A-bimodule Q su h that P ⊗
+= A and Q ⊗
+= B as bimodules. This
+implies that the ategories of essential modules over A and B are isomorphi via
+ˆ A xy and P ⊗
+ˆ B xy.
+Q⊗
+
+Lemma 2.21. A bornologi al algebra is Morita equivalent to C if and only if
+ˆ W dened by some non-zero, bounded bilinear
+it is isomorphi to the algebra V ⊗
+ˆ V → C. The Morita equivalen e is implemented by V with the obvious
+pairing W ⊗
+ˆ W, C-bimodule and by W with the obvious
+stru ture of essential bornologi al V ⊗
+ˆ W -bimodule. Any irredu ible left or right
+stru ture of essential bornologi al C, V ⊗
+ˆ
+module over V ⊗ W is isomorphi to V or W , respe tively.
+Proof. It is straightforward to
+
+ˆ W is self-indu ed and that V
+he k that V ⊗
+
+ˆ W . Sin e P ⊗
+ˆC Q ∼
+and W implement a Morita equivalen e between C and V ⊗
+=
+
+ˆ Q, it is also evident that any bornologi al algebra Morita equivalent to C is of
+P⊗
+ategory of essential bornologi al modules over C is isomorphi to
+the ategory of bornologi al ve tor spa es. The bornologi al ve tor spa e C is the
+
+this form. The
+
+unique irredu ible obje t of this
+
+ategory. Sin e the Morita equivalen e gives rise
+
+to an isomorphism between the
+
+ategories of modules, we nd that V or W are the
+
+ˆ W , respe tively.
+unique irredu ible left or right modules over V ⊗
+
+
+
+Corollary 2.22. The map π 7→ Ker ∫π gives rise to a bije tion between the
+strongly irredu ible, smooth, summable representations of G and the ideals in D(G)
+for whi h D(G)/ Ker ∫π is Morita equivalent to C.
+Proof. By denition, π is strongly irredu ible if and only if D(G)/ Ker π ∼
+=
+ˆ
+V ⊗ Ṽ . The lemma implies that this is Morita equivalent to C and that V and Ṽ as
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+15
+
+modules over D(G)/ Ker ∫π and hen e as representations of G are uniquely determined by Ker ∫π . Conversely, if D(G)/I is Morita equivalent to C for some ideal in
+
+ˆ W for some essential left and right modules V and W
+D(G), then D(G)/I ∼
+=V ⊗
+ˆ D(G)/I V → C. It is straightover D(G) together with a non-zero linear map W ⊗
+forward to see that V is a strongly irredu ible, smooth summable representation
+with asso iated kernel I .
+
+Thus strongly irredu ible representations
+
+an be
+
+about the algebra D(G).
+
+For some groups, one
+
+representation that has a
+
+entral
+
+lassied if we know enough
+
+an show that any irredu ible
+
+hara ter is already strongly irredu ible. Given a
+
+hara ter χ of Z(G), we let Iχ := {a ∈ Z(G) | χ(a) = 0} and
+
+D(G)χ := D(G)/(Iχ · D(G)).
+This is the
+
+lo alization of D(G) at the entral hara ter χ. Evidently, the ategory
+
+of essential modules over D(G)χ is isomorphi
+tations of G with
+
+entral
+
+representations of G with
+
+to the
+
+ategory of smooth represen-
+
+hara ter χ. Thus the question whether or not irredu ible
+entral
+
+hara ter χ are strongly irredu ible is a question
+
+about the bornologi al algebra D(G)χ . I expe t that for redu tive groups over loal elds, the algebras D(G)χ are always Morita equivalent to nite dimensional
+algebras. This immediately implies that any irredu ible representation with
+
+entral
+
+hara ter χ is strongly irredu ible.
+
+3. The lo al tra e formula
+The results of this se tion are essentially already ontained in [4℄. Computations
+of a similar nature also appear in the work of Jean-François Burnol ([2, 3℄).
+have to reformulate Connes'
+
+dierently. Let K be a global eld and let S be a nite set of pla es that
+all innite pla es. The
+
+We
+
+omputations be ause we treat the global situation
+ontains
+
+lo al tra e formula is an S -lo al analogue of the Expli it
+
+Formula.
+
+Roughly speaking, it measures the failure of the Poisson Summation
+×
+×
+Formula for the Fourier transform on AS . Let CS := AS /KS be the S -idele lass
+
+group. The equivariant Fourier transform F denes a unitary operator on the
+2
+×
+Hilbert spa e L (CS , |x| d x). Let φ be a smooth fun tion on R+ with φ(x) =
+
+0 near ∞ and φ(x) = 1 near 0.
+L2 (CS , |x| d× x) and let
+
+Let λ be the regular representation of CS on
+
+T := Mφ − F ◦ Mφ ◦ F∗ ∈ End(L2 (CS , |x| d× x)).
+We show that ∫λ(f )T and T ∫λ(f ) are nu lear and that
+
+tr(T ∫λ(f )) = tr(∫λ(f )T ) =
+
+X
+
+Wv (f )
+
+v∈S
+
+with the same lo al summands Wv as in the Weil distribution. For S → P(K), we
+get the Weil distribution ex ept for the dis riminant term. This
+
+omes in be ause
+
+of the dierent normalization of the Fourier transform in the global
+The lo al
+
+ase.
+
+ase
+
+an be treated by two rather disjoint sets of te hniques. In this
+2
+×
+se tion, we use the Hilbert spa e approa h and work in the spa e L (CS , |x| d x).
+×
+In the next se tion, we use the mu h smaller spa e S(AS )/KS instead. It makes
+no dieren e whi h spa e we use in the lo al tra e formula. That is, the problem
+of whether there are non- riti al zeros or not does not yet arise in the S -lo al
+
+3.1. Some number theoreti
+
+onventions and notations. We begin by
+
+explaining our setup and notation for the sake of the non-experts. Let S be a
+set of pla es of K that
+
+ontains all innite pla es. Let
+
+AS :=
+
+Y
+
+v∈S
+
+Kv ,
+
+ase.
+
+A×
+S :=
+
+Y
+
+v∈S
+
+Kv× ,
+
+nite
+
+16
+
+RALF MEYER
+
+be the S
+
+-adele ring
+
+-idele group of K , respe tively. We dene the norm
+
+and the S
+×
+×
+homomorphism AS → R+ , whi h is a
+
+ontinuous group homomorphism, by
+
+Y
+
+|(xv )v∈S | = |(xv )v∈S |S :=
+
+|xv |v .
+
+v∈S
+×
+1
+Its kernel is denoted AS . Addition and multipli ation turn AS and AS into lo ally
+ompa t Abelian groups. Let ∁S = P(K) \ S and
+
+KS := {x ∈ K | |x|v ≤ 1 for all v ∈ ∁S},
+KS× := {x ∈ K × | |x|v = 1 for all v ∈ ∁S}.
+×
+The set KS is a subring of K and KS is its multipli ative group. It is known that
+KS and KS× are dis rete and o ompa t subgroups of AS and A1S , respe tively. The
+×
+S
+CS := A×
+S /KS is another lo ally ompa t Abelian group. The
+×
+norm homomorphism des ends to a ontinuous homomorphism |xy| : CS → R+ . Its
+1
+kernel CS ⊆ CS is a ompa t group.
+×
+×
+The groups AS and CS a t on spa es of fun tions on AS and CS by the
+
+-idele lass group
+
+regular
+
+representation
+
+λg f (x) := f (g −1 · x).
+
+(8)
+The
+
+integrated form of λ is given by
+
+(9)
+
+∫λ(h)(f )(x) :=
+
+Z
+
+h(g) · f (g −1 · x) d× g
+
+×
+×
+with respe t to some xed Haar measure d g on AS or CS , respe tively. Noti e
+that this is just the usual formula for the onvolution of two fun tions.
+×
+×
+If G is either CS or Kv for some pla e v , we normalize d x so that
+
+Z
+
+d× x = ln |u|
+
+for all u ∈ G with |u| ≥ 1.
+
+{x∈G|1≤|x|<|u|}
+
+We do not
+
+×
+are about the normalization of the Haar measure on AS .
+
+If v is an innite pla e, the normalized Haar measure on Kv is the usual Lebesgue measure. If v is nite, the Haar measure is normalized by the requirement
+that the maximal
+
+ompa t subring
+
+Ov := {x ∈ Kv | |x|v ≤ 1}
+
+(10)
+
+The normalized Haar measure on AS is the produ t
+−1
+The measure |x|
+dx is invariant under λ. Hen e it
+×
+×
+is proportional to the Haar measure d x on AS . For this, the niteness of S is
+should have unit volume.
+measure dx
+
+=
+
+Q
+
+v∈S dxv .
+
+important: otherwise the set of x ∈ AS with |x| = 0 may have non-zero measure.
+
+cS with
+We identify the Pontrjagin dual A
+
+su h that ψv 6= 0 for all v ∈ S . Then the map
+
+cS ,
+AS → A
+
+is an isomorphism of lo ally
+
+Fourier transform on AS by
+(11)
+We
+
+2
+
+Q
+
+y 7→ (x 7→ ψ(xy))
+
+ompa t Abelian groups.
+
+2
+
+c
+
+c
+
+v∈S Kv . Let ψ = (ψv )v∈S ∈ AS be
+
+F = Fψ : L (AS , dx) → L (AS , dx),
+
+Hen e we
+
+Ff (ξ) :=
+
+2
+all ψv normalized if Fψv is unitary on L (Kv , dx). Of
+
+Z
+
+an dene the
+
+f (x)ψ(xξ) dx.
+AS
+
+ourse, this depends on
+
+our normalization of dx. We all (ψv ) normalized if all ψv are normalized. Hen e
+×
+Fψ is a unitary operator on L2 (AS , dx) ∼
+= L2 (A×
+S , |x| d x). Re all that the measures
+×
+dx and |x| d x are proportional. If we do not expli itly mention ψ , then we always
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+17
+
+assume that F is taken with respe t to some normalized hara ter ψ . The adjoint
+−1
+= F∗ = λ−1 F, that is, F∗ f (x) = Ff (−x).
+of F is given simply by F
+The operator
+
+×
+×
+2
+×
+J : L2 (A×
+S , |x| d x) → L (AS , |x| d x),
+
+(12)
+
+is unitary and satises J
+
+2
+
+= id and
+
+J ◦ λg = |g|−1 · λg−1 ◦ J,
+
+(13)
+
+Jf (x) := |x|−1 f (x−1 ),
+
+J ◦ ∫λ(h) = ∫λ(Jh) ◦ J.
+
+Thus J(f1 ∗ f2 ) = Jf1 ∗ Jf2 , that is, J is a homomorphism with respe t to
+
+onvo-
+
+lution. The Fourier transform has the same la k of equivarian e, that is,
+
+F ◦ λg = |g|−1 · λg−1 ◦ F,
+
+(14)
+Hen e the
+
+ompositions
+
+F := F ◦ J
+
+(15)
+are
+
+F ◦ ∫λ(h) = ∫λ(Jh) ◦ F.
+
+and
+
+F∗ := J ◦ F∗ ,
+
+λ-equivariant unitary operators on L2 (AS , dx).
+
+Fourier transform.
+
+We
+
+all
+
+F the equivariant
+
+3.2. Des ending operators to idele lasses. Consider the Hilbert spa es
+L2 (CS )α := {f : CS → C | f · |x|α ∈ L2 (CS , d× x)} = L2 (CS , |x|2α d× x)
+2
+We are mainly interested in L (CS )1/2 . Clearly, J is a well-dened
+2
+unitary operator on L (CS )1/2 . We want to know that F or, equivalently, F also
+2
+gives rise to a unitary operator on L (CS )1/2 . This is not a very deep fa t and an
+for α ∈ R.
+
+be proved by elementary means. A tually, there is a general method for des ending
+×
+2
+2
+operators on L (AS )α to L (CS )α .
+×
+2
+If we work spe trally, we an identify L (AS ) with the Hilbert spa e of squarec×
+×
+integrable fun tions on the Pontrjagin dual AS . An AS -equivariant bounded op×
+2
+erator X on L (AS ) orresponds to the operator of pointwise multipli ation by
+
+×
+2 c
+the bounded measurable fun tion X̂ on L (AS ).
+
+c
+Sin e C
+S is a losed subgroup
+c
+×
+c×
+c
+of AS , des ending X to CS orresponds to restri ting X̂ to C
+S ⊆ AS . However,
+c
+sin e C
+S has vanishing measure, we annot restri t measurable fun tions to it. We
+b to be ontinuous. Equivalently, X is a multiplier of the redu ed C ∗ -algebra
+need X
+c×
+×
+∗
+c
+Cred
+(A×
+S ) of AS . Let us denote multiplier algebras by M. Restri tion to CS ⊆ AS
+orresponds to a unital ∗-homomorphism
+∗
+∗
+M(Cred
+(A×
+S )) → M(Cred (CS )).
+
+×
+2
+2
+This is how we des end operators on L (AS ) to L (CS ).
+×
+∗
+In order to verify whether X ∈ M(Cred (AS )), let
+×
+×
+∗
+2
+2
+R := Cred
+(A×
+S ) ∩ L (AS ) ⊆ L (AS ).
+×
+∗
+Then X ∈ M(Cred (AS )) if and only if X(R) ⊆ R. A tually, it su es to
+
+he k
+
+c×
+×
+×
+that X(D(AS )) ⊆ R be ause for any χ ∈ AS there is f ∈ D(AS ) with fˆ(χ) 6= 0.
+Hen e
+
+ontinuity of X̂ · fˆ implies that X̂ is
+
+Sin e
+
+ontinuous near χ.
+
+ontinuity of the Fourier transform is di ult to
+
+di ult to des ribe. However, it is
+
+he k, the spa e R is
+
+lear that
+
+× ×
+×
+2
+L1 (A×
+S , d x) ∩ L (AS , d x) ⊆ R.
+×
+∗
+This allows us to show that F belongs to M(Cred (AS )):
+
+The operators F and F∗ des end to unitary operators on L2 (CS )1/2
+∗
+that are inverse to ea h other and belong to the multiplier algebra of Cred
+(CS )1/2 .
+Lemma 3.1.
+
+18
+
+RALF MEYER
+
+×
+
+2
+
+×
+
+Proof. Sin e we work in L (AS , |x| d
+
+of R a
+
+x), we have to modify the denition
+
+ordingly. It is easy to see that
+
+×
+1
+1/2 ×
+×
+F(D(A×
+d x) ∩ L2 (A×
+S )) ⊆ S(AS ) ⊆ L (AS , |x|
+S , |x| d x) ⊆ R1/2 .
+×
+∗
+This implies F ∈ M(Cred (AS )). The assertions of the lemma now follow from the
+
+
+
+above dis ussion.
+
+2
+Equation (12) also denes J as an operator on L (CS )1/2 . Hen e F = FJ also
+×
+2
+∗
+2
+des ends to L (CS )1/2 . Sin e −1 ∈ KS , we have F = F as operators on L (CS )1/2 ,
+2
+so that F = id. The above onstru tions depend on spe tral analysis and therefore
+require the
+
+ommutativity of CS . A generalization to
+
+ompa t groups
+
+rossed produ ts by lo ally
+
+an be found in [12℄.
+
+3.3. The standard Fredholm module over S(CS ). We let S(CS ) be the
+Bruhat-S hwartz algebra of the lo ally
+
+ompa t Abelian group CS .
+
+in [1℄ and dis ussed in greater detail below.
+module over S(CS ). A part of this
+Multipli ation by the unitary
+
+It is dened
+
+We des ribe a standard Fredholm
+
+onstru tion is used for the lo al tra e formula.
+it
+hara ter |x|
+for t ∈ R is an automorphism
+
+of S(CS ). This denes a smooth a tion of R by bornologi al algebra automorphisms
+on S(CS ). Its generator is the bounded derivation
+
+∂ = Mln |g| : S(CS ) → S(CS ),
+
+∂(f )(g) := ln |g| · f (g).
+
+The derivation property means that
+
+∂(f0 ∗ f1 ) = ∂(f0 ) ∗ f1 + f0 ∗ ∂(f1 )
+for all f0 , f1 ∈ S(CS ). The
+
+standard tra e on S(CS ) is the bounded linear fun tional
+
+τ : S(CS ) → C,
+
+τ (f ) = f (1CS ).
+
+2
+×
+It satises τ ◦∂ = 0. We abbreviate L (CS ) := L (CS , d x). Sin e λ is a unitary rep2
+resentation on L (CS ), its integrated form extends to a bounded ∗-homomorphism
+∫λ : S(CS ) → End(L2 (CS )).
+2
+
+Let φ : R+ → R+ be a smooth fun tion su h that φ(x) = 1 for x
+
+lose to 0
+
+and φ(x) = 0 for large enough x. We pull ba k φ to a smooth fun tion on CS by
+φ(g) := φ(|g|). The operator Mφ of multipli ation by φ is bounded on L2 (CS ). In
+this se tion, the smoothness of φ is irrelevant. Things a tually be ome simpler if
+we
+
+hoose φ to be the
+
+hara teristi
+
+fun tion of ]0, 1]. Later we want Mφ to operate
+
+on spa es of smooth fun tions and therefore require smooth φ.
+The following notation is
+
+onvenient.
+
+Suppose that we have a linear map
+
+h : V → Hom(X, Y ). We say that h(v) is uniformly nu lear for v ∈ V if h(v)
+is nu lear for all v ∈ S and if h(S) is bounded in the spa e of nu lear operators for
+all bounded subsets S ⊆ V . For instan e, a representation π of a lo ally ompa t
+group G is summable if and only if ∫π(f ) is uniformly nu lear for f ∈ D(G).
+Lemma 3.2.
+
+Let φ be as above and let h ∈ S(CS ). Then the operators
+[Mφ , ∫λ(f )],
+
+∫λ(f )Mh ,
+
+Mh ∫λ(f )
+
+on L2(CS ) are uniformly nu lear for f ∈ S(CS ). We have
+tr ∫λ(f0 )[Mφ , ∫λ(f1 )] = τ (−f0 ∗ ∂f1 ) = τ (∂(f0 ) ∗ f1 )
+R
+and tr ∫λ(f0 )Mh = f0 (1) · CS h(x) d× x for all f0 , f1 ∈ S(CS ).
+Proof. We have
+
+[Mφ , ∫λ(f )]h(x) =
+
+Z
+
+CS
+
+
+φ(|x|) − φ(|y|) f (xy −1 ) · h(y) d× y,
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+19
+
+so that the operator [Mφ , ∫λ(f )] has the integral kernel
+
+We
+
+
+Kf (x, y) := f (xy −1 ) φ(|x|) − φ(|y|) .
+
+∼
+ˆ
+laim that f 7→ Kf is a bounded map from S(CS ) to S(CS ) ⊗S(C
+S ) = S(CS ×CS ).
+
+This yields the uniform nu learity of [Mφ , ∫λ(f )]. To prove the
+
+laim, observe rst
+
+that f belongs to S(CS /k) for some elementary Abelian quotient CS /k of CS . Hen e
+Kf is a fun tion on (CS /k)2 . Thus we may repla e CS by the elementary Abelian
+group G
+
+:= CS /k .
+
+It is important that the fun tion
+
+|ln |x|| is a proper length
+
+fun tion and hen e denes rapid de ay on G. There is R ∈ R≥1 depending only
+−1
+on φ su h that Kf (x, y) vanishes for |x|, |y| ≥ R and |x|, |y| ≤ R
+. This implies
+
+max{|x|, |x|−1 , |y|, |y|−1 } ≤ R · max{|xy −1 |, |xy −1 |−1 }
+on the support of Kf . Hen e the rapid de ay of f implies rapid de ay of Kf . If we
+2
+apply a G -equivariant dierential operator to Kf , we do not enlarge the support
+−1
+and we retain rapid de ay in the variable xy
+. Hen e the dierentiated fun tions
+still have rapid de ay. This yields the
+
+laim.
+
+Similarly, the operator ∫λ(f0 )[Mφ , ∫λ(f1 )] has the integral kernel
+
+K(x, y) :=
+
+Z
+
+f0 (xz −1 )(φ(|z|) − φ(|y|))f1 (zy −1 ) d× z,
+
+CS
+
+whi h belongs to S(CS × CS ) as well. The tra e of the operator dened by su h an
+integral kernel is equal to the integral of the kernel along the diagonal. Thus
+
+tr ∫λ(f0 )[Mφ , ∫λ(f1 )] =
+
+R
+
+Z
+
+K(x, x) d× x
+CS
+Z
+Z
+f0 (a)f1 (a−1 )
+=
+
+φ(|z|) − φ(|az|) d× z d× a.
+
+CS
+
+CS
+
+×
+ompute
+CS φ(|z|) − φ(|az|) d z . If φ had ompa t support, the left invarian e
+×
+of d z would for e the integral to vanish. Therefore, we may repla e φ by any
+′
+′
+fun tion φ with the same behavior at 0 and ∞. We hoose φ to be the hara teristi
+′
+′
+fun tion of ]0, 1]. Thus φ (|z|) − φ (|az|) is the hara teristi fun tion of the set
+{z ∈ CS | |a|−1 < |z| ≤ 1} for |a| ≥ 1. Hen e the integral is ln |a|. We also get ln |a|
+We
+
+for |a| ≤ 1. This yields the asserted value for tr ∫λ(f0 )[Mφ , ∫λ(f1 )].
+The
+
+orresponding results for ∫λ(f0 )Mh are simpler and proved similarlyand
+
+
+
+therefore left to the reader.
+
+-summable odd Fredholm module
+
+Let F = 1 − 2Mφ . Then ∫λ and F dene a 1
+2
+over S(CS ). That is, ∫λ(f ) · (1 − F ) and [∫λ(f ), F ] are uniformly nu lear operators
+2
+∗
+on L (CS ) for f ∈ S(CS ) and F = F . If we let φ be the hara teristi fun tion
+2
+of ]0, 1], then even F
+= id. Lemma 3.2 implies easily that the Chern-Connes
+hara ter of this Fredholm module is the
+
+y li
+
+1- o y le
+
+χ(f0 , f1 ) := τ (f0 ∗ ∂f1 ).
+However, we do not use this fa t. Instead, we twist this Fredholm module by F and
+∗
+obtain the 0- o y le χ(F, F f ) in Lemma 3.3.
+
+3.4. A ommutator with the equivariant Fourier transform.
+
+Sin e we
+2
+2
+want to use the equivariant Fourier transform, we repla e L (CS ) by L (CS )1/2 , on
+∗
+whi h the operators F and F are dened. These Hilbert spa es are isomorphi via
+1/2
+−1/2
+multipli ation by |x|
+. The algebra S(CS ) now a ts by ∫λ(f · |x|
+). Sin e we
+−1/2
+do not want to write |x|
+in all our formulas, we repla e S(CS ) by the ∗-algebra
+
+S(CS )1/2 := S(CS ) · |x|−1/2 = {f : CS → C | f · |x|1/2 ∈ S(CS )},
+
+20
+
+RALF MEYER
+
+whi h is isomorphi
+
+to S(CS ) via multipli ation by |x|
+
+∗
+
+±1/2
+
+2
+
+. For φ as above we let
+
+2
+
+T := Mφ − F ◦ Mφ ◦ F : L (CS )1/2 → L (CS )1/2 .
+We prefer to
+
+hoose φ smooth, but again it is also possible to take the
+
+hara teristi
+
+fun tion of ]0, 1].
+
+The operators ∫λ(f )T and T ∫λ(f ) on L2(CS )1/2 are uniformly
+nu lear for f ∈ S(CS )1/2 and
+Lemma 3.3.
+
+tr(∫λ(f )T ) = tr(T ∫λ(f )) = τ (F∂(F∗ f ))
+
+(16)
+
+for all f ∈ S(CS )1/2 .
+∗
+
+Proof. We have [∫λ(f ), T ] = [∫λ(f ), Mφ ]−F[∫λ(f ), Mφ ]F
+
+∗
+be ause F and F are
+
+equivariant. Lemma 3.2 implies that [∫λ(f ), Mφ ] and hen e [∫λ(f ), T ] are uniformly
+∗
+2
+nu lear for f ∈ S(CS )1/2 . Sin e F and F are bounded on L (CS ) and inverse to
+ea h other and [∫λ(f ), Mφ ] is nu lear, we get
+
+tr [∫λ(f ), T ] = tr [∫λ(f ), Mφ ] − tr F[∫λ(f ), Mφ ]F∗
+= tr [∫λ(f ), Mφ ] − tr [∫λ(f ), Mφ ]F∗ F = 0.
+he k uniform nu learity and to ompute the tra e for ∫λ(f )T .
+∗
+We rewrite this operator using the equivarian e of F and F . We have F◦∫λ(f )(h) =
+
+Thus it su es to
+
+F(f ∗ h) = F(f ) ∗ h = ∫λ(Ff )(h) for all f, h ∈ S(CS )1/2 . That is,
+∫λ(f ) ◦ F = F ◦ ∫λ(f ) = ∫λ(Ff )
+
+(17)
+
+∗
+∈ Cred
+(CS )1/2 . Hen e both sides of (17)
+2
+dene the same bounded linear operator on L (CS )1/2 .
+on S(CS )1/2 . Lemma 3.1 yields that Ff
+We
+
+ompute
+
+∫λ(f )T = ∫λ(f ) ◦ Mφ − ∫λ(f ) ◦ FMφ F∗ = −[Mφ , ∫λ(f )] + [Mφ , ∫λ(Ff )] ◦ F∗ .
+∗
+A ner analysis than the above (Proposition 4.4) yields Ff ∈ S(CS )1/2 . Sin e F is
+2
+a bounded operator on L (CS )1/2 , Lemma 3.2 implies that ∫λ(f ) ◦ T is uniformly
+nu lear for f ∈ S(CS )1/2 .
+Sin e
+
+onvolutions f1 ∗ f2 are dense in S(CS )1/2 , it su es to
+
+ompute the tra e
+
+of ∫λ(f1 ∗ f2 )T . We have
+
+tr ∫λ(f1 ∗ f2 )T = − tr ∫λ(f1 )[Mφ , ∫λ(f2 )] + tr ∫λ(f1 )[Mφ , ∫λ(Ff2 )] ◦ F∗
+= τ (f1 ∗ ∂f2 ) + tr F∗ ∫λ(f1 )[Mφ , ∫λ(Ff2 )]
+= τ (f1 ∗ ∂f2 ) + τ (∂(F∗ f1 ) ∗ Ff2 ) = τ (F∂(F∗ f1 ∗ f2 ))
+∗
+be ause F and F are inverse to ea h other. This yields (16).
+
+
+
+×
+∗
+We are going to ompute τ (F∂(F f )). Let H := KS . For any f ∈ D(CS ),
+P
+×
+¯
+¯
+there is f ∈ D(AS ) ⊆ S(AS ) with
+x∈H f (gx) = f (g) for all g ∈ CS . Sin e
+R
+h(x)
+ln
+|x|
+dx
+exists for all h ∈ S(AS ), the Fourier transform of ln |x| is a wellAS
+dened tempered distribution on AS . Let † denote the onvolution on the additive
+group AS .
+
+Sin e the Fourier transform intertwines pointwise multipli ation and
+∗
+∗
+onvolution and F ◦ ∂ ◦ F = −FMln |x| F , we get
+
+τ (F∂(F∗ f )) = −
+We have ln |x|S =
+
+P
+
+X
+
+(FMln |x| F−1 f¯)(a) = −
+
+a∈H
+
+X
+
+a∈H
+
+
+(F ln |x|) † f¯ (a),
+
+v∈S ln |x|v . This implies
+X
+F(ln |x|S ) =
+πv∗ F(ln |x|v ),
+v∈S
+
+∗
+′
+where hπv D, f i := D(f |0×Kv ) for any f ∈ S(AS ), D ∈ S (Kv ). Thus onvolution
+∗
+with πv D only moves in the dire tion of Kv and leaves the other oordinates xed.
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+21
+
+The Fourier transform Pv := F(ln |x|v ) satises
+
+Lemma 3.4 ([4, page 50℄).
+
+hPv , λa f i = hPv − ln |a|δ0 , f i
+
+(18)
+
+for all f ∈ S(Kv ). We have
+hPv , f i = −
+
+Z
+
+Kv×
+
+f (x) d× x
+
+for all f ∈ S(Kv ) with f (0) = 0. Thus Pv is a prin ipal value for the above integral.
+It is determined uniquely by the normalization ondition FPv (1) = 0.
+x| = ln |x| − ln |a| for a ∈ Kv× easily implies (18).
+If we restri t to fun tions that vanish at 0, the multiple of δ0 vanishes, so that Pv is
+λ-invariant
+on this subspa e. By the uniqueness of Haar measure, we get Pv (f ) =
+R
+c · Kv× f (x) d× x for all f ∈ D(Kv× ) with some onstant c. This extends to all
+f ∈ S(Kv ) with f (0) = 0. This an be proved dire tly. It also follows rather easily
+×
+from Lemma 4.13 and a spe tral des ription of the spa e T (Kv ) as in Se tion 5.7.
+×
+If f ∈ D(Kv ) is onstant in a neighborhood of 0, then f − λa f ∈ D(Kv ) for all
+×
+a ∈ Kv . Equation (18) yields
+Z
+f (x) − f (a−1 x) d× x = hPv , f − λa f i = ln |a|f (0).
+c·
+Proof. The relation ln |a
+
+−1
+
+Kv×
+
+Computing the integral on the left hand side as in the proof of Lemma 3.2, we
+R
+×
+Kv× f (x) d x. So far we have
+determined Pv up to the addition of a onstant multiple of the Dira measure δ0 .
+
+obtain c = −1. Thus Pv is a prin ipal value for −
+
+ondition FPv (1) = ln |1| = 0.
+
+This is xed by the additional
+
+
+
+We get
+
+
+((F ln |x|v ) † f¯ (a) = hPv , x 7→ f¯(a − x)i
+¯
+¯
+= hPv , x 7→ f¯(a · (1 − a−1
+v x))i = hPv , x 7→ f (a · (1 − x))i − ln |a|v f (1).
+P
+The terms ln |a|v are an eled by the summation over S be ause
+v∈S ln |a|v =
+ln |a|S = 0 for a ∈ H . The summation over H repla es f¯ by f again. Therefore,
+XX
+X
+−
+(F ln |x|v ) † f¯(a) = −
+hPv , x 7→ f (1 − x)i
+v∈S a∈H
+
+v∈S
+
+=
+
+XZ ′
+
+Kv×
+
+v∈S
+×
+
+f (1 − x) d× x =
+
+X Z ′ f (x)|x|
+d× x,
+× |1 − x|
+Kv
+
+v∈S
+
+×
+
+where we use |1 − x| d (1 − x) = |x| d x and pull ba k f ∈ S(CS )1/2 to a fun tion
+×
+×
+on Kv using the evident homomorphism Kv → CS . Of ourse, the last prin ipal
+value diers from the rst one be ause we have shifted the singularity of the integral
+from 0 to 1. We still just get the ordinary integral if f (1) = 0. The normalization
+of the prin ipal value at v only depends on the lo al eld Kv .
+Lemma 3.5.
+
+For a nite lo al eld K, the prin ipal value is normalized by
+Z ′
+
+×
+OK
+
+|x|
+d× x = 0.
+|1 − x|
+
+Proof. Let P ⊆ O be the maximal ideal of elements with |x| < 1. Reversing
+
+the above
+
+omputation, we obtain
+
+Z ′
+
+Z ′
+
+|x|
+d× x =
+× |1 − x|
+OK
+
+Z ′
+1O× |x| ×
+d x=
+11−O× d× x
+K× |1 − x|
+K×
+Z ′
+=
+1O − 11+P d× x = −hPK , 1O i − ln(qK )(qK − 1)−1
+K×
+
+22
+
+RALF MEYER
+
+be ause 1 + P ⊆ K
+
+×
+
+−1
+has volume ln(qK )(qK − 1)
+for our normalization of the Haar
+
+measure. Sin e the Fourier transform of 1O is again 1O , we also get
+
+hPK , 1O i =
+
+Z
+
+ln |x| dx = − ln(qK )(qK − 1)−1 .
+
+{x∈K||x|≤1}
+
+
+
+This yields the assertion.
+
+The normalization of the prin ipal values at the innite pla es is more painful to
+des ribe expli itly. Alain Connes
+
+he ks in [4, page 9196℄ that the above prin ipal
+
+values are the same as those used by André Weil in his Expli it Formula ([20, 21℄).
+Putting everything together, we obtain
+
+tr(∫λ(f )T ) =
+
+(19)
+
+X Z ′ f (x)|x|
+d× x
+× |1 − x|
+Kv
+
+v∈S
+
+for all f ∈ S(CS ) with the same prin ipal values as in [20, 21℄. We
+
+tra e formula.
+
+all (19) the
+
+lo al
+
+What happens if we take the Fourier transform with respe t to a non-normalized
+hara ter ψ ? Of
+
+ourse, then we should also renormalize the Haar measure so that F
+×
+2
+is again unitary on L (AS , dx). We have ψ(x) = ψ0 (∂ · x) for some ∂ ∈ AS and a
+normalized
+
+hara ter ψ0 . The Fourier transforms for ψ and ψ0 dier by
+
+−1/2
+
+Fψ f = |∂|S
+
+F(λ∂ f ).
+
+Therefore,
+
+hFψ ln |x|S , f i = hF ln |∂ −1 x|S , f i = hF ln |x|S , f i + ln |∂|S−1 · f (0).
+Sin e
+(20)
+
+measure δ0 is the identity map, we obtain
+X Z ′ f (x)|x|
+tr(∫λ(f )Tψ ) =
+d× x − f (1) · ln |∂|−1
+S .
+Kv× |1 − x|
+
+onvolution with the Dira
+
+v∈S
+
+This variant of (19) be omes important when we pass to the global situation.
+
+4. The lo al tra e formula without Hilbert spa es
+Again we let K be a global eld and we let S be a nite set of pla es of K
+ontaining all innite pla es. In order to pass to the global ase, we have to repla e
+L2 (CS )1/2 by a smaller spa e that allows us to work outside the riti al strip.
+2
+This is the purpose of the spa e T (CS ) ≺ L (CS )1/2 . The notation ≺ means that
+2
+T (CS ) ⊆ L (CS )1/2 and that the in lusion map is bounded. The spa e T (CS )
+α
+onsists of those fun tions f : CS → C for whi h f · |x|
+is a Bruhat-S hwartz
+∗
+α
+fun tion for α > 0 and (F f ) · |x| is a Bruhat-S hwartz fun tion for α < 1. The
+operator T of the previous se tion restri ts to a bounded operator on T (CS ) and the
+2
+operators ∫λ(f )T and T ∫λ(f ) are uniformly nu lear operators L (CS )1/2 → T (CS )
+2
+for f ∈ D(CS ). Therefore, they are uniformly nu lear as operators on L (CS )1/2
+and T (CS ) and have the same tra e on both spa es.
+If K is a global fun tion eld, then there is a variant Tc (CS ) of T (CS ) that
+should be used instead. With T (CS ) we
+
+an prove the meromorphi
+
+extension of
+
+L-fun tions to Ω(CS ). With Tc (CS ) we even get that they are rational fun tions.
+The denition of the spa es T (CS ) and Tc (CS ) is rather ad ho . There is a more
+×
+natural way to get them. The oinvariant spa e S(AS )/KS is, by denition, the
+quotient of S(AS ) by the losed linear span of elements of the form λa f − f with
+a ∈ KS× , f ∈ S(AS ). We show that S(AS )/KS× is isomorphi to T (CS ) for algebrai
+number elds and to Tc (CS ) for global fun tion elds. We also prove that the higher
+×
+group homology Hn (KS , S(AS )) for n ≥ 1 vanishes. This is ne essary in order to
+×
+ompute the Ho hs hild and y li homology of the rossed produ t K ⋉ S(AK ).
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+We remark that very little of this is needed in order to
+dieren e representation and
+
+ompute its
+
+23
+
+onstru t the global
+
+hara ter. We may just take the spa e
+
+T (CS ) or Tc (CS ) and be happy with it. The only additional fa t that we need is
+×
+the maximum prin iple of Lemma 4.20. We mainly bring S(AS )/KS into play
+be ause we want the global dieren e representation to be as natural as possible.
+×
+In order to ompute Hn (KS , S(AS )), we pro eed in two steps. We only explain
+×
+this in the ase where K is an algebrai number eld. Dene T (AS ) in the same
+ˆ D(A1 ) denote the total left derived fun tor of the balan ed
+way as T (CS ). Let L⊗
+S
+
+ˆ D(A1 ) . Let S(A1S ) be the Bruhat-S hwartz algebra of A1S .
+tensor produ t fun tor ⊗
+S
+
+We show in the rst step that
+
+ˆ D(A1 ) S(AS ) = T (A×
+S(A1S ) L⊗
+S ).
+S
+Roughly speaking, this means that from the point of view of those representations
+×
+1
+of AS whose restri tion to AS is tempered, there is no dieren e between S(AS ) and
+×
+T (AS ). I expe t an analogue of this result in the automorphi ase, but I have not
+yet he ked the details. In the se ond step we use that the anoni al representation
+×
+1
+1
+of AS on D(CS ) integrates to a (right) module stru ture over S(AS ) be ause CS is
+ompa t. An easy omputation then shows
+
+ˆ D(K × ) S(AS ) ∼
+C(1) L⊗
+= T (CS ).
+S
+
+This yields the assertions about group homology and the
+homology spa es of the
+
+hain
+
+oinvariant spa e as the
+
+ˆ D(K × ) S(AS ).
+omplex C(1) L⊗
+S
+
+requires some general fa ts about homology for smooth
+
+Our
+
+omputation
+
+onvolution algebras. We
+
+ˆ A(G) W ∼
+ˆ D(G) W if V and W are right modules over A(G),
+need that V L⊗
+= V L⊗
+×
+where G = AS and A(G) is a ertain weighted S hwartz algebra. We all A(G)
+if this happens.
+
+iso ohomologi al
+
+4.1. Weighted Bruhat-S hwartz algebras on lo ally ompa t Abelian
+groups. First we re all some fa ts about the Bruhat-S hwartz algebra S(G) of a
+lo ally
+
+ompa t Abelian group G (see [1℄). We need the full generality of Bruhat's
+
+groups we are dealing with. If G is elementary Abelian,
+S(G) is dened as usual. It is a nu lear Fré het spa e. We equip it with the von
+Neumann bornology to get a bornologi al ve tor spa e. For arbitrary G, we onsider
+pairs of subgroups k ⊆ U ⊆ G su h that k is ompa t and U/k is elementary
+Abelian. We all U/k a proper elementary Abelian subquotient of G. We an
+pull ba k S(U/k) to a spa e of fun tions on G. The proper elementary Abelian
+subquotients of G form a dire ted set and the spa es S(U/k) form an indu tive
+system with inje tive stru ture maps. We let S(G) be its bornologi al dire t union.
+That is, a subset of S(G) is bounded if and only if it is bounded in S(U/k) for some
+proper elementary Abelian subquotient U/k . Sin e S(G) for arbitrary G looks
+lo ally (that is, on any bounded subset) like S(G) for elementary Abelian G, it
+denition for the adeli
+
+inherits many properties from the elementary Abelian
+The spa e S(G) is a nu lear,
+
+omplete,
+
+all G. Both pointwise multipli ation and
+
+ase.
+
+onvex bornologi al ve tor spa e for
+
+onvolution are bounded bilinear maps
+
+on S(G). The group G itself and its Pontrjagin dual Ĝ a t on S(G) by the regular
+representation λ dened as in (8) and by pointwise multipli ation
+(21)
+
+αχ f (x) := χ(x) · f (x)
+
+for all χ ∈ Ĝ, f ∈ S(G). These two representations are smooth in the sense of [13℄.
+
+ˆ S(G2 ). The Fourier
+For dire t produ ts of groups, we get S(G1 × G2 ) ∼
+= S(G1 ) ⊗
+transform for G is an isomorphism
+
+∼
+=
+
+F : S(G) → S(Ĝ).
+
+24
+
+RALF MEYER
+
+It intertwines
+
+onvolution and pointwise multipli ation and the representations of
+
+G and Ĝ on S(G) and S(Ĝ) des ribed above. If G is elementary Abelian, then these
+assertions are well-known if we take into a
+analysis are equivalent in this
+
+ount that bornologi al and topologi al
+
+ase by [13, 15℄.
+
+The extension to arbitrary G is
+
+straightforward using the dire t union denition of S(G).
+
+≺ W if V ⊆ W and
+→ W is bounded. In most ases, both V and W will be
+spa es of fun tions on some group G, so that the set-theoreti al ondition V ⊆ W
+is meaningful. Suppose that we are given a set (Vi )i∈I of bornologi al ve tor spa es
+and a bornologi al ve tor spa e W su h that Vi ≺ W . In our appli ations, we an
+T
+take W to be the set of fun tions on some group G. Then the interse tion
+i∈I Vi
+T
+V
+is a ve tor subspa e of W . By onvention, we equip
+with
+the
+interse
+tion
+i
+i∈I
+bornology, whi h onsists of subsets that are bounded in Vi for all i ∈ I .
+We let G be a lo ally ompa t Abelian group equipped with a positive quasi×
+hara ter, that is, a ontinuous group homomorphism |xy| : G → R+ . Let
+Given two bornologi al ve tor spa es V, W we write V
+
+the in lusion map V
+
+G1 := {g ∈ G | |g| = 1}.
+For ea h s ∈ C, the fun tion x 7→ |x|
+
+s
+
+is a quasi- hara ter on G. It is a unitary
+
+hara ter if s is purely imaginary. Multipli ation by a quasi- hara ter is an algebra
+homomorphism with respe t to
+
+onvolution. Hen e
+
+S(G)s := {f : G → C | f · |x|s ∈ S(G)}
+is a
+
+onvolution algebra as well. The algebra S(G)s only depends on the real part
+
+of s be ause S(G) is
+
+losed under multipli ation by
+
+hara ters.
+
+Let I+ and I− be two intervals in R. We let I∩ := I+ ∩I− and I∪ := I− ∪I+ . We
+always assume in this situation that I∩ 6= ∅so that I∪ is an interval as welland
+that sup I+ ≥ sup I− . In the following denition, we also assume that I+ is bounded
+below and not above and that I− is bounded above and not below.
+
+Thus I∩ is
+
+bounded and I∪ = R. We mainly need the intervals I+ = ]0, ∞[, I− = ]−∞, 1[,
+
+I∪ = R and I∩ = ]0, 1[ in this se tion. In the global ase, we have to work with
+I> := ]1, ∞[ and I< := ]−∞, 0[ instead to avoid the riti al strip [0, 1].
+Definition 4.1. For any non-empty interval I ⊆ R, let
+
+S(G)I :=
+
+\
+
+S(G)s .
+
+s∈I
+Let K
+
+⊆ R×
++ be a non-empty
+
+losed interval.
+
+We let S(G; K)I
+
+⊆ S(G)I be the
+
+subspa e of fun tions supported in K , equipped with the subspa e bornology. If
+
+I+ , I− , I∪ , I∩ are as above, we abbreviate S(G)+ := S(G)I+ , et ., and we let
+Sc (G)∪ := lim S(G; [1/n, n])∪ ,
+−→
+
+Sc (G)+ := lim S(G; ]0, n])+ ,
+−→
+
+Sc (G)∩ := S(G)∩ ,
+
+Sc (G)− := lim S(G; [1/n, ∞[)− .
+−→
+n→∞
+
+n→∞
+
+n→∞
+
+The variants Sc (G)I are mainly used in the global fun tion eld
+
+ase. They
+
+allow us to remember the ompa t support properties of S hwartz fun tions in that
+1
+ase. If G is ompa t, then Sc (G)∪ is nothing but the spa e D(G) of ompa tly
+supported smooth fun tions on G.
+It is lear that Sc (G)I ≺ S(G)I for all I and that S(G)I ′ ≺ S(G)I and
+Sc (G)I ′ ≺ Sc (G)I if I ⊆ I ′ . In the following, we denote in lusion maps of this
+form by ι.
+Let α ≤ β . We laim that
+(22)
+
+S(G)[α,β] = S(G)α ∩ S(G)β = {f : G → C | f · (|x|α + |x|β ) ∈ S(G)}
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+as bornologi al ve tor spa es.
+
+25
+
+It is evident that we get a true statement if we
+
+write ≺ instead of = in (22). To prove the laim, we let S be bounded in the third
+α
+β
+spa e, that is, S · (|x| + |x| ) is bounded in S(G). For any s ∈ [α, β], the fun tion
+s
+α
+β
+ws := |x| /(|x| + |x| ) is a bounded smooth fun tion on G whose derivatives
+remain bounded. Therefore, multipli ation by ws is a bounded operator on S(G)
+s
+and S · |x| is bounded in S(G). This implies the laim.
+We
+
+an write any interval I as an in reasing union of a sequen e of
+
+ompa t
+
+intervals [αn , βn ]. Thus
+
+S(G)I =
+
+\
+
+S(G)αn ∩ S(G)βn .
+
+n∈N
+Therefore, S(G)I is a nu lear, lo ally multipli atively
+
+onvex Fré het algebra if G is
+
+elementary Abelian. Moreover, the representations of G and Ĝ on S(G)I des ribed
+above are smooth in this
+of the
+
+ase. For arbitrary G, the spa e S(G)I is the dire t union
+
+orresponding spa es S(U/k)I for proper elementary Abelian subquotients
+
+of G. Hen e it is again a nu lear,
+
+omplete,
+
+onvex bornologi al algebra and the
+
+representations of G and Ĝ on it are smooth. This also holds for the spa e Sc (G)I ,
+we leave the veri ation to the reader.
+Lemma 4.2.
+
+Let I+ , I− ⊆ R be as above. There is a bornologi al extension
+ι
+ι
+
+
+
+(ι,−ι)
+
+S(G)∪ ֌ S(G)+ ⊕ S(G)− ։ S(G)∩ ,
+
+whi h has a G1 -equivariant bounded linear se tion and a similar extension with Sc
+instead of S .
+Proof. It is
+
+lear that S(G)∪ = S(G)+ ∩ S(G)− as bornologi al ve tor spa es.
+
+This means that the sequen e is bornologi ally exa t at S(G)∪ and S(G)+ ⊕S(G)− .
+It remains to
+
+onstru t a bounded linear se tion for (ι, −ι). This implies bornolog-
+
+i al exa tness at S(G)∩ . We assume that sup I− ≤ sup I+ .
+1
+Let φ ∈ D(R+ ) be as before and pull it ba k to a G -invariant fun tion on G
+by φ(g)
+
+:= φ(|g|). For any G-equivariant dierential operator D, the fun tion
+D(φ) : G → C is bounded and supported in the region |x| ≤ R for some R ∈ R.
+s
+−s
+are multipliers of S(G) for all s ≥ 0. That
+Hen e φ · |x| and (1 − φ) · |x|
+is, pointwise multipli ation with these fun tions is a bounded linear operator on
+
+S(G). It follows that the linear map
+σ : S(G)∩ → S(G)+ ⊕ S(G)− ,
+
+f 7→ (φ · f, −(1 − φ) · f ),
+
+is well-dened and bounded. It is the desired se tion for (ι, −ι). By
+
+onstru tion,
+
+φf vanishes for |x| → ∞ and (1 − φ)f vanishes for |x| → 0. Hen e the same map
+works for Sc instead of S as well.
+
+The operator J dened as in (12) evidently is a bornologi al isomorphism
+
+∼
+=
+
+S(G)I → S(G)1−I ,
+
+∼
+=
+
+Sc (G)I → Sc (G)1−I
+
+for all intervals I and 1 − I = {1 − x | x ∈ I}.
+Whenever we prove the nu learity of an operator, we eventually redu e the
+problem to the following elementary lemma:
+
+Suppose that the norm homomorphism G → R×
++ is a proper map
+of topologi al spa es. Let I ⊆ R be an interval and let α ∈ I be arbitrary. Let φ
+be as above and let h ∈ S(G)I . The operators [∫λ(f ), Mφ ] ∫λ(f )Mh and Mh ∫λ(f )
+extend to uniformly nu lear operators from L2 (G)α to S(G)I for f ∈ S(G)I .
+Lemma 4.3.
+
+26
+
+RALF MEYER
+
+Proof. We des ribe these operators by integral kernels as in the proof of
+
+Lemma 3.2. The
+
+ru ial observation is that under our hypothesis on f , the integral
+
+kernel belongs to
+
+\
+
+ˆ S(G)−I ∼
+S(G)I ⊗
+=
+
+ˆ S(G)−β
+S(G)α ⊗
+
+α,β∈I
+
+∼
+= {f : G2 → C | f · |x|α |y|−β ∈ S(G2 ) for all α, β ∈ I }.
+
+
+This is shown as in the proof of Lemma 3.2 and easily implies the assertion.
+
+4.2. Estimates on S hwartz fun tions. Let G := A×S . We ompare the
+
+spa e S(AS ) of Bruhat-S hwartz fun tions on the additive group with the weighted
+spa es of Bruhat-S hwartz fun tions S(G)I
+Proposition 4.4.
+
+onstru ted above.
+
+There are bounded inje tive maps
+
+ι : S(AS ) → S(G)+ ,
+
+f 7→ f |G ,
+
+∗
+
+f 7→ J(F∗ (f )|G ).
+
+ιF : S(AS ) → S(G)− ,
+
+The operator F denes a bounded linear operator on S(G)I if I ⊆ ]0, ∞[. The
+operator F∗ denes a bounded linear operator on S(G)I if I ⊆ ]−∞, 1[. Thus F is
+an automorphism of S(G)I if I ⊆ ]0, 1[.
+The same assertions hold for Sc instead of S if K is a global fun tion eld.
+Proof. First we have to des ribe S(G)I expli itly. The group G is
+
+generated.
+
+ompa tly
+
+Hen e G/k is elementary Abelian whenever it is a Lie group.
+
+Thus
+
+S(G) is the dire t union of the spa es S(G/k), where k runs through the smooth
+ompa t subgroups of G in the terminology of [13℄. We dene
+kxk = max{|x|v , |x|−1
+v | v ∈ S}
+
+for x ∈ G.
+
+This fun tion measures rapid de ay on S(G)I . Let RD(G)+ be the spa e of all
+α
+β
+∈ C0 (G) for all α > 0,
+fun tions f : G → C for whi h f (x) · |x| (1 + ln kxk)
+
+β ∈ R. A set S of fun tions on G is bounded in RD(G)+ if the set of fun tions
+f (x) · |x|α (1 + ln kxk)β for f ∈ S is bounded in C0 (G) for all α > 0, β ∈ R. It is
+straightforward to see that S(G)+ is the smoothening of the regular representation
+of G on RD(G)+ (see [13℄ for the denition of the smoothening).
+×
+α
+β
+We extend |x| (1 + ln kxk) to a fun tion on AS by 0 on AS \ AS . If kxk is large
+−1
+α
+β
+and |x|v remains bounded for all v ∈ S , then |x| ≈ kxk
+, so that |x| (1 + ln kxk)
+is small. Hen e we have a ontinuous fun tion on AS . It also has polynomial
+growth for x → ∞, so that S(AS ) ≺ RD(G)+ . The regular representation of G on
+S(AS ) is easily seen to be smooth. Hen e the universal property of the smoothening
+yields S(AS ) ≺ S(G)+ . Sin e F is a bornologi al isomorphism on S(AS ) and J is
+∗
+a bornologi al isomorphism between S(G)± , we also obtain that ιF is a bounded
+linear map from S(AS ) to S(G)− .
+Let I ⊆ ]−∞, 1[ be an interval. Sin e the left regular representation on S(G)I
+is smooth, S(G)I is an essential module over D(G) (see [13℄). This means that
+ˆ D(G) S(G)I ∼
+D(G) ⊗
+= S(G)I .
+Hen e the following denes a G-equivariant bounded linear map:
+
+∼
+=
+
+ˆ D(G) S(G)I ⊆ S(AS ) ⊗
+ˆ D(G) S(G)I
+S(G)I → D(G) ⊗
+ˆ
+ιF∗ ⊗id
+
+∗
+ˆ D(G) S(G)I →
+S(G)I .
+−→ S(G)I ⊗
+
+The last map above is the onvolution on G. The above omposition sends f1 ∗ f2
+∗
+∗
+∗
+with f1 , f2 ∈ D(G) to F (f1 ) ∗ f2 = F (f1 ∗ f2 ). Hen e it extends F on D(G).
+∗
+2
+Being bounded, it must agree with the restri tion of F on L (AS , dx) to S(AS ).
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+27
+
+A similar argument shows that F restri ts to a bounded linear operator on S(G)I
+∗
+if I ⊆ ]0, ∞[. Therefore, if I ⊆ ]0, 1[, then both F and F are bounded on S(G)I .
+If K is a global fun tion eld, then S(AS ) = D(AS ). Thus fun tions in S(AS )
+vanish for |x| ≫ 1. This allows us to prove the
+We let
+
+\
+
+T (G) := S(G)+ ∩ F(S(G)− ) =
+
+orresponding statements for Sc .
+
+S(G)α ∩
+
+α>0
+
+\
+
+
+
+F(S(G)α ).
+
+α<1
+
+2
+×
+2
+×
+Thus T (G) ≺ L (G, |x| d x) and a subset T of L (G, |x| d x) is bounded in T (G)
+α
+∗
+α
+if and only if T · |x| is bounded in S(G) for α > 0 and F (T ) · |x| is bounded
+∗
+∗
+in S(G) for α < 1. Sin e F = JF is a bornologi al isomorphism on S(G)α for
+α ∈ ]0, 1[, these two onditions hold if and only if T |x|α and F(T )|x|α are bounded
+in S(G)1/2 for all α ≥ 0.
+regular representation.
+
+It is
+
+lear that G a ts smoothly on T (G) by the left
+⊆ L2 (AS , dx) ∼
+= L2 (G, |x| d× x), then
+
+If we view S(AS )
+
+Proposition 4.4 implies S(AS ) ≺ T (G).
+If K is a global fun tion eld, we also dene
+
+Tc (G) := Sc (G)+ ∩ F(Sc (G)− ).
+We have S(AS ) ≺ Tc (G) ≺ T (G) in this
+
+ase. We do
+
+not dene Tc (G) if K is an
+
+algebrai number eld be ause the above denition would just produ e 0. Whenever
+we make statements about Tc , we ta itly assume K to be a global fun tion eld.
+Lemma 4.5.
+
+There is a G-equivariant bornologi al extension
+ι
+ιF∗
+
+
+
+T (G) ֌ S(G)+ ⊕ S(G)−
+
+(23)
+
+(ι,−Fι)
+
+։
+
+S(G)∩ ,
+
+whi h has a bounded G1 -equivariant linear se tion and similarly for Tc (G).
+Proof. Bornologi al exa tness at T (G) and in the middle is trivial. We only
+
+have to
+
+onstru t a bounded linear se tion for the map to S(G)∩ . Let φ be as in
+
+the proof of Lemma 4.2 and dene
+
+σ : S(G)∩ → S(G)+ ⊕ S(G)− ,
+
+σ(f ) := (φ · f, −F∗ ((1 − φ) · f )).
+
+As in the proof of Lemma 4.2, multipli ation by φ and 1 − φ are bounded linear
+∗
+maps from S(G)∩ to S(G)± , respe tively. The map F is a bounded linear operator
+on S(G)− by Proposition 4.4. Therefore, σ is a well-dened bounded linear map.
+1
+It is lear that (ι, −Fι) ◦ σ = id and that σ is G -equivariant.
+
+Sin e F is an automorphism of S(AS ), we expe t it to be a bornologi al isomorphism on T (G) and Tc (G) as well. This is indeed the
+
+ase be ause
+
+F(S(G)+ ) = FJ(S(G)− ) = F(S(G)− ),
+F∗ ◦ F(S(G)− ) = J(S(G)− ) = S(G)+ .
+×
+1
+Let H := KS , so that G/H = CS . Sin e H is a o ompa t subgroup of G , the
+1
+1
+1
+regular representation of G on D(CS ) is S(G )-tempered. We let
+
+ˆ S(G1 ) T (G).
+T (CS ) := D(CS1 ) ⊗
+ˆ S(R×
+It is easy to see that S(G)I ∼
+= S(G1 ) ⊗
++ )I and similarly for CS . Hen e
+ˆ S(G1 ) S(G)I ∼
+D(CS1 ) ⊗
+= S(CS )I
+∗
+for all intervals I . Proposition 4.4 implies that F and F indu e bounded operators
+on S(CS )I for I
+
+⊆ ]−∞, 1[ and I ⊆ ]0, ∞[, respe tively.
+
+Sin e the extension in
+
+28
+
+RALF MEYER
+
+1
+1
+Lemma 4.5 splits G -equivariantly, T (G) is a proje tive module over S(G ) and we
+obtain a CS -equivariant linearly split bornologi al extension
+
+ι
+ιF∗
+
+
+
+(ι,−Fι)
+
+T (CS ) ֌ S(CS )+ ⊕ S(CS )− ։ S(CS )∩ .
+As a result, T (CS ) ∼
+= S(CS )+ ∩F(S(CS )− ). Analogous results hold for Tc (G) instead
+∗
+of T (G). Sin e F is bounded on S(CS )− , we have S(CS )− ≺ F(S(CS )− ) and hen e
+(24)
+
+S(CS )∪ = S(CS )− ∩ S(CS )+ ≺ T (CS ).
+Similarly, we get Sc (CS )∪ ≺ Tc (CS ).
+One
+
+an show that S(CS )∪ is a
+
+losed subspa e of T (CS ). The quotient repre-
+
+sentation of CS on T (CS )/S(CS )∪ is a spe tral interpretation for the poles of the
+
+S -lo al L-fun tion for AS . However, these poles do not have mu h geometri signi an e. They all lie in the region Re ω ≤ 0. The fun tional equation relates them
+to the trivial zeros of innite Euler produ ts. For instan e, if we take just the lo al
+eld R, then we obtain the trivial zeros of the ζ -fun tion. Hen e it does not seem
+worthwhile to explore this spe tral interpretation further.
+−1
+∗
+Let φ and T := Mφ − F ◦ Mφ ◦ F = Mφ − F ◦ Mφ̌ ◦ F
+be as before.
+
+The operator T on L2(CS )1/2 restri ts to a bounded linear
+operator T (CS ) → T (CS ) for algebrai number elds and Tc (CS ) → Tc (CS ) for global
+fun tion elds.
+The operators T ∫λ(f ) and ∫λ(f )T are uniformly nu lear operators L2 (CS )1/2 →
+T (CS ) for f ∈ D(CS ). The same holds for Tc (CS ) if K is a global fun tion eld.
+Proposition 4.6.
+
+Proof. Let φ̌(x) := φ(1/x), then JMφ J = Mφ̌ . Re all that M1−φ and Mφ̌ are
+bounded operators from S(CS )+ to S(CS )∪ . Sin e S(CS )∪ ≺ T (CS ) ≺ S(CS )+ , the
+
+operators Mφ̌ and M1−φ and hen e also Mφ = id − M1−φ are bounded on T (CS ).
+Sin e F is bounded on T (CS ) as well, T is bounded on T (CS ).
+−1
+±1
+. The operators F
+We have [∫λ(f ), T ] = [∫λ(f ), Mφ ] + F[∫λ(Jf ), M1−φ̌ ]F
+2
+are bounded on L (CS )1/2 and T (CS ). And [∫λ(f ), Mφ ] and [∫λ(Jf ), Mφ̌ ] are uni2
+formly nu lear operators from L (CS )1/2 to S(CS )∪ ≺ T (CS ) by Lemma 4.3. Hen e
+[∫λ(f ), T ] is a uniformly nu lear operator from L2 (CS )1/2 to T (CS ) for f ∈ D(CS ).
+For ∫λ(f ) ◦ T , we rst simplify the problem.
+Sin e T (CS ) is nu lear and
+L2 (CS )1/2 is a Bana h spa e, uniform nu learity and uniform boundedness are
+equivalent in our situation. A map into T (CS ) is bounded if and only if it is
+−1
+= −T , we have
+bounded as a map to S(CS )+ and F(S(CS )− ). Sin e FT F
+−1
+F∫λ(f )T F = −∫λ(Jf )T . The map F gives bornologi al isomorphisms
+L2 (CS )1/2 ∼
+S(CS )+ ∼
+= F(S(CS )− ),
+= L2 (CS )1/2 .
+Hen e ∫λ(f )T is bounded as a map to F(S(CS )− ) if (and only if ) it is bounded as
+a map to S(CS )+ . As in the proof of Lemma 3.3, we write
+
+∫λ(f )T = −[Mφ , ∫λ(f )] + [Mφ , ∫λ(Ff )] ◦ F∗ .
+∈ S(CS )+ and Ff ∈ S(CS )+ as well by Proposition 4.4. Sin e F∗ is
+2
+bounded on L (CS )1/2 , the result follows from Lemma 4.3. The same argument
+works for Tc (CS ).
+
+We have f
+
+Corollary 4.7. The operators ∫λ(f )T and T ∫λ(f ) are uniformly nu lear for
+f ∈ D(CS ) as operators on L2 (CS )1/2 , T (CS ) and Tc (CS ) (if dened) and have the
+
+same tra es as operators on these spa es.
+
+Proof. More generally, onsider bornologi al ve tor spa es V ≺ W and X ∈
+ˆ ′ . Sin e V ≺ W , we an view X as an element of ℓ1 (W ) or ℓ1 (V ).
+ℓ1 (W, V ) = V ⊗W
+′
+′
+Sin e the pairings V × V → C and W × W → C are ompatible, the tra es of X
+1
+1
+in ℓ (V ) and ℓ (W ) agree on elementary tensors and hen e everywhere.
+
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+29
+
+4.3. Homology for smooth onvolution algebras. A smooth onvolution
+algebra on a lo ally ompa t group G is a omplete onvex bornologi al ve tor spa e
+A(G) of fun tions on G whi h is a bornologi al algebra under onvolution, ontains
+D(G) as a dense subspa e and has the property that the left and right regular
+representations of G on A(G) are smooth. Thus A(G) is an essential bimodule over
+D(G) in the sense of [13℄, that is,
+ˆ D(G) A(G) ⊗
+ˆ D(G) D(G) ∼
+D(G) ⊗
+(25)
+= A(G).
+It follows that the approximate identities for D(G) ⊆ A(G)
+approximate identities for A(G) as well. Thus we
+over A(G) as in [13℄.
+
+onstru ted in [13℄ are
+
+an speak of essential modules
+
+Any module over A(G) be omes a module over D(G) by
+
+restri tion. Sin e D(G) ⊆ A(G) is dense, the module stru ture over D(G) determines the A(G)-module stru ture uniquely. A module over A(G) is essential if and
+only if it is essential as a module over D(G) be ause of (25). If V is an essential
+module over A(G), then the module stru ture is the integrated form of a smooth
+representation of G on V . The A(G)-module homomorphisms are the same as the
+G-equivariant maps. Hen e:
+Theorem 4.8. The ategory of essential A(G)-modules is isomorphi to a full
+sub ategory of the ategory of smooth representations of G.
+
+We all su h smooth representations A(G)-tempered. The above remarks yield
+HomA(G) (V, W ) ∼
+= HomD(G) (V, W ) for all essential modules V and W over A(G).
+Equation (25) implies (with little extra work) that
+
+HomA(G) (A(G), W ) ∼
+= HomD(G) (D(G), W ),
+ˆ
+ˆ D(G) W,
+A(G) ⊗A(G) W ∼
+= D(G) ⊗
+if W is a module over A(G). That is, the smoothening and roughening fun tors for
+modules over D(G) and A(G) are
+
+ompatible.
+
+ˆ D(G) V maps modules over D(G) to essential modules
+7→ A(G) ⊗
+ˆ A(G) A(G) ∼
+over A(G) be ause A(G) ⊗
+= A(G). If V and W are essential modules
+over D(G) and A(G), respe tively, then
+The fun tor V
+
+ˆ D(G) V, W ) ∼
+HomA(G) (A(G) ⊗
+= HomD(G) (V, HomA(G) (A(G), W ))
+∼ HomD(G) (V, HomD(G) (D(G), W )) ∼
+=
+= HomD(G) (V, W ).
+ˆ D(G) xy is left adjoint to the embedding of the
+That is, the fun tor A(G) ⊗
+of A(G)-tempered smooth representations in the
+tions. We
+
+-temperation fun tor. It follows immediately from the
+
+all this the A(G)
+
+ˆ D(G) V
+adjointness that A(G) ⊗
+Before we
+
+∼
+= V if V is already A(G)-tempered.
+
+an dis uss derived fun tors, we have to des ribe our exa t
+
+stru ture. For the purposes of this arti le, the most
+with
+
+ategory
+
+ategory of all smooth representa-
+
+linearly split extensions. Let A be a
+
+omplete
+
+with an approximate identity and let ModA be the
+
+onvenient
+
+ategory
+
+hoi e is to work
+
+onvex bornologi al algebra
+
+ategory of essential,
+
+omplete
+
+A-modules. That is, an obje t of ModA is a omplete
+onvex bornologi al ve tor spa e V with a bounded homomorphism A → End(V )
+ˆA V ∼
+ˆ V → V is a bornologi al
+su h that A ⊗
+= V or, equivalently, the map A ⊗
+onvex bornologi al left
+
+quotient map. We remark that adjoint asso iativity yields an equivalen e between
+bounded linear maps A
+
+ˆ V → V , so that we
+→ End(V ) and A ⊗
+
+an des ribe
+
+A-modules using either kind of stru ture.
+An extension in ModA is alled linearly split if it splits as an extension of
+bornologi al ve tor spa es.
+
+It is evident that this denes an exa t
+
+the sense of Daniel Quillen ([18℄). Hen e we
+
+an form the derived
+
+of ModA in the usual fashion (see [11, 16℄).
+
+We dene the
+
+ategory in
+
+ategory DerA
+
+free essential module
+
+30
+
+RALF MEYER
+
+We assume that
+free essential modules are proje tive with respe t to linearly split extensions. This
+on a
+
+ˆ V.
+by A ⊗
+
+onvex bornologi al ve tor spa e V
+
+omplete
+
+holds for D(G) and also for A(G), using the same proof as in [13℄. Hen e we
+
+an
+
+ompute derived fun tors using free essential bimodule resolutions. The well-known
+bar
+
+onstru tion provides a natural su h resolution for any essential module.
+
+→ ModB be a fun tor. Its total derived fun tor is a fun tor
+DerA → DerB , that is, its values are equivalen e lasses of hain omplexes. For
+ˆ A xy : ModA →
+instan e, let V be a right A-module. Then we have a fun tor V ⊗
+Mod0 , where Mod0 is the ategory of omplete onvex bornologi al ve tor spa es
+Let F : ModA
+
+with no further stru ture.
+
+By our
+
+hoi e of exa t
+
+ategory stru ture, the only
+
+extensions in Mod0 are the dire t sum extensions, so that Der0 is just the homotopy
+ategory of
+
+hain
+
+omplexes of
+
+omplete
+
+onvex bornologi al ve tor spa es.
+
+ˆ A xy by V L⊗
+ˆ A xy. Its values are homotopy
+denote the derived fun tor of V ⊗
+of
+
+hain
+
+We
+
+lasses
+
+omplexes.
+
+ase D(G). Let P → D(G) be a (linearly split) resolution of
+D(G) by free essential D(G)-bimodules. If V is an essential left D(G)-module, then
+ˆ D(G) V is a linearly split resolution of V by free essential left D(G)-modules.
+P⊗
+Consider again the
+
+Hen e this resolution
+happens if V is a
+is a proje tive
+
+an be used to
+
+hain
+
+hain
+
+ompute derived fun tors. Something similar
+
+ˆ D(G) V is a bi omplex, its total
+omplex. Then P ⊗
+
+omplex and the natural map from this total
+
+a quasi-isomorphism. Thus morphisms in the derived
+
+omplex
+
+omplex to V is
+
+ategory are given by
+
+ˆ D(G) V, W ),
+R HomD(G) (V, W ) ∼
+= HomD(G) (P ⊗
+lasses of bounded D(G)-linear
+→ W . The right derived fun tor R HomD(G) (V, W ) gives the mor-
+
+where HomD(G) denotes the spa e of homotopy
+hain maps V
+phism V
+
+→ W in the derived
+
+ategory. Similarly, we have
+
+ˆ D(G) V ∼
+ˆ D(G) P ⊗
+ˆ D(G) V.
+W L⊗
+=W⊗
+Now let A(G) be a smooth
+
+onvolution algebra on G. We have observed above
+
+that Mod(A(G)) is a full sub ategory of Mod(D(G)).
+
+Although A(G) usually is
+
+not at as a module over D(G), the following still holds in the
+
+ases we need:
+
+Proposition 4.9. Let A(G) be a smooth onvolution algebra on a lo ally ompa t group G. Then the following are equivalent:
+ˆ D(G) A(G) ∼
+(i) A(G) L⊗
+= A(G);
+∼
+ˆ A(G) W for any hain omplexes of essential right and
+ˆ
+(ii) V L⊗D(G) W = V L⊗
+left A(G)-modules V and W ;
+(iii) R HomA(G) (V, W ) ∼
+= R HomD(G) (V, W ) for any hain omplexes of essential
+left A(G)-modules V and W .
+
+We
+
+all the smooth
+
+these equivalent
+
+onvolution algebra A(G)
+
+iso ohomologi al if it satises
+
+onditions.
+
+ˆ D(G) P ⊗
+ˆ D(G) A(G). EviProof. Let P be as above and dene C := A(G) ⊗
+dently, this is a
+
+omplex of free essential A(G)-bimodules. We have just observed
+
+ˆ D(G) A(G). Thus C is a free bimodule resolution of A(G) if and
+that C ∼
+= A(G) L⊗
+only if the natural map C → A(G) is a homotopy equivalen e of
+that is, an isomorphism in Der0 . If this is the
+derived fun tors on the
+
+ase, then C
+
+hain
+
+omplexes,
+
+an be used to
+
+ompute
+
+ategory of A(G)-modules. This yields (ii) and (iii). The
+
+onverse impli ations are straightforward.
+
+
+
+4.4. Weighted S hwartz algebras on R and Z are iso ohomologi al.
+
+We equip G
+
+= R with the norm homomorphism |x| := exp(x) and use this to
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+31
+
+dene the weighted S hwartz algebras S(R)I for intervals I ⊆ R. The following is
+a resolution of D(R) by free essential D(G)-bimodules:
+
+∗
+
+D
+
+ˆ D(R) −→ D(R) ⊗
+ˆ D(R) −→ D(R).
+0 → D(R) ⊗
+Here ∗ denotes
+
+onvolution and D := (d/dx) ⊗ id − (id ⊗ d/dx).
+
+be two smooth representations of R.
+
+Let V and W
+
+We view them as a right and left essential
+
+module over D(R) in the standard way (see [13℄). We use the above free resolution
+
+ˆ D(R) W with the
+to identify V L⊗
+
+hain
+
+omplex of bornologi al ve tor spa es
+
+D∗
+ˆ W.
+ˆ W −→
+V ⊗
+V ⊗
+
+(26)
+
+The boundary map D∗ is given by D∗ := DV ⊗idW −idV ⊗DW , where DV and DW
+are the generators of the representations of R on V and W , respe tively.
+
+For any two intervals I, I ′ ⊆ R, we have a natural isomorphism
+ˆ D(R) S(R)I ′ ∼
+S(R)I L⊗
+= S(R)I∩I ′ with S(G)∅ := {0} by onvention.
+Lemma 4.10.
+
+Proof. We
+
+ˆ S(R)I ′ with the spa e
+an easily identify S(R)I ⊗
+
+S(R )I×I ′ := {f : R2 → C | f · exp(αx + βy) ∈ S(R2 ) for all (α, β) ∈ I × I ′ }.
+2
+
+The operator D∗ in (26) is the dire tional derivative operator D∗ f
+
+= ∂x f − ∂y f .
+
+Thus it is the generator of the 1-parameter group τt f (x, y) := f (x + t, y − t). It is
+2
+evident that D∗ is inje tive, that is, there are no τ -invariant fun tions in S(R )I×I ′ .
+′
+If I ∩ I 6= ∅, then S(R)I ≺ S(R)I∩I ′ and S(R)I ′ ≺ S(R)I∩I ′ . Sin e the latter
+is a
+
+onvolution algebra, the
+
+onvolution denes a bounded bilinear map
+
+ˆ S(R)I ′ → S(R)I∩I ′ ,
+µ : S(R2 )I×I ′ ∼
+= S(R)I ⊗
+
+µf (x) :=
+
+Z
+
+f (x − t, t) dt.
+
+R
+
+We have to show that
+
+µ
+
+D
+
+∗
+S(R2 )I×I ′ −→ S(R)I∩I ′
+S(R2 )I×I ′ −→
+
+is a linearly split bornologi al extension.
+
+We
+
+an
+
+onstru t a se tion for
+
+µ by
+
+omposing the se tion for (ι, ι) : S(R)I ⊕ S(R)I ′ → S(R)I∩I ′ dened in the proof of
+ˆ D(R) ⊆ S(R2 )I×I ′ and S(R)I ′ →
+Lemma 4.2 with the se tions S(R)I → S(R)I ⊗
+2
+ˆ
+D(R) ⊗S(R)
+I ′ ⊆ S(R )I×I ′ for the onvolution map dened in [13, Proposition 4.7℄.
+Thus it remains to prove that D∗ is a bornologi al isomorphism onto the kernel of µ.
+lear that D∗ is an inje tive bounded map into Ker µ, so we merely have to
+Ker µ → S(R2 )I×I ′ with D∗ ◦ σ = id. Similarly, if I ∩ I ′ = ∅, then we have
+2
+to nd su h a map σ dened on all of S(R )I×I ′ . Sin e D∗ involves dierentiation,
+
+It is
+
+nd σ :
+
+integration provides obvious
+
+andidates for its inverse:
+
+σ+ f (x, y) := −
+σ− f (x, y) :=
+
+Z ∞
+
+Z 0
+
+f (x + t, y − t) dt,
+
+0
+
+f (x + t, y − t) dt.
+
+−∞
+
+Formally, both operators satisfy D∗ ◦ σ± = id. Moreover,
+
+σ− (f )(x, y) − σ+ (f )(x, y) = µ(f )(x + y),
+so that both maps oin ide on Ker µ. It is easy to see that σ+ and σ− are bounded
+2
+′
+on S(R )(α,β) for α ≥ β and α ≤ β , respe tively. If I ∩ I = ∅, then either α < β
+′
+′
+for all (α, β) ∈ I ∩ I or α > β for all (α, β) ∈ I ∩ I . Hen e either σ+ or σ− is a
+′
+bounded inverse for D∗ . For I ∩I 6= ∅, the maps σ± agree on Ker µ. The restri tion
+σ± |Ker µ is bounded with respe t to the bornology from S(R2 )α,β for any α, β ∈ R.
+Thus σ± |Ker µ is a bounded inverse for D∗ .
+
+
+
+32
+
+RALF MEYER
+
+Now let G
+
+= Z ⊆ R.
+
+We use the same norm homomorphism as above to
+
+dene the spa es Sc (Z)I . There is a similar expli it
+homology for Z and we
+
+hain
+
+omplex that
+
+omputes
+
+an use an analogous argument to obtain
+
+ˆ D(Z) Sc (Z)I ′ ∼
+Sc (Z)I L⊗
+= Sc (Z)I∩I ′ .
+We leave the details to the reader.
+Corollary 4.11. The smooth onvolution algebras S(R)I and Sc (Z)I are isoohomologi al for all intervals I .
+Theorem 4.12. The Bruhat-S hwartz algebra S(G) is iso ohomologi al for any
+se ond ountable lo ally ompa t Abelian group G.
+Proof. Corollary 4.11 yields that S(R) and S(Z) are iso ohomologi al. For
+
+ompa t groups, we have S(K) = D(K), so that there is nothing to prove at all.
+Let G = G1 × G2 and suppose that S(G1 ) and S(G2 ) are iso ohomologi al. Then
+
+ˆ D(G) S(G) ∼
+ˆ S(G2 ) L⊗
+ˆ D(G )⊗D(G
+ˆ S(G2 )
+S(G) L⊗
+S(G1 ) ⊗
+= S(G1 ) ⊗
+1 ˆ
+2)
+∼
+ˆ D(G ) S(G1 )) ⊗
+ˆ (S(G2 ) L⊗
+ˆ D(G ) S(G2 ))
+= (S(G1 ) L⊗
+1
+
+2
+
+∼
+ˆ S(G2 ) ∼
+= S(G1 ) ⊗
+= S(G),
+that is, S(G) is iso ohomologi al as well. Any elementary Abelian group is a dire t
+n
+m
+produ t K × Z × R
+with ompa t K . Hen e we get the assertion for elementary
+Abelian groups.
+of the
+
+Finally, for arbitrary G both D(G) and S(G) are dire t unions
+
+orresponding algebras D(U/k) and S(U/k) on proper elementary Abelian
+
+subquotients U/k and these subspa es are bornologi al dire t summands.
+
+If we
+
+ˆ D(G) S(G) using, say, the bar resolution, we see easily that it
+ompute S(G) L⊗
+is the dire t union of the
+
+orresponding
+
+omplexes for proper elementary Abelian
+
+subquotients of G and that the latter are dire t summands of the
+itself. Hen e the
+
+ontra tibility of the sub omplexes implies the
+
+omplex for G
+
+ontra tibility of
+
+
+
+the limit, so that S(G) is also iso ohomologi al.
+
+4.5. The oinvariant spa e of S(AS ).
+If K is an innite lo al eld, then the map S(K) → T (K× ) is a
+bornologi al isomorphism. If K is a nite lo al eld, then the map S(K) → Tc (K× )
+is a bornologi al isomorphism.
+Lemma 4.13.
+
+Proof. We have already observed that S(K) ≺ T (K
+
+×
+
+) in the innite ase and
+S(K) ≺ Tc (K ) in the nite ase. It remains to show that any bounded subset T
+×
+×
+of T (K ) or Tc (K ) omes from a bounded subset of S(K). Suppose rst that K
+s
+s
+is innite, that is, either R or C. Then T · |x| and F(T ) · |x| are bounded subsets
+2
+of L (K, dx) for all s ≥ 0. It is well-known that this implies that T is a bounded
+subset of S(K). Similarly, for nite K the fun tions in T and F(T ) have a ommon
+ompa t support in K. This implies that T is bounded in S(K).
+
+×
+
+Lemma 4.13 provides us with a linearly split extension
+
+(27)
+
+ι
+ιF∗
+
+
+
+S(K) ֌ S(K× )+ ⊕ S(K× )−
+
+(ι,−Fι)
+
+։
+
+S(K× )∩
+
+for innite K and a similar extension for nite K. Equivalently, we have a quasiisomorphism from S(K) into the
+
+hain
+
+omplex
+
+(ι,−Fι)
+
+S(K× )+ ⊕ S(K× )− −→ S(K× )∩
+supported in degrees 0, −1.
+
+PRIMES,
+
+Lemma 4.14.
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+33
+
+There is a natural isomorphism
+ˆ D(K× ) S(K) ∼
+S(K× )+ L⊗
+= S(K)+
+
+(28)
+
+for an innite lo al eld K and
+ˆ D(K× ) S(K) ∼
+Sc (K× )+ L⊗
+= Sc (K)+
+
+(29)
+
+for a nite lo al eld K.
+Proof. In the innite
+
+×
+∼ 1
+ase, we have K
+= K 1 × R×
++ = K × R and hen e
+1
+Sin e K is ompa t, we get a natural isomorphism
+
+∼ S(K ) ⊗
+ˆ S(R)I .
+S(K )I =
+ˆ D(R) V
+ˆ D(K× ) V ∼
+S(K× )I L⊗
+= S(R)I L⊗
+×
+
+1
+
+for all
+
+V.
+
+Using also Lemma 4.10 we
+
+ompute
+
+ˆ D(K× ) S(K) ∼
+ˆ D(R) S(K)
+S(K× )+ L⊗
+= S(R)+ L⊗
+∼
+ˆ D(R) [S(R)+ ⊗
+ˆ S(K1 ) ⊕ S(R)− ⊗
+ˆ S(K1 ) (ι,−Fι)
+ˆ S(K1 )]
+−→ S(R)∩ ⊗
+= S(R)+ L⊗
+(ι,−F)
+∼
+ˆ S(K1 ) ⊕ S(R)∩ ⊗
+ˆ S(K1 ) −→ S(R)∩ ⊗
+ˆ S(K1 )]
+= [S(R)+ ⊗
+(ι,−F)
+∼
+= [S(K× )+ ⊕ S(K× )∩ −→ S(K× )∩ ],
+where  ∼
+= denotes homotopy equivalen e. Proposition 4.4 yields that F is an iso×
+morphism on S(K )∩ . Hen e we an repla e the last hain omplex simply by
+S(K× )+ . The proof in the nite ase is similar.
+
+Now we onsider a nite set of pla es S of a global eld K . Then S(AS ) is the
+×
+ompleted tensor produ t of the spa es S(Kv ) for v ∈ S and similarly for D(AS ).
+×
+We abbreviate G := AS .
+Lemma 4.15.
+
+Let I ⊆ ]0, ∞[, then we have a natural isomorphism
+ˆ D(G) S(AS ) ∼
+S(G)I L⊗
+= S(G)I .
+
+If K is a global fun tion eld, then also
+ˆ D(G) S(AS ) ∼
+Sc (G)I L⊗
+= Sc (G)I .
+×
+
+Proof. Let A(G) be the tensor produ t of the algebras S(Kv )+ for innite
+
+×
+pla es v ∈ S and Sc (Kv )+ for nite pla es v ∈ S . Thus A(G) is a smooth onvolution algebra on G. Sin e I ⊆ I+ , the onvolution algebra A(G) is ontained in
+
+∼
+ˆ D(G) W =
+S(G)I . Thus S(G)I is an essential module over A(G). Therefore, S(G)I ⊗
+ˆ
+ˆ
+S(G)I ⊗A(G) A(G) ⊗D(G) W for all essential D(G)-modules W . The A(G)-temper-
+
+ation fun tor evidently maps free modules again to free modules.
+
+ˆ by L⊗
+ˆ in the above statement.
+may repla e ⊗
+
+Therefore, we
+
+Equations (28) and (29) imply
+
+ˆ D(G) S(AS ) ∼
+A(G) L⊗
+= A(G). Sin e this is a free essential A(G)-module, we get
+
+ˆ D(G) S(AS ) ∼
+ˆ A(G) A(G) L⊗
+ˆ D(G) S(AS )
+S(G)I L⊗
+= S(G)I L⊗
+∼
+ˆ A(G) A(G) ∼
+= S(G)I L⊗
+= S(G)I .
+The global fun tion eld
+Theorem 4.16.
+
+ase is similar.
+
+There are natural isomorphisms
+ˆ D(G1 ) S(AS ) ∼
+S(G1 ) L⊗
+= T (G)
+
+for algebrai number elds and
+ˆ D(G1 ) S(AS ) ∼
+S(G1 ) L⊗
+= Tc (G1 )
+
+for global fun tion elds. These are isomorphisms in Der(D(G)).
+
+
+
+34
+
+RALF MEYER
+
+Proof. We only write down the proof for algebrai
+
+number elds. Lemma 4.15
+
+ˆ D(G) S(AS ) ∼
+shows S(G)I L⊗
+= S(G)I for I ⊆ ]0, ∞[. Using the Fourier transform
+⊆ ]−∞, 1[,
+
+and J , we obtain su h an isomorphism also for I
+
+ompare Proposi-
+
+tion 4.4. The linearly split extension
+
+S(G)∪ ֌ S(G)+ ⊕ S(G)− ։ S(G)∩
+of Lemma 4.2 gives rise to the following distinguished triangle in Der0 :
+
+ˆ D(G) S(AS ) −→ S(G)+ L⊗
+ˆ D(G) S(AS ) ⊕ S(G)− L⊗
+ˆ D(G) S(AS )
+S(G)∪ L⊗
+ˆ D(G) S(AS ) −→[1] S(G)∪ L⊗
+ˆ D(G) S(AS ).
+−→ S(G)∩ L⊗
+ˆ D(G) S(AS ) for I+ , I− and I∩ , we obtain a
+Plugging in our results for S(G)I L⊗
+distinguished triangle
+
+(ι,−Fι)
+
+ˆ D(G) S(AS ) −→ S(G)+ ⊕ S(G)− −→ S(G)∩
+S(G)∪ L⊗
+ˆ D(G) S(AS ).
+−→[1] S(G)∪ L⊗
+(ι, −Fι) is a split surje tion with kernel T (G). Hen e
+ˆ D(G) S(AS ) ∼
+S(G)∪ L⊗
+= T (G).
+×
+Let v ∈ S be an innite pla e and split the norm homomorphism G → R+ by
+×
+×
+×
+1 ˆ
+×
+∼
+R+ → Kv → AS . This indu es an isomorphism S(G)∪ = S(G ) ⊗ S(R+ )∪ . The
+×
+a tion of R+ only involves the pla e v . It is easy to see that S(Kv ) ∼
+= T (Kv× ) and
+×
+hen e S(AS ) are essential modules over S(R+ )∪ . Therefore, Corollary 4.11 yields
+Lemma 4.5 asserts that
+
+ˆ D(G) S(AS ) ∼
+ˆ D(G1 ) (S(R×
+ˆ
+T (G) ∼
+= S(G)∪ L⊗
+= S(G1 ) L⊗
++ )∪ L⊗D(R× ) S(AS ))
++
+
+∼
+ˆ D(G1 ) S(AS ).
+ˆ D(G1 ) (S(R×
+ˆ
+S(AS )) ∼
+= S(G1 ) L⊗
+= S(G1 ) L⊗
++ )∪ L⊗S(R×
++ )∪
+1
+ˆ D(G1 ) S(AS ) ∼
+Finally, the isomorphism S(G ) L⊗
+= T (G) is just the
+∼
+=
+
+omposition
+
+∼
+=
+
+≺
+
+ˆ D(G1 ) S(AS ) → S(G1 ) ⊗
+ˆ D(G1 ) S(AS ) → S(G1 ) ⊗
+ˆ D(G1 ) T (G) → T (G).
+S(G1 ) L⊗
+All these ( hain) maps are G-equivariant with respe t to the natural representations
+of G. Hen e we have an isomorphism in the derived
+
+ategory Der(D(G)).
+
+
+
+×
+Suppose that S ontains all innite pla es of K so that H := KS is dened. Let
+×
+×
+CS := AS /H . The group ohomology of KS with oe ients in a representation V
+×
+of AS is the homology of the hain omplex
+
+ˆ D(H) V ∼
+ˆ D(G) V,
+C(1) L⊗
+= D(CS ) L⊗
+
+(30)
+
+×
+where C(1) denotes the trivial representation of KS (see [13℄). Sin e D(CS ) is a
+bimodule over D(CS ), the right hand side belongs to Der(D(CS )), that is, it is a
+hain
+
+omplex of smooth representations of CS in a natural way.
+
+ˆ D(H) S(AS ) is isomorphi in Der(D(CK )) to T (CS )
+Corollary 4.17. C(1) L⊗
+for algebrai number elds and to Tc (CS ) for global fun tion elds.
+1
+number elds. Sin e CS is
+1
+1
+ompa t, the spa e D(CS ) is an essential module over S(G ). Hen e
+Proof. We only write down the proof for algebrai
+
+ˆ D(H) S(AS ) ∼
+ˆ D(G1 ) S(AS )
+C(1) L⊗
+= D(CS1 ) L⊗
+1
+∼
+ˆ S(G1 ) S(G1 ) L⊗
+ˆ D(G1 ) S(AS ) ∼
+ˆ S(G1 ) T (G).
+= D(C ) L⊗
+= D(C 1 ) L⊗
+S
+
+S
+
+1 ˆ
+We already omputed D(CS ) ⊗
+S(G1 ) T (G) in Se tion 4.2. The argument there also
+ˆ.
+
+applies to L⊗
+×
+Taking the homology of this hain omplex, we obtain Hn (KS , S(AS )) ∼
+= 0 for
+×
+∼
+n ≥ 1 and H0 (KS , S(AS )) = T (CS ) or Tc (CS ), respe tively.
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+35
+
+4.6. S hwartz fun tions on nite lo al elds. In order to pass to the
+global
+
+ase, we need ner information about S(K) for a nite lo al eld. Let
+
+O := {x ∈ K | |x|K ≤ 1}
+be the maximal
+
+ompa t subring of K and let ξ0 := 1O ∈ S(K) be the
+
+hara teristi
+
+fun tion of O . Let
+
+O× = K1 := {x ∈ K× | |x|K = 1}
+O×
+Let S(K)
+⊆ S(K) be the subspa e
+×
+of all fun tions that are invariant under O . It onsists of fun tions that only
+−1
+depend on |x|K . An element ̟ ∈ O is alled a
+if |̟|K = qK . Hen e ̟
+×
+Z
+× ∼
+generates the maximal ideal P ⊆ O and K = O × ̟ .
+1
+ompa t subgroup of K .
+
+be the maximal
+
+uniformizer
+
+Let K be a nite lo al eld.
+×
+(1) The fun tions ξn := λn̟ (ξ0 ) = 1̟n O for n ∈ Z form a basis of S(K)O . That
+×
+is, S(K)O is the free C[Z]-module with generator ξ0 .
+(2) There is a K× -equivariant isomorphism S(K) ∼
+= D(K× ) that sends 1O to 1O× .
+Lemma 4.18.
+
+laim that the fun tions (ξj ) are linearly independent. Consider a
+
+Proof. We
+
+ombination f =
+
+P
+
+cj ξj . Unless all cj vanish, there is a smallest j with
+−j
+cj 6= 0. Then f (x) = cj 6= 0 for |x| = qK
+, whi h is the desired linear independen e.
+×
+O
+O×
+Next we laim that S(K)
+is spanned by the elements (ξj ). Let f ∈ S(K)
+.
+Sin e f is lo ally onstant and ompa tly supported, there is a ∈ N su h that f
+a
+is onstant on ̟ O - osets. There is a smallest n ∈ Z su h that f |̟ n O × 6= 0.
+(n−1)
+that
+Subtra ting the orresponding multiple of ξn , we get a new fun tion f
+n−1
+is supported in ̟
+O. Moreover, sin e n is maximal, we must have n ≤ a, so
+(n−1)
+a
+that f
+is also onstant on ̟ O - osets. Pro eeding in this fashion, we obtain
+Pa
+cj ∈ C su h that f − j=n cj ξj is supported in ̟a+1 O and onstant on ̟a O-
+
+nite linear
+
+osets. Hen e this dieren e vanishes, proving the laim.
+O×
+Thus the fun tions (ξj ) form a basis for S(K)
+. Therefore, there is a unique
+×
+
+×
+∼
+= D(K× )O that sends 1O to 1O× . It is
+straightforward to see that a fun tion in S(K) that vanishes at 0 already lies in
+d
+× is a non-trivial hara ter, then no χ-homogeneous fun tion an
+D(K× ). If χ ∈ O
+×
+vanish at 0. Hen e the χ-homogeneous subspa es of S(K) and D(K ) oin ide.
+Putting all homogeneous subspa es together, we get the assertion.
+
+
+K× -equivariant isomorphism S(K)O
+
+4.7. A maximum prin iple. In the global ase, we have to ontrol things
+that happen in the
+
+riti al strip from outside. The te hni al results of this se tion
+
+are needed for this purpose. We need some generalities about multipliers of smooth
+×
+×
+×
+onvolution algebras. Sin e AS is ommutative, multipliers of D(AS ) are just AS ×
+equivariant bounded linear operators on D(AS ). Multipliers a t on any essential
+×
+×
+module over D(AS ), that is, on any smooth representation of AS by [13℄. As we
+observed in Se tion 4.3, we have
+
+HomA(G) (A(G), A(G)) ∼
+= HomD(G) (D(G), A(G))
+for any smooth onvolution algebra A(G). This implies that a distribution h ∈
+D′ (G) is a multiplier of A(G) if and only if h multiplies D(G) into A(G) both on
+the left and right. Hen e A1 (G) ⊆ A2 (G) implies M(A1 (G)) ⊆ M(A2 (G)).
+Lemma 4.19.
+
+invertible on
+
+For any α > 0, there exists a multiplier h ∈ M(D(A×
+S )) that is
+and restri ts to a bounded map from S(AS ) to S(A×
+S )]1−α,∞[ .
+
+S(A×
+S )+
+
+N
+
+×
+×
+v∈S S(Kv )I ≺ S(AS )I for any interval I , we get a stronger
+×
+assertion if we repla e S(AS )I by this tensor produ t in the statement of the
+Proof. Sin e
+
+36
+
+RALF MEYER
+
+×
+lemma. Sin e D(AS ) and S(AS ) are
+ing spa es for Kv , v ∈ S , we
+
+ompleted tensor produ ts of the
+
+orrespond-
+
+an get the multiplier for AS by tensoring together
+
+orresponding multipliers for the lo al elds Kv . Therefore, we only have to on×
+stru t h ∈ M(D(K )) for a lo al eld K that indu es an invertible operator on
+×
+S(K )+ and a bounded operator S(K) → S(K× )]1−α,∞[ .
+For nite K, Lemma 4.18 des ribes an isomorphism S(K) ∼
+= D(K× ). Restri ting
+×
+×
+it to D(K ) ⊆ S(K), we obtain a multiplier h of D(K ). It evidently has the
+n
+n
+required properties for any α. Let K = R. The dierential operator x (d/dx) on
+
+S(R) is dilation invariant and hen e restri ts to an equivariant dierential operator
+×
+×
+on R . This is a multiplier hn of D(R ). It is a bounded map from S(R) into the
+subspa e of S hwartz fun tions that have a zero of order at least n at the origin.
+×
+The latter spa e is evidently ontained in S(R )]−n,∞[ . It is easy to write hn as
+a polynomial fun tion of h1 = x · d/dx = d/d ln x. The spe trum of d/d ln x on
+S(R× )]0,∞[ is ontained in the region {s ∈ C | Re s > 0}. This implies that hn is
+×
+invertible on S(R )]0,∞[ . For K = C, a similar argument shows that the dierential
+n 2
+n
+
+operators (xx) (∂ /∂x ∂x) work.
+Lemma 4.20.
+
+For any α ≥ 0, the map
+
+T (CS ) → S(CS )]α,∞[ ∩ F(S(CS )]−∞,1−α[ ),
+
+f 7→ (f, f ),
+
+is a bornologi al embedding.
+Proof. Let β > α and let T be a subset of T (CS ) that is bounded in S(CS )[β,∞[
+
+and F(S(CS )]−∞,1−β] ).
+
+We
+
+laim that then T is bounded in T (CS ).
+
+This
+
+laim
+
+establishes the lemma. Sin e
+
+S(CS )[1/2,β] = S(CS )1/2 ∩ S(CS )β ,
+
+F(S(CS )[1−β,1/2] ) = F(S(CS )1/2 ) ∩ F(S(CS )β )
+
+and F is a bornologi al isomorphism on S(CS )1/2 , it a tually su es to prove that T
+is bounded in S(CS )1/2 .
+Let h be the multiplier of Lemma 4.19. The same argument as in the proof
+×
+2
+of Proposition 4.4 shows that h ◦ F on L (AS )1/2 extends to a bounded linear
+×
+operator on S(AS )I for any interval I ⊆ ]1 − α, ∞[. Furthermore, h ◦ F des ends to
+×
+1 ˆ
+a bounded linear operator on S(CS )I = D(CS ) ⊗
+S(A1S ) S(AS )I . For the same reason,
+
+h des ends to a bounded multiplier of D(CS ) and hen e a ts as a bounded operator
+∗
+on any representation of CS . By hypothesis, F (T ) is bounded in S(CS )1−β and T
+
+∗
+is bounded in S(CS )β . Hen e hF F (T ) = h(T ) is bounded in
+S(CS )1−β ∩ S(CS )β = S(CS )[1−β,β] ≺ S(CS )1/2 .
+
+By
+
+×
+onstru tion, h a ts as a bornologi al isomorphism on S(AS )1/2 and hen e on
+
+S(CS )1/2 . Thus T is bounded in S(CS )1/2 , whi h is exa tly what we need.
+
+
+
+5. The global dieren e representation
+In this se tion, we
+basi
+
+onstru t the global dieren e representation and prove some
+
+fa ts about it. We show that its
+
+hara ter is equal to the Weil distribution
+
+and that its spe tral multipli ity fun tion is equal to the pole order fun tion for the
+
+L-fun tion. This yields André Weil's Expli it Formula. We
+algebrai
+
+onstru t some further
+
+stru ture on the global dieren e representation in Se tion 5.6 and briey
+
+mention in Se tion 5.7 how our approa h
+
+ontains the meromorphi
+
+of L-fun tions and their fun tional equations.
+
+ontinuation
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+37
+
+5.1. More on adeles and ideles. We already re alled the basi
+
+onventions
+
+regarding adeles and ideles in the S -lo al ase in Se tion 3.1. Here we add some more
+ase. The main nuan e between the S -lo al and global
+×
+ase is that the adele ring AK and the idele group AK are dened as
+
+remarks about the global
+
+restri ted
+dire t produ ts. This is ne essary to get lo ally ompa t groups. Taking this into
+a
+
+ount, we
+
+an dene the same kind of stru ture as in the S -lo al
+
+ase.
+
+The eld K embeds diagonally into AK and this is an isomorphism onto a
+dis rete and o ompa t subeld of AK . We an again dene a norm homomorphism
+1
+×
+A×
+is a dis rete and o ompa t
+K and let AK be its kernel. The group K
+1
+1
+subgroup of AK . Equivalently, the norm-1-subgroup CK of the idele lass group
+×
+×
+CK := AK /K is ompa t.
+×
+×
+×
+Sin e AK is the restri ted dire t produ t of the groups Kv , the spa e D(AK )
+×
+is the restri ted ompleted tensor produ t of the spa es D(Kv ) with distinguished
+×
+ve tors 1O × ∈ D(Kv ) for nite pla es (see [13℄). The spa e S(AK ) an be des ribed
+
+on
+
+similarly: it is the restri ted
+
+ompleted tensor produ t of the spa es S(Kv ) with
+
+distinguished ve tors 1O ∈ S(Kv ) for nite pla es.
+Let S be a nite set of pla es ontaining all innite pla es and let ∁S :=
+P(K) \ S . Dene KS and KS× as in Se tion 3.1. Let
+Y
+Y
+×
+O∁S :=
+Ov ,
+O∁S
+:=
+Ov× .
+
+v∈∁S
+
+v∈∁S
+
+These are the maximal ompa t subring of A∁S and the maximal ompa t subgroup
+×
+A×
+, respe tively. We also view O
+as a ompa t subgroup of CK . There
+∁S
+∁S
+×
+→ CS . We all a nite
+is an obvious inje tive group homomorphism CK /O
+∁S
+if this map is an
+set of pla es S that ontains all innite pla es
+×
+×
+× ∼
+×
+×
+C
+/O
+isomorphism CS ∼
+.
+Equivalently,
+A
+/O
+.
+The niteness of
+K
+/K
+= K ∁S
+S
+∁S
+∁S =
+the ideal lass group implies that there exists a nite set of pla es S0 su h that all
+of
+
+su iently large
+
+S ⊇ S0 are su iently large in this sense.
+S
+Given a smooth representation π : CK → Aut(V ), we let V
+⊆ V be the sub×
+S
+spa e of elements that are invariant under O
+and all elements of V
+unramied
+∁S
+×
+outside S . The subgroups O∁S for the su iently large nite sets of pla es of K
+S
+form a fundamental system of smooth ompa t subgroups. Hen e V = lim V
+for
+−→
+any smooth representation.
+
+We normalize the Haar measure on CK as in the S -lo al
+is dis rete and
+hara ters
+
+ase. Sin e K ⊆ AK
+
+d
+o ompa t, there is ψ ∈ A
+K with ψ|K = 1 and ψ 6= 1. We
+
+normalized. This normalization insures that the dual latti e
+
+all su h
+
+K ⊥ := {y ∈ AK | ψ(ya) = 0 for all a ∈ K}
+
+is equal to K again, whi h is useful for the Poisson Summation Formula.
+hara ter. We an write it as ψ = ψ0 (∂ · x), where the
+×
+c
+lo al fa tors ψ0,v ∈ Kv of ψ0 are normalized for all pla es v and where ∂ ∈ AK .
+The idele ∂ is alled a dierental idele. It is easy to see that ψ is unique up to the
+×
+a tion of K . Hen e the lass of ∂ in CK is independent of the hoi e of ψ . If S
+is a su iently large set of pla es, we an hoose ψ unramied outside S , that is,
+su h that ψv is normalized for v ∈ ∁S . We always assume ψ unramied outside S if
+−1
+this is relevant. The norm |∂|
+is an important geometri invariant of the global
+−1
+eld K . For an algebrai number eld, |∂|
+is the dis riminant of K . For a global
+2g−2
+−1
+= gK , where g is the genus of the underlying urve of K .
+fun tion eld, |∂|
+Let ψ be a normalized
+
+See [22, page 113℄ for this.
+As in the S -lo al
+
+ase, we use ψ to identify AK with its Pontrjagin dual and
+
+to view the Fourier transform as an operator on S(AK ). We normalize the Haar
+measure on AK so that the Fourier transform Fψ dened by (11) for normalized ψ
+
+38
+
+RALF MEYER
+
+is unitary. This Haar measure on AK is
+the
+
+alled
+
+self-dual. It an be hara terized by
+
+ompa t group AK /K has volume 1.
+
+ondition that the
+
+An important dieren e between the global and the S -lo al ase is that the
+×
+2
+2
+×
+Hilbert spa es L (AK , dx) and L (AK , |x| d x) be ome dierent. The problem is
+
+that dx gives zero measure to the set of x ∈ AK with |x| 6= 0. There are several
+other related problems that make it di ult to analyze the global situation using
+Hilbert spa es. Our Fré het spa e setup is not ae ted by these problems, however.
+
+5.2. The oinvariant spa e S(AK )/K × . We are going to des ribe the oin-
+
+variant spa e H+ := S(AK )/K
+
+×
+
+more expli itly. Let S be a su iently large nite
+S
+set of pla es ontaining all innite pla es. Let S(AK ) ⊆ S(AK ) be the subspa e
+×
+of O -invariants as above.
+∁S
+Theorem 5.1.
+
+If S is su iently large, then there are natural isomorphisms
+
+ˆ D(K × ) S(AS ) ∼
+ˆ D(K × ) S(AK )S ∼
+C(1) L⊗
+= C(1) L⊗
+= T (CS )
+S
+
+in the derived ategory Der(D(CK )) of smooth representations of CK .
+Proof. The spa e S(A∁S ) is the restri ted tensor produ t of the spa es S(Kv )
+
+O×
+with distinguished ve tors 1Ov for v ∈ ∁S . Hen e S(A∁S ) ∁S is the restri ted tensor
+×
+O
+produ t of the spa es S(Kv ) v . Lemma 4.18 yields an equivariant isomorphism
+×
+×
+Ov× ∼
+S(Kv )
+= D(Kv /Ov ) that sends 1Ov to 1Ov× . These lo al isomorphisms ombine
+to an isomorphism
+×
+× ∼
+/O∁S
+) = C[K × /KS× ]
+S(A∁S )O∁S ∼
+= D(A×
+∁S
+
+be ause S is su iently large. Hen e
+×
+ˆ C[K × /KS× ].
+ˆ S(A∁S )O∁S ∼
+S(AK )S ∼
+= S(AS ) ⊗
+= S(AS ) ⊗
+
+The assertions now follows from Corollary 4.17 and the Shapiro Lemma.
+
+
+
+×
+The subspa e of O -invariant elements of a representation is the range of a
+∁S
+proje tion QS in the multiplier algebra of D(CK ). Hen e QS a ts on any hain
+omplex of smooth representations of CK . Theorem 5.1 asserts
+
+ˆ D(CK ) S(AK )S ∼
+ˆ D(CK ) S(AK )) ∼
+QS (C(1) L⊗
+= T (CS ).
+= C(1) L⊗
+If (Sn )n∈N is an in reasing sequen e of su iently large nite sets of pla es with
+
+S
+
+Sn = P(K), then
+
+P
+
+n∈N QSn − QSn−1 = id on Der(D(CK )). Hen e
+
+that is, S(AK ) is a y li
+
+ˆ D(CK ) S(AK ) ∼
+C(1) L⊗
+T (CS ),
+= lim
+−→
+for the
+
+oinvariant spa e fun tor and
+
+T (CS ).
+H+ := S(AK )/K × ∼
+= lim
+−→
+Moreover, the stru ture maps in this system are bornologi al embeddings be ause
+×
+
+O
+S
+H+
+:= H+ ∁S = QS (H+ ) ∼
+= T (CS ).
+S
+It is remarkable that the subspa es H+ do not depend on the global stru ture of AK
+but only on things happening inside the nite set of pla es S . This allows us to
+omputations to S -lo al ones.
+S
+S′
+′
+It remains to des ribe how the embedding H+ → H+ for S ⊆ S looks like as
+× ∼
+a map T (CS ) → T (CS ′ ). We have identied S(AS )/KS = T (CS ). It is easy to see
+
+redu e global
+
+that the isomorphism is given by the S
+
+-lo al summation map
+
+∼
+=
+ΣS : S(AS )/KS× → T (CS ),
+
+f (x) :=
+
+X
+
+×
+a∈KS
+
+f (ax).
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+39
+
+∈ T (CS ) ∼
+= S(AS )/KS× and represent it by a fun tion f¯ ∈ S(AS ). The
+embedding S(AS ) → S(AS ′ ) sends f¯ to 1O ′
+⊗ f¯. Thus the indu ed map T (CS ) →
+S \S
+T (CS ′ ) on oinvariants sends f to ΣS ′ (1O ⊗ f¯). To des ribe this more expli itly, we
+hoose for ea h v ∈ ∁S an element pv ∈ KS with |pv |w = 1 for all w ∈ ∁S \ {v} and
+|pv |v = qv−1 . This is possible be ause S is su iently large. We also view pv as an
+×
+×
+element of AS by the usual diagonal embedding K
+→ A×
+S . We have
+M
+pZv .
+KS×′ = KS× ×
+
+Take f
+
+v∈S ′ \S
+
+×
+Represent ẋ ∈ CS ′ by x ∈ AS ′ with |x|v
+be ause S is su iently large. We have
+
+ΣS ′ (1O ⊗ f¯)(ẋ) =
+
+X
+
+X
+
+Y
+
+X
+
+(1O ⊗ f¯)(ax) =
+
+×
+a∈KS
+′
+
+=
+
+= 1 for all v ∈ S ′ \ S . This is possible
+f¯(
+
+Y
+
+∞
+X
+
+Y
+
+−1
+f (ẋ).
+(id − λ−1
+pv )
+
+v
+f (ẋ) =
+λp−n
+v
+
+v∈S ′ \S nv =0
+
+nv ≥0 v∈S ′ \S
+
+pnv v · ax)
+
+v∈S ′ \S
+
+×
+a∈KS
+,nv ≥0
+
+v
+f (ẋ) =
+λp−n
+v
+
+Y
+
+v∈S ′ \S
+
+That is, the stru ture map T (CS ) → T (CS ′ ) is equal to
+posed with the identi al embedding.
+
+Q
+
+−1 −1
+v∈S ′ \S (id − λpv )
+
+om-
+
+onstru t some spe tral interpretation for zeros of L-fun S
+T (CS ) := H+
+as our starting point
+and dene H+ := lim T (CS ) with the above stru ture maps. This does produ e
+−→
+S(AK )/KS× without the need to ompute oinvariant spa es and hen e saves some
+If we only wanted to
+
+tions, then we
+
+ould also take the spa es
+
+ad ho
+
+work. However, the
+
+onstru tion looks rather
+. We prefer to arrive at this
+×
+onstru tion starting from the natural obje t S(AK )/KS .
+
+5.3. Some embeddings and proje tions. We need some denitions. Let
+
+I> := ]1, ∞[ and I< := ]−∞, 0[. Let S(CK )> := S(CK )I> , S(CK )< := S(CK )I< and
+S(CK )>< := S(CK )> ⊕ S(CK )< .
+Finally, dene
+
+L2 (CS )> :=
+
+\
+
+L2 (CS )α .
+
+α>1
+Lemma 5.2.
+
+smoothCS (L2 (CS )> ) = S(CS )> .
+×
+
+Proof. The norm homomorphism |x| is a proper map CS → R+ . Hen e rapid
+
+β
+
+de ay on CS is measured by the fun tions (1 + |ln |x||)
+ǫ
++ |x|−ǫ . Hen e
+
+are dominated by |x|
+
+L2 (CS )> =
+
+\
+
+with β ∈ R. These fun tions
+
+L2 (CS , |x|2α (1 + |ln |x||)β d× x).
+
+α>1,β>0
+It is easy to identify the smoothening of the latter representation with S(CS )> .
+The
+
+
+
+global summation map is dened by
+Σf (x) :=
+
+X
+
+f (ax)
+
+a∈K ×
+for f ∈ S(AS ), x ∈ CK .
+Lemma 5.3. The summation map Σ denes a bounded linear map from H+
+×
+to S(CK )> . For a su iently large nite set of pla es S , its restri tion to O∁S
+invariants is isomorphi to the map
+
+LS :=
+
+Y
+
+v∈∁S
+
+−1
+: T (CS ) → S(CS )> .
+(1 − λ−1
+pv )
+
+40
+
+RALF MEYER
+
+In addition, LS is a CS -equivariant
+bornologi al isomorphism both on L2 (CS )> and
+Q
+−1
+S(CS )> with inverse LS := v∈∁S (1 − λ−1
+pv ).
+
+Proof. We identify Σ with the map LS on H+ ∼
+= T (CS ) in the same way as we
+
+S
+
+′
+des ribed the stru ture maps T (CS ) → T (C ) for S ⊆ S at the end of Se tion 5.2.
+−1
+It remains to he k that LS and LS dene bounded linear operators on S(CS )> .
+×
+Sin e 1 = |a| = |a|S · |a|∁S for all a ∈ K , we get |pv |S = qv and hen e
+S′
+
+−α
+kλ−1
+pv kL2 (CS )α = qv
+−1
+for all v ∈ ∁S . Therefore, the innite produ ts that dene LS and LS
+onverge
+2
+absolutely in the operator norm on L (CS )α for any α > 1. This is equivalent to
+the onvergen e of the Euler produ t dening the ζ -fun tion in the region Re s > 1.
+−1
+2
+Thus LS and LS dene bounded linear operators on L (CS )> . Sin e smoothening
+
+
+
+is fun torial, Lemma 5.2 also yields boundedness on S(CS )> .
+Lemma 5.4.
+
+The map
+i+ : H+ → S(CK )>< ,
+
+f 7→ (Σf, JΣF∗ f ),
+
+is a CK -equivariant bornologi al embedding.
+Let φ ∈ D(R+ ) be a ut-o fun tion as before and let S be a su iently large
+nite set of pla es. Then
+(f0 , f1 ) 7→ M1−φ LS−1 f0 + FM1−φ L−1
+S Jf1 .
+
+pS+ : S(CS )>< → T (CS ),
+
+is a bounded CS1 -equivariant linear operator.
+Proof. It su es to he k that i+ restri ts to an equivariant bornologi al
+S
+embedding on H+ for any su iently large nite set of pla es S . We identify
+S ∼
+H+ = T (CS ) and the summation map with LS , whi h is a bornologi al isomor∼
+=
+phism on S(CS )> by Lemma 5.3. The map J : S(CS )> → S(CS )< is a bornologi al
+
+isomorphism as well. Hen e the rst assertion is equivalent to the statement that
+
+T (CS ) → S(CS )>< ,
+
+f 7→ (f, F∗ f )
+
+−1
+is a bornologi al embedding. This follows from Lemma 4.20. The map LS is an
+
+isomorphism on S(CS )> by Lemma 5.3, M1−φ is a bounded map from S(CS )> to
+S(CS )∪ ≺ T (CS ) and F is a bounded on T (CS ). Thus pS+ is bounded.
+
+Hen e we may identify H+ with its image i+ (H+ ) ⊆ S(CK )>< .
+S
+S
+We extend p+ to an operator p+ : S(CK )>< → H+ as follows. We de ompose
+×
+all o urring spa es as dire t sums of χ-homogeneous subspa es for χ ∈ (O )b.
+∁S
+For any su h χ, we let S(χ) be the union of S with the pla es where χ is ramied.
+S(χ)
+S
+We let p+ := p+
+on the χ-homogeneous subspa e.
+S
+On H+ , we ompute
+
+−1 2
+∗
+pS+ ◦ i+ = M1−φ L−1
+S LS + FM1−φ LS J LS F
+
+= M1−φ + FM1−φ F∗ = id − (Mφ − FJM1−φ JF∗ ).
+We
+
+all φ
+
+symmetri if φ(x) = 1 − φ(x−1 ). Then JM1−φ J = Mφ and hen e
+pS+ ◦ i+ = id − (Mφ − FMφ F∗ ).
+
+S
+Thus ∫λ(f ) ◦ (id − p+ i+ ) is a uniformly nu lear operator on T (CS ) for f ∈ D(CS )
+S
+and the lo al tra e formula (20) omputes its tra e. Therefore, we may think of p+
+as an approximate se tion for the embedding i+ . The other omposition
+
+P+S := i+ ◦ pS+ =
+
+
+
+LS M1−φ L−1
+S
+JLS F∗ M1−φ L−1
+S
+
+is an approximate proje tion onto the range of i+ .
+
+LS FM1−φ LS−1 J
+JLS M1−φ L−1
+S J
+
+
+
+PRIMES,
+
+Our
+
+hara ter
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+41
+
+S
+ompare P+ with a more trivial proje tion P− ,
+
+omputations
+
+whi h we now dene. Let H− := S(CK )∪ . We dene maps
+
+i− : H− → S(CK )>< ,
+p− : S(CK )>< → H− ,
+
+f 7→ (f, f ),
+(f0 , f1 ) 7→ M1−φ f0 + Mφ f1 .
+
+The map i− is a CK -equivariant bornologi al embedding, whi h we use to identify H− with a subspa e of S(CK )>< . The operator p− is a well-dened bounded
+1
+CK
+-equivariant linear operator as in the proof of Lemma 4.2. The operator
+
+
+M1−φ Mφ
+P− := i− ◦ p− =
+.
+M1−φ Mφ
+is a proje tion onto the range of i− be ause p− i− = idH− .
+
+5.4. The Poisson Summation Formula. In order to ompare the operators
+
+P+S and P− , we need the Poisson Summation Formula, whi h is a spe ial feature of
+×
+the global situation. For any x ∈ AK , K ·x ⊆ AK is a dis rete o ompa t subgroup.
+⊥
+−1
+is equal to x
+· K.
+Our normalization of ψ insures that the dual latti e (x · K)
+Hen e the
+
+Poisson Summation Formula asserts
+X
+
+f (ax) = |x|−1
+
+a∈K
+
+X
+
+Ff (ax−1 )
+
+a∈K
+
+for all f ∈ S(AK ), see [22℄. Dene
+
+x 7→ f (0) − |x|−1 · Ff (0),
+
+R(f ) : CS → C,
+
+for f ∈ S(AK ). This des ends to a CK -equivariant bounded linear operator from H+
+−1
+to the 2-dimensional spa e spanned by the onstant fun tion and the fun tion |x|
+.
+The Poisson Summation Formula
+
+an be rewritten as
+
+JΣF = Σ + R.
+
+(31)
+
+S
+When we restri t to H+ for a su iently large nite set of pla es S , we get JLS F =
+
+LS + R on T (CS ) be ause LS = Σ on that subspa e.
+
+The subspa e i+ (H+ ) + i− (H− ) of S(CK )>< is equal to
+X := {(f0 , f1 ) ∈ S(CK )>< | f0 − f1 = c0 − c1 |x|−1 for some c0 , c1 ∈ C}.
+
+Lemma 5.5.
+
+Proof. It is
+
+lear that i− (H− ) ⊆ X and that the quotient X /H− is 2-dimen-
+
+sional. The Poisson Summation Formula implies i+ (H+ ) ⊆ X as well and yields
+that the remaining two basis ve tors do arise be ause of R.
+
+
+
+For α > 1, both ∫λ(f )(P− − P+S ) and (P− − P+S )∫λ(f ) extend to
+uniformly nu lear operators L2 (CS )α ⊕ L2(CS )1−α → S(CK )>< for f ∈ D(CS ).
+Lemma 5.6.
+
+×
+he k this on the subspa es of O -invariants and we may
+∁S
+assume that φ is symmetri . It is straightforward to verify the uniform nu learity
+S
+S
+of [∫λ(f ), P− ] = i− [∫λ(f ), p− ] and [∫λ(f ), P+ ] = i+ [∫λ(f ), p+ ] for all f ∈ D(CS ).
+Proof. It su es to
+
+Hen e we only have to
+(32)
+
+onsider
+
+∫λ(f )(P− − P+S )
+
+
+∫λ(f )(LS M1−φ L−1
+− M1−φ )
+∫λ(f )(LS FM1−φ L−1
+J − Mφ )
+S
+S
+=
+.
+−1
+∫λ(f )(JLS F∗ M1−φ L−1
+S − M1−φ ) ∫λ(f )(JLS M1−φ LS J − Mφ )
+
+The map J is a bornologi al isomorphism
+
+∼
+=
+
+J : S(CS )> → S(CS )< ,
+
+∼
+=
+
+L2 (CS )α → L2 (CS )1−α ,
+
+42
+
+RALF MEYER
+
+we have F = F
+
+∗
+
+= Mφ , and J∫λ(f )J = ∫λ(fˇ) is again of the same
+
+and JM1−φ J
+
+form. Therefore, it su es to
+
+he k that
+
+∫λ(f )(LS M1−φ L−1
+S − M1−φ )
+
+and
+
+∫λ(f )(LS FM1−φ L−1
+S − Mφ J)
+
+2
+extend to uniformly nu lear operators L (CS )α → S(CS )> . Lemma 5.3 yields LS f ∈
+
+S(CS )> . The same proof as for (17) also yields ∫λ(f ) ◦ LS = ∫λ(LS f ). Hen e
+−1
+∫λ(f )(LS M1−φ L−1
+S − M1−φ ) = [∫λ(LS f ), M1−φ ]LS − [∫λ(f ), M1−φ ].
+2
+Lemma 4.3 yields that this extends to a uniformly nu lear operator from L (CS )α
+to S(CS )> for f ∈ D(CS ) for any α > 1. We have
+
+∫λ(f )Mφ J = [∫λ(f ), Mφ ]J + JM1−φ ∫λ(Jf )LS L−1
+S
+= [∫λ(f ), Mφ ]J + J[M1−φ , ∫λ(LS Jf )]LS−1 + JLS ∫λ(Jf )M1−φ L−1
+S
+and hen e
+
+∫λ(f )(LS FM1−φ L−1
+S − Mφ J)
+−1
+= J(JLS F − LS )∫λ(Jf )M1−φ L−1
+S − [∫λ(f ), Mφ ]J − J[M1−φ , ∫λ(LS Jf )]LS
+
+= −[∫λ(f ), Mφ ]J − J([M1−φ , ∫λ(LS Jf )] + ∫λ(RJf )M1−φ )L−1
+S ,
+where we used the Poisson Summation Formula. The operator [λ(f ), Mφ ]J extends
+−1
+2
+to a nu lear operator L (CS )α → S(CS )< by Lemma 4.3. Sin e LS is bounded on
+2
+L (CS )α , it remains to prove that
+
+[M1−φ , ∫λ(LS Jf )] + ∫λ(RJf )M1−φ
+2
+extends to a uniformly nu lear operator L (CS )α → S(CS )< .
+
+The Poisson Sum-
+
+mation Formula implies LS Jf
+
+= h − φ(x) · RJf with h ∈ S(CS )∪ . The operator
+[M1−φ , ∫λ(h)] extends to a nu lear operator from L2 (CS )α to S(CS )∪ by Lemma 4.3.
+We are left with
+
+[M1−φ , ∫λ(φ · RJf )] + ∫λ(RJf )M1−φ
+= M1−φ ∫λ(φ · RJf ) − ∫λ((1 − φ)RJf )M1−φ .
+An examination of the integral kernels of M1−φ ∫λ(φ·RJf ) and ∫λ((1−φ)RJf )M1−φ
+2
+shows that both dene uniformly nu lear maps L (CS )α → S(CS )< for f ∈ D(CS )
+
+
+
+as desired.
+
+5.5. Constru tion of the global dieren e representation. Let
+0
+H+
+:= (H+ + H− )/H− ∼
+= H+ /(H+ ∩ H− ),
+0
+∼ H− /(H+ ∩ H− ),
+H := (H+ + H− )/H+ =
+−
+
+0
+where we take sums and interse tions in S(CK )>< . Let H be the virtual represen0
+0
+of CK . We denote the
+tation H+ ⊖ H− . This is the
+0
+0
+anoni al representations of CK on H± and H by π± and π , respe tively. We are
+
+global dieren e representation
+
+going to show that π is summable. The
+
+hara ter of π is dened by χπ := χπ+ −χπ− .
+
+Definition 5.7. For any pla e v , dene
+
+′
+
+Wv ∈ D (CK ),
+R′
+
+Wv (f ) :=
+
+Z ′
+
+Kv×
+
+f (x)|x| ×
+d x,
+|1 − x|
+
+denotes the same prin ipal value as in the lo al tra e formula. Let DK
+Kv×
+be the dis riminant of K and let
+where
+
+W (f ) :=
+
+X
+
+Wv (f ) − f (1) · ln DK
+
+v∈P(K)
+We
+
+′
+all W ∈ D (CK ) the
+
+(raw) Weil distribution.
+
+for f ∈ D(CK ).
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+43
+
+Theorem 5.8. The virtual representation π is smooth and summable and its
+hara ter is equal to the Weil distribution W . Thus
+
+W (f ) = χπ (f ) =
+
+X
+
+mult(ω, π) · fˆ(ω)
+
+ω∈Ω(CK )
+
+with uniform absolute onvergen e for f in bounded subsets of D(G).
+Proof. Sin e smoothness is hereditary for subrepresentations and quotient
+
+representations, it is
+the des ription of X
+
+lear that π± and hen e π are smooth representations. Re all
+0
+:= H+ + H− in Lemma 5.5. Sin e X /H− = H+
+is 2-dimen-
+
+sional, it is evidently summable.
+
+Sin e all spa es that o
+
+ur below are nu lear,
+
+a nu lear operator is automati ally of order 0. Hen e the restri tion of a nu lear
+operator to an invariant subspa e and the indu ed operator on a quotient spa e
+S
+are again nu lear by Theorem 2.5. Sin e the range of P+ is ontained in H+ ⊆ X
+and the range of P− is ontained in H− ⊆ X , all operators that we onsider in the
+following map S(CS )>< into the subspa e X . Thus they are nu lear as operators
+on X if and only if they are nu lear as operators on S(CS )>< and they have the
+same tra e on both spa es.
+
+≥ 1 su h that |supp f | ∈ ]β −1 , β[ and there is
+a su iently large nite set of pla es S su h that f is unramied outside S and
+qv ≥ β for all v ∈ ∁S . Even more, we an hoose β and S uniformly for f in a
+bounded subset of D(CK ). Consider the following operator on X :
+Let f
+
+∈ D(CK ).
+
+There is β
+
+∫λ(f )(idX − P+S ) = ∫λ(f )(idX − P− ) + ∫λ(f )(P− − P+S ).
+The operator ∫λ(f )(idX − P− ) on X vanishes on the nite odimensional sub0
+spa e H− and indu es ∫π+ (f ) on H+ . Hen e it has nite rank and its tra e is
+χπ+ (f ). The operator ∫λ(f )(P− − P+S ) is of order 0 by Lemma 5.6. Hen e the
+S
+operator ∫λ(f )(idX − P+ ) is of order 0 as well. It leaves H+ invariant and indu es
+0
+S
+∫π− (f ) on H−
+be ause the range of P+ is ontained in H+ . Theorem 2.5 now
+implies that π− is summable.
+The additivity of the tra e in extensions yields
+
+χπ− (f ) = tr ∫λ(f )(idX − P+S ) − tr ∫λ(f )(id − P+S )|H+
+= tr ∫λ(f )(idX − P− ) + tr ∫λ(f )(P− − P+S ) − tr(id − P+S )|H+ .
+Sin e tr ∫λ(f )(idX − P− ) = χπ+ (f ), this implies
+
+χπ (f ) = tr ∫λ(f )(id − P+S )|H+ − tr ∫λ(f )(P− − P+S ).
+Sin e we embed H+ into X using i+ , the rst term is
+
+tr ∫λ(f )(id−P+S )|H+ = tr ∫λ(f )(idH+ −pS+ i+ )|T (CS ) = tr ∫λ(f )(Mφ −FMφ F∗ )|T (CS )
+X
+= tr ∫λ(f )(Mφ − FMφ F∗ )|L2 (CS )1/2 =
+Wv (f ) − f (1) ln |∂|−1
+S = W (f ).
+v∈S
+
+We have assumed φ symmetri
+
+to simplify the formula and we have used the lo al
+
+tra e formula (20) and the fa t that it makes no dieren e whether we ompute
+2
+this tra e on L (CS )1/2 or on T (CS ). Our hoi e of S guarantees Wv (f ) = 0 for
+−1
+v ∈ ∁S and |∂|S = DK .
+S
+It remains to show tr ∫λ(f )(P− − P+ ) = 0. By (32), this amounts to
+
+−1
+tr ∫λ(f )(LS M1−φ L−1
+S − M1−φ ) = tr ∫λ(f )J(LS M1−φ LS − M1−φ )J = 0.
+Sin e
+
+−1
+tr ∫λ(f )J(LS M1−φ L−1
+S − M1−φ )J = tr J∫λ(f )J(LS M1−φ LS − M1−φ )
+
+= tr ∫λ(Jf )(LS M1−φ L−1
+S − M1−φ ),
+
+44
+
+RALF MEYER
+
+−1
+it su es to treat ∫λ(f )(LS M1−φ LS − M1−φ ).
+
+The proof of Lemma 5.6 yields
+
+ˆ S(CS )< , so that its tra e
+that this operator has an integral kernel in S(CS )> ⊗
+is equal to the integral of its integral kernel over the diagonal. Our hoi e of S
+−1
+and β insures that qv ≥ β for all v ∈ ∁S , so that LS − 1 and LS − 1 are sums of
+−1
+operators λx with |x| ≤ β
+. The support ondition on f implies that the integral
+−1
+kernel of ∫λ(f )(LS M1−φ LS − M1−φ ) vanishes identi ally near the diagonal. Hen e
+the tra e also vanishes.
+
+
+c
+Let χ be a quasi- hara ter of CK . Then there are unique s ∈ R and χ0 ∈ C
+K
+s
+su h that χ = |x| · χ0 . We all s := Re χ the
+of χ.
+
+real part
+Proposition 5.9. The integrated form of π extends to a bounded homomorphism
+∫π : lim S(CK )[−ǫ,1+ǫ] → ℓ1 (H0 ).
+−→
+ǫց0
+
+The spe trum of π is ontained in the region {ω ∈ Ω(CK ) | Re ω ∈ [0, 1]}, whi h we
+all the riti al strip.
+0
+lear for the positive part H+ ∼
+= C(1)⊕ C(|x|), so that
+0
+we restri t attention to H− in the following. Fix a su iently large nite set of
+S
+pla es S and ǫ > 0. Lemma 5.6 asserts that (P− − P+ )∫λ(f ) extends to a uniformly
+2
+2
+nu lear operator L (CS )1+ǫ ⊕ L (CS )−ǫ → S(CS )>< for f ∈ D(CS ). The regular
+2
+2
+representations on L (CS )1+ǫ and L (CS )−ǫ integrate to a module stru ture over
+S(CS )[−ǫ,1+ǫ] . Hen e the operators (P− − P+S )∫λ(f1 )∫λ(f2 ) are uniformly nu lear
+Proof. The assertion is
+
+operators on S(CS )>< for f1 ∈ D(CS ) and f2 ∈ S(CS )[−ǫ,1+ǫ] . Sin e
+
+ˆ D(CS ) S(CS )[−ǫ,1+ǫ] ,
+S(CS )[−ǫ,1+ǫ] ∼
+= D(CS ) ⊗
+∈ D(CS ) to (P− − P+S )∫λ(f ) extends to a
+1
+bounded linear map from S(CS )[−ǫ,1+ǫ] to ℓ (S(CS )>< ). This implies the orresponding statement for CK instead of CS be ause ∫λ(f ) for smooth f proje ts to
+×
+0
+O∁S
+-invariants, anyway. We realize H− as a subquotient of S(CK )>< and ∫π− (f )
+S
+as the operator on this subquotient indu ed by (P− − P+ )∫λ(f ) as in the proof of
+Theorem 5.8. Theorem 2.5 yields that ∫π− extends to a bounded homomorphism
+0
+S(CK )[−ǫ,1+ǫ] → ℓ1 (H−
+). Sin e this holds for all ǫ > 0, we get the assertion.
+It follows that any losed subrepresentation of π is an essential module over
+S(CK )[−ǫ,1+ǫ] for all ǫ > 0. Sin e C(χ) has this property if and only if Re χ ∈ [0, 1],
+we obtain the assertion about the spe trum of π .
+
+we obtain that the map that sends f
+
+A more areful analysis shows that ∫π also extends to a representation of
+S(CK )[0,1] . We annot shrink [0, 1] any further be ause of the two quasi- hara ters
+|x|0 and |x|1 in spec π+ .
+
+5.6. Symmetries of the global dieren e representation. It is rather
+hard to
+
+0
+onstru t interesting operators on H . There are, however, some obvious
+
+symmetries that
+
+orrespond to well-known symmetries of L-fun tions. The opera-
+
+tors F on H+ and J on H− agree on H+ ∩ H− by the Poisson Summation Formula.
+0
+Hen e they yield an operator, again alled J , on H . This operator is idempotent
+and satises J∫λ(f )J = ∫λ(Jf ). Complex onjugation on S(CK )>< leaves the sub±
+spa es H± invariant and hen e des ends to H0 . This operator γ on H0 is onjugate
+linear and satises γ∫π(f )γ = ∫π(f ) for all f
+
+∈ D(CK ), where f (x) = f (x). The
+
+ovarian e properties of J and γ imply that they orrespond to the symmetries
+χ 7→ |x|χ−1 and χ 7→ χ on the spe tral side. Hen e the spe trum of π is invariant
+under these two maps and
+
+mult(χ, π) = mult(|x|χ−1 , π) = mult(χ, π)
+
+for all χ ∈ Ω(CK ).
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+There is another more geometri
+of L-fun tions in the
+
+spe tral interpretation for the poles and zeros
+
+ase of global fun tion elds, whi h involves the a tion of the
+
+Frobenius automorphism on an appropriate étale
+the global fun tion eld also a ts on étale
+interest be ause it
+
+45
+
+ohomology. The Galois group of
+
+ohomology, and this a tion is of great
+
+an be used to des ribe poles and zeros of Artin L-fun tions as
+
+well. In our spe tral interpretation we also have an a tion of the Galois group, but
+it is mu h less interesting. In parti ular, it has nothing to do with the Galois a tion
+on étale
+
+ohomology for global fun tion elds. Let τ : K → K be an automorphism
+
+of the eld K . All our onstru tions are natural in an evident fashion, so that τ
+0
+0
+a ts on H . However, this a tion is not very interesting. The a tion on H+ is trivial
+0
+and the a tion on H− is the quotient representation of the natural representation
+on S(CK )∪ that
+
+omes from the a tion of τ on CK . Hen e we obtain mult(χ, π) =
+mult(χ ◦ τ∗ , π) for all χ ∈ Ω(CK ). Sin e τ∗ leaves the norm on CK invariant, its
+a tion on Ω(CK ) merely permutes the onne ted omponents. Thus it has nothing
+to do with Artin L-fun tions.
+0
+By denition, H− is a quotient of S(CK )∪ by H+ ∩ H− , whi h is an ideal with
+respe t to onvolution. Hen e ∫π− drops down to a bounded bilinear map
+
+0
+0
+0
+H−
+× H−
+→ H−
+,
+
+[f1 ] ⊗ [f2 ] 7→ [∫π− (f1 )(f2 )],
+
+0
+whi h turns H− into an asso iative algebra. Any hara ter on this algebra gives rise
+hara ter on S(CK )∪ and thus to a quasi- hara ter of CK . Thus the spe trum
+0
+of H− identies with a subset of Ω(CK ). By denition, this spe trum is exa tly
+
+to a
+
+the spe trum of the
+
+ontragradient representation π̃− .
+
+It is easy to see that π−
+
+and π̃− have the same spe trum and the same spe tral multipli ity fun tion, see
+0
+also Theorem 2.12. The involution Jγ turns H− into a ∗-algebra and γ gives
+0
+0
+an additional real stru ture on H− . A hara ter on H− is a ∗- hara ter if and
+only if it
+
+orresponds to
+
+ω ∈ Ω(CK ) with Re ω = 1/2.
+
+Thus the Generalized
+
+Riemann Hypothesis is equivalent to the assertion that self-adjoint elements of the
+0
+∗-algebra H−
+have real spe trum.
+
+5.7. Spe tral analysis of the global dieren e representation.
+Lemma 5.10. Let I be an open interval. The Fourier-Lapla e transform maps
+S(CK )I isomorphi ally onto the spa e of holomorphi fun tions on the domain {ω ∈
+Ω(CK ) | Re ω ∈ I} whose restri tion to |x|α Cc
+K is a S hwartz fun tion for all α ∈ I .
+Proof. We use that the Fourier transform is an isomorphism S(CK ) ∼
+= S(Cc
+K)
+
+s
+s
+and that (f · |x| )b(ω) = fˆ(ω · |x| ) for all s ∈ C. In parti ular, we may assume
+it
+without loss of generality that 0 ∈ I . Multipli ation by |x|
+for t ∈ R leaves
+
+S(CK ) and S(CK )I invariant. There is only one possible way to extend the fun tion
+it 7→ f · |x|it to a holomorphi fun tion, namely, the fun tion s 7→ f · |x|s . Hen e a
+it
+fun tion in S(CK ) belongs to S(CK )I if and only if the fun tion it 7→ f · |x| extends
+to a holomorphi fun tion from the strip {s ∈ C | Re s ∈ I} to S(CK ). Applying
+c
+the Fourier-Lapla e transform, we get that S(CK )b
+I onsists of those f ∈ S(CK ) for
+it
+whi h the fun tion it 7→ f (ω · |x| ) extends to a holomorphi fun tion from the
+c
+strip {Re s ∈ I} to S(C
+K ). Clearly, su h a holomorphi extension is equivalent to a
+holomorphi extension of f to a fun tion on the strip {Re ω ∈ I} with the property
+αc
+that its restri tion |x| C
+
+K is a S hwartz fun tion for all α ∈ I .
+Suppose now that M : S(CK )I
+
+operator.
+
+→ S(CK )I is a bounded CK -equivariant linear
+
+In the Fourier-Lapla e transformed pi ture, M must a t as pointwise
+
+multipli ation by some holomorphi
+
+fun tion
+
+M̂ : {ω ∈ Ω(CK ) | Re ω ∈ I} → C.
+
+46
+
+RALF MEYER
+
+ˆ S(CK )I S(CK )α
+If α ∈ I , then we have S(CK )I ⊗
+
+∼
+= S(CK )α .
+
+Hen e M gives rise
+
+to a bounded operator on S(CK )α for all α ∈ I . Thus a holomorphi
+
+fun tion on
+
+α
+c
+∈ I} multiplies S(CK )b
+I if and only if its restri tion to CK · |x|
+c
+multiplies S(C
+K ) for ea h α ∈ I .
+The Poisson Summation Formula implies Σf = h + φ · Rf with h ∈ S(CK )∪ .
+Thus the Fourier-Lapla e transform of h is a holomorphi fun tion on all of Ω(CK )
+
+the strip {Re ω
+
+and its restri tion to ea h verti al line is a S hwartz fun tion.
+
+It is easy to see
+
+c for χ ∈ Ω(CK ) is a meromorphi fun tion whose
+that a fun tion of the form φχ
+−1
+only pole is a simple pole at χ
+(we show this during the proof of Theorem 6.3
+c is a S hwartz fun tion on |x|α Cc
+below). Moreover, φχ
+K for all α ∈ R\{− Re χ}. We
+−1 c
+get a S hwartz fun tion on χ
+CK if we multiply with any fun tion that vanishes
+−1
+at χ
+and is onstant at ∞. Hen e Σ(f ) is a meromorphi fun tion whose only
+poles are simple poles at the quasi- hara ters |x| and 1 and whose restri tion to
+αc
+CK is a S hwartz fun tion for all α ∈ R ex ept for its two poles.
+
+verti al lines |x|
+
+This implies the meromorphi
+ontinuation of the L-fun tions LK (χ, s) be ause
+dχ (χ|x|s ) for suitable fχ ∈ S(AK ) for all χ ∈ Cc
+LK (χ, s) is Σf
+K.
+The Poisson Summation Formula is equivalent to
+
+c (χ) = ΣFf
+d (|x|χ−1 )
+Σf
+
+(33)
+
+for all χ ∈ Ω(CK ) \ {1, |x|} and all f ∈ S(AK )/K
+
+×
+
+. This is evident if Rf = 0 and
+
+extends to general f be ause of the equivarian e of Σ. When we apply (33) to the
+spe ial fun tions fχ that give the L-fun tions, we obtain the fun tional equations
+for the L-fun tions. This proof method is due to John T. Tate ([19℄).
+For global fun tion elds, we
+
+an repla e S(CK )∪ by Sc (CK )∪ = D(CK ). The
+
+Fourier-Lapla e transform maps D(CK ) onto the spa e of fun tions on Ω(CK ) whose
+restri tion to ea h
+
+onne ted
+
+omponent is a Laurent polynomial and whi h are
+
+supported in nitely many onne ted omponents. Thus we obtain that L(χ, s) for
+s−1
+s
+s
+χ 6= 1 and ζ(s) · (qK
+− 1)(qK
+− 1) are Laurent polynomials in qK
+.
+Let S be a su iently large set of pla es. We now onsider the fun tions on
+
+Ω(CS ) that
+
+orrespond to LS and F. The operator LS
+
+orresponds to the operator
+
+of pointwise multipli ation by the fun tion
+
+cS (ω) :=
+L
+
+where pv
+
+Y
+
+(1 − ω(pv )−1 )−1 ,
+
+v∈∁S
+
+∈ CS for v ∈ ∁S is as in the denition of LS .
+
+onverges in the region Re ω > 1. The same innite produ t o
+
+This innite produ t
+urs in the denition
+
+cS (ω) · LK,S (ω) for all ω ∈ Ω(CS ) with
+of the L-fun tion of K . Namely, LK (ω) = L
+Re ω > 1, where LK,S is the produ t of the lo al L-fa tors for v ∈ S . Our analysis
+αc
+of LS shows that it is an invertible multiplier of S(|x| C
+S ) for α > 1. Similarly, F is a
+bounded operator on S(CS )+ , so that its Fourier-Lapla e transform is a holomorphi
+∗
+fun tion in the region Re ω > 0. Its inverse F is a bounded operator on S(CS )− , so
+b
+that its Fourier-Lapla e transform is holomorphi in the region Re ω < 1. Thus F
+extends to a meromorphi fun tion on all of Ω(CS ), whi h has no poles for Re ω > 0
+and no zeros for Re ω < 1.
+S
+S
+Next we des ribe the Fourier-Lapla e transform of Σ(H+ ). We identify H+
+with T (CS ) and the summation map Σ with LS . By denition, the Fourier-Lapla e
+transform of T (CS ) onsists of those meromorphi fun tions f on Ω(CS ) whose
+αc
+restri tion to |x| C
+S is S hwartz (and thus has no poles) for all α > 0 and for
+αc
+∗
+c
+whi h F · f is S hwartz on |x| C
+S for α < 1. Both onditions are equivalent for
+S
+0 < α < 1. Thus Σ(H+ ) orresponds to the spa e of meromorphi fun tions f on
+cS is a S hwartz fun tion on |x|α Cc
+Ω(CS ) for whi h f /L
+S for α > 0 and for whi h
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+47
+
+bL
+cS is a S hwartz fun tion on |x|α Cc
+f /F
+S for α < 1. If 0 < Re α < 1, then both
+cS
+onditions for Re ω = α are equivalent. If Re α > 1, we an omit the fa tor L
+be ause it is invertible in this region. If Re α < 0, we an also omit FLS be ause
+S
+of the Poisson Summation Formula. That is, f ∈ (ΣH+ )b if and only if f is a
+α c
+c
+S hwartz fun tion on |x| · C
+S for α > 1 and α < 0, f /LS is a S hwartz fun tion
+α c
+−1
+c
+on |x| · CS for α ∈ ]0, 1] and f (χ)/LS (|x|χ
+) is a S hwartz fun tion for χ ∈ Cc
+K.
+This is exa tly the information about L-fun tions that one obtains using only that
+dχ for some fχ ∈ S(AK ).
+they are of the form Σf
+Finally, we relate spec π− to the zeros of L-fun tions. Let ord(ω, LK ) be the
+pole order of LK at ω ; this is positive for poles and negative for zeros.
+Theorem 5.11. The spe trum of π onsists of the poles and zeros of the L-fun tion LK : Ω(CK ) → C and we have mult(ω, π) = ord(ω, LK ) for all ω ∈ Ω(CK ).
+Proof. The fun tions mult(ω, π) and ord(ω, LK ) are both invariant under
+ω 7→ |x|ω −1 by the Poisson Summation Formula. Hen e it su es to onsider
+ω ∈ Ω(CK ) with Re ω ≥ 1/2. It is lear that the two representations 1 and |x|
+that are ontained in π+ are exa tly the poles of LK . They also have orre t
+multipli ity 1. Instead of des ribing the spe trum of π− , it is easier to des ribe the
+spe trum of its ontragradient π̃− . Both representations have the same hara ter
+0
+and hen e the same spe tral multipli ity fun tion by Theorem 2.12. Sin e H− is
+∼
+a quotient of H− , its ontragradient is a subrepresentation of (H− ) . Clearly, a
+fun tional l : H− → C is ω -homogeneous if and only if l(f ) = 0 for all f that satisfy
+fˆ(ω) = 0. Hen e the only possible ω -homogeneous fun tionals are multiples of the
+0
+evaluation map at ω . In order to get fun tionals on the quotient H− , we need
+fˆ(ω) = 0 for all f ∈ H+ ∩ H− . By our des ription of H+ , this is equivalent to
+cS (ω) = 0 if Re ω > 0. In this region, L
+cS and LK have the same zeros. Thus ω
+L
+is ontained in π− if and only if it is a zero of LK . It is easy to see that the
+multipli ities agree as well.
+
+
+6. The Prime Number Theorem
+We are going to des ribe the asymptoti
+our representation theoreti
+
+distribution of prime ideals using
+
+approa h. A tually, our argument uses nothing more
+
+than the Expli it Formula in the form W (f ) =
+properties of the fun tion n : Ω(CK ) → Z.
+
+P
+
+ˆ
+
+ω∈Ω(CK ) n(ω)f (ω) with very few
+
+6.1. Prime ideals and the Weil distribution. Let K be a global eld
+
+and let S be a su iently large nite set of pla es of K . We obtain a subring
+KS ⊆ K and its multipli ative group of units KS× . Let KS∗ := KS \ {0}. We map
+KS∗ → A×
+S → CS , where the rst map is the diagonal map and the se ond one is the
+∗
+∗
+natural proje tion. The image of KS is a dis rete subset of CS . Two elements in KS
+×
+have the same image in CS if and only if they dier by a unit in KS . Equivalently,
+they generate the same ideal in KS . The prime ideals in KS
+
+orrespond bije tively
+
+to the pla es in ∁S . The element pv ∈ CS for v ∈ ∁S that we used in the des ription
+of the summation map is a generator for the prime ideal
+
+orresponding to the
+
+pla e v . Thus all prime ideals of KS are prin ipal and the subset {pv }v∈∁S ⊆ CS
+an be identied with the set of prime ideals of KS . If K = Q and S
+
+onsists just
+
+of the innite pla e, then the elements pv are exa tly the prime numbers in N. All
+this serves to justify the following
+Definition 6.1. The
+
+prime ideal distribution of KS is the distribution
+
+ΠS : D(CS ) → C,
+
+ΠS (f ) :=
+
+X
+
+v∈∁S
+
+f (pv ).
+
+48
+
+RALF MEYER
+
+We are going to
+bution
+
+W.
+
+ompare the prime ideal distribution ΠS to the Weil distri-
+
+We restri t W to D(CS )
+
+⊆ D(CK ) and still denote it by W .
+
+The
+
+normalization of the prin ipal value in the denition of Wv yields
+
+Wv (f ) =
+
+Z
+
+∞
+∞
+X
+X
+f (x)|x| ×
+−e
+f (pev ) ln(qv )
+f (p−e
+)q
+ln(q
+)
++
+d x=
+v
+v
+v
+×
+|1
+−
+x|
+{x∈Kv ||x|6=1}
+e=1
+e=1
+
+for all v ∈ ∁S . This suggests that we dene error terms
+
+Ev (f ) :=
+
+∞
+X
+
+−e
+f (p−e
+v )qv ln(qv ) +
+
+e=2
+
+ES (f ) :=
+
+X
+
+v∈∁S
+
+Ev +
+
+X
+
+∞
+X
+
+f (pev ) ln(qv ),
+
+e=2
+
+Wv − ln(DK )δ1
+
+v∈S
+
+in su h a way that
+
+
+W (f ) = ΠS (f · ln |x|) + ΠS (Jf ) · ln |x| + ES (f )
+
+for all f ∈ D(CS ).
+
+Lemma 6.2. The distribution ES extends to a bounded linear fun tional on
+S(CS )1/2 . RFor any ǫ > 0, the distribution (ln |x|)−1−ǫ |x|−1/2 · ES ||x|≥1+ǫ is of the
+form f 7→ f dµ for some positive measure µ of nite total volume.
+
+×
+
+Proof. We have already seen in Se tion 3 that Wv is bounded on S(Kv )1/2
+
+for any pla e v . Sin e the distributions Ev are J -invariant and supported in the
+region |x|
+
+∈
+/ [1 − ǫ, 1 + ǫ], the rst assertion follows from the se ond one. It is
+−1−ǫ
+lear that (ln|x|)
+|x|−1/2 Wv ||x|≥1+ǫ omes from a positive measure of nite to-
+
+tal volume for all pla es v . The total volume of the measure that orresponds
+−1−ǫ
+to (ln|x|)
+|x|−1/2 Ev ||x|≥1+ǫ is omparable to qv−1 · (ln qv )−1−ǫ for |qv | → ∞.
+It is well-known that the sum of these terms
+
+onverges.
+
+denes a measure of nite total volume. (If we take
+(ln|x|)−1−ǫ |x|−1 W ||x|≥1+ǫ has nite total volume.)
+
+Hen e the sum also
+
+Wv instead of Ev , only
+
+
+The Fourier-Lapla e transform identies S(CS )1/2 with the spa e of S hwartz
+fun tions on the
+
+riti al line |x|1/2 CcS . Lemma 6.2 yields that ES (f ) is given by
+
+pairing fˆ with some tempered distribution on the
+
+riti al line. We
+
+annot hope for
+
+mu h better error terms. Sin e ΠS and ΠS ◦ J are supported in the disjoint regions
+
+|x| > 1 and |x| < 1, the asymptoti s of W · ln |x| and ΠS for |x| → ∞ are essentially
+equivalent.
+
+6.2. Proof of the Prime Number Theorem. As usual, the rst step is to
+
+show that spec π− is
+
+ontained in the interior of the
+
+riti al strip. The assertion
+
+that Riemann's ζ -fun tion does not vanish on the line Re s = 1 is due to Hadamard
+and de la Vallée Poussin. A more abstra t formulation of their argument, due to
+Pierre Deligne ([5℄), also works for rather general
+
+lasses of L-fun tions. Our proof
+
+below is motivated by the argument in [5℄.
+Theorem 6.3.
+
+Any χ ∈ spec π− satises 0 < Re χ < 1.
+
+Proof. Due to the symmetry J , it su es to rule out the existen e of χ ∈
+spec π− with Re χ = 0, that is, χ ∈ Cc
+K.
+Let h ∈ D(R+ ) with h(x) = 0 for x ≥ 1 and h(x) = 1 for x ≪ 1 and onǫ
+sider the distributions h|x| W for ǫ > 0. Sin e h(1) = 0, there is no need to
+take prin ipal values for hW and the dis riminant term in W is also an eled.
+ǫ
+Thus h|x| W is a positive measure on CK . Its total volume is given formally by
+ǫ
+h|x| W (1) = W (h|x|ǫ ). We laim that this is nite. We do a more general omǫ
+c
+putation and onsider also χ ∈ C
+K . Sin e h|x| χ ∈ S(CK )]−ǫ,1+ǫ[ , Proposition 5.9
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+49
+
+ǫ
+[0]
+0
+ǫ
+yields ∫π(h|x| χ) ∈ ℓ (H ). By Theorem 5.8, W (h|x| χ) is the supertra e of this
+operator. Hen e it is nite and
+
+ǫ
+
+W (h|x| χ) =
+
+an be
+
+X
+
+omputed spe trally as
+
+mult(ω, π) · ĥ(|x|ǫ χω).
+
+ω∈Ω(CK )
+ǫ
+The positivity of h|x| W gives
+
+onstraints on the spe trum of π .
+
+However, this
+
+is di ult to use be ause all quasi- hara ters intera t. Therefore, we onsider the
+ǫ
+limit ǫh|x| W for ǫ ց 0, whi h suppresses the interior of the riti al strip.
+We need the Bohr
+
+ompa ti ation to dene this limit.
+
+c
+Equip C
+K with the
+
+dis rete topology and let B be its Pontrjagin dual. This is a (non-metrizable)
+pa t group
+
+alled the
+
+om-
+
+Bohr ompa ti ation of CK . The spa e C(B) of ontinuous
+
+c
+fun tions on B is the losed linear span of the hara ters χ ∈ C
+K in Cb (CK ). By
+ǫ
+restri tion, φǫ := ǫh|x| W is a positive linear fun tional on C(B) for all ǫ > 0. Its
+ǫ
+Fourier transform is φ̂ǫ (χ) = ǫW (h|x| χ). We laim that
+lim φ̂ǫ (χ) = mult(χ, π)
+
+ǫց0
+
+c
+for all χ ∈ C
+K.
+
+h′ := dh/d ln |x| be the derivative of h in the dire tion |x|. This fun tion
+has ompa t support be ause h is onstant for |x| → 0, ∞. Therefore, the set of
+ǫ
+′
+fun tions |x| χh for ǫ ∈ [0, 1] and xed χ is bounded in D(CK ) and the sums
+X
+mult(ω, π) · ĥ′ (|x|ǫ χω)
+W (|x|ǫ χh′ ) =
+(34)
+Let
+
+ω∈Ω(CK )
+
+are uniformly absolutely onvergent for ǫ ∈ [0, 1] by Theorem 2.10. The fun tions
+1
+) and are related by
+ĥ and ĥ′ vanish outside the prin ipal omponent Ω(CK /CK
+s
+s
+hb′ (|x| ) = −s · ĥ(|x| ). Thus ĥ is a meromorphi fun tion whose only pole is a
+s
+single pole at the trivial representation. Let Uα := {|x| | |s| < α}. The uniform
+′
+absolute onvergen e of the sum for h yields
+
+X
+
+mult(ω, π)ĥ(|x|ǫ χω) ≤ C/α
+
+{ω∈Ω(CK )|ωχ|x|ǫ ∈U
+/ α}
+with some
+
+onstant C that only depends on χ and α but not on ǫ. Hen e
+
+lim φbǫ (χ) = lim
+
+ǫց0
+
+ǫց0
+
+X
+
+mult(ω, π) · ǫ · ĥ(|x|ǫ χω)
+
+ω∈χ−1 |x|−ǫ Uα
+
+for all α > 0. The spe trum of any summable representation is dis rete. There−1
+fore, for su iently small α and ǫ the only quasi- hara ter in χ
+|x|−ǫ Uα that an
+−1
+. This yields
+possibly be ontained in π is χ
+
+lim φbǫ (χ) = lim mult(χ−1 , π) · ǫĥ(|x|ǫ ).
+
+ǫց0
+
+ǫց0
+
+R
+
+ǫ
+b′ (1) = −
+h′ (x) d× x = h(0) −
+laim follows be ause limǫց0 ǫĥ(|x| ) = −h
+CK
+h(∞) = 1 and mult(χ−1 , π) = mult(χ, π) = mult(χ, π).
+The
+
+Consequently, the positive linear fun tionals φǫ are uniformly bounded. Sin e
+
+they
+
+c
+onverge when paired with the generators χ ∈ C
+K of C(B), they
+
+in the weak-∗-topology on C(B) towards a positive linear fun tional
+Fourier transform is mult(χ, π). By the Gelfand-Naimark-Segal (GNS)
+
+onverge
+
+φ0 , whose
+
+onstru tion
+
+φ0 gives rise to a ∗-representation ρ of C(B) with a y li ve tor ξ su h that
+hρ(f )ξ, ξi = φ0 (f ) for all f ∈ C(B). Plugging in hara ters χ ∈ Cc
+K ⊆ C(B), we
+c
+c
+get a unitary representation ρ of CK with hξ, ρχ ξi = mult(χ, π) for all χ ∈ C
+K.
+Sin e mult(1, π) = 1, we have kξk = 1 and hen e |mult(χ, π)| = |hξ, ρχ ξi| ≤ 1
+for all χ ∈ CK . However, the only possible values are 0 and ±1. The value +1 only
+c
+o urs for χ = 1 be ause this is the only element of C
+K ∩ spec π+ . If mult(χ, π) =
+
+50
+
+RALF MEYER
+
+mult(χ′ , π) = −1, then ρχ ξ = −ξ = ρχ′ ξ be ause −ξ is the only unit ve tor with
+hη, ξi = −1. This yields mult(χχ′ , π) = +1 and hen e χχ′ = 1. Therefore, there is
+2
+c
+at most one χ ∈ C
+K ∩ spec π− , and this χ satises χ = 1.
+2
+Finally, it remains to show that no χ with χ = 1 an belong to spec π− . I
+thank Peter Sarnak for pointing out to me how this
+
+Lemma.
+
+an be proved using the Landau
+
+The following argument is a variant of this known tri k.
+
+We pro eed
+
+slightly dierently be ause we want to use as little fun tion theory as possible.
+2
+Choose any χ ∈ Ω(CK ) with χ = 1. Thus χ(x) = ±1 and 1 + χ(x) ≥ 0 for all
+
+x ∈ CK . We have to prove that χ ∈
+/ spec π− .
+s
+Let h be as above and onsider the fun tion F (s) := W (h · (1 + χ) · |x| ). The
+same reasoning as above shows that this is well-dened for Re s > 0 and that there
+is a positive measure µ on CK with support in the region |x| < 1 su h that
+Z
+F (s) = |x|s dµ(x)
+(35)
+for all s ∈ C with Re s > 0. We
+(36)
+
+an also des ribe F spe trally as
+
+F (s) = W (h|x|s ) + W (hχ|x|s )
+X
+X
+
+mult(ω, π) + mult(χω, π) ĥ(ω|x|s ) =
+ρ(t)ĥ(|x|s−t )
+=
+t∈C
+
+ω∈Ω(CK )
+
+
+−t
+−t
+with ρ(t) := mult(|x| , π) + mult(χ|x| , π) . The series onverges absolutely for
+Re s > 0. Our next goal is to extend F meromorphi ally to C using (36).
+s
+We have observed above that the fun tion s 7→ ĥ(|x| ) is a meromorphi fun tion on C whose only pole is a simple pole of residue 1 at s = 0. Moreover, the
+same reasoning as for (34) shows that the sum over |s − t| ≥ α in (36) onverges
+absolutely for any α > 0, s ∈ C, with uniform absolute onvergen e for s in a
+ompa t subset of C. Let s ∈ C. Sin e the support of ρ is dis rete, there is α > 0
+su h that ρ(t) = 0 for all t ∈ C \ {s} with |s − t| < 2α. Hen e
+X
+′
+′
+ρ(t)ĥ(|x|s −t )
+F (s′ ) := ρ(s)ĥ(|x|s −s ) +
+t∈C,|s′ −t|≥α
+
+denes a meromorphi
+
+fun tion in the α-neighborhood of s. Its only possible pole
+
+is a simple pole at s with residue ρ(s). There is no pole if ρ(s) = 0, of
+lo al denitions are
+
+ompatible and extend F to a meromorphi
+
+ourse. These
+
+fun tion on C.
+
+Let s0 ∈ [−∞, 0] be the maximum of all s ∈ R where F has a pole, or −∞
+R s
+|x| dµ(x) for s > 0 by (35).
+s
+1
+We laim that this ontinues to hold for s > s0 ; thus |x| is in L (µ) for all s ∈ R.
+
+if F has no poles on the real axis. We have F (s) =
+Before we prove this plausible
+
+laim, let us see how it nishes the proof of the
+R s
+|x| dµ(x) would be an entire fun tion, hen e
+
+theorem. If s0 = −∞, then F (s) =
+
+ρ(t) = 0 for all t ∈ C and F = 0 by (36). Sin e this is evidently false, s0 ∈ R is
+a pole of F . As any pole of F , it is simple and has residue ρ(s0 ), whi h is nonzero be ause s0 is a pole. Thus (s − s0 )F (s) onverges to ρ(s0 ) for s → s0 . Sin e
+R
+F (s) = |x|s dµ(x) ≥ 0 for s > s0 , we get ρ(s0 ) > 0. Sin e spec π+ = {|x|0 , |x|1 },
+this an only happen at 0 or −1. Sin e
+ρ(0) = ρ(−1) = mult(|x|0 , π) − mult(χ, π) = 1 − mult(χ, π)
+we get mult(χ, π) = 0, that is, χ ∈
+π− , and we are done.
+R/ spec
+s
+It remains to prove F (s) =
+|x|
+dµ(x)
+for s > s0 . Let s1 be the inmum of
+R s
+|x| dµ(x) < ∞. The desired equality holds for s > s1 by
+the s ∈ R for whi h
+analyti
+
+ontinuation. We must show that s1 ≤ s0 . Assume the
+
+is holomorphi
+
+ontrary. Then F
+
+in a 4ǫ-neighborhood of s1 for some ǫ > 0. Hen e the spe tral radius
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+51
+
+of the Taylor expansion of F at s := s1 + ǫ is at least 3ǫ. We have
+
+dn F
+(t) =
+dtn
+
+Z
+
+Z
+
+dn |x|t
+dµ(x) =
+dtn
+
+(ln|x|)n |x|t dµ(x)
+
+for all t > s1 be ause (35) holds in that region. Hen e we get the estimate
+
+1
+n!
+for some
+
+Z
+
+(ln|x|)n |x|s dµ(x) ≤ C(2ǫ)−n
+
+onstant C . Sin e µ is supported in the region |x| < 1, the integrand has
+
+onstant sign on the support of µ. Hen e we
+
+an move the absolute values into the
+1
+integral in the above estimate. Therefore, the power series in L (µ)
+
+|x|t =
+
+∞
+X
+1
+
+n!
+n=0
+
+|x|s (ln|x|)n (t − s)n
+
+∈ L1 (µ). Hen e we arrive at the
+ontradi tion s − 2ǫ ≥ s1 , whi h nishes the proof.
+
+
+onverges absolutely for t > s − 2ǫ, so that |x|
+
+t
+
+To an el the fa tor ln |x| that o urs when omparing W and ΠS , let lξ (x) be
+1/ ln x for 3/2 ≤ x ≤ ξ and 0 otherwise. We hoose an isomorphism CS ∼
+= CS1 × R×
++
+and use this to view lξ as a distribution on CS supported in {1} × [3/2, ξ]. As usual,
+we write a(ξ) ≈ b(ξ) if limξ→∞ a(ξ)/b(ξ) = 1.
+Lemma 6.4.
+
+For any f ∈ D(CS ), we have
+ξ ˆ 1
+ξ
+W (f ∗ lξ ) ≈
+f (|x| ) =
+ln ξ
+ln ξ
+
+Z
+
+f (x)|x| d× x.
+
+CS
+
+Proof. The global tra e formula of Theorem 5.8 yields
+
+(37)
+
+lim W (f ∗ lξ )
+
+ξ→∞
+
+ln ξ
+= lim
+ξ→∞
+ξ
+
+It is well-known that
+
+lbξ (|x|) =
+
+Z ξ
+
+X
+
+cS , s∈C
+χ∈C
+
+t d× t
+=
+3/2 ln t
+
+ln ξ
+mult(χ|x|s , π)fˆ(χ|x|s )lbξ (|x|s )
+.
+ξ
+Z ξ
+
+dt
+
+3/2 ln t
+
+≈
+
+ξ
+.
+ln ξ
+
+= lbξ (|x|α ) ≤ lbξ (|x|) for all α ≤ 1.
+1
+∞
+Sin e the L -norm of f ontrols the L -norm of fˆ, we on lude that the fun tions
+b
+lξ · ln ξ/ξ are uniformly bounded in the region Re s ≤ 1. Hen e we an ommute
+the summation over ω and the limit over ξ in (37). We an also estimate
+Z ξ α ×
+t d t
+ξ α − (3/2)α
+klξ kL1 (R× ,tα d× t) ≤
+=
+= o(ξ/ ln ξ)
++
+α ln(3/2)
+3/2 ln(3/2)
+The positivity of lξ implies klξ kL1 (R× ,tα d× t)
++
+
+s
+for all α < 1. Arguing as above we get limξ→∞ lb
+ξ (|x| ) · ln ξ/ξ = 0 for all s ∈ C
+
+∈ spec π with Re ω = 1 survive the limit ξ → ∞.
+Theorem 6.3 and the asymptoti s for lb
+
+ξ (|x|) imply the assertion.
+with Re s < 1.
+
+Thus only ω
+
+Re all that W (f ) = ΠS (f ·ln |x|)+ΠS ◦J(f ·ln |x|)+ES (f ). The same estimates
+1/2
+/ ln ξ) for ξ → ∞. Sin e ΠS ◦ J((f ∗ lξ ) · ln |x|)
+
+as above yield ES (f ∗ lξ ) = O(ξ
+remains bounded, we get
+(38)
+
+
+ΠS ln |x| · (f ∗ lξ ) ≈
+
+Z
+
+f (x)|x| d× x ·
+
+CS
+
+ξ
+ln ξ
+
+for ξ → ∞
+
+1
+for all f ∈ D(CS ). Let A ⊆ CS be an open subset and let πA (ξ) be the number of
+
+pla es v ∈ ∁S with pv ∈ A × [1, ξ] ⊆ CS .
+Theorem 6.5.
+
+We have πA (ξ) ≈ vol(A) · ξ/ ln ξ for ξ → ∞.
+
+52
+
+RALF MEYER
+
+∼
+= CS1 × R×
++ as above and let f0 be the distribution
+hf0 , f1 i = A f1 (x, 1) d x on CS . We formally have
+Proof. De ompose CS
+
+R
+
+×
+
+πA (ξ) = hΠS , f0 ⊗ 1[3/2,ξ] i = hΠS , ln |x| · (f0 ∗ lξ )i.
+
+If f0 were a smooth fun tion, the desired result would follow from (38).
+fore, we pro eed by smoothening f0 and
+
+he king that this does not
+
+asymptoti s. Fix β > 1. There exist u0 , u1 ∈ D(CS )
+
+β −1 vol(A) <
+
+Z
+
+u0 (x)|x| d× x,
+
+Z
+
+There-
+
+hange the
+
+lose to f0 su h that
+
+u1 (x)|x| d× x < β vol(A)
+
+CS
+
+CS
+
+−1
+and su h that ln |x|(u0 ∗ lξ ) is at least 1 on A × [β, β
+ξ] and ln |x|(u1 ∗ lξ ) is
+−1
+, βξ] and bounded by 1 there. Equation (38) applied to the
+supported in A × [β
+smooth fun tions u0 and u1 implies
+
+πA (β −1 ξ) ≤ β vol(A)ξ/ ln ξ,
+
+πA (βξ) ≥ β −1 vol(A)ξ/ ln ξ
+
+for su iently large ξ . This implies the assertion for β ց 1.
+
+
+
+Referen es
+[1℄ François Bruhat, Distributions sur un groupe lo alement ompa t et appli ations à l'étude des
+représentations des groupes ℘-adiques , Bull. So . Math. Fran e 89 (1961), 4375. MR0140941
+(25 #4354) (Fren h)
+[2℄ Jean-François Burnol, Sur les formules expli ites. I. Analyse invariante , C. R. A ad. S i.
+Paris Sér. I Math. 331 (2000), 423428. MR1792480 (2001m:11155) (Fren h)
+[3℄
+, On Fourier and zeta(s), Forum Math. 16 (2004), 789840. MR2096473
+[4℄ Alain Connes, Tra e formula in non ommutative geometry and the zeros of the Riemann
+zeta fun tion , Sele ta Math. (N.S.) 5 (1999), 29106. MR1694895 (2000i:11133)
+[5℄ Pierre Deligne, La onje ture de Weil. II , Inst. Hautes Études S i. Publ. Math. 52 (1980),
+137252. MR601520 (83 :14017) (Fren h)
+[6℄ Roger Godement and Hervé Ja quet, Zeta fun tions of simple algebras , Le ture Notes in
+Mathemati s, vol. 260, Springer-Verlag, Berlin, 1972. MR0342495 (49 #7241)
+[7℄ Niels Grønbæk, Morita equivalen e for self-indu ed Bana h algebras , Houston J. Math. 22
+(1996), 109140. MR1434388 (98 :46090)
+, An imprimitivity theorem for representations of lo ally ompa t groups on arbitrary
+[8℄
+Bana h spa es , Pa i J. Math. 184 (1998), 121148. MR1626536 (99d:22010)
+[9℄ Alexandre Grothendie k, Produits tensoriels topologiques et espa es nu léaires , Mem. Amer.
+Math. So . 16 (1955). MR0075539 (17,763 ) (Fren h)
+[10℄ Henri Hogbe-Nlend and Vin enzo Bruno Mos atelli, Nu lear and onu lear spa es , NorthHolland Publishing Co., Amsterdam, 1981, ISBN 0-444-86207-2. MR639899 (83i:46004)
+[11℄ Bernhard Keller, Derived ategories and their uses , Handbook of Algebra, Vol. 1, NorthHolland, Amsterdam, 1996, pp. 671701. MR1421815 (98h:18013)
+[12℄ Ralf Meyer, Generalized xed point algebras and square-integrable groups a tions , J. Fun t.
+Anal. 186 (2001), 167195. MR1863296 (2002j:46086)
+, Smooth group representations on bornologi al ve tor spa es , Bull. S i. Math. 128
+[13℄
+(2004), 127166. MR2039113 (2005 :22013)
+[14℄
+, The y li homology and K-theory of ertain adeli
+rossed produ ts (2003),
+http://arxiv.org/math.KT/0312305, eprint.
+[15℄
+, Bornologi al versus topologi al analysis in metrizable spa es , Bana h Algebras and
+Their Appli ations ( Anthony To-Ming Lau Volker Runde, eds.), Contemporary Mathemati s,
+vol. 363, Ameri an Mathemati al So iety, Providen e, RI, 2004, pp. 249278. MR2097966
+[16℄ Amnon Neeman, The derived ategory of an exa t ategory , J. Algebra 135 (1990), 388394.
+MR1080854 (91m:18016)
+[17℄ S. J. Patterson, An introdu tion to the theory of the Riemann zeta-fun tion , Cambridge
+University Press, Cambridge, 1988, ISBN 0-521-33535-3. MR933558 (89d:11072)
+[18℄ Daniel Quillen, Higher algebrai K -theory. I , Algebrai K -Theory, i: Higher K -Theories
+(Pro . Conf., Battelle Memorial Inst., Seattle, Wash., 1972), Le ture Notes in Mathemati s,
+vol. 341, Springer, Berlin, 1973, pp. 85147. MR0338129 (49 #2895)
+[19℄ J. T. Tate, Fourier analysis in number elds and He ke's zeta-fun tions , Algebrai Number
+Theory (Pro . Instru tional Conf., Brighton, 1965), Thompson, Washington, D.C., 1967,
+pp. 305347. MR0217026 (36 #121)
+
+PRIMES,
+
+L-FUNCTIONS AND GROUP REPRESENTATIONS
+
+53
+
+[20℄ André Weil, Sur les formules expli ites de la théorie des nombres premiers , Comm. Sém.
+Math. Univ. Lund [Medd. Lunds Univ. Mat. Sem.℄ 1952 (1952), 252265. MR0053152
+(14,727e) (Fren h)
+, Sur les formules expli ites de la théorie des nombres , Izv. Akad. Nauk SSSR Ser.
+[21℄
+Mat. 36 (1972), 318. MR0379440 (52 #345) (Fren h, with Russian summary)
+[22℄
+, Basi number theory , Springer-Verlag, Berlin, 1995, ISBN 3-540-58655-5, Reprint of
+the se ond (1973) edition. MR1344916 (96 :11002)
+Mathematis hes Institut, Westfälis he Wilhelms-Universität Münster, Einsteinstraÿe 62, 48149 Münster, Germany
+
+E-mail address : rameyermath.uni-muenster.de
+
+

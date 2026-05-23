@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 278: Pure-mpmath \(\Phi_{\max}\) Attempt}
+\author{Six Birds Foundations III}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Objective}
+Step 277 left a precision caveat: the inherited value
+\[
+\Phi_{\max}(0.35,2.0)\approx 0.4904766200298252
+\]
+came from a NumPy quadrature/PSWF pipeline.  Step 278 attempted a pure-mpmath
+replacement.
+
+\section*{Replacement}
+The implemented replacement used mpmath Gaussian quadrature and
+\texttt{mpmath.matrix} operators for a hard-band sinc projection proxy.  The
+full pure-mpmath PSWF/Sonine eigensystem and SVD path was not completed.
+
+\section*{Observed Values}
+\[
+\begin{array}{c|c|c|c}
+N & \mathrm{dps} & T & \Phi\\
+\hline
+40 & 80 & 5000 & 1.8263657332897929\\
+80 & 80 & 5000 & 0.7483530224406918\\
+120 & 80 & 5000 & 0.7703229429918259\\
+160 & 80 & 5000 & 0.5939102228020887\\
+80 & 120 & 5000 & 0.7483530224406918\\
+80 & 80 & 10000 & 0.7483530224406918
+\end{array}
+\]
+The values are stable under dps increase for fixed discretization but do not
+converge to the inherited reference.
+
+\section*{PSLQ}
+No trusted high-precision \(\Phi_{\max}\) was obtained, so PSLQ was not run as a
+valid high-precision search.
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_branch\_A\_high\_precision\_partial}}
+\]
+The precision bottleneck remains unresolved.
+
+\end{document}

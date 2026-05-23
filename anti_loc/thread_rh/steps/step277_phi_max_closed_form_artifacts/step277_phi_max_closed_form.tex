@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 277: Closed-Form Search for \(\Phi_{\max}\)}
+\author{Six Birds Foundations III}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Target}
+The inherited Branch A value is
+\[
+\Phi_{\max}(0.35,2.0)\approx 0.4904766200298252.
+\]
+Step 277 tests whether this number has a small integer-relation expression in
+standard constants.
+
+\section*{Search}
+The PSLQ basis included \(\pi\), powers and reciprocals of \(\pi\), \(e\),
+logarithms \(\log 2,\log 3,\log\pi,\log(2\pi)\), Euler's constant,
+\(\zeta(2),\zeta(3)\), Catalan's constant, Khinchin's constant,
+\(\Gamma(1/4)\), \(\zeta(1/2)\), \(\zeta'(0)\), and Bessel-zero constants.
+
+Transforms tested included
+\[
+\Phi,\quad \Phi^2,\quad 1-\Phi,\quad \log\Phi,\quad
+\Phi\sqrt\pi,\quad \Phi/\log 2.
+\]
+Strict PSLQ used tolerance \(10^{-50}\) and coefficient bound \(10^4\).
+
+\section*{Result}
+No nontrivial integer relation involving \(\Phi\) was found.  Exact relations
+with zero coefficient on \(\Phi\), such as \(\zeta(2)/\pi^2=1/6\), were rejected
+as basis-only identities.
+
+The closest simple hand candidate was
+\[
+\frac{\log 2}{\sqrt2},
+\]
+but its residual is approximately \(3.48\times10^{-4}\), so it fails.
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_branch\_A\_no\_closed\_form}}
+\]
+The value remains a provisional Sonine-family numerical constant within the
+tested basis.  This is not a Branch A closure theorem and has no RH implication.
+
+\end{document}

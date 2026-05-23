@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\title{Step 151: Direct Residual-Exclusion / Adequacy Theorem for the Burnol--Sonine Residual Carrier}
+\author{RATCHET / Formed-Layer Membrane Theory RH Thread}
+\date{Step 151}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\BC}{\mathrm{BC}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Span}{\operatorname{span}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\eps}{\varepsilon}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Step 150 shows that the positive source-frame/positive fixed-ledger trace squeeze has become diagnostic rather than proof-producing: the missing source-budget condition is already collapse-strength. Step 151 therefore pivots to the direct residual-exclusion problem on the Burnol--Sonine residual carrier. The active target is
+\[
+        H_R=0,
+        \qquad\text{equivalently}\qquad
+        \Pi_{Y_a}\mathfrak B_{\ell,a}=0
+\]
+for every finite-place log-shift mode \(\ell\). We prove the exact adjoint evaluator criterion, the exact co-Poisson/zeta-factor certificate, and the obstruction statement: a raw log-shift does not create a zeta factor. Thus direct residual exclusion is not earned by the current construction. The remaining object is the explicit adequacy residual
+\[
+        \Xi^{\BC}_{\ell,a}=\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+\end{abstract}
+
+\section{Carrier and residual block}
+
+Let \(0<a<1\). Burnol's framework supplies a Hilbert space \(L_a\), the zero-evaluator span
+\[
+        Y_a=\overline{\Span\{Y^a_{\rho,k}:\zeta(\rho)=0,
+        0\le k<m_\rho\}},
+\]
+and the co-Poisson subspace
+\[
+        P_a=Y_a^\perp .
+\]
+Let \(P_\infty\) denote the imported archimedean Sonin/prolate projection and let \(\tau_\ell\) denote the finite-place log-shift mode associated to \(\ell\in\mathcal L\). Let
+\[
+        \mathfrak B_{\ell,a}
+        =J_aP_\infty\tau_\ell(I-P_\infty),
+\]
+where \(J_a\) transports the shifted boundary block into Burnol's \(L_a\)-carrier.
+
+\begin{definition}[Burnol--Sonine residual carrier]
+The completed residual carrier is
+\[
+        H_R
+        =\overline{\Span\{\Ran\Pi_{Y_a}\mathfrak B_{\ell,a}:
+        \ell\in\mathcal L\setminus\{0\}\}}
+        \subseteq Y_a.
+\]
+\end{definition}
+
+Thus \(H_R=0\) precisely when every shifted boundary packet is invisible to Burnol zero evaluators.
+
+\section{Direct residual-exclusion criteria}
+
+\begin{theorem}[Equivalent direct exclusion criteria]
+For a fixed \(\ell\), the following are equivalent.
+\begin{enumerate}
+\item \(\Pi_{Y_a}\mathfrak B_{\ell,a}=0\).
+\item \(\Ran \mathfrak B_{\ell,a}\subseteq P_a\).
+\item For every legal input \(u\) and every zero evaluator \((\rho,k)\),
+\[
+        M(\mathfrak B_{\ell,a}u)^{(k)}(\rho)=0.
+\]
+\item For every zero evaluator \((\rho,k)\),
+\[
+        \mathfrak B_{\ell,a}^{*}Y^a_{\rho,k}=0.
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of (1) and (2) follows from \(P_a=Y_a^\perp\). The equivalence of (1), (3), and (4) follows from the reproducing/evaluator identity
+\[
+        \langle f,Y^a_{\rho,k}\rangle=M(f)^{(k)}(\rho)
+\]
+for \(f\in L_a\), plus density of the zero-evaluator span in \(Y_a\).
+\end{proof}
+
+\begin{proposition}[Adjoint zero-evaluator test]
+Assume \(P_\infty=P_\infty^*\), \(\tau_\ell^*=\tau_{-\ell}\), and \(J_a\) is a bounded transport into \(L_a\). Then
+\[
+        \boxed{
+        \mathfrak B_{\ell,a}^{*}Y^a_{\rho,k}
+        =(I-P_\infty)\tau_{-\ell}P_\infty J_a^*Y^a_{\rho,k}.
+        }
+\]
+Therefore
+\[
+        \boxed{
+        \Pi_{Y_a}\mathfrak B_{\ell,a}=0
+        \iff
+        (I-P_\infty)\tau_{-\ell}P_\infty J_a^*Y^a_{\rho,k}=0
+        \quad\forall(\rho,k).
+        }
+\]
+\end{proposition}
+
+\begin{proof}
+This is immediate from the definition
+\(\mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty)\)
+and the adjoint relations.
+\end{proof}
+
+This is the first exact formula for the direct route. It says that direct exclusion is equivalent to a transported zero-evaluator invariance condition under the shifted Sonin/prolate projection.
+
+\section{Co-Poisson certificate}
+
+\begin{theorem}[Zeta-factor certificate]
+Suppose that for every legal input \(u\), there is a legal function \(\alpha_{\ell,u}\) such that
+\[
+        M(\mathfrak B_{\ell,a}u)(s)=\zeta(s)\alpha_{\ell,u}(s),
+\]
+with the correct Burnol support, pole, endpoint, and Sonine records. Then
+\[
+        \Pi_{Y_a}\mathfrak B_{\ell,a}=0.
+\]
+Equivalently, \(\Ran\mathfrak B_{\ell,a}\subseteq P_a\).
+\end{theorem}
+
+\begin{proof}
+If \(\rho\) is a zero of \(\zeta\) of multiplicity \(m_\rho\), then
+\[
+        \left(\zeta(s)\alpha_{\ell,u}(s)\right)^{(k)}\big|_{s=\rho}=0
+        \quad (0\le k<m_\rho),
+\]
+provided the product is legal at \(\rho\). Hence all zero evaluators annihilate \(\mathfrak B_{\ell,a}u\), and the direct exclusion criteria apply.
+\end{proof}
+
+\begin{warning}[Raw log-shift obstruction]
+A log-shift/scaling operation does not create a \(\zeta\)-factor. In Mellin variables it contributes a nonvanishing exponential/power multiplier. Therefore the implication
+\[
+        \text{shifted Sonin/prolate boundary packet}
+        \Longrightarrow
+        \zeta(s)\text{-divisible Mellin transform}
+\]
+is not automatic. Any zeta factor must come from a genuine co-Poisson synthesis, a deeper projection cancellation, or an additional declared source/quotient record.
+\end{warning}
+
+\section{Adequacy residual if direct exclusion fails}
+
+When the direct exclusion criterion is not proved, the active residual is
+\[
+        \boxed{
+        \Xi^{\BC}_{\ell,a}
+        =\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}
+        \succeq0.
+        }
+\]
+For all legal \(u\),
+\[
+        \langle u,\Xi^{\BC}_{\ell,a}u\rangle
+        =\|\Pi_{Y_a}\mathfrak B_{\ell,a}u\|_{L_a}^{2}.
+\]
+Thus \(\Xi^{\BC}_{\ell,a}\) is exactly the part of the shifted boundary-packet sector seen by Burnol zero evaluators.
+
+\begin{corollary}[Direct route trichotomy]
+For every shift mode \(\ell\), exactly one of the following records is needed.
+\begin{enumerate}
+\item \textbf{Exact exclusion:} \(\Xi^{\BC}_{\ell,a}=0\).
+\item \textbf{Budgeted residual:} \(\Xi^{\BC}_{\ell,a}\preceq E_{\ell,a}\) with a declared vanishing or controlled defect budget.
+\item \textbf{Scoped nonclaim:} the theorem is restricted to the orthogonal complement of the visible residual sector.
+\end{enumerate}
+\end{corollary}
+
+\section{Step 151 verdict}
+
+The direct residual-exclusion route is the correct proof-producing pivot after the source-budget obstruction. However, it is not closed by the current construction. Burnol gives the exact criterion \(P_a=Y_a^\perp\), and co-Poisson gives the exact zeta-factor certificate, but the raw shifted Sonin/prolate block does not visibly satisfy that certificate.
+
+The next analytic object is therefore
+\[
+        \boxed{
+        (I-P_\infty)\tau_{-\ell}P_\infty J_a^*Y^a_{\rho,k}.
+        }
+\]
+If this vanishes for all zero evaluators, then \(H_R=0\). If not, its norm distribution is the first direct measurement of \(\Xi^{\BC}\).
+
+\end{document}

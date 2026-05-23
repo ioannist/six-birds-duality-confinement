@@ -1,0 +1,198 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+\newtheorem{status}{Status}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\F}{\mathsf F}
+\newcommand{\A}{\mathsf A}
+\newcommand{\E}{\mathcal E}
+\newcommand{\C}{\mathcal C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\mathbb A}{\mathbb A}
+\newcommand{\Hecke}{\mathcal H_{\rm Hecke}}
+\newcommand{\Zeta}{\mathcal H_{\zeta}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\operatorname{tr}}{\operatorname{tr}}
+\newcommand{\supp}{\operatorname{supp}}
+
+\title{Step 92: Hecke/Idele-Class Carrier Sketch for the Character-Source Route}
+\author{Six Birds / Formed-Layer Membrane RH Thread}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note specifies the minimal completed carrier objects required if the RH membrane program uses a Dirichlet/Hecke character-source ladder to close the anti-invariant source-coercivity gate. It is not an RH proof. It asks whether the Hecke character route is a small source add-on to the paired Weil carrier, or whether it forces an enlarged completed carrier.
+
+The conclusion is the latter unless an explicit bridge is supplied: a Hecke/idele-class character ladder is lawful only as either
+\begin{enumerate}[label=(\roman*)]
+\item an enlarged carrier containing the completed auxiliary $L(s,\chi)$ packages natively, or
+\item a source surface with an audited bridge back to the zeta carrier.
+\end{enumerate}
+Without one of these records, character sources are public shadows or target-selected repairs.
+
+\section{The source-coercivity gate}
+The anti-invariant budget collapse gate from the previous steps is the following. Let $Y^-$ be the completed anti-invariant response space and let
+\[
+L^-_\Gamma:E\to Y^-
+\]
+be the native anti-invariant probe family. A source record is a tuple
+\[
+s=(Q_s,\Theta_s,\lambda_s,D_s)
+\]
+with an upstream-visible readout $Q_s:Y^-\to Z_s$ and positive audit contribution
+\[
+D_s\succeq \lambda_s (Q_sL^-_\Gamma)^*\Theta_s^{-1}(Q_sL^-_\Gamma).
+\]
+The response-side source frame is
+\[
+\F_n=\sum_{s\in\mathcal S_n}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+The accepted source-coercivity gate is
+\[
+\boxed{\F_n\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty.}
+\]
+Then the anti-invariant currency satisfies
+\[
+\K_n^-\preceq \Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n}.
+\]
+Thus character sources must form a full lower frame on $Y^-$, not merely a finite-window or trace-sector frame.
+
+\section{Candidate Hecke/idele-class response space}
+Let
+\[
+\C_\Q=\mathbb A_\Q^\times/\Q^\times
+\]
+be the id\`ele class group, with norm map $|\cdot|:\C_\Q\to\mathbb R_+^\times$. Let
+\[
+\C_\Q^1=\ker |\cdot|
+\]
+be the norm-one class group. The unitary Hecke characters of $\C_\Q$ may be parameterized schematically by a unitary character on $\C_\Q^1$ and a real spectral parameter.
+
+The strongest source-family route treats the anti-invariant response space as a direct integral over a completed Hecke character spectrum:
+\[
+\boxed{
+Y^-_{\rm Hecke}=\int_{\widehat{\C_\Q}^{\,-}}^{\oplus}Y^-_\chi\,d\nu(\chi),
+}
+\]
+where $\widehat{\C_\Q}^{\,-}$ denotes the part of the character spectrum relevant to the anti-linear duality sector, and $\nu$ is the Plancherel measure supplied by the carrier. The character readout $Q_\chi$ is the fiber projection
+\[
+Q_\chi:Y^-_{\rm Hecke}\to Y^-_\chi.
+\]
+A conductor/spectral-window ladder is then
+\[
+\mathcal X_n=\{\chi:\operatorname{cond}(\chi)\le C_n,\\ |\tau_\chi|\le T_n\}.
+\]
+The windowed source frame is
+\[
+\F_n=\int_{\mathcal X_n}\lambda_{\chi,n}Q_\chi^*\Theta_\chi^{-1}Q_\chi\,d\nu(\chi).
+\]
+
+\begin{theorem}[Hecke Plancherel lower-frame gate]
+Suppose $Y^-_{\rm Hecke}=\int^{\oplus}Y^-_\chi d\nu(\chi)$ and $\Theta_\chi$ is measurably comparable to a fixed budget $\Theta_0^-$ on fibers. If
+\[
+\lambda_{\chi,n}\Theta_\chi^{-1}\succeq \Lambda_n(\Theta_0^-)^{-1}
+\]
+for $\nu$-almost every $\chi$ in the full anti-invariant spectrum, then
+\[
+\F_n\succeq \Lambda_n(\Theta_0^-)^{-1}.
+\]
+If this holds only on a window $\mathcal X_n$, then
+\[
+\F_n\succeq \Lambda_n P_n(\Theta_0^-)^{-1}P_n,
+\]
+where $P_n$ is the spectral projection onto the window. This is not a full-frame bound unless $P_n=I$, or the complement is controlled by a tail/exhaustivity record.
+\end{theorem}
+
+\begin{proof}
+For $y=\int y_\chi d\nu(\chi)$,
+\[
+\langle y,\F_ny\rangle=\int_{\mathcal X_n}\lambda_{\chi,n}\langle Q_\chi y,\Theta_\chi^{-1}Q_\chi y\rangle d\nu(\chi).
+\]
+If the lower bound holds on the full spectrum, the integral dominates $\Lambda_n\langle y,(\Theta_0^-)^{-1}y\rangle$. If it holds only on $\mathcal X_n$, the same argument applies only to $P_ny$.
+\end{proof}
+
+\section{Finite Dirichlet windows as support evidence}
+For a finite abelian quotient $G$, the full character family $\widehat G$ is a tight frame:
+\[
+\sum_{\chi\in\widehat G}|\langle f,\chi\rangle|^2=|G|\|f\|^2.
+\]
+Thus complete Dirichlet characters modulo a fixed conductor are good finite-frame objects on the corresponding finite quotient. But a finite quotient is not the completed anti-invariant response space.
+
+\begin{warning}[Finite conductor windows]
+A conductor window gives only a projection $P_nY^-$. It is support evidence unless accompanied by a tail bridge
+\[
+I\preceq P_n+T_n,
+\qquad \operatorname{tr}(\Lambda_n^{-1}P_n+T_n)\to0
+\]
+or the corresponding direct-integral/exhaustivity statement in the completed carrier.
+\end{warning}
+
+\section{Compatibility with the paired Weil carrier}
+The paired Weil carrier from the previous steps is built on a log-side anti-invariant core and positive paired shift features. The Hecke source route is compatible with it only if one of the following bridge records is provided.
+
+\subsection{Bridge option A: source surface over the zeta carrier}
+One keeps the zeta carrier $\Zeta$ as the base carrier and introduces a character source surface $Y^-_{\rm Hecke}$ with a bridge
+\[
+B:Y^-_{\zeta}\to Y^-_{\rm Hecke}
+\]
+such that the Hecke source frame pulls back to a lower frame on $Y^-_\zeta$:
+\[
+B^*\F_nB\succeq \Lambda_n(\Theta_0^-)^{-1}-E_n.
+\]
+This would allow the Hecke sources to repair the zeta anti-invariant soft sector. The bridge $B$ is a major object: it must be upstream-visible, not target-selected, and must carry explicit formula and tail defects.
+
+\subsection{Bridge option B: enlarged Hecke carrier}
+Alternatively, one enlarges the carrier:
+\[
+\Hecke=\int_{\widehat{\C_\Q}}^{\oplus}\mathcal H_\chi\,d\nu(\chi),
+\]
+where each fiber includes the completed $L$-function package $\Lambda(s,\chi)$, its functional equation, gamma/pole/conductor terms, and explicit formula. The zeta carrier is then a distinguished fiber or section. RH for zeta becomes a transfer/descent claim from the enlarged Hecke membrane to the trivial-character section.
+
+This route is lawful but much larger. It requires a membrane transfer theorem back to the zeta fiber, adequacy for the off-critical-zero dissolving probes, and an all-six record for the enlarged carrier.
+
+\begin{status}[Compatibility verdict]
+The Hecke character-source route is not a small add-on to the paired zeta Weil carrier. It is either an enlarged-carrier RH program or it requires a substantial Hecke-to-zeta source bridge. Without one of these, character sources are public shadows.
+\end{status}
+
+\section{Records required for an accepted Hecke source ladder}
+An accepted Hecke source ladder must provide:
+\begin{enumerate}[label=O\arabic*.]
+\item A completed Hecke response space $Y^-_{\rm Hecke}$ with Plancherel measure and anti-invariant sector.
+\item Upstream-visible character readouts $Q_\chi$ and source strengths $\lambda_{\chi,n}$.
+\item A full lower-frame or exhaustive-tail record:
+\[
+\F_n\succeq \Lambda_n(\Theta_0^-)^{-1}-E_n,
+\qquad \Lambda_n\to\infty,
+\qquad E_n\to0.
+\]
+\item Auxiliary explicit-formula records for $\Lambda(s,\chi)$, including conductor, gamma, pole/zero, and tail terms.
+\item Primitive/imprimitive character bookkeeping and conductor refinement law.
+\item A bridge back to the zeta carrier or a lawful enlarged-carrier transfer theorem.
+\item Null-mode legality and nonclaim records for omitted characters or unresolved tails.
+\end{enumerate}
+
+\section{Nonclaim boundary}
+This note does not prove a Hecke source frame for zeta. It does not prove that finite Dirichlet windows exhaust the completed anti-invariant response space. It does not prove RH or GRH. It only states the exact carrier and bridge records required before a character-source ladder can be accepted by the membrane framework.
+
+\section{Conclusion}
+The Hecke/idele route is structurally plausible because characters are the natural arithmetic modes for source coverage. But it changes the scale of the construction. The strongest honest verdict is:
+\[
+\boxed{
+\text{Hecke sources are the most plausible source-coercivity route, but they force an enlarged carrier or a major bridge.}
+}
+\]
+The next analytic target is therefore either to construct the Hecke-to-zeta source bridge, or to accept the enlarged Hecke carrier as the new RH membrane setting and define the descent back to the zeta fiber.
+
+\end{document}

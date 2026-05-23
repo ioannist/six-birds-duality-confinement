@@ -1,0 +1,196 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\title{Step 81: Gamma--Pole Constant Matching for the RH Membrane Route}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 77--80 identified the following obstruction.  The prime autocorrelation term in the explicit formula is signed, but becomes a positive shift-difference feature only after adding the sharp diagonal repair
+\[
+  d_{{\rm pr},L}\|f\|_2^2,
+  \qquad
+  d_{{\rm pr},L}=2\sum_a w_{a,L}.
+\]
+Step 80 showed that the archimedean/gamma contribution has a positive paired difference representation, but that its separated diagonal diverges and therefore cannot be used as free diagonal money.  The present note pins down the constant part of the gamma matching and isolates the pole/completion ledger required before the Douglas bridge can be attempted.
+
+\section{Gamma constant decomposition}
+Let
+\[
+  \Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2).
+\]
+On the critical line write
+\[
+  s=\frac12+i\xi.
+\]
+The logarithmic derivative contribution is
+\[
+  G_\Gamma(\xi)
+  :=\Re\frac{d}{ds}\log\Gamma_{\mathbb R}\Bigl(\frac12+i\xi\Bigr)
+  =\frac12\Re\psi\Bigl(\frac14+\frac{i\xi}{2}\Bigr)-\frac12\log\pi.
+\]
+Define its constant part and normalized positive part by
+\[
+  c_\Gamma:=G_\Gamma(0)=\frac12\psi(1/4)-\frac12\log\pi,
+\]
+\[
+  \Psi_\Gamma(\xi):=G_\Gamma(\xi)-G_\Gamma(0)
+  =\frac12\left(\Re\psi\Bigl(\frac14+\frac{i\xi}{2}\Bigr)-\psi(1/4)\right).
+\]
+
+\begin{lemma}[Gamma constant plus positive paired difference symbol]
+For all real \(\xi\),
+\[
+  \Psi_\Gamma(\xi)
+  =\frac12\int_0^\infty \frac{e^{-t/4}}{1-e^{-t}}
+  \left(1-\cos\frac{\xi t}{2}\right)\,dt\ge 0.
+\]
+Moreover
+\[
+  G_\Gamma(\xi)=c_\Gamma+\Psi_\Gamma(\xi),
+\]
+where numerically
+\[
+  c_\Gamma=\frac12\psi(1/4)-\frac12\log\pi\approx -2.6860917362725.
+\]
+\end{lemma}
+
+\begin{proof}
+Use the standard digamma identity, valid for \(a>0\),
+\[
+  \Re\psi(a+ix)-\psi(a)=\int_0^\infty \frac{e^{-at}}{1-e^{-t}}(1-\cos xt)\,dt.
+\]
+Set \(a=1/4\) and \(x=\xi/2\), then multiply by \(1/2\). The constant is obtained by setting \(\xi=0\).
+\end{proof}
+
+Thus the gamma slot has a positive feature
+\[
+  q^+_\Gamma[f]=\int \Psi_\Gamma(\xi)|\widehat f(\xi)|^2\,d\xi,
+\]
+but matching it to the signed gamma term always also exposes the constant
+\[
+  c_\Gamma\|f\|_2^2.
+\]
+Since \(c_\Gamma<0\), the normalized positive feature is obtained from the signed log-derivative symbol by adding \(-c_\Gamma\|f\|^2\).  This constant must be carried in the completion ledger; it is not optional.
+
+\section{Prime--gamma constant ledger}
+At cutoff \(L\), the prime diagonal repair is
+\[
+  d_{{\rm pr},L}=2\sum_a w_{a,L}.
+\]
+The gamma matching contributes a constant \(c_\Gamma\).  With the convention that the signed completed form contains \(+G_\Gamma\), while the positive feature package contains \(+\Psi_\Gamma\), the signed-to-positive replacement changes the diagonal by
+\[
+  d_{{\rm pr},L}-c_\Gamma.
+\]
+Since \(c_\Gamma<0\), this is
+\[
+  d_{{\rm pr},L}+|c_\Gamma|.
+\]
+If a different explicit-formula orientation places the gamma term with the opposite sign, then the constant contribution changes sign and the positive gamma feature itself changes side of the inequality.  The framework therefore records a sign/orientation gate:
+\[
+  \sigma_\Gamma\in\{+1,-1\},
+\]
+with diagonal balance
+\[
+  d_{{\rm pr},L}-\sigma_\Gamma c_\Gamma.
+\]
+This sign must be fixed by the chosen Weil convention, not selected post hoc.
+
+\begin{definition}[Completion constant balance]
+For an oriented signed gamma term \(\sigma_\Gamma G_\Gamma\), define the residual diagonal balance before pole/tail repair by
+\[
+  \Delta_{{\rm diag},L}(\sigma_\Gamma)
+  :=d_{{\rm pr},L}-\sigma_\Gamma c_\Gamma.
+\]
+The pole/completion/tail ledger must provide a positive feature or defect record controlling this diagonal and any remaining signed residues.
+\end{definition}
+
+\section{Pole/completion slot}
+The completed zeta factor contains
+\[
+  \xi(s)=\frac12s(s-1)\Gamma_{\mathbb R}(s)\zeta(s).
+\]
+The factor \(s(s-1)\) is not merely a scalar correction: it removes the pole at \(s=1\), inserts the symmetric zero/pole bookkeeping at \(0,1\), and supplies null-mode legality data for the completed carrier.
+
+At the autocorrelation level, pole/completion terms naturally appear as finite-rank evaluations. Abstractly, a lawful pole feature has the form
+\[
+  W_{\rm pole}f=(\ip{f}{p_1},\ldots,\ip{f}{p_m}),
+\]
+so that
+\[
+  q^+_{\rm pole}[f]=\sum_{r=1}^m |\ip{f}{p_r}|^2.
+\]
+However, the signed pole terms of the classical explicit formula need not already be in this positive form. Therefore the pole gate is:
+\[
+  R^{\rm sgn}_{\rm pole}[f]\le q^+_{\rm pole}[f]+e_{\rm pole}[f]
+\]
+with a declared defect \(e_{\rm pole}\), or else an exact finite-rank representation.
+
+\section{Tail/support slot}
+Finite prime cutoffs, compact support restrictions, and core-to-full promotion all create tail terms.  The tail slot must provide either a positive feature
+\[
+  q^+_{{\rm tail},L}
+\]
+or a defect form
+\[
+  e_{{\rm tail},L}.
+\]
+A moving finite ledger is not exact unless the tail/exhaustivity record proves
+\[
+  \operatorname{tr}B_L+\operatorname{tr}T_L\to 0.
+\]
+
+\section{Signed-to-positive matching theorem}
+Let
+\[
+  q_{\rm sgn,L}=P_{{\rm pr},L}+\sigma_\Gamma R_{\Gamma,L}^{\rm sgn}+R_{\rm pole,L}^{\rm sgn}+R_{\rm tail,L}^{\rm sgn}
+\]
+be the signed Weil-side form on the chosen anti-invariant core. Let
+\[
+  q_{{\rm cmp},L}=q^+_{{\rm pr},L}+q^+_{\Gamma,L}+q^+_{{\rm pole},L}+q^+_{{\rm tail},L}
+\]
+be the candidate positive completed feature package.
+
+\begin{theorem}[Gamma--pole--tail balance gate]
+Assume the prime and gamma terms satisfy the exact identities
+\[
+  q^+_{{\rm pr},L}=P_{{\rm pr},L}+d_{{\rm pr},L}\|f\|^2,
+\]
+\[
+  q^+_{\Gamma,L}=R_{\Gamma,L}^{\rm sgn}-c_\Gamma\|f\|^2
+\]
+under the chosen sign convention \(\sigma_\Gamma=+1\). Then
+\[
+  q_{{\rm cmp},L}-q_{{\rm sgn},L}
+  = (d_{{\rm pr},L}-c_\Gamma)\|f\|^2
+  +q^+_{{\rm pole},L}-R^{\rm sgn}_{{\rm pole},L}
+  +q^+_{{\rm tail},L}-R^{\rm sgn}_{{\rm tail},L}.
+\]
+Consequently, if the right-hand side is nonnegative on the anti-invariant form core, then
+\[
+  q_{\rm sgn,L}\le q_{\rm cmp,L}.
+\]
+If the right-hand side is bounded below by \(-e_{\rm bal,L}\), then
+\[
+  q_{\rm sgn,L}\le q_{\rm cmp,L}+e_{\rm bal,L}.
+\]
+\end{theorem}
+
+\begin{warning}[No free gamma diagonal]
+The integral kernel underlying \(q^+_\Gamma\) behaves like \(1/t\) near zero.  The feature is positive only as a paired difference form.  Its separated diagonal is divergent and cannot be used as a finite payment for \(d_{{\rm pr},L}\) without a renormalization and completion record.
+\end{warning}
+
+\section{Conclusion}
+Step 81 sharpens the RH analytic target.  The gamma slot supplies a positive paired difference feature and an exact constant ledger.  The prime slot supplies a positive shift feature after a sharp diagonal repair.  The pole/completion and tail slots must now provide a lawful finite-rank and promotion record proving that the remaining diagonal and signed residues are paid.  Until this balance is proved, the completed Weil feature package remains a candidate rather than an accepted Douglas bridge.
+
+\end{document}

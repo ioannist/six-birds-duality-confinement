@@ -1,0 +1,64 @@
+{
+  "carrier": {
+    "carrier": "zeta critical-line moments",
+    "moment": "M_{2k}(T)=int_0^T |zeta(1/2+it)|^{2k} dt",
+    "residual": "Xi_{2k}(T)=|M_{2k}(T)/(a_k g_k T (log T)^{k^2})-1|",
+    "closure": "lim_{T->infty} Xi_{2k}(T)=0 for each fixed k",
+    "lindelof_link": "Lindelof is equivalent to M_{2k}(T)=O_k(T^{1+epsilon}) for all fixed k"
+  },
+  "prediction": {
+    "prediction": "Keating-Snaith leading term",
+    "formula": "M_{2k}(T) ~ a_k g_k T (log T)^{k^2}",
+    "arithmetic_factor": "a_k Euler product",
+    "random_matrix_factor": "g_k=prod_{j=0}^{k-1} j!/(j+k)!",
+    "status": "proved only for k=1,2; conjectural for k>=3"
+  },
+  "classification": [
+    {
+      "call": "inside_subconvexity_extension",
+      "verdict": "V_moments_inside_subconvexity_extension",
+      "reason": "Moments are averaged critical-line growth residuals; they refine the growth-rate/subconvexity family rather than forming a new framework family."
+    },
+    {
+      "subtype": "Type alpha",
+      "name": "sup-bound growth residuals",
+      "examples": "Lindelof, Burgess, Michel-Venkatesh"
+    },
+    {
+      "subtype": "Type beta",
+      "name": "moment-growth and precise moment asymptotics",
+      "examples": "Hardy-Littlewood k=1; Ingham k=2; Keating-Snaith general k"
+    }
+  ],
+  "evidence": [
+    {
+      "instance": "second moment",
+      "k": "1",
+      "status": "proved",
+      "main_term": "T log T",
+      "source": "Hardy-Littlewood 1916/1918"
+    },
+    {
+      "instance": "fourth moment",
+      "k": "2",
+      "status": "proved",
+      "main_term": "(1/(2*pi^2)) T (log T)^4",
+      "source": "Ingham 1926"
+    },
+    {
+      "instance": "sixth moment",
+      "k": "3",
+      "status": "conjectural",
+      "main_term": "42 a_3 T (log T)^9",
+      "source": "Conrey-Ghosh 1998"
+    },
+    {
+      "instance": "general 2k moment",
+      "k": "general",
+      "status": "conjectural",
+      "main_term": "a_k g_k T (log T)^{k^2}",
+      "source": "Keating-Snaith 2000; CFKRS 2005"
+    }
+  ],
+  "final_verdict": "V_moments_inside_subconvexity_extension"
+}

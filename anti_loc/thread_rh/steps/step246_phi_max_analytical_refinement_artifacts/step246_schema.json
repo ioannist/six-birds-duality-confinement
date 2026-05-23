@@ -1,0 +1,48 @@
+{
+  "step": 246,
+  "orientation": "adequacy",
+  "target": "Phi(sigma, ell) analytical refinement",
+  "grid_size": 90,
+  "phi_values_grid": {
+    "path": "/home/repos/six-birds-foundations-iii/anti_loc/thread/steps/step246_phi_max_analytical_refinement_artifacts/phi_grid_step246.csv",
+    "sigma_values": [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+    "ell_labels": ["0.5", "log2", "1.0", "log3", "1.5", "log5", "2.0", "log10/4", "2.5"],
+    "T": 10000.0,
+    "mpmath_dps": 100,
+    "quadrature": "GL1400 local-window double precision inherited from steps 217-220",
+    "pswf_terms": 24,
+    "min_phi": 0.12848233592000288,
+    "max_phi": 0.4898488467749268,
+    "max_grid_location": {"sigma": 0.4, "ell": 2.0},
+    "mean_phi": 0.3354896768976285
+  },
+  "alternative_fits_tested": [
+    "two_erf_band_shift_no_fit",
+    "two_erf_band_shift_scaled_sigma",
+    "pure_erf_shift_affine_g",
+    "voigt_sigma_centered_by_ell",
+    "sinc_sigma_ell",
+    "two_erf_affine_edges"
+  ],
+  "best_fit_residual": {
+    "formula": "two_erf_band_shift_scaled_sigma",
+    "parameters": "c=1.00093725168; eta=1.00576620848",
+    "rmse": 0.0034233392284831014,
+    "max_abs_residual": 0.012414368724688707
+  },
+  "closed_form_candidate": {
+    "formula": "Phi^2 = 0.5*(erf(sigma*(1+ell))-erf(sigma*a(ell))) with a=1 for ell<=2 else ell-1",
+    "status": "theorem-shaped untruncated-Gaussian model, not closed-form-precise for inherited truncated pipeline",
+    "no_fit_rmse": 0.0035846804717080826,
+    "closed_form_threshold": 0.0001,
+    "constant_lookup": "no direct OEIS/ISC low-complexity hit; ISC Plus currently down for maintenance indefinitely"
+  },
+  "phi_analytical_verdict": "V_phi_no_simple_closed_form",
+  "retained_nogos": [
+    "No claim of closed form below 1e-4 residual.",
+    "No weakening of Branch A caveat: wavepacket tests apply to C_l P_infty, not directly C_l P_eta.",
+    "No claim of RH closure.",
+    "No theorem-grade essential-norm formula claimed."
+  ],
+  "final_verdict": "V_phi_no_simple_closed_form"
+}

@@ -1,0 +1,248 @@
+                                                                                                                            math/9910055
+                                                                                                 msc2000: Primary 11M26, Secondary 30D50
+
+                                             A NOTE ON NYMAN’S EQUIVALENT FORMULATION OF
+                                                        THE RIEMANN HYPOTHESIS
+
+                                                                                Jean-François Burnol
+arXiv:math/9910055v3 [math.NT] 11 Jan 2001
+
+
+
+
+                                                                          October 1999 (v1), January 2001 (v2)
+
+
+                                             Abstract: A certain subspace of L2 ((0, 1), dt) has been considered by Nyman, Beurling, and
+                                             others, with the result that the constant function 1 belongs to it if and only if the Riemann
+                                                                                                    Q
+                                             Hypothesis holds. I show in this note that the product ζ(ρ)=0,Re(ρ)> 1 1−ρ
+                                                                                                                      ρ   is the norm of the
+                                                                                                                   2
+                                             projection of 1 to this subspace. This provides a quantitative refinement to Nyman’s theorem.
+
+
+                                             1    Nyman’s criterion for the Riemann Hypothesis
+                                             We first recall a theorem of Nyman [14]. We write {u} for the fractional part of the real
+                                             number u. To  each α 
+                                                                   in ]0, 1[ we associate the function ρα of the positive real number t defined
+                                             by ρα (t) = αt − α 1t . Of course ρα vanishes identically on ]1, +∞[, and is bounded on
+                                             ]0, 1]. We let NB be the closed subspace of H = L2 ((0, 1), dt) spanned by the functions ρα for
+                                             0 < α < 1. We consider both NB and H as closed subspaces of L2 ((0, ∞), dt). We let 1 be
+                                             the step function with value 1 for 0 < t ≤ 1, and 0 for t > 1. We note that both H and NB
+                                             are invariant under the semi-group of unitary contractions U (λ) : f (t) 7→ √1 f ( λt ), 0 < λ ≤ 1.
+                                                                                                                            λ
+                                             Indeed U (λ) · ρα = √1 (ραλ − αρλ ). So NB contains the constant function 1 if and only if it
+                                                                    λ
+                                             contains all step functions if and only if it actually coincides with all of H.
+
+                                             Theorem 1.1 (Nyman, 1950 [14]) The Riemann Hypothesis holds if and only if the function
+                                             1 belongs to NB (hence if and only if NB = H.)
+
+                                             The paper by Balazard and Saias ([3]) is an exposition of the use of the theory of Hardy spaces
+                                             and especially of fundamental results on invariant subspaces by Beurling ([8]) and Lax ([13]) in
+                                             this context. Nyman’s criterion has stimulated various developments in recent years, theoretical
+                                             as well as numerical (see [1], [2] and references therein). We will work exclusively in an Hilbert
+                                             space setting but should not fail to mention the extension by Beurling ([7]) of Nyman’s work
+                                             to an Lp -setting, leading to a characterization of the absence of zeros with real part (strictly)
+                                             greater than p1 . Bercovici and Foias ([5], [6]) have shown how the geometry of the contraction
+                                             semi–group U (λ), λ ≤ 1 can also be the basis of a proof in the Lp –case. We prove:
+
+                                             Theorem 1.2 Let P be orthogonal projection onto NB. We have (counting the zeros with
+                                             their multiplicities)
+                                                                                       Y       1−ρ
+                                                                        kP(1)k =
+                                                                                             1
+                                                                                                ρ
+                                                                                        ζ(ρ)=0, Re(ρ)> 2
+
+
+
+
+                                                                                             1
+Clearly this implies Nyman’s criterion. The proof requires some classical results of harmonic
+analysis (Hardy spaces, the factorization theorem, the Beurling–Lax description of invariant
+subspaces) for which accessible reviews are given in the books by Dym–McKean ([10]) and
+Hoffman ([12]). Specifically we will put to use an old general argument of Beurling ([8, Theorem
+II]) (originating in the study of the Hardy space of the unit disc). It is natural to discuss 1.2
+together with a proof (whose idea is given in [9]) of the elegant following result:
+
+Theorem 1.3 (Balazard-Saias-Yor, [4]) One has
+                   Z                          X
+                 1          log |ζ(w)|                                                  ρ
+                                       |dw| =                                    log
+                2π Re(w)= 1    |w|2                                                    1−ρ
+                                  2                          ζ(ρ)=0, Re(ρ)> 12
+
+
+2    Proofs of 1.1, 1.2 and 1.3
+As in the papers cited above on this subject the main toolR is the Fourier Transform, here in
+                                                                    ∞
+its multiplicative version f (t) ∈ L2 ((0, ∞), dt) 7→ fb(s) = 0 f (t) ts−1 dt. The integral is to
+                                                                                                √
+be understood in the L2 –sense, with Re(s) = 12 . Indeed we really want to look at tf (t) in
+                                                         R  ∞ √
+L2 ((0, ∞), dtt ) and at its transform in the dual group 0      tf (t) tiτ dtt , τ ∈ R. With s = 12 + iτ
+we
+R ∞ end up     with the formula above. If f (t) actually belongs to L2 ((0, 1), dt), then fb(s) =
+            s−1 dt makes sense as an analytic function in the half–plane Re(s) > 1 and the set
+  0 f (t) t                                                                                 2
+of such fb is characterized by the Paley–Wiener Theorem ([10, Chapter         R   3]) as the  Hardy space
+                                                                          1                      2
+H2 of analytic functions h(s) whose L2 –norms on vertical lines 2π                       1 |h(s)| |ds| are
+                                                                                Re(s)=σ> 2
+bounded independently of σ. Such an analytic function h(s) has (pointwise almost everywhere)
+non-tangential limits h( 12 + iτ ) which are also obtained as the Fourier–Mellin Transform of
+f ∈ L2 ((0, 1), dt). Furthermore, there is a Cauchy formula:
+                                                 Z +∞
+                            1                  1       h( 12 + iτ )
+( 2.1 )            Re(s) >       ⇒ h(s) =                           dτ
+                            2                 2π −∞ s − 21 − iτ
+
+                        b
+We note in passing that 1(s) = 1s . The zeta-function appears in this story thanks to
+                                   Z 1 
+                                       1 s−1        1     ζ(s)
+                                          t  dt =       −
+                                    0  t          s − 1    s
+
+                                            2      (s−1)ζ(s)
+Multiplication by s−1s leaves invariant H , so        s2     belongs to H2 ([9]; see also [11]). As
+reviewed in [10], [12] a general fact following from this is the absolute convergence for any s in
+the half-plane Re(s) > 21 of the Blaschke product
+                                            Y             s − ρ 1 − ρ̄   ρ
+                          B(s) =
+                                                     1
+                                                       s − (1 − ρ̄) ρ  1 − ρ
+                                      ζ(ρ)=0, Re(ρ)> 2
+
+
+It is known that such a product built from the zeros of an element of H2 is an inner function,
+that is an analytic function bounded by 1 in the half-plane whose non-tangential limits on the
+critical line have modulus 1 (almost everywhere). The expression as an infinite product might
+cease to make sense (pointwise) for the boundary values, but in the case at hand it is absolutely
+convergent for all s in C, except at the possible poles 1 − ρ̄. A general fact is Norbert Wiener’s
+
+
+
+                                                         2
+theorem on the gain of a causal filter: it implies that the integral involved in 1.3 is absolutely
+convergent. Furthermore there is a factorization formula ([12, chap. 8]):
+                                          Z                                       !
+       (s − 1)ζ(s)        s− 12         1               ζ(w) s + w − 2sw |dw|
+                   =c·A         · exp               log                             · B(s)
+            s2                         2π Re(w)= 1        w        s−w       |w|2
+                                                    2
+
+
+where |c| = 1, 0 < A ≤ 1. There could have been a further term associated to a singular
+measure on the critical line, but the analytic continuation of ζ(s) implies its non-existence. A
+value of A strictly less than 1 would imply a much too quick decrease of ζ(s) when s is real and
+goes to +∞, so A = 1 (see [5], also [9]). Looking at real values of s we see that c is real and
+positive so c = 1. We thus have:
+                                      Z                                      !
+              (s − 1)ζ(s)          1               ζ(w) s + w − 2sw |dw|
+                           = exp               log                              · B(s)
+                  s2              2π Re(w)= 1       w       s−w         |w|2
+                                             2
+                                                              R                               
+                                                                                  s+w−2sw |dw|
+We note that the same applies to 1s and gives 1s = exp − 2π  1
+                                                                 Re(w)= 1 log |w|
+                                                                                    s−w   |w|2
+                                                                                                 so
+                                                                        2
+that we finally conclude (for Re(s) > 12 ):
+                                Z                                       !
+           s−1                1                        s + w − 2sw |dw|
+( 2.2 )         ζ(s) = exp                  log |ζ(w)|                    · B(s)
+            s                2π Re(w)= 1                  s−w      |w|2
+                                           2
+
+from which the Balazard-Saias-Yor formula 1.3 follows by specializing to s = 1. One has
+furthermore
+                               α − αs
+( 2.3 )                α (s) =
+                      ρc              ζ(s)
+                                  s
+and the Beurling-Lax (see [12, chap. 7]) general description of invariant subspaces of the Hardy
+spaces then leads to the conclusion that the Mellin transform of NB exactly coincides with
+B(s)H2 . Indeed on one hand the “common denominator” of the Blaschke products associated
+to the functions ρcα (s) is B(s) and on the other hand none of these functions has a singular
+                                             1
+inner factor, nor a special inner factor As− 2 .
+
+Lemma 2.4 The orthogonal projection of 1s on B(s)H2 is B(1) B(s)
+                                                             s .
+
+
+Proof 2.5 The argument is essentially taken from Beurling: see [8, Theorem II]. We check
+that 1s − B(1) B(s)                                             2
+                s is perpendicular to B(s)h(s), for any h(s) ∈ H :
+                             Z                         
+                           1             1         B(w)
+                                           − B(1)         B(w)h(w) |dw|
+                          2π Re(w)= 1 w              w
+                                     2
+                             Z
+                           1           (B(w) − B(1)) h(w)
+                       =                                   |dw|
+                          2π Re(w)= 1           w
+                                     2
+                             Z
+                           1           (B(w) − B(1)) h(w)
+                       =                                   |dw|
+                          2π Re(w)= 1         1−w
+                                       2
+
+                        = (B(1) − B(1)) h(1) = 0
+
+
+where |B(w)| = 1 on Re(w) = 12 and then (2.1) were used.         •
+
+
+
+                                                3
+Hence the norm of the projection of 1 on NB is B(1) as stated in 1.2 (we note that B(s)s is of
+norm 1 as B(s) is of modulus 1 on the critical line.) We can also interpret Theorem 1.2 as a
+statement involving a conditional expectation for a certain Gaussian system (work in progress.)
+
+
+References
+  [1] L. Báez-Duarte, “On Beurling’s real variable reformulation of the Riemann hypothesis”,
+      Adv. in Maths. 101 (1993), 10-30.
+  [2] L. Báez-Duarte, M. Balazard, B. Landreau and E. Saias, “Notes sur la fonction ζ de
+      Riemann, 3” Adv. in Maths. 149 (2000), 130-144.
+  [3] M. Balazard, E. Saias, “The Nyman–Beurling equivalent form for the Riemann hypothe-
+      sis”, Expo. Math. 18 (2000), 131-138.
+  [4] M. Balazard, E. Saias, M. Yor, “Notes sur la fonction ζ de Riemann, 2”, Advances in
+      Math. 143, 284-287, (1999).
+  [5] H. Bercovici, C. Foias, “A real variable restatement of Riemann’s Hypothesis”, Israel J.
+      of Math. 48, 57–68, (1984).
+  [6] H. Bercovici, C. Foias, “On the Zorn spaces in Beurling’s approach to the Riemann hy-
+      pothesis”, Analysis and topology, 143–149, World Sci. Publishing, River Edge, NJ, 1998.
+  [7] A. Beurling, “A closure problem related to the Riemann Zeta–function”, Proc. Nat. Acad.
+      Sci. 41, 312–314, (1955).
+  [8] A. Beurling, “On two problems concerning linear transformations in Hilbert space”, Acta
+      Mathematica 81, 239–255, (1949).
+  [9] J.-F. Burnol, “An adelic causality problem related to abelian L-functions”, to be published
+      in the Journal of Number theory.
+ [10] H. Dym, H. P. McKean, “Fourier Series and Integrals”, Academic Press (1972).
+ [11] W. Ehm, “A family of probability densities related to the Riemann zeta function”, this
+      volume.
+ [12] K. Hoffman, “Banach spaces of analytic functions”, Prentice-Hall, Inc. (1962). (now avail-
+      able as a Dover Publication, 1988).
+ [13] P. Lax, “Translation invariant subspaces”, Acta Mathematica 101, (1959).
+ [14] B. Nyman, “On some groups and semigroups of translations”, Thesis, Uppsala (1950).
+Jean-François Burnol
+Université de Nice-Sophia-Antipolis
+Laboratoire J.-A. Dieudonné
+Parc Valrose
+F-06108 Nice Cédex 02
+France
+burnol@math.unice.fr
+
+
+
+                                               4
+

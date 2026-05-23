@@ -1,0 +1,246 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newcommand{\K}{\mathsf K}
+\newcommand{\T}{\Theta}
+\newcommand{\R}{\mathcal R}
+\newcommand{\ran}{\operatorname{Ran}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\title{Step 36: Strict-Extension Sources of Anti-Invariant Coercivity}
+\author{Anti-localization working notes}
+\date{May 2026}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 32--35 isolated the RH-facing zero-confinement mechanism in two records:
+\[
+\mathsf A_Z\preceq \K^-,\qquad \K^-\preceq \T^-.
+\]
+Here \(\mathsf A_Z\) is the zero-side anti-invariant displacement matrix and \(\K^-\) is the carrier-side anti-invariant probe-family currency.  Step 35 showed that \(\K^-=0\) is a very strong condition: it is equivalent, after null-mode legality, to the absence of anti-invariant native readout on the legal quotient.  Otherwise one needs a coercive audit mechanism.
+
+This note classifies honest strict-extension sources that can produce anti-invariant coercivity.  The guiding question is:
+\[
+C_\Gamma\succeq \lambda (L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma,
+\qquad \lambda\to\infty,
+\]
+without using the target zero-confinement conclusion as input.
+
+\section{Setup}
+Let \(E\) be the packaged coordinate space of a formed closure/layer, let \(C_\Gamma\succeq0\) be the packaged audit form, and let
+\[
+L^-_\Gamma:E\to Y^-
+\]
+be the declared anti-invariant native probe family.  Assume null-mode legality:
+\[
+\Ker C_\Gamma\subseteq \Ker L^-_\Gamma.
+\]
+The anti-invariant currency matrix is
+\[
+\K^-=(L^-_\Gamma)C_\Gamma^\dagger(L^-_\Gamma)^*.
+\]
+For a positive definite response budget \(\T^-_0\), we say that the audit is \(\lambda\)-coercive against the anti-invariant family if
+\[
+C_\Gamma\succeq \lambda (L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma.
+\]
+
+\begin{lemma}[coercive currency collapse]
+If \(C_\Gamma\succeq \lambda (L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma\) and null-mode legality holds, then
+\[
+\K^-\preceq \lambda^{-1}\T^-_0.
+\]
+\end{lemma}
+\begin{proof}
+For every \(y\in Y^-\), write \(g=(L^-_\Gamma)^*y\).  The form inequality gives
+\[
+|\langle y,L^-_\Gamma x\rangle|^2
+\le (y^*\T^-_0 y)\, x^*(L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma x
+\le \lambda^{-1}(y^*\T^-_0 y)x^*C_\Gamma x.
+\]
+Taking the variational supremum over \(x\) gives
+\[
+y^*\K^- y\le \lambda^{-1}y^*\T^-_0y.
+\]
+\end{proof}
+
+\section{Source I: completed feature factorization}
+The first honest source is a completed positive feature map
+\[
+W:E\to Z,
+\qquad C_\Gamma\succeq \lambda W^*W.
+\]
+Suppose the anti-invariant probe family factors through the completed feature:
+\[
+L^-_\Gamma=A W.
+\]
+
+\begin{theorem}[feature-factor coercivity]
+Assume
+\[
+A^*(\T^-_0)^{-1}A\preceq \kappa I_Z,
+\qquad
+C_\Gamma\succeq \lambda W^*W.
+\]
+Then
+\[
+\K^-\preceq \frac{\kappa}{\lambda}\T^-_0.
+\]
+\end{theorem}
+\begin{proof}
+Since \(L^-_\Gamma=AW\),
+\[
+(L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma
+=W^*A^*(\T^-_0)^{-1}AW
+\preceq \kappa W^*W.
+\]
+Thus
+\[
+C_\Gamma\succeq \lambda W^*W\succeq \frac{\lambda}{\kappa}(L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma,
+\]
+and the preceding lemma applies.
+\end{proof}
+
+\paragraph{RH reading.}
+The feature map \(W\) is not a signed raw explicit-formula term.  It must be a completed positive feature map, e.g.
+\[
+W_{\rm cmp}=\begin{bmatrix} W_{\rm pr}\\ W_\infty\\ W_{\rm pole}\\ W_{\rm tail}\end{bmatrix},
+\]
+whose quadratic form is visible and positive in the completed carrier.  The theorem is only lawful if the factorization \(L^-_\Gamma=A W_{\rm cmp}\) is supplied upstream of the anti-localization claim.
+
+\section{Source II: defective completed factorization}
+Exact factorization may be too strong.  Suppose
+\[
+L^-_\Gamma=A W+E,
+\]
+with visible residual \(E\).  If
+\[
+A^*(\T^-_0)^{-1}A\preceq \kappa I,
+\]
+then by \((u+v)^*(u+v)\le 2u^*u+2v^*v\),
+\[
+(L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma
+\preceq 2\kappa W^*W+2E^*(\T^-_0)^{-1}E.
+\]
+
+\begin{theorem}[defective factorization budget]
+If
+\[
+C_\Gamma\succeq \lambda W^*W+\mu E^*(\T^-_0)^{-1}E,
+\]
+then
+\[
+\K^-\preceq \max\left\{\frac{2\kappa}{\lambda},\frac{2}{\mu}\right\}\T^-_0.
+\]
+\end{theorem}
+\begin{proof}
+The displayed inequalities imply
+\[
+(L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma
+\preceq
+\max\left\{\frac{2\kappa}{\lambda},\frac{2}{\mu}\right\} C_\Gamma.
+\]
+Apply the coercive currency lemma.
+\end{proof}
+
+\section{Source III: root-composite character forcing}
+Let a finite group \(G\) act equivariantly on \(E\), \(Y^-\), and the audit.  Suppose the response space decomposes into character sectors
+\[
+Y^- = \bigoplus_{\chi\in \widehat G^-}Y_\chi,
+\qquad L^-_\Gamma=\bigoplus_\chi L_\chi.
+\]
+Let \(C_\chi\) be the restricted carrier-side form on the corresponding sector.  If for every nontrivial anti-invariant character sector
+\[
+C_\chi\succeq \lambda_\chi L_\chi^*\Theta_\chi^{-1}L_\chi,
+\]
+then
+\[
+\K^-_\chi\preceq \lambda_\chi^{-1}\Theta_\chi.
+\]
+Consequently, if \(\lambda_\chi\to\infty\) for all nontrivial anti-invariant sectors, then \(\K^-\to0\) on the full anti-invariant character family.
+
+\begin{warning}[trace shadow]
+Coercing only the invariant or trace character does not coerce the anti-invariant family.  Character-wise budget control is required.  Determinants, norms, and trace shadows are not Loewner-order certificates unless accompanied by a character-sector domination record.
+\end{warning}
+
+\section{Source IV: threshold/refinement accumulation}
+Suppose a refinement ladder adds anti-invariant audit increments
+\[
+C_n=C_0+\sum_{j=1}^n D_j,
+\qquad D_j\succeq \delta_j (L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma.
+\]
+Then
+\[
+C_n\succeq \left(\sum_{j=1}^n\delta_j\right)(L^-_\Gamma)^*(\T^-_0)^{-1}L^-_\Gamma,
+\]
+and therefore
+\[
+\K^-_n\preceq \left(\sum_{j=1}^n\delta_j\right)^{-1}\T^-_0.
+\]
+Thus the anti-invariant budget collapses if
+\[
+\sum_{j=1}^{\infty}\delta_j=\infty.
+\]
+
+\begin{warning}[finite-stage overread]
+Every finite stage may improve the budget while still failing exact collapse.  If \(\sum\delta_j<\infty\), the budget has a positive lower limit.  Divergent cumulative anti-invariant hardening is the mathematical distinction between asymptotic collapse and finite support-only improvement.
+\end{warning}
+
+\section{Source V: parity-fixed readout and lawful nonclaim gating}
+A different source is exact fixed-layer restriction:
+\[
+L^-_\Gamma=0
+\]
+on the legal quotient.  Then \(\K^-=0\) immediately.  This is not coercive hardening; it is absence of anti-invariant native readout.  It is lawful only if the closure's native probe family is genuinely parity-fixed or fixed-sector by upstream declaration.
+
+If instead anti-invariant probes are removed merely to make the theorem true, the result is an explicit nonclaim/gating move, not an anti-invariant no-needle theorem.
+
+\section{No-go theorem: partial hardening is not collapse}
+Let
+\[
+C_\lambda=\begin{pmatrix}1+\lambda&0\\0&1\end{pmatrix},
+\qquad L^-=I_{\mathbb R^2}.
+\]
+Then
+\[
+\K^-_\lambda=\begin{pmatrix}(1+\lambda)^{-1}&0\\0&1\end{pmatrix}.
+\]
+The first anti-invariant coordinate collapses, but the full family budget satisfies
+\[
+\|\K^-_\lambda\|=1
+\]
+for every \(\lambda\).  Thus hardening selected anti-invariant directions does not collapse the native anti-invariant family.
+
+\section{Strict-extension source record}
+An anti-invariant coercivity claim requires a source record
+\[
+\mathsf{CoercSource}=(W,A,E,\lambda,\mu,G,\{\lambda_\chi\},\{\delta_j\},\mathsf{Visibility},\mathsf{Nonclaims}).
+\]
+The accepted status requires:
+\begin{enumerate}[label=(\roman*)]
+\item the feature map or character decomposition is declared upstream;
+\item all completion pieces used in \(W\) are visible and positive as a carrier-side currency;
+\item residuals are recorded as defects, not suppressed;
+\item coercive constants are independent of the zero-confinement conclusion;
+\item finite-stage bounds are not overread as exact collapse;
+\item excluded probes carry explicit nonclaim records.
+\end{enumerate}
+
+\section{Conclusion}
+Anti-invariant budget collapse cannot be obtained from anti-linear symmetry alone.  It requires one of the following strict-extension sources:
+\[
+\text{completed feature factorization},\quad
+\text{root-composite character forcing},\quad
+\text{divergent threshold/refinement hardening},\quad
+\text{exact fixed-layer readout},
+\]
+or a claim-weakening nonclaim gate.  The RH-facing obligation is therefore sharpened: identify which upstream square supplies a positive anti-invariant feature map or character-sector coercivity, and prove that its cumulative strength collapses the anti-invariant currency without using RH as input.
+
+\end{document}

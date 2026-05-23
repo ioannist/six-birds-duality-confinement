@@ -1,0 +1,166 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{gate}{Gate}
+
+\title{Step 121: Regularized Co-Poisson/M\"untz Dirichlet Shadow Construction}
+\author{RATCHET / Six Birds RH Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 120 reduced the Burnol-to-Dirichlet readability problem to the angular gap
+\[
+\delta_{BD,N}=\|(I-P_{D,N})B_NG_{B,N}^{-1/2}\|.
+\]
+The point of Step 121 is to replace the naive critical-line Dirichlet partial sum by a lawful regularized shadow. The ordinary sum
+\[
+\sum_{n\le X}n^{-s}
+\]
+is not a legal shadow of \(\zeta(s)\) on the critical line unless accompanied by a declared regularization, pole/completion correction, and tail record.
+
+\section{Burnol target}
+Let \(g\) be a Burnol/co-Poisson generator with right Mellin transform
+\[
+\widehat g(s)=\int_0^\infty g(t)t^{-s}\,dt.
+\]
+The native co-Poisson/M\"untz target is
+\[
+B g(s)=\zeta(s)\widehat g(s).
+\]
+This target is lawful because it is obtained from the M\"untz-modified co-Poisson relation rather than from an unregularized critical-line Dirichlet series.
+
+\section{Smooth M\"untz shadow}
+Choose a smooth cutoff \(\omega\in C_c^\infty(0,\infty)\) with Mellin transform
+\[
+\Omega(w)=\int_0^\infty \omega(x)x^{w-1}\,dx.
+\]
+Define
+\[
+Z_X^\omega(s)
+=
+\sum_{n\ge1}\omega(n/X)n^{-s}-X^{1-s}\Omega(1-s).
+\]
+The subtraction term is the M\"untz/pole correction. It is not optional. The corresponding Burnol-to-Dirichlet shadow is
+\[
+B_X^{\mathrm{reg}}g(s)=Z_X^\omega(s)\widehat g(s),
+\]
+with residual
+\[
+T_X^\omega g(s)=\zeta(s)\widehat g(s)-Z_X^\omega(s)\widehat g(s).
+\]
+
+\begin{gate}[Regularization gate]
+The shadow \(Z_X^\omega\widehat g\) is accepted only if the M\"untz correction channel
+\[
+X^{1-s}\Omega(1-s)\widehat g(s)
+\]
+and the residual tail \(T_X^\omega g\) are declared in the carrier. If they are ignored, the construction is a public shadow, not a membrane witness.
+\end{gate}
+
+\section{Finite window construction}
+Let \(Y_{B,N}\) be a finite Burnol/co-Poisson atom window with synthesis map
+\[
+B_N:Y_{B,N}\to H_N,
+\qquad
+G_{B,N}=B_N^*B_N.
+\]
+Let \(D_N^{\mathrm{reg}}\) be the declared regularized Dirichlet-readable synthesis space. It may include:
+\begin{enumerate}[label=(\roman*)]
+\item the finite Dirichlet coefficient bank coming from \(\sum\omega(n/X)n^{-s}\),
+\item a pole/completion channel for \(X^{1-s}\Omega(1-s)\),
+\item dual-channel atoms from an approximate functional equation, if used,
+\item a tail/nonclaim record.
+\end{enumerate}
+Let \(P_{D,N}^{\mathrm{reg}}\) project onto \(\operatorname{Ran}D_N^{\mathrm{reg}}\). Define
+\[
+\delta_{BD,N}^{\mathrm{reg}}
+=
+\|(I-P_{D,N}^{\mathrm{reg}})B_NG_{B,N}^{-1/2}\|.
+\]
+Equivalently,
+\[
+\Xi_{BD,N}^{\mathrm{reg}}
+=
+B_N^*(I-P_{D,N}^{\mathrm{reg}})B_N.
+\]
+This is the Burnol-to-Dirichlet adequacy residual.
+
+\begin{theorem}[Regularized shadow angular-gap criterion]
+The regularized shadow family is complete on the growing Burnol windows iff
+\[
+\delta_{BD,N}^{\mathrm{reg}}\to0.
+\]
+Equivalently, the declared regularized Dirichlet-readable spaces approximate the Burnol target ranges uniformly:
+\[
+\sup_{0\ne y\in Y_{B,N}}
+\frac{\operatorname{dist}(B_Ny,\operatorname{Ran}D_N^{\mathrm{reg}})}{\|B_Ny\|}
+\to0.
+\]
+Pointwise convergence on each fixed atom is not enough.
+\end{theorem}
+
+\section{Hybrid visibility bound}
+Let \(\epsilon_{B,N}\) be the Burnol geometric exhaustion defect and let \(\tau_{reg,N}\) be the declared regularization/tail defect. Then
+\[
+\epsilon_{hyb,N}
+\le
+\epsilon_{B,N}+\delta_{BD,N}^{\mathrm{reg}}+\tau_{reg,N}.
+\]
+Therefore
+\[
+c_{hyb,N}
+\ge
+1-(\epsilon_{B,N}+\delta_{BD,N}^{\mathrm{reg}}+\tau_{reg,N})^2.
+\]
+If
+\[
+G_{\mathcal X,N}\succeq \gamma_N H_N,
+\]
+then the source route has effective strength
+\[
+\Lambda_{R,N}=\gamma_Nc_{hyb,N}.
+\]
+The completed route needs
+\[
+\gamma_Nc_{hyb,N}\to\infty
+\]
+with fixed/exhaustive tail promotion.
+
+\section{Status trichotomy}
+\begin{enumerate}[label=\textbf{S\arabic*.}]
+\item \textbf{Shadow complete:} \(\delta_{BD,N}^{\mathrm{reg}}\to0\). Burnol visibility becomes Dirichlet/Hecke-readable.
+\item \textbf{Positive floor:} \(\epsilon_{B,N}+\delta_{BD,N}^{\mathrm{reg}}+\tau_{reg,N}<1\) quantitatively. This can still suffice if \(\gamma_Nc_{hyb,N}\to\infty\).
+\item \textbf{Missed shadow sector:} the limiting residual
+\[
+\Xi_{BD}=B^*(I-P_D)B
+\]
+is nonzero. It must be separately source-absorbed, compact/tail-paid, or declared as a scoped nonclaim.
+\end{enumerate}
+
+\section{No-overread rule}
+The ordinary critical-line partial sum is rejected:
+\[
+\sum_{n\le X} n^{-s}
+\quad\text{is not a lawful shadow on }\Re(s)=1/2.
+\]
+The legal objects are regularized shadows with declared M\"untz correction, approximate-functional-equation shadows with declared dual channel, or co-Poisson response shadows with fixed/exhaustive tail records.
+
+\section{Conclusion}
+Step 121 defines the regularized shadow gate. It does not prove \(\delta_{BD,N}\to0\). It names the exact object whose vanishing, positive floor, or source absorption must be earned:
+\[
+\Xi_{BD,N}^{\mathrm{reg}}=B_N^*(I-P_{D,N}^{\mathrm{reg}})B_N.
+\]
+
+\end{document}

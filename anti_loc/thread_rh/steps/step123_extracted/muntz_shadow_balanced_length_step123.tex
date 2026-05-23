@@ -1,0 +1,256 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Step 123: Balanced-Length Theorem for the Regularized Co-Poisson/M\"untz Shadow}
+\author{RH Membrane Construction Notes}
+\date{May 14, 2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cC}{\mathcal C}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\dist}{\operatorname{dist}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 122 replaced naive critical-line Dirichlet partial sums by a regularized M\"untz/co-Poisson shadow.  The new visibility-side obstruction is
+\[
+\eps_{\rm vis,N}
+=\eps_{B,N}+\eps_{\rm Mell,N}+\tau_{M,N}+\kappa_{\rm tail,N},
+\]
+with
+\[
+c_{{\rm hyb},N}\ge 1-\eps_{\rm vis,N}^2.
+\]
+The source-side obstruction is still the Heap--Soundararajan style lower-frame strength
+\[
+G_{\cX,N}\succeq \gamma_N H_N.
+\]
+The RH membrane route requires
+\[
+\gamma_N c_{{\rm hyb},N}\to\infty
+\]
+with fixed/exhaustive ledger promotion.  Step 123 formulates the growth-rate compatibility condition under which the M\"untz shadow is accurate while the Dirichlet polynomial remains short enough for the source moment estimates.
+
+\section{Parameters}
+Let $Q_N$ be the source-family size parameter.  Depending on the source family, $Q_N$ may be a height $T$, a conductor bound, a family cardinality, or an adelic conductor window.  Let
+\[
+T_N=\text{vertical/spectral window},
+\qquad
+A_N=\text{Burnol atom complexity},
+\]
+and let $X_N$ be the length of the regularized Dirichlet shadow
+\[
+Z_{X_N}^{\omega}(s)
+=\sum_{n\ge1}\omega(n/X_N)n^{-s}-X_N^{1-s}\Omega(1-s).
+\]
+Assume the M\"untz contour residual obeys, on the declared Burnol window,
+\[
+\tau_{M,N}
+\le C_M A_N (1+T_N)^A X_N^{-\eta},
+\qquad \eta>0.
+\]
+Assume the source/moment technology is valid for Dirichlet shadows of length
+\[
+X_N\le Q_N^{\theta_*},
+\qquad \theta_*>0.
+\]
+For Heap--Soundararajan's zeta-height version, the short-polynomial proof uses a length bounded by a fixed positive power of the height, schematically $X\le T^{\theta_*}$; in their displayed construction one has a support bound of the form $n\le T^{k/9}$.
+
+\section{The balanced-length cone}
+\begin{definition}[Balance exponent]
+For a requested residual decay buffer $r_N\ge0$, define
+\[
+\theta_{\min,N}
+=
+\frac{
+\log A_N+A\log(1+T_N)+r_N
+}{
+\eta\log Q_N
+}.
+\]
+The \emph{balanced-length cone} is nonempty at stage $N$ if
+\[
+\boxed{\theta_{\min,N}<\theta_*.}
+\]
+\end{definition}
+
+\begin{theorem}[Balanced-length theorem]
+Suppose there exists $\theta_N$ such that
+\[
+\theta_{\min,N}<\theta_N<\theta_*.
+\]
+Set
+\[
+X_N=Q_N^{\theta_N}.
+\]
+Then
+\[
+A_N(1+T_N)^A X_N^{-\eta}
+\le e^{-r_N}.
+\]
+Consequently, if
+\[
+\eps_{B,N}+\eps_{\rm Mell,N}+\kappa_{\rm tail,N}\to0,
+\qquad r_N\to\infty,
+\]
+then
+\[
+\tau_{M,N}\to0,
+\qquad
+c_{{\rm hyb},N}\to1.
+\]
+If additionally
+\[
+G_{\cX,N}\succeq\gamma_NH_N,
+\qquad \gamma_N\to\infty,
+\]
+then the effective source strength diverges:
+\[
+\boxed{\gamma_Nc_{{\rm hyb},N}\to\infty.}
+\]
+\end{theorem}
+
+\begin{proof}
+The choice $X_N=Q_N^{\theta_N}$ gives
+\[
+\log\bigl(A_N(1+T_N)^A X_N^{-\eta}\bigr)
+=\log A_N+A\log(1+T_N)-\eta\theta_N\log Q_N.
+\]
+Since $\theta_N>\theta_{\min,N}$,
+\[
+\eta\theta_N\log Q_N
+>
+\log A_N+A\log(1+T_N)+r_N,
+\]
+and hence
+\[
+A_N(1+T_N)^A X_N^{-\eta}<e^{-r_N}.
+\]
+The visibility conclusion follows from Step 122's bound
+\[
+c_{{\rm hyb},N}\ge1-(\eps_{B,N}+\eps_{\rm Mell,N}+\tau_{M,N}+\kappa_{\rm tail,N})^2.
+\]
+If the total visibility error tends to zero, then $c_{{\rm hyb},N}\to1$.  Multiplication by any divergent source lower-frame strength $\gamma_N$ gives the last assertion.
+\end{proof}
+
+\begin{corollary}[Sub-polynomial atom/window growth]
+Assume
+\[
+\log A_N+A\log(1+T_N)=o(\log Q_N).
+\]
+Then for every fixed $0<\theta<\theta_*$, choosing $X_N=Q_N^{\theta}$ and any buffer $r_N=o(\log Q_N)$ gives the balanced-length condition.  Thus the M\"untz shadow can be accurate while remaining short for the source estimates.
+\end{corollary}
+
+\begin{corollary}[Polynomial regime]
+Assume
+\[
+A_N\ll Q_N^{\alpha},
+\qquad
+1+T_N\ll Q_N^{\beta}.
+\]
+Then the balanced-length cone is nonempty provided
+\[
+\boxed{\alpha+A\beta<\eta\theta_*.}
+\]
+If this strict inequality holds, choose $\theta$ such that
+\[
+\frac{\alpha+A\beta}{\eta}<\theta<\theta_*.
+\]
+\end{corollary}
+
+\section{Positive visibility floor}
+Even if the shadow error does not vanish, the route can remain alive.  If
+\[
+\limsup_N\eps_{\rm vis,N}\le e_*<1,
+\]
+then
+\[
+\liminf_N c_{{\rm hyb},N}
+\ge1-e_*^2>0.
+\]
+Therefore any divergent source strength $\gamma_N\to\infty$ still gives
+\[
+\gamma_Nc_{{\rm hyb},N}\to\infty.
+\]
+This is weaker than shadow completeness but still adequate for source-coercivity if all finite-window tails are promoted lawfully.
+
+\section{Failure theorem}
+\begin{theorem}[Length incompatibility obstruction]
+Suppose that for every admissible source technology there is a fixed $\theta_*>0$ such that $X_N\le Q_N^{\theta_*}$, and suppose
+\[
+\liminf_N
+\frac{\log A_N+A\log(1+T_N)}{\eta\log Q_N}
+\ge\theta_*.
+\]
+Then no choice of $X_N$ both remains short for the source moment estimates and drives the M\"untz contour residual to zero.  The route must then supply one of:
+\begin{enumerate}[label=(\roman*)]
+\item a stronger regularization with larger $\eta$ or smaller complexity exponent $A$;
+\item a source technology valid for longer polynomials, i.e. larger $\theta_*$;
+\item a positive visibility floor plus source growth strong enough to compensate;
+\item a scoped nonclaim / tail-defect record for the missed shadow sector.
+\end{enumerate}
+\end{theorem}
+
+\section{Interpretation in the membrane route}
+The active RH source route now has five independent terms:
+\[
+\gamma_N
+\left[
+1-(\eps_{B,N}+\eps_{\rm Mell,N}+\tau_{M,N}+\kappa_{\rm tail,N})^2
+\right]
+\to\infty.
+\]
+Here
+\[
+\gamma_N=\text{arithmetic source strength},
+\]
+\[
+\eps_{B,N}=\text{Burnol geometric exhaustion defect},
+\]
+\[
+\eps_{\rm Mell,N}=\text{Mellin/Dirichlet modeling defect},
+\]
+\[
+\tau_{M,N}=\text{M\"untz contour residual},
+\]
+\[
+\kappa_{\rm tail,N}=\text{finite-window support/tail defect}.
+\]
+Step 123 shows that the M\"untz residual is not the main obstacle if the balanced-length cone is open.  The real load-bearing tasks become:
+\begin{enumerate}[label=O\arabic*.]
+\item prove Burnol/co-Poisson exhaustion: $\eps_{B,N}\to0$ or positive floor;
+\item prove regularized shadow angular-gap control: $\eps_{\rm Mell,N}+\tau_{M,N}+\kappa_{\rm tail,N}<1$ with adequate decay;
+\item prove a matrix source lower-frame: $G_{\cX,N}\succeq\gamma_NH_N$ with $\gamma_N\to\infty$;
+\item promote finite windows by fixed/exhaustive ledger tails.
+\end{enumerate}
+
+\section{No-smuggling record}
+The parameters $Q_N,T_N,A_N,X_N,\omega_N$ must be selected by upstream carrier and source rules, not by observing which choices make the zero-confinement bound pass.  If a parameter is adjusted after seeing the target zero residual, it is a smuggled source record.
+
+\section{Status}
+The balanced-length gate is conditionally open whenever
+\[
+\exists \theta<\theta_*:
+\quad
+A_N(1+T_N)^AQ_N^{-\eta\theta}\to0.
+\]
+It is conditionally blocked if the Burnol atom complexity and vertical window grow too fast relative to the source conductor/height.
+
+\end{document}

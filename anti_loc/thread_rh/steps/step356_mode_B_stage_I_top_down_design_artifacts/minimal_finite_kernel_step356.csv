@@ -1,0 +1,7 @@
+rule,input_state_1,input_state_2,condition,output_state,lens_effect
+R_H_load,a,,bind_chi_k,a[data_H],q_emits_H_chi_k
+R_Z_load,b,,bind_rho_k,b[data_Z],q_emits_Z_rho_k
+R_compare,a[data_H],b[data_Z],both_bound,c[lambda_mag_lambda_phase],q_emits_magnitude_phase_residual
+R_operator_audit,c,,operator_certificate_missing,d[lambda_total_missing_operator],q_emits_vector_residual_with_missing_operator
+R_block,d,,lambda_nonzero_or_operator_missing,e,q_undefined_blocked
+R_admit,d,,lambda_zero_and_operator_certified,d_admissible,q_emits_certified_descent_residual_zero

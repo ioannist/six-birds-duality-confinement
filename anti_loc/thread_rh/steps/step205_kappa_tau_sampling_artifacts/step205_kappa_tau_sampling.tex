@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 205: \(\kappa_i(\tau)\) Sampling Audit}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_kappa\_tau\_sampling\_formula\_corrected}.}
+\]
+
+\section*{Operator Chain}
+
+Burnol 2002 gives the projected de Branges kernel
+\[
+K_a^\Gamma(s,w)=\frac{E_\lambda(s)E_\lambda(w)-E_\lambda(1-s)E_\lambda(1-w)}{s+w-1}.
+\]
+Step 153 gives
+\[
+U_\infty(J_a^*Y^a_{w,k})=
+T_a^*\partial_{\overline w}^kK_a^\Gamma(\cdot,w),
+\]
+and Step 152/153 gives
+\[
+T_a=M_\Gamma J_aU_\infty^{-1},\qquad
+T_a^*=U_\infty J_a^*M_\Gamma^*.
+\]
+Thus
+\[
+\kappa_i(\tau)=T_{1/2}^*K_{1/2}^{\Gamma}(\cdot,\rho_i)(1/2+i\tau).
+\]
+The inherited records do not imply
+\[
+T_{1/2}^*K_{1/2}^{\Gamma}(\cdot,\rho_i)(1/2+i\tau)
+=K_{1/2}^{\Gamma}(1/2+i\tau,\rho_i).
+\]
+That equality is an extra transport theorem, not a consequence of Burnol's
+kernel formula alone.
+
+\section*{Candidate Boundary Samples}
+
+The candidate shadow
+\[
+K_{1/2}^{\Gamma}(1/2+i\tau,\rho_i)
+\]
+was sampled on 200 Gauss--Legendre nodes over \([-40,40]\) for
+\(i=1,2,3\).  These values are recorded as candidate samples, not certified
+\(\kappa_i(\tau)\) samples.  Representative candidate values for \(i=1\) are:
+\[
+\begin{array}{c|c}
+\tau & K_{1/2}^{\Gamma}(1/2+i\tau,\rho_1)\\
+\hline
+-25 & 7.49470020947\cdot10^{-15}\\
+-14 & 8.42407963493\cdot10^{-10}\\
+0 & 4.67028549034\cdot10^{-7}\\
+14 & -3.66923017176\cdot10^{-12}\\
+25 & -1.95825829371\cdot10^{-15}
+\end{array}
+\]
+
+\section*{\(c\)-Matrix}
+
+The intended entries are
+\[
+c_{ij}=\int \overline{\kappa_i(\tau)}
+\bigl((I-P_\infty)M_{m_\ell}P_\infty\kappa_j\bigr)(\tau)
+\frac{d\tau}{2\pi}.
+\]
+Since \(\kappa_i(\tau)\) itself is not certified, applying the Step 173
+\(K_\infty^{op}\) PSWF formula to the candidate samples would be an
+unlawful ambient-shadow substitution.  Therefore the \(c\)-matrix and
+\(\Xi_{\mathrm{matrix\_source}}\) are not computed in this step.
+
+\section*{Required Next Record}
+
+The next required record is either
+\[
+T_a^*K_a^\Gamma(\cdot,\rho)(1/2+i\tau)
+=K_a^\Gamma(1/2+i\tau,\rho),
+\]
+or the corrected explicit formula for
+\[
+U_\infty J_a^*M_\Gamma^*K_a^\Gamma(\cdot,\rho).
+\]
+
+\section*{Nonclaim}
+
+This step does not prove RH, does not close Branch B, and does not decide
+\(\Xi_{\mathrm{matrix\_source}}\).  It narrows the blocker from ``missing
+\(\kappa\)'' to the exact transport-sampling theorem needed for numerical
+\(c_{ij}\) evaluation.
+
+\end{document}
+

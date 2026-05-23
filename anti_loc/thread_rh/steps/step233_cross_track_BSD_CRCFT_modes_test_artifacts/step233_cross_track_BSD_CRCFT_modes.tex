@@ -1,0 +1,57 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 233: CRCFT Modes on BSD Bridge Components}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section{BSD Component Equation}
+
+The b-52a BSD bridge defect is
+\[
+  \Delta_{\rm BSD}^{\rm BK}
+  =
+  E_{\rm an/period}
+  + E_{\rm ht/reg}
+  + E_{\rm finite}
+  + \sum_p E_p
+  + E_{\rm det}.
+\]
+
+\section{CRCFT Modes}
+
+The RH-derived CRCFT modes are:
+\begin{itemize}
+\item TE: target-equivalence;
+\item CTMT: carrier-typed matrix-element or terminal-object reduction;
+\item BF: bridge failure.
+\end{itemize}
+
+\section{BSD Classification}
+
+\begin{center}
+\begin{tabular}{p{0.19\linewidth}p{0.13\linewidth}p{0.29\linewidth}p{0.28\linewidth}}
+\toprule
+Component & Mode & Secondary interface & Evidence\\
+\midrule
+\(E_{\rm an/period}\) & TE & BF if normalization bridge absent & Analytic leading coefficient and period normalization are BSD analytic-side target content.\\
+\(E_{\rm ht/reg}\) & TE & CTMT through regulator matrices & Regulator equality is target content, but its computation is height-pairing determinant data.\\
+\(E_{\rm finite}\) & BF & CTMT after finite-source tower supplied & Scalar finite factors and \(\dim\Sha[p]\) are noninjective public shadows.\\
+\(\sum_p E_p\) & CTMT & BF for uncovered primes & Per-prime p-adic rows are atomic local terminal gates.\\
+\(E_{\rm det}\) & CTMT & TE consequence if all vanish & Determinant-line maps are the central terminal object.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+
+The BSD components all fit the TE/CTMT/BF typology once component-level terminal objects are allowed. CRCFT is therefore cross-track verified on BSD.
+
+\[
+  \boxed{\texttt{V\_bsd\_CRCFT\_modes\_verified}.}
+\]
+
+\end{document}

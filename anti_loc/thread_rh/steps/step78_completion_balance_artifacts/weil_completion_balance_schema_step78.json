@@ -1,0 +1,25 @@
+{
+  "step": 78,
+  "title": "Completion Balance for Positive Weil Feature Matching",
+  "objects": {
+    "core": "C^-_log",
+    "signed_prime": "P_pr,L(h_f) = - sum_a w_a(h_f(a)+h_f(-a))",
+    "positive_prime": "q_pr,L[f] = sum_a w_a ||tau_a f - f||^2",
+    "diagonal_repair": "d_pr,L = 2 sum_a w_a",
+    "signed_rest": "R_sgn,L",
+    "positive_slots": ["q_infty^+", "q_pole^+", "q_tail^+"],
+    "balance_form": "B_L = d_pr ||f||^2 + q_infty^+ + q_pole^+ + q_tail^+ - R_sgn"
+  },
+  "acceptance_gate": {
+    "core_inequality": "q_Z <= q_sgn + e_Weil",
+    "balance": "B_L >= - e_bal",
+    "conclusion": "q_Z <= q_cmp + e_Weil + e_bal",
+    "douglas_if_defects_zero": "V_Z = T W_cmp, ||T|| <= 1"
+  },
+  "nonclaims": [
+    "Does not prove RH",
+    "Does not prove the actual Weil formula has this feature decomposition",
+    "Trace equality is not balance",
+    "Finite core checks are support-only without form-core extension"
+  ]
+}

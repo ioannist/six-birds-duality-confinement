@@ -1,0 +1,6 @@
+stage,attempt,operator_expression,intermediate_result,status
+T2a,PSWF spectral expansion,"Q=Phat_lambda; QP_lambdaQ phi_n=mu_n phi_n","S_lambda=I-P-(I-P)Q(I_{QH}-QPQ)^{-1}Q(I-P)=I-P-sum |(I-P)phi_n><(I-P)phi_n|/(1-mu_n)","succeeds as exact operational identity"
+T2b,direct spatial kernel,"P(x,y)=1_I(x)delta(x-y); Q(x,y)=sin(lambda(x-y))/(pi(x-y))","S_lambda(x,y)=delta-P kernel minus PSWF-tail projection series; naive inclusion-exclusion requires inverse cross-term","succeeds as strong/distribution kernel"
+T2c,Sonine-side formulation,"U_infty(J_a^*Y)=T_a^*partial K_a^Gamma; K_a^Gamma=P_{L_a^Gamma}K_amb","Sonine evaluator route contains another projected kernel and does not simplify P_infty independently","attempted; no simpler formula"
+T2d,alternating projection identity,"E=I-P_lambda; F=I-Phat_lambda","S_lambda f=lim_N(EF)^N f strongly by von Neumann alternating projections","succeeds; secondary operational identity"
+verification,test vectors,"f in Ran P gives S f=0; f in ker P cap ker Q gives S f=f","Confirms projection behavior of the derived formula","passed"

@@ -1,0 +1,1111 @@
+arXiv:1910.14368v1 [math.NT] 31 Oct 2019
+
+THE SCALING HAMILTONIAN
+ALAIN CONNES and CATERINA CONSANI
+Dedicated to Dan Voiculescu with admiration
+
+A BSTRACT. We first explain the link between the Berry-Keating Hamiltonian and the spectral realization of zeros of the Riemann zeta function ζ of [10], and why there is no conflict
+at the semi-classical level between the “absorption" picture of [10] and the semiclassical
+“emission" computations of [1, 2], while the minus sign manifests itself in the Maslov
+phases. We then use the quantized calculus to analyse the recent attempt of X.-J. Li at
+proving Weil’s positivity, and understand its limit. We then propose an operator theoretic
+semi-local framework directly related to the Riemann Hypothesis.
+K EYWORDS : Riemann zeta function, Hamiltonian, Semi-local trace formula, Weil positivity.
+MSC (2010): 11M55, 46L87, 58B34.
+
+INTRODUCTION
+
+This special volume of the Journal of Operator Theory is a wonderful occasion
+to acknowledge the scientific contributions of Dan Voiculescu both as a problem
+solver and a theory builder.
+The topic of the present paper can be described as a nagging thought on the
+power of Operator Theory in connection with a main unsolved problem in mathematics : the Riemann Hypothesis (RH). After the initial attempt of the first author [10], that stemmed from a coincidental encounter with RH through quantum
+statistical mechanics, both authors (of the present paper) abandoned the hope of
+dealing with the problem in a purely analytic manner and shifted their attention,
+in search of another powerful tool : Algebraic Geometry. We refer to [13, 15] for
+a survey of the geometric space that our approach has unveiled (the Scaling Site)
+and to [16] for the development of an “absolute algebraic geometry", motivated
+by the discovery of this new site, and the need to formulate a Riemann-Roch
+formula on its square.
+The nagging thought which is the subject of the present paper is that, after all, one
+might have given up too easily on analysis and the power of Hilbert space operators to obtain positivity statements. Indeed in [10], while the construction of a
+
+102
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+global Hilbert space spectral realization remained artificial by the use of Sobolev
+spaces, the construction of the semi-local Hilbert space operators is completely
+canonical and provides the subtle finite parts in the Riemann-Weil explicit formulas. We first explain in Section 1 the relation between the so-called Berry-Keating
+Hamiltonian1 and the original spectral realization of [10]. The key points are first
+why passing from an absorption spectrum (as in [10]) to an emission spectrum
+(as suggested in [1,2]) does not introduce a mismatch in the semiclassical approximations, and moreover why the cutoff suggested in [1, 2] is equivalent, at the
+semiclassical level to the removal of the contribution of the “white light" from the
+quantum system. We also point out that there is no issue about quantizing the
+H = PQ Hamiltonian, and this is what was already done in [10], and that the minus sign is not completely eliminated in the cutoff suggested in [1,2] and appears
+in the Maslov phases.
+In Section 2 we recall the semi-local trace formula proved in [10] as formulated
+in [12]. The main technical result, recalled in Lemma 2.4, computes the trace of
+the scaling action on the Hilbert space L2 ( XS ) canonically associated to a finite set
+S 3 ∞ of places of Q. The space XS is an approximation of the adèle class space
+of the rationals, obtained by trading the full adèle ring AQ for the finite product
+of the local fields Qv attached to the places v ∈ S, and effecting its quotient by the
+group
+(0.1)
+
+n
+
+Q∗S = GL1 (Q S ) = {± pn1 1 · · · pk k : p j ∈ S \ {∞} , n j ∈ Z}.
+
+In Section 3 we describe the idea of X.-J. Li as an attempt to prove Weil’s positivity.
+We use the quantized calculus to analyse the cutoff that he proposes, motivated
+by Sonine spaces. We prove a key Lemma 3.4 showing that his approach would
+have worked out, had a certain function φ( z) belonged to the Hardy space H∞
+of the half-plane C+1 := { z ∈ C | <( z) > 1/2}. The function φ( z) is meromor2
+
+phic in C and of modulus 1 on the critical line so that, at first sight, it looks like
+an "inner function", but unfortunately it fails to be so and in particular it is not
+bounded. It should have been clear from the start though, that such a semi-local
+approach could not work without using a global Poisson Formula that dictates
+the normalizations of the principal values. By ignoring all primes above some
+size (a natural strategy) one has normalized the principal value to be 0 for them,
+thus the local normalization of the principal values for the primes in S should
+play a key role, and one should not be able to neglect it completely (in [10] the
+2 log Λ term accommodates such local changes).
+In Section 4 we formulate a conjecture on the power of the semi-local framework
+as a tool to prove Weil’s positivity. We explain why the global Poisson Formula
+makes sense in the semi-local cases and provides a conceptual explanation for the
+1Their work was motivated by extensive explanations of A. Connes at IHES, as M. Berry and J.
+Keating acknowledge in [1]
+
+T HE SCALING H AMILTONIAN
+
+103
+
+functions involved in the semi-local trace formula. We finally discuss the merits
+of the geometric strategy compared to the analytic one outlined here.
+
+1. THE SCALING HAMILTONIAN
+
+In the setting of [10] (see also Chapter 2 of [12]) the spectral realization is as an
+absorption spectrum, i.e. it appears as dark lines in a background given by white
+light.
+
+F IGURE 1. Absorption Spectrum
+
+When disregarding the finite places to get the simplest instance of the semi-local
+picture, one obtains the action of the multiplicative group R∗+ by scaling on the
+Hilbert space L2 (R) of square integrable functions on the real line. This procedure
+corresponds in an obvious way to the “quantization" of the Hamiltonian H =
+PQ. There is no mystery whatsoever in this quantization since in the unique
+irreducible representation of the Heisenberg commutation relations the operators
+P and Q correspond respectively (up to normalization) to i∂ x and multiplication
+by x, so that the self-adjoint operator 12 ( PQ + QP) corresponds to the generator
+of the scaling flow which is x∂ x (to which one needs to add the constant 12 in
+order to get the generator of a unitary group). However, since the Hamiltonian
+is unbounded below, the associated quantum system given by the scaling action
+on L2 (R) does not have discrete spectrum. In order to analyze it, one performs
+a cutoff both in q and p spaces, at the same size Λ. Due to the normalization of
+the Fourier transform used in number theoretic contexts (i.e. with phase factor
+e−2πipq ), the Hamiltonian is H = 2π pq (see Chapter II, §3.2 of [12]). The portion
+of phase space in which the size of H = 2π pq is less than a given energy E is
+shown in Figure 2.
+
+104
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+P
+
+Λ
+
+p q = E/2π
+
+E/2πΛ
+
+Q
+
+Λ
+
+F IGURE 2
+As explained in details in Chapter II, §3.2 of [12], one restricts to even functions to
+handle the Riemann zeta function, and to the first quadrant in order to estimate
+the semiclassical count of the zeros of ζ with positive imaginary part less than
+E. This procedure is depicted in Figure 3. In order to compare this semiclassical
+picture with white light, one considers the model of white light given by the
+regular representation of the additive group R. We adjust the cutoff so that this
+corresponds, using the isomorphism u 7→ exp(u) of R with the multiplicative
+E
+group R∗+ , to the subgraph of the hyperbola pq = 2π
+restricted to the interval
+[1/Λ, Λ ] as shown in Figure 4.
+The exponential u 7→ exp(u) is obviously an isomorphism exp : R → R∗+ and
+the following map is a symplectic isomorphism
+Φ(u, v) := (exp(u), v exp(−u)),
+since its Jacobian is given by
+d exp(u) ∧ d(v exp(−u)) = exp(u)du ∧ (exp(−u)dv − v exp(−u)du) = du ∧ dv.
+
+T HE SCALING H AMILTONIAN
+
+105
+
+P
+
+Λ
+
+p q = E/2π
+
+E/2πΛ
+Q
+F IGURE 3
+
+The symplectic isomorphism Φ transforms the phase space of the regular representation of R cutoff in the interval [− log Λ, log Λ ] and in a range of energy (the
+dual variable to log(q)) in the interval [0, E/2π ], into the portion of the phase
+space (q, p) shown in Figure 4. We refer to [10] and Chapter II, §3.2 of [12] for the
+understanding of careful normalizations.
+
+106
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+P
+
+Λ E/2π
+
+E/2π
+
+Log Λ
+
+-Log Λ
+
+Φ(u,v)=(eu ,v e-u )
+
+p q ≤ E/2π
+
+Q
+
+-1
+
+Λ
+
+Λ
+F IGURE 4
+
+T HE SCALING H AMILTONIAN
+
+107
+
+There are two main differences between the cutoff phase space of Figure 3 and the
+white light of Figure 4. Firstly, there is a piece of Figure 4 which is not covered by
+Figure 3, it extends from p = Λ to p = Λ E/2π and is represented in dark blue in
+Figure 5 :
+P
+
+ΛE/2π
+
+Λ
+
+p q = E/2π
+
+1/Λ
+
+Λ
+Q
+
+F IGURE 5
+Then there is also the rectangle, with vertices at (0, 0), (1/Λ, 0),(1/Λ, Λ ),(0, Λ ),
+in Figure 3, which does not fit inside Figure 4. It is of area equal to 1 and thus
+corresponds to a single quantum state2.
+2This is reminiscent of the pole of the Riemann zeta function, or equivalently to half of the bound-
+
+ary conditions f (0) = 0, fˆ(0) = 0 that one needs to impose to use the Poisson Formula for the map
+E, as in [10].
+
+108
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+In order to compare this set-up with the Berry-Keating framework we perform
+the symplectic transformation of the (q, p) plane given by
+
+(q, p) 7→ (Λq,
+
+p
+) = σ (q, p).
+Λ
+
+E
+This transformation preserves the area and the hyperbola pq = 2π
+. It transforms
+Figure 5 into the following Figure 6:
+
+P
+
+E/2π
+
+p q = E/2π
+1
+
+->Λ2
+
+1
+
+F IGURE 6
+
+One easily obtains that the missing (absorbed) part of the white light is given by
+the semiclassical picture of the “Berry-Keating" Hamiltonian as in Figure 7.
+This discussion shows that all the semiclassical computations for the Riemann
+zeros viewed as an absorption spectrum (as in [10, 12]), are identical to those performed with the “Berry-Keating" Hamiltonian viewed as an emission spectrum
+( [1, 2]). The presence of the opposite signs involved in absorption and emission
+spectra does not create a conflict at this point. However, one should not conclude
+that the two models are equivalent.
+
+Q
+
+T HE SCALING H AMILTONIAN
+
+109
+
+F IGURE 7. Figure taken from [2], there is a different normalization of the Fourier transform which accounts for the discrepancy
+in the factors 2π.
+In fact, the minus sign coming from the absorption spectrum strikes back when
+one investigates the quantum fluctuations. In [1], Berry and Keating are forced to
+set the Maslov phases all equal to π in order to account for this minus sign. They
+write explicitly :
+
+2. SEMI-LOCAL TRACE FORMULA
+
+After the initial work [10] on the semi-local trace formula a better proof was obtained based on an idea of [6] in the case of a single archimedean place. This
+development was explained in the class of the first author at Collège de France in
+
+110
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+1999 [11]. We refer to Chapter 2 of [12] for a detailed exposition. A key tool here
+is the quantized calculus of Chapter IV of [9].
+2.1. Q UANTIZED CALCULUS . The main idea of the quantized calculus is to give
+an operator-theoretic version of the calculus rules, based on the operator-theoretic
+differential
+(2.1)
+
+d− f := [ F, f ],
+
+where f is an element in an involutive algebra A represented as bounded operators on a Hilbert space H. The right-hand side of (2.1) is the commutator with
+a self-adjoint operator F on H with F 2 = 1. One then defines the analogue of
+differential forms of degree n as linear combinations of monomials of the form
+ω = f 0 d− f 1 d− f 2 . . .−
+d fn ∈ Ω n .
+The differential of an element of Ω n is defined as the graded variant of (2.1)
+(2.2)
+
+d−ω := Fω − (−1)nωF.
+
+One checks, using F 2 = 1, that the square of the differential is 0, d−2ω = 0.
+Next, we briefly recall the framework for the quantized calculus in one variable,
+as in Chapter IV of [9]. We let functions f of one real variable act as multiplication
+operators in L2 (R, ds), by
+(2.3)
+
+( f ξ )(s) := f (s) ξ (s) , ∀s ∈ R, ξ ∈ L2 (R, ds).
+
+We let FeR be the Fourier transform with respect to the character eR ( x) := e−2πix
+(2.4)
+
+FeR (ξ )( y) :=
+
+Z
+
+ξ ( x) e−2πixy dy.
+R
+
+We let 1[a,b] be the characteristic function of the interval [ a, b] ⊂ R and
+(2.5)
+
+1
+Π[a,b] := FeR 1[a,b] F−
+eR
+
+be the conjugate by the Fourier transform FeR of the multiplication operator by
+1[a,b] . Let H be the Hilbert transform H = 2 Π[0,∞] − 1 given, with care of the
+principal value, by
+(2.6)
+
+( H ξ )(s) :=
+
+1
+iπ
+
+Z
+
+ξ (t)
+dt.
+s−t
+
+D EFINITION 2.1. We define the quantized differential of f to be the operator
+(2.7)
+
+d− f := [ H, f ] = H f − f H.
+
+Thus, the quantized differential of f is given by the kernel
+i f (s) − f (t)
+.
+π
+s−t
+Definition 2.1 extends to arbitrary modulated groups C, i.e. to locally compact
+abelian groups endowed with a proper homomorphism Mod : C → R∗+ . We let
+b be the Pontrjagin dual of C endowed with
+Mod(u) = |u| for u ∈ C. We let C
+(2.8)
+
+k(s, t) =
+
+T HE SCALING H AMILTONIAN
+
+111
+
+b) act as multiplication operators on the
+its Haar measure. The elements of L∞ (C
+b). The operator H on H is given by
+Hilbert space H := L2 (C
+(2.9)
+
+−1
+H : = 2 FC 1 P FC
+− 1,
+
+where FC : L2 (C ) → H is the Fourier transform and 1 P is the multiplication by
+the characteristic function of the set P = {u ∈ C | |u| ≥ 1}. Such H plays the role
+of the Hilbert transform.
+In analogy with (2.7), we define the “quantized" differential of f as the operator
+(2.10)
+
+d− f := [ H, f ] = H f − f H.
+
+We also use the following notation whose normalization fits with (2.5) :
+(2.11)
+
+−1
+Π[a,b] := FC 1Y FC
+,
+
+for Y = {u ∈ C | e2π a ≤ |u| ≤ e2πb }.
+
+2.2. T HE H ILBERT SPACE L2 ( XS ) FOR A FINITE SET OF PLACES . In the following
+we consider the global field Q of rational numbers. In the adèle ring of Q the additive Haar measure and the Haar measure of the multiplicative group of idèles
+are mutually singular. This problem does not arise when one restricts the attention to a finite set S of places of Q. We assume that ∞ ∈ S. Let us consider the
+locally compact ring
+(2.12)
+
+A S = ∏ Qv .
+v∈ S
+
+It contains Q as a subring, using the diagonal embedding. We let Q S denote the
+subring of Q given by all rational numbers whose denominator only involves
+powers of primes p ∈ S. In other words,
+(2.13)
+
+Q S = {q ∈ Q | |q|v ≤ 1 , ∀v ∈
+/ S} .
+
+The group Q∗S of invertible elements of the ring Q S is of the form
+n
+(2.14)
+Q∗S = GL1 (Q S ) = {± p1n1 · · · pk k : p j ∈ S \ {∞} , n j ∈ Z}.
+We approximate the adèle class space by the semi-local adèle class space XS
+which is the quotient
+(2.15)
+
+XS := A S /Q∗S .
+
+The group
+(2.16)
+
+CQ,S = A∗S /Q∗S , A∗S = GL1 (A S ) = ∏ GL1 (Q p )
+p∈ S
+
+acts naturally by multiplication on the quotient XS .
+We recall from [10, 12] that the Fourier transform F on the Bruhat-Schwartz space
+S (A S ) induces a unitary operator on the Hilbert space L2 ( XS ). For each place
+v ∈ S we choose a basic character αv of Qv . This makes it possible to identify the
+locally compact abelian group Qv with its Pontrjagin dual by the pairing
+(2.17)
+
+h a, bi := αv ( ab), ∀ a, b ∈ Qv .
+
+112
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+We normalize the additive Haar measure so that it is self-dual. Then α = ∏v αv is
+a basic character of the additive group A S , and we let Fα denote the corresponding Fourier transform, acting on the space S (A S ). We refer to [10,12] for the proof
+of the following result
+L EMMA 2.2. Consider the character α = ∏v αv and the corresponding Fourier transform Fα as above. The map f 7→ Fα ( f ), for f ∈ S (A S ), extends uniquely to a unitary
+operator Fα on the Hilbert space L2 ( XS ).
+The scaling operator ϑa (λ ), for λ ∈ GL1 (A S ), is defined as
+(2.18)
+
+(ϑa (λ ) ξ )( a) = ξ (λ −1 a), ∀ a ∈ A S , ∀ξ ∈ S (A S ).
+
+It is not unitary but its module is given by the module of the modulated group
+CQ,S
+(2.19)
+
+ϑa (λ )∗ ϑa (λ ) = ϑa (λ )ϑa (λ )∗ = |λ | S .
+
+We let w be the unitary identification of L2 ( XS ) with L2 (CQ,S ) (see [12] Proposition 2.30). It intertwines the representation ϑa with the following regular representation ϑm of CQ,S
+(2.20)
+
+(ϑm (λ ) ξ )(v) := ξ (λ −1 v) ,
+
+∀ξ ∈ L2 (CQ,S ) ,
+
+by the equality
+(2.21)
+
+w ϑa (λ )w−1 = |λ |1/2 ϑm (λ ) ,
+
+∀λ ∈ CQ,S .
+
+For each place v, the multiplicative group Q∗v is a modulated group, and by
+c∗ ) that allows one to express the
+[17] there exists a unitary function uv ∈ L∞ (Q
+v
+Fourier transform Fαv relative to the character αv , as a composition of the inversion I ( f )(s) := f (s−1 ) with the multiplicative convolution operator associated
+to uv . The function uv is given by the ratio of the local factors of L-functions
+(see [17]). This classical formula extends to our context as follows. We denote by
+u the function
+(2.22)
+
+u := ∏ uv ◦ πv .
+S
+
+∗
+c∗
+[
+where πv : C
+Q,S → Qv is the projection dual to the embedding Qv ,→ CQ,S ,
+x 7→ (1, 1, . . . , x, . . . , 1) which puts x at the place v. We now have
+
+L EMMA 2.3. (see [12]) On L2 ( XS ) one has
+(2.23)
+
+Fα = w−1 ◦ I ◦ FC−1 ◦ u ◦ FC ◦ w,
+
+where FC is the Fourier transform of CQ,S and I ( f )(s) := f (s−1 ) is the inversion.
+
+T HE SCALING H AMILTONIAN
+
+113
+
+2.3. T HE SEMI - LOCAL TRACE FORMULA . As in the case of the single place ∞, we
+introduce infrared and ultraviolet cutoffs. For the infrared, we use the orthogonal
+projection PΛ onto the subspace
+(2.24)
+
+{ξ ∈ L2 ( XS ) | ξ ( x) = 0, ∀ x with | x| > Λ }.
+
+Thus, PΛ is the operator acting as multiplication by the function ρΛ , with ρΛ ( x) =
+1 for | x| ≤ Λ and ρΛ ( x) = 0 for | x| > Λ.
+We define an ultraviolet cutoff as PbΛ = Fα PΛ Fα−1 , where Fα is the Fourier transform of Lemma 2.2, which depends upon the choice of the basic character α =
+∏v αv . Then, we let
+(2.25)
+
+RΛ = PbΛ PΛ .
+
+We recall from Chapter 2 of [12] the following result.
+L EMMA 2.4. Let S 3 ∞ be as above. For any Λ > 0 there is a unitary operator
+(2.26)
+
+[
+W = WΛ : L2 ( XS ) → L2 (C
+Q,S )
+
+such that, for any h j ∈ S (CQ,S ), j = 1, 2, one has
+
+(2.27)
+
+W ϑa (h̃1 ) PbΛ PΛ ϑa (h̃2 )W ∗ =
+
+
+1 −1 −
+ĥ1 2 u d u Π[−∞, 2 log Λ ] + Π[0, 2 log Λ ] ĥ2 .
+2π
+
+2π
+
+Here h̃ j (λ ) = |λ |−1/2 h j (λ ), the operator d−u is the quantized differential of the function
+u := ∏ S uv ◦ πv of (2.22) and ĥ j is the multiplication operator by the Fourier transform
+FC ( h j ) .
+This result together with the formula
+1 −1 −
+−1 −
+(u1 u2 )−1 d−(u1 u2 ) = u−
+2 ( u1 du1 ) u2 + u2 du2
+
+allows one to compute Tr(ĥ1 u−1 d−u ĥ2 ) in (2.27) as a sum, and get
+
+
+Z 0
+|w|1/2
+1 −1 −
+u d u ĥ2 ) = ∑
+h(w)d∗ w,
+(2.28)
+Tr(ĥ1
+∗ |1 − w|
+2
+v ∈ S Qv
+where h = h1 ? h2 is such that ϑm (h) = ϑm (h1 )ϑm (h2 ). One then derives the
+following semi-local trace formula (see [10, 12])
+T HEOREM 2.5. Let A S be as above, α = ∏v∈ S αv a choice of basic character. Let f ∈
+S (CQ,S ) be a function with compact support. Then, in the limit Λ → ∞, one has
+(2.29)
+
+Tr(ϑa ( f ) RΛ ) = 2 f (1) log Λ + ∑
+
+v∈ S
+
+Z 0
+Q∗v
+
+f ( w−1 ) ∗
+d w + o(1).
+|1 − w|
+
+114
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+Note that ϑa ( f ) = f (λ )ϑa (λ )d∗ λ corresponds by (2.21) to ϑm (h) = h(λ )ϑm (λ )d∗ λ,
+where one has h(λ ) = |λ |1/2 f (λ ). In terms of the test function h the terms in the
+right hand side of (2.29) take the more symmetric form
+R
+
+(2.30)
+
+R
+
+f ( w−1 ) ∗
+d w=
+Q∗v |1 − w |
+
+Z 0
+
+|w|1/2
+h ( w−1 ) d∗ w =
+Q∗v |1 − w |
+
+Z 0
+
+|w|1/2
+h(w) d∗ w.
+Q∗v |1 − w |
+
+Z 0
+
+3. SONINE SPACES AND THE ATTEMPT OF X.-J. LI
+
+In [7], J. F. Burnol found a spectral realization of the zeros of zeta, closely related
+to the spectral realization of [10], but using the Sonine spaces implemented by L.
+de Brange in his approach to RH. Motivated by the role of Sonine spaces, as well
+as his own work on the semi-local trace formula [18], X.-J. Li made, in early 2019,
+a brave attempt at proving the Weil positivity which is equivalent to RH (see [5]).
+Rather than introducing a cutoff for large q and p as in [10], he prescribes a cutoff
+near zero, i.e. for small q and p. In fact he does this in a balanced way i.e. say
+requiring q > Λ and p > Λ −1 . The coincidence between this prescription and the
+above relation between the “absorption" and "emission pictures" is very striking
+since the proposed cutoff near zero corresponds exactly to Figures 5, 6, 7.
+This attempt though fails. Nonetheless it is worthwhile to review it in some details and also to understand what is still missing, while retaining the interesting
+part. There are two basic facts on which Li’s attempt is based:
+FACT 3.1. Let A, B be positive bounded operators in a Hilbert space H and assume that AB is of trace class, then Tr( AB) ≥ 0.
+Proof. Let A1/2 be the square root of A. Then, since in general the spectrum of a
+product ST is the same as the spectrum of TS except possibly for 0, one obtains,
+denoting Spec∗ the non-zero part of the spectrum
+Spec∗ ( AB) = Spec∗ ( A1/2 BA1/2 ) ≥ 0.
+This shows that all eigenvalues of the trace class operator AB are positive, and
+one concludes using Lidskii’s theorem.
+FACT 3.2. The Riemann-Weil explicit formula applied to a test function h ∈ S (CQ )
+with compact support only involves finitely many places.
+Proof. By hypothesis the function h only depends on the modulus. The contribution of each prime p only involves the value of h on non-zero powers of p so that
+only finitely many primes contribute.
+The natural idea then, is to use the semi-local framework of [10] recalled in Section 2 and more precisely formula (2.28) to show an inequality of the form
+(3.1)
+
+Z 0
+
+|w|1/2
+
+∑ Q∗ |1 − w| h(w)d∗ u ≤ 0,
+
+v∈ S
+
+v
+
+h = h1 ? h2 , h2 ( w ) : = h1 ( w−1 ) .
+
+T HE SCALING H AMILTONIAN
+
+115
+
+Note that by construction the operators ĥ j given as the multiplication operators
+by the Fourier transform FC (h j ) fulfill, when h2 = h∗1 as in (3.1), the following
+FACT 3.3. When h2 = h∗1 , the operator ĥ1 ĥ2 is positive.
+Now, using the cyclic property of the trace and the commutativity of the algebra
+of multiplication by functions, one gets from (2.28) the following equality
+
+
+Z 0
+|w|1/2
+1 −1 −
+∗
+(3.2)
+∑ ∗ |1 − w| h(w)d w = Tr ĥ1 ĥ2 ( 2 u d u) .
+v ∈ S Qv
+The idea of X.-J. Li is to replace the operator RΛ = PbΛ PΛ by the positive operator
+T = P P̂P, where P is the projection corresponding to the cutoff near zero, i.e.
+restricting to |w| ≥ 1. One gets, using the notations of (2.28), that
+T = Pu∗ (1 − P)uP.
+One sees that Fact 3.1 would imply (3.1) provided one could prove that
+1
+Pu∗ (1 − P)uP = − u−1 d−u.
+2
+As we shall see this is equivalent to controlling the sign of the operator u−1 d−u.
+The quantized calculus gives in fact the following general criterion to control the
+sign of the “logarithmic derivative" u−1 d−u of a unitary u.
+L EMMA 3.4. Let H be a Hilbert space, u a unitary operator and F = 2P − 1, where P
+− : = [ F, u ], the following three conditions are
+is an orthogonal projection. Then, with du
+equivalent
+(i) Pu∗ (1 − P)uP = − 12 u−1 d−u
+(ii) u−1 d−u ≤ 0
+(iii) Pu = PuP
+Proof. (i ) ⇒ (ii ) since Pu∗ (1 − P)uP is a positive operator.
+(ii ) ⇒ (iii ). If u−1 d−u ≤ 0 one has u∗ [ P, u] ≤ 0 and u∗ Pu ≤ P, thus Pu∗ P = u∗ P
+since the range of u∗ P is inside P. Thus, taking adjoints, one obtains Pu = PuP.
+(iii ) ⇒ (i ). Assume Pu = PuP. Taking adjoints one derives Pu∗ P = u∗ P, and
+thus the projection Q = u∗ Pu is less than P, one has PQP = Q and
+1
+Pu∗ (1 − P)uP = P(1 − Q) P = P − Q = −u∗ [ P, u] = − u−1 d−u
+2
+which proves (i ).
+When working with the quantized calculus in one variable one gets the following
+C OROLLARY 3.5. Let H and F be as in Definition 2.1, and u a unitary function. Then
+the equivalent conditions of Lemma 3.4 hold if and only if u∗ is an inner function in the
+sense of Beurling [3].
+
+116
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+Proof. The function u∗ is inner if and only if it preserves the subspace which is the
+range of the projection P, with F = 2P − 1. Then Lemma 3.4 gives the required
+equivalence.
+Equipped with Lemma 3.4 and Corollary 3.5, we can now understand why the
+direct approach proposed by X.-J. Li fails to prove Weil’s positivity. Indeed, in
+our case and taking a single place to simplify the discussion, the issue is whether
+the functions u∗v , where uv is given by the ratio of local factors on the critical line,
+happen to be inner functions. In fact we can ask if uv belongs to one of the Hardy
+spaces H∞ (C±1 ) of the half plane
+2
+
+C±1 := { z ∈ C | ±<( z) > 1/2}.
+2
+
+At a finite prime p the function u p is given by the ratio of local factors
+u p (s) :=
+
+(3.3)
+
+1
+1 − p−(1− z)
+, z = + is.
+−
+z
+1−p
+2
+
+It is a function of modulus 1 for s ∈ R. The zeros of the denominator 1 − p− z give
+poles,
+2πi
+1 − p− z = 0 ⇐⇒ z ∈
+Z
+log p
+which show that in the left half-plane the function is not holomorphic. On the
+other hand in the right half-plane the denominator does not vanish and the function is holomorphic. However it is not bounded since for real values of z it behaves as follows
+1 − p−(1− z)
+∼ − p z−1 , z → ∞.
+1 − p− z
+We now look at the archimedean place. There, the ratio of local factors is
+
+1− z
+z
+π 2 − 2 Γ 2z
+1
+
+ .
+(3.4)
+u∞ (s) := φ( + is), φ( z) =
+z
+2
+Γ 1−
+2
+The function φ( z) is of modulus 1 for z = 12 + is, and has poles in the left halfplane. It is holomorphic in the right half-plane <( z) ≥ 21 , however it is not
+bounded there. In fact one has using the complement formula
+Γ ( x)Γ (1 − x) =
+
+π
+π
+⇒
+= Γ ( x)sin(π x)
+sin(π x)
+Γ (1 − x)
+
+with x = 12 (1 + z), that
+φ( z) = π
+
+− 21 − z
+
+Γ
+
+z
+2
+
+
+Γ
+
+1+z
+2
+
+
+
+
+
+1+z
+sin π
+2
+
+
+.
+
+T HE SCALING H AMILTONIAN
+
+117
+
+Thus even on the real axis the function φ( z) that vanishes at odd integers takes
+very large values on even integers such as
+
+φ(20) =
+
+1856156927625
+∼ 26.4562.
+8π 20
+
+Thus we conclude that none of the functions uv (s)∗ fulfills the requirement of
+Corollary 3.5. We finally remark that, a priori, the inequality (3.1) could still hold
+even though the above described attempt to prove it fails. In fact one has the
+following
+FACT 3.6. The inequality (3.1) does not hold in general.
+Proof. We consider the simplest case when S is reduced to the single archimedean
+place. Inequality (3.1) would then imply, using the expression of the left hand
+side in terms of the logarithmic derivative of u∞ (s), that this logarithmic derivative (multiplied by i) has a constant sign. But u∞ (s) = e2i θ (s) where θ (s) is the
+Riemann-Siegel angular function (see [12] Chapter II, §5.1, Lemma 2.20). Thus
+the inequality (3.1) would imply that the Riemann-Siegel angular function θ (s) is
+a monotonic function, but by looking at its graph (Figure 8) one sees that it is not
+the case.
+
+20
+
+10
+
+-40
+
+20
+
+-20
+-10
+
+-20
+
+F IGURE 8. Riemann-Siegel function.
+
+40
+
+118
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+4. AN OPERATOR THEORETIC PROBLEM
+
+By a result of A. Weil (see [5]) RH is equivalent to the negativity of the right hand
+side of the explicit formulas for all test functions f of the form
+f ( x) =
+
+Z ∞
+0
+
+g( xy) g( y)dy,
+
+Z ∞
+0
+
+g( x)dx = 0,
+
+Z ∞
+0
+
+g( x)d∗ x = 0.
+
+One may moreover restrict attention to test functions g with compact support
+(see [4]). With these notations, the right hand side of the explicit formulas corresponds, in the more general case of L-functions, to the terms in (2.29). To pass to
+the more symmetric form (2.30), one then lets h1 ( x) = x1/2 g( x), thus getting
+f ( x) =
+
+Z ∞
+0
+
+g( xy) g( y)dy = x−1/2
+
+Z ∞
+0
+
+h1 ( xy)h1 ( y)d∗ y.
+
+Thus, with h2 = h∗1 , so that h2 ( x) := h1 ( x−1 ) one obtains
+h( x) = x1/2 f ( x) =
+
+Z ∞
+0
+
+h1 ( xy)h1 ( y)d∗ y =
+
+Z ∞
+0
+
+h1 ( xy−1 )h1 ( y−1 )d∗ y = (h1 ? h2 )( x).
+
+Hence Weil’s positivity corresponds well to (3.1) but one needs to impose the two
+conditions
+(4.1)
+
+Z ∞
+0
+
+h1 ( x) x±1/2 d∗ x = 0.
+
+The above discussion suggests the following
+C ONJECTURE 4.1. The semi-local operator theoretic framework with S := {∞} ∪ { p |
+p < q} suffices to prove the Weil inequality for all test functions with support in the
+interval (q−1/2 , q1/2 ).
+4.1. P OISSON F ORMULA AND BASIC CHARACTERS . The Poisson summation formula gives the conceptual reason why the ratio of local factors on the critical
+line appear when writing the Fourier transform as the composition of inversion
+with a multiplicative convolution. To understand this point we start with a single place, i.e. we take S = {∞}, and proceed at the formal level not caring too
+much about some technical points. One introduces the following operator acting
+on even functions f ∈ S (R) satisfying f (0) = fˆ(0) = 0,
+(4.2)
+
+E( f )( x) := | x|1/2 ∑ f (nx).
+n>0
+
+The Poisson summation formula then asserts that, provided one takes the Fourier
+transform FeR associated to the basic character eR for which the lattice Z ⊂ R is
+self-dual (i.e. the basic character eR ( x) = e−2πix used in (2.4)), one has
+(4.3)
+
+E(FeR ( f ))( x) = E( f )( x−1 ) ,
+
+∀ x ∈ R∗+ .
+
+We define the duality hR∗+ , Ri by the bicharacter
+(4.4)
+
+µ (v, s) = v−is , ∀v ∈ R∗+ , s ∈ R ,
+
+T HE SCALING H AMILTONIAN
+
+119
+
+so that the Fourier transform Fµ : L2 (R∗+ ) → L2 (R) is given by
+
+Fµ ( f )(s) :=
+
+(4.5)
+
+Z ∞
+0
+
+f (v)v−is d∗ v .
+
+When reading (4.2) in the dual of the multiplicative group R∗+ , the multiplication
+of the variable x 7→ nx which is a translation in R∗+ becomes the multiplication of
+the function by nis . With f n ( x) := x1/2 f (nx) one then has
+
+Fµ ( f n )(s) =
+
+Z ∞
+0
+
+f (nv)v1/2−is d∗ v = n−(1/2−is) Fµ ( f )(s),
+
+so that, at this formal level, we obtain
+
+Fµ (E( f ))(s) = ζ (1/2 − is)Fµ ( f )(s).
+Thus we may think of E, when read in Fourier, as multiplication by ζ (1/2 −
+is). The fact that E can be viewed, in Fourier, as a multiplication operator is not
+surprising since by construction E commutes with scaling. Another map which
+commutes with scaling is the composite I ◦ FeR of the inversion I with the additive
+Fourier transform FeR . Thus this composition is given, when read in Fourier, as
+the multiplication by a function u which is of modulus 1 due to unitarity. The
+point then is that the Poisson Formula (4.3) states that the map E conjugates FeR
+with the inversion I and one obtains, still at this formal level, that
+u(s) = ζ (1/2 − is)/ζ (1/2 + is).
+By the functional equation this quotient is the ratio (3.4) of archimedean local
+factors.
+This discussion adapts to the semi-local case provided one replaces the summation over Z in the Poisson Formula by the summation over the discrete subgroup
+(2.13). Since Q S is a ring, this summation is invariant under multiplication by
+the group Q∗S of units. Moreover, every element q ∈ Q S is uniquely a product
+q = um, where u ∈ Q∗S is a unit and m ∈ MS is an element of the multiplicative
+monoid of positive integers prime to all p ∈ S. The role of the map E of (4.2) is
+now played by
+E( f )( x) := | x|1/2
+
+(4.6)
+
+∑ f (mx).
+
+m∈ MS
+
+When computed in Fourier as above but now involving characters of the group
+CQ,S , (4.6) produces sums for L functions which reduce, for the trivial character,
+to
+∑ m−1/2+is = ζ (1/2 − is) ∏ (1 − p−1/2+is ).
+MS
+
+p∈ S
+
+Thus we see, heuristically as above, that the Poisson Formula gives the conceptual explanation for Lemma 2.3. There is in general a choice involved for basic
+additive characters α S of A S such that Q S is a self-dual lattice, but this ambiguity
+disappears when working in the quotient XS = A S /Q∗S . In particular, the Fourier
+transform Fα is independent of such choices. Indeed, the Fourier transforms of
+
+120
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+the same function for different choices of characters for which Q S is a self-dual lattice are related by the action (by scaling) of the group Q∗S and thus their difference
+vanishes in the space L2 ( XS ). The Weil inequality needs the above normalization
+of additive characters and this indicates that the Poisson Formula should play a
+key role in the solution of the Conjecture 4.1.
+In fact, there is another striking reason why the Poisson Formula is intimately
+related to Conjecture 4.1. It is the construction, due to J.P. Kahane (see [8]), of
+non-trivial elements of the Sonine space, i.e. of functions which vanish identically
+near the origin as well as their Fourier transform. Let Π := ∑n∈Z δn be the Poisson distribution, which is the sum of Dirac distributions on the integers. Then
+the tempered distribution D (Π ) has the above vanishing property, when D is a
+differential operator whose range D (S (R)) consists of functions which fulfill the
+two conditions
+(4.7)
+
+f (0) = fˆ(0) = 0.
+
+The simplest choice for D is D ( f )( x) := x f 00 ( x), since one checks by integration by parts that the integral of D ( f ) vanishes. For any such choice of D the
+distribution D (Π ) has the required Sonine support property. One then obtains
+a solution in Schwartz space by applying to D (Π ) the smoothing by convolution with a smooth function φ with small support near zero, and multiplication by the Fourier transform of φ. In fact the above choice of the differential
+operator D , though simple, is not symmetric with respect to Fourier transform.
+One checks that the simple function D := Du2 + Du of our scaling Hamiltonian
+Du ( f ) x) := x f 0 ( x) does indeed work, commutes with Fourier transform, and one
+gets
+(4.8)
+
+D ( f )( x) = x2 f 00 ( x) + 2x f 0 ( x).
+
+One checks directly that the range D (S (R)) consists of functions which fulfill the
+two conditions (4.7). All this construction extends verbatim to the semi-local case.
+R EMARK 4.2. In an intriguing manner the adjoint expression ∆2 := Du2 − Du
+provides the tropical structure of the Scaling Site as explained in [14], equation
+(1).
+4.2. T IME VERSUS E NERGY. In the approach to RH advocated by M. Berry and
+J. Keating [1, 2], one looks for an interpretation of the zeros of the Riemann zeta
+function as energy levels of a quantum system. In our own approach however
+the zeros appear naturally as “times" i.e. in a dual manner (see [10]). While this
+fact might look perplexing at first sight, we shall briefly explain here below why
+this dual point of view is in fact more natural in view of the generalization of the
+Riemann zeta function in the framework of global fields. Indeed, in this set-up
+one meets much simpler avatars of the Riemann zeta function. They are associated to a curve C over a finite field Fq . It turns out that these analogues of the
+Riemann zeta function ζ (s) are in fact functions of the form L(q−s ), where q is the
+
+T HE SCALING H AMILTONIAN
+
+121
+
+cardinality of the finite field over which the curve is defined. Moreover, L( z) is
+a rational fraction and its zeros are determined by the zeros z j of the polynomial
+numerator P( z) whose degree is twice the genus g of the curve. By a famous theorem of A. Weil, all z j are on the circle of radius q−1/2 . Thus the zeros s of L(q−s )
+are all of real part <(s) = 21 and their imaginary parts =(s) are of the form
+=(s) =
+
+
+1
+α + 2πk , j ∈ {1, . . . 2g}, k ∈ Z,
+log q j
+
+where the −α j are the arguments of the z j and are determined only modulo 2π.
+This type of distribution of numbers, being periodic, is very natural as a distribution in “time", not in “energy".
+4.3. A NALYSIS AND G EOMETRY. The above discussion does not dismiss the nagging thought we started with. In fact there is a real possibility that one could
+find a way to solve Conjecture 4.1, by first concentrating on the simplest case of
+a single place and finding a way to make use of the support condition on the
+test function. A scary aspect of this strategy is that Weil’s positivity is very much
+dependent on the careful choices of principal values and it is difficult to avoid
+computational mistakes. This analytical approach is in this respect, by its vulnerability, quite different from the geometric approach that we have gradually
+developed in [13, 15]. While the adèle class space is clearly implicit in the semilocal analytic approach described above, its geometric structure is only unveiled
+at the global level and it reveals its conceptual meaning as the points of the Scaling Site, where the action of the scaling group reveals itself as the action of the
+Frobenius.
+
+REFERENCES
+[1] M. Berry and J. Keating, H = qp and the Riemann zeros, “Supersymmetry and Trace
+Formulae: Chaos and Disorder”, edited by J.P. Keating, D.E. Khmelnitskii and I.V.
+Lerner, Plenum Press. Link to download the paper
+[2] M. Berry and J. Keating, The Riemann zeros and eigenvalue asymptotics. SIAM Rev. 41
+(1999), no. 2, 236–266.
+[3] A. Beurling, On two problems concerning linear transformations in Hilbert space. Acta
+Mathematica 81, (1948) 239–255.
+[4] E. Bombieri, J. Lagarias, Complements to Li’s criterion for the Riemann hypothesis. J. Number Theory 77 (1999), no. 2, 274–287.
+[5] E. Bombieri, The Riemann hypothesis. The millennium prize problems, 107–124, Clay
+Math. Inst., Cambridge, MA, 2006.
+[6] J. F. Burnol, Sur les formules explicites. I. Analyse invariante [On explicit formulae. I.
+Invariant analysis] C. R. Acad. Sci. Paris Sér. I Math. 331 (2000), no. 6, 423–428.
+
+122
+
+A LAIN C ONNES AND C ATERINA C ONSANI
+
+[7] J. F. Burnol, Sur certains espaces de Hilbert de fonctions entières, liés à la transformation
+de Fourier et aux fonctions L de Dirichlet et de Riemann. (French) [Some Hilbert spaces
+of entire functions associated with the Fourier transform and Dirichlet and Riemann
+L-functions] C. R. Acad. Sci. Paris Sér. I Math. 333 (2001), no. 3, 201–206.
+[8] J. F. Burnol, Sur les espaces de Sonine associés par de Branges à la transformation de Fourier.
+C. R. Acad. Sci. Paris, Ser. I 335 (2002) 689–692.
+[9] A. Connes, Noncommutative geometry, Academic Press (1994).
+[10] A. Connes, Trace formula in noncommutative geometry and the zeros of the Riemann zeta
+function. Selecta Math. (N.S.) 5 (1999), no. 1, 29–106.
+[11] A. Connes, Formules explicites, formules de trace et réalisation spectrale des zéros de la
+fonction zéta, Course at Collège de France, 1999.
+[12] A. Connes, M. Marcolli, Noncommutative Geometry, Quantum Fields, and Motives,
+American Mathematical Society, 2008.
+[13] A. Connes, An essay on the Riemann Hypothesis. In “Open problems in mathematics",
+Springer (2016), volume edited by Michael Rassias and John Nash.
+[14] A. Connes, C. Consani, Geometry of the Scaling Site. Selecta Math. (N.S.) 23 (2017), no.
+3, 1803–1850.
+[15] A. Connes, C. Consani, The Riemann-Roch strategy, complex lift of the Scaling Site, To appear on “Advances in Noncommutative Geometry, On the Occasion of Alain Connes’
+70th Birthday”, Chamseddine, A., Consani, C., Higson, N., Khalkhali, M., Moscovici,
+H., Yu, G. (Eds.), Springer (2019). Available at http://arxiv.org/abs/1805.10501.
+ISBN 978-3-030-29596-7.
+[16] A. Connes, C. Consani, On Absolute Algebraic Geometry preprint (2019). Available at
+https://arxiv.org/abs/1909.09796
+[17] J. Tate, Fourier analysis in number fields and Hecke’s zeta-function, Ph.D. Thesis, Princeton, 1950. Reprinted in J.W.S. Cassels and A. Frölich (Eds.) “Algebraic Number Theory”, Academic Press, 1967.
+[18] Li, Xian-Jin, A generalization of A. Connes’ trace formula. J. Number Theory 130 (2010),
+no. 2, 386–430.
+A LAIN C ONNES , C OLLÈGE DE F RANCE , IHES AND O HIO S TATE U NIVERSITY
+E-mail address: alain@connes.org
+C ATERINA C ONSANI , D EPARTMENT OF M ATHEMATICS , T HE J OHNS H OPKINS U NIVER SITY, B ALTIMORE MD, 21218, USA
+E-mail address: kc@math.jhu.edu
+
+

@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Step 65: Exact Confinement Versus Asymptotic Budgets}
+\author{Formed-Layer Membrane Theory Working Note}
+\date{May 2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{remark}{Remark}
+
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\K}{\mathsf K}
+\newcommand{\ThetaM}{\Theta^-}
+\newcommand{\EF}{E_{\rm EF}}
+\newcommand{\ES}{E_{\rm src}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\PSD}{\mathbb S_+}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The previous root-composite confinement theorem gives quantitative bounds of the form
+\[
+  \AZ \preceq
+  (1+t)(\Lambda^{-1}\Theta_0^-+E_{\rm src})
+  +(1+t^{-1})E_{\rm EF}.
+\]
+If the right-hand side tends to zero along a strict-extension ladder, does this give exact zero confinement, or only asymptotic evidence?
+
+This note separates three cases.
+\begin{enumerate}[label=(\roman*)]
+\item A fixed zero-displacement ledger is squeezed by a sequence of shrinking budgets. Then exact confinement follows, even without finite termination.
+\item A moving/truncated ledger is squeezed at each stage. Then exact confinement does not follow unless a tail/exhaustivity record is also squeezed.
+\item A completion process has decreasing defect but no finite accepted stage. This is not, by itself, a proof of exact confinement; it is only an infinite improvement record unless it supplies a fixed-ledger or exhaustive squeeze.
+\end{enumerate}
+
+\section{Fixed-ledger squeeze}
+
+\begin{lemma}[positive squeeze]
+Let $A\succeq0$ and $B_n\succeq0$ be finite-dimensional positive semidefinite matrices. If
+\[
+  A\preceq B_n\quad\text{for all }n
+\]
+and
+\[
+  \tr B_n\to0,
+\]
+then $A=0$.
+\end{lemma}
+
+\begin{proof}
+Since $0\preceq A\preceq B_n$, we have $0\le \tr A\le \tr B_n$ for every $n$. Letting $n\to\infty$ gives $\tr A=0$. A positive semidefinite matrix with zero trace is zero.
+\end{proof}
+
+\begin{theorem}[exact confinement from asymptotic fixed-ledger squeeze]
+Let $\AZ\succeq0$ be a fixed zero-side anti-invariant displacement matrix. Suppose that for every $n$ there is $t_n>0$ such that
+\[
+  \AZ
+  \preceq
+  B_n
+  :=(1+t_n)(\Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n})
+  +(1+t_n^{-1})E_{{\rm EF},n},
+\]
+and
+\[
+  \tr B_n\to0.
+\]
+Then
+\[
+  \AZ=0.
+\]
+If the anti-invariant readout separates the duality fixed locus, then all visible zero/root mass lies on the fixed locus.
+\end{theorem}
+
+\begin{proof}
+Apply the positive squeeze lemma to $A=\AZ$ and $B_n$.
+If $\AZ=0$, then for every anti-invariant coordinate $y$, the visible square displacement of the zero ledger in direction $y$ is zero. If the readout separates the fixed locus, the only visible zero/root mass with zero anti-invariant displacement is mass supported on $\Fix(J)$.
+\end{proof}
+
+\begin{corollary}[optimized scalar obstruction]
+Let
+\[
+  a_n=\tr(\Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n}),
+  \qquad
+  b_n=\tr E_{{\rm EF},n}.
+\]
+Then
+\[
+  \inf_{t>0}\tr B_n=(\sqrt{a_n}+\sqrt{b_n})^2.
+\]
+In particular, if $a_n\to0$ and $b_n\to0$, then $\AZ=0$.
+\end{corollary}
+
+\begin{proof}
+Minimize $(1+t)a_n+(1+t^{-1})b_n$ over $t>0$. The minimizer is $t=\sqrt{b_n/a_n}$ when $a_n,b_n>0$, and the formula follows by continuity in degenerate cases.
+\end{proof}
+
+\section{Why the monotone nonterminating example is different}
+
+\begin{warning}[decreasing defect is not fixed-ledger squeeze]
+The sequence
+\[
+  K_n=1+\frac1n,
+  \qquad
+  \Theta=1,
+\]
+has positive defect
+\[
+  K_n-\Theta=\frac1n\to0,
+\]
+but no finite $n$ satisfies $K_n\le\Theta$. This does not contradict exact confinement from fixed-ledger squeeze. In the squeeze theorem the same fixed object $A$ satisfies
+\[
+  A\preceq B_n\to0
+\]
+for every $n$. In the monotone nonterminating example, the object being tested changes with $n$ and never enters the accepted region at a finite stage.
+\end{warning}
+
+\begin{proposition}[two exact routes]
+There are two distinct ways to obtain exact zero confinement.
+\begin{enumerate}[label=(\alph*)]
+\item Finite completion: for some $N$, the completed record proves $\AZ\preceq0$, hence $\AZ=0$.
+\item Infinite fixed-ledger squeeze: for all $n$, the same $\AZ$ satisfies $\AZ\preceq B_n$, with $B_n\to0$ in trace or operator norm.
+\end{enumerate}
+Finite termination is sufficient but not necessary. A nonterminating asymptotic ladder can still prove exact confinement if it squeezes a fixed/exhaustive zero ledger.
+\end{proposition}
+
+\section{Moving ledgers and tail/exhaustivity}
+
+\begin{warning}[moving target failure]
+Bounds of the form
+\[
+  \mathsf A_{Z,n}\preceq B_n,
+  \qquad
+  B_n\to0,
+\]
+do not imply $\AZ=0$ for a larger limiting zero ledger $\AZ$ unless the relation between $\mathsf A_{Z,n}$ and $\AZ$ is audited. A sequence can squeeze the visible/truncated part while missing a hidden tail.
+\end{warning}
+
+\begin{theorem}[exhaustive squeeze]
+Let $\AZ\succeq0$ be a fixed trace-class displacement ledger. Suppose there are visible sub-ledgers $\mathsf A_{Z,n}\succeq0$ and tail budgets $T_n\succeq0$ such that
+\[
+  \AZ \preceq \mathsf A_{Z,n}+T_n,
+\]
+\[
+  \mathsf A_{Z,n}\preceq B_n,
+\]
+and
+\[
+  \tr(B_n+T_n)\to0.
+\]
+Then $\AZ=0$.
+\end{theorem}
+
+\begin{proof}
+We have $0\preceq\AZ\preceq B_n+T_n$ for all $n$. The positive squeeze lemma gives $\AZ=0$.
+\end{proof}
+
+\begin{corollary}[nested exhaustive squeeze]
+If $\mathsf A_{Z,n}\nearrow\AZ$ in trace and $\mathsf A_{Z,n}\preceq B_n$ with $\tr B_n\to0$, then $\AZ=0$.
+\end{corollary}
+
+\begin{proof}
+For fixed $m$ and all $n\ge m$, $\mathsf A_{Z,m}\preceq \mathsf A_{Z,n}\preceq B_n$. Hence $\mathsf A_{Z,m}=0$ by squeezing. Since every $m$ is zero and $\mathsf A_{Z,n}\nearrow\AZ$, we get $\AZ=0$.
+\end{proof}
+
+\section{RH-facing interpretation}
+
+For the RH root-composite route, the fixed-locus involution is
+\[
+  J(s)=1-\overline{s},
+\]
+with fixed locus
+\[
+  \Re(s)=\frac12.
+\]
+The exact zero-confinement route can be stated as follows.
+
+\begin{theorem}[RH-shaped exact confinement criterion]
+Assume a completed RH square ledger supplies:
+\begin{enumerate}[label=(O\arabic*)]
+\item a fixed or exhaustively visible zero-side anti-invariant displacement ledger $\AZ$;
+\item completed explicit-formula domination
+\[
+  \AZ\preceq(1+t_n)\K_n^-+(1+t_n^{-1})E_{{\rm EF},n};
+\]
+\item anti-invariant carrier budget collapse
+\[
+  \K_n^-\preceq \Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n};
+\]
+\item an optimized trace budget
+\[
+  \tr\left[(1+t_n)(\Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n})+(1+t_n^{-1})E_{{\rm EF},n}\right]\to0;
+\]
+\item null-mode legality, zero visibility/exhaustivity, and no-smuggling/nonclaim records.
+\end{enumerate}
+Then the visible zero ledger is supported on $\Fix(J)$. In RH language, every visible nontrivial zero represented by the ledger lies on the critical line.
+\end{theorem}
+
+\begin{remark}[answer to the finite-termination question]
+The zeta strict-extension ladder does not need to terminate in finitely many steps if it proves a fixed/exhaustive squeeze. Finite termination and infinite squeezing are different proof shapes. What is not enough is a merely decreasing finite-stage defect with moving ledgers, missing tails, or no uniform domination of the same zero-side object.
+\end{remark}
+
+\section{Failure ledger}
+If exact confinement is not obtained, the obstruction must be charged to one of:
+\begin{enumerate}[label=(F\arabic*)]
+\item no fixed/exhaustive zero-side ledger;
+\item explicit-formula domination is only trace-level or has nonvanishing $E_{\rm EF}$;
+\item character/source coercivity has bounded $\Lambda_n$ or nonvanishing $E_{\rm src}$;
+\item anti-invariant source frame misses a character direction;
+\item null-mode legality fails;
+\item zero visibility/exhaustivity fails;
+\item the proof gives only finite-stage improvement $K_n\downarrow\Theta$ but no fixed-object squeeze.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Mz}{M_\zeta}
+\newcommand{\Uinf}{\mathcal U_\infty}
+
+\title{Step 176: Branch C Full-Carrier Foreclosure}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{foreclosure\_verdict = V\_branch\_c\_foreclosed\_generic}.}
+\]
+
+The word ``generic'' is used in the diagnostic cascade sense: the obstruction
+has now been observed at multiple zeta zeros and for multiple legal Burnol
+generators.  It is not an open-dense theorem on the full legal class.
+
+\section{Inherited Numerical Method}
+
+Step 173 supplied the operational identity
+\[
+K_\infty^{\rm op}(s,s')
+=\delta(\tau-\tau')
+-\frac{\sin(\lambda(\tau-\tau'))}{\pi(\tau-\tau')}
+-\sum_{n\ge0}\Psi_n^\lambda(s)\overline{\Psi_n^\lambda(s')}.
+\]
+Step 174 gave
+\[
+L_{\rho,0}(G)
+=-\int_{\mathbb R}
+\frac{\sin(\gamma-u)}{\pi(\gamma-u)}
+\zeta(1/2+iu)G(1/2+iu)\,du
+-\sum_{n\ge0}\Psi_n(\rho)J_n
+\]
+for \(\rho=1/2+i\gamma\), because the delta term cancels at zeta zeros.
+Step 175 evaluated the first datum
+\[
+L_{\rho_1,0}(G_*)
+=0.12146653476134234-0.08985731971133760\,i
+\]
+with error radius \(1.9648066412630187\cdot10^{-4}\) and lower bound
+\[
+|L_{\rho_1,0}(G_*)|\ge0.1508944091096583.
+\]
+
+This step uses the same settings:
+\[
+\lambda=1,\quad U=200,\quad h=0.05,\quad \texttt{mpmath.zeta precision}=50,
+\]
+Gauss--Legendre quadrature for \(G\), and sinc-kernel diagonalization on
+\([-1,1]\) for the \(\Psi_n\) basis.
+
+\section{Confirmation Data}
+
+The additional legal generator \(G'_*\) uses centers
+\[
+2,\quad 5/2,\quad 3,
+\]
+with \(\epsilon=1/4\), and coefficients chosen by the same two-moment system
+so that
+\[
+G'_*(0)=G'_*(1)=0.
+\]
+The numerical residuals are
+\[
+G'_*(0)=2.7755575615628914\cdot10^{-17},
+\qquad
+G'_*(1)=2.7755575615628914\cdot10^{-17}.
+\]
+
+\[
+\begin{array}{c|c|c|r|r|r}
+\toprule
+\rho & G & L_{\rho,0}(G) & |L| & \text{error} & \text{lower bound}\\
+\midrule
+\rho_2 & G_* &
+0.16442101662000874-0.027105022872143426\,i &
+0.16664019014408440 &
+1.9290105611310254\cdot10^{-4} &
+0.16644728908797130\\
+\rho_3 & G_* &
+-0.06557366346002169+0.08988786620051682\,i &
+0.11126425225403799 &
+1.8585726353641995\cdot10^{-4} &
+0.11107839499050157\\
+\rho_1 & G'_* &
+0.20421356560997495-0.07350308391838643\,i &
+0.21703889910486759 &
+8.4315870631991870\cdot10^{-5} &
+0.21695458323423561\\
+\bottomrule
+\end{array}
+\]
+
+All confirmation values are separated from zero by margins far exceeding their
+error radii.
+
+\section{No-Go Theorem}
+
+\begin{theorem}[Branch C full-carrier ZI-COV(i) foreclosure]
+On the inherited Burnol/Sonine pulled-evaluator carrier, under the standard
+log-Mellin/Fourier normalization for \(\Uinf\) and \(\lambda=1\), the Branch C
+full-carrier ZI-COV(i) route is foreclosed.  More precisely, there exist
+explicit legal Burnol generators and nontrivial zeta-zero labels
+\((\rho,k)=(\rho_j,0)\) for which
+\[
+L_{\rho,0}(G)
+=\langle \Mz G,\Psym y_{\rho,0}\rangle
+= (\Psym\Mz G)(\rho)
+\ne0.
+\]
+Consequently, the full-carrier identity
+\[
+\Psym\Mz G=\Mz A_\infty G
+\]
+for a bounded full-carrier \(A_\infty\) cannot hold on the full legal Burnol
+class.  Step 170's zero-free output subclass remains the valid scope of
+ZI-COV(i).
+\end{theorem}
+
+\begin{proof}
+Step 173 gives the operational identity for \(\Psym\).  Step 174 converts the
+zero-evaluator pairing to the computable formula
+\[
+L_{\rho,0}(G)=-I_{\rm sinc}-\sum_n\Psi_n(\rho)J_n.
+\]
+Step 175 supplies one certified nonzero datum at \((\rho_1,0,G_*)\).  This
+step supplies three further nonzero data:
+\[
+(\rho_2,0,G_*),\qquad
+(\rho_3,0,G_*),\qquad
+(\rho_1,0,G'_*).
+\]
+If full-carrier ZI-COV(i) held, then for every legal \(G\)
+\[
+\Psym\Mz G=\Mz A_\infty G.
+\]
+At a zeta zero \(\rho\), the right side has value
+\[
+(\Mz A_\infty G)(\rho)=\zeta(\rho)(A_\infty G)(\rho)=0
+\]
+whenever \(A_\infty G\) is a regular legal output at the zero.  The displayed
+nonzero values of \(L_{\rho,0}(G)=(\Psym\Mz G)(\rho)\) contradict this
+full-carrier route.
+
+Finally, if the normalization is changed by a unitary map \(W\) that is
+unitarily equivalent to the standard log-Mellin/Fourier convention, then
+\[
+\langle f,\Psym y\rangle
+=\langle Wf,W\Psym y\rangle
+\]
+and zero/nonzero status of the matrix element is preserved.  Such a
+normalization may alter displayed magnitudes but not the obstruction itself.
+\end{proof}
+
+\section{Scope and Nonclaim}
+
+This theorem forecloses only the Branch C full-carrier ZI-COV(i) route.  It
+does not close \(\Xi_{\mathrm{BC}}\), does not close Branch A, does not close
+Branch B, and does not close any Hecke branch.  It does not prove RH and does
+not extend beyond the inherited normalization or normalizations unitarily
+equivalent to it.  It also does not decide jet-surjectivity directly; it
+decides several matrix-element instances on which that route depends.
+
+\end{document}

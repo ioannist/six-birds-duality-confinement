@@ -1,0 +1,60 @@
+{
+  "step": 249,
+  "orientation": "adequacy",
+  "target": "Branch C k=2 proper foreclosure via Burnol E_lambda second derivative",
+  "symbolic_derivation": {
+    "kernel": "K_a^Gamma(z,w)=[E(z)Ebar(w)-E(1-z)Ebar(1-w)]/(z+w-1)",
+    "partial_wbar_squared": "partial_wbar^2 K=[E(z)conj(E''(w))-E(1-z)conj(E''(1-w))]/(z+w-1)",
+    "sign_note": "second term is negative because partial_wbar conj(E'(1-w))=-conj(E''(1-w))",
+    "E_second": "E''=P''B+2P'B'+PB'', with P''/P=0.25 polygamma(1,w/2)+(-0.5 log(pi)+0.5 digamma(w/2))^2",
+    "operational_pairing": "L_{rho,2}(G)=(-i d/dgamma)^2[(P_infty M_zeta G)(1/2+i gamma)]"
+  },
+  "k2_proper_values": [
+    {
+      "case_id": "C19",
+      "rho_index": 1,
+      "G_id": "G_star",
+      "proper_L_real": 0.37245776007152931,
+      "proper_L_imag": -0.43592544907499736,
+      "proper_L_abs": 0.5733722876009435,
+      "proper_error_bound": 0.000011512508330935216,
+      "proper_lower_bound_abs": 0.57336077509261252
+    },
+    {
+      "case_id": "C20",
+      "rho_index": 2,
+      "G_id": "G_star",
+      "proper_L_real": 0.54707142276211562,
+      "proper_L_imag": 0.094768620568003892,
+      "proper_L_abs": 0.55521908562956279,
+      "proper_error_bound": 0.000007641875217016286,
+      "proper_lower_bound_abs": 0.55521144375434572
+    },
+    {
+      "case_id": "C21",
+      "rho_index": 1,
+      "G_id": "G_prime",
+      "proper_L_real": 0.75214386864433791,
+      "proper_L_imag": -0.049905844121446004,
+      "proper_L_abs": 0.75379771319416,
+      "proper_error_bound": 0.0000031386471790121817,
+      "proper_lower_bound_abs": 0.75379457454698096
+    }
+  ],
+  "robustness": {
+    "mpmath_dps": 80,
+    "step196_grid": "U=200, h=0.05",
+    "pswf_terms_value": 3,
+    "pswf_terms_tail": 12,
+    "finite_difference_k2_cross_check": "max analytic-vs-central-difference difference 8.6221047375757397e-05",
+    "checks": "half-grid, coarse-G, alternate-PSWF, second-derivative tail reserve"
+  },
+  "branch_C_k2_proper_verdict": "V_branch_C_k2_proper_foreclosure",
+  "retained_nogos": [
+    "No Branch C closure claimed.",
+    "No RH claim.",
+    "No weakening of step 176 full-carrier foreclosure caveat.",
+    "No replacement of global transport-sampling caveats outside this Branch C operational convention."
+  ],
+  "final_verdict": "V_branch_C_k2_proper_foreclosure"
+}

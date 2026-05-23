@@ -1,0 +1,211 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\title{Step 116: Residual-Specific Hecke/Dirichlet Source Absorption for the Boundary--Co-Poisson Residual}
+\author{RATCHET RH Membrane Program}
+\date{May 14, 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 113--115 reduced the Burnol/co-Poisson visibility shortcut to a precise residual.  Let
+\[
+  \mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty)
+\]
+be the shifted Sonin/prolate boundary block transported into Burnol's $L_a$ carrier.  Burnol's theorem gives
+\[
+  P_a=Y_a^\perp
+\]
+for $a<1$, where $Y_a$ is the closed span of the zeta-zero evaluator vectors and $P_a$ is the co-Poisson subspace.  The obstruction to the clean inclusion
+\[
+  \operatorname{Ran}\mathfrak B_{\ell,a}\subseteq P_a
+\]
+is therefore
+\[
+  \Pi_{Y_a}\mathfrak B_{\ell,a}\neq0.
+\]
+The exact adequacy residual is
+\[
+  \Xi^{\rm BC}_{\ell,a}=\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}\succeq0.
+\]
+Step 116 formulates the source-coercivity theorem that absorbs this residual without assuming zeta-factorization or zero simplicity.
+
+\section{Residual sector}
+\begin{definition}[Boundary--co-Poisson residual]
+For a finite set of shift modes $\mathcal L_N\subset\mathcal L_S\setminus\{0\}$ and nonnegative weights $w_\ell$, define
+\[
+  \Xi^{\rm BC}_N=\sum_{\ell\in\mathcal L_N}w_\ell\,\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+Its support projection is
+\[
+  \Pi_{\mathcal R,N}=\operatorname{supp}(\Xi^{\rm BC}_N),
+\]
+and the finite residual sector is
+\[
+  \mathcal R_N=\operatorname{Ran}\Pi_{\mathcal R,N}=\overline{\operatorname{Ran}((\Xi^{\rm BC}_N)^{1/2})}.
+\]
+\end{definition}
+
+\begin{definition}[Residual reference budget]
+A positive form $\Gamma_{\mathcal R,N}\succ0$ on $\mathcal R_N$ is an accepted residual reference budget if
+\[
+  \Xi^{\rm BC}_N\preceq \Gamma_{\mathcal R,N}
+\]
+and if the inclusions $\mathcal R_N\hookrightarrow\mathcal R$ carry a fixed/exhaustive tail record.
+\end{definition}
+
+\section{Source records}
+A Hecke/Dirichlet source record is a tuple
+\[
+  s=(\omega,Q_\omega,\Theta_\omega,\lambda_{\omega,N},D_\omega,\sigma_s)
+\]
+where $\omega$ is an upstream-declared character/source label, $Q_\omega$ is the residual readout, $\Theta_\omega\succ0$ is its response budget, $\lambda_{\omega,N}\ge0$ is an upstream-declared source weight, $D_\omega$ is the source-energy contribution, and $\sigma_s$ is the all-six status record.
+The induced residual source frame is
+\[
+  F_{\mathcal R,N}=\sum_{\omega\in\mathcal X_N}\lambda_{\omega,N}Q_\omega^*\Theta_\omega^{-1}Q_\omega.
+\]
+The character family $\mathcal X_N$ must be declared by conductor, place, Hecke spectrum, or another native arithmetic ordering before the residual eigenvectors are inspected.
+
+\section{Direct residual absorption}
+\begin{theorem}[Direct residual absorption]
+Suppose on $\mathcal R_N$ one has
+\[
+  \Xi^{\rm BC}_N\preceq F_{\mathcal R,N}+E_{{\rm abs},N}.
+\]
+Then the boundary--co-Poisson residual is absorbed by the source record at stage $N$, up to the declared defect $E_{{\rm abs},N}$.  If the finite residuals exhaust a completed residual ledger and
+\[
+  \operatorname{tr}(E_{{\rm abs},N})+\operatorname{tr}(T_N)\to0,
+\]
+then the residual contributes no completed blind spot.
+\end{theorem}
+
+\begin{proof}
+The inequality is exactly the Loewner domination required to replace the residual term by the source feature.  Tail promotion is the fixed/exhaustive ledger squeeze: a completed positive residual dominated by finite budgets with vanishing trace tail must vanish in the limit.
+\end{proof}
+
+\section{Coercive absorption and budget collapse}
+\begin{theorem}[Residual lower-frame absorption]
+Assume
+\[
+  \Xi^{\rm BC}_N\preceq\Gamma_{\mathcal R,N}
+\]
+and the source frame satisfies the residual lower-frame inequality
+\[
+  F_{\mathcal R,N}\succeq \Lambda_N\Gamma_{\mathcal R,N}-R_N,
+  \qquad \Lambda_N\to\infty.
+\]
+Then
+\[
+  \Xi^{\rm BC}_N\preceq \Lambda_N^{-1}F_{\mathcal R,N}+\Lambda_N^{-1}R_N.
+\]
+In particular, if $\Lambda_N^{-1}R_N$ and the finite-window tails vanish in the fixed/exhaustive ledger sense, then the residual budget collapses.
+\end{theorem}
+
+\begin{proof}
+Since $\Xi_N^{\rm BC}\preceq\Gamma_{\mathcal R,N}$,
+\[
+  \Lambda_N\Xi_N^{\rm BC}\preceq \Lambda_N\Gamma_{\mathcal R,N}\preceq F_{\mathcal R,N}+R_N.
+\]
+Dividing by $\Lambda_N$ gives the asserted inequality.
+\end{proof}
+
+\section{Matrix-moment sufficient condition}
+Let
+\[
+  M_{\mathcal R,N}:\mathcal R_N\to H_N^{\rm resp}
+\]
+synthesize a residual dictionary and let
+\[
+  D_N:\mathbb C^{I_N}\to H_N^{\rm resp}
+\]
+be a declared Burnol/co-Poisson or Dirichlet coefficient synthesis map.  Define
+\[
+  R_{\mathcal R,N}=D_N^\dagger M_{\mathcal R,N},
+\]
+and let $G_{\mathcal X,N}$ be the character/source Gram matrix on coefficient space.
+
+\begin{theorem}[Matrix moment lift on the residual sector]
+If
+\[
+  G_{\mathcal X,N}\succeq \gamma_N H_N
+\]
+and
+\[
+  R_{\mathcal R,N}^*H_NR_{\mathcal R,N}\succeq c_N\Gamma_{\mathcal R,N},
+\]
+then
+\[
+  F_{\mathcal R,N}=R_{\mathcal R,N}^*G_{\mathcal X,N}R_{\mathcal R,N}
+  \succeq \gamma_Nc_N\Gamma_{\mathcal R,N}.
+\]
+Thus the residual source ladder has
+\[
+  \Lambda_N=\gamma_Nc_N.
+\]
+\end{theorem}
+
+\begin{proof}
+By substitution,
+\[
+  R^*G_{\mathcal X}R\succeq\gamma_NR^*H_NR\succeq\gamma_Nc_N\Gamma_{\mathcal R,N}.
+\]
+\end{proof}
+
+\section{Residual-specific coefficient visibility}
+Let $P_N$ denote the projection onto $\operatorname{Ran}D_N$.  The residual coefficient defect is
+\[
+  E_{{\rm coef},\mathcal R,N}=(I-P_N)M_{\mathcal R,N}.
+\]
+Then
+\[
+  R_{\mathcal R,N}^*H_NR_{\mathcal R,N}
+  =M_{\mathcal R,N}^*P_NM_{\mathcal R,N}
+  =G_{\mathcal R,N}-E_{{\rm coef},\mathcal R,N}^*E_{{\rm coef},\mathcal R,N}.
+\]
+Consequently the residual visibility constant is
+\[
+  c_N=1-
+  \left\|E_{{\rm coef},\mathcal R,N}\Gamma_{\mathcal R,N}^{-1/2}\right\|^2.
+\]
+This is an adequacy residual: it measures exactly the part of the boundary--co-Poisson residual not translated into the coefficient language read by character sources.
+
+\section{No-smuggling and failure modes}
+The theorem does not permit the following moves:
+\begin{enumerate}[label=(\roman*)]
+\item choosing $Q_\omega$ after diagonalizing $\Xi^{\rm BC}$;
+\item proving only a scalar lower moment in one mollifier direction;
+\item using finite character orthogonality without Plancherel/exhaustivity;
+\item assuming zero simplicity to form the residual subspace;
+\item ignoring the coefficient residual $E_{{\rm coef},\mathcal R,N}$.
+\end{enumerate}
+If any of these occur, the status is support-only, provisional, or smuggled.
+
+\section{Construction target}
+The active theorem to earn is
+\[
+  \gamma_Nc_N\to\infty,
+\]
+where
+\[
+  \gamma_N
+  =\text{operator-valued Hecke/Dirichlet matrix-moment lower bound},
+\]
+and
+\[
+  c_N
+  =\text{residual-specific Burnol/co-Poisson coefficient visibility}.
+\]
+This is the residual-specific source-coercivity version of the RH membrane route.
+
+\end{document}

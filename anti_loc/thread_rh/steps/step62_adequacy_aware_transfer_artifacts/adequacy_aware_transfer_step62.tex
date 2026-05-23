@@ -1,0 +1,226 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\newcommand{\range}{\operatorname{Ran}}
+\newcommand{\kernel}{\operatorname{Ker}}
+\newcommand{\traceace}{\operatorname{tr}}
+
+\title{Step 62: Adequacy-Aware Membrane Transfer}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note connects the formed-layer membrane theorem with the companion theory of adequacy residuals.  A native membrane bound alone transfers only native probe pricing.  A layer-dissolving membrane transfers only when adequacy is also transported, or when the bridge pays the residual defect explicitly.
+
+The goal is to prove a bridge theorem of the form
+\[
+\text{native membrane} + \Xi\text{-adequacy} + \text{lawful bridge}
+\Rightarrow
+\text{transferred dissolving membrane with explicit defect}.
+\]
+
+\section{Legal quotient conventions}
+Let \(C=C^*\succeq0\) on a finite-dimensional Hilbert space \(E\).  All formulas are interpreted on the legal quotient
+\[
+E_C=(\ker C)^\perp,\qquad C_0=C|_{E_C}>0.
+\]
+Probe families \(L:E\to Y\) and \(D:E\to Z\) are null-legal when they annihilate \(\ker C\).  We then write
+\[
+K_{LL}=L_0C_0^{-1}L_0^*,\qquad
+K_{DL}=D_0C_0^{-1}L_0^*,\qquad
+K_{DD}=D_0C_0^{-1}D_0^*.
+\]
+The adequacy residual is
+\[
+\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}.
+\]
+Equivalently, with
+\[
+T_L=L_0C_0^{-1/2},\qquad T_D=D_0C_0^{-1/2},
+\]
+and \(P_L\) the orthogonal projection onto \(\range(T_L^*)\),
+\[
+\Xi_C(D\mid L)=T_D(I-P_L)T_D^*\succeq0.
+\]
+
+\section{Native membrane plus adequacy gives dissolving membrane}
+\begin{proposition}[Adequacy promotion]
+Let \(L\) be native probes, \(D\) layer-dissolving probes, and let
+\[
+A_*:=K_{DL}K_{LL}^{\dagger}.
+\]
+If
+\[
+K_{LL}\preceq \Theta_Y,
+\qquad
+\Xi_C(D\mid L)\preceq \Xi_Z,
+\]
+then
+\[
+K_{DD}\preceq A_*\Theta_YA_*^*+\Xi_Z.
+\]
+\end{proposition}
+
+\begin{proof}
+By Schur residual decomposition,
+\[
+K_{DD}=K_{DL}K_{LL}^{\dagger}K_{LD}+\Xi_C(D\mid L)=A_*K_{LL}A_*^*+\Xi_C(D\mid L).
+\]
+The assumptions give the claimed bound.
+\end{proof}
+
+\section{Exact adequacy-aware bridge}
+\begin{definition}[Exact adequacy-aware bridge]
+A bridge from \((E,C,L,D)\) to \((E',C',L',D')\) consists of maps
+\[
+U:E'_{C'}\to E_C,\qquad A:Y\to Y',\qquad B:Z\to Z'
+\]
+such that
+\[
+C'_0=U^*C_0U,
+\qquad
+L'_0=AL_0U,
+\qquad
+D'_0=BD_0U.
+\]
+The native response map \(A\) is called faithful on the native span if
+\[
+\range((AL_0U)^*)=U^*\range(L_0^*).
+\]
+This prevents native coarsening from creating an artificial adequacy blind spot.
+\end{definition}
+
+\begin{theorem}[Exact adequacy-aware membrane transfer]
+Assume an exact adequacy-aware bridge and faithfulness of \(A\) on the native span.  Then
+\[
+K'_{L'L'}=A K_{LL}A^*,
+\]
+\[
+\Xi_{C'}(D'\mid L')=B\Xi_C(D\mid L)B^*,
+\]
+and
+\[
+K'_{D'D'}=B K_{DD}B^*.
+\]
+Consequently, if the source records satisfy
+\[
+K_{LL}\preceq\Theta_Y,
+\qquad
+\Xi_C(D\mid L)\preceq\Xi_Z,
+\]
+then the target layer-dissolving membrane satisfies
+\[
+K'_{D'D'}\preceq B(A_*\Theta_YA_*^*+\Xi_Z)B^*.
+\]
+\end{theorem}
+
+\begin{proof}
+The native and dissolving currency equalities follow by direct substitution and the exact energy identity.  For the residual, write
+\[
+T'_{L'}=AL_0U(C'_0)^{-1/2},\qquad T'_{D'}=BD_0U(C'_0)^{-1/2}.
+\]
+Under the exact reducing bridge, \(U(C'_0)^{-1/2}\) identifies the target legal energy-dual space with the source restricted legal energy-dual space.  Faithfulness of \(A\) gives equality of the native dual spans after transport, so the orthogonal complement to the native span is transported exactly. Hence
+\[
+T'_{D'}(I-P_{L'})T_{D'}'^*=B T_D(I-P_L)T_D^*B^*=B\Xi_C(D\mid L)B^*.
+\]
+The final inequality follows from the adequacy promotion proposition.
+\end{proof}
+
+\section{Defective bridge theorem}
+In practice the dissolving readout may agree only up to residual.  Let the native side be exact and faithful, while
+\[
+D'_0=BD_0U+R.
+\]
+Let
+\[
+\Xi_R:=\Xi_{C'}(R\mid L').
+\]
+
+\begin{theorem}[Defective adequacy-aware transfer]
+Under the preceding hypotheses, for every \(t>0\),
+\[
+\Xi_{C'}(D'\mid L')
+\preceq
+(1+t)B\Xi_C(D\mid L)B^*+(1+t^{-1})\Xi_R.
+\]
+If additionally
+\[
+K_{LL}\preceq\Theta_Y,
+\qquad
+\Xi_C(D\mid L)\preceq\Xi_Z,
+\qquad
+\Xi_R\preceq E_R,
+\]
+then the target dissolving currency obeys a defect-paid bound
+\[
+K'_{D'D'}\preceq
+(1+s)B(A_*\Theta_YA_*^*+\Xi_Z)B^*+(1+s^{-1})R(C'_0)^{-1}R^*
+\]
+for every \(s>0\), and its adequacy residual obeys
+\[
+\Xi_{C'}(D'\mid L')
+\preceq
+(1+t)B\Xi_ZB^*+(1+t^{-1})E_R.
+\]
+\end{theorem}
+
+\begin{proof}
+Use the projection formula for \(\Xi\).  If \(D'=D'_a+R\), then
+\[
+T_{D'}(I-P_{L'})T_{D'}^*
+=(T_{D'_a}+T_R)(I-P_{L'})(T_{D'_a}+T_R)^*.
+\]
+The Hilbert-space inequality
+\[
+(x+y)(x+y)^*\preceq(1+t)xx^*+(1+t^{-1})yy^*
+\]
+gives the residual bound.  The dissolving-currency bound is the analogous inequality applied to \(D'_0C_0'^{-1/2}\).  Insert the source adequacy promotion bound and the residual budgets.
+\end{proof}
+
+\section{Energy-loss variant}
+If the bridge is not energy-exact but satisfies
+\[
+C'_0\succeq \beta U^*C_0U,
+\qquad \beta>0,
+\]
+then each transported source currency is multiplied by at most \(\beta^{-1}\).  For example, in the exact readout case,
+\[
+K'_{D'D'}\preceq \beta^{-1}B K_{DD}B^*.
+\]
+The defect-paid theorem becomes
+\[
+K'_{D'D'}\preceq
+\frac{1+s}{\beta}B(A_*\Theta_YA_*^*+\Xi_Z)B^*
++(1+s^{-1})R(C'_0)^{-1}R^*.
+\]
+This is the adequacy-aware version of membrane transfer with energy degradation.
+
+\section{Public shadow and nonclaim}
+If a public shadow observes only \(F D\), then
+\[
+\Xi_C(FD\mid L)=F\Xi_C(D\mid L)F^*.
+\]
+Therefore intrinsic adequacy implies public adequacy, but the converse is false unless a reconstruction map and residual budget are supplied.  A public shadow with small \(\Xi\) is support evidence, not an intrinsic adequacy certificate.
+
+\section{Interpretation}
+The theorem combines two papers' interfaces:
+\begin{itemize}[leftmargin=2em]
+\item The membrane paper transfers native family currency budgets.
+\item The \(\Xi\)-paper transfers adequacy residuals.
+\item Together they transfer the layer-dissolving membrane, provided the bridge carries native probes, dissolving probes, and energy lawfully.
+\end{itemize}
+
+\end{document}

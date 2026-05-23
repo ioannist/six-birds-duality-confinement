@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\Fq}{\mathbb F_q}
+\newcommand{\Qell}{\mathbb Q_\ell}
+\newcommand{\Xbar}{\overline X}
+\newcommand{\XiWD}{\Xi_{\mathrm{WD}}}
+\newcommand{\CRE}{\mathrm{CRE}}
+\newcommand{\CRCFT}{\mathrm{CRCFT}}
+
+\title{Step 186: Weil--Deligne Function-Field RH Carrier Pivot}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{weil\_deligne\_verdict}=V_{\mathrm{weil\_deligne\_closes}}.}
+\]
+
+The Weil/Deligne function-field carrier is RH-analogous but not
+classically-RH-equivalent for Riemann's zeta.  On its native cohomological
+carrier, the framework residual closes:
+\[
+\boxed{\XiWD=0}
+\]
+by Grothendieck's trace formalism and Deligne's purity theorem.
+
+\section*{Inherited Record Audit}
+
+The inherited local records do not contain a full function-field
+Weil/Deligne carrier package.  The only nearby inherited item is the
+Deninger/motivic context recorded in the Connes pivot, which is explicitly
+contextual and not a constructed number-field cohomology.  Thus this step
+declares the function-field carrier directly and uses classical
+Weil--Grothendieck--Deligne theorems as the native ledger.
+
+\section*{Carrier Declaration}
+
+Let \(X/\Fq\) be a smooth projective variety of dimension \(d\), and let
+\(\ell\ne \operatorname{char}(\Fq)\).  Define the graded cohomological carrier
+\[
+H_{\mathrm{WD}}(X)
+=
+\bigoplus_{i=0}^{2d}
+H^i_{\mathrm{\acute et}}(\Xbar,\Qell).
+\]
+This is a finite-dimensional graded \(\Qell\)-cohomological carrier with
+Poincare duality pairings.  It is not a Hilbert carrier for Riemann's zeta.
+
+The native operator is Frobenius:
+\[
+\mathrm{Frob}_q:
+H^i_{\mathrm{\acute et}}(\Xbar,\Qell)
+\longrightarrow
+H^i_{\mathrm{\acute et}}(\Xbar,\Qell).
+\]
+We fix a geometric Frobenius convention; switching to arithmetic Frobenius
+inverts the eigenvalues and must be tracked consistently.
+
+\section*{Native Probes and Trace Ledger}
+
+Native probes are cohomology classes and Frobenius-equivariant constructions.
+Dissolving probes are the trace measurements
+\[
+\operatorname{Tr}\!\left(\mathrm{Frob}_q^n\mid
+H^i_{\mathrm{\acute et}}(\Xbar,\Qell)\right).
+\]
+Grothendieck--Lefschetz gives the point-count ledger:
+\[
+\#X(\Fq^n)
+=
+\sum_{i=0}^{2d}(-1)^i
+\operatorname{Tr}\!\left(\mathrm{Frob}_q^n\mid
+H^i_{\mathrm{\acute et}}(\Xbar,\Qell)\right).
+\]
+The zeta function is
+\[
+Z(X,t)
+=
+\exp\left(\sum_{n\ge1}\#X(\Fq^n)\frac{t^n}{n}\right)
+=
+\prod_i
+\det\!\left(1-t\,\mathrm{Frob}_q\mid
+H^i_{\mathrm{\acute et}}(\Xbar,\Qell)\right)^{(-1)^{i+1}}.
+\]
+With \(t=q^{-s}\), an eigenvalue \(\alpha_{i,j}\) of Frobenius on \(H^i\)
+contributes a zero or pole at \(\alpha_{i,j}q^{-s}=1\), with the sign
+determined by the cohomological parity.
+
+\section*{Parent Residual}
+
+\begin{definition}[Weil--Deligne residual]
+\(\XiWD\) is the graded Frobenius-weight defect:
+\[
+\XiWD=0
+\quad\Longleftrightarrow\quad
+|\iota(\alpha_{i,j})|=q^{i/2}
+\]
+for every Frobenius eigenvalue \(\alpha_{i,j}\) on
+\(H^i_{\mathrm{\acute et}}(\Xbar,\Qell)\) and every complex embedding
+\(\iota:\overline{\Q}_\ell\to\mathbb C\) used to measure absolute values.
+\end{definition}
+
+Equivalently, \(\XiWD=0\) says the native degree-\(i\) zero/pole ledger lies
+on the expected line \(\operatorname{Re}(s)=i/2\), after the parity and
+reciprocal conventions of \(Z(X,t)\) are accounted for.
+
+\begin{theorem}[Native Weil--Deligne closure]
+For smooth projective \(X/\Fq\),
+\[
+\XiWD=0.
+\]
+\end{theorem}
+
+\begin{proof}
+Grothendieck's \(\ell\)-adic cohomological formalism supplies the legal native
+carrier, the Lefschetz trace formula, Poincare duality, and the determinant
+factorization of \(Z(X,t)\).  Deligne's proof of the Weil conjectures gives
+purity: Frobenius on \(H^i_{\mathrm{\acute et}}(\Xbar,\Qell)\) is pure of
+weight \(i\).  Therefore every eigenvalue satisfies
+\[
+|\iota(\alpha_{i,j})|=q^{i/2}.
+\]
+This is exactly the vanishing condition for the graded weight defect
+\(\XiWD\).  Thus the framework residual closes natively on the
+function-field carrier.
+\end{proof}
+
+\section*{CRE and CRCFT Audit}
+
+\begin{center}
+\begin{tabular}{p{0.28\linewidth}p{0.18\linewidth}p{0.44\linewidth}}
+\toprule
+Audit & Result & Reason\\
+\midrule
+CRE status & not \(\CRE\)
+& Closing \(\XiWD\) proves function-field RH for \(X/\Fq\), not Riemann RH.\\
+\(\CRCFT\) applicability & does not apply
+& \(\CRCFT\) is a foreclosure taxonomy for CRE carriers; this non-CRE carrier closes natively.\\
+Framework closure & closed native
+& Grothendieck--Lefschetz plus Deligne purity supplies the full cohomological ledger.\\
+Transfer to Riemann RH & not claimed
+& No number-field cohomology carrier with the same properties is supplied.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Pattern Implication}
+
+Together with the Selberg/Maass carrier, this gives a second non-CRE
+RH-analogous carrier that closes natively.  The emerging distinction is now
+sharper:
+\[
+\text{CRE carriers tested} \Rightarrow \CRCFT\text{ foreclosure modes,}
+\]
+while
+\[
+\text{proved non-CRE RH analogs} \Rightarrow \text{native closure when their full ledger is present.}
+\]
+This is an empirical framework pattern, not a proof that all future non-CRE
+analogs close.
+
+\section*{Classical Theorems Cited}
+
+\begin{itemize}
+\item A. Weil, 1948, \emph{Sur les courbes algébriques et les variétés qui
+s'en déduisent}: function-field RH for curves and the geometric method.
+\item A. Weil, 1949, \emph{Numbers of solutions of equations in finite
+fields}: formulation of the Weil conjectures.
+\item A. Grothendieck, 1965 and SGA: \(\ell\)-adic cohomology,
+Grothendieck--Lefschetz trace formula, determinant factorization, and
+functional equation formalism.
+\item P. Deligne, 1973, \emph{La conjecture de Weil I}: proof of RH/purity
+for smooth projective varieties over finite fields.
+\item P. Deligne, 1980, \emph{La conjecture de Weil II}: weights and mixed
+sheaf formalism.
+\end{itemize}
+
+\section*{Nonclaim Boundary}
+
+This step does not prove Riemann RH, does not transfer function-field RH to
+the number-field zeta function, and does not construct a number-field
+cohomology with Deligne purity.  It closes only the native Weil/Deligne
+function-field residual \(\XiWD\).
+
+\end{document}

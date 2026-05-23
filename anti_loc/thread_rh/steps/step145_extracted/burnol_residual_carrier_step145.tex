@@ -1,0 +1,209 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+
+\title{Step 145: Burnol/Sonine Residual Carrier Instantiation}
+\author{Six Birds / RH Membrane Working Thread}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+Step 144 gave an abstract completed-tail promotion theorem.  Step 145 instantiates its objects on the Burnol/Sonine residual carrier.  The goal is to replace the formal symbols
+\[
+H_R,\qquad P_N,\qquad T_N,\qquad K_R
+\]
+by explicit carrier-native objects.  The step is deliberately conservative: it proves the trace-tail promotion theorem once two records are supplied, and it names the two records that are not supplied automatically.
+
+\section{Burnol/Sonine residual carrier}
+Fix a Burnol scale
+\[
+0<a<1,\qquad A=a^{-1}.
+\]
+Let
+\[
+L_a\subset L^2(0,\infty;dt)
+\]
+be Burnol's extended Sonine space: functions constant on $(0,a)$ whose cosine transform is again constant on $(0,a)$.  Let
+\[
+Y_a=\overline{\mathrm{span}\{Y^a_{\rho,k}: \rho \in Z_\zeta,
+0\le k<m_\rho\}}
+\]
+be the closed span of the zero-evaluator vectors.  Burnol's theorem gives, for $a<1$,
+\[
+P_a=Y_a^\perp,
+\]
+where $P_a$ is the co-Poisson subspace.
+
+Let $P_\infty$ denote the imported archimedean Sonin/prolate projection and let $J_a$ be the declared transport into $L_a$.  For a finite-place log-shift mode $\ell$, define
+\[
+\mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty).
+\]
+The part of the shifted boundary packet seen by the zero-evaluator span is
+\[
+\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+Thus the completed residual carrier is the closed subspace
+\[
+\boxed{
+H_R:=\overline{\mathrm{span}\{\operatorname{Ran}\Pi_{Y_a}\mathfrak B_{\ell,a}:
+\ell\in\mathcal L\setminus\{0\}\}}\subseteq Y_a\subset L_a.
+}
+\]
+Equivalently, $H_R$ is the completed carrier of the residual
+\[
+\Xi^{\rm BC}_{\ell,a}=\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+If all these ranges vanish, then $H_R=0$ and the Burnol/co-Poisson inclusion route closes.  Otherwise $H_R$ is the residual sector that must be source-absorbed.
+
+\section{Finite windows}
+A finite residual window must be upstream-declared.  We use a triple window
+\[
+\mathcal I_N=(\mathcal L_N,T_N^{\rm zero},K_N^{\Omega}),
+\]
+where
+\begin{itemize}[leftmargin=2em]
+\item $\mathcal L_N$ is a finite set of finite-place log-shift modes;
+\item $T_N^{\rm zero}$ is a zero-evaluator height cutoff;
+\item $K_N^{\Omega}$ is the declared Heap--Soundararajan-style block cutoff.
+\end{itemize}
+Define
+\[
+\mathcal R_N:=\mathrm{span}\left\{
+\Pi_R\Pi_{Y_a}\mathfrak B_{\ell,a}u_j:
+\ell\in\mathcal L_N,
+\,j\le N
+\right\}
+\]
+with the additional restriction that its regularized Burnol/Muentz shadow lies in the declared $\Omega$-compatible source-readable dictionary at cutoff $K_N^{\Omega}$.  Let
+\[
+P_N:H_R\to H_R
+\]
+be the orthogonal projection onto the closed finite-dimensional space
+\[
+H_{R,N}:=\overline{\mathcal R_N}\subset H_R.
+\]
+The window ladder is accepted only if
+\[
+\boxed{P_N\uparrow I_{H_R}\quad\text{strongly}.}
+\]
+This is the completed residual-exhaustivity record.
+
+\section{Completed residual ledger}
+The completed residual ledger is a positive operator
+\[
+K_R\ge0
+\]
+on $H_R$.  In the RH application, the intended ledger is the projection of the completed anti-invariant zero ledger to the residual carrier.  Abstractly, we write
+\[
+K_R=\Pi_RK_Z\Pi_R,
+\]
+where $K_Z$ is the completed off-critical zero-audit ledger and $\Pi_R$ is the projection to $H_R$.  Its trace-class status is not automatic.
+
+\begin{definition}[Accepted completed residual ledger]
+The residual ledger record is accepted if
+\[
+\boxed{K_R\in\mathcal S_1(H_R),\qquad K_R\ge0.}
+\]
+If $K_R$ is not trace-class, finite-window source frames remain support-only unless a separate weighted tail theorem is supplied.
+\end{definition}
+
+\section{Tail form}
+With $G_R=I_{H_R}$ and $P_N$ orthogonal, the canonical tail form is
+\[
+\boxed{T_N=I_{H_R}-P_N.}
+\]
+Then
+\[
+G_R=P_N^*G_{R,N}P_N+T_N
+\]
+with $G_{R,N}=I_{H_{R,N}}$.
+
+\begin{theorem}[Burnol/Sonine completed-tail promotion]
+Assume
+\[
+P_N\uparrow I_{H_R}\quad\text{strongly},
+\qquad
+K_R\in\mathcal S_1(H_R),
+\qquad K_R\ge0.
+\]
+Then
+\[
+\boxed{
+\operatorname{tr}(T_NK_R)=\operatorname{tr}((I-P_N)K_R)\to0.
+}
+\]
+Consequently, any finite-window source frame satisfying
+\[
+F_N^{\Omega,\rm win}\succeq \Lambda_N^\Omega G_{R,N}
+\]
+lifts to the completed residual carrier as
+\[
+F_N^\Omega+\Lambda_N^\Omega T_N\succeq \Lambda_N^\Omega G_R,
+\]
+and the completed residual squeeze is
+\[
+\boxed{
+\operatorname{tr}(G_RK_R)
+\le
+\frac{C_{\rm src}}{\Lambda_N^\Omega}
++\operatorname{tr}(T_NK_R).
+}
+\]
+Thus completed residual mass collapses if
+\[
+\Lambda_N^\Omega\to\infty
+\qquad\text{and}\qquad
+\operatorname{tr}(T_NK_R)\to0.
+\]
+\end{theorem}
+
+\begin{proof}
+For positive trace-class $K_R$, finite-rank projections $P_N\uparrow I$ strongly imply
+\[
+\operatorname{tr}((I-P_N)K_R)\to0.
+\]
+This follows by approximating $K_R$ in trace norm by a finite-rank positive operator and using strong convergence on the finite-dimensional range.  The lifted frame inequality is the Step 144 promotion identity specialized to $G_R=I$ and $T_N=I-P_N$.  The squeeze follows by pairing the lifted inequality with $K_R$ and using the source-audit bound.
+\end{proof}
+
+\section{What is now instantiated}
+The abstract Step 144 symbols become:
+\[
+\boxed{H_R=\overline{\mathrm{span}\,\operatorname{Ran}\Pi_{Y_a}\mathfrak B_{\ell,a}}\subset L_a,}
+\]
+\[
+\boxed{P_N=\text{orthogonal projection onto the finite declared residual window }H_{R,N},}
+\]
+\[
+\boxed{T_N=I_{H_R}-P_N,}
+\]
+\[
+\boxed{K_R=\Pi_RK_Z\Pi_R\text{, accepted only with positive trace-class record.}}
+\]
+
+\section{Remaining obligations}
+The instantiation does not prove RH.  It names the remaining carrier-side records:
+\begin{enumerate}[leftmargin=2em]
+\item strong exhaustivity of the declared residual windows: $P_N\uparrow I_{H_R}$;
+\item trace-class status of the completed residual ledger: $K_R\in\mathcal S_1$;
+\item source strength: $\Lambda_N^\Omega\to\infty$;
+\item no-smuggling of $\mathcal I_N=(\mathcal L_N,T_N^{\rm zero},K_N^\Omega)$;
+\item compatibility with the restricted BPRZ source frame and source shortness;
+\item fixed/exhaustive promotion of the off-critical zero ledger.
+\end{enumerate}
+
+\section{Nonclaim boundary}
+If $P_N\not\uparrow I_{H_R}$, the result is finite-window support evidence only.  If $K_R$ is not trace-class, $\operatorname{tr}(T_NK_R)\to0$ is not automatic and becomes a separate zero-density/regularity theorem.  If $H_R$ has a component outside the regularized Dirichlet-readable closure, that component remains an adequacy residual and is not source-absorbed by the present ladder.
+
+\end{document}

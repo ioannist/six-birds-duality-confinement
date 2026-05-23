@@ -1,0 +1,106 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\title{Step 133: $\Omega$-Truncated Dirichlet-Polynomial Architecture for GCD--Log Blind-Sector Suppression}
+\author{Six Birds / RH Membrane Working Notes}
+\date{May 2026}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 130 showed that the unrestricted BPRZ shifted-main-term kernel has squarefree Boolean near-null modes. Step 131 showed that these modes are not automatically fatal because the actual residual coefficient class is not arbitrary: it is produced by a zeta/Müntz incidence convolution. Step 132 proved that deep blind Walsh modes read only high-divisibility seed coefficients.
+
+Step 133 imports the Heap--Soundararajan $\Omega$-block architecture as an external analytic-number-theory template for controlling this high-divisibility tail. We do not rederive their moment method. We translate the relevant architecture into the membrane/adequacy language.
+
+\section{Boolean setup}
+Let $P_y$ be a finite set of primes and identify squarefree divisors with subsets $S\subseteq P_y$. For a seed vector $b$, define the finite zeta incidence convolution
+\[
+  (Z_y b)(T)=\sum_{S\subseteq T} b(S).
+\]
+For a Boolean sign vector $\epsilon\in\{\pm1\}^{P_y}$, let $A(\epsilon)=\{p:\epsilon_p=-1\}$. Step 132 proved
+\[
+  \widehat{Z_y b}(\epsilon)
+  =2^{-|P_y|/2}(-1)^{|A|}\sum_{V\subseteq A^c}2^{|P_y|-|A|-|V|}b(A\cup V).
+\]
+Hence the mode $\epsilon$ only reads seed coefficients supported on supersets of $A$.
+
+\begin{definition}[Upward closure]
+For a blind family $\mathcal B$ of negative-prime sets, define
+\[
+  \uparrow\mathcal B=
+  \{S\subseteq P_y:\exists A\in\mathcal B,\ A\subseteq S\}.
+\]
+\end{definition}
+
+\begin{theorem}[Blind-sector tail reduction]
+Let $\Pi_{\mathcal B}$ project onto the blind Walsh modes corresponding to $\mathcal B$. Then
+\[
+  \Pi_{\mathcal B}Z_yb
+  =\Pi_{\mathcal B}Z_yP_{\uparrow\mathcal B}b.
+\]
+Consequently,
+\[
+  \frac{\|\Pi_{\mathcal B}Z_yb\|}{\|Z_yb\|}
+  \le
+  \frac{\|Z_yP_{\uparrow\mathcal B}b\|}{\|Z_yb\|}.
+\]
+\end{theorem}
+
+\section{Heap--Soundararajan block import}
+The imported architecture consists of prime blocks $\mathcal P_j$, block sums $P_j$, and truncation thresholds
+\[
+  K_j=A P_j,
+\]
+with HS using a large constant threshold in their model. The corresponding seed class enforces
+\[
+  \Omega(n_j)\le K_j
+\]
+inside each block. In the membrane route, this is not a proof of a lower frame; it is a non-smuggled declaration of a high-divisibility cutoff.
+
+\begin{definition}[$\Omega$-tail defect]
+Let $P_{\Omega\le K}$ project onto seed coefficients obeying all declared block thresholds, and define
+\[
+  \tau_{\Omega,N}
+  =\frac{\|Z_y(I-P_{\Omega\le K})b_N\|}{\|Z_yb_N\|}.
+\]
+\end{definition}
+
+\begin{proposition}[Exact suppression under block threshold]
+If every blind set $A\in\mathcal B$ violates at least one block threshold, i.e. $|A\cap\mathcal P_j|>K_j$ for some $j$, and $b=P_{\Omega\le K}b$, then
+\[
+  \Pi_{\mathcal B}Z_yb=0.
+\]
+If the seed is not exactly truncated, then
+\[
+  \|\Pi_{\mathcal B}Z_yb\|\le \|Z_y(I-P_{\Omega\le K})b\|.
+\]
+\end{proposition}
+
+\section{Restricted BPRZ salvage}
+Let $K_q$ be the GCD--log main kernel from Step 130. Suppose $K_q\succeq \gamma_q I$ on the complement of the blind sector. If
+\[
+  \|\Pi_{\mathcal B}Z_yb\|\le \delta_N\|Z_yb\|,
+\]
+then
+\[
+  \langle Z_yb,K_qZ_yb\rangle
+  \ge \gamma_q(1-\delta_N^2)\|Z_yb\|^2.
+\]
+Thus $\delta_N\to0$ is sufficient, but a uniform $\delta_N<1$ is already enough if $\gamma_q\to\infty$.
+
+\section{Open analytic obligation}
+For the actual regularized Burnol/Müntz residual seed, one must prove
+\[
+  \frac{\|\Pi_{\rm blind}Z_yb_N\|}{\|Z_yb_N\|}\to0,
+\]
+or at least a uniform bound $<1$. This is the high-divisibility/Omega-tail gate.
+
+\section{Nonclaim}
+This note does not prove RH and does not claim that HS scalar moment machinery gives an operator-valued source frame. It imports the HS block architecture and identifies the exact additional tail and matrix-lower-frame records required by the membrane proof route.
+
+\end{document}

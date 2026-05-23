@@ -1,0 +1,151 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\newcommand{\XiBC}{\Xi_{\mathrm{BC}}}
+\newcommand{\XiH}{\Xi_{\mathrm{BC,Hecke}}}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Hzeta}{H_{\zeta}^{-}}
+\newcommand{\HH}{H_{Q,1}^{-}}
+\newcommand{\Yzeta}{Y_{\zeta}^{-}}
+\newcommand{\YH}{Y_{Q,1}^{-}}
+
+\title{Step 168: H6 Zeta-Fiber Descent Audit}
+\author{RH Track Adequacy Ledger}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+This note audits H6, the bridge from the Hecke residual \(\XiH\) at
+\(K=\Q\), \(\chi=1\), to the inherited Burnol/Sonine residual \(\XiBC\).
+The output is one typed verdict among equality, defect-paid transfer,
+non-comparability, or audit indeterminacy.
+
+\section{T1. Typed Bridge Context}
+
+The Hecke fiber under audit is:
+\[
+  \bigl(\HH,L_{Q,1},D_{Q,1},C_{Q,1}\bigr),
+\]
+where \(\HH\) is the \(K=\Q\), trivial-character Hilbert carrier,
+\(L_{Q,1}\) is its native probe family, \(D_{Q,1}\) is its dissolving probe
+family, and \(C_{Q,1}\) is its audit energy.
+
+The Burnol/Sonine side is the inherited pulled-evaluator carrier:
+\[
+  \bigl(H,L,D,C\bigr),
+\]
+with parent residual
+\[
+  \XiBC = B^* \Pi_Y B.
+\]
+
+Step 92 records candidate bridge notation
+\[
+  B:\Yzeta\to \YH,\qquad R:\YH\to \Yzeta,
+\]
+and the desired bridge pattern
+\[
+  RB=I,\qquad K_{\zeta}\preceq R K_H R^*+E_{\mathrm{br}}.
+\]
+For step 168 these are candidate or required bridge slots. They are not
+accepted comparison data.
+
+The comparison target is therefore either an exact residual identity
+\[
+  \XiH|_{K=\Q,\chi=1}=\XiBC,
+\]
+or a defect inequality transferring the Hecke-fiber conclusion to the
+Burnol/Sonine carrier through a positive-budgeted \(E_{\mathrm{br}}\).
+
+\section{T2. Source Audit}
+
+Step 92 supplies a Hecke/idele carrier sketch. It defines a completed
+Hecke response space, character readouts, a source-frame program, and
+bridge slots \(B\) and \(R\). It classifies the Hecke-to-zeta bridge as a
+major required object. The machine records mark the bridge as
+``major\_bridge\_required'', ``missing\_key'', or
+``enlarged\_carrier\_program'' rather than as accepted comparison data.
+
+Step 167 imports this status. It records:
+\begin{itemize}[leftmargin=2em]
+\item BR1: \(L_{\Q}(s,1)=\zeta(s)\), accepted only at scalar L-function level.
+\item BR2: comparison of Hecke fiber carrier with Burnol/Sonine carrier,
+status open external bridge.
+\item BR3: step 92 bridge maps and defect inequality, status open external bridge.
+\end{itemize}
+
+The adjacent records through steps 30--95 supply framework discipline,
+source-frame schemas, and finite-window warnings. They do not supply a
+carrier isomorphism \(\HH\simeq H\), probe congruences
+\(L_{Q,1}\leftrightarrow L\), dissolving-probe congruences
+\(D_{Q,1}\leftrightarrow D\), an audit-energy identity or inequality
+between \(C_{Q,1}\) and \(C\), or a zero-ledger congruence beyond scalar
+L-function equality.
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{bridge\_verdict = non\_comparability}.}
+\]
+
+This verdict is ledger-relative: under the inherited records, the Hecke
+fiber and Burnol/Sonine carrier are structurally non-comparable for H6.
+The verdict does not forbid a future external bridge theorem. It says no
+such theorem is present in the inherited record.
+
+\section{T3. Framework-Derived No-Go}
+
+\textbf{No-go statement.}
+The Hecke fiber carrier at \(K=\Q\), \(\chi=1\), is structurally
+non-comparable to the Burnol/Sonine pulled-evaluator carrier under the
+inherited records; consequently, closure of \(\XiH\) does not supply closure
+of \(\XiBC\) on the Burnol/Sonine carrier.
+
+\textbf{Scope.}
+The no-go applies only to H6 under the step 168 ledger. It does not alter
+the Burnol/Sonine cascade and it does not alter H1--H5 on the Hecke side.
+It also does not deny the scalar identity \(L_{\Q}(s,1)=\zeta(s)\). Its
+point is that scalar identity is not carrier identity.
+
+\textbf{Proof sketch.}
+Equality would require accepted \(B,R\) with \(RB=I\) and congruence of
+Hilbert carrier, native probes, dissolving probes, audit energy, and zero
+ledger. Step 92 does not supply those comparison data. Defect-paid transfer
+would require an explicit positive-budgeted \(E_{\mathrm{br}}\) satisfying
+the defective bridge theorem hypotheses. Step 92 names a bridge-defect slot
+but does not supply positivity, fixed-ledger control, or an adequacy budget.
+The only accepted cross-record identity is \(L_{\Q}(s,1)=\zeta(s)\), and
+step 167 explicitly retains the no-go that scalar L-function identity is not
+carrier identity. Therefore H6 is non-comparable under the inherited records.
+
+\textbf{Nonclaim record.}
+This step does not assert exact equality, does not assert a defect-paid
+transfer, does not close either parent residual, and does not promote BR2 or
+BR3 to accepted bridge sources.
+
+\section{T5. Residual Tree Update}
+
+The Burnol/Sonine tree remains a sibling residual tree with unchanged open
+branches:
+\begin{itemize}[leftmargin=2em]
+\item Branch A: Calkin bridge G2--G5, split external theorem.
+\item Branch B: per-zero finite-carrier SL164.1, finite-carrier diagnostic
+indeterminate.
+\item Branch C: shifted co-Poisson H1--H5, split external theorem.
+\end{itemize}
+
+The Hecke tree remains active with H1--H5 unchanged. H6 is updated:
+\[
+  \text{H6 zeta-fiber descent to }\XiBC:
+  \quad \texttt{open\_external\_bridge}
+  \longmapsto
+  \texttt{non\_comparability}.
+\]
+
+\end{document}
+

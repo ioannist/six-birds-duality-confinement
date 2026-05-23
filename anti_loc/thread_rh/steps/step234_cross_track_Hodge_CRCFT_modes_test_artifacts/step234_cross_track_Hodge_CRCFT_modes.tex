@@ -1,0 +1,89 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 234: Cross-Track CRCFT Modes on Hodge Components}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+
+\newcommand{\XiH}{\Xi_{\mathrm H}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+This step tests whether the CRCFT modes derived on the RH track and BSD-verified at step 233 also classify the Hodge track's active cycle-column structure.
+
+The three modes are:
+\begin{itemize}
+\item \textbf{TE}: closure is target-equivalent in the declared scope.
+\item \textbf{CTMT}: closure reduces to carrier-native terminal computations.
+\item \textbf{BF}: comparison or transport from a support carrier to the target fails without target-strength bridge content.
+\end{itemize}
+
+\section{Hodge residual readout}
+
+The Hodge track defines
+\[
+V_{X,p}=\mathrm{Hdg}^p(X)_{\mathbb Q},\qquad
+A_{X,p}=\mathrm{Alg}^p(X)_{\mathbb Q}\subseteq V_{X,p},
+\]
+and
+\[
+\XiH(X,p)=I-P_{A_{X,p}}.
+\]
+The faithful reformulation is
+\[
+\XiH(X,p)=0 \Longleftrightarrow A_{X,p}=V_{X,p}.
+\]
+
+For the active Fermat fourfold lane the scoped residual is
+\[
+\Xi_H^{\mathrm{std}}(X^4_{33},2)\ne 0,
+\]
+where the standard/induced Fermat dictionary misses a residual sector. Repair requires a nonstandard codimension-2 surface or correspondence column passing the cycle-column gates.
+
+\section{Cycle-column gates}
+
+The Hodge records list six gates:
+\begin{enumerate}
+\item algebraic codimension-2 surface on \(X^4_{33}\);
+\item containment in the Fermat hypersurface;
+\item Chow/cohomology cycle-class map;
+\item Fermat character projector;
+\item nonzero residual quotient column;
+\item Hodge--Riemann metric/projection plus rational/cyclotomic descent.
+\end{enumerate}
+
+\section{Mode table}
+
+\begin{center}
+\begin{tabular}{p{0.31\linewidth}p{0.14\linewidth}p{0.45\linewidth}}
+\toprule
+Component & Mode & Reason\\
+\midrule
+\(\Xi_H^{\mathrm{std}}(X^4_{33},2)\) & TE & Vanishing is exactly the declared standard-dictionary adequacy target.\\
+Nonstandard repair column & BF & Support data do not bridge to Hodge closure without a lawful cycle column.\\
+Candidate equations / arithmetic support & CTMT & Coefficient, containment, and support equations are terminal column computations.\\
+Cycle realization / containment & TE/CTMT & Actual cycle containment is Hodge-native target content; lane proof is terminal algebraic computation.\\
+Cycle-class map / Fermat projector & CTMT & Column and character-projection computations are terminal.\\
+Hodge--Riemann projection / residual quotient & TE/CTMT & Residual vanishing is the target certificate; matrix/rank evaluation is terminal.\\
+Rational / cyclotomic descent & TE/BF & Descent is required for a rational Hodge-cycle source; absent descent blocks transport.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Literature audit}
+
+The audit used Hodge 1950, Grothendieck's standard conjectures, Cattani--Deligne--Kaplan on Hodge loci, Deligne on Hodge cycles on abelian varieties, Voisin and Lewis as modern references, and Tate 1965 for analog/bridge context. These sources supply the conceptual and scoped-theorem infrastructure, but the Hodge records retain the rule that only a source-stated cycle-span theorem in the declared scope licenses \(\XiH=0\).
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{V\_hodge\_CRCFT\_modes\_verified}}
+\]
+
+The CRCFT modes extend to the Hodge track. This upgrades CRCFT to verified-on-3-track-instances: RH, BSD, and Hodge. No Hodge proof is claimed.
+
+\end{document}

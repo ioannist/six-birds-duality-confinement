@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\begin{document}
+
+\section*{Step 218: Large-\(T\) Wavepacket Extension}
+
+\subsection*{Construction}
+
+We extend the Step 217 wavepacket test to
+\[
+T\in\{300,1000,3000,10000\}.
+\]
+For each \(T\), define
+\[
+u_T(\tau)=Z_T^{-1/2}\exp\!\left(-\frac{(\tau-T)^2}{2\sigma^2}\right)
+\mathbf 1_{\{|\tau-T|<3\sigma\}},
+\qquad \sigma=1.
+\]
+The tested operator is
+\[
+C_\ell P_\infty=(I-P_\infty)M_{m_\ell}P_\infty,\qquad \ell=\log 2.
+\]
+
+The numerical method uses a moving local Gauss--Legendre window centered at \(T\), with half-width \(80\).  This resolves the width-\(1\) packet even at \(T=10000\).  The sinc part of \(P_\infty\) is translation invariant in local differences, while the finite PSWF correction is evaluated at the actual large ordinates.
+
+\subsection*{Primary Values}
+
+\[
+\begin{array}{c|c}
+T & \|C_\ell u_T\|\\
+\hline
+300 & 0.2638416044\\
+1000 & 0.2638455893\\
+3000 & 0.2638458640\\
+10000 & 0.2638458688
+\end{array}
+\]
+
+The drift from \(T=300\) to \(T=10000\) is only
+\[
+4.2644\cdot 10^{-6},
+\]
+and the ratio is
+\[
+\|C_\ell u_{10000}\|/\|C_\ell u_{300}\|=1.00001616.
+\]
+With conservative error \(7.5\cdot 10^{-2}\),
+\[
+\delta\ge 0.1888416044.
+\]
+
+\subsection*{Robustness}
+
+The bound persists under \(\sigma=0.5\) and under \(\ell=\log 3\).  At \(T=10000\), changing the local half-window from \(40\) to \(120\) gives norms from \(0.262169\) to \(0.264677\), the same numerical band.
+
+\subsection*{Verdict}
+
+The large-\(T\) extension is flat at displayed precision:
+\[
+\boxed{\mathrm{V\_wavepacket\_large\_T\_constant}}.
+\]
+This strengthens the essential-norm diagnostic for \(C_\ell P_\infty\), but it does not decide the narrower \(C_\ell P_\eta\) Branch A question.
+
+\end{document}

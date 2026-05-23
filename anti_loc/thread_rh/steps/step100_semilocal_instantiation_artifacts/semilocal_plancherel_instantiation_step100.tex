@@ -1,0 +1,121 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\one}{\mathbf 1}
+\newcommand{\pre}{\preceq}
+\title{Step 100: Semilocal Plancherel/Exhaustivity Instantiation}
+\author{Six Birds / RH Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 99 gave an abstract promotion theorem: finite character or finite-window source frames become completed lower frames only through a Plancherel/exhaustivity record plus a tail form.  Step 100 instantiates that theorem on one concrete carrier, namely the semilocal Connes--Consani--Moscovici response space.
+
+This is not a proof of RH.  It fixes the response room, the window maps, and the exact tail objects that must be controlled before finite-window evidence can be promoted.
+
+\section{Carrier choice}
+Let $S$ be a finite set of rational places with $\infty\in S$.  Let
+\[
+  X_S=A_S/\Gamma,
+  \qquad
+  \Gamma=\{\pm p_1^{n_1}\cdots p_k^{n_k}:p_j\in S\setminus\{\infty\},\ n_j\in\mathbb Z\}.
+\]
+The semilocal Hardy--Titchmarsh construction gives a canonical response space
+\[
+  Y_S=L^2(\R,dm_S),
+  \qquad
+  dm_S(s)=\left|\prod_{v\in S}L_v\!\left(\frac12-is\right)\right|^2ds.
+\]
+The Fourier involution on the semilocal side becomes the symmetry $s\mapsto -s$ in this model.  We therefore set
+\[
+  Y_S^-:=\{y\in L^2(\R,dm_S):\mathcal J y=-y\},
+  \qquad (\mathcal J y)(s)=y(-s),
+\]
+with the usual conjugate-linear variant when the carrier is complex and real structures are retained.
+
+\section{Window maps}
+For $T>0$, define the spectral window
+\[
+  \Pi_T:Y_S^-\to Y_{S,T}^-:=L^2([-T,T],dm_S)^-,
+  \qquad
+  \Pi_Ty=\one_{|s|\le T}y.
+\]
+The adjoint is extension by zero, and
+\[
+  \Pi_T^*\Pi_T=M_{\one_{|s|\le T}}.
+\]
+Optionally one may refine this by a finite-mode/prolate/orthogonal-polynomial projection $P_N^{(S)}$ and use
+\[
+  \Pi_{T,N}=P_N^{(S)}\Pi_T.
+\]
+This second truncation is support-only unless its $N$-tail is also audited.
+
+\section{Tail/exhaustivity theorem on the fixed semilocal carrier}
+\begin{theorem}[Trace-tail exhaustivity]
+Let $A_Z\ge0$ be a trace-class completed zero ledger on $Y_S^-$. Then
+\[
+ \operatorname{tr}\big((I-\Pi_T^*\Pi_T)A_Z(I-\Pi_T^*\Pi_T)\big)\to0
+ \qquad (T\to\infty).
+\]
+Consequently, finite spectral windows exhaust the zero ledger if the same completed ledger $A_Z$ is being squeezed.
+\end{theorem}
+\begin{proof}
+The projections $P_T=\Pi_T^*\Pi_T$ increase strongly to $I$ on $Y_S^-$.  If $A_Z$ is positive trace-class, approximate it in trace norm by a finite-rank positive operator.  Strong convergence is uniform on finite-dimensional ranges, and the trace-norm approximation supplies the remaining $\varepsilon$.
+\end{proof}
+
+\section{Lower-frame promotion with explicit tail}
+Let $\Theta_0^-$ be the native anti-invariant budget on $Y_S^-$.  Let $B_T$ be a positive window budget on $Y_{S,T}^-$.  A Plancherel/exhaustivity record is an inequality
+\[
+  (\Theta_0^-)^{-1}\preceq \Pi_T^*B_T\Pi_T+T_T,
+  \qquad T_T\ge0.
+\]
+If a finite-window source frame satisfies
+\[
+  F_T^{\rm win}\succeq \Lambda_T B_T,
+\]
+then its lift
+\[
+  F_T=\Pi_T^*F_T^{\rm win}\Pi_T
+\]
+obeys
+\[
+  F_T+\Lambda_TT_T\succeq \Lambda_T(\Theta_0^-)^{-1}.
+\]
+Thus finite-window source coercivity promotes exactly to the extent that $T_T$ is small on the completed zero ledger.
+
+\section{Concrete tail form}
+In the simplest multiplication-budget case, if $(\Theta_0^-)^{-1}=M_w$ for a positive measurable weight $w$, then
+\[
+  T_T=M_{w\one_{|s|>T}}.
+\]
+The zero-ledger tail is
+\[
+  \operatorname{tr}(T_T^{1/2}A_ZT_T^{1/2}).
+\]
+The exact-confinement route requires this quantity to vanish along the same fixed or exhaustive ledger used in the zero-side squeeze.
+
+\section{Important limitation}
+The fixed $K_S$-invariant semilocal response space records the finite places through the measure $dm_S$.  It does not by itself provide all character-source modes.  Therefore, Step 100 instantiates the spectral Plancherel/tail gate, but it does not discharge the Hecke/Dirichlet lower-frame source gate
+\[
+  F_n\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty.
+\]
+For that, one needs either a source readout family $Q_\omega$ descending lawfully to $Y_S^-$, or an enlarged Hecke/id\`ele carrier with a Plancherel theorem and a descent bridge back to the zeta zero ledger.
+
+\section{Status}
+Step 100 accepts the semilocal CCM response space as the first concrete carrier for window/tail bookkeeping:
+\[
+  Y_S^-=L^2(\R,dm_S)^-,\quad \Pi_T=M_{\one_{|s|\le T}},\quad T_T=(I-\Pi_T)^*(\Theta_0^-)^{-1}(I-\Pi_T).
+\]
+The remaining open tasks are source lower-frame construction and absorption of $\Delta_S^+$.
+\end{document}

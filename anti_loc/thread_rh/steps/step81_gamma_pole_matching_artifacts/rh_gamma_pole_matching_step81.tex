@@ -1,0 +1,242 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\cmp}{\mathrm{cmp}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\tail}{\mathrm{tail}}
+\newcommand{\pole}{\mathrm{pole}}
+\newcommand{\diag}{\mathrm{diag}}
+
+\title{Step 81: Gamma--Pole Normalization and Completion Balance for the RH Membrane Route}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The previous steps isolated the RH membrane obligation
+\[
+  V_Z^*V_Z\preceq W_{\cmp}^*W_{\cmp},
+  \qquad
+  W_{\cmp}=(W_{\pr},W_\infty,W_{\pole},W_{\tail}),
+\]
+or equivalently the Douglas contraction $V_Z=TW_{\cmp}$ with $\norm T\le1$.
+Step 77 showed that the prime autocorrelation term becomes a positive shift-difference feature only after a diagonal repair. Step 80 showed that the gamma factor has a natural positive paired difference representation but that its separated diagonal diverges. This note records the resulting gamma--pole normalization gate: the archimedean feature is positive only as a paired form, and any comparison with the signed explicit formula must specify the finite counterterm supplied by pole/completion/tail records.
+
+\section{Log-side conventions}
+Let $f\in C_c^\infty(\R)$ and let
+\[
+  \widetilde f(t)=\overline{f(-t)},\qquad
+  h_f(a)=(f*\widetilde f)(a)=\ip{\tau_a f}{f}.
+\]
+Here $(\tau_a f)(t)=f(t+a)$. Then
+\[
+  \widehat h_f(\xi)=|\widehat f(\xi)|^2.
+\]
+The anti-linear zeta symmetry is modeled on the log side by
+\[
+  (Jf)(t)=\overline{f(-t)},
+\]
+and the anti-invariant core is $C_c^\infty(\R)^{J=-1}$, though the identities below do not require anti-invariance.
+
+\section{The gamma paired feature}
+For the zeta gamma factor, the normalized archimedean symbol is
+\[
+  \Psi_\infty(\xi)
+  =\Re\psi\!\left(\frac14+\frac{i\xi}{2}\right)-\psi\!\left(\frac14\right),
+\]
+where $\psi=\Gamma'/\Gamma$. The standard digamma integral gives
+\[
+  \Psi_\infty(\xi)=\int_0^\infty
+  \frac{e^{-t/4}}{1-e^{-t}}\left(1-\cos\frac{\xi t}{2}\right)\,dt.
+\]
+Define
+\[
+  \kappa_\infty(t)=\frac12\frac{e^{-t/4}}{1-e^{-t}},\qquad t>0.
+\]
+
+\begin{definition}[Archimedean paired difference feature]
+The positive paired gamma feature is
+\[
+  q_\infty^+[f]
+  =\int_0^\infty \kappa_\infty(t)\norm{\tau_{t/2}f-f}_2^2\,dt.
+\]
+Equivalently,
+\[
+  q_\infty^+[f]=\int_\R \Psi_\infty(\xi)|\widehat f(\xi)|^2\,d\xi
+\]
+up to the Fourier normalization convention.
+\end{definition}
+
+\begin{lemma}[Paired finiteness]
+For $f\in C_c^\infty(\R)$, $q_\infty^+[f]<\infty$.
+\end{lemma}
+\begin{proof}
+Near $t=0$,
+\[
+  \kappa_\infty(t)\sim \frac{1}{2t},
+  \qquad
+  \norm{\tau_{t/2}f-f}_2^2=O(t^2)\norm{f'}_2^2.
+\]
+Thus the integrand is $O(t)$ near zero. At infinity, $\kappa_\infty(t)$ decays exponentially while
+$\norm{\tau_{t/2}f-f}_2^2\le4\norm f_2^2$. Hence the integral converges.
+\end{proof}
+
+\section{Truncated expansion and the divergent diagonal}
+For $0<\varepsilon<R$, define
+\[
+  q_{\infty}^{\varepsilon,R}[f]
+  =\int_\varepsilon^R\kappa_\infty(t)\norm{\tau_{t/2}f-f}_2^2\,dt.
+\]
+Expanding the square gives
+\[
+  q_{\infty}^{\varepsilon,R}[f]
+  =D_\infty(\varepsilon,R)\norm f_2^2
+  -2\Re\int_\varepsilon^R \kappa_\infty(t)h_f(t/2)\,dt,
+\]
+where
+\[
+  D_\infty(\varepsilon,R)=2\int_\varepsilon^R\kappa_\infty(t)\,dt.
+\]
+Since $\kappa_\infty(t)\sim(2t)^{-1}$, one has
+\[
+  D_\infty(\varepsilon,R)=\log(1/\varepsilon)+O_R(1)
+  \qquad(\varepsilon\downarrow0).
+\]
+
+\begin{proposition}[No free archimedean diagonal]
+The archimedean feature $q_\infty^+$ is positive as a paired difference form, but its separated diagonal $D_\infty(\varepsilon,R)\norm f^2$ diverges as $\varepsilon\downarrow0$. Consequently no proof may use the separated archimedean diagonal as a finite payment unless it also supplies a renormalization, quotient, pole/completion counterterm, or explicit defect ledger.
+\end{proposition}
+
+\section{Prime diagonal repair and gamma--pole normalization}
+Let $w_a\ge0$ be the finite prime-shift weights at cutoff $L$. The signed prime autocorrelation term is
+\[
+  P_{\pr,L}(h_f)=-\sum_a w_a\bigl(h_f(a)+h_f(-a)\bigr),
+\]
+and the positive prime feature is
+\[
+  q_{\pr,L}[f]=\sum_a w_a\norm{\tau_a f-f}_2^2.
+\]
+The exact identity is
+\[
+  q_{\pr,L}[f]=P_{\pr,L}(h_f)+d_{\pr,L}\norm f^2,
+  \qquad
+  d_{\pr,L}=2\sum_a w_a.
+\]
+Thus a positive prime feature requires a finite diagonal repair $d_{\pr,L}\norm f^2$.
+
+The gamma side is different: its natural positive feature is paired and has no finite separated diagonal. Therefore the matching between the signed explicit formula and the positive feature package must be written in renormalized form.
+
+\begin{definition}[Gamma normalization record]
+A gamma normalization record at cutoff $L$ is a triple
+\[
+  (c_{\infty,L},r_{\infty,L},\mathcal R_{\infty,L})
+\]
+such that on the chosen core
+\[
+  R_{\infty,L}^{\sgn}[f]
+  =q_\infty^+[f]-c_{\infty,L}\norm f^2+r_{\infty,L}[f],
+\]
+with residual $r_{\infty,L}$ dominated by an explicit defect form
+\[
+  r_{\infty,L}[f]\le \mathcal R_{\infty,L}[f].
+\]
+When $\mathcal R_{\infty,L}=0$ this is an exact signed-gamma-to-positive-feature matching.
+\end{definition}
+
+\begin{definition}[Pole/completion payment record]
+A pole/completion payment record is a positive finite-rank or quotient feature
+\[
+  q_{\pole,L}^+[f]=\sum_{r=1}^{m_L}|\ip{f}{p_{r,L}}|^2
+\]
+together with a scalar or finite-dimensional lower bound certifying how much of the diagonal completion sector it pays. A tail/support payment record is either a positive feature $q_{\tail,L}^+$ or a defect form $e_{\tail,L}$ with fixed/exhaustive ledger status.
+\end{definition}
+
+\section{The completion balance gate}
+Write the signed completed carrier schematically as
+\[
+  q_{\sgn,L}=P_{\pr,L}+R_{\infty,L}^{\sgn}+R_{\pole,L}^{\sgn}+R_{\tail,L}^{\sgn}.
+\]
+The candidate positive completed carrier is
+\[
+  q_{\cmp,L}=q_{\pr,L}+q_\infty^++q_{\pole,L}^++q_{\tail,L}^+.
+\]
+Using the prime repair and the gamma normalization record, the difference is
+\[
+\begin{aligned}
+  q_{\cmp,L}[f]-q_{\sgn,L}[f]
+  ={}& (d_{\pr,L}+c_{\infty,L})\norm f^2
+  +q_{\pole,L}^+[f]+q_{\tail,L}^+[f]
+  \\
+  &-r_{\infty,L}[f]-R_{\pole,L}^{\sgn}[f]-R_{\tail,L}^{\sgn}[f].
+\end{aligned}
+\]
+
+\begin{definition}[Completion balance form]
+The completion balance form is
+\[
+\boxed{
+\begin{aligned}
+  \mathcal B_L[f]
+  ={}& (d_{\pr,L}+c_{\infty,L})\norm f^2
+  +q_{\pole,L}^+[f]+q_{\tail,L}^+[f]
+  \\
+  &-r_{\infty,L}[f]-R_{\pole,L}^{\sgn}[f]-R_{\tail,L}^{\sgn}[f].
+\end{aligned}}
+\]
+The balance gate is $\mathcal B_L\ge0$ on the completed core, or else the negative part of $\mathcal B_L$ must be carried as a matching defect.
+\end{definition}
+
+\begin{theorem}[Gamma--pole completion balance implies positive matching]
+Suppose the signed Weil-side comparison gives
+\[
+  q_Z[f]\le q_{\sgn,L}[f]+e_{\mathrm{Weil},L}[f]
+\]
+on the chosen core. Suppose also that the gamma normalization and pole/tail records give
+\[
+  \mathcal B_L[f]\ge -e_{\mathrm{bal},L}[f].
+\]
+Then
+\[
+  q_Z[f]\le q_{\cmp,L}[f]+e_{\mathrm{Weil},L}[f]+e_{\mathrm{bal},L}[f].
+\]
+If the defects vanish and the core-to-full Douglas gate is accepted, then
+\[
+  V_Z^*V_Z\preceq W_{\cmp,L}^*W_{\cmp,L}.
+\]
+\end{theorem}
+\begin{proof}
+By definition,
+\[
+  q_{\cmp,L}=q_{\sgn,L}+\mathcal B_L.
+\]
+Thus $q_{\sgn,L}\le q_{\cmp,L}+e_{\mathrm{bal},L}$. Combining with the signed comparison gives the asserted bound. The final assertion is the core-to-full domination/Douglas factorization theorem.
+\end{proof}
+
+\section{Consequences for the RH route}
+The prime slot is naturally positive after a finite diagonal repair. The gamma slot is naturally positive only as a paired renormalized difference form. The pole/completion and tail slots must do the finite bookkeeping that turns the signed completed explicit formula into a positive completed feature package. The remaining RH obligation is therefore not vague positivity; it is the concrete gate
+\[
+  \mathcal B_L\ge0
+\]
+with vanishing or controlled defects across a fixed or exhaustive ledger.
+
+\end{document}

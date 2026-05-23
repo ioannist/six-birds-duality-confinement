@@ -1,0 +1,148 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\title{Step 180: Carrier-Typed Matrix-Element Terminality}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{final\_verdict = V\_CTMT\_formalized}.}
+\]
+
+This is case-3 synthesis: a foundational typed condition is recognized from a
+track instance and formalized for reuse across carriers and future tracks.
+
+\section{Definition}
+
+\begin{definition}[Carrier-Typed Matrix-Element Terminality]
+A residual closure attempt on a typed carrier \(C\) exhibits
+\emph{Carrier-Typed Matrix-Element Terminality} (CTMT) when, after applying the
+available operational identities and structural reductions, the closure
+question reduces to deciding a carrier-native matrix-element family
+\[
+M(\alpha,\beta,\gamma)
+=
+\langle a_\alpha,P_\beta b_\gamma\rangle,
+\]
+where \(a_\alpha\) and \(b_\gamma\) are carrier-native vectors, \(P_\beta\) is
+a carrier-native projection, transport, quotient, or operational kernel, and
+the inherited records do not supply enough kernel/transport data to compute
+\(M\).  The \(M\)-decision must not already be target-equivalent to the desired
+conclusion, and public-shadow or finite-window data may not be promoted without
+a typed bridge theorem.
+\end{definition}
+
+\section{Resolution Modes}
+
+\[
+\begin{array}{l|p{0.68\linewidth}}
+\toprule
+\text{Mode} & \text{Meaning}\\
+\midrule
+\text{CTMT-stuck} &
+The \(M\)-family is well typed but a kernel or transport theorem is missing.
+The \(M\)-family becomes the exact external-content interface.\\
+\text{CTMT-foreclosed-numerical} &
+A different lawful operational chain computes at least one \(M\)-value
+nonzero with a sharp lower bound.  The route is foreclosed under inherited
+normalization.\\
+\text{CTMT-bridge-failure} &
+The attempted \(M\)-family crosses carriers, but the carrier comparison data
+are missing, so the carrier-pivot fails under inherited records.\\
+\bottomrule
+\end{array}
+\]
+
+\section{Four Instances}
+
+\[
+\begin{array}{c|p{0.17\linewidth}|p{0.24\linewidth}|p{0.18\linewidth}|p{0.18\linewidth}}
+\toprule
+\text{Instance} & \text{Carrier} & M\text{-form} & \text{Projection / bridge} & \text{Verdict}\\
+\midrule
+A &
+Burnol/Sonine &
+\(\langle\eta_i,C_\ell\eta_j\rangle\) &
+\(P_\eta\), \(P_\infty\) via \(K_\infty^{op}\) &
+\texttt{V\_branch\_a\_stuck\_at\_kappa}\\
+B &
+Burnol/Sonine &
+\(c_{ij}(\ell)=\langle e_i,C_\ell e_j\rangle\) &
+\(P_\infty\) via \(K_\infty^{op}\), pulled evaluators via \(\kappa\) &
+\texttt{V\_kappa\_classical\_theorem\_needed}\\
+C &
+Burnol/Sonine &
+\(L_{\rho,k}(G)=\langle M_\zeta G,P_\infty y_{\rho,k}\rangle\) &
+\(P_\infty\) via \(K_\infty^{op}\) &
+\texttt{V\_branch\_c\_foreclosed\_generic}\\
+H6 &
+Hecke to Burnol/Sonine &
+attempted cross-carrier pairing &
+carrier comparison / descent bridge &
+\texttt{V-NC}\\
+\bottomrule
+\end{array}
+\]
+
+Instances A and B are CTMT-stuck at the same Burnol projected-kernel theorem
+for \(\kappa\).  Instance C is CTMT-foreclosed-numerical: four nonzero
+\(L\)-values with \(|L|\ge0.11\) foreclose the full-carrier Branch C route.
+Instance H6 is CTMT-bridge-failure: the scalar identity \(L_{\mathbb Q}(s,1)
+=\zeta(s)\) does not identify the carriers, probes, energy, or ledgers.
+
+\section{Consequence Theorem}
+
+\begin{theorem}[CTMT Consequence]
+When a typed carrier exhibits CTMT, the framework's typed contribution is the
+carrier-native matrix-element statement \(M\), including its carrier, vectors,
+projection or transport, and resolution mode.  The outcome is exactly one of
+the following typed statuses:
+\[
+\text{CTMT-stuck},\qquad
+\text{CTMT-foreclosed-numerical},\qquad
+\text{CTMT-bridge-failure}.
+\]
+Consequently, the external-content interface produced by the framework is the
+\(M\)-statement, not a vague request for external operator theory.
+\end{theorem}
+
+\begin{proof}
+The definition requires that all available typed reductions have already been
+applied.  If the \(M\)-family remains well-defined but uncomputed, the missing
+kernel or transport theorem is precisely the unresolved external content.  If
+an alternate lawful operational chain computes a nonzero \(M\)-value, the
+route's asserted vanishing or factorization fails under the inherited
+normalization.  If the carriers cannot be compared, then no cross-carrier
+matrix element is defined, so the descent or pivot fails.  These alternatives
+exhaust the documented Step 175--179 instances and are carrier-typed rather
+than public-shadow claims.
+\end{proof}
+
+\section{Corpus Candidate}
+
+CTMT is flagged for future foundational-corpus inclusion.  Suggested target:
+\[
+\texttt{anti\_loc/CTMT.md}.
+\]
+This step writes only the standalone candidate
+\[
+\texttt{CTMT\_typed\_condition.md}
+\]
+inside the Step 180 artifact directory.
+
+\section{Nonclaim Boundary}
+
+CTMT does not prove RH, does not close \(\Xi_{\mathrm{BC}}\), does not close
+any branch by itself, and does not weaken retained no-gos.  It is a typed
+diagnostic and external-interface condition.
+
+\end{document}

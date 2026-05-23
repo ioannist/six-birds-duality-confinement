@@ -1,0 +1,212 @@
+{
+  "step": 172,
+  "orientation": "adequacy",
+  "active_residuals": [
+    "Xi_BC",
+    "Xi_BC_Hecke"
+  ],
+  "cascade_state": {
+    "primary_parent_residual": {
+      "name": "Xi_BC",
+      "formula": "Xi_BC = B^*_{l,a} Pi_{Y_a} B_{l,a}",
+      "carrier": "Burnol/Sonine pulled-evaluator carrier",
+      "status": "open_parent_residual"
+    },
+    "sibling_parent_residual": {
+      "name": "Xi_BC_Hecke",
+      "carrier": "Hecke L-function carrier through step 92",
+      "status": "open_sibling_residual",
+      "bridge_to_Xi_BC": {
+        "bridge": "H6 zeta_fiber_descent_to_Xi_BC",
+        "source_step": 168,
+        "verdict": "non_comparability",
+        "reason": "scalar L-function identity L_Q(s,1)=zeta(s) does not supply carrier/probe/audit residual identity"
+      }
+    },
+    "branches": {
+      "A_Calkin_bridge_G2_G5": {
+        "status": "split_external_theorem",
+        "source_step": 163,
+        "typed_context": "A_eta = C*(P_infty, M_{m_l}, P_eta, I); K_eta = A_eta cap K(H); q_eta(C_l P_eta) in A_eta/K_eta",
+        "open_gates": [
+          "G2 faithful boundary symbol sigma_B",
+          "G3 normal form C_l = U_l W_l + K_l",
+          "G4 lower-faithfulness of U_l",
+          "G5 compact remainder record for K_l"
+        ],
+        "active_sub_residual": "Xi_BC to Xi_BW under accepted G2-G5 bridge"
+      },
+      "B_per_zero_finite_carrier_SL164_1": {
+        "status": "finite_carrier_diagnostic_indeterminate",
+        "source_step": 164,
+        "typed_context": "H_eta = closed-direct-sum over rho of H_{eta,rho}; A_{eta,rho} subset A_eta; finite carrier Rho_fin,A_fin,K_fin",
+        "open_external_content": "SL164.1 projected Burnol/Sonine kernel evaluator entries at support_only",
+        "active_sub_residual": "Xi_matrix_source_{l,Rho_fin,A_fin,K_fin}"
+      },
+      "C_shifted_co_Poisson_H1_H5": {
+        "status": "open_with_subclass_factorization_and_kernel_required_keystone",
+        "source_steps": [
+          165,
+          169,
+          170,
+          171
+        ],
+        "typed_context": "shifted Burnol packet u_{l,a}=B_{l,a}u; candidate factorization M(Bu_{l,a})(s)=zeta(s) alpha_{l,a,u}(s)",
+        "deeper_lemma": "ZI-COV_{l,a}^{CP}: (i) P_infty M_zeta G = M_zeta A_infty G; (ii) T_a P_infty M_zeta H = M_zeta A_{T,a} H",
+        "explicit_operator": "A_infty^Omega G := M_{1/zeta} P_infty M_zeta G",
+        "subclass": "G_Omega = { G legal : supp(P_infty M_zeta G) subset Omega, inf_{s in Omega}|zeta(s)| > 0 }",
+        "target_equivalence_test": "not_target_equivalent_under_inherited_records",
+        "jet_surjectivity_status": "V_surj_undefined in route table; V_surj_genuinely_kernel_required in step 171 schema",
+        "missing_foundational_record": "Sonin/prolate Mellin kernel K_infty(s,s') of P_infty, or equivalent range-evaluator theorem deciding <M_zeta G, P_infty y_{rho,k}> for legal Burnol G"
+      }
+    },
+    "retained_nogos": [
+      {
+        "name": "public-shadow non-promotion",
+        "scope": "Hardy/Hankel and hard-support shadows cannot decide q_eta(C_l P_eta) without accepted Calkin-faithful bridge",
+        "status": "retained"
+      },
+      {
+        "name": "finite-window Calkin blindness",
+        "scope": "finite singular-value or finite-section evidence remains moving_window_support_only",
+        "status": "retained"
+      },
+      {
+        "name": "auxiliary-GRH smuggling",
+        "scope": "zero confinement of auxiliary L-functions cannot be source",
+        "status": "retained"
+      },
+      {
+        "name": "incomplete character spectrum support-only",
+        "scope": "finite character families do not supply full spectrum records",
+        "status": "retained"
+      },
+      {
+        "name": "scalar L-function identity is not carrier identity",
+        "scope": "L_Q(s,1)=zeta(s) is scalar only and not a carrier/probe/audit equality",
+        "status": "retained"
+      },
+      {
+        "name": "ledger-relative Hecke non-comparability",
+        "scope": "Hecke K=Q trivial fiber remains non-comparable to Burnol/Sonine carrier under inherited records",
+        "status": "retained"
+      }
+    ]
+  },
+  "closeout_theorem_name": "RH membrane packet cascade closeout",
+  "external_content_interface": [
+    {
+      "entry": "Branch A",
+      "branch": "Calkin-bridge G2-G5",
+      "typed_context": "A_eta = C*(P_infty, M_{m_l}, P_eta, I); K_eta = A_eta cap K(H); q_eta(C_l P_eta) in A_eta/K_eta",
+      "required_record": "G2-G5 Calkin-faithful boundary-symbol theorem: faithful sigma_B, normal form C_l = U_l W_l + K_l, lower-faithfulness of U_l, and compact remainder record for K_l",
+      "expected_verdict_shape_on_success": "carrier-grade Calkin verdict route for q_eta(C_l P_eta) and the corresponding Xi_BC branch decision",
+      "nogos_not_bypassed": [
+        "public-shadow non-promotion",
+        "finite-window Calkin blindness"
+      ]
+    },
+    {
+      "entry": "Branch B",
+      "branch": "Per-zero finite-carrier SL164.1",
+      "typed_context": "H_eta = closed-direct-sum over rho of H_{eta,rho}; A_{eta,rho} subset A_eta; finite carrier Rho_fin,A_fin,K_fin",
+      "required_record": "SL164.1 exact projected Burnol/Sonine kernel evaluator entries",
+      "expected_verdict_shape_on_success": "decision of Xi_matrix_source_{l,Rho_fin,A_fin,K_fin} and activation map for exact coupling or summability records",
+      "nogos_not_bypassed": [
+        "finite-window Calkin blindness",
+        "public-shadow non-promotion"
+      ]
+    },
+    {
+      "entry": "Branch C",
+      "branch": "Shifted co-Poisson H1-H5",
+      "typed_context": "u_{l,a}=B_{l,a}u; ZI-COV_{l,a}^{CP}; zero-free output subclass for P_infty M_zeta",
+      "required_record": "H1-H5 shifted co-Poisson external theorem package, refined by C-K or C-II",
+      "expected_verdict_shape_on_success": "typed shifted factorization route for Xi_BC on the declared carrier, subject to the keystone and endpoint records",
+      "nogos_not_bypassed": [
+        "auxiliary-GRH smuggling",
+        "scalar L-function identity is not carrier identity",
+        "public-shadow non-promotion"
+      ]
+    },
+    {
+      "entry": "Entry C-K",
+      "branch": "Branch C keystone",
+      "typed_context": "Burnol/Sonine Mellin carrier with P_infty the transported Sonin/prolate projection; zero-evaluator jets y_{rho,k}",
+      "required_record": "Sonin/prolate Mellin kernel K_infty(s,s') or equivalent range-evaluator theorem deciding <M_zeta G, P_infty y_{rho,k}> for legal Burnol G",
+      "expected_verdict_shape_on_success": "decision of projected zero-jet surjectivity and target-equivalence status for Branch C",
+      "nogos_not_bypassed": [
+        "public-shadow non-promotion",
+        "finite-window Calkin blindness",
+        "auxiliary-GRH smuggling"
+      ]
+    },
+    {
+      "entry": "Entry C-II",
+      "branch": "Branch C ZI-COV(ii)",
+      "typed_context": "T_a P_infty M_zeta output subclass with support in Omega' and inf_{s in Omega'}|zeta(s)| > 0",
+      "required_record": "ZI-COV(ii) operator A_{T,a}^{Omega'} satisfying T_a P_infty M_zeta H = M_zeta A_{T,a}^{Omega'} H on the analogous zero-free subclass",
+      "expected_verdict_shape_on_success": "joint zero-free subclass factorization for M(B_{l,a}Cg)(s) using A_infty^Omega and A_{T,a}^{Omega'}",
+      "nogos_not_bypassed": [
+        "auxiliary-GRH smuggling",
+        "scalar L-function identity is not carrier identity"
+      ]
+    }
+  ],
+  "framework_derived_outputs": [
+    {
+      "category": "predictive structural",
+      "outputs": [
+        "public-shadow non-promotion",
+        "finite-window Calkin blindness",
+        "Hecke-side auxiliary-GRH smuggling no-go",
+        "incomplete character spectrum support-only",
+        "scalar L-function identity is not carrier identity",
+        "ledger-relative Hecke non-comparability"
+      ]
+    },
+    {
+      "category": "analytical structural theorem-grade",
+      "outputs": [
+        "step 163 scoped residual theorem",
+        "step 166 cascade summary",
+        "step 167 Hecke pivot declaration",
+        "step 168 Hecke non-comparability typed no-go",
+        "steps 169-170 conditional subclass factorization on Branch C",
+        "step 171 V_surj_undefined / V_surj_genuinely_kernel_required keystone audit"
+      ]
+    },
+    {
+      "category": "analytical structural finite-carrier diagnostic",
+      "outputs": [
+        "step 164 per-zero refinement",
+        "step 170 CP-RED test on bump generator sidelined at /home/repos/six-birds-foundations-iii/anti_loc/thread/.step170_cp_red_test_sidelined/"
+      ]
+    },
+    {
+      "category": "organizational/audit",
+      "outputs": [
+        "residual tree",
+        "bridge atlas",
+        "route status across steps 163-172",
+        "nonclaim boundaries",
+        "validation scripts"
+      ]
+    },
+    {
+      "category": "remaining external content",
+      "outputs": [
+        "K_infty(s,s') Sonin/prolate Mellin kernel",
+        "ZI-COV(ii) operator A_{T,a}",
+        "SL164.1 projected Burnol/Sonine kernel evaluator records",
+        "G2-G5 Calkin-faithful boundary-symbol theorem"
+      ]
+    }
+  ],
+  "final_verdict": "track_closeout_cascade_diagnostic_complete_at_inherited_records_ceiling",
+  "manager_led_arc_summary": "Steps 163 and 166 were synthesis-without-new-content closeout or summary steps that organized inherited gates. Steps 169-171 were forward-push attempts: they reduced Branch C to ZI-COV, proved a zero-free output-support subclass for ZI-COV(i), tested target-equivalence, and isolated the missing Sonin/prolate Mellin kernel or range-evaluator theorem as the decisive external record.",
+  "next_track_directions": [
+    "Supply specific external content for one of the named records.",
+    "Pivot to non-Burnol/Sonine, non-Hecke primary carrier, for example automorphic representation, p-adic, or geometric Langlands carriers."
+  ]
+}

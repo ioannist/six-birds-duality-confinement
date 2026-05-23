@@ -1,0 +1,78 @@
+{
+  "mpmath_dps": 80,
+  "N_max": 2000,
+  "X_MAX": 40000,
+  "tail_bound_per_entry": 2.5e-05,
+  "pinv_rcond": 1e-12,
+  "data": [
+    {
+      "N": 1000,
+      "delta_sq": "0.00646330050366617",
+      "raw_delta_sq": "0.00646330050366617",
+      "delta_sq_logN": "0.0446468981738479",
+      "tail_bound_per_entry": "2.5e-05",
+      "rank": 999,
+      "largest_eigenvalue": "4.09448119e+00",
+      "smallest_kept_eigenvalue": "8.18061573e-07",
+      "condition_proxy": "5.00510149e+06",
+      "step195_delta_sq_if_available": "0.00654423096394308",
+      "delta_vs_step195": "-8.09304602769102e-05",
+      "status": "computed"
+    },
+    {
+      "N": 1500,
+      "delta_sq": "0.0061103986361164",
+      "raw_delta_sq": "0.0061103986361164",
+      "delta_sq_logN": "0.0446866918788952",
+      "tail_bound_per_entry": "2.5e-05",
+      "rank": 1499,
+      "largest_eigenvalue": "4.31496636e+00",
+      "smallest_kept_eigenvalue": "3.40989627e-07",
+      "condition_proxy": "1.26542452e+07",
+      "step195_delta_sq_if_available": "",
+      "delta_vs_step195": "",
+      "status": "computed"
+    },
+    {
+      "N": 2000,
+      "delta_sq": "0.0059290131181805",
+      "raw_delta_sq": "0.0059290131181805",
+      "delta_sq_logN": "0.0450658503926355",
+      "tail_bound_per_entry": "2.5e-05",
+      "rank": 1999,
+      "largest_eigenvalue": "4.46326149e+00",
+      "smallest_kept_eigenvalue": "1.79201943e-07",
+      "condition_proxy": "2.49063230e+07",
+      "step195_delta_sq_if_available": "",
+      "delta_vs_step195": "",
+      "status": "computed"
+    }
+  ],
+  "fit": [
+    {
+      "model": "tail_mean_delta_sq_logN",
+      "fit_range": "N=200,500,1000,1500,2000",
+      "C": "0.0456632443937048",
+      "alpha": "1",
+      "spread": "0.000926351",
+      "notes": "mean and population std of delta_sq*log(N)"
+    },
+    {
+      "model": "C_over_logN_alpha",
+      "fit_range": "N>=20 including Step195 inherited plus Step199 N=1500,2000",
+      "C": "0.0547051524798759",
+      "alpha": "1.096343229",
+      "spread": "",
+      "notes": "least-squares fit delta ~ C/(log N)^alpha"
+    },
+    {
+      "model": "recent_C_over_logN_alpha",
+      "fit_range": "N>=200 including Step195 inherited plus Step199 N=1500,2000",
+      "C": "0.0606633898663218",
+      "alpha": "1.15047847",
+      "spread": "",
+      "notes": "tail-only fit; more sensitive to truncation and conditioning"
+    }
+  ],
+  "verdict_support": "slow_log_consistent_with_truncation_caveat"
+}

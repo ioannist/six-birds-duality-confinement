@@ -1,0 +1,17 @@
+kind,id,status,reason
+constraint,C_arithmetic_independence,PASS,GUE ensemble uses Gaussian Hermitian matrix entries; no arithmetic primitives.
+constraint,C_self_adjoint_native,PASS,Each finite matrix is Hermitian and self-adjoint.
+constraint,C_no_adelic_substrate,PASS,No adelic/idclic substrate.
+constraint,C_no_tautology,FAIL,Pointwise match would require choosing/conditioning a realization equal to zeta zeros.
+constraint,C_explicit_formula_natural,FAIL,Pure GUE has no prime side or explicit formula analog.
+constraint,C_GUE_natural_refined_TRS,PASS,Complex Hermitian ensemble breaks the real TRS class and yields GUE statistics by construction/universality.
+constraint,C_trace_formula_compatibility,FAIL,"Universality gives correlation functions, not a Weil trace/explicit formula with termwise origin."
+constraint,C_length_spectrum_arithmetic_mismatch,PASS_NONAPPLICABLE,No length/geodesic/periodic-orbit spectrum is used.
+constraint,C_boundary_phase_arithmetic_smuggling,PASS_NONAPPLICABLE,No boundary extension parameter is used.
+constraint,C_ensemble_distributional_not_pointwise,PROPOSED_FAIL,New failure shape: statistics match does not imply deterministic pointwise spectrum equality.
+gate,Gate1_primitive_exclusion,PASS,No zeta/primes/modular/adeles in ensemble definition.
+gate,Gate2_dependency_trace,PASS,GUE axioms -> Hermitian spectrum -> universality theorem -> sine-kernel statistics.
+gate,Gate3_ablation,PASS,Removing zeta comparison leaves a standard GUE ensemble.
+gate,Gate4_negative_controls,PASS,"Universality applies broadly, showing the statistics are not enough to identify zeta specifically."
+gate,Gate5_stageII_small_spectrum,FAIL,No deterministic first-eigenvalue/zero match is produced.
+gate,Gate6_no_single_axiom_equivalence,FAIL,Any axiom selecting the zeta-zero realization would be equivalent to inserting the target spectrum.

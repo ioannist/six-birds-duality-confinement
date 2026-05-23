@@ -1,0 +1,55 @@
+{
+  "step": 165,
+  "orientation": "adequacy",
+  "active_residual": "Xi_BC = B^* Pi_Y B",
+  "main_operator": "C_l P_eta",
+  "typed_context": "Shifted co-Poisson factorization route on Burnol packets",
+  "new_branch_residual": "Xi_cP_shifted_l",
+  "source_audit_verdict": "split_external_theorem",
+  "shifted_co_poisson_obligation_split": {
+    "H1": {
+      "name": "shifted strip and packet context",
+      "statement": "Declare u_{l,a}=B_{l,a}u=J_a P_infty tau_l (I-P_infty)u and the legal Mellin strip for M(Bu_{l,a})(s).",
+      "status": "framework_defined"
+    },
+    "H2": {
+      "name": "shifted zeta factorization existence",
+      "statement": "Prove M(Bu_{l,a})(s)=zeta(s) alpha_{l,a,u}(s) in the typed strip for every legal input.",
+      "status": "open_external_proof"
+    },
+    "H3": {
+      "name": "alpha typed properties",
+      "statement": "Prove alpha_{l,a,u} has the required holomorphy, vertical growth, Hilbert-carrier, and support properties.",
+      "status": "open_external_proof"
+    },
+    "H4": {
+      "name": "endpoint and zero admissibility",
+      "statement": "Prove pole, endpoint, support, trivial-zero, and multiplicity-index compatibility needed for Burnol zero evaluators.",
+      "status": "open_external_proof"
+    },
+    "H5": {
+      "name": "exact compactness implication",
+      "statement": "Prove the completed-carrier implication from H1-H4 to Xi_BC closure and to the active Calkin object.",
+      "status": "open_external_proof"
+    }
+  },
+  "typed_no_go_statement": null,
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness"
+  ],
+  "lanes_carried_forward": [
+    "Calkin-bridge lane G2-G5 (step 163)",
+    "Per-zero finite-carrier lane SL164.1 (step 164)"
+  ],
+  "final_verdict": "split_external_theorem",
+  "next_step": {
+    "step": 166,
+    "strategic_lanes": [
+      "attempt H2 shifted zeta-factorization existence",
+      "attempt H3-H4 alpha and endpoint admissibility audit",
+      "attempt H5 completed exact-implication theorem",
+      "record diagnostic-complete cascade summary if multiple branches remain split_external_theorem"
+    ]
+  }
+}

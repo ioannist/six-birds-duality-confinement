@@ -1,0 +1,69 @@
+\section*{Step 269: Branch C k=5,6,7 Extension}
+
+\paragraph{Verdict.}
+\[
+\mathrm{V\_branch\_C\_polynomial\_correction}.
+\]
+The Branch C evaluator dataset was extended from \(k=0,\ldots,4\) to
+\(k=0,\ldots,7\) for the three step-250 triples.
+
+\paragraph{Kernel/evaluator context.}
+Burnol 2002 gives the de Branges kernel
+\[
+K(z_1,z_2)=
+\frac{E(z_1)E(z_2)-E(1-z_1)E(1-z_2)}{z_1+z_2-1},
+\]
+and Burnol 2004 gives Sonine Mellin evaluator vectors
+\[
+[f,Z^\lambda_{w,k}]=M(f)^{(k)}(w).
+\]
+The Branch C functional is the inherited matrix-element pairing
+\[
+L_{\rho,k}(G)=\langle M_\zeta G,P_\infty y_{\rho,k}\rangle.
+\]
+
+\paragraph{New computed values.}
+\[
+\begin{array}{c|ccc}
+\text{triple} & k=5 & k=6 & k=7\\
+\hline
+\rho_1,G_\star & 4.373822966988 & 8.804781976434 & 17.958730549970\\
+\rho_2,G_\star & 6.187878923392 & 15.417394277714 & 39.189293968779\\
+\rho_1,G' & 4.676864962801 & 8.700017345945 & 16.316879205385
+\end{array}
+\]
+The respective error bounds are \(8.88\cdot10^{-6}\),
+\(1.12\cdot10^{-5}\), \(3.37\cdot10^{-5}\);
+\(6.64\cdot10^{-6}\), \(7.30\cdot10^{-6}\), \(5.02\cdot10^{-6}\);
+and \(2.54\cdot10^{-6}\), \(3.20\cdot10^{-6}\), \(4.86\cdot10^{-5}\).
+
+\paragraph{Pure exponential fit.}
+For \( |L_k|=a\exp(bk)\) on \(k=0,\ldots,7\):
+\[
+\begin{array}{c|ccc}
+\text{triple} & a & b & \mathrm{RMSE}\\
+\hline
+\rho_1,G_\star & 0.1293040638 & 0.7046255999 & 3.69\cdot10^{-2}\\
+\rho_2,G_\star & 0.0612709944 & 0.9228326092 & 1.25\cdot10^{-1}\\
+\rho_1,G' & 0.2082597819 & 0.6228614952 & 2.47\cdot10^{-2}
+\end{array}
+\]
+The exponential trend persists, but the residuals grow relative to the
+\(k=0,\ldots,4\) fit.
+
+\paragraph{Polynomial correction.}
+The model
+\[
+|L_k|=a(k+1)^c\exp(bk)
+\]
+improves the RMSE to \(1.65\cdot10^{-2}\), \(2.11\cdot10^{-2}\), and
+\(1.54\cdot10^{-2}\), respectively, with negative exponents
+\[
+c=-0.300,\quad -1.125,\quad -0.137.
+\]
+
+\paragraph{Assessment.}
+The higher-k extension remains strongly nonzero and exponential in scale, but
+the extended sequence favors an exponential law with a negative polynomial
+correction over the pure step-250 exponential.  This remains numerical evidence
+only; no Branch C closure or RH consequence is claimed.

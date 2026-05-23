@@ -1,0 +1,531 @@
+                                                                                                                      version du 10 mars 2003
+                                                                                                                                math/0302102
+
+
+                                             DES ÉQUATIONS DE DIRAC ET DE SCHRÖDINGER POUR LA
+arXiv:math/0302102v3 [math.NT] 10 Mar 2003
+
+
+
+
+                                                                    TRANSFORMATION DE FOURIER
+
+
+
+                                                                               JEAN-FRANÇOIS BURNOL
+
+
+                                                       Résumé.    Dyson a asso ié aux déterminants de Fredholm des noyaux de Di-
+                                                       ri hlet pairs (resp. impairs) une équation de S hrödinger sur un demi-axe et
+                                                       a employé les méthodes du s attering inverse de Gel'fand-Levitan et de Mar-
+                                                        henko, en tandem, pour étudier l'asymptotique de es déterminants. Nous
+                                                       avons proposé suite à notre mise-au-jour de l'opérateur ondu teur de her-
+                                                        her à réaliser la transformation de Fourier elle-même omme un s attering, et
+                                                       nous obtenons i i dans e but deux systèmes de Dira sur l'axe réel tout entier
+                                                       et qui sont asso iés intrinsèquement, respe tivement, aux transformations en
+                                                        osinus et en sinus.
+
+
+
+                                                Dira     and S hrödinger equations for the Fourier Transform
+
+
+
+                                                       Abstra t. Dyson has asso iated with the Fredholm determinants of the even
+                                                       (resp. odd) Diri hlet kernels a S hrödinger equation on the half-axis and has
+                                                       used, in tandem, the Gel'fand-Levitan and Mar henko methods of inverse s at-
+                                                       tering theory to study the asymptoti s of these determinants. We have pro-
+                                                       posed following our unearthing of the ondu tor operator to seek to realize
+                                                       the Fourier transform itself as a s attering, and we obtain here to this end
+                                                       two Dira systems on the entire real axis whi h are intrinsi ally asso iated,
+                                                       respe tively, to the osine and to the sine transforms.
+
+                                                Jean-François Burnol, Université Lille 1, UFR de Mathématiques, Cité S ientique M2,
+                                             F-59655 Villeneuve d'As q Cedex, Fran e
+                                             burnolagat.univ-lille1.fr
+
+
+                                                                          1.   Abridged English Version
+                                                Dyson [14℄ has asso iated with the Diri hlet kernels
+
+                                                                                     sin(s(x − y)) sin(s(x + y))
+                                             (1)                      Ds± (x, y) =                ±
+                                                                                       π(x − y)      π(x + y)
+                                             on (0, 1) two S hrödinger equations on (0, +∞) whose potentials are given as:
+
+                                                                                            d2
+                                             (2)                            W± (s) = −2         log D± (s) − 1
+                                                                                            ds2
+                                                                                                                    ±
+                                             In this denition the D± (s) are the Fredholm Determinants det(δ(x−y)−Ds (x, y))
+                                             asso iated with the (tra e- lass) kernels above.            After establishing a general link
+                                             between the methods of Gel'fand-Levitan on one hand, of Mar henko on the other
+
+                                                La version datée 10 mars 2003 apporte à elle du 11 février les équations additionnelles (13),
+                                             (14), (25a), (25b), (26a), (26b), ainsi que (27) et (29) et s'a ompagne d'une dis ussion plus pré ise
+                                             de eux des résultats de l'auteur qui feront l'objet d'une réda tion plus détaillée par ailleurs.
+                                                                                              1
+2                                JEAN-FRANÇOIS BURNOL
+
+
+
+hand, and the study of Fredholm determinants, Dyson obtained in this parti ular
+    ase the existen e of an asymptoti    development as s   → ∞ of log D± (s), thus
+extending the earlier result of des Cloizeaux and Mehta ([11℄) whi h is:
+
+                                     s2  1   1
+(3)                 log D± (s) = −      ∓ s − log s + C± + o(1),
+                                     4   2   8
+and another heuristi      argument enabled Dyson to give the values for the    onstants
+C± . Ex ept for that last point, still in need of rigorous proof, des Cloizeaux-Mehta's
+and Dyson's results have been later rigorously established by Deift-Its-Zhou [12℄ in
+the framework of a Riemann-Hilbert approa h (see also Widom [18℄ for a proof of
+                      2
+log D+ (s)D− (s) = − s2 (1 + o(1))).
+   Our dis overy [3℄ of the lo al operator theoreti ontent of the expli it formulae
+of Number Theory led us to propose to realize the Fourier transform itself as a
+s attering [6℄. The multipli ative Fourier analysis of the additive Fourier transform
+leads to two unit modulus fun tions on the      riti al line χ+ (s) and χ− (s), the rst
+    orresponding to theosine transform, and the se ond to the sine transform. But
+                                             1
+their phases are of the order γ log |γ| (s =
+                                             2 + iγ ) and this es apes the framework
+of s attering matri es for potentials whi h satisfy the usual hypotheses of the
+Gel'fand-Levitan and Mar henko methods.
+     We asso iate in this Note to the    osine transform (resp. sine transform) a dif-
+ferential system whi h, as in [14℄, involves the Fredholm determinants D± (s). To
+                                                                       2
+express it as a Dira system, we shall use, not the variable s = 2πa ∈ (0, ∞),
+                                                                         ±
+but rather the variable u = log(a) ∈ (−∞, +∞). Let us thus dene Da , a > 0
+                                                  2         ±              ±
+to be the Diri hlet kernel as above for s = 2πa and let da = det(1 − Da ) and
+           ±
+d± (u) = da , a = exp(u), u ∈ R. We propose the following Dira -type system:
+                                r
+                      d            d2
+(4a)                    α(u) = − − 2 log d± (u) · α(u) − γβ(u)
+                     du           du
+                                r
+                      d            d2
+(4b)                    β(u) = + − 2 log d± (u) · β(u) + γα(u)
+                     du           du
+                                                                     q
+                                                                         d2
+     The real number γ is the spe tral parameter. Let µ± (u) =        − du 2 log d± (u).
+
+Ea h     omponent α(u) and β(u) has its own S hrödinger equation. These equations
+are related through a Darboux transformation, and they take the form:
+
+
+                      d2
+(5a)                −    α(u) + (µ± (u)2 − µ′± (u))α(u) = γ 2 α(u)
+                     du2
+                      d2
+(5b)                − 2 β(u) + (µ± (u)2 + µ′± (u))β(u) = γ 2 β(u)
+                     du
+     See also (25a), (25b), (26a), (26b), for alternative expressions. The potentials
+arising in (5a), (5b) are exponentially in reasing as u → +∞ and exponentially
+vanishing as u → −∞. We have studied the s attering (rather, ree tion) indu ed
+by (5a) and (5b) on waves originating at −∞ and being boun ed ba k to −∞ and we
+have established that the    orresponding phase shifts realize (in the manner indi ated
+above, and stated more pre isely in the Fren h se tion) the Fourier      osine and sine
+transforms as s attering matri es.      A detailed treatment will appear elsewhere.
+Here, we shall explain the origin of the systems (4) and the existen e of known
+solutions for ea h value of the spe tral parameter: the stru ture fun tions of the
+                 DES ÉQUATIONS DE DIRAC-SCHRÖDINGER POUR FOURIER                        3
+
+
+
+Hilbert spa es of entire fun tions whi h had been asso iated by de Branges to
+the Fourier transform [1℄.       We gave their rst expli it formulae in [10℄ and give
+here their asso iated dierential systems (4):       these systems turn out to involve
+the determinants d± (u), a fa t whi h thus establishes a link between the theory
+of the de Branges Sonine spa es and the quantities arising in the study of the
+random matri es [16℄. In [8℄ we linked through the         o-Poisson formula the study
+of the Riemann zeta fun tion to the Sonine spa es.         As the reader will per eive,
+referen e [2℄ plays only a distant rle here. This is despite the fa t that we    onsider
+most beautiful the de Branges dis overy [1℄ of the existen e of a natural isometri
+expansion for Fourier self-or-skew-re ipro al fun tions, and that we are aware of
+the ri h   ontents of his general theory [2℄. We are also aware of the ri h relations it
+holds with other works, su h as the investigations of Krein (see, for example, [13℄),
+relations whi h are not that easily per eived from [2℄.        Rather the elu idation of
+the de Branges Fourier Sonine spa es, whi h was a ne essity after [7℄, was initiated
+in [10℄ and is    ontinued here, and turns out to provide an opportunity to partially
+realize some of the ideas whi h are internal to our approa h of the problems of the
+zeta fun tion and whi h we have expressed elsewhere [3℄, [6℄, [8℄.
+
+
+                            2.   Un système différentiel
+  Nous     ontinuons la dis ussion entamée dans la partie en langue anglaise du sys-
+tème de Dira      (4) et des équations de S hrödinger (5a), (5b) asso iées. Nous utili-
+serons les notations suivantes : la transformation de Fourier F agit selon F (f )(y) =
+R 2πixy
+ Re      f (x) dx. On a F = F+ + iF− où F+ est la transformation en osinus et F−
+est la transformation en sinus. Soit a > 0. Nous utiliserons l'opérateur Pa de res-
+                                                           +            +
+tri tion à l'intervalle [−a, a], ainsi que les opérateurs Fa = F+ Pa , Fa = Pa F+ Pa ,
+Da = (Fa ) , Fa = F− Pa , Fa = Pa F− Pa , Da = (Fa ) . Les opérateurs Fa+ et Da+
+  +       + 2     −              −                −      − 2
+         −        −                                                     2        1
+(resp. Fa et Da ) peuvent être vus au hoix omme agissant sur L (−a, a; dx),
+                                                                                 2
+sur son sous-espa e pair (resp. impair), ou après un hangement d'é helle sur
+L2 (−1, 1; 21 dx) ou en ore sur L2 (0, 1; dx). Dans ette dernière représentation le
+                          ±
+noyau de l'opérateur Da est donné par :
+
+                          sin(2πa2 (x − y)) sin(2πa2 (x + y))
+(6)                                        ±
+                              π(x − y)          π(x + y)
+                                     +     −
+  Considérons les uniques fon tions φa et φa solutions (disons, lo alement inté-
+grables) des équations :
+
+
+
+(7a)                             φ+    + +
+                                  a + Fa φa = 2 cos(2πax)
+                                       + −
+(7b)                             φ−
+                                  a − Fa φa = 2 cos(2πax)
+
+  Ce sont des fon tions paires, entières. Nous mentionnons également les fon tions
+impaires qui sont asso iées à la transformation en sinus. Elles vérient :
+
+
+
+(8a)                             ψa+ + Fa− ψa+ = 2 sin(2πax)
+(8b)                             ψa− − Fa− ψa− = 2 sin(2πax)
+  Pour être spé ique nous         onsidérerons i i la transformation en   osinus, la dis-
+ ussion étant essentiellement identique pour la transformation en sinus. Soit δx =
+  ∂
+x ∂x + 12 . Un al ul simple aboutit au système diérentiel suivant :
+4                                     JEAN-FRANÇOIS BURNOL
+
+
+
+
+                         ∂ +             1    +                +
+(9a)                    a  φ = δx φ−                    −
+                                    a − ( + aφa (a) + aφa (a))φa
+                         ∂a a            2
+                         ∂               1
+(9b)                    a φ−  = δx φ+         +         −      −
+                                    a − ( − aφa (a) − aφa (a))φa
+                         ∂a a            2
+                                                ∂ +         −     ∂ −        +
+    La démonstration onsiste à montrer que a
+                                                ∂a φa −δx φa et a ∂a φa −δx φa satisfont
+aussi les équations (7) à des fa teurs multipli atifs près qui sont omme indiqués. La
+             +         −
+quantité aφa (a) + aφa (a) jouant un rle important nous la désignerons par µ(a) :
+
+(10)                                  µ(a) = aφ+         −
+                                               a (a) + aφa (a)
+
+On établit sans peine         omme      onséquen e de (9) :
+
+                               ∂          1 ∂
+(11)                             aφ+ φ− =      x((φ+  2    − 2
+                                                   a ) + (φa ) )
+                               ∂a a a     2 ∂x
+et à partir de là la formule suivante :
+
+
+                                                                Z a
+                    2                             d
+(12)           µ(a)     = a (φ+
+                              2        −     2
+                              a (a) + φa (a)) = a   a                 φ+     −
+                                                                       a (x)φa (x) dx
+                                                          da     −a
+
+
+               3.   Le lien ave les déterminants de Fredholm
+    Par une formule         onnue de la théorie générale des déterminants de Fredholm :
+
+                      d                                             d
+(13)      φ+
+           a (a) = +    log det(1 + Fa+ )               φ−
+                                                         a (a) = −    log det(1 − Fa+ )
+                     da                                            da
+                      d                                            d
+(14)      ψa+ (a) = + log det(1 + Fa− )                 ψa− (a) = − log det(1 − Fa− )
+                     da                                            da
+Ainsi, on a aussi :
+
+                                                d     det(1 + Fa+ )
+(15)                                µ(a) = a      log
+                                               da     det(1 − Fa+ )
+                                                                     +
+    Nous relions maintenant µ(a) au déterminant de Fredholm det(1 − Da ). Par une
+formule bien   onnue on a :
+
+                               d                    + −1 d
+(16)                             log d+
+                                      a = −Tr((1 − Da )    D+ )
+                              da                        da a
+                                                    +
+Or le  al ul immédiat du noyau de la dérivée de Da montre qu'il s'agit d'un opéra-
+                                    + −1 d     +
+teur de rang un, et don que (1 − Da )
+                                          da Da l'est également. Son ve teur propre
+                                 + −1
+est donné par la fon tion (1 − Da )   (2 cos(2πa2 x)) (nous sommes i i sur [0, 1]), et
+on trouve que la valeur propre est égale au produit s alaire de ette fon tion ave
+(2a)2 cos(2πa2 x). En faisant usage de la fa torisation 1 − Da+ = (1 + Fa+ )(1 − Fa+ )
+et du ara tère auto-adjoint de es opérateurs on obtient nalement la formule :
+                                                  Z a
+                                   d
+(17)                                 log d+
+                                          a = −         φ+     −
+                                                         a (x)φa (x) dx
+                                  da               −a
+
+où l'on est revenu à l'intervalle [−a, a].
+    La   omparaison ave           (12), (13), permet don       d'obtenir le théorème suivant :
+                 DES ÉQUATIONS DE DIRAC-SCHRÖDINGER POUR FOURIER                            5
+
+
+
+Théorème 1.        Soit d+ (u) = d+a = det(1 − Da+ ), et µ+ (u) = µ(a) pour a = exp(u),
+u ∈ R. On a :
+                                            d2
+(18)                              µ+ (u)2 = −   log d+ (u)
+                                           du2
+                                             d2
+(19)                µ+ (u)2 − µ′+ (u) = −2 2 log det(1 + Fa+ )
+                                            du
+                                             d2
+(20)                µ+ (u) + µ+ (u) = −2 2 log det(1 − Fa+ )
+                          2     ′
+                                            du
+                        q
+                             d2
+   Dans (4), on a é rit   − du 2 log d+ (u) pour désigner la fon tion u 7→ µ+ (u) =
+   u
+µ(e ).
+
+            4.   Le système différentiel des distributions Aa et Ba
+   Les fon tions    φ+     −
+                     a et φa sont aussi des distributions tempérées dont on peut
+prendre la transformée de Fourier. On vérie de suite que les distributions tempérées
+paires :
+                                         √
+                                         a
+(21a)                             Aa =     (F (φ+      +
+                                                a ) + φa )
+                                        2
+                                        √
+                                       i a
+(21b)                             Ba =      (F (φ−      −
+                                                 a ) − φa )
+                                        2
+ont la propriété remarquable de s'annuler dans ] − a, a[ tout        omme leurs transfor-
+mées de Fourier puisque Aa est invariante et Ba est anti-invariante. Or un théorème
+général [10, Thm. 1℄ nous dit que toute distribution D (paire ou impaire) ayant
+                                                      R∞
+ ette propriété a omme transformée de Mellin droite
+                                                        0
+                                                          D(t)t−s dt (a priori dé-
+nie pour Re(s) ≫ 0) une fon tion entière de s qui a des zéros triviaux en s = −2n,
+n ∈ N (−1 − 2n, dans le as impair). Nous noterons Aa (s) et Ba (s) les transfor-
+mées de Mellin de Aa et Ba , omplétées par le fa teur Gamma π
+                                                               −s/2
+                                                                    Γ( 2s ). Nous
+avons démontré dans [10℄ que         es fon tions entières sont en fait les fon tions de
+stru ture (dans une     ertaine normalisation) de     ertains espa es de Hilbert de fon -
+tions entières que de Branges a asso ié à la transformation de Fourier [1℄. Ave         nos
+ onventions, l'axe de symétrie de        es espa es est la droite   ritique, et don   par   e
+fait même, les fon tion entières Aa et Ba vérient l'hypothèse de Riemann. Nous
+avons aussi montré que la densité de leurs zéros est au premier ordre identique à
+ elle pour les zéros de la fon tion dzêta de Riemann [9℄.
+   Cela étant dit, à partir du système diérentiel (9) on obtient :
+
+                               ∂
+(22a)                         a   Aa = iδx Ba − µ(a)Aa
+                               ∂a
+                               ∂
+(22b)                         a Ba = −iδx Aa + µ(a)Ba
+                               ∂a
+                                                                       1
+Au niveau des transformées de Mellin droites on a δx = s −                 = iγ . On obtient
+                                                                       2
+don     :
+
+                                 ∂
+(23a)                          a    Aa = −γBa − µ(a)Aa
+                                 ∂a
+                                  ∂
+(23b)                           a Ba = +γAa + µ(a)Ba
+                                 ∂a
+6                                JEAN-FRANÇOIS BURNOL
+
+
+                     s            s
+   Nous poserons A (u) = Aa (s), B (u) = Ba (s), µ+ (u) = µ(a) ave                   a = exp(u),
+    1
+s = 2 + iγ . Ainsi :
+Théorème 2.     Les fon tions As (u) et B s (u) de la variable u ∈ R vérient le système
+diérentiel suivant (s = 21 + iγ ) :
+                            d s
+(24a)                         A (u) = −γB s (u) − µ+ (u)As (u)
+                           du
+                            d s
+(24b)                         B (u) = +γAs (u) + µ+ (u)B s (u)
+                           du
+    Les équations de S hrödinger asso iées en dé oulent :
+
+                  d2 s           d2                 
+(25a)         −     2
+                      A (u) + − 2 2 log det(1 + Fa+ ) As (u) = γ 2 As (u)
+                 du              du
+                  d2 s           d2                 
+(25b)           − 2 B (u) + − 2 2 log det(1 − Fa+ ) B s (u) = γ 2 B s (u)
+                 du              du
+    Pour la transformation en sinus on obtiendrait :
+
+                d2               d2                  
+(26a)             − α(u) +   − 2     log det(1 + F −
+                                                   a )  α(u) = γ 2 α(u)
+               du2               du2
+                d2               d2                   
+(26b)        − 2 β(u) + − 2 2 log det(1 − Fa− ) β(u) = γ 2 β(u)
+               du                du
+   On notera que si l'on normalise les fon tions de stru ture A et B des espa es de
+                             1
+de Branges en imposant Aa ( ) = 1 alors les équations du deuxième ordre vériées
+                             2
+par A et B prennent la forme d'équations de Sturm-Liouville.
+
+
+                                   5.   Compléments
+    La théorie générale de de Branges [2℄ établit l'existen e d'équations intégrales
+(qui peuvent parfois prendre,     omme il était             onnu a priori que    ela serait le   as
+i i [2℄, une forme diérentielle) pour      ertaines
+                                                haînes de sous-espa es (dont les élé-
+                                                                        2
+ments sont aussi des fon tions entières) d'un même espa e de Hilbert L (R, d∆(γ)).
+                                                                   2
+Elle les utilise pour obtenir une représentation isométrique de L (R, d∆(γ)), ap-
+portant ainsi une vaste généralisation au théorème de Paley-Wiener. Dans le                      as
+parti ulier qui est    onsidéré i i nous avons vérié que l'expansion isométrique des
+espa es de Sonine (asso iés à la transformation en             osinus) prend la forme suivante :
+l'appli ation
+                                    Z +∞ 
+                   α(u)                                             
+(27)                       7→ f (s) =       As (u)α(u) + B s (u)β(u) du
+                    β(u)               −∞
+                    2      2 du        2         1
+est isométrique de L (R → R ; 2 ) sur L (Re(s) = 2 ; d∆(γ)) ave                  :
+
+                                        1          |ds|             1
+(28)                   d∆(γ) =                 2        ,      s=     + iγ.
+                                 π − 2 Γ( 2s )
+                                     s
+                                                    2π              2
+Ce type d'expansion isométrique est aussi intimement lié à des                  onsidérations an-
+térieures de Krein,    omme il est expliqué dans le livre de Dym et M Kean [13℄.
+    Les potentiels pour les équations de S hrödinger sont exponentiellement                  rois-
+sants en u    → +∞ et s'annulent exponentiellement en u → −∞ :                       ela suggère,
+au-delà des     onsidérations liées à l'expansion isométrique, d'aborder le problème
+du s attering d'ondes provenant de −∞ et y étant renvoyées. Krein a utilisé ses
+te hniques pour aborder sur un demi-axe les problèmes de s attering également
+                  DES ÉQUATIONS DE DIRAC-SCHRÖDINGER POUR FOURIER                                 7
+
+
+
+traités par les appro hes de Gel'fand-Levitan et Mar henko, dans un adre où la
+                                             R d∆(γ)
+mesure spe trale d∆(γ) satisfait la ondition
+                                               1+γ 2 < ∞, e qui n'est pas le as i i,
+bien qu'un grand nombre de onsidérations restent valables. En fait la diéren e
+essentielle ave       la situation habituellement envisagée est qu'i i, heuristiquement,
+plus l'onde est énergétique, plus profondément elle pénètrera dans le potentiel et
+plus longtemps elle mettra pour en être renvoyée : de sorte que l'on s'attend à                   e
+que les dé alages de phases soient divergents lorsque la fréquen e γ tend vers ±∞.
+   Ce problème, pour (25a) par exemple, est rendu pré is par le fait que la               ondition
+être de     arré intégrable en +∞ est une          ondition aux bords appropriée en +∞,
+ave     pour unique solution (à une         onstante multipli ative près) de fréquen e réelle
+γ la fon tion u 7→ As (u). Le           al ul de la matri e de s attering dé oule alors de
+la détermination, pour         ha une des équations de S hrödinger (25a), (25b), (26a),
+(26b), des solutions satisfaisant la  ondition de Jost en −∞. Par exemple, on
+trouve, pour l'équation (25a), que la solution ( omplexe) qui se                omporte asymp-
+totiquement en −∞ omme exp(−iγu) est donnée exa tement par (a = exp(u),
+s = 21 + iγ , Re(s) < 1) :
+                                                   Z a
+(29)                           u 7→ e−iγu − eu/2         φ+
+                                                          a (x)x
+                                                                −s
+                                                                   dx
+                                                     0
+
+et à partir de là on établit que la matri e de s attering de −∞ vers −∞ est, pour
+                                                       −(1−s)/2
+l'équation (25a), exa tement donnée par la fon tion π           Γ((1−s)/2)/π −s/2 Γ(s/2) =
+             1
+χ+ (s), s = 2 + iγ , qui donne la représentation multipli ative (sur la droite ritique)
+                                                                               1
+de la transformation en osinus. Pour l'équation (25b) on trouve −χ+ ( + iγ)
+                                                                               2
+  omme matri e de s attering. Pour les équations (26a) et (26b) asso iées à la trans-
+formation en sinus on rempla e χ+ par la fon tion χ− donnant la représentation
+multipli ative de la transformation en sinus. Peut-être existe-t-il un moyen d'uti-
+liser    ette information pour remonter aux potentiels eux-mêmes et obtenir ainsi
+peut-être une autre appro he (spé ique au               as d'un unique intervalle [−a, a]) aux
+résultats de Deift-Its-Zhou [12℄ et des autres auteurs            ités.
+   Ces matri es de s attering sont aussi les fon tions qui apparaissent dans les
+équations fon tionnelles de la fon tion dzêta de Riemann et des séries L de Diri hlet.
+Signalons à       e sujet que la présente Note est la      ontinuation logique de nos travaux
+antérieurs [3℄, [4℄ (voir [5℄ pour un résumé) sur l'opérateur ondu teur log |x|+log |y|,
+opérateur qui entre autres         hoses, révéla que la transformation de Fourier était une
+symétrie des formules expli ites.
+
+
+                                            Référen es
+ 1. L. de Branges, Self-re ipro al fun tions, J. Math. Anal. Appl. 9 (1964) 433457.
+ 2. L. de Branges, Espa es de Hilbert de Fon tions Entières, Masson, Paris, 1972.
+ 3. J.-F. Burnol, The Expli it Formula and a propagator, (1998) 21 p. Non publié.
+ 4. J.-F. Burnol, The expli it formula and the     ondu tor operator, (1999) 28p. Non publié.
+
+ 5. J.-F. Burnol, Sur les formules expli ites I : analyse invariante, C. R. A ad. S i. Paris 331
+    (2000), Série I, 423-428.
+ 6. J.-F. Burnol, S attering on the p-adi    eld and a tra e formula, Int. Math. Res. Not. 2000 :2
+    (2000), 57-70.
+ 7. J.-F. Burnol, Sur     ertains espa es de Hilbert de fon tions entières, liés à la transformation
+      de Fourier et aux fon tions L de Diri hlet et de Riemann, C. R. A ad. S i. Paris 333 (2001),
+      série I, 201-206.
+8                                   JEAN-FRANÇOIS BURNOL
+
+
+
+    8. J.-F. Burnol, On Fourier and Zeta(s), (2001), Habilitationss hrift, Forum Mathemati um, à
+       paraître.
+    9. J.-F. Burnol, Two omplete and minimal systems asso iated with the zeros of the Riemann
+       zeta fun tion, 28 p. Soumis à une revue ave omité de le ture (Janvier 2003). Disponible sur
+       arXiv.org : math/0203120
+10. J.-F. Burnol, Sur les espa es de Sonine asso iés par de Branges à la transformation de
+    Fourier, C. R. A ad. S i. Paris, Ser. I 335 (2002), 689-692.
+
+11. J. des Cloizeaux, M. L. Mehta, Asymptoti behavior of spa ing distributions for the eigenvalues
+    of random matri es, J. Math. Phys. 14 (1973), 1648-1650.
+
+12. P. Deift, A. R. Its, X. Zhou, A Riemann-Hilbert approa h to asymptoti        problems arising
+      in the theory of the random matrix models, and also in the theory of integrable statisti al
+      me hani s, Ann. Math. 146 (1997), 149-235.
+
+13. H. Dym, H.P. M Kean, Gaussian pro esses, Fun tion Theory, and the Inverse Spe tral Pro-
+    blem, A ademi Press, New York-London, 1976.
+
+14. F. Dyson, Fredholm determinants and Inverse S attering Problems, Comm. Math. Phys. 47
+    (1976), 171-183.
+15. M. Jimbo, T. Miwa, Y. Mri, M. Sato, Density matrix of an impenetrable Bose gas and the
+    fth Painlevé trans endent, Physi a 1D (1980), 80-158.
+
+16. M. L. Mehta, Random Matri es, 2nd ed., A ademi Press, San Diego, 1991.
+17. C.A. Tra y, H. Widom, Fredholm determinants, dierential equations and matrix models,
+    Comm. Math. Phys 163 (1994), 33-72.
+18. H. Widom, The asymptoti s of a       ontinuous analogue of orthogonal polynomials, J. Approx.
+    Theory 77 (1994), 51-64.
+

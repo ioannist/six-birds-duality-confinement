@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+
+\title{Step 98: Finite Character Orthogonality versus Completed Lower-Frame Audit}
+\author{Six Birds RH Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 97 reduced the Hecke/Dirichlet source route to a lower-frame absorption problem for the positive semilocal cross-term
+\[
+  \Delta_S^+ \preceq F_n+E_n,
+  \qquad
+  F_n=\sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}
+  Q_\omega^*\Theta_\omega^{-1}Q_\omega,
+\]
+with
+\[
+  F_n\succeq \Lambda_n(\Theta_0^-)^{-1},
+  \qquad \Lambda_n\to\infty.
+\]
+The present note separates what finite character orthogonality gives for free from what the completed RH source route still has to earn.
+
+\section{Finite character tight frames}
+Let $G$ be a finite abelian group and let $\widehat G$ be its character group.  We use the normalized Hilbert space
+\[
+  \ell^2(G)=\{f:G\to\mathbb C\},
+  \qquad
+  \langle f,g\rangle_G=\frac1{|G|}\sum_{x\in G}f(x)\overline{g(x)}.
+\]
+For $\chi\in\widehat G$, define $e_\chi(x)=\chi(x)$.
+
+\begin{theorem}[finite character tight frame]
+The family $\{e_\chi:\chi\in\widehat G\}$ is an orthonormal basis of $\ell^2(G)$.  Equivalently,
+\[
+  \frac1{|G|}\sum_{x\in G}\chi(x)\overline{\psi(x)}=\delta_{\chi\psi},
+\]
+which is dual to
+\[
+  \sum_{\chi\in\widehat G}\chi(x)\overline{\chi(y)}=|G|\mathbf 1_{x=y}.
+\]
+Thus the full character analysis operator is unitary, and the frame operator is the identity.
+\end{theorem}
+
+\begin{proof}
+The orthogonality identities are the standard Fourier orthogonality relations for finite abelian groups.  Since $|\widehat G|=|G|$, an orthonormal character family of size $|G|$ is complete.
+\end{proof}
+
+For Dirichlet characters modulo $q$, this theorem applies to the finite abelian group
+\[
+  G_q=(\mathbb Z/q\mathbb Z)^\times.
+\]
+Thus the complete family of Dirichlet characters modulo $q$ is a tight frame on functions on the unit group.  It is not automatically a tight frame on every response sector of a completed zeta or semilocal carrier.
+
+\section{Partial character no-go}
+Let $\mathcal X\subsetneq\widehat G$ and let
+\[
+  F_{\mathcal X}=\sum_{\chi\in\mathcal X}P_\chi
+\]
+be the sum of the one-dimensional orthogonal projections onto the corresponding character lines.
+
+\begin{proposition}[partial source hole]
+If $\mathcal X\ne\widehat G$, then $F_{\mathcal X}$ has nontrivial kernel. In particular, no positive lower-frame constant holds on all of $\ell^2(G)$:
+\[
+  F_{\mathcal X}\not\succeq \lambda I_{\ell^2(G)}
+  \qquad (\lambda>0).
+\]
+\end{proposition}
+
+\begin{proof}
+The span of $\{e_\chi:\chi\in\mathcal X\}$ is a proper subspace of $\ell^2(G)$.  Any nonzero vector in its orthogonal complement is annihilated by every $P_\chi$ with $\chi\in\mathcal X$.
+\end{proof}
+
+\begin{warning}[primitive-only warning]
+Primitive characters, trace averages, or a selected subset of characters may be arithmetically meaningful, but they do not automatically form a complete lower frame on the response space.  They are accepted only after a missing-sector, imprimitive-sector, or tail/exhaustivity record.
+\end{warning}
+
+\section{Window-to-completed promotion}
+Let $Y^-$ be the completed anti-invariant response space.  A finite conductor or finite quotient window gives a response map
+\[
+  R_n:Y^-\to Y_n,
+\]
+where $Y_n$ is a finite character space.  Even if the complete character family is a tight frame on $Y_n$, the promoted source frame on $Y^-$ is
+\[
+  \widetilde F_n=R_n^*F_{Y_n}R_n.
+\]
+This controls only the part of $Y^-$ visible to $R_n$.
+
+\begin{definition}[exhaustive character-window record]
+A character-window ladder is exhaustive if there are positive tail operators $T_n\succeq0$ such that
+\[
+  I_{Y^-}\preceq R_n^*R_n+T_n,
+  \qquad
+  \operatorname{tr}T_n\to0
+\]
+(or the appropriate operator-norm or trace-class analogue required by the ledger).
+\end{definition}
+
+\begin{theorem}[finite-to-completed lower-frame promotion]
+Assume the complete character source frame on $Y_n$ satisfies
+\[
+  F_{Y_n}\succeq \lambda_n I_{Y_n},
+\]
+and the window ladder has an exhaustive tail record
+\[
+  I_{Y^-}\preceq R_n^*R_n+T_n.
+\]
+Then
+\[
+  R_n^*F_{Y_n}R_n+\lambda_n T_n\succeq \lambda_n I_{Y^-}.
+\]
+Equivalently, the finite-window frame promotes to a completed lower frame only after the invisible tail is charged.
+\end{theorem}
+
+\begin{proof}
+From $F_{Y_n}\succeq\lambda_n I_{Y_n}$, we get
+\[
+  R_n^*F_{Y_n}R_n\succeq \lambda_n R_n^*R_n.
+\]
+Using $I_{Y^-}\preceq R_n^*R_n+T_n$ gives
+\[
+  \lambda_n I_{Y^-}\preceq \lambda_n R_n^*R_n+\lambda_n T_n
+  \preceq R_n^*F_{Y_n}R_n+\lambda_n T_n.
+\]
+\end{proof}
+
+\begin{corollary}[moving-window support-only]
+If one only knows $F_{Y_n}\succeq\lambda_n I_{Y_n}$ on moving finite windows and has no tail/exhaustivity bridge to a completed $Y^-$, then the source record is support-only.  It does not imply a completed anti-invariant lower frame.
+\end{corollary}
+
+\section{Completed source-collapse theorem}
+Assume an upstream-visible source ladder gives
+\[
+  F_n=\sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega
+  \succeq \Lambda_n(\Theta_0^-)^{-1}
+\]
+on the completed anti-invariant response space $Y^-$.  Then the source-extended carrier has the currency bound
+\[
+  K_n^-=L^-C_n^\dagger(L^-)^*\preceq \Lambda_n^{-1}\Theta_0^-+E_{\mathrm{src},n}.
+\]
+Thus if $\Lambda_n\to\infty$ and $E_{\mathrm{src},n}\to0$ in the fixed/exhaustive ledger sense, the anti-invariant budget collapses.
+
+\section{Upper-frame warning}
+Many familiar analytic number theory inequalities are upper-frame or average-control statements: they say an average of source responses is not too large.  The membrane route needs the opposite direction:
+\[
+  F_n\succeq \Lambda_n(\Theta_0^-)^{-1}.
+\]
+This is a lower-frame condition.  It says every anti-invariant recombination direction is charged.  A large-sieve-type upper bound, by itself, is therefore not the source-collapse theorem.
+
+\section{Application to the RH hybrid program}
+The finite character theorem explains why Dirichlet and Hecke characters are attractive source candidates: at each finite quotient, complete character families are exact tight frames.  But the RH hybrid route requires more:
+\begin{enumerate}[label=(\roman*)]
+  \item a completed response space $Y^-$ from the semilocal/Hecke carrier;
+  \item upstream-visible readouts $Q_\omega:Y^-\to Z_\omega$;
+  \item a Plancherel or conductor-exhaustivity theorem promoting finite windows to $Y^-$;
+  \item a source absorption inequality $\Delta_S^+\preceq F_n+E_n$;
+  \item lower-frame growth $F_n\succeq\Lambda_n(\Theta_0^-)^{-1}$ with $\Lambda_n\to\infty$;
+  \item fixed/exhaustive zero-ledger promotion;
+  \item all-six channel records and no target-selected sources.
+\end{enumerate}
+
+\section{Conclusion}
+Finite character orthogonality is a real structural win, but it proves only a finite-window tight frame.  The completed RH source route needs a Plancherel/exhaustivity theorem and a genuine lower frame on the completed anti-invariant carrier.  Without that promotion, character-source evidence remains a moving-window support result.
+
+\end{document}

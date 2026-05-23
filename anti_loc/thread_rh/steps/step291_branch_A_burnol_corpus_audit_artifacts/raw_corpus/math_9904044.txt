@@ -1,0 +1,1326 @@
+                                                                                                                            math/9904044
+
+                                                                                                                   Includes math/9907103
+
+                                                                                                                     11S80, 42B99, 47G10
+arXiv:math/9904044v2 [math.NT] 10 Nov 2000
+
+
+
+
+                                                QUATERNIONIC GAMMA FUNCTIONS AND THEIR LOGARITHMIC
+
+                                                                 DERIVATIVES AS SPECTRAL FUNCTIONS
+
+
+
+
+                                                                                     Jean-François Burnol
+
+                                                                                       November 2000
+
+
+
+
+                                             We establish Connes’s local trace formula (related to the explicit formulae of number theory)
+
+                                             for the quaternions. This is done as an application of a study of the central operator H =
+
+                                             log(|x|) + log(|y|) in the context of invariant harmonic analysis. The multiplicative analysis
+
+                                             of the additive Fourier transform gives a spectral interpretation to generalized “Tate Gamma
+
+                                             functions” (closely akin to the Godement-Jacquet “γ(s, π, ψ)” functions.) The analysis of H
+
+                                             leads furthermore to a spectral interpretation for the logarithmic derivatives of these Gamma
+
+                                             functions (which are involved in “explicit formulae”.)
+
+
+
+
+                                             Université de Nice- Sophia Antipolis
+
+                                             Laboratoire J.-A. Dieudonné
+
+                                             Parc Valrose
+
+                                             F-06108 Nice Cédex 02
+
+                                             France
+
+                                             burnol@math.unice.fr
+
+
+
+
+                                                                                              1
+Contents
+
+
+1 Introduction                                                                                    2
+
+
+
+
+2 Closed invariant operators                                                                      3
+
+
+
+
+3 Tate’s functional equations                                                                     7
+
+
+
+
+4 The central operator H = log(|x|) + log(|y|)                                                   14
+
+
+
+
+5 The trace of Connes for quaternions                                                            19
+
+
+
+
+1    Introduction
+
+
+We establish for quaternions an analog of the trace formula obtained by Connes in [5] for a
+                                                        fΛ PΛ Uf ) = 2 log(Λ)f (1)+W (f )+o(1)
+commutative local field K. This formula has the form Tr(P
+
+(for Λ → ∞), where f is a test-function on K × , Uf is the operator of multiplicative convolution
+                fΛ are cut-off projections (precise definitions will be given later), all acting on
+with f , PΛ and P
+
+the Hilbert space of square-integrable functions on K. The contant term W (f ) was shown by
+
+Connes to be exactly the term arising in the “Weil’s explicit formulae” [14] of number theory.
+
+
+
+We have shown in this abelian local case (see [1], [2], and the related papers [3] and [4]) that the
+
+Weil term W (f ) can be written as −H(f )(1) for a certain dilaton-invariant operator H. We
+
+study this operator in the non-commutative context of quaternions and then derive the (analog
+
+of) Connes’s asymptotic formula. The proof would go through (with some simplifications of
+
+
+
+
+                                                 2
+course) equally well in the abelian case.
+
+
+
+We first give some elementary lemmas of independent interest about self-adjoint operators. We
+
+then study in multiplicative terms the additive Fourier Transform, and this immediately leads
+
+to the definition of certain “Quaternionic Tate Gamma” functions and to the analog of Tate’s
+
+local functional equations ([13], [15]). This is of course very much related to the generalization
+
+to GL(N ) of Tate’s Thesis in the work [6] of Godement-Jacquet (see [8], [9] for reviews and
+
+references to further works by other authors), where certain “γ(s, π, ψ)” functions, local L- and
+
+ǫ-factors and associated functional equations are studied. Also relevant is the classic monograph
+
+by Stein and Weiss [12] on harmonic analysis in euclidean spaces. In this paper we will follow
+
+a completely explicit and accordingly elementary approach.
+
+
+
+We introduce the “conductor operator” H = log(|x|) + log(|y|) and show how it gives an
+
+operator theoretic interpretation to the logarithmic derivatives of the Gamma functions (which
+
+are involved in explicit formulae.) It is then a simple matter to compute Connes’s trace, and
+
+to obtain the asymptotic formula
+
+                            fΛ PΛ Uf ) = 2 log(Λ)f (1) − H(f )(1) + o(1)
+                         Tr(P
+
+
+in a form directly involving our operator H. Further work leads to a “Weil-like” formulation
+
+for the constant term H(f )(1), if so desired.
+
+
+
+
+2    Closed invariant operators
+
+
+It is well known that any bounded operator on L2 (R, dx) which commutes with translations
+
+is diagonalized by the additive Fourier transform (see for example the Stein-Weiss monograph
+
+[12].) We need a generalization which applies to (possibly) unbounded operators on Hilbert
+
+spaces of the form L2 (G, dx) where G is a topological group. Various powerful statements are
+
+easily found in the standard references on Hilbert spaces, usually in the language of spectral
+
+
+
+                                                 3
+representations of abelian von Neumann algebras. For lack of a reference precisely suited to
+
+the exact formulation we will need, we provide here some simple lemmas with their proofs.
+
+
+
+Definition 2.1 Let L be a Hilbert space. A (possibly unbounded) operator M on L with domain
+
+D is said to commute with the bounded operator A if
+                                                                            
+                   ∀v ∈ L : v ∈ D ⇒       A(v) ∈ D and M (A(v)) = A(M (v))
+
+
+
+
+Theorem 2.2 Let L be a Hilbert space and G a (not necessarily abelian) group of unitary
+
+operators on L. Let A be the von Neumann algebra of bounded operators commuting with G.
+
+Let M be a (possibly unbounded) operator on L, with dense domain D. If the three following
+
+conditions are satisfied
+
+(1) A is abelian
+
+(2) (M, D) is symmetric
+
+(3) (M, D) commutes with the elements of G
+
+then (M, D) has a unique self-adjoint extension. This extension commutes with the operators
+
+in A.
+
+
+
+Proof We first replace (M, D) by its double-adjoint so that we can assume that (M, D) is
+
+closed (it is easy to check that conditions (2) and (3) remain valid). The problem is to show
+
+that it is self-adjoint. Let K be the range of the operator M + i. It is a closed subspace of L
+
+(as k(M + i)(ϕ)k2 = kM (ϕ)k2 + kϕk2 , and M is closed). Let R be the bounded operator onto
+
+D which is orthogonal projection onto K followed with the inverse of M + i. One checks easily
+
+that R belongs to A, hence commutes with its adjoint R∗ which will also belong to A. Any
+
+vector ψ in the kernel of R is then in the kernel of R∗ (as < R∗ ψ|R∗ ψ > = < ψ|R R∗ ψ > = 0).
+
+So ψ belongs to the orthogonal complement to the range of R, that is ψ = 0 as the range
+
+of R is D. So K = L and in the same manner (M − i)(D) = L. By the basic criterion for
+
+self-adjointness (see [10]), M is self-adjoint. Let A ∈ A. It commutes with the resolvant R
+
+
+
+                                                 4
+hence leaves stable its range D. On D one has RA(M + i) = AR(M + i) = A = R(M + i)A
+
+hence A(M + i) = (M + i)A so A commutes with M .               ♣
+
+
+
+For the remainder of this section we let G be a locally compact, Hausdorff, topological abelian
+          b its dual group. We refer to [11] for the basics of harmonic analysis on G. In
+group and G
+
+particular we have a Haar measure dx (unique up to a multiplicative constant) and a Hilbert
+
+space L = L2 (G, dx). We also have a dual Haar measure dy on G    b such that the Fourier
+                    R
+                                                             b dy). We sometimes identify
+transform F (ϕ)(y) = ϕ(x)y(x)dx is an isometry of L onto L2 (G,
+
+the two Hilbert spaces without making explicit the reference to F : so when we write f (y) ∈ L
+                                              b dy). No confusion should arise. We will assume
+we really refer to F −1 (f ) ∈ L with f ∈ L2 (G,
+
+that dy is a σ-finite measure so that there exists ψ ∈ L with the property ψ(y) 6= 0 a.e. .
+
+
+                                     b not necessarily bounded. Let Da ⊂ L be the domain of
+Let a(y) be a measurable function on G,
+
+square-integrable (equivalence classes of measurable) functions ϕ(x) on G such that a(y)F (ϕ)(y)
+               b dy). And let Ma be the operator with domain Da acting according to ϕ 7→
+belongs to L2 (G,
+
+Ma (ϕ) = F −1 (a · F (ϕ)). We write a = b if the two functions a(y) and b(y) are equal almost
+              b
+everywhere on G.
+
+
+
+
+Lemma 2.3 The operator (Ma , Da ) on L2 (G, dx) commutes with G. Furthermore Da is dense
+
+and (Ma , Da ) is a closed operator. If (Mb , Db ) extends (Ma , Da ), then in fact a = b and
+
+(Mb , Db ) = (Ma , Da ). The adjoint of (Ma , Da ) is (Ma , Da ) (of course Da = Da .)
+
+
+
+
+Proof We give the proof for completeness. The commutation with G-translations is clear.
+
+Then Da contains (the inverse Fourier transform of) √ ψ(y)                 and all its translates. Hence
+                                                               1+|a(y)|2
+
+if f is orthogonal to Da then the function √f (y)ψ(y) 2 on G
+                                                           b belongs to L1 (G,
+                                                                            b dy) and has a
+                                                    1+|a(y)|
+vanishing “inverse Fourier transform”, hence f = 0 (almost everywhere). It is also clear using
+√ ψ(y)        that if (Mb , Db ) extends (Ma , Da ), then a = b. Let us assume that the sequence ϕj is
+  1+|a(y)|2
+                                                                                       b almost
+such that ϕ = l.i.m. ϕj and θ = l.i.m. Ma (ϕj ) both exist. Let us pick a pointwise on G
+
+
+
+                                                   5
+everywhere convergent subsequence ϕjk (y). Using Fatou’s lemma we deduce that ϕ belongs to
+                                                      R
+Da . Using Fatou’s lemma again we get the vanishing of Gb |θ(y) − a(y)ϕ(y)|2 dy, and this shows
+
+that (Ma , Da ) is a closed operator. Finally let f (y) be in the domain of the adjoint of (Ma , Da ).
+
+There exists then an element θ of L such that for any ϕ ∈ Da the equality
+                               Z                        Z
+                                   f (y)a(y)ϕ(y) dy =       θ(y)ϕ(y) dy
+
+                                                            b dy):
+holds. This implies that the two following functions of L1 (G,
+
+                                f (y)a(y)ψ(y)            θ(y)ψ(y)
+                                p                and    p
+                                   1 + |a(y)|2            1 + |a(y)|2
+
+have the same Fourier transform on G, hence are equal almost everywhere. So f ∈ Da and
+
+(Ma )∗ (f ) = (Ma )(f ).   ♣
+
+
+
+
+Theorem 2.4 Let (M, D) be a closed operator on L2 (G, dx) commuting with G-translations.
+
+Then (M, D) = (Ma , Da ) for a (unique) multiplicator a.
+
+
+
+
+Note 2.5 For a bounded M and G = R, this is proven in the classical monograph by Stein
+
+and Weiss [12], as a special case of a more general statement applying in Lp spaces.
+
+
+
+
+Proof Let us first assume that M is bounded. We use the (inverse Fourier transform of the)
+
+function ψ(y) and define a(y) to be Mψ(y)
+                                     (ψ)(y)
+                                            . Let us consider the domain D consisting of all
+
+finite linear combinations of translates of ψ. It is dense by the argument using unicity of Fourier
+
+transform in L1 we have used previously. Then (M, D) ⊂ (Ma , Da ), hence (Ma , Da ) is also an
+
+extension of the closure of (M, D). As M is assumed to be bounded this is (M, L). But this
+
+means that Da = L and that M = Ma (we then note that necessarily a is essentially bounded).
+
+
+
+The next case is when M is assumed to be self-adjoint. Its resolvents R1 = (M − i)−1 and
+
+R2 = (M + i)−1 are bounded and commute with G. Hence they correspond to multiplicators
+
+
+
+                                                  6
+r1 (y) and r2 (y). The kernel of R1 is orthogonal to the range of R2 = R1∗ which is all of D, so
+
+in fact it is reduced to {0}. Hence r1 (y) is almost everywhere non-vanishing. Let f ∈ D and
+
+g = M (f ). As R1 (M (f ) − i f ) = f we get g(y) = 1+i r1 (y)                              1+i r1 (y)
+                                                      r1 (y) · f (y) and defining a(y) to be r1 (y)
+
+we see that (Ma , Da ) is an extension of (M, D). Taking the adjoints we deduce that (M, D) is
+
+an extension of (Ma , Da ). So all three are equal (and a is real-valued).
+
+
+
+For the general case we use the theorem of polar decomposition (see for example [10]). There
+
+exists a non-negative self-adjoint operator |M | with the same domain as M and a partial
+
+isometry U such that M = U |M |. Further conditions are satisfied which make |M | and U
+
+unique: so they also commute with G. It follows from what was proven previously that (M, D) ⊂
+
+(Ma , Da ) for an appropriate a (the product of the multiplicators associated to the self-adjoint
+
+|M | and the bounded U ). The adjoint (M ∗ , D ∗ ) also has a dense domain and commutes
+
+with G, so in the same manner (M ∗ , D ∗ ) ⊂ (Mb , Db ) for an appropriate b. The inclusion
+
+(Ma , Da ) ⊂ (M ∗ , D ∗ ) ⊂ (Mb , Db ) implies b = a and (Ma , Da ) = (M, D)∗∗ . But the double-
+
+adjoint coincides with the closed operator (M, D).        ♣
+
+
+
+Let us mention an immediate corollary:
+
+
+
+
+Corollary 2.6 A closed symmetric operator on L2 (G, dx) commuting with G is self-adjoint,
+
+and a symmetric operator which has a dense domain and commutes with G is essentially self-
+
+adjoint.
+
+
+
+
+3    Tate’s functional equations
+
+
+Our first concern will be to introduce numerous notations. Let H be the space of quaternions
+
+with R-basis {1, i, j, k} and table of multiplication i2 = j 2 = k2 = −1, ij = k = −ji, jk =
+
+i = −kj, ki = j = −ik. A typical quaternion will be denoted x = x0 + x1 i + x2 j + x3 k, its
+
+
+
+
+                                                  7
+conjugate x = x0 − x1 i − x2 j − x3 k, its real part Re(x) = x0 , its (reduced) norm n(x) = xx =
+
+xx = x20 + x21 + x22 + x23 .
+
+
+
+H can also be considered as a left C-vector space with basis {1, j}. We then write a = x0 + x1 i
+
+and b = x2 + x3 i. Then jaj −1 = a, x = a + bj, and n(x) = aa + bb. The action of H on itself
+
+by right-multiplication sends x = a + bj to the 2 × 2 complex matrix
+                                                     
+                                               a −b
+                                       Rx =
+                                                b a
+
+We write V for the complex vector space of complex-linear forms α : H → C. The forms
+
+A : x 7→ a and B : x 7→ b are a basis of V . We have a left action of H on V with x ∈ H acting
+
+as α(y) 7→ α(yx). This left action represents the quaternion x by the matrix
+                                                     
+                                                a b
+                                        Lx =
+                                                −b a
+
+Also let VN = SYMN (V ), for N = 0, 1, . . . be the N + 1-dimensional complex vector space with
+
+basis the monomials Aj B N −j , 0 ≤ j ≤ N .
+
+
+
+Let G = H× be the multiplicative group (with typical element g) and G0 = {g ∈ G| n(g) =
+
+1} its maximal compact subgroup. Through the assignment g 7→ Lg an isomorphism G0 ∼
+
+SU (2) is obtained, and the VN ’s give the complete list of (isomorphism classes of) irreducible
+
+representations of G0 .
+
+
+
+The additive Fourier Transform F is taken with respect to the additive character x 7→ λ(x) =
+
+e−2π i(x+x) . We note that λ(xy) = λ(yx). The choice we make for the normalization of F is:
+                                               Z
+                              F(ϕ)(y) = ϕ(y)
+                                         e   = ϕ(x)λ(−xy) dx
+
+where dx = 4dx0 dx1 dx2 dx3 is the unique self-dual Haar measure for λ. With these choices the
+
+function ω(x) = e−2πxx is its own Fourier transform.
+
+
+
+Definition 3.1 The module |g| of g ∈ H× is defined by the equality of additive Haar measures
+
+on H: d(gx) = d(xg) = |g|dx. It is expressed in terms of the reduced norm by |g| = n(g)2 .
+
+
+
+                                               8
+                                                                                       dg
+Note 3.2 The multiplicative (left- and right-) Haar measures on G are the multiples of |g| .
+
+
+
+                                                               p
+One has a direct product G = (0, ∞) × G0 , g = rg0 , r =           n(g) = |g|1/4 . We write dσ for
+
+the Euclidean surface element on G0 (for the coordinates xi ), so that dx = 4r 3 drdσ. The
+                                      R             R∞
+rule for integrating functions of r is g(r)dx = 8π 2 0 g(r)r 3 dr as is checked with ω(x). So
+
+dσ = 2π 2 d∗ g0 where d∗ g0 is the Haar measure on G0 with total mass 1.
+
+
+
+                                                                              dg
+Definition 3.3 The normalized Haar measure on G is defined to be d∗ g = 2π1 2 |g| = 4 dr  ∗
+                                                                                       r d g0 .
+
+It is chosen so that its push-forward under the module map g 7→ u = |g| ∈ R×+ is du   dr
+                                                                                  u =4 r .
+
+
+
+
+The multiplicative group G acts in various unitary ways on L2 := L2 (H, dx):
+
+              L1 (g) : ϕ(x) 7→ |g|1/2 ϕ(xg)             R1 (g) : ϕ(x) 7→ |g|1/2 ϕ(gx)
+
+and also L2 (g) = R1 (g−1 ) and R2 (g) = L1 (g −1 ).
+
+
+
+                                                                                        1
+Definition 3.4 The Inversion I is the unitary operator on L2 (H, dx) acting as ϕ(x) 7→ |x| ϕ( x1 ).
+
+The Gamma operator is the composite Γ = FI.
+
+
+
+
+Theorem 3.5 The Gamma operator commutes with both left actions L1 and L2 and with both
+
+right actions R1 and R2 of G on L2 .
+
+
+
+
+Proof One just checks that F intertwines L1 with L2 , and also R1 with R2 and that the
+
+inversion I also intertwines L1 with L2 , and R1 with R2 .     ♣
+
+
+
+                                                                   p
+Definition 3.6 The basic isometry is the map φ(x) 7→ f (g) =           2π 2 |g| φ(g) between L2 (H, dx)
+
+and L2 (G, d∗ g).
+
+
+
+                                                  9
+Note 3.7 It is convenient to avoid using any notation at all for the basic isometry. So we
+
+still denote by F the additive Fourier transform transported to the multiplicative setting. The
+
+inversion I becomes f (g) 7→ f (g−1 ). The Gamma operator is still denoted Γ when viewed as
+
+acting on L2 (G, d∗ g).
+
+
+
+
+The spectral decomposition of L2 ((0, ∞), du
+                                           u ) is standard Fourier (or Mellin) theory (alterna-
+
+tively we can apply Theorem 2.4 here): any bounded operator M commuting with multiplica-
+                                                                                         dτ
+tive translations is given by a measurable bounded multiplier a(τ ) in dual space L2 (R, 2π ):
+                            Z Λ                                           Z Λ
+                                       −iτ dτ                                                    dτ
+          G1 (u) = l.i.m.         ψ(τ )u         =⇒ M (G1 )(u) = l.i.m.         a(τ )ψ(τ )u−iτ
+                    Λ→∞      −Λ             2π                      Λ→∞    −Λ                    2π
+
+
+
+On the other hand the spectral decomposition of L2 (G0 , d∗ g0 ) is part of the Peter-Weyl theory:
+
+it tells us that L2 (G0 , d∗ g0 ) decomposes under the L1 × R1 action by G0 × G0 into a countable
+
+direct sum ⊕N ≥0 WN of finite dimensional irreducible, non-isomorphic, modules. This is also
+
+the isotypical decomposition under either L1 alone or R1 alone (for which WN then contains
+
+N + 1 copies of VN .) Using the standard theory of tensor products of separable Hilbert spaces
+
+(see for example [10]) we have:
+
+
+
+
+Lemma 3.8 The isotypical decomposition of L2 (G, d∗ g) under the compact group G0 × G0
+
+acting through L1 × R1 is
+
+                                           du                                      du
+            L2 (G, d∗ g) = L2 ((0, ∞),        ) ⊗ L2 (G0 , d∗ g0 ) = ⊕N L2 ((0, ∞), ) ⊗ WN
+                                           u                                        u
+
+
+
+
+Lemma 3.9 Let M be a bounded operator on L2 which commutes with both the L1 and R1
+
+actions of G. Then to each integer N ≥ 0 is associated an (essentially bounded) multiplicator
+
+aN (τ ) on R, unique up to equality almost everywhere, such that
+                                                             Z Λ
+                                   dτ
+                                   2                                            dτ
+                          ψ ∈ L (R, ), G1 (u) = l.i.m.              ψ(τ )u−iτ
+                                   2π           Λ→∞            −Λ               2π
+
+
+                                                     10
+                                      ⇒ ∀F ∈ WN    M (F G1 ) = F G2
+                                                  Z Λ
+                                                                       dτ
+                             with G2 (u) = l.i.m.     aN (τ )ψ(τ )u−iτ
+                                           Λ→∞ −Λ                      2π
+and where F G1 is the function g 7→ F ( |g|g1/4 )G1 (|g|) and F G2 the function g 7→ F ( |g|g1/4 )G2 (|g|).
+
+
+
+
+Proof Let us take f ∈ L2 ((0, ∞), du                                        2       ∗
+                                   u ) and consider the linear operator on L (G0 , d g0 ):
+                                                    Z ∞                                     
+                                                                                1/4     du
+                         F (g0 ) 7→       g0 7→            f (u)M (f ⊗ F )(g0 u       )
+                                                      0                                  u
+
+It commutes with the action of G0 × G0 hence stabilizes each WN and is a multiple afN of the
+
+identity there. On the other hand, if we choose F1 and F2 in WN and consider
+                                           Z                                              
+                                                                            1/4       ∗
+                          f 7→       u 7→            F2 (g0 )M (f ⊗ F1 )(g0 u     ) d g0
+                                                G0
+
+we obtain a bounded operator M (F1 , F2 ) on L2 ((0, ∞), du
+                                                          u ) commuting with dilations and such
+
+that
+                                                     f
+                      < f |M (F1 , F2 )(f ) >=< F2 |MN (F1 ) >= afN < F2 |F1 >
+
+where the let-hand bracket is computed in L2 ((0, ∞), du                             2       ∗
+                                                      u ) while the next two are in L (G0 , d g0 ).
+
+So M (F1 , F2 ) depends on (F1 , F2 ) only through < F2 |F1 >. We then let aN (τ ) be the spectral
+
+multiplier associated to M (F, F ) for an arbitrary F satisfying < F |F >= 1.                    ♣
+
+
+
+
+Corollary 3.10 The von Neumann algebra A of bounded operators commuting simultaneously
+
+with the left and right actions of the multiplicative quaternions on L2 (H, dx) is abelian.
+
+
+
+
+Lemma 3.11 A self-adjoint operator M commuting with both left and right actions of G com-
+
+mutes with any operator of the von Neumann algebra A. In particular it commutes with Γ.
+
+
+
+
+Proof One applies Theorem 2.2.                   ♣
+
+
+
+
+                                                             11
+Definition 3.12 The quaternionic Tate Gamma functions are the multiplicators γN (τ ) (N ≥
+
+0) associated to the unitary operator Γ.
+
+
+
+
+Note 3.13 This generalizes the Gamma functions of Tate for K = R anf K = C ([13]). In all
+
+cases they are indexed by the characters of the maximal compact subgroup of the multiplicative
+
+group K × .
+
+
+
+
+Lemma 3.14 There is a smooth function in the equivalence class of γN (τ ).
+
+
+
+Proof If the function G1 (u) on (0, ∞) is chosen smooth with compact support (so that ψ(τ )
+
+is entire) then, for any F ∈ WN the function F G1 , viewed in the additive picture, is smooth on
+
+H, has compact support, and vanishes identically in a neighborhood of the origin. So its image
+
+under the inversion also belongs to the Schwartz class in the additive picture on H. Hence
+
+Γ(F G1 ) can be written as |g|1/2 φ(g) for some Schwartz function φ(x) of the additive variable
+
+x. One checks that this then implies that G2 (u) is a Schwartz function of the variable log(u)
+
+(we assume that F does not identically vanish of course), hence that γN (τ )ψ(τ ) is a Schwartz
+
+function of τ . The various allowable ψ’s have no common zeros so the conclusion follows.     ♣
+
+
+
+Note 3.15 From now on γN refers to this unique smooth representative. It is everywhere of
+
+modulus 1 as Γ is a unitary operator.
+
+
+
+
+Note 3.16 Any function F ∈ WN will now be considered as a function on all of G = H× after
+
+extending it to be constant along each radial line. It is not defined at x = 0 of course.
+
+
+
+Let F ∈ WN . For Re(s) > 0, F (x)|x|s−1 is a tempered distribution on H, hence has a
+
+distribution-theoretic Fourier Transform. At first we only consider s = 12 + iτ :
+
+
+
+                                               12
+Lemma 3.17 As distributions on H
+
+                                    1       1                           1
+                               F(F ( ) |x|− 2 +iτ ) = γN (τ )F (x) |x|− 2 −iτ
+                                    x
+
+
+
+Proof We have to check the identity:
+               Z                                    Z
+                     1     − 12 +iτ                             1
+                  F ( ) |y|         e dy = γN (τ ) · F (x) |x|− 2 −iτ ϕ(x) dx
+                                    ϕ(y)
+                     y
+
+for all Schwartz functions ϕ(x) with Fourier Transform ϕ(y).
+                                                       e     Both integrals are analytic in
+
+τ ∈ R, hence both sides are smooth (bounded) functions of τ . It will be enough to prove the
+                                         dτ
+identity after integrating against ψ(τ ) 2π with an arbitrary Schwartz function ψ(τ ). With the
+
+notations of Lemma 3.9, we have to check
+                 Z                           Z
+                       1     1    − 21                         1
+                    F ( )G1 ( )|y| ϕ(y)e dy = F (x) G2 (x)|x|− 2 ϕ(x) dx
+                       y     y
+                                                                       1
+But, by Lemma 3.9, and by Definition 3.12, F (x) G2 (x)|x|− 2 is just the Fourier Transform in
+                                 1
+L2 (H, dx) of F ( y1 )G1 ( y1 )|y|− 2 , so this reduces to the L2 -identity
+                                        Z                  Z
+                                                 e dy = ψ(x)ϕ(x)
+                                           ψ(y)ϕ(y)           e         dx
+
+  ♣
+
+
+
+Theorem 3.18 Let F ∈ WN . There exists an analytic function ΓN (s) in 0 < Re(s) < 1
+
+depending only on N ∈ N and such that the following identity of tempered distributions on H
+
+holds for each s in the critical strip (0 < Re(s) < 1):
+
+                                          1
+                                     F(F ( ) |x|s−1 ) = ΓN (s)F (x) |x|−s
+                                          x
+
+
+
+Proof We have to check an identity:
+                  Z                              Z
+                        1     s−1
+                                  e dy = ΓN (s) · F (x) |x|−s ϕ(x) dx
+                     F ( ) |y| ϕ(y)
+                        y
+
+for all Schwartz functions ϕ(x) with Fourier Transform ϕ(y).
+                                                       e     Both integrals are analytic in the
+
+strip 0 < Re(s) < 1, their ratio is thus a meromorphic function, which depends neither on F
+
+
+
+                                                      13
+nor on ϕ as it equals γN (τ ) on the critical line. Furthermore for any given s we can choose
+
+ϕ(x) = F (x)α(|x|), with α having very small support around |x| = 1 to see that this ratio is in
+
+fact analytic.        ♣
+
+
+
+
+Note 3.19 This is the analog for quaternions of Tate’s “local functional equation” [13], in the
+
+distribution theoretic flavor advocated by Weil [15]. We followed a different approach than
+
+Tate, as his proof does not go through that easily in the non-commutative case.
+
+
+
+                                    R∞
+Let Γ(s) be Euler’s Gamma function ( 0 e−u us du
+                                               u ).
+
+
+
+
+Theorem 3.20 We have for each N ∈ N:
+
+                                                                     Γ(2s + N2 )
+                                       ΓN (s) = iN (2π)2−4s
+                                                                  Γ(2(1 − s) + N2 )
+
+
+
+                                                          N −j       j                     j
+Proof Let 0 ≤ j ≤ N and ωj (x) = A(x)                            B(x) e−2πxx = aN −j b ω(x). One checks that
+                                 j
+fj (y) = (−1)j iN αN −j β ω(y) (y = α + βj). We choose as homogeneous function Fj (x) =
+ω
+
+aN −j bj |x|−N/4 . For these choices the identity of Theorem 3.18 becomes
+            Z                                                            Z
+       iN       (αα)N −j (ββ)j e−2πyy |y|s−1−N/4 dy = ΓN (s)                 (aa)N −j (bb)j e−2πxx |x|−s−N/4 dx
+
+
+Adding a suitable linear combinations of these identities for 0 ≤ j ≤ N gives
+                      Z                                                  Z
+                  N          N       −2πyy     s−1−N/4
+                  i       (yy) e             |y|         dy = ΓN (s)         (xx)N e−2πxx |x|−s−N/4 dx
+
+
+hence the result after evaluating the integrals in terms of Γ(s).                      ♣
+
+
+
+
+4    The central operator H = log(|x|) + log(|y|)
+
+
+
+
+                                                             14
+Definition 4.1 We let ∆ ⊂ C ∞ (G) be the vector space of finite linear combinations of functions
+
+f (g) = F (g0 )K(log(|g|)) with F in one of the WN ’s (hence smooth) and K a Schwartz function
+
+on R. It is a dense sub-domain of L2 .
+
+
+
+
+Theorem 4.2 ∆ is stable under F.
+
+
+
+                                                                                              γ ′ (τ )
+Proof We have to show that γN (τ ) is a multiplier of the Schwartz class. Let hN (τ ) = −i γN
+                                                                                            N (τ )
+                                                                                                   .
+
+Using Theorem 3.20 and the partial fraction expansion of the logarithmic derivative of Γ(s)
+
+(as in [1] for the real and complex Tate Gamma functions), or Stirling’s formula, or any other
+                                               (k)                       (k)
+means, one finds hN (τ ) = O(log(1 + |τ |)), hN (τ ) = O(1), so that γN (τ ) = O(log(1 + |τ |)k ).
+
+♣
+
+
+
+Let A be the operator on L2 (H, dx) of multiplication with log(|x|). As it is unbounded, we need
+
+a domain and we choose it to be ∆. Of course (A, ∆) is essentially self-adjoint. It is unitarily
+
+equivalent to the operator (B, ∆), B = FAF −1 . Clearly:
+
+
+
+
+Lemma 4.3 The domain ∆ is stable under A and B.
+
+
+
+
+Definition 4.4 The conductor operator is the operator H = A + B:
+
+                                      H = log(|x|) + log(|y|)
+
+This is an unbounded operator defined initially on the domain ∆.
+
+
+
+
+Lemma 4.5 The conductor operator (H, ∆) commutes with the left and with the right actions
+
+of G and is symmetric.
+
+
+
+                                                15
+This is clear. Applying now Theorem 2.2 we deduce:
+
+
+
+
+Theorem 4.6 The conductor operator (H, ∆) has a unique self-adjoint extension.
+
+
+
+
+We will simply denote by H and call “conductor operator” this self-adjoint extension.
+
+
+
+
+Theorem 4.7 The conductor operator H commutes with the inversion I.
+
+
+
+
+Proof Indeed, it commutes with Γ by Theorem 2.2 and it commutes with F by construction.
+
+♣
+
+
+
+We now want to give a concrete description of its spectral functions.
+
+
+
+
+Definition 4.8 Let for each N ∈ N and τ ∈ R:
+
+                                                    γ ′ (τ )
+                                        hN (τ ) = −i N
+                                                    γN (τ )
+
+                                         kN (τ ) = −h′N (τ )
+
+
+
+
+Explicit computations prove that the functions hN are left-bounded (∃C ∀τ ∀N hN (τ ) ≥ −C)
+
+and that the functions kN are bounded (∃C ∀τ ∀N |kN (τ )| ≤ C.) We need not reproduce these
+
+computations here, which use only the partial fraction expansion of Euler’s gamma function,
+
+as similar results are provided in [1] in the real and complex cases.
+
+
+
+Let f (g) = F (g0 )φ(|g|) be an element of ∆, F ∈ WN ⊂ L2 (G0 , dg0 ), φ ∈ L2 ((0, ∞), du
+                                                                                        u ), φ being
+
+a Schwartz function of log(u) (u = |g|). We can also consider f to be given as a pair {F, ψ}
+             R∞
+with ψ(τ ) = 0 φ(u)uiτ duu being a Schwartz function of τ . Then A(f ) is given by the pair
+
+
+
+
+                                                 16
+                                                   d
+{F, D(ψ)} where D is the differential operator 1i dτ . This implies that ΓAΓ−1 (f ) corresponds
+
+to the pair {F, D(ψ) − hN · ψ}. On the other hand ΓAΓ−1 = −B so H(f ) corresponds to
+
+the pair {F, hN · ψ}. The commutation with the inversion I translates into hN (−τ ) = hN (τ ).
+
+Also: K = i[B, A] = −i[A, H] sends the pair {F, ψ} to {F, kN · ψ}, hence is bounded and
+
+anti-commutes with the Inversion. We have proved:
+
+
+
+
+Theorem 4.9 The operator log(|x|) + log(|y|) is self-adjoint, left-bounded, commutes with the
+
+left- and right- dilations, commutes with the Inversion, and its spectral functions are the func-
+
+tions hN (τ ). The operator i [log(|y|), log(|x|)] is bounded, self-adjoint, commutes with the left-
+
+and right- dilations, anti-commutes with the Inversion and its spectral functions are the func-
+
+tions kN (τ ).
+
+
+
+
+We now conclude this chapter with a study of some elementary distribution-theoretic properties
+
+of H. For this we need the analytic functions of s (0 < Re(s) < 1) indexed by N ∈ N:
+
+                                                    d
+                                      HN (s) =         log(ΓN (s))
+                                                    ds
+
+(so that hN (τ ) = HN ( 21 + iτ )).
+
+
+
+
+Lemma 4.10 Let ϕ(x) be a Schwartz function on H. Then H(ϕ) is continuous on H\{0}, is
+
+O(log(|x|)) for x → 0, and is O(1/|x|) for |x| → ∞. Furthermore, for any F ∈ WN (constant
+
+along radial lines), the following identity holds for 0 < Re(s) < 1:
+                       Z                                        Z
+                                          −s
+                           H(ϕ)(x)F (x)|x|       dx = HN (s)        ϕ(x)F (x)|x|−s dx
+
+
+
+
+Proof Assuming the validity of the estimates we see that both sides of the identity are analytic
+
+functions of s, so it is enough to prove the identity on the critical line:
+                   Z                                            Z
+                                      − 12 −iτ                                    1
+                       H(ϕ)(x)F (x)|x|           dx = hN (τ )       ϕ(x)F (x)|x|− 2 −iτ dx
+
+
+
+                                                     17
+As in the proof of Lemma 3.17, it is enough to prove it after integrating against an arbitrary
+                                      R∞           dτ
+Schwartz function ψ(τ ). With G(u) = −∞ ψ(τ )u−iτ 2π  , and using Theorem 4.9 this becomes
+                   Z                                         Z
+                                               − 12                                    1
+                       H(ϕ)(x)F (x)G(|x|)|x|          dx =        ϕ(x)H(F G)(x)|x|− 2 dx
+
+(on the right-hand-side H(F G) is computed in the multiplicative picture, on the left-hand-
+
+side H(ϕ) is evaluated in the additive picture). The self-adjointness of H reduces this to
+
+H(ϕ) = H(ϕ), which is a valid identity.
+
+
+
+For the proof of the estimates we observe that B(ϕ) is the Fourier transform of an L1 -function
+
+hence is continuous, so that we only need to show that it is O(1/|x|) for |x| → ∞. For this
+
+we use that B(ϕ) is additive convolution of −ϕ with the distribution G = F(− log(|y|)). The
+
+estimate then follows from the formula for G given in the next lemma.                      ♣
+
+
+
+
+Lemma 4.11 The distribution G(x) = F(− log(|y|)) is given as:
+              Z                                Z
+                                 dx                                 dx
+     G(ϕ) =       (ϕ(x) − ϕ(0)) 2     +                    ϕ(x)            + (4 log(2π) + 4γe − 2)ϕ(0)
+            |x|≤1              2π |x|            |x|>1            2π 2 |x|
+
+
+
+Proof    We have used the notation γe = −Γ′ (1) for the Euler-Mascheroni’s constant (=
+
+0.577 . . .). Let ∆s for Re(s) > 0 be the homogeneous distribution |x|s−1 on H. It is a tempered
+
+distribution. The formula
+                       Z                                     Z
+                                                                                           2π 2
+            ∆s (ϕ) =            (ϕ(x) − ϕ(0))|x|s−1 dx +                 ϕ(x)|x|s−1 dx +        ϕ(0)
+                        |x|≤1                                    |x|>1                      s
+
+defines its analytic continuation to Re(s) > − 14 , with a simple pole at s = 0. Using
+
+                                          F(∆s ) = Γ0 (s)∆1−s
+
+for s = 1 − ε, ε → 0, and expanding in ε gives
+                                (             Z                          Z                     )
+                  2               2π 2                             dx                dx
+ϕ(0)+εG(ϕ)+O(ε ) = Γ0 (1−ε)·           ϕ(0) +        (ϕ(x) − ϕ(0))     +        ϕ(x)     + O(ε)
+                                   ε           |x|≤1               |x|    |x|>1      |x|
+
+As Γ0 (1 − ε) = 2π1 2 (ε + (4 log(2π) + 4γe − 2)ε2 + O(ε3 )) the result follows.               ♣
+
+
+
+                                                      18
+5    The trace of Connes for quaternions
+
+
+Let f (g) be a smooth function with compact support on H× . Let Uf be the bounded operator
+R
+  f (g)L2 (g) d∗ g on L2 (H, dx) of left multiplicative convolution. So
+                                            Z
+                                                         1
+                             Uf : ϕ(x) 7→         f (g) p ϕ(g−1 x) d∗ g
+                                                G        |g|
+
+The composition Uf F of Uf with the Fourier Transform F acts as
+                         Z Z
+                                      1
+              ϕ(x) 7→          f (g) p λ(−g−1 xy)ϕ(y) dy d∗ g
+                          G H         |g|
+                         Z Z         p
+                                  1
+                     =         f ( ) |g|λ(−gxy) d∗ g ϕ(y) dy
+                          H G     g
+                               Z       Z                                  !
+                           1                    1      1
+                     =   √                    f( )p            λ(−Y xy) dY ϕ(y) dy
+                           2π 2 y∈H      Y ∈H   Y    2π 2 |Y |
+                               Z
+                           1
+                     =   √         F(I(f )a )(xy)ϕ(y) dy
+                           2π 2 H
+
+
+
+In this last equation I(f )a is the additive representative √ 12             f ( Y1 ) of I(f ). Finally denoting
+                                                                   2π |Y |
+similarly with Γ(f )a the additive representative of Γ(f ) we obtain
+                                                     Z
+                                            1
+                           (Uf F)(ϕ)(x) = √                 Γ(f )a (xy)ϕ(y) dy
+                                           2π 2         H
+
+
+
+
+As f has compact support on H× we note that I(f )a is smooth with compact support on H
+
+and that Γ(f )a belongs to the Schwartz class. Following Connes ([5], for R or C instead of H),
+                                                       fΛ PΛ Uf , where P
+our goal is to compute the trace Tr(Λ) of the operator P                fΛ = FPΛ F −1 and
+
+PΛ is the cut-off projection to functions with support in |x| ≤ Λ. Our reference for trace-class
+
+operators will be [7]. We recall that if A is trace-class then for any bounded B, AB and BA are
+
+trace-class and have the same trace. Also if K1 and K2 are two Hilbert-Schmidt operators given
+
+for example as L2 −kernels k1 (x, y) and k2 (x, y) on a measure space (X, dx) then A = K1∗ K2 is
+
+trace-class and its trace is the Hilbert-Schmidt scalar products of K1 and K2 :
+                                            Z Z
+                            Tr(K1∗ K2 ) =          k1 (x, y) k2 (x, y) dxdy
+
+
+
+                                                   19
+The operator PΛ F −1 PΛ is an operator with kernel a smooth function restricted to a finite box
+
+(precisely it is λ(xy), |x|, |y| ≤ Λ). Such an operator is trace class, as is well-known (one classical
+
+line of reasoning is as follows: taking a smooth function ρ(x) with compact support, identically
+
+1 on |x| ≤ Λ, and Qρ the multiplication operator with ρ, one has PΛ F −1 PΛ = PΛ Qρ F −1 Qρ PΛ ,
+
+so that it is enough to prove that Qρ F −1 Qρ is trace-class. This operator has a smooth kernel
+
+with compact support, so we can put the system in a box, and reduce to an operator K with
+
+smooth kernel on a torus. Then K = (1 + ∆)−n (1 + ∆)n K with ∆ the positive Laplacian. For
+
+n large enough, (1 + ∆)−n is trace-class, while (1 + ∆)n K is at any rate bounded.)
+
+
+                     fΛ PΛ Uf = F · PΛ F −1 PΛ · Uf is indeed trace class and
+So Connes’s operator P
+
+                  fΛ PΛ Uf ) = Tr(PΛ F −1 PΛ · Uf F) = Tr(PΛ F −1 PΛ · PΛ Uf FPΛ )
+               Tr(P
+
+can be computed as a Hilbert-Schmidt scalar product:
+                                         Z Z
+                  Tr(PfΛ PΛ Uf ) = √ 1                λ(xy)Γ(f )a (xy) dxdy
+                                    2π 2    |x|,|y|≤Λ
+
+using the change of variable (x, y) 7→ (Y = xy, y)
+                                     Z                      Z                                !
+                             √                                                        dy
+                f
+             Tr(PΛ PΛ Uf ) = 2π   2        λ(Y )Γ(f )a (Y )                                      dY
+                                                                                       2
+                                           |Y |≤Λ2                      |Y |
+                                                                        Λ
+                                                                             ≤|y|≤Λ 2π |y|
+
+                                √          Z                             
+(C)              fΛ PΛ Uf ) =
+              Tr(P                  2π 2              2 log(Λ) − log(|Y |) λ(Y )Γ(f )a (Y ) dY
+                                           |Y |≤Λ2
+
+This integral is an inverse (additive) Fourier transform evaluated at 1. As Γ = FI itself
+                                                     √
+involves a Fourier transform the final result is just 2π 2 MΛ (I(f )a )(1) where MΛ is the self-
+                                                                               √
+adjoint operator (2 log(Λ) − B)+ = max(2 log(Λ) − B, 0). If we recall that 2π 2 is involved
+
+in the basic isometry from the additive to the multiplicative picture, we can finally express
+
+everything back in the multiplicative picture:
+
+
+
+                                fΛ PΛ Uf is a trace-class operator and satisfies
+Theorem 5.1 The Connes operator P
+
+                           fΛ PΛ Uf ) = (2 log(Λ) − B)+ (I(f ))(1)
+                        Tr(P
+
+                           fΛ PΛ Uf ) = 2 log(Λ)f (1) − H(f )(1) + o(1)
+                        Tr(P
+
+
+
+
+                                                        20
+For the last line we used that B(I(f ))(1) = H(I(f ))(1) = H(f )(1) as H = log(|x|) + log(|y|)
+
+commutes with the Inversion I. The error is o(1) for Λ → ∞ as it is bounded above in absolute
+
+value (assuming Λ > 1) by
+
+                             √     Z
+                              2π 2               log(|Y |) |Γ(f )a (Y )| dY
+                                       |Y |≥Λ2
+
+and Γ(f )a is a Schwartz function of Y ∈ H. We note that if needed the Lemma 4.11 gives to
+
+the term H(f )(1) a form more closely akin to the Weil’s explicit formulae of number theory.
+
+We note that Connes’s computation in [5] also goes through an intermediate stage essentially
+
+identical with (C) and that the identification of the constant term with Weil’s expression for
+
+the explicit formula of number theory then requires a further discussion. The main result of [1]
+
+and of this paper is thus the direct connection between H and the logarithmic derivatives of
+
+the Tate Gamma functions involved in the explicit formulae.
+
+
+
+Acknowledgements
+
+
+
+I thank the SSAS (“Société de secours des amis des sciences”, quai de Conti, Paris) for its
+
+financial support while this work was completed.
+
+
+
+References
+
+ [1] J.-F. Burnol, “The explicit formula and the conductor operator”, math/9902080. In prepa-
+     ration.
+
+ [2] J.-F. Burnol, “Sur les formules explicites I: analyse invariante”, C. R. Acad. Sci. Paris, t.
+     331, Série I, p 423-428, 2000.
+
+ [3] J.-F. Burnol, “Scattering on the p-adic field and a trace formula”, IMRN 2000:2, 2000.
+
+ [4] J.-F. Burnol, “An adelic causality problem related to abelian L−functions”, to appear in
+     the Journal of Number Theory.
+
+ [5] A. Connes, “Trace formula in non-commutative Geometry and the zeros of the Riemann
+     zeta function”, Selecta Math. (N.S.) 5 (1999) , no. 1, 29–106.
+
+ [6] R. Godement, H. Jacquet, “Zeta function of simple algebras”, Lecture Notes in Mathe-
+     matics, vol. 260, Springer-Verlag, New York, 1972.
+
+
+
+                                                     21
+ [7] I. Ts. Gohberg, M. G. Krein, “Introduction to the theory of linear non-self-adjoint opera-
+     tors”, American Mathematical Society, (original in russian 1965), 1969.
+
+ [8] H. Jacquet, “Principal L-functions for GL(n)”, in “Representation Theory and Automor-
+     phic Functions”, Proc. Symp. Pure Math. 61, 321-329, eds. T.N.Bailey, A.W.Knapp, AMS,
+     1997.
+
+ [9] H. Jacquet, “Principal L-functions of the linear group”, in “Automorphic Forms, Rep-
+     resentations, and L-functions”, (A. Borel and W. Casselman, eds.), Proc. Symp. Pure.
+     Math., vol. 33, Part II, American Mathematical Society, Providence, 1979, pp. 63-86.
+
+[10] M. Reed, B. Simon, “Methods of modern mathematical physics, Vol.1: Functional Analy-
+     sis”, revised and enlarged edition, Academic Press, 1980.
+
+[11] W. Rudin, “Fourier analysis on groups”, Interscience Publishers, 1962.
+
+[12] E. Stein, G. Weiss, “Introduction to Fourier Analysis on Euclidean Spaces”, Princeton
+     University Press, 1973.
+
+[13] J. Tate, “Fourier Analysis in Number Fields and Hecke’s Zeta Function”, Princeton 1950,
+     reprinted in “Algebraic Number Theory”, (J.W.S. Cassels and A. Fröhlich, eds.), Academic
+     Press, 1967.
+
+[14] A. Weil, “Sur les “formules explicites” de la théorie des nombres premiers”, Comm. Sem.
+     Math. Univ. Lund (1952) Volume dedicated to Marcel Riesz, 252–265. Oeuvres, Vol. II.
+
+[15] A. Weil, “Fonctions zêtas et distributions”, Séminaire Bourbaki no 312, 1966. Oeuvres,
+     Vol. II.
+
+
+
+
+                                          Jean-François Burnol
+                                          Université de Nice- Sophia Antipolis
+                                          Laboratoire J.-A. Dieudonné
+                                          Parc Valrose
+                                          F-06108 Nice Cédex 02
+                                          France
+                                          burnol@math.unice.fr
+
+
+
+                                              22
+

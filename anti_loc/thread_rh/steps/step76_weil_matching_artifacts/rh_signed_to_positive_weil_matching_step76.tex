@@ -1,0 +1,175 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{lemma}{Lemma}
+\title{Step 76: Signed-to-Positive Weil Matching Gate}
+\author{Six Birds RH Membrane Project}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The previous step selected the logarithmic anti-invariant core
+\[
+\mathcal C^-_{\log}=C_c^\infty(\mathbb R)^{J=-1},\qquad (Jf)(t)=\overline{f(-t)},
+\]
+and proposed a completed carrier-side feature map
+\[
+W_{\mathrm{cmp}}=(W_{\mathrm{pr}},W_\infty,W_{\mathrm{pole}},W_{\mathrm{tail}}).
+\]
+The present step isolates the matching problem: a classical explicit formula identity is signed, while the membrane gate requires a positive feature representation and a Douglas domination
+\[
+V_Z^*V_Z\preceq W_{\mathrm{cmp}}^*W_{\mathrm{cmp}}.
+\]
+Thus the active analytic target is not merely to rewrite the explicit formula, but to promote its signed terms into a positive completed feature package.
+
+\section{Positive feature representations}
+\begin{definition}[Spectral positive feature]
+Let $Y^-$ be a Hilbert response space and let $q$ be a nonnegative closed quadratic form on $Y^-$. A positive feature representation is a Hilbert space $\mathcal E$ and a closed operator $W:Y^-\supset\mathcal D(W)\to\mathcal E$ such that
+\[
+q[y]=\|Wy\|^2.
+\]
+Equivalently, $q$ is represented by its square-root form.
+\end{definition}
+
+\begin{definition}[Shift-difference feature]
+On the log side, a positive shift-difference feature has the form
+\[
+(W_\mu f)(a,t)=f(t+a)-f(t)
+\]
+with positive symmetric measure $\mu$ satisfying the usual Lévy integrability condition. Its form is
+\[
+q_\mu[f]=\int\!\int |f(t+a)-f(t)|^2\,dt\,d\mu(a),
+\]
+and its Fourier symbol is
+\[
+\Psi_\mu(\xi)=\int |e^{ia\xi}-1|^2\,d\mu(a)=2\int(1-\cos(a\xi))\,d\mu(a)\ge0.
+\]
+\end{definition}
+
+\begin{theorem}[Lévy--Khintchine gate for shift features]
+An even continuous function $\Psi$ with $\Psi(0)=0$ is the symbol of a positive shift-difference feature, up to a possible Gaussian term $c\xi^2$, iff it is continuous negative definite. Equivalently,
+\[
+\Psi(\xi)=c\xi^2+\int_{\mathbb R\setminus\{0\}}(1-\cos(a\xi))\,\nu(da),
+\]
+where $c\ge0$ and $\nu$ is a positive Lévy measure.
+\end{theorem}
+
+\begin{proof}
+This is the symmetric one-dimensional Lévy--Khintchine theorem. The corresponding quadratic form is obtained by integrating the squared shift difference against the positive Lévy measure, with the Gaussian term represented by a derivative feature.
+\end{proof}
+
+\begin{warning}[Two positivity notions]
+Every nonnegative measurable multiplier $\Psi(\xi)$ gives a positive spectral feature $\widehat{Wf}(\xi)=\sqrt{\Psi(\xi)}\widehat f(\xi)$. But it need not be a positive shift-difference feature. The explicit-formula feature slots proposed here are shift/difference-like; hence the stronger negative-definite symbol gate is relevant when a shift interpretation is claimed.
+\end{warning}
+
+\section{Candidate component slots}
+\subsection{Prime-power slot}
+At finite support $L$, the prime-power candidate is
+\[
+(W_{{\rm pr},L}f)_n(t)=\sqrt{\frac{\Lambda(n)}{\sqrt n}}\,\alpha_L(\log n)(f(t+\log n)-f(t)).
+\]
+It gives the positive form
+\[
+q_{{\rm pr},L}[f]=\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2\|\tau_{\log n}f-f\|_2^2.
+\]
+Its symbol is
+\[
+\Psi_{{\rm pr},L}(\xi)=2\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2(1-\cos(\xi\log n)).
+\]
+This is automatically a positive shift-difference feature.
+
+\subsection{Archimedean slot}
+A formal archimedean candidate is a positive shift kernel
+\[
+\kappa_\infty(a)\sim \frac{1}{2\sinh(|a|/2)}.
+\]
+Near zero it behaves like $|a|^{-1}$, and the difference form is locally integrable because $|f(t+a)-f(t)|^2=O(a^2)$ on smooth cores. At infinity it decays exponentially. The accepted gate requires an exact match to the gamma factor, including any renormalization needed at $a=0$ and any coupling to pole/completion terms.
+
+\subsection{Pole/completion slot}
+Pole and completion corrections are finite-rank or finite-codimension constraints represented by features
+\[
+W_{\rm pole}f=(\langle f,p_1\rangle,\ldots,\langle f,p_m\rangle).
+\]
+Their role is not optional: omitting them can create fake null-mode legality or leave a signed residual uncharged.
+
+\subsection{Tail/support slot}
+The tail slot either appears as a positive feature $W_{\rm tail}$ or as a defect budget $E_{\rm tail}$. Finite support claims are exact only when the tail participates in a fixed-ledger or exhaustive-ledger squeeze.
+
+\section{Signed-to-positive matching gate}
+\begin{definition}[Signed explicit formula package]
+A signed explicit-formula package on a core $\mathcal C^-_{\log}$ consists of a zero form $q_Z$, signed visible carrier pieces $q_{\rm pr}^{\rm sig},q_\infty^{\rm sig},q_{\rm pole}^{\rm sig},q_{\rm tail}^{\rm sig}$, and an identity
+\[
+q_Z[f]+Q_W[f]=q_{\rm pr}^{\rm sig}[f]+q_\infty^{\rm sig}[f]+q_{\rm pole}^{\rm sig}[f]+q_{\rm tail}^{\rm sig}[f]
+\]
+for $f\in\mathcal C^-_{\log}$.
+\end{definition}
+
+\begin{definition}[Positive completed matching]
+A signed package is positively matched if there are positive features $W_{\rm pr},W_\infty,W_{\rm pole},W_{\rm tail}$ such that
+\[
+q_{\rm cmp}[f]=\|W_{\rm cmp}f\|^2,\qquad W_{\rm cmp}=\begin{bmatrix}W_{\rm pr}\\W_\infty\\W_{\rm pole}\\W_{\rm tail}\end{bmatrix},
+\]
+and
+\[
+Q_W[f]=q_{\rm cmp}[f]-q_Z[f]\ge0
+\]
+on the completed anti-invariant core, with closability and core records.
+\end{definition}
+
+\begin{theorem}[Weil positivity to Douglas gate]
+Assume that on a dense form core $\mathcal C^-_{\log}$,
+\[
+q_Z[f]=\|V_Zf\|^2,\qquad q_{\rm cmp}[f]=\|W_{\rm cmp}f\|^2,
+\]
+and
+\[
+q_Z[f]\le q_{\rm cmp}[f].
+\]
+If $q_{\rm cmp}$ is closable and $\mathcal C^-_{\log}$ is a form core for the completed response space, then
+\[
+V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}
+\]
+on the completed space. Equivalently, there exists a contraction $T$ with
+\[
+V_Z=T W_{\rm cmp},\qquad \|T\|\le1.
+\]
+\end{theorem}
+
+\begin{proof}
+The form inequality extends by closure from the core to the form domain. The operator inequality follows from the representation theorem for nonnegative closed forms. Douglas factorization gives the contraction because $V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}$ is equivalent to $\operatorname{Ran}V_Z^*\subseteq \operatorname{Ran}W_{\rm cmp}^*$ with contractive factorization.
+\end{proof}
+
+\begin{warning}[What remains unearned]
+The signed classical explicit formula does not by itself provide positive completed matching. One must prove: (i) exact matching of prime/gamma/pole/tail terms to positive feature forms; (ii) null-mode legality; (iii) tail/exhaustivity; and (iv) full anti-invariant response-space closure. Until then the status is signed identity support evidence, not an accepted Douglas bridge.
+\end{warning}
+
+\section{No-overread countermodels}
+\begin{proposition}[Trace equality does not imply domination]
+There exist positive matrices $A,K$ with $\operatorname{tr}A=\operatorname{tr}K$ but $A\npreceq K$.
+\end{proposition}
+\begin{proof}
+Take $A=\operatorname{diag}(2,0)$ and $K=I_2$. Then traces are equal, but $K-A=\operatorname{diag}(-1,1)$ is not positive.
+\end{proof}
+
+\begin{proposition}[Core-subspace positivity is not full positivity]
+A quadratic form can be nonnegative on a proper test subspace and negative outside it.
+\end{proposition}
+\begin{proof}
+On $\mathbb R^2$, $Q=\operatorname{diag}(1,-1/2)$ is positive on the span of $e_1$ but not on the full space.
+\end{proof}
+
+\section{RH obligation after this step}
+The RH O1 bridge is now a three-part construction:
+\begin{enumerate}
+\item choose the completed anti-invariant response space and a dense Weil core;
+\item positively match the signed explicit formula into $W_{\rm pr},W_\infty,W_{\rm pole},W_{\rm tail}$;
+\item prove $q_Z\le q_{\rm cmp}$ on the core and close it to Douglas factorization.
+\end{enumerate}
+If any part fails, the status is one of: signed-identity support-only, finite-core support-only, tail-defective, null-mode failure, or public-shadow overread.
+
+\end{document}

@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{warning}[theorem]{Warning}
+
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\spanop}{\operatorname{span}}
+
+\title{Step 67: Zero-Ledger Visibility and Exhaustivity}
+\author{Six Birds / Formed-Layer Membrane Theory Working Note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 65 distinguished exact confinement from merely decreasing defects.  Step 66 distinguished a fixed completed ledger from moving finite-stage ledgers.  This note gives the missing visibility/exhaustivity theorem for the zero side.  It states exactly when a zero ledger is a fixed object, when a finite-window ledger is exhaustive, and when a moving ledger is only support evidence.
+
+The motivating RH-facing involution is
+\[
+        J(s)=1-\overline{s},
+        \qquad \Fix(J)=\{s:\Re(s)=1/2\}.
+\]
+However, all statements below are abstract Hilbert/measure statements.
+
+\section{Zero ledgers}
+
+\begin{definition}[anti-linear fixed-locus readout]
+Let $X$ be a root/zero space with anti-linear involution $J_X$. Let $Y$ be a finite-dimensional real Hilbert response space with linear involution $J_Y$, and let
+\[
+        Y=Y^+\oplus Y^-,
+        \qquad P_-=\frac{I-J_Y}{2}.
+\]
+A zero readout is a measurable map
+\[
+        \psi:X\to Y,
+        \qquad \psi_-=P_-\psi.
+\]
+It is \emph{fixed-locus separating} on a visible set $X_{\rm vis}\subseteq X$ if
+\[
+        \psi_-(x)=0 \quad\Longleftrightarrow\quad x\in \Fix(J_X)
+        \qquad (x\in X_{\rm vis}).
+\]
+It is quantitatively separating with gauge $\delta:X_{\rm vis}\to[0,\infty)$ if
+\[
+        \delta(x)\le \|\psi_-(x)\|,
+        \qquad
+        \delta(x)=0 \Longleftrightarrow x\in\Fix(J_X).
+\]
+\end{definition}
+
+\begin{definition}[completed zero ledger]
+Let $(X_{\rm vis},\mu)$ be a positive measure ledger of visible roots/zeros and assume
+\[
+        \int_{X_{\rm vis}}\|\psi_-(x)\|^2\,d\mu(x)<\infty.
+\]
+The completed anti-invariant zero ledger is the positive operator
+\[
+        \mathsf A_Z
+        =\int_{X_{\rm vis}} \psi_-(x)\psi_-(x)^*\,d\mu(x)
+        \quad\text{on }Y^-.
+\]
+Equivalently,
+\[
+        y^*\mathsf A_Z y
+        =\int_{X_{\rm vis}} |\langle y,\psi_-(x)\rangle|^2\,d\mu(x).
+\]
+\end{definition}
+
+\begin{lemma}[separation by the ledger]
+If $\psi$ is fixed-locus separating and $\mathsf A_Z=0$, then $\mu$-almost every visible root lies in $\Fix(J_X)$. More quantitatively, if $\delta(x)\le\|\psi_-(x)\|$, then for every $\varepsilon>0$,
+\[
+        \mu\{x:\delta(x)\ge\varepsilon\}
+        \le \varepsilon^{-2}\Tr\mathsf A_Z.
+\]
+\end{lemma}
+
+\begin{proof}
+Since $\mathsf A_Z\succeq0$, $\Tr\mathsf A_Z=\int\|\psi_-(x)\|^2\,d\mu(x)$.  If $\mathsf A_Z=0$ then the trace is zero and hence $\psi_-(x)=0$ almost everywhere, which gives fixed-locus confinement by separation.  The quantitative estimate follows from Chebyshev/Markov:
+\[
+\varepsilon^2\mu\{\delta\ge\varepsilon\}
+\le \int_{\delta\ge\varepsilon}\delta^2\,d\mu
+\le \int\|\psi_-\|^2\,d\mu=\Tr\mathsf A_Z.
+\]
+\end{proof}
+
+\section{Fixed, exhaustive, and moving ledgers}
+
+\begin{definition}[fixed ledger]
+A confinement proof has a \emph{fixed zero ledger} if the same completed operator $\mathsf A_Z$ is present at every stage and the stage-$n$ proof supplies
+\[
+        \mathsf A_Z\preceq B_n,
+        \qquad B_n\succeq0.
+\]
+It is an \emph{exact fixed squeeze} if $\Tr B_n\to0$.
+\end{definition}
+
+\begin{theorem}[fixed-ledger squeeze]
+If $\mathsf A_Z\preceq B_n$ for all $n$ and $\Tr B_n\to0$, then
+\[
+        \mathsf A_Z=0.
+\]
+If the readout separates the fixed locus, all visible zero mass is supported on $\Fix(J_X)$.
+\end{theorem}
+
+\begin{proof}
+For every $n$, $0\le\Tr \mathsf A_Z\le\Tr B_n$.  Letting $n\to\infty$ gives $\Tr\mathsf A_Z=0$.  Since $\mathsf A_Z\succeq0$, this implies $\mathsf A_Z=0$.
+\end{proof}
+
+\begin{definition}[exhaustive finite-window ledger]
+A moving finite-window ledger consists of positive operators $\mathsf A_{Z,n}$ on response spaces $Y_n^-$, embeddings $\iota_n:Y_n^-\to Y^-$, and positive tail operators $T_n\succeq0$ such that
+\[
+        \mathsf A_Z
+        \preceq \iota_n\mathsf A_{Z,n}\iota_n^*+T_n.
+\]
+It is exhaustive if the proof also supplies bounds
+\[
+        \mathsf A_{Z,n}\preceq B_n
+\]
+with
+\[
+        \Tr(\iota_nB_n\iota_n^*)+\Tr T_n\to0.
+\]
+\end{definition}
+
+\begin{theorem}[exhaustive-ledger squeeze]
+If $(\mathsf A_{Z,n},\iota_n,T_n)$ is exhaustive, then
+\[
+        \mathsf A_Z=0.
+\]
+Consequently, if the completed readout separates $\Fix(J_X)$, all visible zero mass lies on the fixed locus.
+\end{theorem}
+
+\begin{proof}
+By the assumptions,
+\[
+        \mathsf A_Z
+        \preceq \iota_n B_n\iota_n^*+T_n.
+\]
+Taking traces gives
+\[
+        0\le\Tr\mathsf A_Z
+        \le \Tr(\iota_nB_n\iota_n^*)+\Tr T_n\to0.
+\]
+Hence $\mathsf A_Z=0$.
+\end{proof}
+
+\begin{warning}[moving-ledger support-only]
+Bounds of the form
+\[
+        \mathsf A_{Z,n}\preceq B_n,
+        \qquad \Tr B_n\to0
+\]
+are not enough if $\mathsf A_{Z,n}$ is a moving or truncated ledger and no tail/exhaustivity record relates it to a completed $\mathsf A_Z$.  In that case the status is only
+\[
+        \texttt{moving\_ledger\_support\_only}.
+\]
+\end{warning}
+
+\begin{proposition}[tail countermodel]
+Let $Y=\ell^2(\mathbb N)$ and let
+\[
+        \mathsf A_Z=e_1e_1^*.
+\]
+For each $n$, take $Y_n=\spanop\{e_{n+1}\}$ and $\mathsf A_{Z,n}=0$. Then $\mathsf A_{Z,n}\preceq0$ with zero bound at every stage, but no inequality
+\[
+        \mathsf A_Z\preceq \iota_n\mathsf A_{Z,n}\iota_n^*+T_n
+\]
+can hold with $\Tr T_n\to0$.  Thus moving windows can hide fixed off-locus mass.
+\end{proposition}
+
+\section{RH-facing obstruction budget}
+
+For the root-composite route, the anti-invariant obstruction budget at stage $n$ has the form
+\[
+        B_n(t)=
+        (1+t)(\Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n})
+        +(1+t^{-1})E_{{\rm EF},n}.
+\]
+The scalar trace budget satisfies
+\[
+        \inf_{t>0}\Tr B_n(t)
+        =\left(\sqrt{a_n}+\sqrt{b_n}\right)^2,
+\]
+where
+\[
+        a_n=\Tr(\Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n}),
+        \qquad
+        b_n=\Tr E_{{\rm EF},n}.
+\]
+
+\begin{corollary}[RH-facing exact squeeze criterion]
+Suppose the completed zero ledger $\mathsf A_Z$ is fixed or exhaustive. Suppose, in the fixed case, that
+\[
+        \mathsf A_Z\preceq B_n(t_n)
+\]
+for some $t_n>0$, and in the exhaustive case the same domination holds after embedding plus tail. If
+\[
+        \Tr B_n(t_n)\to0
+\]
+with the exhaustive tail also vanishing, then $\mathsf A_Z=0$.  If the anti-invariant readout separates the fixed locus of $J(s)=1-\overline{s}$, this gives visible confinement to $\Re(s)=1/2$.
+\end{corollary}
+
+\section{Status taxonomy}
+
+\begin{center}
+\begin{tabular}{lll}
+Status & Required record & Confinement conclusion\\
+\hline
+\texttt{fixed\_ledger} & Same completed $\mathsf A_Z$ squeezed by $B_n\to0$ & exact\\
+\texttt{exhaustive\_ledger} & finite windows + embeddings + tail $T_n\to0$ & exact\\
+\texttt{moving\_ledger\_support\_only} & finite windows only, no tail bridge & support only\\
+\texttt{nonseparating\_readout} & $\psi_-=0$ does not characterize fixed locus & no confinement\\
+\texttt{hidden\_multiplicity} & zero weights/multiplicities incomplete & incomplete ledger\\
+\texttt{tail\_uncontrolled} & $T_n$ absent or nonvanishing & no exact conclusion\\
+\end{tabular}
+\end{center}
+
+\section{Conclusion}
+The exact-confinement question is not whether the defect decreases.  It is whether the proof squeezes a fixed completed zero ledger, or an exhaustive sequence of finite ledgers with a vanishing tail.  Finite termination is sufficient but not necessary; infinite decay is decisive only when the object being squeezed is fixed or exhaustive.
+
+\end{document}

@@ -1,0 +1,205 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Step 159: Boundary-Weyl Inclusion / Avoidance Theorem for $H_\eta$}
+\author{Riemann--Membrane Construction Ledger}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Orientation and typed context}
+This track is \emph{adequacy-oriented}.  Thus
+\[
+  \Xi\to 0
+\]
+is good news, while robust positive residual is missed adequacy.
+
+The typed context for this step is the Burnol/Sonine pulled-evaluator carrier with Calkin comparison:
+\[
+  H_\eta
+  =\overline{\operatorname{span}\{\eta^a_{\rho,k}\}},
+  \qquad
+  \eta^a_{\rho,k}=J_a^*Y^a_{\rho,k},
+\]
+and
+\[
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+  \qquad
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+The active Calkin object is
+\[
+  q(C_\ell P_\eta)\in \mathcal B(H)/\mathcal K(H),
+\]
+where $P_\eta$ is the orthogonal projection onto $H_\eta$.
+
+\section{The active residual}
+The Burnol/co-Poisson adequacy residual is
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  =\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}
+  \succeq 0.
+\]
+Equivalently, after pulling the zero-evaluators back to the archimedean/Sonin model, the residual kernel is
+\[
+  \mathcal R_\ell((w,k),(z,j))
+  =\langle C_\ell\eta^a_{w,k},C_\ell\eta^a_{z,j}\rangle.
+\]
+Thus compact/tail payment of $\Xi^{\rm BC}$ is controlled by compactness of
+\[
+  C_\ell P_\eta.
+\]
+
+\section{Boundary-symbol abstraction}
+The hard-support model from Step 158 suggests that the noncompact part of $C_\ell$ is a boundary-leakage operator.  In the actual Burnol/Sonine carrier this must be declared as a typed bridge, not assumed.
+
+\begin{definition}[Boundary-symbol factorization]
+A boundary-symbol record for $C_\ell$ consists of a projection or positive contraction $W_\ell$ on the same Hilbert context, a bounded operator $U_\ell$, and a compact operator $K_\ell$ such that
+\[
+  C_\ell = U_\ell W_\ell + K_\ell.
+\]
+It is \emph{lower-faithful on $H_\eta$} if there exists $\alpha_\ell>0$ such that for every $u\in H_\eta$,
+\[
+  \|U_\ell W_\ell u\|
+  \ge \alpha_\ell\|W_\ell u\|.
+\]
+The operator
+\[
+  \Xi^{\rm BW}_{\ell,a}:=P_\eta W_\ell^*W_\ell P_\eta
+\]
+is the boundary-Weyl sub-residual.
+\end{definition}
+
+\begin{theorem}[Boundary-Weyl avoidance dichotomy]
+Assume a lower-faithful boundary-symbol factorization
+\[
+  C_\ell = U_\ell W_\ell+K_\ell,
+  \qquad K_\ell\in\mathcal K(H).
+\]
+Then:
+\begin{enumerate}[label=(\roman*)]
+\item If $W_\ell P_\eta$ is compact, then $C_\ell P_\eta$ is compact.  Consequently $\Xi^{\rm BC}$ is norm-tail-payable under any finite-rank exhaustion of $H_\eta$.
+\item If there exists a normalized weak-null sequence $u_n\in H_\eta$ such that
+\[
+  \liminf_{n\to\infty}\|W_\ell u_n\|\ge b>0,
+\]
+then
+\[
+  \|C_\ell P_\eta\|_{\rm e}\ge \alpha_\ell b>0.
+\]
+Consequently $\Xi^{\rm BC}$ is not compact/tail-payable by ordinary finite-window exhaustion.
+\item Equivalently, compact/tail payment of $\Xi^{\rm BC}$ is reduced to the boundary avoidance condition
+\[
+  W_\ell P_\eta\in\mathcal K(H).
+\]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+If $W_\ell P_\eta$ is compact, then $U_\ell W_\ell P_\eta$ is compact and so is $K_\ell P_\eta$. Hence $C_\ell P_\eta$ is compact.
+
+Conversely, let $u_n\in H_\eta$ be normalized and weak-null with $\liminf\|W_\ell u_n\|\ge b$. Since $K_\ell$ is compact, $K_\ell u_n\to 0$. Thus
+\[
+  \liminf\|C_\ell u_n\|
+  \ge
+  \liminf\bigl(\|U_\ell W_\ell u_n\|-\|K_\ell u_n\|\bigr)
+  \ge \alpha_\ell b.
+\]
+This is a Weyl-sequence certificate for positive essential norm.
+\end{proof}
+
+\section{Hard-support shadow}
+In the hard-support shadow context,
+\[
+  P_+=\mathbf 1_{[0,\infty)},
+  \qquad
+  (T_{-\ell}f)(x)=f(x+\ell),
+\]
+and
+\[
+  C^{\rm supp}_\ell=(I-P_+)T_{-\ell}P_+.
+\]
+Then $C^{\rm supp}_\ell$ is a partial translation from $L^2([0,\ell])$ to $L^2([-\ell,0])$.  The boundary symbol is simply
+\[
+  W_\ell=\mathbf 1_{[0,\ell]}.
+\]
+Thus a sequence
+\[
+  u_n(x)=\ell^{-1/2}e^{2\pi i n x/\ell}\mathbf 1_{[0,\ell]}(x)
+\]
+is normalized, weak-null, and satisfies
+\[
+  \|C^{\rm supp}_\ell u_n\|=1.
+\]
+This proves noncompactness in the hard-support shadow.
+
+\paragraph{Status.} This is \texttt{public\_shadow}, not a Burnol/Sonine theorem.  Promotion requires a Calkin-faithful bridge from $C_\ell$ to the boundary-symbol model in the pulled-evaluator context.
+
+\section{Burnol/Sonine consequence}
+In the actual carrier, Step 159 cannot conclude compactness or essential noncompactness without one of the following typed records:
+\begin{enumerate}[label=(\alph*)]
+\item a Calkin-faithful boundary-symbol factorization of $C_\ell$;
+\item compact boundary avoidance:
+\[
+  W_\ell P_\eta\in\mathcal K(H);
+\]
+\item a pulled-evaluator boundary Weyl sequence:
+\[
+  u_n\in H_\eta,
+  \quad \|u_n\|=1,
+  \quad u_n\rightharpoonup0,
+  \quad \liminf\|W_\ell u_n\|>0.
+\]
+\end{enumerate}
+
+\section{Residual tree after Step 159}
+The active adequacy residual now decomposes as
+\[
+  \Xi^{\rm BC}
+  \leadsto
+  \Xi^{\rm BW}
+  +
+  \text{boundary-symbol bridge defect}
+  +
+  \text{compact remainder}.
+\]
+The compact remainder is tail-payable.  The bridge defect is a typed-context obligation.  The boundary-Weyl residual is the decisive leaf:
+\[
+  \Xi^{\rm BW}_{\ell,a}=P_\eta W_\ell^*W_\ell P_\eta.
+\]
+
+\section{No-go scope}
+Step 159 forecloses only the shortcut
+\[
+  \text{hard-support or Hardy-shadow Weyl sequence}
+  \Rightarrow
+  \text{Burnol/Sonine essential obstruction}.
+\]
+That implication is invalid without a Calkin-faithful bridge.
+
+It does not foreclose co-Poisson factorization, semilocal prolate cancellation, direct compactness of $C_\ell P_\eta$, or a genuine Burnol/Sonine Weyl-sequence construction.
+
+\section{Next obligation}
+The next testable external/content theorem is:
+\[
+  \boxed{\text{Calkin-faithful boundary-symbol bridge for }C_\ell.}
+\]
+It must establish either
+\[
+  C_\ell = U_\ell W_\ell + K_\ell,
+  \qquad K_\ell\in\mathcal K,
+\]
+with faithful control on $H_\eta$, or show that no such boundary-symbol model captures the Burnol/Sonine commutator.
+
+\end{document}

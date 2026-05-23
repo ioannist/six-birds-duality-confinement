@@ -1,0 +1,159 @@
+\section*{Step 310: Candidate Lower-Bound Theorem for Branch C}
+
+\subsection*{Inherited certified facts}
+
+Let
+\[
+  \rho_1 = \frac12+i\gamma_1,\qquad \gamma_1 \approx 14.134725,
+\]
+and let \(G_\star\) be the compactly supported smooth test function on
+\([1.3,3.7]\) with centers \(1.5,2.5,3.5\), \(\epsilon=0.20\), and
+coefficients \(1,-3.3409952306,2.3409952306\).  The inherited Mellin
+convention is
+\[
+  M(G)(z)=\int_0^\infty G(t)t^{-z}\,dt.
+\]
+Set
+\[
+  h(z)=\zeta(z)M(G_\star)(z),\qquad
+  \delta_{D,k}(\rho_1,G_\star)=h^{(k)}(\rho_1).
+\]
+
+Step 307 certified:
+\[
+  |M(G_\star)(1)|=
+  1.33943834915891599478412134567032143685770702518296718111148
+  \times 10^{-102},
+\]
+so the pole of \(\zeta\) at \(1\) is numerically cancelled by
+\(M(G_\star)(1)=0\).  Step 307 also certified
+\[
+  M(G_\star)(\rho_1)=-0.06965146358+0.18763300553i\neq 0,
+\]
+so the zero of \(h\) at \(\rho_1\) is inherited from the simple zero of
+\(\zeta\).
+
+Step 308 certified that \(M(G_\star)^{(m)}(\rho_1)\) is non-lacunary for
+\(0\le m\le 30\), and that the Leibniz reconstruction matches the
+certified magnitudes at \(k=10,20,30,50\) to displayed precision.
+
+Step 309 computed the termwise Leibniz distribution
+\[
+  T_{k,j}
+  =
+  {k\choose j}\zeta^{(j)}(\rho_1)M(G_\star)^{(k-j)}(\rho_1),
+  \qquad 1\le j\le k,
+\]
+and found a broad high-\(j\) saddle:
+\[
+\begin{array}{c|c|c|c}
+k & j_\ast(k) & j_\ast(k)/k
+  & |\sum_jT_{k,j}|/\sum_j|T_{k,j}|\\
+\hline
+10&4&0.40&0.8119400203\\
+20&10&0.50&0.6254689266\\
+30&15&0.50&0.4694197978\\
+50&28&0.56&0.2684622890.
+\end{array}
+\]
+A least-squares fit to these interference ratios gives
+\[
+  \frac{|\sum_jT_{k,j}|}{\sum_j|T_{k,j}|}
+  \approx 1.07997\exp(-0.0277874\,k)
+\]
+on \(k=10,20,30,50\).  This is an empirical diagnostic, not yet a
+rigorous bound.
+
+\subsection*{Candidate theorem: certified-sample form}
+
+\paragraph{Candidate Theorem 310.A (Branch C lower-bound form, sample-calibrated).}
+For \(G_\star\) and \(\rho_1\) as above, define
+\[
+  \delta_{D,k}(\rho_1,G_\star)
+  =
+  \left(\zeta M(G_\star)\right)^{(k)}(\rho_1).
+\]
+Assume the two lower-bound lemmata stated below.  Then there exist
+explicit constants
+\[
+  A_0=10^{-2},\qquad B_0=2.5,\qquad \alpha_0=0,\qquad k_0=10
+\]
+such that
+\[
+  |\delta_{D,k}(\rho_1,G_\star)|
+  \ge A_0 B_0^k k^{\alpha_0}
+  =
+  10^{-2}\,2.5^k
+  \qquad (k\ge k_0).
+\]
+
+\paragraph{Required Lemma 1: central-window magnitude lower bound.}
+There are constants \(C_M>0\), \(B_M>0\), \(\beta\in\mathbb R\), and a
+central interval \(J_k\subset \{1,\ldots,k\}\) of width \(\asymp\sqrt{k}\)
+around \(j_\ast(k)\sim k/2\) such that
+\[
+  \sum_{j\in J_k}|T_{k,j}|
+  \ge C_M B_M^k k^\beta
+  \qquad(k\ge k_0).
+\]
+This is the rigorous version of the broad high-\(j\) saddle observed in
+Step 309.
+
+\paragraph{Required Lemma 2: phase/interference lower bound.}
+There are constants \(C_I>0\) and \(\eta\ge0\), with the empirical
+diagnostic \(\eta\approx0.0277874\), such that
+\[
+  \left|\sum_{j=1}^kT_{k,j}\right|
+  \ge
+  C_I e^{-\eta k}\sum_{j\in J_k}|T_{k,j}|
+  \qquad(k\ge k_0).
+\]
+This is the load-bearing missing lemma.  It requires explicit control of
+the phases of
+\(\zeta^{(j)}(\rho_1)M(G_\star)^{(k-j)}(\rho_1)\) in the central saddle
+window.
+
+\subsection*{Proof sketch}
+
+The pole-cancellation hypothesis \(M(G_\star)(1)=0\) makes
+\(h=\zeta M(G_\star)\) entire.  Since \(M(G_\star)(\rho_1)\neq0\) and
+\(\rho_1\) is a simple zero of \(\zeta\), \(h\) has a simple zero at
+\(\rho_1\).
+
+For every \(k\ge1\), Leibniz gives the identity
+\[
+  \delta_{D,k}
+  =
+  \sum_{j=0}^k {k\choose j}
+  \zeta^{(j)}(\rho_1)M(G_\star)^{(k-j)}(\rho_1).
+\]
+The \(j=0\) term vanishes because \(\zeta(\rho_1)=0\).  Step 308
+certifies that the \(M(G_\star)\)-derivative side is non-lacunary in the
+computed range; Step 309 shows the resulting \(j\)-distribution has a
+broad high-\(j\) saddle.
+
+If Lemma 1 supplies an exponential lower bound on the magnitude in the
+central saddle window, and Lemma 2 supplies a non-catastrophic
+interference bound, then
+\[
+  |\delta_{D,k}|
+  \ge C_I C_M k^\beta \exp((\log B_M-\eta)k).
+\]
+Choosing any \(B_0< B_Me^{-\eta}\) and absorbing finite initial values
+into \(A_0\) gives the stated lower bound.  The sample-calibrated
+constants \(A_0=10^{-2}\) and \(B_0=2.5\) are consistent with the certified
+values at \(k=10,20,30,50\), but are not promoted to a proved theorem
+until Lemma 2 is established rigorously.
+
+\subsection*{Why finite-type entire-function methods do not prove this}
+
+Step 307 blocks the direct finite-type Cauchy-Hadamard route: the zeta
+functional equation gives
+\[
+  \log|\zeta(-R+i\eta)|=R\log R+O(R)
+\]
+off trivial-zero rays, so \(h=\zeta M(G_\star)\) is not finite type in the
+order-one sense.  The lower-bound proof must therefore use the specific
+Leibniz saddle and phase structure, rather than only global
+entire-function type.
+

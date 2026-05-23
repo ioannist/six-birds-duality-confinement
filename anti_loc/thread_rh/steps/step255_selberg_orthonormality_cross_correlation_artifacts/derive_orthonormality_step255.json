@@ -1,0 +1,37 @@
+{
+  "orthonormality_carrier": {
+    "carrier": "Full Selberg orthonormality",
+    "objects": "primitive Selberg-class L-functions L1,L2",
+    "prime_correlation": "S_12(x)=sum_{p<=x} a_p(L1) conjugate(a_p(L2))/p",
+    "diagonal": "S_LL(x)=n_L log log x + O(1)",
+    "off_diagonal": "S_12(x)=O(1) for L1 != L2",
+    "normalization_note": "standard Selberg diagonal constant is n_L, expected n_L=1 for primitive functions; this is not the pole order at s=1",
+    "residual": "Xi_orth(L1,L2)=limsup_x |S_12(x)-n_L delta_{L1,L2} log log x|/(1+log log x)",
+    "closure": "bounded diagonal remainder and bounded off-diagonal correlations for all primitive pairs"
+  },
+  "extension": {
+    "finding": "Selberg-Class Cross-Correlation Extension",
+    "statement": "Beyond per-L RH analogues, Selberg-class typed cascades admit multi-L residuals measuring correlations between distinct primitive L-functions.",
+    "scope": "second-order Selberg-class family: pairwise/multiway coefficient correlations, joint zeros, and orthonormality conditions",
+    "status": "candidate verified-on-2-instances corpus-pending",
+    "relation_to_step232": "extends SCDG from single-L RH-analogue residuals to multi-L correlation residuals",
+    "relation_to_step254": "SOC is the off-diagonal instance"
+  },
+  "evidence": [
+    {
+      "instance": "SOC off-diagonal",
+      "step": "254",
+      "residual": "sum_{p<=x} a_p(L1) conjugate(a_p(L2))/p",
+      "closure": "O(1) or normalized limit zero for L1 != L2",
+      "status": "open cross-correlation carrier"
+    },
+    {
+      "instance": "diagonal orthonormality",
+      "step": "255",
+      "residual": "sum_{p<=x} |a_p(L)|^2/p - n_L log log x",
+      "closure": "O(1) for primitive L",
+      "status": "open diagonal norm carrier"
+    }
+  ],
+  "final_verdict": "V_selberg_orthonormality_cross_correlation_typed"
+}

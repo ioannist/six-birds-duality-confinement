@@ -1,0 +1,90 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Step 142: Slowly Growing $\Omega$-Cutoff Density Ladder}
+\author{Six Birds / RH Membrane Construction Notes}
+\date{}
+\newtheorem{theorem}{Theorem}
+\begin{document}\maketitle
+\section{Purpose}
+Step 141 left the restricted source route with two independent floors:
+\[
+1-\epsilon_{B\to\Omega,N}^2,\qquad 1-\delta_{R,K,N}^2.
+\]
+The first is the density of the declared $\Omega$-compatible Burnol/M\"untz dictionary in the residual Burnol/Sonine window. The second is avoidance of the GCD-log Boolean blind sector.
+
+This step studies the diagonal repair: allow the $\Omega$ cutoff to grow slowly,
+\[
+K_N\to\infty,
+\]
+while keeping the source Dirichlet polynomial inside the imported shortness range and choosing a blind threshold $R_N$ for which
+\[
+\delta_{R_N,K_N,N}<1.
+\]
+
+\section{Objects}
+Let
+\[
+M_{R,N}:Y_{R,N}\to H_N,\qquad G_{R,N}=M_{R,N}^*M_{R,N}
+\]
+synthesize the finite Burnol/Sonine residual window. Let $P_{\Omega,K,N}$ project onto the declared $\Omega$-compatible Burnol/M\"untz atom dictionary. Define
+\[
+\epsilon_{B\to\Omega,N}(K)=\|(I-P_{\Omega,K,N})M_{R,N}G_{R,N}^{-1/2}\|.
+\]
+This is the worst normalized spanning miss of a constructible family.
+
+The GCD-log blind-sector defect is
+\[
+\delta_{R,K,N}=L_{R,K}(y_N)+T_{R,K}(y_N)\sigma_{K,N},
+\]
+where $L_{R,K}$ is low-$\Omega$ weighted leakage and $T_{R,K}\sigma_{K,N}$ is the blind-projected high-$\Omega$ tail contribution.
+
+\section{Shortness budget}
+Let the effective source polynomial length be
+\[
+L_N^{\rm eff}(K_N)\asymp X_NR_N^{\rm coeff}\,\mathcal L_\Omega(K_N).
+\]
+The source import is lawful only if
+\[
+L_N^{\rm eff}(K_N)\le q_N^{\theta_{\rm src}-o(1)}.
+\]
+Equivalently, in logarithmic budget form,
+\[
+\log X_N+\log R_N^{\rm coeff}+\sum_j K_{j,N}\log T_{j,N}\le (\theta_{\rm src}-\eta_N)\log q_N.
+\]
+Thus $K_N$ may grow only inside the source shortness budget.
+
+\section{Main theorem}
+\begin{theorem}[Slow $\Omega$ diagonal ladder]
+Assume:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item $\epsilon_{B\to\Omega,N}(K_N)\le \epsilon_0<1$, ideally with $\epsilon_{B\to\Omega,N}(K_N)\to0$;
+\item $L_N^{\rm eff}(K_N)\le q_N^{\theta_{\rm src}-o(1)}$;
+\item $\delta_{R_N,K_N,N}\le\delta_0<1$;
+\item the restricted source kernel satisfies $K_q\succeq \gamma_q I$ on the nonblind residual class, with $\gamma_q\asymp\log q_N$;
+\item finite residual windows promote through a fixed/exhaustive tail record.
+\end{enumerate}
+Then
+\[
+\Lambda_N^\Omega\gtrsim \gamma_q(1-\epsilon_{B\to\Omega,N}(K_N)^2)(1-\delta_0^2).
+\]
+In particular, if the two floors stay positive and $\gamma_q\to\infty$, the residual source strength diverges. If $\epsilon_{B\to\Omega,N}(K_N)\to0$, the density side becomes asymptotically exact.
+\end{theorem}
+
+\section{Status}
+This is a conditional bicriteria theorem. It does not prove $\Omega$-compatible density. It states exactly what a slowly growing cutoff ladder must satisfy.
+
+The next load-bearing object is
+\[
+\Xi_{B\to\Omega,N}=M_{R,N}^*(I-P_{\Omega,K,N})M_{R,N}.
+\]
+If the slow ladder fails, this is the missed residual sector.
+
+\section{Next step}
+Step 143 should prove or refute the $\Omega$-filtration density theorem:
+\[
+\epsilon_{B\to\Omega,N}(K_N)\to0
+\]
+for an upstream-declared, slowly growing cutoff sequence inside the source shortness budget.
+\end{document}

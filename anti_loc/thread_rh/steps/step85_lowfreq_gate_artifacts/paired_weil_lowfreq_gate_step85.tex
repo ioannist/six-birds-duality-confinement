@@ -1,0 +1,145 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,geometry,booktabs}
+\geometry{margin=1in}
+\title{Step 85: Low-Frequency Coercivity Gate for the Paired Weil Carrier}
+\author{Six Birds / RH Membrane Workstream}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\dd}{\,d}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Ran}{\operatorname{Ran}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 83--84 replaced separated diagonal accounting by the paired completed Weil feature gate. The paired carrier is of shift-difference/CND type:
+\[
+  q_\Psi[f]=\int_\R \Psi(\xi)|\widehat f(\xi)|^2\dd\xi,
+  \qquad
+  \Psi(\xi)=c\xi^2+2\int_\R(1-\cos(a\xi))\,\mu(\dd a),
+\]
+with $c\ge0$ and $\mu\ge0$. This note records the next obstruction: such carriers generically have a legal zero at $\xi=0$. Therefore they are positive difference forms, but not automatically coercive on the full anti-invariant response space.
+
+For the RH membrane route, this means that the paired prime/gamma feature package can be a positive carrier without providing the full anti-invariant budget collapse required for fixed-locus confinement. A low-frequency/null-mode record is unavoidable.
+
+\section{CND symbols and the zero at the origin}
+
+\begin{lemma}[Paired shift features vanish at zero]
+Let
+\[
+  \Psi(\xi)=c\xi^2+2\int_\R(1-\cos(a\xi))\,\mu(\dd a),
+\]
+where $c\ge0$ and $\mu\ge0$ is a symmetric Levy measure for which the expression is finite. Then
+\[
+  \Psi(0)=0.
+\]
+If there is nontrivial shift or diffusion mass, then $\Psi(\xi)>0$ for some $\xi$, but the multiplication operator by $\Psi$ has no positive $L^2$ gap on any response space admitting arbitrarily low frequencies.
+\end{lemma}
+
+\begin{proof}
+The equality $\Psi(0)=0$ follows from $1-\cos(0)=0$ and $c0^2=0$. If low frequencies are admissible, choose normalized Fourier functions supported in $[-\varepsilon,\varepsilon]$. By continuity or local integrability of the symbol at the origin, the Rayleigh quotient tends to $0$ along such functions. Hence no uniform lower bound $\Psi\ge\lambda>0$ is available.\end{proof}
+
+\section{Anti-invariant subspace does not automatically remove the zero}
+Let the log-side anti-linear involution be
+\[
+  (Jf)(t)=\overline{f(-t)}.
+\]
+For real-valued functions, the anti-invariant condition $Jf=-f$ is oddness. In Fourier variables, the anti-invariant sector still contains wave packets whose Fourier support approaches $\xi=0$; they are odd/imaginary but low-frequency.
+
+\begin{proposition}[Anti-invariance is not a spectral gap]
+The anti-invariant subspace
+\[
+  \mathcal H^- =\{f:Jf=-f\}
+\]
+does not by itself create a positive lower bound for a CND shift-difference carrier. If $\Psi(\xi)\sim C|\xi|^{2r}$ near $0$, then there exist normalized $f_n\in\mathcal H^-$ such that
+\[
+  \int \Psi(\xi)|\widehat f_n(\xi)|^2\dd\xi\to0.
+\]
+\end{proposition}
+
+\begin{proof}
+Choose an odd smooth bump in frequency supported in $[1,2]\cup[-2,-1]$ and rescale it toward the origin. The $L^2$ norm stays $1$, the function remains anti-invariant, and the energy is bounded by a constant multiple of the supremum of $\Psi$ on the shrinking support.\end{proof}
+
+\section{Probe admissibility near the legal zero}
+
+\begin{theorem}[Low-frequency cancellation criterion]
+Assume a one-dimensional CND carrier satisfies
+\[
+  \Psi(\xi)\asymp |\xi|^{2r}
+  \qquad (\xi\to0)
+\]
+with $r>0$. Let a probe $g$ have Fourier profile
+\[
+  |\widehat g(\xi)|\lesssim |\xi|^s
+\]
+near $0$. Then the local contribution to capacity
+\[
+  \int_{|\xi|<\varepsilon}\frac{|\widehat g(\xi)|^2}{\Psi(\xi)}\dd\xi
+\]
+is finite if
+\[
+  2s-2r>-1,
+  \qquad\text{i.e.}\qquad
+  s>r-\frac12.
+\]
+For the usual shift-difference zero $r=1$, one needs $s>1/2$.
+\end{theorem}
+
+\begin{proof}
+Near the origin the integrand is bounded by a constant multiple of $|\xi|^{2s-2r}$. This is locally integrable in one dimension exactly when $2s-2r>-1$.\end{proof}
+
+\section{Coercivity alternatives}
+The paired completed Weil carrier can support an RH membrane only if its legal zero is handled. There are four lawful alternatives.
+
+\begin{enumerate}
+\item \textbf{Quotient/gap record.} The response space excludes a neighborhood or mode family around the zero by a lawful quotient, producing a genuine gap.
+\item \textbf{Probe cancellation record.} The zero-side/dissolving probes vanish at the legal zero with enough order to make capacity finite.
+\item \textbf{Strict-extension source record.} Additional upstream-visible character/source records add a lower frame on the anti-invariant response sector, producing a growing coercivity constant.
+\item \textbf{Defect/nonclaim record.} The unresolved low-frequency part is recorded as a tail or scope defect rather than silently claimed.
+\end{enumerate}
+
+\begin{warning}[Positive is not coercive]
+A positive paired feature representation proves $q_\Psi\ge0$. It does not prove anti-invariant budget collapse. The latter requires a lower-frame/coercivity statement against the declared anti-invariant probes.
+\end{warning}
+
+\section{RH reading}
+For the candidate paired prime/gamma carrier, the prime and gamma symbols have the schematic behavior
+\[
+  \Psi_{\rm pr,L}(\xi)+\Psi_\infty(\xi)
+  \sim C_L\xi^2
+  \qquad (\xi\to0),
+\]
+with $C_L>0$ at finite $L$. This is a positive difference carrier, but it has no global $L^2$ gap.
+
+Therefore the RH route cannot stop at:
+\[
+  \text{prime and gamma are positive paired features.}
+\]
+It must also supply one of:
+\[
+  \text{legal zero quotient/gap},\qquad
+  \text{low-frequency cancellation of }V_Z,
+\]
+\[
+  \text{full-sector strict-extension coercivity},\qquad
+  \text{explicit low-frequency defect budget.}
+\]
+
+\section{Conclusion}
+The paired completed Weil feature package is the right replacement for separated diagonal accounting. However, because paired shift/CND features vanish at the origin, positivity does not imply coercivity. The next RH obligation is a legal-zero/low-frequency gate:
+\[
+  \boxed{\text{handle the CND zero at }\xi=0\text{ by quotient, cancellation, source growth, or defect.}}
+\]
+
+\end{document}

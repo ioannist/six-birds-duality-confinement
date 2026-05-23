@@ -1,0 +1,46 @@
+{
+  "step": 238,
+  "orientation": "adequacy",
+  "primary_carrier": "Lindelof hypothesis",
+  "carrier_definition": {
+    "function": "zeta(1/2 + i t)",
+    "residual": "Xi_Lindelof = limsup_{t -> infinity} log |zeta(1/2 + i t)| / log t",
+    "closure": "Xi_Lindelof = 0, equivalently |zeta(1/2 + i t)| = O_epsilon(t^epsilon) for every epsilon > 0",
+    "carrier_type": "critical-line growth carrier"
+  },
+  "RH_implies_Lindelof": {
+    "status": "proved implication",
+    "summary": "RH implies Lindelof through standard analytic consequences of RH and Phragmen-Lindelof type bounds.",
+    "classification_impact": "Lindelof is a consequence of RH, not an RH-equivalent carrier."
+  },
+  "Lindelof_strictly_weaker": {
+    "framework_status": "strictly weaker sub-target",
+    "summary": "No accepted theorem gives Lindelof implies RH. Closing Xi_Lindelof does not close Xi_BC or RH in the cascade.",
+    "non_equivalence": "outside Riemann-RH Dichotomy; target-equivalent only to Lindelof itself"
+  },
+  "best_subconvexity_bound": {
+    "source": "Bourgain 2017 / arXiv:1408.5794",
+    "bound": "|zeta(1/2 + i t)| <<_epsilon t^(13/84 + epsilon)",
+    "status": "best pointwise bound found in this audit; Lindelof remains open"
+  },
+  "classification": {
+    "under_Riemann_RH_Dichotomy": "outside scope because Lindelof is not RH-equivalent",
+    "under_generalized_subconjecture_Dichotomy": "generalized CRCFT-TE within the Lindelof family",
+    "mode": "sub-conjecture-target-equivalent",
+    "reason": "closure of Xi_Lindelof is exactly Lindelof, not RH"
+  },
+  "density_hypothesis_equivalence": {
+    "Backlund_short_interval_form": "equivalent to Lindelof: for every sigma > 1/2, zeros in T <= Im(s) <= T+1 and sigma <= Re(s) <= 1 grow slower than log T",
+    "standard_density_hypothesis": "recorded as Lindelof-family zero-density form; audited sources state it follows from Lindelof, and this step does not use it as an unqualified RH-equivalence",
+    "classification_impact": "density/zero-count variants remain Lindelof-subtarget carriers, not RH closure routes"
+  },
+  "lindelof_verdict": "V_lindelof_outside_dichotomy_sub_conjecture",
+  "retained_nogos": [
+    "No claim that Lindelof is proved.",
+    "No claim that RH is proved.",
+    "No claim that Lindelof implies RH.",
+    "No weakening of RH Dichotomy, CRCFT, Bridge Impossibility, CTMT recursion, or prior no-gos.",
+    "The density hypothesis is not used as a hidden bridge to RH."
+  ],
+  "final_verdict": "V_lindelof_outside_dichotomy_sub_conjecture"
+}

@@ -1,0 +1,57 @@
+# Step 454 Source Notes
+
+## Needles labels
+
+- needles.tex `def:main:involutive-ledger` line 1048.
+- needles.tex `thm:main:separation-confinement` line 1171.
+- needles.tex `thm:main:douglas-domination` line 1260.
+- needles.tex `thm:main:duality-confinement-master` line 1290.
+
+## RH track citations
+
+Step 69 states the RH specialization: `J(s)=1-conj(s)`, `Fix(J)={Re(s)=1/2}`, and `psi_-(s)=Re(s)-1/2`. It also states that exact confinement requires completed domination records with trace tending to zero.
+
+Step 448 verdict: `sdtc_closure_constructed_translation_landed`; translation theorem theorem-grade by construction; Gamma named not accepted.
+
+Step 449 verdict: hypothesis 3 not established; named `Xi_SDTC_domination_records`; no smuggle.
+
+Step 450 verdict: anti-tautology deepened at PvNP bar with `Pop_SDTC_DominationCandidateAudit`.
+
+Step 451 verdict: framework route partial with trace-decay gap.
+
+Step 452 verdict: SAU witness circular when target-solving.
+
+Step 453 verdict: recognition under V-Differential, not derivation.
+
+## PvNP precedent
+
+np628 verdict: recognition closure landed with `Gamma_CSL-SAT-hidden`; all seven gates pass; no-overreading satisfied.
+
+np629 verdict: closure framing aligned; source/readout distinction explicit; final judgment theorem-grade within Six Birds under standard closure assumption and conditional outside Six Birds.
+
+## Foundations III no-overreading
+
+Theorem 23 states accepted instrument-indexed claims have `delta_overread=empty`; every suppressed dependency must be bridged.
+
+## NDO SAU
+
+The NDO SAU certificate shape records six fields: saturation, strictness, non-descent, audited descent, accepted lower answer, and nonclaim. Step 452 showed the SAU route does not independently close the RH residual.
+
+## np606 V-Differential
+
+np606 classifies NS/BSD as witness-content-exposing and P-vs-NP/RH as trace-state-only at diagnosis grade. Step 453 records the RH use as recognition-mode source content.
+
+## Pre-closure active basis constraints cited verbatim
+
+- C_arithmetic_independence: operator_H_and_Hilbert_space_and_domain_and_construction_primitives_must_be_specifiable_in_arithmetic_independent_vocabulary_arithmetic_may_enter_only_in_audited_descent
+- C_self_adjoint_native: self_adjointness_of_H_must_follow_from_operator_theoretic_axioms_applied_to_declared_Hilbert_space_and_domain_no_boundary_conditions_involving_zeta_zeros_or_arithmetic_derived_bound_states
+- C_no_adelic_substrate: Hilbert_space_construction_cannot_use_adèles_idèles_class_field_structures_or_quotients_thereof_NCG_constructions_permitted_only_if_spectral_triple_does_not_involve_arithmetic_data
+- C_no_tautology: construction_must_NOT_stipulate_spectrum_zeros_correspondence_the_connection_from_H_to_zeta_zeros_must_be_proved_via_audit_chain_not_defined_by_construction
+- C_explicit_formula_natural: primes_zeros_duality_of_explicit_formula_must_fall_out_of_operator_trace_structure_naturally_not_imported_as_axiom_primes_side_terms_must_arise_from_generic_operator_theoretic_structure_e_g_periodic_orbits_of_dynamical_system_or_trace_of_compact_perturbation
+- C_GUE_natural: GUE_statistics_of_spectrum_should_follow_from_generic_operator_theoretic_properties_AND_construction_must_BREAK_TIME_REVERSAL_SYMMETRY_via_complex_potential_OR_chirality_OR_magnetic_field_analog_OR_PT_symmetric_framework_to_produce_GUE_rather_than_GOE
+- C_trace_formula_compatibility: if_construction_generates_trace_formula_formula_must_structurally_match_Riemann_von_Mangoldt_Weil_but_match_must_be_derived_not_stipulated_each_term_on_each_side_must_have_explicit_operator_theoretic_origin
+- C_length_spectrum_arithmetic_mismatch: any_candidate_substrate_Selberg_analog_or_similar_must_explain_why_its_primitive_object_spectrum_geodesic_lengths_periodic_orbit_periods_or_analogous_structural_objects_equals_or_canonically_transforms_to_log_p_for_rational_primes_OR_construction_must_derive_zeta_via_primes_side_that_does_NOT_come_from_Selberg_style_geometric_trace
+- C_boundary_phase_arithmetic_smuggling: any_self_adjoint_extension_parameter_boundary_phase_deficiency_index_family_or_regularization_parameter_must_be_fixed_by_arithmetic_independent_domain_data_using_such_a_parameter_to_encode_zeta_zeros_Dirichlet_characters_conductor_labels_or_L_function_selections_constitutes_arithmetic_smuggling_and_violates_C_self_adjoint_native
+- C_ensemble_distributional_not_pointwise: random_matrix_ensemble_constructions_can_match_zeta_zero_LOCAL_STATISTICS_via_universality_theorems_but_Hilbert_Polya_requires_DETERMINISTIC_operator_with_explicit_POINTWISE_spectrum_equal_to_zeta_zero_imaginary_parts_conditioning_on_or_selecting_specific_ensemble_realization_to_match_zeta_zeros_is_tautology_or_arithmetic_smuggling_via_conditioning_measure
+- C_spectral_zeta_not_spectrum: matching_zeta_as_spectral_zeta_Tr_abs_D_power_minus_s_or_matching_zeros_of_zeta_D_does_not_satisfy_Route_2_unless_an_independent_pointwise_spectral_mechanism_identifies_operator_eigenvalues_with_zeta_zero_ordinates
+- Xi_SDTC_domination_records: future_SDTC_derivation_or_recognition_steps_must_supply_or_derive_completed_domination_records_A_Z_zeta_precedes_B_n_with_trace_B_n_to_0_without_building_them_into_closure_admissibility_or_the_definition_of_Sel_bang_zeta_tr

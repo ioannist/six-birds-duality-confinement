@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\E}{\mathsf E}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{Step 86: Low-Frequency Resolution Gate for the Paired Weil Carrier}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The paired completed Weil feature program reduces the first RH-facing bridge to a positive carrier of the form
+\[
+  q_\Psi[f]=\int_{\mathbb R}\Psi(\xi)|\widehat f(\xi)|^2\,d\xi,
+\]
+where the paired prime/gamma candidates have continuous-negative-definite structure. Such symbols are positive, but they usually vanish at their legal zero set. Positivity is therefore not coercivity.
+
+This note records the low-frequency resolution gate. It states exactly what additional record is needed before the paired feature package can support an anti-invariant membrane:
+\[
+  \text{quotient/gap} \quad\text{or}\quad \text{cancellation} \quad\text{or}\quad \text{source coercivity} \quad\text{or}\quad \text{defect/nonclaim}.
+\]
+
+\section{Paired symbols and legal zeros}
+\begin{definition}[Paired CND carrier]
+A translation-invariant paired feature carrier has symbol
+\[
+  \Psi(\xi)=c\xi^2+2\int_{\mathbb R}(1-\cos(a\xi))\,\mu(da),
+  \qquad c\ge0,
+  \quad \mu\ge0.
+\]
+Its legal zero set is
+\[
+  Z_0=\{\xi:\Psi(\xi)=0\}.
+\]
+For ordinary shift-difference features with nontrivial shifts, typically $0\in Z_0$.
+\end{definition}
+
+\begin{lemma}[Paired positivity is not coercivity]
+For every paired CND symbol,
+\[
+  \Psi(0)=0.
+\]
+If the completed response space contains packets with Fourier mass arbitrarily close to $0$, then
+\[
+  \inf_{\|f\|_2=1} q_\Psi[f]=0.
+\]
+\end{lemma}
+
+\begin{proof}
+The identity $1-\cos(0)=0$ gives $\Psi(0)=0$. If there are normalized packets supported in $|\xi|<\varepsilon$, continuity or local boundedness near zero gives $q_\Psi[f_\varepsilon]\to0$ as $\varepsilon\to0$.
+\end{proof}
+
+\begin{remark}[Anti-invariance does not create a gap]
+On the log side, $Jf(t)=\overline{f(-t)}$. For real functions, $Jf=-f$ means $f$ is odd. Odd functions may still have Fourier mass arbitrarily close to $\xi=0$. Therefore the anti-invariant sector is not automatically gapped.
+\end{remark}
+
+\section{Capacity near a legal zero}
+Let $g$ be a probe/readout vector with Fourier profile $\widehat g$. The local capacity against the paired carrier is
+\[
+  \Cap_\Psi(g;U)=\int_U \frac{|\widehat g(\xi)|^2}{\Psi(\xi)}\,d\xi,
+\]
+provided the null-mode legality and range conditions are satisfied.
+
+\begin{theorem}[Low-frequency cancellation criterion]
+Suppose that near a zero $\xi_0$ in dimension $d$,
+\[
+  \Psi(\xi)\ge c\,\rho(\xi)^{2r},
+\]
+where $\rho(\xi)=\operatorname{dist}(\xi,Z_0)$, and that
+\[
+  |\widehat g(\xi)|\le C\rho(\xi)^s.
+\]
+Then the local capacity near $\xi_0$ is finite if
+\[
+  s>r-\frac d2.
+\]
+In the model one-dimensional shift case $r=1,d=1$, this becomes
+\[
+  s>\frac12.
+\]
+\end{theorem}
+
+\begin{proof}
+In polar coordinates transverse to the zero set, the integrand is bounded by
+\[
+  \rho^{2s-2r}\rho^{d-1}\,d\rho.
+\]
+This is integrable at $0$ iff
+\[
+  2s-2r+d>0,
+\]
+which is equivalent to the claimed condition.
+\end{proof}
+
+\section{Four lawful low-frequency records}
+\subsection{Quotient or gap}
+If the response space is lawfully quotiented or restricted so that
+\[
+  \Psi(\xi)\ge \gamma>0
+\]
+on the remaining legal support, then
+\[
+  \Cap_\Psi(g)\le \gamma^{-1}\|g\|^2.
+\]
+This is a scoped statement. If the excluded low-frequency sector may contain layer-dissolving probes, a nonclaim or tail record is mandatory.
+
+\subsection{Cancellation}
+If the zero-side readout vanishes at the legal zero with sufficient order, the capacity is finite by the cancellation criterion. This gives a genuine membrane record only if the cancellation is native, stable under refinement, and preserved by the explicit-formula bridge.
+
+\subsection{Strict-extension source coercivity}
+Let $L_0^-$ be a low-frequency anti-invariant response family. If a strict extension supplies
+\[
+  C_n^+\succeq C+\Lambda_n (L_0^-)^*\Theta_0^{-1}L_0^-,
+\]
+then
+\[
+  K_n^-\preceq \Lambda_n^{-1}\Theta_0
+\]
+on that response sector. If $\Lambda_n\to\infty$, the budget collapses on a fixed/exhaustive ledger.
+
+\subsection{Defect or nonclaim}
+If none of the above is earned, the low-frequency sector must appear as an explicit defect
+\[
+  E_{\rm low,n}
+\]
+or as a scoped nonclaim. Exact confinement requires
+\[
+  \tr E_{\rm low,n}\to0
+\]
+under a fixed or exhaustive ledger record.
+
+\section{RH reading}
+For RH, the paired prime/gamma feature package is a plausible positive carrier candidate, but its CND structure leaves a legal low-frequency zero. Therefore the RH membrane route still requires one of:
+\begin{enumerate}[label=(\alph*)]
+  \item a lawful quotient/gap that does not discard off-critical zero witnesses;
+  \item low-frequency cancellation of the zero-side anti-invariant readout;
+  \item strict-extension character/source coercivity covering the entire low-frequency anti-invariant sector;
+  \item an explicit defect/tail/nonclaim record.
+\end{enumerate}
+Without such a record, paired positivity is support evidence but not an accepted anti-invariant membrane.
+
+\section{Nonclaim boundary}
+This note does not prove RH. It does not prove that the paired Weil carrier has a gap. It does not prove that anti-invariant zero readouts have the required low-frequency cancellation. It only identifies the exact low-frequency record that must be supplied before the paired feature package can serve as the Douglas bridge carrier.
+
+\end{document}

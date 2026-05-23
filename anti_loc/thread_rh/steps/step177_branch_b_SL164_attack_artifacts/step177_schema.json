@@ -1,0 +1,75 @@
+{
+  "step": 177,
+  "orientation": "adequacy",
+  "target": "P_{L_a^Gamma} K_a^Gamma derivation + c_{ij}(l) evaluation",
+  "inherited_records": [
+    {
+      "source": "step153",
+      "quote": "T_a:=M_Gamma J_a U_infty^{-1}; U_infty(J_a^*Y^a_{w,k})=T_a^* partial_{bar w}^k K_a^Gamma(.,w)."
+    },
+    {
+      "source": "step153",
+      "quote": "K_a^Gamma(.,w)=P_{L_a^Gamma} K_a^{Gamma,amb}(.,w); the projection is load-bearing and omitting it gives only a public Hardy shadow."
+    },
+    {
+      "source": "step164",
+      "quote": "c_{ij}(ell)=<e_i,C_ell e_j>, e_i=eta^{a_0}_{rho_i,0}/||eta^{a_0}_{rho_i,0}||, C_ell=(I-P_infty)M_{m_ell}P_infty."
+    },
+    {
+      "source": "step145",
+      "quote": "L_a is Burnol's extended Sonine space; H_R is a residual carrier inside Y_a subset L_a."
+    }
+  ],
+  "derivation_chain": [
+    {
+      "stage": "T2a",
+      "expression": "For kappa_{a,w}=T_a^*K_a^Gamma(.,w), P_infty kappa_{a,w}=kappa_{a,w}-sinc*kappa_{a,w}-sum_n Psi_n <kappa_{a,w},Psi_n> by K_infty^op.",
+      "status": "formal_success_conditional_on_kappa"
+    },
+    {
+      "stage": "T2b",
+      "expression": "(P_{L_a^Gamma}K_a^Gamma)(z,w)=<kappa_{a,z},P_infty kappa_{a,w}> or equivalently evaluation after T_a transport.",
+      "status": "operational_formula"
+    },
+    {
+      "stage": "T2c",
+      "expression": "At z=rho_i,w=rho_j, K_proj(rho_i,rho_j)=<kappa_i,P_infty kappa_j>.",
+      "status": "specialized_to_Rho_fin"
+    },
+    {
+      "stage": "T2d",
+      "expression": "c_{ij}(ell)=<kappa_i-P_infty kappa_i,M_{m_ell}P_infty kappa_j>/(||kappa_i||||kappa_j||).",
+      "status": "matrix_entry_reduction"
+    }
+  ],
+  "projected_kernel_formula": {
+    "kappa_definition": "kappa_{a,w}=T_a^*K_a^Gamma(.,w)",
+    "P_action": "(P kappa_w)(tau)=kappa_w(tau)-int_R sin(tau-u)/(pi(tau-u))kappa_w(u)du-sum_n Psi_n(tau)<kappa_w,Psi_n>",
+    "kernel": "K_proj(z,w)=<kappa_{a,z},P kappa_{a,w}>",
+    "matrix_entry": "c_{ij}(ell)=<kappa_i-P kappa_i,M_{m_ell}P kappa_j>/(||kappa_i||||kappa_j||)"
+  },
+  "c_ij_numerical_values": [
+    {
+      "i": 1,
+      "j": 1,
+      "l": 0.6931471805599453,
+      "c_real": null,
+      "c_imag": null,
+      "c_abs": null,
+      "error_bound": null,
+      "verdict": "not_evaluable_missing_kappa",
+      "gap": "missing explicit Mellin representative kappa_{a,w}(tau)=T_a^*K_a^Gamma(.,w), equivalently the action of P_{L_a^Gamma} on K_a^{Gamma,amb}"
+    }
+  ],
+  "SL164_verdict": "V_SL164_stuck_at_normalization",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1"
+  ],
+  "final_verdict": "V_SL164_stuck_at_normalization"
+}

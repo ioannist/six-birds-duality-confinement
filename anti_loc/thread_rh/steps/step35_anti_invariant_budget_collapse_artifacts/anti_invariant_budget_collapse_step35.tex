@@ -1,0 +1,282 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\ThetaB}{\Theta^-}
+\newcommand{\Yminus}{Y^-}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\pre}{\preceq}
+\newcommand{\suc}{\succeq}
+
+\title{Step 35: Anti-Invariant Budget Collapse}
+\author{Six Birds Anti-Localization Working Notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Steps 32--34 isolated the RH-facing zero-confinement route as two records:
+\begin{equation}
+\A_Z \pre \K^- ,
+\qquad
+\K^- \pre \ThetaB .
+\end{equation}
+Here \(\A_Z\) is the zero-side anti-invariant displacement matrix and \(\K^-\) is the completed carrier-side anti-invariant currency. Step 34 decomposed the explicit-formula domination record \(\A_Z\pre\K^-\) into prime, archimedean, pole/completion, and tail features. This note studies the second record: when can the anti-invariant budget \(\K^-\) vanish, or become arbitrarily small, without smuggling the desired zero-confinement conclusion?
+
+The main conclusion is deliberately narrow:
+\begin{center}
+\fbox{\parbox{0.88\linewidth}{Anti-linear symmetry alone does not collapse the anti-invariant budget. Budget collapse requires either exact fixed-layer readout \(L^-\Gamma=0\), or an explicit coercive anti-invariant audit penalty whose strength tends to infinity under a lawful strict extension.}}
+\end{center}
+
+\section{Setup}
+
+Let \(E\) be the packaged coordinate space of a formed closure, with exact packaged audit form
+\begin{equation}
+  c[a] = \langle a,C_\Gamma a\rangle, \qquad C_\Gamma=C_\Gamma^*\suc 0.
+\end{equation}
+Let \(J\) be an anti-linear involution on the response space. After realification, write
+\begin{equation}
+Y_{\mathbb R}=Y^+\oplus Y^-,
+\qquad
+P_\pm = \frac{I\pm J}{2}.
+\end{equation}
+Let
+\begin{equation}
+  L^-_\Gamma:E\to Y^-
+\end{equation}
+be the declared anti-invariant probe-family readout on the exact package. The anti-invariant currency matrix is
+\begin{equation}
+\boxed{
+  \K^- = L^-_\Gamma C_\Gamma^\dagger (L^-_\Gamma)^* .
+}
+\end{equation}
+Throughout, null-mode legality means
+\begin{equation}
+  L^-_\Gamma a=0 \qquad (a\in\Ker C_\Gamma).
+\end{equation}
+Under this condition, \(\K^-\) is the correct family capacity matrix on the quotient by legal null modes.
+
+\section{Zero budget is exact fixed-layer readout}
+
+\begin{theorem}[Zero anti-invariant budget]
+Assume null-mode legality. Then
+\begin{equation}
+  \K^- =0
+\end{equation}
+if and only if
+\begin{equation}
+  L^-_\Gamma a=0 \qquad \text{for every }a\in (\Ker C_\Gamma)^\perp.
+\end{equation}
+Equivalently, after quotienting legal null modes, \(L^-_\Gamma=0\).
+\end{theorem}
+
+\begin{proof}
+On \((\Ker C_\Gamma)^\perp\), \(C_\Gamma^\dagger\) is strictly positive on the energy quotient. Thus
+\begin{equation}
+  y^*\K^- y
+  =\langle (L^-_\Gamma)^*y,
+  C_\Gamma^\dagger (L^-_\Gamma)^*y\rangle
+  =\|C_\Gamma^{\dagger/2}(L^-_\Gamma)^*y\|^2.
+\end{equation}
+Therefore \(\K^-=0\) iff \((L^-_\Gamma)^*y\) has no component in \((\Ker C_\Gamma)^\perp\) for all \(y\). Null-mode legality removes the kernel component as a feasible response, hence the quotient readout vanishes. The converse is immediate.\end{proof}
+
+\begin{corollary}[Fixed-layer collapse]
+If the formed closure is exactly fixed by the anti-linear duality in the sense that all native readouts satisfy
+\begin{equation}
+P_-L\Gamma=0,
+\end{equation}
+then
+\begin{equation}
+\K^-=0.
+\end{equation}
+\end{corollary}
+
+\begin{remark}
+This is a structural statement, not an RH proof. In the RH case, it says that if the completed carrier already proves that the native zero-displacement readout has no anti-invariant component, then the anti-invariant budget is zero. The hard part is earning that fixed-layer readout without assuming the conclusion.
+\end{remark}
+
+\section{Coercive anti-invariant penalties collapse the budget}
+
+The more useful nontrivial mechanism is coercive pricing of anti-invariant response.
+
+\begin{theorem}[Coercive anti-invariant budget bound]
+Let \(\Theta_0^-\succ 0\) be a declared anti-invariant response budget. Suppose the exact audit form satisfies
+\begin{equation}
+\boxed{
+  \langle a,C_\Gamma a\rangle
+  \ge
+  \lambda\,\langle L^-_\Gamma a,
+  (\Theta_0^-)^{-1}L^-_\Gamma a\rangle
+  \qquad (a\in E)
+}
+\end{equation}
+for some \(\lambda>0\). Then
+\begin{equation}
+\boxed{
+  \K^-\pre \lambda^{-1}\Theta_0^- .
+}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For any \(y\in Y^-\), Cauchy's inequality in the \(\Theta_0^-\)-metric gives
+\begin{equation}
+|\langle y,L^-_\Gamma a\rangle|^2
+\le
+\langle y,\Theta_0^-y\rangle
+\langle L^-_\Gamma a,(\Theta_0^-)^{-1}L^-_\Gamma a\rangle.
+\end{equation}
+The coercive audit hypothesis gives
+\begin{equation}
+|\langle y,L^-_\Gamma a\rangle|^2
+\le
+\lambda^{-1}\langle y,\Theta_0^-y\rangle\langle a,C_\Gamma a\rangle.
+\end{equation}
+Taking the supremum over nonzero \(a\) gives
+\begin{equation}
+  y^*\K^- y\le \lambda^{-1}y^*\Theta_0^-y.
+\end{equation}
+Since this holds for every \(y\), \(\K^-\pre\lambda^{-1}\Theta_0^-\).\end{proof}
+
+\begin{corollary}[Budget collapse along strict extension]
+Let \(\mathsf S_n\) be a lawful strict-extension ladder with anti-invariant coercivity constants \(\lambda_n\to\infty\):
+\begin{equation}
+  C_{\Gamma,n}\suc \lambda_n (L^-_{\Gamma,n})^*(\Theta_0^-)^{-1}L^-_{\Gamma,n}.
+\end{equation}
+Then
+\begin{equation}
+  \K_n^-\pre \lambda_n^{-1}\Theta_0^-\to0
+\end{equation}
+ in Loewner order.
+\end{corollary}
+
+\begin{remark}
+This is the honest form of the Count-a-Stone passivity-toy intuition: tighter positivity can confine zeros only if the tightening is specifically anti-invariant-coercive. Generic passivity or invariant-sector positivity is not enough.
+\end{remark}
+
+\section{Zero-confinement consequence}
+
+Let \(Z\) be a duality-invariant zero/root ledger with anti-invariant displacement readout \(V_Z:Y^-\to \ell^2(Z,w)\) and
+\begin{equation}
+\A_Z=V_Z^*V_Z.
+\end{equation}
+Assume the completed explicit-formula square has supplied
+\begin{equation}
+  \A_Z\pre\K^- .
+\end{equation}
+
+\begin{theorem}[Budget collapse gives zero confinement]
+If
+\begin{equation}
+  \A_Z\pre \K^-\pre \varepsilon \Theta_0^- ,
+\end{equation}
+then for every separation threshold \(\delta>0\),
+\begin{equation}
+\boxed{
+  \sum_{z:\ \|P_-\psi(z)\|\ge \delta} w_z
+  \le
+  \frac{\varepsilon\,\Tr(\Theta_0^-)}{\delta^2} .
+}
+\end{equation}
+If \(\varepsilon=0\), all visible zero/root mass lies on the fixed locus of \(J\). If \(\varepsilon_n\to0\), off-fixed mass above every fixed separation threshold tends to zero.
+\end{theorem}
+
+\begin{proof}
+The displacement trace satisfies
+\begin{equation}
+  \Tr(\A_Z)=\sum_{z\in Z}w_z\|P_-\psi(z)\|^2.
+\end{equation}
+By domination,
+\begin{equation}
+  \Tr(\A_Z)\le \varepsilon \Tr(\Theta_0^-).
+\end{equation}
+The displayed bound follows from Markov/Chebyshev:
+\begin{equation}
+  \delta^2 \sum_{z:\|P_-\psi(z)\|\ge\delta} w_z
+  \le \sum_z w_z\|P_-\psi(z)\|^2.
+\end{equation}
+The zero-budget statement follows by taking \(\varepsilon=0\).\end{proof}
+
+\section{No-go statements}
+
+\begin{proposition}[Symmetry alone does not collapse the anti-invariant budget]
+Let
+\begin{equation}
+Y=Y^+\oplus Y^- ,
+\qquad
+C=I,
+\qquad
+L^-=I_{Y^-}.
+\end{equation}
+This is compatible with an anti-linear involution whose realification has invariant and anti-invariant sectors. But
+\begin{equation}
+\K^-=I_{Y^-}\ne0.
+\end{equation}
+Thus anti-linear symmetry, by itself, does not imply zero anti-invariant budget.
+\end{proposition}
+
+
+\begin{proposition}[Partial hardening leaves unseen anti-invariant probes]
+Let \(Y^-=\mathbb R^2\), \(C_\lambda=I+\lambda e_1e_1^*\), and let \(L^-=I_{\mathbb R^2}\). Then the first anti-invariant coordinate has currency \((1+\lambda)^{-1}\), but the second has currency \(1\). Thus hardening a visible anti-invariant probe does not collapse the whole anti-invariant budget unless the hardening is coercive for the entire declared anti-invariant family.
+\end{proposition}
+
+\begin{proposition}[Null-mode legality is essential]
+Let \(C=\operatorname{diag}(0,1)\) and \(L(a_0,a_1)=a_0\). Then the pseudoinverse expression \(LC^\dagger L^*=0\), but the true variational capacity is infinite, since vectors \((1,\varepsilon)\) have response \(1\) and energy \(\varepsilon^2\). Hence zero pseudoinverse currency is meaningful only after null-mode legality or quotienting has been accepted.
+\end{proposition}
+
+\begin{proposition}[Invariant trace control is not anti-invariant control]
+Let
+\begin{equation}
+\K=\begin{pmatrix}0&0\\0&1\end{pmatrix},
+\qquad
+\Theta=\begin{pmatrix}0&0\\0&0\end{pmatrix}
+\end{equation}
+relative to \(Y^+\oplus Y^-\). The invariant block has zero budget, but the anti-invariant block violates zero budget. Therefore invariant/self-dual trace collapse does not imply anti-invariant collapse.
+\end{proposition}
+
+\section{Six Birds status}
+
+The accepted status of an anti-invariant budget collapse record requires:
+\begin{enumerate}[label=(\roman*)]
+\item formed closure/layer and exact package;
+\item declared anti-linear involution \(J\) and response splitting \(Y^+\oplus Y^-\);
+\item null-mode legality;
+\item explicit-formula domination \(\A_Z\pre\K^-\), exact or with recorded defect;
+\item either exact fixed-layer readout \(L^-\Gamma=0\), or anti-invariant coercive audit \(C_\Gamma\suc\lambda(L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma\);
+\item strict-extension or threshold record if \(\lambda\) is claimed to grow;
+\item nonclaim record: no substrate-level claim that the raw operator has no anti-invariant modes, only that no native anti-invariant response is feasible under the declared audit budget.
+\end{enumerate}
+
+\section{Summary}
+
+Anti-invariant budget collapse is not a consequence of symmetry. It is a consequence of one of two stronger facts:
+\begin{equation}
+\boxed{L^-\Gamma=0}
+\end{equation}
+or
+\begin{equation}
+\boxed{C_\Gamma\suc\lambda(L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma,
+\quad \lambda\gg1.}
+\end{equation}
+Together with explicit-formula domination \(\A_Z\pre\K^-\), this yields quantitative confinement to the anti-linear fixed locus. For RH this fixed locus is the critical line \(\Re(s)=1/2\), but the theorem itself is an abstract anti-localization theorem, not a proof of the RH domination or coercivity records.
+
+\end{document}

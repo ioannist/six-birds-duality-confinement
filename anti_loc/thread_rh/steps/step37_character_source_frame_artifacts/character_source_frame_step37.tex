@@ -1,0 +1,243 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\let\Ker\relax
+\DeclareMathOperator{\Ker}{Ker}
+\let\tr\relax
+\DeclareMathOperator{\tr}{tr}
+\let\Fix\relax
+\DeclareMathOperator{\Fix}{Fix}
+\let\Cap\relax
+\DeclareMathOperator{\Cap}{Cap}
+
+\title{Step 37: Character-Source Frame Theorem for Anti-Invariant Anti-Localization}
+\author{Six Birds anti-localization working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 31--36 isolated a root-composite route to zero confinement.  The anti-linear fixed-locus theorem reduces confinement to two records:
+\[
+  \mathsf A_Z\preceq \mathsf K^- ,
+  \qquad
+  \mathsf K^-\preceq \Theta^- .
+\]
+The first is an explicit-formula domination square.  The second is an anti-invariant anti-localization budget.  Step 36 proved that a strict extension collapses \(\mathsf K^-\) when it supplies full-sector anti-invariant coercivity.
+
+This note specializes that mechanism to the root-composite/character profile.  The main conclusion is:
+\[
+\boxed{
+\text{character-wise source growth + a lower character frame}
+\Longrightarrow
+\text{full anti-invariant budget collapse}.
+}
+\]
+The key obstruction is also explicit: hardening only invariant, trace, or incomplete character sectors leaves unpriced anti-invariant directions.
+
+\section{Anti-invariant response space and character source records}
+Let \(Y^-\) be a finite-dimensional anti-invariant response Hilbert space.  Let \(L^-_\Gamma:E\to Y^-\) be the declared anti-invariant probe family on an exact packaged carrier, and let \(C_\Gamma\succeq0\) be the packaged audit form.  Assume null-mode legality:
+\[
+  L^-_\Gamma a=0\quad \text{for all }a\in \Ker C_\Gamma.
+\]
+Then the anti-invariant currency matrix is
+\[
+  \mathsf K^- = L^-_\Gamma C_\Gamma^\dagger (L^-_\Gamma)^* .
+\]
+
+\begin{definition}[character/source record]
+A source record is a tuple
+\[
+  s=(Q_s,\Theta_s,\lambda_s,D_s),
+\]
+where \(Q_s:Y^-\to Z_s\) is an upstream-visible character or source readout, \(\Theta_s\succ0\) is a local source budget on \(Z_s\), \(\lambda_s>0\) is a declared source strength, and \(D_s\succeq0\) is a positive audit contribution satisfying
+\[
+  D_s\succeq
+  \lambda_s (Q_sL^-_\Gamma)^*\Theta_s^{-1}(Q_sL^-_\Gamma).
+\]
+The response-side source frame associated to a finite accepted family \(\mathcal S\) is
+\[
+  F_{\mathcal S}:=
+  \sum_{s\in\mathcal S}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+\end{definition}
+
+\begin{definition}[relative lower source-frame constant]
+For a global anti-invariant reference budget \(\Theta^-_0\succ0\), define
+\[
+  \Lambda(\mathcal S;\Theta^-_0)
+  :=
+  \lambda_{\min}\!\bigl((\Theta^-_0)^{1/2}F_{\mathcal S}(\Theta^-_0)^{1/2}\bigr).
+\]
+Equivalently,
+\[
+  F_{\mathcal S}\succeq \Lambda(\mathcal S;\Theta^-_0)(\Theta^-_0)^{-1}.
+\]
+\end{definition}
+
+\section{The source-frame coercivity theorem}
+\begin{theorem}[source-frame anti-invariant coercivity]
+Let \(\mathcal S\) be an accepted finite source family.  Suppose the strict extension adds the positive source audit
+\[
+  C_\Gamma^+ = C_\Gamma + \sum_{s\in\mathcal S}D_s .
+\]
+If
+\[
+  \Lambda:=\Lambda(\mathcal S;\Theta^-_0)>0,
+\]
+then
+\[
+  C_\Gamma^+\succeq
+  \Lambda (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma,
+\]
+and therefore
+\[
+\boxed{
+  \mathsf K^-_+ := L^-_\Gamma (C_\Gamma^+)^\dagger (L^-_\Gamma)^*
+  \preceq \Lambda^{-1}\Theta^-_0.
+}
+\]
+Consequently, if along an accepted strict-extension ladder \(\Lambda_n\to\infty\), then \(\mathsf K^-_n\to0\) in Loewner order relative to \(\Theta^-_0\).
+\end{theorem}
+
+\begin{proof}
+By the source-record inequalities,
+\[
+  \sum_sD_s\succeq
+  \sum_s \lambda_s(L^-_\Gamma)^*Q_s^*\Theta_s^{-1}Q_sL^-_\Gamma
+  = (L^-_\Gamma)^*F_{\mathcal S}L^-_\Gamma.
+\]
+If \(F_{\mathcal S}\succeq \Lambda(\Theta^-_0)^{-1}\), then
+\[
+  C_\Gamma^+\succeq
+  (L^-_\Gamma)^*F_{\mathcal S}L^-_\Gamma
+  \succeq
+  \Lambda (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma.
+\]
+For any \(a\in E\), this gives
+\[
+  \|L^-_\Gamma a\|^2_{(\Theta^-_0)^{-1}}
+  \le \Lambda^{-1}\langle a,C_\Gamma^+a\rangle.
+\]
+Equivalently, for every recombination \(y\in Y^-\),
+\[
+  |\langle y,L^-_\Gamma a\rangle|^2
+  \le
+  \Lambda^{-1}\langle y,\Theta^-_0 y\rangle\langle a,C_\Gamma^+a\rangle.
+\]
+Taking the supremum over legal \(a\) gives
+\[
+  y^*\mathsf K^-_+y\le \Lambda^{-1}y^*\Theta^-_0y,
+\]
+which is the claimed Loewner inequality.
+\end{proof}
+
+\section{Character decomposition}
+Let \(G\) be a finite group acting unitarily on \(Y^-\).  Write the isotypic decomposition
+\[
+  Y^- = \bigoplus_{\chi\in\widehat G^-}Y_\chi,
+  \qquad
+  P_\chi:Y^-\to Y_\chi.
+\]
+Here \(\widehat G^-\) is the set of anti-invariant-visible character blocks.  It need not equal all irreducible characters of \(G\); it is the part of the response family declared native for the anti-invariant ledger.
+
+\begin{corollary}[orthogonal character-source frame]
+Assume \(\Theta^-_0\) is block diagonal with respect to \(Y^- =\oplus_\chi Y_\chi\).  For each \(\chi\in\widehat G^-\), let
+\[
+  Q_\chi=P_\chi,
+  \qquad
+  \Theta_\chi=P_\chi\Theta^-_0P_\chi|_{Y_\chi},
+  \qquad
+  \lambda_\chi>0.
+\]
+Then
+\[
+  F_{\mathcal S}=\sum_{\chi\in\widehat G^-}\lambda_\chi P_\chi\Theta_\chi^{-1}P_\chi,
+\]
+and
+\[
+  \Lambda(\mathcal S;\Theta^-_0)=\min_{\chi\in\widehat G^-}\lambda_\chi.
+\]
+Thus
+\[
+  \mathsf K^-_+\preceq
+  \bigl(\min_\chi\lambda_\chi\bigr)^{-1}\Theta^-_0.
+\]
+In particular, character-wise source strengths \(\lambda_\chi(n)\to\infty\) uniformly over \(\widehat G^-\) collapse the anti-invariant budget.
+\end{corollary}
+
+\begin{proof}
+On each block \(Y_\chi\), the operator \((\Theta^-_0)^{1/2}F_{\mathcal S}(\Theta^-_0)^{1/2}\) acts as \(\lambda_\chi I\).  Hence its smallest eigenvalue is \(\min_\chi\lambda_\chi\).  Apply the theorem.
+\end{proof}
+
+\begin{corollary}[nonorthogonal character/source frame]
+Suppose \(\Theta_s=\theta_s I_{Z_s}\) and the source readouts obey a lower frame bound
+\[
+  \sum_{s\in\mathcal S}Q_s^*Q_s\succeq m I_{Y^-}.
+\]
+If \(\lambda_s/\theta_s\ge c>0\) for every \(s\), then
+\[
+  F_{\mathcal S}\succeq cm I_{Y^-}.
+\]
+For \(\Theta^-_0=I\), this gives
+\[
+  \mathsf K^-_+\preceq (cm)^{-1}I.
+\]
+\end{corollary}
+
+\section{No-go: incomplete or wrong-sector character sources}
+\begin{proposition}[missing character obstruction]
+If there exists \(0\ne y\in Y^-\) such that \(Q_sy=0\) for all accepted sources \(s\), then
+\[
+  \Lambda(\mathcal S;\Theta^-_0)=0.
+\]
+No finite source-frame coercivity conclusion controls the recombination \(y\); in particular, the strict extension does not collapse the full anti-invariant budget.
+\end{proposition}
+
+\begin{proof}
+For such \(y\), \(y^*F_{\mathcal S}y=0\).  Since \(\Theta^-_0\succ0\), this forces the relative lower-frame constant to vanish.
+\end{proof}
+
+\begin{proposition}[trace/invariant source is insufficient]
+A source family supported only on the invariant or trace sector cannot collapse the anti-invariant currency unless the anti-invariant response space is zero or has been lawfully excluded by nonclaim.  Formally, if \(Q_sP_-=0\) for all sources on \(Y^-\), then \(F_{\mathcal S}=0\) on \(Y^-\), so \(\Lambda=0\).
+\end{proposition}
+
+\section{RH-facing reading}
+For RH the anti-linear involution is
+\[
+  J(s)=1-\overline{s},
+\]
+and \(Y^-\) is the anti-invariant response sector measuring displacement from \(\Re(s)=1/2\).  A root-composite character-source theorem would have to identify upstream-visible character/source blocks \(P_\chi\) and source strengths \(\lambda_\chi\) coming from completion, explicit-formula descent, root-composite conjugacy, or threshold/refinement records.  If those blocks form a lower frame over \(Y^-\), and their strengths grow or are large enough, Step 36's coercivity mechanism gives
+\[
+  \mathsf K^-\preceq \Lambda^{-1}\Theta^-_0.
+\]
+Together with the completed explicit-formula domination square
+\[
+  \mathsf A_Z\preceq \mathsf K^- ,
+\]
+this yields quantitative confinement to the fixed locus.  If \(\Lambda\to\infty\), the visible off-fixed mass is driven to zero.
+
+\begin{remark}[no-smuggling status]
+The character/source blocks must be selected by upstream-visible data before the zero-confinement test.  Choosing the blocks because they close
+\[
+  \mathsf A_Z\preceq\mathsf K^-\preceq\Theta^-
+\]
+is a target-selected source and has status \texttt{smuggled} or \texttt{support-only}, not accepted.
+\end{remark}
+
+\section{Summary}
+Step 37 proves that root-composite anti-localization is not merely character decomposition.  It requires a lower character frame: the accepted character/source records must cover the entire anti-invariant native response space.  Uniform source growth over that frame collapses the anti-invariant budget.  Missing characters, invariant-only traces, or wrong-sector hardening leave unpriced anti-invariant witnesses.
+
+\end{document}

@@ -1,0 +1,57 @@
+{
+  "step": 204,
+  "orientation": "adequacy",
+  "target": "unnormalized Xi_matrix_source decision",
+  "xi_matrix_source_formula": {
+    "full_HS": "||C_l P_eta||_HS^2 = tr(G^{-1} H), H_ij=<C_l kappa_i,C_l kappa_j>",
+    "compressed_c_only": "||P_eta C_l P_eta||_HS^2 = tr(G^{-1} c^* G^{-1} c), c_ij=<kappa_i,C_l kappa_j>",
+    "identity_verdict": "c-only trace is not the full HS residual unless C_l(H_eta_fin) is contained in H_eta_fin or the finite diagnostic is explicitly compressed"
+  },
+  "G_matrix_full": {
+    "source": "G_matrix_step204.csv",
+    "off_diagonal_formula": "G_ij=K_{1/2}^Gamma(rho_j,conj(rho_i))",
+    "nominal_det": "2.10033807151e-40",
+    "nominal_G_inverse_frobenius_norm": "4.09992478506e16",
+    "conditioning_status": "fragile; diagonal error bounds dominate diagonal values"
+  },
+  "c_matrix": {
+    "source": "c_matrix_step204.csv",
+    "status": "not_evaluated_certified",
+    "reason": "requires certified boundary-line kappa_i(tau) samples and full K_infty^op PSWF quadrature"
+  },
+  "M_matrix": {
+    "source": "M_matrix_step204.csv",
+    "status": "not_formed",
+    "reason": "c_matrix not certified and c-only identity is compressed rather than full HS"
+  },
+  "xi_matrix_source_value": null,
+  "xi_matrix_source_lower_bound": null,
+  "xi_matrix_source_error": "not_certified",
+  "xi_matrix_source_verdict": "V_unnormalized_partial",
+  "robustness_table": [
+    {
+      "test": "G_nominal_det",
+      "value": "2.10033807151e-40",
+      "status": "computed"
+    },
+    {
+      "test": "G_inverse_frobenius_norm",
+      "value": "4.09992478506e16",
+      "status": "computed"
+    },
+    {
+      "test": "c_matrix",
+      "value": "not_certified",
+      "status": "blocked"
+    }
+  ],
+  "retained_nogos": [
+    "Does not prove RH",
+    "Does not close Xi_BC",
+    "Does not close Branch B",
+    "Does not decide Xi_matrix_source",
+    "Does not weaken Branch C foreclosure or independent carrier no-gos"
+  ],
+  "final_verdict": "V_unnormalized_partial"
+}
+

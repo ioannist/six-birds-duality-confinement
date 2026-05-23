@@ -1,0 +1,59 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 232: Dirichlet \(L(\chi,s)\) and the Selberg-Class Dichotomy Generalization}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section{Carrier}
+
+Let \(\chi\) be a primitive non-trivial Dirichlet character modulo \(q\ge 2\). The Dirichlet \(L\)-function is
+\[
+  L(\chi,s)=\sum_{n\ge 1}\chi(n)n^{-s}.
+\]
+Its completed form has the parity-dependent shape
+\[
+  \Lambda(\chi,s)
+  =
+  \left(\frac{q}{\pi}\right)^{(s+a)/2}
+  \Gamma\!\left(\frac{s+a}{2}\right)L(\chi,s),
+\]
+where \(a=0\) for even \(\chi\) and \(a=1\) for odd \(\chi\). The functional equation pairs \(\chi\) and \(\overline{\chi}\) across \(s\leftrightarrow 1-s\). The critical line is
+\[
+  \Re(s)=\frac12.
+\]
+
+\section{CRE Audit}
+
+The RH analog for a fixed non-trivial \(\chi\) is:
+\[
+  \text{all nontrivial zeros of }L(\chi,s)\text{ lie on }\Re(s)=1/2.
+\]
+This is open. It is not equivalent to Riemann RH. Full GRH for all Dirichlet characters includes the trivial character and hence implies Riemann RH, but Riemann RH alone does not imply the non-trivial character cases.
+
+\section{Classification}
+
+Thus the carrier is outside the Riemann-specific Dichotomy: it is not CRE and is not a proved non-CRE native closure.
+
+Under the proposed Selberg-class generalization, the carrier is target-equivalent within its own family:
+\[
+  \Xi_\chi=0
+  \quad\Longleftrightarrow\quad
+  L(\chi,s)\text{-RH}.
+\]
+This is generalized \(\mathrm{CRCFT}\)-TE.
+
+\section{Candidate Selberg-Class Generalization}
+
+For each Selberg-class or automorphic \(L\)-function \(L\), define \(\Xi_L\) as the zero-line defect relative to its functional equation. Then closure \(\Xi_L=0\) is target-equivalent to the \(L\)-specific RH analog. Proved analogs are native closures; statistical/value-distribution carriers remain outside.
+
+\section{Verdict}
+
+\[
+  \boxed{\texttt{V\_dirichlet\_L\_outside\_dichotomy\_selberg\_generalization}.}
+\]
+
+\end{document}

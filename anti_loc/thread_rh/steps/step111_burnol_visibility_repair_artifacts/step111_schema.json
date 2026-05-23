@@ -1,0 +1,18 @@
+{
+  "step": 111,
+  "title": "Burnol-native coefficient visibility repair",
+  "objects": {
+    "Y_B_N": "finite Burnol/Sonine boundary-packet sector",
+    "M_N": "boundary packet synthesis map",
+    "D_N": "coefficient synthesis dictionary",
+    "R_N": "D_N^dagger M_N coefficient map",
+    "E_coef_N": "(I-P_D_N) M_N coefficient visibility residual",
+    "c_N": "minimum generalized eigenvalue of R_N^* H_N R_N relative to G_B_N"
+  },
+  "main_identities": [
+    "R_N^* H_N R_N = M_N^* P_D_N M_N = G_B_N - E_coef_N^* E_coef_N",
+    "c_N = 1 - ||E_coef_N G_B_N^{-1/2}||^2",
+    "D_N subset D_N^+ implies c_N(D_N^+) >= c_N(D_N)"
+  ],
+  "status": "finite theorem and toy audit; RH construction still open"
+}

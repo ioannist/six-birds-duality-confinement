@@ -1,0 +1,51 @@
+{
+  "step": 170,
+  "orientation": "adequacy",
+  "active_residual": "Xi_BC / Xi_cP_shifted_l",
+  "target_lemma": "ZI-COV_{l,a}^{CP}",
+  "mellin_projection_definition": {
+    "source_step": "Steps 102, 104, 153, 154, 162",
+    "quote": "Step 104: H=L^2(R), or the even subspace; P_lambda is the spatial cutoff projection onto [-lambda,lambda]; Phat_lambda=F^{-1}P_lambda F; S_lambda=ker P_lambda cap ker Phat_lambda; S_lambda is the orthogonal projection onto S_lambda. Step 102: P_infty is the archimedean Sonin/prolate projection. Step 162: P_infty is archimedean/Sonin projection in the Burnol/Sonine pulled-evaluator Hilbert context. Step 153/154 use its Mellin-side representative mathsf P_infty in (I-mathsf P_infty)M_{m_l}mathsf P_infty.",
+    "projects_onto": "U_infty of the archimedean Sonin/prolate subspace, modeled in Step 104 as S_lambda=ker P_lambda cap ker Phat_lambda in H=L^2(R) or the even subspace.",
+    "measure_weight": "Raw archimedean model uses L^2(R) Lebesgue measure in log/Fourier variable; Step 153 uses the Mellin boundary s=1/2+i tau. No inherited Step 153/154/162 record supplies an explicit integral kernel K_infty(s,s') or a projection onto a zeta-zero spectral region."
+  },
+  "target_equivalence_test_result": "not_target_equivalent",
+  "zi_cov_verdict": "V_subclass_proved",
+  "explicit_A_infty_formula": "On the zero-free-output subclass G in G_Omega with supp(mathsf P_infty M_zeta G) subset Omega and ||1/zeta||_{L^infty(Omega)}<infty, A_infty^Omega G := M_{1/zeta} mathsf P_infty M_zeta G.",
+  "counterexample_G_0": null,
+  "target_equivalence_proof_sketch": "Full ZI-COV(i) implies that every projected zeta multiple mathsf P_infty M_zeta G is zeta-divisible, hence its zero-evaluator jets vanish at zeta zeros. This is a zeta-ideal invariance property of the inherited Sonin/prolate projection. It implies absence of zeros only under an additional jet-surjectivity assumption saying that the projected range can realize nonzero jets at each zero. No inherited definition of P_infty supplies such a spectral range or jet-surjectivity. Conversely, if the output support avoids zeros so 1/zeta is bounded, ZI-COV(i) holds on that subclass by explicit division. Thus the inherited records give not_target_equivalent, plus a zero-free-output subclass theorem.",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability"
+  ],
+  "final_verdict": "V_subclass_proved",
+  "next_step": {
+    "step": 171,
+    "strategic_lanes": [
+      {
+        "lane": "attempt_nonzero_zero_free_output_subclass",
+        "mode": "attempt",
+        "goal": "Construct a nonzero legal Burnol generator G whose projected zeta multiple has support in a fixed zero-free Omega."
+      },
+      {
+        "lane": "attempt_projected_zero_jet_surjectivity",
+        "mode": "attempt",
+        "goal": "Prove or refute whether mathsf P_infty M_zeta legal profiles can realize nonzero jets at zeta zeros."
+      },
+      {
+        "lane": "attempt_explicit_kernel_for_mathsf_P_infty",
+        "mode": "attempt",
+        "goal": "Derive or import an exact kernel K_infty(s,s') for the Sonin/prolate Mellin projection and test zeta-ideal invariance."
+      },
+      {
+        "lane": "attempt_ZI_COV_ii_on_zero_free_subclass",
+        "mode": "attempt",
+        "goal": "Extend the zero-free-output proof from ZI-COV(i) to T_a mathsf P_infty M_zeta H = M_zeta A_{T,a}H."
+      }
+    ]
+  }
+}

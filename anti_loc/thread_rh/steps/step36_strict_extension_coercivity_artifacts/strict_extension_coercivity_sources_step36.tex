@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Tr}{tr}
+
+\title{Step 36: Strict-Extension Sources of Anti-Invariant Coercivity}
+\author{Anti-Localization Project}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 35 showed that an anti-invariant currency budget collapses only under a strong structural condition.  If
+\[
+  L^-_\Gamma:E\to Y^-
+\]
+is the anti-invariant probe family and
+\[
+  C_\Gamma=\Gamma^*C\Gamma
+\]
+is the exact packaged audit, then a budget
+\[
+  \mathsf K^-=L^-_\Gamma C_\Gamma^\dagger (L^-_\Gamma)^*
+\]
+is forced small by a coercive domination of the form
+\[
+  C_\Gamma\succeq \lambda (L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma.
+\]
+This note asks what kind of lawful strict extension can supply such coercivity without smuggling the target zero-confinement claim.
+
+\section{Anti-invariant source records}
+
+\begin{definition}[anti-invariant source record]
+Let \((H,E,\Gamma,C,L^-,\Theta_0^-)\)
+be an exact packaged anti-invariant carrier.  An anti-invariant source record is a tuple
+\[
+  \mathsf R_s=(D_s,Q_s,\Theta_s,\lambda_s,\mathsf{vis}_s,\mathsf{status}_s)
+\]
+where
+\begin{enumerate}[label=(\roman*)]
+  \item \(D_s\succeq0\) is an accepted positive audit contribution on channel coordinates;
+  \item \(Q_s:Y^-\to Y_s\) is the source-visible anti-invariant response sampled by this contribution;
+  \item \(\Theta_s\succ0\) is the source response metric;
+  \item \(\lambda_s\ge0\) is the source strength;
+  \item the record proves
+  \[
+    D_s\succeq \lambda_s (Q_sL^-_\Gamma)^*\Theta_s^{-1}(Q_sL^-_\Gamma);
+  \]
+  \item \(\mathsf{vis}_s\) records whether the source is visible before the anti-localization square is tested;
+  \item \(\mathsf{status}_s\) records whether the source is accepted, support-only, smuggled, or outside scope.
+\end{enumerate}
+Only accepted positive contributions enter a coercivity proof.
+\end{definition}
+
+\begin{definition}[source coverage matrix]
+Given accepted source records \(\mathcal S\), define the response-side coverage matrix
+\[
+  F_{\mathcal S}
+  =
+  \sum_{s\in\mathcal S}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+The source coverage constant relative to \(\Theta_0^-\) is
+\[
+  \Lambda(\mathcal S;\Theta_0^-)
+  =
+  \lambda_{\min}\!\bigl((\Theta_0^-)^{1/2}F_{\mathcal S}(\Theta_0^-)^{1/2}\bigr).
+\]
+Equivalently,
+\[
+  F_{\mathcal S}\succeq \Lambda(\mathcal S;\Theta_0^-)(\Theta_0^-)^{-1}.
+\]
+\end{definition}
+
+\section{The source-frame coercivity theorem}
+
+\begin{theorem}[source-frame coercivity]
+Let \(C_\Gamma^+=C_{0,\Gamma}+\sum_{s\in\mathcal S}D_s\), where \(C_{0,\Gamma}\succeq0\) and every \(D_s\) is an accepted anti-invariant source contribution.  If
+\[
+  \Lambda:=\Lambda(\mathcal S;\Theta_0^-)>0,
+\]
+then
+\[
+  C_\Gamma^+
+  \succeq
+  \Lambda (L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma.
+\]
+Consequently, under null-mode legality,
+\[
+  \mathsf K^+_-
+  =L^-_\Gamma(C_\Gamma^+)^\dagger (L^-_\Gamma)^*
+  \preceq
+  \Lambda^{-1}\Theta_0^-.
+\]
+\end{theorem}
+
+\begin{proof}
+By the source records,
+\[
+  \sum_{s\in\mathcal S}D_s
+  \succeq
+  \sum_{s\in\mathcal S}\lambda_s(L^-_\Gamma)^*Q_s^*\Theta_s^{-1}Q_sL^-_\Gamma
+  =
+  (L^-_\Gamma)^*F_{\mathcal S}L^-_\Gamma.
+\]
+Since \(F_{\mathcal S}\succeq\Lambda(\Theta_0^-)^{-1}\), we have
+\[
+  C_\Gamma^+
+  \succeq
+  (L^-_\Gamma)^*F_{\mathcal S}L^-_\Gamma
+  \succeq
+  \Lambda (L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma.
+\]
+The capacity bound follows from the coercive collapse theorem of Step 35: if \(C\succeq \Lambda L^*\Theta^{-1}L\), then \(LC^\dagger L^*\preceq\Lambda^{-1}\Theta\), provided the probe annihilates legal null modes.
+\end{proof}
+
+\section{Strict extension ladders}
+
+\begin{theorem}[strict-extension budget collapse]
+Let \(\mathsf S_n\) be a sequence of formed closures with fixed anti-invariant response family \(L^-_n\) transported into a common response metric \(\Theta_0^-\).  Suppose each strict extension adds accepted source records \(\mathcal S_n\) with coverage constant \(\Lambda_n\), and suppose the transported carrier satisfies
+\[
+  C_{\Gamma,n}\succeq \Lambda_n (L^-_{\Gamma,n})^*(\Theta_0^-)^{-1}L^-_{\Gamma,n}.
+\]
+If
+\[
+  \Lambda_n\to\infty,
+\]
+then
+\[
+  \mathsf K^-_n\preceq \Lambda_n^{-1}\Theta_0^-\to0
+\]
+in Loewner order.  If also the completed explicit-formula domination square gives
+\[
+  \mathsf A_{Z,n}\preceq \mathsf K^-_n,
+\]
+then the visible off-fixed mass satisfies, for every \(\delta>0\),
+\[
+  \sum_{z:\ \|P_-\psi_n(z)\|\ge \delta}w_z
+  \le
+  \frac{\operatorname{tr}(\Theta_0^-)}{\delta^2\Lambda_n}\to0.
+\]
+\end{theorem}
+
+\begin{proof}
+The first conclusion is the preceding theorem.  The off-fixed mass estimate is the Step 32 zero-confinement estimate applied with \(\Theta_n^- = \Lambda_n^{-1}\Theta_0^-\).
+\end{proof}
+
+\begin{corollary}[source summability criterion]
+If accepted source records arrive in stages and
+\[
+  F_n=\sum_{s\le n}\lambda_s Q_s^*\Theta_s^{-1}Q_s,
+  \qquad
+  \lambda_{\min}((\Theta_0^-)^{1/2}F_n(\Theta_0^-)^{1/2})\to\infty,
+\]
+then the anti-invariant budget collapses.  If the latter eigenvalue remains bounded, the source records give at most a finite budget, not zero confinement.
+\end{corollary}
+
+\section{Five lawful source types}
+
+\subsection{Completion/gamma-pole source}
+A completion/gamma-pole source is lawful only after the signed explicit-formula terms have been packaged as a positive source contribution \(D_s\succeq0\).  Raw signed terms are not source records.  The accepted record must show which anti-invariant response \(Q_sL^-\) the completion sees and with what strength \(\lambda_s\).
+
+\subsection{Root-composite character forcing}
+If a root-composite/Galois-type symmetry decomposes the anti-invariant response into characters,
+\[
+  Y^- = \bigoplus_\chi Y_\chi,
+\]
+then source coverage is character-wise.  If
+\[
+  D_\chi\succeq \lambda_\chi (P_\chi L^-_\Gamma)^*\Theta_\chi^{-1}P_\chi L^-_\Gamma
+\]
+for all anti-invariant characters and the character weights have a positive lower frame over \(Y^-\), then the source-frame theorem applies.  Controlling only the trivial/invariant character does not control anti-invariant displacement.
+
+\subsection{Threshold/refinement growth}
+Prime-power or refinement thresholds may add positive source records.  They collapse the anti-invariant budget only when the cumulative source coverage eigenvalue diverges.  Merely adding infinitely many terms is insufficient if their coverage misses a direction or is summable.
+
+\subsection{Parity-closed restriction}
+A parity-closed native probe family may have
+\[
+  L^-_\Gamma=0.
+\]
+Then \(\mathsf K^-=0\) on the declared family.  This is lawful only as a scoped claim: anti-invariant displacement probes have been excluded, so the theorem does not prove zero confinement unless the explicit-formula ledger separately proves those probes are non-native or invisible by construction.
+
+\subsection{Nonclaim/gating}
+A closure may exclude an anti-invariant probe family with an explicit nonclaim.  This yields no anti-invariant needle within the declared family, but it cannot be read as a proof that the underlying zero/root ledger has no off-fixed mass.
+
+\section{No-go warnings}
+
+\begin{warning}[wrong-sector hardening]
+Hardening only a proper subspace of \(Y^-\) leaves uncovered anti-invariant directions.  If
+\[
+  C_\lambda=I+\lambda e_1e_1^*,\qquad L^-=I_{\mathbb R^2},
+\]
+then the first coordinate budget tends to zero but the second coordinate budget remains one.  The source coverage constant is zero.
+\end{warning}
+
+\begin{warning}[finite source is not collapse]
+If \(\Lambda_n\) remains bounded, the best conclusion is
+\[
+  \mathsf K_n^-
+  \preceq \Lambda_\infty^{-1}\Theta_0^-.
+\]
+This may be a useful anti-localization budget, but it is not exact confinement.
+\end{warning}
+
+\begin{warning}[target-selected source]
+A source selected because it makes \(\mathsf A_Z\preceq\mathsf K^-\preceq\Theta^-\) pass is not an upstream source.  It is support-only unless the source is declared by completion, character structure, threshold/refinement, or another visible upper ledger before the zero-confinement square is tested.
+\end{warning}
+
+\section{RH-facing interpretation}
+For RH, the anti-linear involution is
+\[
+  J(s)=1-\overline{s},
+\]
+whose fixed locus is the critical line.  Steps 32--35 reduced zero confinement to two obligations:
+\[
+  \mathsf A_Z\preceq\mathsf K^-\quad\text{and}\quad \mathsf K^-\preceq\Theta^-.
+\]
+Step 36 says that the second obligation can be supplied by a strict-extension source only if the completed RH ledger gives accepted positive source records whose cumulative coverage of the anti-invariant response family diverges or reaches the desired budget.  Candidate sources include completion/gamma-pole terms, root-composite character forcing, and threshold/refinement growth.  Parity restriction and nonclaim gating may be lawful, but they do not by themselves prove RH-style zero confinement.
+
+\section{Conclusion}
+Anti-invariant budget collapse is not a consequence of symmetry, passivity, or self-duality alone.  It requires an accepted strict-extension source that sees the whole anti-invariant native family with growing or sufficient coercive strength.  This is the proof-theoretic version of ``tightening passivity'' without smuggling the target theorem.
+
+\end{document}

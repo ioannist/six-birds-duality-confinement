@@ -1,0 +1,47 @@
+\section*{Step 290: Branch B c-Matrix Precision Attack}
+
+The inherited c-matrix is
+\[
+c_{ij}=\frac{1}{2\pi}\sum_\tau w(\tau)\,
+\overline{\kappa_i(\tau)}
+\big((I-P)e^{i\ell\tau}P\kappa_j\big)(\tau),
+\qquad \ell=\log 2.
+\]
+Step 208 used 200 Gauss--Legendre nodes on \([-40,40]\) and 24 PSWF terms.
+
+Burnol's kernel formula is
+\[
+K(z_1,z_2)=
+\frac{E(z_1)E(z_2)-E(1-z_1)E(1-z_2)}{z_1+z_2-1}.
+\]
+Burnol's Sonine function formula is
+\[
+E_\lambda(w)=\pi^{-w/2}\Gamma(w/2)\left(
+\lambda^{1/2-w}+\frac{\sqrt{\lambda}}{2}
+\int_\lambda^\infty(\psi_+^\lambda(t)-\psi_-^\lambda(t))t^{-w}dt
+\right).
+\]
+
+The grid was refined to 2000 nodes.  The inherited entry-error proxy improved
+only by factors \(5.85\) to \(6.35\) for CAND1 and \(24.92\) to \(29.10\) for
+CAND2, not by ten orders of magnitude.  The analytical dps=200 Burnol-kernel
+probe completed, but no closed formula for the full projected commutator entry
+\(c_{ij}\) is present in the inherited artifacts.
+
+With the refined grid,
+\[
+|\Xi_{\mathrm{CAND1}}|=1.0110381170\cdot 10^{-2},
+\qquad
+\mathrm{err}_{1}\approx 8.9106130286\cdot 10^{12},
+\]
+while
+\[
+|\Xi_{\mathrm{CAND2}}|=7.8384611222\cdot 10^{65},
+\qquad
+\mathrm{err}_{2}\approx 5.9008860463\cdot 10^{64}.
+\]
+The proxy intervals are disjoint by more than fifty orders of magnitude.
+
+\[
+\boxed{\texttt{V\_branch\_B\_c\_matrix\_refined\_disagrees\_hard\_block}}
+\]

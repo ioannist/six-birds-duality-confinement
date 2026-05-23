@@ -1,0 +1,769 @@
+%&biglatex
+\documentclass{amsart}
+%% Manuscrit par JF Burnol
+%% Des \'equations de Dirac et de Schr\"odinger pour
+%% la transformation de Fourier
+%%
+%% 
+%% 10 mars 2003: version finale; ameliorations de presentation
+%%               et quelques resultats supplementaires
+%%
+%% 11 fevrier 2003: premiere version
+%%                  
+%%          
+%% 
+
+\usepackage[T1]{fontenc}
+\usepackage[applemac]{inputenc} 
+\usepackage[american, frenchb]{babel}
+
+\def\ladate{{\small version du 10 mars 2003}}
+\def\from{From}
+
+\newtheorem{theoreme}{Th�or�me}[]
+\newtheorem{corollaire}[theoreme]{Corollaire}
+\newtheorem{lemme}[theoreme]{Lemme}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}{D�finition}
+\newtheorem{note}{Note}
+\newtheorem{remarque}{Remarque}
+
+
+\newcommand\Un{{\mathbf 1}}
+\newcommand\CC{{\mathbb C}}
+\newcommand\NN{{\mathbb N}}
+\newcommand\QQ{{\mathbb Q}}
+\newcommand\RR{{\mathbb R}}
+\newcommand\ZZ{{\mathbb Z}}
+\newcommand\HH{{\mathbb H}}
+
+
+\newcommand\cA{{\mathcal A}}
+\newcommand\cB{{\mathcal B}}
+\newcommand\cE{{\mathcal E}}
+\newcommand\cF{{\mathcal F}}
+\newcommand\cG{{\mathcal G}}
+\newcommand\cS{{\mathcal S}}
+\newcommand\cC{{\mathcal C}}
+\newcommand\cU{{\mathcal U}}
+\newcommand\cV{{\mathcal V}}
+\newcommand\cK{{\mathcal K}}
+\newcommand\cD{{\mathcal D}}
+\newcommand\cL{{\mathcal L}}
+
+\let\wh=\widehat
+\let\wt=\widetilde
+
+\renewcommand{\Re}{{\rm Re}}
+\renewcommand{\Im}{{\rm Im}}
+
+
+\begin{document}
+
+%%\textbf{Analyse Harmonique/\textit{Harmonic Analysis}}
+\rightline{\ladate}
+\rightline{math/0302102}
+
+\bigskip
+
+\title[Des \'equations de Dirac-Schr\"odinger pour
+Fourier]{Des \'equations de Dirac et de Schr\"odinger pour
+la transformation de Fourier}
+
+\author{Jean-Fran\c cois Burnol}
+
+
+\thanks{%%\textbf{Note pr�sent�e par J.-P. Kahane}\\
+La version dat�e 10 mars 2003 apporte � celle du 11 f�vrier
+les �quations additionnelles  \eqref{eq:phidet},
+\eqref{eq:psidet},  \eqref{eq:schrodbis++}, \eqref{eq:schrodbis+-},
+\eqref{eq:schrodbis-+}, \eqref{eq:schrodbis--}, ainsi que
+\eqref{eq:iso} et \eqref{eq:jost} et s'accompagne d'une
+discussion plus pr�cise de ceux des r�sultats de l'auteur qui feront
+l'objet d'une r�daction plus d�taill�e par ailleurs.}
+
+
+
+\begin{abstract}
+Dyson a associ� aux d�terminants de Fredholm des noyaux de Dirichlet
+pairs (resp. impairs) une �quation de
+Schr�dinger sur un demi-axe et a employ� les m�thodes du
+scattering inverse de Gel'fand-Levitan et de Marchenko, en
+tandem, pour �tudier l'asymptotique de ces
+d�terminants. Nous avons propos� suite � notre mise-au-jour
+de l'op�rateur conducteur de chercher � r�aliser la
+transformation de Fourier elle-m�me comme un scattering, et
+nous obtenons ici dans ce but deux syst�mes de Dirac sur
+l'axe r�el tout entier  et qui sont associ�s
+intrins�quement, respectivement, aux transformations  en
+cosinus et en sinus.
+\end{abstract}
+
+\maketitle
+
+\selectlanguage{american} \title{\textbf{Dirac and
+Schr�dinger equations for the Fourier Transform}}
+
+\begin{abstract}
+Dyson has associated with the Fredholm determinants of the
+even (resp. odd) Dirichlet kernels a Schr�dinger
+equation on the half-axis and has used, in tandem, the
+Gel'fand-Levitan and Marchenko methods of inverse scattering
+theory to study the asymptotics of these determinants. We
+have proposed following our unearthing of the conductor
+operator to seek to realize the Fourier transform itself as
+a scattering, and we obtain here to this end two Dirac
+systems on the entire real axis which are intrinsically
+associated, respectively, to the cosine and to the sine
+transforms.
+\end{abstract}
+
+\maketitle
+
+\selectlanguage{french}
+\bigskip
+
+\begin{small}
+Jean-Fran\c cois Burnol, Universit� Lille 1, UFR de Math�matiques, 
+Cit� Scientifique M2, F-59655 Villeneuve d'Ascq Cedex, France\\
+\texttt{burnol@agat.univ-lille1.fr}
+\end{small}
+
+\centerline{\hbox to4cm{\leaders \hrule height1pt \hfill}}
+%
+
+\selectlanguage{american}
+\section{Abridged English Version}
+
+Dyson \cite{dyson} has associated with the Dirichlet kernels
+\begin{equation}
+D_s^\pm(x,y) = \frac{\sin(s(x-y))}{\pi(x-y)} \pm
+\frac{\sin(s(x+y))}{\pi(x+y)}
+\end{equation}
+on $(0,1)$ two Schr�dinger equations on 
+$(0,+\infty)$ whose potentials are given as:
+\begin{equation}
+W_\pm(s) = -2 \frac{d^2}{ds^2}\log D_\pm(s) - 1
+\end{equation}
+In this definition the $D_\pm(s)$ are the Fredholm Determinants
+$\det(\delta(x-y)-D_s^\pm(x,y))$ associated with the
+(trace-class) kernels above. After establishing a general
+link between the methods of Gel'fand-Levitan on one hand,
+of Marchenko on the other hand, and the study of
+Fredholm determinants, Dyson obtained in this particular case
+the existence of an asymptotic development as  $s\to\infty$
+of
+$\log D_\pm(s)$, thus extending the earlier result of
+des~Cloizeaux
+and Mehta (\cite{dcmehta}) which is:
+\begin{equation}
+\log D_\pm(s) = -\frac{s^2}4\mp\frac12 s- \frac18\log s +
+C_\pm + o(1),
+\end{equation} and another heuristic argument enabled Dyson
+to give the values for the constants $C_\pm$. Except for
+that last point, still in need of rigorous proof,
+des~Cloizeaux-Mehta's  and Dyson's results have been later
+rigorously established by Deift-Its-Zhou \cite{diz} in the
+framework of a Riemann-Hilbert approach (see also Widom
+\cite{widom} for a proof of $\log
+D_+(s)D_-(s) = -\frac{s^2}2(1+o(1))$).
+
+Our discovery  \cite{jfprop} of the local operator theoretic
+content of the explicit formulae of Number Theory led us to
+propose to realize the Fourier transform itself as a
+scattering \cite{jfscat}. The multiplicative Fourier
+analysis of the additive Fourier transform  leads to two
+unit modulus functions on the critical line $\chi_+(s)$ and
+$\chi_-(s)$, the first corresponding to the cosine
+transform, and the second to the sine transform. But their
+phases are of the order $\gamma\log|\gamma|$ ($s =
+\frac12+i\gamma$) and this escapes the framework of
+scattering ``matrices'' for potentials which satisfy  the usual
+hypotheses of the Gel'fand-Levitan and Marchenko methods.
+
+We associate in this Note to the cosine transform (resp.
+sine transform) a differential system which, as in
+\cite{dyson}, involves the Fredholm determinants
+$D_\pm(s)$. To express it as a Dirac system, we shall use,
+not the variable $s=2\pi a^2\in (0,\infty)$, but
+rather the variable $u = \log(a) \in (-\infty,+\infty)$. Let
+us thus define $D_a^\pm$, $a>0$ to be the Dirichlet kernel
+as above for $s=2\pi a^2$ and let  $d_a^\pm = \det(1 -
+D_a^\pm)$ and $d_\pm(u) = d_a^\pm, a= \exp(u), u\in\RR$. We
+propose the following Dirac-type system:
+
+\begin{subequations}\label{eq:dirac}
+\begin{align}
+\frac{d}{du} \alpha(u) &= - \sqrt{-\frac{d^2}{du^2}\log
+d_\pm(u)}\cdot\alpha(u) - \gamma \beta(u)\\
+\frac{d}{du} \beta(u) &= + \sqrt{-\frac{d^2}{du^2}\log
+d_\pm(u)}\cdot\beta(u) + \gamma \alpha(u)
+\end{align}
+\end{subequations}
+
+The real number $\gamma$ is the  spectral parameter. Let
+$\mu_\pm(u) = \sqrt{-\frac{d^2}{du^2}\log d_\pm(u)}$. Each
+component
+ $\alpha(u)$ and $\beta(u)$ has its own Schr�dinger 
+equation. These equations are related through a Darboux
+transformation, and they take the form:
+
+\begin{subequations}
+\begin{align}
+- \frac{d^2}{du^2} \alpha(u) + (\mu_\pm(u)^2 -
+\mu_\pm'(u))\alpha(u) &= \gamma^2 \alpha(u)\label{eq:schrod1}\\
+- \frac{d^2}{du^2} \beta(u) + (\mu_\pm(u)^2 +
+\mu_\pm'(u))\beta(u) &= \gamma^2 \beta(u)\label{eq:schrod2}
+\end{align}
+\end{subequations}
+
+See also \eqref{eq:schrodbis++}, \eqref{eq:schrodbis+-},
+\eqref{eq:schrodbis-+}, \eqref{eq:schrodbis--}, for
+alternative expressions. The  potentials arising in
+\eqref{eq:schrod1}, \eqref{eq:schrod2} are exponentially
+increasing as $u\to+\infty$ and exponentially vanishing as
+$u\to-\infty$. We have studied the scattering (rather,
+reflection) induced by  \eqref{eq:schrod1} and
+\eqref{eq:schrod2} on waves originating at $-\infty$ and
+being bounced back to $-\infty$ and we have established that
+the corresponding phase shifts realize (in the manner
+indicated above, and stated more precisely in the French
+section) the Fourier cosine and sine transforms as
+scattering matrices. A detailed treatment will appear
+elsewhere. Here, we shall explain the origin of the systems
+\eqref{eq:dirac} and the existence of known solutions for
+each value of the spectral parameter: the structure
+functions of the Hilbert spaces of entire functions which
+had been associated by de~Branges to the Fourier transform
+\cite{bra64}. We gave their first explicit formulae in
+\cite{jfsonine}  and give here their associated differential
+systems \eqref{eq:dirac}: these systems turn out to involve
+the determinants $d_\pm(u)$, a fact which thus establishes a
+link between the theory of the de~Branges Sonine spaces and
+the quantities arising in the study of the random matrices
+\cite{mehta}. In \cite{jfhab} we linked through the
+co-Poisson formula the study of the Riemann zeta function to
+the Sonine spaces. As the reader will perceive, reference
+\cite{bra} plays only a distant r�le here. This is despite
+the fact that we consider most beautiful the de~Branges
+discovery \cite{bra64} of the existence of a natural
+isometric expansion for Fourier self-or-skew-reciprocal
+functions, and that we are aware of the rich contents of his
+general theory \cite{bra}. We are also aware of the rich
+relations it holds with other works, such as the
+investigations of Krein (see, for example, \cite{dymkean}),
+relations which are not that easily perceived from
+\cite{bra}. Rather the elucidation of the de~Branges Fourier
+Sonine spaces, which was a necessity after \cite{jfcrashp},
+was initiated in \cite{jfsonine} and is continued
+here, and turns out to provide an opportunity to partially
+realize some of the ideas which are internal to our approach
+of the problems of the zeta function and which we have
+expressed elsewhere \cite{jfprop}, \cite{jfscat},
+\cite{jfhab}.
+
+\selectlanguage{french}
+
+\section{Un syst�me diff�rentiel}
+
+Nous continuons la discussion entam�e dans la partie en
+langue anglaise du syst�me de Dirac \eqref{eq:dirac} et des
+�quations de Schr�dinger \eqref{eq:schrod1},
+\eqref{eq:schrod2} associ�es. Nous utiliserons les notations
+suivantes: la transformation de Fourier $\cF$ agit selon
+$\cF(f)(y) =
+\int_\RR e^{2\pi i xy}f(x)\,dx$. On a $\cF = \cF_+ + i\cF_-$
+o� $\cF_+$ est la transformation en cosinus et $\cF_-$ est
+la transformation en sinus. Soit $a>0$. Nous utiliserons
+l'op�rateur $P_a$ de restriction � l'intervalle $[-a,a]$,
+ainsi que les op�rateurs $\cF_a^+ = \cF_+ P_a$, $F_a^+ =
+P_a\cF_+ P_a$, $D_a^+ = (F_a^+)^2$, $\cF_a^- = \cF_- P_a$,
+$F_a^- =
+P_a \cF_- P_a$, $D_a^- = (F_a^-)^2$. Les op�rateurs $F_a^+$
+et
+$D_a^+$ (resp. $F_a^-$ et $D_a^-$) peuvent �tre vus au choix
+comme agissant sur $L^2(-a,a; \frac12 dx)$, sur son
+sous-espace pair (resp. impair), ou apr�s un changement
+d'�chelle sur $L^2(-1,1; \frac12 dx)$ ou encore sur
+$L^2(0,1;dx)$. Dans cette derni�re repr�sentation le noyau
+de l'op�rateur $D_a^\pm$ est donn� par:
+\begin{equation}
+\frac{\sin(2\pi a^2 (x-y))}{\pi(x-y)} \pm \frac{\sin(2\pi
+a^2 (x+y))}{\pi(x+y)}
+\end{equation}
+
+Consid�rons les uniques
+fonctions $\phi_a^+$ et $\phi_a^-$ solutions (disons,
+localement int�grables) des �quations:
+
+\begin{subequations}\label{eq:phi}
+\begin{align}
+\phi_a^+ + \cF_a^+ \phi_a^+ &= 2\cos(2\pi ax)\\
+\phi_a^- - \cF_a^+ \phi_a^- &= 2\cos(2\pi ax)
+\end{align}
+\end{subequations}
+
+
+Ce sont des fonctions paires, enti�res. Nous mentionnons
+�galement les fonctions impaires qui sont associ�es � la
+transformation en sinus. Elles  v�rifient:
+
+\begin{subequations}\label{eq:psi}
+\begin{align}
+\psi_a^+ + \cF_a^- \psi_a^+ &= 2\sin(2\pi ax)\\
+\psi_a^- - \cF_a^- \psi_a^- &= 2\sin(2\pi ax)
+\end{align}
+\end{subequations}
+
+Pour �tre sp�cifique nous consid�rerons ici la
+transformation en cosinus, la discussion �tant
+essentiellement identique
+pour la transformation en sinus. Soit $\delta_x =
+x\frac\partial{\partial x} + \frac12$. Un calcul simple
+aboutit au syst�me diff�rentiel suivant:
+
+\begin{subequations}\label{eq:phisys}
+\begin{align}
+a\frac\partial{\partial a} \phi_a^+  = \delta_x \phi_a^- -
+(\frac12 + a\phi_a^+(a) + a\phi_a^-(a))\phi_a^+\\
+a\frac\partial{\partial a} \phi_a^-  = \delta_x \phi_a^+ -
+(\frac12 - a\phi_a^+(a) - a\phi_a^-(a))\phi_a^-
+\end{align}
+\end{subequations}
+
+La d�monstration consiste � montrer que
+$a\frac\partial{\partial a} \phi_a^+  -\delta_x \phi_a^-$ et
+$a\frac\partial{\partial a} \phi_a^-  - \delta_x \phi_a^+ $
+satisfont aussi les �quations \eqref{eq:phi} � des facteurs
+multiplicatifs pr�s qui sont comme indiqu�s. La quantit�
+$a\phi_a^+(a)+ a\phi_a^-(a)$ jouant un r�le important nous
+la d�signerons par $\mu(a)$:
+\begin{equation}
+\mu(a) = a\phi_a^+(a)+ a\phi_a^-(a)
+\end{equation}
+On �tablit sans peine comme cons�quence de
+\eqref{eq:phisys}:
+\begin{equation}
+\frac\partial{\partial a} a \phi_a^+\phi_a^- = \frac12
+\frac\partial{\partial x} x ((\phi_a^+)^2 + (\phi_a^-)^2 )
+\end{equation}
+et � partir de l� la formule suivante:
+
+\begin{equation}\label{eq:mu}
+\mu(a)^2 = a^2(\phi_a^+(a)+ \phi_a^-(a))^2 = a\frac{d}{da}
+a\int_{-a}^a\phi_a^+(x)\phi_a^-(x)\,dx
+\end{equation}
+
+\section{Le lien avec les d�terminants de Fredholm}
+
+Par une formule connue de la th�orie g�n�rale des
+  d�terminants de Fredholm:
+\begin{align}
+\phi_a^+(a) = +\frac{d}{da} \log\det(1+F_a^+)\ \qquad
+\phi_a^-(a) = -\frac{d}{da} \log\det(1-F_a^+)\label{eq:phidet}\\
+\psi_a^+(a) = +\frac{d}{da} \log\det(1+F_a^-)\ \qquad
+\psi_a^-(a) = -\frac{d}{da} \log\det(1-F_a^-)\label{eq:psidet}
+\end{align}
+Ainsi, on a aussi:
+\begin{equation}
+\mu(a) = a\frac{d}{da}
+\log\frac{\det(1+F_a^+)}{\det(1-F_a^+)}
+\end{equation}
+
+Nous relions maintenant $\mu(a)$ au d�terminant de Fredholm
+$\det(1-D_a^+)$. Par une formule bien connue on a:
+\begin{equation}
+\frac{d}{da}\log d_a^+ = -{\rm Tr}((1-
+D_a^+)^{-1}\frac{d}{da}D_a^+)
+\end{equation}
+Or le calcul imm�diat du noyau de la d�riv�e de $D_a^+$
+montre qu'il s'agit d'un op�rateur de rang un, et donc que
+$(1- D_a^+)^{-1}\frac{d}{da}D_a^+$ l'est �galement. Son 
+vecteur propre est donn� par la fonction
+$(1-D_a^+)^{-1}(2\cos(2\pi a^2x))$ (nous sommes ici sur
+$[0,1]$), et on trouve que la valeur propre est �gale au
+produit scalaire de cette fonction avec $(2a)2\cos(2\pi a^2
+x)$. En faisant usage de la factorisation $1-D_a^+ =
+(1+F_a^+)(1-F_a^+)$ et du caract�re auto-adjoint de ces
+op�rateurs on obtient finalement la formule:
+\begin{equation}
+\frac{d}{da} \log d_a^+ = - \int_{-a}^a
+\phi_a^+(x)\phi_a^-(x)\,dx
+\end{equation}
+o� l'on est revenu � l'intervalle $[-a,a]$.
+
+La comparaison avec \eqref{eq:mu}, \eqref{eq:phidet},
+permet donc d'obtenir le th�or�me suivant:
+\begin{theoreme}
+Soit $d_+(u) = d_a^+ = \det(1 - D_a^+)$, et $\mu_+(u) =
+\mu(a)$ pour $a = \exp(u)$,
+$u\in\RR$. On a:
+\begin{align}
+\mu_+(u)^2  &= -\frac{d^2}{du^2} \log d_+(u)\\
+\mu_+(u)^2 - \mu_+'(u) &= - 2\frac{d^2}{du^2} \log \det(1 +
+F_a^+)\label{eq:pot+}\\
+\mu_+(u)^2 + \mu_+'(u) &= - 2\frac{d^2}{du^2} \log \det(1 -
+F_a^+)\label{eq:pot-}
+\end{align}
+\end{theoreme}
+
+Dans \eqref{eq:dirac}, on a �crit $\sqrt{-\frac{d^2}{du^2}\log
+d_+(u)}$  pour d�signer la fonction $u\mapsto \mu_+(u) = \mu(e^u)$.
+
+\section{Le syst�me diff�rentiel des distributions $A_a$ et
+$B_a$}
+
+Les fonctions $\phi_a^+$ et $\phi_a^-$ sont aussi des
+distributions temp�r�es dont on peut prendre la transform�e
+de Fourier. On v�rifie de suite que les distributions
+temp�r�es paires:
+\begin{subequations}
+\begin{align}
+A_a &= \frac{\sqrt{a}}2\, (\cF(\phi_a^+) + \phi_a^+ )\\
+B_a &= \frac{i\sqrt{a}}2\, (\cF(\phi_a^-) - \phi_a^-)
+\end{align}
+\end{subequations}
+ont la propri�t� remarquable de s'annuler dans $]-a,a[$ tout
+comme leurs transform�es de Fourier puisque $A_a$ est
+invariante et $B_a$ est anti-invariante. Or un th�or�me
+g�n�ral \cite[Thm. 1]{jfsonine} nous dit que toute
+distribution $D$ (paire ou impaire) ayant cette propri�t� a
+comme transform�e de Mellin droite $\int_0^\infty
+D(t)t^{-s}dt$ (a priori d�finie pour $\Re(s)\gg0$) une
+fonction enti�re de $s$ qui a des z�ros triviaux en $s =
+-2n$, $n\in\NN$ ($-1-2n$, dans le cas impair). Nous noterons
+$\cA_a(s)$ et $\cB_a(s)$ les transform�es de Mellin de $A_a$
+et $B_a$, compl�t�es par le facteur Gamma
+$\pi^{-s/2}\Gamma(\frac s2)$. Nous avons d�montr� dans
+\cite{jfsonine} que ces fonctions enti�res sont en fait les
+fonctions de structure (dans une certaine normalisation) de
+certains espaces de Hilbert de fonctions enti�res que
+de~Branges a associ� � la transformation de Fourier
+\cite{bra64}. Avec nos conventions, l'axe de sym�trie de ces
+espaces est la droite critique, et donc par ce fait m�me,
+les fonction enti�res $\cA_a$ et $\cB_a$ v�rifient
+l'hypoth�se de Riemann. Nous avons aussi montr� que la
+densit� de leurs z�ros est au premier ordre identique �
+celle pour les z�ros de la fonction dz�ta de Riemann
+\cite{jftwosys}.
+
+Cela �tant dit, � partir du syst�me diff�rentiel
+\eqref{eq:phisys} on obtient:
+\begin{subequations}
+\begin{align}
+a\frac\partial{\partial a} A_a  &= i\delta_x B_a -
+\mu(a)A_a\\
+a\frac\partial{\partial a} B_a  &= -i\delta_x A_a +
+\mu(a)B_a
+\end{align}
+\end{subequations}
+Au niveau des transform�es de Mellin droites on a $\delta_x =
+s-\frac12 = i\gamma$. On obtient donc:
+\begin{subequations}
+\begin{align}
+a\frac\partial{\partial a} \cA_a  &= -\gamma \cB_a -
+\mu(a)\cA_a\\
+a\frac\partial{\partial a} \cB_a  &= +\gamma \cA_a +
+\mu(a)\cB_a
+\end{align}
+\end{subequations}
+
+Nous poserons $\cA^s(u) = \cA_a(s)$, $\cB^s(u) = \cB_a(s)$,
+$\mu_+(u) = \mu(a)$ avec $a=\exp(u)$, $s = \frac12 +
+i\gamma$. Ainsi:
+
+\begin{theoreme}
+Les fonctions $\cA^s(u)$ et $\cB^s(u)$ de la variable
+$u\in\RR$ v�rifient le syst�me diff�rentiel suivant
+($s=\frac12+i\gamma$):
+\begin{subequations}
+\begin{align}
+\frac{d}{du} \cA^s(u)  &= -\gamma \cB^s(u) -
+\mu_+(u)\cA^s(u) \\
+\frac{d}{du} \cB^s(u) &= +\gamma \cA^s(u) + \mu_+(u)\cB^s(u)
+\end{align}
+\end{subequations}
+\end{theoreme}
+
+Les �quations de Schr�dinger associ�es en d�coulent:
+\begin{subequations}
+\begin{align}
+- \frac{d^2}{du^2}  \cA^s(u) + \Big(- 2\frac{d^2}{du^2} \log \det(1 +
+F_a^+)\Big) \cA^s(u) &= \gamma^2  \cA^s(u)\label{eq:schrodbis++}\\
+- \frac{d^2}{du^2}  \cB^s(u) + \Big(- 2\frac{d^2}{du^2} \log \det(1 -
+F_a^+)\Big) \cB^s(u)&= \gamma^2 \cB^s(u)\label{eq:schrodbis+-}
+\end{align}
+\end{subequations}
+
+Pour la transformation en sinus on obtiendrait:
+\begin{subequations}
+\begin{align}
+- \frac{d^2}{du^2}  \alpha(u) + \Big(- 2\frac{d^2}{du^2} \log \det(1 +
+F_a^-)\Big) \alpha(u) &= \gamma^2  \alpha(u)\label{eq:schrodbis-+}\\
+- \frac{d^2}{du^2}  \beta(u) + \Big(- 2\frac{d^2}{du^2} \log \det(1 -
+F_a^-)\Big) \beta(u)&= \gamma^2 \beta(u)\label{eq:schrodbis--}
+\end{align}
+\end{subequations}
+
+
+On
+notera que  si l'on normalise les fonctions de structure
+$\cA$ et $\cB$ des espaces de de~Branges en imposant
+$\cA_a(\frac12) = 1$ alors les �quations du deuxi�me ordre
+v�rifi�es par $\cA$ et $\cB$ prennent la forme d'�quations
+de Sturm-Liouville. 
+
+
+\section{Compl�ments}
+
+La th�orie g�n�rale de de~Branges \cite{bra} �tablit
+l'existence d'�quations int�grales (qui peuvent parfois
+prendre, comme il �tait connu a priori que cela serait le
+cas ici \cite{bra}, une forme diff�rentielle) pour certaines
+cha�nes de sous-espaces (dont les �l�ments sont aussi des
+fonctions enti�res) d'un m�me espace de Hilbert
+$L^2(\RR,d\Delta(\gamma))$. Elle les utilise pour obtenir
+une repr�sentation isom�trique de
+$L^2(\RR,d\Delta(\gamma))$, apportant ainsi une vaste
+g�n�ralisation au th�or�me de Paley-Wiener. Dans le cas
+particulier qui est consid�r� ici nous avons v�rifi� que
+l'expansion isom�trique des espaces de Sonine (associ�s � la
+transformation en cosinus) prend la forme suivante:
+l'application
+\begin{equation}\label{eq:iso}
+\begin{bmatrix}
+\alpha(u)\\ \beta(u)
+\end{bmatrix}
+\mapsto
+f(s) = \int_{-\infty}^{+\infty}
+\Big(\cA^s(u)\alpha(u)+\cB^s(u)\beta(u)\Big)\,du
+\end{equation}
+est isom�trique de $L^2(\RR\to\RR^2;\frac{du}2)$ sur
+$L^2(\Re(s)=\frac12;d\Delta(\gamma))$ avec: 
+\begin{equation}
+d\Delta(\gamma) = \frac1{\left|\pi^{-\frac s2}\Gamma(\frac
+s2)\right|^2}\frac{|ds|}{2\pi}, \qquad  s = \frac12 +
+i\gamma.
+\end{equation}
+Ce type d'expansion isom�trique est aussi intimement li� �
+des consid�rations ant�rieures de Krein, comme il est
+expliqu� dans le livre de Dym et McKean
+\cite{dymkean}. 
+
+Les potentiels pour les �quations de Schr�dinger sont
+exponentiellement croissants en $u\to+\infty$ et s'annulent
+exponentiellement en $u\to-\infty$: cela sugg�re, au-del�
+des consid�rations li�es � l'expansion isom�trique,
+d'aborder le probl�me du scattering d'ondes provenant de
+$-\infty$ et y �tant renvoy�es. Krein a  utilis� ses
+techniques pour aborder sur un demi-axe les probl�mes de scattering
+�galement trait�s par les approches de Gel'fand-Levitan et
+Marchenko, dans un cadre o� la mesure spectrale
+$d\Delta(\gamma)$ satisfait la condition
+$\int\frac{d\Delta(\gamma)}{1+\gamma^2}<\infty$, ce qui
+n'est pas le cas ici, bien qu'un grand nombre de
+consid�rations restent valables. En fait la diff�rence
+essentielle avec la situation habituellement envisag�e est
+qu'ici, heuristiquement, plus l'onde est �nerg�tique, plus
+profond�ment elle p�n�trera dans le potentiel et plus
+longtemps elle mettra pour en �tre renvoy�e: de sorte que
+l'on s'attend � ce que les d�calages de phases soient
+divergents lorsque la fr�quence $\gamma$ tend vers
+$\pm\infty$.
+
+
+
+Ce probl�me, pour \eqref{eq:schrodbis++} par exemple,  est
+rendu pr�cis par le fait que la condition ``�tre de carr�
+int�grable en $+\infty$'' est une condition aux bords
+appropri�e en $+\infty$, avec pour unique solution (� une
+constante multiplicative pr�s) de fr�quence r�elle $\gamma$
+la fonction $u\mapsto \cA^s(u)$. Le calcul de la matrice de
+scattering d�coule alors de la d�termination, pour chacune
+des �quations de Schr�dinger \eqref{eq:schrodbis++},
+\eqref{eq:schrodbis+-}, \eqref{eq:schrodbis-+},
+\eqref{eq:schrodbis--}, des solutions satisfaisant la
+``condition de Jost'' en $-\infty$. Par exemple, on trouve,
+pour l'�quation  \eqref{eq:schrodbis++}, que la solution
+(complexe) qui se comporte asymptotiquement en $-\infty$
+comme $\exp(-i\gamma u)$ est donn�e exactement par
+($a=\exp(u)$, $s=\frac12 + i\gamma$, $\Re(s)<1$):
+\begin{equation}\label{eq:jost}
+u\mapsto e^{-i\gamma u} - e^{u/2} \int_0^a \phi_a^+(x)x^{-s}\,dx
+\end{equation}
+et � partir de l� on �tablit que la ``matrice de
+scattering'' de $-\infty$ vers $-\infty$ est, pour
+l'�quation \eqref{eq:schrodbis++}, exactement donn�e par la
+fonction $ \pi^{-(1-s)/2}\Gamma((1-s)/2) /
+\pi^{-s/2}\Gamma(s/2)=\chi_+(s)$, $s=\frac12 + i\gamma$, qui
+donne la repr�sentation multiplicative (sur la droite
+critique) de la transformation en cosinus.  Pour l'�quation
+\eqref{eq:schrodbis+-} on trouve $-\chi_+(\frac12+i\gamma)$
+comme matrice de scattering. Pour les �quations
+\eqref{eq:schrodbis-+} et \eqref{eq:schrodbis--} associ�es �
+la transformation en sinus on remplace $\chi_+$ par la
+fonction $\chi_-$ donnant la repr�sentation multiplicative
+de la transformation en sinus. Peut-�tre existe-t-il un moyen
+d'utiliser cette information pour remonter aux potentiels
+eux-m�mes et obtenir ainsi peut-�tre une autre approche
+(sp�cifique au cas d'un unique intervalle $[-a,a]$) aux
+r�sultats de Deift-Its-Zhou \cite{diz} et des autres auteurs
+cit�s.
+
+Ces ``matrices de scattering'' sont aussi les fonctions qui
+apparaissent  dans les �quations fonctionnelles de la
+fonction dz�ta de Riemann et des s�ries $L$ de
+Dirichlet. Signalons � ce sujet que la pr�sente Note est la
+continuation logique de nos travaux ant�rieurs
+\cite{jfprop}, \cite{jfcond} (voir \cite{jfcrasexp} pour un
+r�sum�) sur l'op�rateur conducteur $\log|x|+\log|y|$,
+op�rateur qui entre autres choses, r�v�la que la
+transformation de Fourier �tait une sym�trie des formules
+explicites.
+
+% ce qui mena ensuite � la formule de
+%co-Poisson et � l'association de vecteurs hilbertiens aux
+%z�ros de la fonction dz�ta de Riemann \cite{jfhab}. 
+
+%Nous esp�rons qu'une �tude plus pouss�e de \eqref{eq:dirac}
+%et des th�mes annexes permettra de rentrer en contact avec,
+%en particulier, \cite{diz}, \cite{jmms}, \cite{tw},
+%\cite{widom}.
+
+% La bri�vet� de notre compte-rendu sera
+%pardonn�e par le lecteur averti du fait que \cite{jfprop} et
+%\cite{jfcond} restent non publi�s � ce jour, car, au choix,
+%ils  constituent des ``variations mineures'', n'apportent
+%``aucune id�e r�ellement nouvelle'', ``ne contiennent
+%rien'', en tout cas ``rien de particuli�rement profond et ne
+%m�ritent pas publication'', ``ne paraissent pas d'une
+%qualit� exceptionnelle'', ``semblent tr�s loin de d�montrer
+%les qualit�s d'autonomie et de valeur scientifique que l'on
+%est en droit d'attendre'', constituent de ``l'analyse
+%harmonique locale sans signification particuli�re'', que
+%tr�s r�cemment encore, l'affaire de leur publication a �t�
+%consid�r�e comme �tant ``un chapitre clos'', et que en ce
+%qui concerne notre manuscrit central ``On Fourier and
+%Zeta(s)'' \cite{jfhab}, il ne para�tra finalement que apr�s
+%que l'auteur ait �t� inform� par un membre d'un bureau
+%�ditorial que m�me dans une version amput�e de ses
+%``ruminations philosophiques'', de toute consid�ration des
+%formules explicites, de toute mention du crit�re de
+%Nyman-Beurling, l'article ne m�riterait jamais publication
+%dans un Journal  ne partageant ne serait-ce qu'une fraction
+%des ``standards'' de celui initialement envisag� et que
+%l'arbitre nous ait inform� que l'article ne contenait pas de
+%r�els th�or�mes, que ses r�sultats �taient ``formels'' et
+%``assez simples'', et que l'auteur pourrait bien raccourcir
+%et simplifier encore le tout.
+
+
+%Il para�trait dans ces conditions fort t�m�raire de la part
+%de l'auteur de promettre la publication d'un quelconque
+%expos� d�taill� dans un avenir proche. De plus il est vrai
+%que l'enthousiasme n�cessaire pour se lancer dans de co�teux
+%labeurs de r�daction et de communication d'id�es nouvelles
+%commence � nous faire d�faut singuli�rement. 
+
+%%Nous pouvons aussi garder nos id�es pour nous.
+
+% nous ne sommes plus dans la m�me situation d'exclusion
+%qui �tait la n�tre lors de la r�flexion qui mena � la
+%d�couverte de l'op�rateur conducteur, ni m�me dans la
+%situation qui �tait la n�tre lors du travail ayant abouti �
+%la r�daction de \cite{jfhab}. Il est vrai que nous avions
+%connu en 1991 d'autres n�fastes composantes de la vie
+%scientifique, pires encore, et que cela nous d�cida �
+%orienter nos recherches dans des domaines plus centraux et
+%donc autorisant un jugement plus vaste. Cependant les
+%r�actions des arbitres reproduites plus-haut nous confirment
+%qu'il est important de rendre les articles math�matiques
+%imm�diatement  accessibles � l'ensemble de la communaut� via
+%la communication �lectronique, sans attendre l'avis des
+%arbitres anonymes. 
+
+
+\bibliographystyle{amsplain}
+\begin{thebibliography}{10}
+
+
+\bibitem{bra64} L.~de~Branges, \emph{Self-reciprocal
+functions}, J. Math. Anal. Appl. {\bf 9} (1964) 433--457.
+
+\bibitem{bra} L.~de~Branges, \emph{Espaces de Hilbert de
+Fonctions Enti�res}, Masson, Paris, 1972.
+
+\bibitem{jfprop} J.-F.~Burnol, \emph{The Explicit Formula
+and a propagator}, (1998) 21 p. Non publi�.
+
+\bibitem{jfcond} J.-F.~Burnol, \emph{The explicit formula
+and the conductor operator}, (1999) 28p. Non publi�.
+
+\bibitem{jfcrasexp} J.-F.~Burnol, \emph{Sur les formules explicites I:
+analyse invariante}, C. R. Acad. Sci. Paris {\bf 331} (2000), S\'erie
+I, 423-428.
+
+\bibitem{jfscat} J.-F.~Burnol, \emph{Scattering on the p-adic field
+and a trace formula}, Int. Math. Res. Not. {\bf 2000:2} (2000),
+57-70.
+
+\bibitem{jfcrashp} J.-F.~Burnol, \emph{Sur certains espaces de Hilbert de
+fonctions enti\`eres{,} li\'es \`a la transformation de Fourier et aux
+fonctions L de Dirichlet et de Riemann},  C. R. Acad. Sci. Paris {\bf
+333} (2001), s\'erie~I, 201-206.
+
+\bibitem{jfhab} J.-F. Burnol, \textit{On Fourier and
+Zeta(s)}, (2001), Habilitationsschrift,
+Forum Mathematicum, � para�tre.
+
+\bibitem{jftwosys} J.-F.~Burnol, \emph{Two complete and
+minimal systems associated with the zeros of the Riemann
+zeta function}, 28 p. Soumis � une revue avec comit�
+de lecture (Janvier 2003). Disponible sur
+\texttt{arXiv.org}: \texttt{math/0203120}
+
+\bibitem{jfsonine} J.-F.~Burnol, \emph{Sur les ``espaces de
+Sonine'' associ\'es par de~Branges \`a la transformation de
+Fourier},  C. R. Acad. Sci. Paris, Ser. I {\bf 335} (2002),
+689-692.
+
+
+\bibitem{dcmehta} J. des Cloizeaux, M. L. Mehta,
+\emph{Asymptotic behavior of spacing distributions for the
+eigenvalues of random matrices}, J. Math. Phys. \textbf{14}
+(1973), 1648-1650.
+
+\bibitem{diz} P. Deift, A. R. Its, X. Zhou, \emph{A
+Riemann-Hilbert approach to asymptotic problems arising in
+the theory of the random matrix models, and also in the
+theory of integrable statistical mechanics},
+Ann. Math. \textbf{146} (1997), 149-235.
+
+\bibitem{dymkean} H.~Dym, H.P.~McKean, \emph{Gaussian
+processes, Function Theory, and the Inverse Spectral
+Problem}, Academic Press, New York-London, 1976.
+
+\bibitem{dyson} F. Dyson, \emph{Fredholm determinants and
+Inverse Scattering Problems},
+Comm. Math. Phys. \textbf{47} (1976), 171-183.
+
+\bibitem{jmms} M. Jimbo, T. Miwa, Y. M\^ori, M. Sato,
+\emph{Density matrix of an impenetrable Bose gas and the
+fifth Painlev� transcendent}, Physica \textbf{1D} (1980),
+80-158.
+
+\bibitem{mehta} M.~L.~Mehta, \emph{Random Matrices}, 2nd
+ed., Academic Press, San Diego, 1991.
+
+\bibitem{tw} C.A. Tracy, H. Widom, \emph{Fredholm
+determinants, differential equations and matrix models},
+Comm. Math. Phys \textbf{163} (1994), 33-72.
+
+\bibitem{widom} H. Widom, \emph{The asymptotics of a
+continuous analogue of orthogonal polynomials},
+J. Approx. Theory \textbf{77} (1994), 51-64.
+
+\end{thebibliography}
+\end{document}

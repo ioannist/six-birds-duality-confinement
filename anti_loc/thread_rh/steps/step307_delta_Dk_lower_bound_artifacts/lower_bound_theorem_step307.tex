@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Step 307: Attempted Lower Bound for \texorpdfstring{$|\delta_{D,k}(\rho_1,G_\star)|$}{delta}}
+
+Let
+\[
+  M(G_\star)(z)=\int_0^\infty G_\star(t)t^{-z}\,dt,\qquad
+  h(z)=\zeta(z)M(G_\star)(z),
+\]
+with the inherited Branch C convention \(t^{-z}\).  The coefficients of
+\(G_\star\) enforce
+\[
+  M(G_\star)(1)=\int G_\star(t)t^{-1}\,dt=0
+\]
+to numerical precision, so the pole of \(\zeta\) at \(z=1\) is cancelled.
+Also \(M(G_\star)(\rho_1)\neq 0\), so \(h\) has a simple zero at \(\rho_1\).
+
+\subsection*{Finite-type route}
+
+The requested route would use a finite order-one type \(\tau_h\) and the
+Cauchy--Hadamard/Stirling heuristic
+\[
+  |h^{(k)}(\rho_1)|=k!|c_k|\approx \sqrt{2\pi k}\,\tau_h^k.
+\]
+This route is blocked.  Although \(M(G_\star)\) is an entire transform of a
+compactly supported \(C^\infty\) function with exponential indicator bounded
+by \(\log 3.7\), the zeta factor is not finite type in the order-one sense.
+The functional equation gives, on left-half-plane directions away from trivial
+zeros,
+\[
+  \log|\zeta(-R+i\eta)| = R\log R + O(R),
+\]
+so \(\log|\zeta(z)|/|z|\to\infty\) along such rays.  After the removable pole
+at \(1\) is cancelled, \(h\) remains an entire function of order one but
+infinite type by this standard estimate.
+
+\subsection*{Lower-bound obstruction}
+
+Even if a finite type were available, growth/type data alone do not imply a
+coefficient lower bound of the form
+\[
+  |h^{(k)}(\rho_1)|\ge A_0 b_0^k k^{\alpha_0}\qquad(k\ge k_0).
+\]
+Cauchy estimates are upper bounds.  Jensen, Phragmen--Lindelöf, and
+Cauchy--Hadamard control maximal growth or limsup coefficient envelopes; they
+do not prevent cancellations or lacunary coefficient patterns for a specific
+Taylor expansion about \(\rho_1\).
+
+\subsection*{Conclusion}
+
+No theorem-grade lower bound with explicit constants
+\((A_0,b_0,\alpha_0,k_0)\) is derived from the stated standard entire-function
+inputs.  The certified values support strong empirical growth, but converting
+them into a lower bound for all large \(k\) requires additional structure:
+for example a signed/phase-controlled asymptotic for the Cauchy-circle Fourier
+coefficient, not merely order/type.
+
+\end{document}

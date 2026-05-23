@@ -1,0 +1,113 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\title{Step 104: Shifted Sonin/Prolate Off-Diagonal Compactness Test}
+\author{RH Membrane Program}
+\date{May 2026}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 101 reduced compactness of the semilocal cross-term to the compactness of a semilocal projection residual. Step 102 reduced that residual to an off-diagonal metric-mixing block. Step 103 expanded the finite local factor as a Bohr series of log-shifts. This note tests the basic block
+\[
+B_a=P_\infty\tau_a(I-P_\infty)
+\]
+for one nonzero shift $a=\log p$, using the archimedean Sonin/prolate projection structure.
+
+The main conclusion is negative for the raw archimedean Sonin projection: the shifted off-diagonal block is not compact. Thus the semilocal compactness shortcut cannot be justified by raw Sonin transport alone. It remains possible only if the actual semilocal prolate projection supplies an additional cancellation mechanism, or if the noncompact sector is absorbed by a Hecke/Dirichlet source ladder.
+
+\section{Archimedean Sonin model}
+Let $H=L^2(\mathbb R)$, or the even subspace when the functional-equation grading is imposed. Let $P_\lambda$ denote the spatial cutoff projection onto $[-\lambda,\lambda]$, and let
+\[
+\widehat P_\lambda=\mathcal F^{-1}P_\lambda\mathcal F
+\]
+be the corresponding Fourier cutoff. The archimedean Sonin space is
+\[
+\mathcal S_\lambda=\ker P_\lambda\cap\ker\widehat P_\lambda.
+\]
+Let $S_\lambda$ be the orthogonal projection onto $\mathcal S_\lambda$.
+
+Let $\tau_a$ denote the log-shift/dilation unitary associated with a finite local Euler-factor mode. The compactness target is
+\[
+B_a=S_\lambda\tau_a(I-S_\lambda).
+\]
+
+\section{Boundary packet witness}
+\begin{lemma}[boundary escaping interval]
+For every nonzero $a$ there exists a nonempty interval $J\subset[-\lambda,\lambda]$ such that
+\[
+J+a\subset \mathbb R\setminus[-\lambda,\lambda].
+\]
+\end{lemma}
+\begin{proof}
+If $a>0$, choose $J$ sufficiently close to the right endpoint $\lambda$. If $a<0$, choose $J$ sufficiently close to the left endpoint $-\lambda$.
+\end{proof}
+
+\begin{lemma}[high-frequency boundary packets]
+Let $\phi\in C_c^\infty(J)$ with $\|\phi\|_2=1$, and set
+\[
+f_n(x)=e^{inx}\phi(x).
+\]
+Then $f_n\in\operatorname{Ran}P_\lambda$, hence $f_n\in\mathcal S_\lambda^\perp$, and $f_n\rightharpoonup0$ weakly in $H$.
+Moreover
+\[
+P_\lambda\tau_a f_n=0,
+\qquad
+\|\widehat P_\lambda\tau_a f_n\|_2\to0.
+\]
+\end{lemma}
+\begin{proof}
+The first assertion follows from the support of $\phi$. Weak convergence follows from the Riemann--Lebesgue lemma. Since $J+a$ is outside the spatial cutoff, $P_\lambda\tau_a f_n=0$. The Fourier transform of $\tau_a f_n$ is a translated high-frequency packet; its mass in the fixed low-frequency window tends to zero.
+\end{proof}
+
+\begin{theorem}[raw shifted Sonin block is noncompact]
+For every nonzero shift $a$, the operator
+\[
+B_a=S_\lambda\tau_a(I-S_\lambda)
+\]
+is not compact on the archimedean Sonin model.
+\end{theorem}
+\begin{proof}
+The packets $f_n$ above belong to $\mathcal S_\lambda^\perp$, so $(I-S_\lambda)f_n=f_n$. The shifted packets $\tau_a f_n$ have no mass in the spatial cutoff and asymptotically no mass in the Fourier cutoff. Hence their distance to
+\[
+\mathcal S_\lambda=\ker P_\lambda\cap\ker\widehat P_\lambda
+\]
+tends to zero. Equivalently,
+\[
+\|S_\lambda\tau_a f_n-\tau_a f_n\|_2\to0.
+\]
+Since $\|\tau_a f_n\|_2=1$, we obtain
+\[
+\|B_a f_n\|_2=\|S_\lambda\tau_a f_n\|_2\to1.
+\]
+But $f_n\rightharpoonup0$. A compact operator sends weakly convergent sequences to norm-convergent sequences. Therefore $B_a$ is not compact.
+\end{proof}
+
+\begin{remark}[closed-sum condition]
+The argument uses the standard closed-sum geometry of the prolate pair $P_\lambda,\widehat P_\lambda$. In the archimedean prolate theory, the angle operator is diagonalized by prolate spheroidal functions and has singular values strictly below one and rapidly decaying. This ensures that small spatial and Fourier cutoff projections imply small distance to the Sonin space.
+\end{remark}
+
+\section{Consequences for the semilocal RH route}
+Step 103 showed that finite local factors expand as a series of log-shifts, so the off-diagonal semilocal metric block is built from operators of the form
+\[
+P_\infty\tau_{\ell}(I-P_\infty).
+\]
+Step 104 shows that if $P_\infty$ is merely the raw archimedean Sonin projection, then already a single nonzero shift is noncompact.
+
+Therefore the compactness shortcut has only three lawful exits:
+\begin{enumerate}[label=(\roman*)]
+\item the actual semilocal prolate projection $P_S$ is not a mere transported Sonin projection and cancels the boundary-packet sector;
+\item a quotient/gating record removes the escaping boundary packets with a declared nonclaim/tail record;
+\item the noncompact sector is charged by a Hecke/Dirichlet lower-frame source ladder.
+\end{enumerate}
+
+\section{Status}
+This step does not prove anything about the full unconstructed semilocal prolate operator. It proves a no-go for the raw archimedean Sonin compactness shortcut. The next analytic target is to test whether the semilocal prolate correction changes the projection enough to cancel the boundary-packet witness.
+
+\end{document}

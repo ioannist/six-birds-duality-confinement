@@ -1,0 +1,37 @@
+{
+  "step": 259,
+  "orientation": "adequacy",
+  "target": "zeta moments / Keating-Snaith RMT prediction",
+  "moment_carrier_definition": {
+    "moment": "M_{2k}(T)=int_0^T |zeta(1/2+it)|^{2k} dt",
+    "residual": "Xi_{2k}(T)=|M_{2k}(T)/(a_k g_k T (log T)^{k^2})-1|",
+    "closure": "lim_{T->infty} Xi_{2k}(T)=0 for each fixed k",
+    "lindelof_link": "Lindelof is equivalent to M_{2k}(T)=O_k(T^{1+epsilon}) for all fixed k"
+  },
+  "keating_snaith_leading_coefficient": {
+    "formula": "M_{2k}(T) ~ a_k g_k T (log T)^{k^2}",
+    "g_k": "prod_{j=0}^{k-1} j!/(j+k)!",
+    "a_k": "arithmetic Euler product"
+  },
+  "proved_vs_conjectural": [
+    {"k": 1, "status": "proved", "main_term": "T log T"},
+    {"k": 2, "status": "proved", "main_term": "(1/(2*pi^2)) T (log T)^4"},
+    {"k": 3, "status": "conjectural", "main_term": "42 a_3 T (log T)^9"},
+    {"k": "general", "status": "conjectural", "main_term": "a_k g_k T (log T)^{k^2}"}
+  ],
+  "classification_call": {
+    "verdict": "V_moments_inside_subconvexity_extension",
+    "reason": "Moments are averaged critical-line growth residuals; precise moment asymptotics are stronger than Lindelof but refine the same growth-rate family.",
+    "subtype_refinement": {
+      "Type_alpha": "pointwise/sup-bound growth residuals",
+      "Type_beta": "moment-growth and precise moment asymptotics"
+    }
+  },
+  "retained_nogos": [
+    "does not claim Keating-Snaith proved",
+    "does not claim RH solved",
+    "distinguishes proved k=1,2 from conjectural k>=3",
+    "does not weaken retained no-gos"
+  ],
+  "final_verdict": "V_moments_inside_subconvexity_extension"
+}

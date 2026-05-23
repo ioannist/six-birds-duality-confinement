@@ -1,0 +1,9 @@
+Gate,Statement,Accepted if,Failure status
+G1: decoupled length window,"Choose T_N=Q_N^tau, A_N<=Q_N^a, X_N=Q_N^x, R_N=Q_N^r.",tau<1 is allowed; Q_N can be much larger than the vertical window.,same_aspect_pressure
+G2: Muntz accuracy,"tau_M,N <= C A_N (1+T_N)^alpha X_N^{-eta}.",x > (a + alpha*tau)/eta.,shadow_tail_defect
+G3: Burnol coefficient modeling,"epsilon_Mell,N + kappa_tail,N <= C A_N R_N^{-beta}.",r > a/beta.,coefficient_visibility_defect
+G4: source shortness,L_N = X_N R_N <= Q_N^{theta_src-o(1)}.,x+r < theta_src.,source_method_invalid
+G5: conductor-decoupled feasibility,(a+alpha*tau)/eta + a/beta < theta_src.,"There is a nonempty interval of legal x,r.",no_power_law_window
+G6: coefficient lower frame,"G_X,N >= gamma_N H_N on Dirichlet-readable coefficient space.",Complete characters or matrix moment estimates provide gamma_N.,upper_bound_only_or_partial_frame
+G7: hybrid visibility floor,"c_hyb,N >= 1 - E_N^2 with E_N<1.","Positive floor or c_hyb,N -> 1.",blind_shadow_sector
+G8: effective collapse,"Lambda_N = gamma_N c_hyb,N -> infinity with fixed/exhaustive tail.",Residual source budget collapses.,finite_window_support_only

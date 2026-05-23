@@ -1,0 +1,156 @@
+{
+  "step": 169,
+  "orientation": "adequacy",
+  "active_residual": "Xi_BC / Xi_cP_shifted_l",
+  "main_object": "M(B u_{l,a})(s)",
+  "inherited_records": [
+    {
+      "id": "R1",
+      "source_step": 165,
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/step165_shifted_co_poisson_artifacts/step165_shifted_co_poisson.tex",
+      "quoted_form": "u_{l,a}:=B_{l,a}u:=J_a P_infty tau_l (I-P_infty)u; m_l(s)=exp[-l(1/2-s)]"
+    },
+    {
+      "id": "R2",
+      "source_step": 119,
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/step119_extracted/burnol_dirichlet_shadow_step119.tex",
+      "quoted_form": "ghat_j(s)=int_0^infty g_j(t)t^{-s}dt; Cg_j(t)=sum_{n>=1}g_j(t/n)/n-ghat_j(1); M(Cg_j)(s)=zeta(s)ghat_j(s)"
+    },
+    {
+      "id": "R3",
+      "source_step": 154,
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/step154_extracted/projected_sonine_commutator_step154.tex",
+      "quoted_form": "C_l=(I-P_infty)M_{m_l}P_infty; r_{l,w,k}=C_l eta^a_{w,k}"
+    },
+    {
+      "id": "R4",
+      "source_step": 153,
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/step153_extracted/pulled_evaluator_kernel_step153.tex",
+      "quoted_form": "T_a=M_Gamma J_a U_infty^{-1}; U_infty(J_a^*Y^a_{w,k})=T_a^* partial_barw^k K_a^Gamma(.,w)"
+    },
+    {
+      "id": "R5",
+      "source_step": "114-115",
+      "citation": "/home/repos/six-birds-foundations-iii/anti_loc/thread/step114_extracted/boundary_to_copoisson_step114.tex; /home/repos/six-birds-foundations-iii/anti_loc/thread/step115_extracted/boundary_zeta_factorization_step115.tex",
+      "quoted_form": "M(J_a P_infty tau_l(I-P_infty)u)(s)=zeta(s)alpha_{l,u}(s) is sufficient; log-shift is a nonvanishing exponential multiplier and does not itself create a zeta factor"
+    }
+  ],
+  "derivation_steps": [
+    {
+      "step_id": "T2a",
+      "description": "Expand the shifted Burnol packet and apply Mellin linearity.",
+      "inherited_record_cited": "R1",
+      "intermediate_expression": "M(B_{l,a}u)(s)=M(J_a P_infty tau_l(I-P_infty)u)(s)"
+    },
+    {
+      "step_id": "T2b-J",
+      "description": "Use the Mellin transport definition of J_a through T_a.",
+      "inherited_record_cited": "R4",
+      "intermediate_expression": "For v in the legal H_infty domain, M(J_a v)=T_a U_infty v"
+    },
+    {
+      "step_id": "T2b-P",
+      "description": "Represent P_infty and I-P_infty in the inherited Mellin model.",
+      "inherited_record_cited": "R3/R4",
+      "intermediate_expression": "U_infty P_infty U_infty^{-1}=mathsf P_infty, so U_infty(I-P_infty)u=(I-mathsf P_infty)F_u"
+    },
+    {
+      "step_id": "T2b-tau",
+      "description": "Apply the log-shift multiplier.",
+      "inherited_record_cited": "R1/R3",
+      "intermediate_expression": "U_infty tau_l(I-P_infty)u=M_{m_l}(I-mathsf P_infty)F_u, m_l(s)=exp[-l(1/2-s)]"
+    },
+    {
+      "step_id": "T2c",
+      "description": "Compose the inherited actions.",
+      "inherited_record_cited": "R1/R3/R4",
+      "intermediate_expression": "M(B_{l,a}u)(s)=[T_a mathsf P_infty M_{m_l}(I-mathsf P_infty)F_u](s)"
+    },
+    {
+      "step_id": "T2d",
+      "description": "Compare with the only inherited zeta-producing identity.",
+      "inherited_record_cited": "R2",
+      "intermediate_expression": "If J_aP_infty tau_l(I-P_infty)u=Cg_{l,a,u}, then M(B_{l,a}u)(s)=zeta(s)ghat_{l,a,u}(s)"
+    },
+    {
+      "step_id": "T2e",
+      "description": "Identify the stuck point.",
+      "inherited_record_cited": "R2/R5",
+      "intermediate_expression": "Need T_a mathsf P_infty M_{m_l}(I-mathsf P_infty)F_u in zeta * Ghat_a; inherited records do not give this membership"
+    },
+    {
+      "step_id": "U2a",
+      "description": "Specialize to the co-Poisson subclass u=Cg.",
+      "inherited_record_cited": "R2",
+      "intermediate_expression": "F_{Cg}=U_infty(Cg)=M_zeta G, where G=ghat"
+    },
+    {
+      "step_id": "U2b",
+      "description": "Apply the incoming complementary projection.",
+      "inherited_record_cited": "R3/R4",
+      "intermediate_expression": "(I-mathsf P_infty)F_{Cg}=M_zeta G-mathsf P_infty M_zeta G"
+    },
+    {
+      "step_id": "U2c",
+      "description": "Apply the log shift and use scalar multiplier commutation.",
+      "inherited_record_cited": "R1/R5",
+      "intermediate_expression": "M_{m_l}(I-mathsf P_infty)M_zeta G=M_zeta(m_l G)-M_{m_l}mathsf P_infty M_zeta G"
+    },
+    {
+      "step_id": "U2d",
+      "description": "Apply the outgoing projection and Burnol transport.",
+      "inherited_record_cited": "R3/R4",
+      "intermediate_expression": "M(B_{l,a}Cg)=T_a mathsf P_infty M_zeta(m_l G)-T_a mathsf P_infty M_{m_l}mathsf P_infty M_zeta G"
+    },
+    {
+      "step_id": "U2e",
+      "description": "Name the deeper conditional identity exposed by the subclass.",
+      "inherited_record_cited": "R2/R3/R4/R5",
+      "intermediate_expression": "Need zeta-ideal covariance: mathsf P_infty M_zeta G=M_zeta A_infty G and T_a mathsf P_infty M_zeta H=M_zeta A_{T,a}H on the displayed profiles"
+    }
+  ],
+  "factorization_verdict": "V_conditional_subclass",
+  "partial_expression": "M(B_{l,a}u)(s)=[T_a mathsf P_infty M_{m_l}(I-mathsf P_infty)U_infty u](s)",
+  "named_symbolic_gap": {
+    "name": "CP-RED_{l,a}",
+    "precise_statement": "For every legal u, prove J_a P_infty tau_l(I-P_infty)u equals Cg_{l,a,u} in L_a for a legal Burnol generator g_{l,a,u}, or equivalently prove T_a mathsf P_infty M_{m_l}(I-mathsf P_infty)U_infty u belongs to zeta times the admitted Burnol generator Mellin class.",
+    "why_needed": "Step119 supplies zeta only for M(Cg); step115 says the raw log-shift multiplier is nonvanishing and cannot itself supply the zeta divisor."
+  },
+  "subclass_attempt": {
+    "subclass": "u = Cg",
+    "verdict_upgrade": "V_conditional_subclass",
+    "explicit_formula": "For G=ghat and F_{Cg}=M_zeta G, M(B_{l,a}Cg)=T_a mathsf P_infty M_{m_l}(I-mathsf P_infty)M_zeta G = T_a mathsf P_infty M_zeta(m_l G)-T_a mathsf P_infty M_{m_l}mathsf P_infty M_zeta G.",
+    "obstruction_or_named_deeper_lemma": "ZI-COV_{l,a}^{CP}: zeta-ideal covariance on co-Poisson profiles, namely mathsf P_infty M_zeta G=M_zeta A_infty G and T_a mathsf P_infty M_zeta H=M_zeta A_{T,a}H for the resulting profiles H. Under this deeper lemma, alpha_{l,a,Cg}=A_{T,a}(m_l(G-A_infty G)); inherited records do not supply A_infty or A_{T,a}."
+  },
+  "gap_class": "algebraic",
+  "grade": "conditional subclass reduction",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum is support-only without tail/exhaustivity",
+    "scalar L-function identity is not carrier identity"
+  ],
+  "final_verdict": "V_conditional_subclass",
+  "next_step": {
+    "step": 170,
+    "strategic_lanes": [
+      {
+        "lane": "attempt_ZI_COV_projection_on_CP_profiles",
+        "rationale": "Prove or refute mathsf P_infty M_zeta G=M_zeta A_infty G for legal Burnol generator profiles G."
+      },
+      {
+        "lane": "attempt_Ta_zeta_ideal_covariance",
+        "rationale": "Prove or refute T_a mathsf P_infty M_zeta H=M_zeta A_{T,a}H on profiles generated by the subclass computation."
+      },
+      {
+        "lane": "attempt_explicit_CP_counterexample",
+        "rationale": "Choose a legal generator G and test whether the projection term mathsf P_infty M_zeta G has nonzero zero-evaluator derivative."
+      },
+      {
+        "lane": "attempt_conditional_alpha_endpoint_records",
+        "rationale": "If ZI-COV holds on a subfamily, verify that alpha_{l,a,Cg}=A_{T,a}(m_l(G-A_infty G)) has Burnol endpoint and support legality."
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "lindelof": {
+    "carrier": "Lindelof hypothesis for zeta",
+    "mu_definition": "mu(1/2)=limsup_{T->infty} log|zeta(1/2+iT)|/log T",
+    "residual": "Xi_Lindelof(T)=sup_{T'<=T} log|zeta(1/2+iT')|/log T'",
+    "closure": "mu(1/2)=0, equivalently zeta(1/2+iT)=O_epsilon(T^epsilon)",
+    "known_implication": "RH implies Lindelof; converse open"
+  },
+  "subconvexity_family": {
+    "carrier": "Selberg-class subconvexity family",
+    "objects": "L(s,pi) with analytic conductor C(pi)",
+    "convexity_baseline": "L(1/2,pi) << C(pi)^(1/4+epsilon)",
+    "subconvexity": "break exponent 1/4 by a fixed delta>0",
+    "lindelof_limit": "exponent 0",
+    "residual": "Xi_sub(pi)=limsup log|L(1/2,pi)|/log C(pi)",
+    "closure": "Xi_sub(pi)=0 in the Lindelof limit"
+  },
+  "extension": {
+    "finding": "Selberg-Class Subconvexity Extension",
+    "statement": "Beyond per-L RH analogues and cross-correlation residuals, Selberg-class cascades admit critical-line growth-rate residuals. Convexity is the universal baseline; subconvexity is a partial closure; Lindelof is the exponent-zero target.",
+    "status": "candidate verified-on-3-instances corpus-pending",
+    "relation_to_SCDG": "parallel to SCDG, not inside it; SCDG concerns zero-location RH analogues",
+    "relation_to_cross_correlation": "parallel to Cross-Correlation Extension, not inside it; no pairwise coefficient or zero correlation is involved"
+  },
+  "evidence": [
+    {
+      "instance": "zeta Lindelof / Bourgain subconvexity",
+      "object": "zeta(1/2+it)",
+      "baseline": "convexity exponent 1/4",
+      "known_result": "Bourgain 2017 exponent 13/84+epsilon",
+      "typed_shape": "single-L growth residual"
+    },
+    {
+      "instance": "Burgess Dirichlet subconvexity",
+      "object": "L(1/2,chi)",
+      "baseline": "conductor exponent 1/4",
+      "known_result": "Burgess exponent 3/16+epsilon in conductor aspect",
+      "typed_shape": "GL1 growth residual"
+    },
+    {
+      "instance": "Michel-Venkatesh GL(2)",
+      "object": "GL1/GL2 automorphic L-functions",
+      "baseline": "analytic conductor exponent 1/4",
+      "known_result": "subconvexity for GL1 and GL2 over fixed number fields, uniformly in aspects",
+      "typed_shape": "automorphic growth residual"
+    }
+  ],
+  "final_verdict": "V_lindelof_subconvexity_extension"
+}

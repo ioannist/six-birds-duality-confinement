@@ -1,0 +1,38 @@
+{
+  "step": 278,
+  "orientation": "numerical_high_precision",
+  "target": "pure-mpmath \u03a6_max + PSLQ retry",
+  "numpy_replacement_summary": {
+    "critical_path_numpy_usage": "none in compute_phi_max_pure_mpmath_step278.py",
+    "replacement_components": [
+      "mpmath.gauss_quadrature composite panels",
+      "mpmath.matrix operator multiplication",
+      "pure-mpmath sinc hard-band projection proxy"
+    ],
+    "not_completed": "full pure-mpmath PSWF/Sonine eigensystem and SVD replacement"
+  },
+  "phi_max_high_precision": {
+    "reference_inherited": "0.4904766200298252",
+    "best_available_pure_mpmath_proxy": "0.59391022280208870548151963380032299457105965390333003961354810949709559226999945",
+    "best_N": 160,
+    "best_dps": 80,
+    "trusted_digits_vs_reference": 0,
+    "stability_status": "not_stable_enough_for_pslq"
+  },
+  "pslq_high_precision_results": {
+    "status": "not_run_unstable_input",
+    "reason": "pure-mpmath convergence did not produce stable high-precision Phi digits"
+  },
+  "persistence_check": {
+    "basis_size_doubling": "failed",
+    "dps_doubling": "same discretization but not reference-converged",
+    "pslq_persistence": "not applicable"
+  },
+  "retained_nogos": [
+    "No RH claim.",
+    "No Branch A closure claim.",
+    "No closed form accepted from unstable discretization.",
+    "Step 277 precision boundary remains unresolved."
+  ],
+  "final_verdict": "V_branch_A_high_precision_partial"
+}

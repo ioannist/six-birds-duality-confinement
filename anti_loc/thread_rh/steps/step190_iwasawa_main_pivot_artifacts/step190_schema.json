@@ -1,0 +1,85 @@
+{
+  "step": 190,
+  "orientation": "adequacy",
+  "primary_carrier": "Iwasawa Main Conjecture (cyclotomic over Q)",
+  "carrier_definition": {
+    "base": "cyclotomic Z_p-extension Q_infty/Q, with p an odd prime",
+    "Gamma": "Gal(Q_infty/Q) is isomorphic to Z_p",
+    "Lambda": "Z_p[[Gamma]] is isomorphic to Z_p[[T]], with T = gamma - 1 for a topological generator gamma",
+    "type": "Noetherian p-adic module-theoretic carrier, not a complex Hilbert carrier",
+    "native_context": "height-one prime and characteristic-ideal ledger in the Iwasawa algebra"
+  },
+  "iwasawa_module": {
+    "layers": "Q_n in Q_infty, equivalently cyclotomic layers inside Q(mu_{p^{n+1}}) after fixing the standard component",
+    "A_n": "p-primary class-group component in the n-th cyclotomic layer, with character components when chi is fixed",
+    "X_infty": "inverse limit of A_n under norm maps",
+    "module_status": "finitely generated torsion Lambda_chi module in the classical cyclotomic main-conjecture setting",
+    "operator": "Gamma acts continuously on X_infty; T = gamma - 1 is the Lambda coordinate"
+  },
+  "p_adic_L_function": {
+    "name": "Kubota-Leopoldt p-adic L-function L_p(chi)",
+    "element": "L_p(chi) in Lambda_chi, determined up to Lambda_chi unit",
+    "interpolation": "interpolates special Dirichlet L-values in the p-adic variable",
+    "caveat": "interpolation is a p-adic special-value ledger and does not imply the complex zero-line statement for Riemann zeta"
+  },
+  "characteristic_ideal": {
+    "definition": "char_{Lambda_chi}(X_infty^chi)",
+    "zero_structure": "height-one prime valuations and Lambda divisors of the torsion module",
+    "main_conjecture_equality": "char_{Lambda_chi}(X_infty^chi) = (L_p(chi)) up to unit"
+  },
+  "parent_residual_on_IW": {
+    "name": "Xi_IW",
+    "definition": "Xi_IW^chi = div_{Lambda_chi}(char_{Lambda_chi}(X_infty^chi)) - div_{Lambda_chi}(L_p(chi))",
+    "zero_condition": "Xi_IW^chi = 0 iff the characteristic ideal equals the p-adic L-function ideal up to unit",
+    "native_probe_side": "finite-order characters of Gamma, height-one primes, class-group norm-compatible components",
+    "dissolving_probe_side": "p-adic L-values and Kubota-Leopoldt interpolation data"
+  },
+  "CRE_status": "not_CRE",
+  "CRE_status_reason": "Closing Xi_IW proves the Iwasawa main conjecture in the chosen p-adic setting; it does not imply Riemann's complex RH and is not logically equivalent to it.",
+  "CRCFT_applicability": "does_not_apply",
+  "CRCFT_applicability_reason": "CRCFT is the foreclosure taxonomy for classically-RH-equivalent carriers.  This carrier is non-CRE and has a proved native module-theoretic ledger.",
+  "framework_closure_status": {
+    "status": "closed_native_iwasawa",
+    "Xi_IW": "0 by Mazur-Wiles for the cyclotomic carrier over Q, componentwise in the classical scope",
+    "native_ledger": "Lambda characteristic ideal ledger plus Kubota-Leopoldt p-adic L-function",
+    "extensions": "Wiles 1990 extends the main conjecture to totally real fields; Skinner-Urban 2014 supplies GL2 main-conjecture results under stated ordinary/hypothesis scopes",
+    "does_not_transfer_to_RH": true
+  },
+  "iwasawa_verdict": "V_iwasawa_closes",
+  "classical_theorems_cited": [
+    {
+      "source": "Iwasawa 1959 and later foundational papers",
+      "use": "cyclotomic tower, Iwasawa modules, Lambda-adic class-group structure"
+    },
+    {
+      "source": "Kubota-Leopoldt 1964",
+      "use": "construction of p-adic L-functions for Dirichlet characters"
+    },
+    {
+      "source": "Mazur-Wiles 1984, Class fields of abelian extensions of Q",
+      "use": "proof of the cyclotomic Iwasawa main conjecture over Q"
+    },
+    {
+      "source": "Wiles 1990, The Iwasawa conjecture for totally real fields",
+      "use": "totally real extension of the main conjecture"
+    },
+    {
+      "source": "Skinner-Urban 2014, The Iwasawa Main Conjectures for GL2",
+      "use": "GL2 p-adic main-conjecture extension under stated hypotheses"
+    }
+  ],
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1",
+    "de Branges RH-carrier closure target-equivalence / Conrey-Li survival",
+    "Hilbert-Polya/Berry-Keating standard xp bridge failure and modified-operator target-equivalence",
+    "Connes adelic trace-formula full closure target-equivalence / completed spectral ledger not inherited"
+  ],
+  "final_verdict": "V_iwasawa_closes"
+}
+

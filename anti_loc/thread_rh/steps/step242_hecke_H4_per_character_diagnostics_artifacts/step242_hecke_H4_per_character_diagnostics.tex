@@ -1,0 +1,75 @@
+\section*{Step 242: Hecke H4 Per-Character Finite Diagnostics}
+
+\subsection*{H4 Specification}
+
+For a Hecke character \(\chi\), H4 asks for finite matrix diagnostics on the
+first few zeros of \(L(s,\chi)\). The intended matrix entries are
+\[
+c_{ij}^{\chi}(\ell)
+ =
+\left\langle
+\kappa_{\chi,i},
+(I-P_{\infty,\chi})M_{m_\ell}P_{\infty,\chi}
+\kappa_{\chi,j}
+\right\rangle,
+\]
+with Gram matrix
+\[
+G_{ij}^{\chi}=\langle \kappa_{\chi,i},\kappa_{\chi,j}\rangle.
+\]
+The finite residual is the compressed matrix-source quantity, for example
+\[
+\Xi_{\mathrm{matrix}}^{\chi}
+ =
+\operatorname{tr}\left(
+G_\chi^{-1}(c^\chi)^*G_\chi^{-1}c^\chi
+\right),
+\]
+or the equivalent normalized finite diagnostic.
+
+\subsection*{Inherited Records}
+
+Step 92 declares Hecke source and character objects, but the completed response
+space, Plancherel measure, character readouts, auxiliary explicit formula
+records, and finite-to-completed tail records remain open.
+
+Step 167 records H4 as the branch
+\[
+\texttt{per\_character\_finite\_carrier}
+\]
+with status \(\texttt{finite\_carrier\_diagnostic\_only}\). Step 168 retains
+H6 non-comparability, so no Hecke finite packet transfers to the
+Burnol/Sonine residual.
+
+Step 177 showed that the Burnol/Sonine Branch B finite diagnostic required the
+explicit vector \(\kappa_{a,w}\). Step 201 supplied that vector for the
+Burnol/Sonine carrier using Burnol 2002/2004. That is not a Hecke record. H4
+would need a Hecke-projected reproducing kernel, Hecke \(\kappa_{\chi,w}\), and
+the action of \(P_{\infty,\chi}\). None is inherited.
+
+\subsection*{No-Go Discipline}
+
+H4 cannot assume auxiliary GRH for \(L(s,\chi)\), cannot promote finite
+character packets to full character-spectrum evidence, and cannot identify
+the trivial Hecke scalar \(L\)-function with the Burnol/Sonine carrier.
+
+\subsection*{Literature Audit}
+
+Iwaniec-Kowalski supply the analytic framework for Hecke \(L\)-functions.
+Conrey-Iwaniec and related work supply Hecke zero-spacing and family
+statistics. Burnol's Fourier/zeta papers supply the zeta/Sonine kernel
+machinery and related \(L\)-function context. Recent de Branges/RKHS papers
+give reproducing-kernel methods for low-lying \(L\)-function zeros.
+
+These sources do not supply the H4 package: a Hecke projected kernel,
+\(\kappa_{\chi,w}\), \(P_{\infty,\chi}\), and the lawful finite
+matrix-source residual.
+
+\subsection*{Verdict}
+
+\[
+\texttt{V\_hecke\_H4\_blocked\_external}.
+\]
+
+H4 remains diagnostic-only until external Hecke kernel/projection records are
+supplied.

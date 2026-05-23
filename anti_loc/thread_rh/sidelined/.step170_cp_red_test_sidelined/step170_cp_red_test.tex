@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,geometry}
+\geometry{margin=1in}
+\title{Step 170: CP-RED Test on Explicit Legal Burnol Generators}
+\author{RH Membrane / Burnol--Sonine Residual Thread}
+\date{}
+\newcommand{\Chat}{\mathcal C}
+\newcommand{\Mell}{\mathcal M}
+\newcommand{\Pinfty}{P_\infty}
+\newcommand{\Pinfm}{\mathsf P_\infty}
+\newcommand{\Uinf}{\mathcal U_\infty}
+\begin{document}
+\maketitle
+
+\section{Inherited Records Used}
+Step 119 supplies, for legal Burnol generators,
+\[
+  \widehat g(s)=\int_0^\infty g(t)t^{-s}\,dt,\qquad
+  \Chat g(t)=\sum_{n\ge1}\frac{g(t/n)}n-\widehat g(1),
+\]
+and, when \(\widehat g(0)=\widehat g(1)=0\),
+\[
+  \Mell(\Chat g)(s)=\zeta(s)\widehat g(s).
+\]
+Step 169 supplies the shifted packet formula
+\[
+  \Mell(J_a\Pinfty\tau_\ell(I-\Pinfty)u)(s)
+  =
+  [T_a\Pinfm M_{m_\ell}(I-\Pinfm)\Uinf u](s),
+  \qquad m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+For the co-Poisson subclass \(u=\Chat g\), Step 169 records
+\[
+  \Uinf u = M_\zeta G,\qquad G=\widehat g,
+\]
+so
+\[
+  \Mell(J_a\Pinfty\tau_\ell(I-\Pinfty)\Chat g)(s)
+  =
+  [T_a\Pinfm M_{m_\ell}(I-\Pinfm)M_\zeta G](s).
+\]
+
+\section{Explicit Legal Generator}
+Take \(a=1/4\), \(A=4\), and \(\ell=\log 2\).  For \(r<R\), define
+\[
+  \beta_{r,R}(t)=
+  \begin{cases}
+  \exp\!\left(-\dfrac{(R-r)^2}{(t-r)(R-t)}\right),& r<t<R,\\
+  0,&\text{otherwise.}
+  \end{cases}
+\]
+This is \(C_c^\infty\) and vanishes to infinite order at the endpoints.  The
+test generator is
+\[
+\begin{aligned}
+g(t)=&\ \beta_{0.40,0.70}(t)
+(-2.42572377955429)\beta_{0.90,1.30}(t)
+(+1.11714918636953)\beta_{1.70,2.30}(t).
+\end{aligned}
+\]
+Its support is contained in \([1/4,4]\).  Direct quadrature gives
+\[
+  \widehat g(0)=0.0000000000000000e+00,\qquad
+  \widehat g(1)=8.6736173798840355e-19.
+\]
+Thus \(g\) is a legal Step 119 generator to numerical quadrature precision.
+
+\section{Co-Poisson Computation}
+The Burnol atom is \(u_G=\Chat g\), i.e.
+\[
+  u_G(t)=\sum_{n\ge1}\frac{g(t/n)}n-\widehat g(1).
+\]
+Since \(g\) is supported in \([0.40,2.30]\), this is a finite sum at each fixed
+\(t\).  For example:
+\[
+\begin{array}{c|c}
+t & u_G(t)\\
+\hline
+0.45 & 7.465858083767e-04\\
+0.60 & 1.110899653824e-02\\
+1.00 & -6.156774837415e-03\\
+2.00 & 1.739626876281e-02\\
+3.00 & 1.708435959246e-04
+\end{array}
+\]
+The Mellin target is
+\[
+  \Mell(u_G)(s)=\zeta(s)G(s),\qquad G(s)=\widehat g(s).
+\]
+At the sampled first zero ordinate \(\tau_1=14.134725141734693\),
+\[
+  G(1/2+i\tau_1)=-4.808111595503e-03+7.053982953328e-03i,\qquad
+  \zeta(1/2+i\tau_1)G(1/2+i\tau_1)
+  =4.608796116687e-18+4.346833037843e-18i.
+\]
+
+\section{Transported Packet for the Same Legal Input}
+For \(u_G=\Chat g\) and \(\ell=\log 2\), \(m_\ell(s)=2^{s-1/2}\).  The
+inherited operator records give the explicit transported packet
+\[
+\boxed{
+  \Mell(J_{1/4}\Pinfty\tau_{\log 2}(I-\Pinfty)u_G)(s)
+  =
+  [T_{1/4}\Pinfm M_{2^{s-1/2}}(I-\Pinfm)M_\zeta G](s).
+}
+\]
+Expanding the complementary projection:
+\[
+\begin{aligned}
+&[T_{1/4}\Pinfm M_{2^{s-1/2}}(I-\Pinfm)M_\zeta G](s)\\
+&\quad=
+[T_{1/4}\Pinfm M_\zeta(2^{s-1/2}G)](s)
+-
+[T_{1/4}\Pinfm M_{2^{s-1/2}}\Pinfm M_\zeta G](s).
+\end{aligned}
+\]
+
+\section{Comparison With Co-Poisson Form}
+To verify CP-RED on this input, one must produce a legal \(h\) such that
+\[
+  [T_{1/4}\Pinfm M_{2^{s-1/2}}(I-\Pinfm)M_\zeta G](s)
+  =
+  \zeta(s)\widehat h(s).
+\]
+The direct same-generator comparison \(h=g\) would require
+\[
+  [T_{1/4}\Pinfm M_{2^{s-1/2}}(I-\Pinfm)M_\zeta G](s)
+  =
+  \zeta(s)G(s).
+\]
+This is the exact algebraic step where the computation halts.  The inherited
+records provide the formal placement of \(\Pinfm\), \(M_{m_\ell}\), and \(T_a\),
+but do not provide the kernel or matrix elements of \(\Pinfm\), the action of
+\(T_a\) on this profile, or a zeta-ideal covariance theorem of the form
+\[
+  \Pinfm M_\zeta G \in M_\zeta(\text{legal profiles}),
+  \qquad
+  T_a\Pinfm M_\zeta H\in M_\zeta(\text{legal profiles}).
+\]
+
+\section{Verdict and Nonclaim}
+\[
+  \boxed{\texttt{factorization\_verdict = V\_CPRED\_STUCK}.}
+\]
+The step computes an explicit legal generator and its co-Poisson packet, and it
+computes the inherited shifted-packet expression for the corresponding legal
+input \(u_G=\Chat g\).  It neither establishes nor refutes CP-RED because the
+missing operation is the exact \(\Pinfm/T_a\) action on the explicit profile
+\(M_\zeta G\).
+
+This step does not establish RH, does not establish \(\Xi_{BC}=0\), and does
+not promote the unshifted co-Poisson identity to a shifted-packet identity.
+\end{document}

@@ -1,0 +1,280 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{countermodel}{Countermodel}
+\newcommand{\Rng}{\operatorname{Ran}}
+\newcommand{\Kr}{\operatorname{Ker}}
+\newcommand{\Capa}{\operatorname{Cap}}
+\newcommand{\Costs}{\operatorname{Cost}}
+\newcommand{\Tr}{\operatorname{tr}}
+
+\title{Step 25: Predictive Probe-Family Capacity\\Forward-Stable Shadow Prices for Formed Closures}
+\author{RATCHET anti-localization workstream}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Step 23 upgraded scalar probe capacity to a finite probe-family currency matrix. This note upgrades the static family theorem to the predictive/refinement setting. The main object is a transported family-capacity sequence
+\[
+\widehat K_j = R_j L_j\Gamma_j C_{\Gamma,j}^{\dagger}\Gamma_j^*L_j^*R_j^*,
+\]
+valued on a common response space. A formed predictive closure is anti-localized against its native probe family exactly when these transported matrices admit a common Loewner budget
+\[
+\widehat K_j\preceq \Theta\qquad(j\ge j_0).
+\]
+Equivalently, every native recombination has uniformly bounded forward capacity. The note also proves a summable-defect propagation theorem and records countermodels showing why current-depth, branchwise, or pointwise finite capacity does not imply predictive anti-localization.
+\end{abstract}
+
+\section{Static family capacity recalled}
+Let \(\Gamma:E\to H\) be an exact packaged carrier, \(C\succeq0\) an audit energy on \(H\), and \(L:H\to Y\) a declared finite probe family. Put
+\[
+ C_\Gamma=\Gamma^*C\Gamma,\qquad L_\Gamma=L\Gamma.
+\]
+The family currency matrix is
+\[
+ K_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*.
+\]
+Null-mode legality means
+\[
+\Rng L_\Gamma^*\subseteq\Rng C_\Gamma,
+\]
+or equivalently every declared recombination annihilates \(\Kr C_\Gamma\). Under this condition,
+\[
+\Capa_C(y^*L;\Rng\Gamma)=y^*K_{C,\Gamma}(L)y.
+\]
+For a desired response \(z\in\Rng L_\Gamma\),
+\[
+\Costs_C(z;L,\Gamma)
+=\inf\{a^*C_\Gamma a:L_\Gamma a=z\}
+=z^*K_{C,\Gamma}(L)^\dagger z.
+\]
+Thus \(K\) is the compliance or shadow-value matrix, while \(K^\dagger\) is the resistance or minimum-spend matrix.
+
+\section{Predictive closures and response transport}
+
+\begin{definition}[Predictive probe-family ladder]
+A predictive probe-family ladder consists of:
+\begin{enumerate}[label=(\roman*)]
+\item exact packaged carriers \(\Gamma_j:E_j\to H_j\),
+\item audit energies \(C_j\succeq0\) and compressed forms \(C_{\Gamma,j}=\Gamma_j^*C_j\Gamma_j\),
+\item declared native probe families \(L_j:H_j\to Y_j\),
+\item response transports \(R_j:Y_j\to Y_*\) into a common finite response space \(Y_*\),
+\item null-mode legality \(\Rng (L_j\Gamma_j)^*\subseteq\Rng C_{\Gamma,j}\) for all accepted levels.
+\end{enumerate}
+The transported family currency matrix is
+\[
+\widehat K_j
+:=R_jL_j\Gamma_jC_{\Gamma,j}^{\dagger}\Gamma_j^*L_j^*R_j^*\in\mathcal B(Y_*)_+.
+\]
+For \(y\in Y_*\), the level-\(j\) transported recombination probe is
+\[
+\ell_{j,y}(a)=\langle y,R_jL_j\Gamma_j a\rangle.
+\]
+\end{definition}
+
+\begin{definition}[Predictive capacity functional]
+For \(y\in Y_*\), define
+\[
+\Capa_{\rm pred}(y):=\sup_{j\ge j_0} y^*\widehat K_j y.
+\]
+A predictive family certificate with budget \(\Theta\succeq0\) is the Loewner bound
+\[
+\widehat K_j\preceq\Theta\qquad(j\ge j_0).
+\]
+\end{definition}
+
+\begin{theorem}[Predictive family anti-localization]
+Let \((\widehat K_j)_{j\ge j_0}\) be the transported family currencies of a predictive ladder. For \(\Theta\succeq0\), the following are equivalent:
+\begin{enumerate}[label=(\alph*)]
+\item \(\widehat K_j\preceq\Theta\) for every \(j\ge j_0\).
+\item Every native transported recombination has uniformly bounded forward capacity:
+\[
+\Capa_{\rm pred}(y)\le y^*\Theta y\qquad(y\in Y_*).
+\]
+\end{enumerate}
+Consequently, a formed predictive closure with such a \(\Theta\) has no native predictive recombination needles relative to \((L_j,R_j,C_j,\Gamma_j)\).
+\end{theorem}
+
+\begin{proof}
+By the static family theorem,
+\[
+\Capa_{C_j}(\ell_{j,y};\Rng\Gamma_j)=y^*\widehat K_jy.
+\]
+Thus \(\widehat K_j\preceq\Theta\) for all \(j\) is equivalent to
+\[
+y^*\widehat K_jy\le y^*\Theta y\qquad\text{for all }y,j.
+\]
+Taking the supremum over \(j\) gives (b). Conversely, if (b) holds, then for each fixed \(j\),
+\[
+y^*\widehat K_jy\le \sup_k y^*\widehat K_ky\le y^*\Theta y
+\]
+for all \(y\), hence \(\widehat K_j\preceq\Theta\).
+\end{proof}
+
+\begin{remark}[Closure-only scope]
+This theorem is deliberately scoped to formed predictive closures. A non-closed artifact may have no common response transport, no stable native family, no null-mode ledger, or no forward audit budget. Such artifacts are outside the no-needle claim. In Six Birds language: closure first, no-native-predictive-needle theorem second.
+\end{remark}
+
+\section{A summable-defect propagation theorem}
+
+The predictive theorem above is a certificate criterion. The next theorem gives a mechanism for producing \(\Theta\) from a refinement defect ledger.
+
+\begin{theorem}[Summable Loewner defect propagation]
+Let \((K_j)_{j\ge0}\) be positive semidefinite matrices on a common finite response space. Suppose there are scalars \(\varepsilon_j\ge0\) and positive semidefinite defect matrices \(D_j\succeq0\) such that
+\[
+K_{j+1}\preceq (1+\varepsilon_j)K_j+D_j.
+\]
+For \(0\le m<n\), set
+\[
+P_{m,n}:=\prod_{r=m}^{n-1}(1+\varepsilon_r),
+\qquad P_{n,n}:=1.
+\]
+Then
+\[
+K_n\preceq P_{0,n}K_0+\sum_{m=0}^{n-1}P_{m+1,n}D_m.
+\]
+In particular, if
+\[
+P_\infty:=\prod_{r=0}^\infty(1+\varepsilon_r)<\infty,
+\qquad \sum_{m=0}^\infty D_m\preceq D_\infty
+\]
+for some finite positive semidefinite \(D_\infty\), then
+\[
+K_n\preceq P_\infty(K_0+D_\infty)
+\qquad(n\ge0).
+\]
+Thus
+\[
+\Theta:=P_\infty(K_0+D_\infty)
+\]
+is a predictive family anti-localization budget.
+\end{theorem}
+
+\begin{proof}
+Iterating once gives the claim for \(n=1\). Assume it holds for \(n\). Then
+\begin{align*}
+K_{n+1}
+&\preceq (1+\varepsilon_n)K_n+D_n\\
+&\preceq (1+\varepsilon_n)\left(P_{0,n}K_0+\sum_{m=0}^{n-1}P_{m+1,n}D_m\right)+D_n\\
+&=P_{0,n+1}K_0+\sum_{m=0}^{n-1}P_{m+1,n+1}D_m+D_n,
+\end{align*}
+which is the formula with \(P_{n+1,n+1}=1\). If the infinite product and defect sum are bounded, then \(P_{m+1,n}\le P_\infty\) and \(P_{0,n}\le P_\infty\), giving the stated uniform budget.
+\end{proof}
+
+\begin{remark}[Strict extension versus fixed iteration]
+The theorem does not say refinement automatically improves capacity. It says predictive anti-localization follows when the refinement defect ledger is summable in Loewner order. If a fixed package merely iterates without new constraints, one typically gets saturation rather than contraction. A genuine capacity decrease must be charged to a strict package change, a new admissible constraint, or a controlled negative defect that is itself audited.
+\end{remark}
+
+\section{Commuting ladders and canonical budgets}
+
+\begin{proposition}[Commuting predictive budget]
+Suppose all \(K_j\) commute, so there is a common orthonormal basis with
+\[
+K_j=\operatorname{diag}(\lambda_{j,1},\dots,\lambda_{j,m}).
+\]
+Then the least diagonal Loewner budget is
+\[
+\Theta_{\min}=\operatorname{diag}\left(\sup_j\lambda_{j,1},\dots,\sup_j\lambda_{j,m}\right),
+\]
+provided the displayed suprema are finite. If any supremum is infinite, no finite diagonal predictive budget exists.
+\end{proposition}
+
+\begin{proof}
+A diagonal \(\Theta=\operatorname{diag}(\theta_1,\dots,\theta_m)\) dominates every \(K_j\) iff \(\theta_\mu\ge \lambda_{j,\mu}\) for all \(j,\mu\). The minimal diagonal choice is the coordinatewise supremum.
+\end{proof}
+
+\begin{remark}
+For noncommuting families, a predictive budget may exist but need not be canonically represented by a coordinatewise maximum. The audit must declare the chosen \(\Theta\) or the optimization criterion used to select it. This is a family-level form of no-smuggling: the budget is part of the certificate.
+\end{remark}
+
+\section{Predictive quotient}
+
+\begin{definition}[Current and predictive equivalence]
+At level \(j_0\), two recombination vectors \(y,z\in Y_*\) are current-equivalent if
+\[
+y^*\widehat K_{j_0}y=z^*\widehat K_{j_0}z.
+\]
+They are predictively equivalent if
+\[
+y^*\widehat K_jy=z^*\widehat K_jz\qquad\text{for all }j\ge j_0.
+\]
+The predictive quotient refines the current quotient whenever there exist current-equivalent recombinations that become distinct at a later level.
+\end{definition}
+
+\begin{countermodel}[Current equivalence need not be predictive]
+Let \(Y_*=\mathbb R^2\),
+\[
+K_0=I,
+\qquad
+K_n=\begin{pmatrix}1&0\\0&n\end{pmatrix}\quad(n\ge1).
+\]
+Then \(e_1\) and \(e_2\) are current-equivalent at \(n=0\), but
+\[
+e_1^*K_ne_1=1,
+\qquad e_2^*K_ne_2=n.
+\]
+Thus \(e_2\) becomes a predictive needle while \(e_1\) remains bounded.
+\end{countermodel}
+
+\section{Recombination countermodels under refinement}
+
+\begin{countermodel}[Growing family: branchwise predictive bounds do not control recombination]
+Let the response space at depth \(m\) be \(Y_m=\mathbb C^m\), embedded into \(\ell^2(\mathbb N)\) by the first \(m\) coordinates. Let
+\[
+K_m=\mathbf 1_m\mathbf 1_m^*,
+\]
+where \(\mathbf 1_m=(1,\dots,1)\in\mathbb C^m\). Every coordinate probe has capacity
+\[
+e_i^*K_me_i=1.
+\]
+But the normalized recombination
+\[
+y_m=\frac{1}{\sqrt m}\mathbf 1_m
+\]
+has capacity
+\[
+y_m^*K_my_m=m.
+\]
+Thus branchwise predictive capacity is uniformly bounded, while recombination capacity diverges. This is the predictive form of the cancellation/recombination needle.
+\end{countermodel}
+
+\begin{countermodel}[Pointwise finite is not predictive]
+Let \(Y_*=\mathbb R\) and \(K_j=j\). Every finite stage has finite capacity, but
+\[
+\Capa_{\rm pred}(1)=\sup_j j=\infty.
+\]
+Thus finite current certificates do not imply predictive anti-localization.
+\end{countermodel}
+
+\section{Six Birds reading}
+
+A predictive family anti-localization certificate records:
+\[
+\mathsf{PredAL}=(\Gamma_j,C_j,L_j,R_j,\widehat K_j,\Theta,D_j,\varepsilon_j,\mathsf{Audit})_{j\ge j_0}.
+\]
+It is accepted only for formed closures/layers and only when:
+\begin{enumerate}[label=(\roman*)]
+\item carriers are exact at each accepted level;
+\item native probe families are declared;
+\item response transports are lawful;
+\item null modes are quotiented or annihilated;
+\item recombinations are controlled by a matrix budget \(\Theta\), not merely by scalar diagonals;
+\item refinement defects are summable or otherwise dominated;
+\item no public shadow, route-local, or current-only certificate is overread as predictive anti-localization.
+\end{enumerate}
+The certificate then supports the scoped claim:
+\[
+\boxed{\text{the formed predictive closure has no native predictive recombination needles.}}
+\]
+It does not license claims about unformed artifacts, undeclared probes, or raw substrates.
+
+\end{document}

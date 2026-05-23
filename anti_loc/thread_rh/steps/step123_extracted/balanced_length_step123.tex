@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\title{Step 123: Balanced-Length Theorem for the Regularized Müntz/co-Poisson Shadow}
+\author{RATCHET / RH Membrane Program}
+\date{May 2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 122 made the Burnol-to-Dirichlet readability gate lawful by replacing naive critical-line partial sums with a smooth M\"untz/co-Poisson shadow.  The new problem is quantitative: the M\"untz shadow must be long enough to approximate the Burnol/co-Poisson target on the declared vertical window, but short enough to remain inside the available Heap--Soundararajan style source estimates.
+
+This note gives the first balanced-length theorem.  It does not prove RH.  It states the exact compatibility inequality that must hold before the source route can close.
+
+\section{Objects}
+Let
+\[
+Y_{B,N}
+\]
+be a finite Burnol/co-Poisson atom window, and let
+\[
+B_N:Y_{B,N}\to H_N
+\]
+be the exact Burnol response synthesis map.  Let
+\[
+D_N^{\rm reg}:\mathbb C^{I_N}\to H_N
+\]
+be the declared regularized M\"untz/co-Poisson Dirichlet-readable synthesis family, and let
+\[
+P_N^{\rm reg}
+\]
+denote orthogonal projection onto its range.  The regularized shadow defect is
+\[
+\delta_{BD,N}^{\rm reg}
+=
+\left\|(I-P_N^{\rm reg})B_NG_{B,N}^{-1/2}\right\|.
+\]
+Equivalently,
+\[
+\Xi_{BD,N}^{\rm reg}=B_N^*(I-P_N^{\rm reg})B_N.
+\]
+
+The effective hybrid visibility constant has the form
+\[
+c_{{\rm hyb},N}
+\ge
+1-
+\bigl(
+\epsilon_{B,N}+\tau_{{\rm reg},N}
+\bigr)^2,
+\]
+where
+\[
+\tau_{{\rm reg},N}
+=
+\epsilon_{{\rm Mell},N}+\tau_{M,N}+\kappa_{{\rm tail},N}.
+\]
+
+\section{Length parameters}
+Let
+\[
+T_N = \text{vertical / spectral window},
+\]
+\[
+X_N = \text{M\"untz smoothing length},
+\]
+\[
+R_N = \text{Burnol atom intrinsic coefficient length},
+\]
+\[
+A_N = \text{uniform Burnol atom complexity},
+\]
+\[
+Q_N = \text{source conductor / averaging scale}.
+\]
+After multiplying the Burnol atom shadow by the regularized zeta shadow, the effective Dirichlet length is
+\[
+L_N\asymp X_NR_N.
+\]
+The source method is assumed valid only in the short-polynomial range
+\[
+L_N\le Q_N^{\theta_{\rm src}-o(1)}.
+\]
+For the direct Heap--Soundararajan template one should think of \(\theta_{\rm src}\) as small, since their construction deliberately keeps the Dirichlet polynomial short.
+
+\section{Error model}
+We use the following abstract but checkable model:
+\[
+\tau_{M,N}\le C A_N(1+T_N)^\alpha X_N^{-\eta},
+\]
+\[
+\epsilon_{{\rm Mell},N}+\kappa_{{\rm tail},N}\le C A_NR_N^{-\beta}.
+\]
+Here \(\eta>0\) is the decay exponent obtained by moving the M\"untz contour, \(\alpha\) is the vertical-window growth exponent, and \(\beta\) is the Burnol-to-coefficient modeling exponent.
+
+\section{Polynomial exponent form}
+Suppose
+\[
+T_N=Q_N^t,
+\quad
+A_N\le Q_N^a,
+\quad
+X_N=Q_N^x,
+\quad
+R_N=Q_N^r.
+\]
+Then the conditions become:
+\[
+a+\alpha t-\eta x<0,
+\]
+\[
+a-\beta r<0,
+\]
+\[
+x+r<\theta_{\rm src}.
+\]
+
+\begin{theorem}[Balanced-length compatibility]
+Under the polynomial error model above, there exist exponents \(x,r>0\) such that the regularized shadow errors vanish and the Dirichlet polynomial remains in the source-valid range if and only if
+\[
+\boxed{
+\frac{a+\alpha t}{\eta}+\frac{a}{\beta}<\theta_{\rm src}.
+}
+\]
+More precisely, any choice satisfying
+\[
+x>\frac{a+\alpha t}{\eta},
+\qquad
+r>\frac{a}{\beta},
+\qquad
+x+r<\theta_{\rm src}
+\]
+works, and no polynomial choice works if the displayed strict inequality fails.
+\end{theorem}
+
+\begin{proof}
+The M\"untz contour residual tends to zero if
+\[
+A_NT_N^\alpha X_N^{-\eta}=Q_N^{a+\alpha t-\eta x}\to0,
+\]
+which is equivalent to \(x>(a+\alpha t)/\eta\).  The Mellin/coefficient and support-tail errors tend to zero if
+\[
+A_NR_N^{-\beta}=Q_N^{a-\beta r}\to0,
+\]
+which is equivalent to \(r>a/\beta\).  The source estimate remains lawful if
+\[
+X_NR_N=Q_N^{x+r}\le Q_N^{\theta_{\rm src}-o(1)},
+\]
+which requires \(x+r<\theta_{\rm src}\).  These three strict inequalities are feasible exactly when the sum of the two lower bounds is less than \(\theta_{\rm src}\).
+\end{proof}
+
+\section{Consequences}
+\subsection{Same-aspect obstruction}
+If \(Q_N\) and \(T_N\) are the same scale, then \(t=1\).  With bounded atom complexity \(a=0\) and no intrinsic coefficient length cost \(r=0\), the necessary condition is
+\[
+\frac{\alpha}{\eta}<\theta_{\rm src}.
+\]
+This is the simplest obstruction.  If the contour error grows like a positive power of the same vertical window and the source machinery only allows very short polynomials, the same-aspect route is blocked.
+
+\subsection{Decoupled conductor route}
+If the source conductor scale \(Q_N\) may grow faster than the vertical window \(T_N\), then \(t<1\).  The condition becomes
+\[
+\frac{a+\alpha t}{\eta}+\frac{a}{\beta}<\theta_{\rm src}.
+\]
+Thus a sufficiently large conductor family can leave room for both M\"untz accuracy and source validity.  This points toward the conductor/aspect character ladder rather than a pure t-aspect route.
+
+\subsection{Positive floor regime}
+Vanishing readability error is sufficient but not strictly necessary for source absorption.  If
+\[
+\epsilon_{B,N}+\tau_{{\rm reg},N}\le 1-\delta
+\]
+for some \(\delta>0\), then
+\[
+c_{{\rm hyb},N}\ge 1-(1-\delta)^2>0.
+\]
+Hence any source strength \(\gamma_N\to\infty\) gives
+\[
+\gamma_Nc_{{\rm hyb},N}\to\infty.
+\]
+This still requires fixed/exhaustive tail promotion; a positive visibility floor alone is not an RH proof.
+
+\section{RH-route reading}
+The source route now has five quantitative obligations:
+\[
+\epsilon_{B,N}\quad\text{Burnol geometric exhaustion},
+\]
+\[
+\epsilon_{{\rm Mell},N}\quad\text{Mellin/Dirichlet modeling},
+\]
+\[
+\tau_{M,N}\quad\text{M\"untz contour residual},
+\]
+\[
+\kappa_{{\rm tail},N}\quad\text{finite-window tail/support},
+\]
+\[
+\gamma_N\quad\text{Hecke/Dirichlet source strength}.
+\]
+The accepted lower-frame route requires
+\[
+\boxed{
+\gamma_N\left[1-(\epsilon_{B,N}+\epsilon_{{\rm Mell},N}+\tau_{M,N}+\kappa_{{\rm tail},N})^2\right]\to\infty
+}
+\]
+with fixed/exhaustive ledger promotion.
+
+\section{Strategic verdict}
+The same-aspect version is likely underpowered if one imports the current short-polynomial moment technology without improvement.  The viable route is therefore:
+\[
+\boxed{
+\text{decouple the source conductor scale from the vertical M\"untz window.}
+}
+\]
+Equivalently, use a conductor/aspect Hecke or Dirichlet family to obtain a larger source-valid range than the M\"untz shadow length would permit in pure t-aspect.
+
+\section{Next target}
+The next concrete theorem is a conductor-decoupled source theorem:
+\[
+\boxed{
+\text{construct }Q_N\gg T_N\text{ source families such that }L_N=X_NR_N\le Q_N^{\theta_{\rm src}}
+}
+\]
+while retaining the residual-specific lower-frame inequality on \(\Xi^{\rm BC}\).
+
+\end{document}

@@ -1,0 +1,2549 @@
+HECKE ALGEBRAS, TYPE III FACTORS AND
+PHASE TRANSITIONS WITH SPONTANEOUS SYMMETRY
+BREAKING IN NUMBER THEORY
+
+Jean-Benoît BOST
+
+and
+
+Alain CONNES
+
+Institut des Hautes Etudes Scientifiques
+35, route de Chartres
+91440 – Bures-sur-Yvette (France)
+Avril 1995
+IHES/M/95/38
+
+Hecke Algebras, Type III Factors and
+Phase Transitions with Spontaneous Symmetry
+Breaking in Number Theory
+Jean-Benoît BOST
+
+and
+
+Alain CONNES
+
+In this paper we shall discuss an example of a quantum statistical mechanical system,
+arising from the statistical theory of prime numbers, which exhibits a phase transition
+with spontaneous symmetry breaking (cf. [Bos-C]). The original motivation for these
+results comes from the work of B. Julia [J] (cf. also [Spe]).
+Table of contents
+1. Description of the system and its phase transition.
+2. Bosonic second quantization and prime numbers as a subset of R.
+3. Products of trees and the noncommutative Hecke algebra.
+4. Presentation of the C*-algebra CQ = C*R( PQ+ , P+Z ).
+5. Action of W x R on CQ.
+6. Construction of KMSβ states for β > 1.
+7. Uniqueness of KMSβ states for β ]0,1].
+
+1. Description of the system and its phase transition
+Let us first recall the general discussion of quantum statistical mechanics and phase transitions. A quantum statistical system is given by:
+α) The C*-algebra of observables: A.
+β) The time evolution ((σt)tR, which is a one parameter group of automorphisms of A.
+An equilibrium, or KMS state, at inverse temperature β on (A, σt) is a state φ on A which
+fulfills the KMSβ condition with respect to σt, namely for any x, y A, there exists a
+1
+
+bounded holomorphic function, (continuous on the closed strip), Fx,y(z), 0 < Imz < β
+such that:
+Fx,y(t) = φ(x <Tt(y))
+Fx,y(t + iβ) = φ(σι(y)x)
+
+Vt
+
+R
+vt R .
+
+In the simplest case where A = MN(C) is the algebra of Ν x N matrices, any one parameter
+group of automorphisms (σt )tR of A is of the form:
+crt(x) = eitH X e
+
+-itH
+
+Vx e A , t R
+
+for some selfadjoint element Η = H* A. Then for any β
+KMS/j state for at, and it is given by the formula:
+
+[0,oo[, one has a unique
+
+Note here that H is only defined up to an additive constant by σt, so that the normalization
+), cannot be recovered from σt. However the following formula holds:
+factor: Trace(e
+-Bw
+
+Log Trace(e- BH ) =Sup ( S( φ ) — βφ(Η ) )
+φ
+where φ varies over all states on A and S(φ) is the entropy of the state:
+S(φ) = —Trace(ρLogρ) for φ = Trace( ρ. ) .
+In a slightly more involved situation, that of systems without interaction it is still true that
+for any β [0, ∞[ there exists a unique KMSβ state. More precisely one has the following
+immediate:
+Proposition 1. Let A = <g> A be an infinite tensor product of matrix algebras A =
+v
+
+v
+
+Mnv (C), and at = <g> σ” a product time evolution. Then for any β > 0, there exists a
+unique KMSβ state φβ for (A,σt), and one has φβ =© φβ,v, where φ β, ν is the unique
+KMSβ state for (Αv,σvt).
+For interesting systems with interaction, one expects in general that for large temperature,
+i.e. small β, the disorder will be predominent so that there will exist only one KMSβ
+state. For small enough temperature some order should set in and allow for the existence
+of various thermodynamical phases, i.e. of various KMSβ states. It is a very important
+general fact of the C*-algebraic formulation of quantum statistical mechanics that for a
+2
+
+given β every KMSβ state decomposes uniquely as a statistical superposition of extreme
+KMSβ states:
+Proposition 2. ([Br-R] [H]) Let (Α,σt) be a C*-dynamical system and β G [0, oo[. Then
+the space of KMSβ states is a compact convex Choquet simplex.
+For a careful discussion of the link between extreme KMSβ states and thermodynamical
+phases we refer the reader to [Η].
+As a simple (classical) example illustrating the coexistence of phases at small temperature
+one can think of the phase diagram for water and vapor or better for the ferromagnet.
+In the latter example when the temperature T is larger than the critical temperature Tc,
+of the order of 103 K, the disorder dominates, while for T < Tc the individual magnets
+tend to align with each other, which in the classical 3 dimensional set-up yields a set
+of thermodynamical homogeneous phases parametrized by the 2 dimensional sphere of
+directions in 3 space.
+This example serves to illustrate the phenomenon of spontaneous symmetry breaking: The
+group SO(3) of rotations in R3 is a symmetry group of the dynamical system one starts
+with, and for large T, T > T , the equilibrium state is unique and hence invariant under
+rotation. For small T however, T < T , the group SO(3) acts non trivially on the set of
+thermodynamical phases and the choice of an equilibrium state breaks the symmetry.
+c
+
+c
+
+The C*-algebraic formulation of this is straightforward. One has a (compact) group G of
+automorphisms of the C*-algebra. A which commutes with the time evolution:
+αg Aut A , Vg G G , θgσt = tag Vt
+
+R .
+
+Such a group obviously acts on the compact convex space of KMSβ states and hence on
+its extreme points.
+We shall now describe (the precise motivation will be explained below) a C*-dynamical
+system intimately related to the distribution of prime numbers and exhibiting the above
+behaviour of spontaneous symmetry breaking.
+The C*-algebra A is a Hecke algebra, which contains the algebra of usual Hecke operators
+of number theory, i.e. those related to Hecke correspondences for lattices in C ([Sh], [Ser1]).
+The latter algebra is commutative and is essentially the algebra of composition of double
+cosets:
+More generally, given a discrete group Γ and a subgroup Γ0 which is almost normal, namely
+which satisfies the condition
+3
+
+“The orbits of Γ0 acting on the left on Γ/Γ0 are finite
+one defines the Hecke algebra, H(Γ, Γ0) as the convolution algebra of (C-valued for our
+purposes) functions with finite support on Γ0\Γ/Γ0. More specifically given two such
+functions f, f' H(Γ, Γ0), their convolution is
+(f * f')(y) = Σ f (yy1- 1) f'(y1)
+Γ0\Γ
+
+Vy Γ .
+
+In this formula f and f' are viewed as Γ0 biinvariant functions on Γ with finite support in
+Γ0\Γ/Γ0.
+To complete H to a C*-algebra we just close it in norm in the following regular representation of H in l2(Γ0\Γ) (cf. [Bi]).
+Proposition 3. Let Γ0 Γ be an almost normal subgroup of the discrete group Γ. Then
+the following formula defines an (involutive) representation λ of H(Γ, Γ0) in l2(Γ0\Γ):
+(λ(f)ξ)(y) = Σ f(yy1-1 ) ξ(y1 )
+
+vy e r«\r , vf e H .
+
+Γ0\Γ
+
+One checks that λ(f) is bounded for any f H(Γ, Γ0). The involution on H such that:
+λ(f*) = λ(f)*
+
+Vf H
+
+is given by the following equality:
+f*(y) = /(7
+
+_
+
+Vy G Γ \Γ/Γ ·
+0
+0
+
+)
+
+1
+
+Thus we let A be the C*-algebra norm closure of H(Γ, Γ0) in l2(Γ0\Γ). A good notation
+for it, compatible with the discrete group case is:
+H(Γ, Γ0) = C*r(Γ, Γ0) ·
+Let us now define the one parameter group of automorphisms at G Aut A. We first need
+to introduce a notation. Since each Γ0 orbit on Γ/Γ0 is finite we shall let, for y G Γ
+L(y) = cardinality of the image of Γ0 y Γ0 in Γ/Γ0
+R(y) = cardinality of the image of Γ0y Γ0 in Γ0\Γ.
+Thus by construction L(y)
+biivariant functions.
+
+N*, R(y)
+
+N*, R(y) = L(y-1),
+
+4
+
+L and R are both Γ0
+
+Proposition 4. Let Γ0 Γ be an almost normal subgroup of the discrete group Γ. There
+exists a unique one parameter group of automorphisms σt Aut(C*r(r, Γο)) such that
+
+In fact, as we shall see later, σ-t is the restriction of the modular automorphism group σt
+for the state on Μ = \(H)" given by the unit vector corresponding to the coset Γ0 Γ0\Γ.
+Let us now consider the Hecke algebra H for the groups:
+Γ = P+ , r„ = P+
+where P is the group of 2 x 2 matrices P = ^ 10
+
+^
+
+; aa-
+
+1
+
+1
+
+= a- a = 1
+
+and the +
+
+indicates that we restrict to a > 0.
+One checks that P+Z is almost normal in PQ+ (cf. Lemma 13).
+We shall now describe the phase transition with spontaneous symmetry breaking for the
+dynamical system corresponding to Γ = P+Q , Γ0 = P+Z.
+Let us denote by φβ the following function on the group Q/Z. Given n = a/b G Q/Z, with
+a, b G Z, with a relatively prime to b > 0, one lets
+b= Π pkp
+pP
+be the prime factor decomposition of b and one sets:
+Ψβ(n)=
+
+Π
+p
+Pkp ≠0
+
+(l-ρβ 1)(1-p 1)-
+
+kpf3
+
+1
+
+.
+
+The inclusion of the unipotent subgroup
+
+defines an imbedding Q/Z C Γ0\Γ/Γ0 and injective morphisms of involutive algebras
+C[Q/Z] C H(Γ, Γ0)
+and
+C* (Q/Z) C C*r (Γ, Γ0).
+
+The main result of this paper is:
+5
+
+Theorem 5. Let (A, σt) be the C*-dynamical system associated to the almost normal
+subgroup P+Z of P+Q. Then:
+a) For 0 < β < 1 there exists a unique KMSβ state φ β on ( A, σt). Its restriction to
+C*(Q/Z) Cr*(r,r0) is given by the above function of positive type ψβ on Q/Z. Each φβ
+is a factor state and the associated factor is the hyperfinite factor of type III1, R∞.
+b) For β > 1 the KMSβ states on (A, σt) form a simplex whose extreme points φβ χ are
+of C generated
+parametrized by the complex imbeddings χ : Qcycl → C of the subfield Q
+by the roots of unity and whose restrictions to C*( Q/Z) are given by the following formula:
+cycl
+
+These states are type I∞ factor states.
+The normalization factor is the inverse of the Riemann ζ function evaluated at β.
+In other words the critical temperature here is Tc = 1 and at low temperature (β > 1) the
+phases of the system are parametrized by all possible embeddings of K = Qcycl in the field
+of complex numbers.
+As we shall see below the Galois group G = Gal(Qcycl/Q) does act naturally as a group of
+and the spontaautomorphisms of C*r(Γ,Γ0) commuting with the time evolution
+neous symmetry breaking occurs for β > 1.
+Before we begin the proof of Theorem 5, we shall explain how the above C'*-dynamical
+system is related to the distribution of prime numbers.
+
+2. Bosonic second quantization and prime numbers as a subset of R
+It is a saying of E. Nelson that first quantization is a mystery while second quantization is
+a functor. In the bosonic case this functor S from the category of Hilbert spaces to itself,
+assigns to every Hilbert space H the new Hilbert space SH given by:
+SH =
+
+S” H
+
+0
+
+where SnH is the nth symmetric power of H endowed with the following inner product:
+
+6
+
+(see for instance [G]). Given an operator T in H (more generally T : H1 —> H2), the
+operator ST in SH is given by:
+(ST)(6 · · · ξn) = (Tξ1)(Τξ2) · · · (Tξn)
+
+Vξi G H .
+
+Even if T is bounded, ST is not bounded in general but if T is selfadjoint (unbounded) so
+is ST. Thus we shall work with such operators. One has the following formula:
+Trace(ST)
+= ———-——
+V
+'
+det(l-T)
+
+(*)
+
+which makes good sense if || T ||< 1 and T ε
+The problem we shall now consider is the following: to give a simple characterization of
+selfadjoint operators T in H whose spectrum is the subset P C R formed of all prime
+numbers, each with multiplicity one:
+P= {2, 3, 5, 7, 11, 13, 17,...} C R .
+The corresponding problem for the set N = {0,1, 2, 3
+} of natural numbers, or N* =
+N\{0}, is easier, and was solved by Dirac’s paper [Dir] which inaugurated quantum field
+theory. In that case the solution is simply that there exists an operator a such that:
+*
+*
+aa * —aa
+= 1, aa = T.
+
+(For N* one requires that aa* be equal to T. )
+Let us now state the result for the subset P C R:
+Lemma 6. Let T be a selfadjoint operator in a Hilbert space H then (counting multilplicities ):
+Spectrum T = P
+Spectrum ST = N* .
+Proof. Let us first assume that Spectrum ST = N*. Then, as quite generaly SpecT C
+SpecST, (using the inclusion H C SH) we see that Σ = Spec(T) C N*. Let us show that
+P C Σ. Indeed let p E P not be in Σ. Then because Σ C N* one has p Σn for any
+n (with Σn = {k1k2 · . · kn; kj Σ}). This shows that p Spec(ST) = UΣn whence a
+contradiction. Thus P C Σ. If k Σ\P then as k P for some n > 1 this would mean
+that k is not a simple eigenvalue for ST. Thus P = Σ. The converse is obvious from
+Euclid’s unique factorization theorem, but we shall fix the corresponding notations: we let
+H1 = l2(P) be the Hilbert space with basis (ερ)pand we identify it to the one particle
+n
+
+7
+
+subspace of SH1 = l2(N*), the Hilbert space of square integrable sequences of complex
+numbers, with canonical basis the εn, n N*. We shall denote by T the operator:
+T : l2(P) -> l2(P) ; Τεp = pεp
+
+Vp G P
+
+and by ST the corresponding operator:
+ST : l2(N*) -> l2(N*) ; (ST)en = nεn
+
+Vn G N* .
+
+We shall let H = log(ST). It is the generator of a one parameter unitary group Ut =
+exp(itH) = Tit, whose role is made clear by the following special case of formula (*) which
+is the Euler product formula for the Riemann ζ function:
+For Res > 1; (,“(s) = Trace (ST) =
+s
+
+The meaning of Lemma 6 is that the subset P C R has a. neat definition provided one is
+ready to use the formalism of bosonic quantum, field theory. That formalism includes the
+algebra of creation and annihilation operators, respectively α*(ξ) and a(n), for £,η G H,
+given by:
+a* (ξ) ξ1...ξn
+
+= ξξ1,.. ξn Vξj H
+
+α(η) = (a*(n))* .
+It also includes the time evolution, in Heisenberg’s picture, given by:
+σt(x) = Utx
+
+U*t
+
+=
+
+eitH xe-itH Vt ER.
+
+In our case the corresponding C*-algebra in SH = l2 ( N*) and time evolution are given by
+the following:
+Proposition 7. a) For every p G P let μp be the isometry in (Ν*) given by the polar
+decomposition of the creation operator associated to the unit, vector Ep E H. The C*-algebra
+C*(N*) generated by the μρ’s is the same as that generated by the isometries μn, n G N*,
+defined by:
+l2
+
+μn Ek = £kn
+
+VK G N* .
+
+b) This C*-algebra is the infinite tensor product:
+C*(N*) = ® rp
+p£P
+where each rp is the C*-algebra generated by μρ and is the Toeplitz C*-algebra.
+8
+
+c) The equality at(x) = eitH x e-itH, Vx G C*(N*), t G R where H = log(ST), defines a
+one parameter group of automorphisms of C*( N*) given as
+= ® <xt,p ; vt,p(up)
+
+=
+
+pit
+
+pE'P
+
+UP
+
+Vt G R .
+
+Proof. a) By construction μρ is the one sided shift in the Hilbert space S C ερ tensored
+by the identity in each of the Hilbert spaces S C eq, q ≠ p in the decomposition
+SH= (g) S(C eq) .
+qE'P
+
+In terms of the basis (en) of SH one thus has:
+up e n = e p n
+
+Vn e N
+
+so that a) follows.
+b) We recall that the Toeplitz C*-algebra r is the C*-algebra defined by a unique
+generator u satisfying the relation u*u = 1. If u is any non-unitary isometry in a (separable)
+Hilbert space the smallest C*-algebra containing u is isomorphic to r. This C*-algebra is
+nuclear so that the finite tensor products @ rp are unambigously defined. The C*-algebra
+p<n
+
+<8> rp is their inductive limit. Now for each p the isometry μρ generates rp in S C ep and
+
+pEP
+
+since the finite tensor products (g> rp are faithfully represented in H we get b).
+p< n
+
+c) follows from a direct computation.
+The C*-dynamical system thus obtained is not very interesting because it is without interaction (see Proposition 8, a)). Nevertheless the unique associated KMSB states will be
+useful later and are given by the following corollary of Proposition 1 and of the ArakiWoods classification of ITPFI.
+Proposition 8. a) For every β > 0, there exists a unique KMSB state on (C*(N*),at).
+It is the infinite tensor product:
+VP = ® Ρβ,ρ
+pE'P
+
+where ψβ,ρ is the unique KMSB state, on (τp, σt,p) for at, p. The eigenvalue list of φB, ρ is:
+{(1 -p-β)p-ηβ ; neN} .
+9
+
+b) For β > 1, the state φβ is of type I∞ and is given by:
+ψβ(x) = ζ(β)
+
+-1
+
+Trace(e-BH x)
+
+Vx € C*(N*) .
+
+c) For β = 1, the state φρ is a factor state of type III1 given by:
+Vx E C*(N*)
+
+Ψβ(x) = Tracew(e-H x)
+where Tracew is the Dixmier trace.
+
+d) For 0 < β < 1, φβ is a factor state of type III1 and the associated factor is the factor
+R∞ of Araki-Woods.
+Statement d) for β = 1 is due to B. Blackadar ( [Bl] ). We refer to [Co] IV.2 for the definition
+of the Dixmier trace, whose general properties make it clear that the equality c) defines a
+KMS1 state.
+Proof. a) Let us first show that there exists a unique KMSβ state on rp for the group σt, p.
+We let TP be the C*-algebra in l2(N) generated by the one sided shift S, while at,p(S) = pitS
+is the one parameter group of automorphisms. First let φβ, p be the restriction to rp of the
+state on L(l2(N)) given by
+
+where
+One checks that φρ is a KMSβ state on rp. Conversely, let φ be a KMSβ state on rp.
+Then the KMSβ condition shows that φ vanishes on any eigenvector A G Tp,
+)Ρ
+
+at,P(A) = \ A
+
+\/t G R
+
+lt
+
+,
+
+provided Λ -ψ 1 .
+
+It also shows that v?(SS*) = (p(S* a-ip(S)) = p p(S*S) = p
+1 — p~P. More generally, one has for any k, l G N:
+S*l)
+
+=
+=
+
+0
+p-kb
+
+if
+if
+
+so that φ(1 — SS*) =
+
+k≠ l
+k = l.
+
+This shows the uniqueness of φ = φρ on the ideal K of compact operators, K C rp.
+ίΡ
+
+Thus the difference φ = φ — φρ vanishes on K and is a continuous linear form on the
+quotient C*-algebra rp/K = C(S1). We saw that φ(Sn) = φBp,p(Sn) = 0 for any n > 0 and
+similarly for (S*)n so that Ψ = 0 and φ = φB,ρ.
+)Ρ
+
+10
+
+The uniqueness of φβ then follows by a general argument for tensor products: Let (A, σAt)
+and (Β,σB) be C*-dynamical systems and φ a KMSB state on (A © B, σAt © σΒ). Then
+for any b B the functional on A:
+φb(α) = φ(α © b)
+is KMSB on A. Indeed for any x, y in A one has:
+y © b) = <ρ(σ?@Β(χ © l)(y © &))
+
+ψ(ν v?{x) © b) = φ((ν © 6) afC
+
+(x 01)).
+
+lB
+
+b) One uses the finiteness of Trace(e BH) for β > 1.
+c) By construction one has an infinite tensor product of type I factors with eigenvalue
+list given by
+λp,n = p-nB (1 -
+
+p-B)
+
+thus the assertion follows from [A-W].
+d) One directly checks the KMS1 condition, and the same argument as for c) shows
+that φ1 is of type III1.
+
+3. Products of trees and the non-commutative Hecke algebra
+In this section we shall relate the C*-dynamical system (C*(N*), σt), of section β) with
+basic number theory notions [We2] and get the Hecke dynamical system of Theorem 5.
+Let P be the ax + b group, i.e. the group of triangular 2x2 matrices of the form 1
+
+0
+
+b ,
+
+a
+
+with a invertible. We view it as an algebraic group over Z, i.e. as a functor A → PA from
+commutative rings to groups. It plays an important role in the elementary classification
+of locally compact (commutative and non discrete) fields (cf. [We2]). Indeed given such a
+field K then the group G = ΡK is a locally compact group, and as such it has a module
+δ : G → R*+ ,
+defined by the lack of invariance of a left Haar measure dg on G under right translations:
+(1)
+
+d(gk) = 8(k)dg
+
+Vk 6 G .
+
+(Or equivalently d(g- 1) = δ(g)- 1dg as measures on G.)
+11
+
+This module δ : Ρκ → R*+ is 1 on the additive group and its restriction to the multiplicative
+group (extended by 0 on K\K*) yields a. proper continuous multiplicative map:
+mod K : K → R+ .
+
+(2)
+
+In fact, if dx denotes the Haar measure on the (locally compact) additive group K, we
+have
+Va K* .
+d(ax) = modK (a) dx
+Moreover the open sets {k K; modK(k) < ε} form a basis of neighborhoods of 0. The
+image of δ is a closed subgroup of R*+ and except for the case of the archimedian fields R
+or C, this closed subgroup is discrete equal to λZ for some λ ]0,1[ whose inverse q = λ-1
+is called the module of K. The function on K x K d(x,y) := modK(x — y) is then a
+ultrametric distance giving back the topology of K ([We2]). In other words, we have:
+Proposition 9. (cf. [We2]) Let K be a non-discrete commutative locally compact field,
+K ≠ R or C. Then there exists a prime p such that modK(p) < 1. Call R, R* and P the
+subsets of K respectively given by
+R = {x K ; modK(x) < 1} , R* = {x £ K ; modK(X) = 1} ,
+J = {x £ K ; modK(x) < 1} .
+Then R is the unique maximal compact subring of K; R* is the group of invertible elements
+of R; J is the unique maximal ideal of R, and there is π £ J such that J = πR = Rπ.
+The topology on the topological group K is the unique (ultrametric) topology such that the
+ideals π R form a basis of neighbourhood of 0. Moreover, the residue field k = R/J is a
+finite field of characteristic p; if q is the number of its elements, the image of K* in R*+
+under modK is the subgroup of R*+ generated by q.
+n
+
+Given x K the integer v(x) such that modK(x) = q-v(x) is called the valuation of
+x.
+As a basic example the field
+of p-adic numbers is defined (given any prime number p),
+as the completion of the field Q of rational numbers for the distance function:
+d(x,y) = |x - y|p
+
+(3)
+
+where for x Q, x = p a/b (with n, a., b integers and a, b relatively prime to p) one sets:
+n
+
+(4)
+
+\x\p = p- n .
+12
+
+The maximal subring R of K = Qp is the ring Zp of p-adic integers and the residual field
+k = R/ J is the finite field Fp.
+One obtains in this way, together with the inclusion Q C R, all the inclusions Q C K of
+the field of rational numbers as a dense subfield of a local field K. Such inclusions (or
+rather in general, equivalence classes of completions) are called places and to distinguish
+the real place Q C R from the others, the latter ones are called finite places.
+Putting together the inclusions of Q in its completions Qv = K parametrized by the places
+of Q one gets a single inclusion of Q in the locally compact commutative ring of adeles
+which is the restricted product of the fields Qv. More specifically this ring is the product
+R x A where the ring A of finite adeles is obtained as follows:
+a) Elements x of A are arbitrary families (xρ)ρP, with xp Qp, such that xp Zp for all
+p but a finite number.
+b) (x + y)p = xp + yp; (xy)p = xpyp define the addition and product in A.
+c) Finally A has the unique topology of locally compact ring such that the subring
+R = Π Zp
+pP p
+is open and closed and inherits its compact product topology.
+We shall now relate the C*-dynamical system (C*(N*),σt) of section β) with the locally
+compact ring A of finite adeles.
+We just need to recall that given any locally compact group G with modular function
+δ : G → R*+, one has a natural one parameter group of automorphisms σt of C*(G) given
+by the following formula valid say on L1(G):
+(5)
+
+(σt(f))(g) = δ(g)- it f(g)
+
+Vg e G , t e R .
+
+This automorphism group defines also an automorphism group of the reduced C*-algebra
+C*r(G), and the group σ-t is the modular automorphism group of the Plancherel weight
+on C*(G).
+Proposition 10. Let A be the ring of finite adeles over Q , and R its maximal (open) compact subring. Let G be the locally compact group G = PA, and e C*(G) the characteristic
+function of the open and compact subgroup PR C PA · Then:
+1) One has e = e* = e2, and the reduced C*-algebra C*(G)e = {x G C*(G) ;
+
+is canonically isomorphic to the C*-algebra C*(N*) of section β).
+13
+
+ex = xe = x}
+
+2) One has σt(e) = e Vt R, and the restriction of σt to the reduced C*-algebra C*(N*)
+is the time evolution of section β).
+We think of the characteristic function of PR as an element of L1 (G, dg) C C*(G), with dg
+the unique left Haar measure which gives measure 1 to PR. The group G is solvable and
+hence amenable so that there is no distinction between C*(G) and the reduced C*-algebra
+C*r(G).
+The proof of Proposition 10 reduces immediately to a local statement, namely, if K =
+and R C K is the maximal compact subring, the C* - dynamical system (C*(PK), at)
+given by (5), reduced by the projection ep defined as the characteristic function of PR, is
+isomorphic to the Toeplitz C*-algebra τρ, with the time evolution σt,ρ of Proposition 7, 3).
+To check this one uses the isomorphisms
+C* (PK) = C* (K) > K* = C0(K) > K*
+
+given by the identification of the additive group K with its Pontrjagin dual (cf. [We2]; we
+use in the sequel the same normalizations for the Haar measure and the Fourier transform
+on K as in loc.cit., namely the additive Haar measure of R = Zp is 1, and the identification
+of K with its Pontrjagin dual is such that R┴ = R). Then to ep corresponds the element
+of the crossed product given by ʃR* 1 R Ug dg. The reduced C*-algebra C*(Ρκ)eρ is then
+generated by the isometry μρ, μρ C*(PQ ) , given by the following L1 function:
+P
+
+ep
+
+and is equal to 0 otherwise .
+
+(6)
+
+Let us check that μρ is an isometry, i.e. that μp* μρ = ep. The left Haar measure on ΡK is
+1
+
+given by d
+
+b
+
+a
+
+= db d*a where d*a is the multiplicative Haar measure normalized so
+
+that ʃR*, d*a = 1. The module δ of the locally compact group ΡK is given by δ
+|a|. The adjoint μ* of μρ is given by the function
+= up(g-1) δ(g-1).
+
+(7)
+
+Thus the convolution μ* * μρ is given by the integral
+(UP * μp)(g) = / μΡ(9ΐ) μ,λβιο) (kh
+J Pκ
+
+(8)
+
+This vanishes unless g G PR as can be seen using g = g-1 1 g2 for μρ(gi) = 1. With
+one gets
+Moreover the integral JpK μρ(g) dg is equal to 1 so that one gets μ* * μρ = ep.
+14
+
+One has ot(up)(g) = 0 unless g =
+°t(uP)(g) = %)
+
+μΡ(9) = Μ
+
+, val(a) = 1, b R, and for such g's one has
+μΡ{ο) = p‘ μΡ(ΰ)· Thus <*/(up) = pit up.
+
+We may also write the state φ β, p on C*(PK)ep in terms of biinvariant functions. One
+obtains' the following identity for any f G C*(PK )ep:
+
+(9)
+(Observe that the elements of C*(PK) may be identified with some PR-biinvariant functions
+in L2(PK), and therefore to some locally constant functions on PK; in particular they have
+well defined values on points of PK.) According to Proposition 8 a) and its proof, to prove
+defined by the right hand
+(9) we only need to check that the linear functional on C (PK
+side of (9) satisfies the KMSβ condition; this follows from a straightforward computation.
+C
+
+)
+
+EP
+
+The C*-dynamical system (C*(PA),σt) of proposition 10 is without interaction, exactly
+as is (C*(N*),σt) (Proposition 8), and there is an exact analogue of Proposition 8, which
+states the existence and uniqueness (up to scale) of KMSβ weights on the above system.
+One needs to use weights because one is dealing with non-unital C*-algebras. At the technical side such weights have to be semicontinuous and semifinite (for the norm topology)
+(cf. [Com]). It is however instructive to work out the explicit formula for those KMSβ
+weights. Using the natural isomorphism of the Pontrjagin dual A of the additive group A
+with itself (cf. [We2]), one gets an isomorphism:
+(10)
+
+C*(PA) = Co(A)>A*
+
+where the multiplicative group A* of finite ideles acts by homotheties in the locally compact
+space A. The KMSβ weight on C*(PA), σt is then the dual weight of the following measure
+μ# on A:
+11
+
+μβ(f) = ζ(β)- 1 /
+
+Ij\f) fU)d*j ·
+
+JA*
+
+Here d*j is the Haar measure on the multiplicative group A*, j —» |j| is the module, and
+the formula makes sense as such for β > 1, and by analytic continuation for 0 < β < 1 (cf.
+[T], [We1], [We2]).
+It is clear that to obtain a C*-dynamical system with interaction we need to use not only
+the locally compact ring A but also the fundamental inclusion:
+(12)
+
+Q A .
+15
+
+We shall use the corresponding inclusion PQ C PA = G and the action of PA on the C*module £ = C*(G)e over C*(N* ) given by the isomorphism of proposition 10: C*(G)e =
+C*(N*). Indeed, given any C'*-algebra B and (self adjoint) projection e G B, the space
+£ = Be = {x G B ; xe = x} is in a natural way a (right) C*-module over the reduced
+C*-algebra Be = {x B ; ex = xe = x}. Thus we let:
+(13)
+
+(£, l) = ζ*η G Be , Vf, η G £ = Be
+Vf G £ , a G B .
+
+fa E £
+
+e
+
+This C*-module has moreover a natural left B-module structure, given by (b, ξ ) —* bξ G £,
+V6 G B, f G £.
+In our case E = C*(G)e is a space of functions on G which are invariant by right multiplications by elements of ΡR C G, or in other words it is a space of functions on the
+homogeneous space:
+(14)
+
+Δ = G/PR .
+
+This space Δ is by construction the restricted product of the spaces:
+(15)
+
+Δp = PQp/PZp
+
+relative to the base point given by PZp.
+Proposition 11. The homogeneous space Ap = PQ /PZP over the group PQ C GL(2, QP)
+is naturally isomorphic to the (set of vertices of the) tree of SL(2, Qp). The group PQ
+acts by isometries of Δp and preserves a point at ∞.
+P
+
+P
+
+P
+
+Let us recall (cf. [Ser2]) that the tree of SL(2, K), where K is a local field, is defined in
+terms of equivalence classes of lattices in a, two dimensional vector space V over K. With
+the notations of proposition 9, a lattice L C V is a sub R-module of V which is of finite
+type and generates V as a vector space. The multiplicative group K* operates on the set
+of lattices by (L, x) → xL for x G K*, and one lets T be the set of orbits of this action of
+K*. Given a lattice L C V and a class Λ' T there exists a unique representative L' Λ'
+such that L' C L and L' (jt πL (with π given by proposition 9). Then L/L' = R/πnR and
+the integer n, which only depends upon the classes of L and L', defines a distance d on T,
+by the equality:
+(16)
+
+d(class of L , class of L') = n .
+
+Using the set of pairs with mutual distance equal to 1 to define a 1 dimensional simplicial
+complex, one gets a tree, the tree of SL(2, K), and the above distance is the length of the
+16
+
+unique shortest injective path joining two elements of this tree (cf. [Ser2]). The group
+GL(V) of automorphisms of the vector space V acts on the set of lattices by
+(17)
+
+(L, g) —> yL
+
+V<eGl(V),
+
+and since this action commutes with that of K* it gives an action, by isometries, of GL(V)
+on the tree T. Let us identify V with
+, GL(V) with GL(2, K), and consider PK as
+K2
+
+a subgroup of GL(2,K) : Ρκ =
+
+a G K* , b G K >. Let L0 be the lattice
+
+R2 C K2. Then one checks that PK acts transitively on T and that the stabilizer of the
+class of L0 is PR. We thus get a canonical identification T = PK/PR. Taking K =PQ
+yields the conclusion.
+Proposition 12. 1) The homogeneous space G/PR = Δ equipped with the base point PR
+is canonically isomorphic to the restricted product of the trees Tp equipped with the base
+points PZp, and the action of G on Δ is simplicial.
+2) the subgroup P+Q C PA = G acts transitively on Δ, and the isotropy subgroup of the
+base point * is P+Z.
+Proof. 1) Since both PA and PR are restricted products the proof of 1) is straightforward.
+2) First Q is dense in the additive group A of adeles (with the 00 place removed), cf.
+[Ser1].
+The subgroup Q*+ of A* is discrete and one has A* = Q*+ R* where R* = {(xp) ; val(xp) =
+0 Vp} is a compact subgroup of A* (cf [We]).
+Consider the exact sequence of groups:
+(18)
+
+0 -> A -> PA -4 A* -* 1 .
+
+The closure of PQ in PA is given by ρGiven g =
+
+1
+
+(Q*+). Thus P+Q =
+
+€ PA one can write h = rs with r G Q*+, s G R*, then:
+
+Thus g G PQ PR and since PR is open in PA we get g G P+Q PR. Thus PA = PQ PR, and
+P+Q acts transitively on Δ.
+17
+
+Finally the isotropy subgroup of the base point * = PR is given by P+Q Π PR
+
+=
+
+|
+
+1 n
+^ 5
+
+Q
+
+n e z}= P/.
+We can thus identify Δ with PQ /P/, and we shall now get the Hecke algebra of theorem 5
+from the commutant of the action of PQ in the space of functions on Δ. We need for that
+purpose to consider the Hilbert space L2(A) = £2(PQ/PJ). Let, Γ = P+Q, Γ0 = P+Z Z PQ.
+Let us check first
+Lemma 13. The action of T0 = P+Z on Γ/Γ0 only has finite orbits.
+Proof.
+
+One has
+
+When n varies the n1 k only take finitely values modulo Z, their number depending upon
+the denominator of k. Thus we see that we get indeed a finite orbit of cardinality the
+denominator of k.
+Lemma 14. a) Any element T of the commutant of T acting in l2(Γ/Γ0) is characterized
+by the Γ0-biinvariant function fT(g) = {T
+£e)·
+b) One has Σ \fT(g)\2 < oo.
+r0\r
+c) One has fT*(g) = fT (g- 1)·
+d) The Γ0-biinvariant function fT1T2 associated to the product of two elements T1 and
+T2 in this commutant is given by:
+
+Proof. a) Each element of Γ acts by permutation of the basis εx, x Γ/Γ0 of H =
+l2(Γ/Γ0)· Since T commutes with Γ it is characterized by T which is determined by fT.
+e
+One has fT(g) = {Tg ee,€e) so that fT is Γ0 biinvariant.
+b) Obvious.
+18
+
+) fT*(g) = {T*ee,g- 1ee) = {g Se,Tee) = {Tee,g ee)
+
+c
+
+d) (Tgi e ,g2 e ) = fT(g2 1gι) , {ΆT2 et,g
+e
+
+e
+
+= (T2 e ,g
+e
+
+£c)
+
+l
+
+T*£ ) = Σ<T s ,g1 £ ){gi £e,g
+
+1
+
+2
+
+e
+
+e
+
+t
+
+T*£ ) — (Tj £ ,g 1g
+
+1
+
+e
+
+e
+
+1
+
+l
+
+£ )
+2
+
+One can write d) as
+
+Condition b) shows that fT(g) = 0 unless there exists a finite set F C Γ with:
+Γ0 g Γ0 C F Γ0
+i.e. if g Γ0 belongs to a finite orbit of Γ0 on Γ/Γ0. By Lemma 13 we can take a basis
+of Γ0 biinvariant functions, ex, where X runs through the double classes X G Γ0\Γ/Γ0,
+e
+x(g) = 0 if g X, ex(g) 1 if g X. For each such class one has two associated finite
+integers:
+=
+
+L(X) = cardinality of the image of X in Γ/Γ0
+(19)
+R(X) = cardinality of the image of X in Γ0\Γ.
+In fact to each double class X corresponds the positive rational number given by k for any
+E X, and L(X) is the denominator of k while R(X) is the numerator of k.
+Proposition 15. a) Let f be a Γ0 biinvariant function on Γ with finite support in Γ0\Γ/Γ0.
+Then there exists a unique element r(f) of the commutant of Γ in l2(Γ/Γ0) such that
+f(g) = {r(f ) £e ι g
+
+te)
+
+Vg G Γ .
+
+b) The map r extends to an isomorphism of C*r(T, Γ0) with the C*-algebra C = CQ
+generated by the r(f) in l2(Δ).
+Proof. a) Let X be a double class, X Γ0\Γ/Γ0 and e X the corresponding Γ0 biinvariant
+function. Let T be the matrix given by
+{Tg1 Ee , g2 εe) = eX(<72 1 gl ) ·
+19
+
+One has, by Lemma 13, the bounds
+
+which shows that T defines a bounded operator in l1(Δ) and in l°°( Δ), hence in l2(Δ).
+The uniqueness is clear.
+b) follows from Lemma 14 d) and the definitions of H( Γ, Γ0 ) and C*r(Γ, Γ0 ) (cf. Proposition 3).
+Next we let φ be the state on CQ defined by
+φ(Τ) = (TEe , £e) .
+
+(20)
+
+Lemma 16. φ is a KMS1 state on C with respect to the one parameter group σt,
+( \) = klit e
+<rt(e
+x
+x
+
+,
+
+k, = Λ(-Υ) ·
+
+Proof. The product of Γ0-biinvariant functions is given by:
+
+One has
+
+Let g € Γ with X = Γ0 g Γ0 a fixed double class; then as f is Γ0-biinvariant, the two above
+expressions are multiples of f(g-1):
+φ(eΧ * f) = L(X) f(g- 1) ,
+
+* e ) = R(X) f(g- 1) .
+x
+
+L/ X
+
+Thus φ(eX * f) =
+φ(/ * ex). This shows that eX is an eigenvector for the modular
+automorphism group of the faithful normal state
+T —> (Tee , £ )
+e
+
+20
+
+on the weak closure C" of C acting in Η = l2(Γ/Γ0). It follows thus that φ is a KMS1
+state for the group σt = σφ-t. The vector ε l2( Δ ) is still separating for the weak closure
+of CQ because it is cyclic for P+Q by Proposition 12 2). The subspace H of l2(Δ) given
+by:
+H = CQ £
+e
+
+r
+
+r
+
+e
+
+is in the bicommutant of the action of P+Q on Δ and we shall compute it.
+Lemma 17. Let ξ l2(Δ); then ξ G Hr iff £ is fixed by Γ
+Δ = P+Q/Γ0.
+
+()
+
+C P+Q
+
+acting on the left on
+
+Proof. Let £ G H be fixed under Γ0. Then the function f(g) = (E, Eg) g G Γ/Γ0 is Γ0
+biinvariant. To show that £ G H we can assume, using an orthogonal decomposition,
+that f is the characteristic function of a. double class, f = e X. We get as above that
+e*X ee = ^ g £e where X = FΓ0 so that all the characteristic functions of double classes
+gεF
+belong to H . Conversely if £ G H and £ = T Ee for some operator T commuting with
+Vg G Γ0 one gets that £ is fixed by
+P+Q then as T commutes with Γ C P+Q and g £ = £
+0
+e
+e
+r
+
+r
+
+r
+
+r0.
+
+4. Presentation of the C*-algebra CQ = C*R(P+Q, P+Z)
+Let us first consider the Hecke algebra H = H(Γ, Γ0) where Γ = P+Q, Γ0 = P+Z are as
+above. It is an involutive algebra over C with a linear basis ε X, indexed by the double
+cosets X G Γ0\Γ/Γ0. We shall use the following notations:
+a) For n G N*, μη = n- 1/2 ε Xn where Xn is the double class of the element
+of P+Q.
+
+β) For y G Q/Z, e(y) = εXy where
+
+Xy
+
+is the double class of the element
+
+of
+
+P+Q/P+2
+
+Proposition 18. a) The elements μn, e(y), n G N*, y G Q/Z generate the involutive
+algebra H and the following relations give a presentation of H.
+(a) u*nun = 1 Vn
+
+(b) Unm = un um
+
+Vn, m
+
+(c) un μ*m = u*m un
+
+if (n,m) = 1
+
+(d) e(y)* = e(—y) , e(y1 +y2) = e(y1)e(Y2)
+21
+
+VY, Y1,
+
+y2
+
+(e) e(y) μn = μn e(ny)
+
+Vn , Vy
+Vn , Vγ.
+
+(f) uη e(y) μ = 1/n Σ e(δ)
+nδ=y
+*n
+
+Proof. We first have to check that the relations (a).. .(f) are fulfilled using the definitions
+of the product and involution in H, namely:
+(1)
+
+(2)
+
+f*(g) = f(g-1).
+
+For n e N*, the right class
+
+Γ() is already a double class: Xn. This shows that for
+
+any Γ0 biinvariant function f E H:
+Vg ε T.
+
+(3)
+
+Similarly the right class
+
+Γ0, y G Q/Z is already a double class
+
+Xy
+
+so that:
+
+Vg ε Γ
+
+(4)
+
+and using the equality Γ0
+
+V g ε
+
+(5)
+
+T.
+
+Using (3) (4) (5) one proves directly the relations b) d) and e). The left multiplication by
+μ* is given by
+
+(6)
+
+only depends on k modulo n, since:
+
+where the biinvariance of f shows that f
+
+22
+
+The equality a) follows directly from (6). Let n, m be integers such that (n,m) = 1, using
+(3) one gets that the biinvariant function n1/2m1/2 u n * u*m is the characteristic function
+of the Γ0 double coset:
+
+Let g =
+
+. Using (6) one gets that:
+
+ε Γ. Then the ( k + l)-st term on the right hand side vanishes unless
+g G
+
+, i.e. unless a = n/m, β +nk
+
+G Z. Thus the left hand side vanishes
+
+unless β ε Z/m and is equal to n-1/2 if β ε Z/m since, as (n,m) = 1 only one value of k
+will contribute to the sum. This proves the relation c). To prove f) one combines (3) and
+(4) which gives
+Vg ε T
+
+which one applies to f = μ*. One has f(g) = n- 1/2 if g G
+
+and f(g) = 0
+
+otherwise. This shows that (μn * e(y) * μ*n)(g) vanishes unless g =
+
+with
+
+i.e., nβ = y modulo n. Since this equation has n solutions β ε Q/Z one gets f).
+We have thus proved the relations (a). ..(f). Conversely let A be an involutive algebra
+generated by elements (μn), (ey) satisfying (a). ..(f). We shall show that the monomials
+of the form:
+tn, m, y = un e( y) μ*m
+
+,
+
+n, m ε N* , ( n , m ) = 1 , y ε Q/Z
+
+form a set of generators of the vector space A. It is enough for this to express the adjoint
+and the products of such monomials as elements of their linear span L. First, if we continue
+to denote by tn, m, y the expression μn e( y) μ*m when n, m are not relatively prime but have
+(n, m) = q > 1, we can write:
+tn,m,y=un/q uq ε(y) u*q u*q/q
+
+23
+
+and use (f) to express it as an element of L. It is clear that (tn, m, y)* = t ,n,-y so that
+L = L*. Let us now compute the product: tn1, m1 yl tn2, m2, y2· Let q = (m1, n2) then
+using (a), (b), (c).
+µ*m1 µn = µ*m1/qµ*q
+µ
+/q = µ* /q µn /q = µ n /q µ *
+m
+
+,
+
+qun2
+
+2
+
+Thus
+thus obtains:
+
+tn2, m2, y2
+
+=
+
+2
+
+m1
+
+2
+
+m1/q
+
+e
+
+µn1 (yl) µn2/qμ*m1/qε(y2)μ*m2. Using (e) and its adjoint one
+
+which is a t ,m,y with (n, m) not necessarily 1 and can be expressed as above as an element
+of L.
+n
+
+We have shown that the linear span L of the tn m, y is an involutive algebra and hence that
+L = A. In the algebra H the tn,m,y are given by
+(7)
+
+tn,m,y = (nm)-1/2eX
+
+,
+
+X = double class of
+
+Thus they are linearly independent in H and this is enough to conclude that (a).. .(f) is a
+presentation of H.
+It is crucial that the above presentation of H is defined over the field Q of rational numbers,
+since this will allow for a natural action of the Galois group G of the cyclotomic extension
+Qcycl of Q on certain representations of H which we shall construct later in section 6.
+A result similar to Proposition 18 holds for the C*-algebra CQ = C*r(Γ, Γ0) and due
+to the amenability of Γ = P+Q the nuance between C*(T, T0 ), the universal C*-algebra
+generated by the (μn, ey) with the above relations, and C*r(Γ, Γ0 ) does not arise. One has
+C*(T, T0) = C*r(T, T0).
+Proposition 19. Let π be an involutive representation of H as operators in a Hilbert
+space H. Then π extends uniquely by continuity to a representation of C*r(T, Γ0) = CQ.
+Proof. The relations (a) and (d) show that π(μn) is an isometry and π(e(y)) a unitary.
+Thus one has:
+||π
+Vn, m, y.
+(μn e(y) Μ*M )|| < 1
+This shows that π(f) is bounded for any f G H, with
+
+||π(f)|| < ||f||1
+where
+
+24
+
+It follows then that the following equality defines a norm on H whose completion is a
+C*-algebra:
+(8)
+
+||f||max = Sup{||π(f)|| ; π e Rep H}
+
+where Rep H is the class of all involutive representations of H in a fixed sep arable Hilbert
+space.
+Let us now show that:
+(9)
+
+||f||max = H/llcjqrjY)
+
+V/ G Η ,
+
+which is a statement of amenability of the pair (Γ, Γ0). Let us first prove (9) for elements
+of the group ring f G C[Q/Z], i.e. linear combinations of the ey, y G Q/Z. Using the
+representation of H in l2(Γ0\Γ) one has:
+(10)
+
+||/Imax > ||/C*r
+
+Vf e Η.
+
+Thus we only need to prove the other inequality. The amenability of the group Q/Z shows
+that
+(11)
+
+IH/)II < ll/Hc;«i/Z)
+
+V/€C[Q/Z]
+
+for any unitary representation π of Q/Z.
+Observe that in the representation of H in l2(Γ0\Γ) the restriction to C[Q/Z] defines a
+faithful representation of C*r(Q/Z) = C*( Q/Z). Indeed the restriction of the action of
+Q/Z to the orbit of ε0 = T0, is isomorphic to the regular representation of Q/Z, so the
+answer follows. This proves (9) for elements of C(Q/Z) and allows to view C*(Q/Z) as a
+C*-subalgebra of the C* completion C*(Γ,Γ0) of H for the norm (8). Let us identify the
+dual of the group Q/Z with the additive group R C A using the equality Q/Z = A/R
+and the identification of the additive group A with its Pontrjagin dual. Consider now
+the locally compact groupoid g defined as follows. As a locally compact space g is the
+following subset of R x Q*+,
+(12)
+
+g = {(b,a)€Rx Q* ; ab € R}
+
+which may be identified with a countable union of open and closed subsets of R. One has
+g(0)
+= R x 1 = R and the range and source maps are
+(13)
+
+r(b, a) = ab , s(b, a) = b
+25
+
+while the composition is given by
+(b1, a1 ) o (b2, a2) = (b2, a 1 a2) .
+
+(14)
+
+By construction the fibers Gx and Gx, x ε R of r and s are discrete countable sets and the
+C*-algebras C*(G) and C*r(G) of this locally compact groupoid make good sense. They are
+the completions of the convolution algebra C (G) of continuous functions with compact
+support on G,
+c
+
+(15)
+
+(16)
+
+f*(y) = f(y-1)
+
+under the following respective norms:
+(17)
+
+(18)
+where \x is the left regular representation of f in l2(GX) given by:
+(19)
+
+Now since the group Q*+ is amenable it follows that the locally compact groupoid G is
+amenable in the sense of [Ren], so that the norms (17) and (18) coincide.
+Next, given a representation π of H we get a representation π of Cc(G) as follows. We
+identify H with a subalgebra of Cc(G) by checking that the following elements e(y), μη of
+Cc(G) satisfy the presentation of Proposition 18,
+e(y) (b,a) = 0
+
+(20)
+
+unless
+
+a = 1,
+
+e(y) (b, 1) = (b, y)
+
+(where (b,y) is the pairing between R and Q/Z given by Pontrjagin duality of abelian
+groups)
+(21)
+
+μn(b,a) = 0
+
+unless
+
+a = n-
+
+1
+
+26
+
+; jj.n(b,n- 1 ) = 1
+
+Vb ε R.
+
+One checks directly the relations (a),.. .,(f ) of the presentation of H using in particular the
+equality:
+(22)
+
+(ny, b) = (y, nb)
+
+Vb G R such that nb G R.
+
+Vy G Q/Z
+
+Let then π be an involutive representation of H. We have shown above that the restriction
+of π to the group ring of Q/Z extends to a. representation of C*(Q/Z) = C*r(Q/Z). It
+thus follows using the μn, which together with C(R) generate Cc(G), that π extends to a
+representation π of the convolution algebra C (G) of the locally compact groupoid G. The
+amenability of G thus yields:
+c
+
+(23)
+
+V f e H.
+
+The homomorphism h : G —* Q+, h(b, a) = a, yields for each x G R an injection of Gx
+in Q*+ which allows to consider the continuous field of Hilbert spaces l2(Gx), x G R as a
+subfield of the constant field with fiber l2(Q*+). For any f G H the map x —» Ax( f) is then
+strongly continuous with values in £(l2(Q*+)). This can be checked directly for the μη and
+the elements of C(R).
+It follows that for any f E H the function on R given by x —> ||AX(F)||, is lower semicontinuous in the sense that {x ; ||A (f)|| > a} is an open set for any α. Thus:
+X
+
+(24)
+
+Sup ||λ,(f)|| = Ess Sup ||λχ(f)||
+xeR
+xeR
+
+and the right hand side is equal to ||f||C*r(r,r0) so that the equality (9) follows.
+
+5. Action of W x R on the C*-algebra CQ
+Let (σt)tεR be the action of R on the C*-algebra CQ = C*(P+Q, P+Z) defined in Proposition
+4. In terms of double classes X in Γ0\Γ/Γ0, Γ =
+Γ0 = PZ+, one has
+,
+σt(ex) = k-it ex
+-
+
+and for the double class of g —
+
+i
+
+t
+
+G P+Q
+
+,
+
+k
+
+=
+
+R( X)
+
+one has
+
+k=a .
+
+(1)
+
+In terms of the presentation (Proposition 18) of CQ one has
+(2)
+
+σt(μn) = nit μ
+
+η
+
+Wn G N*
+27
+
+,
+
+at(e(y)) = e(y)
+
+for any y ε Q/Z and any t ε R.
+Proposition 20. a) The C*-subalgebra of CQ given by the fixed points of σ, CQ = {X ε
+Vt ε R} is the image of C*(Q/Z) by the isomorphism associated to the
+CQ ; σt(x) = x
+homomorphism y ε Q/Z —► e(y) ε CQ.
+b) The centralizer of the state φ on CQ given by Lemma 16, is equal to CQ = C*(Q/Z).
+Proof. a) By construction C*(Q/Z) C CQ. The action σ of R on CQ is almost periodic
+and diagonal in the linear basis (ex) of H. The projection P on the fixed points of σ,
+given by the almost periodic average of the σt, is the identity on the double classes eXy,
+y G Q/Z, and vanishes, Ρ(eX) = 0, on the double class of any g = 10 ba , a ≠ 1. The
+conclusion follows since H is dense on CQ and P is norm continuous.
+b) follows from a) and Lemma 16.
+We shall now define a natural action by automorphisms of CQ, of the idele class group
+W = A*/Q*+. Recall first that we obtained CQ in Proposition 15 from the commutant
+of PQ+ in l2(Δ) where Δ = PA/PR = P+Q/P+Z. Let. us show that W = A*/Q*+ acts in a
+natural manner on the commutant of P+Q in l2(Δ). The group PA acts on Δ and on l2(Δ)
+and thus the commutant of P+Q is the same as the commutant of its closure PQ in PA.
+One has (cf. Proposition 12), PQ = AxQ*+ which is a normal subgroup of PA· Thus the
+quotient group:
+(3)
+
+W = A*/Q*+ = PA/P+Q
+
+acts naturally on the commutant P+Q of P+Q in l2(Δ), by
+(4)
+
+θu(x) = uxu*
+
+VX ε P+Q
+
+,
+
+Vu. £ W .
+
+(The choice of the representative u £ PA of the class of u is irrelevant.)
+This defines a strongly continuous action of the compact group W on the von Neumann
+algebra P+Q .
+Proposition 21. a) The action Θ of W on P+Q leaves the dense C*-subalgebra CQ globally
+invariant and is pointwise norm continuous on CQ.
+b) The fixed point subalgebra CWQ in the C*-algebra C*(N*) generated by the μn £ CQ.
+c) The action of W on CQ preserves the state φ and commutes with the action (σt)te R.
+28
+
+Proof. Let us first show that μn, i.e. the right convolution r(f) in l2(T/T0) by f =
+n
+ex , belongs not only to the commutant of P+Q (Proposition 15) but also to the
+commutant of PA. By construction one has
+- 1 / 2
+
+n
+
+µ* εe,gεe) = f(g) = n- 1/2 £Xn(g)
+
+(5)
+
+n
+
+Vg € Γ
+
+and since the ge , g G Γ/Γ0 form a basis of l2(A) we get
+e
+
+e r.
+
+(6)
+
+Let us assume that n = p is a prime number and show that p1/2 μ* coincides with the
+operator in l2(A) = (g) (l2(Tq), *) given by tp = 1 tp 1 ..where tp is the hyperbolic
+translation of one unit of length towards the point at 00 in the tree Tp of Proposition 12.
+Note that this hyperbolic translation is exactly p to one so that p
+tp is a coisometry
+l2
+l2
+on (Tp). Now both μ* and tp commute with the action of P+Q on (Δ), and £e is cyclic
+for P+. Thus the equality
+p 1/2 μρ* £ = trp£
+-1/2
+
+e
+
+e
+
+implies the equality of operators:
+
+(7)
+
+µp
+
+-1/2 r
+
+=p
+
+t
+
+p ·
+
+Since tp belongs to the commutant of PA by construction we thus get that μρ G (PA)' and
+(8)
+
+θu(μn) = μn
+
+Vu G W , n G N* .
+
+To prove 21 a) we just need to show that the action Θ of W leaves the C*-subalgebra
+C*(Q/Z) = C(R) of CQ globally invariant and is pointwise norm continuous on C*(Q/Z).
+This will follow from the following more precise statement,
+Lemma 22. Let f G C(R) = C*(Q/Z) C CQ. Then
+0u(f)(b) = f(ub)
+
+Vb G R, u G R* = W .
+
+Proof. Let us consider (cf. [We2] p.257) the direct product decomposition:
+A*= Q*+ x
+
+z*p) =Q+* x R*
+29
+
+where the morphism r : A* ~» Q*+ is given by
+
+By construction, r is the identity on Q+ and its kernel is
+
+Z* = R*, thus r is the prop
+
+jection on the first term of this decomposition as a. product. We use the second projection
+to identify W with R*.
+The equality of abelian groups A/R = Q/Z shows that the multiplication by an element
+u E R* defines an automorphism mu of Q/Z and to prove Lemma 22 one just has to show
+that for any y ϵ Q/Z one has:
+(9)
+
+Vu ε R* .
+
+Ou(e(y)) = e(mu-1 y)
+
+'
+Since εe is separating for P+Q it is enough to check that 0 (e(y)) εe = e(mu-1 y)εe, i.e.
+that
+u
+
+(10)
+
+ue(y)u* Ɛe = e(mu-1 y)£e ·
+
+Since £e is fixed by ΡR C PA it is fixed by the action of u* E R* C PR. Moreover for
+any 8 E Q/Z the action of e(δ) on εe gives simply
+
+c . Thus (10) follows from the
+e
+
+equality
+
+This completes the proof of Lemma 22 and of Proposition 21 a). To prove 21 c) note that
+the action of R* in l2(A) fixes the vector εe which proves that the action of W on CQ
+preserves the state φ. It obviously commutes with σt anyway. Let us prove 21 b). As W
+is a compact group we can consider the natural projection E of CQ on CWQ given by:
+(11)
+
+E(x) = I θ (x) du .
+Jw
+υ
+
+By construction E is norm continuous and satisfies
+(12)
+
+E(axb) = a E(x) b Vx
+
+G CQ ,
+
+a, b
+
+CWQ
+
+.
+
+Since by (8) one has C*(N*) C CWQ, it suffices using the linear basis µne(y) μof H, to
+show that
+(13)
+
+E(e(y)) € C*(N*)
+30
+
+Vy Q/Z
+
+to conclude that C*(N* ) = CWQ .
+Finally to prove (13) note that E(e( y)) C*( Q/Z) = C(R) is given by a function f G C(R)
+such that:
+f(ub) = f(b)
+
+(14)
+
+Vu
+
+R*
+
+vb e R.
+
+This equality defines a C*-subalgebra of C(R) = 0 C( RΡ), which is identical with
+peP
+C*(N*) Π C*(Q/Z). This can be seen locally by showing that
+(15)
+
+f C(
+
+), f(ub) = f(b)
+
+RP
+
+vu e R*p, be RP
+
+implies that f is a function of | |p.
+
+6. Classification of KMSB states for β > 1
+We shall first construct involutive representations πα of the Hecke algebra H, labelled by
+the Galois group G = Gal(Qcycl/Q) of the subfield Qcycl of C generated by all roots of
+unity.
+Let H be the Hilbert space l2(N*), with its canonical orthonormal basis (£k)keN* ·
+Proposition 23. The following equalities define an involutive representation π1 of the
+Hecke algebra H = H(Γ, Γ0) in l2(N*),
+α) π1(μn) ek = e
+
+nk
+
+Vn, k e N*
+
+β) π1(e(y)) k = exp(2πiky) ek
+
+Vk e N* , y G Q/Z.
+
+Proof. We just need to check that the relations a).. .f ) are fulfilled by the operators
+μ'n = π1(μn) and e'(y) = π1(e(y)) defined by α) β). Since the map k —> nk from N* to N*
+is injective the relation a) follows and moreover the adjoint μ'*n is given by:
+(1)
+
+μ'*n e k = £ k/ n
+
+if n | k
+
+and 0 otherwise.
+
+The relation b) is obvious. To check c) note that if (n, m) = 1 then m | k m | nk and
+when applied to £k both μ'n μ'*m and μ'*m μ'n vanish or are equal to £nk/m· The relation d)
+is clear as well as e),
+e'(y) μ'n £k = e'(y) £nk = exp 2i(nky)enk = μ'n e'(ny)£k .
+31
+
+Let us check f). First both sides applied to £k vanish unless n | k. This is clear for the left
+side by (1), it is true for the right side because it is of the form:
+n δ0 = y
+and Σ e,(δ)£k = 0 unless n | k.
+nδ=0
+Next, when n | k so that k = qn, one has:
+μ'n e'(y) μn £*.· = exp(2πiqy) ek
+e'(δ0)£k = exp(2mikδ0)£k = exp(2πiqy) £ k
+for any δ0 G Q/Z such that n δ0 = y.
+Proposition 24. 1) For α G G = Gal(Qcycl/Q), the following equalities define an involutive representation πα of H in l2(N*):
+α) π (μ ) £k = £nk
+α
+
+η
+
+Vn, k G N*
+
+β) πα(e(y))£k = a(exp 2πiky)£k
+
+, Vk G N* , y G Q/Z.
+
+2) For any element x G H(Q) of the Q algebra generated by the μn and the e(y), the
+matrix elements of πα(x) satisfy:
+(πα(x) £k1 , £k2) = ^(^"l() £ki 1 £k2
+
+Vkj .
+
+Proof. 1) The above proof of Proposition 23 works with no change. The only important
+point is to check d) namely that πQ(e(y))* = πα(e(—y)). This follows because the complex
+conjugation Z —> Z commutes with any a G G.
+2) By construction the matrix elements of the π of the generators satisfy the required
+relation which is stable under the algebraic operations of matrices involving only finite sums
+of products.
+α
+
+Let then H be the positive operator in l2(N*) corresponding to the time evolution described
+in section 2, namely
+Η £n = (log n)εn
+
+(3)
+
+Vn G N* .
+
+We already saw in section 2 that
+
+(4)
+
+eitH x e
+
+-itH
+
+= <τ(x)
+
+Vx 6 C*(N*) , Vt 6 R .
+32
+
+Since it is obvious that H commutes with πrQ(y) for any y G C*(Q/Z) C CQ, we thus
+obtain:
+eitH πα(χ) e ltH = πα(σt(x))
+
+(5)
+
+VX G CQ
+
+, Vt G R .
+
+We can now state:
+Theorem 25. Let π be the canonical extension of the representation πα of H to the
+C*-algebra CQ, and let β > 1.
+α
+
+a) The following equality defines a KMSB state on ( CQ, σt):
+Τβ,α (x) = ((β)- 1 Trace(ia(x)e
+
+βΗ)
+
+VX G CQ .
+
+b) The map a —> is a homeomorphism of the Galois group G of Qcycl with the
+space of extreme points of the Choquet simplex of KMSB states on
+Proof. a) First by Proposition 19 we know that the representation πα extends to a
+representation of CQ and the equality (5) together with the finiteness of Trace (e-βΗ) =
+ζ(β) gives a).
+b) Let us fix β > 1 and show first that the map a —> B, Q is injective. To show this
+note that each of the representations πα of CQ is irreducible and by construction each δ B, α
+is a type IQQ factor state. Thus its GNS construction canonically determines the positive
+operator H, 0 G Sp H, as an unbounded operator afiliated to the weak closure of CQ. In
+particular ψβ, determines canonically the 0-temperature state,
+ί0
+
+(6)
+
+Too= (7Γα(x)^1,ε1) .
+
+When we restrict this state φοο,α to the group ring Q[Q/Z] of Q/Z with rational coefficients,
+we find the corresponding imbedding of the field Qcycl of roots of unity in C:
+
+(7)
+
+Too,α(Σ Xj Yj) = α(Σ Xj exp(2lmiyj))
+
+which of course determines a G G uniquely.
+Next each Τβ,α is a factor state and thus is an extreme point of the weakly compact convex
+set Κβ of KMSB states. Let ε(Κβ) be the space of extreme points of Κβ. We have shown
+that the map a —> Τβ,α is an injection of G in E(Kβ). This map is weakly continuous since,
+as β > 1, the series Σ a(exp 2Kiky)k-B is uniformly convergent. It remains to show that
+this map is surjective. Note first that for any element u of W there exists a corresponding
+element a(u) of G such that
+(8)
+
+Τββ ® θη — Τβ,α(η)
+33
+
+and the map u —» α(u) is an isomorphism of W with G. Next there exists on CQ a unique
+KMSB state which is W-invariant. This holds for any value β £]0, oo[ and follows from
+Proposition 21 b) and Proposition 8 a). Indeed, given such a state φ one has φ = φ ο E
+where E is the projection E = Jw 9u du of CQ on CWQ and the restriction of φ to CWQ =
+C*( N*) is unique. Thus let φ be any KMSB state; one has
+/ φ o 0U du = / <pfiMu)du
+Jw
+Jw
+
+(9)
+
+since both sides are W-invariant KMSB states. Now if φ £ £(Κβ) is an extreme point this
+equality (9) gives two decompositions of the same state as a barycenter of measures over
+Ε(Κβ), which is a Choquet simplex (Proposition 2), so that
+φ ο θ 6 {φβ,α(u) ; v € W}
+η
+
+for almost all u .
+
+Finally this implies that φ = ψβ,α(ν) 0 ^ü-1 for some u, v £ W and φ is in the image of the
+map a —> ψβ,α. Since the map a —> ψβ is continuous and bijective and G is compact, it
+is homeomorphism with its range £(Κβ) and this proves Theorem 25.
+)0
+
+Remarks 26. 1) We shall give in the next section the general formula (for all values of
+β) for the W-invariant KMSB state ψβ on CQ but we can already find the formula for
+β > 1 at this stage using the equality (9). First, using the linear basis (tn,m,y) of H C CQ
+described in section 4 one has
+(H)
+
+^(tn,m,y) = 0
+
+if n/m ≠ 1 Vφ £ Κβ
+
+thus it is enough to determine the restriction of φβ to CQ. For this one can for instance
+use the right hand side of (9) and the formula in Theorem 25 a) for φβα· Let y £ Q/Z,
+n £ N*, then one has
+
+f
+
+(12)
+
+JG
+
+a(exp 2πiny) da = -(-7-^---<p(°/d)
+
+where y = a/b, (a, b) = 1 and (n, b) = d is the g.c.d of n and b. Also μ is the Moebius
+function and φ the Euler function. Let then ρβ be the multiplicative function such that:
+
+(13)
+
+One has
+prime
+
+34
+
+The unique W-invariant KMSB state, given by (9) satisfies
+(14)
+
+where b is the denominator of the irreducible fraction y = a/b · The right hand side of (14)
+is a multiplicative function of b and it is also given by:
+(15)
+
+as can be seen by computing the right hand side of (14) when b is a prime power.
+We shall give another proof of (15) in the next section.
+2) The statement of Theorem 25 b) also applies to the 0-temperature states ψοο,α. For
+extreme such states the map ψοο,α restricted to Q[Q/Z] C C*{Q/Z) gives the associated
+embedding of the field Qcycl of roots of unity in C, as we have seen above.
+
+7. Uniqueness of KMSB states for β £ ]0,1]
+In this section we shall show that for β £]0,1] there exists a unique KMSB state on
+the C*-algebra CQ. We have seen in section 5, Proposition 21, that the C*-subalgebra
+C*(N*) C CQ generated by the μn is the fixed point algebra of the action of W on CQ:
+(1)
+
+C*(N*) = CWQ .
+
+Since W is a compact abelian group, its action on CQ has discrete spectrum and we can
+consider for each character χ of W the corresponding spectral subspace (cf. [Ped]),
+(2)
+
+CQ, X = {x e CQ ; θu(x) = x(u) x
+
+Vu € W} .
+
+To prove the uniqueness of KMSB states on CQ for 0 < β < 1 we shall analyze the partial
+automorphisms of the type III1 factor associated to (C*(N*), ψβ) and to a fixed non trivial
+character χ of W.
+We shall show that these partial automorphisms are outer. Given an element V of
+C'*(Q/Z) = C(R) (resp. a character χ of W), we shall say that V (resp. χ) is localized in a subset F of P, the set of finite places of Q, iff
+
+(3)
+35
+
+(resp. if χ, seen as a character of A*, factorizes through the projection W —> Π Q*p).
+pEF p
+Let us now state the main lemma.
+Lemma 27. Let β G ]0,1] and φ be a KMSB state on the C*-dynamical system (CQ,ot).
+Then:
+a) The restriction of φ to C*( N*) is equal to φβ.
+b) Let X be a non trivial character of W and V G C*( Q/Z) be a partial isometry both
+localized in a finite set F C P, such that
+Og(V) = X(g) V
+Then Φ(Vx) = 0
+
+Vg € W .
+
+Vx 6 C*(N*).
+
+c) The restriction of φ to the spectral subspaces CQ, X, X φ 1 is equal to 0.
+Proof. a) Since the restriction of at to C'*(N* ) is the one parameter group of automorphisms of Proposition 8, the restriction of φ to C*(N*) is a KMSB state and the conclusion
+follows from Proposition 8 a).
+b) Let E = V*V. As (C*(Q)/Ζ) is commutative one has E = VV*. Also E belongs to
+the algebra CWQ = C*(N*). Let a be the automorphism of the reduced algebra C*(N*)E
+determined by the equality:
+
+(4)
+
+a(x) = V x V*
+
+VxeC*(N*)e.
+
+Let M be the factor (of type III1) which is the weak closure of C*(N*) in the G.N.S.
+representation of ψβ. Let us identify C*(N*) with a weakly dense subalgebra of M and
+extend the state ψβ to a normal state φβ on M. As V belongs to the fixed point algebra
+of
+it belongs to the centralizer of φ. It follows that the automorphism a of C*(N*)E
+preserves φβ and extends to an automorphism of ME. Let us show that for β G ]0,1] this
+automorphism is outer. For any q G P\F one has:
+
+(5)
+
+Eμq £ ME , α(Εμ9) = X(gq) E
+
+where gq G R* = Π Z* is given by its components
+(6)
+
+(gq)p - q 6 Z n Z*
+
+if q ≠ p , ( gq)q = 1 ·
+
+To prove (5) note that for any f G C(R) = C*(Q/Z) and n G N* one has (cf. Proposition
+18 e))
+
+(7)
+
+f μn = μn fn , where fn(b) = f(nb)
+36
+
+Vb G R .
+
+Thus if f is localized in F C P and q t F one gets 0gq( f) = fq.
+(8)
+
+fµq = μqθgq(f) .
+
+Applying this to f = V one gets V μq = x(gq) µq V, i.e. one gets (5). Let us view χ as a
+character of (Z/mZ)* where the prime factors of m all belong to F. Then we can simply
+write x(q) instead of x(gq), for q £ F. It follows from (5) that modulo inner automorphisms
+the automorphism a is the infinite tensor product
+
+(9)
+where for any complex number Λ, |A| = 1, we let pp\ be the automorphism of TP such that
+(10)
+
+Pp,\(µp) = λ μρ .
+
+This automorphism is a special case of at p and preserves the state ψβ,p by construction.
+For any χ € W localized on F we let θχ be the element of Out Μ = Aut(M)/Int(M)
+determined by the class of
+(11)
+
+Lemma 28. θχ is inner relative to φB iff the following infinite product converges absolutely
+in absolute value:
+
+Proof. One has in the type I^ factor Mp associated to (τρ,φβ,ρ) a unitary implementing
+the automorphism Pp,x(p), it is given by the diagonal operator with eigenvalues the x(p)j.
+Evaluating the state φB,Ρ on this unitary gives:
+
+and the result follows from general criterions (cf. [Co]).
+^
+This shows using Dirichlet’s theorem [Ser1] that θχ is outer (χ non trivial) when β < 1
+and is inner (since ψβ is a type Io© factor state) for β > 1.
+37
+
+This lemma shows that, for β G ]0,1], the automorphism a of ME given by (4) is outer:
+(12)
+
+{y € ME ;
+
+y a(x) = X y
+
+Vx 6 ME} = {0} .
+
+Now let L be the linear form on ΜE given by
+L(x) = i!>(Vx)
+
+(13)
+
+Vx € C*(N*)E .
+
+The Schwartz inequality |L(x)|2 < Φ(Ε) φ(x*x) shows that it is a normal linear functional
+on ME. Let u be the partial isometry u G ME of its polar decomposition: L = u |L|.
+The KMSB condition for φ applied to the pair Vx, y; x G C*(N*), y G C*(N*), shows that
+L satisfies the α-twisted KMSB condition, where L(σt(y) x) is replaced by L(σt(y) α(x)).
+Now as both V and φ are at invariant so is L and hence so are u and |L|. It follows that
+the Radon-Nikodym derivative (D|L| : D <pB)t belongs to the centralizer of ψβ and is of
+the form h with
+it
+
+(14)
+
+|L|(x) = $B(hx)
+
+Vx 6 ME .
+
+From the twisted KMSB condition we then get:
+z hu = hu a(z)
+
+(15)
+
+Vz G ME
+
+which implies by (12) that hu = 0 and that L = 0.
+This proves Lemma 27 b). Let us prove 27 c). It is enough for that purpose, given a
+character χ G W localized in F C P, to find a sequence V of partial isometries Vn G
+C*(Q/Z) = C(R), localized in F and such that:
+n
+
+(16)
+
+9g(Vn) = x(g)Vn
+
+VgeW; ψβ(VnVn*) -* 1.
+n—^oo
+
+Then, given a G CQ , one has:
+,X
+
+φ(α) = lim φ(VnV*a) = 0
+n—*oo
+
+because V* a G CQ,1 = C*(N*) and Lemma 27 b) applies. Finally the construction of the
+Vn is reduced by Lemma 22 to the construction of continuous functions Vn G C( Jj Zp)
+peF
+such that:
+(17)
+
+Vn(gb) = X(g) Vn(b)
+
+Vb ej]
+F
+
+38
+
+. fl e Y[i;
+F
+
+and such that the |Vn| are uniformly bounded and converge pointwise to 1; this is immediate
+and the existence of the partial isometries Vn follows.
+Corollary 29. For any β G ]0,1] there exists at most one KMSB state on CQ.
+Proof. The group W is a compact group so that the direct sum of the spectral subspaces
+CQ, x is dense in CQ and this determines φ uniquely by Lemma 27.
+We shall now construct this unique KMSB state φβ on CQ in a geometric manner using the
+action on the product of trees of section 3. The construction will follow from the following
+general lemma applied to the C*-module £ = C*(G)e over C*(N*) and the time evolution
+σ* of C*(N*).
+Lemma 30. Let C be a unital C*-algebra, £ a C*-module over C, (σt)te R a one-parameter
+group of automorphisms of C, β G ]0,oo[, ψβ a KMSB state on C, and Hφβ the Hilbert
+space of the GNS construction for φβ.
+a) Let Hβ be the completion of £ for the inner product given by:
+{ξ, n)β = φβ({ξ,η))
+
+G £ .
+
+Then the action of the endomorphisms, Endc(£), on £ extends by continuity to Hβ.
+b) There exists a unique representation p of C0 (the opposite algebra of C) in Hβ such
+that for any Ç G Hβ and a G C in the domain of σiB/2 one has:
+p(α)ζ = £σiβ/2(α) .
+This representation commutes with the left action of Endc(£).
+Proof. The Hilbert space Hβ is the tensor product of C* modules
+(18)
+
+Hβ = £ ®c Hφβ
+
+so that the first assertion follows. The second assertion also follows, using Hφβ as a left
+Hilbert algebra and the stabilization theorem of Kasparov [Ka].
+We apply this lemma with C = C*(Ν*), £ = C*(G)e, and at G Aut C given by the time
+evolution (Proposition 7 3)) of C*(N*). As £ is a space of functions on Δ, so is each of
+the Hβ, and for each a G Δ we let εα be the characteristic function of {a} C Δ. The
+vectors εα, a G Δ, are of unit length in each Hβ and always span a dense subspace of
+Hβ. For β = 1 they give an orthonormal basis, so that H1 = l2(Δ). In order to compute
+39
+
+the inner product (εα, εα')β in Hβ we shall first work locally, i.e. we fix the local field
+K = Qp and apply Lemma 30 to C = C*(PR)E the reduced C*-algebra of PK relative to
+the projection e = 1PR, while the C* module is E = C*(PK) e. We use on C the state
+φβ,Ρ.Then Lemma 30 yields an inner product on the space of functions with finite support
+on the tree Tp = PK /PR.
+Let us now compute explicitely this inner product on the tree T associated to any value β.
+Thus K is a local field, K = Qp, and we first note that transporting ψβ,ρ by the canonical
+isomorphism of τp with the reduced C*-algebra C*(PK )e, its value on a PR biinvariant
+function f(s), s £ ΡK is given by (cf. formula (9) of section 3),
+(19)
+
+Let g e Ρκ, g =
+
+The inner product (g ε0 , £0)/B, with eo corresponding to
+
+the base point, is equal to φβ,ρ(f ), where the function f is associated by formula (13) of
+section 3 to the right cosets PR and g PR in PK /PR:
+(20)
+
+f(s) = m(g PR Π PR S-1 ) Vs G PK
+
+where m is the left Haar measure on PK. We just need to evaluate f(s) for s =
+One has
+
+(21)
+All its elements
+
+satisfy val(a) = 0. This implies that PR S- 1 Π g PR ^ 0 only if
+
+val(h0) = 0. Thus:
+(22)
+
+{ge0, ε0) = 0
+
+if val(
+
+)φ0
+
+h0
+
+Assume now that val(h0) = 0; replacing g by g
+without changing g ε0. One has
+
+(23)
+40
+
+we can assume that h0 = 1
+
+One has g PR Π PRS-1 φ 0 only if val(n0) = —k. Let us assume that val(n0) = —k.
+Then we need to compute the multiplicative Haar measure of the set of h1 £ R* such
+n0-1 + n-10 R = p n-10 + pk R.
+mod R. This holds iff h1 £ p
+that h1n0 = p
+The additive and multiplicative Haar measures coincide on R* up to an overall coefficient
+- k
+
+d*h = (1 —
+
+-k
+
+- k
+
+dh. Thus we get the equality, with
+
+if
+
+(24)
+
+k = —val(n0)
+
+if k φ —val(n0) .
+This together with formula (19) gives the equality
+(25)
+
+Ψβ,ρ(f)=Ρ Ιίβ(1 -Ρβ 'Η1-? ‘)
+
+1
+
+- Α· = —val(n0)
+
+i.e.
+(26)
+
+(9ε0,εο)β = p-kB(l -pB-1)(1 -p-1)
+
+-1
+
+where
+The next step is to understand the geometric meaning of the orbit of { [o
+
+in
+
+l] L0}
+
+the tree Tp and of the value k = —val(n). Since the action of PR on the tree Tp fixes a
+point at oo it preserves the horocycles corresponding to this point. These horocycles are
+the equivalence classes of the relation Roo : L ~ L' iff Eq tq L = tq L' where t is the
+hyperbolic translation of one unit towards the point at oo.
+We first check that two lattices L, L' are Ro equivalent iff they are on the same orbit of
+1 n
+, η £ K of PK. This subgroup is a normal subgroup and hence
+the subgroup
+defines an equivalence relation which is stable under the left action of PK. The map t is
+given by:
+(27)
+
+t(g L0) = g gp L0
+
+Vg £ PK
+
+with gp =
+
+More generally tq(g L0) = g gq L0
+g2 gqp L0, i.e.
+
+Vg G PK. Thus g1 L0 ~ g2 L0 (Rq) iff g1 gq L0 =
+
+(28)
+
+1
+
+g2-1
+
+9i € 9qP PRGp9 ·
+41
+
+This holds iff g2-1g1 is of the form
+
+, val(h) = 0, val(???) > —q. Thus g1 L0 -
+
+g2 L0 (Rx,) iff g2- 1 g1 E K XR*. Two lattices g L0 and
+
+g L0 obviously satisfy
+
+this relation and conversely, if g1 L0 ~ g2 L0(R
+
+as
+
+) we may write g2
+
+g1 without
+
+00
+
+affecting gj L0.
+Let us then understand the value of
+L=
+
+L0.
+
+as a. function of the distance between L0 and
+
+Let k = —val(m). We know that tk(L0) = tk(L) and that this fails for
+
+k — 1. Hence D(L0, L) = 2k. We thus get
+Lemma 31. Let L,L' E T be two lattices.
+a) If they belong to different horocycle equivalence classes, they are orthogonal for ()B.
+b) If they belong to the same horocycle class with distance d(L, L') = 2k > 0 one has:
+{CL
+
+, εL')β=p- kB (1 ~Ρβ
+
+1
+
+)(1· — P *)
+
+1
+
+·
+
+c) If L = L', then (εL,εL')β = 1.
+Remarks. a) For β —> +oo the above inner product converges to a non zero value only if
+L = L' or if L φ L' but L ~ L'(R1) in which case it goes to —p (1 — p ) .
+-1
+
+-
+
+1
+
+-
+
+1
+
+b) For β —> 0 the inner product converges to 1 on each horocycle equivalence class,
+which are then reduced to a single point in Hβ, β = 0.
+Let us now compute the corresponding inner product on Δ = Π(ΤΡ, L0) = P+Q/P+Z. We
+again call L0 the base point.
+Given
+
+1
+0
+
+n
+h
+
+= g , n € Q , h G Q*+, to get a non zero inner product, (g L0,L0), we need
+
+that for each place p, gp L0 ~ L0(R ) and hence that val(gp) = 0. Thus h = 1. Let then
+oo
+
+and let us understand the inner product on the orbit N L0. We
+have a basis ex parametrized by x G Q/Z,
+
+The inner product (εx,ε0)β is then given, using Lemma 31, by
+(29)
+
+42
+
+where x = a/b, (a, b) = 1 and b = Π pkp is the decomposition of b as a product of prime
+p
+powers.
+More generally, it is invariant by translations, i.e. {εx,εy)β = {εx-y,ε0)β, thus the positivity involved is the fact that the function given by (29) is of positive type on the group
+of roots of unity: Q/Z. This function is the function ψβ of Theorem 5.
+One has (gx L0 , g2 L0)B = 0 if g2- 1g1 £ N.
+Let us then take an arbitrary orbit N g L0, g G P+Q . We need to compute ((1, x) g L0, (1, y)
+g L0)β where x, y G Q and (1, x), (l, y) are the corresponding elements of N. One has
+((1, x) g L0, (1 ,y) g L0) = (g ex' , g ey') = {ex'-y' , ε0) where (1, x') = g (1,x)g and
+1 0
+are
+(1, y') = g (1, y)g. Thus we see that the orbits N 0 k e0, k e Q*+,
+pairwise
+-
+
+l
+
+- 1
+
+orthogonal for ( )β and the inner product is, up to arelabelling, given by (29) on each of
+them.
+We are now ready to describe the Hilbert spaces Hβ associated by Lemma 30 to the C*
+module ԑ = Be over C*(N*) and the KMS state φβ, and then get the commutant of P+Q
+in Hβ as a unitary representation of the C*-algebra CQ.
+Proposition 32. a) Let Hβ be the Hilbert space completion of the C* module C*(PA)E,
+over eC*(PA)e = C*(N*), with state ψβ. Then Hβ has a natural basis indexed by P+Q/P+Z,
+and its inner product is invariant under left translations by P+Q and given by
+
+where ψβ is the function of positive type defined in Theorem 5.
+b) The C*-algebra C0Q admits a representation in Hβ given by the right convolution
+with δB/2 f for any P+Z biinvariant function f on P+Q .
+c) The vector £o = class of P+Z is cyclic for P+Q , separating for CQ, CQ £0 is the fixed
+points of P+Z C P+Q and (CQ)" is the commutant of P+Q in Hβ.
+d) The vector £0 defines a KMSB state on CQ.
+Proof. The proof of a) follows from (29). We let Hβ, 1 be the subspace of Hβ generated
+by the orbit N £0 of £0 under the normal subgroup N of P+Q. More generally for k G Q*+
+we let
+(30)
+43
+
+The subspaces Ηβare pairwise orthogonal and Hβ is their direct sum.
+Let us prove b). We know that the action by right convolution of the Hecke algebra H
+of P+Z-biinvariant function on P+Q yields a representation of Η0 on the linear span of the
+natural basis ex, x G P+Q/P+Z of Ηβ. This is still true if we twist this action by the (non
+involutive) automorphism of H given by multiplication by <B/2.
+Thus we just need to show that the new representation of H0 in Ηβ is involutive.
+When we restrict this representation to the group ring of Q/Z we obtain (as S = 1 on
+double classes in Q/Z) that the corresponding representation of Q/Z is given by
+(31)
+Thus p(y) is diagonal in the decomposition Ηβ = HB,k
+unitary since the left action of N on Ηβis unitary.
+
+and its restriction to HB,K is
+
+When we restrict the representation p of H0 to the involutive subalgebra generated by
+the μn, its unitarity follows from Lemma 30 b). The explicit computation of the isometry
+Up = p(μ*p) in Ηβ associated to μ*, p a prime, is the following. We let as above tp be the
+hyperbolic translation of one unit of length towards the point at oo in the tree Tp. We let
+it act trivially on the other trees. One then obtains
+(32)
+
+One can check directly using Lemma 31 that Up is indeed an isometry.
+We have thus shown that p is an involutive representation of H0 in Ηβ and by Proposition
+19 it extends to a representation of C0Q in Ηβ. This proves b). By construction ε0 is
+cyclic for P+Q . Since the above action of H0 (and C0Q) commutes with P+Q the vector ε0 is
+separating for C0Q.
+The proof of the last statement of c) is the same as in the case β = 1 (cf. Lemma 17).
+The proof of d) is the same as that of Lemma. 16.
+Combining Corollary 29 with Proposition 32 d) we obtain that for β G ]0,1] the state on
+CQ given by
+(33)
+
+φ(x) = (ρ(x)ε0, ε0)
+
+Vx G CQ
+
+is the unique KMSB state. This together with 32 a) completes the proof of Theorem 5.
+44
+
+Remarks 33. a) Let on Hβ, Δ be the operator of multiplication by kB on Hβk. There
+exists a unique weight φβ (up to a multiplicative constant) on (P+Q)" with modular automorphism group given by
+σtβ (·) = Δit · Δ
+
+(34)
+
+_it
+
+.
+
+£e is separating for C"Q but not cyclic. Its
+
+For each m E N*, the vector em =
+
+cyclic span CQ £N defines a projection Em E (PQ)" which belongs to the centralizer of φβ
+and on which φβ is finite. On the subspace Em the modular operator of the pair (P"Q/Em,
+C"Q and vector em) is the restriction of Δ.
+The subspace Em is the space of fixed points of the subgroup
+
+of P+Q. These
+
+subspaces form a nested family (i.e. Em C Em' if m divides m') which is total in Hβ.
+b) We used throughout this paper the pairs of groups P+Q, P+Z C P+Q instead of
+the pair PQ, PZ C PQ. The relation between the corresponding C*-dynamical systems
+C*(P+Q,PZ+), Gt and C*(PQ,Pz), σt is quite simple. Indeed the latter is just the fixed
+point C*-algebra of the involution a of the former given by the complex conjugation z —>z
+viewed as an element of W = Gal(Q ). This is easy to check because the double class X
+cycl
+
+modulo Pz of an element g E PQ, g —
+
+is the same as the double class modulo Pz
+
+of g 10 0e , e = Sign(a) which allows to assume a > 0. This shows that PZ biinvariant
+
+functions on PQ yield all the P+Z invariant functions on P+Q which are invariant under the
+involution:
+(35)
+
+g E P+Q ·
+
+One thus obtains the σt equivariant equality
+(36)
+
+C*(PQ, PZ) = C*(P+Q, P+Z)α
+
+and one can rewrite the main theorem of this paper in terms of C*(PQ,PZ).
+c) In this paper we have ignored the place at infinity in our treatment of KMSB states
+or weights and in the construction of CQ from the action on the product of trees (section
+2). We obtained, for the finite places, the action of PK on the tree of SL(2,K) as well as
+the relevant inner product on functions on the tree (section 5) from the understanding of
+KMSB weights on C*(PK) and of the reduction by the projection e E C*(PK), e = 1PR.
+45
+
+At the infinite place the C*-dynamical system at hand is C*(PR), σt where PR is the group
+of matrices
+b e R , a G R*
+
+(37)
+
+and where at is given by the module 6 of PR,
+(38)
+
+Vf € L1(PR) , t e R ·
+
+*t(f)(g) = (g)-it f(g)
+
+The C*-algebra of PR is, using the identification of R with its Pontrjagin dual group, given
+by
+(39)
+
+C*(PR) = C0(R) xR*
+
+where the action of R* is by homotheties. This action has two orbits, R/{0} and {0} and
+to the equivariant exact sequence of C*-algebras:
+(40)
+
+0 -> C0(R/{0}) —> C0(R) —> C -> 0
+
+corresponds the exact sequence of crossed products:
+(41)
+
+0 → k → C*(PR) → C*(R*) →0
+
+similar to the exact sequence of the Tœplitz C*-algebra. Here the two sided ideal K is the
+elementary C*-algebra of compact operators. The representation theory of C*(PR) immediatly follows from (7) and besides the characters of C*(R*) which yield one dimensional
+representations of C*(PR) one has a unique infinite dimensional irreducible representation
+π. This representation can be described as follows. One lets H = L2(R) with
+(42)
+
+((g)ξ)(t) = |a|1/2 ξ(at - b)
+
+where g =
+
+as above, belongs to PR.
+
+Vt e R , ξ e L2(R)
+
+For each β G ]0, oo[ there exists up to normalization a unique KMSB weight on C*(PR), it
+is given by
+(43)
+
+B(f) = Trace(7r(f) Δ-b/2)
+
+Vf £ C*(PR)+
+
+where Δ = — d2/dt2 is the Laplacian, an unbounded selfadjoint operator in L2(R).
+By construction ψβ is a type
+factor weight which is a dominant weight ([C], [C-T])
+on the corresponding type Io© factor. It follows that for any factor M with weight ψ the
+46
+
+centralizer of ψ (g) ψβ is the associated semifinite von Neumann algebra of the continuous
+decomposition of M, i.e. the crossed product by the modular automorphism group σψ,
+(44)
+In our case, with β G]0,1], it is natural to take for M the commutant of P+Q acting in
+the Hilbert space Ηβ (cf. Proposition 32). To obtain the crossed product (44) it is then
+natural to use at the infinity place the Hilbert space Η^ of the GNS construction of the
+weight φβ on C*(PR). In the tensor product Ηβ ® Η°β one has a natural product action
+of the group PA over the adeles A = A x R. The crossed product (44) is then contained in
+the commutant of P+Q which is a discrete subgroup of PA.
+
+References
+[A-W] H. Araki and E.J. Woods : A classification of factors, Publ. Res. Inst. Math. Sci.
+Kyoto Univ. 4 (1968), 51-130.
+[Bi] M. Binder : Induced factor representations of discrete groups and their type, Jour.
+Functional Analysis, to appear.
+[Bl] B.E. Blackadar : The regular representation of restricted direct product groups, Jour.
+Functional Analysis 25 (1977), 267-274.
+[Bos-C] J.-B. Bost and A. Connes : Produits eulériens et facteurs de type III, C.R. Acad. Sci.
+Paris 315 (I) (1992), 279-284.
+[Br-R] O. Bratteli and D.W. Robinson : Operator algebras and quantum statistical mechanics
+I, II, Springer-Verlag, New York-Heidelberg-Berlin, 1981.
+[Com] F. Combes : Poids associé à une algèbre hilbertienne à gauche, Compos. Math. 23
+(1971), 49-77.
+[C] A. Connes : Noncommutative geometry, Academic Press, 1994.
+[Co] A. Connes : Une classification des facteurs de type III, Ann. Sci. Ecole Norm. Sup.
+(4) 6 (1973), 133-252.
+[C-T] A. Connes and M. Takesaki : The flow of weights on factors of type III, Tohoku Math.
+J. 29 (1977), 473-575.
+[Dir] P.A.M. Dirac : The quantum theory of the emission and absorption of radiation, Proc.
+Royal Soc. London A114 (1927), 243-265.
+[G] A. Guichardet : Symmetric Hilbert spaces and related topics, Lecture Notes in Mathematics 261, Springer-Verlag, New York-Heidelberg-Berlin, 1972.
+47
+
+[H] R. Haag : Local quantum physics, Springer-Verlag, New York-Heidelberg-Berlin, 1992.
+[J] B. Julia : Statistical theory of numbers, in Number Theory and Physics, Les Houches
+Winter School, J.-M. Luck, P. Moussa et M. Waldschmidt éditeurs, Springer-Verlag,
+1990.
+[P] G.K. Pedersen : C*-algebras and their automorphism groups, Academic Press, LondonNew York-San Francisco, 1979.
+[Ren] J. Renault : A groupoid approach to C*-algebras, Lecture Notes in Mathematics 793,
+Springer-Verlag, New York-Heidelberg-Berlin, 1980.
+[Ser1] J.-P. Serre : Cours d’arithmétique, P.U.F. Paris, 1970.
+[Ser2] J.-P. Serre : Arbres, amalgames, SL2, Astérisque 46 (1977).
+[Sh] G. Shimura : Introduction to the arithmetic theory of automorphic functions, Princeton University Press, 1971.
+[Spe] D. Spector : Supersymmetry and the Möbius inversion function, Commun. Math.
+Phys. 127 (1990), 239-252.
+[T] J. Tate : Fourier analysis in number fields and Hecke’s zeta function, in Algebraic
+Number Theory, J.W.S. Cassels et A. Fröhlich éditeurs, Academic Press, 1967.
+[We1] A. Weil : Fonction zêta et distributions, Séminaire Bourbaki n°312, juin 1966.
+[We2] A. Weil : Basic number theory, Springer-Verlag, Berlin-Heidelberg-New York, 1974.
+
+48
+
+

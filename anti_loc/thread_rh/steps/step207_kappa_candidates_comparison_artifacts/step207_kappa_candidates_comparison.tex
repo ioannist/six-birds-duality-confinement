@@ -1,0 +1,90 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Step 207: Candidate Transport-Sampling Comparison}
+
+This step tests two candidate formulas for
+\[
+  \kappa_i(\tau)=\bigl[T_{1/2}^*K_{1/2}^{\Gamma}(\cdot,\rho_i)\bigr](1/2+i\tau)
+\]
+on the same 200-node Gauss--Legendre grid in \([-40,40]\).
+
+\subsection*{CAND1: Burnol boundary kernel}
+
+Burnol 2002, Theorem 8 states that \(B(E_\lambda)\) coincides isometrically
+with the space of completed Mellin transforms of \(K_\lambda\).  With Burnol
+2002 equation 1,
+\[
+ K_{1/2}^{\Gamma}(s,w)=
+ \frac{E_{1/2}(s)\overline{E_{1/2}(w)}
+       -E_{1/2}(1-s)\overline{E_{1/2}(1-w)}}{s+w-1},
+\]
+the first candidate is
+\[
+  \mathrm{CAND1}_i(\tau)=K_{1/2}^{\Gamma}(1/2+i\tau,\rho_i).
+\]
+The step uses the Step 205 Burnol-boundary grid computed from Burnol 2002
+Theorem 8 and equation 1.
+
+\subsection*{CAND2: zeta-dual candidate}
+
+Burnol 2004 [19], Theorem 3.1 identifies the \(a=1\), simple-zero dual system
+with inverse Mellin transforms of
+\[
+ \frac{\zeta(s)}{(s-\rho)\zeta'(\rho)\pi^{-\rho/2}\Gamma(\rho/2)}.
+\]
+For \(a=1/2\), Burnol states that suitable linear combinations are required.
+The tested candidate is therefore the single-term normalization probe
+\[
+  \mathrm{CAND2}_i(\tau)=
+  \frac{\zeta(1/2+i\tau)}
+  {(1/2+i\tau-\rho_i)\zeta'(\rho_i)\pi^{-\rho_i/2}\Gamma(\rho_i/2)}.
+\]
+
+\subsection*{Ratio test}
+
+The pointwise ratios \(\mathrm{CAND1}_i(\tau)/\mathrm{CAND2}_i(\tau)\)
+would be constant in \(\tau\) if the candidates differed only by a
+normalization.  The observed nominal ranges are:
+\[
+\begin{array}{c|c|c}
+i & \min |\mathrm{CAND1}/\mathrm{CAND2}| & \max |\mathrm{CAND1}/\mathrm{CAND2}|\\
+\hline
+1 & 2.5008929629627379\cdot10^{-26} & 1.7748924779317304\cdot10^{-10}\\
+2 & 7.4226939561589834\cdot10^{-30} & 2.6079509268902143\cdot10^{-15}\\
+3 & 1.3962291433488764\cdot10^{-33} & 3.0769935351035648\cdot10^{-18}
+\end{array}
+\]
+Thus the candidates do not agree up to a constant at the available numerical
+level.  The imported Step 205 CAND1 error labels are conservative and dominate
+the CAND1 values, so this is a transport-sampling obstruction rather than a
+certified analytic inequality.
+
+\subsection*{Consequence for \(\Xi_{\rm matrix\_source}\)}
+
+The inherited compressed-HS formula is
+\[
+  \Xi_{\rm matrix\_source}=\operatorname{tr}(G^{-1}c^\dagger G^{-1}c),
+  \qquad
+  c_{ij}=\langle \kappa_i,(I-P_\infty)M_{m_\ell}P_\infty\kappa_j\rangle .
+\]
+Since the transport-sampling formula is unresolved, Step 207 does not select
+either candidate and does not evaluate \(c_{ij}\) or \(\Xi_{\rm matrix\_source}\).
+
+\subsection*{Verdict}
+
+\[
+  \boxed{\texttt{V\_kappa\_tau\_candidates\_disagree}.}
+\]
+
+The next typed dependency is the explicit action of
+\[
+  T_a^*=U_\infty J_a^*M_\Gamma^*
+\]
+on \(B(E_a)\) reproducing kernels, or a sharpened proof that the \(a<1\)
+Burnol dual system reduces to a specified linear combination matching the
+boundary kernel.
+
+\end{document}

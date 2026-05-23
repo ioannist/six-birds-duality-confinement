@@ -1,0 +1,31 @@
+{
+  "step": 44,
+  "name": "Membrane Type Promotion Theorem",
+  "source_type": "proof_schema",
+  "objects": {
+    "native_response_space": "Y",
+    "typed_response_space": "Z",
+    "response_presentation": "J:Y->Z",
+    "reconstruction": "R:Z->Y",
+    "native_currency": "K_Y=L C^dagger L^*",
+    "typed_currency": "K_Z=J K_Y J^*",
+    "typed_budget": "Theta_Z",
+    "native_budget": "Theta_Y",
+    "residual_readout": "E=L-RJL",
+    "residual_currency": "K_E=E C^dagger E^*"
+  },
+  "exact_promotion": {
+    "hypotheses": ["R J = I_Y", "K_Z <= Theta_Z"],
+    "conclusion": "K_Y <= R Theta_Z R^*"
+  },
+  "defective_promotion": {
+    "hypotheses": ["K_Z <= Theta_Z", "K_E <= E_0"],
+    "conclusion": "K_Y <= (1+t)R Theta_Z R^* + (1+t^{-1})E_0 for all t>0"
+  },
+  "membrane_types": {
+    "sectioned": "requires full cross-section block budget and faithful section reconstruction",
+    "bundle_fiber": "requires uniform/direct-integral budget and gluing reconstruction",
+    "protocol_indexed": "requires full protocol block budget, readout agreement, and protocol reconstruction"
+  },
+  "statuses": ["accepted_promotion", "defective_promotion", "local_only_or_nonclaim", "overread"]
+}

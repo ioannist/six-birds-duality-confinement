@@ -1,0 +1,241 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{proposition}{Proposition}
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Uinf}{\mathcal U_\infty}
+\newcommand{\MGamma}{\mathcal M_\Gamma}
+\newcommand{\Cell}{C_\ell}
+
+\title{Step 177: Branch B SL164.1 Attack}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{SL164\_verdict = V\_SL164\_stuck\_at\_normalization}.}
+\]
+
+The Step 173 projection identity composes cleanly with the Step 153 transport,
+but the inherited records do not provide the input Mellin vector on which the
+projection must act.  The deepest named gap is
+\[
+\boxed{
+\kappa_{a,w}(\tau)
+:=
+\left(T_a^*K_a^\Gamma(\cdot,w)\right)(1/2+i\tau),
+}
+\]
+equivalently the action of \(P_{\mathcal L_a^\Gamma}\) on
+\(K_a^{\Gamma,\mathrm{amb}}\).
+
+\section{T1. Inherited Records}
+
+Step 145 defines the carrier:
+\[
+L_a\subset L^2(0,\infty;dt)
+\]
+is Burnol's extended Sonine space: functions constant on \((0,a)\) whose
+cosine transform is again constant on \((0,a)\).  It also places the residual
+carrier inside
+\[
+Y_a\subset L_a.
+\]
+
+Step 153 gives the transport and evaluator formula:
+\[
+T_a:=\MGamma J_a\Uinf^{-1},
+\]
+and
+\[
+\Uinf(J_a^*Y^a_{w,k})
+=
+T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+\]
+For \(k=0\), set
+\[
+\kappa_{a,w}:=T_a^*K_a^\Gamma(\cdot,w).
+\]
+
+Step 153 also records the load-bearing projected kernel:
+\[
+K_a^\Gamma(\cdot,w)
+=
+P_{\mathcal L_a^\Gamma}
+K_a^{\Gamma,\mathrm{amb}}(\cdot,w),
+\]
+and warns that omitting this projection gives only the ambient Hardy shadow,
+not the Burnol/Sonine evaluator.
+
+Step 164 defines
+\[
+\rho_1=\frac12+14.134725141734693i,\quad
+\rho_2=\frac12+21.022039638771554i,\quad
+\rho_3=\frac12+25.010857580145688i,
+\]
+\[
+a_0=\frac12,\qquad k=0,
+\]
+and
+\[
+e_i=\frac{\eta^{a_0}_{\rho_i,0}}
+{\|\eta^{a_0}_{\rho_i,0}\|},
+\qquad
+\eta^a_{\rho,k}=J_a^*Y^a_{\rho,k}.
+\]
+The Step 164 matrix entries are
+\[
+c_{ij}(\ell)=\langle e_i,\Cell e_j\rangle,
+\qquad
+\Cell=(I-P_\infty)M_{m_\ell}P_\infty,
+\]
+where
+\[
+m_\ell(s)=\exp[-\ell(1/2-s)].
+\]
+
+\section{T2a. Apply \(\Psym\) on the Mellin Side}
+
+Let \(P=\Psym\), and write \(s=1/2+i\tau\).  Step 173 gives
+\[
+(P F)(\tau)
+=
+F(\tau)
+-\int_{\mathbb R}
+\frac{\sin(\tau-u)}{\pi(\tau-u)}F(u)\,du
+-\sum_{n\ge0}\Psi_n(\tau)\langle F,\Psi_n\rangle.
+\]
+Applying this to the pulled evaluator vector gives
+\[
+\boxed{
+(P\kappa_{a,w})(\tau)
+=
+\kappa_{a,w}(\tau)
+-\int_{\mathbb R}
+\frac{\sin(\tau-u)}{\pi(\tau-u)}
+\kappa_{a,w}(u)\,du
+-\sum_{n\ge0}\Psi_n(\tau)
+\langle \kappa_{a,w},\Psi_n\rangle.
+}
+\]
+This formula is explicit once \(\kappa_{a,w}\) is known.
+
+\section{T2b. Transport Back to the Projected Kernel}
+
+The projected Burnol/Sonine kernel entry can be written in the pulled Mellin
+model as
+\[
+\boxed{
+K_{\mathrm{proj}}(z,w)
+:=
+(P_{\mathcal L_a^\Gamma}K_a^\Gamma)(z,w)
+=
+\langle \kappa_{a,z},P\kappa_{a,w}\rangle.
+}
+\]
+Equivalently, this is the Step 153 transport-back statement:
+\[
+K_{\mathrm{proj}}(z,w)
+=
+\left(T_aP\,T_a^{-1}K_a^\Gamma(\cdot,w)\right)(z),
+\]
+whenever \(T_a^{-1}K_a^\Gamma(\cdot,w)\) is instantiated as
+\(\kappa_{a,w}\).
+
+\section{T2c. Specialization to \(\Rho_{\mathrm{fin}}\)}
+
+For the Step 164 finite carrier,
+\[
+\boxed{
+K_{\mathrm{proj}}(\rho_i,\rho_j)
+=
+\langle \kappa_i,P\kappa_j\rangle,
+\qquad
+\kappa_i:=\kappa_{a_0,\rho_i}.
+}
+\]
+The norms of finite vectors are
+\[
+\|\eta^{a_0}_{\rho_i,0}\|=\|\kappa_i\|,
+\]
+because the Step 153 transport is used through the Hilbert adjoint convention.
+
+\section{T2d. SL164.1 Matrix Entry}
+
+Before normalization,
+\[
+\langle \eta_i,\Cell\eta_j\rangle
+=
+\langle \kappa_i,(I-P)M_{m_\ell}P\kappa_j\rangle.
+\]
+Since \(P\) is an orthogonal projection,
+\[
+\boxed{
+c_{ij}(\ell)
+=
+\frac{
+\langle \kappa_i-P\kappa_i,\,
+M_{m_\ell}P\kappa_j\rangle}
+{\|\kappa_i\|\,\|\kappa_j\|}.
+}
+\]
+This is the requested operational reduction of SL164.1 to \(K_\infty^{op}\)
+plus the Step 153 transport data.
+
+\section{T3. Numerical Attempt}
+
+The requested test pair was
+\[
+i=j=1,\qquad a_0=\frac12,\qquad
+\ell=\log 2=0.6931471805599453.
+\]
+The computation script recorded the formula
+\[
+c_{11}(\ell)
+=
+\frac{\langle \kappa_1-P\kappa_1,M_{m_\ell}P\kappa_1\rangle}
+{\|\kappa_1\|^2}.
+\]
+However, quadrature cannot lawfully begin because the inherited records do not
+provide \(\kappa_1(\tau)\).  Step 153 gives only
+\[
+K_a^\Gamma=P_{\mathcal L_a^\Gamma}K_a^{\Gamma,\mathrm{amb}},
+\]
+with the projection still load-bearing.  Replacing this by
+\(K_a^{\Gamma,\mathrm{amb}}\) would be exactly the public-shadow substitution
+forbidden by Step 153.
+
+\[
+\boxed{
+c_{11}(\log2)\ \text{is not evaluable from inherited records.}
+}
+\]
+
+\section{Branch B Status}
+
+Step 177 sharpens SL164.1.  The missing record is no longer merely
+``projected Sonine kernel unavailable''; it is the explicit Mellin
+representative
+\[
+\kappa_{a,w}=T_a^*K_a^\Gamma(\cdot,w)
+\]
+or, equivalently, an exact formula for
+\[
+P_{\mathcal L_a^\Gamma}K_a^{\Gamma,\mathrm{amb}}.
+\]
+Until that vector is supplied, the finite-carrier matrix diagnostic from Step
+164 remains indeterminate.
+
+\section{Nonclaim Boundary}
+
+This step does not prove RH, does not close \(\Xi_{\mathrm{BC}}\), does not
+close Branch B, and does not compute a numerical \(c_{ij}(\ell)\).  It does
+not weaken retained no-gos and does not use the ambient Hardy shadow as a
+substitute for the projected Burnol/Sonine kernel.
+
+\end{document}

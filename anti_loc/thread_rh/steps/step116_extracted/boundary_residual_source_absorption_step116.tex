@@ -1,0 +1,156 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newcommand{\BC}{\mathrm{BC}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\title{Step 116: Residual-Specific Hecke/Dirichlet Source Absorption for $\Xi^{\rm BC}$}
+\author{RATCHET RH Membrane Program}
+\date{May 14, 2026}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 114--115 reduced the Burnol/co-Poisson visibility shortcut to the zero-evaluator residual
+\[
+\Xi^{\BC}_{\ell,a}=\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}\succeq0,
+\]
+where $Y_a$ is Burnol's zeta-zero evaluator span in $L_a$, $P_a=Y_a^\perp$ is the co-Poisson subspace, and $\mathfrak B_{\ell,a}$ is a shifted semilocal boundary block transported into the Burnol carrier.
+
+The present note states the source-absorption theorem for the case in which the clean zeta-factorization route
+\[
+M(\mathfrak B_{\ell,a}u)(s)=\zeta(s)\alpha_{\ell,u}(s)
+\]
+is not available. The target is to charge the residual sector seen by $\Pi_{Y_a}\mathfrak B_{\ell,a}$ using a non-smuggled Hecke/Dirichlet source frame.
+
+\section{Residual sector}
+\begin{definition}[Boundary-to-co-Poisson residual sector]
+For a finite set of log-shift modes $\mathcal L_N$, define
+\[
+\mathcal R_N
+=\overline{\operatorname{span}}\{\Ran |\Pi_{Y_a}\mathfrak B_{\ell,a}|:\ell\in\mathcal L_N\}\subseteq Y_a.
+\]
+Let $M_{R,N}:\mathbb C^{d_N}\to Y_a$ synthesize a finite dictionary for $\mathcal R_N$, and set
+\[
+G_{R,N}=M_{R,N}^*M_{R,N}.
+\]
+The finite residual form is
+\[
+\Xi^{\BC}_N\preceq \sigma_N G_{R,N}+T_N^{\BC},
+\]
+where $T_N^{\BC}$ is the finite-to-completed residual tail.
+\end{definition}
+
+\section{Residual coefficient visibility}
+Let $D_N:\mathbb C^{I_N}\to H_N$ be a declared coefficient synthesis dictionary, typically Burnol/co-Poisson native followed by a Dirichlet/Hecke coefficient readout. Let $P_{D,N}$ be the projection onto $\Ran D_N$. The residual coefficient map is
+\[
+R_N=D_N^\dagger M_{R,N}.
+\]
+The coefficient visibility identity is
+\[
+R_N^*H_NR_N
+=M_{R,N}^*P_{D,N}M_{R,N}
+=G_{R,N}-E_{R,N}^*E_{R,N},
+\]
+where
+\[
+E_{R,N}=(I-P_{D,N})M_{R,N}.
+\]
+Thus the residual visibility constant is
+\[
+c_{R,N}=1-\|E_{R,N}G_{R,N}^{-1/2}\|^2.
+\]
+This is the residual-specific $\Xi$ adequacy gate: it measures what the residual sector sees that the coefficient dictionary cannot express.
+
+\section{Source frame}
+Let $\mathcal X_N$ be an upstream-declared character/source family. Define its coefficient-space Gram matrix by
+\[
+G_{\mathcal X,N}(m,n)
+=\sum_{\omega\in\mathcal X_N}\lambda_{\omega,N}\omega(n)\overline{\omega(m)}.
+\]
+The induced residual source frame is
+\[
+F_{R,N}=R_N^*G_{\mathcal X,N}R_N.
+\]
+
+\begin{theorem}[Finite residual source absorption]
+Assume
+\[
+G_{\mathcal X,N}\succeq \gamma_N H_N,
+\qquad
+R_N^*H_NR_N\succeq c_{R,N}G_{R,N}.
+\]
+Then
+\[
+F_{R,N}\succeq \gamma_Nc_{R,N}G_{R,N}.
+\]
+If additionally
+\[
+\Xi^{\BC}_N\preceq \sigma_NG_{R,N}+T_N^{\BC},
+\]
+then
+\[
+\Xi^{\BC}_N\preceq \frac{\sigma_N}{\gamma_Nc_{R,N}}F_{R,N}+T_N^{\BC}.
+\]
+In particular, the residual is source-absorbed when
+\[
+\gamma_Nc_{R,N}\to\infty,
+\qquad
+T_N^{\BC}\to0
+\]
+in the fixed/exhaustive ledger sense.
+\end{theorem}
+
+\begin{proof}
+The first inequality follows by congruence:
+\[
+F_{R,N}=R_N^*G_{\mathcal X,N}R_N\succeq \gamma_NR_N^*H_NR_N\succeq \gamma_Nc_{R,N}G_{R,N}.
+\]
+Thus
+\[
+G_{R,N}\preceq (\gamma_Nc_{R,N})^{-1}F_{R,N},
+\]
+and substitution into the residual domination estimate gives the result.
+\end{proof}
+
+\section{Completed theorem shape}
+Let $\mathcal R$ be the completed boundary-to-co-Poisson residual sector. A completed source absorption record consists of finite windows $\Pi_N:\mathcal R\to\mathcal R_N$ and tails $T_N$ such that
+\[
+\Xi^{\BC}\preceq \iota_N\Xi^{\BC}_N\iota_N^*+T_N,
+\qquad
+\Tr T_N\to0,
+\]
+together with finite source frames satisfying
+\[
+F_{R,N}\succeq \Lambda_NG_{R,N}-E_{R,N}^{\rm src},
+\qquad
+\Lambda_N=\gamma_Nc_{R,N}\to\infty,
+\]
+and defects satisfying the fixed/exhaustive ledger budget.
+
+Then $\Xi^{\BC}$ is absorbed by the source ladder. If the rest of the semilocal membrane records pass, this closes the boundary residual left by the failure of automatic co-Poisson inclusion.
+
+\section{No-smuggling discipline}
+The source family $\mathcal X_N$, the coefficient dictionary $D_N$, the residual windows, and the weights $\lambda_{\omega,N}$ must be declared upstream from the arithmetic carrier. They cannot be selected because they make a final zero-confinement inequality pass. Zero simplicity is not an allowed assumption in this route.
+
+\section{Interpretation}
+The dangerous shifted boundary packets may have a component seen by the zero-evaluator sector. That component is $\Xi^{\BC}$. Step 116 says: if the co-Poisson atom language cannot make it vanish, then Hecke/Dirichlet sources must see and charge it. The two required constants are
+\[
+\gamma_N=\text{character/source strength},\qquad c_{R,N}=\text{residual coefficient visibility}.
+\]
+The route advances only if
+\[
+\gamma_Nc_{R,N}\to\infty.
+\]
+
+\end{document}

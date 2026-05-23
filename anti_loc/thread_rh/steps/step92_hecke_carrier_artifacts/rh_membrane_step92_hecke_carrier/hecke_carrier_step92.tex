@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+\newcommand{\A}{\mathbb A}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\cK}{\mathsf K}
+\newcommand{\cF}{\mathsf F}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cE}{\mathcal E}
+\newcommand{\cY}{\mathcal Y}
+\newcommand{\cZ}{\mathcal Z}
+\newcommand{\pre}{\preceq}
+\title{Step 92: Hecke/Id\`ele-Class Carrier Sketch for the Character-Source Route}
+\author{Six Birds RH Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The paired completed Weil carrier has a low-frequency soft sector.  One lawful route to collapse the anti-invariant budget is a source ladder: add upstream-visible arithmetic source records whose response-side lower frame covers the full anti-invariant sector with strength \(\Lambda_n\to\infty\).  Step 91 identified Dirichlet/Hecke character sources as the strongest plausible source family.  This note states the minimal Hecke/id\`ele-class carrier objects required for that route, and distinguishes a zeta-only repair from an enlarged-carrier program.
+
+\section{Id\`ele-class carrier objects}
+Let
+\[
+  C_\Q=\A_\Q^\times/\Q^\times
+\]
+be the id\`ele class group.  There is a norm map
+\[
+  |\cdot|:C_\Q\to \R_{>0},
+\]
+and the unitary character side decomposes into finite/arithmetic and archimedean-frequency data.  A Hecke character is denoted
+\[
+  \omega=\chi |\cdot|^{it},
+\]
+where \(\chi\) includes finite character data and archimedean parity, and \(t\in\R\) is the continuous frequency parameter.
+
+The minimal enlarged carrier record is
+\[
+  \mathsf H_{\rm Hecke}
+  =\bigl(\cH_{\rm H},C_{\rm H},Y^-_{\rm H},L^-_{\rm H},\{Q_\omega\}_{\omega},\mu_{\rm Pl},\mathsf{EF}_{\omega},\mathsf{Audit}\bigr).
+\]
+Here:
+\begin{itemize}[leftmargin=2em]
+\item \(\cH_{\rm H}\) is a completed Hilbert carrier for the id\`ele/Hecke source family.
+\item \(C_{\rm H}\) is the source audit operator.
+\item \(Y^-_{\rm H}\) is the anti-invariant response space for off-fixed-locus displacement.
+\item \(Q_\omega:Y^-_{\rm H}\to Z_\omega\) is the character readout.
+\item \(\mu_{\rm Pl}\) is the Plancherel/exhaustivity measure on characters.
+\item \(\mathsf{EF}_\omega\) is the completed explicit-formula record for the auxiliary \(L(s,\omega)\).
+\end{itemize}
+
+\section{Source-frame gate}
+A character source record at stage \(n\) is a tuple
+\[
+  s=(\omega,Q_\omega,\Theta_\omega,\lambda_{\omega,n},D_\omega),
+\]
+with
+\[
+  D_\omega\succeq \lambda_{\omega,n}(Q_\omega L^-_{\rm H})^*\Theta_\omega^{-1}(Q_\omega L^-_{\rm H}).
+\]
+The response-side source frame is
+\[
+  \cF_n=\sum_{\omega\in\cX_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega.
+\]
+The source route requires
+\[
+  \boxed{\cF_n\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty.}
+\]
+Then the anti-invariant currency collapses:
+\[
+  \cK_n^-\pre \Lambda_n^{-1}\Theta_0^- + E_{{\rm src},n}.
+\]
+
+\section{Finite quotient frame theorem}
+\begin{theorem}[finite character frame]
+Let \(G\) be a finite abelian group and let \(\widehat G\) be its full character group, with normalized characters
+\[
+  e_\chi(g)=|G|^{-1/2}\chi(g).
+\]
+Then \(\{e_\chi\}_{\chi\in\widehat G}\) is an orthonormal basis of \(\ell^2(G)\).  Consequently,
+\[
+  \sum_{\chi\in\widehat G} P_\chi=I_{\ell^2(G)}.
+\]
+If each full character block is charged with weight \(\lambda_n\), then
+\[
+  \cF_n=\lambda_n I_{\ell^2(G)}.
+\]
+\end{theorem}
+
+\begin{warning}[finite quotient support-only]
+The preceding theorem is exact on the finite quotient \(G\).  It does not by itself cover the completed Hecke response space.  To promote it, one needs an exhaustion map \(\Pi_n:Y^-_{\rm H}\to \ell^2(G_n)\) and a tail record.
+\end{warning}
+
+\section{Exhaustive Hecke frame criterion}
+Let \(\Pi_n:Y^-_{\rm H}\to Y^-_n\) be the conductor/frequency-window response truncation.  Suppose the finite source frame satisfies
+\[
+  \cF_{n}^{\rm fin}\succeq \Lambda_n (\Theta_{n}^-)^{-1}
+  \quad\text{on }Y^-_n.
+\]
+Lift it to the full response space:
+\[
+  \cF_n=\Pi_n^*\cF_{n}^{\rm fin}\Pi_n.
+\]
+A full-frame conclusion requires a tail operator \(T_n\succeq0\) such that
+\[
+  I_{Y^-_{\rm H}}\preceq \Pi_n^*\Pi_n+T_n,
+\]
+with a vanishing tail budget compatible with the target trace/Loewner bound.
+
+\begin{theorem}[exhaustive source-frame criterion]
+Assume
+\[
+  \Pi_n^*\cF_n^{\rm fin}\Pi_n\succeq \Lambda_n \Pi_n^*(\Theta_n^-)^{-1}\Pi_n
+\]
+and
+\[
+  (\Theta_0^-)^{-1}\preceq \Pi_n^*(\Theta_n^-)^{-1}\Pi_n+R_n.
+\]
+Then
+\[
+  \cF_n + \Lambda_n R_n\succeq \Lambda_n(\Theta_0^-)^{-1}.
+\]
+Thus a finite-window character frame promotes to a full source frame only with an explicit residual/tail term \(R_n\).  If \(R_n\) is not controlled or does not vanish in the final obstruction budget, the status is support-only.
+\end{theorem}
+
+\section{Compatibility with the Weil--Douglas bridge}
+There are two routes.
+
+\subsection{Zeta-only repair route}
+One attempts to use character sources as repair terms inside the original zeta carrier.  This is lawful only if every source record descends to the zeta anti-invariant response space before the final zero-confinement gate.  Otherwise the sources are external public shadows.
+
+\subsection{Enlarged Hecke-carrier route}
+One enlarges the carrier to include the auxiliary \(L(s,\omega)\) packages.  The completed feature package becomes
+\[
+  W_{\rm cmp,H}=\bigoplus_{\omega\in\cX} W_{{\rm cmp},\omega},
+\]
+with each \(W_{{\rm cmp},\omega}\) carrying prime, archimedean, pole, and tail slots for the completed \(L(s,\omega)\).  This is the honest path if character sources are load-bearing.
+
+\begin{proposition}[verdict]
+The Hecke/character-source route is compatible with the Weil--Douglas bridge only as either:
+\begin{enumerate}[label=(\roman*)]
+\item a zeta-native source family with explicit descent to \(Y^-\), or
+\item an enlarged Hecke carrier with auxiliary explicit-formula records, Plancherel/exhaustivity, and a descent bridge back to the zeta zero ledger.
+\end{enumerate}
+Absent one of these records, character sources are support evidence, not an accepted source-coercivity proof.
+\end{proposition}
+
+\section{Minimal obligations}
+\begin{enumerate}[label=H\arabic*.]
+\item Define the completed anti-invariant Hecke response space \(Y^-_{\rm H}\).
+\item Define the character readouts \(Q_\omega\) and their Plancherel measure.
+\item Prove finite-window character frames and a vanishing tail/exhaustivity bridge.
+\item Provide completed explicit-formula records \(\mathsf{EF}_\omega\) for each auxiliary source.
+\item Prove source lower-frame growth \(\Lambda_n\to\infty\) on the full anti-invariant sector.
+\item Prove source defects vanish in the same fixed/exhaustive ledger sense as the zero ledger.
+\item Provide a zeta descent bridge or accept that the result is an enlarged-carrier RH program.
+\end{enumerate}
+
+\section{Nonclaim boundary}
+This note does not prove RH.  It does not prove that Dirichlet or Hecke characters automatically provide the required source frame.  It does not permit assuming GRH for auxiliary \(L\)-functions.  It states the exact objects and gates that a character-source route must supply.
+
+\end{document}

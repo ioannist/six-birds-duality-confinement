@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newcommand{\C}{\mathbb C}
+\newcommand{\eps}{\varepsilon}
+\title{Step 125: Prime-Conductor Finite Source-Frame Model}
+\author{RATCHET / Six Birds RH Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 125 instantiates the conductor-decoupled source theorem on the cleanest finite arithmetic family: complete Dirichlet characters modulo a prime conductor $q_N$ with coefficient support length $L_N<q_N$.
+
+The goal is not to re-prove standard analytic number theory.  The goal is to place the standard finite character orthogonality theorem into the membrane source-frame language and to expose the first defects that matter for the completed residual sector.
+
+\section{Finite coefficient space}
+Let $q$ be prime and let
+\[
+  I_L=\{1,\dots,L\},\qquad L<q.
+\]
+Let $a=(a_n)_{n\in I_L}\in \C^{I_L}$ and define
+\[
+  Q_\chi a=\sum_{n\le L} a_n\chi(n).
+\]
+The full source Gram is
+\[
+  G_q(m,n)=\sum_{\chi\bmod q}\chi(n)\overline{\chi(m)}.
+\]
+
+\begin{lemma}[Complete prime-modulus character frame]
+If $q$ is prime and $1\le m,n\le L<q$, then
+\[
+  G_q(m,n)=(q-1)\delta_{mn}.
+\]
+Thus
+\[
+  G_q=(q-1)I_L.
+\]
+\end{lemma}
+
+\begin{proof}
+Characters modulo $q$ are the dual group of $(\mathbb Z/q\mathbb Z)^\times$.  Orthogonality gives
+\[
+\sum_{\chi\bmod q}\chi(n)\overline{\chi(m)}
+=(q-1)\mathbf 1_{n\equiv m\bmod q}.
+\]
+Since $1\le m,n<q$, congruence modulo $q$ is equality.
+\end{proof}
+
+\section{Primitive-character defect}
+For prime $q$, all non-principal characters are primitive and the principal character has conductor $1$.  Removing the principal character gives
+\[
+  G_q^{\rm prim}=G_q-\mathbf 1\mathbf 1^*=(q-1)I_L-J_L.
+\]
+
+\begin{proposition}[Primitive rank-one correction]
+The eigenvalues of $G_q^{\rm prim}$ on $\C^{I_L}$ are
+\[
+  q-1-L
+\]
+for the constant vector, and
+\[
+  q-1
+\]
+with multiplicity $L-1$.  Hence
+\[
+  G_q^{\rm prim}\succeq (q-1-L)I_L.
+\]
+After averaging over primitive characters,
+\[
+  \frac{1}{q-2}G_q^{\rm prim}\succeq \left(1-\frac{L}{q-2}\right)I_L.
+\]
+\end{proposition}
+
+This is the first honest defect: the primitive-only family loses a rank-one constant direction.  Robust primitive lower frame requires $L$ to remain strictly below the conductor scale.
+
+\section{Membrane source-frame implication}
+Let $Y_{R,N}$ be a finite residual sector with Gram $G_{R,N}$.  Let
+\[
+  R_N:Y_{R,N}\to\C^{I_N}
+\]
+be the regularized Burnol-to-Dirichlet coefficient map.  If
+\[
+  G_{\mathcal X,N}\succeq \gamma_N H_N
+\]
+and
+\[
+  R_N^*H_NR_N\succeq c_{\rm hyb,N}G_{R,N},
+\]
+then
+\[
+  R_N^*G_{\mathcal X,N}R_N\succeq \gamma_N c_{\rm hyb,N}G_{R,N}.
+\]
+Thus the effective source strength is
+\[
+  \Lambda_{R,N}=\gamma_N c_{\rm hyb,N}.
+\]
+
+\section{Source-weight normalization warning}
+The unnormalized full prime-modulus frame has $\gamma_N=q_N-1$.  The averaged full frame has $\gamma_N=1$.  Therefore divergence of $\Lambda_N$ is not a free consequence of having many characters.
+
+The P6 audit must declare whether summing over all characters is a lawful accumulation of independent source records, or whether the family must be normalized by total source currency.  Uncharged character-count growth is smuggling.
+
+\section{Completed promotion}
+A finite coefficient frame is not a completed membrane.  It must promote through a fixed or exhaustive tail record
+\[
+  G_R\preceq \Pi_N^*G_{R,N}\Pi_N+T_N.
+\]
+If the lifted frame is used in the form
+\[
+  F_N+\Lambda_NT_N\succeq \Lambda_NG_R,
+\]
+then the amplified tail $\Lambda_NT_N$ must be explicitly controlled.  Otherwise the result remains moving-window support evidence.
+
+\section{Route status}
+Step 125 supplies a finite exact source-frame prototype.  The remaining load-bearing work is:
+\begin{enumerate}[leftmargin=1.5em]
+\item source-weight normalization / cumulative conductor ladder audit;
+\item matrix lower-moment estimates for source-weighted families;
+\item regularized Burnol-to-Dirichlet visibility floor;
+\item fixed/exhaustive residual-tail promotion;
+\item all-six and $\Xi$ adequacy records.
+\end{enumerate}
+
+\end{document}

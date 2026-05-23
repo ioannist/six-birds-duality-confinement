@@ -1,0 +1,43 @@
+{
+  "step": 290,
+  "orientation": "adequacy",
+  "target": "Branch B c-matrix precision attack",
+  "c_matrix_provenance": {
+    "source": "Step208 finite-grid K_infty_op diagnostic",
+    "formula": "c_ij=sum_tau w(tau) conj(kappa_i(tau))*((I-P) exp(i ell tau) P kappa_j)(tau)/(2*pi)",
+    "inherited_grid": "200 Gauss-Legendre nodes on [-40,40]",
+    "inherited_pswf_terms": 24,
+    "CAND1": "Step205/207 Burnol boundary-kernel samples K_{1/2}^Gamma(1/2+i tau,rho_i)",
+    "CAND2": "Step207 zeta-dual samples"
+  },
+  "avenue_A_grid_refinement": {
+    "grid_nodes": 2000,
+    "compute_seconds": 465.206,
+    "CAND1_reduction_factor_range": "5.85 to 6.35",
+    "CAND2_reduction_factor_range": "24.92 to 29.10",
+    "ten_order_target_met": false
+  },
+  "avenue_B_analytical_evaluation": {
+    "mpmath_quad_dps": 200,
+    "probe_status": "completed finite-resolvent Burnol E_lambda diagnostic",
+    "full_c_matrix_status": "blocked_no_closed_projected_commutator_c_entry_formula_in_inherited_artifacts"
+  },
+  "uncertainty_reduction": {
+    "ten_order_reduction_achieved": false,
+    "dominant_remaining_source": "missing exact transport/projected-commutator c-entry formula plus PSWF/finite-grid truncation"
+  },
+  "CAND1_vs_CAND2_decision": {
+    "CAND1_refined_Xi_abs": "1.0110381170400962461e-2",
+    "CAND1_proxy_error": "8.9106130286257425e12",
+    "CAND2_refined_Xi_abs": "7.8384611222267976e65",
+    "CAND2_proxy_error": "5.9008860462864297e64",
+    "comparison": "proxy intervals disjoint by more than 50 orders of magnitude",
+    "decision": "sampled CAND1 and CAND2 transport formulas disagree"
+  },
+  "retained_nogos": [
+    "no RH solved claim",
+    "no exact Burnol transport theorem supplied",
+    "analytical projected c-entry formula remains missing"
+  ],
+  "final_verdict": "V_branch_B_c_matrix_refined_disagrees_hard_block"
+}

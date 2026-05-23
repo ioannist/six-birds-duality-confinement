@@ -1,0 +1,52 @@
+{
+  "step": 199,
+  "orientation": "adequacy",
+  "target": "BN harmonic chain extension to N=2000",
+  "N_values_computed": [1500, 2000],
+  "calibration_N_values": [1000],
+  "delta_sq_values": {
+    "1000_calibration": 0.00646330050366617,
+    "1500": 0.0061103986361164,
+    "2000": 0.0059290131181805
+  },
+  "delta_sq_logN_values": {
+    "1000_calibration": 0.0446468981738479,
+    "1500": 0.0446866918788952,
+    "2000": 0.0450658503926355
+  },
+  "updated_decay_fit": {
+    "tail_mean_delta_sq_logN_N_200_to_2000": 0.0456632443937048,
+    "tail_mean_spread": 0.000926351,
+    "C_over_logN_alpha_fit_N_ge_20": {
+      "C": 0.0547051524798759,
+      "alpha": 1.096343229
+    },
+    "recent_tail_fit_N_ge_200": {
+      "C": 0.0606633898663218,
+      "alpha": 1.15047847
+    }
+  },
+  "method": {
+    "formula": "G_pq=sum_{n>=1} ((n mod p)/p)((n mod q)/q)/(n(n+1))",
+    "mpmath_dps": 80,
+    "X_MAX": 40000,
+    "tail_bound_per_entry": 0.000025,
+    "linear_algebra": "symmetric eigen-pseudoinverse on active matrix with rcond=1e-12",
+    "precision_caveat": "full mpmath 2000x2000 SVD was not feasible; Step195-comparable eigen pseudoinverse used with N=1000 calibration"
+  },
+  "BN_N2000_verdict": "V_BN_N2000_consistent",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "Hecke V-NC bridge no-go",
+    "Branch C full-carrier ZI-COV(i) foreclosure",
+    "de Branges target-equivalence",
+    "HP/BK standard bridge failure and modified target-equivalence",
+    "Connes trace-formula target-equivalence"
+  ],
+  "final_verdict": "V_BN_N2000_consistent"
+}
+

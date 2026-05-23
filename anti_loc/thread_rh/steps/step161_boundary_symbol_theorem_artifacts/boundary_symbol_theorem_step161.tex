@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{nogo}{No-Go Theorem}
+
+\title{Step 161: Boundary-Symbol Theorem Extraction / Scope Closure}
+\author{Six Birds / RH Membrane Working Note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Orientation and inherited state}
+
+This step is \emph{adequacy-oriented}.  Smaller residual is better:
+\[
+  \Xi^{\rm BC}\to 0
+  \quad\text{or}\quad
+  \Xi^{\rm BC}\preceq \Omega
+\]
+with a declared budget.
+
+The input state is Step 160.  The active residual is
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  =
+  \mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a},
+\]
+and the active Calkin object is
+\[
+  C_\ell P_\eta,
+  \qquad
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+  \qquad
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+Here
+\[
+  H_\eta=
+  \overline{\operatorname{span}\{J_a^*Y^a_{\rho,k}\}},
+  \qquad
+  P_\eta=\operatorname{Proj}_{H_\eta}.
+\]
+The comparison context is the Burnol/Sonine pulled-evaluator carrier in the
+Calkin algebra \(\mathcal B(H)/\mathcal K(H)\).  Hard-support and
+Hardy/Hankel computations are not in this context unless a bridge is supplied.
+
+\section{Bridge theorem target}
+
+\begin{definition}[Calkin-faithful boundary-symbol theorem]
+A Calkin-faithful boundary-symbol theorem for the Step 161 target consists of:
+\begin{enumerate}[label=(\roman*)]
+  \item a declared Calkin algebra \(\mathcal A_\eta/\mathcal K_\eta\) generated
+  by the Burnol/Sonine operators \(P_\infty\), \(M_{m_\ell}\), and \(P_\eta\);
+  \item a quotient-level boundary-symbol map
+  \[
+    \sigma_B:\mathcal A_\eta/\mathcal K_\eta\to\mathcal S_B
+  \]
+  that is faithful on the Calkin class of \(C_\ell P_\eta\);
+  \item a factorization on the completed Burnol/Sonine carrier
+  \[
+    C_\ell=U_\ell W_\ell+K_\ell,
+    \qquad
+    K_\ell\in\mathcal K(H);
+  \]
+  \item lower-faithfulness of \(U_\ell\) on the boundary range relevant to
+  \(H_\eta\);
+  \item compact-ideal compatibility, so that compactness of \(W_\ell P_\eta\)
+  is equivalent to compactness of \(C_\ell P_\eta\).
+\end{enumerate}
+\end{definition}
+
+This theorem is not a notation choice.  It is a completed-carrier operator
+theorem.  A source that supplies only a Hardy shadow, hard-support shadow,
+finite singular-value pattern, or ambient Sonin formula does not satisfy the
+target unless it also supplies the bridge above.
+
+\section{Source audit}
+
+Step 161 audits the local sources available after Step 160.
+
+\begin{center}
+\begin{tabular}{lll}
+\hline
+Source & Status & Reason\\
+\hline
+Burnol carrier theorem & accepted support & defines \(Y_a\), \(P_a=Y_a^\perp\), and evaluators\\
+CCM/Sonin machinery & imported support & supplies semilocal/Sonin setting, not Calkin bridge\\
+Hardy/Hankel shadow & public shadow & wrong carrier without bridge\\
+Hard-support shadow & public shadow & gives obstruction model, not Burnol theorem\\
+Step 160 theorem & conditional & bridge equivalence only if bridge exists\\
+\hline
+\end{tabular}
+\end{center}
+
+No audited local source supplies all bridge gates.  Therefore the bridge is not
+accepted in this step.
+
+\section{Conditional theorem retained}
+
+\begin{theorem}[Conditional boundary-symbol equivalence]
+Assume the Calkin-faithful boundary-symbol theorem above.  Then
+\[
+  C_\ell P_\eta\in\mathcal K(H)
+  \quad\Longleftrightarrow\quad
+  W_\ell P_\eta\in\mathcal K(H).
+\]
+Consequently the compact/tail status of \(\Xi^{\rm BC}\) is equivalent, under
+the bridge, to the compact/tail status of
+\[
+  \Xi^{\rm BW}_{\ell,a}
+  =
+  P_\eta W_\ell^*W_\ell P_\eta.
+\]
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The factorization \(C_\ell=U_\ell W_\ell+K_\ell\) gives
+\[
+  C_\ell P_\eta=U_\ell W_\ell P_\eta+K_\ell P_\eta.
+\]
+The second term is compact.  If \(W_\ell P_\eta\) is compact, then
+\(C_\ell P_\eta\) is compact.  Conversely, after passing to the Calkin algebra,
+faithfulness of \(\sigma_B\) and lower-faithfulness of \(U_\ell\) on the
+boundary range prevent \(U_\ell\) from killing a noncompact boundary class.
+Thus a noncompact class for \(W_\ell P_\eta\) would give a noncompact class for
+\(C_\ell P_\eta\), proving the equivalence.
+\end{proof}
+
+\section{No-go records retained}
+
+\begin{nogo}[Public-shadow non-promotion]
+Without a Calkin-faithful boundary-symbol bridge, Hardy/Hankel and
+hard-support compactness or noncompactness statements cannot be promoted to
+the Burnol/Sonine pulled-evaluator carrier.
+\end{nogo}
+
+\begin{nogo}[Finite-window Calkin blindness]
+Finite-section singular-value or matrix evidence cannot decide whether
+\[
+  C_\ell P_\eta\in\mathcal K(H)
+\]
+or whether \(\|C_\ell P_\eta\|_{\rm e}>0\) on the completed carrier.
+\end{nogo}
+
+Both no-go statements are framework-derived analytical structural content.
+They do not rule out a true bridge, a direct pulled-evaluator Weyl sequence, a
+co-Poisson factorization, or a semilocal prolate cancellation theorem.
+
+\section{Verdict}
+
+\[
+\boxed{\text{No Calkin-faithful boundary-symbol theorem is extracted locally.}}
+\]
+
+The step is diagnostic-complete at this leaf.  The exact remaining external
+theorem is:
+\[
+  \boxed{
+  \text{Construct }\sigma_B,\ U_\ell,\ W_\ell,\ K_\ell
+  \text{ with }
+  C_\ell=U_\ell W_\ell+K_\ell,\ K_\ell\in\mathcal K,
+  }
+\]
+on the Burnol/Sonine pulled-evaluator carrier, with lower-faithfulness and
+compact-ideal compatibility on \(H_\eta\).
+
+\section{Next leaf}
+
+Step 162 should either:
+\begin{enumerate}[label=(\alph*)]
+  \item attempt the external operator theorem above from Burnol/Sonine or CCM
+  source material;
+  \item construct an actual pulled-evaluator Weyl sequence in \(H_\eta\);
+  \item prove a genuine co-Poisson factorization for the shifted boundary
+  packets; or
+  \item close the RH membrane packet as a scoped residual theorem carrying
+  \(\Xi^{\rm BC}\).
+\end{enumerate}
+
+\end{document}

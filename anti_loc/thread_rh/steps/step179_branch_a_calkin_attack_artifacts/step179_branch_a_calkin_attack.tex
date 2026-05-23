@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Cell}{C_\ell}
+\newcommand{\Peta}{P_\eta}
+\newcommand{\Keta}{\mathcal K_\eta}
+\newcommand{\Aeta}{\mathcal A_\eta}
+
+\title{Step 179: Branch A Calkin-Class Attack}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{calkin\_class\_verdict = V\_branch\_a\_stuck\_at\_kappa}.}
+\]
+
+Step 173 supplies an operational formula for \(\Psym\), hence for
+\[
+\Cell=(I-\Psym)M_{m_\ell}\Psym.
+\]
+But the Branch A Calkin object is
+\[
+\Cell\Peta,
+\]
+and the projection \(\Peta\) is onto the actual pulled-evaluator span
+\[
+H_\eta=\overline{\operatorname{span}\{J_a^*Y^a_{\rho,k}\}}.
+\]
+By Step 153,
+\[
+\mathcal U_\infty(J_a^*Y^a_{\rho,k})
+=
+T_a^*\partial_{\overline\rho}^{\,k}K_a^\Gamma(\cdot,\rho)
+=:\kappa_{a,\rho,k}.
+\]
+Thus deciding the Calkin class requires the same \(\kappa\) record isolated in
+Steps 177--178.
+
+\section{T1. Inherited Records}
+
+Step 162 declares
+\[
+\Aeta=C^*(P_\infty,M_{m_\ell},P_\eta,I),
+\qquad
+\Keta=\Aeta\cap\mathcal K(H),
+\]
+and the active quotient object
+\[
+q_\eta(\Cell\Peta)\in\Aeta/\Keta.
+\]
+
+Step 154 gives
+\[
+\Cell=(I-P_\infty)M_{m_\ell}P_\infty.
+\]
+
+Step 158 gives the Calkin dichotomy: \(\Cell\Peta\) is compact if it sends
+every normalized weak-null sequence in \(H_\eta\) to norm-null, while positive
+essential norm follows from a normalized weak-null sequence
+\[
+u_n\in H_\eta,\qquad u_n\rightharpoonup0,\qquad
+\liminf_n\|\Cell u_n\|>0.
+\]
+
+Steps 158--160 also warn that hard-support, Hardy, and finite-window Weyl
+evidence is public-shadow or moving-window support only unless promoted to the
+actual Burnol/Sonine quotient.
+
+Step 173 gives
+\[
+(\Psym F)(\tau)
+=F(\tau)-\int\frac{\sin(\tau-u)}{\pi(\tau-u)}F(u)\,du
+-\sum_n\Psi_n(\tau)\langle F,\Psi_n\rangle.
+\]
+This acts on known Mellin vectors.
+
+\section{T2a. Matrix Elements}
+
+Let
+\[
+\kappa_i=\mathcal U_\infty\eta_i.
+\]
+Then
+\[
+\langle \eta_i,\Cell\eta_j\rangle
+=
+\langle \kappa_i,(I-\Psym)M_{m_\ell}\Psym\kappa_j\rangle.
+\]
+Since \(\Psym\) is orthogonal,
+\[
+\boxed{
+\langle \eta_i,\Cell\eta_j\rangle
+=
+\langle \kappa_i-\Psym\kappa_i,\,
+M_{m_\ell}\Psym\kappa_j\rangle.
+}
+\]
+Step 173 evaluates \(\Psym\kappa_i\) only after \(\kappa_i\) is known.  Thus
+the matrix-element route is blocked at \(\kappa\).
+
+\section{T2b. Hilbert-Schmidt and Trace Route}
+
+The Hilbert-Schmidt test would require
+\[
+\|\Cell\Peta\|_{\mathrm{HS}}^2
+=
+\operatorname{tr}(\Peta \Cell^*\Cell \Peta).
+\]
+Equivalently, with an orthonormal frame \(\{e_j\}\) for \(H_\eta\),
+\[
+\|\Cell\Peta\|_{\mathrm{HS}}^2
+=
+\sum_j\|\Cell e_j\|^2.
+\]
+But \(\Peta\) itself is the projection onto the closed span of the vectors
+\[
+\kappa_{a,\rho,k}=T_a^*\partial_{\overline\rho}^{\,k}
+K_a^\Gamma(\cdot,\rho).
+\]
+Without their Gram kernel or an orthonormalization of that span, the trace
+cannot be computed.  K-infinity alone gives \(\Cell\), not \(\Peta\).
+
+\section{T2c. Weyl Sequence}
+
+Step 158's hard-support Weyl sequence shows the natural obstruction mechanism
+in a shadow model.  To prove
+\[
+\|\Cell\Peta\|_{\mathrm e}>0,
+\]
+one needs actual vectors
+\[
+u_n\in H_\eta
+\]
+with persistent \(\Cell\)-mass.  PSWF or hard-support vectors are ambient
+vectors unless one proves they lie in, or can be approximated by, the
+\(\kappa\)-span.  That is again a \(\kappa\) or projected-Sonine-density
+record.
+
+\section{T2d. Step 175--176 Data}
+
+The nonzero Step 175--176 values
+\[
+L_{\rho,k}(G)=\langle M_\zeta G,\Psym y_{\rho,k}\rangle
+\]
+show that certain projected zero-evaluator pairings are nonzero.  They do not
+identify
+\[
+\langle \eta_i,\Cell\eta_j\rangle
+\]
+without the convention chain mapping \(y_{\rho,k}\), \(\eta_{\rho,k}\), and
+\(\kappa_{a,\rho,k}\) into one Hilbert model.  That convention chain is exactly
+the Step 178 \(\kappa\) record.
+
+\section{Calkin-Class Evidence}
+
+\[
+\begin{array}{l|l}
+\toprule
+\text{criterion} & \text{status}\\
+\midrule
+\Cell\Peta\in\mathcal K & \text{not decided}\\
+\|\Cell\Peta\|_{\mathrm e}>0 & \text{not decided}\\
+\text{Hilbert-Schmidt / trace test} & \text{blocked at }\Peta\text{ kernel}\\
+\text{matrix entries} & \text{blocked at }\kappa_i,\kappa_j\\
+\text{Weyl sequence} & \text{blocked at actual }H_\eta\text{ membership}\\
+\bottomrule
+\end{array}
+\]
+
+The structural finding is that Branch A's matrix route, Branch A's actual Weyl
+promotion route, and Branch B's SL164.1 finite matrix route all reduce to the
+same projected Sonine kernel / \(\kappa\) record.
+
+\section{Nonclaim Boundary}
+
+This step does not prove \(\Cell\Peta\) compact.  It does not prove positive
+essential norm.  It does not construct a Weyl sequence in \(H_\eta\), and it
+does not promote public-shadow or finite-window evidence.  It does not close
+\(\Xi_{\mathrm{BC}}\) or alter retained no-gos.
+
+\end{document}

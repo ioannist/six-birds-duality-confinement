@@ -1,0 +1,35 @@
+{
+  "object": "Xi_C(D|L)",
+  "name": "adequacy residual / blind-spot currency",
+  "legal_quotient": {
+    "space": "E_C=(ker C)^perp",
+    "operator": "C_0=C|_{E_C}>0",
+    "null_legality": ["L|kerC=0", "D|kerC=0"]
+  },
+  "currencies": {
+    "K_LL": "L_0 C_0^{-1} L_0^*",
+    "K_DL": "D_0 C_0^{-1} L_0^*",
+    "K_DD": "D_0 C_0^{-1} D_0^*"
+  },
+  "definition": "Xi=K_DD-K_DL K_LL^dagger K_LD",
+  "equivalent_forms": [
+    "T_D(I-P_L)T_D^*",
+    "Loewner minimum over A of (D-AL)C^{-1}(D-AL)^*",
+    "Schur complement of K_LL in joint currency of (L,D)"
+  ],
+  "exact_adequacy": [
+    "Xi=0",
+    "D_0=A L_0",
+    "ker L_0 subset ker D_0"
+  ],
+  "strict_extension": {
+    "new_family": "L+=[L;M]",
+    "chain_rule": "Xi(D|L+)=Xi(D|L)-K_DM|L K_MM|L^dagger K_MD|L",
+    "monotonicity": "Xi(D|L+) <= Xi(D|L)"
+  },
+  "nonclaims": [
+    "no claim for undeclared dissolving probes",
+    "no claim without null-mode legality",
+    "no predictive claim without transport and residual control"
+  ]
+}

@@ -1,0 +1,26 @@
+\section*{Step 286: Branch C k=20 Extension Attempt}
+
+\paragraph{Target.}
+The target was to compute \(L_{\rho,k}(G)\) for \(k=10,15,20\) on the three step-269 triples and refit
+\[
+  |L|_k = a(k+1)^c e^{bk}.
+\]
+
+\paragraph{Attempt.}
+The Step 269 projected-value pipeline was run at mpmath precision \(120\) decimal digits.  The run did not complete in a practical time.  The step therefore records a partial result rather than certified high-order values.
+
+\paragraph{Diagnostic output.}
+The artifact dataset keeps the certified inherited values for \(k=0,\ldots,7\) and adds model-probe extrapolations for \(k=10,15,20\).  These rows are explicitly marked as extrapolative and non-certified.
+
+\paragraph{Burnol context.}
+The structural identity inherited from Burnol's Sonine framework is
+\[
+  [f,Z^\lambda_{w,k}] = M(f)^{(k)}(w),
+\]
+so the high-order evaluator remains connected to Mellin-transform derivatives.  This identity was not enough to make the high-k projected computation tractable in this step.
+
+\paragraph{Verdict.}
+\[
+  \boxed{V_{\mathrm{branch\_C\_k20\_partial}}}
+\]
+The high-k computation remains precision/time-limited.  No Branch C closure or RH conclusion is claimed.

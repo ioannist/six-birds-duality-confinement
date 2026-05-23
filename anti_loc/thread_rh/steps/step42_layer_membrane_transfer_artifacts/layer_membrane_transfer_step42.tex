@@ -1,0 +1,248 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\K}{\mathsf K}
+\renewcommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\pre}{\preceq}
+\newcommand{\suc}{\succeq}
+
+\title{Step 42: Layer Membrane Transfer Theorem}
+\author{Six Birds Anti-Localization Program}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The formed-layer membrane theorem gives a native predictive anti-localization certificate on a lawful carrier. The next question is transfer: when may such a membrane be pushed across a carrier bridge, descent map, public shadow, protocol surface, or exactification map?
+
+This note proves a general transfer theorem. The guiding rule is
+\[
+\boxed{\text{membranes transfer through domination records, not through visual similarity.}}
+\]
+A public signature shadow may inherit a descended budget, but success of the public shadow does not imply success of the lawful carrier unless an audited reverse bridge or equality record is supplied.
+
+\section{Packaged family currencies}
+Let \(E\) be the legal coordinate space of a formed carrier after null-mode quotienting, let \(C\succ0\) be the packaged audit form on \(E\), and let
+\[
+L:E\to Y
+\]
+be the declared native probe-family readout. The family currency is
+\[
+\K=LC^{-1}L^*.
+\]
+For a recombination \(y\in Y\),
+\[
+y^*\K y=\Cap_C(y^*L;E).
+\]
+A membrane budget is a positive semidefinite matrix \(\Theta\) such that
+\[
+\K\pre \Theta.
+\]
+All statements below may be read on legal quotients with Moore--Penrose inverses; the finite-dimensional positive definite form is used to avoid repeating quotient notation.
+
+\section{Exact bridge transfer}
+\begin{definition}[Exact membrane bridge]
+Let \((E,C,L,Y)\) and \((E',C',L',Y')\) be two packaged family carriers. An exact bridge from the source carrier to the target carrier consists of a coordinate map
+\[
+P:E'\to E
+\]
+and a response map
+\[
+A:Y\to Y'
+\]
+satisfying
+\[
+C'\suc P^*CP
+\]
+and
+\[
+L'=ALP.
+\]
+The first condition says the target audit dominates the source audit pulled back along the bridge. The second says the target readout is the transported source readout.
+\end{definition}
+
+\begin{theorem}[Exact bridge membrane transfer]
+If \((P,A)\) is an exact bridge, then
+\[
+\boxed{\K'=L'(C')^{-1}(L')^*\pre A\K A^*.}
+\]
+Consequently, if the source membrane has budget \(\K\pre\Theta\), then the target membrane has budget
+\[
+\boxed{\K'\pre A\Theta A^*.}
+\]
+\end{theorem}
+
+\begin{proof}
+For every target recombination \(y'\in Y'\),
+\begin{align*}
+y'^*\K' y'
+&=\sup_{u'\ne0}\frac{|\langle y',L'u'\rangle|^2}{\langle u',C'u'\rangle}\\
+&=\sup_{u'\ne0}\frac{|\langle A^*y',LPu'\rangle|^2}{\langle u',C'u'\rangle}\\
+&\le\sup_{u'\ne0}\frac{|\langle A^*y',LPu'\rangle|^2}{\langle Pu',C(Pu')\rangle}\\
+&\le\sup_{v\ne0}\frac{|\langle A^*y',Lv\rangle|^2}{\langle v,Cv\rangle}\\
+&=(A^*y')^*\K(A^*y')=y'^*A\K A^*y'.
+\end{align*}
+Since this holds for all \(y'\), the Loewner inequality follows.
+\end{proof}
+
+\begin{corollary}[Capacity data-processing inequality]
+A lawful compression, restriction, or descent that satisfies the exact bridge hypotheses cannot increase the family currency except through the response map:
+\[
+\K'\pre A\K A^*.
+\]
+In particular, if \(A\) is a contraction and \(\Theta=I\), then \(\K\pre I\) implies \(\K'\pre I\).
+\end{corollary}
+
+\section{Defective bridge transfer}
+Exact bridges are rare. The useful theorem is defective transfer with an explicit residual.
+
+\begin{definition}[Defective bridge]
+A defective bridge consists of \((P,A,R,E)\) satisfying
+\[
+C'\suc P^*CP,
+\qquad
+L'=ALP+R,
+\]
+and a residual currency budget
+\[
+E\suc R(C')^{-1}R^*.
+\]
+\end{definition}
+
+\begin{theorem}[Defective bridge membrane transfer]
+For every \(t>0\), a defective bridge gives
+\[
+\boxed{\K'\pre (1+t)A\K A^*+(1+t^{-1})E.}
+\]
+Consequently, if \(\K\pre\Theta\), then
+\[
+\boxed{\K'\pre (1+t)A\Theta A^*+(1+t^{-1})E.}
+\]
+\end{theorem}
+
+\begin{proof}
+For any \(y'\), write
+\[
+\langle y',L'u'\rangle
+=\langle A^*y',LPu'\rangle+\langle y',Ru'\rangle.
+\]
+Use
+\[
+|a+b|^2\le (1+t)|a|^2+(1+t^{-1})|b|^2.
+\]
+The first term is bounded by \((1+t)y'^*A\K A^*y'\) by the exact bridge argument. The second term is bounded by
+\[
+(1+t^{-1})y'^*R(C')^{-1}R^*y'\le (1+t^{-1})y'^*Ey'.
+\]
+Take the supremum over \(u'\) and then over \(y'\).
+\end{proof}
+
+\begin{corollary}[Optimized scalar residual]
+If a scalar public obstruction is recorded by traces, with
+\[
+a=\Tr(A\Theta A^*),\qquad b=\Tr E,
+\]
+then the best scalar trace bound over \(t>0\) is
+\[
+\inf_{t>0}\Tr\bigl((1+t)A\Theta A^*+(1+t^{-1})E\bigr)=(\sqrt a+\sqrt b)^2.
+\]
+\end{corollary}
+
+\section{Public shadows and non-reversible descent}
+\begin{proposition}[Public shadow descent]
+Let \(F:Y\to Z\) be a public readout/forgetting map. The descended public currency is
+\[
+\K_Z=F\K F^*.
+\]
+If \(\K\pre\Theta\), then
+\[
+\K_Z\pre F\Theta F^*.
+\]
+\end{proposition}
+
+\begin{warning}[Public success does not imply carrier membrane]
+The converse is false. Public shadow success does not imply lawful membrane success.
+\end{warning}
+
+\begin{example}
+Let
+\[
+\K=\begin{pmatrix}1/2&0\\0&M\end{pmatrix},
+\qquad
+\Theta=I_2,
+\qquad
+F=(1\;0).
+\]
+Then
+\[
+F\K F^*=1/2\pre1=F\Theta F^*,
+\]
+so the public shadow passes. But for \(M>1\),
+\[
+\K\npreceq\Theta.
+\]
+The hidden sector is an unpriced native needle. A public shadow is therefore support evidence, not a lawful witness, unless a reverse or equality bridge is audited.
+\end{example}
+
+\section{Composition of bridges}
+\begin{theorem}[Defect composition]
+Suppose a first defective bridge gives
+\[
+\K_1\pre A_1\K_0A_1^*+E_1
+\]
+and a second gives
+\[
+\K_2\pre A_2\K_1A_2^*+E_2.
+\]
+Then the composite bridge gives
+\[
+\boxed{\K_2\pre A_2A_1\K_0A_1^*A_2^*+A_2E_1A_2^*+E_2.}
+\]
+With \((1+t)\)-type relaxations, the same formula holds with the corresponding multiplicative constants.
+\end{theorem}
+
+\begin{proof}
+Substitute the first inequality into the second:
+\[
+\K_2\pre A_2(A_1\K_0A_1^*+E_1)A_2^*+E_2.
+\]
+\end{proof}
+
+\section{Membrane transfer gate}
+An accepted transfer record must include:
+\begin{enumerate}[label=\textbf{T\arabic*.}]
+\item source and target formed-closure statuses;
+\item exact package and null-mode legality on both sides;
+\item an energy domination record \(C'\suc P^*CP\);
+\item a response intertwinement record \(L'=ALP+R\);
+\item a residual capacity budget \(R(C')^\dagger R^*\pre E\);
+\item protocol/readout honesty for every route in the bridge family;
+\item a nonclaim record forbidding reversal from public shadow to lawful carrier without a reverse bridge;
+\item defect-composition records for bridge chains.
+\end{enumerate}
+
+\begin{theorem}[Layer membrane transfer theorem]
+Let a source formed layer carry an accepted membrane budget \(\K\pre\Theta\). Let a target layer be connected to it by an accepted defective bridge \((P,A,R,E)\). Then the target has accepted transported membrane budget
+\[
+\boxed{\K'\pre (1+t)A\Theta A^*+(1+t^{-1})E\qquad(t>0).}
+\]
+If \(E=0\) and the bridge is exact, this reduces to \(\K'\pre A\Theta A^*\). If only a public readout \(F\K F^*\) is available, then only the public-shadow budget descends; the carrier membrane is not certified.
+\end{theorem}
+
+\section{Interpretation}
+This theorem is the membrane analogue of a data-processing principle. Lawful descent cannot create new native probe capacity; it can only transport existing capacity and add explicitly priced bridge defects. Public shadows are allowed, but they are not literal membrane witnesses.
+
+\end{document}

@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Capacity}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\K}{\mathsf K}
+\newcommand{\D}{\mathsf D}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\PSD}{\mathbb S_+}
+
+\title{Step 49: Native Probe Adequacy under Strict Extension}
+\author{RATCHET / Six Birds Anti-Localization Program}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Step 48 proved that no native needles imply no layer-dissolving needles only when the declared native probe family is adequate for the layer-dissolving readouts. Step 49 proves the predictive/strict-extension version: adequacy must itself propagate through refinement. A native membrane ladder promotes to a layer-dissolving membrane ladder only when the adequacy residuals are controlled in currency, transported lawfully, and do not reintroduce blind spots or null-mode coupling. The main theorem gives a defect-paid bound
+\[
+  \widehat K^D_j \preceq (1+t)B_j\widehat K^L_jB_j^*+(1+t^{-1})\widehat\Xi_j,
+\]
+and hence a predictive dissolving membrane whenever native budgets and adequacy residual budgets remain within a common Loewner envelope. The note also proves the no-go: native membrane propagation alone does not prevent a dissolving blind spot from appearing under strict extension.
+\end{abstract}
+
+\section{Setup}
+
+At predictive stage $j$ let
+\[
+  \Gamma_j:E_j\to H_j,
+  \qquad
+  C_{\Gamma,j}=\Gamma_j^*C_j\Gamma_j\succeq0
+\]
+be the exact packaged carrier and audit. Let
+\[
+  L_{\Gamma,j}=L_j\Gamma_j:E_j\to Y_j
+\]
+be the declared native probe family and
+\[
+  D_{\Gamma,j}=D_j\Gamma_j:E_j\to Z_j
+\]
+be a candidate layer-dissolving probe family.
+
+The native and dissolving currency matrices are
+\[
+  K^L_j=L_{\Gamma,j}C_{\Gamma,j}^{\dagger}L_{\Gamma,j}^*,
+  \qquad
+  K^D_j=D_{\Gamma,j}C_{\Gamma,j}^{\dagger}D_{\Gamma,j}^*.
+\]
+All pseudoinverse formulas below are used only under the usual null-mode legality conditions: the relevant readouts annihilate $\Ker C_{\Gamma,j}$, or else the true variational capacity is infinite.
+
+\begin{definition}[stagewise adequacy with residual]
+The native family is adequate for the dissolving readout at stage $j$ with reconstruction $A_j:Y_j\to Z_j$ and residual $R_j:E_j\to Z_j$ if
+\[
+  D_{\Gamma,j}=A_jL_{\Gamma,j}+R_j.
+\]
+The adequacy residual currency is
+\[
+  \Xi_j=R_jC_{\Gamma,j}^{\dagger}R_j^*.
+\]
+If $R_j=0$, adequacy is exact.
+\end{definition}
+
+\begin{definition}[transported predictive adequacy]
+Let $S_j:Z_j\to Z$ and $T_j:Y_j\to Y$ transport dissolving and native responses into common predictive response spaces. A transported reconstruction is a map $B_j:Y\to Z$ satisfying the exact identity
+\[
+  S_jA_j=B_jT_j.
+\]
+The transported currencies are
+\[
+  \widehat K^L_j=T_jK^L_jT_j^*,
+  \qquad
+  \widehat K^D_j=S_jK^D_jS_j^*,
+  \qquad
+  \widehat\Xi_j=S_j\Xi_jS_j^*.
+\]
+If the square $S_jA_j=B_jT_j$ has a defect, that defect is charged as an additional residual readout and included in $\widehat\Xi_j$.
+\end{definition}
+
+\section{One-stage adequacy transfer}
+
+\begin{theorem}[defect-paid adequacy transfer]
+Assume
+\[
+  D_{\Gamma}=AL_{\Gamma}+R
+\]
+with null-mode legality for $L_{\Gamma}$, $D_{\Gamma}$, and $R$. Then, for every $t>0$,
+\[
+  K^D \preceq (1+t)AK^LA^*+(1+t^{-1})\Xi,
+\]
+where
+\[
+  K^L=L_{\Gamma}C_{\Gamma}^{\dagger}L_{\Gamma}^*,
+  \quad
+  K^D=D_{\Gamma}C_{\Gamma}^{\dagger}D_{\Gamma}^*,
+  \quad
+  \Xi=RC_{\Gamma}^{\dagger}R^*.
+\]
+Consequently, if $K^L\preceq\Theta_Y$ and $\Xi\preceq\Xi_0$, then
+\[
+  K^D \preceq (1+t)A\Theta_YA^*+(1+t^{-1})\Xi_0.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $G=C_{\Gamma}^{\dagger/2}L_{\Gamma}^*A^*$ and $H=C_{\Gamma}^{\dagger/2}R^*$. Then
+\[
+  K^D=(G+H)^*(G+H).
+\]
+For vectors $z$,
+\[
+  \|(G+H)z\|^2\le (1+t)\|Gz\|^2+(1+t^{-1})\|Hz\|^2.
+\]
+This quadratic inequality is exactly the stated Loewner bound.
+\end{proof}
+
+\begin{corollary}[exact adequacy]
+If $D_{\Gamma}=AL_{\Gamma}$, then
+\[
+  K^D=AK^LA^*.
+\]
+\end{corollary}
+
+\section{Predictive adequacy theorem}
+
+\begin{theorem}[native membrane ladder promotes under adequacy propagation]
+Assume a formed native membrane ladder with
+\[
+  \widehat K^L_j\preceq \Theta^L_j
+\]
+for every accepted stage $j$. Assume transported adequacy records with
+\[
+  \widehat K^D_j \preceq (1+t_j)B_j\widehat K^L_jB_j^*+(1+t_j^{-1})\widehat\Xi_j.
+\]
+If budgets $\Theta^D_j$ satisfy
+\[
+  (1+t_j)B_j\Theta^L_jB_j^*+(1+t_j^{-1})\widehat\Xi_j\preceq\Theta^D_j,
+\]
+then
+\[
+  \widehat K^D_j\preceq\Theta^D_j
+\]
+for every accepted stage. Hence the native membrane ladder promotes to a layer-dissolving membrane ladder.
+\end{theorem}
+
+\begin{proof}
+Combine the stagewise adequacy transfer with the native membrane bound.
+\end{proof}
+
+\begin{corollary}[common-budget version]
+Suppose all responses live in common spaces and there are fixed bounds
+\[
+  \widehat K^L_j\preceq\Theta^L,
+  \qquad
+  B_j\Theta^LB_j^*\preceq\Omega,
+  \qquad
+  \widehat\Xi_j\preceq\Xi
+\]
+for all accepted $j$. Then for every $t>0$,
+\[
+  \widehat K^D_j\preceq (1+t)\Omega+(1+t^{-1})\Xi
+\]
+for all $j$. In particular, a common dissolving budget is
+\[
+  \Theta^D_t=(1+t)\Omega+(1+t^{-1})\Xi.
+\]
+If scalar trace budgets are used, the best scalar trace bound over $t>0$ is
+\[
+  \inf_{t>0}\tr\Theta^D_t
+  =\bigl(\sqrt{\tr\Omega}+\sqrt{\tr\Xi}\bigr)^2.
+\]
+\end{corollary}
+
+\section{Strict-extension residual control}
+
+\begin{definition}[adequacy residual ladder]
+A strict-extension adequacy ladder is a sequence of residual budgets $\widehat\Xi_j\succeq0$ with a propagation record
+\[
+  \widehat\Xi_{j+1}\preceq q_j\widehat\Xi_j+G_j,
+  \qquad q_j\ge0,
+  \qquad G_j\succeq0.
+\]
+The ladder is contracting if $\prod_{i=0}^{n-1}q_i\to0$ and the transported source sum
+\[
+  \sum_{k=0}^{\infty}\left(\prod_{i=k+1}^{\infty}q_i\right)G_k
+\]
+converges in Loewner order.
+\end{definition}
+
+\begin{theorem}[residual propagation]
+If
+\[
+  \widehat\Xi_{j+1}\preceq q_j\widehat\Xi_j+G_j,
+\]
+then for $n\ge1$,
+\[
+  \widehat\Xi_n
+  \preceq
+  \left(\prod_{i=0}^{n-1}q_i\right)\widehat\Xi_0
+  +
+  \sum_{k=0}^{n-1}\left(\prod_{i=k+1}^{n-1}q_i\right)G_k.
+\]
+In particular, if the right-hand side is uniformly bounded by $\Xi_\infty$, then a common adequacy-residual budget exists. If it tends to $0$, adequacy becomes exact in the predictive limit.
+\end{theorem}
+
+\begin{proof}
+Iterate the one-step inequality by induction.
+\end{proof}
+
+\begin{corollary}[strict-extension adequacy promotion]
+Assume a native predictive membrane with common budget $\Theta^L$, bounded reconstruction $B_j\Theta^L B_j^*\preceq\Omega$, and a residual ladder with common bound $\widehat\Xi_j\preceq\Xi_\infty$. Then the layer-dissolving membrane has common budget
+\[
+  \Theta^D_t=(1+t)\Omega+(1+t^{-1})\Xi_\infty.
+\]
+If $\Xi_\infty\to0$ along accepted strict extensions and $\Omega\preceq\Theta^D$, then the promoted membrane approaches the exact adequacy budget.
+\end{corollary}
+
+\section{Blind spots and null-mode failures}
+
+\begin{proposition}[blind-spot criterion]
+Exact adequacy $D_{\Gamma}=AL_{\Gamma}$ for some $A$ is possible if and only if
+\[
+  \Ker L_{\Gamma}\subseteq \Ker D_{\Gamma}.
+\]
+If this inclusion fails, there is a blind-spot vector $v$ with
+\[
+  L_{\Gamma}v=0,
+  \qquad
+  D_{\Gamma}v\ne0.
+\]
+If such blind-spot vectors have arbitrarily small audit energy, dissolving capacity is unbounded; if one lies in $\Ker C_{\Gamma}$, the true variational capacity is infinite.
+\end{proposition}
+
+\begin{proof}
+The factorization $D_{\Gamma}=AL_{\Gamma}$ through $L_{\Gamma}$ exists precisely when $D_{\Gamma}$ is constant on fibers of $L_{\Gamma}$, which is equivalent to $\Ker L_{\Gamma}\subseteq\Ker D_{\Gamma}$ in the linear setting. The capacity claims follow from the variational definition.
+\end{proof}
+
+\begin{warning}[native membrane does not imply dissolving membrane]
+A native membrane can be perfectly formed while a dissolving readout grows without bound on a native blind spot. For example,
+\[
+  E=\mathbb R^2,
+  \quad
+  C=I,
+  \quad
+  L(x_1,x_2)=x_1,
+  \quad
+  D_j(x_1,x_2)=j x_2.
+\]
+Then $K^L=1$ for all $j$, but $K^D_j=j^2$.
+\end{warning}
+
+\section{Six Birds status interpretation}
+
+The adequacy-under-extension gate is an all-six claim:
+\begin{itemize}[leftmargin=1.5em]
+\item $P_1$ rewrite/gauge: strict extension may rewrite $D_j$, $L_j$, or $C_j$; the rewrite must preserve the adequacy square or charge its residual.
+\item $P_2$ feasibility/channel: $L_j$ and $D_j$ must be evaluated on the same exact feasible carrier and legal null quotient.
+\item $P_3$ route/holonomy: adequacy must hold for protocol-union readouts, not only for route-local probes.
+\item $P_4$ staging/refinement: residual currencies must be transported and controlled predictively.
+\item $P_5$ packaging/canonicalization: the adequacy factorization must live on the lawful witness carrier, not a public shadow.
+\item $P_6$ audit/currency: residuals are paid by $K_R=RC^\dagger R^*$, not by informal small-norm statements.
+\end{itemize}
+
+\section{Conclusion}
+
+A formed native membrane is not yet a full layer-dissolving membrane. The missing bridge is native probe adequacy, and Step 49 proves the strict-extension form of that bridge. In slogan form:
+\[
+  \boxed{\text{native membrane} + \text{predictive adequacy} \Rightarrow \text{layer-dissolving membrane}.}
+\]
+If adequacy residuals are not controlled, blind spots can reappear under refinement even when every native probe remains priced.
+
+\end{document}

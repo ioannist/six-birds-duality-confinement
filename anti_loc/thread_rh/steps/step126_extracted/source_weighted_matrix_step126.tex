@@ -1,0 +1,108 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs,geometry}
+\geometry{margin=1in}
+\title{Step 126: Source-Weighted Matrix Lower-Frame Import}
+\author{Riemann Membrane / Six Birds Construction Log}
+\date{May 14, 2026}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 125 closed the finite unweighted character frame.  Step 126 imports the analytic-number-theory landscape and isolates the genuinely new demand of the membrane route: a source-weighted matrix lower frame on the residual coefficient space.
+
+\section{Finite baseline}
+Let $q$ be prime, $\mathcal N_N\subset\{1,\ldots,L_N\}$, $L_N<q$, and $d_N=|\mathcal N_N|$.  For complete characters modulo $q$,
+\[
+\sum_{\chi\bmod q}\left|\sum_{n\in\mathcal N_N}a_n\chi(n)\right|^2=(q-1)\sum_{n\in\mathcal N_N}|a_n|^2.
+\]
+Thus
+\[
+G_q^{\rm all}=(q-1)I.
+\]
+For primitive characters modulo prime $q$, i.e. after removing the principal character,
+\[
+G_q^{\rm prim}=(q-1)I-\mathbf 1\mathbf 1^*,
+\]
+so
+\[
+\lambda_{\min}(G_q^{\rm prim})=q-1-d_N.
+\]
+This block is settled finite algebra.  It is not the completed RH source theorem.
+
+\section{Weighted source Gram}
+Let $w_\chi\ge0$ be the declared source weight/currency.  The active object is
+\[
+G_{q,w}(m,n)=\sum_{\chi\in\mathcal X_q}w_\chi\chi(n)\overline{\chi(m)}.
+\]
+The desired lower frame is
+\[
+G_{q,w}\succeq\gamma_{q,w}H_N.
+\]
+Equivalently,
+\[
+\sum_{\chi\in\mathcal X_q}w_\chi\left|\sum_{n\in\mathcal N_N}a_n\chi(n)\right|^2\ge\gamma_{q,w}\|a\|_{H_N}^2
+\]
+for all coefficient vectors $a$.
+
+\section{Three sufficient criteria}
+\subsection{Weight floor}
+If $w_\chi\ge w_{\min}$ for all $\chi$, then
+\[
+G_{q,w}\succeq w_{\min}G_q.
+\]
+This is simple but usually unavailable for $L$-weighted sources.
+
+\subsection{Fluctuation control}
+Write
+\[
+G_{q,w}=\bar wG_q+E_w.
+\]
+Then
+\[
+G_{q,w}\succeq (\bar w\lambda_{\min}(G_q)-\|E_w\|)I.
+\]
+Thus the lower frame survives if
+\[
+\|E_w\|<\bar w\lambda_{\min}(G_q).
+\]
+
+\subsection{Matrix moment asymptotic}
+The import target from analytic number theory is a uniform quadratic-form asymptotic:
+\[
+a^*G_{q,w}a=\operatorname{Main}(a)+\operatorname{Err}(a),
+\]
+with
+\[
+\operatorname{Main}(a)\ge\gamma\|a\|_{H_N}^2,
+\qquad
+|\operatorname{Err}(a)|\le\varepsilon\operatorname{Main}(a).
+\]
+This yields
+\[
+G_{q,w}\succeq (1-\varepsilon)\gamma H_N.
+\]
+Scalar moment lower bounds are insufficient unless they are uniform over all residual coefficient vectors.
+
+\section{Residual source consequence}
+Let $R_N$ be the residual coefficient map and suppose
+\[
+R_N^*H_NR_N\succeq c_{\rm hyb,N}G_{R,N}.
+\]
+Then
+\[
+R_N^*G_{q,w}R_N\succeq\gamma_{q,w}c_{\rm hyb,N}G_{R,N}.
+\]
+The completed route requires
+\[
+\gamma_{q,w}c_{\rm hyb,N}\to\infty,
+\]
+with residual tail/exhaustivity.
+
+\section{Imported literature status}
+The asymptotic-large-sieve and moment literature supplies candidate scalar and bilinear estimates.  The framework-native gap is the operator-valued lower-frame form on the residual coefficient space, with no target-selected sources and no finite-window overread.
+
+\section{Nonclaim}
+This step does not prove a completed source ladder.  It closes the finite unweighted block and identifies the exact weighted matrix import target.
+
+\end{document}

@@ -1,0 +1,81 @@
+\section*{Step 267: Burnol Transport-Sampling Derivation Attempt}
+
+\paragraph{Verdict.}
+\[
+\mathrm{V\_burnol\_transport\_sampling\_blocked}.
+\]
+The cascade-needed finite transport-sampling theorem is not derivable from
+Burnol 2002 and Burnol 2004 by algebraic specialization.
+
+\paragraph{Burnol 2002 formulas.}
+Theorem 4 gives the Sonine projection
+\[
+\pi_\lambda(f)=f-(1-D_\lambda)^{-1}(P_\lambda f-F_\lambda\mathcal F_+f)
+-\mathcal F_+(1-D_\lambda)^{-1}(P_\lambda\mathcal F_+f-F_\lambda f),
+\]
+where \(F_\lambda=P_\lambda\mathcal F_+P_\lambda\) and
+\(D_\lambda=F_\lambda^2\).
+
+Equation (1) gives the de Branges kernel
+\[
+K(z_1,z_2)=
+\frac{E(z_1)E(z_2)-E(1-z_1)E(1-z_2)}{z_1+z_2-1}.
+\]
+Theorem 8 gives
+\[
+\mathcal E_\lambda(w)=
+\pi^{-w/2}\Gamma(w/2)\left(
+\lambda^{1/2-w}+\frac{\sqrt{\lambda}}{2}
+\int_\lambda^\infty
+(\psi_+^\lambda(t)-\psi_-^\lambda(t))t^{-w}\,dt
+\right).
+\]
+
+\paragraph{Burnol 2004 formulas.}
+Section 6 uses
+\[
+M(f)(s)=\pi^{-s/2}\Gamma(s/2)\int_\lambda^\infty f(t)t^{-s}\,dt
+\]
+and evaluator vectors \(Z^\lambda_{w,k}\) satisfying
+\[
+[f,Z^\lambda_{w,k}]=M(f)^{(k)}(w).
+\]
+It also records the Fourier action
+\[
+\mathcal F_+(Z^\lambda_{w,k})=(-1)^k Z^\lambda_{1-w,k}.
+\]
+The zero-evaluator result is a closed-span statement:
+\[
+K_\lambda=
+\overline{\operatorname{span}}\{Z^\lambda_{\rho,k}:0\leq k<m_\rho\}
+\quad(\lambda\geq1).
+\]
+
+\paragraph{Derivation attempt.}
+Applying zeta multiplication and evaluation gives
+\[
+\operatorname{Eval}_w(M_\zeta\pi_\lambda f)
+=\zeta(w)M(\pi_\lambda f)(w).
+\]
+Using Burnol's evaluator vector,
+\[
+M(\pi_\lambda f)(w)=[\pi_\lambda f,Z^\lambda_{w,0}]
+=[f,\pi_\lambda^\ast Z^\lambda_{w,0}]
+\]
+up to the selected bilinear/Hilbert convention.
+
+\paragraph{Required missing step.}
+The cascade needs a finite sampling identity of the form
+\[
+\pi_\lambda^\ast M_\zeta^\ast Z_w
+=\sum_{i=1}^N c_i Z^\lambda_{\tau_i,0}.
+\]
+Burnol's formulas give the representing vector on the left, but not a finite
+expansion in sampled evaluators.  The Section 6 theorem gives a closed infinite
+span for zero evaluators, not finite interpolation or quadrature for arbitrary
+transported evaluators.
+
+\paragraph{Status.}
+The Branch B transport-sampling terminus is not score-3.  After this audit it
+is score-1 framework-internal unless a new finite transported-evaluator
+expansion theorem is supplied.

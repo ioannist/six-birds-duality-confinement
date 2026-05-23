@@ -1,0 +1,44 @@
+\section*{Step 289: Branch B High-Precision \(G^{-1}\) Re-Attack}
+
+The preserved Step 208 Gram matrix \(G\) was copied from Step 207.  Its
+diagonal entries come from the Step 203 L'Hopital computation of
+\(K(\overline{\rho_i},\rho_i)\), and its off-diagonal entries come from the
+Step 204 conjugate convention for Burnol's kernel equation.
+
+At dps \(80,200,500,1000\), the singular values are stable:
+\[
+\sigma_{\min}=2.4390734770\cdot 10^{-17},\quad
+\sigma_{\max}=6.6615801788\cdot 10^{-10},
+\]
+so
+\[
+\kappa(G)=2.7311929065\cdot 10^7,\qquad
+\|G^{-1}\|_F=4.0999247851\cdot 10^{16}.
+\]
+
+The inherited next-layer quantity is
+\[
+\Xi_{\rm matrix\_source}=\operatorname{tr}(G^{-1}c^\dagger G^{-1}c).
+\]
+At dps \(500\), direct inverse, LU column solves, SVD pseudo-inverse, and
+Newton refinement agree:
+\[
+|\Xi_{\mathrm{CAND1}}|=2.8770749388\cdot 10^{-2},
+\qquad
+|\Xi_{\mathrm{CAND2}}|=8.1516179028\cdot 10^{65}.
+\]
+But the propagated finite-grid c-matrix errors remain
+\[
+1.4685454221\cdot 10^{14}
+\quad\text{and}\quad
+2.6239388729\cdot 10^{66},
+\]
+respectively.
+
+\[
+\boxed{\texttt{V\_branch\_B\_G\_inv\_partial}}
+\]
+
+The stored \(G^{-1}\) is high-precision stable, but the Branch B layer remains
+non-decisive because \(G^{-1}\) amplifies unresolved upstream c-matrix and
+transport-normalization uncertainty.

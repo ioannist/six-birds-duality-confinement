@@ -1,0 +1,81 @@
+{
+  "step": 202,
+  "orientation": "adequacy",
+  "target": "Xi_matrix_source numerical decision via explicit Burnol formulas",
+  "E_half_values": [
+    {
+      "label": "rho_1",
+      "w": "0.5 + 14.1347251417346937904572519836 i",
+      "E": "-0.00000408121209197270847732012831426 + 0.0000157450659741304052146557160453 i",
+      "E_abs": "0.000016265404841853254578078444875",
+      "error_bound": "0.0000000166384315723752321619718556367"
+    },
+    {
+      "label": "rho_2",
+      "w": "0.5 + 21.0220396387715549926284795939 i",
+      "E": "-0.0000000556494927208788014863057568332 - 0.0000000532637080111069468750994758592 i",
+      "E_abs": "0.0000000770317378174970233003143246755",
+      "error_bound": "0.00000000110628445030604351441192346154"
+    },
+    {
+      "label": "rho_3",
+      "w": "0.5 + 25.0108575801456887632137909926 i",
+      "E": "-0.00000000285254026900819762170342508274 + 0.000000000356620933991898599461004861084 i",
+      "E_abs": "0.00000000287474598475667316671200997149",
+      "error_bound": "0.00000000105518094465994402603027200072"
+    }
+  ],
+  "G_matrix": {
+    "formula": "G_ij=K_{1/2}^Gamma(rho_j,rho_i) from Burnol 2002 equation 1",
+    "status": "literal convention assembled but not certified as a Hilbert Gram because diagonal entries vanish",
+    "entries_abs": [
+      ["0.0", "6.221194870136241e-14", "2.220326588064744e-15"],
+      ["6.221194870136241e-14", "0.0", "7.463473143205859e-18"],
+      ["2.220326588064744e-15", "7.463473143205859e-18", "0.0"]
+    ],
+    "diagonal_status": "literal_K_rho_j_rho_i_diagonal_zero"
+  },
+  "c_matrix": {
+    "formula": "c_ij(ell)=<e_i,(I-P_infty)M_{m_ell}P_infty e_j>",
+    "status": "not_evaluated_certified",
+    "reason": "normalization e_i=kappa_i/sqrt(G_ii) is blocked by the literal zero diagonal; full K_infty^op commutator quadrature is also not certified"
+  },
+  "xi_matrix_source_value": null,
+  "xi_matrix_source_error": "not_certified",
+  "xi_matrix_source_verdict": "V_xi_matrix_source_partial",
+  "robustness_table": [
+    {
+      "component": "E_half_resolvent",
+      "N": 160,
+      "dps": 70,
+      "status": "computed"
+    },
+    {
+      "component": "E_half_resolvent",
+      "N": 240,
+      "dps": "not_run",
+      "status": "not_completed"
+    },
+    {
+      "component": "E_half_resolvent",
+      "N": 320,
+      "dps": "not_run",
+      "status": "not_completed"
+    },
+    {
+      "component": "commutator_c_matrix",
+      "ell": "log 2, log 3, 1",
+      "status": "blocked_after_E_G_layer"
+    }
+  ],
+  "new_subresidual": "fix_Branches_B_kernel_inner_product_convention_and_certified_commutator_quadrature",
+  "retained_nogos": [
+    "Does not prove RH",
+    "Does not close Xi_BC",
+    "Does not weaken Branch C full-carrier foreclosure",
+    "Does not weaken HP/BK, Connes, de Branges, Hecke, or Bridge Impossibility no-gos",
+    "Does not claim Branch B finite residual closure"
+  ],
+  "final_verdict": "V_xi_matrix_source_partial"
+}
+

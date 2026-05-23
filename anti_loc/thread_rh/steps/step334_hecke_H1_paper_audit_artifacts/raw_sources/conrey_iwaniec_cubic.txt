@@ -1,0 +1,3500 @@
+Annals of Mathematics, 151 (2000), 1175–1216
+
+arXiv:math/9810182v2 [math.NT] 1 May 2000
+
+The cubic moment of central values
+of automorphic L-functions
+By J. B. Conrey and H. Iwaniec*
+
+Contents
+1. Introduction
+2. A review of classical modular forms
+3. A review of Maass forms
+4. Hecke L-functions
+5. Maass L-functions
+6. Evaluation of the diagonal terms
+7. A partition of sums of Kloosterman sums
+8. Completing the sum S(w; c)
+9. Estimation of the cubic moment - Conclusion
+10. Evaluation of G(m, m1 , m2 ; c)
+11. Bilinear forms H
+12. Estimation of G(M, M1 , M2 ; C)
+13. Estimation of g(χ, ψ)
+14. Estimation of g(χ, χ)
+1. Introduction
+The values of L-functions at the central point s = 12 (we normalize so
+that the functional equation connects values at s and 1 − s) are the subject
+of intensive studies in various aspects: the algebraicity, the nonvanishing, the
+positivity. In some instances these numbers are expressible in terms of important geometric invariants (cf. the Birch and Swinnerton-Dyer conjecture for
+elliptic curves), and the nonvanishing is meaningful in certain structures (such
+as in the Phillips-Sarnak theory of spectral deformations). The positivity of
+the Dirichlet L-functions with real characters at s = 21 would yield quite remarkable effective lower bounds for the class number of imaginary quadratic
+fields. Moreover, a good positive lower bound for the central values of Hecke
+L-functions would rule out the existence of the Landau-Siegel zero.
+*Research of both authors supported by the American Institute of Mathematics and by NSF
+grants DMS-95-00857, DMS-98-01642.
+
+1176
+
+J. B. CONREY AND H. IWANIEC
+
+Independently there is a great interest in upper bounds for the central
+values; in particular one desires to have a strong estimate in terms of the conductor. The Riemann hypothesis yields the best possible results for individual
+values, but still there are known unconditional estimates for the average value
+over distinct families which are as good as the Riemann hypothesis can do, or
+even slightly better (asymptotic formulas for power moments).
+In this paper we consider two families of automorphic L-functions associated with the classical (holomorphic) cusp forms of weight k > 12 and the
+Maass (real-analytic) forms of weight k = 0, both for the group Γ = Γ0 (q)
+(see the reviews in §2 and §3 respectively). Let χ = χq be the real, primitive
+character of modulus q > 1. Throughout this paper we assume (for technical
+simplification) that q is odd, so q is squarefree and χ(n) = ( nq ) is the Jacobi
+symbol. To any primitive cusp form f of level dividing q we introduce the
+L-function
+∞
+X
+λf (n)χ(n)n−s .
+(1.1)
+Lf (s, χ) =
+1
+
+The main object of our pursuit is the cubic moment
+X
+(1.2)
+L3f ( 21 , χ)
+f ∈F ⋆
+
+where F ⋆ is the set of all primitive cusp forms of weight k and level dividing
+q. For this we establish the following bound:
+Theorem 1.1. Let k be an even number > 12 such that χ(−1) = ik . Then
+X
+(1.3)
+L3f ( 12 , χ) ≪ q 1+ε
+f ∈F ⋆
+
+for any ε > 0, the implied constant depending on ε and k.
+Note (see [ILS]) that
+|F ⋆ | =
+
+2
+k−1
+φ(q) + O((kq) 3 ).
+12
+
+Any cusp form
+f (z) =
+
+∞
+X
+1
+
+k−1
+
+λf (n)n 2 e(nz) ∈ Sk (Γ0 (q))
+
+yields the twisted cusp form
+fχ (z) =
+
+∞
+X
+1
+
+k−1
+
+λf (n)χ(n)n 2 e(nz) ∈ Sk (Γ0 (q 2 )),
+
+and our Lf (s, χ) is the L-function attached to fχ (z). If f is a Hecke form then
+fχ is primitive (even if f is not itself primitive). However, the twisted forms fχ
+
+1177
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+span a relatively small subspace of Sk (Γ0 (q 2 )). In view of the above embedding
+the cubic moment (1.2) looks like a tiny partial sum of a complete sum over the
+primitive cusp forms of level q 2 ; nevertheless it is alone a spectrally complete
+sum with respect to the group Γ0 (q). This spectral completeness applies more
+effectively to the normalized cubic moment Ck (q) which is introduced in (4.14).
+In principle our method works also for k = 2, 4, 6, 8, 10, but we skip these
+cases to avoid technical complications. One can figure out, by examining our
+arguments, that the implied constant in (1.3) is c(ε)kA , where A is a large
+absolute number (possibly A = 3). We pay some attention to the dependence
+of implied constants on spectral parameters at the initial (structural) steps,
+but not in the later analytic transformations. If q tends to ∞ over primes, one
+should be able to get an asymptotic formula
+(1.4)
+
+Ck (q) ∼ ck (log q)3
+
+with ck > 0, but our attempts to accomplish this failed. On the other hand the
+difficulties of getting an asymptotic formula for Ck (q) with composite moduli
+seem to be quite serious (Lemma 14.1 loses the factor τ 2 (q) which causes
+troubles when q has many divisors; see also Lemma 13.1).
+The parity condition χ(−1) = ik in Theorem 1.1 can be dropped because
+if χ(−1) = −ik then all the central values Lf ( 21 , χ) vanish by virtue of the
+minus sign in the functional equation for Lf (s, χ).
+Although our method works for the cubic moment of Lf (s, χ) at any fixed
+point on the critical line we have chosen s = 12 for the property
+(1.5)
+
+Lf ( 21 , χ) > 0.
+
+Of course, this property follows from the Riemann hypothesis; therefore it was
+considered as a remarkable achievement when J.-L. Waldspurger [Wa] derived
+(1.5) from his celebrated formula; see also W. Kohnen and D. Zagier [KZ].
+Without having the nonnegativity of central values one could hardly motivate
+the goal of estimating the cubic moment (still we would not hesitate to get
+an asymptotic formula). As a consequence of (1.5) we derive from (1.3) the
+following bound for the individual values.
+Corollary 1.2. Let f be a primitive cusp form of weight k > 12 and
+level dividing q, and let χ(mod q) be the primitive real character (the Jacobi
+symbol). Then
+(1.6)
+
+1
+
+Lf ( 12 , χ) ≪ q 3 +ε
+
+for any ε > 0, the implied constant depending on ε and k.
+1
+
+Let us recall that the convexity bound is Lf ( 21 , χ) ≪ q 2 +ε while the
+Riemann hypothesis yields Lf ( 21 , χ) ≪ q ε .
+
+1178
+
+J. B. CONREY AND H. IWANIEC
+
+An interesting case is that for a Hecke cusp form f of level one and weight
+k (so k is an even integer > 12),
+f (z) =
+
+∞
+X
+1
+
+k−1
+
+a(n)n 2 e(nz) ∈ Sk (Γ0 (1)).
+
+This corresponds, by the Shimura map, to a cusp form g of level four and
+weight k+1
+2 ,
+∞
+X
+k−1
+c(n)n 4 e(nz) ∈ S k+1 (Γ0 (4)).
+g(z) =
+2
+
+1
+
+We normalize f by requiring a(1) = 1, while g is normalized so that
+Z
+k+1
+1
+|g(z)|2 y 2 dµz = 1.
+6 Γ0 (4)\H
+
+Then the formula of Waldspurger, as refined by Kohnen-Zagier (see Theorem
+1 of [KZ]), asserts that for q squarefree with χq (−1) = ik ,
+(1.7)
+
+k
+
+c2 (q) = π − 2 Γ( k2 )Lf ( 12 , χq )hf, f i−1
+
+where
+hf, f i =
+
+Z
+
+Γ0 (q)\H
+
+|f (z)|2 y k dµz.
+
+By (1.6) and (1.7) we get:
+Corollary 1.3. If q is squarefree with χq (−1) = ik then
+(1.8)
+
+1
+
+c(q) ≪ q 6 +ε
+
+where the implied constant depends on ε and the form f .
+This result constitutes a considerable improvement of the estimates given
+in [I1] and [DFI]. It also improves the most recent estimate by V. A. Bykovsky
+[By] who proved (1.8) with exponent 3/16 in place of 1/6. Actually [DFI] and
+[By] provide estimates for Lf (s, χ) at any point on the critical line. To this
+end (as in many other papers; see the survey article [Fr] by J. Friedlander) the
+second moment of relevant L-functions is considered with an amplifier which
+is the square of a short Dirichlet polynomial. In such a setting the property
+(1.5) is not needed yet a sub-convexity bound is achieved by proper choice of
+the length and the coefficients of the amplifier.
+Here is the second instance where the nonnegativity of central values of
+automorphic L-functions plays a crucial role for their estimation (the first case
+appears in [IS] in the context of the Landau-Siegel zero). By comparison with
+the former methods one may interpret the cubic moment approach as a kind of
+amplification of L2f ( 12 , χ) by the factor Lf ( 12 , χ). In this role as a self-amplifier
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1179
+
+the central value Lf ( 21 , χ) is represented by a Dirichlet polynomial whose length
+exceeds greatly all of these in previous practice (here it has length about q).
+Hence the question: what makes it possible to handle the present case? There
+are many different reasons; for instance we emphasize the smoothness of the
+self-amplification. Consequently, it can be attributed to our special amplifier
+Lf ( 12 , χ) that at some point the character sums g(χ, ψ) in two variables over
+a finite field crop (see (11.10)). From then on our arguments are powered
+by the Riemann hypothesis for varieties (Deligne’s theory, see §13). In fact
+our arguments penetrate beyond the Riemann hypothesis as we exploit the
+variation in the angle of the character sum (10.7) when estimating general
+bilinear forms (11.1) (see the closing remarks of §11).
+To reduce the spectral sum (1.2) to the character sums in question we go
+via Petersson’s formula to Kloosterman sums, open the latter and execute the
+resulting additive character sums in three variables (which come from a smooth
+partition of L3f ( 12 , χ) into Dirichlet polynomials) by Fourier analysis on R3 . One
+may argue that our computations would be better performed by employing
+harmonic analysis on GL3 (R); however, we prefer to use only the classical
+tools (Poisson’s formula) which are commonly familiar. In this connection we
+feel the demand is growing for practical tables of special functions on higher
+rank groups to customize them as much as the Bessel functions are on GL2 (R).
+Still, there is a revealing advantage to direct computations; see our comments
+about the factor e(mm1 m2 /c) in (8.32) and (10.1), which presumably would
+not be visible in the framework of GL3 (R). This technical issue sheds some
+light on the position of Bessel functions towards Kloosterman sums.
+In this paper we also consider the spectral cubic moment of central values
+of L-functions attached to Maass forms of weight zero. Since the space of such
+forms is infinite we take only those with bounded spectral parameter; i.e., we
+consider
+(1.9)
+
+X⋆
+
+|tj |6R
+
+L3j ( 21 , χ) +
+
+Z R
+
+−R
+
+|L( 12 + ir, χ)|6 ℓ(r) dr
+
+where ℓ(r) = r 2 (4 + r 2 )−1 . We refer the reader to Sections 3 and 5 to find
+the terminology. Actually the Maass forms were our primary interest when
+we started. Here the special attraction lies in the subspace of the continuous
+spectrum which is spanned by the Eisenstein series Ea (z, 12 + ir) (there are
+τ (q) distinct Eisenstein series associated with the cusps a of Γ0 (q)). Every
+Eisenstein series gives us the same L-function L(s − ir, χ)L(s + ir, χ) (however,
+with different proportions equal to the width of the cusp; see (3.27)) whose
+central value is |L( 21 + ir, χ)|2 ; hence its cube is the sixth power of the Dirichlet
+L-function.
+
+1180
+
+J. B. CONREY AND H. IWANIEC
+
+Theorem 1.4. Let R > 1. For any ε > 0,
+Z R
+X⋆
+3 1
+|L( 12 + ir, χ)|6 ℓ(r) dr ≪ RA q 1+ε
+(1.10)
+Lj ( 2 , χ) +
+−R
+
+|tj |6R
+
+with some absolute constant A > 1, the implied constant depending on ε.
+Here, as in the case of holomorphic cusp forms, the central values Lj ( 21 , χ)
+are also known to be nonnegative without recourse to the Riemann hypothesis
+due to Katok-Sarnak [KS] and Guo [Gu]. Note that in the space of continuous
+spectrum this amounts to |L( 12 + ir, χ)|2 > 0. However, this property for the
+central values of cuspidal L-functions is quite subtle, and is indispensable in
+what follows, even for estimating the Dirichlet L-functions. First it allows us
+to derive from (1.10) the corresponding extensions of the estimates (1.6) and
+(1.8) for the Maass cusp forms. Another observation is that we receive the
+Dirichlet L-functions at any point on the critical line (not just at s = 21 as
+for the cuspidal L-functions) by virtue of the integration in the continuous
+spectrum parameter. Ignoring the contribution of the cuspidal spectrum in
+(1.10) and applying Hölder’s inequality to the remaining integral, one derives
+Z R
+1
+|L( 12 + ir, χ)| dr ≪ RA q 6 +ε
+(1.11)
+−R
+
+where the implied constant depends on ε (in this way we relax the peculiar
+measure ℓ(r)dr which vanishes at r = 0 to order two). Hence, we have the
+following result:
+Corollary 1.5. Let χ be a real, nonprincipal character of modulus q.
+Then for any ε > 0 and s with Re s = 21 ,
+(1.12)
+
+1
+
+L(s, χ) ≪ |s|A q 6 +ε
+
+where A is an absolute constant and the implied constant depends on ε.
+It would not be difficult to produce a numerical value of A which is quite
+large. A hybrid bound which is sharp in both the s aspect and the q-aspect
+simultaneously (not only for the real character) was derived by R. HeathBrown [H-B] by mixing the van der Corput method of exponential sums and
+the Burgess method of character sums. In the q-aspect alone our bound (1.12)
+marks the first improvement of the celebrated result of D. Burgess [Bu] with
+exponent 3/16 in place of 1/6. Moreover, our exponent 1/6 matches the one in
+the classical bound for the Riemann zeta-function on the line Re s = 21 , which
+can be derived by Weyl’s method of estimating exponential sums. Though
+Weyl’s method has been sharpened many times (see the latest achievement of
+M. N. Huxley [Hu]) any improvement of (1.12) seems to require new ideas (we
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1181
+
+tried to introduce an extra small amplification to the cubic moments without
+success). On this occasion let us recall that the aforementioned methods of
+Weyl and Burgess yield the first boundsbreaking convexity for the L-functions
+on GL1 . Since then many refinements and completely new methods were developed for both the L-functions on GL1 and the L-functions on GL2 ; see [Fr].
+We should also point out that Burgess established nontrivial bounds for char1
+acter sums of length N ≫ q 4 +ǫ , while (1.12) yields nontrivial bounds only if
+1
+N ≫ q 3 +ǫ . In particular, (1.12) does not improve old estimates for the least
+quadratic nonresidue.
+Our main goal (proving Corollaries 1.2 and 1.5) could be accomplished
+in one space Lk (Γ0 (q)\H) of square-integrable functions F : H → C which
+transform by
+
+
+cz + d k
+(1.13)
+F (γz) =
+F (z)
+|cz + d|
+for all γ ∈ Γ0 (q). In this setting the holomorphic cusp forms f (z) of weight k
+(more precisely the corresponding forms F (z) = y −k/2 f (z)) lie at the bottom
+of the spectrum, i.e., in the eigenspace of λ = k2 (1 − k2 ) of the Laplace operator
+ 2
+
+∂
+∂2
+∂
+2
+(1.14)
+∆k = y
++ 2 − iky ,
+2
+∂x
+∂y
+∂x
+while the Eisenstein series still yield the Dirichlet L-functions on the critical
+line. We have chosen to present both cases of holomorphic and real-analytic
+forms separately to illustrate structural differences until the end of Section
+5. From this point on both cases are essentially the same so we restrict our
+arguments to the holomorphic forms.
+Acknowledgement. Our work on this paper began and was nearly finished
+in July 1998 at the American Institute of Mathematics in Palo Alto, California.
+The second author is grateful to the Institute for the invitation and generous
+support during his visit. He also wishes to express admiration to John Fry for
+his unprecedented will to support research in mathematics in America and his
+deep vision of the AIM. Finally, we thank the referee for careful reading and
+valuable corrections.
+
+2. A review of classical modular forms
+Let q be a positive integer. We restrict our considerations to the Hecke
+congruence group of level q which is
+
+
+
+a b
+∈ SL2 (Z) : c ≡ 0(mod q) ;
+Γ0 (q) =
+c d
+
+1182
+
+J. B. CONREY AND H. IWANIEC
+
+its index in the modular group is
+ν(q) = [Γ0 (1) : Γ0 (q)] = q
+
+Y
+1
+(1 + ).
+p
+p|q
+
+The group Γ = Γ0 (q) acts on the upper half-plane H = {z = x + iy : y > 0} by
+
+
+az + b
+a b
+∈ Γ.
+, if γ =
+γ=
+c d
+cz + d
+Let k be a positive even integer. The space of cusp forms of weight k and level
+q is denoted Sk (Γ0 (q)); it is a finite-dimensional Hilbert space with respect to
+the inner product
+Z
+f (z)g(z)y k dµz
+(2.1)
+hf, gi =
+Γ\H
+
+where dµz = y −2 dxdy is the invariant measure on H. Let F = {f } be an
+orthonormal basis of Sk (Γ0 (q)). We can assume that every f ∈ F is an eigenfunction of the Hecke operators
+
+
+1 X a k/2 X
+az + b
+(2.2)
+(Tn f )(z) = √
+f
+( )
+,
+d
+d
+n
+ad=n
+
+b(mod d)
+
+for all n with (n, q) = 1; i.e., Tn f = λf (n)f if (n, q) = 1. We call F the Hecke
+basis of Sk (Γ0 (q)). The eigenvalues λf (n) are related to the Fourier coefficients
+of f (z). We write
+(2.3)
+
+f (z) =
+
+∞
+X
+
+k−1
+
+af (n)n 2 e(nz).
+
+1
+
+Then for (n, q) = 1 we have
+(2.4)
+
+af (n) = af (1)λf (n).
+
+Note that if af (1) = 0 then af (n) = 0 for all n co-prime with q. The Hecke
+eigenvalues λf (n) are real and they have the following multiplicative property
+X
+(2.5)
+λf (m)λf (n) =
+λf (mn/d2 )
+d|(m,n)
+
+if (mn, q) = 1.
+For any orthonormal basis F of Sk (Γ0 (q) and any m, n > 1 we have the
+following Petersson formula (cf. Theorem 3.6 of [I3]):
+X
+(4π)1−k Γ(k − 1)
+āf (m)af (n)
+(2.6)
+f ∈F
+
+= δ(m, n) + 2πik
+
+X
+
+c≡0(mod q)
+
+c−1 S(m, n; c)Jk−1
+
+
+
+
+4π √
+mn
+c
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1183
+
+where δ(m, n) is the Kronecker diagonal symbol, S(m, n; c) is the Kloosterman
+sum defined by
+X
+am + dn
+(2.7)
+S(m, n; c) =
+e(
+),
+c
+ad≡1(mod c)
+
+and Jk−1 (x) is the Bessel function of order k − 1. Notice that the series on the
+right-hand side of (2.6) converges absolutely by virtue of the Weil bound
+1
+
+1
+
+|S(m, n; c)| 6 (m, n, c) 2 c 2 τ (c).
+
+(2.8)
+
+For the orthonormal Hecke basis and (mn, q) = 1 we can write (2.6) as
+(2.9)
+X
+X
+√
+√
+c−2 S(m, n; c)J(2 mn/c)
+ωf λf (m)λf (n) = δ(m, n) + mn
+f ∈F
+
+c≡0(mod q)
+
+where
+(2.10)
+
+ωf = (4π)1−k Γ(k − 1)|af (1)|2 ,
+
+(2.11)
+
+J(x) = 4πik x−1 Jk−1 (2πx).
+
+According to the Atkin-Lehner theory [AL] the sum (2.9) can be arranged into
+a sum over all primitive forms of level dividing q , but, of course, with slightly
+different coefficients. Precisely, a primitive form f appears with coefficient
+
+(2.12)
+
+ωf∗ =
+
+12
+(k − 1)q
+
+ X
+
+(ℓ,q)=1
+
+2
+
+λf (ℓ )ℓ
+
+−1
+
+−1
+
+≫ (kq)−1−ε
+
+for any ε > 0, the implied constant depending only on ε.
+Remarks. For the formula (2.12) see [ILS]. The coefficient ωf∗ is essentially
+(up to a simple constant factor) the inverse of the symmetric square L-function
+associated with f at the point s = 1. J. Hoffstein and P. Lockhart [HL] showed
+that ωf∗ ≪ (kq)ε−1 , but we do not need this bound for applications in this
+paper. The lower bound (2.12) can be established by elementary arguments.
+Later we assume that k > 12 to secure a sufficiently rapid convergence of
+the series of Kloosterman sums in (2.9). Indeed we have
+Jk−1 (x) ≪ min(xk−1 , x−1/2 )
+which yields
+(2.13)
+
+J(x) ≪ min(x10 , x−3/2 ) ≪ x10 (1 + x2 )−23/4 .
+
+1184
+
+J. B. CONREY AND H. IWANIEC
+
+3. A review of Maass forms
+In this section we introduce the notation and basic concepts from the
+theory of Maass forms of weight k = 0 in the context of the Hecke congruence
+group Γ = Γ0 (q). There is no essential difference from the theory of classical
+forms except for the existence of a continuous spectrum in the space of Maass
+forms. This is important for our applications since it brings us the Dirichlet
+L-function.
+Let A(Γ\H) denote the space of automorphic functions of weight zero,
+i.e., the functions f : H → C which are Γ-periodic. Let L(Γ\H) denote the
+subspace of square-integrable functions with respect to the inner product (2.1)
+with k = 0. The Laplace operator
+ 2
+
+∂
+∂2
+2
+∆=y
++
+∂x2 ∂y 2
+acts in the dense subspace of smooth functions in L(Γ\H) such that f and
+∆f are both bounded; it has a self-adjoint extension which yields the spectral
+decomposition L(Γ\H) = C ⊕ C(Γ\H) ⊕ E(Γ\H). Here C is the space of constant functions, C(Γ\H) is the space of cusp forms and E(Γ\H) is the space of
+Eisenstein series.
+Let U = {uj : j > 1}, be an orthonormal basis of the C(Γ\H) which are
+eigenfunctions of ∆, say
+(∆ + λj )uj = 0
+
+with λj = sj (1 − sj ),
+
+sj =
+
+1
++ itj .
+2
+
+Since λj > 0 we have Re sj = 12 or 21 6 sj < 1. Any uj (z) has the Fourier
+expansion of type
+X
+(3.1)
+uj (z) =
+ρj (n)Wsj (nz)
+n6=0
+
+where Ws (z) is the Whittaker function given by
+(3.2)
+
+1
+
+Ws (z) = 2|y| 2 Ks− 1 (2π|y|)e(x)
+2
+
+and Ks (y) is the K-Bessel function. Note that Ws (z) ∼ e(z) as y → ∞. The
+automorphic forms uj (z) are called Maass cusp forms.
+The eigenpacket in E(Γ\H) consists of Eisenstein series Ea (z, s) on the
+line Re s = 12 . These are defined for every cusp a by
+X
+Ea (z, s) =
+(Im σa−1 γz)s
+γ∈Γa \Γ
+
+if Re s > 1 and by analytic continuation for all s ∈ C. Here Γa is the stability
+group of a and σa ∈ SL2 (R) is such that σa ∞ = a and σa−1 Γa σa = Γ∞ . The
+
+1185
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+scaling matrix σa of cusp a is only determined up to a translation from the
+right; however the Eisenstein series does not depend on the choice of σa , not
+even on the choice of a cusp in the equivalence class. The Fourier expansion
+of Ea (z, s) is similar to that of a cusp form; precisely,
+X
+(3.3)
+Ea (z, s) = ϕa y s + ϕa (s)y 1−s +
+ϕa (n, s)Ws (nz)
+n6=0
+
+where ϕa = 1 if a ∼ ∞ or ϕa = 0 otherwise.
+We can assume that U is the Hecke basis, i.e., every uj ∈ U is an eigenfunction of all the Hecke operators (2.2) with k = 0,
+(3.4)
+
+Tn uj = λj (n)uj
+
+if
+
+(n, q) = 1.
+
+Moreover, the reflection operator R defined by (Rf )(z) = f (−z̄) commutes
+with ∆ and all Tn with (n, q) = 1 so that we can also require
+(3.5)
+
+Ruj = εj uj .
+
+Since R is an involution the space C(Γ\H) is split into even and odd cusp forms
+according to εj = 1 and εj = −1. All the Eisenstein series Ea (z, s) are even
+and they are also eigenfunctions of the Hecke operators
+(3.6)
+
+Tn Ea (z, s) = ηa (n, s)Ea (z, s),
+
+if
+
+(n, q) = 1.
+
+The analog of Petersson’s formula (2.6) for Maass forms is the following
+formula of Kuznetsov (see Theorem 9.3 of [I2]):
+(3.7)
+X
+
+h(tj )ρ̄j (m)ρj (n) +
+
+j
+
+X 1 Z ∞
+a
+
+4π
+
+−∞
+
+= δ(m, n)H +
+
+h(r)ϕ̄a (m, 12 + ir)ϕa (n, 12 + ir) dr
+X
+
+c−1 S(m, n; c)H ±
+
+c≡0(mod q)
+
+
+4π p
+|mn|
+c
+
+where ± is the sign of mn and H, H + (x), H − (x) are the integral transforms of
+h(t) given by
+Z
+1 ∞
+H=
+(3.8)
+h(t) th(πt)tdt,
+π −∞
+Z ∞
+h(t)t
++
+J2it (x)
+H (x) = 2i
+(3.9)
+dt,
+ch πt
+−∞
+Z
+4 ∞
+(3.10)
+K2it (x) sh(πt)h(t)tdt.
+H − (x) =
+π −∞
+This formula holds for any orthonormal basis U of cusp forms in C(Γ\H), for
+any mn 6= 0 and any test function h(t) which satisfies the following conditions;
+(3.11)
+
+h(t)
+
+is holomorphic in |Im t| 6 σ,
+
+1186
+
+J. B. CONREY AND H. IWANIEC
+
+(3.12)
+h(t) = h(−t),
+(3.13)
+h(t) ≪ (|t| + 1)−θ ,
+for some σ > 12 and θ > 2.
+For the Fourier coefficients ϕa (±n, s) of the Eisenstein series Ea (z, s),
+1
+
+ϕa (±n, s) = ϕa (1, s)ηa (n, s)n− 2 ,
+
+(3.14)
+
+if n > 0, (n, q) = 1. For the coefficients ρj (n) of the Hecke-Maass form uj (z)
+we have a similar formula
+1
+
+ρj (±n) = ρj (±1)λj (n)n− 2 ,
+
+(3.15)
+
+if n > 0, (n, q) = 1. Moreover
+(3.16)
+
+ρj (−1) = εj ρj (1).
+
+To simplify presentation we restrict the spectral sum in (3.7) to the even forms;
+these can be selected by adding (3.7) for m, n to that for −m, n. We obtain
+for m, n > 1, (mn, q) = 1,
+(3.17)
+X′
+X 1 Z ∞
+h(tj )ωj λj (m)λj (n) +
+h(r)ωa (r)ηa (m, 12 + ir)ηa (n, 21 + ir) dr
+4π
+−∞
+a
+j
+X
+√
+1
+= 2 δ(m, n)H + mn
+c≡0(mod q)
+
+√
+√
+× c {S(m, n; c)J (2 mn/c) + S(−m, n; c)J − (2 mn/c)}
+P
+where ′ restricts to the even Hecke cusp forms,
+−2
+
+(3.18)
+
++
+
+ωj = 4π|ρj (1)|2 / ch πtj
+
+for λj = sj (1 − sj ) with sj = 21 + itj and
+(3.19)
+
+ωa (r) = 4π|ϕa (1, 12 + ir)|2 /chπr.
+
+The J-functions which are attached to the Kloosterman sums on the righthand side of (3.17) are defined by J ± (x) = x−1 H ± (2πx). In our applications of
+(3.17) we assume that the conditions (3.11)-(3.13) hold with σ > 6 to ensure
+the bound H + (x) ≪ min(x11 , x−1/2 ). For x > 1 this follows by J2it (x) ≪
+x−1/2 ch πt, and for 0 < x < 1 this follows by moving the integration in (3.9)
+to the horizontal line Im t = 6 and applying Js (x) ≪ xσ eπ|s|/2 . The same
+bound is derived for H − (x) by similar arguments. In any case we get
+(3.20)
+
+J ± (x) ≪ min(x10 , x−3/2 ) ≪ x10 (1 + x2 )−23/4 .
+
+Recall that (3.17) requires the condition (mn, q) = 1. By the theory of
+Hecke operators (as in the case of (2.9)) the sum (3.17) can be arranged into a
+sum over primitive cusp forms of level dividing q with coefficients ωj∗ satisfying
+(3.21)
+
+ωj∗ ≫ (q|sj |)−1−ε .
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1187
+
+In the case of continuous spectrum we know the Fourier coefficients ϕa (n, s)
+quite explicitly. We compute them by using the Eisenstein series for the modular group
+X X
+E(z, s) = 21 y s
+|cz + d|−2s .
+(c,d)=1
+
+This has the Fourier expansion (3.3) with
+1
+
+ϕ(n, s) = π s Γ(s)−1 ζ(2s)|n|− 2 η(n, s)
+
+(3.22)
+where
+(3.23)
+
+X
+
+η(n, s) =
+
+1
+
+(a/d)s− 2 .
+
+ad=|n|
+
+Every Eisenstein series Ea (z, s) for the group Γ = Γ0 (q) can be expressed as a
+linear combination of E(dz, s) with d|q. Below we derive these representations.
+Recall that q is squarefree, so every cusp of Γ0 (q) is equivalent to a = 1/v
+with v|q. The complementary divisor w = q/v is the width of a. We find that
+(by the arguments in [DI, p. 240], or [He, p. 534])
+ √
+
+
+√  
+a/ w b/ w
+a b
+−1
+√
+√
+σa Γ =
+∈ SL2 (Z), c ≡ −av(q) .
+:
+c w
+c d
+d w
+√
+√
+Hence the cosets Γ∞ \σa−1 Γ are parametrized by pairs of numbers {c w, d w}
+with (c, dw) = 1 and v|c. Therefore the Eisenstein series for the cusp a = 1/v
+is given by
+X
+1  y s X X
+|cz + d|−2s .
+Ea (z, s) =
+(Im τ z)s =
+2
+w
+−1
+(c,dw)=1
+v|c
+
+τ ∈Γ∞ \σa Γ
+
+Removing the condition (d, c) = 1 by Möbius inversion we get
+Ea (z, s) =
+
+−2s
+X X cvz
+1  y s X
+µ(δ)δ−2s
++d
+2 w
+(δ, v)
+(c,d)6=(0,0)
+(c,w)=1
+
+(δ,w)=1
+
+−1
+
+= ζ(2s)
+
+X
+
+µ(δ)δ
+
+−2s
+
+γ|w
+
+(δ,w)=1
+
+= ζq (2s)
+
+XX
+δ|v γ|w
+
+X
+
+
+
+ 
+(δ, v) s
+γvz
+µ(γ)
+E
+,s
+γq
+(δ, v)
+
+v
+µ(δγ)(δγq)−s E(γ z, s)
+δ
+
+where ζq (s) is the local zeta-function
+Y
+(3.24)
+ζq (s) =
+(1 − p−s )−1 .
+p|q
+
+1188
+
+J. B. CONREY AND H. IWANIEC
+
+Putting v = βδ we arrive at
+(3.25)
+
+Ea (z, s) = ζq (2s)µ(v)(qv)−s
+
+X X
+
+µ(βγ)β s γ −s E(βγz, s).
+
+β|v γ|w
+
+By (3.22)–(3.25) we deduce that for n > 1, (n, q) = 1
+(3.26)
+
+ϕa (n, s) =
+
+µ(v) π s ζq (2s) η(n, s)
+√ .
+( )
+Γ(s) qv ζ(2s)
+n
+
+Hence, for any cusp, ηa (n, s) = η(n, s) if (n, q) = 1, and
+(3.27)
+
+ωa (r) =
+
+4π |ζq (1 + 2ir)|2
+.
+qv |ζ(1 + 2ir)|2
+
+Note that ωa (r) > 4πw|ν(q)ζ(1 + 2ir)|−2 , where w is the width of the cusp and
+ν(q) is the index of the group.
+4. Hecke L-functions
+From now on we assume that q is squarefree, odd. Let χ = χq be the
+real, primitive character of conductor q; i.e., χ is given by the Jacobi-Legendre
+symbol
+ 
+n
+(4.1)
+χ(n) =
+.
+q
+To any primitive form f of level q ′ |q we associate the L-functions
+(4.2)
+∞
+X
+Y
+−1
+−1 Y
+λf (n)n−s =
+1 − λf (p)p−s
+Lf (s) =
+1 − λf (p)p−s + p−2s
+1
+
+p ∤q ′
+
+p|q ′
+
+and
+(4.3)
+
+Lf (s, χ) =
+
+∞
+X
+
+λf (n)χ(n)n−s =
+
+1
+
+Y
+(1 − λf (p)χ(p)p−s + p−2s )−1 .
+p ∤q
+
+The latter is the L-function of the twisted form
+∞
+X
+k−1
+af (n)χ(n)n 2 e(nz) ∈ Sk (Γ0 (q 2 )).
+fχ (z) =
+1
+
+Moreover, the completed L-function
+ q s
+(4.4)
+Λf (s, χ) =
+Γ(s + k−1
+2 )Lf (s, χ)
+2π
+is entire and it satisfies the functional equation
+(4.5)
+
+Λf (s, χ) = wf (χ)Λf (1 − s, χ)
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1189
+
+with wf (χ) = χ(−1)ik (see Razar [R], for example). Note that wf (χ) does not
+depend on f . From now on we assume that
+χ(−1) = ik
+
+(4.6)
+
+so that (4.5) holds with wf (χ) = 1 (otherwise all the central values Lf ( 21 , χ)
+vanish).
+Remarks. By a theorem of Winnie Li [L] the Euler product (4.3) and the
+functional equation (4.5) guarantee that fχ is primitive. Also, we can see more
+explicitly the dependence of wf (χ) on f and χ as follows. If f is primitive
+of level q ′ |q then wf (χ) = χ(−1)µ(q ′ )λf (q ′ )wf and wf = ik µ(q ′ )λf (q ′ ), so
+that wf (χ) = χ(−1)ik . Clearly all the above properties of Lf ( 21 , χ) (including
+the definition (4.3)) remain true for any cusp form f from the Hecke basis F
+(because the character χ kills the coefficients with n not prime to q ).
+Using the functional equation (4.5) we shall represent the central values
+To this end we choose a
+function G(s) which is holomorphic in |Re s| 6 A such that
+
+Lf ( 12 , χ) by its partial sum of length about O(kq).
+(4.7)
+
+G(s) = G(−s),
+Γ( k2 )G(0) = 1,
+Γ(s + k2 )G(s) ≪ (|s| + 1)−2A
+
+for some A > 1. Consider the integral
+Z
+1
+I = 2πi
+Λf (s + 21 , χ)G(s)s−1 ds.
+(1)
+
+Moving the integration to the line Re s = −1 and applying (4.5) we derive
+Λf ( 21 , χ)G(0) = 2I.
+
+On the other hand, integrating term by term, we derive
+∞
+ q 1 n
+X
+2
+λf (n)χ(n)
+I=
+V
+2πn
+q
+1
+
+where V (y) is the inverse Mellin transform of (2π)−s Γ(s + k2 )G(s)s−1 ,
+Z
+1
+(4.8)
+V (y) =
+Γ(s + k2 )G(s)(2πy)−s s−1 ds.
+2πi (1)
+
+Hence by the normalization condition (4.7) we get:
+Lemma 4.1. For any Hecke form f ∈ F we have
+(4.9)
+
+Lf ( 21 , χ) = 2
+
+∞
+X
+1
+
+1
+
+λf (n)χ(n)n− 2 V (n/q).
+
+1190
+
+J. B. CONREY AND H. IWANIEC
+
+Observe that V (y) satisfies the following bounds
+(4.10)
+
+V (y) = 1 + O(y A ),
+
+(4.11)
+
+V (y) ≪ (1 + y)−A ,
+
+V (ℓ) (y) ≪ y A (1 + y)−2A ,
+
+(4.12)
+
+for 0 < ℓ < A where the implied constant depends on that in (4.7). Actually
+V (y) depends on the weight k. One can choose G(s) depending on k so that
+V (y) ≪ k(1 + y/k)−A ;
+therefore the series (4.9) dies rapidly as soon as n exceeds kq. If one is not concerned with the dependence of implied constants on the parameter k then one
+has a simple choice G(s) = Γ(k/2)−1 getting the incomplete gamma function
+Z ∞
+k
+1
+V (y) = k
+e−x x 2 −1 dx.
+Γ( 2 ) 2πy
+By (2.5) and (4.9) we deduce that
+(4.13)
+
+L2f ( 12 , χ) = 4
+
+X
+
+−1
+
+d
+
+XX
+n1 n2
+
+(d,q)=1
+
+χ(n1 n2 )
+λf (n1 n2 ) √
+V
+n1 n2
+
+
+
+dn1
+q
+
+
+
+V
+
+
+
+dn2
+q
+
+
+
+.
+
+Now we have everything ready to begin working with the cubic moment
+of the central values Lf ( 12 , χ). From an analytic point of view it is natural to
+introduce the spectrally normalized cubic moment
+X
+X
+(4.14)
+Ck (q) =
+ωf∗ L3f ( 12 , χ)
+ωf L3f ( 12 , χ) =
+f ∈F ∗
+
+f ∈F
+
+where F is the Hecke orthonormal basis of Sk (Γ0 (q)). This differs from the
+arithmetically normalized cubic moment (1.2) by the coefficients ωf∗ . Recall
+that the ωf∗ satisfy the lower bound (2.12). Therefore
+X
+(4.15)
+L3f ( 12 , χ) ≪ Ck (q)(kq)1+ε
+f ∈F ∗
+
+for any ε > 0, where the implied constant depends only on ε. Hence for
+Theorem 1.1 we need to show that
+Ck (q) ≪ q ε
+
+(4.16)
+
+where the implied constant depends on ε and k.
+Applying (4.9) and (4.13) we write (4.14) as follows:
+(4.17) Ck (q) = 8
+
+X
+
+f ∈F
+
+ωf
+
+XXX
+n
+
+n1
+
+n2
+
+χ(nn1 n2 )
+V
+λf (n)λf (n1 n2 ) √
+nn1 n2
+
+
+
+n n2 n2
+, ,
+q q q
+
+
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1191
+
+where
+(4.18)
+
+X
+
+V (x, x1 , x2 ) = V (x)
+
+d−1 V (dx1 )V (dx2 ).
+
+(d,q)=1
+
+Next by the Petersson formula (2.9) this is transformed into
+X
+(4.19)
+Ck (q) = D +
+c−2 S(c)
+c≡0(mod q)
+
+where D is the contribution of the diagonal terms given by
+
+ 
+ 
+
+XX
+n1 n2
+dn1
+dn2
+(4.20)
+D=8
+(dn1 n2 )−1 V
+V
+V
+,
+q
+q
+q
+(dn1 n2 ,q)=1
+
+and S(c) is the contribution of the Kloosterman sums of modulus c given by
+(4.21)
+ √
+ 
+
+XXX
+2 nn1 n2
+n n1 n2
+, ,
+χ(nn1 n2 )S(n, n1 n2 ; c)J
+V
+.
+S(c) = 8
+c
+q q q
+n
+n n
+1
+
+2
+
+5. Maass L-functions
+To any even cusp form uj in the Hecke basis U of L(Γ\H) we associate
+the L-function
+∞
+X
+λj (n)χ(n)n−s .
+(5.1)
+Lj (s, χ) =
+1
+
+This has the Euler product of the type (4.3). Moreover the completed
+L-function
+ q s  s + it   s − it 
+j
+j
+Γ
+Γ
+Lj (s, χ),
+(5.2)
+Λj (s, χ) =
+π
+2
+2
+is entire and it satisfies the functional equation
+
+Λj (s, χ) = Λj (1 − s, χ).
+
+(5.3)
+
+Hence arguing as in Lemma 4.1 we deduce:
+Lemma 5.1. For any even cusp form uj ∈ U,
+Lj ( 12 , χ) = 2
+
+(5.4)
+
+∞
+X
+
+1
+
+λj (n)χ(n)n− 2 Vj (n/q)
+
+1
+
+with Vj (y) given by
+(5.5)
+
+1
+Vj (y) =
+2πi
+
+Z
+
+Γ
+(1)
+
+
+
+s + itj
+2
+
+ 
+
+s − itj
+Γ
+Gj (s)(πy)−s s−1 ds.
+2
+
+where Gj (s) is any holomorphic function in |Re s| 6 A such that
+
+1192
+
+J. B. CONREY AND H. IWANIEC
+
+(5.6)
+
+Gj (s) = Gj (−s),
+ 
+
+1 itj
+1 itj
++
+−
+Γ
+Gj (0) = 1,
+Γ
+4
+2
+4
+2
+
+ 
+
+s + itj
+s − itj
+Γ
+Γ
+Gj (s) ≪ (|s| + 1)−2A .
+2
+2
+
+(5.7)
+(5.8)
+
+
+
+Observe that Vj (y) satisfies the bounds (4.10)–(4.12).
+To the Eisenstein series Ea (z, 12 + ir) we associate the L-function
+(5.9)
+
+La,r (s, χ) =
+
+∞
+X
+
+ηa (n, 21 + ir)χ(n)n−s .
+
+1
+
+It turns out that the La,r (s, χ) is the same one for every cusp, indeed it is the
+product of two Dirichlet L-functions (see (3.26))
+La,r (s, χ) = L(s + ir, χ)L(s − ir, χ).
+
+(5.10)
+
+This satisfies the functional equation (5.3) (which can also be verified directly
+using the functional equation for L(s, χ); see [Da]), so (5.4) becomes
+!
+∞
+X
+X
+1
+2
+ir
+1
+(5.11)
+|L( 2 + ir, χ)| = 2
+χ(n)n− 2 Vr (n/q)
+(a/d)
+1
+
+ad=n
+
+where Vr (y) is given by the integral (5.5) with tj replaced by r in (5.5)–(5.8).
+Now we are ready to introduce the spectrally normalized cubic moment
+of the central values of L-functions associated with the even cusp forms and
+the Eisenstein series
+Z ∞
+X′
+1
+′
+3 1
+(5.12)
+Ch (q) =
+h(tj )ωj Lj ( 2 , χ) +
+h(r)ω(r)|L( 12 + ir)|6 dr
+4π −∞
+j
+P
+where the coefficients ωj are given by (3.18) and ω(r) = a ωa (r). By (3.27)
+we obtain
+1 |ζq (1 + 2ir)|2
+4π Y
+(1 + )
+.
+(5.13)
+ω(r) =
+q
+p |ζ(1 + 2ir)|2
+p|q
+
+Note that the largest contribution to the continuous spectrum comes from the
+cusp of the largest width (which is the cusp zero). Now,
+ω(r) ≫ r 2 ((r 2 + 1)q)−1−ε .
+
+(5.14)
+
+Assuming h(r) > 0 and h(r) > 1 if −R 6 r 6 R, we derive by (3.21) and (5.14)
+that
+Z R
+X⋆
+(5.15)
+L3j ( 12 , χ) +
+|L( 12 + ir, χ)|6 ℓ(r) dr ≪ Ch′ (q)(Rq)1+ε
+|tj |6R
+
+−R
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1193
+
+for any ε > 0, where the implied constant depends only on ε. Therefore, for
+Theorem 1.4 we need to show that
+(5.16)
+
+Ch′ (q) ≪ RA q ε
+
+where the implied constant depends on ε and the test function h.
+Applying (5.4) and (5.11) we transform Ch′ (q) by the Kuznetsov formula
+(3.17) into
+X
+c−2 S ′ (c),
+(5.17)
+Ch′ (q) = D ′ +
+c≡0(mod q)
+
+where D ′ is the contribution of the diagonal terms and S ′ (c) is the contribution
+of the Kloosterman sums to modulus c. Here D ′ is similar to D in (4.20) and
+S ′ (c) is similar to S(c) in (4.21). From this point on our treatments of Ck (q)
+and Ch′ (q) are almost identical except for technical details. Both cases are
+based on the same properties of the involved functions J(x), J + (x) and J − (x).
+Therefore, for notation economy, we choose to proceed further only with the
+classical cusp forms, i.e. we shall complete the proof of (4.16) and claim (5.16)
+by parallel arguments. The reader should note that the dependency on the
+spectral parameter in our estimates is polynomial at each step; hence the
+factor RA in (5.16) and (1.10).
+
+6. Evaluation of the diagonal terms
+Recall that D is the contribution to the cubic moment Ck (q) of the diagonal
+terms which is given by (4.20). Using the bounds (4.10)–(4.12) one shows that
+ 
+ 
+
+
+Z Z Z
+ϕ(q) 3 ∞ ∞ ∞
+yy2
+y1 y2
+yy1
+D ∼ 8(
+)
+V
+V
+(yy1 y2 )−1 dy dy1 dy2
+V
+q
+q
+q
+q
+1
+1
+1
+
+
+Z q  Z y1  Z q/y1
+ϕ(q) 3
+dy dy2 dy1
+8 ϕ(q)
+∼ 16
+= (
+log q)3 .
+q
+y
+y2
+y1
+3 q
+1
+1
+1
+
+A more precise asymptotic can be derived from the complex integral
+Z Z Z  s+s +s
+1
+2
+q
+−3
+D = 8(2πi)
+(ε) (ε) (ε) 2π
+· Γ(s + k2 )Γ(s1 + k2 )Γ(s2 + k2 )G(s)G(s1 )G(s2 )
+
+· ζq (s + s1 + 1)ζq (s + s2 + 1)ζq (s1 + s2 + 1)(ss1 s2 )−1 ds ds1 ds2 ;
+however, we only need the upper bound
+(6.1)
+
+D ≪ qε.
+
+1194
+
+J. B. CONREY AND H. IWANIEC
+
+7. A partition of sums of Kloosterman sums
+Recall that S(c) is the sum of Kloosterman sums S(n, n1 n2 ; c) to the
+modulus c ≡ 0(mod q) given by (4.21) where n, n1 , n2 run over all positive
+√
+integers. The special function J(x) = 4πik x−1 Jk−1 (2πx) for x = 2 nn1 n2 /c
+which is attached to the Kloosterman sum S(n, n1 n2 ; c) in (4.21) is itself a
+continuous analog of the latter. But this analogy is merely visual. One can
+√
+compute asymptotically J(2 nn1 n2 /c) by the stationary phase method while
+the Kloosterman sum S(n, n1 n2 ; c) requires more advanced arguments from
+algebraic geometry (see §§13 and 14).
+All we need to know about the J-function is that it can be written as (see
+[W, p. 206])
+(7.1)
+
+J(x) = Re W (x)e(x)
+
+where W (x) is a smooth function whose derivatives satisfy the bound (assuming k > 12)
+xℓ W (ℓ) (x) ≪ x10 (1 + x2 )−23/4
+
+(7.2)
+
+for all ℓ > 0 where the implied constant depends on k and ℓ. One could display
+the dependence on k, but we abandon this feature for the sake of notational
+simplicity.
+To get hold on the variables n, n1 , n2 of summation in (4.17) we split
+the range by a smooth partition of unity whose constituents are supported in
+dyadic boxes
+
+
+x x1 x2
+(7.3)
+N = (x, x1 , x2 ) : 1 6 ,
+,
+62
+N N1 N2
+with N, N1 , N2 > 21 . Accordingly S(c) splits into sums of type
+(7.4)
+XXX
+√
+χ(nn1 n2 )S(n, n1 n2 ; c)e(2 nn1 n2 /c)W (n, n1 , n2 ; c)
+S(W ; c) =
+n
+
+n1
+
+n2
+
+where
+(7.5)
+
+W (x, x1 , x2 ; c) = P (x, x1 , x2 )V
+
+
+
+x x1 x2
+, ,
+q q q
+
+
+
+√
+W (2 xx1 x2 /c)
+
+and the P -functions are the constituents of the partition of unity. Precisely,
+X
+(7.6)
+S(c) = 8Re
+S(W ; c).
+N
+
+We shall treat the sums of Kloosterman sums (7.4) in full generality. All we
+need to know about the function W (x, x1 , x2 ; c) is that it is smooth, supported
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1195
+
+in the box (7.3), and its partial derivatives satisfy the bound
+xℓ xℓ11 xℓ22 |W (ℓ,ℓ1 ,ℓ2 ) (x, x1 , x2 ; c)| 6 Q
+
+(7.7)
+
+for 0 6 ℓ, ℓ1 , ℓ2 6 A (A is a large constant) with some Q > 0.
+We also restrict the modulus c to a dyadic segment
+(7.8)
+
+C 6 c 6 2C,
+
+c ≡ 0(mod q),
+
+with C > q. Notice that our particular function (7.5) satisfies (7.7) with
+(7.9)
+
+ 
+
+N N1 N2 5
+N N1 N2 −23/4
+1+
+Q≪
+C2
+C2
+
+ 
+ 
+
+N −A
+N1 −A
+N2 −A
+· 1+
+log q,
+1+
+1+
+q
+q
+q
+
+
+by virtue of (4.12) and (7.2) (the factor log q appears from the summation in
+d in (4.18)).
+Remarks. Using individual estimates for the Kloosterman sums in (7.4)
+one obtains
+S(W ; c) ≪ cQN N1 N2 .
+
+(7.10)
+
+This bound is satisfactory for large c, but it is not sufficient in all ranges. In
+order to improve (7.10) one has to exploit some cancellation of the terms in
+(7.4), which is due to the variation in the argument of the twisted Kloosterman
+sum
+√
+χ(nn1 n2 )S(n, n1 n2 ; c)e(2 nn1 n2 /c)
+with respect to n, n1 , n2 (we shall get an extra cancellation by summing over
+c as well).
+8. Completing the sum S(W ; c)
+The character χ(nn1 n2 ) and the Kloosterman sum S(n, n1 n2 ; c) with
+c ≡ 0(mod q) in (7.4) are periodic in n, n1 , n2 of period c (however the ex√
+ponential factor e(2 nn1 n2 /c) is not). Thus splitting into residue classes and
+applying the Poisson summation formula for each class we obtain
+XXX
+G(m, m1 , m2 ; c)W̌ (m, m1 , m2 ; c)
+(8.1)
+S(W ; c) =
+m
+
+m1 m2
+
+where m, m1 , m2 run over all integers (we call the variables m, m1 , m2 the
+“dual” of the “original” n, n1 , n2 ), G is the complete sum of Kloosterman
+
+1196
+
+J. B. CONREY AND H. IWANIEC
+
+sums twisted by characters to modulus c,
+(8.2)
+XXX
+G(m, m1 , m2 ; c) =
+χ(aa1 a2 )S(a, a1 a2 ; c)ec (am + a1 m1 + a2 m2 )
+a,a1 ,a2 (mod c)
+
+(recall the standard notation ec (x) = e2πix/c ), and W̌ is given by the following
+Fourier integral:
+(8.3) W̌ (m, m1 , m2 ; c)
+Z
+√
+W (cx, cx1 , cx2 ; c)e(2 cxx1 x2 − mx − m1 x1 − m2 x2 ) dxdx1 dx2 .
+=
+R3
+
+Before employing advanced arguments we cut the series (8.1) using crude
+estimates for the sum (8.2) and the integral (8.3). By (10.16) we have
+|G(m, m1 , m2 ; c)| 6 c3 .
+
+(8.4)
+
+By (8.3) one gets directly W̌ ≪ QN N1 N2 C −3 ; however on integrating by parts
+we can improve this bound to
+(8.5)
+
+W̌ (m, m1 , m2 ; c)
+
+ 
+
+ 
+|m2 | −A
+|m1 | −A
+|m| −A
+1+
+1+
+≪ QN N1 N2 C
+1+
+M
+M1
+M2
+√
+where M N = M1 N1 = M2 N2 = C + N N1 N2 = D, say. Since A is a large
+constant it shows that W̌ is very small outside the box
+−3
+
+(8.6)
+
+
+
+|m| 6 M q ε , |m1 | 6 M1 q ε , |m2 | 6 M2 q ε .
+
+We denote this box by M(and say M is “dual” to N ). Estimating the tail of
+the series (8.1) with (m, m1 , m2 ) ∈
+/ M by using (8.4) and (8.5) we are left with
+(8.7)
+XXX
+S(W ; c) =
+G(m, m1 , m2 ; c)W̌ (m, m1 , m2 ; c) + O(QN N1 N2 q −3 ).
+(m,m1 ,m2 )∈M
+
+Our next goal is to pull out from W̌ (m, m1 , m2 ; c) the phase factor
+e(−mm1 m2 /c) and then to separate the variables in
+ mm m 
+1 2
+(8.8)
+K(m, m1 , m2 ; c) = e
+W̌ (m, m1 , m2 ; c).
+c
+We choose the method of Fourier transform (because it is in harmony with the
+forthcoming computations of the sum G(m, m1 , m2 ; c) in §10); however the
+Mellin transform would do the job as well.
+Throughout Da stands for the differential operator
+D a F (x, x1 , x2 ) = xa xa11 xa22 F (a,a1 ,a2 ) (x, x1 , x2 )
+where F (a,a1 ,a2 ) is the partial derivative of order a = (a, a1 , a2 ).
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1197
+
+Lemma 8.1. Let W (x, x1 , x2 ) be a smooth function supported in the dyadic
+box
+
+
+x x1 x2
+,
+62
+X = (x, x1 , x2 ) : 1 6 ,
+X X1 X2
+
+(8.9)
+
+with X, X1 , X2 > 0, and its partial derivatives satisfy the bound
+|D a W (x, x1 , x2 )| 6 1
+
+(8.10)
+
+for any a = (a, a1 , a2 ) 6 18 component by component. Put
+√
+L(x, x1 , x2 ) = W (x, x1 , x2 )e(2 xx1 x2 ),
+(8.11)
+(8.12)
+
+K(y, y1 , y2 ) = L̂(y, y1 , y2 )e(yy1 y2 ),
+
+where L̂ is the Fourier transform of L. Then the L1 -norm of the Fourier
+transform of K satisfies
+Z
+1
+|K̂(t, t1 , t2 )|dtdt1 dt2 ≪ (XX1 X2 ) 4 log(1 + XX1 X2 ) + (XX1 X2 )−2
+(8.13)
+R3
+
+where the implied constant is absolute.
+Proof. Our arguments are direct but quite long as we go through the
+Fourier inversion several times to avoid problems with the stationary phase.
+Define Y, Y1 , Y2 and Z by
+(8.14)
+
+XX1 X2 = Z 2 , XY = X1 Y1 = X2 Y2 = Z.
+
+Note that Y Y1 Y2 = Z. First we estimate the derivatives of
+Z
+√
+W (x, x1 , x2 )e(2 xx1 x2 − xy − x1 y1 − x2 y2 )dx
+(8.15)
+L̂(y, y1 , y2 ) =
+R3
+
+at any point y = (y, y1 , y2 ) ∈ R3 outside the box
+
+
+y y1 y2
+1
+63 .
+(8.16)
+Y = (y, y1 , y2 ) : 6 , ,
+3 Y Y1 Y2
+
+One may say that Y is “dual” to X . Applying the operator D a with respect
+to the variables (y, y1 , y2 ) we get
+Z
+a
+W (x, x1 , x2 )(−2πixy)a (−2πix1 y1 )a1 (−2πix2 y2 )a2
+D L̂(y, y1 , y2 ) =
+R3
+√
+· e(2 xx1 x2 − xy − x1 y1 − x2 y2 )dx.
+
+Hence Da L̂(y, y1 , y2 ) ≪ Z 2 (|y|X)a (|y1 |X1 )a1 (|y2 |X2 )a2 by trivial estimation;
+however we can do better by partial integration. Since y = (y, y1 , y2 ) ∈
+/ Y
+1
+we may assume without loss of generality that y is not in the segment 3 Y 6
+√
+y 6 3Y , so xy does not match 2 xx1 x2 . If Z + |y|X > 1 then on integrating
+by parts with respect to x eighteen times we gain the factor (Z + |y|X)18 ;
+
+1198
+
+J. B. CONREY AND H. IWANIEC
+
+otherwise we do not integrate by parts with respect to x at all. In any case
+we save the factor (1 + Z + |y|X)18 . The same operation can be applied
+simultaneously with respect to the other variables x1 , x2 , provided y1 , y2 do
+not satisfy 13 Yi 6 yi 6 3Yi , gaining the factors (1 + Z + |yi |Xi )18 . If one or both
+variables y1 , y2 do satisfy 13 Yi 6 yi 6 3Yi then we do not integrate by parts
+with respect to xi , but still claim the factor (1 + Z + |yi |Xi )6 by borrowing it
+from the gain in the variable x. Thus for any y = (y, y1 , y2 ) ∈ R3 outside the
+box Y and any a = (a, a1 , a2 ) we have
+(8.17)
+Da L̂(y, y1 , y2 ) ≪Z 2 (|y|X)a (|y|1 |X1 )a1 (|y2 |X2 )a2
+· (1 + Z + |y|X)−6 (1 + Z + |y1 |X1 )−6 (1 + Z + |y2 |X2 )−6 .
+Applying Da to (8.12) we derive by (8.17) that
+D a K(y, y1 , y2 ) ≪Z 2 (|y|X + |yy1 y2 |)a (|y1 |X1 + |yy1 y2 |)a1 (|y2 |X2 + |yy1 y2 |)a2
+· (1 + Z + |y|X)−6 (1 + Z + |y1 |X1 )−6 (1 + Z + |y2 |X2 )−6 .
+Here we have |y|X + |yy1 y2 | 6 |y|XZ −2 (1 + Z + |y1 |X1 )(1 + Z + |y2 |X2 ) and
+similar inequalities hold for the other two combinations. Therefore if a 6 2
+and y ∈
+/ Y,
+(8.18)
+
+D a K(y, y1 , y2 ) ≪Z 2 (|y|XZ −2 )a (|y1 |X1 Z −2 )a1 (|y2 |X2 Z −2 )a2
+· (1 + |y|X)−2 (1 + |y1 |X1 )−2 (1 + |y2 |X2 )−2 .
+
+Now we proceed to the estimation of Da K(y) in the box Y. In this range
+before integrating by parts we pull out the exponential factor e(−yy1 y2 ) from
+the Fourier integral (8.15). To this end we arrange the amplitude function
+√
+2 xx1 x2 − xy − x1 y1 − x2 y2 in the following form
+√
+1 √
+1
+−yy1 y2 + (x1 − yy2 )(x2 − yy1 ) − (y x − x1 x2 )2 .
+y
+y
+
+Introducing this into (8.15) and changing the variables of integration
+√ √
+x = (x, x1 , x2 ) into v = (v, v1 , v2p
+) by the formulas x1 = (v1 + y2 y) y,
+√ √
+x2 = (v2 + y1 y) y and x = (v + x1 x2 /y)2 /y we get
+Z
+H(v; y)e(−v 2 + v1 v2 )dvdv1 dv2
+(8.19)
+K(y) =
+R3
+
+where the kernel function is given by
+(8.20)
+
+1
+√ √
+√ √
+H(v; y) = 2(x(v; y)y) 2 W (x(v; y), (v1 + y2 y) y, (v2 + y1 y) y)
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1199
+
+with
+(8.21)
+
+√ 1
+√ 1
+x(v; y) = [v + (v1 + y2 y) 2 (v2 + y1 y) 2 ]2 y −1 .
+
+Notice that the new variables v = (v, v1 , v2 ) are restricted by
+(8.22)
+
+√
+1
+1
+1
+√
+√
+v y = y x − x1 x2 ≪ Y X 2 + (X1 X2 ) 2 = 2Y X 2 ,
+√
+v1 y = x1 − yy2 ≪ X1 + Y Y2 = 2X1 ,
+√
+v2 y = x2 − yy2 ≪ X2 + Y Y1 = 2X2 ,
+
+by virtue of the support of W (x, x1 , x2 ) being in the box X and the point
+(y, y1 , y2 ) being in the box Y. Put
+(8.23)
+
+p(v) = −
+
+Z v Z v1 Z v2
+0
+
+0
+
+e(−u2 + u1 u2 )dudu1 du2 .
+
+0
+
+Clearly, we have p(v) ≪ log(1 + |v1 v2 |) on R3 . Integrating (8.19) by parts we
+get
+Z
+∂ 3 H(v; y)
+dvdv1 dv2 .
+p(v)
+K(y) =
+∂v∂v1 ∂v2
+R3
+Applying the operator Da and the restrictions (8.22) we derive the following
+estimate
+(8.24)
+
+D a K(y) ≪
+
+∂ 3 D a H(v; y) 3
+Z 2 log(1 + Z)
+∂v∂v1 ∂v2
+
+for some v = (v, v1 , v2 ). We need (8.24) for all y ∈ Y and a 6 2; therefore we
+have to differentiate H(v; y) up to nine times. However we only show details
+for the first order partial derivatives, the higher order ones, being estimated
+by repeating the arguments, are left for checking to careful readers.
+We begin by the following estimate
+(8.25)
+
+1
+
+1
+
+H(v; y) ≪ (XY ) 2 = Z 2 .
+
+Next we estimate the partial derivatives of x(v; y) with respect to v, v1 , v2 and
+y, y1 , y2 in the range restricted by the support of W (x, x1 , x2 ). By (8.21) we
+
+1200
+
+J. B. CONREY AND H. IWANIEC
+
+derive the following estimates
+ 1
+1
+√ 1
+X 2
+√ 1 −1
+∂x
+2
+2
+= XZ − 2 ,
+= 2[v + (v1 + y2 y) (v2 + y1 y) ]y ≪
+∂v
+Y
+
+
+
+1
+1
+√  21
+v2 + y1 y
+X2 2
+[∗]
+XX2 2
+∂x
+=X
+,
+=
+≪
+√
+∂v1
+v1 + y2 y
+y
+Y X1
+ZX1
+
+
+1
+1
+
+√ 1
+v1 + y2 y 2 [∗]
+XX1 2
+∂x
+X1 2
+=
+≪
+=X
+,
+√
+∂v2
+v2 + y1 y
+y
+Y X2
+ZX2
+y
+
+1
+1
+1
+1
+1
+∂x
+= {(. . . )− 2 (. . . ) 2 y2 + (. . . ) 2 (. . . )− 2 y1 }[∗]y − 2 − [∗]2 y −1
+∂y
+1
+
+1
+
+1
+
+≪ {(X2 /X1 ) 2 Y2 + (X1 /X2 ) 2 Y1 }X 2 + X = 3X,
+
+1
+1
+1
+1
+∂x
+= y1 (. . . ) 2 (. . . )− 2 [∗]y − 2 ≪ Y1 (XX1 /X2 ) 2 = X,
+∂y1
+1
+1
+1
+1
+∂x
+= y2 (. . . )− 2 (. . . ) 2 [∗]y − 2 ≪ Y2 (XX2 /X1 ) 2 = X.
+y2
+∂y2
+
+y1
+
+Continuing the differentiation along the above lines one shows that
+Da x(v; y) ≪ X
+
+(8.26)
+and
+(8.27)
+
+α1
+α2
+∂ (α,α1 ,α2 )
+a
+− 1 (α+α1 +α2 )
+2 (X /X ) 2 Z 2
+D
+x(v;
+y)
+≪
+X(X
+/X
+)
+2
+1
+1
+2
+α
+α
+1
+2
+∂v α ∂v1 ∂v2
+
+if (α, α1 , α2 ) 6 1 and a = (a, a1 , a2 ) 6 2. Now we are ready to estimate the
+partial derivatives of H(v; y). By (8.20) we obtain the following estimates
+
+y 1 
+∂W ∂x
+∂H
+2
+W
++
+2x
+=
+≪ 1,
+∂v
+x
+∂x ∂v
+
+y 1 
+√ ∂W
+∂H
+∂W ∂x
+2
+=
++ 2y x
+W + 2x
+∂v1
+x
+∂x ∂v1
+∂x1
+1
+
+1
+
+1
+
+≪ (X2 /X1 ) 2 + Y X 2 X1−1 = 2(X2 /X1 ) 2 ,
+
+1
+∂H
+≪ (X1 /X2 ) 2 (by interchanging variables),
+∂v2
+ 
+
+
+1
+∂H
+∂x
+y 1
+∂W
+y
+=y
+( )2 W + x
+≪ Z2,
+∂y
+∂y
+x
+∂x
+
+
+
+
+1
+1 ∂W
+1 ∂W
+∂x
+y 1
+∂H
+= y1
+≪ Z2,
+( ) 2 W + (xy) 2
++ 2y1 y(xy) 2
+y1
+∂y1
+∂y1
+x
+∂x
+∂x2
+
+y2
+
+1
+∂H
+≪ Z2
+∂y2
+
+(by interchanging variables).
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1201
+
+Continuing the differentiation along the above lines one shows that
+1
+
+D a H(v; y) ≪ Z 2 ,
+
+(8.28)
+(8.29)
+
+∂ (α,α1 ,α2 )
+D a H(v; y) ≪
+∂v α ∂v1α1 ∂v2α2
+
+
+
+X2
+X1
+
+ α1 
+2
+
+X1
+X2
+
+ α2
+2
+
+1
+
+Z 2 (1−α−α1 −α2 )
+
+if (α, α1 , α2 ) 6 1 and a = (a, a1 , a2 ) 6 2. In particular,
+∂ 3 D a H(v; y)
+≪ Z −1 .
+∂v∂v1 ∂v2
+Inserting this into (8.24) we conclude that for a 6 2 and y ∈ Y
+1
+
+Da K(y) ≪ Z 2 log(1 + Z).
+
+(8.30)
+
+Finally we are ready to complete the proof of Lemma 8.1. Combining
+(8.18) and (8.30) we deduce that the Fourier transform of K(y, y1 , y2 ) satisfies
+(8.31)
+K̂(t, t1 , t2 ) ≪ (1 + |t|X1 X2 )−2 (1 + |t1 |XX2 )−2 (1 + |t2 |XX1 )−2
+3
+
++ Z 2 (1 + |t|Y )−2 (1 + |t1 |Y1 )−2 (1 + |t2 |Y2 )−2
+
+where the first term comes by partial integration outside the box Y by (8.18),
+and the second term comes by partial intergration in the box Y by (8.30)
+(needless to say the transition through the boundary of Y is made with a
+smooth partition of unity to avoid boundary terms in partial integration). By
+(8.31) we obtain
+Z
+1
+|K̂(t, t1 , t2 )|dtdt1 dt2 ≪ Z −4 + Z 2 log(1 + Z)
+R3
+
+which is the bound (8.13).
+
+Remarks. The term Z −4 is significant only if Z 6 1, it could be improved if
+we dealt with the factor e(yy1 y2 ) in passing from (8.17) to (8.18) by stationary
+phase methods rather than by direct differentiation.
+By Lemma 8.1 we write
+ mm m 
+1 2
+K(m, m1 , m2 ; c)
+W̌ (m, m1 , m2 ; c) = e −
+c
+where for c fixed K(y, y1 , y2 ; c) = K(y, y1 , y2 ) is a smooth function on R3 whose
+Fourier transform satisfies
+Z
+1
+|K̂(t, t1 , t2 )|dtdt1 dt2 ≪ C −1 (Z 2 log(1 + Z) + Z −4 )
+(8.33)
+
+(8.32)
+
+R3
+
+√
+with Z = N N1 N2 /C. We shall see that the factor e(−mm1 m2 /c) which
+we extracted from W̌ (m, m1 , m2 ; c) in (8.32) cancels out with the factor
+
+1202
+
+J. B. CONREY AND H. IWANIEC
+
+e(mm1 m2 /c) which appears in the formula (10.1) for the character sum
+G(m, m1 , m2 ; c). Originally G(m, m1 , m2 ; c) was defined by (8.2); however,
+anticipating the cancellation of the above character, we introduce the modified
+sum
+mm1 m2
+(8.34)
+G′ (m, m1 , m2 ; c) = e(−
+)G(m, m1 , m2 ; c),
+c
+and we refer the reader to Lemma 10.2 to see another expression for
+G′ (m, m1 , m2 ; c). Inserting (8.32), (8.34) into (8.7) and applying the Fourier
+inversion to K(m, m1 , m2 ; c) we deduce by (8.33) that
+1
+
+(8.35)
+
+S(W ; c) ≪ N N1 N2 q −3 + C −1 (Z 2 log(1 + Z) + Z −4 )
+XXX
+G′ (m, m1 , m2 ; c)ψ(m, m1 , m2 )
+(m,m1 ,m2 )∈M
+
+where ψ(m, m1 , m2 ) = e(−mt − m1 t1 − m2 t2 ) for some real numbers t, t1 , t2 .
+It does not matter what the numbers t, t1 , t2 are since in the following
+sections we are going to establish estimates for sums of type
+(8.36)
+XXX
+X
+G′ (m, m1 , m2 ; c)αm βm1 ,m2
+G(M, M1 , M2 ; C) =
+c−2
+C 6c<2C
+c≡0(mod q)
+
+m
+
+m1 m2
+
+for any complex coefficients αm for |m| 6 M and βm1 ,m2 for |m1 | 6 M1 ,
+|m2 | 6 M2 which are bounded.
+Proposition 8.2. Let C > q > 1 and M, M1 , M2 > 1. Let αm and
+βm1 ,m2 be complex numbers with |αm | 6 1 for |m| 6 M and |βm1 ,m2 | 6 1 for
+|m1 | 6 M1 , |m2 | 6 M . Then
+(8.37)
+2
+G(M, M1 , M2 ; C) ≪ C 1 + (M + M1 + M2 )q −1 τ 2 (q)
+1
+1
+1
++ 1 + CM q −2 2 1 + M1 M2 q −1 2 (CM M1 M2 ) 2 +ε
+for any ε > 0, the implied constant depending only on ε.
+
+9. Estimation of the cubic moment – Conclusion
+Using Proposition 8.2 we are ready to finish the proof of Theorem 1.1.
+Recall that the cubic moment (4.14) was transformed by Petersson’s formula
+to (4.19) where D is the contribution of the diagonal terms as estimated in (6.1).
+The other terms S(c) are sums of Kloosterman sums. These are partitioned
+into dyadic boxes in (7.6). We also divided the range of the modulus c into
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1203
+
+dyadic segments (7.8). Now, given a box N of size N × N1 × N2 and C > q,
+we need to estimate
+X
+(9.1)
+T (C) =
+c−2 S(W ; c).
+C 6c<2C
+c≡0(mod q)
+
+To this end we apply (8.35) getting
+(9.2)
+
+T (C) ≪ QN N1 N2 C −1 q −4
+1
+
++ QC −1 (Z 2 log(1 + Z) + Z −4 )G(M, M1 , M2 ; C)
+
+where Q satisfies (7.9) and M × M1 × M2 is the size of the “dual” box. Let
+√
+us recall that Z = N N1 N2 /C, and M N = M1 N1 = M2 N2 = D with D =
+√
+C + N N1 N2 . Introducing (8.37) into (9.2) we get
+(9.3)
+
+D
+D 2 ε
+D
++
++
+D
+T (C) ≪ QN N1 N2 C q + Q(Z + Z ) 1 +
+qN
+qN1 qN2
+ 12 
+ 12
+1 
+
+1
+CD 2
+CD3
+D2
+−1
+−4
++ QC (Z 2 + Z ) 1 + 2
+Dε .
+1+
+q N
+qN1 N2
+N N 1 N2
+−1 −4
+
+1
+2
+
+−4
+
+
+
+Taking into account the bound for W given in (7.9) we see easily that the
+√
+right-hand side of (9.3) multiplied by C ε is the largest for C = N N1 N2 and
+N = N1 = N2 = q, and it is bounded by O(q 3ε ). Therefore
+(9.4)
+
+T (C) ≪ q 3ε C −ε
+
+for any C > q and any ε > 0, the implied constant depending on ε. Finally
+gathering together all the pieces (9.4) and (6.1) into (4.19) we get Ck (q) ≪ q 2ε
+which completes the proof of Theorem 1.1.
+Of course, we still have to prove Proposition 8.2 for which we spend the
+rest of this paper.
+10. Evaluation of G(m, m1 , m2 ; c)
+Recall that G(m, m1 , m2 ; c) is defined by (8.2). Put c = qr. We begin by
+opening the Kloosterman sum
+X⋆  ad + a1 a2 d¯
+S(a, a1 a2 ; c) =
+.
+e
+c
+d(mod c)
+
+The sum over a(mod c) vanishes unless d + m ≡ 0(mod r) in which case it is
+equal to rτ (χ)χ((d + m)/r) where τ (χ) is the Gauss sum
+X
+τ (χ) =
+χ(x)eq (x).
+x(mod q)
+
+1204
+
+J. B. CONREY AND H. IWANIEC
+
+Similarly the sum over a1 (mod c) vanishes unless a2 d¯ + m1 ≡ 0(mod r) in
+which case it is equal to rτ (χ)χ(d)χ((a2 + dm1 )/r). Now the sum over a2
+is given by
+X
+χ(a2 )χ((a2 + dm1 )/r)e(a2 m2 /qr)
+a2 (mod c)
+a2 ≡−dm1 (mod r)
+
+=
+
+X
+
+u(mod q)
+
+χ(ur − dm1 )χ(u)e
+
+
+
+um2 dm1 m2
+−
+q
+qr
+
+
+
+.
+
+Finally we sum over d(mod c) with (d, c) = 1, d ≡ −m(mod r). These conditions imply that m and r are co-prime. Having recorded that (m, r) = 1 the
+condition (d, c) = 1 is redundant so we are free to run over d(mod c) getting
+X
+
+d(mod c)
+d≡−m(mod r)
+
+=
+
+χ(d)χ((d + m)/r)χ(ur − dm1 )e(−dm1 m2 /qr)
+
+X
+
+v(mod q)
+
+χ(v)χ(vr − m)χ(ur − (vr − m)m1 )e
+
+
+
+−vm1 m2 mm1 m2
++
+q
+qr
+
+
+
+.
+
+Gathering the above results we obtain (for (m, r) = 1)
+(10.1)
+
+G(m, m1 , m2 ; qr) = (rτ (χ))2 eqr (mm1 m2 )Hr (m, m1 , m2 ; q)
+
+where
+Hr (m, m1 , m2 ; q) =
+
+XX
+
+u,v(mod q)
+
+χ[uv(vr −m)(ur −(vr −m)m1 )]eq (um2 −vm1 m2 ).
+
+Changing u into u + vm1 we arrive at
+XX
+(10.2) Hr (m, m1 , m2 ; q) =
+χ[v(u+vm1 )(vr−m)(ur+mm1 )]eq (um2 ).
+u,v(mod q)
+
+Clearly the character sum Hr (m, m1 , m2 ; q) is symmetric in m1 , m2 by (10.1)
+and (8.2). Note also that it is multiplicative in q; precisely if (q1 , q2 ) = 1 then
+(10.3)
+
+Hr (m, m1 , m2 ; q1 q2 ) = Hr (m, m1 q̄1 , m2 ; q2 )Hr (m, m1 , m2 q̄2 ; q1 )
+
+where q̄1 , q̄2 are the multiplicative inverses of q1 , q2 to moduli q2 , q1 respectively.
+(The implied characters are χq1 q2 , χq2 , and χq1 respectively.) This property
+reduces our problem of computing Hr (m, m1 , m2 ; q) to prime modulus.
+Lemma 10.1. Suppose q is prime. Then Hr (m, m1 , m2 ; q) is given by
+(10.4)
+
+χ2 (mm1 m2 )τ 2 (χ),
+
+if q|r,
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+(10.5)
+
+1
+R(m; q)R(m1 ; q)R(m2 ; q),
+q−1
+
+(10.6)
+
+H(r̄mm1 m2 ; q),
+
+1205
+
+if q ∤ r and q|mm1 m2 ,
+if q ∤ rmm1 m2 .
+
+Here τ (χ) is the Gauss sum, R(m, q) = S(0, m; q) is the Ramanujan sum, and
+XX
+(10.7)
+H(w; q) =
+χ(uv(u + 1)(v + 1))eq ((uv − 1)w) .
+u,v(mod q)
+
+Remark. In the sequel we consider (10.7) as the definition of H(w; q) for
+all q, not necessarily prime.
+Proof. We use the expression (10.2). If q|r then (10.2) reduces to
+XX
+χ(−m2 m1 )
+χ(v(u + vm1 ))eq (um2 ) = χ2 (mm1 m2 )τ 2 (χ).
+u
+
+v
+
+Now suppose q ∤ r. Then changing u, v into ur̄, vr̄ we get
+XX
+(10.8)
+χ[v(u + vm1 )(v − m)(u + mm1 )]eq (ur̄m2 ).
+u
+
+v
+
+If q|m1 then (10.8) reduces to
+X
+X
+χ2 (u)eq (ur̄m2 )
+χ(v(v − m)) = R(m2 ; q)R(m; q)
+u
+
+v
+
+which agrees with (10.5). The case q|m2 follows by the symmetry. Now suppose
+q ∤ rm1 m2 . Then (10.8) becomes
+XX
+(10.9)
+χ[v(u + v)(v − m)(u + m)]eq (ur̄m1 m2 ).
+u
+
+v
+
+If q|m then (10.9) reduces to
+XX
+χ[uv 2 (u + v)]eq (ur̄m1 m2 ) = 1
+u
+
+v
+
+which agrees with (10.5). Finally, if q ∤ rmm1 m2 then (10.9) becomes (10.6)
+by changing variables.
+Remarks. Note that Hr (m, m1 , m2 ; q) vanishes if q|(r, mm1 m2 ), and it is
+equal to τ 2 (χ) = χ(−1)q if q|r, q ∤ mm1 m2 . One can express the two cases
+(10.5) and (10.6) in one form
+(10.10)
+Hr (m, m1 , m2 ; q) = H(r̄mm1 m2 ; q)
+1
+{R(m; q)R(m1 ; q)R(m2 ; q) − R(mm1 m2 ; q)}
++
+q−1
+
+1206
+
+J. B. CONREY AND H. IWANIEC
+
+if q ∤ r because H(0; q) = 1. This formula, in spite of being quite compact, is
+not convenient for extension to composite moduli since it lacks multiplicative
+properties.
+Let q be squarefree. Notice that (10.4) and (10.5) are purely multiplicative
+in q while (10.6) satisfies the twisted multiplication rule
+(10.11)
+
+H(w; q1 q2 ) = H(wq̄1 ; q2 )H(wq̄2 ; q1 )
+
+if q = q1 q2 (here H(⋆; q) is defined by (10.7) with χ = χq for q = q1 , q2 and
+q1 q2 respectively). Put
+(10.12)
+
+h = (r, q), k = (mm1 m2 , q/h), ℓ = q/hk.
+
+We write
+Hr (m, m1 , m2 ; q)
+= Hr (kℓm, m1 , m2 ; h)Hr (ℓhm, m1 , m2 ; k)Hr (hkm, m1 , m2 ; ℓ),
+by the rule (10.3). Applying Lemma 10.1 we arrive at
+(10.13)
+Hr (m, m1 , m2 ; q) = χh (−1)
+
+h
+R(m; k)R(m1 ; k)R(m2 ; k)H(rhkmm1 m2 ; ℓ)
+φ(k)
+
+provided (h, mm1 m2 ) = 1, or else Hr (m, m1 , m2 ; q) vanishes.
+(10.13) and (10.1) we obtain:
+
+Combining
+
+Lemma 10.2. Let c = qr with q squarefree. Suppose m, m1 , m2 are integers
+with
+(10.14)
+
+(m, r) = 1, (m1 m2 , q, r) = 1.
+
+Then the modified character sum (8.34) satisfies
+(10.15)
+G′ (m, m1 , m2 ; c) = χkℓ (−1)
+
+r 2 qh
+R(m; k)R(m1 ; k)R(m2 ; k)H(rhkmm1 m2 ; ℓ)
+φ(k)
+
+where h = (r, q), k = (mm1 m2 , q) and ℓ = q/hk. If the co-primality conditions
+(10.14) are not satisfied then G′ (m, m1 , m2 ; c) vanishes.
+Applying trivial estimates |R(m; k)| 6 φ(k) and |H(w; ℓ)| 6 ℓ2 we obtain:
+Corollary 10.3. Let c = qr with q squarefree. For any m, m1 , m2 we
+have
+(10.16)
+
+|G(m, m1 , m2 ; c)| 6 q 3 r 2 .
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1207
+
+11. Bilinear forms H
+Recall that H(w; q) is the character sum defined by (10.7) where χ = χq is
+the real primitive character of conductor q (the Jacobi symbol). In this section
+we estimate general sums of type
+XXX
+(11.1)
+H=
+γr,m βn H(ar̄mn; q)
+(rmn,q)=1
+
+with any complex coefficients γr,m and βn for 1 6 r 6 R, 1 6 m 6 M and
+1 6 n 6 N. Although (11.1) is a triple sum we consider it as a bilinear form
+since the variables r and m are not separated. For convenience we assume that
+(11.2)
+
+|γr,m | 6 1,
+
+but we make no conditions about β = (βn ). We shall estimate H in terms of
+the ℓ2 -norm
+X
+1
+(11.3)
+kβk = (
+|βn |2 ) 2 .
+n
+
+Lemma 11.1. Let (a, q) = 1. Now,
+(11.4)
+
+1
+
+1
+
+1
+
+H ≪ kβk(q + RM ) 2 (q + N ) 2 (qRM ) 2 +ε
+
+for any ε > 0, the implied constant depending only on ε.
+Actually we first prove (11.4) for the following sum
+XXX
+(11.5)
+H∗ =
+γr,m βn H ∗ (ar̄mn; q)
+(rmn,q)=1
+
+where H ∗ (w; q) denotes the reduced character sum
+XX
+(11.6)
+H ∗ (w; q) =
+χ(uv(u + 1)(v + 1))eq ((uv − 1)w).
+u,v(mod q)
+(uv−1,q)=1
+
+Let H(q) denote the above character sum restricted by the condition
+uv ≡ 1( mod q) instead of (uv−1, q) = 1. For q prime H(q) = −χ(−1), whence
+for any squarefree q we obtain H(q) = µ(q)χq (−1) by the pure multiplicativity.
+Then by the twisted multiplicativity we derive
+XX
+(11.7)
+H(w; q) =
+µ(q1 )χq1 (−1)H ∗ (q̄1 w; q2 ).
+q1 q2 =q
+
+Hence it is clear that (11.4) for H∗ implies that for H.
+Now we can express the additive character eq ((uv − 1)w) in H∗ by means
+of the multiplicative characters ψ(mod q). Indeed for (a, q) = 1,
+
+1208
+
+J. B. CONREY AND H. IWANIEC
+
+(11.8)
+
+eq (a) =
+
+1
+φ(q)
+
+X
+
+τ (ψ)ψ̄(a)
+
+ψ(mod q)
+
+where τ (ψ) is the Gauss sum. Hence we obtain
+X
+1
+(11.9)
+H ∗ (w; q) =
+τ (ψ̄)g(χ, ψ)ψ(w)
+φ(q)
+ψ(mod q)
+
+where g(χ, ψ) is the hybrid character sum
+XX
+(11.10)
+g(χ, ψ) =
+χ(uv(u + 1)(v + 1))ψ(uv − 1).
+u,v(mod q)
+
+Inserting (11.9) into (11.5) we obtain
+(11.11)
+!
+!
+X
+XX
+X
+1
+∗
+H =
+βn ψ(n) .
+γr,m ψ(r̄m)
+τ (ψ̄)g(χ, ψ)ψ(a)
+φ(q)
+n
+r
+m
+ψ(mod q)
+
+In the last two sections we shall prove that for any ψ(mod q)
+(11.12)
+
+g(χ, ψ) ≪ q 1+ε
+1
+
+where the implied constant depends only on ε. Since |τ (ψ)| 6 q 2 we obtain
+X XX
+X
+1
+|H∗ | ≪ q 2 +ε
+|
+γr,m ψ(r̄m)||
+βn ψ(n)|.
+ψ(mod q)
+
+r
+
+m
+
+n
+
+Finally by Cauchy’s inequality and the orthogonality of characters this yields
+(11.4) for H∗ . This completes the proof of Lemma 11.1.
+Remarks. The bound (11.12), which is best possible, is essential. We need
+it for all ψ(mod q); even one exception would weaken the final results consid3
+erably. For example, if for one character we only had g(χ, ψ) ≪ q 2 +ε , then the
+3
+3
+method would yield Lf ( 21 , χ) ≪ q 8 +ε in place of (1.6), and L(s, χ) ≪ q 16 +ε
+in place of (1.12). Knowing that H(w; q) ≪ q (by the Riemann hypothesis for
+varieties) one can see that the estimate for bilinear form (11.4) saves an extra
+1
+factor q 2 because of cancellation which is due to a variation in the angle of
+H(w; q) as the parameter w ranges over special numbers. Moreover it is very
+important that the three variables r, m, n appear only in one block w = ar̄mn
+1
+in a multiplicative fashion. The point is that we lost a factor q 2 only one time
+when passing from additive to multiplicative characters while we gained this
+factor twice when applying the orthogonality of the multiplicative characters.
+Another interesting point is that r originated from moduli of Kloosterman
+sums S(m, n; qr) and was transformed to a variable modulo q by means of a
+kind of reciprocity.
+
+1209
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+12. Estimation of G(M, M1 , M2 ; C)
+Inserting (10.15) into (8.36) we obtain
+X
+1X X X h
+G(M, M1 , M2 ; C) 6
+q
+φ(k)
+hkℓ=q
+
+·
+
+XXX
+
+(r,kℓ)=1
+C 6hqr<2C
+
+R(m; k)R(m1 ; k)R(m2 ; k)H(rh2 kmm1 m2 ; ℓ)αm βm1 ,m2 .
+
+(mm1 m2 ,hℓ)=1
+mm1 m2 ≡0(k)
+(m,r)=1
+
+We put m into outer summation, estimate R(m, k) by (m, k)φ(k)/k, and keep
+m1 , m2 in the inner summation. To simplify the inner sum we create one
+variable n = m1 m2 with coefficients
+X
+(12.1)
+βn (k) =
+βm1 ,m2 R(m1 ; k)R(m2 ; k).
+m1 m2 =n
+
+We obtain
+(12.2)
+
+G(M, M1 , M2 ; C) 6
+
+1X X Xh
+q
+k
+hkℓ=q
+
+·
+
+X
+
+X
+
+X
+
+(m, k)
+
+|m|6M
+(r,kℓ)=1
+C 6hqr<2C (m,hℓr)=1
+
+H(rh2 kmn; ℓ)βn (k) .
+
+(n,hℓ)=1
+mn≡0(k)
+
+Before making further simplifications we isolate the contribution to
+G(M, M1 , M2 ; C) of the terms with mm1 m2 = 0; we denote this contribution by G0 (M, M1 , M2 ; C). For these terms on the right side of (12.2) we have
+h = ℓ = 1 and k = q; therefore
+XXX
+(m, q)(m1 , q)(m2 , q)
+G0 (M, M1 , M2 ; C) ≪ Cq −3
+mm1 m2 =0
+
+where the summation is also restricted by |m| 6 M , |m1 | 6 M1 , |m2 | 6 M2 .
+Hence
+2
+(12.3)
+G0 (M, M1 , M2 ; C) ≪ C 1 + (M + M1 + M2 )q −1 τ 2 (q).
+
+Let G ∗ (M, M1 , M2 ; C) denote the contribution to G(M, M1 , M2 ; C) of the
+terms with mm1 m2 different from zero. Putting κ = (m, k) in (12.2) we get
+X
+X
+1 X h X
+κ
+|G ∗ (M, M1 , M2 ; C)| 6
+q
+k
+′
+hkℓ=q
+
+·
+
+κν=k
+
+X
+
+0<|n|6N ′
+(n,hℓ)=1
+
+R6r<2R 0<|m|6M
+(r,ℓ)=1
+(m,ℓ)=1
+
+H(rh2 mn; ℓ)βνn (k)
+
+1210
+
+J. B. CONREY AND H. IWANIEC
+
+where R = C/hq, M ′ = M/κ, N ′ = M1 M2 /ν and βνn (k) is as in (12.1). For
+n 6= 0 we have |βn (k)| 6 (n, k)2 τ (n), so that
+X
+X
+|βνn (k)|2 6 ν 4 τ 2 (ν)
+(n, κ)4 τ 2 (n)
+0<|n|6N ′
+
+0<|n|6N ′
+
+≪ ν 4 τ 2 (ν)κ3 N ′ (log 2N ′ )4 ≪ k3 τ 2 (k)M1 M2 (log 2M1 M2 )4 .
+Now applying (11.4) we derive that
+(12.4)
+1
+1
+1
+G ∗ (M, M1 , M2 ; C) ≪ 1 + CM q −2 2 1 + M1 M2 q −1 2 (CM M1 M2 ) 2 +ε .
+
+Adding the estimates (12.3) and (12.4) we complete the proof of Proposition 8.2.
+
+13. Estimation of g(χ, ψ)
+Our aim is to prove the bound (11.12) for the hybrid character sum g(χ, ψ)
+with χ(mod q) real, primitive character and ψ(mod q) any character. Since
+g(χ, ψ) is multiplicative in the modulus it suffices to show:
+Lemma 13.1. Let p be prime, χ(mod p) the real, nonprincipal character,
+and ψ(mod p) any character. Then
+|g(χ, ψ)| ≪ p
+
+(13.1)
+
+where the implied constant is absolute.
+In the proof we employ the Riemann hypothesis for varieties over the finite
+field Fp . We need to consider the character sums over the field extensions Fq /Fp
+with q = pm , m > 1. Put
+XX
+χm (uv(u + 1)(v + 1))ψm (uv − 1)
+(13.2)
+g(χm , ψm ) =
+u,v∈Fpm
+
+where χm and ψm are the characters derived from χ, ψ by composing with the
+norm NFq /Fp : Fq → Fp . Let L(T ) be the associated L-function
+!
+∞
+X
+Tm
+g(χm , ψm )
+(13.3)
+L(T ) = exp
+.
+m
+1
+
+B. Dwork [Dw] showed that L(T ) is rational:
+Y
+Y
+(13.4)
+L(T ) =
+(1 − αν T ) (1 − βν T )−1 .
+ν
+
+ν
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1211
+
+Equivalently
+g(χm , ψm ) = −
+
+(13.5)
+
+X
+
+αm
+ν +
+
+ν
+
+X
+
+βνm .
+
+ν
+
+−1
+P. Deligne [De] showed that the roots α−1
+ν , βν are algebraic numbers with
+
+|αν | = pkν /2 , |βν | = pℓν /2
+
+(13.6)
+
+where kν , ℓν are nonnegative integers called the weights of αν , βν . The total
+degree of L(T ) (the number of roots) was estimated by A. Adolphson and
+S. Sperber [AS] using Bombieri’s idea [Bo]; it is bounded by a number independent of the characteristic p.
+Lemma 13.2. Let q = pm and χ ∈ F̂q , χ 6= 1. Then
+1 X
+|g(χ, ψ)|2 = q 2 − 2q − 2.
+(13.7)
+q−1
+ψ∈F̂q
+
+Proof. By the orthogonality of characters the left-hand side of (13.7) is
+equal to
+XXXX
+χ(u1 v1 (u1 + 1)(v1 + 1)χ̄(u2 v2 (u2 + 1)(v2 + 1))
+u1 v1 =u2 v2
+
+=
+
+XXX
+χ((u1 + 1)(v1 + 1))χ̄((u2 + 1)(u1 v1 + u2 ))χ(u2 ).
+u1 ,v1 ,u2 ∈F∗q
+
+The sum over u1 equals
+
+X
+χ̄(v1 )(q − 2)
+if u2 = v1
+χ(u1 + 1)χ̄(u1 v1 + u2 ) =
+−χ̄(v1 ) − χ̄(u2 ) if u2 6= v1 .
+u 6=0
+1
+
+Now the sum over u2 equals
+X
+X
+χ̄(u2 + 1)χ(u2 )
+= q χ̄(v1 + 1) + χ̄(v1 ) + 1.
+u2 6=0
+
+u1 6=0
+
+Finally the sum over v1 equals
+X X
+X
+= q(q − 2) − 2.
+χ(v1 + 1)
+v1 6=0
+
+u2 6=0 u1 6=0
+
+This completes the proof of 13.7.
+Lemma 13.2 and the formula (13.5) imply (by choosing a suitable m) that
+all the weights kν , ℓν are 6 2 except for at most one root of weight three for
+one character ψ. If such a root exists then ψ must be real, precisely ψ = χ,
+
+1212
+
+J. B. CONREY AND H. IWANIEC
+
+because for the trivial character ψ0 = 1 we have g(χ, ψ0 ) = 1. This completes
+the proof of Lemma 13.1 for all ψ 6= χ. For ψ = χ we shall estimate g(χ, χ)
+without recourse to the Riemann hypothesis.
+14. Estimation of g(χ, χ)
+There are several interesting expressions for g(χ, χ) with real character
+χ(mod p). First recall that by the definition
+XX
+(14.1)
+g(χ, χ) =
+χ(uv(u + 1)(v + 1)(uv − 1)).
+u,v(mod p)
+
+Changing variables one gets
+XX
+(14.2)
+g(χ, χ) =
+χ(uv(u + 1)(v + 1)(u − v)).
+u,v(mod p)
+
+Therefore g(χ, χ) is associated with the elliptic curves in the Legendre family
+Eλ : y 2 = x(x + 1)(x + λ).
+
+(14.3)
+
+Next we write (14.2) in the following way:
+XX
+(14.4)
+g(χ, χ) =
+χ(2(u2 − 1)(v 2 − 1)(u − v)).
+u,v(mod p)
+
+Notice that g(χ, χ) = χ(−1)g(χ, χ), i.e. g(χ, χ) = 0 if χ(−1) = −1. Now we
+separate the variables in (14.4) by inserting
+X
+1
+χ(a)ep (2a(u − v)).
+(14.5)
+χ(2(u − v)) =
+τ (χ)
+a(mod p)
+
+This yields
+(14.6)
+
+g(χ, χ) =
+
+2
+X
+1 X
+χ(u2 − 1)ep (2au) .
+χ(a)
+τ (χ) a
+u
+
+The innermost sum is a Kloosterman sum, precisely
+X
+(14.7)
+χ(u2 − 1)ep (2au) = S(a, a; p)
+u
+
+if a 6≡ 0(mod p). Therefore we have
+(14.8)
+
+g(χ, χ)τ (χ) =
+
+X
+
+χ(a)S 2 (a, a; p).
+
+a
+
+Weil’s estimate for the Kloosterman sums S(a, a; p), or Hasse’s estimate
+for the number of points on the curve Eλ /Fp , yields |g(χ, χ)| 6 2p3/2 while our
+goal is:
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1213
+
+Lemma 14.1. For the real character χ(mod p), χ 6= 1,
+|g(χ, χ)| 6 4p.
+
+(14.9)
+
+√
+Writing S(a, a; p) = 2 p cos(ωp (a)) we derive from (14.8) that
+X
+g(χ, χ) = τ (χ)(1 + χ(−1))
+χ(a)e2iωp (a) .
+a(mod p)
+
+Therefore the estimate (14.9) reads as
+X
+√
+χ(a)e2iωp (a) 6 2 p.
+(14.10)
+a(mod p)
+
+In other words one can say that the variation of the Kloosterman angle ωp (a)
+is quite independent of the sign change of the character χ(a).
+Our proof of (14.9) is completely elementary. First notice that S(a, a; p) =
+S(ab, ab̄; p) for any b 6≡ 0(mod p). By means of this parameter we create p − 1
+copies of g(χ, χ). Moreover changing a into ac2 with c 6≡ 0(mod p) we create
+altogether (p − 1)2 copies of g(χ, χ). Thus,
+!2
+X⋆ X⋆ X
+p(p − 1)2 g2 (χ, χ) =
+χ(a)S 2 (abc2 , ab̄c2 ; p) .
+b
+
+a
+
+c
+
+Put bc2 = x and b̄c2 = y, i.e. b2 = x/y and c4 = xy. Given x and y there are
+at most two solutions for b and four for c; therefore g2 (χ, χ) 6 T , where
+!2
+XX X
+8
+χ(a)S 2 (ax, ay; p) .
+(14.11)
+T =
+p(p − 1)2 x y
+a
+We shall compute T exactly. Opening the Kloosterman sum, squaring out and
+executing the summation in x, y(mod p) we get
+(14.12)
+
+T =
+
+8p X X
+χ(a1 a2 )ν(a1 /a2 )
+(p − 1)2 a a
+1
+
+2
+
+where ν(a) is the number of solutions to the system
+
+
+1
+1
+1
+1
+a(d1 + d2 ) = d3 + d4 ,
+a
++
++ .
+=
+d1 d2
+d3 d4
+If d1 + d2 = 0 then d3 + d4 = 0. The number of such solutions is (p − 1)2 .
+If d1 + d2 6= 0 then the second equation of the system can be replaced
+by d1 d2 = d3 d4 . Given d1 , d2 with d1 d2 (d1 + d2 ) 6= 0 the d3 , d4 are the
+
+1214
+
+J. B. CONREY AND H. IWANIEC
+
+roots of X 2 − a(d1 + d2 )X + d1 d2 = 0, and the number of roots equals
+1 + χ[a2 (d1 + d2 )2 − 4d1 d2 ]. Hence
+ν(a) = (p − 1)2 +
+
+XX
+
+d1 d2 (d1 +d2 )6=0
+
+= (p − 1)2 + (p − 1)
+
+(1 + χ[a2 (d1 + d2 )2 − 4d1 d2 ])
+
+X
+
+d(d+1)6=0
+
+(1 + χ[a2 (d + 1)2 − 4d])
+
+= (p − 1)2 + (p − 1)(p − 2) + (p − 1)
+
+X
+
+d(d−1)6=0
+
+χ(a2 d2 − 4d + 4).
+
+The last sum is equal to −3 + pδ(a2 ), where δ(a) = 1 if a = 1, and δ(a) = 0
+otherwise, therefore
+(14.13)
+
+ν(a) = 2(p − 1)(p − 3) + p(p − 1)δ(a2 ).
+
+Inserting (14.13) into (14.12) we arrive at
+(14.14)
+
+T = 8p2 (1 + χ(−1)).
+
+This, together with g2 (χ, χ) 6 T , completes the proof of (14.9).
+Remarks. Some of the ideas of our proof of Lemma 14.1 are reminiscent
+of the Kloosterman arguments [Kl]. The method is capable of producing good
+P
+results for the sum
+χ(a)S 2 (a, a; p) with any character χ which assumes one
+value with large multiplicity. In particular it works well for a character of any
+fixed order. We believe that (14.10) is true for any χ(mod q). A more advanced
+study of the Kloosterman angles ωp (a) can be found in the book [Ka].
+Added in proof. W. Duke showed (in February, 1999) that g(χ, χ) =
+2ReJ 2 (χ, ψ) where J(χ, ψ) is the Jacobi sum and ψ is a quartic character
+modulo p ≡ 1(mod 4). He also pointed out that g(χ, χ) is the pth Fourier
+coefficient of η(4z)6 ∈ S3 (Γ0 (12), so Lemma 14.1 follows from Ramanujan’s
+conjecture (proved by P. Deligne). N. Katz also informed us that g(χ, χ) can
+be computed explicitly.
+
+American Institute of Mathematics, Palo Alto, CA
+Oklahoma State University, Stillwater, OK
+E-mail address: conrey@aimath.org
+Rutgers University, Piscataway, NJ
+E-mail address: iwaniec@math.rutgers.edu
+
+CENTRAL VALUES OF AUTOMORPHIC L-FUNCTIONS
+
+1215
+
+References
+
+[AS]
+[AL]
+[Bo]
+[Bu]
+[By]
+
+[Da]
+[De]
+[DI]
+[DFI]
+[Dw]
+[Fr]
+[Gu]
+[H-B]
+[He]
+[HL]
+[Hu]
+[I1]
+[I2]
+[I3]
+[I4]
+[ILS]
+[IS]
+[KS]
+[Ka]
+[Kl]
+[KZ]
+[L]
+[R]
+
+A. Adolphson and S. Sperber, Character sums in finite fields, Compositio Math. 52
+
+(1984), 325–354.
+A. Atkin and J. Lehner, Hecke operators on Γ0 (m), Math. Ann. 185 (1970), 134–160.
+E. Bombieri, On exponential sums in finite fields, II, Invent. Math. 47 (1978), 29–39.
+D. A. Burgess, On character sums and L-series, I, Proc. London Math. Soc. 12
+(1962), 193–206.
+V. A. Bykovky, Estimation of Hecke series for holomorphic parabolic forms twisted
+by a character on the critical line (in Russian), Preprint 05-1995 of the Institute for
+Applied Mathematics of the Russian Academy of Sciences in Khabarovsk.
+H. Davenport, Multiplicative Number Theory, Markham Publ. Co., Chicago, 1967.
+P. Deligne, La conjecture de Weil, II, Publ. Math. I.H.E.S. 52 (1981), 137–252.
+J.-M. Deshouillers and H. Iwaniec, Kloosterman sums and Fourier coefficients of
+cusp forms, Invent. Math. 70 (1982), 219–288.
+W. Duke, J. B. Friedlander, and H. Iwaniec, Bounds for automorphic L-functions,
+Invent. Math. 112 (1993), 1–8.
+B. Dwork, On the rationality of the zeta function of an algebraic variety, Amer. J.
+Math. 82 (1960), 631–648.
+J. B. Friedlander, Bounds for L-functions, Proc. I.C.M. (Zürich, 1994), Birkhäuser,
+Basel, 1995, 363–373.
+J. Guo, On the positivity of the central critical values of automorphic L-functions
+for GL(2), Duke Math. J. 83 (1996), 157–190.
+D. R. Heath-Brown, Hybrid bounds for Dirichlet L-function, II, Quart. J. Math.
+Oxford 31 (1980), 157–167.
+D. A. Hejhal, The Selberg Trace Formula for PSL(2, R), Lecture Notes in Math.
+1001 (1983), Springer-Verlag, New York.
+J. Hoffstein and P. Lockhart, Coefficients of Maass forms and the Siegel zero, Ann.
+of Math. 140 (1994), 161–181.
+M. N. Huxley, Exponential sums and the Riemann zeta function, IV, Proc. London
+Math. Soc. 66 (1993), 1–40.
+H. Iwaniec, Fourier coefficients of modular forms of half-integral weight, Invent.
+Math. 87 (1987), 385–401.
+, Introduction to the Spectral Theory of Automorphic Forms, Biblioteca de la
+Revista Matemática Iberoamericana (1995), Madrid.
+, Topics in Classical Automorphic Forms, Graduate Studies in Math. 17,
+Providence, RI (1997).
+, Small eigenvalues of Lapacian for Γ0 (N ), Acta Arith. 56 (1990), 65–82.
+H. Iwaniec, W. Luo, and P. Sarnak, Low lying zeros of families of L-functions, Publ.
+Math. I.H.É.S, to appear.
+H. Iwaniec and P. Sarnak, The non-vanishing of central values of automorphic Lfunctions and Siegel’s zero, preprint, 1997.
+S. Katok and P. Sarnak, Heegner points, cycles, and Maass forms, Israel J. Math.
+84 (1993), 193–227.
+N. M. Katz, Gauss Sums, Kloosterman Sums, and Monodromy Groups, Annals of
+Math. Studies 116 (1988), Princeton University Press, Princeton, NJ.
+H. D. Kloosterman, On the representation of numbers in the form ax2 + by 2 + cz 2
++ dt2 , Acta Math. 49 (1926), 407–464.
+W. Kohnen and D. Zagier, Values of L-series of modular forms at the center of the
+critical strip, Invent. Math. 64 (1981), 175–198.
+W. Li, Newforms and functional equations, Math. Ann. 212 (1975), 285–315.
+Michael J. Razar, Modular forms for G0 (N ) and Dirichlet series, Trans. A.M.S.
+231 (1977), 489–495.
+
+1216
+[Wa]
+[W]
+
+J. B. CONREY AND H. IWANIEC
+J.-L. Waldspurger, Sur les coefficients de Fourier des forms modulaires de poids
+demi-entier, J. Math. Pures Appl. 60 (1981), 375–484.
+G. N. Watson, A Treatise on the Theory of Bessel Functions, Cambridge University
+Press, Cambridge, England (edition 1995).
+
+(Received September 29, 1998)
+
+

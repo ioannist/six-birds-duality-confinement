@@ -1,0 +1,143 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\title{Step 154: Projected Sonine-Kernel Commutator Audit}
+\author{Riemann Membrane / Six Birds Construction Log}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 151 reduced direct residual exclusion to
+\[
+  \Pi_{Y_a}\mathfrak B_{\ell,a}=0,
+\]
+where Burnol's carrier gives \(P_a=Y_a^\perp\).  Step 152 rewrote the adjoint test as
+\[
+  \mathfrak B_{\ell,a}^*Y^a_{\rho,k}
+  =(I-P_\infty)\tau_{-\ell}P_\infty J_a^*Y^a_{\rho,k}.
+\]
+Step 153 computed the pulled evaluator as a projected completed Mellin/Sonine reproducing kernel.
+This note audits the actual commutator condition.
+
+\section{Pulled evaluator and commutator}
+Let
+\[
+  \eta^a_{w,k}=J_a^*Y^a_{w,k}.
+\]
+In the completed Mellin model, Step 153 gives the formal kernel representation
+\[
+  \mathcal U_\infty\eta^a_{w,k}
+  = T_a^*\partial_{\bar w}^{\,k}K_a^\Gamma(\cdot,w),
+\]
+where
+\[
+  K_a^\Gamma(\cdot,w)=P_{\mathcal L_a^\Gamma}K_a^{\Gamma,\mathrm{amb}}(\cdot,w).
+\]
+The projection \(P_{\mathcal L_a^\Gamma}\) is load-bearing; replacing it by the ambient Hardy kernel gives only a shadow.
+
+For the normalized log shift, Mellin transport is multiplication by
+\[
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+Define
+\[
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty.
+\]
+Then the direct-exclusion residual is
+\[
+  r_{\ell,w,k}=C_\ell\eta^a_{w,k}.
+\]
+Equivalently,
+\[
+  C_\ell=(I-P_\infty)[M_{m_\ell},P_\infty].
+\]
+
+\section{Positive kernel residual}
+Define the positive kernel
+\[
+  \mathcal R_\ell((w,k),(z,j))
+  =\langle C_\ell\eta^a_{w,k},C_\ell\eta^a_{z,j}\rangle.
+\]
+Then
+\[
+  \mathcal R_\ell
+  = \langle \eta^a_{w,k},
+      P_\infty M_{\overline{m_\ell}}(I-P_\infty)M_{m_\ell}P_\infty
+      \eta^a_{z,j}\rangle.
+\]
+Thus the corresponding operator is the Hankel/projection square
+\[
+  C_\ell^*C_\ell
+  =P_\infty M_{\overline{m_\ell}}(I-P_\infty)M_{m_\ell}P_\infty.
+\]
+
+\begin{theorem}[Direct exclusion criterion]
+For a declared shift family \(\mathcal L\),
+\[
+  H_R=0
+\]
+if and only if
+\[
+  C_\ell\eta^a_{\rho,k}=0
+  \qquad
+  \forall \ell\in\mathcal L\setminus\{0\},\; \forall \rho,\;0\le k<m_\rho.
+\]
+Equivalently, \(\mathcal R_\ell\) vanishes on the nontrivial-zero evaluator family.
+\end{theorem}
+
+\begin{proof}
+This is the adjoint form of
+\(\Pi_{Y_a}\mathfrak B_{\ell,a}=0\), using
+\(P_a=Y_a^\perp\), and the adjoint transport formula of Step 152.
+\end{proof}
+
+\section{Audit verdict}
+The raw log shift cannot earn this condition.  In Mellin variables it is a nonvanishing multiplier.
+It does not create a factor \(\zeta(s)\).  Therefore the co-Poisson certificate
+\[
+  M(\mathfrak B_{\ell,a}u)(s)=\zeta(s)\alpha_{\ell,u}(s)
+\]
+would have to come from genuine co-Poisson synthesis or a deeper projection identity, not from the shift itself.
+
+The projected commutator can vanish on the tested family only if the projected Sonine kernel family lies in
+\[
+  \ker C_\ell.
+\]
+No imported Burnol or CCM theorem currently proves this.  The semilocal Hardy--Titchmarsh and Sonin framework supplies the ambient carrier, but not the annihilation of this Hankel/projection residual.
+
+\section{Residual if the commutator does not vanish}
+If direct exclusion is not proved, the active adequacy residual is
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  =\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+On the pulled evaluator side this residual is represented by the positive kernel \(\mathcal R_\ell\).
+Thus the route status is:
+\[
+  \boxed{\text{direct exclusion not closed; }\Xi^{\rm BC}\text{ remains active.}}
+\]
+
+\section{Finite sanity audit}
+A finite discrete Sonin projection
+\[
+  P=\operatorname{Proj}(\ker P_T\cap\ker P_F)
+\]
+was used only to verify algebraic identities and generic non-annihilation of
+\[
+  (I-P)T_\ell P.
+\]
+The numerical audit is not RH evidence and is not a model of the completed Burnol carrier.
+It confirms only that shifted projected Sonin blocks do not vanish by formal algebra alone.
+
+\end{document}

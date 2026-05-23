@@ -1,0 +1,123 @@
+{
+  "step": 172,
+  "orientation": "adequacy",
+  "active_residual": "Xi_BC",
+  "main_theorem": "Shifted Co-Poisson Cascade Reduction for Xi_BC on the Burnol/Sonine Carrier",
+  "reduction_chain": [
+    {
+      "stage": "a",
+      "source_steps": [169],
+      "statement": "On u=Cg with g legal and G=ghat, M(B_{l,a} Cg)=T_a P_infty M_zeta(m_l G)-T_a P_infty M_{m_l} P_infty M_zeta G.",
+      "status": "inherited_step169_subclass_computation"
+    },
+    {
+      "stage": "b",
+      "source_steps": [169, 170],
+      "statement": "The full Cg zeta factorization is equivalent to ZI-COV^{CP}_{l,a}: P_infty M_zeta G=M_zeta A_infty G and T_a P_infty M_zeta H=M_zeta A_{T,a}H, with alpha=A_{T,a}(m_l(G-A_infty G)).",
+      "status": "conditional_on_ZI_COV_CP"
+    },
+    {
+      "stage": "c",
+      "source_steps": [170],
+      "statement": "ZI-COV(i) holds on the zero-free-output subclass via A_infty^Omega=M_{1/zeta} P_infty M_zeta; full-carrier ZI-COV(i) is not target-equivalent to RH under inherited records.",
+      "status": "subclass_proved_target_equivalence_rejected"
+    },
+    {
+      "stage": "d",
+      "source_steps": [171],
+      "statement": "Closure of full ZI-COV reduces to deciding L_{rho,k}(G)=<P_infty M_zeta G,y_{rho,k}>=<M_zeta G,P_infty y_{rho,k}>; five structural routes reduce to L_{rho,k}.",
+      "status": "matrix_element_terminal_gap"
+    },
+    {
+      "stage": "e",
+      "source_steps": [169, 170, 171, 172],
+      "statement": "Closing the shifted co-Poisson exact route for Xi_BC reduces, under inherited records, to deciding the matrix-element family {L_{rho,k}} or an equivalent theorem in the same typed carrier.",
+      "status": "cascade_reduction_theorem_terminus"
+    }
+  ],
+  "external_content_interface": [
+    {
+      "obligation_id": "BC_C_L_rho_k_per_label",
+      "carrier": "Burnol/Sonine pulled-evaluator carrier",
+      "typed_context": "Step119 legal Burnol profiles G=ghat; Step153 zero-evaluator atoms y_{rho,k}; transported Sonin/prolate projection P_infty.",
+      "specific_obligation": "For each zeta-zero label (rho,k) with 0<=k<m_rho in the inherited evaluator context, decide L_{rho,k}(G)=<M_zeta G,P_infty y_{rho,k}> on legal G, or supply K_infty/range-evaluator matrix data deciding it.",
+      "closure_implication": "Decides the terminal Branch C matrix-element gate for the shifted co-Poisson exact route under Xi_BC.",
+      "retained_nogos": ["public-shadow non-promotion", "finite-window Calkin blindness"]
+    },
+    {
+      "obligation_id": "BC_C_full_ZI_COV_CP",
+      "carrier": "Burnol/Sonine pulled-evaluator carrier",
+      "typed_context": "Step169 shifted co-Poisson subclass u=Cg and Step170 ZI-COV typed operators.",
+      "specific_obligation": "Prove full-carrier ZI-COV^{CP}_{l,a}: P_infty M_zeta G=M_zeta A_infty G and T_a P_infty M_zeta H=M_zeta A_{T,a}H with bounded legal operators.",
+      "closure_implication": "Supplies the Step169 zeta factorization quotient alpha_{l,a,Cg} for Branch C in the inherited typed route.",
+      "retained_nogos": ["public-shadow non-promotion", "scalar identity not carrier identity"]
+    },
+    {
+      "obligation_id": "BC_C_direct_jet_surjectivity_or_annihilation",
+      "carrier": "Burnol/Sonine pulled-evaluator carrier",
+      "typed_context": "Projected zero-jet functionals L_{rho,k} from Step171.",
+      "specific_obligation": "Prove direct projected jet-surjectivity, or direct structural annihilation, for the legal Burnol class without replacing P_infty by a zeta-zero spectral projection.",
+      "closure_implication": "Decides the Step171 target gate for Branch C and determines whether the exact route can advance.",
+      "retained_nogos": ["public-shadow non-promotion", "finite-window Calkin blindness"]
+    },
+    {
+      "obligation_id": "Branch_A_G2_G5",
+      "carrier": "Burnol/Sonine Calkin bridge context",
+      "typed_context": "A_eta=C*(P_infty,M_{m_l},P_eta,I), K_eta=A_eta cap K(H), quotient A_eta/K_eta.",
+      "specific_obligation": "Supply G2 faithful symbol, G3 normal form C_l=U_l W_l+K_l, G4 lower-faithfulness of U_l, and G5 compact remainder K_l in K(H).",
+      "closure_implication": "Completes the inherited Branch A split bridge route toward its targeted Xi_BC closure implication.",
+      "retained_nogos": ["finite-window Calkin blindness", "public-shadow non-promotion"]
+    },
+    {
+      "obligation_id": "Branch_B_SL164_1",
+      "carrier": "Burnol/Sonine per-zero finite-carrier context",
+      "typed_context": "H_eta direct sum over zero labels; finite packet Rho_fin,A_fin,K_fin; active Xi_matrix_source residual and dormant activation rules.",
+      "specific_obligation": "Supply SL164.1 projected Burnol/Sonine kernel evaluator entries as external records and decide the finite matrix-source residual.",
+      "closure_implication": "Decides whether Branch B gives its targeted Xi_BC closure implication or activates the next residual.",
+      "retained_nogos": ["public-shadow non-promotion", "finite-window Calkin blindness"]
+    },
+    {
+      "obligation_id": "Hecke_H1_H5",
+      "carrier": "Hecke L-functions carrier",
+      "typed_context": "Distinct Xi_BC_Hecke sibling residual with branches H1-H5 from Step167.",
+      "specific_obligation": "Supply H1 direct-integral Schur legality, H2 source lower-frame and Plancherel tail, H3 Hecke Calkin bridge, H4 per-character finite-carrier diagnostics, and H5 auxiliary explicit-formula records.",
+      "closure_implication": "Advances the Hecke sibling cascade only; transfer to Xi_BC requires an H6 bridge theorem not inherited.",
+      "retained_nogos": ["auxiliary-GRH smuggling", "incomplete character spectrum support-only", "scalar identity not carrier identity"]
+    },
+    {
+      "obligation_id": "Hecke_H6_V_NC_bridge",
+      "carrier": "Bridge between Hecke K=Q chi=trivial fiber and Burnol/Sonine carrier",
+      "typed_context": "Step168 V-NC non-comparable bridge context with carrier/probe/audit/zero-ledger axes.",
+      "specific_obligation": "Supply external bridge equality or defect-paid transfer with accepted maps and budgeted bridge defect; scalar L-function identity alone is insufficient.",
+      "closure_implication": "Only such a bridge can relate the Hecke sibling output back to the Burnol/Sonine Xi_BC residual.",
+      "retained_nogos": ["scalar identity not carrier identity", "ledger-relative Hecke non-comparability"]
+    }
+  ],
+  "candidate_foundational_typed_condition": {
+    "name": "Carrier-Typed Matrix-Element Terminality",
+    "statement": "An adequacy residual on a typed carrier reaches matrix-element terminality when named operator-algebra reductions convert residual closure into a specific family of carrier-native matrix elements, while inherited records do not decide those elements and do not make their decision logically equivalent to the target conclusion.",
+    "status": "candidate_for_foundational_corpus",
+    "instantiation": "Branch C terminal family L_{rho,k}(G)=<M_zeta G,P_infty y_{rho,k}>."
+  },
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "scalar L-function identity is not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "H6 V-NC non-comparability"
+  ],
+  "final_verdict": "cascade_reduction_theorem_terminus",
+  "track_terminus_state": true,
+  "next_external_attack_lanes": [
+    "derive K_infty(s,s') or equivalent range-evaluator matrix for P_infty",
+    "decide L_{rho,k}(G) for each zero/order label on legal Burnol profiles",
+    "prove full ZI-COV^{CP}_{l,a} on the inherited Burnol/Sonine carrier",
+    "prove direct projected jet-surjectivity or structural annihilation",
+    "supply Branch A G2-G5 Calkin bridge theorem",
+    "supply Branch B SL164.1 evaluator records and matrix-source decision",
+    "pursue Hecke H1-H5 with H6 bridge handled under V-NC"
+  ]
+}

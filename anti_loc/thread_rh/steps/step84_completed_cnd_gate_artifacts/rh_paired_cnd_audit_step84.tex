@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+\title{Step 84: CND Audit of the Paired Completed Weil Candidate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 77--83 showed that separated diagonal accounting is the wrong target for the
+RH membrane construction.  The prime and gamma slots should be kept as paired
+shift-difference features whenever possible.  This step records the exact audit gate
+for that strategy.
+
+The active question is not merely whether a Fourier symbol is nonnegative.  The
+log-side paired feature
+\[
+        q_\mu[f]=\int_{\mathbb R}\|\tau_a f-f\|_2^2\,d\mu(a)
+\]
+exists with a positive measure \(\mu\) exactly when its symbol is of
+continuous-negative-definite/L\'evy--Khintchine type.  This is a stricter structural
+condition than pointwise positivity.
+
+\section{The CND paired-feature gate}
+Let \(\tau_a f(t)=f(t+a)\).  If \(\mu\) is a positive symmetric measure satisfying the
+usual L\'evy integrability condition, define
+\[
+        q_\mu[f]=\int_{\mathbb R}\|\tau_a f-f\|_2^2\,d\mu(a).
+\]
+On the Fourier side,
+\[
+        q_\mu[f]=\int_{\mathbb R}\Psi_\mu(\xi)|\widehat f(\xi)|^2\,d\xi,
+        \qquad
+        \Psi_\mu(\xi)=2\int_{\mathbb R}(1-\cos(a\xi))\,d\mu(a).
+\]
+
+\begin{definition}[Paired shift-feature admissibility]
+A translation-invariant quadratic symbol \(\Psi\) is paired-shift admissible if
+\[
+        \Psi(\xi)=c\xi^2+2\int_{\mathbb R}(1-\cos(a\xi))\,d\mu(a)
+\]
+with \(c\ge0\), \(\mu\ge0\), and the standard L\'evy integrability condition.
+Equivalently, \(\Psi\) is an even continuous negative definite symbol with
+\(\Psi(0)=0\).
+\end{definition}
+
+\begin{theorem}[CND gate]
+A translation-invariant positive paired feature of the above log-shift form exists
+for \(\Psi\) if and only if \(\Psi\) is paired-shift admissible.  Equivalently,
+\(e^{-t\Psi}\) is positive definite for every \(t>0\).
+\end{theorem}
+
+\begin{proof}
+This is the symmetric one-dimensional L\'evy--Khintchine/Schoenberg theorem.  If
+\(\Psi\) has the displayed representation, then
+\(e^{-t\Psi}\) is positive definite and the quadratic form is realized by the
+corresponding shift-difference feature.  Conversely, a continuous negative definite
+even function with \(\Psi(0)=0\) has the L\'evy--Khintchine representation and hence
+is realized by the paired feature.
+\end{proof}
+
+\section{Prime and gamma slots}
+For a finite prime-power cutoff, set
+\[
+        \Psi_{{\rm pr},L}(\xi)
+        =2\sum_n w_{n,L}(1-\cos(\xi\log n)),
+        \qquad
+        w_{n,L}\ge0.
+\]
+This is paired-shift admissible with the discrete measure
+\(\sum_n w_{n,L}\delta_{\log n}\) and its symmetric reflection.
+
+For the zeta gamma factor one obtains the normalized positive symbol
+\[
+        \Psi_\Gamma(\xi)
+        =\frac12\int_0^\infty \frac{e^{-t/4}}{1-e^{-t}}
+          \left(1-\cos\frac{\xi t}{2}\right)\,dt.
+\]
+It is also paired-shift admissible, represented by the positive kernel
+\[
+        d\mu_\Gamma(a)
+        =\frac12\frac{e^{-2a/4}}{1-e^{-2a}}\,2\,da
+\]
+under the change \(a=t/2\), with the paired-difference form keeping the near-zero
+singularity lawful.
+
+\begin{proposition}[Prime--gamma CND closure]
+For each finite prime cutoff \(L\),
+\[
+        \Psi_{{\rm pg},L}:=\Psi_{{\rm pr},L}+\Psi_\Gamma
+\]
+is paired-shift admissible.  Therefore the prime-plus-gamma paired carrier admits a
+positive shift-feature representation.
+\end{proposition}
+
+\begin{proof}
+The cone of continuous negative definite symbols is closed under nonnegative linear
+combination.  Both \(\Psi_{{\rm pr},L}\) and \(\Psi_\Gamma\) are in that cone.
+\end{proof}
+
+\section{What this does not earn}
+The CND audit only proves that a candidate prime-plus-gamma paired carrier is a
+lawful positive feature.  It does not prove that this carrier is equal to the signed
+completed Weil explicit-formula form.  The matching gate remains
+\[
+        q_Z[f]\le q_{{\rm pr}+\Gamma,L}[f]+q_{\rm pole}[f]+q_{\rm tail}[f]+e_L[f]
+\]
+on a completed anti-invariant core, followed by closability, fixed-ledger, and tail
+records.
+
+\begin{warning}[Nonnegative is not enough]
+A pointwise nonnegative symbol need not be paired-shift admissible.  For example,
+\(\Psi(\xi)=\xi^4\) is nonnegative but not continuous negative definite.  With
+points \(-1,0,1\) and coefficients \((1,-2,1)\), whose sum is zero,
+\[
+        \sum_{i,j}c_i c_j \Psi(x_i-x_j)=24>0,
+\]
+violating the defining CND inequality.
+\end{warning}
+
+\begin{warning}[Finite-rank repair cannot fix a full-core non-CND residual]
+A finite-rank pole/completion form can repair finitely many endpoint or null-mode
+directions, but it cannot convert a non-CND infinite-dimensional residual into a
+paired shift-feature on the full completed core.  Such a residual must be repaired
+by a full-sector tail/source, a different paired representation, or recorded as a
+defect/nonclaim.
+\end{warning}
+
+\section{RH gate status after this step}
+The candidate paired feature package now has the following status.
+\begin{itemize}
+\item The finite prime slot passes the paired-feature gate.
+\item The normalized gamma slot passes the paired-feature gate as a paired, singular,
+renormalized difference form.
+\item Their sum is CND and therefore has a positive paired feature representation.
+\item The pole slot remains finite-rank and is lawful only for finite completion/null
+modes.
+\item The tail/support slot must supply full-sector coercivity or a vanishing defect
+record.
+\item The signed-to-positive equality with the actual completed Weil form remains
+unearned.
+\end{itemize}
+
+\section{Conclusion}
+The active RH construction target is now sharpened:
+\[
+        \boxed{\text{prove that the actual completed Weil form equals or is dominated by
+        a paired CND carrier plus lawful pole/tail records}.}
+\]
+The CND audit says the prime-plus-gamma candidate is a legitimate positive feature,
+but not yet the accepted Douglas bridge.
+
+\end{document}

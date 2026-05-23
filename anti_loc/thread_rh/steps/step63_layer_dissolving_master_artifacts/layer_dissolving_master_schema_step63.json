@@ -1,0 +1,41 @@
+{
+  "name": "LayerDissolvingMembraneRecord",
+  "version": "step63",
+  "purpose": "Certify that a formed closure/layer has no declared layer-dissolving predictive needles.",
+  "objects": {
+    "E_j": "legal Hilbert carrier at predictive stage j",
+    "C_j": "audit energy; positive semidefinite with explicit null-mode quotient",
+    "L_j": "native probe family",
+    "D_j": "layer-dissolving probe family",
+    "S_j": "transport from stage dissolving response space to common predictive response space",
+    "ThetaY_j": "native membrane budget",
+    "OmegaZ_j": "Xi adequacy residual budget",
+    "ThetaD": "common layer-dissolving predictive budget"
+  },
+  "core_matrices": {
+    "K_L_j": "L_j C_j^dagger L_j^* on legal quotient",
+    "K_D_j": "D_j C_j^dagger D_j^* on legal quotient",
+    "Xi_j": "K_D_j - K_DL_j K_L_j^dagger K_LD_j",
+    "A_star_j": "K_DL_j K_L_j^dagger"
+  },
+  "acceptance_gates": [
+    "formed_closure",
+    "exact_package",
+    "null_mode_legality",
+    "native_membrane_budget",
+    "Xi_adequacy_budget",
+    "dissolving_response_transport",
+    "common_predictive_budget",
+    "all_six_statuses",
+    "completed_witness_ledger",
+    "nonclaim_boundary"
+  ],
+  "claim": "If every accepted stage satisfies S_j(A_j ThetaY_j A_j^* + OmegaZ_j)S_j^* <= ThetaD, then sup_j Cap(z^*S_jD_j) <= z^*ThetaD z for every dissolving recombination z.",
+  "nonclaims": [
+    "does not certify raw substrate needles",
+    "does not certify undeclared dissolving probes",
+    "does not infer adequacy from native membrane alone",
+    "does not promote public shadows without a bridge",
+    "does not solve RH or Navier-Stokes"
+  ]
+}

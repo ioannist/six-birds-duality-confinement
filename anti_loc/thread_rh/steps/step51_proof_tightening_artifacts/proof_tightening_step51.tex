@@ -1,0 +1,284 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{booktabs,longtable}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{countermodel}[theorem]{Countermodel}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Cost}{Cost}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\K}{\mathsf K}
+\newcommand{\XiRes}{\Xi}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\Mem}{\mathsf{Mem}}
+
+\title{Step 51 Proof Tightening:\
+Singular Currency Duality, Adequacy Residuals, and Acceptance Gates}
+\author{Six Birds / RATCHET working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note tightens three proof points in the integrated membrane manuscript.  First, it states the minimum-spend/currency duality on the legal energy quotient, including the correct singular-case range and null-mode hypotheses.  Second, it gives a standalone treatment of the adequacy residual
+\[
+  \Xi_C(D\mid L)
+  =K_{DD}-K_{DL}K_{LL}^\dagger K_{LD},
+\]
+including optimality, exact-adequacy, blind-spot, and strict-extension monotonicity theorems.  Third, it separates mathematical membrane equivalence from Six Birds acceptance: a Loewner budget is mathematically equivalent to no unresolved native witnesses, but an \emph{accepted} membrane additionally requires all declared audit gates.  Thus matrix success alone is support-only if the exact-six record is missing.
+\end{abstract}
+
+\section{Legal quotient conventions}
+
+\begin{definition}[Legal energy quotient]
+Let \(E\) be a finite-dimensional Hilbert space and let \(C=C^*\succeq0\).  Put
+\[
+  N_C=\Ker C,
+  \qquad
+  E_C=N_C^\perp.
+\]
+The legal energy quotient is represented by \(E_C\), with strictly positive audit
+\[
+  C_0=C|_{E_C}>0.
+\]
+For any readout \(L:E\to Y\), write
+\[
+  L_0=L|_{E_C}.
+\]
+The readout is \emph{null-legal} when
+\[
+  L(N_C)=0.
+\]
+Equivalently, \(L=L_0\pi_C\), where \(\pi_C:E\to E_C\) is the orthogonal quotient representative.
+\end{definition}
+
+\begin{warning}[Pseudoinverse expressions are legal only after null handling]
+The expression \(LC^\dagger L^*\) measures currency on the legal quotient.  If \(L\) sees a legal zero-energy direction, the variational capacity is infinite in the corresponding dual direction even though a raw pseudoinverse expression may look finite or even zero.  Therefore every membrane statement must either quotient/annihilate null modes or explicitly downgrade its status.
+\end{warning}
+
+\begin{theorem}[Singular minimum-spend duality]
+Let \(C\succeq0\), assume \(L(N_C)=0\), and define
+\[
+  K_L=L_0C_0^{-1}L_0^*=LC^\dagger L^*.
+\]
+For \(z\in Y\), define
+\[
+  \Cost_C(z;L)=\inf\{x^*Cx: Lx=z\}.
+\]
+Then
+\[
+  \Cost_C(z;L)=
+  \begin{cases}
+    z^*K_L^\dagger z, & z\in\Ran L_0,\\
+    +\infty, & z\notin\Ran L_0.
+  \end{cases}
+\]
+Equivalently, the finite response space is \(\Ran K_L=\Ran L_0\), and \(K_L^\dagger\) is the resistance/minimum-spend form on that response space.
+\end{theorem}
+
+\begin{proof}
+Because \(L\) annihilates \(N_C\), the constraint \(Lx=z\) and energy \(x^*Cx\) depend only on \(x_0=\pi_Cx\in E_C\).  Thus
+\[
+  \Cost_C(z;L)=\inf\{x_0^*C_0x_0:L_0x_0=z\}.
+\]
+If \(z\notin\Ran L_0\), the feasible set is empty.  If \(z\in\Ran L_0\), whiten by \(u=C_0^{1/2}x_0\) and set
+\[
+  A=L_0C_0^{-1/2}:E_C\to Y.
+\]
+Then the problem becomes
+\[
+  \inf\{\|u\|^2:Au=z\}.
+\]
+The minimum-norm preimage is \(u=A^\dagger z\), with squared norm \(z^*(AA^*)^\dagger z\).  Since
+\[
+  AA^*=L_0C_0^{-1}L_0^*=K_L,
+\]
+this gives the formula.
+\end{proof}
+
+\begin{corollary}[Family currency is finite only on the legal response]
+For a native family \(L\), the matrix \(K_L=LC^\dagger L^*\) is the compliance matrix on the legal quotient.  The membrane budget \(K_L\preceq\Theta\) is meaningful as a no-needle statement only together with null-mode legality \(L(N_C)=0\).  Without it, a zero-energy response may have zero spend and infinite scalar capacity.
+\end{corollary}
+
+\section{The adequacy residual \texorpdfstring{$\Xi_C(D\mid L)$}{Xi}}
+
+\begin{definition}[Dissolving readout and native adequacy]
+Let \(L:E\to Y\) be the declared native probe family and \(D:E\to Z\) a layer-dissolving readout.  After passing to \(E_C\), define
+\[
+  K_{LL}=L_0C_0^{-1}L_0^*,\quad
+  K_{DL}=D_0C_0^{-1}L_0^*,\quad
+  K_{DD}=D_0C_0^{-1}D_0^*.
+\]
+The \emph{adequacy residual} is
+\[
+  \boxed{\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}.}
+\]
+\end{definition}
+
+\begin{theorem}[Optimal residual theorem]
+For every response map \(A:Y\to Z\), define the residual readout
+\[
+  R_A=D_0-AL_0
+\]
+and its residual currency
+\[
+  K_{R_A}=R_AC_0^{-1}R_A^*.
+\]
+Then
+\[
+  K_{R_A}
+  =\Xi_C(D\mid L)+(A-A_*)K_{LL}(A-A_*)^*,
+  \qquad
+  A_*=K_{DL}K_{LL}^\dagger.
+\]
+Consequently, \(\Xi_C(D\mid L)\succeq0\) and it is the unique Loewner-minimal residual currency among all factorizations \(D\approx AL\).
+\end{theorem}
+
+\begin{proof}
+The block matrix
+\[
+  \begin{pmatrix}
+    K_{LL} & K_{LD}\\
+    K_{DL} & K_{DD}
+  \end{pmatrix}
+  =
+  \begin{pmatrix}L_0\\D_0\end{pmatrix}
+  C_0^{-1}
+  \begin{pmatrix}L_0^*&D_0^*\end{pmatrix}
+\]
+is positive semidefinite.  Hence \(\Ran K_{LD}\subseteq\Ran K_{LL}\), so the Moore--Penrose Schur complement is positive.  Expanding
+\[
+  (D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+\]
+gives
+\[
+  K_{DD}-AK_{LD}-K_{DL}A^*+AK_{LL}A^*.
+\]
+Substituting \(A=A_*+(A-A_*)\), using \(K_{LL}K_{LL}^\dagger K_{LD}=K_{LD}\), and collecting terms gives the identity.
+\end{proof}
+
+\begin{theorem}[Exact adequacy and blind spots]
+The following are equivalent:
+\begin{enumerate}
+  \item \(\Xi_C(D\mid L)=0\).
+  \item There exists \(A:Y\to Z\) such that \(D_0=AL_0\).
+  \item \(\Ker L_0\subseteq\Ker D_0\).
+\end{enumerate}
+If these fail, then there is a legal blind spot \(v\in E_C\) such that
+\[
+  L_0v=0,
+  \qquad
+  D_0v\ne0.
+\]
+If such a blind spot can have arbitrarily small audit energy relative to \(D_0v\), then the dissolving currency is large; if it lies in a legal null direction before quotienting, the true variational capacity is infinite.
+\end{theorem}
+
+\begin{proof}
+The equivalence of (2) and (3) is the elementary factorization theorem for linear maps: \(D_0\) factors through \(L_0\) iff \(D_0\) is constant on fibers of \(L_0\), equivalently \(\Ker L_0\subseteq\Ker D_0\).  By the optimal residual theorem, \(\Xi=0\) iff the minimum residual currency is zero, i.e. iff \((D_0-A_*L_0)C_0^{-1/2}=0\), hence \(D_0=A_*L_0\) on \(E_C\).  The blind-spot statement is the negation of the kernel inclusion.
+\end{proof}
+
+\begin{theorem}[Strict-extension monotonicity of adequacy]
+Let a strict native-family extension add probes \(M:E\to W\), and set
+\[
+  L^+=\begin{pmatrix}L\\M\end{pmatrix}.
+\]
+Then
+\[
+  \boxed{\Xi_C(D\mid L^+)\preceq\Xi_C(D\mid L).}
+\]
+More precisely,
+\[
+  \Xi_C(D\mid L,M)
+  =\Xi_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^\dagger K_{MD\mid L},
+\]
+where the conditional blocks are Schur residuals after conditioning on \(L\).  The subtracted term is positive semidefinite.  Equality holds when the added probes are conditionally invisible to the old dissolving blind spot.
+\end{theorem}
+
+\begin{proof}
+The residual \(\Xi_C(D\mid L)\) is the minimum of \(K_{D-AL}\) over all maps \(A:Y\to Z\).  Conditioning on \(L^+=(L,M)\) minimizes over a larger class of maps \((A,B):Y\oplus W\to Z\), so the residual cannot increase.  The displayed decrement is the standard nested Schur complement identity applied to the block Gram matrix of \((L,M,D)C_0^{-1/2}\).
+\end{proof}
+
+\begin{remark}[Why \(\Xi\) deserves standalone treatment]
+The residual \(\Xi_C(D\mid L)\) is the optimal currency of the layer-dissolving readout that remains invisible after conditioning on the native family.  It is a Schur residual, a blind-spot measure, and the monotone target of strict native-family extension.  In this sense it is the formal object measuring what the layer does not yet know about itself.
+\end{remark}
+
+\section{Acceptance: implication, not bare equivalence}
+
+\begin{definition}[Mathematical membrane]
+A mathematical native membrane at a stage is the Loewner budget
+\[
+  K_L\preceq\Theta.
+\]
+A predictive mathematical membrane is the family of budgets
+\[
+  \widehat K_j\preceq\Theta
+  \quad\text{for all accepted stages }j.
+\]
+Equivalently, there is no unresolved native recombination vector \(y\) with
+\[
+  y^*(\widehat K_j-\Theta)y>0.
+\]
+\end{definition}
+
+\begin{definition}[Accepted Six Birds membrane]
+An accepted Six Birds membrane is the conjunction of:
+\begin{enumerate}
+  \item formed closure/layer status;
+  \item exact packaged carrier and null-mode legality;
+  \item declared native probe family and adequacy status for any layer-dissolving claim;
+  \item route/protocol union and predictive transport records;
+  \item lawful witness rather than public-shadow overread;
+  \item all-six channel records \(P_1,\dots,P_6\);
+  \item the mathematical membrane budget \(\widehat K_j\preceq\Theta\) for the declared scope;
+  \item nonclaim records for excluded probes, routes, stages, shadows, or dissolving readouts.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Acceptance implication and downgrade]
+An accepted Six Birds membrane implies the mathematical membrane budget for its declared scope:
+\[
+  \mathsf{AcceptedMembrane}\Longrightarrow \widehat K_j\preceq\Theta\quad\forall j.
+\]
+Conversely, the bare inequality \(\widehat K_j\preceq\Theta\) does not imply acceptance unless the gate records in the definition of accepted membrane are also supplied.  Without those records, the correct status is support-only, local-only, native-only, public-shadow-only, or failed-audit according to the missing gate.
+\end{theorem}
+
+\begin{proof}
+The forward implication is immediate because the mathematical budget is one of the accepted-record components.  For the converse, omit any gate: if null-mode legality is omitted, a probe can see a zero-energy direction; if recombination closure is omitted, diagonal probes can pass while a combination fails; if route union is omitted, two route-local budgets can pass while the stacked protocol block fails; if adequacy is omitted, a layer-dissolving blind spot can be invisible to native probes; if packaging/witness records are omitted, a public shadow can pass while the lawful carrier fails.  These finite countermodels show that the inequality, outside its declared and audited carrier/probe scope, is not an accepted membrane claim.
+\end{proof}
+
+\begin{corollary}[Correct wording for the manuscript]
+The manuscript should use equivalence only inside the mathematical layer:
+\[
+  K\preceq\Theta
+  \quad\Longleftrightarrow\quad
+  \text{no unresolved native recombination witness}.
+\]
+It should use implication/gating language for Six Birds acceptance:
+\[
+  \text{accepted all-six record}
+  \quad\Longrightarrow\quad
+  K\preceq\Theta.
+\]
+The reverse direction is valid only by definition after all gate records are included.
+\end{corollary}
+
+\section{Title and positioning update}
+
+The integrated manuscript should be retitled from a narrow anti-localization paper to a formed-layer membrane paper.  A current working title is:
+\[
+\boxed{\textit{Formed-Layer Membrane Theory: Anti-Localization, Adequacy, and the Root-Composite Obligation}.}
+\]
+Anti-localization remains a central consequence, but the framework now covers native probe-family currency, adequacy residuals, membrane transfer, type promotion, exact-six records, strict-extension ladders, and root-composite zero-confinement obligations.
+
+\end{document}

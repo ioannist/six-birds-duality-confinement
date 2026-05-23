@@ -1,0 +1,35 @@
+\section*{Step 297: Saddle-Escape Asymptotic for $\delta D_k$}
+
+Let $h(z)=\zeta(z)M(G_\star)(z)$ and $\rho=\rho_1$.  The raw Branch C term is
+\[
+  \delta D_k(\rho)=h^{(k)}(\rho)
+  =\frac{k!}{2\pi i}\int_C \frac{h(z)}{(z-\rho)^{k+1}}\,dz.
+\]
+Step 271 numerics show that the relevant saddle is not at fixed distance:
+\[
+  R(k)=|z_\ast(k)-\rho|\simeq c k,\qquad c\approx 0.4742.
+\]
+Using Stirling,
+\[
+  \frac{k!}{R(k)^k}
+  \sim \sqrt{2\pi k}\frac{1}{(ce)^k},
+\]
+so the $k\log k$ contribution cancels.  The remaining growth is the product of
+this Stirling cancellation with the growth of $M(R(k))=\max |h|$ on the
+escaping contour.  The resulting saddle-escape ansatz is
+\[
+  |\delta D_k|\sim A k^\alpha \exp(bk+\gamma k\log k),
+\]
+with the derived cancellation giving $\gamma=0$.
+
+Fitting the certified values at $k=5,10,15,20,30,50$ gives
+\[
+  A=2.03288834e+00,\qquad
+  \alpha=-2.61900497,\qquad
+  b=1.02039761,\qquad
+  \gamma=0.
+\]
+The fit is not theorem-grade: it is a saddle-escape model calibrated on the
+available certified derivatives.  The missing paper-grade component is a
+closed asymptotic for $\max_{|z-\rho|=ck}|\zeta(z)M(G_\star)(z)|$ in the
+left-half-plane saddle sector.

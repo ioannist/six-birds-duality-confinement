@@ -1,0 +1,512 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{obligation}[theorem]{Obligation}
+\newtheorem{nonclaim}[theorem]{Nonclaim}
+\newtheorem{countermodel}[theorem]{Countermodel}
+\newtheorem{schema}[theorem]{Schema}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\range}{Ran}
+\DeclareMathOperator{\kernel}{Ker}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Cost}{Cost}
+\DeclareMathOperator{\Capacity}{Cap}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Sel}{Sel}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\XiRes}{\Xi}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\Mem}{\mathsf{Mem}}
+\newcommand{\EF}{\mathrm{EF}}
+\newcommand{\src}{\mathrm{src}}
+\newcommand{\cmp}{\mathrm{cmp}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\tail}{\mathrm{tail}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Loewner}{\preceq}
+
+\title{Formed-Layer Membrane Theory:\\
+Anti-Localization, Adequacy, and the Root-Composite Obligation\\
+\large Proof-Polished Draft v0.5}
+\author{Six Birds / RATCHET working manuscript}
+\date{Step 56 proof-polish pass}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This manuscript develops a formed-layer membrane theory.  Anti-localization is one major consequence of the theory, but the central object is broader: a formed layer carries a native predictive probe-family currency matrix, and the layer has a membrane precisely when all native predictive recombinations are priced inside an accepted audit budget.  The scalar capacity identity is refined into a matrix currency theorem
+\[
+  \K_{C,\Gamma}(L)=L\Gamma(\Gamma^*C\Gamma)^\dagger\Gamma^*L^*,
+\]
+with reciprocal minimum-spend duality.  The adequacy residual
+\[
+  \Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}
+\]
+is treated as a first-class object: it is the unique optimal blind-spot currency measuring what a layer-dissolving probe family can see that the native probe family cannot.  Predictive membranes, critical-pair completion, all-six-channel records, transfer, membrane taxonomy, type promotion, adequacy under strict extension, and root-composite zero-confinement obligations are stated as one framework.  The Riemann and Navier--Stokes discussions are obligations and demonstrations of scope, not solved claims.  The closure-only scope is constitutive: the theory asserts no-native-needle results only for formed closures/layers with adequate native probe families and accepted all-six audit records.
+\end{abstract}
+
+\tableofcontents
+
+\section{Why the title changed}
+
+The earlier title centered anti-localization.  The correct landing is now broader:
+\[
+\boxed{\text{formed-layer membrane theory.}}
+\]
+A formed layer has a membrane when every native way of addressing, recombining, transporting, or dissolving it has an audited price.  Anti-localization is the no-cheap-native-needle theorem inside this membrane theory.
+
+\begin{nonclaim}[No raw substrate theorem]
+The theory does not claim that a raw substrate, provisional package, public shadow, or undeclared response family contains no needles.  It claims that a formed closure/layer with an accepted native membrane has no unresolved native layer-dissolving needles within the declared scope.
+\end{nonclaim}
+
+\begin{nonclaim}[Applications are obligations unless gates are earned]
+The RH and Navier--Stokes sections state obligation schemata.  They do not assert RH or Navier--Stokes regularity.  A claim becomes accepted only when the exact carrier, native family, adequacy record, predictive transport, and all-six audit gates are supplied.
+\end{nonclaim}
+
+\section{The master structure}
+
+\subsection{Objects}
+A formed-layer membrane record has the schematic form
+\[
+  \mathsf{Mem}=(E_j,H_j,\Gamma_j,C_j,L_j,D_j,R_j,\Theta,\Xi_j,P_1,\ldots,P_6,\mathsf N).
+\]
+Here \(\Gamma_j\) is the exact package, \(C_j\) is the audit, \(L_j\) is the native probe family, \(D_j\) is an optional layer-dissolving probe family, \(R_j\) transports responses to a common predictive response space, \(\Theta\) is the native budget, \(\Xi_j\) is the adequacy residual budget, and \(P_1,\ldots,P_6\) are the all-six records.
+
+
+\subsection{Proof-polish convention: legal energy quotient}
+All capacity, cost, and adequacy statements are made on the legal energy quotient.  If
+\[
+  C=C^*\succeq0,
+\]
+write
+\[
+  E_C=(\ker C)^\perp,
+  \qquad C_0=C|_{E_C}>0.
+\]
+A probe family \(L:E\to Y\) is null-legal when
+\[
+  L(\ker C)=0.
+\]
+Then \(L=L_0Q_C\) and all pseudoinverse formulas below are shorthand for quotient formulas on \(E_C\).  If a native or dissolving probe sees \(\ker C\), the corresponding variational capacity is infinite unless the claim explicitly quotients or excludes that direction.
+
+\subsection{Proof-polish convention: mathematical membrane versus acceptance}
+The matrix inequality
+\[
+  K\preceq \Theta
+\]
+is a mathematical membrane: it is equivalent to the absence of native recombination witnesses.  A Six Birds accepted membrane is a stronger judgment: it is the mathematical membrane plus formed closure, exact package, null-mode legality, native-family declaration, adequacy or scoped nonclaim for dissolving probes, predictive transport, all-six statuses, completed witness ledger, and nonclaim boundary.  Thus
+\[
+  \text{accepted membrane}\Rightarrow K\preceq\Theta,
+\]
+while the reverse implication is true only for the explicitly defined predicate that includes all audit gates.  A bare matrix inequality is support evidence until those gates are recorded.
+
+\subsection{The formed-layer membrane theorem}
+At stage \(j\), define
+\[
+  C_{\Gamma,j}=\Gamma_j^*C_j\Gamma_j,
+  \qquad
+  L_{\Gamma,j}=L_j\Gamma_j,
+\]
+and transported family currency
+\[
+  \widehat K_j
+  =R_jL_{\Gamma,j}C_{\Gamma,j}^\dagger L_{\Gamma,j}^*R_j^*.
+\]
+
+\begin{theorem}[Formed-layer membrane theorem]
+Assume formed closure, exact package, null-mode legality, declared native family, lawful response transport, protocol honesty, predictive stability, all-six-channel records, and completed critical-pair ledger.  Then the following are equivalent at the mathematical ledger level:
+\[
+  \widehat K_j\Loewner\Theta\quad\text{for every accepted predictive stage }j,
+\]
+\[
+  \text{there is no unresolved native predictive recombination witness }(j,y)
+  \text{ with }y^*(\widehat K_j-\Theta)y>0.
+\]
+Consequently, for every native recombination \(y\),
+\[
+  \sup_j \Capacity_{C_j}(y^*R_jL_j;\range\Gamma_j)\le y^*\Theta y.
+\]
+A Six Birds acceptance claim additionally requires the all-six records and nonclaim boundary.
+\end{theorem}
+
+\section{Scalar capacity and probe-family currency}
+
+\begin{definition}[Scalar capacity]
+For \(\ell(u)=\langle g,u\rangle\), with \(g_\Gamma=\Gamma^*g\),
+\[
+  \Capacity_C(\ell;\range\Gamma)=
+  \sup_{a\ne0}\frac{|\langle g_\Gamma,a\rangle|^2}{\langle a,C_\Gamma a\rangle},
+\]
+with infinite capacity if the probe sees a legal null mode.
+\end{definition}
+
+\begin{theorem}[Scalar identity pack]
+Under null-mode legality,
+\[
+  \Capacity_C(\ell;\range\Gamma)=\langle g_\Gamma,C_\Gamma^\dagger g_\Gamma\rangle
+  =\int_0^\infty\langle g_\Gamma,e^{-tC_\Gamma}g_\Gamma\rangle\,dt.
+\]
+If \(C=B^*B\), then
+\[
+  \Capacity_C(\ell;\range\Gamma)=\inf\{\|q\|^2:(B\Gamma)^*q=g_\Gamma\}.
+\]
+\end{theorem}
+
+\begin{definition}[Probe-family currency]
+Let \(C_\Gamma=\Gamma^*C\Gamma\succeq0\), let
+\[
+  E_{\Gamma,0}=(\ker C_\Gamma)^\perp,
+  \qquad
+  C_{\Gamma,0}=C_\Gamma|_{E_{\Gamma,0}}>0.
+\]
+A packaged native family \(L_\Gamma=L\Gamma\) is null-legal when
+\[
+  L_\Gamma(\ker C_\Gamma)=0.
+\]
+When null-legality holds, define
+\[
+  \K_{C,\Gamma}(L)
+  =L_{\Gamma,0}C_{\Gamma,0}^{-1}L_{\Gamma,0}^*
+  =L_\Gamma C_\Gamma^\dagger L_\Gamma^*.
+\]
+If null-legality fails, the affected response has infinite variational capacity and the pseudoinverse expression is not an accepted finite witness.
+\end{definition}
+
+\begin{theorem}[Family capacity theorem with null legality]
+Assume \(L_\Gamma\) is null-legal.  For every recombination \(y\in Y\),
+\[
+  \Capacity_C(y^*L;\range\Gamma)=y^*\K_{C,\Gamma}(L)y.
+\]
+If \(L_\Gamma^*y\) sees \(\ker C_\Gamma\), the variational capacity is \(+\infty\).  Thus family anti-localization is the Loewner budget
+\[
+  \K_{C,\Gamma}(L)\Loewner\Theta
+\]
+only after null-mode legality is earned.
+\end{theorem}
+
+\begin{theorem}[Minimum-spend duality on the legal quotient]
+Assume \(L_\Gamma\) is null-legal for \(C_\Gamma\).  Let
+\[
+  E_{\Gamma,C}=(\ker C_\Gamma)^\perp,
+  \qquad C_{\Gamma,0}=C_\Gamma|_{E_{\Gamma,C}}>0,
+\]
+and let \(L_{\Gamma,0}\) be the restricted family.  For a desired native response \(z\in Y\),
+\[
+  \Cost_C(z;L,\Gamma)=\inf\{a^*C_\Gamma a:L_\Gamma a=z\}
+  =
+  \begin{cases}
+    z^*\K_{C,\Gamma}(L)^\dagger z, & z\in \range L_{\Gamma,0},\\
+    +\infty, & z\notin \range L_{\Gamma,0}.
+  \end{cases}
+\]
+Thus \(\K\) is compliance/shadow value and \(\K^\dagger\) is resistance/minimum spend, but only after null-mode legality and range membership are recorded.
+\end{theorem}
+
+\begin{countermodel}[Scalar probes do not control recombinations]
+Let \(H=\mathbb C\), \(C=1\), and \(Lu=u(1,\ldots,1)\in\mathbb C^m\).  Then \(\K=\mathbf 1\mathbf 1^*\).  Every coordinate probe has capacity \(1\), but the normalized all-ones recombination has capacity \(m\).  Diagonal checks are not family checks.
+\end{countermodel}
+
+\section{Schur squares and lawful witnesses}
+
+\begin{theorem}[Schur-capacity equivalence]
+For
+\[
+  M=\begin{pmatrix}a&g^*\\ g&C\end{pmatrix},\qquad C\succeq0,
+\]
+one has \(M\succeq0\) iff \(g\perp\ker C\) and
+\[
+  g^*C^\dagger g\le a.
+\]
+\end{theorem}
+
+\begin{theorem}[Family Schur square]
+Assume \(C_\Gamma\succeq0\).  Then
+\[
+  \begin{pmatrix}\Theta&L_\Gamma\\L_\Gamma^*&C_\Gamma\end{pmatrix}\succeq0
+\]
+if and only if
+\[
+  L_\Gamma(\ker C_\Gamma)=0
+  \qquad\text{and}\qquad
+  \K_{C,\Gamma}(L)\Loewner\Theta.
+\]
+Thus null-mode legality is not a technical aside; it is part of the Schur square.
+\end{theorem}
+
+\begin{theorem}[Compressed internal Schur identity]
+Let \(M=M^*>0\), let \(\Phi:\mathbb C^k\to H\) be an isometric low package, and set \(P=\Phi\Phi^*\), \(Q=I-P\),
+\[
+  A=\Phi^*M\Phi,\qquad B=QM\Phi,\qquad C_Q=QMQ|_{QH}.
+\]
+Then the compressed Schur margin is
+\[
+  S=A-B^*C_Q^\dagger B=(\Phi^*M^\dagger\Phi)^{-1}
+\]
+when the indicated inverse is legal.  This is the lawful same-branch witness; ambient diagonal formulas are public shadows unless a reducing bridge is audited.
+\end{theorem}
+
+\section{Adequacy residual \texorpdfstring{\(\Xi_C(D\mid L)\)}{Xi}}
+
+\subsection{Why \(\Xi\) is central}
+The native family \(L\) is what a layer officially knows how to sense.  A layer-dissolving family \(D\) represents probes that could break the layer.  The adequacy residual measures what \(D\) can see that \(L\) cannot.
+
+Work on the legal energy quotient \(E_C=(\ker C)^\perp\), with \(C_0=C|_{E_C}>0\).  Write \(L_0,D_0\) for the restrictions.
+
+\begin{definition}[Adequacy residual]
+Define
+\[
+  K_{LL}=L_0C_0^{-1}L_0^*,\qquad
+  K_{DL}=D_0C_0^{-1}L_0^*,\qquad
+  K_{DD}=D_0C_0^{-1}D_0^*.
+\]
+The adequacy residual is
+\[
+  \boxed{\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}.}
+\]
+\end{definition}
+
+\begin{theorem}[\(\Xi\) as optimal blind-spot currency]
+Let
+\[
+  T_L=L_0C_0^{-1/2},\qquad T_D=D_0C_0^{-1/2},
+\]
+and let \(P_L\) be the orthogonal projection onto \(\range(T_L^*)\).  Then
+\[
+  \Xi_C(D\mid L)=T_D(I-P_L)T_D^*\succeq0.
+\]
+Moreover, with \(A_*=K_{DL}K_{LL}^\dagger\),
+\[
+  (D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+  =\Xi_C(D\mid L)+(A-A_*)K_{LL}(A-A_*)^*.
+\]
+Therefore \(\Xi_C(D\mid L)\) is the unique Loewner-minimal residual over all factorizations \(D\approx AL\).
+\end{theorem}
+
+\begin{corollary}[Exact adequacy]
+The following are equivalent:
+\[
+  \Xi_C(D\mid L)=0,
+\]
+\[
+  \exists A\text{ such that }D_0=AL_0,
+\]
+\[
+  \ker L_0\subseteq\ker D_0.
+\]
+Thus exact adequacy is exactly the absence of a legal hidden direction.
+\end{corollary}
+
+\begin{theorem}[Adequacy promotion]
+If \(K_{LL}\Loewner\Theta_Y\) and \(\Xi_C(D\mid L)\Loewner\Xi_Z\), then
+\[
+  K_{DD}\Loewner A_*\Theta_YA_*^*+\Xi_Z.
+\]
+Thus a native membrane plus an adequacy residual budget promotes to a layer-dissolving membrane.
+\end{theorem}
+
+\begin{theorem}[Strict extension monotonicity of \(\Xi\)]
+Let \(L^+=\begin{bmatrix}L\\M\end{bmatrix}\).  Then
+\[
+  \Xi_C(D\mid L^+)\Loewner\Xi_C(D\mid L).
+\]
+More sharply,
+\[
+  \Xi_C(D\mid L,M)=\Xi_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^\dagger K_{MD\mid L}.
+\]
+Same-family repetition gives equality.
+\end{theorem}
+
+\section{Predictive membranes and critical-pair completion}
+
+\begin{definition}[Predictive membrane]
+A predictive membrane is a family of transported currencies \(\widehat K_j\) with a common budget \(\Theta\),
+\[
+  \widehat K_j\Loewner\Theta\qquad\forall j.
+\]
+A predictive witness is a pair \((j,y)\) with \(y^*(\widehat K_j-\Theta)y>0\).
+\end{definition}
+
+\begin{theorem}[Summable predictive propagation]
+If
+\[
+  \widehat K_{j+1}\Loewner(1+\varepsilon_j)\widehat K_j+D_j,
+\]
+with \(\prod_j(1+\varepsilon_j)<\infty\) and \(\sum_jD_j\Loewner D_\infty\), then
+\[
+  \widehat K_n\Loewner P_\infty(\widehat K_0+D_\infty).
+\]
+Thus summable defects preserve predictive membranes under a sufficiently large budget.
+\end{theorem}
+
+\begin{theorem}[Critical-pair witness theorem]
+For \(\mathsf D=\K-\Theta\),
+\[
+  \K\npreceq\Theta\quad\Longleftrightarrow\quad\exists y:y^*\mathsf Dy>0.
+\]
+Support-minimal witnesses are native critical pairs.  Accepted membrane claims require every native critical pair to be priced, resolved by lawful rewrite, or excluded with a nonclaim record.
+\end{theorem}
+
+\section{Exact-six records, transfer, and taxonomy}
+
+\begin{definition}[All-six membrane record]
+An accepted record contains statuses for
+\[
+P_1:\text{ rewrite/gauge/operator repair},
+\]
+\[
+P_2:\text{ feasibility/channel/frame/null legality},
+\]
+\[
+P_3:\text{ route/holonomy/protocol union},
+\]
+\[
+P_4:\text{ staging/refinement/predictive transport},
+\]
+\[
+P_5:\text{ packaging/canonicalization/lawful witness},
+\]
+\[
+P_6:\text{ audit/currency/budget and witness ledger}.
+\]
+\end{definition}
+
+\begin{theorem}[All-six acceptance semantics]
+For a fixed legal mathematical record,
+\[
+  \widehat K_j\Loewner\Theta\ \forall j
+  \quad\Longleftrightarrow\quad
+  \text{no native predictive recombination witness remains unresolved.}
+\]
+An accepted all-six membrane record implies this mathematical budget.  The converse is not automatic: a bare matrix inequality is support evidence unless the formed closure, exact package, null legality, native family, adequacy when dissolving probes are claimed, predictive transport, all-six status, and witness ledger gates are supplied.
+\end{theorem}
+
+\begin{theorem}[Membrane transfer]
+Suppose a bridge from source to target is given by \(P:E'\to E\) and \(A:Y\to Y'\), with
+\[
+  C'\succeq P^*CP,
+  \qquad
+  L'=ALP.
+\]
+Then
+\[
+  K'=L'(C')^\dagger(L')^*\Loewner AK A^*.
+\]
+If \(L'=ALP+R\), then for every \(t>0\),
+\[
+  K'\Loewner(1+t)AKA^*+(1+t^{-1})R(C')^\dagger R^*.
+\]
+\end{theorem}
+
+\begin{definition}[Membrane taxonomy]
+Membranes are typed as intrinsic, sectioned, bundle/fiber, or protocol-indexed.  Type promotion to intrinsic requires faithful reconstruction, full block currency control, and defect accounting.
+\end{definition}
+
+\section{Reflexive membrane ladders}
+
+\begin{theorem}[Strict-extension contraction]
+Same-package iteration preserves the currency matrix up to isomorphism.  Strict contraction of witnesses requires a lawful strict extension: audit strengthening, feasibility restriction, carrier rewrite, package canonicalization, route completion, predictive transport repair, or explicit budget/scoping repair.
+\end{theorem}
+
+\begin{theorem}[Reflexive membrane ladder]
+A strict all-six extension ladder with budgeted propagation and completion discipline has one of three honest outcomes:
+\[
+\text{persistent membrane},\qquad
+\text{eventual membrane after finitely many strict repairs},\qquad
+\text{named obstruction/downgrade}.
+\]
+No theorem of finite completion follows from monotone improvement alone.
+\end{theorem}
+
+\section{Root-composite obligation}
+
+\subsection{Anti-linear duality}
+For an anti-linear involution \(J\), realify the response space and split
+\[
+  Y_{\mathbb R}=Y^+\oplus Y^-.
+\]
+For RH,
+\[
+  J(s)=1-\overline s,
+  \qquad
+  \Fix(J)=\{s:\Re(s)=1/2\}.
+\]
+
+\begin{theorem}[Zero-confinement bridge]
+Let \(\mathsf A_Z\) be the zero-side anti-invariant displacement matrix and let \(\mathsf K^-\) be the completed carrier-side anti-invariant currency.  If
+\[
+  \mathsf A_Z\Loewner(1+t)\mathsf K^-+(1+t^{-1})E_{\EF}
+\]
+and
+\[
+  \mathsf K^-\Loewner\Lambda^{-1}\Theta_0^-+E_{\src},
+\]
+then
+\[
+  \mathsf A_Z\Loewner(1+t)(\Lambda^{-1}\Theta_0^-+E_{\src})+(1+t^{-1})E_{\EF}.
+\]
+Thus if \(\Lambda\to\infty\) and \(E_{\EF},E_{\src}\to0\), visible off-fixed root mass vanishes.
+\end{theorem}
+
+\begin{obligation}[RH root-composite obligation]
+An RH-facing membrane proof must supply:
+\begin{enumerate}[label=O\arabic*.,leftmargin=2em]
+  \item formed completed zero/prime carrier;
+  \item anti-linear duality and zero visibility/exhaustivity;
+  \item completed explicit-formula domination \(\mathsf A_Z\Loewner\mathsf K^-+E_{\EF}\);
+  \item null-mode legality;
+  \item full anti-invariant character/source frame;
+  \item coercivity growth \(\mathsf K^-\Loewner\Lambda^{-1}\Theta_0^-+E_{\src}\);
+  \item finite-to-continuum and promotion control;
+  \item no trace-shadow or invariant-sector overread;
+  \item nonclaim/scope honesty.
+\end{enumerate}
+This is a research program, not a checklist already discharged.
+\end{obligation}
+
+\section{Navier adequacy demonstration}
+
+This section is deliberately short.  It demonstrates \(\Xi\)-language outside RH without opening a Navier project.
+
+For a Fourier cutoff carrier on \(\mathbb T^d\) with Sobolev audit
+\[
+  C_{s,N}e_k=(1+|k|^2)^s e_k,
+\]
+and pointwise derivative probe of order \(q\),
+\[
+  D_{q,x,N}e_k\sim |k|^qe^{ik\cdot x},
+\]
+the capacity scales like
+\[
+  \Capacity_{s,N}(D_q)\asymp\sum_{|k|\le N}\frac{|k|^{2q}}{(1+|k|^2)^s}.
+\]
+Uniform boundedness requires
+\[
+  s>q+\frac d2.
+\]
+Thus in three dimensions, energy \((s=0)\) and enstrophy/dissipation \((s=1)\) do not adequately price pointwise velocity or vorticity/strain blow-up probes.  A Navier membrane proof would require stronger coercive audit, channelized feasible carrier, parabolic smoothing with source-admission, or a scoped nonclaim.
+
+\section{Conclusion: where the paper should land}
+
+The paper should land on the following statement:
+\[
+\boxed{\text{formed-layer membrane theory is the exact-six theory of priced native addressability.}}
+\]
+A formed layer is not certified by one scalar capacity bound, one route-local check, one public shadow, or one finite stage.  It is certified by a predictive native probe-family currency budget, an adequacy residual record for dissolving probes, a completed critical-pair ledger, lawful transfer/promotion records, and all-six channel statuses.
+
+Anti-localization is the no-cheap-native-needle theorem inside this theory.  The object \(\Xi_C(D\mid L)\) is the blind-spot currency measuring what the layer does not know about its own possible dissolution.  The root-composite RH route is a major obligation of the theory, not a solved claim.  The Navier discussion is a short adequacy demonstration, not a parallel attack.
+
+\end{document}

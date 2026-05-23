@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\Hh}{\mathcal H}
+\newcommand{\K}{\mathsf K}
+\newcommand{\E}{\mathcal E}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Loewner}{\preceq}
+
+\title{Step 89: Source-Coercivity Alternative for the Low-Frequency Zeta Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 88 showed that the zero-side cancellation route is viable only if the zero-side readout factors through a bounded primitive.  Mere anti-invariance or fixed-locus separation is not enough.  This note develops the other serious route from Step 87: \emph{source coercivity}.  The question is:
+\[
+\text{what must a lawful zeta source ladder prove in order to charge the low-frequency legal zero of the paired Weil carrier?}
+\]
+The result is a precise lower-frame condition on upstream-visible source records.  This is not a proof of RH.  It is a gate: it states what the zeta carrier would have to supply.
+
+\section{Setup}
+Let $Y^-$ be the anti-invariant response space for an involution.  For RH this involution is
+\[
+J(s)=1-\overline{s},
+\]
+and $Y^-$ records displacement from the fixed line.  Let $C_0\ge 0$ be the paired completed Weil carrier candidate on $Y^-$, with paired shift/CND symbol $\Psi(\xi)$ satisfying $\Psi(0)=0$.
+
+Let $P_{\mathrm{lo},\varepsilon}$ and $P_{\mathrm{hi},\varepsilon}$ be spectral projections onto
+\[
+|\xi|<\varepsilon,\qquad |\xi|\ge \varepsilon.
+\]
+The low-frequency problem is that $C_0$ is not coercive on $P_{\mathrm{lo},\varepsilon}Y^-$.
+
+\begin{definition}[Source record]
+A source record is a tuple
+\[
+s=(Q_s,\Theta_s,\lambda_s,D_s,\sigma_s),
+\]
+where $Q_s:Y^-\to Z_s$ is an upstream-visible anti-invariant source readout, $\Theta_s\succ0$ is its source budget, $\lambda_s\ge0$ is its strength, $D_s\ge0$ is an audit contribution, and $\sigma_s$ is its Six Birds status record.  It is accepted only if
+\[
+D_s\succeq \lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+The source must be declared upstream of the confinement test.  A source chosen from the offending witness is post-hoc and is not accepted.
+\end{definition}
+
+\begin{definition}[Source lower frame]
+For a family $\mathcal S_n$ of accepted sources define
+\[
+F_n=\sum_{s\in\mathcal S_n}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+The family has low-frequency lower-frame constant $\Lambda_{n,\varepsilon}$ relative to $\Theta_0^-$ if
+\[
+P_{\mathrm{lo},\varepsilon}F_nP_{\mathrm{lo},\varepsilon}
+\succeq
+\Lambda_{n,\varepsilon}\,P_{\mathrm{lo},\varepsilon}(\Theta_0^-)^{-1}P_{\mathrm{lo},\varepsilon}.
+\]
+It has full-sector lower frame $\Lambda_n$ if the same inequality holds on all of $Y^-$.
+\end{definition}
+
+\section{Source-coercivity theorem}
+\begin{theorem}[Low-frequency source coercivity]
+Let
+\[
+C_n=C_0+\sum_{s\in\mathcal S_n}D_s.
+\]
+Assume the low-frequency lower frame condition
+\[
+P_{\mathrm{lo},\varepsilon}F_nP_{\mathrm{lo},\varepsilon}
+\succeq
+\Lambda_{n,\varepsilon}\,P_{\mathrm{lo},\varepsilon}(\Theta_0^-)^{-1}P_{\mathrm{lo},\varepsilon}.
+\]
+Then, on the low-frequency subspace,
+\[
+P_{\mathrm{lo},\varepsilon}C_nP_{\mathrm{lo},\varepsilon}
+\succeq
+\Lambda_{n,\varepsilon}\,P_{\mathrm{lo},\varepsilon}(\Theta_0^-)^{-1}P_{\mathrm{lo},\varepsilon}.
+\]
+Consequently the low-frequency anti-invariant currency obeys
+\[
+K^-_{n,\mathrm{lo}}
+\preceq
+\Lambda_{n,\varepsilon}^{-1}\,P_{\mathrm{lo},\varepsilon}\Theta_0^-P_{\mathrm{lo},\varepsilon}.
+\]
+If $\Lambda_{n,\varepsilon}\to\infty$, then the low-frequency currency collapses.
+\end{theorem}
+
+\begin{proof}
+The source acceptance inequalities give
+\[
+\sum_sD_s\succeq \sum_s\lambda_sQ_s^*\Theta_s^{-1}Q_s=F_n.
+\]
+Restricting to $P_{\mathrm{lo},\varepsilon}Y^-$ gives the asserted lower bound for $C_n$, since $C_0\ge0$.  The currency bound is the reciprocal Loewner bound on the legal quotient: if $C\succeq \Lambda L^*\Theta^{-1}L$, then $LC^\dagger L^*\preceq \Lambda^{-1}\Theta$, with null-mode legality understood.
+\end{proof}
+
+\begin{corollary}[Full-sector collapse]
+If the accepted source ladder satisfies the full-sector frame bound
+\[
+F_n\succeq\Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty,
+\]
+then
+\[
+K_n^-\preceq\Lambda_n^{-1}\Theta_0^-\to0.
+\]
+This is the source-coercivity record needed for exact fixed-locus confinement when combined with the fixed/exhaustive zero-ledger squeeze and the explicit-formula domination bridge.
+\end{corollary}
+
+\section{Interaction with the paired Weil carrier}
+The paired prime/gamma carrier provides a positive baseline $C_0$.  It usually gives a high-frequency lower bound of the form
+\[
+P_{\mathrm{hi},\varepsilon}C_0P_{\mathrm{hi},\varepsilon}\succeq m_\varepsilon P_{\mathrm{hi},\varepsilon},
+\]
+because $\Psi(\xi)>0$ away from $\xi=0$.  This helps fixed-scale estimates, but it does not by itself yield $K^-\to0$ on the full sector.  Exact confinement needs either full-sector source growth or a separate fixed/exhaustive squeeze that makes the relevant zero-side ledger live only in sectors whose budgets vanish.
+
+\begin{warning}[High-frequency boundedness is not collapse]
+A positive lower bound $m_\varepsilon>0$ on $|\xi|\ge\varepsilon$ gives a finite capacity bound there.  It does not make the high-frequency budget vanish.  Thus low-frequency source collapse alone is not a complete RH proof unless the bridge/ledger has already localized the zero-side displacement to the collapsing sector or supplies another collapsing source for the high sector.
+\end{warning}
+
+\section{No-go gates}
+\begin{proposition}[Incomplete source family]
+If there exists $0\ne y\in P_{\mathrm{lo},\varepsilon}Y^-$ such that
+\[
+Q_sy=0\qquad\forall s\in\mathcal S_n,\ \forall n,
+\]
+then the lower-frame constant on the low-frequency sector is zero for every $n$.  No amount of growth in the visible sources charges this hidden direction.
+\end{proposition}
+
+\begin{proposition}[Bounded source strength]
+If $\sup_n\Lambda_{n,\varepsilon}<\infty$, then the source ladder can give at best a finite low-frequency budget, not collapse.
+\end{proposition}
+
+\begin{warning}[Target-selected sources]
+If the source family is selected after seeing a witness $y$ with large capacity, and the source is added only to kill that $y$, the record is not upstream-visible.  It is status \texttt{smuggled} or \texttt{support-only}, not an accepted zeta source ladder.
+\end{warning}
+
+\begin{warning}[Finite-rank source limitation]
+A finite-rank source can eliminate finitely many known soft directions.  On an infinite-dimensional low-frequency sector it cannot supply a positive lower frame unless the sector has been lawfully finite-dimensionalized or the claim is scoped to that finite subspace.
+\end{warning}
+
+\section{Zeta-specific candidate sources}
+The framework allows several possible upstream-visible source families.  This note does not assert that any of them work.
+\begin{enumerate}[leftmargin=*]
+\item Prime-threshold source records: new prime-power shifts entering at declared refinement thresholds.
+\item Dirichlet/Hecke character sources: auxiliary character readouts that might cover nontrivial anti-invariant character blocks.
+\item Automorphic/Selberg trace sources: spectral features from a larger trace formula carrier.
+\item Root-composite/Galois orbit sources: character blocks of algebraic zero/root orbit data.
+\end{enumerate}
+The accepted gate is the same in all cases:
+\[
+F_n\succeq\Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty,
+\]
+with all sources declared upstream of the final zero-confinement test.
+
+\section{RH status after this step}
+The source-coercivity route remains plausible but hard.  It requires constructing an upstream-visible source ladder whose cumulative readouts form a lower frame over the entire anti-invariant sector, or at least over the exact sector where the zero-side ledger lives after the bridge.  Partial hardening, bounded hardening, finite-rank hardening, or target-selected hardening do not close the RH gate.
+
+\end{document}

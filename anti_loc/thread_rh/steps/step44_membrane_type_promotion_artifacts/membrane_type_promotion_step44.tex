@@ -1,0 +1,321 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\Th}{\Theta}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\Loewner}{\preceq}
+
+\title{Step 44: Membrane Type Promotion Theorem\\
+\large Sectioned, Bundle/Fiber, and Protocol-Indexed Membranes to Intrinsic Membranes}
+\author{Six Birds Anti-Localization Workstream}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+The preceding membrane taxonomy distinguished four forms of anti-localization membrane:
+\[
+\text{intrinsic},\qquad \text{sectioned},\qquad \text{bundle/fiber},\qquad \text{protocol-indexed}.
+\]
+The present note proves when a weaker typed membrane may be promoted to an intrinsic membrane.  The answer is not: ``whenever every section/fiber/protocol passes.''  Promotion requires a \emph{faithful response presentation}, a block-level currency bound, and an audited reconstruction or descent bridge.  Defects are paid explicitly.
+
+The note is intentionally abstract.  It does not simulate a Six Birds substrate.  It is a proof-level promotion calculus.
+
+\section{Basic currency notation}
+
+Let \(E\) be the finite or Hilbert channel coordinate carrier, \(C\ge0\) an audit form on \(E\), and \(L:E\to Y\) a declared native response/probe family.  Assume null-mode legality:
+\[
+L|_{\Ker C}=0.
+\]
+The native currency matrix is
+\[
+\K_Y = L C^\dagger L^*.
+\]
+A native membrane with budget \(\Th_Y\) is the Loewner inequality
+\[
+\K_Y\Loewner \Th_Y.
+\]
+
+A typed membrane is obtained by applying a response presentation
+\[
+J:Y\to Z,
+\]
+where \(Z\) may be a section stack, a bundle response space, or a protocol stack.  The typed readout is
+\[
+L_Z = J L,
+\]
+and the typed currency is
+\[
+\K_Z = J\K_YJ^* = L_Z C^\dagger L_Z^*.
+\]
+A typed membrane says
+\[
+\K_Z\Loewner\Th_Z.
+\]
+
+\section{Exact promotion through a faithful response presentation}
+
+\begin{definition}[faithful response presentation]
+A response presentation \(J:Y\to Z\) is exactly faithful for a native response space \(Y\) if there exists a reconstruction map
+\[
+R:Z\to Y
+\]
+such that
+\[
+RJ=I_Y.
+\]
+The pair \((J,R)\) is the promotion bridge.
+\end{definition}
+
+\begin{theorem}[exact type promotion]
+Let \(J:Y\to Z\) be an exact faithful response presentation with reconstruction \(R:Z\to Y\), so \(RJ=I_Y\).  If the typed membrane satisfies
+\[
+\K_Z=J\K_YJ^*\Loewner \Th_Z,
+\]
+then the native/intrinsic membrane satisfies
+\[
+\boxed{\K_Y\Loewner R\Th_ZR^*.}
+\]
+In particular, if an intended intrinsic budget \(\Th_Y\) obeys
+\[
+R\Th_ZR^*\Loewner\Th_Y,
+\]
+then the typed membrane promotes to the intrinsic membrane \(\K_Y\Loewner\Th_Y\).
+\end{theorem}
+
+\begin{proof}
+Since \(RJ=I_Y\),
+\[
+\K_Y=(RJ)\K_Y(RJ)^*=R(J\K_YJ^*)R^*=R\K_ZR^*.
+\]
+The typed budget gives \(R\K_ZR^*\Loewner R\Th_ZR^*\), hence the claim.
+\end{proof}
+
+\begin{corollary}[coordinate frame form]
+Suppose \(J^*J\succeq \gamma I_Y\) for some \(\gamma>0\), and use the canonical reconstruction
+\[
+R=(J^*J)^{-1}J^*.
+\]
+Then \(RJ=I_Y\) and
+\[
+\K_Y\Loewner R\Th_ZR^*.
+\]
+If \(\Th_Z\Loewner \theta I_Z\), then
+\[
+\K_Y\Loewner \theta (J^*J)^{-1}\Loewner \frac{\theta}{\gamma}I_Y.
+\]
+Thus the frame lower bound is the promotion price.
+\end{corollary}
+
+\section{Defective promotion}
+
+In applications, a section/protocol/bundle readout may reconstruct the native response only up to residual.  Let the declared residual readout be
+\[
+E = L - R J L:E\to Y.
+\]
+Its residual currency is
+\[
+\K_E=E C^\dagger E^*.
+\]
+
+\begin{theorem}[defective type promotion]
+Let \(J:Y\to Z\) and \(R:Z\to Y\) be declared.  Suppose the typed membrane satisfies
+\[
+\K_Z\Loewner\Th_Z,
+\]
+and the residual currency satisfies
+\[
+\K_E\Loewner E_0.
+\]
+Then for every \(t>0\),
+\[
+\boxed{\K_Y\Loewner (1+t)R\Th_ZR^*+(1+t^{-1})E_0.}
+\]
+Consequently a typed membrane promotes to budget \(\Th_Y\) if for some \(t>0\),
+\[
+(1+t)R\Th_ZR^*+(1+t^{-1})E_0\Loewner\Th_Y.
+\]
+\end{theorem}
+
+\begin{proof}
+Write
+\[
+L=RJL+E.
+\]
+For any response vector \(y\in Y\),
+\[
+\langle y,Lu\rangle
+=\langle R^*y,JLu\rangle+\langle y,Eu\rangle.
+\]
+Using \(|a+b|^2\le(1+t)|a|^2+(1+t^{-1})|b|^2\) and optimizing over audit energy yields
+\[
+y^*\K_Yy\le (1+t)y^*R\K_ZR^*y+(1+t^{-1})y^*\K_Ey.
+\]
+The budget assumptions give the result.
+\end{proof}
+
+\begin{corollary}[optimized scalar trace defect]
+If the scalar obstruction is measured by trace, set
+\[
+a=\tr(R\Th_ZR^*),\qquad b=\tr(E_0).
+\]
+Then
+\[
+\inf_{t>0}\tr\bigl((1+t)R\Th_ZR^*+(1+t^{-1})E_0\bigr)
+=(\sqrt a+\sqrt b)^2.
+\]
+\end{corollary}
+
+\section{Sectioned membranes}
+
+Let \(Y_a\) be section response spaces and
+\[
+J_{\mathrm{sec}}:Y\to Z_{\mathrm{sec}}:=\bigoplus_{a\in A}Y_a
+\]
+be the section stack.  The sectioned currency is the full block matrix
+\[
+\K_{\mathrm{sec}}=J_{\mathrm{sec}}\K_YJ_{\mathrm{sec}}^*=[\K^{ab}]_{a,b}.
+\]
+
+\begin{theorem}[sectioned-to-intrinsic promotion]
+A sectioned membrane promotes to an intrinsic membrane precisely through a faithful section reconstruction.  If there exists
+\[
+R_{\mathrm{sec}}:Z_{\mathrm{sec}}\to Y,
+\qquad R_{\mathrm{sec}}J_{\mathrm{sec}}=I_Y,
+\]
+and
+\[
+\K_{\mathrm{sec}}\Loewner\Th_{\mathrm{sec}},
+\]
+then
+\[
+\K_Y\Loewner R_{\mathrm{sec}}\Th_{\mathrm{sec}}R_{\mathrm{sec}}^*.
+\]
+If only the section diagonals \(\K^{aa}\Loewner\Th_a\) are known, no intrinsic promotion follows in general.
+\end{theorem}
+
+\begin{example}[diagonal section overread]
+Let
+\[
+\K_Y=\begin{pmatrix}1&\rho\\ \rho&1\end{pmatrix},
+\qquad \Th_Y=I,
+\qquad 0<\rho<1.
+\]
+Each diagonal section passes with budget \(1\), but
+\[
+\lambda_{\max}(\K_Y)=1+\rho>1.
+\]
+The recombination \((1,1)/\sqrt2\) is a native cross-section witness.
+\end{example}
+
+\section{Bundle/fiber membranes}
+
+Let \((B,\mu)\) be a base and \(Y_b\) fiber response spaces.  Let
+\[
+J_{\mathrm{bun}}:Y\to \int_B^{\oplus}Y_b\,d\mu(b)
+\]
+be a fiber readout.  Fiber currencies are \(\K_b\); the bundle stack currency is
+\[
+\K_{\mathrm{bun}}=J_{\mathrm{bun}}\K_YJ_{\mathrm{bun}}^*.
+\]
+
+\begin{theorem}[bundle/fiber-to-intrinsic promotion]
+Suppose a bundle membrane has a faithful reconstruction
+\[
+R_{\mathrm{bun}}:\int_B^{\oplus}Y_b\,d\mu(b)\to Y,
+\qquad R_{\mathrm{bun}}J_{\mathrm{bun}}=I_Y.
+\]
+If
+\[
+\K_{\mathrm{bun}}\Loewner\Th_{\mathrm{bun}}
+\]
+as an operator on the direct integral response space, then
+\[
+\K_Y\Loewner R_{\mathrm{bun}}\Th_{\mathrm{bun}}R_{\mathrm{bun}}^*.
+\]
+Fiberwise finite budgets without a uniform or direct-integral budget do not imply intrinsic promotion.
+\end{theorem}
+
+\begin{example}[fiberwise finite but nonuniform]
+Let the base be \(\mathbb N\) and let \(\K_n=n\) on a one-dimensional fiber.  Every fiber has finite currency, but no uniform budget \(\Theta_0<\infty\) controls all fibers.  Thus the bundle/fiber membrane is only pointwise, not intrinsic.
+\end{example}
+
+\section{Protocol-indexed membranes}
+
+Let protocols \(p\in P\) have response spaces \(Y_p\) and protocol readouts \(L_p:E\to Y_p\).  The stacked protocol response is
+\[
+\mathbb L u=(L_pu)_{p\in P},
+\]
+with protocol currency
+\[
+\mathbb K=\mathbb L C^\dagger\mathbb L^*=[\K^{pq}]_{p,q}.
+\]
+
+\begin{theorem}[protocol-to-intrinsic promotion]
+Let \(J_{\mathrm{prot}}:Y\to\bigoplus_pY_p\) be the declared embedding of the native response into protocol responses.  If there exists a reconstruction
+\[
+R_{\mathrm{prot}}J_{\mathrm{prot}}=I_Y
+\]
+and the full protocol-union block matrix satisfies
+\[
+\mathbb K\Loewner\mathbb\Theta,
+\]
+then the native membrane promotes as
+\[
+\K_Y\Loewner R_{\mathrm{prot}}\mathbb\Theta R_{\mathrm{prot}}^*.
+\]
+Protocol-local diagonal budgets \(\K^{pp}\Loewner\Theta_p\) do not promote unless mixed-protocol blocks and readout agreement are controlled.
+\end{theorem}
+
+\begin{example}[duplicated protocol trap]
+Let two protocols read the same scalar response.  Then
+\[
+\mathbb K=\begin{pmatrix}1&1\\1&1\end{pmatrix}.
+\]
+Each diagonal protocol budget is \(1\), but the stacked protocol budget has largest eigenvalue \(2\).  The mixed-route recombination is the witness.
+\end{example}
+
+\section{Promotion and claim weakening}
+
+A weaker membrane type may always be made true by weakening the target claim: remove cross-section recombinations, restrict to almost-everywhere fibers, or declare protocols separately.  This is not intrinsic promotion.  It is a scoped nonclaim.  An accepted promotion must either:
+\begin{enumerate}[label=(\alph*)]
+\item provide an exact reconstruction bridge and a full block budget;
+\item provide a defective reconstruction bridge and pay the residual currency; or
+\item explicitly downgrade/narrow the claim with a nonclaim record.
+\end{enumerate}
+
+\begin{theorem}[promotion alternative]
+Given a membrane of weaker type \(\tau\), an attempted intrinsic claim has one of three statuses:
+\begin{enumerate}[label=(\roman*)]
+\item \emph{accepted promotion}: exact bridge and block budget imply \(\K_Y\Loewner\Th_Y\);
+\item \emph{defective promotion}: residual bridge gives \(\K_Y\Loewner\Th_Y+E\) or a weakened budget;
+\item \emph{nonclaim / local only}: absent bridge, absent block budget, nonuniform fibers, or protocol-local-only data prevents intrinsic promotion.
+\end{enumerate}
+The last status is not failure of the weaker membrane; it is failure of the stronger intrinsic claim.
+\end{theorem}
+
+\section{Takeaway}
+
+Membrane type promotion is a bridge theorem.  Local membranes, fiber membranes, and protocol membranes can become intrinsic membranes only when their response presentations are faithful and their block currencies are controlled.  Otherwise they remain lawful but weaker claims.  This is the anti-localization version of the Six Birds no-overreading rule: local truth, public shadows, and route-local certificates do not automatically become global layer membranes.
+
+\end{document}

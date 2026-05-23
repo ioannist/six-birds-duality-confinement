@@ -1,0 +1,64 @@
+{
+  "step": 247,
+  "orientation": "adequacy",
+  "target": "Branch C k=1 proper finite-differences via Burnol E_lambda derivative",
+  "symbolic_derivation": {
+    "kernel": "K_a^Gamma(z,w)=[E(z)Ebar(w)-E(1-z)Ebar(1-w)]/(z+w-1)",
+    "partial_wbar_kernel": "partial_wbar K=[E(z)conj(E'(w))+E(1-z)conj(E'(1-w))]/(z+w-1)",
+    "E_prime": "E'(w)=P'(w)B(w)+P(w)B'(w), with P'/P=-0.5 log(pi)+0.5 digamma(w/2) and B' differentiated under the Theorem 8 integral",
+    "operational_pairing": "L_{rho,1}(G)=-i d/dgamma [(P_infty M_zeta G)(1/2+i gamma)] at gamma=Im(rho)"
+  },
+  "k1_proper_values": [
+    {
+      "case_id": "C16",
+      "rho_index": 1,
+      "G_id": "G_star",
+      "proper_L_real": -0.20350008475409476,
+      "proper_L_imag": 0.20581739138984281,
+      "proper_L_abs": 0.28943580133328961,
+      "proper_error_bound": 0.0000096477715466995265,
+      "proper_lower_bound_abs": 0.28942615356174289
+    },
+    {
+      "case_id": "C17",
+      "rho_index": 2,
+      "G_id": "G_star",
+      "proper_L_real": -0.28851655380740765,
+      "proper_L_imag": 0.0065784014238456003,
+      "proper_L_abs": 0.28859154039263868,
+      "proper_error_bound": 0.0000065596609130695406,
+      "proper_lower_bound_abs": 0.28858498073172562
+    },
+    {
+      "case_id": "C18",
+      "rho_index": 1,
+      "G_id": "G_prime",
+      "proper_L_real": -0.39417987983519504,
+      "proper_L_imag": 0.077967512070938536,
+      "proper_L_abs": 0.40181676247441539,
+      "proper_error_bound": 0.0000027985543424272984,
+      "proper_lower_bound_abs": 0.40181396392007296
+    }
+  ],
+  "finite_difference_comparison": {
+    "max_abs_difference_vs_step196": 0.000022963742822340216,
+    "old_k1_error_range": "8.500e-3 to 1.970e-2",
+    "new_k1_error_range": "2.80e-6 to 9.65e-6",
+    "status": "proper derivative is finite-difference consistent and much sharper"
+  },
+  "robustness": {
+    "mpmath_dps": 80,
+    "step196_grid": "U=200, h=0.05",
+    "pswf_terms_value": 3,
+    "pswf_terms_tail": 12,
+    "checks": "half-grid, coarse-G, alternate-PSWF, derivative-tail reserve"
+  },
+  "branch_C_k1_proper_verdict": "V_branch_C_k1_proper_foreclosure",
+  "retained_nogos": [
+    "No Branch C closure claimed.",
+    "No RH claim.",
+    "No weakening of step 176 full-carrier foreclosure caveat.",
+    "No replacement of transport-sampling theorem caveats outside this Branch C operational convention."
+  ],
+  "final_verdict": "V_branch_C_k1_proper_foreclosure"
+}

@@ -1,0 +1,25 @@
+# Lean validation manifest for the RH paper axis.
+#
+# Each entry corresponds to a paper_label from
+# formalization/inventory/rh_paper_inventory.toml whose intended_status
+# is "mechanize_now". The manifest is populated incrementally as codex
+# produces Lean realizations.
+#
+# Status meanings (verbatim from F2/F3):
+# - definition:   paper definition has a Lean definition-like declaration
+# - theorem:      paper claim has a Lean theorem/lemma whose dependency audit passes
+# - axiomatic:    declaration is or depends on project-local axioms (NOT allowed in this repo)
+# - partial:      declaration mechanizes only a supporting fragment
+# - unformalized: no Lean correspondent is present yet
+#
+# Schema (per entry):
+#   paper_label    = "<kind>:rh:<short-name>"
+#   paper_section  = "<section title>"
+#   description    = "<one-line summary>"
+#   status         = "<one of the values above>"
+#   lean_subproject = "."
+#   lean_module    = "SixBirdsDualityConfinement.RH.<Section>"
+#   lean_decl      = "SixBirdsDualityConfinement.RH.<Section>.<name>"
+#   notes          = ""
+
+# TODO: populate after Phase C from the per-axis paper inventory.

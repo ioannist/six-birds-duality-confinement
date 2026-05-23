@@ -1,0 +1,28 @@
+\section*{Step 283: P-vs-NP Score-2 Audit of Williams ACC Lower Bound}
+
+\paragraph{Target.}
+The step tests whether Williams' non-uniform ACC lower bound supplies a bridge to the P-vs-NP cascade's universal P-machine atlas terminus.
+
+\paragraph{Published theorem.}
+Williams proves that nondeterministic exponential time does not have small non-uniform ACC circuits.  The paper states:
+\[
+  \mathrm{NTIME}[2^n] \not\subseteq \mathrm{ACC}^0/\mathrm{poly}.
+\]
+Equivalently in the broader headline form, \( \mathrm{NEXP} \) does not have non-uniform ACC circuits of polynomial size.
+
+\paragraph{Cascade need.}
+The P-vs-NP chain requires closure at the \(P\) versus \(NP\) target level: either a proof that SAT is not in \(P\), a proof in the opposite direction, or a lawful universal P-machine atlas bridge that is not target-circular.
+
+\paragraph{Gap.}
+Williams separates a high exponential-time class from a restricted constant-depth modular circuit class.  The cascade needs an \(NP\)-versus-\(P\) separation.  The implication
+\[
+  \mathrm{NEXP}\not\subseteq \mathrm{ACC}^0/\mathrm{poly}
+  \Rightarrow P\ne NP
+\]
+is not a theorem and is false as a direct implication.  Bridging the gap would require new lower-bound content at the NP/P scale.
+
+\paragraph{Verdict.}
+\[
+  \boxed{V_{\mathrm{williams\_ACC\_PNP\_bridge\_blocked}}}
+\]
+The Williams score-2 candidate downgrades to score-1.  This completes a 7-of-7 empirical downgrade pattern across RH, BSD, Hodge, NS, and P-vs-NP.

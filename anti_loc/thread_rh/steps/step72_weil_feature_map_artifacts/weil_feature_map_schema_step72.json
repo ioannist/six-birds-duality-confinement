@@ -1,0 +1,33 @@
+{
+  "step": 72,
+  "title": "Candidate Completed Weil Feature Maps",
+  "object": "O1 explicit-formula Douglas bridge",
+  "target_chain": ["A_Z <= K_cmp", "K_cmp <= Theta^-", "tr Theta^- -> 0"],
+  "feature_slots": {
+    "prime_power": {
+      "symbol": "W_pr",
+      "candidate": "sqrt(Lambda(n)/sqrt(n)) alpha_L(log n)(tau_log_n f - f)",
+      "status": "positive_candidate"
+    },
+    "archimedean_gamma": {
+      "symbol": "W_infty",
+      "candidate": "sqrt(kappa_infty(a))(tau_a f - f)",
+      "status": "requires_renormalization_or_quotient"
+    },
+    "pole_completion": {
+      "symbol": "W_pole",
+      "candidate": "finite-dimensional completion features",
+      "status": "requires_null_and_pole_record"
+    },
+    "tail_support": {
+      "symbol": "W_tail or E_tail",
+      "candidate": "omitted shifts and support leakage",
+      "status": "defect_or_exhaustive_tail_record"
+    }
+  },
+  "acceptance_gate": {
+    "douglas": "V_Z = T W_cmp with ||T|| <= 1",
+    "loewner": "A_Z <= K_cmp",
+    "not_sufficient": ["trace equality", "signed explicit formula", "finite window without tail"]
+  }
+}

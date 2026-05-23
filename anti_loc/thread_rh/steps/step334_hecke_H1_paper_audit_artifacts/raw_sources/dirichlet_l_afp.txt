@@ -1,0 +1,4325 @@
+Dirichlet L-functions and Dirichlet’s Theorem
+Manuel Eberl
+February 6, 2026
+
+Abstract
+This article provides a formalisation of Dirichlet characters and
+Dirichlet L-functions including proofs of their basic properties – most
+notably their analyticity, their areas of convergence, and their nonvanishing for R(s) ≥ 1. All of this is built in a very high-level style
+using Dirichlet series. The proof of the non-vanishing follows a very
+short and elegant proof by Newman [4], which we attempt to reproduce
+faithfully in a similar level of abstraction in Isabelle.
+This also leads to a relatively short proof of Dirichlet’s Theorem,
+which states that, if h and n are coprime, there are infinitely many
+primes p with p ≡ h (mod n).
+
+1
+
+Contents
+1 Multiplicative Characters of Finite Abelian Groups
+1.1 Definition of characters . . . . . . . . . . . . . . . . . . . . .
+1.2 Basic properties . . . . . . . . . . . . . . . . . . . . . . . . . .
+1.3 The Character group . . . . . . . . . . . . . . . . . . . . . . .
+1.4 The isomorphism between a group and its dual . . . . . . . .
+1.5 Non-trivial facts about characters . . . . . . . . . . . . . . . .
+1.6 The first orthogonality relation . . . . . . . . . . . . . . . . .
+1.7 The isomorphism between a group and its double dual . . . .
+
+3
+3
+4
+6
+9
+24
+35
+36
+
+2 Dirichlet Characters
+39
+2.1 The multiplicative group of residues . . . . . . . . . . . . . . 39
+2.2 Definition of Dirichlet characters . . . . . . . . . . . . . . . . 41
+2.3 Sums of Dirichlet characters . . . . . . . . . . . . . . . . . . . 46
+3 Dirichlet L-functions
+49
+3.1 Definition and basic properties . . . . . . . . . . . . . . . . . 49
+3.2 The non-vanishing for R(s) ≥ 1 . . . . . . . . . . . . . . . . . 59
+3.3 Asymptotic bounds on partial sums of Dirichlet L functions . 69
+3.4 Evaluation of L(χ, 0) . . . . . . . . . . . . . . . . . . . . . . . 72
+3.5 Properties of L(χ, s) for real χ . . . . . . . . . . . . . . . . . 73
+4 Dirichlet’s Theorem on primes in arithmetic progressions 75
+4.1 Auxiliary results . . . . . . . . . . . . . . . . . . . . . . . . . 75
+4.2 The contribution of the non-principal characters . . . . . . . 76
+4.3 The contribution of the principal character . . . . . . . . . . 78
+4.4 The main result . . . . . . . . . . . . . . . . . . . . . . . . . . 80
+
+2
+
+1
+
+Multiplicative Characters of Finite Abelian Groups
+
+theory Multiplicative-Characters
+imports
+Complex-Main
+Finitely-Generated-Abelian-Groups.Finitely-Generated-Abelian-Groups
+begin
+notation integer-mod-group (‹Z ›)
+
+1.1
+
+Definition of characters
+
+A (multiplicative) character is a completely multiplicative function from a
+group to the complex numbers. For simplicity, we restrict this to finite
+abelian groups here, which is the most interesting case.
+Characters form a group where the identity is the principal character that
+maps all elements to 1, multiplication is point-wise multiplication of the
+characters, and the inverse is the point-wise complex conjugate.
+This group is often called the Pontryagin dual group and is isomorphic to
+the original group (in a non-natural way) while the double-dual group is
+naturally isomorphic to the original group.
+To get extensionality of the characters, we also require characters to map
+anything that is not in the group to 0.
+definition principal-char :: ( 0a, 0b) monoid-scheme ⇒ 0a ⇒ complex where
+principal-char G a = (if a ∈ carrier G then 1 else 0 )
+definition inv-character where
+inv-character χ = (λa. cnj (χ a))
+lemma inv-character-principal [simp]: inv-character (principal-char G) = principal-char G
+by (simp add: inv-character-def principal-char-def fun-eq-iff )
+lemma inv-character-inv-character [simp]: inv-character (inv-character χ) = χ
+by (simp add: inv-character-def )
+lemma eval-inv-character: inv-character χ j = cnj (χ j)
+by (simp add: inv-character-def )
+
+bundle character-syntax
+begin
+notation principal-char (‹χ0 ı›)
+end
+locale character = finite-comm-group +
+fixes χ :: 0a ⇒ complex
+
+3
+
+assumes char-one-nz: χ 1 6= 0
+assumes char-eq-0 : a ∈
+/ carrier G =⇒ χ a = 0
+assumes char-mult [simp]: a ∈ carrier G =⇒ b ∈ carrier G =⇒ χ (a ⊗ b) = χ
+a∗χb
+begin
+
+1.2
+
+Basic properties
+
+lemma char-one [simp]: χ 1 = 1
+proof −
+from char-mult[of 1 1] have χ 1 ∗ (χ 1 − 1 ) = 0
+by (auto simp del: char-mult)
+with char-one-nz show ?thesis by simp
+qed
+lemma char-power [simp]: a ∈ carrier G =⇒ χ (a [^] k) = χ a ^ k
+by (induction k) auto
+lemma char-root:
+assumes a ∈ carrier G
+shows χ a ^ ord a = 1
+proof −
+from assms have χ a ^ ord a = χ (a [^] ord a)
+by (subst char-power) auto
+also from fin and assms have a [^] ord a = 1 by (intro pow-ord-eq-1 ) auto
+finally show ?thesis by simp
+qed
+lemma char-root 0:
+assumes a ∈ carrier G
+shows χ a ^ order G = 1
+proof −
+from assms have χ a ^ order G = χ (a [^] order G) by simp
+also from fin and assms have a [^] order G = 1 by (intro pow-order-eq-1 ) auto
+finally show ?thesis by simp
+qed
+lemma norm-char: norm (χ a) = (if a ∈ carrier G then 1 else 0 )
+proof (cases a ∈ carrier G)
+case True
+have norm (χ a) ^ order G = norm (χ a ^ order G) by (simp add: norm-power)
+also from True have χ a ^ order G = 1 by (rule char-root 0)
+finally have norm (χ a) ^ order G = 1 ^ order G by simp
+hence norm (χ a) = 1 by (subst (asm) power-eq-iff-eq-base) auto
+with True show ?thesis by auto
+next
+case False
+thus ?thesis by (auto simp: char-eq-0 )
+qed
+
+4
+
+lemma char-eq-0-iff : χ a = 0 ←→ a ∈
+/ carrier G
+proof −
+have χ a = 0 ←→ norm (χ a) = 0 by simp
+also have . . . ←→ a ∈
+/ carrier G by (subst norm-char) auto
+finally show ?thesis .
+qed
+lemma inv-character: character G (inv-character χ)
+by standard (auto simp: inv-character-def char-eq-0 )
+lemma mult-inv-character: χ k ∗ inv-character χ k = principal-char G k
+proof −
+have χ k ∗ inv-character χ k = of-real (norm (χ k) ^ 2 )
+by (subst complex-norm-square) (simp add: inv-character-def )
+also have . . . = principal-char G k
+by (simp add: principal-char-def norm-char)
+finally show ?thesis .
+qed
+lemma
+assumes a ∈ carrier G
+shows char-inv: χ (inv a) = cnj (χ a) and char-inv 0: χ (inv a) = inverse (χ
+a)
+proof −
+from assms have inv a ⊗ a = 1 by simp
+also have χ . . . = 1 by simp
+also from assms have χ (inv a ⊗ a) = χ (inv a) ∗ χ a
+by (intro char-mult) auto
+finally have ∗: χ (inv a) ∗ χ a = 1 .
+thus χ (inv a) = inverse (χ a) by (auto simp: divide-simps)
+also from mult-inv-character[of a] and assms have inverse (χ a) = cnj (χ a)
+by (auto simp add: inv-character-def principal-char-def divide-simps mult.commute)
+finally show χ (inv a) = cnj (χ a) .
+qed
+end
+lemma (in finite-comm-group) character-principal [simp, intro]: character G (principal-char
+G)
+by standard (auto simp: principal-char-def )
+lemmas [simp,intro] = finite-comm-group.character-principal
+lemma character-ext:
+V
+assumes character G χ character G χ 0 x. x ∈ carrier G =⇒ χ x = χ 0 x
+shows χ = χ 0
+proof
+fix x :: 0a
+
+5
+
+show χ x = χ 0 x
+using assms by (cases x ∈ carrier G) (auto simp: character.char-eq-0 )
+qed
+lemma character-mult [intro]:
+assumes character G χ character G χ 0
+shows character G (λx. χ x ∗ χ 0 x)
+proof −
+interpret χ: character G χ by fact
+interpret χ 0: character G χ 0 by fact
+show ?thesis by standard (auto simp: χ.char-eq-0 )
+qed
+
+lemma character-inv-character-iff [simp]: character G (inv-character χ) ←→ character G χ
+proof
+assume character G (inv-character χ)
+from character.inv-character [OF this] show character G χ by simp
+qed (auto simp: character.inv-character)
+
+definition characters :: ( 0a, 0b) monoid-scheme ⇒ ( 0a ⇒ complex) set where
+characters G = {χ. character G χ}
+
+1.3
+
+The Character group
+
+b which
+The characters of a finite abelian group G form another group G,
+is called its Pontryagin dual group. This generalises to the more general
+setting of locally compact abelian groups, but we restrict ourselves to the
+finite setting because it is much easier.
+definition Characters :: ( 0a, 0b) monoid-scheme ⇒ ( 0a ⇒ complex) monoid
+where Characters G = (| carrier = characters G, monoid.mult = (λχ1 χ2 k. χ1
+k ∗ χ2 k),
+one = principal-char G |)
+lemma carrier-Characters: carrier (Characters G) = characters G
+by (simp add: Characters-def )
+lemma one-Characters: one (Characters G) = principal-char G
+by (simp add: Characters-def )
+lemma mult-Characters: monoid.mult (Characters G) χ1 χ2 = (λa. χ1 a ∗ χ2 a)
+by (simp add: Characters-def )
+context finite-comm-group
+begin
+
+6
+
+sublocale principal: character G principal-char G ..
+lemma finite-characters [intro]: finite (characters G)
+proof (rule finite-subset)
+show characters G ⊆ (λf x. if x ∈ carrier G then f x else 0 ) ‘
+Pi E (carrier G) (λ-. {z. z ^ order G = 1 }) (is - ⊆ ?h ‘ ?Chars)
+proof (intro subsetI , goal-cases)
+case (1 χ)
+then interpret χ: character G χ by (simp add: characters-def )
+have ?h (restrict χ (carrier G)) ∈ ?h ‘ ?Chars
+by (intro imageI ) (auto simp: χ.char-root 0)
+also have ?h (restrict χ (carrier G)) = χ by (simp add: fun-eq-iff χ.char-eq-0 )
+finally show ?case .
+qed
+show finite (?h ‘ ?Chars)
+by (intro finite-imageI finite-PiE finite-roots-unity) (auto simp: Suc-le-eq)
+qed
+lemma finite-comm-group-Characters [intro]: finite-comm-group (Characters G)
+proof
+fix χ χ 0 assume ∗: χ ∈ carrier (Characters G) χ 0 ∈ carrier (Characters G)
+from ∗ interpret χ: character G χ by (simp-all add: characters-def carrier-Characters)
+from ∗ interpret χ 0: character G χ 0 by (simp-all add: characters-def carrier-Characters)
+have character G (λk. χ k ∗ χ 0 k)
+by standard (insert ∗, simp-all add: χ.char-eq-0 one-Characters
+mult-Characters characters-def carrier-Characters)
+thus χ ⊗Characters G χ 0 ∈ carrier (Characters G)
+by (simp add: characters-def one-Characters mult-Characters carrier-Characters)
+next
+have character G (principal-char G) ..
+thus 1Characters G ∈ carrier (Characters G)
+by (simp add: characters-def one-Characters mult-Characters carrier-Characters)
+next
+fix χ assume ∗: χ ∈ carrier (Characters G)
+from ∗ interpret χ: character G χ by (simp-all add: characters-def carrier-Characters)
+show 1Characters G ⊗Characters G χ = χ and χ ⊗Characters G 1Characters G
+=χ
+by (simp-all add: principal-char-def fun-eq-iff χ.char-eq-0 one-Characters mult-Characters)
+next
+have χ ∈ Units (Characters G) if χ ∈ carrier (Characters G) for χ
+proof −
+from that interpret χ: character G χ by (simp add: characters-def carrier-Characters)
+have χ ⊗Characters G inv-character χ = 1Characters G and
+inv-character χ ⊗Characters G χ = 1Characters G
+by (simp-all add: χ.mult-inv-character mult-ac one-Characters mult-Characters)
+moreover from that have inv-character χ ∈ carrier (Characters G)
+by (simp add: characters-def carrier-Characters)
+
+7
+
+ultimately show ?thesis using that unfolding Units-def by blast
+qed
+thus carrier (Characters G) ⊆ Units (Characters G) ..
+qed (auto simp: principal-char-def one-Characters mult-Characters carrier-Characters)
+end
+lemma (in character) character-in-order-1 :
+assumes order G = 1
+shows χ = principal-char G
+proof −
+from assms have card (carrier G − {1}) = 0
+by (subst card-Diff-subset) (auto simp: order-def )
+hence carrier G − {1} = {}
+by (subst (asm) card-0-eq) auto
+hence carrier G = {1} by auto
+thus ?thesis
+by (intro ext) (simp-all add: principal-char-def char-eq-0 )
+qed
+lemma (in finite-comm-group) characters-in-order-1 :
+assumes order G = 1
+shows characters G = {principal-char G}
+using character.character-in-order-1 [OF - assms] by (auto simp: characters-def )
+lemma (in character) inv-Characters: inv Characters G χ = inv-character χ
+proof −
+interpret Characters: finite-comm-group Characters G ..
+have character G χ ..
+thus ?thesis
+by (intro Characters.inv-equality)
+(auto simp: characters-def mult-inv-character mult-ac
+carrier-Characters one-Characters mult-Characters)
+qed
+lemma (in finite-comm-group) inv-Characters 0:
+χ ∈ characters G =⇒ inv Characters G χ = inv-character χ
+by (intro character.inv-Characters) (auto simp: characters-def )
+lemmas (in finite-comm-group) Characters-simps =
+carrier-Characters mult-Characters one-Characters inv-Characters 0
+lemma inv-Characters 0: χ ∈ characters G =⇒ inv Characters G χ = inv-character
+χ
+using character.inv-Characters[of G χ] by (simp add: characters-def )
+
+8
+
+1.4
+
+The isomorphism between a group and its dual
+
+We start this section by inspecting the special case of a cyclic group. Here,
+any character is fixed by the value it assigns to the generating element of
+the cyclic group. This can then be used to construct a bijection between the
+nth unit roots and the elements of the character group - implying the other
+results.
+lemma (in finite-cyclic-group)
+defines ic: induce-char ≡ (λc::complex. (λa. if a∈carrier G then c powi get-exp
+gen a else 0 ))
+shows order-Characters: order (Characters G) = order G
+and gen-fixes-char: [[character G a; character G b; a gen = b gen]] =⇒ a = b
+and unity-root-induce-char: z ^ order G = 1 =⇒ character G (induce-char z)
+proof −
+interpret C : finite-comm-group Characters G using finite-comm-group-Characters
+.
+define n where n = order G
+hence n: n > 0 using order-gt-0 by presburger
+from n-def have nog: n = ord gen using ord-gen-is-group-order by simp
+have xnz: x 6= 0 if x ^ n = 1 for x::complex using n(1 ) that by (metis
+zero-neq-one zero-power)
+have m: x powi m = x powi (m mod n) if x ^ n = 1 for x::complex and m::int
+using powi-mod[OF that n] .
+show cf : character G (induce-char x) if x: x ^ n = 1 for x
+proof
+show induce-char x 1 6= 0 using xnz[OF that] unfolding ic by auto
+show induce-char x a = 0 if a ∈
+/ carrier G for a using that unfolding ic by
+simp
+show induce-char x (a ⊗ b) = induce-char x a ∗ induce-char x b
+if a ∈ carrier G b ∈ carrier G for a b
+proof −
+have x powi get-exp gen (a ⊗ b) = x powi get-exp gen a ∗ x powi get-exp gen
+b
+proof −
+have x powi get-exp gen (a ⊗ b) = x powi ((get-exp gen a + get-exp gen b)
+mod n)
+using m[OF x] get-exp-mult-mod[OF that] n-def ord-gen-is-group-order by
+metis
+also have . . . = x powi (get-exp gen a + get-exp gen b) using m[OF x] by
+presburger
+finally show ?thesis by (simp add: power-int-add xnz[OF x])
+qed
+thus ?thesis using that unfolding ic by simp
+qed
+qed
+define get-c where gc: get-c = (λc:: 0a ⇒ complex. c gen)
+have biji: bij-betw induce-char {z. z ^ n = 1 } (characters G)
+and bijg: bij-betw get-c (characters G) {z. z ^ n = 1 }
+
+9
+
+proof (intro bij-betwI [of - - - get-c])
+show iin: induce-char ∈ {z. z ^ n = 1 } → characters G using cf unfolding
+characters-def
+by blast
+show gi: get-c (induce-char x) = x if x ∈ {z. z ^ n = 1 } for x
+proof (cases n = 1 )
+case True
+with that have x = 1 by force
+thus ?thesis unfolding ic gc by simp
+next
+case False
+have x: x ^ n = 1 using that by blast
+have x powi get-exp gen gen = x
+proof −
+have x powi get-exp gen gen = x powi (get-exp gen gen mod n) using m[OF
+x] by blast
+moreover have (get-exp gen gen mod n) = 1
+proof −
+have 1 = 1 mod int n using False n by auto
+also have . . . = get-exp gen gen mod n
+by (unfold nog, intro pow-eq-int-mod[OF gen-closed],
+use get-exp-fulfills[OF gen-closed] in auto)
+finally show ?thesis by argo
+qed
+ultimately show x powi get-exp gen gen = x by simp
+qed
+thus ?thesis unfolding ic gc by simp
+qed
+show gin: get-c ∈ characters G → {z. z ^ n = 1 }
+proof −
+have False if get-c c ^ n 6= 1 character G c for c
+proof −
+interpret character G c by fact
+show False using that(1 )[unfolded gc] by (simp add: char-root 0 n-def )
+qed
+thus ?thesis unfolding characters-def by blast
+qed
+show ig: induce-char (get-c y) = y if y: y ∈ characters G for y
+proof (cases n = 1 )
+case True
+hence y = principal-char G using y n-def character.character-in-order-1
+characters-def
+by auto
+thus ?thesis unfolding ic gc principal-char-def by force
+next
+case False
+have yc: y ∈ carrier (Characters G) using y[unfolded carrier-Characters[symmetric]]
+.
+interpret character G y using that unfolding characters-def by simp
+
+10
+
+have ygo: y gen ^ n = 1 using char-root 0[OF gen-closed] n-def by blast
+have y gen powi get-exp gen a = y a if a ∈ carrier G for a using that
+proof (induction rule: generator-induct1 )
+case gen
+have y gen powi get-exp gen gen = y gen powi (get-exp gen gen mod n)
+using m[OF ygo] by blast
+also have . . . = y gen powi ((1 ::int) mod n)
+using get-exp-self [OF gen-closed] nog by argo
+also have . . . = y gen powi 1 using False n by simp
+finally have yg: y gen powi get-exp gen gen = y gen by simp
+thus ?case .
+case (step x)
+have y gen powi get-exp gen (x ⊗ gen) = y gen powi (get-exp gen (x ⊗ gen)
+mod n)
+using m[OF ygo] by blast
+also have . . . = y gen powi ((get-exp gen x + get-exp gen gen) mod n)
+using get-exp-mult-mod[OF step(1 ) gen-closed, unfolded nog[symmetric]]
+by argo
+also have . . . = y gen powi (get-exp gen x + get-exp gen gen) using m[OF
+ygo] by presburger
+also have . . . = y gen powi get-exp gen x ∗ y gen powi get-exp gen gen
+by (simp add: char-eq-0-iff power-int-add)
+also have . . . = y x ∗ y gen using yg step(2 ) by argo
+also have . . . = y (x ⊗ gen) using step(1 ) by simp
+finally show ?case .
+qed
+thus induce-char (get-c y) = y unfolding ic gc using char-eq-0 by auto
+qed
+show bij-betw get-c (characters G) {z. z ^ n = 1 } using ig gi iin gin
+by (auto intro: bij-betwI )
+qed
+with card-roots-unity-eq[OF n] n-def show order (Characters G) = order G
+unfolding order-def
+by (metis bij-betw-same-card carrier-Characters)
+assume assm: character G a character G b a gen = b gen
+with bijg[unfolded gc characters-def bij-betw-def inj-on-def ] show a = b by auto
+qed
+
+Moreover, we can show that a character that assigns a "true" root of unity
+to the generating element of the group, generates the character group.
+lemma (in finite-cyclic-group) finite-cyclic-group-Characters:
+obtains χ where finite-cyclic-group (Characters G) χ
+proof −
+interpret C : finite-comm-group Characters G by (rule finite-comm-group-Characters)
+define n where n: n = order G
+hence nnz: n 6= 0 by blast
+from n have nog: n = ord gen using ord-gen-is-group-order
+by simp
+V
+obtain x::complex where x: x ^ n = 1 m. [[0 <m; m<n]] =⇒ x ^ m 6= 1
+using true-nth-unity-root by blast
+
+11
+
+have xnz: x 6= 0 using x n by (metis order-gt-0 zero-neq-one zero-power)
+have m: x powi m = x powi (m mod n) for m::int
+using powi-mod[OF x(1 )] nnz by blast
+let ?f = (λa. if a ∈ carrier G then x powi (get-exp gen a) else 0 )
+have cf : character G ?f using unity-root-induce-char[OF x(1 )[unfolded n]] .
+have fpow: (?f [^]Characters G m) a = x powi ((get-exp gen a) ∗ m)
+if a ∈ carrier G for a:: 0a and m::nat
+using that
+proof (unfold Characters-def principal-char-def , induction m)
+case s: (Suc m)
+have x powi (get-exp gen a ∗ int m) ∗ x powi get-exp gen a
+= x powi (get-exp gen a ∗ (1 + int m))
+proof −
+fix ma :: nat
+have x powi ((1 + int ma) ∗ get-exp gen a)
+= x powi (get-exp gen a + int ma ∗ get-exp gen a) ∧ 0 6= x
+by (simp add: comm-semiring-class.distrib xnz)
+then show x powi (get-exp gen a ∗ int ma) ∗ x powi get-exp gen a
+= x powi (get-exp gen a ∗ (1 + int ma))
+by (simp add: mult.commute power-int-add)
+qed
+thus ?case using s by simp
+qed simp
+interpret cyclic-group Characters G ?f
+proof (intro C .element-ord-generates-cyclic)
+show fc: ?f ∈ carrier (Characters G) using cf carrier-Characters[of G] characters-def by fast
+from x nnz have fno: ?f [^]Characters G m 6= 1Characters G if 0 < m m < n
+for m
+proof (cases n = 1 )
+case False
+have 1Characters G gen = 1 unfolding Characters-def principal-char-def
+using that by simp
+moreover have (?f [^]Characters G m) gen 6= 1
+proof −
+have (?f [^]Characters G m) gen = x powi ((get-exp gen gen) ∗ m) using
+fpow by blast
+also have . . . = (x powi (get-exp gen gen)) ^ m by (simp add: power-int-mult)
+also have . . . = x ^ m
+proof −
+have x powi (get-exp gen gen) = x powi ((get-exp gen gen) mod n) using
+m by blast
+moreover have ((get-exp gen gen) mod n) = 1
+proof −
+have 1 = 1 mod int n using False nnz by simp
+also have . . . = get-exp gen gen mod n
+by (unfold nog, intro pow-eq-int-mod[OF gen-closed],
+use get-exp-fulfills[OF gen-closed] in auto)
+finally show ?thesis by argo
+
+12
+
+qed
+ultimately have x powi (get-exp gen gen) = x by simp
+thus ?thesis by simp
+qed
+finally show ?thesis using x(2 )[OF that] by argo
+qed
+ultimately show ?thesis by fastforce
+qed (use that in blast)
+have C .ord ?f = n
+proof −
+from nnz have C .ord ?f ≤ n unfolding n
+using C .ord-dvd-group-order[OF fc] order-Characters dvd-nat-bounds by
+auto
+with C .ord-conv-Least[OF fc] C .pow-order-eq-1 [OF fc] n nnz show C .ord ?f
+=n
+by (metis (no-types, lifting) C .ord-pos C .pow-ord-eq-1 fc fno le-neq-implies-less)
+qed
+thus C .ord ?f = order (Characters G) using n order-Characters by argo
+qed
+have finite-cyclic-group (Characters G) ?f by unfold-locales
+with that show ?thesis by blast
+qed
+
+And as two cyclic groups of the same order are isomorphic it follows the
+isomorphism of a finite cyclic group and its dual.
+lemma (in finite-cyclic-group) Characters-iso:
+G ∼
+= Characters G
+proof −
+from finite-cyclic-group-Characters obtain f where f : finite-cyclic-group (Characters
+G) f .
+then interpret C : finite-cyclic-group Characters G f .
+have cyclic-group (Characters G) f by unfold-locales
+from iso-cyclic-groups-same-order[OF this order-Characters[symmetric]] show
+?thesis .
+qed
+
+The character groups of two isomorphic groups are also isomorphic.
+lemma (in finite-comm-group) iso-imp-iso-chars:
+assumes G ∼
+= H group H
+shows Characters G ∼
+= Characters H
+proof −
+interpret H : finite-comm-group H by (rule iso-imp-finite-comm[OF assms])
+from assms have H ∼
+= G using iso-sym by auto
+then obtain g where g: g ∈ iso H G unfolding is-iso-def by blast
+then interpret ggh: group-hom H G g by (unfold-locales, unfold iso-def , simp)
+let ?f = (λc a. if a ∈ carrier H then (c ◦ g) a else 0 )
+have ?f ∈ iso (Characters G) (Characters H )
+proof (intro isoI )
+interpret CG: finite-comm-group Characters G by (intro finite-comm-group-Characters)
+
+13
+
+interpret CH : finite-comm-group Characters H by (intro H .finite-comm-group-Characters)
+have f-in: ?f x ∈ carrier (Characters H ) if x ∈ carrier (Characters G) for x
+proof (unfold carrier-Characters characters-def , rule, unfold-locales)
+interpret character G x using that characters-def carrier-Characters by blast
+show (if
+V 1H ∈ carrier H then (x ◦ g) 1H else 0 ) 6= 0 using g iso-iff by auto
+show a. a ∈
+/ carrier H =⇒ (if a ∈ carrier H then (x ◦ g) a else 0 ) = 0 by
+simp
+show ?f x (a ⊗H b) = ?f x a ∗ ?f x b if a ∈ carrier H b ∈ carrier H for a b
+using that by auto
+qed
+show ?f ∈ hom (Characters G) (Characters H )
+proof (intro homI )
+show ?f x ∈ carrier (Characters H ) if x ∈ carrier (Characters G) for x
+using f-in[OF that] .
+show ?f (x ⊗Characters G y) = ?f x ⊗Characters H ?f y
+if x ∈ carrier (Characters G) y ∈ carrier (Characters G) for x y
+proof −
+interpret x: character G x using that characters-def carrier-Characters by
+blast
+interpret y: character G y using that characters-def carrier-Characters by
+blast
+show ?thesis using that mult-Characters[of G] mult-Characters[of H ] by
+auto
+qed
+qed
+show bij-betw ?f (carrier (Characters G)) (carrier (Characters H ))
+proof (intro bij-betwI )
+define f where f = inv-into (carrier H ) g
+hence f : f ∈ iso G H using H .iso-set-sym[OF g] by simp
+then interpret fgh: group-hom G H f by (unfold-locales, unfold iso-def , simp)
+let ?g = (λc a. if a ∈ carrier G then (c ◦ f ) a else 0 )
+show ?f ∈ carrier (Characters G) → carrier (Characters H ) using f-in by
+fast
+show ?g ∈ carrier (Characters H ) → carrier (Characters G)
+proof −
+have g-in: ?g x ∈ carrier (Characters G) if x ∈ carrier (Characters H ) for
+x
+proof (unfold carrier-Characters characters-def , rule, unfold-locales)
+interpret character H x using that characters-def carrier-Characters by
+blast
+show (if 1G ∈ carrier G then (x ◦ f ) 1G else 0 ) 6= 0 using f iso-iff by
+auto
+V
+show a. a ∈
+/ carrier G =⇒ (if a ∈ carrier G then (x ◦ f ) a else 0 ) = 0
+by simp
+show ?g x (a ⊗G b) = ?g x a ∗ ?g x b if a ∈ carrier G b ∈ carrier G for
+ab
+using that by auto
+qed
+thus ?thesis by simp
+
+14
+
+qed
+show ?f (?g x) = x if x: x ∈ carrier (Characters H ) for x
+proof −
+interpret character H x using x characters-def carrier-Characters by blast
+have ?f (?g x) a = x a if a: a ∈
+/ carrier H for a using a char-eq-0 [OF a]
+by auto
+moreover have ?f (?g x) a = x a if a: a ∈ carrier H for a
+proof −
+from a have inv-into (carrier H ) g (g a) = a
+by (simp add: g ggh.inj-iff-trivial-ker ggh.iso-kernel)
+thus ?thesis using a f-def by auto
+qed
+ultimately show ?thesis by fast
+qed
+show ?g (?f x) = x if x: x ∈ carrier (Characters G) for x
+proof −
+interpret character G x using x characters-def carrier-Characters by blast
+have ?g (?f x) a = x a if a: a ∈
+/ carrier G for a using a char-eq-0 [OF a]
+by auto
+moreover have ?g (?f x) a = x a if a: a ∈ carrier G for a using a f-def
+proof −
+from a have g (inv-into (carrier H ) g a) = a
+by (meson f-inv-into-f g ggh.iso-iff subset-iff )
+thus ?thesis using a f-def fgh.hom-closed by auto
+qed
+ultimately show ?thesis by fast
+qed
+qed
+qed
+thus ?thesis unfolding is-iso-def by blast
+qed
+
+The following two lemmas characterize the way a character behaves in a
+direct group product: a character on the product induces characters on each
+of the factors. Also, any character on the direct product can be decomposed
+into a pointwise product of characters on the factors.
+lemma DirProds-subchar:
+assumes finite-comm-group (DirProds Gs I )
+and x: x ∈ carrier (Characters (DirProds Gs I ))
+and i: i ∈ I
+and I : finite I
+defines g: g ≡ (λc. (λi∈I . (λa. c ((λi∈I . 1Gs i )(i:=a)))))
+shows character (Gs i) (g x i)
+proof −
+interpret DP: finite-comm-group DirProds Gs I by fact
+interpret xc: character DirProds Gs I x using x unfolding Characters-def
+characters-def by auto
+interpret Gi: finite-comm-group Gs i
+using i DirProds-finite-comm-group-iff [OF I ] DP.finite-comm-group-axioms by
+
+15
+
+blast
+V
+have allg: i. i∈I =⇒ group (Gs i) using DirProds-group-imp-groups[OF DP.is-group]
+.
+show ?thesis
+proof (unfold-locales)
+have (λi∈I . 1Gs i ) = (λi∈I . 1Gs i )(i := 1Gs i ) using i by force
+thus g x i 1Gs i 6= 0 using i g DirProds-one 00[of Gs I ] xc.char-one-nz by auto
+show g x i a = 0 if a: a ∈
+/ carrier (Gs i) for a
+proof −
+from a i have ((λi∈I . 1Gs i )(i := a)) ∈
+/ carrier (DirProds Gs I )
+unfolding DirProds-def by force
+from xc.char-eq-0 [OF this] show ?thesis using i g by auto
+qed
+show g x i (a ⊗Gs i b) = g x i a ∗ g x i b
+if ab: a ∈ carrier (Gs i) b ∈ carrier (Gs i) for a b
+proof −
+have g x i (a ⊗Gs i b)
+= x ((λi∈I . 1Gs i )(i := a) ⊗DirProds Gs I (λi∈I . 1Gs i )(i := b))
+proof −
+have ((λi∈I . 1Gs i )(i := a) ⊗DirProds Gs I (λi∈I . 1Gs i )(i := b))
+= ((λi∈I . 1Gs i )(i := (a ⊗Gs i b)))
+proof −
+have ((λi∈I . 1Gs i )(i := a) ⊗DirProds Gs I (λi∈I . 1Gs i )(i := b)) j
+= ((λi∈I . 1Gs i )(i := (a ⊗Gs i b))) j
+for j
+proof (cases j ∈ I )
+case True
+from allg[OF True] interpret Gj: group Gs j .
+show ?thesis using ab True i unfolding DirProds-mult by simp
+next
+case False
+then show ?thesis unfolding DirProds-mult using i by fastforce
+qed
+thus ?thesis by fast
+qed
+thus ?thesis using i g by auto
+qed
+also have . . . = x ((λi∈I . 1Gs i )(i := a)) ∗ x ((λi∈I . 1Gs i )(i := b))
+proof −
+have ac: ((λi∈I . 1Gs i )(i := a)) ∈ carrier (DirProds Gs I )
+unfolding DirProds-def using ab i monoid.one-closed[OF group.is-monoid[OF
+allg]] by force
+have bc: ((λi∈I . 1Gs i )(i := b)) ∈ carrier (DirProds Gs I )
+unfolding DirProds-def using ab i monoid.one-closed[OF group.is-monoid[OF
+allg]] by force
+from xc.char-mult[OF ac bc] show ?thesis .
+qed
+also have . . . = g x i a ∗ g x i b using i g by auto
+finally show ?thesis .
+
+16
+
+qed
+qed
+qed
+lemma Characters-DirProds-single-prod:
+assumes finite-comm-group (DirProds Gs I )
+and x: x ∈ carrier (Characters (DirProds Gs I ))
+and I : finite I
+defines g: g ≡ (λI . (λc. (λi∈I . (λa. c ((λi∈I .Q
+1Gs i )(i:=a))))))
+shows (λe. if e∈carrier(DirProds Gs I ) then
+i∈I . (g I x i) (e i) else 0 ) = x
+(is ?g x = x)
+proof
+show ?g x e = x e for e
+proof (cases e ∈ carrier (DirProds Gs I ))
+case True
+show ?thesis using I x assms(1 ) True unfolding g
+proof (induction I arbitrary: x e rule: finite-induct)
+case empty
+interpret DP: finite-comm-group DirProds Gs {} by fact
+from DirProds-empty[of Gs] have order (DirProds Gs {}) = 1 unfolding
+order-def by simp
+with DP.characters-in-order-1 [OF this] empty(1 ) show ?case
+using DirProds-empty[of Gs] unfolding Characters-def principal-char-def
+by auto
+next
+case j: (insert j I )
+interpret DP: finite-comm-group DirProds Gs (insert j I ) by fact
+interpret DP2 : finite-comm-group DirProds Gs I
+proof −
+from DirProds-finite-comm-group-iff [of insert j I Gs] DP.finite-comm-group-axioms
+j
+have (∀ i∈(insert j I ). finite-comm-group (Gs i)) by blast
+with DirProds-finite-comm-group-iff [OF j(1 ), of Gs] show finite-comm-group
+(DirProds Gs I )
+by blast
+qed
+interpret xc: character DirProds Gs (insert j I ) x
+using j(4V
+) unfolding Characters-def characters-def by simp
+have allg: i. i∈(insert j I ) =⇒ group (Gs i)
+using DirProds-group-imp-groups[OF DP.is-group] .
+have e1c: e(j:= 1Gs j ) ∈ carrier (DirProds Gs (insert j I ))
+using j(6 ) monoid.one-closed[OF group.is-monoid[OF allg[of j]]]
+unfolding DirProds-def PiE-def Pi-def by simp
+have e2c: (λi∈(insert j I ). 1Gs i )(j := e j) ∈ carrier (DirProds Gs (insert j
+I ))
+unfolding DirProds-def PiE-def Pi-def
+using monoid.one-closed[OF group.is-monoid[OF allg]] comp-in-carr[OF
+j(6 )] by auto
+have e = e(j:= 1Gs j ) ⊗DirProds Gs (insert j I ) (λi∈(insert j I ). 1Gs i )(j :=
+
+17
+
+e j)
+proof −
+have e k
+= (e(j:= 1Gs j ) ⊗DirProds Gs (insert j I ) (λi∈(insert j I ). 1Gs i )(j := e
+j)) k
+for k
+proof (cases k∈(insert j I ))
+case k: True
+from allg[OF k] interpret Gk: group Gs k .
+from allg[of j] interpret Gj: group Gs j by simp
+from k show ?thesis unfolding comp-mult[OF k] using comp-in-carr[OF
+j(6 ) k] by auto
+next
+case False
+then show ?thesis using j(6 ) unfolding DirProds-def by auto
+qed
+thus ?thesis by blast
+qed
+hence x e = x (e(j:= 1Gs j )) ∗ x ((λi∈(insert j I ). 1Gs i )(j := e j))
+using xc.char-mult[OF
+e1c e2c] by argo
+Q
+also have . . . = ( i∈I . g (insert j I ) x i (e i)) ∗ g (insert j I ) x j (e j)
+proof −
+Q
+have x (e(j:= 1Gs j )) = ( i∈I . g (insert j I ) x i (e i))
+proof −
+have eu: e(j:=undefined) ∈ carrier (DirProds Gs I ) using j(2 , 6 )
+unfolding DirProds-def PiE-def Pi-def extensional-def by fastforce
+let ?x = λp. if p∈carrier(DirProds Gs I ) then x (p(j:= 1Gs j )) else 0
+have cx2 : character (DirProds Gs I ) ?x
+proof
+show ?x 1DirProds Gs I 6= 0
+proof −
+have 1DirProds Gs I (j := 1Gs j ) = 1DirProds Gs (insert j I )
+unfolding DirProds-one 00 by force
+thus ?thesis by simp
+qed
+show ?x a = 0 if a: a ∈
+/ carrier (DirProds Gs I ) for a using a by argo
+show ?x (a ⊗DirProds Gs I b) = ?x a ∗ ?x b
+if ab: a ∈ carrier (DirProds Gs I ) b ∈ carrier (DirProds Gs I ) for a b
+proof −
+have ac: a(j := 1Gs j ) ∈ carrier (DirProds Gs (insert j I ))
+using ab monoid.one-closed[OF group.is-monoid[OF allg[of j]]]
+unfolding DirProds-def PiE-def Pi-def by simp
+have bc: b(j := 1Gs j ) ∈ carrier (DirProds Gs (insert j I ))
+using ab monoid.one-closed[OF group.is-monoid[OF allg[of j]]]
+unfolding DirProds-def PiE-def Pi-def by simp
+have m: ((a ⊗DirProds Gs I b)(j := 1Gs j ))
+= (a(j := 1Gs j ) ⊗DirProds Gs (insert j I ) b(j := 1Gs j ))
+proof −
+
+18
+
+have ((a ⊗DirProds Gs I b)(j := 1Gs j )) h
+= (a(j := 1Gs j ) ⊗DirProds Gs (insert j I ) b(j := 1Gs j )) h
+if h: h∈(insert j I ) for h
+proof (cases h=j)
+case True
+interpret Gj: group Gs j using allg[of j] by blast
+from True comp-mult[OF h, of Gs a(j := 1Gs j ) b(j := 1Gs j )]
+show ?thesis
+by auto
+next
+case False
+interpret Gj: group Gs h using allg[OF h] .
+from False h comp-mult[OF h, of Gs a(j := 1Gs j ) b(j := 1Gs j )]
+comp-mult[of h I Gs a b]
+show ?thesis by auto
+qed
+moreover have ((a ⊗DirProds Gs I b)(j := 1Gs j )) h
+= (a(j := 1Gs j ) ⊗DirProds Gs (insert j I ) b(j := 1Gs j )) h
+if h: h ∈(insert
+/
+j I ) for h using h unfolding DirProds-def PiE-def
+by simp
+ultimately show ?thesis by blast
+qed
+have x ((a ⊗DirProds Gs I b)(j := 1Gs j ))
+= x (a(j := 1Gs j )) ∗ x (b(j := 1Gs j ))
+by (unfold m, intro xc.char-mult[OF ac bc])
+thus ?thesis using ab by auto
+qed
+qed
+then interpret cx2 : character DirProds Gs I ?x .
+from cx2 have cx3 :?x ∈ carrier (Characters (DirProds Gs I ))
+unfolding Characters-def characters-def by simp
+from j(3 )[OF cx3 DP2 .finite-comm-group-axioms eu] have
+(if e(j:=undefined)
+∈ carrier (DirProds Gs I )
+Q
+then
+i∈I . g I ?x i ((e(j:=undefined)) i)
+else 0 ) = ?x (e(j:=undefined))
+using eu j(2 ) Q
+unfolding g by fast
+with eu have ( i∈I . g I (λp. if p ∈ carrier (DirProds Gs I )
+then x (p(j := 1Gs j ))
+else 0 ) i ((e(j := undefined)) i)) = x (e(j :=
+1Gs j ))
+by simp
+moreover have g I (λa. if a ∈ carrier (DirProds Gs I )
+then x (a(j := 1Gs j ))
+else 0 ) i ((e(j := undefined)) i) = g (insert j I ) x i (e i)
+if i: i∈I for i
+proof −
+have (λi∈I . 1Gs i )(i := e i) ∈ carrier (DirProds Gs I )
+unfolding DirProds-def PiE-def Pi-def extensional-def
+
+19
+
+using monoid.one-closed[OF group.is-monoid[OF allg]] comp-in-carr[OF
+j(6 )] i by simp
+moreover have ((λi∈I . 1Gs i )(i := e i, j := 1Gs j ))
+= ((λi∈insert j I . 1Gs i )(i := e i)) using i j(2 ) by auto
+ultimately show ?thesis using i j(2 , 4 , 6 ) unfolding g by auto
+qed
+ultimately show ?thesis by simp
+qed
+moreover have x ((λi∈(insert j I ). 1Gs i )(j := e j)) = g (insert j I ) x j (e
+j)
+unfolding g by simp
+ultimately show ?thesis by argo
+qed
+finally show ?case using j unfolding g by auto
+qed
+next
+case False
+interpret xc: character DirProds Gs I x
+using x unfolding Characters-def characters-def by simp
+from xc.char-eq-0 [OF False] False show ?thesis by argo
+qed
+qed
+
+This allows for the following: the character group of a direct product is
+isomorphic to the direct product of the character groups of the factors.
+lemma (in finite-comm-group) Characters-DirProds-iso:
+assumes DirProds Gs I ∼
+= G group (DirProds Gs I ) finite I
+shows DirProds (Characters ◦ Gs) I ∼
+= Characters G
+proof −
+interpret DP: group DirProds Gs I by fact
+interpret DP: finite-comm-group DirProds Gs I
+by (intro iso-imp-finite-comm[OF DP.iso-sym[OF assms(1 )]], unfold-locales)
+interpret DPC : finite-comm-group DirProds (Characters ◦ Gs) I
+using DirProds-finite-comm-group-iff [OF assms(3 ), of Characters ◦ Gs]
+DirProds-finite-comm-group-iff [OF assms(3 ), of Gs]
+DP.finite-comm-group-axioms finite-comm-group.finite-comm-group-Characters
+by auto
+interpret CDP: finite-comm-group Characters (DirProds Gs I )
+using DP.finite-comm-group-Characters .
+interpret C : finite-comm-group Characters G using finite-comm-group-Characters
+.
+V
+have allg: i. i∈I =⇒ group (Gs i) using DirProds-group-imp-groups[OF assms(2 )]
+.
+Q
+let ?f = (λcp. (λe. (if e∈carrier (DirProds Gs I ) then i∈I . cp i (e i) else 0 )))
+have f-in: ?f x ∈ carrier (Characters (DirProds Gs I ))
+if x: x ∈ carrier (DirProds (Characters ◦ Gs) I ) for x
+proof (unfold carrier-Characters characters-def , safe, unfold-locales)
+show ?f x 1DirProds Gs I 6= 0
+proof −
+
+20
+
+have x i (1DirProds Gs I i) 6= 0 if i: i ∈ I for i
+proof −
+interpret Gi: finite-comm-group Gs i
+using DirProds-finite-comm-group-iff [OF assms(3 )] DP.finite-comm-group-axioms
+i by blast
+interpret xi: character Gs i x i
+using i x unfolding DirProds-def Characters-def characters-def by auto
+show ?thesis using DirProds-one 0[OF i, of Gs] by simp
+qed
+thus ?thesis by (simp add: assms(3 ))
+qed
+show ?f x a = 0 if a ∈
+/ carrier (DirProds Gs I ) for a using that by simp
+show ?f x (a ⊗DirProds Gs I b) = ?f x a ∗ ?f x b
+if ab: a ∈ carrier (DirProds Gs I ) b ∈ carrier (DirProds Gs I ) for a b
+proof −
+have a ⊗DirProds Q
+Gs I b ∈ carrier (DirProds Gs I ) using that by blast
+moreover have
+(
+i∈I . x i ((a ⊗Q
+DirProds Gs I b) i))
+Q
+= ( i∈I . x i (a i)) ∗ ( i∈I . x i (b i))
+proof −
+have x i ((a ⊗DirProds Gs I b) i) = x i (a i) ∗ x i (b i) if i: i∈I for i
+proof −
+interpret xi: character Gs i x i
+using i x unfolding DirProds-def Characters-def characters-def by auto
+show ?thesis using ab comp-mult[OF i, of Gs a b] by(auto simp:
+comp-in-carr[OF - i])
+qed
+thus ?thesis using prod.distrib by force
+qed
+ultimately show ?thesis using that by auto
+qed
+qed
+have ?f ∈ iso (DirProds (Characters ◦ Gs) I ) (Characters (DirProds Gs I ))
+proof (intro isoI )
+show ?f ∈ hom (DirProds (Characters ◦ Gs) I ) (Characters (DirProds Gs I ))
+proof (intro homI )
+show ?f x ∈ carrier (Characters (DirProds Gs I ))
+if x: x ∈ carrier (DirProds (Characters ◦ Gs) I ) for x using f-in[OF that] .
+show ?f (x ⊗DirProds (Characters ◦ Gs) I y) = ?f x ⊗Characters (DirProds Gs I )
+?f y
+if x ∈ carrier (DirProds (Characters ◦ Gs) I ) y ∈ carrier (DirProds
+(Characters ◦ Gs) I )
+for x y
+proof −
+have ?f x ⊗Characters (DirProds Gs I ) ?f y
+Q
+Q
+= (λe. if e ∈ carrier (DirProds Gs I ) then ( i∈I . x i (e i)) ∗ ( i∈I . y i
+(e i)) else 0 )
+unfolding Characters-def by auto
+also have . . . = ?f (x ⊗DirProds (Characters ◦ Gs) I y)
+proof −
+
+21
+
+Q
+Q
+have (Q i∈I . x i (e i)) ∗ ( i∈I . y i (e i))
+= ( i∈I . (x ⊗DirProds (Characters ◦ Gs) I y) i (e i)) for e
+unfolding DirProds-def Characters-def by (auto simp: prod.distrib)
+thus ?thesis by presburger
+qed
+finally show ?thesis by argo
+qed
+qed
+then interpret fgh: group-hom DirProds (Characters ◦ Gs) I Characters
+(DirProds Gs I ) ?f
+by (unfold-locales, simp)
+show bij-betw ?f (carrier (DirProds (Characters ◦ Gs) I )) (carrier (Characters
+(DirProds Gs I )))
+proof (intro bij-betwI )
+let ?g = (λc. (λi∈I . (λa. c ((λi∈I . 1Gs i )(i:=a)))))
+have allc: character (Gs i) (?g x i)
+if x: x ∈ carrier (Characters (DirProds Gs I )) and i: i ∈ I for x i
+using DirProds-subchar[OF DP.finite-comm-group-axioms x i assms(3 )] .
+have g-in: ?g x ∈ carrier (DirProds (Characters ◦ Gs) I )
+if x: x ∈ carrier (Characters (DirProds Gs I )) for x
+using allc[OF x] unfolding DirProds-def Characters-def characters-def by
+simp
+show fi: ?f ∈ carrier (DirProds (Characters ◦ Gs) I ) → carrier (Characters
+(DirProds Gs I ))
+using f-in by fast
+show gi: ?g ∈ carrier (Characters (DirProds Gs I )) → carrier (DirProds
+(Characters ◦ Gs) I )
+using g-in by fast
+show ?f (?g x) = x if x: x ∈ carrier (Characters (DirProds Gs I )) for x
+proof −
+from x interpret x: character DirProds Gs I x unfolding Characters-def
+characters-def
+by auto
+from f-in[OF g-in[OF x]] interpret character DirProds Gs I ?f (?g x)
+unfolding
+Characters-def characters-def by simp
+Q
+have ( i∈I . (λi∈I . λa. x ((λi∈I . 1Gs i )(i := a))) i (e i)) = x e
+if e: e ∈ carrier (DirProds Gs I ) for e
+proof −
+define y where y: y = (λe.Qif e ∈ carrier (DirProds Gs I )
+then
+i∈I . (λi∈I . λa. x ((λi∈I . 1Gs i )(i := a))) i
+(e i)
+else 0 )
+from Characters-DirProds-single-prod[OF DP.finite-comm-group-axioms x
+assms(3 )]
+have y = x using y by force
+hence y e = x e by blast
+thus ?thesis using e unfolding y by argo
+qed
+with x.char-eq-0 show ?thesis by force
+
+22
+
+qed
+show ?g (?f x) = x if x: x ∈ carrier (DirProds (Characters ◦ Gs) I ) for x
+proof (intro eq-parts-imp-eq[OF g-in[OF f-in[OF x]] x])
+show ?g (?f x) i = x i if i: i∈I for i
+proof −
+interpret xi: character Gs i x i
+using x i unfolding DirProds-def Characters-def characters-def by auto
+have ?g (?f x) i a = x i a if a: a ∈carrier
+/
+(Gs i) for a
+proof −
+have (λi∈I . 1Gs i )(i := a) ∈
+/ carrier (DirProds Gs I )
+using a i unfolding DirProds-def PiE-def Pi-def by auto
+with xi.char-eq-0 [OF a] a i show ?thesis by auto
+qed
+moreover have ?g (?f x) i a = x i a if a: a∈carrier (Gs i) for a
+proof −
+have (λi∈I . 1Gs i )(i := a) ∈ carrier (DirProds Gs I )
+using a i monoid.one-closed[OF group.is-monoid[OF allg]]
+unfolding DirProds-def
+by force
+Q
+moreover have ( j∈I . x j (((λi∈I . 1Gs i )(i := a)) j)) = x i a
+proof −Q
+have ( j∈I . x j (((λi∈I . 1Gs i )(i :=Qa)) j))
+= x i (((λi∈I . 1Gs i )(i := a)) i) ∗ ( j∈I −{i}. x j (((λi∈I . 1Gs i )(i
+:= a)) j))
+by (meson assms(3 ) i prod.remove)
+moreover have x j (((λi∈I . 1Gs i )(i := a)) j) = 1 if j: j∈I j 6= i for j
+proof −
+interpret xj: character Gs j x j
+using j(1 ) x unfolding DirProds-def Characters-def characters-def
+by auto
+show ?thesis using j by auto
+qed
+moreover have x i (((λi∈I . 1Gs i )(i := a)) i) = x i a by simp
+ultimately show ?thesis by auto
+qed
+ultimately show ?thesis using a i by simp
+qed
+ultimately show ?thesis by blast
+qed
+qed
+qed
+qed
+hence DirProds (Characters ◦ Gs) I ∼
+= Characters (DirProds Gs I ) unfolding
+is-iso-def by blast
+moreover have Characters (DirProds Gs I ) ∼
+= Characters G
+using DP.iso-imp-iso-chars[OF assms(1 ) is-group] .
+ultimately show ?thesis using iso-trans by blast
+qed
+
+As thus both the group and its character group can be decomposed into the
+23
+
+same cyclic factors, the isomorphism follows for any finite abelian group.
+theorem (in finite-comm-group) Characters-iso:
+shows G ∼
+= Characters G
+proof −
+from cyclic-product obtain ns
+where ns: DirProds (λn. Z (ns ! n)) {..<length ns} ∼
+= G ∀ n∈set ns. n 6= 0 .
+interpret DP: group DirProds (λn. Z (ns ! n)) {..<length ns}
+by (intro DirProds-is-group, auto)
+have G ∼
+= DirProds (λn. Z (ns ! n)) {..<length ns} using DP.iso-sym[OF ns(1 )]
+.
+moreover have DirProds (Characters ◦ (λn. Z (ns ! n))) {..<length ns} ∼
+=
+Characters G
+by (intro Characters-DirProds-iso[OF ns(1 ) DirProds-is-group], auto)
+moreover have DirProds (λn. Z (ns ! n)) {..<length ns}
+∼
+= DirProds (Characters ◦ (λn. Z (ns ! n))) {..<length ns}
+proof (intro DirProds-iso1 )
+fix i assume i: i ∈ {..<length ns}
+obtain a where cyclic-group (Z (ns!i)) a using Zn-cyclic-group .
+then interpret Zi: cyclic-group Z (ns!i) a .
+interpret Zi: finite-cyclic-group Z (ns!i) a
+proof
+have order (Z (ns ! i)) 6= 0 using ns(2 ) i Zn-order by simp
+thus finite (carrier (Z (ns ! i))) unfolding order-def by (simp add: card-eq-0-iff )
+qed
+show Group.group ((Characters ◦ (λn. Z (ns ! n))) i)
+Group.group (Z (ns ! i)) Z (ns ! i) ∼
+= (Characters ◦ (λn. Z (ns ! n))) i
+using Zi.Characters-iso Zi.finite-comm-group-Characters comm-group-def finite-comm-group-def
+by auto
+qed
+ultimately show ?thesis by (auto elim: iso-trans)
+qed
+
+Hence, the orders are also equal.
+corollary (in finite-comm-group) order-Characters:
+order (Characters G) = order G
+using iso-same-card[OF Characters-iso] unfolding order-def by argo
+corollary (in finite-comm-group) card-characters: card (characters G) = order G
+using order-Characters unfolding order-def Characters-def by simp
+
+1.5
+
+Non-trivial facts about characters
+
+We characterize the character group of a quotient group as the group of
+characters that map all elements of the subgroup onto 1.
+lemma (in finite-comm-group) iso-Characters-FactGroup:
+assumes H : subgroup H G
+shows (λχ x. if x ∈ carrier G then χ (H #> x) else 0 ) ∈
+
+24
+
+iso (Characters (G Mod H )) ((Characters G)(|carrier := {χ∈characters
+G. ∀ x∈H . χ x = 1 }|))
+proof −
+interpret H : normal H G using subgroup-imp-normal[OF H ] .
+interpret Chars: finite-comm-group Characters G
+by (rule finite-comm-group-Characters)
+interpret Fact: comm-group G Mod H
+by (simp add: H .subgroup-axioms comm-group.abelian-FactGroup comm-group-axioms)
+interpret Fact: finite-comm-group G Mod H
+by unfold-locales (auto simp: carrier-FactGroup)
+define C :: ( 0a ⇒ complex) set where C = {χ∈characters G. ∀ x∈H . χ x = 1 }
+interpret C : subgroup C Characters G
+proof (unfold-locales, goal-cases)
+case 1
+thus ?case
+by (auto simp: C-def one-Characters mult-Characters carrier-Characters characters-def )
+next
+case 2
+thus ?case
+by (auto simp: C-def one-Characters mult-Characters carrier-Characters characters-def )
+next
+case 3
+thus ?case
+by (auto simp: C-def one-Characters mult-Characters
+carrier-Characters characters-def principal-char-def )
+next
+case (4 χ)
+hence inv Characters G χ = inv-character χ
+by (subst inv-Characters 0) (auto simp: C-def carrier-Characters)
+moreover have inv-character χ ∈ characters G
+using 4 by (auto simp: C-def characters-def )
+moreover have ∀ x∈H . inv-character χ x = 1
+using 4 by (auto simp: C-def inv-character-def )
+ultimately show ?case
+by (auto simp: C-def )
+qed
+define f :: ( 0a set ⇒ complex) ⇒ ( 0a ⇒ complex)
+where f = (λχ x. if x ∈ carrier G then χ (H #> x) else 0 )
+have [intro]: character G (f χ) if character (G Mod H ) χ for χ
+proof −
+interpret character G Mod H χ by fact
+show ?thesis
+proof (unfold-locales, goal-cases)
+case 1
+
+25
+
+thus ?case by (auto simp: f-def char-eq-0-iff carrier-FactGroup)
+next
+case (2 x)
+thus ?case by (auto simp: f-def )
+next
+case (3 x y)
+have χ (H #> x) ∗ χ (H #> y) = χ ((H #> x) ⊗G Mod H (H #> y))
+using 3 by (intro char-mult [symmetric]) (auto simp: carrier-FactGroup)
+also have (H #> x) ⊗G Mod H (H #> y) = H #> (x ⊗ y)
+using 3 by (simp add: H .rcos-sum)
+finally show ?case
+using 3 by (simp add: f-def )
+qed
+qed
+have [intro]: f χ ∈ C if character (G Mod H ) χ for χ
+proof −
+interpret χ: character G Mod H χ
+by fact
+have character G (f χ)
+using χ.character-axioms by auto
+moreover have χ (H #> x) = 1 if x ∈ H for x
+using that H .rcos-const χ.char-one by force
+ultimately show ?thesis
+by (auto simp: carrier-Characters C-def characters-def f-def )
+qed
+show f ∈ iso (Characters (G Mod H )) ((Characters G)(|carrier := C |))
+proof (rule isoI )
+show f ∈ hom (Characters (G Mod H )) (Characters G(|carrier := C |))
+proof (rule homI , goal-cases)
+case (1 χ)
+thus ?case
+by (auto simp: carrier-Characters characters-def )
+qed (auto simp: f-def carrier-Characters fun-eq-iff mult-Characters)
+next
+have bij-betw f (characters (G Mod H )) C
+unfolding bij-betw-def
+proof
+show inj: inj-on f (characters (G Mod H ))
+proof (rule inj-onI , goal-cases)
+case (1 χ1 χ2 )
+interpret χ1 : character G Mod H χ1
+using 1 by (auto simp: characters-def )
+interpret χ2 : character G Mod H χ2
+using 1 by (auto simp: characters-def )
+have χ1 H 0 = χ2 H 0 for H 0
+proof (cases H 0 ∈ carrier (G Mod H ))
+
+26
+
+case False
+thus ?thesis by (simp add: χ1 .char-eq-0 χ2 .char-eq-0 )
+next
+case True
+then obtain x where x: x ∈ carrier G H 0 = H #> x
+by (auto simp: carrier-FactGroup)
+from 1 have f χ1 x = f χ2 x
+by simp
+with x show ?thesis
+by (auto simp: f-def )
+qed
+thus χ1 = χ2 by force
+qed
+have f ‘ characters (G Mod H ) ⊆ C
+by (auto simp: characters-def )
+moreover have C ⊆ f ‘ characters (G Mod H )
+proof safe
+fix χ assume χ: χ ∈ C
+from χ interpret character G χ
+by (auto simp: C-def characters-def )
+have [simp]: χ x = 1 if x ∈ H for x
+using χ that by (auto simp: C-def )
+have ∀ H 0∈carrier (G Mod H ). ∃ x∈carrier G. H 0 = H #> x
+by (auto simp: carrier-FactGroup)
+then obtain h where h: h H 0 ∈ carrier G H 0 = H #> h H 0 if H 0 ∈ carrier
+(G Mod H ) for H 0
+by metis
+define χ 0 where χ 0 = (λH 0. if H 0 ∈ carrier (G Mod H ) then χ (h H 0) else
+0)
+have χ-cong: χ x = χ y if H #> x = H #> y x ∈ carrier G y ∈ carrier
+G for x y
+proof −
+have x ∈ H #> x
+by (simp add: H .subgroup-axioms rcos-self that(2 ))
+also have . . . = H #> y
+by fact
+finally obtain z where z: z ∈ H x = z ⊗ y
+unfolding r-coset-def by auto
+thus ?thesis
+using z H .subset that by simp
+qed
+have character (G Mod H ) χ 0
+proof (unfold-locales, goal-cases)
+case 1
+have H : H ∈ carrier (G Mod H )
+
+27
+
+using Fact.one-closed unfolding one-FactGroup .
+with h[of H ] have h H ∈ carrier G
+by blast
+thus ?case using H
+by (auto simp: char-eq-0-iff χ 0-def )
+next
+case (2 H 0)
+thus ?case by (auto simp: χ 0-def )
+next
+case (3 H1 H2 )
+from 3 have H12 : H1 <#> H2 ∈ carrier (G Mod H )
+using Fact.m-closed by force
+have χ (h (H1 <#> H2 )) = χ (h H1 ⊗ h H2 )
+proof (rule χ-cong)
+show H #> h (H1 <#> H2 ) = H #> (h H1 ⊗ h H2 )
+by (metis 3 H .rcos-sum H12 h)
+qed (use 3 h[of H1 ] h[of H2 ] h[OF H12 ] in auto)
+thus ?case
+using 3 H12 h[of H1 ] h[of H2 ] by (auto simp: χ 0-def )
+qed
+moreover have f χ 0 x = χ x for x
+proof (cases x ∈ carrier G)
+case False
+thus ?thesis
+by (auto simp: f-def χ 0-def char-eq-0-iff )
+next
+case True
+hence ∗: H #> x ∈ carrier (G Mod H )
+by (auto simp: carrier-FactGroup)
+have χ (h (H #> x)) = χ x
+using True ∗ h[of H #> x] by (intro χ-cong) auto
+thus ?thesis
+using True ∗ by (auto simp: f-def fun-eq-iff χ 0-def )
+qed
+hence f χ 0 = χ by force
+ultimately show χ ∈ f ‘ characters (G Mod H )
+unfolding characters-def by blast
+qed
+ultimately show f ‘ characters (G Mod H ) = C
+by blast
+qed
+thus bij-betw f (carrier (Characters (G Mod H ))) (carrier (Characters G(|carrier
+:= C |)))
+by (simp add: carrier-Characters)
+qed
+
+28
+
+qed
+lemma (in finite-comm-group) is-iso-Characters-FactGroup:
+assumes H : subgroup H G
+shows Characters (G Mod H ) ∼
+= (Characters G)(|carrier := {χ∈characters G.
+∀ x∈H . χ x = 1 }|)
+using iso-Characters-FactGroup[OF assms] unfolding is-iso-def by blast
+
+In order to derive the number of extensions a character on a subgroup has to
+the entire group, we introduce the group homomorphism restrict-char that
+restricts a character to a given subgroup H.
+definition restrict-char:: 0a set ⇒ ( 0a ⇒ complex) ⇒ ( 0a ⇒ complex) where
+restrict-char H χ = (λe. if e∈H then χ e else 0 )
+lemma (in finite-comm-group) restrict-char-hom:
+assumes subgroup H G
+shows group-hom (Characters G) (Characters (G(|carrier := H |))) (restrict-char
+H)
+proof −
+let ?CG = Characters G
+let ?H = G(|carrier := H |)
+let ?CH = Characters ?H
+interpret H : subgroup H G by fact
+interpret H : finite-comm-group ?H by (simp add: assms subgroup-imp-finite-comm-group)
+interpret CG: finite-comm-group ?CG using finite-comm-group-Characters .
+interpret CH : finite-comm-group ?CH using H .finite-comm-group-Characters .
+show ?thesis
+proof (unfold-locales, intro homI )
+show restrict-char H x ∈ carrier ?CH if x: x ∈ carrier ?CG for x
+proof −
+interpret xc: character G x using x unfolding Characters-def characters-def
+by simp
+have character ?H (restrict-char H x)
+by (unfold restrict-char-def , unfold-locales, auto)
+thus ?thesis unfolding Characters-def characters-def by simp
+qed
+show restrict-char H (x ⊗?CG y) = restrict-char H x ⊗?CH restrict-char H y
+if x: x ∈ carrier ?CG and y: y ∈ carrier ?CG for x y
+proof −
+interpret xc: character G x using x unfolding Characters-def characters-def
+by simp
+interpret yc: character G y using y unfolding Characters-def characters-def
+by simp
+show ?thesis unfolding Characters-def restrict-char-def by auto
+qed
+qed
+qed
+
+The kernel is just the set of the characters that are 1 on all of H.
+29
+
+lemma (in finite-comm-group) restrict-char-kernel:
+assumes subgroup H G
+shows kernel (Characters G) (Characters (G(|carrier := H |))) (restrict-char H )
+= {χ∈characters G. ∀ x∈H . χ x = 1 }
+by (unfold restrict-char-def kernel-def one-Characters
+carrier-Characters principal-char-def characters-def , simp, metis)
+
+Also, all of the characters on the subgroup are the image of some character
+on the whole group.
+lemma (in finite-comm-group) restrict-char-image:
+assumes subgroup H G
+shows restrict-char H ‘ (carrier (Characters G)) = carrier (Characters (G(|carrier
+:= H |)))
+proof −
+interpret H : subgroup H G by fact
+interpret H : finite-comm-group G(|carrier := H |) using subgroup-imp-finite-comm-group[OF
+assms] .
+interpret r: group-hom Characters G Characters (G(|carrier := H |)) restrict-char
+H
+using restrict-char-hom[OF assms] .
+interpret Mod: finite-comm-group G Mod H using finite-comm-FactGroup[OF
+assms] .
+interpret CG: finite-comm-group Characters G using finite-comm-group-Characters
+.
+have c1 : order (Characters (G(|carrier := H |))) = card H using H .order-Characters
+unfolding order-def by simp
+have card H ∗ card (kernel (Characters G) (Characters (G(|carrier := H |)))
+(restrict-char H ))
+= order G
+using restrict-char-kernel[OF assms] iso-same-card[OF is-iso-Characters-FactGroup[OF
+assms]]
+Mod.order-Characters lagrange[OF assms] unfolding order-def FactGroup-def
+by (force simp: algebra-simps)
+moreover have card (kernel (Characters G) (Characters (G(|carrier := H |)))
+(restrict-char H )) 6= 0
+using r.one-in-kernel unfolding kernel-def CG.fin by auto
+ultimately have c2 : card H = card (restrict-char H ‘ carrier (Characters G))
+using r.image-kernel-product[unfolded order-Characters] by (metis mult-right-cancel)
+have restrict-char H ‘ (carrier (Characters G)) ⊆ carrier (Characters (G(|carrier
+:= H |)))
+by auto
+with c2 H .fin show ?thesis
+by (auto, metis H .finite-imp-card-positive c1 card-subset-eq fin-gen
+order-def r.H .order-gt-0-iff-finite)
+qed
+
+30
+
+It follows that any character on H can be extended to a character on G.
+lemma (in finite-comm-group) character-extension-exists:
+assumes subgroup H G character (G(|carrier
+:= H |)) χ
+V
+obtains χ 0 where character G χ 0 and x. x ∈ H =⇒ χ 0 x = χ x
+proof −
+from restrict-char-image[OF assms(1 )] assms(2 ) obtain χ 0
+where chi 0: restrict-char H χ 0 = χ character G χ 0
+by (force simp: carrier-Characters characters-def )
+thus ?thesis using that restrict-char-def by metis
+qed
+
+For two characters on a group G the number of characters on subgroup H
+that share the values with them is the same for both.
+lemma (in finite-comm-group) character-restrict-card:
+assumes subgroup H G character G a character G b
+shows card {χ 0∈characters G. ∀ x∈H . χ 0 x = a x} = card {χ 0∈characters G.
+∀ x∈H . χ 0 x = b x}
+proof −
+interpret H : subgroup H G by fact
+interpret H : finite-comm-group G(|carrier := H |) using assms(1 )
+by (simp add: subgroup-imp-finite-comm-group)
+interpret CG: finite-comm-group Characters G using finite-comm-group-Characters
+.
+interpret a: character G a by fact
+interpret b: character G b by fact
+have ac: a ∈ carrier (Characters G) unfolding Characters-def characters-def
+using assms by simp
+have bc: b ∈ carrier (Characters G) unfolding Characters-def characters-def
+using assms by simp
+define f where f : f = (λc. b ⊗Characters G inv Characters G a ⊗Characters G c)
+define g where g: g = (λc. a ⊗Characters G inv Characters G b ⊗Characters G c)
+let ?A = {χ 0∈characters G. ∀ x∈H . χ 0 x = a x}
+let ?B = {χ 0∈characters G. ∀ x∈H . χ 0 x = b x}
+have bij-betw f ?A ?B
+proof (intro bij-betwI [of - - - g])
+show f ∈ ?A → ?B
+proof
+show f x ∈ ?B if x: x ∈ ?A for x
+proof −
+interpret xc: character G x using x unfolding characters-def by blast
+have xc: x ∈ carrier (Characters G) using x unfolding Characters-def by
+simp
+have f x y = b y if y: y ∈ H for y
+proof −
+have (inv Characters G a) y ∗ a y = 1
+by (simp add: a.inv-Characters a.mult-inv-character mult.commute
+principal-char-def y)
+thus ?thesis unfolding f mult-Characters using x y by fastforce
+qed
+
+31
+
+thus f x ∈ ?B unfolding f carrier-Characters[symmetric] using ac bc xc
+by blast
+qed
+qed
+show g ∈ ?B → ?A
+proof
+show g x ∈ ?A if x: x ∈ ?B for x
+proof −
+interpret xc: character G x using x unfolding characters-def by blast
+have xc: x ∈ carrier (Characters G) using x unfolding Characters-def by
+simp
+have g x y = a y if y: y ∈ H for y
+proof −
+have (inv Characters G b) y ∗ x y = 1 using x y
+by (simp add: b.inv-Characters b.mult-inv-character mult.commute
+principal-char-def )
+thus ?thesis unfolding g mult-Characters by simp
+qed
+thus g x ∈ ?A unfolding g carrier-Characters[symmetric] using ac bc xc
+by blast
+qed
+qed
+show g (f x) = x if x: x ∈ ?A for x
+proof −
+have xc: x ∈ carrier (Characters G) using x unfolding Characters-def by
+force
+with ac bc show ?thesis unfolding f g
+by (auto simp: CG.m-assoc[symmetric],
+metis CG.inv-closed CG.inv-comm CG.l-inv CG.m-assoc CG.r-one)
+qed
+show f (g x) = x if x: x ∈ ?B for x
+proof −
+have xc: x ∈ carrier (Characters G) using x unfolding Characters-def by
+force
+with ac bc show ?thesis unfolding f g
+by (auto simp: CG.m-assoc[symmetric],
+metis CG.inv-closed CG.inv-comm CG.l-inv CG.m-assoc CG.r-one)
+qed
+qed
+thus ?thesis using bij-betw-same-card by blast
+qed
+
+These lemmas allow to show that the number of extensions of a character
+on H to a character on G is just |G|/|H|.
+theorem (in finite-comm-group) card-character-extensions:
+assumes subgroup H G character (G(|carrier := H |)) χ
+shows card {χ 0∈characters G. ∀ x∈H . χ 0 x = χ x} ∗ card H = order G
+proof −
+interpret H : subgroup H G by fact
+
+32
+
+interpret H : finite-comm-group G(|carrier := H |)
+using subgroup-imp-finite-comm-group[OF assms(1 )] .
+interpret chi: character G(|carrier := H |) χ by fact
+interpret C : finite-comm-group Characters G using finite-comm-group-Characters
+.
+interpret Mod: finite-comm-group G Mod H using finite-comm-FactGroup[OF
+assms(1 )] .
+obtain a where a: a ∈ carrier (Characters G) restrict-char H a = χ
+proof −
+have ∃ a∈carrier (Characters G). restrict-char H a = χ
+using restrict-char-image[OF assms(1 )] assms(2 )
+unfolding carrier-Characters characters-def image-def by force
+thus ?thesis using that by blast
+qed
+show ?thesis
+proof −
+have p: {χ∈characters G. ∀ x∈H . χ x = 1 } = {χ∈characters G. ∀ x∈H . χ x
+= principal-char G x}
+unfolding principal-char-def by force
+have ac: {χ 0∈characters G. ∀ x∈H . χ 0 x = χ x} = {χ 0∈characters G. ∀ x∈H .
+χ 0 x = a x}
+using a(2 ) unfolding restrict-char-def by force
+have card {χ∈characters G. ∀ x∈H . χ x = 1 } = card {χ 0∈characters G. ∀ x∈H .
+χ 0 x = χ x}
+by (unfold ac p; intro character-restrict-card[OF assms(1 )],
+use a[unfolded Characters-def characters-def ] in auto)
+moreover have card {χ∈characters G. ∀ x∈H . χ x = 1 } = card (carrier (G
+Mod H ))
+using iso-same-card[OF is-iso-Characters-FactGroup[OF assms(1 )]]
+Mod.order-Characters[unfolded order-def ] by force
+moreover have card (carrier (G Mod H )) ∗ card H = order G
+using lagrange[OF assms(1 )] unfolding FactGroup-def by simp
+ultimately show ?thesis by argo
+qed
+qed
+
+Lastly, we can also show that for each x ∈ H of order n > 1 and each n-th
+root of unity z, there exists a character χ on G such that χ(x) = z.
+lemma (in group) powi-get-exp-self :
+fixes z::complex
+assumes z ^ n = 1 x ∈ carrier G ord x = n n > 1
+shows z powi get-exp x x = z
+proof −
+from assms have ngt0 : n > 0 by simp
+from powi-mod[OF assms(1 ) ngt0 , of get-exp x x] get-exp-self [OF assms(2 ),
+unfolded assms(3 )]
+have z powi get-exp x x = z powi (1 mod int n) by argo
+also have . . . = z using assms(4 ) by simp
+finally show ?thesis .
+
+33
+
+qed
+corollary (in finite-comm-group) character-with-value-exists:
+assumes x ∈ carrier G and x 6= 1 and z ^ ord x = 1
+obtains χ where character G χ and χ x = z
+proof −
+interpret H : subgroup generate G {x} G using generate-is-subgroup assms(1 )
+by simp
+interpret H : finite-comm-group G(|carrier := generate G {x}|)
+using subgroup-imp-finite-comm-group[OF H .subgroup-axioms] .
+interpret H : finite-cyclic-group G(|carrier := generate G {x}|) x
+proof (unfold finite-cyclic-group-def , safe)
+show finite-group (G(|carrier := generate G {x}|)) by unfold-locales
+show cyclic-group (G(|carrier := generate G {x}|)) x
+proof (intro H .cyclic-groupI0 )
+show x ∈ carrier (G(|carrier := generate G {x}|)) using generate.incl[of x
+{x} G] by simp
+show carrier (G(|carrier := generate G {x}|)) = generate (G(|carrier :=
+generate G {x}|)) {x}
+using generate-consistent[OF generate-sincl H .subgroup-axioms] by simp
+qed
+qed
+have ox: H .ord x = ord x using H .gen-closed H .subgroup-axioms subgroup-ord-eq
+by auto
+have ogt1 : ord x > 1 using ord-pos by (metis assms(1 , 2 ) less-one nat-neq-iff
+ord-eq-1 )
+from assms H .unity-root-induce-char[unfolded H .ord-gen-is-group-order[symmetric]
+ox, OF assms(3 )]
+obtain c where c: character (G(|carrier := generate G {x}|)) c
+c = (λa. if a ∈ carrier (G(|carrier := generate G {x}|))
+then z powi H .get-exp x a else 0 ) by blast
+have cx: c x = z unfolding c(2 )
+using H .powi-get-exp-self [OF assms(3 ) - ox ogt1 ] generate-sincl[of {x}] by
+simp
+V
+obtain f where f : character G f y. y ∈ (generate G {x}) =⇒ f y = c y
+using character-extension-exists[OF H .subgroup-axioms c(1 )] by blast
+show ?thesis by (intro that[OF f (1 )], use cx f (2 ) generate-sincl in blast)
+qed
+
+In particular, for any x that is not the identity element, there exists a character χ such that χ(x) 6= 1.
+corollary (in finite-comm-group) character-neq-1-exists:
+assumes x ∈ carrier G and x 6= 1
+obtains χ where character G χ and χ x 6= 1
+proof −
+define z where z = cis (2 ∗ pi / ord x)
+have z-pow-h: z ^ ord x = 1
+by (auto simp: z-def DeMoivre)
+
+34
+
+from assms have ord x ≥ 1 by (intro ord-ge-1 ) auto
+moreover have ord x 6= 1
+using pow-ord-eq-1 [of x] assms fin by (intro notI ) simp-all
+ultimately have ord x > 1 by linarith
+have [simp]: z 6= 1
+proof
+assume z = 1
+have bij-betw (λk. cis (2 ∗ pi ∗ real k / real (ord x))) {..<ord x} {z. z ^ ord x
+= 1}
+using ‹ord x > 1 › by (intro bij-betw-roots-unity) auto
+hence inj: inj-on (λk. cis (2 ∗ pi ∗ real k / real (ord x))) {..<ord x}
+by (auto simp: bij-betw-def )
+have 0 = (1 :: nat)
+using ‹z = 1 › and ‹ord x > 1 › by (intro inj-onD[OF inj]) (auto simp: z-def )
+thus False by simp
+qed
+obtain χ where character G χ and χ x = z
+using character-with-value-exists[OF assms z-pow-h] .
+thus ?thesis using that[of χ] by simp
+qed
+
+1.6
+
+The first orthogonality relation
+
+The entries of any non-principal character sum to 0.
+theorem
+(in character) sum-character:
+P
+( x∈carrier G. χ x) = (if χ = principal-char G then of-nat (order G) else 0 )
+proof (cases χ = principal-char G)
+case True
+P
+P
+hence ( x∈carrier G. χ x) = ( x∈carrier G. 1 )
+by (intro sum.cong) (auto simp: principal-char-def )
+also have . . . = order G by (simp add: order-def )
+finally show ?thesis using True by simp
+next
+case False
+P
+define S where S = ( x∈carrier G. χ x)
+from False obtain y where y: y ∈ carrier G χ y 6= 1
+by (auto simp: principal-char-def
+fun-eq-iff char-eq-0-iff split: if-splits)
+P
+from y have S = ( x∈carrier G. χ (y ⊗ x)) unfolding S-def
+by (intro sum.reindex-bij-betw
+[symmetric] bij-betw-mult-left)
+P
+also have . . . = ( x∈carrier G. χ y ∗ χ x)
+by (intro sum.cong refl char-mult y)
+also have . . . = χ y ∗ S by (simp add: S-def sum-distrib-left)
+finally have (χ y − 1 ) ∗ S = 0 by (simp add: algebra-simps)
+with y have S = 0 by simp
+with False show ?thesis by (simp add: S-def )
+qed
+
+35
+
+corollary (in finite-comm-group) character-orthogonality1 :
+assumes character
+G χ and character G χ 0
+P
+shows ( x∈carrier G. χ x ∗ cnj (χ 0 x)) = (if χ = χ 0 then of-nat (order G)
+else 0 )
+proof −
+define C where [simp]: C = Characters G
+interpret C : finite-comm-group C unfolding C-def
+by (rule finite-comm-group-Characters)
+let ?χ = λx. χ x ∗ inv-character χ 0 x
+interpret character G λx. χ x ∗ inv-character χ 0 x
+by (intro
+assms)
+P character-mult character.inv-character
+P
+have ( x∈carrier G. χ x ∗ cnj (χ 0 x)) = ( x∈carrier G. ?χ x)
+by (intro sum.cong) (auto simp: inv-character-def )
+also have . . . = (if ?χ = principal-char G then of-nat (order G) else 0 )
+by (rule sum-character)
+also have ?χ = principal-char G ←→ χ ⊗C inv C χ 0 = 1C
+using assms by (simp add: Characters-simps characters-def )
+also have . . . ←→ χ = χ 0
+proof
+assume χ ⊗C inv C χ 0 = 1C
+from C .inv-equality [OF this] and assms show χ = χ 0
+by (auto simp: characters-def Characters-simps)
+next
+assume ∗: χ = χ 0
+from assms show χ ⊗C inv C χ 0 = 1C
+by (subst ∗, intro C .r-inv) (auto simp: carrier-Characters characters-def )
+qed
+finally show ?thesis .
+qed
+
+1.7
+
+The isomorphism between a group and its double dual
+
+Lastly, we show that the double dual of a finite abelian group is naturally
+isomorphic to the original group via the obvious isomorphism x 7→ (χ 7→
+χ(x)). It is easy to see that this is a homomorphism and that it is injective.
+b
+b = |G|
+b = |G| then shows that it is also surjective.
+The fact |G|
+context finite-comm-group
+begin
+definition double-dual-iso :: 0a ⇒ ( 0a ⇒ complex) ⇒ complex where
+double-dual-iso x = (λχ. if character G χ then χ x else 0 )
+lemma double-dual-iso-apply [simp]: character G χ =⇒ double-dual-iso x χ = χ x
+by (simp add: double-dual-iso-def )
+lemma character-double-dual-iso [intro]:
+assumes x: x ∈ carrier G
+shows character (Characters G) (double-dual-iso x)
+
+36
+
+proof −
+interpret G 0: finite-comm-group Characters G
+by (rule finite-comm-group-Characters)
+show character (Characters G) (double-dual-iso x)
+using x by unfold-locales (auto simp: double-dual-iso-def characters-def Characters-def
+principal-char-def character.char-eq-0 )
+qed
+lemma double-dual-iso-mult [simp]:
+assumes x ∈ carrier G y ∈ carrier G
+shows double-dual-iso (x ⊗ y) =
+double-dual-iso x ⊗Characters (Characters G) double-dual-iso y
+using assms by (auto simp: double-dual-iso-def Characters-def fun-eq-iff character.char-mult)
+lemma double-dual-iso-one [simp]:
+double-dual-iso 1 = principal-char (Characters G)
+by (auto simp: fun-eq-iff double-dual-iso-def principal-char-def
+carrier-Characters characters-def character.char-one)
+lemma inj-double-dual-iso: inj-on double-dual-iso (carrier G)
+proof −
+interpret G 0: finite-comm-group Characters G
+by (rule finite-comm-group-Characters)
+interpret G 00: finite-comm-group Characters (Characters G)
+by (rule G 0.finite-comm-group-Characters)
+have hom: double-dual-iso ∈ hom G (Characters (Characters G))
+by (rule homI ) (auto simp: carrier-Characters characters-def )
+have inj-aux: x = 1
+if x: x ∈ carrier G double-dual-iso x = 1Characters (Characters G) for x
+proof (rule ccontr)
+assume x 6= 1
+obtain χ where χ: character G χ χ x 6= 1
+using character-neq-1-exists[OF x(1 ) ‹x 6= 1›] .
+from x have ∀ χ. (if χ ∈ characters G then χ x else 0 ) = (if χ ∈ characters
+G then 1 else 0 )
+by (auto simp: double-dual-iso-def Characters-def fun-eq-iff
+principal-char-def characters-def )
+hence eq1 : ∀ χ∈characters G. χ x = 1 by metis
+with χ show False unfolding characters-def by auto
+qed
+thus ?thesis
+using inj-aux hom is-group G 00.is-group by (subst inj-on-one-iff 0) auto
+qed
+lemma double-dual-iso-eq-iff [simp]:
+x ∈ carrier G =⇒ y ∈ carrier G =⇒ double-dual-iso x = double-dual-iso y ←→
+x =y
+
+37
+
+by (auto dest: inj-onD[OF inj-double-dual-iso])
+theorem double-dual-iso: double-dual-iso ∈ iso G (Characters (Characters G))
+proof (rule isoI )
+interpret G 0: finite-comm-group Characters G
+by (rule finite-comm-group-Characters)
+interpret G 00: finite-comm-group Characters (Characters G)
+by (rule G 0.finite-comm-group-Characters)
+show hom: double-dual-iso ∈ hom G (Characters (Characters G))
+by (rule homI ) (auto simp: carrier-Characters characters-def )
+show bij-betw double-dual-iso (carrier G) (carrier (Characters (Characters G)))
+unfolding bij-betw-def
+proof
+show inj-on double-dual-iso (carrier G) by (fact inj-double-dual-iso)
+next
+show double-dual-iso ‘ carrier G = carrier (Characters (Characters G))
+proof (rule card-subset-eq)
+show finite (carrier (Characters (Characters G)))
+by (fact G 00.fin)
+next
+have card (carrier (Characters (Characters G))) = card (carrier G)
+by (simp add: carrier-Characters G 0.card-characters card-characters order-def )
+also have . . . = card (double-dual-iso ‘ carrier G)
+by (intro card-image [symmetric] inj-double-dual-iso)
+finally show card (double-dual-iso ‘ carrier G) =
+card (carrier (Characters (Characters G))) ..
+next
+show double-dual-iso ‘ carrier G ⊆ carrier (Characters (Characters G))
+using hom by (auto simp: hom-def )
+qed
+qed
+qed
+lemma double-dual-is-iso: Characters (Characters G) ∼
+=G
+by (rule iso-sym) (use double-dual-iso in ‹auto simp: is-iso-def ›)
+
+The second orthogonality relation follows from the first one via Pontryagin
+duality:
+theorem sum-characters:
+assumes P
+x: x ∈ carrier G
+shows ( χ∈characters G. χ x) = (if x = 1 then of-nat (order G) else 0 )
+proof −
+interpret G 0: finite-comm-group Characters G
+by (rule finite-comm-group-Characters)
+interpret x: character Characters G double-dual-iso x
+using x by auto
+
+38
+
+from x.sum-character show ?thesis using double-dual-iso-eq-iff [of x 1] x
+by (auto simp: characters-def carrier-Characters order-Characters simp del:
+double-dual-iso-eq-iff )
+qed
+corollary character-orthogonality2 :
+assumes P
+x ∈ carrier G y ∈ carrier G
+shows ( χ∈characters G. χ x ∗ cnj (χ y)) = (if x = y then of-nat (order G)
+else 0 )
+proof −
+P
+P
+from assms have ( χ∈characters G. χ x ∗ cnj (χ y)) = ( χ∈characters G.
+χ (x ⊗ inv y))
+by (intro sum.cong) (simp-all add: character.char-inv character.char-mult characters-def )
+also from assms have . . . = (if x ⊗ inv y = 1 then of-nat (order G) else 0 )
+by (intro sum-characters) auto
+also from assms have x ⊗ inv y = 1 ←→ x = y
+using inv-equality[of x inv y] by auto
+finally show ?thesis .
+qed
+end
+no-notation integer-mod-group (‹Z ›)
+end
+
+2
+
+Dirichlet Characters
+
+theory Dirichlet-Characters
+imports
+Multiplicative-Characters
+HOL−Number-Theory.Residues
+Dirichlet-Series.Multiplicative-Function
+begin
+
+Dirichlet characters are essentially just the characters of the multiplicative
+group of integer residues ZZ/nZZ for some fixed n. For convenience, these
+residues are usually represented by natural numbers from 0 to n − 1, and
+we extend the characters to all natural numbers periodically, so that χ(k
+mod n) = χ(k) holds.
+Numbers that are not coprime to n are not in the group and therefore are
+assigned 0 by all characters.
+
+2.1
+
+The multiplicative group of residues
+
+definition residue-mult-group :: nat ⇒ nat monoid where
+residue-mult-group n = (| carrier = totatives n, monoid.mult = (λx y. (x ∗ y)
+mod n), one = 1 |)
+
+39
+
+definition principal-dchar :: nat ⇒ nat ⇒ complex where
+principal-dchar n = (λk. if coprime k n then 1 else 0 )
+lemma principal-dchar-coprime [simp]: coprime k n =⇒ principal-dchar n k = 1
+and principal-dchar-not-coprime [simp]: ¬coprime k n =⇒ principal-dchar n k =
+0
+by (simp-all add: principal-dchar-def )
+lemma principal-dchar-1 [simp]: principal-dchar n 1 = 1
+by simp
+lemma principal-dchar-minus1 [simp]:
+assumes n > 0
+shows principal-dchar n (n − Suc 0 ) = 1
+proof (cases n = 1 )
+case False
+with assms have n > 1 by linarith
+thus ?thesis using coprime-diff-one-left-nat[of n]
+by (intro principal-dchar-coprime) auto
+qed auto
+lemma mod-in-totatives: n > 1 =⇒ a mod n ∈ totatives n ←→ coprime a n
+by (auto simp: totatives-def mod-greater-zero-iff-not-dvd dest: coprime-common-divisor-nat)
+bundle dcharacter-syntax
+begin
+notation principal-dchar (‹χ0 ı›)
+end
+locale residues-nat =
+fixes n :: nat (structure) and G
+assumes n: n > 1
+defines G ≡ residue-mult-group n
+begin
+lemma order [simp]: order G = totient n
+by (simp add: order-def G-def totient-def residue-mult-group-def )
+lemma totatives-mod [simp]: x ∈ totatives n =⇒ x mod n = x
+using n by (intro mod-less) (auto simp: totatives-def intro!: order.not-eq-order-implies-strict)
+lemma principal-dchar-minus1 [simp]: principal-dchar n (n − Suc 0 ) = 1
+using principal-dchar-minus1 [of n] n by simp
+sublocale finite-comm-group G
+proof
+fix x y assume xy: x ∈ carrier G y ∈ carrier G
+hence coprime (x ∗ y) n
+
+40
+
+by (auto simp: G-def residue-mult-group-def totatives-def )
+with xy and n show x ⊗G y ∈ carrier G
+using coprime-common-divisor-nat[of x ∗ y n]
+by (auto simp: G-def residue-mult-group-def totatives-def
+mod-greater-zero-iff-not-dvd le-Suc-eq simp del: coprime-mult-left-iff )
+next
+fix x y z assume xyz: x ∈ carrier G y ∈ carrier G z ∈ carrier G
+thus x ⊗G y ⊗G z = x ⊗G (y ⊗G z)
+by (auto simp: G-def residue-mult-group-def mult-ac mod-mult-right-eq)
+next
+fix x assume x ∈ carrier G
+with n have x < n by (auto simp: G-def residue-mult-group-def totatives-def
+intro!: order.not-eq-order-implies-strict)
+thus 1G ⊗G x = x and x ⊗G 1G = x
+by (simp-all add: G-def residue-mult-group-def )
+next
+have x ∈ Units G if x ∈ carrier G for x unfolding Units-def
+proof safe
+from that have x > 0 coprime x n
+by (auto simp: G-def residue-mult-group-def totatives-def )
+from ‹coprime x n› and n obtain y where y: y < n [x ∗ y = 1 ] (mod n)
+by (subst (asm) coprime-iff-invertible 0-nat) auto
+hence x ∗ y mod n = 1
+using n by (simp add: cong-def mult-ac)
+moreover from y have coprime y n
+by (subst coprime-iff-invertible-nat) (auto simp: mult.commute)
+ultimately show ∃ a∈carrier G. a ⊗G x = 1G ∧ x ⊗G a = 1G using y
+by (intro bexI [of - y])
+(auto simp: G-def residue-mult-group-def totatives-def mult.commute intro!:
+Nat.gr0I )
+qed fact+
+thus carrier G ⊆ Units G ..
+qed (insert n, auto simp: G-def residue-mult-group-def mult-ac)
+
+2.2
+
+Definition of Dirichlet characters
+
+The following two functions make the connection between Dirichlet characters and the multiplicative characters of the residue group.
+definition c2dc :: (nat ⇒ complex) ⇒ (nat ⇒ complex) where
+c2dc χ = (λx. χ (x mod n))
+definition dc2c :: (nat ⇒ complex) ⇒ (nat ⇒ complex) where
+dc2c χ = (λx. if x < n then χ x else 0 )
+lemma dc2c-c2dc [simp]:
+assumes character G χ
+shows dc2c (c2dc χ) = χ
+proof −
+interpret character G χ by fact
+
+41
+
+show ?thesis
+using n by (auto simp: fun-eq-iff dc2c-def c2dc-def char-eq-0-iff G-def
+residue-mult-group-def totatives-def )
+qed
+end
+locale dcharacter = residues-nat +
+fixes χ :: nat ⇒ complex
+assumes mult-aux: a ∈ totatives n =⇒ b ∈ totatives n =⇒ χ (a ∗ b) = χ a ∗ χ
+b
+assumes eq-zero: ¬coprime a n =⇒ χ a = 0
+assumes periodic: χ (a + n) = χ a
+assumes one-not-zero: χ 1 6= 0
+begin
+lemma zero-eq-0 [simp]: χ 0 = 0
+using n by (intro eq-zero) auto
+lemma Suc-0 [simp]: χ (Suc 0 ) = 1
+using n mult-aux[of 1 1 ] one-not-zero by (simp add: totatives-def )
+lemma periodic-mult: χ (a + m ∗ n) = χ a
+proof (induction m)
+case (Suc m)
+have a + Suc m ∗ n = a + m ∗ n+ n by simp
+also have χ . . . = χ (a + m ∗ n) by (rule periodic)
+also have . . . = χ a by (rule Suc.IH )
+finally show ?case .
+qed simp-all
+lemma minus-one-periodic [simp]:
+assumes k > 0
+shows χ (k ∗ n − 1 ) = χ (n − 1 )
+proof −
+have k ∗ n − 1 = n − 1 + (k − 1 ) ∗ n
+using assms n by (simp add: algebra-simps)
+also have χ . . . = χ (n − 1 )
+by (rule periodic-mult)
+finally show ?thesis .
+qed
+lemma cong:
+assumes [a = b] (mod n)
+shows χ a = χ b
+proof −
+from assms obtain k1 k2 where ∗: b + k1 ∗ n = a + k2 ∗ n
+by (subst (asm) cong-iff-lin-nat) auto
+have χ a = χ (a + k2 ∗ n) by (rule periodic-mult [symmetric])
+
+42
+
+also note ∗ [symmetric]
+also have χ (b + k1 ∗ n) = χ b by (rule periodic-mult)
+finally show ?thesis .
+qed
+lemma mod [simp]: χ (a mod n) = χ a
+by (rule cong) (simp-all add: cong-def )
+lemma mult [simp]: χ (a ∗ b) = χ a ∗ χ b
+proof (cases coprime a n ∧ coprime b n)
+case True
+hence a mod n ∈ totatives n b mod n ∈ totatives n
+using n by (auto simp: totatives-def mod-greater-zero-iff-not-dvd coprime-absorb-right)
+hence χ ((a mod n) ∗ (b mod n)) = χ (a mod n) ∗ χ (b mod n)
+by (rule mult-aux)
+also have χ ((a mod n) ∗ (b mod n)) = χ (a ∗ b)
+by (rule cong) (auto simp: cong-def mod-mult-eq)
+finally show ?thesis by simp
+next
+case False
+hence ¬coprime (a ∗ b) n by simp
+with False show ?thesis by (auto simp: eq-zero)
+qed
+sublocale mult: completely-multiplicative-function χ
+by standard auto
+lemma eq-zero-iff : χ x = 0 ←→ ¬coprime x n
+proof safe
+assume χ x = 0 and coprime x n
+from cong-solve-coprime-nat [OF this(2 )]
+obtain y where [x ∗ y = Suc 0 ] (mod n) by blast
+hence χ (x ∗ y) = χ (Suc 0 ) by (rule cong)
+with ‹χ x = 0 › show False by simp
+qed (auto simp: eq-zero)
+lemma minus-one 0: χ (n − 1 ) ∈ {−1 , 1 }
+proof −
+define n 0 where n 0 = n − 2
+have n: n = Suc (Suc n 0) using n by (simp add: n 0-def )
+have (n − 1 ) ^ 2 = 1 + (n − 2 ) ∗ n
+by (simp add: power2-eq-square algebra-simps n)
+also have χ . . . = 1
+by (subst periodic-mult) auto
+also have χ ((n − 1 ) ^ 2 ) = χ (n − 1 ) ^ 2
+by (rule mult.power)
+finally show ?thesis
+by (subst (asm) power2-eq-1-iff ) auto
+qed
+
+43
+
+lemma c2dc-dc2c [simp]: c2dc (dc2c χ) = χ
+using n by (auto simp: c2dc-def dc2c-def fun-eq-iff intro!: cong simp: cong-def )
+lemma character-dc2c: character G (dc2c χ)
+by standard (insert n, auto simp: G-def residue-mult-group-def dc2c-def totatives-def
+intro!: eq-zero)
+sublocale dc2c: character G dc2c χ
+by (fact character-dc2c)
+lemma dcharacter-inv-character [intro]: dcharacter n (inv-character χ)
+by standard (auto simp: inv-character-def eq-zero periodic)
+lemma norm: norm (χ k) = (if coprime k n then 1 else 0 )
+proof −
+have χ k = χ (k mod n) by (intro cong) (auto simp: cong-def )
+also from n have . . . = dc2c χ (k mod n) by (simp add: dc2c-def )
+also from n have norm . . . = (if coprime k n then 1 else 0 )
+by (subst dc2c.norm-char) (auto simp: G-def residue-mult-group-def mod-in-totatives)
+finally show ?thesis .
+qed
+lemma norm-le-1 : norm (χ k) ≤ 1
+by (subst norm) auto
+end
+
+definition dcharacters :: nat ⇒ (nat ⇒ complex) set where
+dcharacters n = {χ. dcharacter n χ}
+context residues-nat
+begin
+lemma character-dc2c: dcharacter n χ =⇒ character G (dc2c χ)
+using dcharacter.character-dc2c[of n χ] by (simp add: G-def )
+lemma dcharacter-c2dc:
+assumes character G χ
+shows dcharacter n (c2dc χ)
+proof −
+interpret character G χ by fact
+show ?thesis
+proof
+fix x assume ¬coprime x n
+thus c2dc χ x = 0
+by (auto simp: c2dc-def char-eq-0-iff G-def residue-mult-group-def tota-
+
+44
+
+tives-def )
+qed (insert char-mult char-one n,
+auto simp: c2dc-def G-def residue-mult-group-def simp del: char-mult char-one)
+qed
+lemma principal-dchar-altdef : principal-dchar n = c2dc (principal-char G)
+using n by (auto simp: c2dc-def principal-dchar-def principal-char-def G-def
+residue-mult-group-def fun-eq-iff mod-in-totatives)
+sublocale principal: dcharacter n G principal-dchar n
+by (simp add: principal-dchar-altdef dcharacter-c2dc | rule G-def )+
+lemma c2dc-principal [simp]: c2dc (principal-char G) = principal-dchar n
+by (simp add: principal-dchar-altdef )
+lemma dc2c-principal [simp]: dc2c (principal-dchar n) = principal-char G
+proof −
+have dc2c (c2dc (principal-char G)) = dc2c (principal-dchar n)
+by (subst c2dc-principal) (rule refl)
+thus ?thesis by (subst (asm) dc2c-c2dc) simp-all
+qed
+
+lemma bij-betw-dcharacters-characters:
+bij-betw dc2c (dcharacters n) (characters G)
+by (intro bij-betwI [where ?g = c2dc])
+(auto simp: characters-def dcharacters-def dcharacter-c2dc
+character-dc2c dcharacter.c2dc-dc2c)
+lemma bij-betw-characters-dcharacters:
+bij-betw c2dc (characters G) (dcharacters n)
+by (intro bij-betwI [where ?g = dc2c])
+(auto simp: characters-def dcharacters-def dcharacter-c2dc
+character-dc2c dcharacter.c2dc-dc2c)
+lemma finite-dcharacters [intro]: finite (dcharacters n)
+using bij-betw-finite [OF bij-betw-dcharacters-characters] by auto
+lemma card-dcharacters [simp]: card (dcharacters n) = totient n
+using bij-betw-same-card [OF bij-betw-dcharacters-characters] card-characters by
+simp
+end
+lemma inv-character-eq-principal-dchar-iff [simp]:
+inv-character χ = principal-dchar n ←→ χ = principal-dchar n
+by (auto simp add: fun-eq-iff inv-character-def principal-dchar-def )
+
+45
+
+2.3
+
+Sums of Dirichlet characters
+
+lemma
+P (in dcharacter) sum-dcharacter-totatives:
+( x∈totatives n. χ x) = (if χ = principal-dchar n then of-nat (totient n) else
+0)
+proof −
+P
+P
+from n have ( x∈totatives n. χ x) = ( x∈carrier G. dc2c χ x)
+by (intro sum.cong) (auto simp: totatives-def dc2c-def G-def residue-mult-group-def )
+also have . . . = (if dc2c χ = principal-char G then of-nat (order G) else 0 )
+by (rule dc2c.sum-character)
+also have dc2c χ = principal-char G ←→ χ = principal-dchar n
+by (metis c2dc-dc2c dc2c-principal principal-dchar-altdef )
+finally show ?thesis by simp
+qed
+lemma
+(in dcharacter) sum-dcharacter-block:
+P
+( x<n. χ x) = (if χ = principal-dchar n then of-nat (totient n) else 0 )
+proof −
+P
+P
+from n have ( x<n. χ x) = ( x∈totatives n. χ x)
+by (intro sum.mono-neutral-right)
+(auto simp: totatives-def eq-zero-iff intro!: Nat.gr0I order.not-eq-order-implies-strict)
+also have . . . = (if χ = principal-dchar n then of-nat (totient n) else 0 )
+by (rule sum-dcharacter-totatives)
+finally show ?thesis .
+qed
+lemma (in dcharacter) sum-dcharacter-block 0:
+sum χ {Suc 0 ..n} = (if χ = principal-dchar n then of-nat (totient n) else 0 )
+proof −
+let ?f = λk. if k = n then 0 else k and ?g = λk. if k = 0 then n else k
+have sum χ {1 ..n} = sum χ {..<n}
+using n by (intro sum.reindex-bij-witness[where j = ?f and i = ?g]) (auto
+simp: eq-zero-iff )
+thus ?thesis by (simp add: sum-dcharacter-block)
+qed
+lemma (in dcharacter) sum-lessThan-dcharacter:
+assumes P
+χ 6= principal-dchar
+Pn
+shows ( x<m. χ x) = ( x<m mod n. χ x)
+proof (induction m rule: less-induct)
+case (less m)
+show ?case
+proof (cases m < n)
+case True
+thus ?thesis by simp
+next
+case False
+hence {..<m}
+by auto P
+P = {..<n} ∪ {n..<m}
+P
+also have ( x∈. . . . χ x) = ( x<n. χ x) + ( x∈{n..<m}. χ x)
+by (intro sum.union-disjoint) auto
+
+46
+
+P
+also from assms have ( x<n. χ x) = 0
+by (subst sum-dcharacter-block)
+simp-all
+P
+P
+also from False have ( x∈{n..<m}. χ x) = ( x∈{..<m − n}. χ (x + n))
+by (intro sum.reindex-bij-witness[of - λx. x + n λx. x − n]) (auto simp:
+periodic)
+P
+also have . . . = (P x∈{..<m − n}. χ x) by (simp add: periodic)
+also have . . . = ( x<(m − n) mod n. χ x)
+using False and n by (intro less.IH ) auto
+also from False and n have (m − n) mod n = m mod n
+by (simp add: le-mod-geq)
+finally show ?thesis by simp
+qed
+qed
+lemma (in dcharacter) sum-dcharacter-lessThan-le:
+assumes χ 6= principal-dchar
+n
+P
+shows norm ( x<m. χ x) ≤ totient n
+proof −P
+P
+have ( x<m. χ x) = ( x<m mod n. χ x) by (rule sum-lessThan-dcharacter)
+fact
+P
+also have . . . = ( x | x < m mod n ∧ coprime x n. χ x)
+by (intro sum.mono-neutral-right)
+(auto simp: eq-zero-iff )
+P
+also have norm . . . ≤ ( x | x < m mod n ∧ coprime x n. 1 )
+by (rule sum-norm-le) (auto simp: norm)
+also have . . . = card {x. x < m mod n ∧ coprime x n} by simp
+also have . . . ≤ card (totatives n) unfolding of-nat-le-iff
+proof (intro card-mono subsetI )
+fix x assume x: x ∈ {x. x < m mod n ∧ coprime x n}
+hence x < m mod n by simp
+also have . . . < n using n by simp
+finally show x ∈ totatives n using x
+by (auto simp: totatives-def intro!: Nat.gr0I )
+qed auto
+also have . . . = totient n by (simp add: totient-def )
+finally show ?thesis .
+qed
+lemma (in dcharacter) sum-dcharacter-atMost-le:
+assumes χ 6= principal-dchar
+n
+P
+shows norm ( x≤m. χ x) ≤ totient n
+using sum-dcharacter-lessThan-le[OF assms, of Suc m] by (subst (asm) lessThan-Suc-atMost)
+lemma
+(in residues-nat) sum-dcharacters:
+P
+( χ∈dcharacters n. χ x) = (if [x = 1 ] (mod n) then of-nat (totient n) else 0 )
+proof (cases coprime x n)
+case True
+with nP
+have x: x mod n ∈ totativesP
+n by (auto simp: mod-in-totatives)
+have ( χ∈dcharacters n. χ x) = ( χ∈characters G. c2dc χ x)
+by (rule sum.reindex-bij-betw [OF bij-betw-characters-dcharacters, symmetric])
+
+47
+
+P
+also from x have . . . = ( χ∈characters G. χ (x mod n))
+by (simp add: c2dc-def )
+also from x have . . . = (if x mod n = 1 then order G else 0 )
+by (subst sum-characters) (unfold G-def residue-mult-group-def , auto)
+also from n have x mod n = 1 ←→ [x = 1 ] (mod n)
+by (simp add: cong-def )
+finally show ?thesis by simp
+next
+case False
+have x mod n 6= 1
+proof
+assume ∗: x mod n = 1
+have gcd (x mod n) n = 1 by (subst ∗) simp
+also have gcd (x mod n) n = gcd x n
+by (subst gcd.commute) (simp only: gcd-red-nat [symmetric])
+finally show False using ‹¬coprime x n› unfolding coprime-iff-gcd-eq-1 by
+contradiction
+qed
+P
+from False have ( χ∈dcharacters n. χ x) = 0
+by (intro sum.neutral) (auto simp: dcharacters-def dcharacter.eq-zero)
+with ‹x mod n 6= 1 › and n show ?thesis by (simp add: cong-def )
+qed
+lemma (in dcharacter) even-dcharacter-linear-sum-eq-0 [simp]:
+assumes P
+χ 6= principal-dchar n and χ (n − 1 ) = 1
+shows ( k=Suc 0 ..<n. of-nat k ∗ χ k) = 0
+proof −P
+P
+have ( k=1 ..<n. of-nat k ∗ χ k) = ( k=1 ..<n. (of-nat n − of-nat k) ∗ χ (n
+− k))
+by (intro sum.reindex-bij-witness[where i = λk. n − k and j = λk. n − k])
+(auto simp: of-nat-diff
+P )
+P
+also have . . . = n ∗ ( k=1 ..<n. χ (n − k)) − ( k=1 ..<n. k ∗ χ (n − k))
+by (simp add:
+P algebra-simps sum-subtractf
+P sum-distrib-left)
+also have ( k=1 ..<n. χ (n − k)) = ( k=1 ..<n. χ k)
+by (intro sum.reindex-bij-witness[where i = λk. n − k and j = λk. n − k])
+auto
+P
+also have . . . = ( k<n. χ k)
+by (intro sum.mono-neutral-left) (auto simp: Suc-le-eq)
+also have . P
+. . = 0 using assms by (simp add: sum-dcharacter-block)
+P
+also have ( k=1 ..<n. of-nat k ∗ χ (n − k)) = ( k=1 ..<n. k ∗ χ k)
+proof (intro sum.cong refl)
+fix k assume k: k ∈ {1 ..<n}
+have of-nat k ∗ χ k = of-nat k ∗ χ ((n − 1 ) ∗ k)
+using assms by (subst mult) simp-all
+also have (n − 1 ) ∗ k = n − k + (k − 1 ) ∗ n
+using k by (simp add: algebra-simps)
+also have χ . . . = χ (n − k)
+by (rule periodic-mult)
+finally show of-nat k ∗ χ (n − k) = of-nat k ∗ χ k ..
+
+48
+
+qed
+finally show ?thesis by simp
+qed
+end
+
+3
+
+Dirichlet L-functions
+
+theory Dirichlet-L-Functions
+imports
+Dirichlet-Characters
+HOL−Library.Landau-Symbols
+Zeta-Function.Zeta-Function
+begin
+
+We can now define the Dirichlet L-functions. These P
+are essentially the func−s converge
+tions in the complex plane that the Dirichlet series ∞
+k=1 χ(k)k
+to, for some fixed Dirichlet character χ.
+First of all, we need to take care of a syntactical problem: The notation for
+vectors uses χ as syntax, which causes some annoyance to us, so we disable
+it locally.
+
+3.1
+
+Definition and basic properties
+
+We now define Dirichlet L functions as a finite linear combination of Hurwitz ζ functions. This has the advantage that we directly get the analytic
+continuation over the full domain and only need to prove that the series
+really converges to this definition whenever it does converge, which is not
+hard to do.
+definition Dirichlet-L :: nat ⇒ (nat ⇒ complex) ⇒ complex ⇒ complex where
+Dirichlet-L m χ s =
+(if s = 1 then
+if χ = principal-dchar m then 0 else eval-fds (fds χ) 1
+else
+P
+of-nat m powr − s ∗ ( k = 1 ..m. χ k ∗ hurwitz-zeta (real k / real m) s))
+lemma Dirichlet-L-conv-hurwitz-zeta-nonprincipal:
+assumes s 6= 1
+shows Dirichlet-L n χ s = P
+of-nat n powr −s ∗ ( k = 1 ..n. χ k ∗ hurwitz-zeta (real k / real n) s)
+using assms by (simp add: Dirichlet-L-def )
+
+Analyticity everywhere except 1 is trivial by the above definition, since the
+Hurwitz ζ function is analytic everywhere except 1. For L functions of non
+principal characters, we will have to show the analyticity at 1 separately
+later.
+49
+
+lemma holomorphic-Dirichlet-L-weak:
+assumes m > 0 1 ∈
+/ A
+shows Dirichlet-L m χ holomorphic-on A
+proof −
+P
+have (λs. of-nat m powr − s ∗ ( k = 1 ..m. χ k ∗ hurwitz-zeta (real k / real
+m) s))
+holomorphic-on A
+using assms unfolding Dirichlet-L-def by (intro holomorphic-intros) auto
+also have ?this ←→ ?thesis
+using assms by (intro holomorphic-cong refl) (auto simp: Dirichlet-L-def )
+finally show ?thesis .
+qed
+
+context dcharacter
+begin
+
+For a real value greater than 1, the formal Dirichlet series of an L function
+for some character χ converges to the L function.
+lemma
+fixes s :: complex
+assumes s: Re s > 1
+shows abs-summable-Dirichlet-L: summable (λn. norm (χ n ∗ of-nat n powr
+−s))
+and summable-Dirichlet-L:
+summable (λn. χ n ∗ of-nat n powr −s)
+and sums-Dirichlet-L:
+(λn. χ n ∗ n powr −s) sums Dirichlet-L n χ s
+and Dirichlet-L-conv-eval-fds-weak: Dirichlet-L n χ s = eval-fds (fds χ) s
+proof −
+P
+define L where L = ( n. χ n ∗ of-nat n powr −s)
+show summable (λn. norm (χ n ∗ of-nat n powr −s))
+by (subst summable-Suc-iff [symmetric],
+rule summable-comparison-test [OF - summable-zeta-real[of Re s]])
+(insert s norm, auto intro!: exI [of - 0 ] simp: norm-mult norm-powr-real-powr)
+thus summable: summable (λn. χ n ∗ of-nat n powr −s)
+by (rule summable-norm-cancel)
+hence (λn. χ n ∗ of-nat
+P n powr −s) sums L by (simp add: L-def sums-iff )
+from this have (λm.
+k = m ∗ n..<m ∗ n + n. χ k ∗ of-nat k powr − s) sums
+L
+by (rule sums-group)
+(use n in auto)
+P
+also have (λm.
+k = m ∗ n..<m ∗ P
+n + n. χ k ∗ of-nat k powr − s) =
+(λm. of-nat n powr −s ∗ ( k = 1 ..n. χ k ∗ (of-nat m + of-nat k /
+of-nat n) powr − s))
+proof (rule ext, goal-cases)
+case (1Pm)
+have ( Pk = m ∗ n..<m ∗ n + n. χ k ∗ of-nat k powr − s) =
+( k=0 ..<n. χ (k + m ∗ n) ∗ of-nat (m ∗ n + k) powr − s)
+by (intro sum.reindex-bij-witness[of
+- λk. k + m ∗ n λk. k − m ∗ n]) auto
+P
+also have . . . = ( k=0 ..<n. χ k ∗ of-nat (m ∗ n + k) powr − s)
+
+50
+
+by (simp add: periodic-mult)
+P
+also have . . . = ( k=0 ..<n. χ k ∗ (of-nat m + of-nat k / of-nat n) powr −
+s ∗ of-nat n powr −s)
+proof (intro sum.cong refl, goal-cases)
+case (1 k)
+have of-nat (m ∗ n + k) = (of-nat m + of-nat k / of-nat n :: complex) ∗
+of-nat n
+using n by (simp add: divide-simps del: div-mult-self1 div-mult-self2
+div-mult-self3 div-mult-self4 )
+also have . . . powr −s = (of-nat m + of-nat k / of-nat n) powr −s ∗ of-nat
+n powr −s
+by (rule powr-times-real) auto
+finally show ?case by simp
+qed
+P
+also have . . . = of-nat n powr −s ∗ ( k=0 ..<n. χ k ∗ (of-nat m + of-nat k
+/ of-nat n) powr − s)
+by (subst sum-distrib-left)
+(simp-all add: mult-ac)
+P
+also have (P k = 0 ..<n. χ k ∗ (of-nat m + of-nat k / of-nat n) powr − s) =
+( k = 1 ..<n. χ k ∗ (of-nat m + of-nat k / of-nat n) powr − s)
+by (intro sum.mono-neutral-right)
+(auto simp: Suc-le-eq)
+P
+also have . . . = ( k = 1 ..n. χ k ∗ (of-nat m + of-nat k / of-nat n) powr −
+s)
+using periodic-mult[of 0 1 ] by (intro sum.mono-neutral-left) auto
+finally show ?case .
+qed
+finally have . . . sums L .
+P
+moreover have (λm. of-nat n powr − s ∗ ( k=1 ..n. χ k ∗ (of-nat m + of-real
+(of-nat k / of-nat n)) powr − s)) sums P
+(of-nat n powr − s ∗ ( k=1 ..n. χ k ∗ hurwitz-zeta (of-nat k /
+of-nat n) s))
+using s by (intro sums-sum sums-mult sums-hurwitz-zeta) auto
+ultimately have L = . . .
+by (simp add: sums-iff )
+also have . . . = Dirichlet-L n χ s P
+using assms by (auto simp: Dirichlet-L-def )
+finally have Dirichlet-L n χ s = ( n. χ n ∗ of-nat n powr −s)
+by (simp add: L-def )
+with summable show (λn. χ n ∗ n powr −s) sums Dirichlet-L n χ s
+by (simp add: sums-iff L-def )
+thus Dirichlet-L n χ s = eval-fds (fds χ) s
+by (simp add: eval-fds-def sums-iff powr-minus field-simps fds-nth-fds 0)
+qed
+lemma fds-abs-converges-weak: Re s > 1 =⇒ fds-abs-converges (fds χ) s
+using abs-summable-Dirichlet-L[of s]
+by (simp add: fds-abs-converges-def powr-minus divide-simps fds-nth-fds 0)
+lemma abs-conv-abscissa-weak: abs-conv-abscissa (fds χ) ≤ 1
+proof (rule abs-conv-abscissa-leI , goal-cases)
+case (1 c)
+
+51
+
+thus ?case
+by (intro exI [of - of-real c] conjI fds-abs-converges-weak) auto
+qed
+
+Dirichlet L functions have the Euler product expansion
+
+Y
+χ(p)
+L(χ, s) =
+1 − −s
+p
+p
+for all s with R(s) > 1.
+lemma
+fixes s :: complex assumes s: Re s > 1
+shows Dirichlet-L-euler-product-LIMSEQ:
+Q
+(λn. p≤n. if prime p then inverse (1 − χ p / nat-power p s) else 1 )
+−−−−→ Dirichlet-L n χ s (is ?th1 )
+and Dirichlet-L-abs-convergent-euler-product:
+abs-convergent-prod (λp. if prime p then inverse (1 − χ p / p powr s)
+else 1 )
+(is ?th2 )
+proof −
+have mult: completely-multiplicative-function (fds-nth (fds χ))
+using mult.completely-multiplicative-function-axioms by (simp add: fds-nth-fds 0)
+have conv: fds-abs-converges (fds χ) s
+using abs-summable-Dirichlet-L[OF s]
+by (simp Q
+add: fds-abs-converges-def fds-nth-fds 0 powr-minus divide-simps)
+have (λn. p≤n. if prime p then inverse (1 − χ p / nat-power p s) else 1 )
+−−−−→ eval-fds (fds χ) s
+using fds-euler-product-LIMSEQ 0 [OF mult conv] by (simp add: fds-nth-fds 0
+cong: if-cong)
+also have eval-fds (fds χ) s = Dirichlet-L n χ s
+using sums-Dirichlet-L[OF s] unfolding eval-fds-def
+by (simp add: sums-iff fds-nth-fds 0 powr-minus divide-simps)
+finally show ?th1 .
+from fds-abs-convergent-euler-product 0 [OF mult conv] show ?th2
+by (simp add: fds-nth-fds cong: if-cong)
+qed
+lemma Dirichlet-L-Re-gt-1-nonzero:
+assumes Re s > 1
+shows Dirichlet-L n χ s 6= 0
+proof −
+have completely-multiplicative-function (fds-nth (fds χ))
+by (simp add: fds-nth-fds 0 mult.completely-multiplicative-function-axioms)
+moreover have fds-abs-converges (fds χ) s
+using abs-summable-Dirichlet-L[OF assms]
+by (simp add: fds-abs-converges-def fds-nth-fds 0 powr-minus divide-simps)
+ultimately have (eval-fds (fds χ) s = 0 ) ←→ (∃ p. prime p ∧ fds-nth (fds χ) p
+= nat-power p s)
+by (rule fds-abs-convergent-zero-iff )
+
+52
+
+also have eval-fds (fds χ) s = Dirichlet-L n χ s
+using Dirichlet-L-conv-eval-fds-weak[OF assms] by simp
+also have ¬(∃ p. prime p ∧ fds-nth (fds χ) p = nat-power p s)
+proof safe
+fix p :: nat assume p: prime p fds-nth (fds χ) p = nat-power p s
+from p have real 1 < real p by (subst of-nat-less-iff ) (auto simp: prime-gt-Suc-0-nat)
+also have . . . = real p powr 1 by simp
+also from p and assms have real p powr 1 ≤ real p powr Re s
+by (intro powr-mono) (auto simp: real-of-nat-ge-one-iff prime-ge-Suc-0-nat)
+also have . . . = norm (nat-power p s) by (simp add: norm-nat-power norm-powr-real-powr)
+also have nat-power p s = fds-nth (fds χ) p using p by simp
+also have norm . . . ≤ 1 by (auto simp: fds-nth-fds 0 norm)
+finally show False by simp
+qed
+finally show ?thesis .
+qed
+lemma sum-dcharacter-antimono-bound:
+fixes x0 a b :: real and f f 0 :: real ⇒ real
+assumes nonprincipal: χ 6= χ0
+assumes x0 :Vx0 ≥ 0 and ab: x0 ≤ a a < b
+0
+assumes f 0: x. x ≥
+V x0 =⇒ (f has-field-derivative f x) (at x)
+assumes f-nonneg: Vx. x ≥ x0 =⇒ f x ≥ 0
+assumes f 0-nonpos:
+x. x ≥ x0 =⇒ f 0 x ≤ 0
+P
+shows norm ( n∈real −‘ {a<..b}. χ n ∗ (f (real n))) ≤ 2 ∗ real (totient n)
+∗fa
+proof −
+note deriv = has-field-derivative-at-within [OF f 0]
+let ?A = sum-upto χ
+have cont: continuous-on {a..b} f
+by (rule DERIV-continuous-on[OF deriv]) (use ab in auto)
+have I 0: (f 0 has-integral (f b − f a)) {a..b}
+using ab deriv by (intro fundamental-theorem-of-calculus)
+(auto simp: has-real-derivative-iff-has-vector-derivative [symmetric])
+define I where I = integral {a..b} (λt. ?A t ∗ of-real (f 0 t))
+define C where C = real (totient n)
+have C-nonneg: C ≥ 0 by (simp add: C-def )
+have C : norm (?A x) ≤ C for x
+proof −
+P
+have ?A x = ( k≤nat bxc. χ k) unfolding sum-upto-altdef
+by (intro sum.mono-neutral-left) auto
+also have norm . . . ≤ C unfolding C-def using nonprincipal
+by (rule sum-dcharacter-atMost-le)
+finally show ?thesis .
+qed
+0
+have I : ((λt.
+P ?A t ∗ f t) has-integral ?A b ∗ f b − ?A a ∗ f a −
+( n∈real −‘ {a<..b}. χ n ∗ f (real n))) {a..b} using ab x0 cont f 0
+
+53
+
+by (intro
+P partial-summation-strong[of {}] has-vector-derivative-of-real) auto
+hence ( n∈real −‘ {a<..b}. χ n ∗ f (real n)) = ?A b ∗ f b − ?A a ∗ f a − I
+by (simp add: has-integral-iff I-def )
+also have norm . . . ≤ norm (?A b) ∗ norm (f b) + norm (?A a) ∗ norm (f a)
++ norm I
+by (rule order.trans[OF norm-triangle-ineq4 ] add-mono)+ (simp-all add: norm-mult)
+also have norm I ≤ integral {a..b} (λt. of-real (−C ) ∗ of-real (f 0 t))
+unfolding I-def using I I 0 f 0-nonpos ab C
+by (intro integral-norm-bound-integral integrable-on-cmult-left)
+(simp-all add: has-integral-iff norm-mult mult-right-mono-neg)
+also have . . . = − (C ∗ (f b − f a))
+using integral-linear[OF - bounded-linear-of-real, of f 0 {a..b}] I 0
+by (simp add: has-integral-iff o-def )
+also have . . . = C ∗ (f a − f b) by (simp add: algebra-simps)
+also have norm (sum-upto χ b) ≤ C by (rule C )
+also have norm (sum-upto χ a) ≤ C by (rule C )
+also have C ∗ norm (f b) + C ∗ norm (f a) + C ∗ (f a − f b) = 2 ∗ C ∗ f a
+using f-nonneg[of a] f-nonneg[of b] ab by (simp add: algebra-simps)
+finally show ?thesis by (simp add: mult-right-mono C-def )
+qed
+lemma summable-dcharacter-antimono:
+fixes x0 a b :: real and f f 0 :: real ⇒ real
+assumes nonprincipal:
+χ 6= χ0
+V
+assumes f 0: x. x ≥
+x0
+=⇒ (f has-field-derivative f 0 x) (at x)
+V
+assumes f-nonneg: Vx. x ≥ x0 =⇒ f x ≥ 0
+assumes f 0-nonpos: x. x ≥ x0 =⇒ f 0 x ≤ 0
+assumes lim: (f −−−→ 0 ) at-top
+shows summable (λn. χ n ∗ f n)
+proof (rule summable-bounded-partials [where ?g = λx. 2 ∗ real (totient n) ∗ f
+x], goal-cases)
+case 1
+from eventually-ge-at-top[of nat dx0 e] show ?case
+proof eventually-elim
+case (elim x)
+show ?case
+proof (safe, goal-cases)
+case (1 a b)
+with elim have ∗: max 0 x0 ≥ 0 max 0 x0 ≤ a real a < real b
+by (simp-all
+add: nat-le-iff ceiling-le-iff )
+P
+have ( Pn∈{a<..b}. χ n ∗ complex-of-real (f (real n))) =
+( n∈real −‘ {real a<..real b}. χ n ∗ complex-of-real (f (real n)))
+by (intro sum.cong refl) auto
+also have norm . . . ≤ 2 ∗ real (totient n) ∗ f a
+using nonprincipal ∗ f 0 f-nonneg f 0-nonpos by (rule sum-dcharacter-antimono-bound)
+simp-all
+finally show ?case .
+qed
+qed
+
+54
+
+qed (auto intro!: tendsto-mult-right-zero filterlim-compose[OF lim] filterlim-real-sequentially)
+lemma conv-abscissa-le-0 :
+fixes s :: real
+assumes nonprincipal: χ 6= χ0
+shows conv-abscissa (fds χ) ≤ 0
+proof (rule conv-abscissa-leI )
+fix s assume s: 0 < ereal s
+have summable (λn. χ n ∗ of-real (n powr −s))
+proof (rule summable-dcharacter-antimono[of 1 ])
+fix x :: real assume x ≥ 1
+thus ((λx. x powr −s) has-field-derivative (−s ∗ x powr (−s−1 ))) (at x)
+by (auto intro!: derivative-eq-intros)
+qed (insert s assms, auto intro!: tendsto-neg-powr filterlim-ident)
+thus ∃ s 0::complex. s 0 · 1 = s ∧ fds-converges (fds χ) s 0 using s
+by (intro exI [of - of-real s])
+(auto simp: fds-converges-def powr-minus divide-simps powr-of-real [symmetric]
+fds-nth-fds 0)
+qed
+lemma summable-Dirichlet-L 0:
+assumes nonprincipal: χ 6= χ0
+assumes s: Re s > 0
+shows summable (λn. χ n ∗ of-nat n powr −s)
+proof −
+from assms have fds-converges (fds χ) s
+by (intro fds-converges le-less-trans[OF conv-abscissa-le-0 ]) auto
+thus ?thesis by (simp add: fds-converges-def powr-minus divide-simps fds-nth-fds 0)
+qed
+lemma
+assumes χ 6= χ0
+V
+shows Dirichlet-L-conv-eval-fds: s. Re s > 0 =⇒ Dirichlet-L n χ s = eval-fds
+(fds χ) s
+and holomorphic-Dirichlet-L: Dirichlet-L n χ holomorphic-on A
+proof −
+show eq: Dirichlet-L n χ s = eval-fds (fds χ) s (is ?f s = ?g s) if Re s > 0 for s
+proof (cases s = 1 )
+case False
+show ?thesis
+proof (rule analytic-continuation-open[where ?f = ?f and ?g = ?g])
+show {s. Re s > 1 } ⊆ {s. Re s > 0 } − {1 } by auto
+show connected ({s. 0 < Re s} − {1 })
+using aff-dim-halfspace-gt[of 0 1 ::complex]
+by (intro connected-punctured-convex convex-halfspace-Re-gt) auto
+qed (insert that n assms False,
+auto intro!: convex-halfspace-Re-gt open-halfspace-Re-gt exI [of - 2 ]
+holomorphic-intros holomorphic-Dirichlet-L-weak
+Dirichlet-L-conv-eval-fds-weak le-less-trans[OF conv-abscissa-le-0 ])
+
+55
+
+qed (insert assms, simp-all add: Dirichlet-L-def )
+have Dirichlet-L n χ holomorphic-on UNIV
+proof (rule no-isolated-singularity 0)
+from n show Dirichlet-L n χ holomorphic-on (UNIV − {1 })
+by (intro holomorphic-Dirichlet-L-weak) auto
+next
+fix s :: complex assume s: s ∈ {1 }
+show Dirichlet-L n χ −s→ Dirichlet-L n χ s
+proof (rule Lim-transform-eventually)
+from assms have continuous-on {s. Re s > 0 } (eval-fds (fds χ))
+by (intro holomorphic-fds-eval holomorphic-on-imp-continuous-on)
+(auto intro: le-less-trans[OF conv-abscissa-le-0 ])
+hence eval-fds (fds χ) −s→ eval-fds (fds χ) s using s
+by (subst (asm) continuous-on-eq-continuous-at) (auto simp: open-halfspace-Re-gt
+isCont-def )
+also have eval-fds (fds χ) s = Dirichlet-L n χ s
+using assms s by (simp add: Dirichlet-L-def )
+finally show eval-fds (fds χ) −s→ Dirichlet-L n χ s .
+next
+have eventually (λz. z ∈ {z. Re z > 0 }) (nhds s) using s
+by (intro eventually-nhds-in-open) (auto simp: open-halfspace-Re-gt)
+hence eventually (λz. z ∈ {z. Re z > 0 }) (at s)
+unfolding eventually-at-filter by eventually-elim auto
+then show eventually (λz. eval-fds (fds χ) z = Dirichlet-L n χ z) (at s)
+by eventually-elim (auto intro!: eq [symmetric])
+qed
+qed auto
+thus Dirichlet-L n χ holomorphic-on A by (rule holomorphic-on-subset) auto
+qed
+lemma cnj-Dirichlet-L:
+cnj (Dirichlet-L n χ s) = Dirichlet-L n (inv-character χ) (cnj s)
+proof −
+{
+assume ∗: χ 6= χ0 s = 1
+with summable-Dirichlet-L 0[of 1 ] have (λn. χ n / n) sums eval-fds (fds χ) 1
+by (simp add: eval-fds-def fds-nth-fds 0 powr-minus sums-iff divide-simps)
+hence (λn. inv-character χ n / n) sums cnj (eval-fds (fds χ) 1 )
+by (subst (asm) sums-cnj [symmetric]) (simp add: inv-character-def )
+hence eval-fds (fds (inv-character χ)) 1 = cnj (eval-fds (fds χ) 1 )
+by (simp add: eval-fds-def fds-nth-fds 0 inv-character-def sums-iff )
+}
+thus ?thesis by (auto simp add: Dirichlet-L-def cnj-powr eval-inv-character)
+qed
+end
+lemma holomorphic-Dirichlet-L [holomorphic-intros]:
+assumes n > 1 χ 6= principal-dchar n ∧ dcharacter n χ ∨ χ = principal-dchar
+
+56
+
+n ∧1 ∈
+/ A
+shows Dirichlet-L n χ holomorphic-on A
+using assms(2 )
+proof
+assume χ = principal-dchar n ∧ 1 ∈
+/ A
+with holomorphic-Dirichlet-L-weak[of n A principal-dchar n] assms(1 ) show
+?thesis by auto
+qed (insert dcharacter.holomorphic-Dirichlet-L[of n χ A], auto)
+lemma holomorphic-Dirichlet-L 0 [holomorphic-intros]:
+assumes n > 1 f holomorphic-on A
+χ 6= principal-dchar n ∧ dcharacter n χ ∨ χ = principal-dchar n ∧ (∀ x∈A.
+f x 6= 1 )
+shows (λs. Dirichlet-L n χ (f s)) holomorphic-on A
+using holomorphic-on-compose[OF assms(2 ) holomorphic-Dirichlet-L[OF assms(1 ),
+of χ]] assms
+by (auto simp: o-def image-iff )
+lemma continuous-on-Dirichlet-L:
+assumes n > 1 χ 6= principal-dchar n ∧ dcharacter n χ ∨ χ = principal-dchar
+n ∧1 ∈
+/ A
+shows continuous-on A (Dirichlet-L n χ)
+using assms by (intro holomorphic-on-imp-continuous-on holomorphic-intros)
+lemma continuous-on-Dirichlet-L 0 [continuous-intros]:
+assumes continuous-on A f n > 1
+and χ 6= principal-dchar n ∧ dcharacter n χ ∨ χ = principal-dchar n ∧
+(∀ x∈A. f x 6= 1 )
+shows continuous-on A (λx. Dirichlet-L n χ (f x))
+using continuous-on-compose2 [OF continuous-on-Dirichlet-L[of n χ f ‘ A] assms(1 )]
+assms
+by (auto simp: image-iff )
+corollary continuous-Dirichlet-L [continuous-intros]:
+n > 1 =⇒ χ 6= principal-dchar n ∧ dcharacter n χ ∨ χ = principal-dchar n ∧ s
+6= 1 =⇒
+continuous (at s within A) (Dirichlet-L n χ)
+by (rule continuous-within-subset[of - UNIV ])
+(insert continuous-on-Dirichlet-L[of n χ (if χ = principal-dchar n then −{1 }
+else UNIV )],
+auto simp: continuous-on-eq-continuous-at open-Compl)
+corollary continuous-Dirichlet-L 0 [continuous-intros]:
+n > 1 =⇒ continuous (at s within A) f =⇒
+χ 6= principal-dchar n ∧ dcharacter n χ ∨ χ = principal-dchar n ∧ f s 6= 1
+=⇒
+continuous (at s within A) (λx. Dirichlet-L n χ (f x))
+by (rule continuous-within-compose3 [OF continuous-Dirichlet-L]) auto
+
+57
+
+context residues-nat
+begin
+
+Applying the above to the L(χ0 , s), the L function of the principal character,
+we find that it differs from the Riemann ζ function only by multiplication
+with a constant that depends only on the modulus n. They therefore have
+the same analytic properties as the ζ function itself.
+lemma Dirichlet-L-principal:
+fixes s :: complex
+Q
+shows Dirichlet-L n χ0 s = ( p | prime p ∧ p dvd n. (1 − 1 / p powr s)) ∗
+zeta s
+(is ?f s = ?g s)
+proof (cases s = 1 )
+case False
+show ?thesis
+proof (rule analytic-continuation-open[where ?f = ?f and ?g = ?g])
+show {s. Re s > 1 } ⊆ − {1 } by auto
+show ?f s = ?g s if s ∈ {s. Re s > 1 } for s
+proof −
+from that Q
+have s: Re s > 1 by simp
+let ?P = (Q p | prime p ∧ p dvd n. (1 − 1 / p powr s))
+have (λn. p≤n. if prime p then inverse (1 − χ0 p / nat-power p s) else 1 )
+−−−−→ Dirichlet-L n χ0 s
+using s by (rule principal.Dirichlet-L-euler-product-LIMSEQ)
+Q
+also have ?this ←→ (λn. ?P ∗ ( p≤n. if prime p then inverse (1 − 1 /
+of-nat p powr s) else 1 ))
+−−−−→ Dirichlet-L n χ0 s (is - = filterlim ?g - -)
+proof (intro tendsto-cong eventually-mono [OF eventually-ge-at-top, of n],
+goal-cases)
+case (1 m)
+let ?f Q
+= λp. inverse (1 − 1 / p powr s)
+have ( Qp≤m. if prime p then inverse (1 − χ0 p / nat-power p s) else 1 ) =
+( p | p ≤ m ∧ prime p ∧ coprime p n. ?f p) (is - = prod - ?A)
+by (intro prod.mono-neutral-cong-right) (auto simp: principal-dchar-def )
+also have ?A = {p. p ≤ m ∧ prime p} − {p. prime p ∧ p dvd n}
+(is - = ?B − ?C ) using n by (auto dest: prime-imp-coprime simp:
+coprime-absorb-left)
+also {
+Q
+Q
+Q
+have ∗: ( p∈?B. ?f p) = ( p∈?B − ?C . ?f p) ∗ ( p∈?C . ?f p)
+usingQ1 n by (intro prod.subset-diff
+) (auto dest: dvd-imp-le)
+Q
+Q
+have ( p∈?B. ?f p) ∗ ?P = ( p∈?B − ?C . ?f p) ∗ (( p∈?C . ?f p) ∗
+?P)
+by (subst ∗)
+Q (simp add: mult-ac) Q
+also have ( p∈?C . ?f p) ∗ ?P = ( p∈?C . 1 )
+by (subst prod.distrib [symmetric], rule prod.cong)
+(insert s, auto simp: divide-simps powr-def exp-eq-1 )
+also have . . . Q
+= 1 by simp
+Q
+finally have ( p∈?B − ?C . ?f p) = ( p∈?B. ?f p) ∗ ?P by simp
+
+58
+
+}
+Q
+Q
+also have ( p∈?B. ?f p) = ( p≤m. if prime p then ?f p else 1 )
+by (intro prod.mono-neutral-cong-left) auto
+finally show ?case by (simp only: mult-ac)
+qed
+finally have ?g −−−−→ Dirichlet-L n χ0 s .
+moreover have ?g −−−−→ ?P ∗ zeta s
+by (intro tendsto-mult tendsto-const euler-product-zeta s)
+ultimately show Dirichlet-L n χ0 s = ?P ∗ zeta s
+by (rule LIMSEQ-unique)
+qed
+qed (insert ‹s 6= 1 › n, auto intro!: holomorphic-intros holomorphic-Dirichlet-L-weak
+open-halfspace-Re-gt exI [of - 2 ] connected-punctured-universe)
+qed (simp-all add: Dirichlet-L-def zeta-1 )
+end
+
+3.2
+
+The non-vanishing for R(s) ≥ 1
+
+lemma coprime-prime-exists:
+assumes n > (0 :: nat)
+obtains p where prime p coprime p n
+proof −
+from bigger-prime[of n] obtain p where p: prime p p > n by auto
+with assms have ¬p dvd n by (auto dest: dvd-imp-le)
+with p have coprime p n by (intro prime-imp-coprime)
+with that[of p] and p show ?thesis by auto
+qed
+
+The case of the principal character is trivial, since it differs from the Riemann
+ζ(s) only in a multiplicative factor that is clearly non-zero for R(s) ≥ 1.
+theorem (in residues-nat) Dirichlet-L-Re-ge-1-nonzero-principal:
+assumes Re s ≥ 1 s 6= 1
+shows Dirichlet-L n (principal-dchar n) s 6= 0
+proof −Q
+have ( p | prime p ∧ p dvd n. 1 − 1 / p powr s) 6= (0 :: complex)
+proof (subst prod-zero-iff )
+from n show finite {p. prime p ∧ p dvd n} by (intro finite-prime-divisors)
+auto
+show ¬(∃ p∈{p. prime p ∧ p dvd n}. 1 − 1 / p powr s = 0 )
+proof safe
+fix p assume p: prime p p dvd n and 1 − 1 / p powr s = 0
+hence norm (p powr s) = 1 by simp
+also have norm (p powr s) = real p powr Re s by (simp add: norm-powr-real-powr)
+finally show False using p assms by (simp add: powr-def prime-gt-0-nat)
+qed
+qed
+with zeta-Re-ge-1-nonzero[OF assms] show ?thesis by (simp add: Dirichlet-L-principal)
+qed
+
+59
+
+The proof for non-principal character is quite involved and is typically very
+complicated and technical in most textbooks. For instance, Apostol [1]
+proves the result separately for real and non-real characters, where the nonreal case is relatively short and nice, but the real case involves a number of
+complicated asymptotic estimates.
+The following proof, on the other hand – like our proof of the analogous
+result for the Riemann ζ function – is based on Newman’s book [4]. Newman
+gives a very short, concise, and high-level sketch that we aim to reproduce
+faithfully here.
+context dcharacter
+begin
+theorem Dirichlet-L-Re-ge-1-nonzero-nonprincipal:
+assumes χ 6= χ0 and Re u ≥ 1
+shows Dirichlet-L n χ u 6= 0
+proof (cases Re u > 1 )
+include dcharacter-syntax
+case False
+define a where a = −Im u
+from False and assms have Re u = 1 by simp
+hence [simp]: u = 1 − i ∗ a by (simp add: a-def complex-eq-iff )
+show ?thesis
+proof
+assume Dirichlet-L n χ u = 0
+hence zero: Dirichlet-L n χ (1 − i ∗ a) = 0 by simp
+define χ 0 where [simp]: χ 0 = inv-character χ
+— We define the function Z(s), which is the product of all the Dirichlet L
+functions, and its Dirichlet series. Then, similarly to the proof of the non-vanishing
+of the Riemann ζ function for R(s) ≥ 1, we define Q(s) = Z(s)Z(s + ia)Z(s − ia).
+Our objective is to show that the Dirichlet series of this function Q converges
+everywhere.
+Q
+define Z where Z = (λs. χ∈dcharacters
+n. Dirichlet-L n χ s)
+Q
+define Z-fds where Z-fds = ( χ∈dcharacters n. fds χ)
+define Q where Q = (λs. Z s ^ 2 ∗ Z (s + i ∗ a) ∗ Z (s − i ∗ a))
+define Q-fds where Q-fds = Z-fds ^ 2 ∗ fds-shift (i ∗ a) Z-fds ∗ fds-shift (−i
+∗ a) Z-fds
+let ?sings = {1 , 1 + i ∗ a, 1 − i ∗ a}
+— Some preliminary auxiliary
+Q facts
+define P where P = (λs. ( x∈{p. prime p ∧ p dvd n}. 1 − 1 / of-nat x powr
+s :: complex))
+have χ0 : χ0 ∈ dcharacters n by (auto simp: principal.dcharacter-axioms dcharacters-def )
+have [continuous-intros]: continuous-on A P for A unfolding P-def
+by (intro continuous-intros) (auto simp: prime-gt-0-nat)
+from this[of UNIV ] have [continuous-intros]: isCont P s for s
+by (auto simp: continuous-on-eq-continuous-at)
+
+60
+
+have χ: χ ∈ dcharacters n χ 0 ∈ dcharacters n using dcharacter-axioms
+by (auto simp add: dcharacters-def dcharacter.dcharacter-inv-character)
+from zero dcharacter.cnj-Dirichlet-L[of n χ 1 − i ∗ a] dcharacter-axioms
+have zero 0: Dirichlet-L n χ 0 (1 + i ∗ a) = 0 by simp
+Q
+have Z = (λs. Dirichlet-L n χ0 s ∗ ( χ∈dcharacters n − {χ0 }. Dirichlet-L n
+χ s))
+unfolding Z-def using χ0 by (intro
+Q ext prod.remove) auto
+also have . . . = (λs. P s ∗ zeta s ∗ ( χ∈dcharacters n − {χ0 }. Dirichlet-L n
+χ s))
+by (simp add: Dirichlet-L-principal P-def )
+Q
+finally have Z-eq: Z = (λs. P s ∗ zeta s ∗ ( χ∈dcharacters n − {χ0 }.
+Dirichlet-L n χ s)) .
+have Z-eq 0: Z =Q(λs. P s ∗ zeta s ∗ Dirichlet-L n χ s ∗
+( χ∈dcharacters n − {χ0 } − {χ}. Dirichlet-L n χ s))
+if χ ∈ dcharacters n χ 6= χ0 for χ
+proof (rule ext, goal-cases)
+case (1 s)
+from that have χ: χ ∈ dcharacters n by (simp add: dcharacters-def )
+have ZQ
+s = P s ∗ zeta s ∗
+( χ∈dcharacters
+n − {χ0 }. Dirichlet-L n χ s) by (simp add: Z-eq)
+Q
+also have ( χ∈dcharacters n − {χ0 }. Dirichlet-L n χ s) = Dirichlet-L n χ
+s∗
+Q
+( χ∈dcharacters n − {χ0 } − {χ}. Dirichlet-L n χ s)
+using assms χ that by (intro prod.remove) auto
+finally show ?case by (simp add: mult-ac)
+qed
+— We again show that Q is locally bounded everywhere by showing that every
+singularity is cancelled by some zero. Since now, a can be zero, we do a case
+distinction here to make things a bit easier.
+have Q-bigo-1 : Q ∈ O[at s](λ-. 1 ) for s
+proof (cases a = 0 )
+case True
+have (λs. Dirichlet-L n χ s − Dirichlet-L n χ 1 ) ∈ O[at 1 ](λs. s − 1 ) using
+χ assms n
+by (intro taylor-bigo-linear holomorphic-on-imp-differentiable-at[of - UNIV ]
+holomorphic-intros) (auto simp: dcharacters-def )
+hence ∗: Dirichlet-L n χ ∈ O[at 1 ](λs. s − 1 ) using zero True by simp
+have Z = Q
+(λs. P s ∗ zeta s ∗ Dirichlet-L n χ s ∗
+( χ∈dcharacters n − {χ0 } − {χ}. Dirichlet-L n χ s))
+using χ assms by (intro Z-eq 0) auto
+also have . . . ∈ O[at 1 ](λs. 1 ∗ (1 / (s − 1 )) ∗ (s − 1 ) ∗ 1 ) using n χ
+by (intro landau-o.big.mult continuous-imp-bigo-1 zeta-bigo-at-1 continuous-intros ∗)
+(auto simp: dcharacters-def )
+also have (λs::complex. 1 ∗ (1 / (s − 1 )) ∗ (s − 1 ) ∗ 1 ) ∈ Θ[at 1 ](λ-. 1 )
+by (intro bigthetaI-cong) (auto simp: eventually-at-filter)
+
+61
+
+finally have Z-at-1 : Z ∈ O[at 1 ](λ-. 1 ) .
+have Z ∈ O[at s](λ-. 1 )
+proof (cases s = 1 )
+case False
+thus ?thesis unfolding Z-def using n χ
+by (intro continuous-imp-bigo-1 continuous-intros) (auto simp: dcharacters-def )
+qed (insert Z-at-1 , auto)
+from ‹a = 0 › have Q = (λs. Z s ∗ Z s ∗ Z s ∗ Z s)
+by (simp add: Q-def power2-eq-square)
+also have . . . ∈ O[at s](λ-. 1 ∗ 1 ∗ 1 ∗ 1 )
+by (intro landau-o.big.mult) fact+
+finally show ?thesis by simp
+next
+case False
+have bigo1 : (λs. Z s ∗ Z (s − i ∗ a)) ∈ O[at 1 ](λ-. 1 )
+if Dirichlet-L n χ (1 − i ∗ a) = 0 a 6= 0 χ ∈ dcharacters n χ 6= χ0
+for a :: real and χ
+proof −
+have (λs. Dirichlet-L n χ (s − i ∗ a) − Dirichlet-L n χ (1 − i ∗ a)) ∈ O[at
+1 ](λs. s − 1 )
+using assms n that
+by (intro taylor-bigo-linear holomorphic-on-imp-differentiable-at[of - UNIV ]
+holomorphic-intros) (auto simp: dcharacters-def )
+hence ∗: (λs. Dirichlet-L n χ (s − i ∗ a)) ∈ O[at 1 ](λs. s − 1 ) using that
+by simp
+have (λs. Z (s − i∗a)) = (λs. P (s − i∗a) ∗ zeta (s − i∗a) ∗ Dirichlet-L n
+χ (s − i∗a)
+Q
+∗ ( χ∈dcharacters n − {χ0 } − {χ}. Dirichlet-L n χ (s − i∗a)))
+using that by (subst Z-eq 0[of χ]) auto
+also have . . . ∈ O[at 1 ](λs. 1 ∗ 1 ∗ (s − 1 ) ∗ 1 ) unfolding P-def using
+that n
+by (intro landau-o.big.mult continuous-imp-bigo-1 continuous-intros ∗)
+(auto simp: prime-gt-0-nat dcharacters-def )
+finally have (λs. Z (s − i ∗ a)) ∈ O[at 1 ](λs. s − 1 ) by simp
+moreover have Z ∈ O[at 1 ](λs. 1 ∗ (1 / (s − 1 )) ∗ 1 ) unfolding Z-eq
+using n that
+by (intro landau-o.big.mult zeta-bigo-at-1 continuous-imp-bigo-1 continuous-intros)
+(auto simp: dcharacters-def )
+hence Z ∈ O[at 1 ](λs. 1 / (s − 1 )) by simp
+ultimately have (λs. Z s ∗ Z (s − i ∗ a)) ∈ O[at 1 ](λs. 1 / (s − 1 ) ∗ (s
+− 1 ))
+by (intro landau-o.big.mult)
+also have (λs. 1 / (s − 1 ) ∗ (s − 1 )) ∈ Θ[at 1 ](λ-. 1 )
+by (intro bigthetaI-cong) (auto simp add: eventually-at-filter)
+
+62
+
+finally show ?thesis .
+qed
+have bigo1 0: (λs. Z s ∗ Z (s + i ∗ a)) ∈ O[at 1 ](λ-. 1 )
+if Dirichlet-L n χ (1 − i ∗ a) = 0 a 6= 0 χ ∈ dcharacters n χ 6= χ0
+for a :: real and χ
+proof −
+from that interpret dcharacter n G χ by (simp-all add: dcharacters-def
+G-def )
+from bigo1 [of inv-character χ −a] that cnj-Dirichlet-L[of 1 − i ∗ a] show
+?thesis
+by (simp add: dcharacters-def dcharacter-inv-character)
+qed
+have bigo2 : (λs. Z s ∗ Z (s − i ∗ a)) ∈ O[at (1 + i ∗ a)](λ-. 1 )
+if Dirichlet-L n χ (1 − i ∗ a) = 0 a 6= 0 χ ∈ dcharacters n χ 6= χ0
+for a :: real and χ
+proof −
+have (λs. Z s ∗ Z (s − i ∗ a)) ∈ O[filtermap (λs. s + i ∗ a) (at 1 )](λ-. 1 )
+using bigo1 0[of χ a] that by (simp add: mult.commute landau-o.big.in-filtermap-iff )
+also have filtermap (λs. s + i ∗ a) (at 1 ) = at (1 + i ∗ a)
+using filtermap-at-shift[of −i ∗ a 1 ] by simp
+finally show ?thesis .
+qed
+have bigo2 0: (λs. Z s ∗ Z (s + i ∗ a)) ∈ O[at (1 − i ∗ a)](λ-. 1 )
+if Dirichlet-L n χ (1 − i ∗ a) = 0 a 6= 0 χ ∈ dcharacters n χ 6= χ0
+for a :: real and χ
+proof −
+from that interpret dcharacter n G χ by (simp-all add: dcharacters-def
+G-def )
+from bigo2 [of inv-character χ −a] that cnj-Dirichlet-L[of 1 − i ∗ a] show
+?thesis
+by (simp add: dcharacters-def dcharacter-inv-character)
+qed
+have Q-eq: Q = (λs. (Z s ∗ Z (s + i ∗ a)) ∗ (Z s ∗ Z (s − i ∗ a)))
+by (simp add: Q-def power2-eq-square mult-ac)
+consider s = 1 | s = 1 + i ∗ a | s = 1 − i ∗ a | s ∈
+/ ?sings by blast
+thus ?thesis
+proof cases
+case 1
+have Q ∈ O[at 1 ](λ-. 1 ∗ 1 )
+unfolding Q-eq using assms zero zero 0 False χ
+by (intro landau-o.big.mult bigo1 [of χ a] bigo1 0[of χ a]; simp)+
+with 1 show ?thesis by simp
+next
+case 2
+
+63
+
+have Q ∈ O[at (1 + i ∗ a)](λ-. 1 ∗ 1 ) unfolding Q-eq
+using assms zero zero 0 False χ n
+by (intro landau-o.big.mult bigo2 [of χ a] continuous-imp-bigo-1 )
+(auto simp: Z-def dcharacters-def intro!: continuous-intros)
+with 2 show ?thesis by simp
+next
+case 3
+have Q ∈ O[at (1 − i ∗ a)](λ-. 1 ∗ 1 ) unfolding Q-eq
+using assms zero zero 0 False χ n
+by (intro landau-o.big.mult bigo2 0[of χ a] continuous-imp-bigo-1 )
+(auto simp: Z-def dcharacters-def intro!: continuous-intros)
+with 3 show ?thesis by simp
+next
+case 4
+thus ?thesis unfolding Q-def Z-def using n
+by (intro continuous-imp-bigo-1 continuous-intros)
+(auto simp: dcharacters-def complex-eq-iff )
+qed
+qed
+— Again, we can remove the singularities from Q and extend it to an entire
+function.
+have ∃ Q 0. Q 0 holomorphic-on UNIV ∧ (∀ z∈UNIV − ?sings. Q 0 z = Q z)
+using n by (intro removable-singularities Q-bigo-1 )
+(auto simp: Q-def Z-def dcharacters-def complex-eq-iff intro!:
+holomorphic-intros)
+V
+then obtain Q 0 where Q 0: Q 0 holomorphic-on UNIV z. z ∈
+/ ?sings =⇒ Q 0
+z = Q z by blast
+— Q 0 constitutes an analytic continuation of the Dirichlet series of Q.
+have eval-Q-fds: eval-fds Q-fds s = Q 0 s if Re s > 1 for s
+proof −
+have [simp]: dcharacter n χ if χ ∈ dcharacters n for χ
+using that by (simp add: dcharacters-def )
+from that have abs-conv-abscissa (fds χ) < ereal (Re s) if χ ∈ dcharacters
+n for χ
+using that by (intro le-less-trans[OF dcharacter.abs-conv-abscissa-weak[of
+n χ]]) auto
+hence eval-fds Q-fds s = Q s using that
+by (simp add: Q-fds-def Q-def eval-fds-mult eval-fds-power fds-abs-converges-mult
+eval-fds-prod fds-abs-converges-prod dcharacter.Dirichlet-L-conv-eval-fds-weak
+fds-abs-converges-power eval-fds-zeta Z-fds-def Z-def fds-abs-converges)
+also from that have . . . = Q 0 s by (subst Q 0) auto
+finally show ?thesis .
+qed
+— Since the characters are completely multiplicative, the series for this logarithm
+can be rewritten like this:
+
+64
+
+define I where I = (λk. if [k = 1 ] (mod n) then totient n else 0 :: real)
+have ln-Q-fds-eq:
+fds-ln 0 Q-fds = fds (λk. of-real (2 ∗ I k ∗ mangoldt k / ln k ∗ (1 + cos (a ∗
+ln k))))
+proof −
+have nz: χ (Suc 0 ) = 1 if χ ∈ dcharacters n for χ
+using dcharacter.Suc-0 [of n χ] that by (simp add: dcharacters-def )
+note simps = fds-ln-mult[where l 0 = 0 and l 00 = 0 ] fds-ln-power[where l 0
+= 0]
+0
+fds-ln-prod[where
+P l = λ-. 0 ]
+have fds-ln 0 Q-fds = ( χ∈dcharacters n. 2 ∗ fds-ln 0 (fds χ) +
+fds-shift (i ∗ a) (fds-ln 0 (fds χ)) + fds-shift (−i ∗ a) (fds-ln 0 (fds χ)))
+by (auto simp: Q-fds-def
+Z-fds-def simps nz sum.distrib sum-distrib-left)
+P
+also have . . . = ( χ∈dcharacters n.
+fds (λk. χ k ∗ of-real (2 ∗ mangoldt k / ln k ∗ (1 + cos (a ∗
+ln k))))) P
+(is ( χ∈-. ?l χ) = -)
+proof (intro sum.cong refl, goal-cases)
+case (1 χ)
+then interpret dcharacter n G χ by (simp-all add: dcharacters-def G-def )
+have mult: completely-multiplicative-function (fds-nth (fds χ))
+by (simp add: fds-nth-fds 0 mult.completely-multiplicative-function-axioms)
+have ∗: fds-ln 0 (fds χ) = fds (λn. χ n ∗ mangoldt n /R ln (real n))
+by (simp add: fds-ln-completely-multiplicative[OF mult] fds-nth-fds 0
+fds-eq-iff )
+have ?l χ = fds (λk. χ k ∗ mangoldt k /R ln k ∗ (2 + k powr (i ∗ a) + k
+powr (−i ∗ a)))
+by (unfold ∗, rule fds-eqI ) (simp add: algebra-simps scaleR-conv-of-real
+numeral-fds)
+also have . . . = fds (λk. χ k ∗ 2 ∗ mangoldt k /R ln k ∗ (1 + cos (of-real(a
+∗ ln k))))
+unfolding cos-exp-eq by (intro fds-eqI ) (simp add: powr-def algebra-simps)
+also have . . . = fds (λk. χ k ∗ of-real (2 ∗ mangoldt k / ln k ∗ (1 + cos
+(a ∗ ln k))))
+unfolding cos-of-real by (simp add: field-simps scaleR-conv-of-real)
+finally show ?case .
+qed
+P
+also have . . . = fds (λk. ( χ∈dcharacters n. χ k) ∗ of-real (2 ∗ mangoldt
+k / ln k ∗
+(1 + cos (a ∗ ln k))))
+by (simp add: sum-distrib-right sum-divide-distrib scaleR-conv-of-real sum-distrib-left)
+also have . . . = fds (λk. of-real (2 ∗ I k ∗ mangoldt k / ln k ∗ (1 + cos (a
+∗ ln k))))
+by (intro fds-eqI , subst sum-dcharacters) (simp-all add: I-def algebra-simps)
+finally show ?thesis .
+qed
+— The coefficients of that logarithm series are clearly nonnegative:
+have nonneg-dirichlet-series (fds-ln 0 Q-fds)
+proof
+
+65
+
+show fds-nth (fds-ln 0 Q-fds) k ∈ ≥0 for k
+proof (cases k < 2 )
+case False
+have cos: 1 + cos x ≥ 0 for x :: real
+using cos-ge-minus-one[of x] by linarith
+have fds-nth (fds-ln 0 Q-fds) k =
+of-real (2 ∗ I k ∗ mangoldt k / ln k ∗ (1 + cos (a ∗ ln k)))
+by (auto simp: fds-nth-fds 0 ln-Q-fds-eq)
+also have . . . ∈ ≥0 using False unfolding I-def
+by (subst nonneg-Reals-of-real-iff )
+(intro mult-nonneg-nonneg divide-nonneg-pos cos mangoldt-nonneg, auto)
+finally show ?thesis .
+qed (cases k; auto simp: ln-Q-fds-eq)
+qed
+— Therefore Q-fds also has non-negative coefficients.
+hence nonneg: nonneg-dirichlet-series Q-fds
+proof (rule
+Q nonneg-dirichlet-series-lnD)
+have ( x∈dcharacters n. x (Suc 0 )) = 1
+by (intro prod.neutral) (auto simp: dcharacters-def dcharacter.Suc-0 )
+thus exp 0 = fds-nth Q-fds (Suc 0 ) by (simp add: Q-fds-def Z-fds-def )
+qed
+— And by Pringsheim–Landau, we get that the Dirichlet series of Q converges
+everywhere.
+have abs-conv-abscissa Q-fds ≤ 1 unfolding Q-fds-def Z-fds-def fds-shift-prod
+by (intro abs-conv-abscissa-power-leI abs-conv-abscissa-mult-leI abs-conv-abscissa-prod-le)
+(auto simp: dcharacters-def dcharacter.abs-conv-abscissa-weak)
+with nonneg and eval-Q-fds and ‹Q 0 holomorphic-on UNIV ›
+have abscissa: abs-conv-abscissa Q-fds = −∞
+by (intro entire-continuation-imp-abs-conv-abscissa-MInfty[where g = Q 0
+and c = 1 ])
+(auto simp: one-ereal-def )
+— Again, similarly to the proof for ζ, we select a subseries of Q. This time we
+cannot simply pick powers of 2, since 2 might not be coprime to n, in which case
+the subseries would simply be 1 everywhere, which is not helpful. However, it is
+clear that there is always some prime p that is coprime to n, so we just use the
+subseries Q that corresponds to powers of p.
+from n obtain p where p: prime p coprime p n
+using coprime-prime-exists[of n] by auto
+define R-fds where R-fds = fds-primepow-subseries p Q-fds
+have conv-abscissa R-fds ≤ abs-conv-abscissa R-fds by (rule conv-le-abs-conv-abscissa)
+also have abs-conv-abscissa R-fds ≤ abs-conv-abscissa Q-fds
+unfolding R-fds-def by (rule abs-conv-abscissa-restrict)
+also have . . . = −∞ by (simp add: abscissa)
+finally have abscissa 0: conv-abscissa R-fds = −∞ by simp
+— The following function g(a, s) is the denominator in the Euler product
+expansion of the subseries of Z(s + ia). It is clear that it is entire and non-zero for
+
+66
+
+R(s) > 0 and all real a.
+define g :: real ⇒ complex
+⇒ complex
+Q
+where g = (λa s. ( χ∈dcharacters n. (1 − χ p ∗ p powr (−s + i ∗ of-real
+a))))
+have g-nz: g a s 6= 0 if Re s > 0 for s a unfolding g-def
+proof (subst prod-zero-iff [OF finite-dcharacters], safe)
+fix χ assume χ ∈ dcharacters n and ∗: 1 − χ p ∗ p powr (−s + i∗a) = 0
+then interpret dcharacter n G χ by (simp-all add: dcharacters-def G-def )
+from p have real p > real 1 by (subst of-nat-less-iff ) (auto simp: prime-gt-Suc-0-nat)
+hence real p powr − Re s < real p powr 0
+using p that by (intro powr-less-mono) auto
+hence 0 < norm (1 :: complex) − norm (χ p ∗ p powr (−s + i∗a))
+using p by (simp add: norm-mult norm norm-powr-real-powr)
+also have . . . ≤ norm (1 − χ p ∗ p powr (−s + i∗a))
+by (rule norm-triangle-ineq2 )
+finally show False by (subst (asm) ∗) simp-all
+qed
+have [holomorphic-intros]: g a holomorphic-on A for a A unfolding g-def
+using p by (intro holomorphic-intros)
+— By taking Euler product expansions of every factor, we get
+1
+R(s) =
+= (1 − 2−s )−2 (1 − 2−s+ia )−1 (1 − 2−s−ia )−1
+2
+g(0, s) g(a, s)g(−a, s)
+for every s with R(s) > 1, and by analytic continuation also for R(s) > 0.
+have eval-R: eval-fds R-fds s = 1 / (g 0 s ^ 2 ∗ g a s ∗ g (−a) s)
+(is - = ?f s) if Re s > 0 for s :: complex
+proof −
+show ?thesis
+proof (rule analytic-continuation-open[where f = eval-fds R-fds])
+show ?f holomorphic-on {s. Re s > 0 } using p g-nz[of 0 ] g-nz[of a] g-nz[of
+−a]
+by (intro holomorphic-intros) (auto simp: g-nz)
+next
+fix z assume z: z ∈ {s. Re s > 1 }
+have [simp]: completely-multiplicative-function χ fds-nth (fds χ) = χ
+if χ ∈ dcharacters n for χ
+proof −
+from that interpret dcharacter n G χ by (simp-all add: G-def dcharacters-def )
+show completely-multiplicative-function χ fds-nth (fds χ) = χ
+by (simp-all add: fds-nth-fds 0 mult.completely-multiplicative-function-axioms)
+qed
+have [simp]: dcharacter n χ if χ ∈ dcharacters n for χ
+using that by (simp add: dcharacters-def )
+from that have abs-conv-abscissa (fds χ) < ereal (Re z) if χ ∈ dcharacters
+n for χ
+using that z by (intro le-less-trans[OF dcharacter.abs-conv-abscissa-weak[of
+n χ]]) auto
+
+67
+
+thus eval-fds R-fds z = ?f z using z p
+by (simp add: R-fds-def Q-fds-def Z-fds-def eval-fds-mult eval-fds-prod
+eval-fds-power
+fds-abs-converges-mult fds-abs-converges-power fds-abs-converges-prod
+g-def mult-ac
+fds-primepow-subseries-euler-product-cm powr-minus powr-diff powr-add
+prod-dividef
+fds-abs-summable-zeta g-nz fds-abs-converges power-one-over divide-inverse [symmetric])
+qed (insert that abscissa 0, auto intro!: exI [of - 2 ] convex-connected open-halfspace-Re-gt
+convex-halfspace-Re-gt holomorphic-intros)
+qed
+— We again have our contradiction: R(s) is entire, but the right-hand side has
+a pole at 0 since g(0, 0) = 0.
+show False
+proof (rule not-tendsto-and-filterlim-at-infinity)
+have g-limit: (g a −−−→ g a 0 ) (at 0 within {s. Re s > 0 }) for a
+proof −
+have continuous-on UNIV (g a) by (intro holomorphic-on-imp-continuous-on
+holomorphic-intros)
+hence isCont (g a) 0 by (rule continuous-on-interior) auto
+hence continuous (at 0 within {s. Re s > 0 }) (g a) by (rule continuous-within-subset) auto
+thus ?thesis by (auto simp: continuous-within)
+qed
+have ((λs. g 0 s ^ 2 ∗ g a s ∗ g (−a) s) −−−→ g 0 0 ^ 2 ∗ g a 0 ∗ g (−a) 0 )
+(at 0 within {s. Re s > 0 }) by (intro tendsto-intros g-limit)
+also have g 0 0 = 0 unfolding g-def
+proof (rule prod-zero)
+from p and χ0 show ∃ χ∈dcharacters n. 1 − χ p ∗ of-nat p powr (− 0 +
+i ∗ of-real 0 ) = 0
+by (intro bexI [of - χ0 ]) (auto simp: principal-dchar-def )
+qed auto
+moreover have eventually (λs. s ∈ {s. Re s > 0 }) (at 0 within {s. Re s >
+0 })
+by (auto simp: eventually-at-filter)
+hence eventually (λs. g 0 s ^ 2 ∗ g a s ∗ g (−a) s 6= 0 ) (at 0 within {s. Re s
+> 0 })
+by eventually-elim (auto simp: g-nz)
+ultimately have filterlim (λs. g 0 s ^ 2 ∗ g a s ∗ g (−a) s) (at 0 )
+(at 0 within {s. Re s > 0 }) by (simp add: filterlim-at)
+hence filterlim ?f at-infinity (at 0 within {s. Re s > 0 }) (is ?lim)
+by (intro filterlim-divide-at-infinity[OF tendsto-const]
+tendsto-mult-filterlim-at-infinity) auto
+also have ev: eventually (λs. Re s > 0 ) (at 0 within {s. Re s > 0 })
+by (auto simp: eventually-at intro!: exI [of - 1 ])
+have ?lim ←→ filterlim (eval-fds R-fds) at-infinity (at 0 within {s. Re s >
+0 })
+
+68
+
+by (intro filterlim-cong refl eventually-mono[OF ev]) (auto simp: eval-R)
+finally show . . . .
+next
+have continuous (at 0 within {s. Re s > 0 }) (eval-fds R-fds)
+by (intro continuous-intros) (auto simp: abscissa 0)
+thus ((eval-fds R-fds −−−→ eval-fds R-fds 0 )) (at 0 within {s. Re s > 0 })
+by (auto simp: continuous-within)
+next
+have 0 ∈ {s. Re s ≥ 0 } by simp
+also have {s. Re s ≥ 0 } = closure {s. Re s > 0 }
+using closure-halfspace-gt[of 1 ::complex 0 ] by (simp add: inner-commute)
+finally have 0 ∈ . . . .
+thus at 0 within {s. Re s > 0 } 6= bot
+by (subst at-within-eq-bot-iff ) auto
+qed
+qed
+qed (fact Dirichlet-L-Re-gt-1-nonzero)
+
+3.3
+
+Asymptotic bounds on partial sums of Dirichlet L functions
+
+The following are some bounds on partial sums of the L-function of a character that are useful for asymptotic reasoning, particularly for Dirichlet’s
+Theorem.
+lemma sum-upto-dcharacter-le:
+assumes χ 6= χ0
+shows norm (sum-upto χ x) ≤ totient n
+proof −
+P
+have sum-upto χ x = ( k≤nat bxc. χ k) unfolding sum-upto-altdef
+by (intro sum.mono-neutral-left) auto
+also have norm . . . ≤ totient n
+by (rule sum-dcharacter-atMost-le) fact
+finally show ?thesis .
+qed
+lemma Dirichlet-L-minus-partial-sum-bound:
+fixes s :: complex and x :: real
+assumes χ 6= χ0 and Re s > 0 and x > 0
+defines σ ≡ Re s
+shows norm (sum-upto (λn. χ n ∗ n powr −s) x − Dirichlet-L n χ s) ≤
+real (totient n) ∗ (2 + cmod s / σ) / x powr σ
+proof (rule Lim-norm-ubound)
+from assms have summable (λn. χ n ∗ of-nat n powr −s)
+by (intro summable-Dirichlet-L 0)
+with assms have (λn. χ n ∗ of-nat n powr −s) sums Dirichlet-L n χ s
+using Dirichlet-L-conv-eval-fds[OF assms(1 ,2 )]
+0
+by (simp add:
+P sums-iff eval-fds-def powr-minus divide-simps fds-nth-fds )
+hence (λm.
+k≤m. χ k ∗ of-nat k powr −s) −−−−→ Dirichlet-L n χ s
+
+69
+
+by (simp add: sums-def 0 atLeast0AtMost)
+P
+thus (λm. sum-upto (λk. χ k ∗ of-nat k powr −s) x − ( k≤m. χ k ∗ of-nat k
+powr −s))
+−−−−→ sum-upto (λk. χ k ∗ of-nat k powr −s) x − Dirichlet-L n χ s
+by (intro tendsto-intros)
+next
+define M where
+PM = sum-upto χ
+have le: norm ( n∈real−‘{x<..y}. χ n ∗ of-nat n powr − s)
+≤ real (totient n) ∗ (2 + cmod s / σ) / x powr σ if xy: 0 < x x < y
+for x y
+proof −
+from xy have I : ((λt. M t ∗ (−s ∗ t powr (−s−1 ))) has-integral
+MP
+y ∗ of-real y powr − s − M x ∗ of-real x powr − s −
+( n∈real−‘{x<..y}. χ n ∗ of-real (real n) powr −s)) {x..y}
+unfolding M-def
+by (intro partial-summation-strong [of {}])
+(auto intro!: has-vector-derivative-real-field derivative-eq-intros continuous-intros) P
+hence ( n∈real−‘{x<..y}. χ n ∗ real n powr −s) =
+M y ∗ of-real y powr − s − M x ∗ of-real x powr − s −
+integral {x..y} (λt. M t ∗ (−s ∗ t powr (−s−1 )))
+by (simp add: has-integral-iff )
+also have norm . . . ≤ norm (M y ∗ of-real y powr −s) + norm (M x ∗ of-real
+x powr −s) +
+norm (integral {x..y} (λt. M t ∗ (−s ∗ t powr (−s−1 ))))
+by (intro order.trans[OF norm-triangle-ineq4 ] add-mono order.refl)
+also have norm (M y ∗ of-real y powr −s) ≤ totient n ∗ y powr −σ
+using xy assms unfolding norm-mult M-def σ-def
+by (intro mult-mono sum-upto-dcharacter-le) (auto simp: norm-powr-real-powr)
+also have . . . ≤ totient n ∗ x powr −σ
+using assms xy by (intro mult-left-mono powr-mono2 0) (auto simp: σ-def )
+also have norm (M x ∗ of-real x powr −s) ≤ totient n ∗ x powr −σ
+using xy assms unfolding norm-mult M-def σ-def
+by (intro mult-mono sum-upto-dcharacter-le) (auto simp: norm-powr-real-powr)
+also have norm (integral {x..y} (λt. M t ∗ (− s ∗ of-real t powr (−s−1 )))) ≤
+integral {x..y} (λt. real (totient n) ∗ norm s ∗ t powr (−σ−1 ))
+proof (rule integral-norm-bound-integral integrable-on-cmult-left)
+show (λt. real (totient n) ∗ norm s ∗ t powr (− σ − 1 )) integrable-on {x..y}
+using xy by (intro integrable-continuous-real continuous-intros) auto
+next
+fix t assume t: t ∈ {x..y}
+have norm (M t ∗ (−s ∗ of-real t powr (−s−1 ))) ≤
+real (totient n) ∗ (norm s ∗ t powr (−σ−1 ))
+unfolding norm-mult M-def σ-def using xy t assms
+by (intro mult-mono sum-upto-dcharacter-le) (auto simp: norm-mult norm-powr-real-powr)
+thus norm (M t ∗ (−s ∗ of-real t powr (−s−1 ))) ≤ real (totient n) ∗ norm s
+∗ t powr (−σ−1 )
+by (simp add: algebra-simps)
+qed (insert I , auto simp: has-integral-iff )
+
+70
+
+also have . . . = real (totient n) ∗ norm s ∗ integral {x..y} (λt. t powr (−σ−1 ))
+by simp
+also have ((λt. t powr (−σ−1 )) has-integral (y powr −σ / (−σ) − x powr −σ
+/ (−σ))) {x..y}
+using xy assms
+by (intro fundamental-theorem-of-calculus)
+(auto intro!: derivative-eq-intros
+simp: has-real-derivative-iff-has-vector-derivative [symmetric] σ-def )
+hence integral {x..y} (λt. t powr (−σ−1 )) = y powr −σ / (−σ) − x powr −σ
+/ (−σ)
+by (simp add: has-integral-iff )
+also from assms have . . . ≤ x powr −σ / σ by (simp add: σ-def )
+also have real (totient n) ∗ x powr −σ + real (totient n) ∗ x powr −σ +
+real (totient n) ∗ norm s ∗ (x powr −σ / σ) =
+real (totient n) ∗ (2 + norm s / σ) / x powr σ
+using xy by (simp add: field-simps powr-minus)
+finally show ?thesis by (simp add: mult-left-mono)
+qed
+show eventually (λm.
+P norm (sum-upto (λk. χ k ∗ of-nat k powr − s) x −
+( k≤m. χ k ∗ of-nat k powr − s))
+≤ real (totient n) ∗ (2 + cmod s / σ) / x powr σ) at-top
+using eventually-gt-at-top[of nat bxc]
+proof eventually-elim
+case (elim
+P m)
+have ( k≤m. χ k ∗ of-nat k powr − s) − sum-upto (λk. χ k ∗ of-nat k powr
+− s) x =P
+( k∈{..m} − {k. 0 < k ∧ real k ≤ x}. χ k ∗ of-nat k powr −s) unfolding
+sum-upto-def
+using elim ‹x > 0 › by (intro Groups-Big.sum-diff [symmetric])
+(auto simp: nat-less-iff floor-less-iff )
+P
+also have . . . = ( k∈{..m} − {k. real k ≤ x}. χ k ∗ of-nat k powr −s)
+by (intro sum.mono-neutral-right) auto
+also have {..m} − {k. real k ≤ x} = real −‘ {x<..real m}
+using elim ‹x >P
+0 › by (auto simp: nat-less-iff floor-less-iff not-less)
+also have norm ( k∈. . . . χ k ∗ of-nat k powr −s) ≤
+real (totient n) ∗ (2 + cmod s / σ) / x powr σ
+using elim ‹x > 0 › by (intro le) (auto simp: nat-less-iff floor-less-iff )
+finally show ?case by (simp add: norm-minus-commute)
+qed
+qed auto
+lemma partial-Dirichlet-L-sum-bigo:
+fixes s :: complex and x :: real
+assumes χ 6= χ0 Re s > 0
+shows (λx. sum-upto (λn. χ n ∗ n powr −s) x − Dirichlet-L n χ s) ∈ O(λx.
+x powr −s)
+proof (rule bigoI )
+show eventually (λx. norm (sum-upto (λn. χ n ∗ of-nat n powr −s) x − Dirich-
+
+71
+
+let-L n χ s)
+≤ real (totient n) ∗ (2 + norm s / Re s) ∗ norm (of-real x powr − s))
+at-top
+using eventually-gt-at-top[of 0 ]
+proof eventually-elim
+case (elim x)
+have norm (sum-upto (λn. χ n ∗ of-nat n powr −s) x − Dirichlet-L n χ s)
+≤ real (totient n) ∗ (2 + norm s / Re s) / x powr Re s
+using elim assms by (intro Dirichlet-L-minus-partial-sum-bound) auto
+thus ?case using elim assms
+by (simp add: norm-powr-real-powr powr-minus divide-simps norm-divide
+del: div-mult-self1 div-mult-self2 div-mult-self3 div-mult-self4 )
+qed
+qed
+end
+
+3.4
+
+Evaluation of L(χ, 0)
+
+context residues-nat
+begin
+lemma Dirichlet-L-0-principal [simp]: Dirichlet-L n χ0 0 = 0
+proof −
+Q
+have Dirichlet-L n χ0 0 = −1 /2 ∗ ( p | prime p ∧ p dvd n. 1 − 1 / p powr
+0)
+by (simp add:
+Q Dirichlet-L-principal prime-gt-0-nat)
+Q
+also have ( p | prime p ∧ p dvd n. 1 − 1 / p powr 0 ) = ( p | prime p ∧ p
+dvd n. 0 :: complex)
+by (intro prod.cong)
+(auto simp: prime-gt-0-nat)
+Q
+also have ( p | prime p ∧ p dvd n. 0 :: complex) = 0
+using prime-divisor-exists[of n] n by (auto simp: card-gt-0-iff )
+finally show ?thesis by simp
+qed
+end
+context dcharacter
+begin
+lemma Dirichlet-L-0-nonprincipal:
+assumes nonprincipal: χ 6= χ0 P
+shows Dirichlet-L n χ 0 = −( k=1 ..<n. of-nat k ∗ χ k) / of-nat n
+proof −
+P
+have Dirichlet-L n χ 0 = ( k=1 ..n. χ k ∗ (1 / 2 − of-nat k / of-nat n))
+using assms n by (simp P
+add: Dirichlet-L-conv-hurwitz-zeta-nonprincipal)
+also have . . . = −1 /n ∗ ( k=1 ..n. of-nat k ∗ χ k)
+using assms by (simp add: algebra-simps sum-subtractf sum-dcharacter-block 0
+sum-divide-distrib [symmetric])
+P
+P
+also have ( k=1 ..n. of-nat k ∗ χ k) = ( k=1 ..<n. of-nat k ∗ χ k)
+using n by (intro sum.mono-neutral-right)
+P (auto simp: eq-zero-iff )
+finally show eq: Dirichlet-L n χ 0 = −( k=1 ..<n. of-nat k ∗ χ k) / of-nat n
+by simp
+
+72
+
+qed
+lemma Dirichlet-L-0-even [simp]:
+assumes χ (n − 1 ) = 1
+shows Dirichlet-L n χ 0 = 0
+proof (cases χ = χ0 )
+case False
+P
+hence Dirichlet-L n χ 0 = −( k=Suc 0 ..<n. of-nat k ∗ χ k) / of-nat n
+by (simp add: Dirichlet-L-0-nonprincipal)
+also have . . . = 0
+using assms False by (subst even-dcharacter-linear-sum-eq-0 ) auto
+finally show Dirichlet-L n χ 0 = 0 .
+qed auto
+lemma Dirichlet-L-0 :
+P
+Dirichlet-L n χ 0 = (if χ (n − 1 ) = 1 then 0 else −( k=1 ..<n. of-nat k ∗ χ
+k) / of-nat n)
+by (cases χ = χ0 ) (auto simp: Dirichlet-L-0-nonprincipal)
+end
+
+3.5
+
+Properties of L(χ, s) for real χ
+
+locale real-dcharacter = dcharacter +
+assumes real: χ k ∈ 
+begin
+lemma Im-eq-0 [simp]: Im (χ k) = 0
+using real[of k] by (auto elim!: Reals-cases)
+lemma of-real-Re [simp]: of-real (Re (χ k)) = χ k
+by (simp add: complex-eq-iff )
+lemma char-cases: χ k ∈ {−1 , 0 , 1 }
+proof −
+from norm[of k] have Re (χ k) ∈ {−1 ,0 ,1 }
+by (auto simp: cmod-def split: if-splits)
+hence of-real (Re (χ k)) ∈ {−1 , 0 , 1 } by auto
+also have of-real (Re (χ k)) = χ k by (simp add: complex-eq-iff )
+finally show ?thesis .
+qed
+lemma cnj [simp]: cnj (χ k) = χ k
+by (simp add: complex-eq-iff )
+lemma inv-character-id [simp]: inv-character χ = χ
+by (simp add: inv-character-def fun-eq-iff )
+lemma Dirichlet-L-in-Reals:
+
+73
+
+assumes s ∈ 
+shows Dirichlet-L n χ s ∈ 
+proof −
+have cnj (Dirichlet-L n χ s) = Dirichlet-L n χ s
+using assms by (subst cnj-Dirichlet-L) (auto elim!: Reals-cases)
+thus ?thesis using Reals-cnj-iff by blast
+qed
+
+The following property of real characters is used by Apostol to show the
+non-vanishing of L(χ, 1). We have already shown this in a much easier way,
+but this particular result is still of general interest.
+lemma
+assumes k: k > 0
+P
+shows sum-char-divisors-ge: Re ( d | d dvd k. χ d) ≥P
+0 (is Re (?A k) ≥ 0 )
+and sum-char-divisors-square-ge: is-square k =⇒ Re ( d | d dvd k. χ d) ≥ 1
+proof −
+interpret sum: multiplicative-function ?A
+by (fact mult.multiplicative-sum-divisors)
+have A: ?A k ∈  for k by (intro sum-in-Reals real)
+hence [simp]: Im (?A k) = 0 for k by (auto elim!: Reals-cases)
+have ∗: Re (?A (p ^ m)) ≥ (if even m then 1 else 0 ) if p: prime p for p m
+proof −
+P
+have sum-neg1 : ( i≤m. (−1 ) ^ i) = (if even m then 1 else (0 ::real))
+by (induction m) auto
+P
+from p have ?A (p ^ m) = ( k≤m. χ (p ^ k))
+by (intro sum.reindex-bij-betw
+[symmetric] bij-betw-prime-power-divisors)
+P
+also have Re . . . = ( k≤m. Re (χ p) ^ k) by (simp add: mult.power)
+also have . . . ≥ (if even m then 1 else 0 )
+using sum-neg1 char-cases[of p] by (auto simp: power-0-left)
+finally show ?thesis .
+qed
+have ∗: Re (?A (p ^ m)) ≥ 0 even m =⇒ Re (?A (p ^ m)) ≥ 1 if prime p for
+pm
+using ∗[of p m] that by (auto split: if-splits)
+Q
+have eq: Re (?A k) = ( p∈prime-factors k. Re (?A (p ^ multiplicity p k)))
+using k A
+Pby (subst sum.prod-prime-factors) (auto simp: Re-prod-Reals)
+show Re ( d | d dvd k. χ d) ≥ 0 by (subst eq, intro prod-nonneg ballI ∗) auto
+assume is-square k
+then obtain m where m: k = m ^ 2 by (auto elim!: is-nth-powerE)
+have even (multiplicity p k) if prime p for p using k that unfolding m
+by (substPprime-elem-multiplicity-power-distrib) (auto intro!: Nat.gr0I )
+thus Re ( d | d dvd k. χ d) ≥ 1
+by (subst eq, intro prod-ge-1 ballI ∗) auto
+qed
+end
+
+74
+
+end
+
+4
+
+Dirichlet’s Theorem on primes in arithmetic progressions
+
+theory Dirichlet-Theorem
+imports
+Dirichlet-L-Functions
+Bertrands-Postulate.Bertrand
+Landau-Symbols.Landau-More
+begin
+
+We can now turn to the proof of the main result: Dirichlet’s theorem about
+the infinitude of primes in arithmetic progressions.
+There are previous proofs of this by John Harrison in HOL Light [3] and
+by Mario Carneiro in Metamath [2]. Both of them strive to prove Dirichlet’s theorem with a minimum amount of auxiliary results and definitions,
+whereas our goal was to get a short and simple proof of Dirichlet’s theorem
+built upon a large library of Analytic Number Theory.
+At this point, we already have the key part – the non-vanishing of L(1, χ)
+– and the proof was relatively simple and straightforward due to the large
+amount of Complex Analysis and Analytic Number Theory we have available. The remainder will be a bit more concrete, but still reasonably concise.
+First, we need to re-frame some of the results from the AFP entry about
+Bertrand’s postulate a little bit.
+
+4.1
+
+Auxiliary results
+
+The AFP entry for Bertrand’s postulate already provides a slightly stronger
+version of this for integer values of x, but we can easily extend this to real
+numbers to obtain a slightly nicer presentation.
+lemma sum-upto-mangoldt-le:
+assumes x ≥ 0
+shows sum-upto mangoldt x ≤ 3 / 2 ∗ x
+proof −
+have sum-upto mangoldt x = psi (nat bxc)
+by (simp add: sum-upto-altdef psi-def atLeastSucAtMost-greaterThanAtMost)
+also have . . . ≤ 551 / 256 ∗ ln 2 ∗ real (nat bxc)
+by (rule psi-ubound-log)
+also have . . . ≤ 3 / 2 ∗ real (nat bxc)
+using Bertrand.ln-2-le by (intro mult-right-mono) auto
+also have . . . ≤ 3 / 2 ∗ x using assms by linarith
+finally show ?thesis .
+qed
+
+75
+
+We can also, similarly, use the results from the Bertrand’s postulate entry
+to show that the sum of ln p/p over all primes grows logarithmically.
+lemmaP
+Mertens-bigo:
+(λx. ( p | prime p ∧ real p ≤ x. ln p / p) − ln x) ∈ O(λ-. 1 )
+proof (intro bigoI [of - 8 ] eventually-mono[OF eventually-gt-at-top[of 1 ]], goal-cases)
+case (1P
+x)
+have |( P p | prime p ∧ p ≤ nat bxc. ln p / p) − ln x| =
+|( p | prime p ∧ p ≤ nat bxc. ln p / p) − ln (nat bxc) − (ln x − ln (nat
+bxc))|
+by simp
+P
+also have . . . ≤ |( p | prime p ∧ p ≤ nat bxc. ln p / p) − ln (nat bxc)| + |ln
+x − ln (nat bxc)|
+by (rule abs-triangle-ineq4
+)
+P
+also have |( p | prime p ∧ p ≤ nat bxc. ln p / p) − ln (nat bxc)| ≤ 7
+using 1 by (intro Mertens) auto
+also have |ln x − ln (nat bxc)| = ln x − ln (nat bxc)
+using 1 by (intro abs-of-nonneg) auto
+also from 1 have . . . ≤ (x − nat bxc) / nat bxc by (intro ln-diff-le) auto
+also have . . . ≤ (x − nat bxc) / 1 using 1 by (intro divide-left-mono) auto
+also have . . . = x − nat bxc by simp
+also have . P
+. . ≤ 1 using 1 by linarith
+P
+also have ( p | prime p ∧ p ≤ nat bxc. ln p / p) = ( p | prime p ∧ real p ≤
+x. ln p / p)
+using 1 by (intro sum.cong refl) (auto simp: le-nat-iff le-floor-iff )
+finally show ?case by simp
+qed
+
+4.2
+
+The contribution of the non-principal characters
+
+The estimates in the next two sections are partially inspired by John Harrison’s proof of Dirichlet’s Theorem [3].
+We first estimate the growth of the partial sums of
+0
+
+−L (1, χ)/L(1, χ) =
+
+∞
+X
+k=1
+
+χ(k)
+
+Λ(k)
+k
+
+for a non-principal character χ and show that they are, in fact, bounded,
+which is ultimately a consequence of the non-vanishing of L(1, χ) for nonprincipal χ.
+context dcharacter
+begin
+context
+includes no vec-lambda-syntax and dcharacter-syntax
+fixes L
+assumes nonprincipal: χ 6= χ0
+defines L ≡ Dirichlet-L n χ 1
+
+76
+
+begin
+lemma Dirichlet-L-nonprincipal-mangoldt-bound-aux-strong:
+assumes x: x > 0
+shows norm (L ∗ sum-upto (λk. χ k ∗ mangoldt k / k) x − sum-upto (λk. χ k
+∗ ln k / k) x)
+≤ 9 / 2 ∗ real (totient n)
+proof −
+define B where B = 3 ∗ real (totient n)
+P
+have sum-upto (λk. χ k ∗ ln k / k) x = sum-upto (λk. χ k ∗ ( d | d dvd k.
+mangoldt d) / k) x
+by (intro sum-upto-cong) (simp-all
+P add: mangoldt-sum)
+also have . . . = sum-upto (λk.
+d | d dvd k. χ k ∗ mangoldt d / k) x
+by (simp add: sum-distrib-left sum-distrib-right sum-divide-distrib)
+also have . . . = sum-upto (λk. sum-upto (λd. χ (d ∗ k) ∗ mangoldt k / (d ∗ k))
+(x / real k)) x
+by (rule sum-upto-sum-divisors)
+also have . . . = sum-upto (λk. χ k ∗ mangoldt k / k ∗ sum-upto (λd. χ d / d)
+(x / real k)) x
+by (simp add: sum-upto-def sum-distrib-left mult-ac)
+also have L ∗ sum-upto (λk. χ k ∗ mangoldt k / k) x − . . . =
+sum-upto (λk. (L − sum-upto (λd. χ d / d) (x / real k)) ∗ (χ k ∗
+mangoldt k / k)) x
+unfolding ring-distribs by (simp add: sum-upto-def sum-subtractf sum-distrib-left
+mult-ac)
+also have norm . . . ≤ sum-upto (λk. B / x ∗ mangoldt k) x unfolding sum-upto-def
+proof (rule sum-norm-le, goal-cases)
+case (1 k)
+have norm ((L − sum-upto (λd. χ d / of-nat d) (x / k)) ∗ χ k ∗ (mangoldt k
+/ of-nat k)) ≤
+(B ∗ real k / x) ∗ 1 ∗ (mangoldt k / real k) unfolding norm-mult
+norm-divide
+proof (intro mult-mono divide-left-mono)
+show norm (L − sum-upto (λd. χ d / d) (x / k)) ≤ B ∗ real k / x
+using Dirichlet-L-minus-partial-sum-bound[OF nonprincipal, of 1 x / k] 1 x
+by (simp add: powr-minus B-def L-def divide-simps norm-minus-commute)
+qed (insert 1 , auto intro!: divide-nonneg-pos mangoldt-nonneg norm-le-1 simp:
+B-def )
+also have . . . = B / x ∗ mangoldt k using 1 by simp
+finally show ?case by (simp add: sum-upto-def mult-ac)
+qed
+also have . . . = B / x ∗ sum-upto mangoldt x
+unfolding sum-upto-def sum-distrib-left by simp
+also have . . . ≤ B / x ∗ (3 / 2 ∗ x) using x
+by (intro mult-left-mono sum-upto-mangoldt-le) (auto simp: B-def )
+also have . . . = 9 / 2 ∗ real (totient n) using x by (simp add: B-def )
+finally show ?thesis by (simp add: B-def )
+qed
+
+77
+
+lemma Dirichlet-L-nonprincipal-mangoldt-aux-bound:
+(λx. L ∗ sum-upto (λk. χ k ∗ mangoldt k / k) x − sum-upto (λk. χ k ∗ ln k / k)
+x) ∈ O(λ-. 1 )
+by (intro bigoI [of - 9 / 2 ∗ real (totient n)] eventually-mono[OF eventually-gt-at-top[of
+0 ]])
+(use Dirichlet-L-nonprincipal-mangoldt-bound-aux-strong in simp-all)
+lemma nonprincipal-mangoldt-bound:
+(λx. sum-upto (λk. χ k ∗ mangoldt k / k) x) ∈ O(λ-. 1 ) (is ?lhs ∈ -)
+proof −
+have [simp]: L 6= 0
+using nonprincipal unfolding L-def by (intro Dirichlet-L-Re-ge-1-nonzero-nonprincipal)
+auto
+have fds-converges (fds-deriv (fds χ)) 1 using conv-abscissa-le-0 [OF nonprincipal]
+by (intro fds-converges-deriv) (auto intro: le-less-trans)
+hence summable (λn. −(χ n ∗ ln n / n))
+by (auto simp: fds-converges-def fds-deriv-def scaleR-conv-of-real fds-nth-fds 0
+algebra-simps)
+hence summable (λn. χ n ∗ ln n / n) by (simp only: summable-minus-iff )
+from summable-imp-convergent-sum-upto [OF this] obtain c where
+(sum-upto (λn. χ n ∗ ln n / n) −−−→ c) at-top by blast
+hence ∗: sum-upto (λk. χ k ∗ ln k / k) ∈ O(λ-. 1 ) unfolding sum-upto-def
+by (intro bigoI-tendsto[of - - c]) auto
+from sum-in-bigo[OF Dirichlet-L-nonprincipal-mangoldt-aux-bound ∗]
+have (λx. L ∗ sum-upto (λk. χ k ∗ mangoldt k / k) x) ∈ O(λ-. 1 ) by (simp
+add: L-def )
+thus ?thesis by simp
+qed
+end
+end
+
+4.3
+
+The contribution of the principal character
+
+Next, we turn to the analogous partial sum for the principal character and
+show that it grows logarithmically and therefore is the dominant contribution.
+context residues-nat
+begin
+context
+includes no vec-lambda-syntax and dcharacter-syntax
+begin
+lemmaP
+principal-dchar-sum-bound:
+(λx. ( p | prime p ∧ real p ≤ x. χ0 p ∗ (ln p / p)) − ln x) ∈ O(λ-. 1 )
+proof −
+have fin [simp]: finite {p. prime p ∧ real p ≤ x ∧ Q p} for Q x
+by (rule finite-subset[of - {..nat bxc}]) (auto simp: le-nat-iff le-floor-iff )
+
+78
+
+from fin[of - λ-. True] have [simp]: finite {p. prime p ∧ real p ≤ x} for x
+by (simp del: fin)
+P
+define P :: complex where P = ( p | prime p ∧ p dvd n. of-real (ln p / p))
+P
+have (λx. ( p | prime
+P p ∧ real p ≤ x. χ0 p ∗ (ln p / p)) − ln x) ∈
+Θ(λx. of-real (( p | prime p ∧ real p ≤ x. ln p / p) − ln x) − P) (is - ∈
+Θ(?f ))
+proof (intro bigthetaI-cong eventually-mono[OF eventually-gt-at-top[of real n]],
+goal-cases)
+case (1 x)
+have ∗: {p. prime p ∧ real p ≤ x} =
+{p. prime p ∧ real p ≤ x ∧ p dvd n} ∪ {p. prime p ∧ real p ≤ x ∧ ¬p
+dvd n}
+(is - =
+P?A ∪ ?B) by auto
+have ( Pp | prime p ∧ real p ≤ x. of-real
+P (ln p / p)) =
+( p∈?A. of-real (ln p / p)) + ( p∈?B. complex-of-real (ln p / p))
+by (subst ∗, subst sum.union-disjoint) auto
+also from 1 have ?A = {p. prime p ∧ p dvd n} using n by (auto dest:
+dvd-imp-le)
+P
+also have (P p∈. . . . of-real (ln p / p)) = P by (simp add: P-def )
+also have (P p∈?B. of-real (ln p / p)) =
+( p | prime p ∧ real p ≤ x. χ0 p ∗ (ln p / p))
+by (intro sum.mono-neutral-cong-left)
+(auto simp: principal-dchar-def prime-gt-0-nat coprime-absorb-left prime-imp-coprime)
+finally show ?case using 1 by (simp add: Ln-of-real)
+qed
+also have ?f ∈ O(λ-. of-real 1 )
+by (rule sum-in-bigo, subst landau-o.big.of-real-iff , rule Mertens-bigo) auto
+finally show ?thesis by simp
+qed
+lemma principal-dchar-sum-bound 0:
+(λx. sum-upto (λk. χ0 k ∗ mangoldt k / k) x − Ln x) ∈ O(λ-. 1 )
+proof −
+have (λx. sum-upto
+(λk. χ0 k ∗ mangoldt k / k) x −
+P
+( p | prime p ∧ real p ≤ x. χ0 p ∗ (ln p / p))) ∈ O(λ-. 1 )
+proof (intro bigoI [of - 3 ] eventually-mono[OF eventually-gt-at-top[of 0 ]], goal-cases)
+case (1 x)
+P
+have norm (complex-of-real ( k | real k ≤ x ∧ coprime k n. mangoldt k / k)
+−
+P
+of-real ( p | prime p ∧ p ∈ {k. real k ≤ x ∧ coprime k n}. ln p /
+p)) ≤ 3
+unfolding of-real-diff [symmetric] norm-of-real
+by (rule Mertens-mangoldt-versus-ln[where n = nat bxc])
+(insert n, auto simp: Suc-le-eq
+le-nat-iff le-floor-iff intro!: Nat.gr0I )
+P
+also have complex-of-real ( k | real k ≤ x ∧ coprime k n. mangoldt k / k) =
+sum-upto (λk. χ0 k ∗ mangoldt k / k) x
+unfolding sum-upto-def of-real-sum using n
+by (intro sum.mono-neutral-cong-left) (auto simp: principal-dchar-def intro!:
+
+79
+
+Nat.gr0I )
+P
+also have complex-of-real ( p | prime p ∧ p ∈ {k. real k ≤ x ∧ coprime k n}.
+ln p / p) = P
+( p | prime p ∧ real p ≤ x. χ0 p ∗ (ln p / p))
+unfolding of-real-sum
+by (intro sum.mono-neutral-cong-left)
+(auto simp: principal-dchar-def le-nat-iff le-floor-iff prime-gt-0-nat
+intro!: finite-subset[of - {..nat bxc}])
+finally show ?case by simp
+qed
+from sum-in-bigo(1 )[OF principal-dchar-sum-bound this] show ?thesis
+by simp
+qed
+
+4.4
+
+The main result
+
+We can now show the main result by extracting the primes we want using
+the orthogonality relation on characters, separating the principal part of the
+sum from the non-principal ones and then applying the above estimates.
+lemma Dirichlet-strong:
+assumes coprime
+P hn
+shows (λx. ( p | prime p ∧ [p = h] (mod n) ∧ real p ≤ x. ln p / p) − ln x /
+totient n)
+∈ O(λ-. 1 ) (is (λx. sum - (?A x) − -) ∈ -)
+proof −
+from assms obtain h 0 where h 0: [h ∗ h 0 = Suc 0 ] (mod n)
+by (subst (asm) coprime-iff-invertible-nat) blast
+let ?A 0 = λx. {p. p > 0 ∧ real p ≤ x ∧ [p = h] (mod n)}
+let ?B = dcharacters n − {χ0 }
+have [simp]: χ0 ∈ dcharacters n
+by (auto simp: dcharacters-def principal.dcharacter-axioms)
+P
+have (λx. of-nat (totient n) ∗ ( p∈?A 0 x. mangoldt p / p) − ln x) ∈
+Θ(λx.Psum-upto (λk. χ0 k ∗ mangoldt k / k) x − ln x +
+( χ∈?B. χ h 0 ∗ sum-upto (λk. χ k ∗ mangoldt k / k) x))
+(is - ∈ Θ(?f ))
+proof (intro bigthetaI-cong eventually-mono[OF eventually-gt-at-top[of 0 ]], goal-cases)
+case (1 x)
+P
+have of-nat
+n) ∗ ( p∈?A 0 x. of-real (mangoldt p / p) :: complex) =
+P (totient
+( p∈?A 0 x. of-nat (totient n) ∗ of-real (mangoldt p / p))
+by (subst sum-distrib-left) simp-all
+P
+also have . . . = sum-upto (λk.
+χ∈dcharacters n. χ (h 0 ∗ k) ∗ (mangoldt k /
+k)) x
+unfolding sum-upto-def
+proof (intro sum.mono-neutral-cong-left ballI , goal-cases)
+case (3 p)
+have [h 0 ∗ p 6= 1 ] (mod n)
+proof
+assume [h 0 ∗ p = 1 ] (mod n)
+
+80
+
+hence [h ∗ (h 0 ∗ p) = h ∗ 1 ] (mod n) by (rule cong-scalar-left)
+hence [h = h ∗ h 0 ∗ p] (mod n) by (simp add: mult-ac cong-sym)
+also have [h ∗ h 0 ∗ p = 1 ∗ p] (mod n)
+using h 0 by (intro cong-scalar-right) auto
+finally have [p = h] (mod n) by (simp add: cong-sym)
+with 3 show False by auto
+qed
+thus ?case
+by (auto simp: sum-dcharacters sum-divide-distrib [symmetric] sum-distrib-right
+[symmetric])
+next
+case (4 p)
+hence [p ∗ h 0 = h ∗ h 0] (mod n) by (intro cong-scalar-right) auto
+also have [h ∗ h 0 = 1 ] (mod n) using h 0 by simp
+finally have [h 0 ∗ p = 1 ] (mod n) by (simp add: mult-ac)
+thus ?case using h 0 4
+by (auto simp: sum-dcharacters sum-divide-distrib [symmetric] sum-distrib-right
+[symmetric])
+qed auto
+P
+also have . . . = ( χ∈dcharacters n. sum-upto (λk. χ (h 0 ∗ k) ∗ (mangoldt k
+/ k)) x)
+unfolding sum-upto-def
+by (rule sum.swap)
+P
+also have . . . = ( χ∈dcharacters n. χ h 0 ∗ sum-upto (λk. χ k ∗ (mangoldt k
+/ k)) x)
+unfolding sum-upto-def
+by (intro sum.cong refl) (auto simp: dcharacters-def dcharacter.mult sum-distrib-left
+mult-ac)
+also have . . . P
+= χ0 h 0 ∗ sum-upto (λk. χ0 k ∗ (mangoldt k / k)) x +
+( χ∈?B. χ h 0 ∗ sum-upto (λk. χ k ∗ (mangoldt k / k)) x)
+by (subst sum.remove [symmetric]) (auto simp: sum-distrib-left)
+also have coprime h 0 n
+using h 0 by (subst coprime-iff-invertible-nat, subst (asm) mult.commute) auto
+hence χ0 h 0 = 1
+by (simp add: principal-dchar-def )
+finally show ?case using n 1 by (simp add: Ln-of-real)
+qed
+also have ?f ∈ O(λ-. complex-of-real 1 )
+proof (rule sum-in-bigo[OF - big-sum-in-bigo], goal-cases)
+case 1
+from principal-dchar-sum-bound 0 show ?case by simp
+next
+case (2 χ)
+then interpret dcharacter n G χ by (simp-all add: G-def dcharacters-def )
+from 2 have χ 6= χ0 by auto
+thus ?case unfolding of-real-1
+by (intro landau-o.big.mult-in-1 nonprincipal-mangoldt-bound) auto
+qed
+P
+finally have ∗: (λx. real (totient n) ∗ ( p∈?A 0 x. mangoldt p / p) − ln x) ∈
+O(λ-. 1 )
+
+81
+
+by (subst (asm) landau-o.big.of-real-iff )
+P
+P
+have (λx. real (totient n) ∗ (( p∈?A x. ln p / p) − ( p∈?A 0 x. mangoldt p /
+p))) ∈ O(λ-. 1 )
+proof (intro landau-o.big.mult-in-1
+) P
+P
+show (λx. ( p∈?A x. ln p / p) − ( p∈?A 0 x. mangoldt p / p)) ∈ O(λ-. 1 )
+unfolding landau-o.big.of-real-iff
+proof (intro bigoI [of - 3 ] eventually-mono[OF eventually-gt-at-top[of 0 ]], goal-cases)
+case (1P
+x)
+P
+have |( p∈?A 0 x. mangoldt p / p) − ( p | prime p ∧ p ∈ ?A 0 x. ln p / p)|
+≤3
+by (rule Mertens-mangoldt-versus-ln[where n = nat bxc])
+(auto simp: le-nat-iff le-floor-iff )
+also have {p. prime p ∧ p ∈ ?A 0 x} = ?A x by (auto simp: prime-gt-0-nat)
+finally show ?case by (simp add: abs-minus-commute)
+qed
+qed auto
+from sum-in-bigo(1 )[OFP
+∗ this]
+have (λx. totient n ∗ ( p∈?A x. ln p / p) − ln x) ∈ O(λ-. 1 )
+by (simp add: field-simps) P
+also have (λx. totient n ∗ ( Pp∈?A x. ln p / p) − ln x) =
+(λx. totient n ∗ (( p∈?A x. ln p / p) − ln x / totient n))
+using n by (intro ext) (auto simp: field-simps)
+also have . . . ∈ O(λ-. 1 ) ←→ ?thesis using n
+by (intro landau-o.big.cmult-in-iff ) auto
+finally show ?thesis .
+qed
+
+It is now obvious that the set of primes we are interested in is, in fact,
+infinite.
+theorem Dirichlet:
+assumes coprime h n
+shows infinite {p. prime p ∧ [p = h] (mod n)}
+proof
+assume finite {p. prime p ∧ [p = h] (mod n)}
+then obtain K where K : {p. prime p ∧ [p = h] (mod n)} ⊆ {..<K }
+by (auto simp: finite-nat-iff-bounded)
+P
+have eventually (λx.
+P ( p | prime p ∧ [p = h] (mod n) ∧ real p ≤ x. ln p / p) =
+( p | prime p ∧ [p = h] (mod n). ln p / p)) at-top
+using eventually-ge-at-top[of real K ] by eventually-elim (intro sum.cong, use
+K in auto)
+P
+hence (λx. (P p | prime p ∧ [p = h] (mod n) ∧ real p ≤ x. ln p / p)) ∈
+Θ(λ-. ( p | prime p ∧ [p = h] (mod n). ln p / p)) by (intro bigthetaI-cong)
+auto
+P
+also have (λ-. ( pP
+| prime p ∧ [p = h] (mod n). ln p / p)) ∈ O(λ-. 1 ) by simp
+finally have (λx. ( p | prime p ∧ [p = h] (mod n) ∧ real p ≤ x. ln p / p)) ∈
+O(λ-. 1 ) .
+from sum-in-bigo(2 )[OF this Dirichlet-strong[OF assms]] and n show False by
+simp
+
+82
+
+qed
+
+In the future, one could extend this result to more precise estimates of the
+distribution of primes in arithmetic progressions in a similar way to the
+Prime Number Theorem.
+end
+end
+end
+
+References
+[1] T. M. Apostol. Introduction to Analytic Number Theory. Undergraduate
+Texts in Mathematics. Springer-Verlag, 1976.
+[2] M. Carneiro. Formalization of the prime number theorem and dirichlet’s
+theorem. In Proceedings of the 9th Conference on Intelligent Computer
+Mathematics (CICM 2016), pages 10–13, 2016.
+[3] J. Harrison. A formalized proof of Dirichlet’s theorem on primes in
+arithmetic progression. Journal of Formalized Reasoning, 2(1):63–83,
+2009.
+[4] D. Newman. Analytic Number Theory. Number 177 in Graduate Texts
+in Mathematics. Springer, 1998.
+
+83
+
+

@@ -1,0 +1,194 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\XiBC}{\Xi^{\mathrm{BC}}}
+\newcommand{\HB}{\mathcal H_{\mathcal B}}
+\newcommand{\HR}{\mathcal H_{\mathcal R}}
+\newcommand{\calB}{\mathcal B}
+\newcommand{\calR}{\mathcal R}
+\newcommand{\calX}{\mathcal X}
+\newcommand{\pre}{\preceq}
+\newcommand{\suc}{\succeq}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\tr}{\operatorname{tr}}
+
+\title{Step 116: Residual-Specific Hecke/Dirichlet Source Absorption for $\Xi^{\mathrm{BC}}$}
+\author{RATCHET RH Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 104--105 showed that the raw shifted Sonin/prolate off-diagonal block
+\[
+P_\infty\tau_\ell(I-P_\infty)
+\]
+contains a noncompact boundary-packet sector. Step 115 then tested the clean
+Burnol/co-Poisson shortcut and reduced it to the zero-evaluator residual
+\[
+\XiBC_{\ell,a}=\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+The present step states the source-coercivity theorem that must pay this residual
+when zeta-factorization or direct zero-evaluator annihilation is not available.
+
+\section{Residual sector}
+Let $L_a$ be Burnol's extended Sonine carrier, $Y_a\subset L_a$ the closed span of
+zeta-zero evaluator vectors, and $P_a=Y_a^\perp$ the co-Poisson complement for
+$a<1$. For a finite-place log-shift mode $\ell$, define the transported boundary block
+\[
+\mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty).
+\]
+The boundary-to-co-Poisson residual is
+\[
+\boxed{\XiBC_{\ell,a}=\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}\succeq0.}
+\]
+For a finite set of modes $\mathcal L_N$ with nonnegative weights $w_\ell$, set
+\[
+\XiBC_N=\sum_{\ell\in\mathcal L_N}w_\ell\XiBC_{\ell,a}.
+\]
+Let $\Pi_{\mathcal R,N}$ denote the projection onto the finite residual sector
+\[
+\mathcal R_N=\overline{\Ran(\XiBC_N)^{1/2}}.
+\]
+
+\section{Direct residual absorption}
+\begin{definition}[Residual source frame]
+A residual-specific source frame is a positive form
+\[
+F_n=\sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega
+\]
+on the completed anti-invariant response space. The family $\mathcal X_n$ must be
+declared upstream: conductor windows, character families, weights, and coefficient
+maps are fixed before looking at the residual eigenvectors.
+\end{definition}
+
+\begin{theorem}[Direct source absorption]
+If
+\[
+\XiBC\preceq F_n+E_n,
+\]
+then every estimate of the form
+\[
+q_Z\le q_{\mathrm{pos}}+\XiBC+e
+\]
+promotes to
+\[
+q_Z\le q_{\mathrm{pos}}+F_n+E_n+e.
+\]
+Thus the boundary-to-co-Poisson residual is lawful if $E_n$ is an accepted defect
+or tends to zero in a fixed/exhaustive ledger.
+\end{theorem}
+
+\begin{proof}
+Immediate by Loewner monotonicity. The point is not algebraic difficulty but audit:
+$F_n$ must be an upstream-visible source frame and $E_n$ must be recorded as a
+residual defect.
+\end{proof}
+
+\section{Metric lower-frame absorption}
+The direct inequality $\XiBC\preceq F_n$ may be too strong at a finite stage. The useful version is metric.
+
+\begin{theorem}[Metric residual absorption]
+Let $\Theta_0^-$ be the baseline anti-invariant response budget and suppose on the residual sector
+\[
+\boxed{\XiBC\preceq C_R(\Theta_0^-)^{-1}+T_R.}
+\]
+Assume that the source family satisfies the full residual lower-frame bound
+\[
+\boxed{\Pi_{\mathcal R}F_n\Pi_{\mathcal R}\succeq
+\Lambda_n\Pi_{\mathcal R}(\Theta_0^-)^{-1}\Pi_{\mathcal R}-R_n,\qquad \Lambda_n\to\infty.}
+\]
+Then
+\[
+\boxed{\XiBC\preceq {C_R\over \Lambda_n}F_n+T_R+{C_R\over\Lambda_n}R_n.}
+\]
+Consequently the residual is absorbed if $T_R\to0$ and $\Lambda_n^{-1}R_n\to0$ in the fixed/exhaustive ledger sense.
+\end{theorem}
+
+\begin{proof}
+On $\mathcal R$, the lower-frame inequality gives
+\[
+(\Theta_0^-)^{-1}\preceq \Lambda_n^{-1}F_n+\Lambda_n^{-1}R_n.
+\]
+Multiplying by $C_R$ and using $\XiBC\preceq C_R(\Theta_0^-)^{-1}+T_R$ yields the result.
+\end{proof}
+
+\section{Finite matrix source theorem}
+Let $M_N:Y_{\mathcal R,N}\to H_N$ synthesize a finite residual dictionary with Gram
+$G_{\mathcal R,N}=M_N^*M_N$. Let $D_N:\mathbb C^{I_N}\to H_N$ be a declared coefficient synthesis family and
+$R_N=D_N^\dagger M_N$ its coefficient map. Let $H_N=D_N^*D_N$.
+
+\begin{theorem}[Finite matrix lower-frame prototype]
+If
+\[
+G_{\mathcal X,N}\succeq \gamma_NH_N
+\]
+and
+\[
+R_N^*H_NR_N\succeq c_NG_{\mathcal R,N},
+\]
+then
+\[
+\boxed{R_N^*G_{\mathcal X,N}R_N\succeq \gamma_Nc_NG_{\mathcal R,N}.}
+\]
+Thus the effective finite residual source strength is
+\[
+\boxed{\Lambda_N^{\mathrm{eff}}=\gamma_Nc_N.}
+\]
+\end{theorem}
+
+\begin{proof}
+By the first hypothesis,
+\[
+R_N^*G_{\mathcal X,N}R_N\succeq \gamma_NR_N^*H_NR_N.
+\]
+The second hypothesis gives the stated bound.
+\end{proof}
+
+\begin{remark}[Two independent hard pieces]
+The Heap--Soundararajan mechanism targets $\gamma_N$: character/source strength on coefficient space.
+The Burnol/co-Poisson visibility problem targets $c_N$: whether the residual boundary sector is visible to those coefficients.
+Both are necessary; a scalar mollifier lower bound alone does not imply a matrix lower frame.
+\end{remark}
+
+\section{Completed promotion}
+A finite residual absorption theorem is not an RH theorem unless the finite residual windows exhaust the completed ledger.
+The required promotion record is
+\[
+\XiBC\preceq \iota_N\XiBC_N\iota_N^*+T_N,
+\qquad \tr(T_N)\to0.
+\]
+Together with
+\[
+R_N^*G_{\mathcal X,N}R_N\succeq \Lambda_N^{\mathrm{eff}}G_{\mathcal R,N},
+\qquad \Lambda_N^{\mathrm{eff}}\to\infty,
+\]
+this gives completed absorption of $\XiBC$.
+
+\section{All-six record}
+The residual source route requires the following six-channel record.
+\begin{enumerate}[label=P\arabic*]
+\item Rewrite/gauge: the residual block $\mathfrak B_{\ell,a}$ and projection $\Pi_{Y_a}$ are fixed before source selection.
+\item Feasibility/null legality: null directions of $\XiBC$ and source kernels are quotiented or recorded.
+\item Route/holonomy: log-shift modes $\ell$ from finite local factors are declared as the route family.
+\item Staging/refinement: finite residual windows, conductor windows, and character windows carry tail records.
+\item Packaging: Burnol/Sonine/co-Poisson carrier and semilocal Hardy--Titchmarsh transport are declared.
+\item Audit/currency: Loewner source domination, lower-frame growth, and $\Xi$ residuals are audited.
+\end{enumerate}
+
+\section{Nonclaims}
+This step does not prove RH. It does not prove $\XiBC=0$. It does not prove the Heap--Soundararajan operator lift, the Burnol residual visibility theorem, or the completed Plancherel tail theorem. It states the exact theorem shape that would make residual-specific source absorption lawful.
+
+\end{document}

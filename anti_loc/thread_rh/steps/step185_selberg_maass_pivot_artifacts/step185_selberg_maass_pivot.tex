@@ -1,0 +1,201 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\newcommand{\Hh}{\mathbb H}
+\newcommand{\GammaS}{\Gamma}
+\newcommand{\XiGamma}{\Xi_{\Gamma}}
+\newcommand{\ZG}{Z_{\Gamma}}
+\newcommand{\CRE}{\mathrm{CRE}}
+\newcommand{\CRCFT}{\mathrm{CRCFT}}
+
+\title{Step 185: Selberg Trace Formula / Maass Carrier Pivot}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{selberg\_verdict}=V_{\mathrm{selberg\_closes\_with\_proved\_RH}}.}
+\]
+
+The Selberg/Maass carrier is RH-analogous but not classically-RH-equivalent
+for Riemann's zeta.  On its native carrier, the framework residual closes:
+\[
+\boxed{\XiGamma=0}
+\]
+after the full Selberg spectral/geometric ledger is included.  This closure
+does not transfer to Riemann RH.
+
+\section*{Inherited Record Audit}
+
+\paragraph{Step 90.}
+The source-family audit says that trace-formula and automorphic sources may
+provide genuine spectral/geometric positivity only if the completed carrier is
+chosen to be automorphic/trace-native and if Plancherel or trace-formula data
+provide the full lower-frame record.  Otherwise such data are public trace
+shadows.
+
+\paragraph{Step 92.}
+The Hecke carrier sketch records Selberg/trace-formula sources as plausible
+only if carrier-native and accompanied by explicit bridge records.  A trace
+formula cannot be inserted as a small public repair term into a different
+zeta carrier.
+
+\paragraph{Consequence for this step.}
+Unlike previous pivots, this step chooses the trace-native carrier itself.
+Thus the Selberg trace formula is not used as a public shadow for Riemann's
+zeta; it is used only to close the native Selberg residual.
+
+\section*{Carrier Declaration}
+
+Let \(\Gamma=\mathrm{SL}_2(\mathbb Z)\), with the usual
+\(\mathrm{PSL}_2(\mathbb Z)\) quotient understood for the action on
+\(\Hh\).  Define
+\[
+H_\Gamma=L^2(\Gamma\backslash\Hh,d\mu),
+\qquad
+d\mu=\frac{dx\,dy}{y^2}.
+\]
+The native operator is the positive hyperbolic Laplacian
+\[
+\Delta=-y^2\left(\partial_x^2+\partial_y^2\right),
+\]
+with its standard self-adjoint realization on \(H_\Gamma\).
+
+Its spectral decomposition contains:
+\begin{itemize}
+\item discrete Maass cusp-form eigenvalues
+\[
+\lambda_j=\frac14+r_j^2;
+\]
+\item residual/discrete terms;
+\item continuous Eisenstein spectrum, with scattering/parabolic corrections.
+\end{itemize}
+
+\section*{Selberg Zeta}
+
+The Selberg zeta function is
+\[
+\ZG(s)
+=
+\prod_{P\ {\rm primitive}}
+\prod_{k\ge0}
+\left(1-N(P)^{-s-k}\right),
+\]
+where \(P\) ranges over primitive closed geodesics and \(N(P)\) is the
+geodesic norm.  Spectral zeros associated to the Laplacian satisfy
+\[
+s(1-s)=\lambda_j.
+\]
+For \(\lambda_j=1/4+r_j^2\) this gives
+\[
+s=\frac12\pm ir_j.
+\]
+Residual, exceptional, parabolic, and continuous-spectrum terms are native
+Selberg ledger terms, not omissions.
+
+\section*{Parent Residual}
+
+\begin{definition}[Selberg adequacy residual]
+\(\XiGamma\) is the Schur/trace-formula defect between:
+\begin{itemize}
+\item native spectral probes: the discrete Maass spectrum, residual terms, and
+Eisenstein/scattering spectral measure of \(\Delta\);
+\item native geometric probes: identity, hyperbolic closed-geodesic terms,
+parabolic terms, and scattering corrections.
+\end{itemize}
+The audit energy is the Selberg transform/Plancherel trace-test pairing.
+\end{definition}
+
+Equivalently, for admissible test functions \(h\), write the Selberg trace
+formula schematically as
+\[
+\mathcal S_\Gamma(h)=\mathcal G_\Gamma(h).
+\]
+Then
+\[
+\XiGamma(h):=\mathcal S_\Gamma(h)-\mathcal G_\Gamma(h).
+\]
+
+\begin{theorem}[Native Selberg closure]
+On the Selberg/Maass carrier for \(\Gamma=\mathrm{SL}_2(\mathbb Z)\), after
+all discrete, continuous, residual, identity, hyperbolic, parabolic, and
+scattering terms are included,
+\[
+\XiGamma=0.
+\]
+\end{theorem}
+
+\begin{proof}
+This is precisely the Selberg trace formula on the native automorphic
+carrier.  The spectral side is the spectral decomposition of the self-adjoint
+Laplacian on \(L^2(\Gamma\backslash\Hh)\).  The geometric side is the closed
+geodesic/orbital expansion plus identity, parabolic, scattering, and residual
+terms.  Since both sides are the same distribution on the admissible test
+class, the Schur/trace residual vanishes.
+
+The Selberg zeta RH analog is then native: the nontrivial spectral zeros tied
+to self-adjoint Laplacian eigenvalues lie on the line \(s=1/2+ir\) through
+\(s(1-s)=\lambda\), with the non-cuspidal and residual terms accounted in the
+same ledger.
+\end{proof}
+
+\section*{CRE and CRCFT Audit}
+
+\begin{center}
+\begin{tabular}{p{0.28\linewidth}p{0.18\linewidth}p{0.44\linewidth}}
+\toprule
+Audit & Result & Reason\\
+\midrule
+CRE status & not \(\CRE\)
+& Closing \(\XiGamma\) for \(\ZG\) does not imply Riemann RH and is not
+logically equivalent to it.\\
+\(\CRCFT\) applicability & does not apply
+& \(\CRCFT\) is a foreclosure taxonomy for CRE carriers; this carrier closes
+natively instead.\\
+Framework closure & closed native
+& Full Selberg trace formula supplies the exact spectral/geometric ledger.\\
+Transfer to Riemann RH & not claimed
+& A separate bridge from Selberg/Maass data to Riemann's zeta carrier is not
+supplied.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Implication}
+
+The Selberg/Maass pivot tests the boundary of \(\CRCFT\).  The result is that
+the CRE hypothesis is load-bearing.  A proved RH-analogous carrier with its
+own native trace formula closes under the framework, while the previous CRE
+carriers foreclosed because their closure would decide Riemann RH or require
+missing carrier bridges.
+
+\section*{Classical Theorems Cited}
+
+\begin{itemize}
+\item A. Selberg, 1956: Selberg trace formula and Selberg zeta theory.
+\item D. Hejhal, \emph{The Selberg Trace Formula for PSL(2,R)}, Vols. I--II:
+standard trace formula, zeta, scattering, and continuous-spectrum treatment.
+\item H. Iwaniec, \emph{Spectral Methods of Automorphic Forms}: Maass forms,
+Eisenstein spectrum, and automorphic spectral decomposition for
+\(\mathrm{SL}_2(\mathbb Z)\).
+\end{itemize}
+
+\section*{Nonclaim Boundary}
+
+This step does not prove Riemann RH, does not transfer Selberg's RH analog to
+Riemann's zeta, and does not close any prior Riemann-zeta residual.  It closes
+only the native Selberg residual \(\XiGamma\) on the Selberg/Maass carrier
+with its full trace-formula ledger.
+
+\end{document}

@@ -1,0 +1,304 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newcommand{\K}{\mathsf K}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Capacity}{\operatorname{Cap}}
+\newcommand{\dd}{\,d}
+\newcommand{\pre}{\preceq}
+\newcommand{\suc}{\succeq}
+\title{Step 46: All-Six Record Composition and Propagation for Anti-Localization Membranes}
+\author{Working note}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 41--45 define accepted anti-localization as a formed-layer membrane with an all-six-channel record.  The next question is compositional: if one membrane record transfers to another by a lawful bridge, and the second transfers to a third, when does the composed claim remain accepted?
+
+The point of this note is to prove a bridge-composition theorem.  It says that accepted membrane records compose only when every channel composes and the propagated currency defects remain inside budget.  This is the anti-localization analogue of functoriality with defect accounting.
+
+\section{Membrane records}
+\begin{definition}[Static membrane currency]
+Let $E$ be a finite or Hilbert carrier coordinate space, $C\suc0$ a closed positive audit form on $E$, and $L:E\to Y$ a declared response family.  Assume null-mode legality:
+\[
+\ker C\subseteq \ker L.
+\]
+The response currency matrix is
+\[
+\K=L C^\dagger L^*.
+\]
+For a recombination $y\in Y$,
+\[
+ y^*\K y=\Capacity_C(y^*L;E).
+\]
+\end{definition}
+
+\begin{definition}[All-six membrane record]
+An all-six anti-localization record is
+\[
+\AL=(E,C,L,Y,\Theta;P_1,P_2,P_3,P_4,P_5,P_6;\mathsf N),
+\]
+where $\Theta\suc0$ is the declared budget, $\mathsf N$ is a nonclaim/scope record, and the six channel records certify:
+\begin{enumerate}[label=$P_\arabic*$:]
+\item rewrite/gauge/operator repair;
+\item feasibility/channelization/frame and null legality;
+\item route/holonomy/protocol union;
+\item staging/refinement/predictive transport;
+\item packaging/canonicalization/lawful witness;
+\item audit/currency/budget and witness ledger.
+\end{enumerate}
+The record is accepted at this static stage when all six channel statuses are accepted and
+\[
+\K\preceq\Theta.
+\]
+\end{definition}
+
+\section{Exact bridge composition}
+\begin{definition}[Exact membrane bridge]
+Let
+\[
+\AL_i=(E_i,C_i,L_i,Y_i,\Theta_i;P_1^i,\ldots,P_6^i;\mathsf N_i),\quad i=1,2.
+\]
+An exact bridge $\mathcal B_{12}:\AL_1\to\AL_2$ consists of a carrier pullback
+\[
+P_{12}:E_2\to E_1
+\]
+and a response map
+\[
+A_{12}:Y_1\to Y_2
+\]
+such that
+\[
+C_2\suc P_{12}^*C_1P_{12},\qquad L_2=A_{12}L_1P_{12},
+\]
+and each channel record $P_i^1$ transports to $P_i^2$ with accepted status.
+\end{definition}
+
+\begin{theorem}[Exact bridge membrane transfer]
+If $\mathcal B_{12}$ is exact, then
+\[
+\K_2\preceq A_{12}\K_1A_{12}^*.
+\]
+Consequently, if $\K_1\preceq\Theta_1$, then
+\[
+\K_2\preceq A_{12}\Theta_1A_{12}^*.
+\]
+\end{theorem}
+
+\begin{proof}
+For a response recombination $y\in Y_2$, the target probe is
+\[
+y^*L_2=y^*A_{12}L_1P_{12}.
+\]
+For each target vector $e_2$, its source image is $e_1=P_{12}e_2$, and the energy inequality gives
+\[
+\langle e_2,C_2e_2\rangle\ge \langle e_1,C_1e_1\rangle.
+\]
+Thus the target variational quotient is bounded by the source variational quotient for the recombination $A_{12}^*y$.  Hence
+\[
+y^*\K_2y\le (A_{12}^*y)^*\K_1(A_{12}^*y)=y^*A_{12}\K_1A_{12}^*y.
+\]
+Since this holds for every $y$, the Loewner inequality follows.
+\end{proof}
+
+\begin{theorem}[Exact bridge composition]
+If $\mathcal B_{12}:\AL_1\to\AL_2$ and $\mathcal B_{23}:\AL_2\to\AL_3$ are exact bridges, then their composite
+\[
+\mathcal B_{13}=\mathcal B_{23}\circ\mathcal B_{12}
+\]
+with
+\[
+P_{13}=P_{12}P_{23},\qquad A_{13}=A_{23}A_{12}
+\]
+is exact.  Moreover,
+\[
+\K_3\preceq A_{23}A_{12}\K_1A_{12}^*A_{23}^*.
+\]
+\end{theorem}
+
+\begin{proof}
+The energy inequality composes:
+\[
+C_3\suc P_{23}^*C_2P_{23}\suc P_{23}^*P_{12}^*C_1P_{12}P_{23}=P_{13}^*C_1P_{13}.
+\]
+The response identity also composes:
+\[
+L_3=A_{23}L_2P_{23}=A_{23}A_{12}L_1P_{12}P_{23}=A_{13}L_1P_{13}.
+\]
+All-six exactness composes channelwise by hypothesis.  The currency bound follows from the previous theorem twice.
+\end{proof}
+
+\section{Defective bridges}
+\begin{definition}[Defective membrane bridge]
+A defective bridge $\mathcal B_{12}$ consists of $P_{12},A_{12}$ and parameters $\beta_{12}\in(0,1]$, residual readout $R_{12}:E_2\to Y_2$, and residual currency $E_{12}\suc0$ such that
+\[
+C_2\suc \beta_{12}P_{12}^*C_1P_{12},
+\]
+\[
+L_2=A_{12}L_1P_{12}+R_{12},
+\]
+and
+\[
+R_{12}C_2^\dagger R_{12}^*\preceq E_{12}.
+\]
+The channel defects are accepted when their response-currency contributions are bounded by $E_{12}$ and all statuses are recorded.
+\end{definition}
+
+\begin{theorem}[Defective bridge transfer]
+For every $t>0$,
+\[
+\boxed{\;
+\K_2\preceq \frac{1+t}{\beta_{12}}A_{12}\K_1A_{12}^*+(1+t^{-1})E_{12}.
+\;}
+\]
+\end{theorem}
+
+\begin{proof}
+For $y\in Y_2$ and $e\in E_2$,
+\[
+y^*L_2e=y^*A_{12}L_1P_{12}e+y^*R_{12}e.
+\]
+Use
+\[
+|a+b|^2\le (1+t)|a|^2+(1+t^{-1})|b|^2.
+\]
+The first term is bounded by the source capacity, paying the factor $\beta_{12}^{-1}$ from the energy comparison.  The second is bounded by the residual currency.  Taking suprema over $e$ gives the stated quadratic-form inequality for every $y$.
+\end{proof}
+
+\begin{theorem}[Defective bridge composition]
+Let $\mathcal B_{12}$ and $\mathcal B_{23}$ be defective bridges.  Then for any $s,t>0$,
+\[
+\boxed{
+\begin{aligned}
+\K_3\preceq{}&\frac{(1+t)(1+s)}{\beta_{23}\beta_{12}}
+A_{23}A_{12}\K_1A_{12}^*A_{23}^*\\
+&+\frac{(1+t)(1+s^{-1})}{\beta_{23}}A_{23}E_{12}A_{23}^*
++(1+t^{-1})E_{23}.
+\end{aligned}}
+\]
+Thus defective bridges compose with multiplicative energy loss and additive transported residual currency.
+\end{theorem}
+
+\begin{proof}
+Apply defective transfer first to $\mathcal B_{12}$ and then to $\mathcal B_{23}$:
+\[
+\K_2\preceq \frac{1+s}{\beta_{12}}A_{12}\K_1A_{12}^*+(1+s^{-1})E_{12},
+\]
+\[
+\K_3\preceq \frac{1+t}{\beta_{23}}A_{23}\K_2A_{23}^*+(1+t^{-1})E_{23}.
+\]
+Substitution gives the displayed bound.
+\end{proof}
+
+\section{Predictive propagation}
+\begin{theorem}[All-six predictive propagation]
+Suppose a predictive chain of all-six records satisfies, after transport to a common response space,
+\[
+\widehat K_{j+1}\preceq (1+\varepsilon_j)A_j\widehat K_jA_j^*+E_j,
+\]
+where $E_j\suc0$ aggregates the accepted channelwise defects from $P_1,\ldots,P_6$.  If the budgets satisfy
+\[
+(1+\varepsilon_j)A_j\Theta_jA_j^*+E_j\preceq \Theta_{j+1}
+\]
+and
+\[
+\widehat K_0\preceq\Theta_0,
+\]
+then
+\[
+\widehat K_j\preceq\Theta_j
+\]
+for every accepted stage $j$.
+\end{theorem}
+
+\begin{proof}
+This is induction.  If $\widehat K_j\preceq\Theta_j$, then
+\[
+\widehat K_{j+1}\preceq (1+\varepsilon_j)A_j\Theta_jA_j^*+E_j\preceq\Theta_{j+1}.
+\]
+\end{proof}
+
+\begin{corollary}[Common-space summable defects]
+If $A_j=I$, $\Theta_j=\Theta$ and
+\[
+\widehat K_{j+1}\preceq (1+\varepsilon_j)\widehat K_j+E_j,
+\]
+with
+\[
+\prod_j(1+\varepsilon_j)\le P<\infty,
+\qquad
+\sum_jE_j\preceq E_\infty,
+\]
+and
+\[
+P(\widehat K_0+E_\infty)\preceq\Theta,
+\]
+then the predictive membrane remains accepted at all stages.
+\end{corollary}
+
+\section{All-six composition gate}
+\begin{definition}[Composable all-six bridge]
+A bridge between accepted all-six records is composable only if each channel has a composable record:
+\begin{enumerate}[label=$P_\arabic*$:]
+\item rewrite/gauge maps compose and operator defects are charged;
+\item feasible-channel maps preserve frame/null legality or defect is charged;
+\item route/protocol surfaces are stacked or unioned with mixed-block budget;
+\item staging/refinement transports compose with summable predictive defect;
+\item packaging/canonicalization witnesses compose, not merely their public shadows;
+\item audit/currency ledgers compose by Loewner budget and critical-pair completion.
+\end{enumerate}
+If any channel is missing, the composed claim is downgraded to \texttt{support-only}, \texttt{local-only}, \texttt{failed-predictive}, \texttt{overread}, or \texttt{failed-audit}, according to the missing channel.
+\end{definition}
+
+\begin{theorem}[All-six composition theorem]
+Accepted all-six membranes compose along a chain of bridges if and only if:
+\begin{enumerate}
+\item the carrier/response bridge inequalities hold;
+\item every $P_i$-channel bridge composes with an accepted defect record;
+\item the propagated currency defects remain within the target budget;
+\item the nonclaim record is preserved or narrowed explicitly.
+\end{enumerate}
+Under these conditions, the composed record is an accepted anti-localization membrane.  If any one condition fails, the matrix inequality may still hold as a support calculation, but the all-six membrane claim is not accepted.
+\end{theorem}
+
+\begin{proof}
+The forward direction follows by applying the exact or defective transfer theorem at each bridge and then using predictive propagation.  Channelwise composition is needed to ensure that the currency matrices being compared are the lawful witness matrices, rather than public shadows or route-local fragments.  The converse is an audit statement: if one condition fails, a countermodel exists in which the visible numerical inequality survives on a shadow but a hidden native recombination, route, stage, package, gauge, or audit direction remains unpriced.  These countermodels are the separation cases recorded in the all-six atlas.
+\end{proof}
+
+\section{Countermodel patterns}
+\begin{warning}[Non-summable defects]
+Finite stagewise defects do not compose into a predictive membrane if their sum diverges.  In scalar form,
+\[
+K_{j+1}=K_j+\frac1j
+\]
+has finite $K_j$ at every stage but $K_j\to\infty$.
+\end{warning}
+
+\begin{warning}[Vanishing energy product]
+If bridge energy constants compose as
+\[
+C_{j+1}\suc \beta_j P_j^*C_jP_j
+\]
+with
+\[
+\prod_j\beta_j=0,
+\]
+then the capacity multiplier can diverge even when each single bridge is finite.  Energy domination must have a nonzero product or be compensated by a stronger budget.
+\end{warning}
+
+\begin{warning}[Missing channel]
+A bridge that forgets route unions, packaging witnesses, or mixed-protocol blocks may transfer a public-shadow membrane but not an intrinsic one.  The composed status is then at most support-only or local-only.
+\end{warning}
+
+\section{Interpretation}
+Composition is the point at which anti-localization stops being a one-shot estimate and becomes a layer property.  A formed layer can inherit a membrane through lawful bridges and strict extensions only when all six channels transport and the defect currency remains priced.  Otherwise one obtains a shadow of membrane safety, not a membrane.
+
+\end{document}

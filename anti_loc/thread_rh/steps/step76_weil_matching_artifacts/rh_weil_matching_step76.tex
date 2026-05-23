@@ -1,0 +1,170 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\WEF}{\mathsf W_{\rm EF}}
+\newcommand{\R}{\mathsf R}
+\newcommand{\Ccore}{\mathcal C^-_{\log}}
+
+\title{Step 76: Weil Matching Equations for the Log-Side Feature Core}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 75 proposed a log-side anti-invariant core
+\[
+  \Ccore=\{f\in C_c^\infty(\mathbb R): Jf=-f\},\qquad (Jf)(t)=\overline{f(-t)},
+\]
+and a completed positive feature template
+\[
+  W_{\rm cmp}=\begin{bmatrix}W_{\rm pr}\\ W_\infty\\ W_{\rm pole}\\ W_{\rm tail}\end{bmatrix}.
+\]
+The present note states the exact matching problem between this positive feature template and the classical completed Weil explicit formula.  The goal is not to prove RH.  The goal is to isolate what must be matched before the Douglas gate
+\[
+  \AZ\preceq\Kcmp
+\]
+can even be tested.
+
+\section{Shift features and the diagonal-mass identity}
+Let \(\tau_a f(t)=f(t+a)\).  For a positive measure \(\mu\) on shifts, define
+\[
+  q_\mu[f]=\int \|\tau_a f-f\|_{L^2}^2\,d\mu(a).
+\]
+
+\begin{lemma}[shift-difference expansion]
+For each shift \(a\),
+\[
+  \|\tau_a f-f\|_2^2
+  =2\|f\|_2^2-2\operatorname{Re}\langle f,\tau_a f\rangle.
+\]
+Consequently,
+\[
+  q_\mu[f]=2\mu(\mathbb R)\|f\|_2^2-2\operatorname{Re}\int \langle f,\tau_a f\rangle\,d\mu(a),
+\]
+whenever \(\mu\) is finite.  In Fourier variables,
+\[
+  q_\mu[f]=\int \Psi_\mu(\xi)|\widehat f(\xi)|^2\,d\xi,
+  \qquad
+  \Psi_\mu(\xi)=\int |e^{ia\xi}-1|^2\,d\mu(a)\ge0.
+\]
+\end{lemma}
+
+\paragraph{Interpretation.}
+A positive shift feature is not merely a prime-correlation term.  It contains a diagonal mass term and a negative correlation term.  Thus any attempt to identify prime-power correlations from the explicit formula with a positive shift feature must account for the diagonal mass.  The diagonal mass must be supplied, canceled, or renormalized by the completion/pole/tail ledger.
+
+\section{Candidate prime feature and its matching residual}
+At finite prime cutoff \(L\), let
+\[
+  d\mu_{{\rm pr},L}(a)=\sum_{n\ge2} \frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2\,\delta_{\log n}(a),
+\]
+where \(\alpha_L\) is a declared cutoff.  Then
+\[
+  q_{{\rm pr},L}[f]=\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2\|\tau_{\log n}f-f\|_2^2.
+\]
+By the shift expansion,
+\[
+  q_{{\rm pr},L}[f]=D_{{\rm pr},L}\|f\|_2^2-2\operatorname{Re}\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2\langle f,\tau_{\log n}f\rangle,
+\]
+where
+\[
+  D_{{\rm pr},L}=2\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2.
+\]
+
+\begin{definition}[prime matching residual]
+Let \(P_{\rm Weil,L}[f]\) denote the prime-side contribution of the completed Weil form on the chosen autocorrelation/log core, after the same cutoff and normalization have been applied.  The prime matching residual is the quadratic form
+\[
+  \R_{{\rm pr},L}[f]
+  =q_{{\rm pr},L}[f]-P_{{\rm Weil},L}[f].
+\]
+A prime slot is exact only if \(\R_{{\rm pr},L}=0\) on the declared core.  It is defect-paid if \(\R_{{\rm pr},L}\) is represented by a positive feature or is bounded by an explicit defect budget.
+\end{definition}
+
+\begin{warning}[diagonal mass is load-bearing]
+Even if the correlation part of \(q_{{\rm pr},L}\) matches the signed prime term of the explicit formula, the diagonal mass \(D_{{\rm pr},L}\|f\|_2^2\) remains.  Treating it as invisible is a public-shadow overread.  It must be accounted for by pole/completion, archimedean renormalization, tail budget, or a declared normalization bridge.
+\end{warning}
+
+\section{Archimedean and pole/completion residuals}
+The candidate archimedean feature is a positive shift-difference form
+\[
+  q_\infty[f]=\int_0^\infty \kappa_\infty(a)\|\tau_a f-f\|_2^2\,da,
+\]
+where formally \(\kappa_\infty(a)\) has gamma-factor shape, e.g.
+\[
+  \kappa_\infty(a)\sim \frac{1}{2\sinh(a/2)}.
+\]
+The near-zero singularity is compatible with a difference form because \(\|\tau_a f-f\|_2^2=O(a^2)\) for smooth \(f\).
+
+\begin{definition}[completed matching residual]
+Let \(Q_{\rm Weil,L}[f]\) be the completed explicit-formula quadratic on the declared log core, with prime, gamma, pole, and support/tail terms in the same normalization.  Define
+\[
+  q_{{\rm cmp},L}[f]
+  =q_{{\rm pr},L}[f]+q_{\infty,L}[f]+q_{{\rm pole},L}[f]+q_{{\rm tail},L}[f].
+\]
+The completed matching residual is
+\[
+  \R_{{\rm match},L}[f]=q_{{\rm cmp},L}[f]-Q_{\rm Weil,L}[f].
+\]
+The log-side candidate earns the completed Weil carrier only if \(\R_{{\rm match},L}\) vanishes, or is a positive/controlled defect that is included in the explicit-formula bridge budget.
+\end{definition}
+
+\section{From matching to Douglas domination}
+Let
+\[
+  q_Z[f]=\|V_Zf\|^2,
+  \qquad
+  q_{{\rm cmp},L}[f]=\|W_{{\rm cmp},L}f\|^2.
+\]
+
+\begin{theorem}[matching-plus-positivity implies the Douglas gate]
+Suppose on a dense form core \(\Ccore\):
+\begin{enumerate}[label=(\roman*)]
+  \item the completed matching residual \(\R_{{\rm match},L}\) is zero or defect-paid by a positive form \(E_{{\rm match},L}\),
+  \item the completed Weil positivity form is identified as
+  \[
+    Q_{\rm Weil,L}[f]=q_{{\rm cmp},L}[f]-q_Z[f]-E_{{\rm match},L}[f],
+  \]
+  \item \(Q_{\rm Weil,L}[f]\ge0\) on \(\Ccore\),
+  \item \(q_{{\rm cmp},L}\) is closable and \(\Ccore\) is a form core for the completed anti-invariant response space.
+\end{enumerate}
+Then
+\[
+  q_Z[f]\le q_{{\rm cmp},L}[f]
+\]
+on the completed response space after adding the declared defect budget.  Equivalently,
+\[
+  V_Z^*V_Z\preceq W_{{\rm cmp},L}^*W_{{\rm cmp},L}+E_{{\rm match},L}.
+\]
+If \(E_{{\rm match},L}=0\), Douglas factorization gives a contraction \(T\) such that
+\[
+  V_Z=T W_{{\rm cmp},L},\qquad \|T\|\le1.
+\]
+\end{theorem}
+
+\section{Obligation ledger}
+The exact zeta-carrier matching problem splits into the following records.
+\begin{enumerate}[label=O1.\arabic*]
+  \item Declare the log-side core and prove density/form-core status.
+  \item Match the signed prime-power distribution to a positive prime-shift feature plus diagonal/completion residual.
+  \item Match the gamma term to a renormalized positive archimedean shift feature.
+  \item Handle pole/completion/null modes as finite positive features or quotient records.
+  \item Bound tail/support/promotion residuals in a fixed/exhaustive ledger sense.
+  \item Identify the completed Weil positivity form as \(q_{\rm cmp}-q_Z-E_{\rm match}\), not merely as a signed trace identity.
+\end{enumerate}
+
+\section{Nonclaim boundary}
+This note does not prove the completed matching residual is zero.  It does not prove RH.  It does not assert that the candidate prime and archimedean shift features are the actual completed Weil carrier.  It states the matching equations and the exact residuals that must be earned before the Douglas gate can be attempted.
+
+\end{document}

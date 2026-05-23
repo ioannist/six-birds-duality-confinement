@@ -1,0 +1,52 @@
+{
+  "step": 251,
+  "orientation": "adequacy",
+  "target": "BN harmonic chain extension to N=5000",
+  "N_values_computed": [3000, 4000, 5000],
+  "calibration_N": 2000,
+  "delta_sq_values": [
+    {"N": 3000, "delta_sq": 0.00558973365837179},
+    {"N": 4000, "delta_sq": 0.00538148417111084},
+    {"N": 5000, "delta_sq": 0.00525837798558493}
+  ],
+  "delta_sq_logN_values": [
+    {"N": 3000, "delta_sq_logN": 0.0447534622741908},
+    {"N": 4000, "delta_sq_logN": 0.0446342968526166},
+    {"N": 5000, "delta_sq_logN": 0.044786621176717}
+  ],
+  "calibration": {
+    "N": 2000,
+    "delta_sq_step251": 0.0060999648486344,
+    "delta_sq_logN_step251": 0.0463652378211054,
+    "delta_sq_step199": 0.0059290131181805,
+    "delta_vs_step199": 0.000170951730453899,
+    "note": "Step 251 uses X_MAX=300000 versus step 199 X_MAX=40000."
+  },
+  "numerical_setup": {
+    "mpmath_dps": 80,
+    "X_MAX": 300000,
+    "tail_bound_per_entry": 0.0000033333333333333333,
+    "linear_algebra": "symmetric eigen-pseudoinverse",
+    "pinv_rcond": 1e-12
+  },
+  "conditioning": [
+    {"N": 3000, "rank": 2999, "condition_proxy": 44825688.1},
+    {"N": 4000, "rank": 3999, "condition_proxy": 86867248.8},
+    {"N": 5000, "rank": 4999, "condition_proxy": 142193870.0}
+  ],
+  "updated_decay_fit": [
+    {"model": "tail_mean_delta_sq_logN", "fit_range": "N>=200 through N=5000", "C": 0.045311325284006, "alpha": 1.0, "spread": 0.000862754},
+    {"model": "recent_tail_mean_delta_sq_logN", "fit_range": "N>=1000 through N=5000", "C": 0.0448554780938519, "alpha": 1.0, "spread": 0.000208024},
+    {"model": "C_over_logN_alpha", "fit_range": "N>=20", "C": 0.0545618913647252, "alpha": 1.094554992},
+    {"model": "tail_C_over_logN_alpha", "fit_range": "N>=200", "C": 0.0572138071988156, "alpha": 1.118314712},
+    {"model": "newest_C_over_logN_alpha", "fit_range": "N>=1000", "C": 0.0488745892509167, "alpha": 1.041904016}
+  ],
+  "BN_N5000_verdict": "V_BN_N5000_consistent",
+  "retained_nogos": [
+    "finite harmonic-chain computation only",
+    "does not prove convergence of delta_A^2 to zero",
+    "does not prove the Beurling-Nyman criterion or RH",
+    "conditioning grows to 1.42e8 at N=5000; numerical result remains diagnostic"
+  ],
+  "final_verdict": "V_BN_N5000_consistent"
+}

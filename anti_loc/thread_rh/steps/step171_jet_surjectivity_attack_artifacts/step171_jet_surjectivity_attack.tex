@@ -1,0 +1,344 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Pinf}{P_\infty}
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Mz}{M_\zeta}
+\newcommand{\Uinf}{\mathcal U_\infty}
+\newcommand{\MG}{\mathcal M_\Gamma}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Blegal}{\mathcal B}
+
+\title{Step 171: Projected Zero-Jet Surjectivity Attack}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{jet\_surjectivity\_verdict =
+V\_surj\_genuinely\_kernel\_required}.}
+\]
+
+The upgraded structural audit does not prove projected zero-jet surjectivity,
+does not refute it at any specific zeta zero, and does not produce a partial
+zero/order partition.  It proves the record-relative meta-conclusion that all
+available structural routes reduce to the same missing datum: an exact
+Mellin-side Sonin/prolate projection kernel
+\[
+  K_\infty(s,s')
+\]
+or an equivalent range-evaluator matrix theorem deciding
+\[
+  \langle \Mz G,\Psym y_{\rho,k}\rangle
+\]
+for legal Burnol inputs \(G\in\Blegal\).
+
+\section{T1. Inherited definitions}
+
+\subsection*{Projection}
+
+Step 104 records the raw archimedean Sonin model:
+\[
+  H=L^2(\mathbb R)
+\]
+or the even subspace. \(P_\lambda\) is the spatial cutoff projection onto
+\([-\lambda,\lambda]\), and
+\[
+  \widehat P_\lambda=\mathcal F^{-1}P_\lambda\mathcal F.
+\]
+The archimedean Sonin space is
+\[
+  \mathcal S_\lambda=\ker P_\lambda\cap\ker\widehat P_\lambda,
+\]
+and \(S_\lambda\) is the orthogonal projection onto \(\mathcal S_\lambda\).
+
+Step 102 identifies \(P_\infty\) as the archimedean Sonin/prolate projection.
+Step 162 places it in the Burnol/Sonine pulled-evaluator Hilbert context.
+Step 170 records the Mellin-side representative:
+\[
+  \Psym=\Uinf P_\infty\Uinf^{-1}.
+\]
+Therefore the exact inherited formula for arbitrary Mellin-side \(F\) is
+\[
+  \boxed{
+  (\Psym F)(s)
+  :=
+  (\Uinf P_\infty\Uinf^{-1}F)(s)
+  }
+\]
+with \(P_\infty\) identified with the Sonin/prolate projection \(S_\lambda\)
+under the inherited archimedean model.
+
+The inherited records do not provide
+\[
+  (\Psym F)(s)=\int K_\infty(s,s')F(s')\,d\mu(s').
+\]
+
+\subsection*{Legal Burnol input}
+
+Step 119 declares legal Burnol generators
+\[
+  g_j\in C_c^\infty([a,A])
+\]
+with right-Mellin transform
+\[
+  \widehat g_j(s)=\int_0^\infty g_j(t)t^{-s}\,dt
+\]
+and endpoint vanishings
+\[
+  \widehat g_j(0)=0,\qquad \widehat g_j(1)=0.
+\]
+For the co-Poisson synthesis,
+\[
+  M(\mathcal Cg_j)(s)=\zeta(s)\widehat g_j(s).
+\]
+Thus the legal Mellin-side input in this step is \(G=\widehat g\), not an
+arbitrary atom, constant, polynomial, or evaluator-side vector.
+
+\subsection*{Zero-evaluator jets}
+
+Step 153 defines Burnol's zero-evaluator vector by
+\[
+  [f,Y^a_{w,k}]_{L_a}=M(f)^{(k)}(w),
+  \qquad f\in L_a.
+\]
+In the completed Mellin model,
+\[
+  \MG(Y^a_{w,k})(s)=\partial_{\overline w}^{\,k}K_a^\Gamma(s,w)
+\]
+under the Hilbert convention, and
+\[
+  \MG(Y^a_{w,k})(s)=\partial_w^{\,k}K_a^\Gamma(s,w)
+\]
+under Burnol's analytic bilinear convention. Step 153 also sets
+\[
+  T_a:=\MG J_a\Uinf^{-1}
+\]
+and records the pulled zero-evaluator formula
+\[
+  \Uinf(J_a^*Y^a_{w,k})
+  =
+  T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+\]
+
+Thus for legal \(F\), the jet \(F^{(k)}(\rho)\) is exactly the Burnol
+zero-evaluator functional at \((\rho,k)\).
+
+\section{T2. Surjectivity attack}
+
+For a zeta zero \(\rho\) and \(0\le k<m_\rho\), define
+\[
+  L_{\rho,k}(G):=\partial_s^k(\Psym\Mz G)(\rho).
+\]
+Using the zero-evaluator vector \(y_{\rho,k}\) in the completed carrier,
+\[
+\begin{aligned}
+  L_{\rho,k}(G)
+    &= \langle \Psym\Mz G,y_{\rho,k}\rangle \\
+    &= \langle \Mz G,\Psym^*y_{\rho,k}\rangle.
+\end{aligned}
+\]
+Since \(\Psym\) is a transported orthogonal projection,
+\[
+  \Psym^*=\Psym,\qquad \Psym^2=\Psym,\qquad \Psym=\Psym^*\Psym,
+\]
+and hence
+\[
+  \boxed{
+  L_{\rho,k}(G)=\langle \Mz G,\Psym y_{\rho,k}\rangle.
+  }
+\]
+Surjectivity at \((\rho,k)\) is equivalent to this functional not vanishing
+identically on the legal Burnol class \(\Blegal\). Refutation at
+\((\rho,k)\) is equivalent to its identical vanishing on \(\Blegal\).
+
+\subsection*{T2a. Constructive direction}
+
+\paragraph{Mellin bump or atom near \(\rho\).}
+If \(K_\infty(s,s')\) were known, one could try to choose \(G\) so that
+\[
+  \partial_s^k
+  \int K_\infty(s,s')\zeta(s')G(s')\,d\mu(s')
+  \bigg|_{s=\rho}
+  \ne0.
+\]
+But the inherited carrier does not declare Mellin atoms or arbitrary bumps as
+legal \(G\). It declares \(G=\widehat g\) for compactly supported Burnol input
+with endpoint vanishings. No inherited Paley-Wiener density theorem is supplied
+that lets such \(G\) approximate an atom in the required projected-evaluator
+functional.
+
+\paragraph{Sonin zero-evaluator atom.}
+The vector \(Y^a_{\rho,k}\), or its pullback \(J_a^*Y^a_{\rho,k}\), is an
+evaluator-side object:
+\[
+  \Uinf(J_a^*Y^a_{\rho,k})
+  =
+  T_a^*\partial_{\overline \rho}^{\,k}K_a^\Gamma(\cdot,\rho).
+\]
+Using it as an input would require a legal \(G\) solving a divisibility or
+pullback problem such as \(M_\zeta G=J_a^*Y^a_{\rho,k}\), or a weaker projected
+nonzero pairing theorem. No such record is inherited.
+
+\paragraph{Constant or polynomial profile.}
+These profiles are not declared legal Burnol inputs. Moreover, before applying
+\(\Psym\),
+\[
+  \partial_s^k(\zeta G)(\rho)=0
+  \qquad(0\le k<m_\rho)
+\]
+because of the zeta factor. The projection may mix the profile and revive a
+jet, but deciding that requires \(K_\infty\) or the projected evaluator
+\(\Psym y_{\rho,k}\).
+
+\subsection*{T2b. Refutation direction: structural audit}
+
+\paragraph{U1a. Pairing and duality.}
+The strongest possible pairing refutation would prove, for some specific
+\((\rho_0,k_0)\),
+\[
+  \Psym y_{\rho_0,k_0}\in(\Mz\Blegal)^\perp.
+\]
+Then
+\[
+  L_{\rho_0,k_0}(G)
+  =
+  \langle \Mz G,\Psym y_{\rho_0,k_0}\rangle
+  =
+  0
+  \qquad(G\in\Blegal).
+\]
+The inherited range information is only
+\[
+  \Psym y_{\rho_0,k_0}\in\Ran\Psym
+  =
+  \Uinf(\mathcal S_\lambda),
+  \qquad
+  \mathcal S_\lambda=\ker P_\lambda\cap\ker\widehat P_\lambda.
+\]
+This is a support-Fourier Sonin condition.  No inherited Step
+102/104/105/153/162 record identifies \(\Ran\Psym\), or any vector in it, with
+\((\Mz\Blegal)^\perp\).  Thus the duality route reduces exactly to the missing
+range-evaluator matrix element
+\[
+  \langle \Mz G,\Psym y_{\rho_0,k_0}\rangle.
+\]
+
+\paragraph{U1b. Zero-evaluator structure.}
+Step 153 gives
+\[
+  y_{\rho,k}
+  =
+  T_a^*\partial_{\overline\rho}^{\,k}K_a^\Gamma(\cdot,\rho)
+\]
+in the transported completed model.  A structural zero-evaluator refutation
+would need a theorem of the form
+\[
+  \Psym y_{\rho,k}
+  =
+  \sum_{j\le J}c_j\,y_{\rho'_j,k'_j}
+\]
+with labels for which multiplication by \(\zeta\) forces the pairings to
+vanish, or at least
+\[
+  \langle \Mz G,\Psym y_{\rho,k}\rangle
+  =
+  \sum_{j\le J}c_j\,\partial_s^{k'_j}(\zeta G)(\rho'_j).
+\]
+No inherited record states that \(\Psym\) maps zero-evaluator atoms to
+zero-evaluator atoms or to a zero-annihilating span.  Step 153 explicitly
+leaves the projected Sonine kernel as a load-bearing projection, so this route
+also requires the projected evaluator \(\Psym y_{\rho,k}\).
+
+\paragraph{U1c. Algebraic idempotency.}
+Projection algebra gives only
+\[
+\begin{aligned}
+  L_{\rho,k}(G)
+  &=\langle \Psym\Mz G,y_{\rho,k}\rangle \\
+  &=\langle \Psym\Mz G,\Psym y_{\rho,k}\rangle \\
+  &=\langle \Mz G,\Psym y_{\rho,k}\rangle .
+\end{aligned}
+\]
+This inserts \(\Psym\) on the evaluator side; it does not commute
+\(\Psym\) past \(M_\zeta\), does not prove \(\Mz\Blegal\perp\Ran\Psym\), and
+does not preserve the zeta-divisibility ideal.  Therefore idempotency supplies
+no cancellation beyond the same unknown pairing.
+
+\paragraph{U1d. Specific zero test.}
+Taking the lowest critical zero
+\[
+  \rho_1=\frac12+14.134725\ldots i,\qquad k_0=0,
+\]
+does not improve the situation.  Step 102/104/105 records are about
+archimedean Sonin/prolate projection geometry and shifted compactness or
+Calkin repair.  Step 142/143/144 records concern \(\Omega\)-compatible density,
+blind-sector floors, and completed-tail promotion.  None of these records
+contains a matrix element, eigenlabel, or cancellation identity tied to
+\(\rho_1\) or to any zeta-zero label.  Hence no specific \((\rho_1,0)\)
+vanishing or nonvanishing decision is inherited.
+
+\subsection*{T2c. Partial outcome}
+
+A partial verdict would require at least one decided subset:
+\[
+  L_{\rho,k}\not\equiv0\quad\text{on one family}
+  \qquad\text{or}\qquad
+  L_{\rho,k}\equiv0\quad\text{on another family}.
+\]
+The records give no such subset.  They provide neither a zero/order partition
+nor a range theorem distinguishing special \(\rho\)'s.  Thus the partial route
+also collapses to the missing \(K_\infty\) or equivalent range-evaluator
+matrix.
+
+\subsection*{U2. Non-kernel constructive direction}
+
+\paragraph{Candidate \(G=Y_{\rho_0,k_0}\).}
+This candidate is not legal: \(Y_{\rho_0,k_0}\) is an evaluator vector, while
+legal \(G\)'s are right-Mellin transforms \(\widehat g\) of Step 119 Burnol
+generators.  Even ignoring legality, the proposed test is
+\[
+  \langle \Mz Y_{\rho_0,k_0},\Psym y_{\rho_0,k_0}\rangle,
+\]
+which is again a projected-evaluator matrix element not supplied by Step 153.
+
+\paragraph{Candidate \(G=1\).}
+The constant profile is not a Step 119 legal Burnol transform with endpoint
+vanishings.  Formally, the unprojected jet vanishes at \(\rho_0\):
+\[
+  \partial_s^{k_0}\zeta(s)\big|_{s=\rho_0}=0
+  \qquad(k_0<m_{\rho_0}).
+\]
+The projected jet would be
+\[
+  \langle \zeta,\Psym y_{\rho_0,k_0}\rangle,
+\]
+and deciding whether projection revives the jet again requires \(K_\infty\) or
+the equivalent projected-evaluator theorem.
+
+\section{T3. Consequence}
+
+The consequence for Branch C is:
+\[
+  \boxed{\texttt{target\_equivalence\_consequence =
+  kernel\_required\_not\_decided}.}
+\]
+Full ZI-COV would still imply zero-evaluator cancellation at zeta zeros, but
+Step 171 cannot convert that into target-equivalence. It also cannot prove a
+specific sharper-than-RH obstruction. The Step 170 zero-free-output subclass
+remains the retained conditional result.
+
+\section{Nonclaim boundary}
+
+This step does not prove RH, does not prove full-carrier ZI-COV, does not
+prove projected zero-jet surjectivity, and does not refute projected zero-jet
+surjectivity at a specific \((\rho,k)\).  It does not promote a public Hardy
+shadow, finite-window computation, scalar identity, or source comparison into
+the Burnol/Sonine carrier.
+
+\end{document}

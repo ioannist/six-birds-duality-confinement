@@ -1,0 +1,73 @@
+{
+  "step": 179,
+  "orientation": "adequacy",
+  "target": "Calkin class of C_l P_eta in A_eta/K_eta",
+  "inherited_records": [
+    {
+      "source": "step162",
+      "quote": "A_eta=C*(P_infty,M_m,P_eta,I); K_eta=A_eta cap K(H); active quotient object q_eta(C_l P_eta)."
+    },
+    {
+      "source": "step154",
+      "quote": "C_l=(I-P_infty)M_{m_l}P_infty; U_infty eta^a_{w,k}=T_a^* partial_{bar w}^k K_a^Gamma(.,w)."
+    },
+    {
+      "source": "step158",
+      "quote": "C_l P_eta compact iff all weak-null sequences in H_eta are sent norm-null; positive essential norm requires normalized weak-null u_n in H_eta with liminf ||C_l u_n||>0."
+    },
+    {
+      "source": "step159",
+      "quote": "Hard-support Weyl sequence is a public shadow and cannot be promoted without a Calkin-faithful bridge."
+    },
+    {
+      "source": "step173",
+      "quote": "K_infty^op=delta-sinc-sum_n Psi_n Psi_n^* gives P_infty action on known Mellin vectors."
+    },
+    {
+      "source": "step178",
+      "quote": "kappa_{a,w}=T_a^*K_a^Gamma(.,w) requires Burnol explicit Bessel/Hankel resolvent formula for P_{L_a^Gamma}."
+    }
+  ],
+  "attack_pursued": ["T2a", "T2b", "T2c", "T2d"],
+  "derivation_chain": [
+    {
+      "stage": "T2a",
+      "expression": "<eta_i,C_l eta_j>=<kappa_i,(I-P)M_{m_l}P kappa_j>=<kappa_i-P kappa_i,M_{m_l}P kappa_j>.",
+      "status": "blocked_at_kappa"
+    },
+    {
+      "stage": "T2b",
+      "expression": "||C_l P_eta||_HS^2=trace(P_eta C_l^*C_l P_eta), requiring the kernel or frame of P_eta.",
+      "status": "blocked_at_P_eta_kernel"
+    },
+    {
+      "stage": "T2c",
+      "expression": "A Weyl sequence must satisfy u_n in H_eta; PSWF/hard-support sequences are only ambient shadows unless expanded in kappa vectors.",
+      "status": "blocked_at_actual_H_eta_vectors"
+    },
+    {
+      "stage": "T2d",
+      "expression": "Step175 L-values involve <M_zeta G,P y_{rho,k}> and do not determine <eta_i,C_l eta_j> without identifying y/eta through kappa.",
+      "status": "blocked_at_pairing_identification"
+    }
+  ],
+  "calkin_class_evidence": {
+    "compactness": "not decided",
+    "essential_norm_positive": "not decided",
+    "operator_formula": "C_l P_eta=(I-P_infty)M_{m_l}P_infty P_eta",
+    "K_infty_use": "K_infty^op determines P_infty on known Mellin vectors",
+    "blocking_equivalence": "P_eta and all actual H_eta tests require kappa_{a,rho,k}=T_a^* partial K_a^Gamma(.,rho)"
+  },
+  "calkin_class_verdict": "V_branch_a_stuck_at_kappa",
+  "no_go_theorem": null,
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1"
+  ],
+  "final_verdict": "V_branch_a_stuck_at_kappa"
+}

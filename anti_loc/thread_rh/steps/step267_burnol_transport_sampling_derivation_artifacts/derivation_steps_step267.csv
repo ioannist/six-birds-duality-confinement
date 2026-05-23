@@ -1,0 +1,7 @@
+step,operation,expression,result
+1,start from Burnol projection,"pi_lambda = I - R_lambda(P_lambda - F_lambda F_+) - F_+ R_lambda(P_lambda F_+ - F_lambda), R_lambda=(1-D_lambda)^(-1)","pi_lambda is explicit but involves a bounded inverse/resolvent on L^2(0,lambda), not a finite-rank operator"
+2,apply Mellin/zeta multiplication and evaluate,Eval_w(M_zeta pi_lambda f) = zeta(w) M(pi_lambda f)(w),if w is not a zeta zero this is a continuous linear functional represented by pi_lambda^* M_zeta^* Z_w
+3,use Burnol evaluator theorem,"M(pi_lambda f)(w) = [pi_lambda f, Z^lambda_{w,0}] = [f, pi_lambda^* Z^lambda_{w,0}]",the evaluation is represented by a transported evaluator vector
+4,compare to cascade-needed finite sampling,"need pi_lambda^* M_zeta^* Z_w = sum_i c_i Z^lambda_{tau_i,0} with finite i","this finite evaluator expansion is the missing lemma; it is not Burnol Theorem 4, Theorem 8, or Section 6"
+5,check Burnol 2004 span statements,"K_lambda=closed span{Z^lambda_{rho,k}} for lambda>=1; finite collections of Z^lambda_{w,k} are linearly independent","Burnol supplies closed infinite span/independence, not finite spanning of arbitrary transported evaluators"
+6,derive final assessment,finite transport-sampling would require a finite interpolation/quadrature theorem for the relevant vector,not derivable from the fetched Burnol formulas

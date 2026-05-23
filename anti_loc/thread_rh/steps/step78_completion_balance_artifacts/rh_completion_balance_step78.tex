@@ -1,0 +1,221 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\title{Step 78: Completion Balance for Positive Weil Feature Matching}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\E}{\mathsf E}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\cmp}{\mathrm{cmp}}
+\newcommand{\sgn}{\mathrm{sgn}}
+\newcommand{\tail}{\mathrm{tail}}
+\newcommand{\pole}{\mathrm{pole}}
+\newcommand{\bal}{\mathrm{bal}}
+\newcommand{\diag}{\mathrm{diag}}
+\newcommand{\EF}{\mathrm{EF}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Step 77 showed that the signed prime autocorrelation term becomes a positive shift-difference feature only after adding a diagonal repair term.  This note isolates the corresponding completion-balance problem for the RH Weil--Douglas bridge.  The prime feature alone is not a positive representative of the signed explicit formula.  The gamma, pole/completion, and tail slots must supply a positive balance form that pays the prime diagonal and any remaining signed-form mismatch.  The central gate is a Loewner/form inequality, not a trace identity.
+\end{abstract}
+
+\section{Setup}
+Let
+\[
+    \mathcal C^-_{\log}\subset Y^-
+\]
+be the anti-invariant log-side Weil core.  For \(f\in \mathcal C^-_{\log}\), let
+\[
+    \widetilde f(t)=\overline{f(-t)},
+    \qquad h_f(a)=(f*\widetilde f)(a)=\langle \tau_a f,f\rangle .
+\]
+Then
+\[
+    \widehat h_f(\xi)=|\widehat f(\xi)|^2 .
+\]
+
+Let \(w_a\ge0\) be finite-cutoff prime-power weights, for example
+\[
+    w_{n,L}=\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2.
+\]
+The signed prime autocorrelation contribution is
+\[
+    P_{\pr,L}(h_f)=-\sum_a w_a(h_f(a)+h_f(-a)).
+\]
+The positive prime shift-difference feature is
+\[
+    q_{\pr,L}[f]=\sum_a w_a\|\tau_a f-f\|_2^2.
+\]
+
+\begin{lemma}[Prime diagonal identity]
+For every \(f\in\mathcal C^-_{\log}\),
+\[
+    q_{\pr,L}[f]
+    = P_{\pr,L}(h_f)+d_{\pr,L}\|f\|_2^2,
+\]
+where
+\[
+    d_{\pr,L}=2\sum_a w_a.
+\]
+Equivalently, in Fourier variables,
+\[
+    \Psi_{\pr,L}(\xi)=d_{\pr,L}-2\sum_a w_a\cos(a\xi)
+    =2\sum_a w_a(1-\cos(a\xi))\ge0.
+\]
+\end{lemma}
+
+\begin{proof}
+Expand
+\[
+\|\tau_a f-f\|_2^2=2\|f\|_2^2-\langle \tau_a f,f\rangle-\langle f,\tau_a f\rangle
+=2h_f(0)-h_f(a)-h_f(-a).
+\]
+Sum with weights \(w_a\).  The Fourier expression follows from Plancherel.
+\end{proof}
+
+\section{Signed formula versus positive feature package}
+The completed signed explicit-formula side may be written abstractly as
+\[
+    q_{\sgn,L}[f]
+    =P_{\pr,L}(h_f)+R_{\sgn,L}[f],
+\]
+where \(R_{\sgn,L}\) collects signed archimedean, pole, completion, support, and tail terms.
+
+The candidate positive completed carrier feature package has the form
+\[
+    W_{\cmp,L}=\begin{bmatrix}W_{\pr,L}\\ W_{\infty,L}\\ W_{\pole,L}\\ W_{\tail,L}\end{bmatrix},
+\]
+with associated positive form
+\[
+    q_{\cmp,L}[f]=\|W_{\cmp,L}f\|^2
+    =q_{\pr,L}[f]+q_{\infty,L}^+[f]+q_{\pole,L}^+[f]+q_{\tail,L}^+[f].
+\]
+Thus
+\[
+    q_{\cmp,L}[f]-q_{\sgn,L}[f]
+    =d_{\pr,L}\|f\|^2
+     +q_{\infty,L}^+[f]+q_{\pole,L}^+[f]+q_{\tail,L}^+[f]
+     -R_{\sgn,L}[f].
+\]
+
+\begin{definition}[Completion-balance form]
+The completion-balance form is
+\[
+    \mathcal B_L[f]
+    :=d_{\pr,L}\|f\|^2
+     +q_{\infty,L}^+[f]+q_{\pole,L}^+[f]+q_{\tail,L}^+[f]
+     -R_{\sgn,L}[f].
+\]
+The positive feature package matches the signed completed formula with no deficit when
+\[
+    \mathcal B_L[f]\ge0\qquad (f\in\mathcal C^-_{\log}).
+\]
+If only
+\[
+    \mathcal B_L[f]\ge -e_L[f]
+\]
+with \(e_L\ge0\), then \(e_L\) is the explicit-formula matching defect.
+\end{definition}
+
+\begin{theorem}[Signed-to-positive matching gate]
+Assume a signed Weil domination inequality on the core,
+\[
+    q_Z[f]\le q_{\sgn,L}[f]+e_{\mathrm{Weil},L}[f],
+\]
+where \(q_Z[f]=\|V_Zf\|^2\).  If the completion-balance form satisfies
+\[
+    \mathcal B_L[f]\ge -e_{\bal,L}[f],
+\]
+then
+\[
+    q_Z[f]\le q_{\cmp,L}[f]+e_{\mathrm{Weil},L}[f]+e_{\bal,L}[f].
+\]
+In particular, if both defects vanish and the resulting form inequality extends from a form core to the completed anti-invariant response space, then
+\[
+    V_Z^*V_Z\preceq W_{\cmp,L}^*W_{\cmp,L},
+\]
+so there exists a contraction \(T\) such that
+\[
+    V_Z=T W_{\cmp,L},\qquad \|T\|\le1.
+\]
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[
+q_{\cmp,L}=q_{\sgn,L}+\mathcal B_L.
+\]
+Combining the two displayed assumptions gives
+\[
+q_Z\le q_{\sgn,L}+e_{\mathrm{Weil},L}
+\le q_{\cmp,L}+e_{\mathrm{Weil},L}+e_{\bal,L}.
+\]
+If the defects vanish and the core-to-full gate passes, the Loewner domination follows.  Douglas factorization gives the contraction.
+\end{proof}
+
+\section{What the gamma, pole, and tail slots must do}
+The preceding theorem shows that the gamma, pole, and tail slots are not decorations.  They must pay the form
+\[
+    R_{\sgn,L}[f]-d_{\pr,L}\|f\|^2
+\]
+after adding positive completions.  Equivalently, they must make \(\mathcal B_L\) nonnegative or leave a declared defect.
+
+\begin{proposition}[Balance split]
+Suppose
+\[
+    R_{\sgn,L}=R_{\infty,L}^{\sgn}+R_{\pole,L}^{\sgn}+R_{\tail,L}^{\sgn}.
+\]
+If positive forms \(q^+_{\infty,L},q^+_{\pole,L},q^+_{\tail,L}\) satisfy
+\[
+    q^+_{\infty,L}-R_{\infty,L}^{\sgn}
+    +q^+_{\pole,L}-R_{\pole,L}^{\sgn}
+    +q^+_{\tail,L}-R_{\tail,L}^{\sgn}
+    +d_{\pr,L}\|\cdot\|^2\ge0,
+\]
+then the signed completed carrier admits a positive feature package on the core.  If the left hand side is negative on some vector, that vector is a signed-to-positive matching witness.
+\end{proposition}
+
+\begin{warning}[Trace is not balance]
+The equality
+\[
+    \operatorname{tr} q_{\cmp,L}=\operatorname{tr}q_{\sgn,L}
+\]
+for a finite presentation does not imply \(\mathcal B_L\ge0\).  Completion balance is a Loewner/form inequality, not a scalar accounting identity.
+\end{warning}
+
+\section{Candidate statuses}
+The prime-power slot is already positive after diagonal repair.  The exact matching status is not earned until the diagonal repair is accounted for inside the completed formula.
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Slot & positive feature status & matching obligation\\
+\midrule
+Prime & shift-difference feature after diagonal repair & pay/locate \(d_{\pr,L}\|f\|^2\)\\
+Gamma & plausible renormalized shift or spectral feature & prove exact archimedean matching\\
+Pole/completion & finite-rank positive feature & handle pole/null modes and diagonal balance\\
+Tail/support & positive feature or defect budget & prove fixed/exhaustive tail squeeze\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Nonclaims}
+This note does not prove RH.  It does not prove the classical Weil form has the required positive feature representation.  It proves only the algebraic gate: a signed explicit formula can be used for the Douglas bridge only after a positive completion-balance form is supplied, with all residuals explicitly budgeted.
+
+\end{document}

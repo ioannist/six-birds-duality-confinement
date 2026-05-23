@@ -1,0 +1,236 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\Kmat}{\mathsf K}
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\EF}{\mathsf{EF}}
+
+\title{Step 33: Explicit-Formula Domination Schema for Anti-Invariant Zero Confinement}
+\author{Six Birds Anti-Localization Project}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 32 reduced RH-facing zero confinement to two records:
+\[
+  \AZ \preceq \Kmat^- , \qquad \Kmat^-\preceq \Theta^- .
+\]
+The second record is the anti-invariant anti-localization budget.  The first record is the explicit-formula domination bridge.  It says that zero-side anti-invariant displacement is not an independent quantity; it descends through the completed carrier-side currency.
+
+This note does not prove the RH bridge.  It states the exact finite Hilbert schema that an accepted explicit-formula bridge must satisfy, proves equivalent factorization forms, and records the defect and overread modes.
+
+\section{Zero-side displacement and carrier-side currency}
+Let $Y^-$ be a finite-dimensional real Hilbert response space representing the anti-invariant sector of an anti-linear duality $J$.  Let $Z$ be a finite weighted zero or root ledger, and let
+\[
+  \psi: Z\to Y^- , \qquad w_z>0
+\]
+be the anti-invariant displacement readout.  Define the zero-side displacement operator
+\[
+  \mathcal Z:Y^-\to \ell^2(Z,w),
+  \qquad
+  (\mathcal Z y)_z=\sqrt{w_z}\,\langle y,\psi(z)\rangle .
+\]
+The zero-side displacement matrix is
+\[
+  \AZ=\mathcal Z^*\mathcal Z
+  =\sum_{z\in Z} w_z\,\psi(z)\psi(z)^* .
+\]
+
+Let $(E,C_\Gamma,L^-_\Gamma)$ be the exact completed carrier-side anti-invariant probe package, with $C_\Gamma\succeq0$ and null-mode legality
+\[
+  \Ran (L^-_\Gamma)^*\subseteq \overline{\Ran C_\Gamma} .
+\]
+The anti-invariant family currency matrix is
+\[
+  \Kmat^- = L^-_\Gamma C_\Gamma^\dagger (L^-_\Gamma)^*.
+\]
+Equivalently, if
+\[
+  \mathcal J = (C_\Gamma^\dagger)^{1/2}(L^-_\Gamma)^*:Y^-\to E/\ker C_\Gamma,
+\]
+then
+\[
+  \Kmat^- = \mathcal J^*\mathcal J .
+\]
+
+\begin{definition}
+An explicit-formula domination record is a tuple
+\[
+  \EF=(Z,\mathcal Z,E,C_\Gamma,L^-_\Gamma,\mathcal J,\Delta_{\EF},\mathsf A)
+\]
+with defect
+\[
+  \Delta_{\EF}=\Kmat^- - \AZ.
+\]
+It is accepted when $\Delta_{\EF}\succeq0$ and the audit record $\mathsf A$ verifies that all prime, gamma, pole, support, visibility, and null-mode terms used to construct the bridge are declared.
+\end{definition}
+
+\section{The domination theorem}
+\begin{theorem}
+For finite-dimensional $Y^-$, the following are equivalent.
+\begin{enumerate}[label=(\roman*)]
+  \item Zero-side displacement is dominated by carrier-side currency:
+  \[
+    \AZ\preceq \Kmat^- .
+  \]
+  \item Every anti-invariant recombination is carrier-priced:
+  \[
+    \sum_{z\in Z} w_z |\langle y,\psi(z)\rangle|^2
+    \le
+    y^*\Kmat^-y
+    \qquad (y\in Y^-).
+  \]
+  \item There exists a contraction $R:E/\ker C_\Gamma\to \ell^2(Z,w)$ with
+  \[
+    \mathcal Z = R\mathcal J,
+    \qquad \|R\|\le1 .
+  \]
+  \item There exists a contraction $S$ on the range Hilbert spaces such that
+  \[
+    \AZ^{1/2}=S(\Kmat^-)^{1/2} .
+  \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of (i) and (ii) follows from quadratic forms.  The equivalence of (i), (iii), and (iv) is the Douglas factorization lemma applied to $\mathcal Z^*\mathcal Z$ and $\mathcal J^*\mathcal J$.  In finite dimension it can be verified directly by writing the polar factorization of $\mathcal Z(\Kmat^-)^{\dagger/2}$ on $\overline{\Ran \Kmat^-}$ and using $\ker \Kmat^-\subseteq\ker \AZ$, which follows from $\AZ\preceq\Kmat^-$.\end{proof}
+
+\begin{corollary}
+If
+\[
+  \AZ\preceq\Kmat^-\preceq\Theta^- ,
+\]
+then
+\[
+  \AZ\preceq\Theta^- .
+\]
+Consequently, for $\delta(z)=\|\psi(z)\|$ and any $\varepsilon>0$,
+\[
+  \sum_{z:\,\delta(z)\ge\varepsilon} w_z
+  \le
+  \frac{\tr\Theta^-}{\varepsilon^2} .
+\]
+If $\Theta^-=0$, all visible zero or root mass lies on the fixed locus of $J$.
+\end{corollary}
+
+\begin{proof}
+The Loewner inequality is transitive.  The mass bound follows from
+\[
+  \varepsilon^2\sum_{\delta(z)\ge\varepsilon} w_z
+  \le \sum_z w_z\|\psi(z)\|^2
+  =\tr\AZ\le\tr\Theta^- .
+\]
+\end{proof}
+
+\section{Defective explicit-formula bridges}
+An actual explicit formula may arrive with visible completed terms and possible unresolved defects.  The finite audit record should therefore allow a nonnegative error budget $E_{\EF}\succeq0$:
+\[
+  \AZ\preceq \Kmat^- + E_{\EF}.
+\]
+Then
+\[
+  \Kmat^-\preceq\Theta^-
+  \quad\Longrightarrow\quad
+  \AZ\preceq\Theta^-+E_{\EF}.
+\]
+Thus a missing gamma, pole, support, or endpoint term is not a harmless bookkeeping error; it becomes an explicit zero-confinement defect.
+
+\begin{definition}
+The explicit-formula bridge has status:
+\begin{itemize}
+  \item \texttt{accepted} if $E_{\EF}=0$ and all visibility, null, and protocol gates pass;
+  \item \texttt{accepted\_with\_defect} if $E_{\EF}\succeq0$ is declared and the weakened zero-confinement claim is the stated claim;
+  \item \texttt{support\_only} if only scalar, trace, or finite sampled checks are supplied;
+  \item \texttt{overread} if trace or invariant shadows are promoted to Loewner domination without a bridge;
+  \item \texttt{failed\_audit} if an undeclared prime, gamma, pole, endpoint, or support term is used.
+\end{itemize}
+\end{definition}
+
+\section{Trace-shadow no-overread}
+The invariant trace of a zero ledger is not enough to certify anti-invariant Loewner domination.
+
+\begin{proposition}
+There exist positive semidefinite matrices $\AZ$ and $\Kmat$ such that
+\[
+  \tr\AZ\le \tr\Kmat
+\]
+but
+\[
+  \AZ\npreceq \Kmat .
+\]
+\end{proposition}
+
+\begin{proof}
+Take
+\[
+  \AZ=\begin{pmatrix}2&0\\0&0\end{pmatrix},
+  \qquad
+  \Kmat=\begin{pmatrix}1&0\\0&1\end{pmatrix}.
+\]
+Then $\tr\AZ=\tr\Kmat=2$, but $e_1^*(\AZ-\Kmat)e_1=1>0$, so $\AZ\npreceq\Kmat$.
+\end{proof}
+
+\begin{proposition}
+Let $Y=Y^+\oplus Y^-$ and
+\[
+  \Kmat=\begin{pmatrix}1/2&0\\0&2\end{pmatrix},
+  \qquad
+  \Theta=I.
+\]
+Then the invariant sector passes while the full family budget fails.
+\end{proposition}
+
+\begin{proof}
+On $Y^+$, $1/2\le1$.  On $Y^-$, $2>1$, so $\Kmat\npreceq\Theta$.
+\end{proof}
+
+\section{RH-facing reading}
+For RH, the anti-linear duality is
+\[
+  J(s)=1-\overline{s},
+\]
+whose fixed locus is the critical line.  The explicit-formula domination bridge would have to show that zero-side anti-invariant displacement is a contracted readout of the completed carrier-side anti-invariant currency:
+\[
+  \mathcal Z^- = R\mathcal J^- ,\qquad \|R\|\le1.
+\]
+Equivalently,
+\[
+  \AZ\preceq \Kmat^- .
+\]
+Together with an accepted anti-invariant budget
+\[
+  \Kmat^-\preceq \Theta^- ,
+\]
+this yields quantitative zero confinement.  If the accepted budget is zero, then no visible zero mass can lie off the critical line.
+
+\begin{remark}
+This note does not prove RH, does not construct the completed RH carrier, and does not prove $\AZ\preceq\Kmat^-$.  It states the exact square-ledger theorem that such a proof must instantiate.  In particular, prime-side trace agreement, Euler-product staging agreement, or invariant self-duality alone do not imply anti-invariant domination.
+\end{remark}
+
+\section{Audit checklist for the explicit-formula square}
+An accepted explicit-formula domination square must declare:
+\begin{enumerate}[label=(\arabic*)]
+  \item zero-side object $Z$ and anti-invariant readout $\psi$;
+  \item completed carrier $C_\Gamma$ and anti-invariant probe family $L^-_\Gamma$;
+  \item null-mode legality: $\Ran(L^-_\Gamma)^*\subseteq\overline{\Ran C_\Gamma}$;
+  \item explicit-formula map or factorization $\mathcal Z=R\mathcal J$, or Loewner defect $E_{\EF}$;
+  \item visible gamma, pole, support, endpoint, and prime-power terms;
+  \item nonclaim record forbidding trace-shadow or invariant-only overread;
+  \item predictive/refinement record if the claim is made across a limiting support ladder.
+\end{enumerate}
+
+\end{document}

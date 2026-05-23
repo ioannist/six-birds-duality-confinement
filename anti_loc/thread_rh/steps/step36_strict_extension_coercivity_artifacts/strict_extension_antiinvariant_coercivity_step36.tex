@@ -1,0 +1,306 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Tr}{tr}
+
+\title{Step 36: Strict-Extension Sources of Anti-Invariant Coercivity}
+\author{Anti-Localization Working Notes}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 32--35 isolated the RH-facing zero-confinement mechanism into two records:
+\[
+  \mathsf A_Z\preceq \mathsf K^-,
+  \qquad
+  \mathsf K^-\preceq \Theta^-.
+\]
+Step 35 showed that the strongest case, collapse of the anti-invariant budget, does not follow from anti-linear symmetry alone.  The present note answers the next question: what kinds of lawful strict extension can force
+\[
+  C_\Gamma \succeq
+  \lambda (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma,
+  \qquad \lambda\to\infty,
+\]
+without smuggling the target conclusion?
+
+The answer is structural.  Anti-invariant coercivity can be forced by declared positive carrier features which dominate the anti-invariant probe family, by root-composite character forcing, by threshold/refinement accumulation whose total strength diverges, or by a lawful parity/fixed-layer restriction with an explicit nonclaim.  It cannot be forced by symmetry alone, by signed trace balance, by hardening only the invariant sector, by finitely many bounded threshold updates, or by hiding a probe restriction without a nonclaim record.
+
+\section{Basic setup}
+Let \(E\) be the coordinate space of an exact packaged carrier \(\mathcal F=\Ran\Gamma\).  Let
+\[
+  C_\Gamma=\Gamma^*C\Gamma\succeq0
+\]
+be the packaged audit form and let
+\[
+  L^-_\Gamma:E\to Y^-
+\]
+be the declared anti-invariant probe family.  We assume null-mode legality:
+\[
+  L^-_\Gamma v=0
+  \quad\text{for all }v\in\ker C_\Gamma.
+\]
+The anti-invariant currency matrix is
+\[
+  \mathsf K^-
+  =L^-_\Gamma C_\Gamma^\dagger (L^-_\Gamma)^*.
+\]
+
+\begin{definition}[anti-invariant coercivity source]
+Let \(\Theta^-_0\succ0\) be a reference budget on \(Y^-\).  A positive audit increment \(D\succeq0\) is a \emph{coercivity source of strength \(\lambda\)} for \(L^-_\Gamma\) if
+\[
+  D\succeq \lambda (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma.
+\]
+It is \emph{lawful} only if it is supplied by a declared strict-extension record: completion/gamma-pole term, root-composite character forcing, threshold/refinement update, package/canonicalization rewrite, or explicit claim narrowing with a nonclaim record.
+\end{definition}
+
+\section{Direct coercivity and budget collapse}
+
+\begin{theorem}[direct anti-invariant coercivity]
+Assume null-mode legality and
+\[
+  C_\Gamma\succeq \lambda (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma,
+  \qquad \lambda>0.
+\]
+Then
+\[
+  \mathsf K^-
+  =L^-_\Gamma C_\Gamma^\dagger (L^-_\Gamma)^*
+  \preceq \lambda^{-1}\Theta^-_0.
+\]
+\end{theorem}
+
+\begin{proof}
+For any \(y\in Y^-\), set \(g=(L^-_\Gamma)^*y\).  The variational form gives
+\[
+  y^*\mathsf K^-y
+  =\sup_{a\ne0}\frac{|\langle y,L^-_\Gamma a\rangle|^2}{\langle a,C_\Gamma a\rangle}.
+\]
+The coercivity hypothesis implies
+\[
+  \langle a,C_\Gamma a\rangle
+  \ge \lambda\langle L^-_\Gamma a,(\Theta^-_0)^{-1}L^-_\Gamma a\rangle.
+\]
+By Cauchy--Schwarz in the \((\Theta^-_0)^{-1}\)-metric,
+\[
+  |\langle y,L^-_\Gamma a\rangle|^2
+  \le
+  \langle y,\Theta^-_0 y\rangle
+  \langle L^-_\Gamma a,(\Theta^-_0)^{-1}L^-_\Gamma a\rangle.
+\]
+Therefore \(y^*\mathsf K^-y\le \lambda^{-1}y^*\Theta^-_0y\).  Since this holds for all \(y\), the Loewner bound follows.
+\end{proof}
+
+\begin{corollary}[strict-extension collapse ladder]
+Let
+\[
+  C_{N,\Gamma}=C_{0,\Gamma}+\sum_{n=1}^N D_{n,\Gamma}
+\]
+with
+\[
+  D_{n,\Gamma}\succeq \lambda_n (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma.
+\]
+If \(\Lambda_N=\lambda_0+\sum_{n=1}^N\lambda_n\), where
+\[
+  C_{0,\Gamma}\succeq \lambda_0 (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma,
+\]
+then
+\[
+  \mathsf K^-_N\preceq \Lambda_N^{-1}\Theta^-_0.
+\]
+If \(\Lambda_N\to\infty\), then \(\mathsf K^-_N\to0\) in Loewner order.
+\end{corollary}
+
+\begin{remark}
+This is the strict-extension form of ``tightened passivity confines roots.''  It is not enough to improve positivity vaguely.  The improvement must dominate the actual anti-invariant probe family.
+\end{remark}
+
+\section{Component factorization: how completed pieces can pay for anti-invariant probes}
+
+Let a completed explicit-formula/passivity package supply positive feature maps
+\[
+  F_i:E\to Z_i,
+  \qquad i\in I,
+\]
+so that
+\[
+  C_\Gamma\succeq F^*F,
+  \qquad F=(F_i)_{i\in I}:E\to\bigoplus_i Z_i.
+\]
+
+\begin{theorem}[component factorization source]
+Suppose the anti-invariant readout factors through the completed positive features:
+\[
+  L^-_\Gamma=B F
+\]
+for some bounded \(B:\bigoplus_i Z_i\to Y^-\).  Then
+\[
+  C_\Gamma\succeq \lambda (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma,
+  \qquad
+  \lambda=\|\Theta_0^{-1/2}B\|^{-2},
+\]
+with the convention \(\lambda=+\infty\) if \(B=0\).  Consequently
+\[
+  \mathsf K^-\preceq \|\Theta_0^{-1/2}B\|^2\Theta^-_0.
+\]
+\end{theorem}
+
+\begin{proof}
+The factorization gives
+\[
+  (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma
+  =F^*B^*(\Theta^-_0)^{-1}BF
+  \preceq
+  \|\Theta_0^{-1/2}B\|^2F^*F.
+\]
+Since \(C_\Gamma\succeq F^*F\), the result follows from the direct coercivity theorem.
+\end{proof}
+
+\begin{corollary}[defective factorization]
+If
+\[
+  L^-_\Gamma=BF+R,
+\]
+then for every \(t>0\),
+\[
+  (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma
+  \preceq
+  (1+t)F^*B^*(\Theta^-_0)^{-1}BF
+  +(1+t^{-1})R^*(\Theta^-_0)^{-1}R.
+\]
+Thus a missing completion term is not harmless.  It becomes an explicit coercivity defect.
+\end{corollary}
+
+\section{Root-composite character forcing}
+Let a finite group \(G\) act equivariantly on the carrier and response family.  Suppose the anti-invariant family decomposes into character blocks
+\[
+  Y^- = \bigoplus_{\chi\in\widehat G^-}Y_\chi,
+  \qquad
+  L^-_\Gamma=\bigoplus_\chi L_{\chi,\Gamma}.
+\]
+
+\begin{theorem}[character-block coercivity]
+If for each anti-invariant/nontrivial character block
+\[
+  C_\Gamma|_\chi\succeq \lambda_\chi L_{\chi,\Gamma}^*\Theta_\chi^{-1}L_{\chi,\Gamma},
+\]
+then
+\[
+  \mathsf K^-_\chi\preceq \lambda_\chi^{-1}\Theta_\chi,
+  \qquad
+  \mathsf K^-\preceq \bigoplus_\chi \lambda_\chi^{-1}\Theta_\chi.
+\]
+In particular, if \(\min_\chi\lambda_\chi\to\infty\) along a strict extension ladder, all anti-invariant character budgets collapse.
+\end{theorem}
+
+\begin{remark}
+Trace/invariant control is not this theorem.  The root-composite profile requires all nontrivial/anti-invariant character blocks to be priced.  A determinant or trace shadow can pass while a nontrivial character needle remains.
+\end{remark}
+
+\section{Parity closure, gating, and nonclaim}
+
+\begin{proposition}[fixed-layer readout collapse]
+If the formed closure declares a parity/fixed readout for which
+\[
+  L^-_\Gamma=0
+\]
+ on the legal quotient, then \(\mathsf K^-=0\).  This is a lawful zero budget only when the anti-invariant probes are outside the native family by declared parity closure or nonclaim.  It is not a proof that the raw substrate has no anti-invariant vectors.
+\end{proposition}
+
+\begin{proof}
+If \(L^-_\Gamma=0\), then \(\mathsf K^-=0\).  The remaining statement is the audit status: omitting anti-invariant probes must be visible in the claim boundary.
+\end{proof}
+
+\section{No-go theorems}
+
+\begin{proposition}[symmetry alone does not collapse budget]
+There exists a self-dual/anti-linear-symmetric carrier with nonzero anti-invariant budget.
+\end{proposition}
+
+\begin{proof}
+On \(Y=Y^+\oplus Y^-\), take \(C=I\) and \(L^-\) the identity on \(Y^-\).  The carrier commutes with the involution, but \(\mathsf K^-=I_{Y^-}\ne0\).
+\end{proof}
+
+\begin{proposition}[wrong-sector hardening]
+Strengthening only the invariant sector does not reduce an anti-invariant budget.  If
+\[
+  C_\lambda=(1+\lambda)P_+ + P_-,
+  \qquad L^-=P_- ,
+\]
+then \(\mathsf K^-=I_{Y^-}\) for all \(\lambda\).
+\end{proposition}
+
+\begin{proposition}[partial hardening leaves uncovered needles]
+Let
+\[
+  C_\lambda=\operatorname{diag}(1+\lambda,1),
+  \qquad L^-=I_{\mathbb R^2}.
+\]
+Then
+\[
+  \mathsf K^-_\lambda=\operatorname{diag}((1+\lambda)^{-1},1).
+\]
+The first anti-invariant coordinate collapses, but the second remains unpriced.
+\end{proposition}
+
+\begin{proposition}[bounded threshold accumulation]
+If strict threshold increments have total coercivity
+\[
+  \sum_n\lambda_n<\infty,
+\]
+then the direct estimate gives only
+\[
+  \mathsf K^-_\infty\preceq \left(\lambda_0+\sum_n\lambda_n\right)^{-1}\Theta^-_0,
+\]
+not collapse to zero.
+\end{proposition}
+
+\section{RH-facing reading}
+The RH-facing anti-linear involution is
+\[
+  J(s)=1-\overline{s},
+  \qquad \Fix(J)=\{\Re(s)=1/2\}.
+\]
+Steps 32--34 reduced zero confinement to two records:
+\[
+  \mathsf A_Z\preceq \mathsf K^-_{\mathrm{cmp}},
+  \qquad
+  \mathsf K^-_{\mathrm{cmp}}\preceq \Theta^-.
+\]
+The present note says that the second record can be earned by one of the following lawful mechanisms:
+\begin{enumerate}[label=(\roman*)]
+\item exact fixed-layer readout: \(L^-_\Gamma=0\) with explicit nonclaim for anti-invariant probes;
+\item completed positive feature factorization: \(L^-_\Gamma=BF_{\mathrm{cmp}}\) with small \(\|\Theta_0^{-1/2}B\|\);
+\item root-composite character forcing: all anti-invariant character blocks have growing coercivity;
+\item threshold/refinement accumulation: strict positive increments hit every anti-invariant direction with divergent cumulative strength.
+\end{enumerate}
+It cannot be earned from anti-linear symmetry alone, invariant trace control, signed explicit-formula equality, finitely many bounded updates, or hidden gating.
+
+\section{Summary theorem}
+\begin{theorem}[strict-extension source of anti-invariant coercivity]
+Let a formed closure carry a legal anti-invariant probe family \(L^-_\Gamma\) and reference budget \(\Theta^-_0\succ0\).  Suppose a strict-extension ladder supplies completed positive audit increments whose cumulative carrier satisfies
+\[
+  C_{N,\Gamma}\succeq \Lambda_N (L^-_\Gamma)^*(\Theta^-_0)^{-1}L^-_\Gamma.
+\]
+Then
+\[
+  \mathsf K^-_N\preceq \Lambda_N^{-1}\Theta^-_0.
+\]
+If \(\Lambda_N\to\infty\), the anti-invariant budget collapses.  Conversely, without a record implying such domination on every native anti-invariant direction, symmetry and passivity alone do not imply collapse.
+\end{theorem}
+
+\end{document}

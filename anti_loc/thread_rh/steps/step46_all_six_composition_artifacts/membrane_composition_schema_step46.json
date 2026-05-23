@@ -1,0 +1,27 @@
+{
+  "schema": "AllSixMembraneCompositionRecord",
+  "version": "step46",
+  "objects": {
+    "source_record": ["E_a", "C_a", "L_a", "Y_a", "Theta_a", "P1..P6"],
+    "target_record": ["E_b", "C_b", "L_b", "Y_b", "Theta_b", "P1..P6"],
+    "bridge": {
+      "feasible_pullback": "P_ab:E_b->E_a",
+      "response_pushforward": "A_ab:Y_a->Y_b",
+      "energy_domination": "C_b >= P_ab^* C_a P_ab",
+      "readout_law": "L_b = A_ab L_a P_ab + R_ab",
+      "residual_currency": "E_ab = R_ab C_b^dagger R_ab^*"
+    }
+  },
+  "acceptance": {
+    "exact": "K_b <= A_ab K_a A_ab^*",
+    "defective": "K_b <= (1+t) A_ab K_a A_ab^* + (1+t^-1) E_ab",
+    "all_six_channels": ["P1_rewrite", "P2_feasibility", "P3_route", "P4_staging", "P5_packaging", "P6_audit"]
+  },
+  "statuses": ["accepted", "defective_with_budget", "support_only", "local_only", "overread", "failed_channel", "failed_budget"],
+  "nonclaims": [
+    "public shadow transfer does not imply intrinsic transfer",
+    "route-local transfer does not imply protocol-union transfer",
+    "current-stage transfer does not imply predictive transfer",
+    "same visible readout does not imply same lawful carrier"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "step": 100,
+  "title": "Semilocal Plancherel/Exhaustivity Instantiation",
+  "carrier": {
+    "type": "semilocal Connes-Consani-Moscovici response space",
+    "space": "Y_S^- = L^2(R, dm_S)^-",
+    "measure": "dm_S(xi)=|prod_{v in S} L_v(1/2-i xi)|^2 dxi",
+    "involution": "J_S y(xi)=conj(y(-xi))"
+  },
+  "window_maps": {
+    "spectral_cutoff": "P_T = 1_{[-T,T]}",
+    "finite_rank_cutoff": "P_N^S from cyclic-pair/prolate/orthogonal-polynomial windows",
+    "analysis_map": "Pi_{S,T,N}: Y_S^- -> Y_{S,T,N}^-"
+  },
+  "tail_gate": "(Theta_0^-)^{-1} <= Pi^* B Pi + T_{S,T,N}",
+  "lower_frame_gate": "F_win >= Lambda B_win",
+  "completed_promotion": "F + Lambda T >= Lambda (Theta_0^-)^{-1}",
+  "delta_absorption": "Delta_S^+ <= F + E_abs",
+  "compact_shortcut": "If Delta_S^+ compact, absorption reduces to finite-window domination plus compact tail",
+  "nonclaims": [
+    "does not prove RH",
+    "does not prove Delta compactness",
+    "does not discharge Xi adequacy",
+    "does not promote finite windows without tail"
+  ]
+}

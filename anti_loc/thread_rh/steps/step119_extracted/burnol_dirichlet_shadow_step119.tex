@@ -1,0 +1,194 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Step 119: Explicit Burnol--to--Dirichlet Shadow Map $A_N$}
+\author{RATCHET / Six Birds RH Membrane Working Note}
+\date{May 2026}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 118 split the residual-source route into three obligations:
+\[
+  \epsilon_{B,N}\to 0,\qquad \delta_{BD,N}\to 0,\qquad
+  \gamma_N c_{\rm hyb,N}\to\infty.
+\]
+Step 119 derives the actual Burnol--to--Dirichlet shadow map
+\[
+  A_N : \mathbb C^{J_N}_{\rm Burnol}\longrightarrow \mathbb C^{K_N}_{\rm Dirichlet}
+\]
+from the co-Poisson/Mellin formula and isolates the defect
+\[
+  \delta_{BD,N}=\|(B_N-D_NA_N)G_B^{-1/2}\|.
+\]
+This is a source-readability gate: Burnol atoms may be geometrically adequate, but Hecke/Dirichlet characters only charge their Dirichlet-readable shadows.
+
+\section{Burnol/co-Poisson input}
+Let $g_j\in C_c^\infty([a,A])$ be a declared Burnol generator with the right-Mellin transform
+\[
+  \widehat g_j(s)=\int_0^\infty g_j(t)t^{-s}\,dt.
+\]
+The required endpoint vanishings are
+\[
+  \widehat g_j(0)=0,\qquad \widehat g_j(1)=0.
+\]
+The co-Poisson synthesis is
+\[
+  \mathcal Cg_j(t)=\sum_{n\ge1}\frac{g_j(t/n)}{n}-\widehat g_j(1).
+\]
+On the critical strip, with the vanishings imposed, the right-Mellin transform satisfies
+\[
+  M(\mathcal Cg_j)(s)=\zeta(s)\widehat g_j(s).
+\]
+Thus the Burnol-native atom is zero-annihilating through the explicit $\zeta$ factor, but it is not yet Dirichlet-source-readable as a finite coefficient vector.
+
+\section{Finite Mellin projection}
+Choose an upstream-declared Dirichlet exponential support
+\[
+  \mathcal M_N=\{1,2,\dots,M_N\}.
+\]
+Let
+\[
+  D_M b(s)=\sum_{m\le M_N}b(m)m^{-s}.
+\]
+On a declared response window/core $\Gamma_N\subset\{s=1/2+i\tau\}$ with Hilbert weight $d\nu_N$, define the Mellin projection coefficients
+\[
+  b_{j,N}:=(D_M^*D_M)^{\dagger}D_M^*\widehat g_j.
+\]
+Equivalently,
+\[
+  \widehat g_{j,N}^{\rm sh}(s)=\sum_{m\le M_N}b_{j,N}(m)m^{-s}.
+\]
+The Mellin-shadow defect is
+\[
+  \delta_{M,N}:=
+  \left\| (\widehat g_j-\widehat g^{\rm sh}_{j,N})_jG_g^{-1/2}\right\|.
+\]
+
+\section{The explicit shadow map $A_N$}
+Choose a truncated zeta coefficient window
+\[
+  \zeta_{Z_N}(s)=\sum_{n\le Z_N}n^{-s}.
+\]
+Multiplying the projected generator by $\zeta_{Z_N}$ gives
+\[
+  \zeta_{Z_N}(s)\widehat g^{\rm sh}_{j,N}(s)
+  =\sum_{n\le Z_N}\sum_{m\le M_N}b_{j,N}(m)(nm)^{-s}.
+\]
+Therefore the Dirichlet-readable shadow support is
+\[
+  \mathcal K_N=\{k=nm:n\le Z_N,\ m\le M_N\},
+\]
+and the shadow map $A_N$ is the divisor-convolution matrix
+\[
+  \boxed{
+  (A_Ne_j)(k)=
+  \sum_{\substack{m\mid k\\m\le M_N\\ k/m\le Z_N}} b_{j,N}(m).
+  }
+\]
+Then
+\[
+  D_KA_Ne_j(s)=\zeta_{Z_N}(s)\widehat g^{\rm sh}_{j,N}(s).
+\]
+This is the explicit Burnol--to--Dirichlet shadow map.
+
+
+\section{Optimal projection form}
+The divisor-convolution formula is the structured shadow when the finite zeta factor and the Mellin projection have already been chosen. There is also a coordinate-free finite projection form. Let
+\[
+  B_Ne_j(s)=\zeta(s)\widehat g_j(s)
+\]
+be the Burnol/co-Poisson response image on the finite response core with weight $W_N$, and let
+\[
+  D_Na(s)=\sum_{n\in\mathcal N_N}a_n n^{-s}
+\]
+be the source-readable Dirichlet synthesis. The optimal finite Burnol-to-Dirichlet shadow is
+\[
+  \boxed{A_N=(D_N^*W_ND_N)^{\dagger}D_N^*W_NB_N.}
+\]
+Equivalently, $D_NA_N$ is the $W_N$-orthogonal projection of the Burnol response image onto the finite Dirichlet-readable range.
+The associated adequacy residual is
+\[
+  \boxed{\Xi_{BD,N}=B_N^*W_N(I-P_{D_N})B_N,}
+\]
+where $P_{D_N}$ is the $W_N$-orthogonal projection onto $\operatorname{Ran}D_N$.
+The normalized shadow defect is
+\[
+  \boxed{\delta_{BD,N}=\|(I-P_{D_N})B_NG_{B,N}^{-1/2}\|,\qquad
+  G_{B,N}=B_N^*W_NB_N.}
+\]
+Thus
+\[
+  c_{BD,N}=1-\delta_{BD,N}^2.
+\]
+
+\section{Shadow defect and decomposition}
+Let
+\[
+  B_Ne_j(s):=\zeta(s)\widehat g_j(s)
+\]
+be the declared Burnol/co-Poisson target on the chosen finite response core. Let $D_K$ be Dirichlet synthesis on $\mathcal K_N$. Define
+\[
+  \boxed{
+  \delta_{BD,N}:=\|(B_N-D_KA_N)G_B^{-1/2}\|.
+  }
+\]
+Formally,
+\[
+  B_N-D_KA_N
+  =\zeta(s)(\widehat g_j-\widehat g^{\rm sh}_{j,N})
+  +(\zeta(s)-\zeta_{Z_N}(s))\widehat g^{\rm sh}_{j,N}
+  +E_{\rm win,N}.
+\]
+Thus
+\[
+  \boxed{
+  \delta_{BD,N}\lesssim
+  \delta_{M,N}+\delta_{\zeta,N}+\delta_{\rm win,N}.
+  }
+\]
+The defect has three meanings:
+\begin{enumerate}[nosep]
+\item Mellin projection miss: the Burnol generator is not represented by finite Dirichlet exponentials.
+\item Zeta truncation miss: the finite $\zeta_{Z_N}$ window does not exhaust the completed $\zeta$ factor.
+\item Response-window miss: the finite vertical/core window does not exhaust the completed response space.
+\end{enumerate}
+
+\section{Source-readability theorem}
+Let $G_{\mathcal X,N}$ be the Hecke/Dirichlet character source Gram on coefficient space and $H_N=D_K^*D_K$ the coefficient Hilbert metric. If
+\[
+  G_{\mathcal X,N}\succeq \gamma_NH_N
+\]
+and
+\[
+  A_N^*H_NA_N\succeq c_{BD,N}G_B,
+\]
+then
+\[
+  A_N^*G_{\mathcal X,N}A_N\succeq \gamma_Nc_{BD,N}G_B.
+\]
+When $D_KA_N$ is the projection/shadow of $B_N$,
+\[
+  c_{BD,N}=1-\delta_{BD,N}^2.
+\]
+Thus the residual source ladder needs
+\[
+  \boxed{\gamma_Nc_{BD,N}\to\infty}
+\]
+with fixed/exhaustive tail promotion.
+
+\section{Strategic conclusion}
+The Burnol-to-Dirichlet bridge is not automatic. The co-Poisson formula gives the factor $\zeta(s)\widehat g(s)$, but characters only see finite Dirichlet coefficients after a projection and divisor-convolution shadow. The new obstruction is
+\[
+  \boxed{\delta_{BD,N}.}
+\]
+If $\delta_{BD,N}\to0$, Burnol geometric visibility becomes source-readable. If it does not, then the unreadable part is an adequacy residual that must be carried as a defect or attacked by a different source family acting directly on the Burnol carrier.
+
+\section{Nonclaim}
+The finite sanity check in this step is only an algebraic stress test. It is not evidence for RH. Negative or near-zero $c_{BD,N}$ in the toy model means the declared finite shadow dictionary fails that toy visibility gate; it does not prove failure of the actual Burnol carrier.
+
+\end{document}

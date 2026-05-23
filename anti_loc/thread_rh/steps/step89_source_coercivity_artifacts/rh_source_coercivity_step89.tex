@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\ThetaB}{\Theta^-}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\pre}{\preceq}
+\newcommand{\suc}{\succeq}
+
+\title{Step 89: Source-Coercivity Route Audit for the RH Membrane Program}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 85--88 isolated the low-frequency zero of a paired Weil carrier.  A paired shift/CND feature is positive but satisfies
+\[
+  \Psi(0)=0.
+\]
+Anti-invariance does not remove this zero, and zero-side cancellation requires a uniform primitive certificate.  This note audits the other serious path: \emph{source coercivity}.  The question is whether an upstream-visible strict-extension ladder can make anti-invariant response increasingly expensive without selecting sources post hoc from the desired RH conclusion.
+
+The result is deliberately restrictive.  A source ladder that charges only the low-frequency sector repairs a local weakness but does not by itself prove exact RH-style confinement.  Exact confinement through the framework requires full anti-invariant budget collapse, or a fixed/exhaustive ledger argument reducing the claim to the charged sector with vanishing tail.
+
+\section{Source records}
+Let $E$ be the legal carrier quotient, $C_0\suc0$ an audit form, and
+\[
+  L^-:E\to Y^-
+\]
+the anti-invariant response/readout family.  A source record is a tuple
+\[
+  s=(Q_s,\Theta_s,\lambda_s,D_s)
+\]
+where $Q_s:Y^-\to Z_s$ is an upstream-visible response readout, $\Theta_s\succ0$ is its local budget, $\lambda_s\ge0$ is its strength, and
+\[
+  D_s\suc \lambda_s (Q_sL^-)^*\Theta_s^{-1}(Q_sL^-).
+\]
+The cumulative response-side source frame is
+\[
+  F_{\mathcal S}:=\sum_{s\in\mathcal S}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+
+\begin{definition}[Source lower frame]
+Relative to a reference budget $\Theta_0^-\succ0$, the source family has lower-frame strength $\Lambda$ on a response subspace $Y_0\subseteq Y^-$ if
+\[
+  P_{Y_0}F_{\mathcal S}P_{Y_0}\suc \Lambda P_{Y_0}(\Theta_0^-)^{-1}P_{Y_0}.
+\]
+It has full anti-invariant lower frame if $Y_0=Y^-$.
+\end{definition}
+
+\section{Full-sector source coercivity}
+\begin{theorem}[Full-sector source collapse]
+Assume accepted source records satisfy
+\[
+  F_{\mathcal S,n}\suc \Lambda_n(\Theta_0^-)^{-1}
+\]
+on all of $Y^-$.  Let
+\[
+  C_n^+=C_0+\sum_{s\in\mathcal S_n}D_s.
+\]
+Then, under null-mode legality,
+\[
+  \K_n^-:=L^-(C_n^+)^\dagger(L^-)^*\pre \Lambda_n^{-1}\Theta_0^-.
+\]
+In particular, if $\Lambda_n\to\infty$, then $\K_n^-\to0$ in Loewner order.
+\end{theorem}
+
+\begin{proof}
+By the source record inequality,
+\[
+  C_n^+\suc \sum_sD_s\suc (L^-)^*F_{\mathcal S,n}L^-\suc
+  \Lambda_n (L^-)^*(\Theta_0^-)^{-1}L^-.
+\]
+The standard currency domination theorem gives
+\[
+  L^-(C_n^+)^\dagger(L^-)^*\pre \Lambda_n^{-1}\Theta_0^-.
+\]
+\end{proof}
+
+\section{Partial source repair is not exact confinement}
+\begin{proposition}[Low-sector-only source]
+Let
+\[
+  Y^-=Y_{\rm low}\oplus Y_{\rm hi}.
+\]
+Suppose sources give
+\[
+  F_{\mathcal S,n}\suc \Lambda_nP_{\rm low}(\Theta_0^-)^{-1}P_{\rm low}
+\]
+only on $Y_{\rm low}$, and suppose the paired carrier has a fixed high-sector coercivity
+\[
+  C_0\suc \gamma (L^-P_{\rm hi})^*(\Theta_0^-)^{-1}(L^-P_{\rm hi}).
+\]
+Then
+\[
+  \K_n^-\pre \Lambda_n^{-1}P_{\rm low}\Theta_0^-P_{\rm low}+\gamma^{-1}P_{\rm hi}\Theta_0^-P_{\rm hi}
+\]
+modulo cross-term constants after block diagonalization.  Thus $\Lambda_n\to\infty$ collapses only the charged low sector.  Unless $\gamma\to\infty$ or the high-sector ledger has a vanishing tail/nonclaim record, full anti-invariant budget collapse does not follow.
+\end{proposition}
+
+\begin{warning}[Local repair versus RH]
+Resolving the paired-carrier low-frequency zero is necessary for the candidate Douglas bridge, but exact RH-style confinement through the membrane theorem requires the anti-invariant zero ledger to be squeezed as a whole.  A low-frequency-only source is support evidence unless the zero ledger is reduced to that sector by an exhaustive tail record.
+\end{warning}
+
+\section{No-post-hoc source selection}
+\begin{definition}[Upstream-visible source]
+A source record is upstream-visible if its readout $Q_s$, strength schedule $\lambda_s$, and local budget $\Theta_s$ are declared from the completed zeta closure data before the anti-invariant budget test is evaluated.  Sources chosen because they minimize the observed residual
+\[
+  \mathsf A_Z-\mathsf K_n^-
+\]
+are post-hoc and have status \texttt{smuggled} or \texttt{support-only}.
+\end{definition}
+
+\begin{proposition}[Finite-rank source no-go]
+If $Y^-$ is infinite-dimensional and the cumulative source frame $F_{\mathcal S,n}$ has finite rank for every $n$ with non-exhaustive ranges, then no finite stage gives a full lower frame
+\[
+  F_{\mathcal S,n}\suc \Lambda I_{Y^-},\qquad \Lambda>0.
+\]
+An infinite ladder may still succeed only if its ranges are exhaustive and the lower-frame constants on the completed ledger diverge with a vanishing tail record.
+\end{proposition}
+
+\section{Zeta-specific candidate sources}
+\begin{enumerate}[label=\textbf{S\arabic*.}]
+\item \textbf{Prime/Euler source ladder.}  Prime-power shifts are upstream-visible and naturally paired-positive.  They can increase coverage in log-frequency, but they do not automatically give a full lower frame at $\xi=0$ because shift symbols vanish there.
+\item \textbf{Dirichlet/Hecke character sources.}  Twists and character families are promising for root-composite coverage.  They may generate nontrivial character blocks, but the full lower-frame theorem requires coverage of every anti-invariant block, not only trace or invariant sectors.
+\item \textbf{Scale/conductor source.}  Variation through conductors or archimedean parameters may charge low-frequency directions, but the source must be declared upstream and must not be tuned to observed off-line zero displacement.
+\item \textbf{Selberg/automorphic source.}  Trace-formula or automorphic representation carriers could supply large source frames, but this requires choosing a concrete carrier and proving the bridge records.
+\end{enumerate}
+
+\section{RH source-coercivity obligation}
+The source route to RH now has the following exact obligation:
+\[
+  \boxed{F_{\mathcal S,n}\suc \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty}
+\]
+on the full anti-invariant response ledger, or on an exhaustive sequence of finite response ledgers with vanishing tail.  Together with explicit-formula domination
+\[
+  \mathsf A_Z\pre \mathsf K_n^-+E_{{\rm EF},n}
+\]
+and vanishing defects, this gives exact confinement by fixed/exhaustive squeeze.
+
+\section{Nonclaims}
+This note does not construct the zeta source ladder.  It proves the source-coercivity gate and classifies the candidate source families.  It does not prove RH, Weil positivity, or a Douglas bridge.
+
+\end{document}

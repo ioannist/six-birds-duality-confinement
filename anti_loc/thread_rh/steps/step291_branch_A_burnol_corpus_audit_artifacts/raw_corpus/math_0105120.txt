@@ -1,0 +1,521 @@
+                                                                                                                              math.NT/0105120
+arXiv:math/0105120v1 [math.NT] 15 May 2001
+
+
+
+
+                                             Sur certains espaces de Hilbert de fonctions entières,
+                                             liés à la transformation de Fourier et aux fonctions L
+                                             de Dirichlet et de Riemann
+
+
+                                                                                  Jean–François BURNOL
+                                                                                           Mai 2001
+
+
+
+
+                                             Nous construisons dans un Espace de Sonine de fonctions entières un sous-espace at-
+                                             taché à la fonction dzêta de Riemann et nous montrons que le quotient contient des
+                                             vecteurs intrinsèquement liés aux zéros non-triviaux et à leurs multiplicités éventuelles.
+
+
+
+
+                                                    Université de Nice Sophia-Antipolis
+                                                    Laboratoire J. A. Dieudonné, Mathématiques
+                                                    Parc Valrose
+                                                    F–06108 Nice cedex 02
+                                                    France
+                                                    burnol@math.unice.fr
+
+
+
+
+                                             Cette Note a été présentée aux C. R. Acad. Sci., Paris, par le Professeur Jean-Pierre KAHANE.
+
+                                                                                               1
+                                      English summary
+
+   Let K = L2 ((0, ∞), dt). The Mellin transform of a function f ∈ K is defined, on the critical
+
+line Re(s) = 1/2 and with the meaning of a Plancherel isometry, through the formula fb(s) =
+R∞          s−1
+                                                                           R∞
+  0 f (t) t     dt. Let F+ be the cosine transform (formally F+ (f )(t) = 2 0 cos(2πtu)f (u)du.) Let
+
+a and b be two strictly positive real numbers and let Ka,b be the closed subspace of K consisting
+
+of functions f with support in (a, ∞) and such that F+ (f ) has its support in (b, ∞). It is known
+
+classically that L2 ((0, a]) + F+ (L2 ((0, b])) is a closed proper subspace of K (see [15], sect. 2.9, p.
+
+126-127 ) hence that none of the Ka,b ’s is reduced to {0}. The functions π −(1−s)/2 Γ((1 − s)/2)fb(s)
+
+on the critical line (for f ∈ Ka,b ) build (up to a trivial change of variable) a special case of a Sonine
+
+Hilbert space as considered by De Branges in [13], and in particular it consists of entire functions.
+
+We prove elementarily:
+
+   Théorème 1.      The Mellin transforms of the functions in Ka,b are entire functions. They have
+
+at s = 1 + 2j, j ∈ N, trivial zeros and these are their only common zeros (and are simple as such.)
+                                                          R
+   We write (φ, ψ] for the euclidean scalar product           φ(u)ψ(u)du. Let I be the operator I(f )(t) =
+
+1/t f (1/t) and let G = IF+ I. The operator G is unitary and satisfies G 2 = 1. Let Λ > 0 and let
+                                   T
+HΛ = I(K1/Λ,1/Λ ) = L2 ((0, Λ), dt) G(L2 ((0, Λ), dt)). The Mellin transforms of elements from HΛ
+
+are entire functions with trivial zeros at −2j, j ∈ N. The function fb(s) satisfies the same functional
+
+equation as the Riemann zeta function if and only if G(f ) = f , and up to a sign if and only if
+
+G(f ) = −f . We prove:
+                              T                  S
+   Theorem 2.       One has       HΛ = {0} and       HΛ = K. For each Λ > 0, each complex number w,
+                                                   Λ
+and each integer k ∈ N there is a unique vector Zw,k   in HΛ such that the euclidean scalar product
+                                              
+     Λ
+(f, Zw,k ] equals (dk /dk w) π −w/2 Γ(w/2)fb(w) for each f ∈ HΛ . The vectors Zw,k
+                                                                                 Λ
+                                                                                   , w ∈ C, k ∈ N
+
+are linearly independent, in particular they are all non-vanishing.
+
+   Let Λ > 1 and let VΛ be the vector space of smooth functions with support in [1/Λ, Λ]. Let D
+                                                         P             R∞
+be the operator u(d2 /d2 u)u. Let, for φ ∈ VΛ , E(φ)(u) = n≥1 φ(nu) − ( 0 φ(t)dt)/u.
+
+   Theorem 3.       Let WΛ be the closure in K of the functions E(φ) for φ ∈ D(VΛ ). One has
+
+                                                      2
+                    Λ
+WΛ ⊂ HΛ . A vector Zw,k is perpendicular to WΛ if and only if w is a non-trivial zero ρ of the zeta
+
+function of Riemann and 0 ≤ k < mρ (mρ = multiplicity of ρ.)
+
+   The outlines of the proofs will be found in the french part of this Note. One thus defines HPΛ
+
+as the perpendicular complement to WΛ in HΛ so that
+
+                                                              
+                        K = L2 ((Λ, ∞), dt) + GL2 ((Λ, ∞), dt) ⊥ WΛ ⊥ HPΛ
+
+
+The construction should be compared to the approach of Connes in [11], [12].
+
+Conclusion.        In the continuation of [4], [5], we have shown that the scattering theory for the
+
+Fourier transform (which belongs to Analysis) has arithmetical aspects, through exhibiting some
+
+natural Hilbert spaces containing vectors intrinsically associated to the non-trivial zeros of the
+
+Riemann zeta function (and to their multiplicities; this is a continuation to [10].) It would be
+
+interesting to better understand the operator framework behind this construction ([6],[7],[8].) The
+
+study of Λ → 0, Λ = 1, Λ → ∞ is a problem of the renormalization group ([16]), which appears to
+
+be linked to the problem of the nature of the zeta function ([3].)
+
+
+
+
+   Dans la section intitulée “Espaces de Sonine” de son livre ([13]) De Branges associe des espaces
+
+de Hilbert de fonctions entières à la transformation de Hankel d’ordre ν, ν > −1. Lorsque ν = −1/2
+
+la transformation de Hankel est essentiellement la transformation en cosinus F+ agissant sur K =
+                                                   R∞
+L2 (]0, ∞[, dt) selon (formellement) F+ (f )(t) = 2 0 cos(2πtu)f (u)du. Nous construisons dans la
+
+présente Note des quotients de ces Espaces de Sonine (associés à F+ ) qui contiennent des vecteurs
+
+intrinsèquement liés aux zéros non-triviaux de la fonction dzêta de Riemann (et à leurs multiplicités
+
+éventuelles.) Une description plus satisfaisante de cette construction est de nature opératorielle, et
+
+nous reviendrons sur ce point dans un travail ultérieur.
+
+
+1. Les espaces Ka,b
+
+    Soit K l’espace de Hilbert L2 (]0, ∞[, dt) des fonctions à valeurs complexes de carrés intégrables sur
+                                                                    R
+]0, ∞[. Nous noterons (φ, ψ] pour le produit scalaire euclidien φ(u)ψ(u)du. Soit F+ la transforma-
+                                                                R∞                                    2
+tion en cosinus agissant formellement selon F+ (f )(t) = 2 0 cos(2πtu)f (u)du. Elle vérifie F+         = 1,
+
+                                                     3
+(F+ (φ), F+ (ψ)] = (φ, ψ]. Soit I agissant selon I(f )(t) = 1/t f (1/t). Le composé Γ+ = F+ I est
+                                                                                     R
+invariant et est donc diagonalisé par l’isométrie de Mellin-Plancherel f 7→ fb(s) = f (t)ts−1 dt entre
+
+K et l’espace des fonctions de carrés intégrables sur Re(s) = 1/2 pour la mesure |ds|/2π. Le multipli-
+
+cateur spectral associé est la fonction γ+ (s) = 2(2π)−s cos(πs/2)Γ(s). On a donc γ+ (s)γ+ (1 − s) = 1
+
+et, presque partout sur la droite critique:
+
+
+                                     ∀f ∈ K         fb(s) = γ+ (s) Fd
+                                                                    + (f )(1 − s)                       (1.1)
+
+
+   Soient a et b deux nombres réels strictement positifs et considérons le sous-espace fermé Ka,b
+
+de K des fonctions f supportées par [a, ∞[ et telles que F+ (f ) soit supportée par [b, ∞[. Il est
+
+connu classiquement que L2 (]0, a]) + F+ (L2 (]0, b])) est un sous espace fermé propre de K (voir [15],
+
+sect. 2.9, p. 126-127 ) et donc que les espaces Ka,b sont tous non-réduits à {0}. Si f est presque
+                              R
+partout nulle sur ]0, a] alors f (t)ts−1 dt est analytique dans le demi-plan Re(s) < 1/2, et par (1.1)
+
+si f ∈ Ka,b alors fb(s) existe en tant que fonction analytique dans Re(s) > 1/2. En fait:
+
+   Théorème 1.1. (voir [13])         Toute fonction d’un espace Ka,b a une transformée de Mellin qui
+
+est une fonction entière de s ∈ C.
+
+   Il suffirait de constater en effet que les fonctions π −(1−s)/2 Γ((1 − s)/2)fb(s) forment (à un change-
+
+ment de variables près) un des Espaces de Sonine de fonctions entières considérés par De Branges
+
+dans [13]. Mais pour établir en particulier le Théorème (1.5) plus loin, nous ferons plutôt reposer la
+
+démonstration sur l’identité élémentaire suivante, valable pour tout f ∈ Ka,b :
+
+       Z ∞                     Z ∞          R∞
+                                     (1 − s) a sin(2π ut)ts−2 dt − as−1 sin(2π au)
+             f (t) ts−1 dt =                                                       F+ (f )(u) du        (1.2)
+        0                      b                         πu
+
+   Cette identité est tout d’abord établie pour Re(s) < 0 et donne le prolongement analytique de
+
+fb(s) au moins au demi-plan Re(s) < 1. Puis (par exemple) (1.1) donne le prolongement analytique
+
+au plan complexe. L’équation (1.2) résulte du calcul (immédiat) par intégration par parties:
+
+                         Z ∞                                    R∞
+                                              w−1        (1 − w) a sin(2π ut)tw−2 dt − aw−1 sin(2πau)
+      Re(w) < 0 ⇒ 2             cos(2π ut)t         dt =
+                          a                                                  πu
+                     R∞                                   R∞
+   Avec Ca (u, w) = 2 a cos(2π ut)tw−1 dt et Sa (u, w) = 2 a sin(2π ut)tw−1 dt on a la relation
+
+ci-dessus entre Ca (u, w) et Sa (u, w − 1) et aussi une relation entre Sa (u, w) et Ca (u, w − 1) qui
+
+établissent que ces fonctions sont des fonctions entières de w (pour chaque u > 0 fixé) et aussi
+
+                                                           4
+qu’elles sont O(1/u) sur [1, ∞[ uniformément par rapport à w ∈ C lorsque |w| est borné. L’usage
+
+que nous ferons de ce dernier point est dans la continuation de [10] (motivé par [2], Lemme 6.) Il
+
+va sans dire que ces calculs simples (et ceux qui suivent) sont bien connus.
+
+   Soit f (t) une fonction infiniment dérivable à support compact dans ]0, ∞[. Par Fubini on a
+R∞              w−1
+                        R∞
+ a F+ (f )(t) t     dt = 0 Ca (u, w)f (u) du pour Re(w) < 0 puis pour tout w ∈ C puisque les deux
+                                                             Ra
+membres sont des fonctions entières de w. Soit Da (u, w) = 2 0 cos(2π ut)tw−1 dt (pour Re(w) > 0.)
+                   Ra                     R∞                                        R∞
+Par Fubini on a 0 F+ (f )(t) tw−1 dt = 0 Da (u, w)f (u) du et donc Fd   + (f )(w) = 0 (Ca (u, w) +
+
+Da (u, w))f (u) du d’où par (1.1) pour Re(w) > 0:
+                               Z a                                       ∞
+                                                                         X (−1)j                 a2j+w
+   Ca (u, w) = γ+ (w)u−w − 2         cos(2π ut)tw−1 dt = γ+ (w)u−w − 2                 (2πu)2j            (1.3)
+                                 0                                       j=0
+                                                                               (2j)!             2j + w
+
+   Cette dernière formule montre que Ca (u, w) pour w fixé est une fonction analytique de u dans
+
+C\] − ∞, 0], au moins pour w distinct de 0, −2, −4, . . . En utilisant le fait que γ+ (w) a un pôle
+
+simple en −2k (k ∈ N) avec un résidu égal à 2(2π)2k (−1)k (1/(2k)!), on voit de plus que Ca (u, −2k)
+
+diffère d’une fonction entière de u par un multiple non nul de u2k log(u) et qu’elle est donc également
+
+analytique en u sur C\] − ∞, 0]. On peut affirmer, les seuls zéros de γ+ (w) étant en 1, 3, 5, . . . , que
+
+les seules fonctions entières en u parmi les Ca (u, w), w ∈ C, sont obtenues pour w ∈ {±1, ±3, ±5, . . .}
+
+et que Ca (u, w) est dans K si et seulement si soit Re(w) < 1/2 soit w ∈ {1, 3, 5, . . .}. Nous avons
+
+ainsi établi:
+
+   Lemme 1.2.      La fonction Ca (u, w) pour u > 0 fixé est une fonction entière de w.
+
+   Lemme 1.3.      Pour w ∈ C fixé Ca (u, w) est une fonction analytique de u ∈ C\] − ∞, 0]. Elle est
+
+entière si et seulement si w ∈ {±(1 + 2j), j ∈ N}. Elle est O(1/u) sur [1, ∞[, et cela uniformément
+                                                                                Ra
+par rapport à w lorsque |w| est borné. Pour Re(w) > 0, elle vaut γ+ (w) u−w −2 0 cos(2π ut)tw−1 dt,
+
+et est donc γ+ (w) u−w + O(1) sur ]0, 1] et cela uniformément par rapport à w pour Re(w) ≥ ǫ > 0.
+
+Elle appartient à K si et seulement si soit Re(w) < 1/2 soit w ∈ {1, 3, 5, . . .}. On a Ca (u, 1 + 2j) =
+
+−F+ (1t≤a t2j )(u) pour j ∈ N.
+
+   Théorème 1.4.      Soient a > 0, b > 0 fixés. Les transformées de Mellin fb(s) des fonctions
+
+f ∈ Ka,b possèdent en 1, 3, 5, . . . des zéros triviaux et ce sont leurs seuls zéros communs.
+
+   Démonstration.         Nous donnons ici une approche directe qui ne fait pas appel aux résultats
+
+généraux de [13]. Le fait que fb(1 + 2j) = 0 (j ∈ N) pour tout f ∈ Ka,b se voit directement
+
+                                                     5
+sur l’équation (1.1.). Pour tout nombre complexe w et toute fonction f ∈ Ka,b on a fb(w) =
+
+(F+ (f ), φw                w            w
+           a,b ] = (f, F+ (φa,b )] avec φa,b (u) = 1u≥b (u) Ca (u, w). Donc si w est un zéro commun à
+
+toutes les fonctions fb alors φw          2           2
+                               a,b ∈ F+ (L (]0, a]))+L (]0, b]). Dans l’écriture (unique) correspondante
+
+φw
+ a,b = fa,b + ga,b la fonction fa,b (u) est une fonction entière de u et elle est égale pour u > b à
+
+Ca (u, w) qui est analytique sur C\] − ∞, 0]. Elles sont donc égales et on en déduit que Ca (u, w)
+
+appartient à F+ (L2 (]0, a])). En particulier elle est dans K ce qui implique par ce qui précède soit
+
+w ∈ {1 + 2j, j ∈ N} soit Re(w) < 1/2. Mais ce dernier cas est à exclure car alors Ca (u, w) appartient
+
+à F+ (L2 ([a, ∞[)) (et est non nulle). •
+
+
+   L’équation (1.1) montre que 1, 3, 5, . . . sont simples en tant que zéros communs aux fonctions
+
+fb(s) pour f ∈ Ka,b . Il existe une isométrie canonique entre Ka,b et Kλ,λ pour λ2 = ab et nous
+
+supposerons dorénavant a = b = λ > 0. Nous définissons des fonctions Dw,k (t) sur ]0, ∞[ et des
+          λ                                                        λ
+vecteurs Xw,k dans K pour w ∈ C et k ∈ N de la manière suivante: Xw,k (t) := 1t≥λ (t)Dw,k (t) avec,
+
+pour Re(w) > 1/2, Dw,k (t) := (log(1/t))k t−w et, pour Re(w) ≤ 1/2, Dw,k (t) := (dk /dk w)Cλ (t, w).
+                                              λ
+Pour tout f ∈ Kλ,λ on a pour Re(w) > 1/2 (f, Xw,k ] = (dk /dk w)fb(1 − w) et pour Re(w) ≤ 1/2 on
+       λ
+a (f, Xw,k ] = (dk /dk w)(γ+ (w)fb(1 − w)). On notera en particulier la compensation entre les pôles
+
+de γ+ (w) et les zéros triviaux de fb(1 − w).
+
+                                                                               λ
+   Théorème 1.5.      Soit λ > 0. Les projections orthogonales des vecteurs Xw,k sur Kλ,λ sont
+
+linéairement indépendantes.
+
+                                                                              λ              ⊥
+   Démonstration.          Supposons qu’une combinaison linéaire finie des Xw,k soit dans Kλ,λ =
+
+L2 (]0, λ]) + F+ (L2 (]0, λ])). Comme dans la démonstration précédente, la combinaison linéaire cor-
+
+respondante des Dw,k (t) (qui est analytique en t sur ]0, ∞[) doit être dans F+ (L2 (]0, λ])). Elle ne
+
+peut être de carré intégrable au voisinage de l’origine que si il n’y a aucune contribution d’un couple
+
+(k, w) avec Re(w) > 1/2 car alors Dw,k (t) = (log(1/t))k t−w . On élimine pour la même raison les
+
+couples (w, k) vérifiant Re(w) = 1/2 car alors Dw,k (t) a par le Lemme (1.3) une singularité domi-
+
+nante pour t → 0 du type (log(1/t))k t−w . On remarque finalement pour Re(w) < 1/2 par l’équation
+                             λ
+(1.1) l’identité (F+ (f ), Xw,k ] = (dk /dk w)(fb(w)) qui montre que F+ (Xw,k
+                                                                           λ
+                                                                               ) et (−1)k X1−w,k ont la
+
+même projection sur Kλ,λ . On est donc ramené au cas précédemment éliminé. •
+
+
+
+
+                                                    6
+                                   Λ
+2. Les espaces HΛ et les vecteurs Zw,k
+
+   Il est naturel pour les développements ultérieurs de travailler plutôt avec les fonctions fb(1 − s),
+
+pour lesquelles les zéros triviaux sont situés en 0, −2, −4, . . . . Soit HΛ (pour Λ > 0) l’espace des
+
+fonctions dans K presque partout nulles pour t > Λ et dont les images sous G := IF+ I sont presque
+
+partout nulles pour t > Λ. On a HΛ = IKλ,λ avec λ = 1/Λ et les transformées de Mellin sont les
+
+fonctions fb(1 − s), f ∈ Kλ,λ . L’unitaire G vérifie G 2 = 1 et laisse stable HΛ qui se décompose donc
+
+comme une somme perpendiculaire HΛ+ ⊥ HΛ− , les transformées de Mellin des fonctions invariantes
+
+sous G satisfaisant la même équation fonctionnelle que la fonction dzêta de Riemann, tandis que
+
+celles dans HΛ− la satisfont au signe près. Il est clair que les espaces HΛ forment une chaı̂ne croissante
+
+d’espaces de Hilbert.
+
+                                 T                 S
+   Proposition 2.1.       On a       HΛ = {0} et       HΛ = K.
+
+   La première assertion est immédiate, et pour la deuxième on peut par exemple utiliser le fait
+             S                                                                         √
+que l’espace HΛ est invariant sous les translations multiplicatives Dθ : f (t) 7→ (1/ θ)f (t/θ)
+
+(0 < θ < ∞), puisque Dθ (HΛ ) ⊂ HΛθ pour θ ≥ 1 et Dθ (HΛ ) ⊂ HΛ/θ pour θ ≤ 1. Or si f (t)
+
+est une fonction quelconque non-nulle de H1 alors les zéros de fb(s) sur la droite critique forment
+
+un ensemble de mesure de Lebesgue nulle et par un théorème de Wiener cela implique que les
+
+combinaisons linéaires de ses translatées multiplicatives sont denses dans K.
+
+   Au vu des zéros triviaux en 0, −2, . . . on associe à f ∈ HΛ non plus simplement fb(s) mais la
+
+fonction entière M (f )(s) := π −s/2 Γ(s/2)fb(s). L’espace de Hilbert des fonctions entières M (f )(s)
+
+pour f ∈ HΛ est un Espace de Sonine au sens de [13], [14] (ici, la droite critique joue le rôle de l’axe
+
+réel dans [13], [14]). On dispose des équations fonctionnelles M (G(f ))(s) = M (f )(1 − s).
+
+   Proposition 2.2.       Pour tout nombre complexe w et pour tout entier k ≥ 0 l’évaluation f 7→
+
+M (f )(k) (w) définit une forme linéaire continue sur HΛ .
+
+   Cela découle des calculs précédant le Théorème (1.5) puisque ces formes linéaires s’expriment
+                                                                                                    λ
+(selon un système triangulaire) en fonction des produits scalaires euclidiens avec les vecteurs I(Xw,k )
+                                             Λ
+(λ = 1/Λ). Il existe donc un unique vecteur Zw,k dans HΛ tel que ∀f ∈ HΛ M (f )(k) (w) = (f, Zw,k
+                                                                                              Λ
+                                                                                                  ].
+
+Le noyau reproduisant (analytique) K Λ (w, k; z, l) = (Zw,k
+                                                        Λ      Λ
+                                                            , Zz,l ] est un objet important de l’Analyse
+
+pour lequel la théorie de De Branges donne une formule exacte à partir d’une certaine fonction EΛ (z)
+
+                                                       7
+                                                                                    Λ
+au sujet de laquelle nous souhaiterions pouvoir être plus explicite. Les vecteurs Zw,k sont reliés
+                                             λ
+aux projections orthogonales des vecteurs I(Xw,k ) (λ = 1/Λ) sur HΛ par un système triangulaire
+
+inversible et donc par le Théorème (1.5):
+
+                                     Λ
+   Théorème 2.3.     Les vecteurs Zw,k pour w ∈ C, k ∈ N sont linéairement indépendants (en
+
+particulier ils sont tous non nuls.)
+
+
+3. Les espaces WΛ et HPΛ pour Λ > 1
+
+   Soit Λ > 1 et soit VΛ l’espace vectoriel des fonctions infiniment différentiables et supportées
+                                        b
+par [1/Λ, Λ]. La transformée de Mellin φ(s) d’une telle fonction φ est une fonction entière. Le
+             b est une fonction méromorphe, de carré intégrable sur la droite critique et qui est la
+produit ζ(s)φ(s)
+                                                            P               R∞
+transformée de Mellin au sens L2 de la fonction E(φ)(u) = n≥1 φ(nu) − ( 0 φ(t)dt)/u ([5].) Soit
+
+D = u(d2 /d2 u)u l’opérateur différentiel invariant de multiplicateur spectral s(s − 1). Les fonctions
+                                                          b
+de VΛ dans l’image de D sont exactement celles vérifiant φ(0)   b
+                                                               = φ(1) = 0. On désignera par WΛ
+
+l’adhérence dans K des fonctions E(φ) pour φ ∈ D(VΛ ).
+
+                                                              Λ
+   Théorème 3.1.     Soit Λ > 1. On a WΛ ⊂ HΛ . Un vecteur Zw,k est perpendiculaire à WΛ si
+
+et seulement si w est un zéro non-trivial ρ de la fonction dzêta de Riemann et 0 ≤ k < mρ (mρ =
+
+multiplicité de ρ.)
+
+   Démonstration.        On observe pour φ ∈ D(VΛ ) que E(φ) a son support dans ]0, Λ]. De plus
+
+I(φ) est aussi dans D(VΛ ) et donc EI(φ) a également son support dans ]0, Λ]. La transformée de
+                       b et son image sous F+ I est γ+ (s)ζ(s)φ(s)
+Mellin de E(φ) est ζ(s)φ(s)                                   b = ζ(1−s)φ(s).
+                                                                        b     Donc G(E(φ)) =
+                                               b
+IF+ I(E(φ)) a comme transformée de Mellin ζ(s)φ(1−s) autrement dit G(E(φ)) = E(I(φ)). Il existe
+              b avec φ ∈ VΛ prenant des valeurs et des dérivées quelconques en un nombre fini de
+des fonctions φ(s)
+
+nombres complexes fixés à l’avance et avec cela le Théorème est démontré. •
+
+   Définition 3.2.     Soit Λ > 1. On désigne par HPΛ le complément orthogonal de WΛ dans HΛ .
+
+   On comparera à l’approche de Connes dans [11], [12]. On a donc
+
+                                                             
+                       K = L2 ((Λ, ∞), dt) + GL2 ((Λ, ∞), dt) ⊥ WΛ ⊥ HPΛ
+
+
+On peut traiter de manière analogue le cas d’une série L(s, χ) de Dirichlet pour les caractères
+
+primitifs et pairs. Il sera alors inutile de se restreindre à D(VΛ ) et il faudra tenir compte du
+
+                                                   8
+conducteur q > 1. Pour une série associée à un caractère impair la construction utilisera non plus
+
+F+ mais la transformation en sinus F− .
+
+
+4. Conclusion
+
+   Dans la continuation de [4], [5], nous avons montré que la théorie (appartenant à l’Analyse) de
+
+collision (scattering) pour la transformation de Fourier a des aspects arithmétiques en associant
+
+de manière intrinsèque un certain quotient HPΛ à la fonction dzêta de Riemann (pour Λ > 1)
+
+et en montrant qu’il est lié à ses zéros non-triviaux (et à leurs multiplicités éventuelles; ceci est
+
+dans la continuation de [10].) Il serait intéressant de mieux comprendre ces constructions en termes
+
+opératoriels ([6],[7],[8].) L’étude de Λ → 0, de Λ → ∞, et de Λ = 1 est un problème de groupe de
+
+renormalisation ([16]) qui semble relié à celui de la nature de la fonction dzêta ([3].)
+
+
+
+
+                                                    9
+                                           Références bibliographiques
+ [1] Báez-Duarte L., A class of invariant unitary operators, Adv. in Maths. 144 (1999), 1-12.
+ [2] Báez-Duarte L., Balazard M., Landreau B. et Saias E., Notes sur la fonction ζ de Riemann 3, Adv. in Maths.
+       149 (2000), 130-144.
+ [3] Blake W., The Explicit Formula and a propagator , 21 p., http://fr.arXiv.org/abs/math/9809119
+ [4] Burnol J.-F., Scattering on the p-adic field and a trace formula, Int. Math. Res. Not. 2000:2 (2000), 57-70.
+ [5]          , An adelic causality problem related to abelian L-functions, J. Number Theory 87 (2001), no. 2, 253-269.
+ [6]          , The Explicit Formula and the conductor operator , 28p., http://fr.arXiv.org/abs/math/9902080
+ [7]          , Sur les Formules Explicites I: analyse invariante, C. R. Acad. Sci. Paris 331 (2000), série I, 423-428.
+ [8]          , Quaternionic gamma functions and their logarithmic derivatives as spectral functions, Math. Res. Lett.
+       8 (2001), no. 1-2, 209-224.
+ [9]          , A note on Nyman’s equivalent formulation for the Riemann Hypothesis, 4p., Cont. Math. Ser., à paraı̂tre.
+[10]          , A lower bound in an approximation problem involving the zeros of the Riemann zeta function, 17p., mars
+       2001. Soumis à Adv. in Maths. http://fr.arXiv.org/abs/math/0103058
+[11] Connes A., Formule de trace en géométrie non-commutative et hypothèse de Riemann, C. R. Acad. Sci. Paris
+       323 (1996), série I, 1231-1236.
+[12]          , Trace formula in non-commutative Geometry and the zeros of the Riemann zeta function, Selecta Math.
+       (N.S.) 5 (1999), no. 1, 29-106.
+[13] De Branges L., Espaces Hilbertiens de Fonctions Entières, Masson et Cie, Paris (1972) (trad. de Hilbert spaces
+       of entire functions Prentice Hall Inc., Englewood Cliffs, 1968.)
+[14]               , A conjecture which implies the Riemann hypothesis, J. Funct. Anal. 121 (1994), no. 1, 117-184.
+[15] Dym H., McKean H.P., Fourier Series and Integrals, Academic Press, 1972.
+[16] Wilson K.G., The renormalization group and critical phenomena, Rev. Mod. Phys. 55 (1983), 583-600.
+
+
+
+
+                                                             10
+

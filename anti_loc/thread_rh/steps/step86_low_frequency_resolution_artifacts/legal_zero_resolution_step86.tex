@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Step 86: Legal-Zero Resolution Gate for the Paired Weil Carrier}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\E}{\mathsf E}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Cap}{\operatorname{Cap}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 83--85 moved the RH-facing construction away from separated signed accounting and toward a paired completed Weil feature carrier.  The paired carrier has the correct positivity shape, but every shift-difference/CND feature has a legal zero at frequency zero.  This note states the gate needed to handle that legal zero.
+
+The guiding point is:
+\[
+\boxed{\text{paired positivity is not coercivity.}}
+\]
+A positive paired carrier cannot be overread as a full anti-invariant membrane until its low-frequency legal zero is quotiented, cancelled, charged by a source, or recorded as a defect/nonclaim.
+
+\section{Paired carrier and legal zero}
+Let the completed anti-invariant log-side response core be represented in Fourier variables by a Hilbert space
+\[
+\mathcal H=L^2(\mathbb R,d\xi)
+\]
+or a closed subspace of it.  Let the paired completed carrier be the multiplication form
+\[
+q_\Psi[f]=\int_{\mathbb R}\Psi(\xi)|\widehat f(\xi)|^2\,d\xi,
+\]
+where
+\[
+\Psi(\xi)=c\xi^2+2\int_{\mathbb R}(1-\cos(a\xi))\,\mu(da),\qquad c\ge0,\quad \mu\ge0.
+\]
+Then
+\[
+\Psi(0)=0.
+\]
+This is the legal zero of a paired shift-difference carrier.
+
+\begin{warning}[No coercivity from paired positivity alone]
+If the response core contains packets with Fourier support concentrating near \(\xi=0\), then \(q_\Psi\) has no positive lower bound on the unit sphere.  Thus positivity of the paired feature package does not itself imply anti-invariant budget collapse.
+\end{warning}
+
+\begin{proposition}[Low-frequency no-gap]
+Assume \(\Psi(\xi)\le C|\xi|^{2r}\) for \(|\xi|\le1\) and some \(r>0\).  If \(\mathcal H\) contains normalized packets \(f_\varepsilon\) supported in \(|\xi|\le\varepsilon\), then
+\[
+q_\Psi[f_\varepsilon]\le C\varepsilon^{2r}\to0.
+\]
+Hence
+\[
+\inf_{\|f\|=1}q_\Psi[f]=0.
+\]
+\end{proposition}
+
+\begin{proof}
+For normalized \(f_\varepsilon\) supported in \(|\xi|\le\varepsilon\),
+\[
+q_\Psi[f_\varepsilon]
+=\int_{|\xi|\le\varepsilon}\Psi(\xi)|\widehat f_\varepsilon(\xi)|^2\,d\xi
+\le C\varepsilon^{2r}\|f_\varepsilon\|^2.
+\]
+\end{proof}
+
+\section{Four lawful resolutions}
+The low-frequency legal zero can be resolved in exactly four audit-safe ways.
+
+\begin{definition}[Legal-zero resolution record]
+A paired Weil carrier has a legal-zero resolution record if one of the following is declared and audited.
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Quotient/gap record.} The legal zero sector \(Z_0\) is quotiented or excluded by a nonclaim, and the remaining carrier has a spectral gap.
+\item \textbf{Cancellation record.} Every zero-side or dissolving probe has enough vanishing at \(\xi=0\) to have finite capacity against \(\Psi^{-1}\).
+\item \textbf{Source-coercivity record.} A strict-extension source adds a positive form charging the low-frequency sector with strength \(\lambda_n\), and \(\lambda_n\to\infty\) or is large enough for the declared budget.
+\item \textbf{Defect/nonclaim record.} The unresolved low-frequency sector is carried as an explicit defect or excluded from the scope of the claim.
+\end{enumerate}
+\end{definition}
+
+\subsection{Quotient/gap}
+Let \(Q_\delta\) be projection onto \(|\xi|\ge\delta\).  If the response core is restricted to \(Q_\delta\mathcal H\), then
+\[
+\gamma_\delta:=\inf_{|\xi|\ge\delta}\Psi(\xi)>0
+\]
+provided \(\Psi\) has no other legal zero on the retained sector.  Hence
+\[
+q_\Psi[f]\ge \gamma_\delta\|f\|^2\qquad (f\in Q_\delta\mathcal H).
+\]
+This is a scoped membrane statement.  It is not a full-core membrane unless the quotient is part of the formed carrier.
+
+\subsection{Cancellation}
+Let a scalar probe be represented by \(g\in L^2_{\rm loc}\).  Its capacity is
+\[
+\Cap_\Psi(g)=\int \frac{|g(\xi)|^2}{\Psi(\xi)}\,d\xi,
+\]
+when the integral is finite and the probe annihilates true null modes.
+
+\begin{theorem}[Low-frequency cancellation criterion]
+Assume near \(0\),
+\[
+\Psi(\xi)\asymp |\xi|^{2r},
+\qquad
+|g(\xi)|\lesssim |\xi|^s.
+\]
+In one dimension the local capacity contribution near zero is finite if and only if
+\[
+\boxed{s>r-\frac12.}
+\]
+For ordinary shift features, \(r=1\), so one needs \(s>1/2\).
+\end{theorem}
+
+\begin{proof}
+Near zero the integrand is bounded by a constant times
+\[
+|\xi|^{2s-2r}.
+\]
+The one-dimensional integral \(\int_0^\epsilon \xi^{2s-2r}\,d\xi\) converges exactly when \(2s-2r>-1\), i.e. \(s>r-1/2\).
+\end{proof}
+
+\subsection{Source coercivity}
+Let \(P_0\) project to a low-frequency window \(|\xi|\le\delta\).  Suppose a strict-extension source adds
+\[
+q_{\rm src,n}[f]\ge \lambda_n\|P_0f\|^2.
+\]
+Then the extended carrier has symbol at least
+\[
+\Psi_n(\xi)\ge \Psi(\xi)+\lambda_n\mathbf 1_{|\xi|\le\delta}.
+\]
+For a probe \(g=g_0+g_1\) with \(g_0=P_0g\),
+\[
+\int_{|\xi|\le\delta}\frac{|g(\xi)|^2}{\Psi_n(\xi)}\,d\xi\le \lambda_n^{-1}\|g_0\|^2.
+\]
+Thus low-frequency capacity collapses on the source-covered sector if \(\lambda_n\to\infty\).
+
+\begin{corollary}[Full-sector low-frequency source frame]
+If a family of low-frequency source readouts \(Q_s\) satisfies
+\[
+\sum_s\lambda_s Q_s^*\Theta_s^{-1}Q_s\succeq \Lambda P_0
+\]
+on the low-frequency anti-invariant sector, then the low-frequency budget is bounded by \(\Lambda^{-1}\) times the declared response budget.  Collapse requires \(\Lambda\to\infty\) or exact finite completion.
+\end{corollary}
+
+\subsection{Defect and nonclaim}
+If no quotient, cancellation, or source-coercivity record is supplied, the honest bridge is
+\[
+\A_X\preceq K^-+E_{\rm low},
+\]
+where \(E_{\rm low}\) is the low-frequency defect.  Exact fixed-locus confinement requires the low-frequency defect to vanish in the fixed/exhaustive ledger squeeze.  Otherwise the status is support-only or scoped.
+
+\section{RH-facing interpretation}
+For RH, the paired prime/gamma feature package is promising because the prime and gamma symbols pass the candidate paired-feature positivity gate.  But the paired feature carrier has a legal zero at \(\xi=0\).  Anti-invariance under
+\[
+J(s)=1-\overline{s}
+\]
+does not by itself remove low-frequency log-side packets.  Therefore the RH construction must add a legal-zero resolution record.
+
+The remaining legal options are:
+\begin{enumerate}[label=(\alph*)]
+\item prove that the actual zero-side anti-invariant readout cancels sufficiently at \(\xi=0\);
+\item prove a quotient/gap record for the completed response core;
+\item build a strict-extension source ladder charging the whole low-frequency anti-invariant sector;
+\item carry the unresolved low-frequency sector as a defect and accept only a scoped or asymptotic statement.
+\end{enumerate}
+
+\section{Nonclaims}
+This note does not prove RH.  It does not prove the paired completed Weil carrier exists.  It does not prove the signed explicit formula matches the positive paired feature carrier.  It only states the legal-zero gate that any such carrier must pass before its positivity can be overread as a membrane.
+
+\end{document}

@@ -1,0 +1,35 @@
+{
+  "step": 89,
+  "name": "Source-Coercivity Alternative for the Low-Frequency Zeta Gate",
+  "objects": {
+    "Y_minus": "anti-invariant response sector",
+    "C0": "paired completed Weil carrier candidate",
+    "P_low": "low-frequency spectral projection",
+    "Q_s": "upstream-visible source readout",
+    "Theta_s": "source budget",
+    "lambda_s": "source strength",
+    "D_s": "positive audit contribution",
+    "F_n": "sum_s lambda_s Q_s^* Theta_s^{-1} Q_s",
+    "Lambda_n": "source lower-frame constant"
+  },
+  "accepted_source_record": {
+    "condition": "D_s >= lambda_s Q_s^* Theta_s^{-1} Q_s",
+    "visibility": "declared upstream of final zero-confinement test",
+    "forbidden": "target-selected source chosen from final witness"
+  },
+  "main_gate": {
+    "low_frequency": "P_low F_n P_low >= Lambda_n P_low Theta_0^{-1} P_low",
+    "conclusion": "K^-_{n,low} <= Lambda_n^{-1} P_low Theta_0 P_low"
+  },
+  "full_sector_gate": {
+    "condition": "F_n >= Lambda_n Theta_0^{-1} and Lambda_n -> infinity",
+    "conclusion": "K^-_n -> 0"
+  },
+  "failure_modes": [
+    "incomplete_source_family",
+    "bounded_source_strength",
+    "finite_rank_source_on_infinite_sector",
+    "target_selected_source",
+    "high_frequency_bounded_but_not_collapsed"
+  ]
+}

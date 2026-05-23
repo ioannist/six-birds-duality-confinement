@@ -1,0 +1,56 @@
+\section*{Step 250: Branch C Higher-\(k\) Growth Diagnostic}
+
+\paragraph{Kernel derivative.}
+Burnol's 2002 formula gives
+\[
+K_a^\Gamma(z,w)=
+\frac{E_\lambda(z)\overline{E_\lambda(w)}
+-E_\lambda(1-z)\overline{E_\lambda(1-w)}}{z+w-1}.
+\]
+Since \(z+w-1\) is independent of \(\overline w\), the higher
+anti-holomorphic derivatives have the form
+\[
+\partial_{\overline w}^{k}K_a^\Gamma(z,w)
+=
+\frac{
+E_\lambda(z)\overline{E_\lambda^{(k)}(w)}
+ + (-1)^{k+1}E_\lambda(1-z)\overline{E_\lambda^{(k)}(1-w)}
+}{z+w-1}.
+\]
+In the critical-line numerical realization this is implemented as
+\[
+L_{\rho,k}(G)
+=(-i\partial_\gamma)^k
+\bigl(P_\infty M_\zeta G\bigr)(1/2+i\gamma)\big|_{\gamma=\Im\rho}.
+\]
+
+\paragraph{Computed values.}
+For the triples \((\rho_1,G_\star)\), \((\rho_2,G_\star)\), and
+\((\rho_1,G')\), the new values are:
+\[
+\begin{array}{c|cc}
+\text{triple} & k=3 & k=4\\
+\hline
+\rho_1,G_\star & 1.1164964359 & 2.2021731761\\
+\rho_2,G_\star & 1.1457543044 & 2.5868233085\\
+\rho_1,G' & 1.3778472859 & 2.5398826197
+\end{array}
+\]
+with numerical error bounds below \(1.2\cdot10^{-5}\).
+
+\paragraph{Growth-law fit.}
+Linear, quadratic, exponential, factorial, affine-factorial, and
+Pochhammer models were fitted over \(k=0,\ldots,4\).  The exponential model
+had the lowest raw RMSE for all three triples:
+\[
+\mathrm{RMSE}=2.74\cdot10^{-3},\quad
+3.38\cdot10^{-2},\quad
+3.50\cdot10^{-3}.
+\]
+
+\paragraph{Verdict.}
+The finite sampled diagnostic supports
+\[
+\mathrm{V\_branch\_C\_k\_growth\_law\_exponential}.
+\]
+This is not an asymptotic theorem and does not claim RH closure.

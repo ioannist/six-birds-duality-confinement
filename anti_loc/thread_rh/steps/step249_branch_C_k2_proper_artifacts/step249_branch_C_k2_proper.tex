@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 249: Proper \(k=2\) Branch C Evaluation}
+\author{anti\_loc RH track}
+\date{2026-05-16}
+
+\begin{document}
+\maketitle
+
+\section{Second Kernel Jet}
+
+Burnol's kernel is recorded as
+\[
+K_a^\Gamma(z,w)=
+\frac{E(z)\overline{E(w)}-E(1-z)\overline{E(1-w)}}{z+w-1}.
+\]
+Step 247 gave
+\[
+\partial_{\bar w}K_a^\Gamma(z,w)=
+\frac{E(z)\overline{E'(w)}+E(1-z)\overline{E'(1-w)}}{z+w-1}.
+\]
+Differentiating again gives
+\[
+\partial_{\bar w}^2K_a^\Gamma(z,w)=
+\frac{E(z)\overline{E''(w)}-E(1-z)\overline{E''(1-w)}}{z+w-1}.
+\]
+The sign is negative in the second term because
+\[
+\partial_{\bar w}\overline{E'(1-w)}=-\overline{E''(1-w)}.
+\]
+The denominator contributes no \(\partial_{\bar w}\) term under the inherited \(z+w-1\) convention.
+
+\section{Second Derivative of \(E_\lambda\)}
+
+Writing \(E=PB\),
+\[
+E''=P''B+2P'B'+PB''.
+\]
+Furthermore,
+\[
+\frac{P''}{P}
+=\frac14\psi_1(w/2)
++\left(-\frac12\log\pi+\frac12\psi(w/2)\right)^2,
+\]
+and
+\[
+B''=(\log\lambda)^2\lambda^{1/2-w}
++\frac{\sqrt\lambda}{2}\int_\lambda^\infty
+\psi_{\rm diff}(t)t^{-w}(\log t)^2\,dt.
+\]
+
+\section{Operational Evaluation}
+
+The step 196/247 Branch C convention extends to
+\[
+L_{\rho,2}(G)=
+\left(-i\frac{d}{d\gamma}\right)^2
+\left(P_\infty M_\zeta G\right)(1/2+i\gamma)
+\bigg|_{\gamma=\operatorname{Im}\rho}.
+\]
+The second derivative is applied analytically to the delta, sinc, and PSWF terms.
+
+\section{Results}
+
+\begin{center}
+\begin{tabular}{llllrrr}
+\toprule
+Case & \(\rho\) & \(G\) & Method & \(|L|\) & Error & Lower\\
+\midrule
+C19 & \(\rho_1\) & \(G_\star\) & analytic second derivative & 0.5733722876 & \(1.15\cdot10^{-5}\) & 0.5733607751\\
+C20 & \(\rho_2\) & \(G_\star\) & analytic second derivative & 0.5552190856 & \(7.64\cdot10^{-6}\) & 0.5552114438\\
+C21 & \(\rho_1\) & \(G'\) & analytic second derivative & 0.7537977132 & \(3.14\cdot10^{-6}\) & 0.7537945745\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Verdict}
+
+\[
+\texttt{V\_branch\_C\_k2\_proper\_foreclosure}.
+\]
+
+\end{document}

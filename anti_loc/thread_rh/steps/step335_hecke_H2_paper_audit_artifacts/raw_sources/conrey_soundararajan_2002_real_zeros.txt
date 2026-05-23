@@ -1,0 +1,4860 @@
+arXiv:math/0111013v1 [math.NT] 1 Nov 2001
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+J. B. Conrey and K. Soundararajan
+1. Introduction
+A small part of the Generalized Riemann Hypothesis asserts that L-functions do not have
+zeros on the line segment ( 21 , 1]. The question of vanishing at s = 12 often has deep
+arithmetical significance, and has been investigated extensively. A persuasive view is that
+L-functions vanish at 21 either for trivial reasons (the sign of the functional equation being
+negative), or for deep arithmetical reasons (such as the L-function of an elliptic curve of
+positive rank) and that the latter case happens very rarely. N. Katz and P. Sarnak [7]
+have formulated precise conjectures on the low lying zeros in families of L-functions which
+support this view.
+In the case of Dirichlet L-functions it is expected that L( 21 , χ) is never zero, and so
+L(σ, χ) 6= 0 for all 12 ≤ σ ≤ 1. This conjecture appears to have been first enunciated by
+S.D. Chowla [2] in the special case of quadratic characters χ. Progress towards these nonvanishing questions has been in two directions: zero-density type results which establish
+that very few L-functions have a zero in ( 12 +ǫ, 1] (see for example A. Selberg [10], M. Jutila
+[6] and D.R. Heath-Brown [4]), and a growing body of work on non-vanishing at 21 (see
+for example R. Balasubramanian and V.K. Murty [1], H. Iwaniec and Sarnak [5], and K.
+Soundararajan [11]). Further much numerical evidence for the GRH has been accumulated,
+and these calculations support Chowla’s conjecture (see [8] and [9]). However the state of
+knowledge could not exclude the possibility that every Dirichlet L-function of sufficiently
+large conductor has a non-trivial real zero. In this paper we eliminate this possibility, and
+prove that a positive proportion of quadratic Dirichlet L-functions do not vanish on [ 21 , 1].
+
+For an integer d ≡ 0, or 1 (mod 4) we put χd (n) = nd , so that χd is a real character
+with conductor at most |d|. If d is an odd, positive, square-free integer then χ−8d is a real,
+primitive character with conductor 8d, and with χ−8d (−1) = −1.
+
+Theorem 1. For at least 20% of the odd square-free integers d ≥ 0 we have L(σ, χ−8d ) > 0
+for 0 ≤ σ ≤ 1. More precisely, for all large x the number of odd positive square-free integers
+d ≤ x such that L(σ, χ−8d ) > 0 for all 0 ≤ σ ≤ 1 exceeds 15 ( π4x2 ).
+While in this paper we have restricted our attention to fundamental discriminants of
+the form −8d, our methods would apply to fundamental discriminants in any arithmetic
+
+Research of both authors is supported by the American Institute of Mathematics (AIM), and in part
+through grants from the NSF including FRG grant DMS-00-74028.
+Typeset by AMS-TEX
+1
+
+2
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+progression. Also our proof yields that there are many L-functions having no non-trivial
+zeros in a thin rectangle containing the real axis. Precisely, there is a constant c > 0 such
+that for at least 20% of the fundamental discriminants −8d with 0 < d ≤ x, the rectangle
+{σ + it : σ ∈ [0, 1], |t| ≤ c/ log x} is free of zeros of L(s, χ−8d ). As another consequence
+of our work we find that the number of fundamental discriminants −8d with 0 < d ≤ x
+1
+such that L(s, χ−8d ) has a zero in the interval [σ, 1] is ≪ x1−(1−ǫ)(σ− 2 ) for any fixed ǫ > 0.
+2. Outline of the Proof
+We begin with the following version of the argument principle, due to Selberg [10], whose
+proof we reproduce for completeness.
+Lemma 2.1. Let f be a holomorphic function, which is non-zero in some half-plane
+Re(z) ≥ W . Let B be the rectangular box with vertices W0 ± iH, W1 ± iH where H > 0
+and W0 < W < W1 . Then
+4H
+
+X
+
+β+iγ∈B
+f (β+iγ)=0
+
+ 
+
+
+ Z H
+πγ
+πt
+π(β − W0 )
+cos
+cos
+sinh
+=
+log |f (W0 + it)|dt
+2H
+2H
+2H
+−H
+
+
+Z W1
+
+
+
+π(α − W0 )
+log |f (α + iH)f (α − iH)|dα
+sinh
++
+2H
+W0
+Z H
+ W − W + it 
+1
+0
+cos π
+− Re
+log f (W1 + it)dt.
+2iH
+−H
+Proof. From the box B we exclude the line segments x + iγ with W0 ≤ x ≤ β for every
+zero β + iγ of f lying in B. Denoting by Γ the boundary of the resulting domain we see
+that
+Z
+ s−W 
+0
+cos π
+log f (s)ds = 0.
+2iH
+Γ
+
+Since the value of log f (s) differs by 2πi on the upper and lower sides of the “cuts” from
+β + iγ to W0 + iγ, we conclude from the above that
+2πi
+
+X
+
+β+iγ∈B
+f (β+iγ)=0
+
+=
+
+Z β+iγ
+
+ s−W 
+0
+ds
+cos π
+2iH
+W0 +iγ
+
+ Z W0 +iH
+W0 −iH
+
++
+
+Z W1 +iH
+W0 +iH
+
+−
+
+Z W1 +iH
+W1 −iH
+
+−
+
+Z W1 −iH 
+W0 −iH
+
+ s−W 
+0
+log f (s)ds.
+cos π
+2iH
+
+The imaginary part of the LHS above equals the LHS of the equality of the Lemma.
+The imaginary part of the first integral on the RHS above equals the first term on the
+RHS of the Lemma. The second and fourth integrals on the RHS above have combined
+imaginary part equal to the second term on the RHS of the Lemma. Lastly the imaginary
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+3
+
+part of the fourth term on the RHS above equals the third term on the RHS of the Lemma.
+Thus Lemma 2.1 is proved.
+Let X be large, and let d be any odd square-free number in [X, 2X]. We shall apply
+Lemma 2.1 to a mollified version of L(s, χ−8d ). Precisely, for a parameter X ǫ ≤ M ≤ X
+to be fixed later1 , let
+X λ(n)
+χ−8d (n),
+M (s, d) =
+ns
+n≤M
+
+where the λ(n) are real numbers ≪ nǫ to be specified later. We apply Lemma 2.1 with
+f (s, d) := L(s, χ8d )M (s, d) and W0 = 21 − logRX , H = logSX , and W1 = σ0 where R and
+S are fixed positive parameters in the interval (ǫ, 1/ǫ) to be chosen later, and σ0 > 1 will
+be chosen later such that f (s, d) has no zeros in Re s > σ0 . Since the LHS of Lemma 2.1
+consists of positive terms we glean that
+(2.1)
+
+4S
+
+X
+
+sinh
+
+β≥ 12 − logRX
+L(β,χ−8d )=0
+
+ π(R + log X(β − 1/2)) 
+2S
+
+≤ I1 (d) + I2 (d) + I3 (d),
+
+where (after obvious changes of variables)
+(2.2a)
+
+(2.2b)
+
+Z S
+
+
+
+Z (σ0 − 12 ) log X
+
+sinh
+
+
+1
+
+R
+t
+πt
+log f
+I1 (d) =
+cos
+−
++i
+, d dt,
+2S
+2 log X
+log X
+−S
+I2 (d) =
+
+−R
+
+ π(x + R) 
+2S
+
+log f
+
+1
+2
+
++
+
+2
+x
+S
++i
+, d dx,
+log X
+log X
+
+and
+(2.2c)
+
+I3 (d) = −Re
+
+Z S
+
+
+
+ (σ − 1/2) log X − R + it 
+t
+0
+log f σ0 + i
+, d dt.
+cos π
+2iS
+log X
+−S
+
+Suppose that L(β, χ−8d ) = 0 for some β ∈ [ 21 , 1]. We claim that the LHS of (2.1)
+1
+R
+exceeds 8S sinh( πR
+2S ). To see this, suppose first that L(s, χ−8d ) has a zero β > 2 +
+log X .
+
+≥ 8S sinh πR
+since
+Then the contribution of this zero alone would be ≥ 4S sinh πR
+S
+2S
+ξ
+1
+sinh(2x) ≥ 2 sinh x for x ≥ 0. On the other hand, if L(s, χ−8d ) has a zero at 2 + log X for
+some 0 ≤ ξ ≤ R then by the functional equation it also has a zero at 12 − logξ X . In case ξ = 0
+1
+note that there is at least a double zero at
+zeros are included
+in the LHS
+
+ 2 . Both these
+
+
+
+≥ 8S sinh πR
++ sinh π(R+ξ)
+of (2.1), and together they contribute 4S sinh π(R−ξ)
+2S
+2S
+2S ,
+
+1 Here and throughout, ǫ denotes a small positive real number. The reader should be warned that it
+might be a different ǫ from line to line.
+
+4
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+since the minimum value of sinh(x − y) + sinh(x + y) for 0 ≤ y ≤ x is attained at y = 0.
+We document this below:
+ 
+πR
+(2.3) I1 (d) + I2 (d) + I3 (d) ≥ 8S sinh
+if L(s, χ−8d ) has a non-trivial real zero.
+2S
+The plan now is to obtain upper bounds for I1 (d) + I2 (d) + I3 (d) on average over d, and
+thereby conclude that the inequality (2.3) cannot hold too often. To elaborate on this,
+we first fix some notation. Let {an }∞
+n=1 be any sequence of complex numbers, and let F
+denote a smooth function supported in the interval [1, 2]. Throughout this paper we adopt
+the notation
+ 
+1 X 2
+d
+S(ad ; F ) = S(ad ; F, X) =
+µ (d)ad F
+.
+X
+X
+d odd
+
+Let Φ be a smooth non-negative function supported in [1, 2]. For a complex number w we
+define
+Z ∞
+Φ(y)y w dy.
+(2.4a)
+Φ̌(w) =
+0
+
+For integers ν ≥ 0 we define
+(2.4b)
+
+Φ(ν) = max
+
+0≤j≤ν
+
+Z 2
+1
+
+|Φ(j) (t)|dt.
+
+Integrating by parts ν times we get that
+1
+Φ̌(w) =
+(w + 1) · · · (w + ν)
+
+Z ∞
+
+Φ(ν) (y)y w+ν dy,
+
+0
+
+so that for Re w > −1 we have
+|Φ̌(w)| ≪
+
+(2.4c)
+
+2Re w
+Φ(ν) .
+|w + 1|ν
+
+Let N (X, Φ) count, with weight Φ(d/X), the odd, square-free integers d ∈ [X, 2X] such
+that L(s, χ−8d ) has a non-trivial real zero. In view of (2.1) and (2.3) we see that
+
+ πR −1
+S(I1 (d) + I2 (d) + I3 (d); Φ).
+N (X, Φ) ≤ X 8S sinh
+2S
+For a complex number δ1 we define
+(2.5)
+
+W(δ1 , Φ) =
+
+S(|L( 12 + δ1 , χ−8d )M ( 21 + δ1 , χ−8d )|2 ; Φ)
+.
+S(1; Φ)
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+5
+
+Since the arithmetic mean exceeds the geometric mean we have that
+S(log |f ( 21 + δ1 , d)|2 ; Φ) ≤ S(1; Φ) log W(δ1 ; Φ).
+Using this in (2.1), and recalling the definitions (2.2a,b), we conclude that
+(2.6)
+
+N (X, Φ) ≤
+
+
+X
+XS(1; Φ) 
+S(I3 (d); Φ),
+J
+(X;
+Φ)
++
+J
+(X;
+Φ)
++
+1
+2
+πR
+8S sinh( 2S )
+8S sinh( πR
+2S )
+
+where
+(2.7a)
+
+J1 (X; Φ) =
+
+Z S
+0
+
+(2.7b)
+
+J2 (X; Φ) =
+
+
+
+
+
+
+πt
+R
+t
+cos
+log W −
++i
+; Φ dt,
+2S
+log X
+log X
+
+Z ( 12 +ǫ) log X
+
+sinh
+
+−R
+
+ π(x + R) 
+2S
+
+log W
+
+
+
+
+x
+S
++i
+; Φ dx.
+log X
+log X
+
+At this juncture we specify more carefully the choice of our mollifier coefficients. To
+counter the rapid growth of the sinh(π(x + R)/(2S)) term in (2.7b), we would like W((x +
+iS)/ log X; Φ) to tend rapidly to 1. One way to ensure this is to choose λ(n) = 0 if n is
+even, or if n > M , and for odd integers n ≤ M define
+(2.8)
+
+λ(n) := µ(n)Q
+
+ log(M/n) 
+log M
+
+:=
+
+(
+
+µ(n)
+µ(n)P ( log(M/n)
+)
+log M
+
+if n ≤ M 1−b
+
+if M 1−b ≤ n ≤ M.
+
+Here b is a parameter in [ǫ, 1 − ǫ], and P (x) is a polynomial such that P (0) = P ′ (0) = 0,
+and P (b) = 1, P ′ (b) = 0.
+Proposition 2.1. Suppose Φ is a non-negative smooth function supported on [1, 2] such
+√
+R2
+that Φ(t) ≪ 1, and with 1 Φ(t)dt ≫ 1. If M ≤ X and δ1 is a complex number with
+Re δ1 > ǫ then
+1
+
+1
+
+W(δ1 , Φ) = 1 + O(Φ(2) X ǫ (M −2Re δ1 (1−b) + M ( 2 −δ1 )(1−b) X − 2 )).
+Further f (s, d) has no zeros in Re s > 1 + 3 log log M/ log M , and taking σ0 = 1 +
+3 log log M/ log M , we have
+ (1/2 + ǫ) log X 
+M −(1−b) X ǫ .
+S(I3 (d); Φ) ≪ exp π
+2S
+The implied constants above, and elsewhere, may depend upon ǫ, and the polynomial
+P . Proposition 2.1 allows us to mollify a little away from 12 , and we now turn to the more
+delicate question of mollifying near 21 . Let δ1 and δ2 be two complex numbers, and define
+
+6
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+δ1 −δ2
+2
+τ = δ1 +δ
+2 , and δ =
+2 . We put κ = max(|Re δ|, |Re τ |) and we suppose below that
+1
+κ ≤ 4 . Let
+  2s − 14
+8d
+Γ( 2s + 12 )L(s, χ−8d ),
+ξ(s, χ−8d) =
+π
+
+denote the completed L-function which satisfies the functional equation ξ(s) = ξ(1 − s).
+We shall show how to evaluate
+(2.9)
+
+S(ξ( 21 + δ1 , χ−8d )ξ( 21 + δ2 , χ−8d )M ( 21 + δ1 , d)M ( 21 + δ2 , d); Ψ),
+
+where Ψ is a smooth function supported on [1, 2]. We obtain (8X/π)τ Γδ (τ )W(δ1 , Φ) by
+taking δ2 = δ1 , and taking Ψ(t) = Φ(t)t−τ .
+To evaluate the expression (2.9), we first need an “approximate functional equation”
+for ξ( 21 + δ1 , χ−8d )ξ( 21 + δ2 , χ−8d ). Put
+
+For ξ > 0 we define
+(2.10)
+
+3 s δ  3 s δ 
+Γδ (s) = Γ
+Γ
+.
++ +
++ −
+4 2 2
+4 2 2
+1
+Wδ,τ (ξ) =
+2πi
+
+Z
+
+2s
+Γδ (s)ξ −s 2
+ds,
+s − τ2
+(c)
+
+R
+R c+i∞
+where c > |Re τ | is a real number. Here, and throughout, we abbreviate c−i∞ to (c) . In
+Lemma 3.1 we shall see that Wδ,τ (ξ) is a smooth function on (0, ∞), and that it decays
+exponentially as ξ → ∞. For all integers n ≥ 1, and complex numbers s we put
+X  a s
+rs (n) =
+,
+b
+ab=n
+
+which is plainly an even function of s. Finally, for all integers d > 0 we define
+
+
+ 
+∞
+X
+nπ
+rδ (n) −8d
+√
+Wδ,τ
+.
+(2.11)
+Aδ,τ (d) :=
+n
+n
+8d
+n=1
+We establish in Lemma 3.2 that for fundamental discriminants −8d(< 0) we have
+1
+1
+ξ( + δ1 , χ−8d )ξ( + δ2 , χ−8d ) = Aδ,τ (d).
+2
+2
+Thus our expression in (2.9) becomes S(Aδ,τ (d)M ( 21 + δ1 , d)M ( 21 + δ2 , d); Ψ).
+√
+Let 2X ≥ Y > 1 be a real parameter to be chosen later and write µ2 (d) = MY (d) +
+RY (d) where
+X
+X
+MY (d) =
+µ(l),
+and
+RY (d) =
+µ(l).
+l2 |d
+l≤Y
+
+l2 |d
+l>Y
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+7
+
+Given a sequence {an }∞
+n=1 , and a smooth function F supported on [1, 2], we define
+ 
+d
+1 X
+MY (d)ad F
+,
+SM (ad ; F ) = SM,X,Y (ad ; F ) =
+X
+X
+d odd
+
+and
+SR (ad ; F ) = SR,X,Y (fd ; F ) =
+so that S(ad ; F ) = SM (fd ; F ) + O(SR (ad ; F )).
+
+d
+1 X
+RY (d)ad F
+,
+X
+X
+d odd
+
+Proposition 2.2. Let Ψ be a smooth function
+√ supported on [1, 2], with Ψ(t) ≪ 1. With
+notations as above, and supposing that M ≤ X, we have
+
+SR (Aδ,τ (d)M ( 21 + δ1 , d)M ( 21 + δ2 , d); Ψ) ≪ X κ+ǫ
+
+1
+Y
+
++
+
+X −Re δ1 /2 + X −Re δ2 /2
+1
+
+Y2
+
++X
+
+−Re τ
+
+
+.
+
+It remains lastly to evaluate SM (Aδ,τ (d)M ( 21 +δ1 , d)M ( 21 +δ2 , d); Ψ). We evaluate more
+
+; Ψ) for any odd integer l. To state our result, we need a few
+generally SM (Aδ,τ (d) −8d
+l
+more definitions. For any two complex numbers s and w we define
+(2.12)
+
+Z(s; w) = ζ(s − 2w)ζ(s)ζ(s + 2w).
+
+We write the odd integer l as l = l1 l22 , where l1 and l2 are odd, and l1 is square-free.
+For a complex number w with |Re w| ≤ 41 , and a complex number s with Re s > 21 we
+Q
+define ηw (s; l) = p ηp;w (s; l) where η2;w (s; l) = (1 − 2−s−2w )(1 − 2−s )(1 − w−s+2w ) and
+for primes p ≥ 3 we have
+
+
+
+
+p2w +p−2w
+p
+1
+1
+1
+1
+
+1
+−
+1
++
++
+−
++
+if p ∤ l
+s
+s
+s+1
+2s+1
+
+p+1
+p
+p
+p
+p
+p
+
+
+
+
+
+
+p
+1 − p1s
+if p|l1
+(2.13)
+ηp;w (s; l) =
+p+1
+
+
+
+
+
+
+ p  1 − 12s
+otherwise.
+p+1
+
+p
+
+Note that ηw (s; l) is absolutely convergent in the range of our definition.
+
+Proposition 2.3. With notations as above, we may write
+−8d
+
+SM
+Aδ,τ (d); Ψ
+l
+ µτ
+X
+2
+8X
+√
+Ψ̌(µτ )Z(1 + 2µτ ; δ)ηδ (1 + 2µτ ; l)
+=
+rδ (l1 )Γδ (µτ )
+l1 π
+3ζ(2) l1 µ=±
+ µδ
+
+8X
++ rτ (l1 )Γτ (µδ)
+Ψ̌(µδ)Z(1 + 2µδ; τ )ητ (1 + 2µδ; l)
+l1 π
+κ+|Re δ|− 21 
+ |r (l )|X κ+ǫ |r (l )|X ǫ
+X |Re δ|+ǫ l1
+δ 1
+δ 1
++
+.
++
++ R(l) + O
+1
+1
++κ
+Y 1−2κ−2|Re δ|
+(Xl1 ) 4
+Y l12
+
+8
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Here R(l) is a remainder term bounded for each individual l by
+1
+
+|R(l)| ≪
+
+l 2 +ǫ Y 1+ǫ
+X
+
+1
+2 −|Re δ|−ǫ
+
+Ψ(2) Ψǫ(3) ,
+
+and bounded on average by
+2L−1
+X
+l=L
+
+|R(l)| ≪
+
+L1+ǫ Y 1+ǫ
+X
+
+1
+2 −|Re δ|−ǫ
+
+Ψ(2) Ψǫ(3) .
+
+We shall prove Proposition 2.3 in Section 5. Observe that although each of the four
+main terms in Proposition 2.3 has singularities (for example the first term has poles when
+τ = 0, or when τ = ±δ), their sum is regular.
+Plainly Propositions 2.2 and 2.3 can be used to evaluate the quantity in (2.9). However,
+carrying this out is complicated, and in an effort to keep the exposition simple we shall
+restrict our values of δ1 and δ2 to those necessary in evaluating J1 (X; Φ) and J2 (X; Φ).
+Proposition 2.4. Let Φ be a non-negative smooth function on [1, 2] with Φ(t) ≪ 1, and
+R2
+1
+with 1 Φ(t)dt ≫ 1. Let δ1 be a complex number such that 14 ≥ Re δ1 ≥ − ǫ log
+X , and with
+ǫ
+|δ1 | ≥ log X . We take δ2 = δ1 so that τ = Re δ1 , and δ = iIm δ1 . Then with the mollifier
+1
+
+coefficients as in (2.8), and with M = X 2 −ǫ we have that W(δ1 , Φ) equals
+ 1 − (8X/π)−2τ 8X −τ (8X/π)δ − (8X/π)−δ  Z b
+Q′′ (x) 2
+1+
+M −2τ (1−x) Q′ (x)+
+dx
+−
+2τ log M
+π
+2δ log M
+2δ1 log M
+0
+
+with an error O(X −τ −ǫ Φ(2) Φǫ(3) + M −2τ (1−b) |δ1 |6 log5 X).
+We emphasize that the conditions on |δ1 | and Re δ1 were assumed only to ease our
+exposition. In fact, the stated result holds without these restraints. Armed with these
+results, we complete the proof of Theorem 1.
+Proof of Theorem 1. We take Φ to be a smooth function supported in (1, 2) such that
+Φ(t) ∈ [0, 1] for all t, Φ(t) = 1 for t ∈ (1 + ǫ, 2 − ǫ), and |Φ(ν) (t)| ≪ν (1/ǫ)ν (so that
+1
+Φ(2) ≪ 1/ǫ, and Φ(3) ≪ 1/ǫ2 ). Our mollifier is chosen as in (2.8), with M = X 2 −ǫ .
+Further we take σ0 as in Proposition 2.1, and S = π/(2(1 − b)) + 10ǫ. Using Proposition
+2.1 in (2.6) we get that
+N (X, Φ) ≤
+
+XS(1; Φ)
+(J1 (X; Φ) + J2 (X; Φ)) + o(X),
+8S sinh( πR
+)
+2S
+
+where J1 and J2 are given in (2.7a,b).
+Applying Proposition 2.4 we get that for real numbers u and v with max(|u|, |v|) ≥ ǫ
+and 14 log X ≥ u ≥ −1/ǫ
+W
+
+
+
+(1 + |u| + |v|)6 
+,
+, Φ = V(u, v) + O M −2u(1−b)/ log X
+log X
+log X
+
+ u + iv
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+9
+
+where
+e−u log X  sinh u sin v 
+−
+V(u, v) := 1+
+2 log M
+u
+v
+
+Z b
+
+M −2u(1−x)/ log X Q′ (x)+
+
+0
+
+Q′′ (x) log X 2
+dx.
+2(x + iy) log M
+
+Plainly V(u, v) ≥ 1 always, and so we deduce that
+J1 (X; Φ) =
+
+Z S
+0
+
+
+ 1 
+πt
+log V(−R, t)dt + O
+.
+cos
+2S
+log X
+
+
+Further, using the above together with Proposition 2.1, and keeping in mind our choice
+for S, we obtain that
+J2 (X; Φ) =
+
+Z ∞
+0
+
+
+
+
+πu
+sinh
+log V(u − R, S)du + o(1).
+2S
+
+We conclude that
+XS(1; Φ) 
+
+N (X, Φ) ≤
+8S sinh πR
+2S
+
+Z S
+0
+
+
+
+
+πt
+cos
+log V(−R, t)dt
+2S
+ 
+Z ∞
+
+πu
+log V(u − R, S)du + o(X).
++
+sinh
+2S
+0
+
+We now take R = 6.8, b = 0.64, and P (x) = 3(x/b)2 − 2(x/b)3 . Then a computer
+calculation showed that N (X, Φ) ≤ 0.79XS(1; Φ) + o(X). Taking X = x/2, x/4, . . . , we
+obtain Theorem 1.
+We end this section by reflecting on some features of the method used to prove Theorem
+1. Our overall strategy was to estimate on average the number of zeros (weighted suitably)
+of the mollified L-function in a small box B as in Lemma 2.1. If we use the usual argument
+principle to estimate the zeros in B, then we face the problem of trying to understand
+the argument of f (s, d) on the horizontal sides of B. This appears to be difficult because
+the argument of L(s, χ−8d ) is intimately related to the location of its zeros. Selberg’s
+argument principle (Lemma 2.1) allows us to circumvent this by introducing the kernel
+sin(π(s−W0 +iH)/(2iH)) which is real on the left vertical edge of B, and purely imaginary
+on the horizontal edges of B. This enables us to deal only with log |f (s, d)| (a quantity
+well suited for estimating from above) on these three sides of B, while on the left vertical
+edge of B we are in the region of absolute convergence of L(s, χ−8d ) so that log f (s, d) is
+relatively easy to understand on this line.
+The chief drawback with Selberg’s lemma is the exponential growth of the the kernel
+sin(π(s − W0 + iH)/(2iH)) on the horizontal sides of B. To offset this it is necessary that
+log |f (s, d)| be very small on the horizontal sides of B (at least on average over d). This
+motivates our choice (see (2.8)) of the mollifier coefficients λ(n): this choice guarantees
+that the Dirichlet series coefficients of f (s, d) vanish for 2 ≤ n ≤ M 1−b so that we would
+
+10
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+expect f (s, d) to be close to 1 on average (as confirmed by Proposition 2.1). Since the
+growth of Selberg’s kernel is determined by the height of the box H, and the decay of
+log |f (s, d)| is controlled by how long a mollifier we can take, we see that there is a natural
+limitation on how small a box we can take in terms of how long a mollifier we can allow.
+In this way we reduce the problem of estimating the weighted average of zeros in B to
+evaluating certain mollified mean values, and that is accomplished by extending the ideas
+in [11]. There are two features of this approach which are a little dissatisfying. Firstly
+the choice of mollifier coefficients is made in an ad hoc way through some numerical
+experimentation. This is in contrast with the classical situation of mollifying at a point
+where the optimal mollifier coefficients emerge as minimizers of a certain quadratic form
+while keeping a linear form fixed. The situation here is less clear because the final answer
+depends on a complicated integral over the sides of B of the mollified moments, and also
+because the initial mollifier coefficients are no longer free, as explained above. We have not
+understood this optimization problem fully, and it is quite possible that a better choice of
+mollifier exists.
+Secondly, the proof of Theorem 1 relied crucially upon knowing that our weighted
+average of zeros is less than 1. Since this emerged only after an involved calculation we
+now indicate why it is reasonable to expect this average to be small. More precisely note
+that in the proof of Theorem 1 we bounded
+(2.14)
+
+1
+
+2 sinh πR
+2S
+
+X
+
+β+iγ∈B
+f (β+iγ,d)=0
+
+
+
+
+πγ log X
+π(R + log X(β − 1/2))
+cos
+sinh
+.
+2S
+2S
+
+
+We showed that on average over d this quantity is bounded by 0.79, while if L(s, χ−8d )
+had a real zero this quantity exceeds 1; thus producing many L(s, χ−8d ) having no real
+zeros. We now restrict our attention to the zeros in (2.14) arising from L(s, χ−8d ) term,
+and calculate (conjecturally) their contribution. We suspect that the contribution from
+zeros of the mollifier to (2.14) is negligible on average; at any rate (2.14) is at least as large
+as the contribution from zeros of L(s, χ−8d ), and so it is necessary that this be small. If we
+assume the Generalized Riemann Hypothesis then the zeros of L(s, χ−8d ) in B contribute
+to (2.14) the amount
+(2.15)
+
+1
+2
+
+X
+
+|γ log X|≤S
+1
+L( +iγ,χ−8d )=0
+2
+
+
+
+
+πγ log X
+cos
+.
+2S
+
+The distribution of low lying zeros in families of L-functions has been studied extensively
+by Katz and Sarnak [7], and the conjectures they formulate there enable one to calculate
+sums like (2.15) on average. Our family of L-functions is expected to have a symplectic
+symmetry, whose 1-level density function is conjecturally 1 − sin(2πx)/(2πx) (see pages
+405-409 of [7]). Note that this density vanishes to order 2 at 0, indicating that the zeros
+of L(s, χ−8d ) tend to repel the point 1/2. This philosophy predicts that the average value
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+11
+
+of (2.15) is
+Z S/(2π)
+0
+
+ 2 
+sin(2πx) 
+π x
+1−
+dx.
+cos
+S
+2πx
+
+For the choice of S in Theorem 1 (namely S = π/(0.72)) the above evaluates to 0.1827 . . . .
+Thus conjecturally there are very few zeros in our box, and this suggests an explanation
+for why the method works.
+We may ask if results similar to Theorem 1 hold for other families of L-functions. Our
+remarks above indicate that perhaps the method would succeed in other families with a
+repulsion phenomenon at 1/2. One example of these is the family of modular forms (say,
+of large weight) and odd sign of the functional equation, where there is always a zero at
+1/2 but the next zero is repelled. We hope to return to these questions later.
+3. Preliminaries
+3.1 The approximate functional equation.
+Lemma 3.1. For ξ ∈ (0, ∞), Wδ,τ (ξ) is a smooth complex-valued function. For ξ near 0
+we have the asymptotic
+Wδ,τ (ξ) = Γδ (τ )ξ −τ + Γδ (−τ )ξ τ + O(ξ 1−ǫ ).
+For large ξ and any integer ν we have the estimate
+(ν)
+
+Wδ,τ (ξ) ≪ν ξ 2ν+6 e−2ξ ≪ν e−ξ .
+Proof. By moving the line of integration in (2.10) to Re s = −1 + ǫ we see immediately
+the asymptotic claimed for small ξ. Plainly the ν-th derivative of Wδ,τ is given by the
+convergent integral
+Z
+2s
+(−1)ν
+Γδ (s)s(s + 1) · · · (s + ν − 1)ξ −s 2
+ds
+2πi (c)
+s − τ2
+for any c > |Re τ |. Thus Wδ,τ (ξ) is smooth. To prove the last estimate of the lemma we
+may suppose that ξ > ν + 4. Since |Γ(x + iy)| ≤ Γ(x) for x ≥ 1, and sΓ(s) = Γ(s + 1), we
+(ν)
+obtain that the integral above giving Wδ,τ (ξ) is bounded by
+2 −c
+
+≪ν |Γ(c/2 + ν + 3)| ξ
+
+|ds|
+ξ −c
+2
+≪
+Γ(c/2
++
+ν
++
+3)
+.
+ν
+2
+2
+c − |Re τ |
+(c) |s − τ |
+
+Z
+
+By Stirling’s formula this is
+≪ν
+
+ c + 2ν + 6 c+2ν+6
+2e
+
+and taking c = 2ξ − 2ν − 6(≥ 2) we get the lemma.
+
+ξ −c
+,
+c − |Re τ |
+
+12
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Lemma 3.2. Recall that κ = max(|Re δ|, |Re τ |) ≤ 41 . For fundamental discriminants
+−8d(< 0) we have
+ξ( 21 + δ1 , χ−8d )ξ( 21 + δ2 , χ−8d ) = Aδ,τ (d).
+Proof. Consider for some 3/2 − |Re δ| > c > 1/2 + |Re δ|
+1
+2πi
+
+2s
+ξ( 21 + δ + s, χ−8d )ξ( 21 − δ + s, χ−8d ) 2
+ds.
+s − τ2
+(c)
+
+Z
+
+Expanding L( 12 + δ + s, χ−8d )L( 21 − δ + s, χ−8d ) into its Dirichlet series
+
+P∞
+
+n=1
+
+rδ (n) −8d
+,
+1
+n
+n 2 +s
+
+and integrating term by term, we get that this equals Aδ,τ (d). Now move the path of
+integration to the line Re(s) = −c. We encounter poles at s = τ , −τ , and the residues
+here give ξ( 21 + δ + τ, χ−8d )ξ( 21 − δ + τ, χ−8d ) + ξ( 21 + δ − τ, χ−8d )ξ( 21 − δ − τ, χ−8d ) =
+2ξ( 21 + δ1 , χ−8d )ξ( 21 + δ2 , χ−8d ), upon using the functional equation. In the remaining
+integral on the −c line, we let s → −s and use the functional equation. Then it evaluates
+to −Aδ,τ (d), which completes our proof.
+3.2 On Gauss-type sums.
+Let n be an odd integer. We define for all integers k
+Gk (n) =
+
+
+
+
+ 
+1−i
+−1 1 + i
++
+2
+n
+2
+
+X
+
+a (mod n)
+
+   
+ak
+a
+e
+,
+n
+n
+
+and put
+τk (n) =
+
+X
+
+a (mod n)
+
+
+ 
+    
+ak
+1+i
+−1 1 − i
+a
+e
+=
+Gk (n).
++
+n
+n
+2
+n
+2
+
+
+If n is square-free then n· is a primitive character with conductor n. Here it is easy to
+√
+see that Gk (n) = nk n. For our later work, we require knowledge of Gk (n) for all odd
+n. This is contained in the next Lemma which is Lemma 2.3 of [11].
+Lemma 3.3.
+(i) (Multiplicativity) Suppose m and n are coprime odd integers.
+Then Gk (mn) = Gk (m)Gk (n).
+(ii) Suppose pα is the largest power of p dividing k. (If k = 0 then set α = ∞.) Then for
+β≥1
+
+0
+if β ≤ α is odd,
+
+
+
+
+β
+
+if β ≤ α is even,
+
+ ϕ(p )
+if β = α + 1 is even,
+Gk (pβ ) = −pα
+
+−α 
+√
+
+kp
+
+
+pα p if β = α + 1 is odd
+
+p
+
+
+0
+if β ≥ α + 2.
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+13
+
+3.3 Lemmas for estimating character sums.
+We collect here two lemmas that will be very useful in bounding the character sums that
+arise below. These are consequences of a recent large sieve result for real characters due
+to D. R. Heath-Brown [4] (see Lemmas 2.4 and 2.5 of [11]).
+Lemma 3.4. Let N and Q be positive integers and let a1 , . . . , aN be arbitrary complex
+numbers. Let S(Q) denote the set of real, primitive characters χ with conductor ≤ Q.
+Then
+2
+X
+X X
+|an1 an2 |,
+an χ(n) ≪ǫ (QN )ǫ (Q + N )
+χ∈S(Q) n≤N
+
+n1 n2 =
+
+for any ǫ > 0. Let M be any positive integer, and for each |m| ≤ M write 4m = m1 m22
+where m1 is a fundamental discriminant, and m2 is positive. Suppose the sequence an
+satisfies |an | ≪ nǫ . Then
+X
+
+|m|≤M
+
+1
+m2
+
+X
+
+n≤N
+
+ 2
+m
+an
+≪ (M N )ǫ N (M + N ).
+n
+
+Lemma 3.5. Let S(Q) be as in Lemma 3.4, and suppose σ + it is a complex number with
+σ ≥ 21 . Then
+X
+
+χ∈S(Q)
+
+|L(σ + it, χ)|4 ≪ Q1+ǫ (1 + |t|)1+ǫ ,
+
+and
+
+X
+
+χ∈S(Q)
+
+1
+
+|L(σ + it, χ)|2 ≪ Q1+ǫ (1 + |t|) 2 +ǫ .
+
+3.4 Poisson summation.
+For a Schwarz class function F we define
+1+i
+1−i
+F̃ (ξ) =
+F̂ (ξ) +
+F̂ (−ξ) =
+2
+2
+
+Z ∞
+
+(cos(2πξx) + sin(2πξx))F (x)dx.
+
+−∞
+
+We quote the following version of Poisson summation (see Lemma 2.6 of [11]):
+Lemma 3.6. Let F be a smooth function supported in (1, 2). For any odd integer n,
+ 
+  
+1 2
+d
+;F =
+SM
+n
+2n n
+
+X
+
+α≤Y
+(α,2n)=1
+
+
+
+µ(α) X
+kX
+k
+.
+(−1) Gk (n)F̃
+α2
+2α2 n
+k
+
+4. Proofs of Propositions 2.1 and 2.2
+We first record two applications
+of these
+Pof Lemma 3.4 which will be useful in the proofs
+ǫ
+Propositions. Write λ2 (n) =
+λ(a)λ(b).
+Note
+that
+|λ
+(n)|
+≪
+n
+and
+that
+2
+ab=n,a,b≤M
+
+14
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+M (s, d)2 =
+have
+X
+
+P
+
+n≤M 2 λ2 (n)n
+
+2
+
+µ (2d)
+
+X
+
+N≤n≤2N
+
+X≤d≤2X
+
+−s −8d
+n .
+
+
+
+By Lemma 3.4 we see that for N ≤ M 2 (≪ X 2 ) we
+
+
+
+λ2 (n) −8d 2
+≪ X ǫ (X + N )
+s
+n
+n
+
+X
+
+N≤n1 ,n2 ≤2N
+n1 n2 =
+
+≪ X ǫ (X + N )N 1−2Re s
+≪ X ǫ (X + N )N 1−2Re s
+ǫ
+
+≪ X (X + N )N
+
+1−2Re s
+
+|λ2 (n1 )λ2 (n2 )|
+(n1 n2 )Re s
+X
+
+N≤n1 ,n2 ≤2N
+n1 n2 =
+2
+X
+a≤M
+
+√
+
+1
+n1 n2
+
+d(a )
+a
+2
+
+.
+
+From this we conclude that
+X
+µ2 (2d)|M (s, d)|4 ≪ X ǫ (X + XM 2(1−2Re s) + M 4(1−Re s) ).
+(4.1)
+X≤d≤2X
+
+In a similar manner we see that if l is any odd integer ≤
+(4.2)
+
+X
+
+X/l2 ≤m≤2X/l2
+
+µ2 (2m)|M (s, l2m)|4 ≪ X ǫ
+
+X
+l
+
++
+2
+
+√
+
+2X then
+
+
+X 2(1−2Re s)
+4(1−Re s)
+.
+M
++
+M
+l2
+
+4.1 Proof of Proposition 2.1.
+Since Φ is a non-negative smooth function supported on [1, 2] such that Φ(t) ≪ 1, and
+R2
+P
+−1
+2
+Φ(t)dt
+≫
+1
+we
+see
+that
+S(1;
+Φ)
+≫
+X
+X≤d≤2X µ (2d) ≫ 1. We write B(s, d) =
+1
+L(s, χ−8d )M (s, d) − 1 so that
+(4.3)
+
+W(δ1 , Φ) = 1 + O(S(B( 21 + δ1 , d); Φ) + S(|B( 12 + δ1 , d)|2 ; Φ)).
+
+To estimate the unknown terms above, we consider
+Z
+ds
+1
+Γ(s + 1)B( 21 + δ1 + s, d)X s ,
+2πi (c)
+s
+for any real number c > 21 − Re δ1 . We move the line of integration to the line Re
+s = −Re δ1 . The pole at s = 0 contributes B( 21 +δ1 ; d) and so we conclude that B( 21 +δ1 , d)
+equals
+Z
+Z
+1
+ds
+1
+s ds
+1
+Γ(s + 1)B( 2 + δ1 + s, d)X
+Γ(s + 1)B( 21 + δ1 + s, d)X s .
+−
+(4.4)
+2πi (c)
+s
+2πi (−Re δ1 )
+s
+Write the expression in (4.4) as T1 ( 21 + δ1 , d) − T2 ( 12 + δ1 , d), say.
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+15
+
+We first consider the contributions of the T2 (d) terms to the unknown quantities in
+(4.3). We shall prove that
+(4.5)
+
+S(|T2 ( 21 + δ1 , d)|2 ; Φ) ≪ X −2Re δ1 +ǫ , and S(|T2 ( 21 + δ1 , d)|; Φ) ≪ X −Re δ1 +ǫ .
+
+Plainly the second estimate above follows from the first and Cauchy’s inequality. To see
+the first estimate observe that by Cauchy’s inequality
+Z
+ Z
+|ds| 
+2
+−2Re δ1
+2
+1
+1
+|Γ(s+1)B( 2 +δ1 +s, d) ds|
+|T2 ( 2 +δ1 , d)| ≪ X
+|Γ(s+1)| 2 ,
+|s|
+(−Re δ1 )
+(−Re δ1 )
+and in view of the rapid decay of |Γ(s + 1)| as |Im s| → ∞, we deduce that
+ Z
+
+2
+−2Re δ1
+1
+1+
+|Γ(s+1)||L( 12 +δ1 +s, χ−8d )M ( 21 +δ1 +s, d)|2 |ds| .
+|T2 ( 2 +δ1 , d)| ≪ X
+(−Re δ1 )
+
+Averaging this over the appropriate d, with another application of Cauchy’s inequality we
+obtain that S(|T2 ( 21 + δ1 , d)|2 ; Φ) is bounded by
+ Z
+
+1
+1
+−2Re δ1
+4
+4
+1
+1
+2
+2
+1+
+|Γ(s+1)|S(|L( 2 +δ1 +s, χ−8d )| ; Φ) S(|M ( 2 +δ1 +s, d)| ; Φ) |ds| ,
+X
+(−Re δ1 )
+
+√
+and (4.5) follows upon using Lemma 3.5 and (4.1) above (keeping in mind that M ≤ X).
+It remains now to consider the T1 contribution. In the region Re s > 1 we may write
+
+
+∞
+X
+b(n) −8d
+.
+B(s, d) =
+s
+n
+n
+n=1
+1−b
+From the shape of our mollifier we see that b(n)
+, b(n) = 0 for all
+P = 0 for allPn ≤ M
+2(1−b)
+2
+square values n ≤ M
+(because b(m ) = d|m2 λ(d) = d|m λ(d) = b(m), since λ is
+supported on square-free numbers), and lastly |b(n)| ≪ d(n) ≪ nǫ for all n. We write
+
+
+Z
+X
+−8d
+b(n)
+ds
+1
+1
+Γ(s + 1)
+Xs
+T1 ( 2 + δ1 , d) =
+1
++δ
++s
+1
+2πi (c)
+n
+s
+n2
+M 1−b ≤n≤X log2 X
+
+
+ s 
+Z
+X
+b(n) −8d  1
+X ds
++
+Γ(s + 1)
+.
+1
++δ
+n
+2πi (c)
+n
+s
+n2 1
+2
+n>X log X
+
+In the
+R second term
+ above we take c = n/(10X) and use Stirling’s formula to get that
+1
+X s ds
+2πi (c) Γ(s + 1) n
+s ≪ exp(−n/(20X)). Hence the second term above contributes
+−5
+≪ X say. In the first term above we move the line of integration to Re s = log1 X . Thus
+(4.6)
+
+1
+T1 ( 21 + δ1 , d) =
+2πi
+
+Z
+
+( log1 X )
+
+Γ(s + 1)
+
+X
+
+M 1−b ≤n≤X log2 X
+
+
+
+−8d
+s ds
+X
++ (X −5 ).
+1
++δ1 +s
+n
+s
+2
+n
+b(n)
+
+16
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+By Cauchy’s inequality we get that
+|T1 ( 21 + δ1 , d)|2 ≪ X −10 +
+
+Z
+
+( log1 X )
+
+×
+≪X
+
+−10
+
++X
+
+ǫ
+
+Z
+
+|Γ(s + 1)|
+
+Z
+
+( log1 X )
+
+M 1−b ≤n≤X log2 X
+
+|Γ(s + 1)|
+
+|Γ(s + 1)|
+
+( log1 X )
+
+
+
+
+−8d 2
+|ds|
+1
+n
+n 2 +δ1 +s
+b(n)
+
+X
+
+|ds| 
+|s2 |
+X
+
+
+
+−8d 2
+|ds|.
+1
+n
+n 2 +δ1 +s
+b(n)
+
+M 1−b ≤n≤X log2 X
+
+Splitting the sum over n into dyadic blocks and using Lemma 3.4 we conclude that
+S(|T1 ( 21 + δ1 , d)|2 ; Φ) ≪ M −2Re δ1 (1−b) X ǫ ,
+which when combined with (4.5) gives that
+S(|B( 21 + δ1 , d)|2 ; Φ) ≪ M −2Re δ1 (1−b) X ǫ .
+
+(4.7)
+
+We now show how to bound S(T1 ( 12 + δ1 , d); Φ). By (4.6) we see that
+(4.8)
+
+S(T1 ( 21 + δ1 , d); Φ) ≪ X −5 + X ǫ
+
+−8d 
+S
+;Φ .
+1
+n
+n 2 +Re δ1
+|b(n)|
+
+X
+
+M 1−b ≤n≤X log2 X
+
+
+whose conductor is at
+For each odd integer n let ψn denote the character ψn (m) = m
+n
+most n. Note that ψn is non-trivial unless n is a square. Observe that for any sequence of
+numbers an ≪ nǫ , and any smooth function g with g(0) = 0 and g(x) decaying rapidly as
+x → ∞, we have the Mellin transform identity
+(4.9)
+
+∞
+X
+
+1
+an g(n) =
+2πi
+n=1
+
+Z
+
+Z
+∞
+X
+an  ∞
+
+(c) n=1 n
+
+w
+
+g(t)t
+
+0
+
+w−1
+
+
+
+dt dw,
+
+where c > 1. Hence we obtain that for any odd integer n
+ψn (−8)
+S(ψn (−8d); Φ) =
+2πi
+
+Z
+
+ψn (−8)
+2πi
+
+Z
+
+=
+
+∞
+X
+µ2 (2d)ψn (d)
+
+(c) d=1
+
+dw
+
+X w−1 Φ̌(w − 1)dw
+
+L(w, ψn )
+(1 + ψn (2)/2w )−1 X w−1 Φ̌(w − 1)dw,
+(c) L(2w, ψn )
+
+P∞
+where L(w, ψn ) = d=1 ψn (d)/dw is the usual Dirichlet L-function. We move the line of
+integration above to the line Re w = 21 + log1 X . We encounter a pole at w = 1 if and only
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+17
+
+if n is a square (in which case L(w, ψn ) is essentially ζ(w)) and the residue of this pole is
+≪ 1. Thus we conclude that
+Z
+− 21 +ǫ
+|L(w, ψn )||Φ̌(w − 1)||dw|,
+|S(ψn (−8d); Φ)| ≪ δ(n = ) + X
+( 12 + log1 X )
+
+where δ(n = ) is 1 if n is a square, and 0 otherwise. Since b(n) = 0 for all squares
+≤ M 2(1−b) we find that
+−8d 
+X
+|b(n)|
+S
+; Φ ≪ X ǫ M −2Re δ1 (1−b)
+1
+n
+2 +Re δ1
+n
+M 1−b ≤n≤X log2 X
+Z
+X
+1
+− 12 +ǫ
++X
+|L(w, ψn)||Φ̌(w − 1)||dw|.
+1
++Re
+δ1
+2
+n
+( 12 + log1 X )
+2
+1−b
+M
+≤n≤X log X
+An easy application of Lemma 3.5 gives that
+X
+1
+|L(w, ψn)| ≪ N 1+ǫ (1 + |w|) 4 +ǫ ,
+N≤n≤2N
+
+and using this above, together with (2.12c) (taking ν = 2 there), we get that
+−8d 
+X
+|b(n)|
+;Φ
+S
+1
+n
+2 +Re δ1
+n
+2
+M 1−b ≤n≤X log X
+
+
+−2Re δ1 (1−b)
+−Re δ1
+( 12 −Re δ1 )(1−b) − 12
+ǫ
++X
++M
+.
+≪ X Φ(2) M
+X
+Using this in (4.8), and combining with (4.5) we deduce that (since M ≤
+(4.10)
+
+√
+
+X)
+
+
+
+1
+1
+1
+S(B( + δ1 , d); Φ) ≪ X ǫ Φ(2) M −2Re δ1 (1−b) + M ( 2 −Re δ1 )(1−b) X − 2 .
+2
+
+Using (4.10) and (4.7) in (4.3), we deduce the first statement of the Proposition.
+To see the second assertion, note that
+f (s, d) = 1 + B(s, d) = 1 + O
+
+
+
+d(n) 
+,
+Re s
+n
+1−b
+
+X
+
+n≥M
+
+from which it follows easily that f (s, d) has no zeros to the right of 1 + 3 log log M/ log M .
+Further for s in this region log f (s, d) = B(s, d) + O(|B(s, d)|2), and so, with σ0 as in the
+Proposition, we have
+
+ ( 1 + ǫ) log X 
+|S(B(s, d); Φ)| + S(|B(s, d)|2; Φ) .
+S(I3 (d); Φ) ≪ exp π 2
+2S
+
+Thus the second assertion also follows from (4.7) and (4.10).
+
+18
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+4.2 Proof of Proposition 2.2.
+2
+Observe that RP
+Y (d) = 0 unless d = l m where m is squarefree and l > Y . Further, note
+ǫ
+that |RY (d)| ≤ k|d 1 ≪ d . Hence
+SR (Aδ,τ (d)M ( 21 + δ1 , d)M ( 21 + δ1 , d); Ψ)
+X♭
+X
+(4.11)
+≪ X −1+ǫ
+|Aδ,τ (l2 m)M ( 21 + δ1 , l2 m)M ( 12 + δ2 , l2 m)|,
+Y <l X/l2 ≤m≤2X/l2
+(l,2)=1
+
+where the ♭ on the sum over m indicates that m is odd and squarefree. By two applications
+of Cauchy’s inequality the sum over m above is
+ 12
+X
+ 14 X
+ 14 X
+♭
+♭
+♭
+2
+2
+2
+4
+2
+4
+1
+1
+.
+(4.12) ≪
+|M ( 2 + δ1 , l m)|
+|M ( 2 + δ2 , l m)|
+|Aδ,τ (l m)|
+m
+
+m
+1
+Now observe that for any c > 2 + |Re δ|
+
+m
+
+(4.13)
+
+1
+Aδ,τ (l m) =
+2πi
+2
+
+
+ 2 s
+
+∞
+2s X rδ (n) −8l2 m
+8l m
+Γδ (s)
+ds.
+π
+s2 − τ 2 n=1 ns+ 21
+n
+(c)
+
+Z
+
+Plainly
+(4.14)
+where
+
+
+
+∞
+X
+rδ (n) −8l2 m
+s+ 12
+
+n
+
+E(s, l) =
+
+Y
+
+n=1 n
+
+p|l
+
+= L( 12 + s + δ, χ−8m )L( 12 + s − δ, χ−8m )E(s, l)
+
+
+
+
+
+−8m
+−8m
+1
+1 − s+ 1 +δ
+1 − s+ 1 −δ
+.
+p
+p
+p 2
+p 2
+1
+
+Since χ−8m is non-principal, it follows that the left side of (4.14) is analytic for all s.
+Hence we may move the line of integration in (4.13) to the line from κ + 1/ log X − i∞
+to κ + 1/ log X + i∞. We encounter
+so Aδ,τ (l2 m) is given by the integral
+Q no poles,√and
+2
+on this new line. Since |E(s, l)| ≤ p|l (1 + 1/ p) ≪ lǫ ≪ X ǫ , 2s/(s2 − τ 2 ) ≪ X ǫ , and
+|Γδ (s)| decays exponentially for large |Im s|, we obtain by Cauchy’s inequality that
+Z
+2
+2
+2κ+ǫ
+|Aδ,τ (l m)| ≪ X
+|Γδ (s)||L( 21 + s + δ, χ−8m )L( 12 + s − δ, χ−8m )|2 |ds|.
+(κ+ log1 X )
+
+Summing this over m and using Lemma 3.5, we obtain that
+Z
+X♭
+X 1+2κ+ǫ
+X 1+2κ+ǫ
+1+ǫ
+2
+2
+|Γ
+(s)|(1
++
+|s|)
+|ds|
+≪
+|Aδ,τ (l m)| ≪
+.
+δ
+2
+1
+l2
+l
+)
+(κ+
+2
+2
+log X
+X/l ≤m≤2X/l
+√
+Using this together with (4.2) (keeping in mind that M ≤ X) we conclude that the
+quantity in (4.12) is bounded by
+1
+X −Re τ 
+X −Re δ1 /2 + X −Re δ2 /2
++
+,
+≪ X 1+κ+ǫ 2 +
+3
+l
+l
+l2
+which when inserted in (4.11) yields the Proposition.
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+19
+
+5. Proof of Proposition 2.3
+Observe that
+
+ X
+
+
+
+
+∞
+rδ (n)
+−8d
+−8d
+√ SM
+Aδ,τ (d); Ψ =
+; Fn ,
+SM
+l
+n
+ln
+n=1
+
+(5.1)
+where
+
+Fn (t) = Fn (δ, τ ; t) = Ψ(t)Wδ,τ
+
+
+
+
+nπ
+.
+8Xt
+
+Using the Poisson summation formula, Lemma 3.6 above, we obtain
+
+
+  X
+
+
+
+∞
+1 16
+µ(α) X
+kX
+−8d
+k
+; Fn =
+.
+(−1) G−k (ln)F̃n
+(5.2)
+SM
+ln
+2ln ln
+α2
+2α2 ln
+α≤Y
+(α,2ln)=1
+
+k=−∞
+
+Using this in (5.1), we deduce that
+
+
+
+−8d
+SM
+Aδ,τ (d); Ψ = P(l) + R0 (l),
+l
+where P(l) is the main principal contribution (arising from the k = 0 term in (5.2)), and
+R0 (l) includes all the non-zero terms k in (5.2). Thus
+  X
+∞
+1 X rδ (n) 16
+µ(α)
+P(l) =
+G0 (ln)F̃n (0),
+3
+2l n=1 n 2
+ln
+α2
+α≤Y
+(α,2ln)=1
+
+and
+(5.3)
+
+ 
+∞
+1 X rδ (n) 16
+R0 (l) =
+2l n=1 n 32
+ln
+
+X
+
+α≤Y
+(α,2ln)=1
+
+
+
+∞
+µ(α) X
+kX
+k
+(−1) G−k (ln)F̃n
+.
+α2
+2α2 ln
+k=−∞
+k6=0
+
+5.1 The principal P(l) contribution.
+Note that F̃n (0) = F̂n (0) and that G0 (ln) = ϕ(ln) if ln =  and G0 (ln) = 0 otherwise.
+Using this together with
+ 1 
+X µ(α)
+1 −1 
+1 Y 
+1
+−
+,
+1
++
+O
+=
+α2
+ζ(2)
+p2
+Y
+α≤Y
+(α,2ln)=1
+
+p|2ln
+
+we deduce that
+ 
+
+
+∞
+p
+1 + O(Y −1 ) X rδ (n) 16 Y
+F̂n (0).
+P(l) =
+1
+ζ(2)
+ln
+p+1
+2
+n=1 n
+ln=
+
+p|2ln
+
+20
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Recall that l = l1 l22 where l1 and l2 are odd, and l1 is square-free. The condition that
+ln =  is thus equivalent to n = l1 m2 for some integer m. Hence
+
+
+∞
+p
+1 + O(Y −1 ) X rδ (l1 m2 ) Y
+√
+F̂l1 m2 (0).
+P(l) =
+m
+p+1
+ζ(2) l1
+m=1
+p|2lm
+m odd
+
+For any c > |Re τ | we have
+Z ∞
+
+
+
+l1 m2 π
+Ψ(t)Wδ,τ
+F̂l1 m2 (0) =
+dt
+8Xt
+0
+
+s  Z ∞
+Z
+ 2s
+8X
+1
+s
+Γδ (s)
+Ψ(t)t dt 2
+ds
+=
+2πi (c)
+l1 m2 π
+s − τ2
+0
+
+s
+Z
+2s
+8X
+1
+Γδ (s)Ψ̌(s)
+ds.
+=
+2πi (c)
+l1 m2 π s2 − τ 2
+Thus for any c > κ
+P(l) =
+
+(5.4a)
+
+2 1 + O(Y −1 )
+√
+I(l),
+3 ζ(2) l1
+
+where
+(5.4b)
+
+1
+I(l) =
+2πi
+
+ s
+
+
+∞
+X
+rδ (l1 m2 ) Y
+8X
+2s
+p
+Γδ (s)
+ds.
+Ψ̌(s) 2
+l1 π
+s − τ 2 m=1 m1+2s
+p+1
+(c)
+
+Z
+
+m odd
+
+p|lm
+
+Lemma 5.1. Suppose l = l1 l22 is as above. Then for Re s > 1 + 2|Re δ|
+
+
+∞
+X
+rδ (l1 m2 ) Y
+p
+= rδ (l1 )Z(s; δ)ηδ (s; l)
+ms
+p+1
+m=1
+
+m odd
+
+p|lm
+
+where Z and η are as defined in (2.12) and (2.13).
+Proof. This follows by comparing the Euler factors on both sides.
+Using Lemma 5.1 in (5.4b), we deduce that
+rδ (l1 )
+I(l) :=
+2πi
+
+ s
+8X
+2s
+Γδ (s)
+Ψ̌(s) 2
+Z(1 + 2s; δ)ηδ (1 + 2s; l)ds.
+l1 π
+s − τ2
+(c)
+
+Z
+
+Note first that taking c = κ + ǫ here we deduce easily that I(l) ≪ |rδ (l)|(X/l1)κ+ǫ . We
+now move the line of integration above to the line Re s = − 14 + ǫ. We encounter simple
+poles at s = ±τ , ±δ. The remaining integral on the − 41 + ǫ line we bound as follows:
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+21
+
+From
+[3] we knowQ
+that on this line |Z(1 + 2s; δ)| ≪ (1 + |s|)3 , and plainly |ηδ (1 + 2s; l)| ≪
+Q
+1
+1
+ǫ
+√1
+p∤l1 (1 + O( p1+ǫ )) ≪ l1 . Hence the integral on the Re s = − 4 + ǫ line is
+p|l1 (1 + O( p ))
+1
+
+≪
+
+|rδ (l1 )|l14
+1
+
+X 4 −ǫ
+
+1
+
++ǫ Z
+
+2
+
+(− 14 +ǫ)
+
+|s| |Ψ̌(s)|Γδ (s)||ds| ≪
+
+|rδ (l1 )|l14
+1
+
+X 4 −ǫ
+
++ǫ
+
+.
+
+We deduce that
+I(l) = rδ (l1 )
+
+Res
+
+s=±δ,±τ
+
+
+
+ s
+
+8X
+2s
+Γδ (s)
+Ψ̌(s) 2
+Z(1 + 2s; δ)ηδ (1 + 2s; l)
+l1 π
+s − τ2
+1
+
++ǫ 
+|rδ (l1 )|l14
+.
++O
+1
+X 4 −ǫ
+
+Using this in (5.4a), we conclude that
+
+
+ s
+2rδ (l1 )
+2s
+8X
+√ Res Γδ (s)
+P(l) =
+Φ̌(s) 2
+Z(1 + 2s; δ)ηδ (1 + 2s; l)
+l1 π
+s − τ2
+3ζ(2) l1 s=±δ
+s=±τ
+
+
+|rδ (l1 )|X κ+ǫ |rδ (l1 )|X ǫ
++
+(5.5)
+.
++O
+1
+1
++κ
+(Xl1 ) 4
+Y l2
+1
+
+5.2 Extracting the secondary principal term from R0 (l).
+Define for all real numbers ξ, and all complex numbers w with Re w > 0,
+Z ∞  
+ξ w−1
+t
+dt.
+(5.6)
+f (ξ, w) =
+F̃t
+t
+0
+t
+
+Since |F̃t (ξ/t)| ≤ 2|F̃t (0)| ≤ e− 20X by Lemma 3.1, clearly the integral above is absolutely
+convergent for Re w > 0. We collect below some properties of f (ξ, w) which are easily
+established by making minor modifications to the proof of Lemma 5.2 of [11].
+Lemma 5.2. For corresponding choices of sign define
+
+
+G± (u) = (2π)−u Γ(u) cos( π2 u) ± sin( π2 u) .
+
+If ξ 6= 0 then for any 1 + Re w > c > max(|Re τ |, Re w) we have
+
+s
+Z
+1
+2s
+8X
+w
+(5.7)
+f (ξ, w) = |ξ| Φ̌(w)
+Γδ (s)
+Gsgn(ξ) (s − w) 2
+ds.
+2πi (c)
+π|ξ|
+s − τ2
+For ξ 6= 0, f (ξ, w) is a holomorphic function of w in Re w > −1 + |Re τ |, and in the region
+1 ≥ Re w > −1 + |Re τ | satisfies the bound
+p
+
+
+|ξ|
+1
+−Re w− 21
+p
+exp −
+|ξ|w |Φ̌(w)|.
+|f (ξ, w)| ≪ (1 + |w|)
+10 X(1 + |w|)
+
+22
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Using the Mellin transform identity (4.9), we may recast the expression for R0 (l) (see
+(5.3) above) as
+
+
+Z
+∞
+∞
+X
+rδ (n)
+1 X µ(α) X (−1)k
+kX
+, w dw,
+(5.8) R0 (l) =
+G−4k (ln)f
+2l
+α2
+2πi (c) n=1 n 23 +w
+2α2 l
+α≤Y
+(α,2l)=1
+
+k=−∞
+k6=0
+
+(n,2α)=1
+
+for any c > |Re δ|.
+
+Lemma 5.3. Write −4k = k1 k22 where k1 is a fundamental discriminant (possibly k1 = 1,
+giving the trivial character), and k2 is positive. In the region Re s > 1 + |Re δ|
+∞
+X
+Y
+rδ (n) G−4k (ln)
+√
+=
+L(s
+−
+δ,
+χ
+)L(s
++
+δ,
+χ
+)
+Gδ;p (s; −k, l, α)
+k
+k
+1
+1
+ns
+n
+p
+n=1
+(n,2a)=1
+
+=: L(s − δ, χk1 )L(s + δ, χk1 )Gδ (s; −k, l, α),
+
+(5.9)
+
+where Gδ;p (s; −k, l, α) is defined as follows: If p|2α then
+ 
+ 
+
+1
+k1
+k1
+1
+1 − s+δ
+,
+Gδ;p (s; −k, l, α) = 1 − s−δ
+p
+p
+p
+p
+while, if p ∤ 2α,
+
+ 
+  X
+∞
+1
+rδ (pr ) G−4k (pr+ordp (l) )
+1
+k1
+k1
+.
+Gδ;p (s; −k, l, α) = 1 − s−δ
+1 − s+δ
+r
+rs
+2
+p
+p
+p
+p
+p
+p
+r=0
+
+Then Gδ (s; −k, l, α) is holomorphic in the region Re s > 12 + |Re δ|, and for Re s ≥
+1
+2 + |Re δ| + ǫ satisfies the bound
+1
+
+1
+
+|Gδ (s; −k, l, α)| ≪ αǫ |k|ǫ l 2 +ǫ (l, k22 ) 2 .
+
+(5.10)
+
+Proof. This follows by making minor changes to the proof of Lemma 5.3 of [11].
+We use Lemma 5.3 in (5.8), and move the line of integration to the line Re w = − 12 +
+|Re δ| + ǫ. We encounter poles only when −k =  (so that k1 = 1, and L(s, χk1 ) = ζ(s)):
+in this case, we have simple poles at w = ±δ, and the residues of these poles give rise to a
+second main term (see (5.12) below). Thus we may write R0 (l) = R(l) + Q(l) where
+Z
+∞
+1 X µ(α) X (−1)k
+R(l) =
+L(1 + w + δ, χk1 )L(1 + w − δ, χk1 )
+2l
+α2
+2πi (− 12 +|Re δ|+ǫ)
+α≤Y
+(α,2l)=1
+
+k=−∞
+k6=0
+
+(5.11)
+ kX
+
+
+, w dw,
+× Gδ (1 + w; −k, l, α)f
+2α2 l
+and (with an obvious change of notation, writing k 2 in place of −k)
+∞
+ k2 X
+
+X
+1 X µ(α) X
+k
+2
+(5.12) P2 (l) =
+ζ(1 + 2µδ)
+(−1) Gδ (1 + µδ; k , l, α)f − 2 , µδ .
+2l
+α2 µ=±
+2α l
+α≤Y
+(α,2l)=1
+
+k=1
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+23
+
+5.3 The secondary principal term Q(l).
+Define, for µ = ±, and for any u with Re u > 21
+Hµ,δ (u; l, α) = l
+
+u
+
+∞
+X
+(−1)k
+
+k=1
+
+k 2u
+
+Gδ (1 + µδ; k 2 , l, α).
+
+Note that the above series converges absolutely when Re u > 21 . Using Lemma 5.2, we see
+that
+∞
+
+ k2 X
+XX
+k
+2
+(−1) Gδ (1 + µδ; k , l, α)f − 2 , µδ
+2α l
+µ=±
+k=1
+
+may be recast as
+1
+(5.13)
+2πi
+
+Z
+
+
+s X
+µδ
+
+16α2
+2s
+X
+Γδ (s)
+Ψ̌(µδ)
+G− (s − µδ) 2
+Hµ,δ (s − µδ; l, α)ds,
+2
+π
+2α
+s − τ2
+(c)
+µ=±
+
+where c > max( 21 + |Re δ|, |Re τ |) = 12 + |Re δ|.
+From the definition of Gδ we see that
+Hµ,δ (u; l, α) = −lu (1 − 21−2u )
+= −lu (1 − 21−2u )
+
+∞
+X
+1
+Gδ (1 + µδ; k 2 , l, α)
+k 2u
+k=1
+
+∞
+YX
+Gδ;p (1 + µδ; p2b , l, α)
+p b=0
+
+p2bu
+
+.
+
+Using the expression for Gδ;p in Lemma 5.3 and then employing Lemma 3.3 to evaluate it,
+we see that we may write
+u− 12
+
+Hµ,δ (u; l, α) = −l(1 − 21−2u )l1
+where H1 =
+
+Q
+
+ζ(2u)ζ(2u + 1 + 4µδ)H1,µ,δ (u; l, α)
+
+p H1;p with
+
+
+
+
+
+1
+1
+1
+1 − p 1 − p1+2µδ 1 − p2u+1+4µδ
+
+
+
+
+
+
+
+
+
+
+1
+1
+1
+
+ 1 − p1 1 − p1+2µδ
+− p2u+2+4µδ
+1 + p1 + p1+2µδ
+
+
+
+
+H1;p =
+
+1
+1
+1
+
+1 − p 1 − p1+2µδ 1 + p2u+2µδ
+
+
+
+
+
+
+
+
+
+
+1
+1
+1 + p1+2µδ
+1 − p1 1 − p1+2µδ
+
+if p|2α
+if p ∤ 2αl
+if p|l1
+if p|l, p ∤ l1 .
+
+These expressions show that Hµ,δ (u; l, α) is analytic in the domain Re u > − 12 + |Re δ|.
+Thus we may move the line of integration in (5.13) to the line Re s = κ + log1 X , and since
+
+24
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+we encounter no poles, (5.13) is given by the resulting integral on this line. Using these
+observations in (4.12) we conclude that
+ µδ
+ s
+Z
+X
+2s
+X
+1
+16
+ζ(1 + 2µδ)G− (s − µδ)
+Ψ̌(µδ)
+P2 (l) =
+Γδ (s)
+2πi (κ+ log1 X )
+π
+s2 − τ 2 µ=±
+2
+
+(5.14)
+
+×
+
+1
+2l
+
+X
+
+µ(α)
+
+α≤Y
+(α,2l)=1
+
+α2−2s+2µδ
+
+Hµ,δ (s − µδ; l, α)ds.
+
+We now wish to show that the sum over α in (5.14) may be extended to infinity, at
+the cost of an acceptable error. Let C denote the closed curve oriented counter-clockwise
+consisting of the following four line segments: from |Re δ|+1/(2 log X)−i(|Im δ|+1/ log X)
+to |Re δ| + 1/(2 log X) + i(|Im δ| + 1/ log X), and from there to −|Re δ| − 1/(2 log X) +
+i(|Im δ| + 1/ log X), and from here to −|Re δ| − 1/(2 log X) − i(|Im δ| + 1/ log X) and lastly
+back to |Re δ| + 1/(2 log X) − i(|Im δ| + 1/ log X). Given s with Re s = κ + log1 X , the
+
+X z
+function 2z Ψ̌(z) 2α
+ζ(1 + 2z)G− (s − z)Hµ,δ (s − z; l, α) is analytic for z inside C. So by
+2
+Cauchy’s theorem
+µδ
+
+X
+X
+ζ(1 + 2µδ)G− (s − µδ)Hµ,δ (s − µδ; l, α)
+Ψ̌(µδ)
+2α2
+µ=±
+(5.15)
+
+1
+=
+2πi
+
+Z
+
+
+
+X
+Ψ̌(z)
+2α2
+C
+
+z
+
+2z
+dz.
+ζ(1 + 2z)G− (s − z)Hµ,δ (s − z; l, α) 2
+z − δ2
+
+We now assume that |Im z| ≤ 1, say. For z on C we see that κ + |Re δ| + 3/(2 log X) ≥
+X z
+Re (s−z) ≥ 1/(2 log X). Further | z 22z
+Ψ̌(z)ζ(1+2z) 2α
+| ≪ (log2 X)(Xα2 )|Re δ|+1/ log X ,
+2
+−δ 2
+and by Stirling’s formula we see that |G− (s − z)| ≪ (1 + |Im (s)|)2κ−1/2 ≪ 1. Lastly from
+Re u− 12
+
+our expressions for Hµ,δ (u; l, α) we deduce that |Hµ,δ (u; l, α)| ≪ l1+ǫ l1
+From these estimates we conclude that (5.15) is bounded by
+κ+|Re δ|− 21
+
+l1+ǫ l1
+We deduce that
+1 X
+2l
+
+α>Y
+(α,2l)=1
+
+αǫ (1 + |s|).
+
+(Xα2 )|Re δ|+ǫ (1 + |s|).
+
+
+µδ
+µ(α) X
+X
+Ψ̌(µδ)
+ζ(1 + 2µδ)G− (s − µδ)Hµ,δ (s − µδ; l, α)
+α2−2s µ=±
+2α2
+κ+|Re δ|− 1
+
+2
+X |Re δ|+ǫ (1 + |s|)Y −1+2κ+2|Re δ| . Using this in (5.14) we
+is bounded by ≪ lǫ l1
+conclude that the error incurred in extending the sum over α to infinity is
+Z
+1
+|s|
+ǫ κ+|Re δ|− 2
+|Re δ|+ǫ −1+2κ+2|Re δ|
+≪ l l1
+|Γδ (s)|(1 + |s|) 2
+X
+Y
+|ds|
+|s − τ 2 |
+(κ)
+
+κ+|Re δ|− 21
+
+≪ l ǫ l1
+
+X |Re δ|+ǫ Y −1+2κ+2|Re δ| .
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+κ+|Re δ|− 12
+
+Thus, up to an error O(lǫ l1
+
+25
+
+X |Re δ|+ǫ Y −1+2κ+2|Re δ| ), P2 (l) is given by
+
+ µδ
+ s
+Z
+X
+1
+16
+2s
+(5.16)
+Ψ̌(µδ)
+ζ(1 + 2µδ)
+Γδ (s)
+G− (s − µδ) 2
+Kµ,δ (s; l)ds,
+2
+2πi (κ)
+π
+s − τ2
+µ=±
+X
+
+where
+1
+Kµ,δ (s; l) =
+2l
+
+∞
+X
+
+α=1
+(α,2l)=1
+
+µ(α)
+α2−2s+2µδ
+
+Hµ,δ (s − µδ; l, α).
+
+Using our expression for Hµ,δ a calculation gives
+
+ Y
+
+ϕ(l) Y
+1
+1
+Kµ,δ (s; l) = − 1 +µδ
+1 − 1+2µδ
+1 + 1+2µδ rs (l1 )
+l
+p
+p
+4l 2
+1
+
+1
+
+p|2l
+
+p|l
+p∤l1
+
+ s
+
+4 + 4−s − 2−1−2µδ − 21+2µδ
+×
+ζ(2s − 2µδ)ζ(2s + 1 + 2µδ)
+4s
+
+
+
+Y
+1
+1
+1
+1
+(p2s + p−2s )
+1
+1 − 1+2µδ
+1 + + 1+2µδ + 3+4µδ −
+.
+×
+1−
+p
+p
+p p
+p
+p2+2µδ
+p∤2l
+
+Using this together with the functional equation for ζ(s) and the relations Γ(z)Γ(1 − z) =
+1
+πcosec(πz) and Γ(z)Γ(z + 12 ) = π 2 21−2z Γ(2z) we see that
+ s
+16
+Jµ,δ (s; l) := Γδ (s)G− (s − µδ)
+Kµ,δ (s; l)
+π
+satisfies the functional equation Jµ,δ (s; l) = Jµ,δ (−s; l). In fact, we obtain the useful
+identity
+(5.17)
+
+ µδ
+2rs (l1 )
+16
+√
+Γs (µδ)Z(1 + 2µδ; s)ηs (1 + 2µδ; l);
+ζ(1 + 2µδ)Jµ,δ (s; l) =
+3ζ(2) l1 πl1
+
+it is plain that the left side above is invariant under s → −s.
+Consider now for µ = ± the integral in (5.16): that is,
+Z
+1
+2s
+(5.18)
+Jµ,δ (s; l) 2
+ds.
+2πi (κ)
+s − τ2
+We move the line of integration to the line Re(s) = −κ. We encounter simple poles at
+s = δ, −δ, τ , and −τ . Thus (5.18) equals
+Z
+2s
+1
+2s
+J
+(s;
+l)
++
+ds.
+Res Jµ,δ (s; l) 2
+µ,δ
+s=±δ,±τ
+s − τ2
+2πi (−κ)
+s2 − τ 2
+
+26
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Changing s to −s and using the relation Jµ,δ (s; l) = Jµ;δ (−s; l) we see that the above is
+Z
+2s
+1
+2s
+Jµ,δ (s; l) 2
+−
+ds.
+= Res Jµ,δ (s; l) 2
+2
+s=±δ,±τ
+s −τ
+2πi (κ)
+s − τ2
+Hence (5.18) equals
+
+
+1
+2s
+2s
+Res Jµ,δ (s; l) 2
++ Jµ,δ (τ ; l) + Jµ,δ (−τ ; l) = Res Jµ,δ (s; l) 2
++ Jµ,δ (τ ; l),
+2
+s=µδ
+2 s=±δ
+s −τ
+s − τ2
+using once again that Jµ,δ (s; l) = Jµ,δ (−s; l).
+We conclude that
+
+
+ µδ
+X
+2s
+X
+ζ(1 + 2µδ) Res Jµ,δ (s; l) 2
++ Jµ,δ (τ ; l)
+P2 (l) =
+Ψ̌(µδ)
+s=µδ
+2
+s − τ2
+µ=+,−
+(5.19)
+
++O
+
+ lǫ X |Re δ|+ǫ lκ+|Re δ|− 21 
+1
+1−2κ−2|Re
+δ|
+Y
+
+.
+
+5.4 The contribution of the remainder terms R(l).
+The contribution of the remainder terms R(l) is bounded in much the same manner as the
+analogous quantity in [11] (see Section 5.4 there). For the sake of completeness we give a
+detailed sketch of the main ideas of the proof.
+First we bound |R(l)| for individual l. Using the bounds of Lemmas 5.2 and 5.3 in
+(5.11) we get that |R(l)| is
+Z
+l−|Re δ|+ǫ X
+1
+|Ψ̌(w)|(1 + |w|)−|Re δ|
+≪ 1 −|Re δ|−ǫ
+1+2|Re
+δ|−ǫ
+1
+α
+X2
+(− 2 +|Re δ|+ǫ)
+α≤Y
+p
+∞
+
+
+X
+|k|
+|L(1 + w + δ, χk1 )L(1 + w − δ, χk1 )| 2|Re δ|
+1
+p
+×
+k
+exp
+−
+|dw|.
+1
+2
+10 α l(1 + |w|)
+|k1 | 2 −|Re δ|
+k=−∞
+k6=0
+
+Performing the sum over k2 we see that this is bounded by
+Z
+1
+X
+1
+l 2 +ǫ
+ǫ
+|Ψ̌(w)|(1 + |w|) 2
+α
+1
+−|Re
+δ|−ǫ
+X2
+(− 12 +|Re δ|+ǫ)
+α≤Y
+×
+
+X |L(1 + w + δ, χk )L(1 + w − δ, χk )|
+1
+
+k1
+
+|k1 |
+
+1
+
+p
+
+|k1 |
+1
+p
+|dw|.
+exp −
+10 α l(1 + |w|)
+
+
+We split the k1 into dyadic blocks and use Cauchy’s inequality with Lemma 3.5 to estimate
+these contributions. We deduce that
+Z
+1
+1
+l 2 +ǫ Y 1+ǫ
+l 2 +ǫ Y 1+ǫ
+|R(l)| ≪ 1 −|Re δ|−ǫ
+|Ψ̌(w)|(1 + |w|)|dw| ≪ 1 −|Re δ|−ǫ Ψ(2) Ψǫ(3) .
+1
+2
+X
+X2
+(− 2 +|Re δ|+ǫ)
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+27
+
+R(l)
+We now sketch how a better bound for R(l) may be obtained on average. Let βl = |R(l)|
+P2L−1
+P2L−1
+if R(l) 6= 0, and βl = 1 otherwise. Then, from (5.11), l=L |R(l)| = l=L βl R(l) is
+∞
+X 1 Z
+X
+≪
+|L(1 + w + δ, χk1 )L(1 + w − δ, χk1 )|
+α2 (− 21 +|Re δ|+ǫ)
+α≤Y
+(α,2)=1
+
+k=−∞
+k6=0
+
+×
+
+(5.20)
+
+2L−1
+X
+
+l=L
+(l,α)=1
+
+
+
+kX
+βl
+Gδ (1 + w; −k, l, α)f
+, w |dw|.
+l
+2α2 l
+
+We now split the sum over k into dyadic blocks K ≤ |k| ≤ 2K − 1. By Cauchy’s inequality
+the sum over k in this range is bounded by the product of two terms. The first of these
+terms is
+ 2K−1
+1
+X
+1
+2 2
+k2 |L(1 + w + δ, χk1 )L(1 + w − δ, χk1 )|
+≪ (K(1 + |w|)) 2 +ǫ ,
+|k|=K
+
+upon using Cauchy’s inequality again with Lemma 3.5. The second term in question is
+
+ 2  12
+ 2K−1
+X βl
+X 1 2L−1
+kX
+Gδ (1 + w; −k, l, α)f
+,w
+.
+(5.21)
+k2
+l
+2α2 l
+l=L
+(l,2α)=1
+
+|k|=K
+
+Lemma 5.4. Let α ≤ Y , K and L be positive integers, and suppose w is a complex number
+with Re w = − 21 + |Re δ| + ǫ. Then for any choice of complex numbers γl with |γl | ≤ 1 we
+have
+
+2
+2K−1
+2L−1
+X 1
+X γl
+kX
+G(1 + w; −k, l, α)f
+,w
+k2
+l
+2α2 l
+|k|=K
+
+l=L
+(l,2α)=1
+
+is bounded by
+!
+√
+2−4|Re δ|+ǫ 2−2|Re δ|+ǫ 2|Re δ|+ǫ
+K
+α
+L
+K
+1
+p
+,
+(1 + |w|)−2|Re δ|+ǫ |Ψ̌(w)|2
+exp −
+20 α L(1 + |w|)
+X 1−2|Re δ|−ǫ
+
+and also by
+
+ǫ
+
+((1 + |w|)αKLX) |Ψ̌(w)|
+
+2
+
+ α2 L(1 + |w|) 2|Re τ |−2|Re δ|
+K
+
+α2 L
+KX 1−2|Re δ|
+
+(K + L).
+
+We bound (5.21) using the first bound of the Lemma for K ≥ α2 L(1 + |w|) log2 X,
+and the second bound for smaller K. Inserting this bound in (5.20) gives (with a little
+calculation)
+Z
+2L−1
+X
+X
+L1+ǫ Y 1+ǫ
+L1+ǫ
+ǫ
+α
+|Ψ̌(w)|(1 + |w|)1+ǫ|dw| ≪ 1 −|Re δ|−ǫ Ψ(2) Ψǫ(3) ,
+|R(l)| ≪ 1 −|Re δ|−ǫ
+X2
+X2
+(− 21 +ǫ)
+α≤Y
+l=L
+
+28
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+as desired.
+Proof of Lemma 5.4. We follow closely the proof of Lemma 5.4 in [11]. Using the bound
+for Gδ in Lemma 5.3, and the bound for |f (ξ, w)| in Lemma 5.2 we easily obtain the first
+bound claimed.
+R
+
+8X s
+1
+g(s, w; sgn(ξ)) |ξ|π
+ds. Taking c = |Re τ | + ǫ, we
+Write the integral in (5.7) as 2πi
+(c)
+see that (for K ≤ |k| ≤ 2K − 1)
+
+
+2L−1
+X γl
+kX
+α1+2|Re τ |−2|Re δ|+ǫ
+Gδ (1 + w; −k, l, α)f
+,
+w
+≪
+|
+Ψ̌(w)|
+1
+1
+l
+2α2 l
+K 2 +|Re τ |−|Re δ|−ǫ X 2 −|Re δ|−ǫ
+l=L
+(l,2α)=1
+
+×
+
+Z
+
+g(s, w; sgn(k))
+
+(c)
+
+2L−1
+X
+
+l=L
+(l,2α)=1
+
+γl
+Gδ (1 + w; −k, l, α)ds .
+1+w−s
+l
+
+1
+
+Since |g(s, w; sgn(k))| ≪ (1 + |w|)c− 2 −Re w+ǫ exp(− π2 |Im(s)|) by Stirling’s formula, we get
+by Cauchy’s inequality that the above is
+≪ (1 + |w|)|Re τ |−|Re δ|+ǫ |Ψ̌(w)|
+
+α1+2|Re τ |−2|Re δ|+ǫ
+1
+
+1
+
+K 2 −|Re δ|+|Re τ |−ǫ X 2 −|Re δ|−ǫ
+Z
+ 21
+2
+X
+ 2L−1
+γl
+π
+×
+exp − 2 |Im(s)|
+Gδ (1 + w; −k, l, α) |ds| .
+l1+w−s
+(c)
+l=L
+(l,2α)=1
+
+The second bound of the Lemma follows by combining this with Lemma 5.5 below.
+Lemma 5.5. Let |δl | ≪ lǫ be any sequence of complex numbers, with δl = 0 if (l, 2α) 6= 1.
+Let w be any complex number with Re(w) = − 12 + |Re δ| + ǫ. Then
+2L−1
+2
+1 X δl
+√ Gδ (1 + w; −k, l, α) ≪ (KLα)ǫ (K + L)L.
+k2
+l
+l=L
+|k|=K
+2K−1
+X
+
+Q
+Q
+Proof. For any integer k = ± i, ai ≥1 pai i we define a(k) = i pai i +1 , and put b(k) =
+Q
+Q
+ai −1
+. Note that Gδ (1 + w; −k, l, α) = 0 unless l can be written as dm
+i, ai =1 pi
+i, ai ≥2 pi
+where d|a(k) and (m, k) = 1 with m square-free. From the definition of G in Lemma 5.3,
+and using Lemma 3.3, we get
+ −1
+  Y
+√
+rδ (p) −k
+−k
+1 + 1+w
+Gδ (1 + w; −k, d, α).
+Gδ (1 + w; k, l, α) = m
+m
+p
+p
+p|m
+
+Using Lemma 5.3 to bound |Gδ (1 + w; −k, d, α)| we see that our desired sum is
+≪ (KLα)
+
+ǫ
+
+2K−1
+X
+
+|k|=K
+
+1
+k2
+
+2L/d
+
+X
+
+d|a(k)
+
+d
+
+X
+
+m=L/d
+
+  Y
+ −1 2
+−k
+rδ (p) −k
+δdm µ(m)
+1 + 1+w
+.
+m
+p
+p
+2
+
+p|m
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+29
+
+We interchange the sums over d and k. Note that d|a(k) implies that that b(d)|k, so that
+k = b(d)f for some integer f with K/b(d) ≤ |f | ≤ 2K/b(d). Write −4f = f1 f22 where f1
+is a fundamental discriminant, and f2 is positive. Notice that k2 ≥ f2 . Thus our desired
+sum is bounded by
+2K/b(d)
+
+(KLα)
+
+ǫ
+
+X
+
+d≤2L
+
+X
+
+d
+
+f =K/b(d)
+
+1
+f2
+
+2L/d
+
+X
+
+m=L/d
+
+
+
+−1 2
+
+
+−f b(d) Y
+rδ (p) −f b(d)
+δdm µ(m)
+1 + 1+w
+,
+m
+p
+p
+2
+
+p|m
+
+and by Lemma 3.4 this is
+
+X L K
+X 1
+L
+ǫ
+≪ (KLα)
+d
+≪ (KLα)ǫ (KL + L2 )
++
+≪ (KLα)ǫ (KL + L2 ).
+d b(d)
+d
+b(d)
+d≤L
+
+d≤L
+
+5.5 Completion of the Proof.
+From our work above the remainder terms are under control; and we need only simplify
+the main term P(l) + P2 (l) arising from (5.5) and (5.19). Using (5.17) it is easy to see that
+the contribution to (5.19) from the poles at µδ cancel precisely the contribution to (5.5)
+from the poles at µδ. Thus our main term includes only the contribution from the poles
+at ±τ in both these expressions. Employing (5.17) we deduce that the main term is
+ µτ
+X
+8X
+2
+√
+Ψ̌(µτ )Z(1 + 2µτ ; δ)ηδ (1 + 2µτ ; l)
+rδ (l1 )Γδ (µτ )
+l1 π
+3ζ(2) l1 µ=±
+ µδ
+
+8X
++ rτ (l1 )Γτ (µδ)
+Ψ̌(µδ)Z(1 + 2µδ; τ )ητ (1 + 2µδ; l) .
+l1 π
+This proves Proposition 2.3.
+6. Mollification near s = 21 : Proof of Proposition 2.4
+From Lemma 3.2, and the definition of ξ(s, χ−8d ) we see that
+W(δ1 , Φ) =
+
+(8X/π)−τ
+S(Aδ,τ (d)|M ( 21 + δ1 , d)|2 ; Φ−τ )
+Γδ (τ )
+
+where Φ−τ (t) = t−τ Φ(t). For a parameter Y to be fixed later we decompose the above as
+o
+(8X/π)−τ n
+SM (Aδ,τ (d)|M ( 21 + δ1 , d)|2 ; Φ−τ ) + O(SR (Aδ,τ (d)|M ( 21 + δ1 , d)|2 ; Φ−τ )) .
+Γδ (τ )
+Applying Proposition 2.2 we conclude that
+(6.1)
+
+W(δ1 , Φ) =
+
+ 1
+
+(8X/π)−τ
+SM (Aδ,τ (d)|M ( 21 + δ1 , d)|2 ; Φ−τ ) + O X ǫ
++ X −τ .
+Γδ (τ )
+Y
+
+30
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Now
+SM (Aδ,τ (d)|M ( 21 + δ1 , d)|2 ; Φ−τ ) =
+
+X X
+l
+
+rs=l
+
+λ(r)λ(s) 
+
+1
+
+1
+
+r 2 +δ1 s 2 +δ2
+
+
+
+
+
+−8d
+SM Aδ,τ (d)
+; Φ−τ ,
+l
+
+and we use Proposition 2.3 to evaluate these terms. First we note that the various remainder terms in Proposition 2.3 contribute (using |λ(n)| ≪ nǫ , rδ (n) ≪ nǫ , d(n) ≪ nǫ , and
+τ ≥ −A/ log X)
+≪
+
+l 2 +τ
+
+X
+Y
+
++
+
+l≤M 2
+
+1
+
+τ +ǫ
+
+≪
+
+Xǫ
+
+lǫ  X τ +ǫ
+
+X
+
+M
+
+τ−1
+
+
+X ǫ l1 2
++
++ |R(l)|
+1
+1 +
++τ
+Y 1−2τ
+(Xl1 ) 4
+Y l2
+1
+
+1
+2 −2τ
+1
+
+X4
+
+Xǫ
+
++
+
+Xǫ
+Y
+
++
+1−2τ
+
+X ǫ M 1−2τ Y
+√
+Φ(2) Φǫ(3) .
+X
+
+1
+
+We choose Y = X τ +ǫ , and recall that M = X 2 −ǫ . Thus from the above considerations we
+get that
+(6.2a)
+
+W(δ1 , Φ) =
+
+(8X/π)−τ X  X λ(r)λ(s) 
+M(l) + O(X −τ −ǫ Φ(2) Φǫ(3) ),
+1
++δ1 12 +δ2
+Γδ (τ )
+2
+r
+s
+l
+
+rs=l
+
+where M(l) = M1 (l) + M2 (l) with
+ µτ
+X
+8X
+2
+√
+Φ̌(µτ − τ )Z(1 + 2µτ ; δ)ηδ (1 + 2µτ ; l),
+rδ (l1 )Γδ (µτ )
+(6.2b) M1 (l) =
+l1 π
+3ζ(2) l1 µ=±
+and
+ µδ
+X
+2
+8X
+√
+(6.2c) M2 (l) =
+rτ (l1 )Γτ (µδ)
+Φ̌(µδ − τ )Z(1 + 2µδ; τ )ητ (1 + 2µδ; l).
+l1 π
+3ζ(2) l1 µ=±
+1
+Recall that we made the simplifying assumptions that 14 ≥ Re δ1 ≥ − ǫ log
+X and that
+ǫ
+2
+2
+2
+2
+2
+|δ1 | ≥ log X . Thus τ − δ = |δ1 | ≥ ǫ /(log X) . These assumptions enable us to evaluate
+the M1 (l) and M2 (l) contributions to (6.2a) separately. Let C denote a closed contour
+(oriented counter-clockwise) which contains the points ±τ and such that for w ∈ C we
+have |Re w| ≤ |τ | + C/ log X, and |Im w| ≤ C/ log X for some absolute constant C, and
+such that |w2 − τ 2 | ≥ ǫ2 /(3 log2 X), and |w2 − δ 2 | ≥ ǫ2 /(3 log2 X), and finally such that
+the perimeter length of C is ≪ |δ1 |. Then the contribution of M1 (l) to (6.2a) is
+
+1
+2πi
+(6.3)
+
+ w−τ
+2Φ̌(w − τ ) 8X
+2w
+Z(1 + 2w; δ)Γδ (w) 2
+π
+w − τ2
+C 3ζ(2)Γδ (τ )
+
+X
+
+rδ (l1 ) X λ(r)λ(s) 
+ηδ (1 + 2wτ ; l) dw.
+×
+1
+1
+1
+2 +w
+r 2 +δ1 s 2 +δ2
+rs=l
+l l1
+
+Z
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+31
+
+We focus first on simplifying the term in parenthesis above. Since λ is supported on
+square-free integers, we may write r = αa, s = αb where α, a, and b are square-free with
+(a, b) = 1. Thus l = α2 ab, l1 = ab, and l2 = α. With this notation the sum over l in (6.3)
+becomes
+X X rδ (ab)
+λ(αa)λ(αb)
+ηδ (1 + 2w; α2 ab)
+1
+1
+1
++w
++δ
++δ
+1+δ
++δ
+1
+2
+1
+2
+b2
+(ab) 2
+α
+a2
+α
+a,b
+(a,b)=1
+
+(6.4)
+
+=
+
+X
+α
+
+1
+α1+2τ
+
+X
+
+a,b
+(a,b)=1
+
+rδ (a)rδ (b)
+λ(αa)λ(αb)ηδ (1 + 2w; α2 ab).
+1+δ
+a 1 +w b1+δ2 +w
+
+Define, for odd primes p,
+
+1
+1
+p−2δ + p2δ
+1 
+hw (p) = 1 + + 1+2w −
++ 3+4w
+p p
+p2+2w
+p
+
+and extend this multiplicatively to a function on odd, square-free integers. From the
+definition of η we see that
+1 
+ηδ (1 + 2w; 1) Y 
+1 + 1+2w .
+ηδ (1 + 2w; α2 ab) =
+hw (α)hw (a)hw (b)
+p
+p|α
+
+Hence our expression (6.4) may be recast as
+X
+Y
+1
+1  X
+rδ (a)λ(αa)
+rδ (b)λ(αb)
+ηδ (1 + 2w; 1)
+1
++
+.
+1+2τ
+1+2w
+1+δ
++w
+1+δ
+1
+α
+hw (α)
+p
+a
+hw (a) b 2 +w hw (b)
+α
+a,b
+(a,b)=1
+
+p|α
+
+Using
+
+P
+
+β|(a,b) µ(β) = 1 if (a, b) = 1 and 0 otherwise, the above becomes
+
+ηδ (1 + 2w; 1)
+
+X
+α
+
+1+2w X
+)
+rδ (β)2 µ(β)
+p|α (1 + 1/p
+α1+2τ hw (α)
+β 2+2τ +2w hw (β)2
+β
+
+Q
+
+×
+
+(6.5)
+
+X rδ (a)λ(aαβ) rδ (b)λ(bαβ)
+.
+a1+δ1 +w hw (a) b1+δ2 +w hw (b)
+a,b
+
+Define for odd primes p
+Hw (p) = 1 +
+
+rδ (p)2
+−
+,
+p1+2w
+p1+2w hw (p)
+1
+
+and extend this multiplicatively to all odd, square-free integers. Then grouping terms
+according to γ = αβ, we see that (6.6) equals
+X Hw (γ)  X rδ (a)λ(aγ)  X rδ (b)λ(bγ) 
+.
+(6.6)
+ηδ (1 + 2w; 1)
+1+2τ h (γ)
+1+δ1 +w h (a)
+1+δ2 +w h (b)
+γ
+a
+b
+w
+w
+w
+a
+γ
+b
+
+32
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Lemma 6.1. Let R be a polynomial with R(0) = R′ (0) = 0. Let g be a multiplicative
+function with g(p) = 1 + O(p−ν ) for some fixed ν > 0. Let y be a large real number, and
+suppose that u and v are bounded complex numbers such that Re(u + v) and Re(u − v) are
+≥ −D/ log y where D is an absolute positive constant. When Re s > 1 + D/ log y we have
+∞
+X
+rv (n)µ(nc)
+
+n=1
+n odd
+
+where G(s, c; u, v) =
+
+Q
+
+Gp (s, c; u, v) :=
+
+ns+u
+
+g(n) =
+
+µ(c)G(s, c; u, v)
+,
+ζ(s + u + v)ζ(s + u − v)
+
+p Gp (s, c; u, v) with
+
+(
+
+1
+1
+(1 − ps+u+v
+)−1 (1 − ps+u−v
+)−1
+
+if p|2c
+
+1
+1
+v (p)
+(1 − ps+u+v
+)−1 (1 − ps+u−v
+)−1 (1 − g(p)r
+ps+u )
+
+otherwise,
+
+so that G(s, c; u, v) is holomorphic in Re s > max( 12 , 1 − ν) + D/ log y. For any odd integer
+c ≤ y we have
+
+
+ E(c) y −Re u+|Re v|
+
+X rv (n)µ(nc)
+p
+log(y/(cn))
+=
+O
+g(n)R
+exp(−A
+log(y/c))
+0
+n1+u
+log y
+log2 y c
+
+n≤y/c
+n odd
+
+∞
+
+
+
+X
+µ(c)G(s + 1, c; u, v)
+1
+(k) log(y/c)
++ Res
+R
+s=0 sζ(1 + s + u + v)ζ(1 + s + u − v)
+(s log y)k
+log y
+k=0
+
+Q
+√
+for some absolute constant A0 > 0, and where E(c) = p|c (1 + 1/ p).
+P
+Proof. Our assertion about the generating function rv (n)µ(nc)g(n)/ns+u follows readily
+upon comparing Euler products. In proving the other statements we may plainly suppose
+(j)
+(j)
+P∞
+P∞
+that c ≤ y/2. Using the Taylor expansion R(x) = j=0 R j!(0) xj = j=2 R j!(0) xj , we
+see that our sum is
+ 
+∞
+X
+y
+R(j) (0) 1 X rβ (n)µ(nc)
+j
+g(n)
+log
+(log y)j j!
+n1+α
+cn
+j=2
+n≤y/c
+n odd
+
+Z
+∞
+ y s ds
+X
+µ(c)G(s + 1, c; u, v)
+R(j) (0) 1
+=
+.
+D+1
+(log y)j 2πi ( log(y/c)
+sj+1
+) ζ(1 + s + u + v)ζ(1 + s + u − v) c
+j=2
+
+The integral above is evaluated by a standard procedure: First one truncates
+pthe above
+D+1
+D+1
+integral to the line segment log(y/c)
+− iT to log(y/c)
++ iT where T := exp( log(y/c)).
+The error involved in doing so is ≪ E(c)(log y/c)2 /T 2 . Next we shift the integral on
+this line segment to the left onto the line segment −Re u + |Re v| − A1 / log T where A1
+is a positive constant such that ζ(1 + s + u + v)ζ(1 + s + u − v) has no zeros in the
+region traversed. We encounter a (multiple) pole at s = 0 whose residue we shall calculate
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+33
+
+presently. The integrals on the three other sides are bounded using standard estimates
+for 1/ζ(s) in the zero-free region, and contribute an amount ≪ E(c)(log(T y/c))2 (T −2 +
+(y/c)−Re u+|Re v|−A1 / log T ). We conclude that for an appropriate positive constant A0 the
+above is
+∞
+X
+R(j) (0)(y/c)s
+µ(c)G(s + 1, c; u, v)
+= Res
+s=0 sζ(1 + s + u + v)ζ(1 + s + u − v)
+sj logj y
+j=2
+
+ E(c) y −Re u+|Re v|
+p
+.
++O
+exp(−A
+log(y/c))
+0
+log2 y c
+(j)
+s
+P∞
+For the purpose of the residue calculation we may replace j=2 R sj(0)(y/c)
+with
+j
+log y
+∞
+∞
+ X
+s−k X R(k+l) (0)  log(y/c) l
+,
+(log(y/c))l =
+k
+l!
+l!
+log y
+log
+y
+l=0
+k=0
+l≤j
+
+∞
+X
+R(j) (0)  X sl
+j=2
+
+sj logj y
+
+upon grouping terms according to k = j − l, and bearing in mind that R(0) = R′ (0) = 0.
+This clearly equals
+∞
+X
+s−k (k)  log(y/c) 
+R
+,
+log y
+logk y
+k=0
+
+completing our proof of the Lemma.
+
+We now return to the evaluation of the expression (6.6). We first deal with the contribution arising from the terms γ ≤ M 1−b . We shall apply Lemma 6.1 twice. In both cases
+we take u = δ1 + w, v = δ, and g(n) = 1/hw (n), and we shall denote the corresponding
+G(s, γ; u, v) by Gw (s, γ; u, v). In the first application we take y = M , and R(x) = P (x);
+and in the second application we take y = M 1−b and R(x) = (1 − P (b + x(1 − b))). Adding
+these two applications we deduce that
+ log(M/aγ) 
+X
+µ(γ)Gw (1, γ; δ1 + w, δ)
+rδ (a)µ(aγ)
+=
+Q
+a1+δ1 +w hw (a)
+log M
+ζ(1 + δ1 + w + δ)ζ(1 + δ1 + w − δ)
+a≤M/γ
+a odd
+
++O
+
+ E(γ) M 1−b −τ −Re w
+log2 M
+
+γ
+
+q
+
+exp(−A0 log M 1−b /γ) .
+
+Observe that, because of our choice of the contour C, the main term above is ≪ |δ1 |2 . An
+analogous expression holds for the sum over b in (6.6), with the only change being that
+δ1 above gets replaced by δ2 . We deduce that the contribution of the γ ≤ M 1−b terms to
+(6.6) equals
+X
+Hw (γ)  µ2 (γ)Gw (1, γ; δ1 + w, δ)Gw (1, γ; δ2 + w, δ)
+Q
+ηδ (1 + 2w; 1)
+1+2τ h (γ)
+γ
+w
+µ=± ζ(1 + δ1 + w + µδ)ζ(1 + δ2 + w + µδ)
+1−b
+γ≤M
+γ odd
+
+
+−τ −Re w
+q
+
+
+|δ1 |2 M 1−b
+1−b
+exp(−A0 log(M
+/γ)) .
++ O E(γ) 2
+γ
+log M
+
+34
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+This is readily seen to be
+ηδ (1 + 2w; 1)
+
+Hw (γ)
+µ2 (γ)Gw (1, γ; δ1 + w, δ)Gw (1, γ; δ2 + w, δ)
+Q
+γ 1+2τ hw (γ) µ=± ζ(1 + δ1 + w + µδ)ζ(1 + δ2 + w + µδ)
+1−b
+
+X
+
+γ≤M
+γ odd
+
++O
+
+ |δ |2
+1
+2
+
+log M
+
+M
+
+(1−b)(−τ −Re w)
+
+
+.
+
+We use this expression in (6.3) to evaluate the contribution of the γ ≤ M 1−b terms to the
+1
+integral there. From our choice of C, and since M = X 2 −ǫ , we see that the error term
+arising from the above is
+
+
+(6.7)
+O log2 X|δ1 |3 M −2τ (1−b) .
+
+The main term arising there is
+ w−τ
+Z
+2Φ̌(w − τ ) 8X
+2w
+1
+Z(1 + 2w; δ)Γδ (w) 2
+2πi C 3ζ(2)Γδ (τ ) π
+w − τ2
+X
+Hw (γ)
+µ2 (γ)Gw (1, γ; δ1 + w, δ)Gw (1, γ; δ2 + w, δ)
+Q
+ηδ (1 + 2w; 1)
+dw.
+γ 1+2τ hw (γ) µ=± ζ(1 + δ1 + w + µδ)ζ(1 + δ2 + w + µδ)
+1−b
+γ≤M
+γ odd
+
+Q
+A priori the integrand has two poles (at ±τ ) inside C, but since µ=± ζ(1 + δ1 + w +
+µδ)−1 ζ(1 + δ2 + w + µτ )−1 vanishes (indeed to order 2) at w = −τ , in fact we have only
+the one simple pole at w = τ . Thus by Cauchy’s theorem the main term above equals
+(6.8)
+
+2Φ̌(0) ηδ (1 + 2τ ; 1)
+3ζ(2) ζ(1 + 2τ )
+
+µ2 (γ)Hτ (γ)
+Gτ (1, γ; δ1 + τ, δ)Gτ (1, γ; δ2 + τ, δ).
+γ 1+2τ hτ (γ)
+1−b
+
+X
+
+γ≤M
+γ odd
+
+Lemma 6.2. With w on the contour C, and other notations as above we have for x ≥ 2
+ηδ (1 + 2w; 1)
+
+X µ2 (γ)Hw (γ)
+
+γ≤x
+γ odd
+
+γ 1+2τ hw (γ)
+
+Gw (1, γ; δ1 + w, δ)Gw (1, γ; δ2 + w, δ)
+
+= ζ(1 + 2τ )(1 − x−2τ )(1 + O(|w − τ |)) + O(x−2τ ).
+Further if 1 ≤ y ≤ x then for any smooth function R on [0, 1]
+ log γ 
+X µ2 (γ)Hw (γ)
+ηδ (1 + 2w; 1)
+Gw (1, γ; δ1 + w, δ)Gw (1, γ; δ2 + w, δ)R
+γ 1+2τ hw (γ)
+log x
+y≤γ≤x
+γ odd
+
+Z x 
+log t  dt
+.
+= (1 + O(|δ1 |))
+R
+log x t1+2τ
+y
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+35
+
+Proof. Upon recalling the definition of Gw (s, γ; u, v) from Lemma 6.1 we see that our
+desired expression equals
+ηδ (1 + 2w; 1)Gw (1, 1; δ1 + w, δ)Gw (1, 1; δ2 + w, δ)
+
+X fw (γ)
+
+γ≤x
+γ odd
+
+γ 1+2τ
+
+,
+
+say, where fw (γ) is the multiplicative function given by
+−1 
+−1
+rδ (p)
+rδ (p)
+Hw (γ) Y 
+1 − 1+δ +w
+1 − 1+δ +w
+.
+fw (γ) = µ (γ)
+hw (γ)
+p 1 hw (p)
+p 2 hw (p)
+2
+
+p|γ
+
+√
+Plainly fw (p) = 1+O(1/ p), say, and so the calculation
+of the sum over γ becomes a stanP
+dard exercise. Writing the generating function γ odd fw (γ)/γ s = ζ(s)Fw (s), (note that
+F is holomorphic in Re s > 12 ), using Perron’s formula, and shifting contours appropriately
+we deduce easily that
+X fw (γ)
+
+γ≤x
+γ odd
+
+γ
+
+= ζ(1 + 2τ )Fw (1 + 2τ ) − Fw (1)
+1+2τ
+
+x−2τ
+1
++ O(x−( 3 +2τ ) )
+2τ
+
+= ζ(1 + 2τ )(1 − x−2τ )Fw (1 + 2τ ) + O(x−2τ ),
+upon using ζ(1 + 2τ ) = 1/(2τ ) + O(1), and that Fw (1 + 2τ ) = Fw (1) + O(τ ). Denote
+ηδ (1 + 2w; 1)Gw (1, 1; δ1 + w, δ)Gw (1, 1; δ2 + w, δ)Fw (1 + 2τ ) by H(w) say. Then with a
+little calculation we may check that H(w) = H(τ ) + O(|w − τ |), and that H(τ ) = 1.
+This proves the first assertion of the Lemma. Our second claim follows upon using partial
+summation, and arguing along similar lines.
+Using Lemma 6.2 in (6.8) above, and combining with the error term estimate (6.7), we
+conclude that the part of the M1 (l) contribution arising from the γ ≤ M 1−b terms equals
+(6.9)
+
+2Φ̌(0)
+(1 − M −2τ (1−b) ) + O(log2 X|δ1 |3 M −2τ (1−b) ).
+3ζ(2)
+
+We now turn to the corresponding contribution from the terms γ > M 1−b in (6.6).
+Applying Lemma 6.1 with u, v, g(n), and Gw (s, γ; u, v) as above, and with R(x) = P (x),
+) = P ( log(M/aγ)
+)
+and y = M . We get that for any odd M 1−b ≤ γ < M , (since Q( log(M/aγ)
+log M
+log M
+for γ in this range)
+X
+
+a≤M/γ
+a odd
+
+
+ E(γ) M −τ −Re w
+ log(M/aγ) 
+p
+rδ (a)µ(aγ)
+log(M/γ))
+=
+O
+exp(−A
+Q
+0
+a1+δ1 +w hw (a)
+log M
+log2 M γ
+∞
+
+
+
+X
+µ(γ)Gw (1 + s, γ; δ1 + w, δ)
+1
+(k) log(M/γ)
++ Res
+.
+Q
+s=0 sζ(1 + s + δ1 + w + δ)ζ(1 + s + δ1 + w − δ)
+(s log M )k
+log M
+k=0
+
+36
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+Write the Taylor expansion of Gw (1 + s, γ; u, v)/(ζ(1 + s + δ1 + w + δ)ζ(1 + s + δ1 + w − δ))
+as a0 + a1 s + a2 s2 + . . . . Then we see that a0 = (δ1 + w + δ)(δ1 + w − δ)Gw (1, γ; δ1 + w, δ) +
+O((|δ1 | + |w|)3 ), a1 = 2(δ1 + w)Gw (1, γ; δ1 + w, δ) + O((|δ1 | + |w|)2 ), a3 = Gw (1, γ; δ1 +
+w, δ) + O(|δ1 | + |w|), and that an ≪n 1 for n ≥ 4. From this it follows that the residue
+term above equals
+
+ log(M/γ) 
+δ1 + w ′  log(M/γ) 
++2
+Q
+µ(γ)Gw (1, γ; δ1 + w, δ) (δ1 + w + δ)(δ1 + w − δ)Q
+log M
+log M
+log M
+
+
+1
+′′ log(M/γ)
++
++ O(|δ1 |3 ).
+Q
+2
+log M
+log M
+An analogous espression holds for the sum over b in (6.6), replacing δ1 above with δ2 .
+We use these expressions to evaluate the contribution to (6.6) from the terms γ > M 1−b .
+Firstly, we see that the remainder terms that accrue are (bearing in mind that w is on the
+contour C)
+ −τ −Re w
+
+X
+p
+1  E(γ)
+2 M
+5
+exp(−A
+|δ
+|
+log(M/γ)) + |δ1 |
+≪
+0
+1
+γ 1+2τ log2 M
+γ
+1−b
+M
+
+≪
+
+≤γ≤M
+
+|δ1 |2
+M −τ −Re w + M −2τ (1−b) |δ1 |5 log M.
+2
+log M
+
+Secondly, we get that the main term here is (denoting for brevity Q(j) (log(M/γ)/ log M )
+(j)
+by Qγ )
+X
+µ2 (γ)Hw (γ)
+Gw (1, γ; δ1 + w, δ)Gw (1, γ; δ2 + w, γ)
+ηδ (1 + 2w; 1)
+γ 1+2τ hw (γ)
+1−b
+M
+
+<γ≤M
+γ odd
+
+
+
+δ1 + w ′
+1
+′′
+× (δ1 + w + δ)(δ1 + w − δ)Qγ + 2
+Qγ +
+Q
+γ
+log M
+log2 M
+
+
+δ2 + w ′
+1
+′′
+× (δ2 + w + δ)(δ2 + w − δ)Qγ + 2
+Qγ +
+Q
+γ .
+log M
+log2 M
+
+Applying Lemma 6.2 (and a suitable change of variables) we conclude that this equals
+Z b
+
+δ1 + w ′
+Q′′ (x) 
+log M
+M −2τ (1−x) (δ1 + w + δ)(δ1 + w − δ)Q(x) + 2
+Q (x) +
+log M
+log2 M
+0
+
+δ2 + w ′
+Q′′ (x) 
+dx
+× (δ2 + w + δ)(δ2 + w − δ)Q(x) + 2
+Q (x) +
+log M
+log2 M
+(6.10)
+
++ O(M −2τ (1−b) |δ1 |5 log M ).
+
+We use these expressions in (6.3) to evaluate the contribution of the γ > M 1−b terms
+to the integral there. From our choices of M and C we get that the error term arising from
+the above is
+
+
+2
+5
+3
+−2τ
+6
+−2τ (1−b)
+(6.11)
+O |δ1 | M
+log X + |δ1 | M
+log X .
+
+REAL ZEROS OF QUADRATIC DIRICHLET L-FUNCTIONS
+
+37
+
+Call the main term in (6.10) N (w). Inserting this into the integral in (6.3), we seek to
+evaluate
+ w−τ
+Z
+2Φ̌(w − τ ) 8X
+2w
+1
+Z(1 + 2w; δ)Γδ (w)N (w) 2
+dw.
+2πi C 3ζ(2)Γδ (τ ) π
+w − τ2
+
+Now Φ̌(w−τ )Γδ (w)/Γδ (τ ) = Φ̌(0)+O(|δ1 |), and 2wZ(1+2w; δ) = 4(w21−δ2 ) +O(|δ1 | log2 X),
+
+and N (w) ≪ M −2τ (1−b) |δ1 |4 log M , whence we deduce that the above integral is
+Z  w−τ
+8X
+1
+2Φ̌(0) 1
+1
+N (w)
+dw + O(|δ1 |6 M −2τ (1−b) log5 X)
+2
+2
+2
+3ζ(2) 2πi C π
+4(w − δ ) w − τ 2
+ −2τ
+
+8X
+2Φ̌(0) 1 
+(6.12)
+N (τ ) −
+N (−τ ) + O(|δ1 |6 M −2τ (1−b) log5 X).
+=
+3ζ(2) 8δ1 δ2 τ
+π
+Using integration by parts together with Q(0) = Q′ (0) = 0, and Q(b) = 1, Q′ (b) = 0 we
+may simplify the expression for N (τ ) to
+Z
+Q′′ (x) 2
+4δ1 δ2 b −2τ (1−x) ′
+−2τ (1−b)
+M
+Q (x) +
+dx.
+8δ1 δ2 τ M
++
+log M 0
+2δ1 log M
+Similarly we find that
+Z
+4δ1 δ2 b −2τ (1−x) ′
+Q′′ (x) 2
+N (−τ ) =
+M
+Q (x) +
+dx.
+log M 0
+2δ1 log M
+Using these identities we conclude that our expression in (6.12) equals
+Z
+Q′′ (x) 2 
+2Φ̌(0)  −2τ (1−b) 1 − (8X/π)−2τ b −2τ (1−x) ′
+M
++
+M
+Q (x) +
+dx
+3ζ(2)
+2τ log M
+2δ1 log M
+0
++ O(M −2τ (1−b) |δ1 |6 log5 X).
+
+Combining this with (6.11) we conclude that the part of the M1 (l) contribution arising
+from the M 1−b ≤ γ ≤ M terms equals
+Z
+2Φ̌(0)  −2τ (1−b) 1 − (8X/π)−2τ b −2τ (1−x) ′
+Q′′ (x) 2 
+M
++
+M
+Q (x) +
+dx
+3ζ(2)
+2τ log M
+2δ1 log M
+0
++ O(|δ1 |3 M −2τ log2 X + M −2τ (1−b) |δ1 |6 log5 X)
+
+Taking this together with (6.9) we have determined the M1 (l) contribution to be
+Z
+2Φ̌(0) 
+Q′′ (x) 2 
+1 − (8X/π)−2τ b −2τ (1−x) ′
+dx
+M
+Q (x) +
+1+
+3ζ(2)
+2τ log M
+2δ1 log M
+0
+
+(6.13)
+
++ O(M −2τ (1−b) |δ1 |6 log5 X).
+
+The calculation of the M2 (l) contribution to (6.2a) is entirely similar. We obtain that
+this contribution equals
+ −τ
+Z
+(8X/π)δ − (8X/π)−δ b −2τ (1−x) ′
+Q′′ (x) 2
+2Φ̌(0) 8X
+M
+Q (x) +
+dx
+−
+3ζ(2) π
+2δ log M
+2δ1 log M
+0
+O(X −τ M −2τ (1−b) |δ1 |6 log5 X).
+
+Inputing this and (6.13) into (6.2a), we obtain Proposition 2.4.
+
+38
+
+J. B. CONREY AND K. SOUNDARARAJAN
+
+References
+[1]
+
+R. Balasubramanian and V. Kumar Murty, Zeros of Dirichlet L-functions, Ann. Scient. École Norm.
+Sup. 25 (1992), 567-615.
+[2] S. D. Chowla, The Riemann Hypothesis and Hilbert’s tenth problem, Gordon and Breach Science
+publishers, New York-London-Paris, 1965, pp. xv+119.
+[3] H. Davenport, Multiplicative number theory, Graduate Texts in Mathematics vol. 74, Springer-Verlag,
+New York-Berlin, 1980, pp. xiii+177.
+[4] D. R. Heath-Brown, A mean value estimate for real character sums, Acta Arith. LXXII. 3 (1995),
+235-275.
+[5] H. Iwaniec and P. Sarnak, Dirichlet L-functions at the central point, preprint.
+[6] M. Jutila, On mean values of Dirichlet polynomials with real characters, Acta Arith. 27 (1975),
+191-198.
+[7] N. Katz and P. Sarnak, Random matrices, Frobenius eigenvalues and monodromy, vol. 45, AMS
+Colloquium Publications, 1999.
+[8] M. O. Rubinstein, Evidence for a spectral interpretation, Ph. D. Thesis, Princeton University (1998).
+[9] R. Rumely, Numerical computations concerning the ERH, Math. of Comp. 61 (1993), 415-440.
+[10] A. Selberg, Contributions to the theory of Dirichlet’s L-functions, Skr. Norske Vid. Akad. Oslo I
+(1946), 1-62.
+[11] K. Soundararajan, Nonvanishing of quadratic Dirichlet L-functions at s = 21 , Annals of Math. 152
+(2000), 447–488.
+[12] E.C. Titchmarsh, The theory of the Riemann zeta-function, Oxford Univ. Press, 2nd ed., 1986.
+American Institute of Mathematics, 360 Portage Avenue, Palo Alto CA , USA
+E-mail address: conrey@ best.com
+Department of Mathematics, University of Michigan, Ann Arbor, MI 48109, USA
+E-mail address: ksound@ math.ias.edu
+
+

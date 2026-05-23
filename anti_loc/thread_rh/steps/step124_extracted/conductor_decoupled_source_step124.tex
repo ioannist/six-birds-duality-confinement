@@ -1,0 +1,131 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newtheorem{definition}{Definition}
+\title{Step 124: Conductor-Decoupled Source Theorem}
+\author{RH membrane program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 123 exposed a length-balance obstruction. The regularized Muentz/co-Poisson shadow needs a Dirichlet length large enough to approximate the Burnol target on the declared vertical window, while the Heap--Soundararajan-style source method only works in a short-polynomial range. Step 124 resolves this at the theorem-shape level by decoupling the source conductor scale from the vertical/Muentz window.
+
+\section{Parameters}
+Let
+\[
+T_N=Q_N^\tau,
+\qquad
+A_N\le Q_N^a,
+\qquad
+X_N=Q_N^x,
+\qquad
+R_N=Q_N^r.
+\]
+Here $T_N$ is the vertical response window, $A_N$ is the Burnol atom-complexity envelope, $X_N$ is the Muentz smoothing length, $R_N$ is the intrinsic Burnol/coefficient length, and $Q_N$ is the source conductor scale. The effective Dirichlet support length is
+\[
+L_N\asymp X_NR_N=Q_N^{x+r}.
+\]
+The source machinery is assumed lawful only in the range
+\[
+L_N\le Q_N^{\theta_{\rm src}-o(1)}.
+\]
+
+\section{Error model}
+The regularized shadow side supplies the estimates
+\[
+\tau_{M,N}\le C A_N(1+T_N)^\alpha X_N^{-\eta},
+\]
+and
+\[
+\epsilon_{{\rm Mell},N}+\kappa_{{\rm tail},N}\le C A_NR_N^{-\beta}.
+\]
+Thus power-law decay requires
+\[
+x>\frac{a+\alpha\tau}{\eta},
+\qquad
+r>\frac{a}{\beta}.
+\]
+
+\begin{theorem}[Conductor-decoupled balanced-length criterion]
+Under the above error model, there exist power-law choices of $X_N$ and $R_N$ satisfying Muentz accuracy, Burnol/coefficient modeling, and source shortness if and only if
+\[
+\boxed{
+\frac{a+\alpha\tau}{\eta}+\frac{a}{\beta}<\theta_{\rm src}.
+}
+\]
+Equivalently, if $Q_N=T_N^\omega$, so that $\tau=1/\omega$, the condition is
+\[
+\boxed{
+\frac{a+\alpha/\omega}{\eta}+\frac{a}{\beta}<\theta_{\rm src}.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+Muentz accuracy requires $x>(a+\alpha\tau)/\eta$. Coefficient modeling requires $r>a/\beta$. Source shortness requires $x+r<\theta_{\rm src}$. A pair $(x,r)$ satisfying all three exists exactly when the sum of the two lower bounds is less than the upper bound $\theta_{\rm src}$.
+\end{proof}
+
+\section{Finite Dirichlet character lower frame}
+Let $q$ be prime and let $\mathcal N\subset\{1,\dots,L\}$ with $L<q$. Define
+\[
+Q_\chi a=\sum_{n\in\mathcal N}a_n\chi(n),
+\qquad
+G_q(m,n)=\sum_{\chi\bmod q}\chi(n)\overline{\chi(m)}.
+\]
+
+\begin{lemma}[Prime-modulus exact finite coefficient frame]
+If $q>L$, then
+\[
+G_q(m,n)=\varphi(q)\mathbf 1_{m=n}
+\]
+for all $m,n\in\mathcal N$. Hence
+\[
+\sum_{\chi\bmod q}|Q_\chi a|^2
+=\varphi(q)\sum_{n\in\mathcal N}|a_n|^2.
+\]
+\end{lemma}
+
+\begin{proof}
+Orthogonality of the complete character group gives $G_q(m,n)=\varphi(q)$ if $m\equiv n\pmod q$ and zero otherwise. Since $1\le m,n<q$, congruence is equality.
+\end{proof}
+
+\begin{warning}[Coefficient frame is not yet a completed source theorem]
+The preceding lemma supplies an exact finite coefficient lower frame. It does not by itself prove the completed RH membrane. One still needs upstream source visibility, source-currency normalization, tail/exhaustivity, and the matrix lower-moment record if the sources are weighted by central values or mollifier weights.
+\end{warning}
+
+\section{Effective source theorem}
+Let
+\[
+G_{\mathcal X,N}\succeq \gamma_N H_N
+\]
+be the character/source lower frame on the regularized Dirichlet-readable coefficient space, and let
+\[
+c_{{\rm hyb},N}\ge 1-(\epsilon_{B,N}+\epsilon_{{\rm Mell},N}+\tau_{M,N}+\kappa_{{\rm tail},N})^2.
+\]
+Then
+\[
+R_N^*G_{\mathcal X,N}R_N\succeq \gamma_Nc_{{\rm hyb},N}G_{R,N}.
+\]
+Thus the residual source route requires
+\[
+\boxed{\gamma_Nc_{{\rm hyb},N}\to\infty}
+\]
+with fixed/exhaustive tail promotion.
+
+\begin{corollary}[Positive visibility floor suffices]
+If $c_{{\rm hyb},N}\ge c_0>0$ and $\gamma_N\to\infty$, then $\gamma_Nc_{{\rm hyb},N}\to\infty$.
+\end{corollary}
+
+\section{Interpretation}
+The same-aspect regime $Q_N\asymp T_N$ can be too cramped. Conductor decoupling creates more room by allowing $Q_N\gg T_N$. In the simplest finite prototype, choose a prime conductor $q_N>L_N$. Complete characters modulo $q_N$ then give an exact finite coefficient lower frame. The hard arithmetic version replaces this raw character frame by a source-weighted matrix lower moment, which is the operator-valued lift of the Heap--Soundararajan scalar template.
+
+\section{Nonclaim}
+This note does not prove RH, does not prove the matrix lower moment, and does not prove that the Burnol-to-Dirichlet angular gap tends to zero. It proves the exact length-decoupling gate and identifies prime-conductor complete characters as the clean finite source-frame prototype.
+
+\end{document}

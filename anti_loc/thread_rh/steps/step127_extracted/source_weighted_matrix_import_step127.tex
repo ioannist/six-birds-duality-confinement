@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,longtable,array,geometry}
+\geometry{margin=1in}
+
+\title{Step 127: Mapping Existing Moment and Asymptotic-Large-Sieve Theorems to a Source-Weighted Matrix Lower Frame}
+\author{RH Membrane / Six Birds Working Note}
+\date{May 14, 2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 126 isolated the source-weighted matrix lower-frame gate
+\[
+G_{q,w}\succeq \gamma_{q,w}H_N,
+\qquad
+G_{q,w}(m,n)=\sum_{\chi\in\mathcal X_q} w_\chi \chi(n)\overline{\chi(m)}.
+\]
+Step 127 maps this gate onto existing analytic number theory rather than re-deriving it.  The conclusion is that ordinary finite character orthogonality and scalar lower-moment technology are not enough.  What is needed is a coefficient-uniform weighted quadratic-form asymptotic.
+
+\section{Finite coefficient space}
+Let
+\[
+A_a(\chi)=\sum_{n\in\mathcal N_N} a_n\chi(n),
+\qquad a\in \mathbb C^{\mathcal N_N},
+\]
+where the support length is
+\[
+L_N=\max \mathcal N_N.
+\]
+The source-weighted Gram is the quadratic form
+\[
+a^*G_{q,w}a=\sum_{\chi\in\mathcal X_q} w_\chi |A_a(\chi)|^2.
+\]
+The membrane source gate demands a lower bound for every vector $a$, not for one selected mollifier direction.
+
+\section{Imported theorem schema}
+\begin{definition}[Uniform weighted matrix moment]
+A family of analytic number theory estimates supplies a \emph{matrix lower-frame import} on coefficient class $\mathcal A_N$ if it gives
+\[
+\sum_{\chi\in\mathcal X_q} w_\chi |A_a(\chi)|^2
+=
+\mathsf{Main}_q(a)+\mathsf{Err}_q(a)
+\]
+with constants $c_q>0$ and $0\le \varepsilon_q<1$ such that, uniformly for all $a\in\mathcal A_N$,
+\[
+\mathsf{Main}_q(a)\ge c_q\|a\|_{H_N}^2,
+\qquad
+|\mathsf{Err}_q(a)|\le \varepsilon_q c_q\|a\|_{H_N}^2.
+\]
+\end{definition}
+
+\begin{theorem}[Import-to-frame theorem]
+If a uniform weighted matrix moment holds, then
+\[
+G_{q,w}\succeq (1-\varepsilon_q)c_qH_N.
+\]
+Consequently, if the residual visibility gate gives
+\[
+R_N^*H_NR_N\succeq c_{\rm hyb,N}G_{R,N},
+\]
+then
+\[
+R_N^*G_{q,w}R_N\succeq (1-\varepsilon_q)c_qc_{\rm hyb,N}G_{R,N}.
+\]
+Thus the effective residual source strength is
+\[
+\Lambda_{R,N}=(1-\varepsilon_q)c_qc_{\rm hyb,N}.
+\]
+\end{theorem}
+
+\section{Where the existing literature fits}
+\subsection{Complete finite characters}
+For a prime conductor $q$ and support length $L_N<q$, complete character orthogonality gives
+\[
+\sum_{\chi\bmod q}|A_a(\chi)|^2=(q-1)\|a\|_2^2.
+\]
+Removing the principal character gives
+\[
+G_q^{\rm prim}=(q-1)I-\mathbf 1\mathbf 1^*.
+\]
+This is a closed finite algebraic frame.  It does not solve the source-weighted problem.
+
+\subsection{CIS / asymptotic large sieve}
+The Conrey--Iwaniec--Soundararajan asymptotic large sieve is a natural platform for coefficient-uniform bilinear forms over primitive characters.  In framework language, it is an import candidate for the uniform asymptotic
+\[
+a^*G_{Q,w}a=\mathsf{Main}_Q(a)+\mathsf{Err}_Q(a)
+\]
+on a conductor family.  Its role is not to prove visibility $c_{\rm hyb,N}$; it supplies off-diagonal control and possible lower-frame main terms in coefficient space.
+
+\subsection{Pratt--Robles / perturbed moments}
+Pratt--Robles is closer to the matrix-lift shape because it allows a general Dirichlet polynomial $A(s)$ inside a perturbed moment.  It is strongest as a t-aspect coefficient-uniform model, and it teaches the required import grammar: theorem statements must be uniform in $A$, not just optimized for a selected mollifier.
+
+\subsection{Bui--Pratt--Robles--Zaharescu and q-aspect twisted second moments}
+A q-aspect twisted second moment with arbitrary Dirichlet polynomial is very close to the required weighted Gram, because the form
+\[
+\sum_{\chi\bmod q}^{*}|L(1/2,\chi)|^2|A_a(\chi)|^2
+\]
+is exactly a source-weighted matrix quadratic form.  If its main term is uniformly positive and its error is uniformly smaller than the main term for the residual coefficient class, it imports directly as $G_{q,w}\succeq \gamma H_N$.
+
+\subsection{Tang--Wu and recent mixed moments}
+Tang--Wu gives a current hybrid/q-aspect mixed moment platform over primitive characters.  It is a candidate for more elaborate weights involving products of central values or automorphic twists.  It should be treated as a scalar/hybrid theorem platform to be audited for coefficient-uniformity.
+
+\subsection{Mollified fourth moment in q-aspect}
+The recent q-aspect mollified fourth moment supplies concrete shortness limits for $L$-weighted source estimates.  Its length condition is a constraint on the Step 123--124 balanced-length gate, not a direct lower frame unless it is upgraded to a uniform matrix form.
+
+\section{Three import modes}
+\begin{enumerate}
+\item \textbf{Exact unweighted frame.} Complete characters modulo prime $q>L_N$ give an exact frame.  This is accepted but not sufficient for $L$-weighted source coercivity.
+\item \textbf{Lightly weighted frame.} If $w_\chi=\bar w+\delta_\chi$ and the fluctuation operator obeys
+\[
+\|E_w\|<\bar w\lambda_{\min}(G_q),
+\]
+then a lower frame survives.
+\item \textbf{Moment-weighted frame.} If $w_\chi$ is built from central values, mollifiers, or mixed moments, an imported asymptotic must be uniform in the coefficient vector $a$.
+\end{enumerate}
+
+\section{No-claim boundary}
+The following are not accepted as a source-weighted lower frame:
+\begin{itemize}
+\item a scalar lower moment for one chosen mollifier;
+\item a large-sieve upper bound;
+\item an asymptotic with an error not uniform over coefficient vectors;
+\item a finite conductor window without completed tail/exhaustivity;
+\item target-selected weights or a zero-simplicity assumption.
+\end{itemize}
+
+\section{Next load-bearing theorem}
+The next theorem is an import audit, not a new re-derivation:
+\[
+\boxed{
+\sum_{\chi\in\mathcal X_q}^{*} w_\chi |A_a(\chi)|^2
+\ge \gamma_q\|a\|_{H_N}^2
+\quad\text{uniformly for all residual coefficient vectors }a.
+}
+\]
+One should attempt this first for the q-aspect twisted second moment with arbitrary $A$, since that platform is closest to the required weighted Gram.  CIS remains the baseline for unweighted and lightly weighted primitive-character frames.
+
+\end{document}

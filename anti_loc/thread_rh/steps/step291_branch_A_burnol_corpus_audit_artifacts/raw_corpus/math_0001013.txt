@@ -1,0 +1,972 @@
+                                                                                                                              math/0001013
+                                                                                                                MSC–91: 11M26, 11R42, 47A40
+                                                                                                      to appear in the Journal of Number Theory
+
+
+
+
+                                                       An adelic causality problem related to abelian L–functions
+arXiv:math/0001013v3 [math.NT] 14 Sep 2000
+
+
+
+
+                                                                                     Jean-François Burnol
+                                                                            January 2000, revised July 2000
+
+
+
+
+                                             Abstract: We associate to the global field K a Lax–Phillips scattering which has the property
+                                             of causality if and only if the Riemann Hypothesis holds for all the abelian L–functions of K.
+                                             As a Hilbert space closure problem this provides an adelic variation on a theme initiated by
+                                             Nyman and Beurling. The adelic aspects are related to previous work by Tate, Iwasawa and
+                                             Connes.
+
+
+
+
+                                             Université de Nice- Sophia Antipolis
+                                             Laboratoire J.-A. Dieudonné
+                                             Parc Valrose
+                                             F-06108 Nice Cédex 02
+                                             France
+                                             burnol@math.unice.fr
+
+
+
+
+                                                                                              1
+1    Adeles, Ideles and Zeros
+
+
+We express the Riemann Hypothesis for abelian L–functions as a Hilbert space closure property
+(theorem 1.11 below). This takes place within the adelic set-up used by Tate [20] (1950) and
+Iwasawa [15] (1952) to establish the functional equations of these L–functions. We treat simul-
+taneously the number field and function field cases (the Tate–Iwasawa ideas have been adapted
+by Weil to the function field case in [22]). Our approach is Hilbert space-theoretical. We take
+our hint from Nyman’s equivalent formulation of the original Riemann Hypothesis [19] (1950).
+Beurling [5] (1949, for the disc), and Lax [16] (1959, for the half-plane), described the invariant
+subspaces of the Hardy spaces and, as is explained in [1] (see also [3] and [4] for Beurling’s
+Lp –extension [6] (1955)), this description is the conceptual element behind Nyman’s thorem.
+We devote a section to explain (without mention of adeles and ideles) what our construction
+amounts to for the Riemann zeta function. It is technically of a very straightforward nature,
+its only deeper aspects being embedded in the Beurling–Lax theory.
+
+
+We associate to the global field an adelic Lax–Phillips scattering [17] (1967). All axioms (where
+the idele class group replaces the more usual Z or R) are satisfied, except possibly the causality
+axiom which we show to be equivalent to the Riemann Hypothesis (this is our main result,
+theorem 1.7). The validity of one of the axioms is related to an observation of Connes [9,
+proof of VIII.5]. The study of connections between the Riemann zeta function and scattering
+theory is at least thirty years old. In particular the Faddeev–Pavlov study of scattering for
+automorphic functions [13] (1972), further developped by Lax and Phillips in their book [18]
+(1976), has attracted widespread attention. In their approach the scattering matrix is directly
+related to the values taken by the Riemann zeta function on the line Re(s) = 1, and the Riemann
+Hypothesis itself is equivalent to some decay properties of scattering waves. Another well-known
+instance is the approach of De Branges ([11] 1986, [12] 1994) within the theory of Hilbert spaces
+of entire functions, also related to scattering (Conrey and Li have recently pointed out some
+difficulties of this approach ([10], 1998)). The connection between our scattering process and
+the Riemann zeta function (or more generally an abelian L–function) is the following: each
+‘bad’ zero (Re(ρ) > 21 ) appears as a pole of the scattering operator, where there should be
+none, if the process was causal. But if the Riemann Hypothesis holds, then the scattering itself
+is of a trivial nature, and says absolutely nothing on the zeros on the critical line. We point
+out that the same holds with the positivity criterion of Weil ([21] 1952, [23] 1972): the Weil
+distribution if of positive type if and only if the Riemann Hypothesis holds, but beyond that,
+
+
+
+
+                                                2
+positivity tells nothing on the location of the zeros except that they are indeed on the critical
+line. Our formulation applies equally well to function fields and number fields: this is as in
+Weil’s positivity approach (especially when formulated as in [8]), and as in the work of Connes
+([9], 1999). The infinite places cause us less trouble than in [21] and [9]. Our sole motivation
+in formulating the Riemann Hypothesis in a novel manner is the hope that creators of other
+tools, of a deeper nature than those used here, would incorporate the gained insight in their
+design constraints. An obvious deficiency of this paper is its inability to achieve an alternative
+proof of the Riemann Hypothesis in the function field case, where it is not an hypothesis but a
+well-known theorem.
+
+
+Let K be a global field (an A–field in the terminology of Weil [22]): either an algebraic number
+field or a field finitely generated and of transcendence degree 1 over a finite field. We briefly
+review some normalizations. The adele ring AK is its own Pontrjagin dual. The set of characters
+(additive, unitary) for which K (diagonally embedded) is its own annihilator is non-empty
+(and a single orbit under the action of K × ). We pick one such good character and let the
+additive Fourier transform F be defined with respect to it (and the corresponding self–dual
+Haar measure, which is in fact independent of the choice made). On each local multiplicative
+group Kν× we write d∗ vν for the multiplicative measure which assigns volume 1 to the units
+                      dx                                                            ×
+(finite place) or is 2|x| (real place) or drdθ
+                                           πr (complex place). On the idele group AK (also seen
+                                     Q
+as a subset of AK ) we use d∗ v = ν d∗ vν , and on the idele class group CK = A×      ×
+                                                                                  K /K we use
+the Haar measure d∗ u which (function field case) assigns volume 1 to the units or (number field
+                                                  Q
+case) is pushed down to dtt under t = |u| = |v| = ν |vν |ν (v ∈ A×
+                                                                 K , u = v).
+
+
+
+Let S(AK ) be the vector space of Bruhat–Schwartz functions.
+
+
+
+Definition 1.1
+
+                    E : S(AK ) → (CK → C)
+                                                           R
+                                         p     X             A ϕ(x) dx
+                          ϕ(x) 7→ f (v) = |v|       ϕ(qv) − Kp
+                                              q∈K ×
+                                                                |v|
+
+
+
+                                                            R
+For functions satisfying the additional conditions ϕ(0) =       AK ϕ(x) dx = 0, E is a tool at the
+heart of the constructions of Connes in [9]. For technical, class-field theoretical, reasons, we
+do not impose any vanishing condition. The map E is related to the ideas of Tate [20] and
+
+
+
+                                                3
+Iwasawa [15], and is especially tuned for Hilbert space matters, as expressed in the following
+lemma:
+
+
+
+Lemma 1.2 E(S(AK )) ⊂ L2 (CK , d∗ u) and is dense in it. The Fourier–Mellin transform of
+E(ϕ), as a function of the unitary characters of CK , is, up to a multiplicative constant depending
+only on K, equal to the Tate L–functions associated to ϕ (restricted to the critical line).
+
+
+
+Note 1.3 As has already been noted by Connes [9, proof of VIII.5], E(S00 ) is dense in
+                                                R
+L2 (CK , d∗ u), where S00 = {ϕ ∈ S(AK ) | ϕ(0) = AK ϕ(x) dx = 0}.
+
+
+
+The idele group acts on S(AK ) (U (v)·ϕ(x) = √1 ϕ( xv )) and on L2 (CK , d∗ u) (U (v)·f (u) = f ( uv )),
+                                                   |v|
+and E intertwines the two actions. Furthermore the Poisson-Tate summation formula shows
+that E intertwines the Fourier transform F on AK with the inversion I (f (u) 7→ f ( u1 )) on CK .
+Each idele v defines an adelic parallelepiped
+
+                            P (v) = {x = (xν ) ∈ AK | ∀ ν |xν |ν ≤ |vν |ν }
+
+whose volume is proportional to |v|.
+
+
+
+Definition 1.4
+
+                  S≤1 = {ϕ ∈ S(AK ) | ∃v ∈ A×
+                                            K : |v| = 1 and supp(ϕ) ⊂ P (v)}
+
+                g
+                S                         ×
+                 ≤1 = {ϕ ∈ S(AK ) | ∃v ∈ AK : |v| = 1 and supp(F(ϕ)) ⊂ P (v)}
+
+                                           D+ = E(S≤1 )⊥
+                                                       ⊥
+                                                  g
+                                           D− = E(S≤1 )
+
+
+
+
+Lemma 1.5 The Lax–Phillips scattering axioms ([17], with Z or R replaced with CK ) are
+satisfied for the “incoming” subspace D−
+                                      ^                        _
+            |λ| ≤ 1 ⇒ U (λ)D− ⊂ D−       U (λ)D− = {0}             U (λ)D− = L2 (CK , d∗ u)
+
+and for the “outgoing” subspace D+
+                                         ^                     _
+           |λ| ≥ 1 ⇒ U (λ)D+ ⊂ D+            U (λ)D+ = {0}         U (λ)D+ = L2 (CK , d∗ u)
+
+
+
+                                                   4
+                         V
+Note 1.6 The property  U (λ)D+ = {0} is cousin to the density property E(S00 ) = L2 (CK , d∗ u)
+                             W
+noted by Connes. The property U (λ)D+ = L2 (CK , d∗ u) is an easy corollary of the Artin–
+Whaples product formula. As D− = I(D+ ) and as I is an isometry which interchanges dilations
+and contractions, the axioms for D− and D+ are equivalent.
+
+
+
+Our main result is:
+
+
+
+Theorem 1.7 (A causality criterion) The Riemann Hypothesis holds for all abelian L–functions
+of K if and only if D− ⊥ D+ .
+
+
+
+We also express the Riemann Hypothesis as a closure property. We need a slightly technical
+definition first:
+
+
+
+Definition 1.8 Let A be the convolution operator
+                                             Z
+                                                   u0
+                             (A · f )(u0 ) =     a( )f (u) d∗ u
+                                              CK   u
+where, in the number field case
+                                                 p
+                                        a(w) =       |w| · 1|w|≤1
+
+and in the function field case (q the cardinality of the field of constants)
+                               p          √    1                   1
+                      a(w) =       |w| · ( q − √ ) · 1|w|<1 + (1 − √ )1|w|=1
+                                                q                   q
+
+
+
+Definition 1.9
+                           
+                       H2 = f ∈ L2 (CK , d∗ u) | ess-supp(f ) ⊂ {|u| ≤ 1}
+
+
+
+
+Lemma 1.10 The operator V = 1 − A is a unitary operator on L2 (CK , d∗ u), commuting with
+the regular action of CK , and sending H2 to (a subspace of ) itself.
+
+
+
+
+Theorem 1.11 (A closure criterion) V (E(S≤1 )) ⊂ H2 with equality if and only if the Rie-
+mann Hypothesis holds for all abelian L–functions of K.
+
+
+
+                                                 5
+2    The criterion for the Riemann zeta function
+
+
+When considering only the Riemann zeta function, Theorem 1.11 boils down to a variant of
+Nyman’s criterion [19]. Let us recall this criterion (see also [1], [3], [4]):
+
+               α        1
+Let ρα (u) =    u   −α    u   , for 0 < α < 1, and u ∈ (0, 1) (with {·} the fractional part). Let N be
+the closed span in L2 ((0, 1), du) of the functions ρα . We also consider both N and L2 ((0, 1), du)
+as closed subspaces of L2 ((0, ∞), du).
+
+
+
+Theorem 2.1 (Nyman, 1950 [19]) The constant function 1 on (0, 1) belongs to N if and
+only if the Riemann Hypothesis holds.
+
+
+                                                                                            q
+Note that N is invariant under the semi-group of unitary contractions U (λ) : f (u) 7→ λ1 f ( uλ ),
+                            q
+λ ≤ 1, u > 0 as U (λ) · ρα = λ1 (ραλ − αρλ ). So, it will contain the constant function 1 (hence
+all step functions) if and only if it actually coincides with all of L2 ((0, 1), du).
+
+
+For the proof one considers the Mellin transform:
+                                                 Z 1
+                                f (u) 7→ fb(s) =     f (u)us−1 du
+                                                        0
+
+which by a Paley–Wiener theorem establishes an isometry between L2 ((0, 1), du) and the Hardy
+space H2 (Re(s) > 21 ) of analytic functions with bounded norm
+                                              Z
+                                                                |ds|
+                                 kF k2 = sup           |F (s)|2
+                                          σ> 1 Re(s)=σ           2π
+                                               2
+
+
+Such functions fb(s) have (a.e.) boundary values also obtained as
+                                                    Z 1
+                                1                       √           du
+                              b
+                             f ( + iτ ) = l · i · m       uf (u)uiτ
+                                2            ǫ→0     ǫ               u
+
+equivalently as the Fourier–Plancherel transform of et/2 f (et ), t ≤ 0.
+
+                                                                                        1
+The unitary semi-group considered above acts on H2 (Re(s) > 12 ) as F (s) 7→ λs− 2 F (s), and Lax
+[16] has described the closed subspaces invariant under this action. It can be directly shown
+(see [14]) that the conformal representation
+                                                    s−1
+                                               w=
+                                                     s
+
+
+                                                    6
+                                                    g(w) = s · F (s)
+
+establishes an isometry between H2 (Re(s) > 12 ) and H2 (|w| < 1) which identifies the invariant
+subspaces of the former with closed subspaces invariant under the shift g(w) 7→ w · g(w) for the
+latter. These were described by Beurling [5] and we learn that the “continuous” case (Lax) and
+“discrete” case (Beurling) are completely equivalent (this equivalence is also a corollary to the
+conformal invariance of Brownian motion on the complex numbers).
+
+
+The Beurling–Lax recipe to determine an invariant closed subspace such as N is to look at the
+Mellin transforms of the functions ρα (u)’s:
+                                                             α − αs
+                                                  ρc
+                                                   α (s) =          ζ(s)
+                                                               s
+and at the “greatest lower bound of their inner factors”: first there will be the Blaschke product
+                                                  Y           s − ρ 1 − ρ̄  ρ
+                              B(s) =
+                                                         1
+                                                           s − (1 − ρ̄) ρ  1−ρ
+                                       ζ(ρ)=0, Re(ρ)> 2
+
+where the zeros appear according to their multiplicities, then an inner factor associated to a
+singular measure on the critical line (the analytic continuation of ζ(s) implies its non-existence),
+                                   1                                                                  1
+and a final inner factor λs− 2 (0 < λ ≤ 1). We argue that λ = 1 as follows: λs− 2 H2 is the
+Mellin transform of L2 ((0, λ), du) which contains N only if λ = 1 (obviously).
+
+                                                                                                          1
+                                                                               s−
+Bercovici and Foias [3, 2.1] prove λ = 1 in the following manner: if ρc
+                                                                      α (s) = λ 2 f (s) for
+
+some f (s) ∈ H2 (Re(s) > 12 ) then ρc          σ
+                                    α (σ) = O(λ ) for σ → +∞. Indeed
+                                                                     1 f (s) is O(1) in any
+
+half-plane Re(s) ≥ 12 + ε, ε > 0 (this follows from its Cauchy integral representation or from
+        R1
+fb(s) = 0 f (u)us−1 du and Cauchy-Schwarz). But obviously limσ→ +∞ σ · ρc α (σ) 6= 0, thus giving
+
+a contradiction if λ < 1 . The following lemma, of independent interest, could also have been
+used:
+
+
+
+Lemma 2.2 If F (s) ∈ H2 is O(|s|K ) on the critical line, then its outer factor F out (s) is O(|s|K )
+on the entire closed half-plane.
+
+
+
+
+Proof 2.3 One has
+                                              Z
+                                                                                 2 Re(s) − 1 |ds0 |
+                       log(|s F out (s)|) =                  log(|s0 F (s0 )|)
+                                              Re(s0 )= 12                          |s − s0 |2 2π
+  1
+      I thank the referee for correcting my incomplete understanding of the Bercovici–Foias proof at this point.
+
+
+
+
+                                                              7
+and                                       Z
+                                                                     2 Re(s) − 1 |ds0 |
+                             log(|s|) =                 log(|s0 |)
+                                          Re(s0 )= 12                  |s − s0 |2 2π
+hence the result    •
+
+
+
+Let us add a few more words to this discussion of Nyman’s theorem. As
+                             Z 1 
+                                   1                1     ζ(s)
+                                       us−1 du =        −
+                              0    u              s − 1    s
+                                              R1     s−1 du we see that s−1 ζ(s)
+(for Re(s) > 0) and s−1   1    1
+                     s · s−1 = s =             0 u                       s   s             belongs to H2 (Re(s) >
+1
+2 ).   The unitary operator V on L2 ((0, ∞), du) given by the multiplier s−1
+                                                                          s in the spectral
+representation acts as                                         Z ∞
+                                                                     1
+                                       f (u) 7→ f (u) −                f (t) dt
+                                                                u    t
+         R ∞ 1 s−1
+As ζ(s)
+    s = − 0 { u }u du (for 0 < Re(s) < 1) we obtain after a straightforward computation:
+                                                         Z 1
+                                       s − 1 ζ(s)
+                                                  =            A(u)us−1 du
+                                         s    s            0
+
+                                          1                1       1
+                                  A(u) = [ ] log(u) + log([ ]!) + [ ]
+                                          u                u       u
+Stirling’s formula implies A(u) = 21 log( u1 ) + O(1) so this integral representation is valid for
+                                                                                                          1
+Re(s) > 0. As A(u) = 1 + log(u) for 21 < u ≤ 1 there is no inner factor of the type λs− 2 with
+                                                                                     ζ(s)
+λ < 1. There is no other singular factor thanks to the analytic continuation, so s−1
+                                                                                  s   s is the
+product of an outer factor with the Blaschke product B(s). Hence
+
+
+                                                            ζ(s)
+Theorem 2.4 The Riemann Hypothesis holds if and only if s−1
+                                                         s   s is an outer function, or
+equivalently if the functions U (λ) · A(u) (0 < λ ≤ 1) span L2 ((0, 1), du).
+
+
+
+The generalized Jensen’s formula (see [14]) then implies a formula first derived by Balazard,
+Saias and Yor:
+
+
+
+Theorem 2.5 ([2])
+                             Z                                        X
+                         1            log |ζ(s)|                                          ρ
+                                                 |ds| =                            log
+                        2π   Re(s)= 1    |s|2                                            1−ρ
+                                   2                           ζ(ρ)=0, Re(ρ)> 21
+
+
+
+
+                                                          8
+The only difference with the proof of Balazard, Saias and Yor is that we do not need the
+general theory of Hardy spaces beyond that of H2 , which is of a more elementary nature. This
+concludes our discussion of Nyman’s theorem. We now turn to some variations on this theme
+(other variations have been considered by Bercovici and Foias in [3] and [4]).
+
+                                                                                  R1
+Let φ(x) be a smooth function on the real line with compact support in [0, 1], and 0 φ(x) dx = 0.
+The Mellin transform                           Z ∞
+                                        b =
+                                        φ(s)         φ(u)us−1 du
+                                                0
+is an entire function, vanishing at 1. We consider:
+                                               X
+                                 T (φ)(u) =          φ(nu)     (u > 0)
+                                               n≥1
+
+which is a smooth function of u on (0, ∞) with support in (0, 1]. Its behavior when u → 0 is
+governed by the Poisson summation formula:
+                                                      1 X n
+                                        T (φ)(u) =       ψ( )
+                                                     |u|   u
+                                                         n∈Z
+                                    R
+where ψ is the Fourier transform        φ(y)e2πi xy dy of φ (hence belongs to the Schwartz space of
+rapidly decreasing functions). So
+
+                                    ∀K     T (φ)(u) =u→0 O(uK )
+
+and the Mellin transform                       Z 1
+                                 T[
+                                  (φ)(s) =           T (φ)(u)us−1 du
+                                                0
+is an entire function. For Re(s) > 1
+
+                                          T[            b
+                                           (φ)(s) = ζ(s)φ(s)
+
+hence by analytic continuation this holds true for all s.
+
+     0 be the vector space consisting of these functions φ, S 0 its closure in L2 ((0, 1), du)
+Let S≤1                                                      ≤1
+                                                                0 and K are invariant under
+and K the closure of the vector space of functions T (φ). Both S≤1
+contractions, hence described by the Beurling–Lax theory. One just has to take the “greatest
+                                         b
+lower bound” of the inner factors of the φ(s)’s (resp. the T[
+                                                            (φ)(s)’s). Obviously S 0 is the
+                                                                                         ≤1
+subspace perpendicular to the constant 1 and this shows that the “greatest lower bound” for
+                 b
+the zeros of the φ(s)’s is simply s = 1 with multiplicity 1. This cancels exactly the pole of the
+zeta function. For the T[
+                        (φ)(s)’s the analytic continuation across the critical line implies that
+
+
+
+                                                     9
+                                                                1
+the only possible singular factor is of the type λs− 2 with λ ≤ 1. For a suitably chosen φ, T (φ)
+does not vanish in ( 21 , 1) so necessarily λ = 1. The conclusion is that K coincides with the
+space N considered by Nyman. Thus:
+
+
+
+Theorem 2.6 The Riemann Hypothesis holds if and only if the constant function 1 belongs to
+                             0 }
+the closure of {T (ϕ) : ϕ ∈ S≤1      •
+
+
+
+We describe one more variation. Let S ev be the vector space of even Schwartz functions on R.
+Let, for u > 0:                                                     R∞
+                                                 X                        ϕ(x) dx
+                                                                      0
+                              E(ϕ)(u) =                ϕ(nu) −
+                                                                           u
+                                                 n≥1
+
+The Poisson summation formula gives
+                                                 1X      n   1
+                              E(ϕ)(u) =             F(ϕ)( ) − ϕ(0)
+                                                 u       u   2
+                                                    n≥1
+
+so that E(ϕ)(u) is 0(1) when u → 0 and is O( u1 ) when u → ∞ and belongs to L2 (R+ , du). Its
+Mellin transform                                   Z ∞
+                                   [
+                                   E(ϕ)(s) =                E(ϕ)(u)us−1 du
+                                                       0
+is absolutely convergent and analytic for 0 < Re(s) < 1. It can be rewritten as
+                   Z 1                   Z ∞X                    R∞
+                                                                     ϕ(x) dx
+                       E(ϕ)(u)us−1 du +         ϕ(nu)us−1 du + 0
+                    0                     1                         s−1
+                                                       n≥1
+
+which is then valid in the half-plane Re(s) > 0. Then, for Re(s) > 1, as
+                 Z ∞X                    Z 1 R∞                   R∞
+                                 s−1          0  ϕ(x) dx  s−1          ϕ(x) dx
+                          ϕ(nu)u du −                    u du + 0
+                  0                        0      u                   s −1
+                     n≥1
+
+hence simply as                              Z ∞
+                              X
+                                        −s
+                                    n              ϕ(u)us−1 du = ζ(s)ϕ(s)
+                                                                     b
+                              n≥1            0
+
+which remains valid for Re(s) > 0.
+
+
+We now need to get rid of the pole of ζ(s) with the help of the operator V (which on L2 (R+ , du)
+acts as s−1
+         s in the spectral representation):
+                                                                Z ∞
+                                                                      1
+                                   V · f (u) = f (u) −                  f (v)dv
+                                                                u     v
+
+
+                                                           10
+One checks V · u1 = 0 so
+                           X              Z ∞X                 X             Z ∞
+                                                          dv                          v      dv
+            V E(ϕ)(u) =         ϕ(nu) −             ϕ(nv)    =   ϕ(nu) −             [ ]ϕ(v)
+                                          u                v                     0    u       v
+                          n≥1                 n≥1              n≥1
+
+Let S≤1 be the vector space of smooth even functions with support in [−1, 1]. For ϕ ∈ S≤1 ,
+V E(ϕ) has support in (0, 1] and its Mellin transform s−1    b
+                                                       s ζ(s)ϕ(s) thus belongs to H2 . As in the
+previous discussions, the Mellin transform of the (closure of) V E(S≤1 ) is the space of multiples
+of the Blaschke product B(s)H2 . Hence:
+
+
+
+Theorem 2.7 V E(S≤1 ) ⊂ H2 with equality if and only if the Riemann Hypothesis holds.
+
+
+
+Let B be the unitary operator on L2 (R+ , du) which acts in the spectral representation as
+multiplication with B(s). Let
+
+                          D+ = E(S≤1 )⊥ = V −1 B · (H2 )⊥ = V −1 BI · H2
+
+(where I is the inversion f (u) 7→ u1 f ( u1 ), or spectrally s 7→ 1 − s). Let
+
+                    D− = E(F(S≤1 ))⊥ = I(D+ ) = IV −1 BI · H2 = V B −1 · H2
+
+Then, in the terminology of Lax and Phillips [17], D+ (resp. D− ) is an “outgoing” (resp.
+“incoming”) space for the action of R×     2
+                                     + on L (R+ , du). The scattering operator associated to
+them is
+                                  S = (V −1 B)−1 · V B −1 = V 2 B −2
+
+It is an invariant operator whose spectral multiplier is ( s−1 2
+                                                            s ) · B(s)
+                                                                      −2 and is an inner function
+
+if and only if B(s) has no zero in Re(s) > 12 , that is if the Riemann Hypothesis holds. The
+scattering multiplier is inner if and only if D+ ⊥ D− . So:
+
+
+
+Theorem 2.8 E(S≤1 )⊥ ⊂ E(F(S≤1 )) if and only if the Riemann Hypothesis holds.
+
+
+
+3    An adelic scattering
+
+                                         1 be the (compact) subgroup of idele classes of unit
+We now prove theorems 1.7 and 1.11. Let CK
+                                                         1 × N , N = {|u| : u ∈ C } ⊂ R× .
+modulus. There is some (non-canonical) isomorphism CK = CK                       K     +
+
+
+
+
+                                                     11
+If K has positive characteristic we let q be the cardinality of the field of constants. It is known
+                                                      1 extends to a character of C trivial on
+that the module group N is q Z . Each character χ of CK                            K
+
+N , which we still denote by χ. At each place ν there is a local character χν from the embedding
+Kν× → CK . And χ is said to be ramified at ν if the restriction of χν to the unit subgroup is
+non-trivial.
+
+
+We start with the properties of
+
+                          E : S(AK ) → (CK → C)
+                                                                 R
+                                               p     X             A ϕ(x) dx
+                                ϕ(x) 7→ f (v) = |v|       ϕ(qv) − Kp
+                                                    q∈K ×
+                                                                      |v|
+
+
+From the definition one has E(ϕ)(u) = O( √1 ) when |u| → ∞, and as the Poisson-Tate formula
+                                                              |u|
+gives
+                                                        E·F =I ·E
+                         p
+one also has E(ϕ)(u) = O( |u|) when |u| → 0. So indeed
+
+                                                E(S(AK )) ⊂ L2 (CK , d∗ u)
+
+
+
+Let χ be a unitary character on CK (trivial on N ). The Fourier-Mellin transform (for Re(s) = 12 )
+                                          Z
+                            [
+                           E(ϕ)(χ, s) =
+                                                                1
+                                              E(ϕ(u))χ(u)|u|s− 2 d∗ u
+                                                             CK
+
+is in fact absolutely convergent and analytic for 0 < Re(s) < 1. It can be rewritten (with u = v,
+v ∈ A×
+     K ) as          Z                                                     Z        X
+                                                     s− 12    ∗
+                                 E(ϕ)(u)χ(u)|u|              d u+                          ϕ(qv)χ(u)|u|s d∗ u
+                         |u|≤1                                             |u|>1
+                                                                                   q∈K ×
+                                           Z                      Z
+                                       −            ϕ(x) dx                    χ(u)|u|s−1 d∗ u
+                                               AK                     |u|>1
+               R                s−1 d∗ u (which vanishes if χ 6= 1) is a meromorphic function F (s),
+The integral       |u|>1 χ(u)|u|                                                               χ
+
+which can be evaluated explicitely. One obtains (both in the number field and function field
+cases)                                                                         Z
+                                  (Re(s) > 1) ⇒ Fχ (s) = −                             χ(u)|u|s−1 d∗ u
+                                                                               |u|≤1
+
+   [
+So E(ϕ)(χ, s) has a meromorphic continuation to Re(s) > 0 which, for Re(s) > 1, coincides
+with
+
+
+
+                                                                      12
+                 Z                                                    Z        X
+                                                 s− 12     ∗
+                             E(ϕ)(u)χ(u)|u|              d u+                         ϕ(qv)χ(u)|u|s d∗ u
+                     |u|≤1                                            |u|>1
+                                                                              q∈K ×
+                                       Z                     Z
+                                   +            ϕ(x) dx                   χ(u)|u|s−1 d∗ u
+                                           AK                    |u|≤1
+                                            Z        X
+                                       =                       ϕ(qv)χ(u)|u|s d∗ u
+                                                CK
+                                                     q∈K ×
+                                                       Z
+                                       = C(K)                    ϕ(v)χ(v)|v|s d∗ v
+                                                         A×
+                                                          K
+
+The constant C(K) being as in Tate’s thesis [20] related to the way the measures d∗ u on CK
+and d∗ v on A×
+             K differ. We recognize in the last integral the Tate L–function L(ϕ, χ, s). The
+identity
+                                       [
+                                       E(ϕ)(χ, s) = C(K)L(ϕ, χ, s)
+
+for Re(s) = 12 holds by analytic continuation. With this lemma 1.2 is proven.
+
+
+We turn to the description of ∆ = E(S≤1 ). The crucial thing is that it is invariant (ob-
+viously) under the (unitary) action of the semi-group of contractions {|u| ≤ 1}, in partic-
+                                            1 .
+ular under the action of the compact group CK                                It thus decomposes as a Hilbert space
+sum of isotypical components ∆χ , which we wish to compare to the isotypical components
+       
+of H2 = f ∈ L2 (CK , d∗ u) | ess-supp(f ) ⊂ {|u| ≤ 1} . We do this in the spectral representation
+                                                                                                           1
+using the Fourier–Mellin transform (in the function field case we write z = q −(s− 2 ) ).
+
+
+Firstly it is a straightforward check that the A-operator (1.8) is an invariant operator whose
+action on L2 is given by the following spectral multipliers A(χ, s):
+
+                                                χ 6= 1 ⇒ A(χ, s) = 0
+                                              1
+                                    A(1, s) =    (number field case)
+                                              s
+                                                √
+                                            1 − qz
+                              A(1, z) = 1 − √        (function field case)
+                                               q−z
+so that V = 1 − A is indeed a unitary (on L2 ) invariant operator with multipliers
+
+                                                χ 6= 1 ⇒ V (χ, s) = 1
+                                             s−1
+                                  V (1, s) =      (number field case)
+                                              s
+                                              √
+                                           1 − qz
+                                V (1, z) = √       (function field case)
+                                             q−z
+
+
+                                                                 13
+From this spectral representation or with a direct computation we also find the important
+identity
+                                     1                  p
+                                V ( p · 1|u|>1 ) = −α(K) |u| · 1|u|≤1
+                                     |u|
+with α(K) = 1 (resp. √1q ) in the number field case (resp. function field case). From the Artin–
+                                                        R
+                                                            AK ϕ(x) dx
+Whaples product formula we obtain E(ϕ)(u) = −                 √          for |u| > 1 and ϕ ∈ S≤1 . So we see
+                                                                  |u|
+that V (∆) is a subspace of H2 . We now describe it exactly with the help of the Beurling–Lax
+theory.
+
+
+Let Sf be the set of finite places of K, and S∞ the (possibly empty) set of infinite places. Let
+qν be the cardinality of the residue field at the finite place ν, πν a uniformizer element of Kν× ,
+which we also consider as an element of A×
+                                         K . The value χ(πν ) is independent of the choice of πν
+if the character χ is unramified at ν. The (“incomplete” in the number field case) L–function
+associated to χ is
+                                                 Y                   1
+                               L(χ, s) =
+                                                               1 − χ(πν )qν−s
+                                           ν∈Sf ,unramified
+
+
+
+The Bruhat-Schwartz function ϕ is built from local components, all of them except finitely
+many being equal to the characteristic function of the local integers, so its Tate L–function
+L(ϕ, χ, s) is a multiple of L(χ, s) by a function holomorphic in Re(s) > 0. By lemma 1.2 this
+                                           [
+implies that the Paley–Wiener transform E(ϕ)(χ,    s) (Re(s) > 1 ) vanishes at each bad zero with
+                                                                          2
+at least the same multiplicity as L(χ, s).
+
+
+
+Definition 3.1 Let B be the unitary invariant operator whose spectral multiplier in the χ-
+isotypical component of L2 (CK , d∗ u) is the Blaschke product on the zeros (with multiplicity) of
+the L–function L(χ, s) in the half-plane Re(s) > 12 (number field case) or the open disc |z| < 1
+            1
+(z = q −(s− 2 ) , function field case).
+
+
+
+We will soon show that one can indeed build a convergent Blaschke product with the bad zeros
+so that B exists! (the function field case is trivial as there are only finitely many). This being
+temporarily admitted we have obtained V (∆) ⊂ B · H2 . And we prove
+
+
+
+Theorem 3.2
+                                             V (∆) = B · H2
+
+
+
+                                                   14
+We treat the function-field case first. We choose ϕν to be 1|x|ν ≤1 at a non-ramified place, and
+                                                                         Q
+χν (x) · 1|x|ν =1 at a ramified place. With these choices we obtain ϕ = ν ϕν which belongs to
+S≤1 and for which (at first for Re(s) > 1):
+
+                                          L(ϕ, χ, s) = L(χ, s)
+
+We do not claim that E(ϕ) is χ–equivariant, nevertheless this identity combined with lemma
+1.2 and the inclusion V (∆) ⊂ H2 shows that V (χ, s)L(χ, s) belongs to H2 (|z| < 1). It is clear
+from the product representation that it does not vanish at z = 0, and it is known for χ = 1
+that the pole at s = 1 of the zeta function ZK (s) is of order 1. Analytic continuation across
+|z| = 1 implies the non-existence of a singular inner factor. So the smallest closed subspace
+of H2 (|z| < 1) containing V (χ, s)L(χ, s), and invariant under shifts, is exactly B(χ, s)H2 . The
+conclusion follows.
+
+
+Let us now consider the case where K is an algebraic number field. We define ϕν (xν ) exactly as
+in the function field case when ν is finite and as χν (x) · gν (|x|ν ) at each infinite place, with gν a
+                                                                                             Q
+smooth function on R×  + with compact support in (0, 1). The product function ϕ(x) =            ν ϕν (xν )
+then belongs to S≤1 and E(ϕ) has a Paley–Wiener transform
+                                  Z
+                                                          1
+                                      E(ϕ)(u) · χ(u)|u|s− 2 d∗ u
+                                   CK
+                                        Z
+                              = C(K)       ϕ(v)χ(v)|v|s d∗ v
+                                                A×
+                                                 K
+                                                          Y
+                                   = C(K)L(χ, s) ·               gbν (s)
+                                                          ν∈S∞
+
+
+
+From this and the inclusion V (∆) ⊂ H2 follows the existence of the Blaschke product B(χ, s)
+as promised above. Furthermore it is clearly possible to choose the gν in such a manner that
+gbν (s) does not vanish at any s prescribed in advance, and the existence of analytic continuation
+                                                                                     1
+accross the critical line then reduces the possibility of an inner factor to λs− 2 with λ ≤ 1. The
+Bercovici–Foias argument implies as in our discussion of Nyman’s theorem that λ = 1. Finally
+it is known that the pole of the zeta function (χ = 1) has exact order 1. With all this the
+identity V (∆) = B · H2 is proven. This completes the proof of the closure criterion 1.11.
+
+
+Let D+ = E(S≤1 )⊥ = ∆⊥ = V −1 B · (H2 )⊥ . Let Z be the unitary operator which is just 1 in
+the number field case and z (in each isotypical component) in the function field case. Then
+(H2 )⊥ = Z −1 I · H2 and D+ = V −1 BZ −1 I · H2 . From this follows
+                         ^                   _
+                           U (λ)D+ = {0}         U (λ)D+ = L2 (CK , d∗ u)
+
+
+
+                                                     15
+so that D+ indeed qualifies as an outgoing subspace and D− as an incoming subspace. One has
+D− = IV −1 BZ −1 I · H2 = V B −1 Z · H2 . The Lax–Phillips scattering operator associated to the
+pair (D+ , D− ) is an invariant unitary operator, unique up to a multiplicative constant in each
+isotypical component. It is:
+
+                               S = (V −1 B)−1 · V B −1 Z = ZV 2 B −2
+
+With the help of S the pair (D+ , D− ) is unitarily equivalent to ((H2 )⊥ , S · H2 ). So it is an
+orthogonal pair if and only if S · H2 ⊂ H2 , if and only if B = 1, if and only if the Riemann
+Hypothesis holds for all abelian L–functions of K. With this the proof of the causality criterion
+1.7 is complete.
+
+
+
+Note 3.3 The reader of the monograph of Lax and Phillips [17, chapter 2] will perhaps be
+perplexed by the fact that “causal” means there “inner with respect to the exterior domain
+|z| > 1” (in the discrete case). But this is because they represent the semi-group leaving
+invariant the outgoing space with the help of the non-negative powers of z. In our case we
+represent it with the help of the non-negative powers of 1z . So “causal” is to be understood to
+mean “inner with respect to the domain | 1z | > 1” (that is |z| < 1).
+
+
+
+
+Note 3.4 We have used IBI = B −1 . This follows from L(χ, s) = L(χ, s) which implies
+B(χ, s) = B(χ, s) (= B(χ, s)−1 for Re(s) = 12 ).
+
+
+
+References
+
+ [1] M. Balazard, E. Saias, “The Nyman–Beurling equivalent form for the Riemann hypothesis”,
+    Expo. Math. 18 (2000), 131–138.
+
+ [2] M. Balazard, E. Saias, M. Yor, “Notes sur la fonction ζ de Riemann, 2”, Advances in
+    Math. 143 (1999), 284–287.
+
+ [3] H. Bercovici, C. Foias, “A real variable restatement of Riemann’s Hypothesis”, Israel J. of
+    Math. 48 (1984), 57–68.
+
+ [4] H. Bercovici, C. Foias, “On the Zorn spaces in Beurling’s approach to the Riemann hy-
+    pothesis”, Analysis and topology, 143–149, World Sci. Publishing, River Edge, NJ, 1998.
+
+
+
+                                                16
+ [5] A. Beurling, “On two problems concerning linear transformations in Hilbert space”, Acta
+    Mathematica 81 (1949), 239–255.
+
+ [6] A. Beurling, “A closure problem related to the Riemann Zeta–function”, Proc. Nat. Acad.
+    Sci. 41 (1955), 312–314.
+
+ [7] J.-F. Burnol, “Scattering on the p-adic field and a trace formula”, IMRN 2000:2, 2000.
+
+ [8] J.-F.   Burnol,     “The     explicit   formula    and     the   conductor    operator”,
+    http://arXiv.org/abs/math/9902080 (1999).
+
+ [9] A. Connes, “Trace formula in non-commutative Geometry and the zeros of the Riemann
+    zeta function”, Selecta Math. (N.S.) 5 (1999) , no. 1, 29–106.
+
+[10] J. B. Conrey and X.-J. Li,          “A note on some positivity conditions related
+    to zeta- and L-functions”,      American Institute of Mathematics preprint series,
+    www.aimath.org/preprints 98.html (1998).
+
+[11] L. De Branges, “The Riemann hypothesis for Hilbert spaces of entire functions”, Bull.
+    Amer. Math. Soc. (N.S.) 15 (1986), no. 1, 1–17.
+
+[12] L. De Branges, “A conjecture which implies the Riemann hypothesis”, J. Funct. Anal. 121
+    (1994), no. 1, 117–184.
+
+[13] L. D. Faddeev, B .S .Pavlov, “Scattering theory and automorphic functions”, Seminar of
+    Steklov Mathematical Institue of Leningrad, 27 (1972), 161-193.
+
+[14] K. Hoffman, “Banach spaces of analytic functions”, (first published in 1962), Dover Pub-
+    lication, 1988.
+
+[15] K. Iwasawa, Letter to J. Dieudonné (1952), in “Zeta Functions in Geometry”, Adv.Stud.in
+    Pure Math 21, ed. N. Kurokawa, T. Sunada, Kinokuniya Ltd., 1992.
+
+[16] P. Lax, “Translation invariant subspaces”, Acta Mathematica 101 (1959), 163–178.
+
+[17] P. Lax, R. S. Phillips, “Scattering Theory”, (1st ed. 1967), Rev. Ed., Pure and Applied
+    Mathematics, v.26, Academic Press, 1989.
+
+[18] P. Lax, R. S. Phillips, “Scattering Theory for automorphic functions”, Annals of Mathe-
+    matics Studies, Princeton University Press, 1976.
+
+[19] B. Nyman, “On some groups and semigroups of translations”, Thesis, Uppsala, 1950.
+
+
+
+                                             17
+[20] J. Tate, “Fourier Analysis in Number Fields and Hecke’s Zeta Function”, Princeton 1950,
+     reprinted in “Algebraic Number Theory”, ed. J.W.S. Cassels and A. Fröhlich, Academic
+     Press, 1967.
+
+[21] A. Weil, “Sur les “formules explicites” de la théorie des nombres premiers”, Comm. Sem.
+     Math. Univ. Lund (1952) Volume dedicated to Marcel Riesz, 252–265. Oeuvres, Vol. II.
+
+[22] A. Weil, “Basic Number Theory”, 3rd ed., Springer–Verlag, 1974.
+
+[23] A. Weil, “Sur les formules explicites de la théorie des nombres”, Izv. Mat. Nauk. (Ser.
+     Mat.) 36 (1972), 3-18. Oeuvres, Vol. III.
+
+
+Université de Nice – Sophia Antipolis
+Laboratoire J.-A. Dieudonné
+Parc Valrose
+F-06108 Nice Cédex 02
+France
+burnol@math.unice.fr
+
+
+
+
+                                                 18
+

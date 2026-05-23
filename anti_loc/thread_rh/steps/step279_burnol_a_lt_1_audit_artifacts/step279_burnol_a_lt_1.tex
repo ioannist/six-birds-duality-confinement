@@ -1,0 +1,48 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 279: Burnol \(a<1\) Linear-Combination Audit}
+\author{Six Birds Foundations III}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Source}
+The audited source is Burnol's Section 6 in \emph{On Fourier and Zeta(s)}
+(Forum Mathematicum 16 (2004), 789--840), titled
+``Sonine spaces of de Branges, novel spaces \(HP_\lambda\), vectors
+\(Z^\lambda_{\rho,k}\), Krein string of the zeta function.''
+
+\section*{Paper Statements}
+Burnol supplies evaluator vectors:
+\[
+[f,Z^\lambda_{w,k}] = M(f)^{(k)}(w),
+\]
+with the corresponding linear forms continuous on \(K_\lambda\).
+
+The decisive span statement is:
+\[
+Z^\lambda_{\rho,k}\ \text{span }K_\lambda
+\quad\Longleftrightarrow\quad
+\lambda\ge 1.
+\]
+For \(0<\lambda<1\), Burnol explicitly proves that the zeta-zero evaluator
+vectors do not span \(K_\lambda\).  The main theorem instead gives a
+decomposition with an additional \(W'_\lambda\) component.
+
+\section*{Cascade Comparison}
+The cascade-needed CAND1/CAND2 agreement requires a finite or countable
+zero-evaluator linear-combination form for \(a<1\), or an equivalent theorem
+showing that the full and compressed evaluator norms agree.  Burnol Section 6
+does not state this and in fact rules out the full zero-evaluator span for
+\(\lambda<1\).
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_burnol\_a\_lt\_1\_form\_blocked}}
+\]
+The gate is score-1 framework-internal, not score-2 literature-adjacent.
+
+\end{document}

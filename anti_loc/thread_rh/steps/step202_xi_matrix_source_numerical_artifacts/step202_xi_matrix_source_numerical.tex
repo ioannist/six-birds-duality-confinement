@@ -1,0 +1,120 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 202: Numerical Attempt on \(\Xi_{\mathrm{matrix\_source}}\)}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_xi\_matrix\_source\_partial}.}
+\]
+
+The Step 201 Burnol unblock is used.  The numerical pipeline evaluates
+\(E_{1/2}\) and assembles the literal de Branges kernel matrix
+\[
+G_{ij}=K_{1/2}^{\Gamma}(\rho_j,\rho_i).
+\]
+The residual \(\Xi_{\mathrm{matrix\_source}}\) is not decided, because the
+literal convention gives zero diagonal entries \(G_{ii}=0\) on the critical
+line, so the normalized vectors \(e_i=\kappa_i/\sqrt{G_{ii}}\) cannot be
+formed without the correct diagonal reproducing-kernel limit or
+inner-product convention.
+
+\section*{Inherited Paper-Grounded Formulas}
+
+Burnol 2002 (math/0208121), Theorem 4, gives the explicit projection
+\(\pi_\lambda=P_{K_\lambda}=P_{L_a^\Gamma}\).  Corollary 5 gives the
+\((1\pm F_\lambda)^{-1}\) simplifications.  Definition 2 gives
+\(\psi_\pm^\lambda\).  Theorem 8 gives
+\[
+E_\lambda(w)=\pi^{-w/2}\Gamma(w/2)\left[
+\lambda^{1/2-w}+\frac{\sqrt{\lambda}}{2}
+\int_\lambda^\infty
+(\psi_+^\lambda(t)-\psi_-^\lambda(t))t^{-w}\,dt\right],
+\qquad \Re w>0.
+\]
+Burnol 2002, equation 1, gives
+\[
+K_{B(E_\lambda)}(z_1,z_2)=
+\frac{E_\lambda(z_1)\overline{E_\lambda(z_2)}
+-E_\lambda(1-z_1)\overline{E_\lambda(1-z_2)}}
+{z_1+z_2-1}.
+\]
+Burnol 2004 (math/0112254), Definition 6.1 and Theorem 6.10, supply the
+carrier \(K_\lambda\) and the completion
+\(\pi^{-s/2}\Gamma(s/2)\).
+
+\section*{Numerical Method}
+
+For \(\lambda=1/2\), the script discretizes the cosine-transform operator on
+\([0,1/2]\), solves
+\[
+(1+F_{1/2})u_+=2\cos(\pi y),\qquad
+(1-F_{1/2})u_-=2\cos(\pi y),
+\]
+and evaluates
+\[
+\psi_+^{1/2}(t)-\psi_-^{1/2}(t)
+=-F_+u_+(t)-F_+u_-(t)
+\]
+inside Burnol's Theorem 8 integral.  Settings were \(70\) scalar decimal
+digits, \(160\) cosine-resolvent nodes, \(520\) Gauss--Legendre integral
+nodes, cutoff \(80\), and check cutoff \(55\).
+
+\section*{Computed \(E_{1/2}\) Values}
+
+\begin{center}
+\begin{tabular}{c c c}
+\toprule
+point & \(E_{1/2}(w)\) & error bound\\
+\midrule
+\(\rho_1\) & \(-4.08121209197\cdot 10^{-6}+1.57450659741\cdot 10^{-5}i\) & \(1.66\cdot 10^{-8}\)\\
+\(\rho_2\) & \(-5.56494927209\cdot 10^{-8}-5.32637080111\cdot 10^{-8}i\) & \(1.11\cdot 10^{-9}\)\\
+\(\rho_3\) & \(-2.85254026901\cdot 10^{-9}+3.56620933992\cdot 10^{-10}i\) & \(1.06\cdot 10^{-9}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The values at \(1-\rho_i\) are the conjugate values in this discretization.
+
+\section*{Gram Matrix Layer}
+
+The literal \(G\)-matrix has zero diagonal entries:
+\[
+|G|\approx
+\begin{pmatrix}
+0 & 6.2212\cdot10^{-14} & 2.2203\cdot10^{-15}\\
+6.2212\cdot10^{-14} & 0 & 7.4635\cdot10^{-18}\\
+2.2203\cdot10^{-15} & 7.4635\cdot10^{-18} & 0
+\end{pmatrix}.
+\]
+This is not a usable Hilbert Gram matrix for normalizing the \(e_i\).  The
+matrix-source residual therefore exposes a sharper sub-residual:
+determine the correct critical-line kernel convention and diagonal limit for
+the zero-evaluator atoms.
+
+\section*{Commutator Matrix}
+
+The desired entries are
+\[
+c_{ij}(\ell)=
+\left\langle e_i,(I-P_\infty)M_{m_\ell}P_\infty e_j\right\rangle,
+\qquad
+m_\ell(s)=\exp[-\ell(1/2-s)].
+\]
+They remain explicit but uncertified numerically.  A certified evaluation must
+first resolve \(e_i\), then compute transported boundary samples
+\(\kappa_i=T_{1/2}^*K_{1/2}^\Gamma(\cdot,\rho_i)\) and include the full
+\(K_\infty^{op}\) PSWF correction.
+
+\section*{Nonclaim}
+
+This step does not prove RH, does not close \(\Xi_{BC}\), and does not close
+Branch B.  It identifies the next numerical/theoretical blocker after the
+Step 201 Burnol \(\kappa\) unblock.
+
+\end{document}
+

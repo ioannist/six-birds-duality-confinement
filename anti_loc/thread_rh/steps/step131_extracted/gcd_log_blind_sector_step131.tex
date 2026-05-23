@@ -1,0 +1,208 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+
+\newcommand{\C}{\mathcal C}
+\newcommand{\B}{\mathcal B}
+\newcommand{\Hc}{\mathcal H}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\sfproj}{\Pi_{\rm sf}}
+\newcommand{\XiG}{\Xi_{\rm GCD}}
+
+\title{Step 131: Residual Coefficient Class versus the GCD--Log Blind Sector}
+\author{Six Birds RH Membrane Program}
+\date{2026-05-14}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 130 showed that the Bui--Pratt--Robles--Zaharescu shifted second-moment main term cannot be imported as an unrestricted matrix lower frame.  The obstruction is an explicit near-null sector of the GCD--log kernel on squarefree Boolean cubes.  Step 131 asks the next, sharper question:
+\[
+    \sfproj R_NY_{R,N}\stackrel{?}{=}0,
+\]
+or at least whether this projection is tail-small on the actual residual coefficient class arising from the regularized Burnol/Muentz shadow.
+
+The key point is that the unrestricted coefficient space contains near-null Boolean sign modes, but the actual residual coefficient image may be special.  In particular, the zeta/Muentz shadow has a convolutional structure that can suppress deep Boolean blind modes.  This step isolates the exact residual:
+\[
+    \boxed{\XiG_N := R_N^*\sfproj R_N.}
+\]
+
+\section{Squarefree Boolean cube and GCD--log diagonalization}
+Let $\mathcal P_y=\{p_1,\dots,p_k\}$ be a finite set of small primes and let
+\[
+    \C_y=\{d: d\text{ squarefree and all }p\mid d\text{ lie in }\mathcal P_y\}.
+\]
+Identifying $d\in\C_y$ with a subset of $\mathcal P_y$, define the Boolean sign basis
+\[
+    \psi_\epsilon(d)=2^{-k/2}\prod_{p\mid d}\epsilon_p,
+    \qquad \epsilon_p\in\{\pm1\}.
+\]
+On $\ell^2(\C_y)$, consider the normalized GCD--log kernel
+\[
+    \widetilde K_q(m,n)
+    =\frac{(m,n)}{\sqrt{mn}}
+    \left(C_q-\log\frac{mn}{(m,n)^2}\right),
+    \qquad C_q=\log q+O(1).
+\]
+
+\begin{theorem}[Boolean diagonalization]
+The Boolean sign basis diagonalizes $\widetilde K_q$.  The eigenvalue corresponding to $\epsilon=(\epsilon_p)_{p\in\mathcal P_y}$ is
+\[
+    \kappa_\epsilon(q,y)
+    =\Lambda_\epsilon(y)
+    \left(
+      C_q+
+      \sum_{p\in\mathcal P_y}
+      \frac{-\epsilon_p p^{-1/2}\log p}{1+\epsilon_p p^{-1/2}}
+    \right),
+\]
+where
+\[
+    \Lambda_\epsilon(y)=\prod_{p\in\mathcal P_y}(1+\epsilon_pp^{-1/2}).
+\]
+In particular, the all-minus mode has
+\[
+    \kappa_-(q,y)=
+    \prod_{p\le y}(1-p^{-1/2})
+    \left(
+      C_q+
+      \sum_{p\le y}\frac{p^{-1/2}\log p}{1-p^{-1/2}}
+    \right),
+\]
+which can be much smaller than $\log q$ when $y$ grows like a small multiple of $\log q$.
+\end{theorem}
+
+\begin{definition}[GCD--log blind sector]
+Fix a threshold $\theta>0$ or a bottom spectral quantile.  The finite GCD--log blind sector is
+\[
+    \Hc_{{\rm sf},y}(\theta)
+    =\operatorname{span}\{\psi_\epsilon:\kappa_\epsilon(q,y)\le \theta\log q\}.
+\]
+Let $\sfproj_{q,y,\theta}$ be the orthogonal projection onto this sector.
+\end{definition}
+
+\begin{definition}[Residual GCD adequacy residual]
+For a residual coefficient map $R_N:Y_{R,N}\to\ell^2(\C_y)$, define
+\[
+    \boxed{\XiG_N=R_N^*\sfproj_{q,y,\theta}R_N.}
+\]
+This is the part of the residual coefficient class that lies in the GCD--log blind sector.
+\end{definition}
+
+\begin{proposition}[Restricted import criterion]
+The BPRZ shifted-main-term lower-frame import may be applied to the residual coefficient class only after one of the following records is earned:
+\[
+    \XiG_N=0,
+\]
+\[
+    \XiG_N\preceq E_N,
+    \qquad E_N\to0\quad\text{in a fixed/exhaustive ledger sense},
+\]
+or
+\[
+    \XiG_N\preceq F_N+E_N
+\]
+for a declared Hecke/Dirichlet source frame $F_N$ and vanishing defect.  Without such a record, the unrestricted GCD--log near-null sector blocks the lower-frame import.
+\end{proposition}
+
+\section{Zeta convolution and Boolean Möbius annihilation}
+The regularized Burnol/Muentz shadow is not an arbitrary coefficient vector.  Its zeta factor induces a convolutional shape.  The finite Boolean model of this effect is the zeta-incidence operator
+\[
+    (Z_yb)(d)=\sum_{e\mid d}b(e),
+    \qquad d\in\C_y.
+\]
+This map has a useful exact relation to Boolean blind modes.
+
+\begin{lemma}[Möbius annihilation identity]
+For each sign vector $\epsilon\in\{\pm1\}^{\mathcal P_y}$,
+\[
+    \langle \psi_\epsilon,Z_yb\rangle
+    =2^{-k/2}\left(\bigotimes_{p\in\mathcal P_y}\ell_{\epsilon_p}\right)b,
+\]
+where the local functionals on a one-prime seed $(b_0,b_1)$ are
+\[
+    \ell_+(b_0,b_1)=2b_0+b_1,
+    \qquad
+    \ell_-(b_0,b_1)=-b_1.
+\]
+In particular, for the all-minus mode,
+\[
+    \boxed{
+    \langle\psi_-,Z_yb\rangle
+    =2^{-k/2}(-1)^k b(P_y),
+    }
+\]
+where $P_y=\prod_{p\in\mathcal P_y}p$.
+\end{lemma}
+
+\begin{proof}
+The operator $Z_y$ is the tensor product over primes of the local incidence map
+\[
+    Z_p(b_0,b_1)=(b_0,b_0+b_1).
+\]
+Pairing with the local plus and minus characters gives
+\[
+    (1,1)Z_p(b_0,b_1)=2b_0+b_1,
+\]
+\[
+    (1,-1)Z_p(b_0,b_1)=-b_1.
+\]
+Tensoring over $p\in\mathcal P_y$ gives the result.
+\end{proof}
+
+\begin{obligation}[High-divisibility / sieve-tail suppression]
+Let $b_N$ be the seed coefficient vector arising from the regularized Burnol/Muentz shadow.  The required blind-sector suppression record is an estimate of the form
+\[
+    \sum_{\epsilon\in\operatorname{Blind}(q,y,\theta)}
+    \left|\left(\bigotimes_p\ell_{\epsilon_p}\right)b_N\right|^2
+    \le \delta_N\,\|Z_yb_N\|^2,
+\]
+with $\delta_N\to0$ or at least $\delta_N\le\delta<1$ strong enough to retain a positive visibility floor.
+\end{obligation}
+
+This is the new analytic gate.  It is a high-divisibility statement: blind modes with many minus signs only see seed coefficients divisible by many of the small primes in the squarefree cube.  If the Burnol/Muentz seed suppresses such coefficients, the actual residual class may avoid the GCD--log blind sector even though the unrestricted coefficient space does not.
+
+\section{Consequences for the RH source route}
+The residual source route after Step 130 was blocked in the unrestricted coefficient space.  Step 131 refines the diagnosis:
+\[
+    \boxed{
+    \text{unrestricted BPRZ lower frame fails, but the actual residual image may avoid the blind sector.}
+    }
+\]
+The route now has three lawful exits:
+\begin{enumerate}
+    \item Prove $\XiG_N=0$ or $\XiG_N\to0$ by high-divisibility/Möbius suppression for the actual Burnol/Muentz residual coefficients.
+    \item Prove a positive floor $\XiG_N\preceq \delta G_{R,N}$ with $\delta<1$, and compensate with a diverging source strength.
+    \item If the blind residual persists, add a separate non-smuggled source frame that charges $\XiG_N$.
+\end{enumerate}
+
+\section{Finite sanity checks}
+The attached finite checks are algebraic sanity checks only.  They verify:
+\begin{itemize}
+    \item Boolean diagonalization of the GCD--log kernel;
+    \item exact Möbius annihilation identity for the all-minus mode;
+    \item strong suppression of blind-sector overlap for synthetic zeta-convolved seeds with high-divisibility suppression;
+    \item the finite residual form $\XiG_N=R_N^*\sfproj R_N$.
+\end{itemize}
+They are not RH evidence.
+
+\section{Next gate}
+The next mathematical target is a sieve-tail theorem for the actual regularized Burnol/Muentz seed coefficients:
+\[
+    \boxed{
+    \text{prove that Burnol/Muentz residual seeds have small high-divisibility mass on Boolean blind modes.}
+    }
+\]
+If this succeeds, the BPRZ matrix import can be attempted on the restricted residual class.  If it fails, $\Xi_{\rm GCD}$ is the next residual requiring source absorption.
+
+\end{document}

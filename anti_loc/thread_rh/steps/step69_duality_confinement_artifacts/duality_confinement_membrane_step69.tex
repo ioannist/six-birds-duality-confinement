@@ -1,0 +1,308 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{Fix}{Fix}
+\DeclareMathOperator{tr}{tr}
+\DeclareMathOperator{Ran}{Ran}
+\DeclareMathOperator{dist}{dist}
+
+\title{Step 69: General Duality-Confinement Membrane Theorem}
+\author{Six Birds / Formed-Layer Membrane Theory Working Note}
+\date{2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Steps 32--68 developed an RH-facing route in which anti-linear duality, zero-ledger visibility, explicit-formula domination, anti-invariant budget collapse, and fixed/exhaustive ledger squeeze imply confinement of visible zero mass to the critical line.  This note lifts that route to the general membrane framework.  The result is a duality-confinement membrane theorem: for any formed closure with an involutive duality, a separating anti-invariant readout, a completed object ledger, a contractive ledger-to-carrier domination bridge, and anti-invariant membrane collapse on a fixed or exhaustive ledger, visible object mass is confined to the fixed locus of the duality.  RH becomes one specialization, not the organizing theorem.
+\end{abstract}
+
+\section{Motivation and scope}
+The RH-specific development revealed a general pattern.  The concrete involution
+\[
+J(s)=1-\overline{s}
+\]
+should be replaced by an involution on a general object ledger.  The critical line should be replaced by the fixed locus of the involution.  The zero-side anti-invariant displacement matrix should be replaced by a general object-side anti-invariant displacement ledger.  The explicit formula should be replaced by a completed domination bridge from object-side displacement to carrier-side anti-invariant currency.  The anti-invariant budget collapse should be understood as an anti-localization membrane on the anti-invariant sector.
+
+This note gives the framework-level theorem.  It does not prove RH, nor any particular confinement theorem.  It states the exact records required for such a proof.
+
+\section{Duality-confinement records}
+
+\begin{definition}[Involutive object ledger]
+An involutive object ledger is a tuple
+\[
+\mathfrak X=(X,J,\mu,\psi,Y,\mathcal J),
+\]
+where:
+\begin{enumerate}[label=(\roman*)]
+\item $X$ is a visible object/root/defect space;
+\item $J:X\to X$ is an involution;
+\item $\mu$ is a positive object ledger measure or finite positive weight system;
+\item $Y$ is a real Hilbert response space;
+\item $\mathcal J:Y\to Y$ is a linear isometric involution;
+\item $\psi:X\to Y$ is an equivariant readout:
+\[
+\psi(Jx)=\mathcal J\psi(x).
+\]
+\end{enumerate}
+Define
+\[
+P_-:=\frac{I-\mathcal J}{2},\qquad \psi_-(x):=P_-\psi(x).
+\]
+The anti-invariant object ledger is
+\[
+\mathsf A_X:=\int_X \psi_-(x)\psi_-(x)^*\,d\mu(x),
+\]
+interpreted in the finite-rank or trace-class sense whenever required.
+\end{definition}
+
+\begin{definition}[Separating anti-invariant readout]
+The anti-invariant readout separates the fixed locus when
+\[
+\psi_-(x)=0 \quad\Longleftrightarrow\quad x\in\Fix(J)
+\]
+on the visible support of $\mu$.  It is quantitatively separating if for every $\varepsilon>0$ there is $m(\varepsilon)>0$ such that
+\[
+\dist(x,\Fix(J))\ge \varepsilon \quad\Longrightarrow\quad \|\psi_-(x)\|\ge m(\varepsilon).
+\]
+\end{definition}
+
+\begin{definition}[Carrier-side anti-invariant membrane]
+Let $E$ be an exact packaged carrier with audit $C\succeq0$ on its legal quotient and anti-invariant native probe family
+\[
+L^-:E\to Y^-.
+\]
+The anti-invariant carrier currency is
+\[
+\mathsf K^-:=L^- C^\dagger (L^-)^*,
+\]
+with null-mode legality required.  A budget record is a positive operator $\Theta^-$ with
+\[
+\mathsf K^-\preceq \Theta^-.
+\]
+A collapse ladder is a family of records
+\[
+\mathsf K^-_n\preceq B_n,
+\qquad \tr B_n\to0,
+\]
+or a defected version with $B_n$ replaced by a bridge budget as below.
+\end{definition}
+
+\section{Object-side confinement from anti-invariant ledger collapse}
+
+\begin{lemma}[Trace identity]
+If $\mathsf A_X$ is trace-class, then
+\[
+\tr\mathsf A_X=\int_X \|\psi_-(x)\|^2\,d\mu(x).
+\]
+Consequently $\mathsf A_X=0$ if and only if $\psi_-(x)=0$ for $\mu$-almost every visible object $x$.
+\end{lemma}
+
+\begin{proof}
+The identity is the definition of trace for rank-one positive operators integrated against a positive measure.  Since the integrand is nonnegative, vanishing of the integral is equivalent to vanishing almost everywhere.  A positive trace-class operator has trace zero if and only if it is the zero operator.
+\end{proof}
+
+\begin{theorem}[Separation implies fixed-locus confinement]
+Assume the anti-invariant readout separates the fixed locus.  If
+\[
+\mathsf A_X=0,
+\]
+then
+\[
+\mu(X\setminus\Fix(J))=0.
+\]
+If the ledger is finite with positive weights, every visible object with positive weight lies in $\Fix(J)$.
+\end{theorem}
+
+\begin{proof}
+By the trace identity, $\psi_-(x)=0$ for $\mu$-almost every $x$.  Separation identifies this zero set with $\Fix(J)$ on the visible support.
+\end{proof}
+
+\begin{theorem}[Quantitative confinement]
+Assume quantitative separation.  Then
+\[
+\mu\{x:\dist(x,\Fix(J))\ge\varepsilon\}
+\le
+\frac{\tr\mathsf A_X}{m(\varepsilon)^2}.
+\]
+\end{theorem}
+
+\begin{proof}
+On the set $\dist(x,\Fix(J))\ge\varepsilon$, the integrand $\|\psi_-(x)\|^2$ is at least $m(\varepsilon)^2$.  Apply Markov's inequality to the trace identity.
+\end{proof}
+
+\section{Domination bridges}
+
+\begin{definition}[Completed domination bridge]
+A completed domination bridge from the object ledger to the carrier membrane is a record
+\[
+\mathsf A_X\preceq \mathsf K^-+E
+\]
+with $E\succeq0$ a declared bridge defect.  Equivalently, in the exact case $E=0$, if
+\[
+\mathsf A_X=V^*V,
+\qquad
+\mathsf K^-=W^*W,
+\]
+then the bridge is exact precisely when there is a contraction $T$ such that
+\[
+V=TW.
+\]
+\end{definition}
+
+\begin{theorem}[Douglas domination / contractive factorization]
+Let $\mathsf A=V^*V$ and $\mathsf K=W^*W$ be bounded positive operators on the same response space.  Then
+\[
+\mathsf A\preceq\mathsf K
+\]
+if and only if there exists a contraction $T$ with
+\[
+V=TW.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the Douglas factorization lemma applied to $V^*$ and $W^*$, equivalently to the range inclusion and norm inequality induced by $V^*V\preceq W^*W$.
+\end{proof}
+
+\begin{theorem}[Duality-confinement membrane theorem]
+Let $\mathfrak X=(X,J,\mu,\psi,Y,\mathcal J)$ be an involutive object ledger with separating anti-invariant readout.  Suppose there is a sequence of completed domination records
+\[
+\mathsf A_X\preceq B_n
+\qquad (n=1,2,\ldots)
+\]
+where $B_n\succeq0$ and
+\[
+\tr B_n\to0.
+\]
+Then
+\[
+\mu(X\setminus\Fix(J))=0.
+\]
+\end{theorem}
+
+\begin{proof}
+For every $n$, $0\preceq \mathsf A_X\preceq B_n$.  Hence $0\le \tr\mathsf A_X\le \tr B_n$.  Taking $n\to\infty$ gives $\tr\mathsf A_X=0$, hence $\mathsf A_X=0$.  Separation gives confinement to $\Fix(J)$.
+\end{proof}
+
+\section{Exhaustive finite ledgers}
+
+\begin{definition}[Exhaustive moving ledger]
+A finite-window or moving object ledger $\mathsf A_{X,n}$ is exhaustive for a completed ledger $\mathsf A_X$ if there are inclusions/transports $\iota_n$ and tail operators $T_n\succeq0$ such that
+\[
+\mathsf A_X\preceq \iota_n\mathsf A_{X,n}\iota_n^*+T_n.
+\]
+It is vanishing-exhaustive under bounds $\mathsf A_{X,n}\preceq B_n$ if
+\[
+\tr(\iota_nB_n\iota_n^*)+\tr T_n\to0.
+\]
+\end{definition}
+
+\begin{theorem}[Exhaustive ledger squeeze]
+If $\mathsf A_{X,n}\preceq B_n$ and the moving ledger is vanishing-exhaustive for $\mathsf A_X$, then
+\[
+\mathsf A_X=0.
+\]
+Consequently, under readout separation, visible object mass is confined to $\Fix(J)$.
+\end{theorem}
+
+\begin{proof}
+By exhaustivity,
+\[
+0\preceq\mathsf A_X\preceq \iota_nB_n\iota_n^*+T_n.
+\]
+Taking traces and passing to the limit yields $\tr\mathsf A_X=0$.
+\end{proof}
+
+\section{Defected obstruction budgets}
+
+\begin{definition}[General obstruction budget]
+A defected duality-confinement record has the form
+\[
+\mathsf A_X\preceq (1+t)(\mathsf K^-_n+E_{{\rm src},n})+(1+t^{-1})E_{{\rm br},n}
+\]
+for $t>0$, where $E_{{\rm br},n}$ is bridge/domination defect and $E_{{\rm src},n}$ is source/membrane defect.  In a collapse ladder one often has
+\[
+\mathsf K^-_n\preceq \Lambda_n^{-1}\Theta_0^-.
+\]
+Then the budget is
+\[
+B_n(t)=(1+t)(\Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n})+(1+t^{-1})E_{{\rm br},n}.
+\]
+\end{definition}
+
+\begin{proposition}[Optimized scalar trace budget]
+Let
+\[
+a_n=\tr(\Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n}),
+\qquad
+b_n=\tr E_{{\rm br},n}.
+\]
+Then
+\[
+\inf_{t>0}\tr B_n(t)=(\sqrt{a_n}+\sqrt{b_n})^2.
+\]
+Thus a sufficient scalar condition for exact confinement by fixed-ledger squeeze is
+\[
+a_n\to0,
+\qquad
+b_n\to0.
+\]
+\end{proposition}
+
+\begin{proof}
+Minimize $(1+t)a_n+(1+t^{-1})b_n$ over $t>0$.  The minimizer is $t=\sqrt{b_n/a_n}$ when $a_n,b_n>0$, with the stated value.  Degenerate cases follow by continuity.
+\end{proof}
+
+\section{Obstruction ledger}
+If fixed-locus confinement is not obtained, at least one of the following records is absent or defective:
+\begin{enumerate}[label=(O\arabic*)]
+\item formed closure and exact object ledger;
+\item separating anti-invariant readout;
+\item completed domination bridge $\mathsf A_X\preceq \mathsf K^-+E$;
+\item anti-invariant membrane/currency budget collapse;
+\item fixed-ledger or exhaustive-ledger visibility;
+\item vanishing bridge and source defects;
+\item null-mode legality and scope honesty;
+\item no-overreading of invariant/public shadows as anti-invariant witnesses.
+\end{enumerate}
+
+\section{RH as specialization}
+For RH, set
+\[
+X=\{\text{visible nontrivial zeros of }\xi\},
+\qquad
+J(s)=1-\overline{s}.
+\]
+Writing $s=1/2+x+it$, the fixed locus is $x=0$, i.e.
+\[
+\Fix(J)=\{s:\Re(s)=1/2\}.
+\]
+A separating anti-invariant readout is
+\[
+\psi_-(s)=\Re(s)-\frac12.
+\]
+The RH-facing obligations are then the general records above:
+\begin{enumerate}[label=(RH\arabic*)]
+\item a fixed or exhaustive completed zero ledger $\mathsf A_Z$;
+\item a completed explicit-formula domination bridge from $\mathsf A_Z$ to the anti-invariant carrier currency;
+\item full anti-invariant character/source coercivity producing $\mathsf K^-_n\to0$ or vanishing budget;
+\item vanishing gamma/pole/support/tail defects;
+\item no trace-shadow or invariant-sector overread.
+\end{enumerate}
+This note proves the framework-level implication.  It does not prove those RH records.
+
+\section{Nonclaims}
+This theorem does not claim that every involutive system confines objects to its fixed locus.  It does not claim that invariant trace balance controls anti-invariant displacement.  It does not claim that moving finite windows with no tail record prove exact confinement.  It does not prove RH.  It states the exact membrane records under which a fixed-locus confinement theorem follows.
+
+\end{document}

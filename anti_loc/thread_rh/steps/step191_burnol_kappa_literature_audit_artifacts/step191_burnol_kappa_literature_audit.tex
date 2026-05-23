@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\LaG}{\mathcal L_a^\Gamma}
+\newcommand{\Kamb}{K_a^{\Gamma,\mathrm{amb}}}
+\newcommand{\KG}{K_a^\Gamma}
+\newcommand{\PL}{P_{\mathcal L_a^\Gamma}}
+\newcommand{\kappaaw}{\kappa_{a,w}}
+
+\title{Step 191: Burnol Kappa Literature Audit}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_kappa\_partial\_source\_found}}.
+\]
+
+The audit located several closely related Burnol, de Branges, and Hankel sources, but did not identify a published source that directly states the inherited target
+\[
+\KG(\cdot,w)=\PL\Kamb(\cdot,w),
+\qquad
+\kappaaw(\tau)=(T_a^*\KG(\cdot,w))(1/2+i\tau).
+\]
+The closest related source is Burnol's \emph{Scattering, determinants, hyperfunctions in relation to \(\Gamma(1-s)/\Gamma(s)\)}, which treats finite-interval \(J_0\) Hankel Fredholm determinants and includes a resolvent-as-reproducing-kernel observation.  That is adjacent, not yet the exact completed zeta/Sonine projection required by Steps 177--179.
+
+\section*{Inherited Target}
+
+Step 145 records that \(L_a\) is Burnol's extended Sonine space: functions constant on \((0,a)\) whose cosine transform is again constant on \((0,a)\).  Step 153 records the evaluator chain
+\[
+\mathcal U_\infty(J_a^*Y^a_{w,k})
+=
+T_a^*\partial_{\overline w}^{\,k}\KG(\cdot,w),
+\]
+and the projected-kernel identity
+\[
+\KG(\cdot,w)=\PL\Kamb(\cdot,w).
+\]
+The ambient kernel is already inherited:
+\[
+\Kamb(s,w)=
+A_\infty(s)\overline{A_\infty(w)}
+\frac{s}{s-1}\overline{\frac{w}{w-1}}
+\frac{a^{s+\overline w-1}}{s+\overline w-1}.
+\]
+The missing record is therefore not an ambient Hardy kernel.  It is the orthogonal projection \(\PL\) onto the completed Burnol/Sonine image.
+
+Step 178 names the missing theorem as Burnol's explicit Bessel/Hankel resolvent formula for \(\PL\).  Step 179 shows that the Branch A Calkin matrix route, Hilbert--Schmidt trace route, Weyl-sequence route, and indirect \(L_{\rho,k}\) route all require the same \(\kappa\) vector.
+
+\section*{Burnol Sources Surveyed}
+
+\begin{enumerate}
+\item Burnol, \emph{Sur certains espaces de Hilbert de fonctions entieres, lies a la transformation de Fourier et aux fonctions L de Dirichlet et de Riemann} (2001).  The abstract states that a Sonine subspace related to zeta is constructed and that the quotient contains vectors attached to nontrivial zeros.  This is relevant to \(Y^a_{\rho,k}\), but no direct \(\PL\Kamb\) formula was identified.
+
+\item Burnol, \emph{Sur les espaces de Sonine associes par de Branges a la transformation de Fourier} (2002).  The published abstract says explicit formulas are obtained for the de Branges functions \(E(z)\) arising from Fourier Sonine spaces.  This is the strongest positive adjacent record: knowing \(E\) gives a de Branges kernel in principle.  The audit did not locate the inherited projection resolvent \(\PL\Kamb\).
+
+\item Burnol, \emph{On Fourier and Zeta(s)} (2004).  This source supplies the broad Fourier/co-Poisson/zeta context.  The audit did not identify the exact projected-kernel formula.
+
+\item Burnol, \emph{Two complete and minimal systems associated with the zeros of the Riemann zeta function} (2004).  The abstract says it determines in which extended Sonine spaces zeta zeros define complete or minimal systems.  This is relevant to zero evaluators and \(Y_a\), but not to the projected-kernel resolvent.
+
+\item Burnol, \emph{Spacetime causality in the study of the Hankel transform} (2006).  The abstract states that the Hankel transform is recovered as scattering and gives a proof of the de Branges--Rovnyak support theorem.  This is adjacent support-property machinery, not the completed zeta/Sonine projection.
+
+\item Burnol, \emph{Scattering, determinants, hyperfunctions in relation to \(\Gamma(1-s)/\Gamma(s)\)} (2006/2008).  The abstract explicitly mentions finite-interval Fredholm determinants of the \(J_0(2\sqrt{xy})\) kernel and a resolvent-as-reproducing-kernel appendix.  This is the closest candidate for a future extraction step, but the audit did not verify it as the exact \(\PL\) formula for \(\LaG\).
+
+\item Burnol, \emph{Entrelacement de co-Poisson} (2007).  The paper's bibliography anchors the earlier Sonine and Fourier-zeta works.  It is relevant to the co-Poisson carrier but did not expose the projected-kernel formula in the accessible metadata.
+\end{enumerate}
+
+\section*{Adjacent Classical Sources}
+
+de Branges's 1964 work on self-reciprocal functions and the 1968 book \emph{Hilbert Spaces of Entire Functions} provide the general RKHS/de Branges kernel theory.  They do not compute the projection from the ambient Hardy kernel to Burnol's completed Sonine subspace.
+
+The de Branges--Rovnyak support-property theorem and Burnol's Hankel causality proof are structurally close to the support constraints defining Sonine spaces.  They still do not provide the target \(\PL\Kamb\) formula without an additional identification.
+
+Classical Bessel/Hankel sources such as Watson and the Bateman/Erdelyi tables can evaluate Bessel integrals once the relevant resolvent is known.  They do not by themselves supply Burnol's completed projection.
+
+\section*{Specific Finding}
+
+The audit found related formulas, not the exact one.  The only candidate strong enough to pursue is Burnol's Hankel Fredholm/resolvent paper.  A future step should extract its actual resolvent formula and compare it, variable by variable, with:
+\[
+\LaG=A_\infty\mathcal L_a,\qquad
+\KG=\PL\Kamb,\qquad
+\kappaaw=T_a^*\KG(\cdot,w).
+\]
+Until that comparison is performed, Path 1 is not unlocked.
+
+\section*{Path 1 Status}
+
+\[
+\boxed{\texttt{path\_1\_status = partially\_clarified}.}
+\]
+
+The exact external-content obligation remains:
+\[
+\text{compute or cite }\PL\Kamb
+\text{ for the completed Burnol/Sonine carrier}.
+\]
+
+\end{document}
+

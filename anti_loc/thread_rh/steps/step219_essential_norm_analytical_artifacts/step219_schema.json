@@ -1,0 +1,54 @@
+{
+  "step": 219,
+  "orientation": "adequacy",
+  "target": "essential-norm Phi(sigma,ell) analytical investigation",
+  "phi_values": {
+    "sigma_1_ell_sweep": {
+      "0.1": "1.30864593099049104e-01",
+      "0.25": "1.97481643150888175e-01",
+      "0.5": "2.46751488487469584e-01",
+      "log2": "2.63845868820962504e-01",
+      "1.0": "2.74862270335125447e-01",
+      "log3": "2.76367797826598260e-01",
+      "pi/2": "2.78822164401324790e-01",
+      "log5": "2.78868438250831074e-01",
+      "log7": "2.79020406629479412e-01",
+      "2.0": "2.77880348430421031e-01",
+      "log10": "1.79178282282230900e-01",
+      "5.0": "1.11470458500919603e-03"
+    },
+    "ell_log2_sigma_sweep": {
+      "0.25": "2.93059350804955265e-01",
+      "0.5": "3.51218322021730034e-01",
+      "1.0": "2.63845868820962504e-01",
+      "2.0": "4.70121801133685027e-02",
+      "5.0": "1.21521036440663441e-03"
+    }
+  },
+  "ell_fit_attempts": {
+    "generic_best": "sinc_like_abs_c_sin_l2_over_l2, RMSE 5.60e-2",
+    "structured_best": "band_shift_erf_scaled_sigma_eff, RMSE 1.47e-3, max residual 4.15e-3",
+    "derived_band_shift": "RMSE 2.40e-3, max residual 6.07e-3"
+  },
+  "sigma_fit_attempts": {
+    "generic_best": "sigma_exp_decay_c_exp_minus_d_s, RMSE 5.09e-2",
+    "structured_best": "sigma_band_shift_erf_log2, RMSE 1.47e-3, max residual 2.11e-3"
+  },
+  "separable_test": {
+    "status": "not_separable",
+    "reason": "band-shift model depends on erf(sigma*(1+ell))-erf(sigma*a(ell)), not f(sigma)g(ell)"
+  },
+  "closed_form_candidates": {
+    "log2_over_pi_residual": "4.32102686683109027e-02",
+    "zeta2_over_2pi_residual": "2.04648102181304026e-03",
+    "band_shift_log2_sigma1_residual": "1.34734326241625624e-03"
+  },
+  "essential_norm_analytical_verdict": "V_essential_norm_ell_dependence_numerical_pattern",
+  "retained_nogos": [
+    "No RH proof is claimed.",
+    "No Branch A C_l P_eta conclusion is claimed.",
+    "The error-function model is a numerical pattern, not a proved closed form.",
+    "All retained no-gos remain unchanged."
+  ],
+  "final_verdict": "V_essential_norm_ell_dependence_numerical_pattern"
+}

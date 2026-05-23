@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\E}{\mathsf E}
+\newcommand{\Y}{Y^-}
+\newcommand{\Wcmp}{W_{\mathrm{cmp}}}
+\newcommand{\VZ}{V_Z}
+\title{Step 76: Signed-to-Positive Weil Matching Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The RH membrane route requires a Douglas bridge
+\[
+  \A_Z\preceq \K_{\mathrm{cmp}},
+  \qquad
+  \A_Z=\VZ^*\VZ,\quad \K_{\mathrm{cmp}}=\Wcmp^*\Wcmp.
+\]
+Equivalently, there must be a contraction
+\[
+  \VZ=T\Wcmp,
+  \qquad \|T\|\le 1.
+\]
+Step 75 proposed a log-side core and candidate positive feature slots
+\[
+  \Wcmp=(W_{\mathrm{pr}},W_{\infty},W_{\mathrm{pole}},W_{\mathrm{tail}})^T.
+\]
+The present note isolates the matching problem between the classical signed Weil explicit formula and the positive feature-map object required by the membrane framework.
+
+\section{Signed forms and positive feature maps}
+
+\begin{definition}[Signed Weil matching datum]
+A signed matching datum on a real Hilbert response space \(\Y\) consists of Hermitian quadratic forms
+\[
+  q_Z[y]=\|\VZ y\|^2,
+  \qquad
+  q_{\rm EF}[y]=q_{\rm pr}^{\rm sgn}[y]+q_{\infty}^{\rm sgn}[y]+q_{\rm pole}^{\rm sgn}[y]+q_{\rm tail}^{\rm sgn}[y],
+\]
+and a proposed identity or inequality relating the zero-side anti-invariant readout to the completed explicit-formula side.
+It is \emph{feature-positive} if there are Hilbert spaces \(\mathcal E_i\) and maps \(W_i:\Y\to\mathcal E_i\) such that
+\[
+  q_{\rm cmp}[y]
+  =\sum_i \|W_i y\|^2
+  \quad\text{and}\quad
+  q_Z[y]\le q_{\rm cmp}[y]
+  \quad\forall y\in\Y.
+\]
+\end{definition}
+
+\begin{theorem}[Positive feature representation]
+Let \(Q\) be a bounded Hermitian form on a Hilbert space \(\Y\). The following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item \(Q\succeq0\).
+\item There exists a Hilbert space \(\mathcal E\) and a bounded map \(W:\Y\to\mathcal E\) such that \(Q=W^*W\).
+\end{enumerate}
+In finite dimension one may take \(W=Q^{1/2}\).
+\end{theorem}
+
+\begin{proof}
+If \(Q=W^*W\), then \(\langle y,Qy\rangle=\|Wy\|^2\ge0\). Conversely, if \(Q\succeq0\), the positive square root \(Q^{1/2}\) exists and gives \(Q=(Q^{1/2})^*Q^{1/2}\). The unbounded form version requires closed positive forms and a form-domain square-root representation.\qedhere
+\end{proof}
+
+\begin{corollary}[Signed slot obstruction]
+A signed explicit-formula component cannot be interpreted as a positive feature slot unless its quadratic form is positive semidefinite on the declared domain. If a component is indefinite, it must either be grouped with other components into a positive completed block or carried as a defect.
+\end{corollary}
+
+\section{Douglas bridge as full-domain Weil positivity}
+
+\begin{theorem}[Weil positivity equals Douglas domination after identification]
+Suppose a completed Weil form on \(\Y\) is identified as
+\[
+  Q_W[y]
+  =\langle y,(\K_{\rm cmp}-\A_Z)y\rangle,
+  \qquad
+  \A_Z=\VZ^*\VZ,
+  \quad
+  \K_{\rm cmp}=\Wcmp^*\Wcmp.
+\]
+Then the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item \(Q_W[y]\ge0\) for all \(y\in\Y\).
+\item \(\A_Z\preceq\K_{\rm cmp}\).
+\item There exists a contraction \(T\) with \(\VZ=T\Wcmp\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of (i) and (ii) is just the definition of Loewner order. The equivalence of (ii) and (iii) is Douglas factorization: \(\VZ^*\VZ\preceq\Wcmp^*\Wcmp\) if and only if \(\VZ=T\Wcmp\) for some contraction \(T\).\qedhere
+\end{proof}
+
+\begin{warning}[What is not earned by the classical formula alone]
+A signed explicit formula, a scalar trace equality, or positivity on a finite test family does not by itself produce \(\K_{\rm cmp}=\Wcmp^*\Wcmp\) with \(\A_Z\preceq\K_{\rm cmp}\). The matching record must identify the response space, the positive completed carrier features, the zero-side readout, and the domain/core on which the domination holds.
+\end{warning}
+
+\section{Minimal repair of a signed matching form}
+
+Let
+\[
+  S=\K_{\rm vis}-\A_Z
+\]
+be the visible signed gap between a proposed carrier feature and the zero displacement. If \(S\nsucceq0\), there is a witness \(y\) with \(\langle y,Sy\rangle<0\), so the Douglas gate fails.
+
+\begin{proposition}[Spectral positive repair, finite-dimensional version]
+In finite dimension let \(S=U\operatorname{diag}(\lambda_i)U^*\). Define
+\[
+  S_-:=U\operatorname{diag}(\max\{-\lambda_i,0\})U^*,
+  \qquad
+  S_+:=U\operatorname{diag}(\max\{\lambda_i,0\})U^*.
+\]
+Then
+\[
+  S+S_-=S_+\succeq0.
+\]
+Thus a defect or completion feature of size at least the negative spectral part repairs the visible gap. This repair is a mathematical completion of the form, not automatically a lawful analytic-number-theory source record.
+\end{proposition}
+
+\begin{proof}
+Immediate from the spectral decomposition.\qedhere
+\end{proof}
+
+\begin{warning}[Repair is not proof]
+The formal repair \(S_-\) only identifies the obstruction. It is not an RH proof unless \(S_-\) is realized by upstream-visible prime, gamma, pole, tail, or strict-extension source records. Otherwise it is target-selected and therefore smuggled.
+\end{warning}
+
+\section{Core-to-full matching}
+
+\begin{theorem}[Core matching gate]
+Let \(\mathcal C\subset\Y_{\rm full}^-\) be a dense form core. Suppose forms
+\[
+  q_Z[y]=\|\VZ y\|^2,
+  \qquad
+  q_{\rm cmp}[y]=\|\Wcmp y\|^2
+\]
+are defined on \(\mathcal C\), with \(q_{\rm cmp}\) closable and \(\mathcal C\) a form core for its closure. If
+\[
+  q_Z[y]\le q_{\rm cmp}[y]\quad (y\in\mathcal C),
+\]
+and \(q_Z\) is continuous with respect to the closed \(q_{\rm cmp}\)-graph norm, then the inequality extends to the completed response space and yields a Douglas contraction.
+\end{theorem}
+
+\begin{proof}
+For any element in the completion choose a core sequence converging in the closed graph norm. The inequality passes to the limit by closedness/continuity. The closed forms then satisfy \(\A_Z\preceq\K_{\rm cmp}\), hence Douglas factorization gives the contraction.\qedhere
+\end{proof}
+
+\section{Status taxonomy}
+
+A proposed Weil matching gate receives one of the following statuses.
+\begin{description}
+\item[exact\_positive\_feature] Each required component is represented by a positive feature map and the Douglas domination holds on the completed response space.
+\item[grouped\_positive\_feature] Individual signed components are not positive, but a completed grouping is positive and upstream-visible.
+\item[defect\_paid] The missing positivity is represented by an explicit defect \(E_{\rm EF}\) that enters the obstruction budget.
+\item[core\_only] Domination is proved on a dense core but closability/core-extension records are missing.
+\item[finite\_support\_only] Domination is shown only on finite windows or finite tests.
+\item[trace\_shadow] Only scalar trace or total accounting is controlled.
+\item[failed\_matching] A negative witness for \(\K_{\rm cmp}-\A_Z\) is present.
+\end{description}
+
+\section{RH obligation after this step}
+The concrete RH construction target is now:
+\[
+  \boxed{
+  \text{construct an upstream-visible positive completed feature representation}
+  }
+\]
+\[
+  \Wcmp=(W_{\rm pr},W_{\infty},W_{\rm pole},W_{\rm tail})^T
+\]
+such that the completed Weil form is exactly
+\[
+  Q_W[y]=\|\Wcmp y\|^2-\|\VZ y\|^2
+\]
+on the full anti-invariant response space, or on a dense core with a full completion record. This is stronger than citing the signed explicit formula and weaker than RH only in the sense that the proof still also needs source-coercivity and fixed/exhaustive zero-ledger squeeze.
+
+\end{document}

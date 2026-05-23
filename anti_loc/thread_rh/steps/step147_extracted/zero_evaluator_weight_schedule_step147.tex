@@ -1,0 +1,195 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\title{Step 147: Zero-Evaluator Norm Envelope and Weight Schedule}
+\author{RH Membrane / Burnol--Sonine Residual Route}
+\date{May 15, 2026}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 146 reduced completed residual-tail promotion to a trace-class condition for a residual zero ledger
+\[
+  K_R^\omega=(D_R^\omega)^*D_R^\omega,
+\]
+where
+\[
+  (D_R^\omega h)_{\rho,k}
+  =\sqrt{\omega_{\rho,k}}\,q(\rho)\,\langle h,\Pi_RY^a_{\rho,k}\rangle,
+  \qquad q(\rho)=\Re\rho-\frac12.
+\]
+The trace-class criterion is
+\[
+  \sum_{(\rho,k)}\omega_{\rho,k}q(\rho)^2
+  \|\Pi_RY^a_{\rho,k}\|_{H_R}^2 <\infty.
+\]
+This note defines admissible positive weights, proves trace-class under an evaluator-norm envelope, and records the remaining source-compatibility gate.
+
+\section{Burnol carrier facts used}
+Burnol's augmented Sonine spaces $L_a$ contain continuous zero-evaluator vectors $Y^a_{w,k}$ representing the derivative evaluations of the Gamma-completed Mellin transform:
+\[
+  \forall f\in L_a,
+  \qquad
+  \int_0^\infty f(t)Y^a_{w,k}(t)\,dt=M(f)^{(k)}(w).
+\]
+For the zeta zeros, Burnol proves that the vectors $Y^a_{\rho,k}$ are minimal for $a\le 1$, complete for $a\ge 1$, and that for $a<1$ the perpendicular complement of their closed span is the co-Poisson subspace $P_a$.
+
+The present ledger is not a new assertion about those completeness theorems. It is a trace-class audit placed on the residual carrier
+\[
+  H_R=\overline{\operatorname{span}\operatorname{Ran}\Pi_{Y_a}\mathfrak B_{\ell,a}}\subseteq Y_a.
+\]
+
+\section{No-smuggling admissibility rules for weights}
+A weight schedule $\omega_{\rho,k}$ is admissible only if it obeys the following rules.
+
+\begin{enumerate}[label=\textbf{W\arabic*.}]
+\item \textbf{Positive separation.} $\omega_{\rho,k}>0$ for every visible zero evaluator direction.
+\item \textbf{Height-only or envelope-only dependence.} Weights may depend on $|\Im\rho|$, multiplicity index $k$, a declared height bin, and an a priori evaluator-norm envelope. They may not depend on $q(\rho)=\Re\rho-1/2$.
+\item \textbf{Upstream declaration.} The schedule is declared before the residual source frame is tested.
+\item \textbf{Trace-class audit.} The schedule must make $K_R^\omega$ trace-class or expose the failure.
+\item \textbf{Source compatibility.} The schedule must leave a finite source audit budget
+\[
+  C_{\rm src}^\omega=\sup_N\operatorname{tr}(F_N^\Omega K_R^\omega)<\infty
+\]
+when used in the completed squeeze.
+\end{enumerate}
+
+\section{Canonical envelope-normalized schedule}
+Let the zero-evaluator indices be partitioned into dyadic height shells
+\[
+  \mathcal Z_j=\{(\rho,k):2^j\le 1+|\Im\rho|<2^{j+1},\;0\le k<m_\rho\}.
+\]
+Define
+\[
+  n_j=\#\mathcal Z_j,
+  \qquad
+  E_j=\sup_{(\rho,k)\in\mathcal Z_j}\|\Pi_RY^a_{\rho,k}\|_{H_R}^2.
+\]
+If $\mathcal Z_j=\varnothing$, set $n_j=0$ and $E_j=0$.
+
+\begin{definition}[Envelope-normalized weights]
+Assuming $E_j<\infty$ for every occupied shell, set
+\[
+  \boxed{
+  \omega_{\rho,k}^{\rm env}
+  =
+  \frac{2^{-j}}{(1+n_j)(1+E_j)}
+  }
+  \qquad ((\rho,k)\in\mathcal Z_j).
+\]
+\end{definition}
+
+This schedule is intentionally weak but lawful: it depends on height shells and a residual-carrier evaluator envelope, not on off-critical displacement.
+
+\begin{theorem}[Trace-class by envelope-normalized weights]
+Suppose $E_j<\infty$ for every occupied height shell. Since nontrivial zeros satisfy $0<\Re\rho<1$, one has $0\le q(\rho)^2\le 1/4$. Then
+\[
+  \sum_{(\rho,k)}\omega^{\rm env}_{\rho,k}q(\rho)^2
+  \|\Pi_RY^a_{\rho,k}\|^2<\infty.
+\]
+Consequently $K_R^{\omega^{\rm env}}\in\mathcal S_1(H_R)$.
+\end{theorem}
+
+\begin{proof}
+For shell $j$,
+\[
+\begin{aligned}
+\sum_{(\rho,k)\in\mathcal Z_j}\omega^{\rm env}_{\rho,k}q(\rho)^2\|\Pi_RY^a_{\rho,k}\|^2
+&\le
+n_j\frac{2^{-j}}{(1+n_j)(1+E_j)}\frac14 E_j \\
+&\le \frac14 2^{-j}.
+\end{aligned}
+\]
+Summing over $j$ gives a finite bound.
+\end{proof}
+
+\begin{corollary}[Separation survives weighting]
+If $\omega_{\rho,k}>0$ for every visible zero-evaluator direction and
+\[
+  \operatorname{tr}K_R^\omega=0,
+\]
+then every visible residual zero direction satisfies $q(\rho)=0$. Thus the weighted ledger is still separating on $H_R$.
+\end{corollary}
+
+\section{Analytic schedules if evaluator envelopes are proved}
+The envelope-normalized schedule is the minimal lawful trace-class closure. Stronger schedules are possible if analytic evaluator-norm envelopes are imported or proved.
+
+\subsection{Polynomial schedule}
+Suppose a shell envelope of the form
+\[
+  \sum_{(\rho,k):|\Im\rho|\le T}
+  (1+k)^{-2}q(\rho)^2\|\Pi_RY^a_{\rho,k}\|^2
+  \le C(1+T)^A
+\]
+is known. Then any
+\[
+  \omega_{ho,k}^{\rm poly}=(1+|\Im\rho|)^{-B}(1+k)^{-2},
+  \qquad B>A+2,
+\]
+produces a trace-class ledger.
+
+\subsection{Stretched-exponential schedule}
+Suppose an envelope
+\[
+  \sum_{(\rho,k):|\Im\rho|\le T}
+  (1+k)^{-2}q(\rho)^2\|\Pi_RY^a_{\rho,k}\|^2
+  \le C\exp(C_1T^\theta)
+\]
+with $0<\theta<\nu$ is known. Then
+\[
+  \omega_{\rho,k}^{\rm exp}=\exp(-B(1+|\Im\rho|)^\nu)(1+k)^{-2}
+\]
+with $B$ sufficiently large is trace-class.
+
+\subsection{Gaussian safety schedule}
+If only a sub-Gaussian or finite-order envelope is known, one may use
+\[
+  \omega_{\rho,k}^{\rm gauss}=\exp(-B(1+|\Im\rho|)^2)(1+k)^{-2}.
+\]
+This remains positive and separating, but it must still pass source-currency compatibility.
+
+\section{Completed residual squeeze}
+With a trace-class positive ledger, strong residual-window exhaustion gives
+\[
+  P_N\uparrow I_{H_R}
+  \quad\Longrightarrow\quad
+  \operatorname{tr}((I-P_N)K_R^\omega(I-P_N))\to0.
+\]
+Therefore the completed squeeze becomes
+\[
+  \boxed{
+  \operatorname{tr}(G_RK_R^\omega)
+  \le
+  \frac{C_{\rm src}^\omega}{\Lambda_N^\Omega}
+  +
+  \operatorname{tr}((I-P_N)K_R^\omega(I-P_N)).
+  }
+\]
+Thus residual mass collapses if
+\[
+  \Lambda_N^\Omega\to\infty,
+  \qquad
+  C_{\rm src}^\omega<\infty,
+  \qquad
+  \operatorname{tr}((I-P_N)K_R^\omega(I-P_N))\to0.
+\]
+
+\section{Status}
+Step 147 closes the trace-class ledger gate conditionally on finite shell evaluator envelopes. It does not prove RH. It proves that a positive weighted ledger can be made trace-class without losing separation, and it exposes the next gate: source-currency compatibility of the chosen weight schedule.
+
+\section{Next step}
+Step 148 should audit
+\[
+  C_{\rm src}^\omega=\sup_N\operatorname{tr}(F_N^\Omega K_R^\omega)<\infty.
+\]
+The question is whether the envelope-normalized or analytic weight schedule is compatible with the restricted BPRZ source frame and the completed residual squeeze.
+
+\end{document}

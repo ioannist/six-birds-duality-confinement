@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{proposition}{Proposition}
+
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\providecommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\XiC}{\Xi_C}
+\newcommand{\preceqq}{\preceq}
+\newcommand{\K}{\mathsf K}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\DL}{\mathsf{DL}}
+
+\title{Step 63: Layer-Dissolving Membrane Master Theorem}
+\author{Six Birds Anti-Localization Program}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note assembles the native membrane theory and the adequacy-residual companion theory into a single master theorem.  The result is the precise implication:
+\[
+\text{formed closure}
++\text{native predictive membrane}
++\Xi\text{-adequacy}
++\text{all-six transport/defect records}
+\Longrightarrow
+\text{no layer-dissolving predictive needles}.
+\]
+The statement is closure-scoped.  It does not claim that raw substrates, public shadows, undeclared probes, or non-closed artifacts have no needles.  It claims that once a layer has been formed and its native and dissolving test families have been declared with all required records, no declared layer-dissolving recombination can be cheaper than its budget.
+
+\section{Legal quotient and stage data}
+At predictive stage $j$, let $E_j$ be a finite-dimensional Hilbert carrier and let
+\[
+ C_j=C_j^*\succeq0
+\]
+be the audit energy.  Work on the legal energy quotient
+\[
+ E_{j,0}=(\Ker C_j)^\perp,\qquad C_{j,0}=C_j|_{E_{j,0}}>0.
+\]
+All probe families in an accepted record must be null-legal:
+\[
+ L_j|_{\Ker C_j}=0,\qquad D_j|_{\Ker C_j}=0.
+\]
+Here
+\[
+ L_j:E_j\to Y_j
+\]
+is the native probe family, and
+\[
+ D_j:E_j\to Z_j
+\]
+is the layer-dissolving probe family.  Let
+\[
+ T_{L,j}=L_{j,0}C_{j,0}^{-1/2},\qquad
+ T_{D,j}=D_{j,0}C_{j,0}^{-1/2}.
+\]
+Define the native currency, dissolving currency, and cross-currency matrices by
+\[
+ K^L_j=L_{j,0}C_{j,0}^{-1}L_{j,0}^*,
+\]
+\[
+ K^D_j=D_{j,0}C_{j,0}^{-1}D_{j,0}^*,
+\]
+\[
+ K^{DL}_j=D_{j,0}C_{j,0}^{-1}L_{j,0}^*.
+\]
+
+\section{Adequacy residual}
+\begin{definition}[Adequacy residual]
+The adequacy residual of dissolving probes $D_j$ relative to native probes $L_j$ is
+\[
+ \Xi_j:=\Xi_{C_j}(D_j\mid L_j)
+ =K^D_j-K^{DL}_j(K^L_j)^\dagger (K^{DL}_j)^*.
+\]
+Equivalently, if $P_{L,j}$ denotes the orthogonal projection onto
+\[
+ \Ran(T_{L,j}^*)\subset E_{j,0},
+\]
+then
+\[
+ \Xi_j=T_{D,j}(I-P_{L,j})T_{D,j}^*\succeq0.
+\]
+\end{definition}
+
+\begin{lemma}[Optimal native explanation]
+Let
+\[
+ A_j:=K^{DL}_j(K^L_j)^\dagger:Y_j\to Z_j.
+\]
+Then
+\[
+ K^D_j=A_jK^L_jA_j^*+\Xi_j.
+\]
+Moreover, for every attempted native explanation $A:Y_j\to Z_j$,
+\[
+ (D_{j,0}-AL_{j,0})C_{j,0}^{-1}(D_{j,0}-AL_{j,0})^*
+ =\Xi_j+(A-A_j)K^L_j(A-A_j)^*.
+\]
+Thus $A_j$ is the optimal native explanation and $\Xi_j$ is the unique optimal blind-spot currency.
+\end{lemma}
+
+\begin{proof}
+This is the Schur-complement/projection identity for the block covariance
+\[
+\begin{pmatrix}
+K^L_j & (K^{DL}_j)^*\\
+K^{DL}_j & K^D_j
+\end{pmatrix}
+=\begin{pmatrix}T_{L,j}\\T_{D,j}\end{pmatrix}
+\begin{pmatrix}T_{L,j}\\T_{D,j}\end{pmatrix}^*.
+\]
+The Schur residual of the lower-right block after conditioning on the native block is
+$T_{D,j}(I-P_{L,j})T_{D,j}^*$, which gives the first identity.  Expanding the quadratic residual for arbitrary $A$ and completing the square yields the second identity.
+\end{proof}
+
+\section{Stagewise layer-dissolving membrane}
+Let
+\[
+ S_j:Z_j\to Z
+\]
+transport dissolving responses into a common predictive dissolving response space $Z$.  A native response transport $R_j:Y_j\to Y$ may also be present, but the layer-dissolving theorem only needs a native budget in the same stage and a dissolving budget after transport.
+
+\begin{definition}[Stagewise layer-dissolving budget]
+Given a native budget $\Theta^Y_j\succeq0$, an adequacy budget $\Omega^Z_j\succeq0$, and a target dissolving budget $\Theta^D\succeq0$, say that stage $j$ has a certified layer-dissolving budget if
+\[
+ K^L_j\preceq \Theta^Y_j,
+\]
+\[
+ \Xi_j\preceq \Omega^Z_j,
+\]
+and
+\[
+ S_j\bigl(A_j\Theta^Y_jA_j^*+\Omega^Z_j\bigr)S_j^*
+ \preceq \Theta^D.
+\]
+\end{definition}
+
+\begin{theorem}[Stagewise layer-dissolving membrane]
+If stage $j$ has a certified layer-dissolving budget, then
+\[
+ S_jK^D_jS_j^*\preceq \Theta^D.
+\]
+Equivalently, for every dissolving recombination $z\in Z$,
+\[
+ \Cap_{C_j}\bigl(z^*S_jD_j;E_j\bigr)\le z^*\Theta^Dz.
+\]
+\end{theorem}
+
+\begin{proof}
+By the optimal native explanation lemma,
+\[
+ K^D_j=A_jK^L_jA_j^*+\Xi_j.
+\]
+The hypotheses $K^L_j\preceq\Theta^Y_j$ and $\Xi_j\preceq\Omega^Z_j$ give
+\[
+ K^D_j\preceq A_j\Theta^Y_jA_j^*+\Omega^Z_j.
+\]
+Congruence by $S_j$ gives the matrix claim.  The scalar recombination claim follows from the family-capacity identity.
+\end{proof}
+
+\section{Predictive master theorem}
+\begin{definition}[Layer-dissolving predictive membrane]
+A formed closure has a layer-dissolving predictive membrane with budget $\Theta^D$ if every accepted predictive stage $j$ has exact package, null-mode legality, native membrane, adequacy residual budget, dissolving response transport, all-six statuses, and
+\[
+ S_jK^D_jS_j^*\preceq\Theta^D.
+\]
+\end{definition}
+
+\begin{theorem}[Layer-dissolving membrane master theorem]
+Suppose a formed closure/layer supplies, for every accepted predictive stage $j$:
+\begin{enumerate}[label=(\alph*)]
+\item exact packaged carrier and audit $C_j$;
+\item null-legal native and dissolving probe families $L_j,D_j$;
+\item native membrane budget $K^L_j\preceq\Theta^Y_j$;
+\item adequacy residual budget $\Xi_{C_j}(D_j\mid L_j)\preceq\Omega^Z_j$;
+\item response transport $S_j:Z_j\to Z$ and a common dissolving budget $\Theta^D$ satisfying
+\[
+ S_j(A_j\Theta^Y_jA_j^*+\Omega^Z_j)S_j^*\preceq\Theta^D;
+\]
+\item accepted all-six records $P_1,\dots,P_6$ for rewrite/gauge, feasibility/channel, route/holonomy, staging/refinement, packaging/canonicalization, and audit/currency.
+\end{enumerate}
+Then the formed closure has no layer-dissolving predictive needles in the declared family:
+\[
+ \sup_j \Cap_{C_j}(z^*S_jD_j;E_j)\le z^*\Theta^Dz
+ \qquad(z\in Z).
+\]
+Equivalently,
+\[
+ S_jK^D_jS_j^*\preceq\Theta^D
+\qquad\text{for every accepted }j.
+\]
+\end{theorem}
+
+\begin{proof}
+Apply the stagewise layer-dissolving membrane theorem at each accepted stage.  The all-six records do not change the linear-algebraic inequality; they license the assertion as a formed-layer membrane claim rather than a bare matrix fact.
+\end{proof}
+
+\section{Defective form}
+In practice the budgets may be transported through a bridge or verified up to defects.  The clean form is as follows.
+
+\begin{theorem}[Defect-paid layer-dissolving membrane]
+Assume
+\[
+ K^L_j\preceq\Theta^Y_j+E^L_j,
+\qquad
+ \Xi_j\preceq\Omega^Z_j+E^\Xi_j.
+\]
+Then
+\[
+ S_jK^D_jS_j^*
+ \preceq
+ S_j\bigl(A_j\Theta^Y_jA_j^*+\Omega^Z_j\bigr)S_j^*
+ +S_j\bigl(A_jE^L_jA_j^*+E^\Xi_j\bigr)S_j^*.
+\]
+Thus a defect-paid common budget is
+\[
+ \Theta^D_j=
+ S_j\bigl(A_j\Theta^Y_jA_j^*+\Omega^Z_j+A_jE^L_jA_j^*+E^\Xi_j\bigr)S_j^*.
+\]
+A predictive claim is accepted only if these transported defects remain inside the declared global budget or are explicitly recorded as residual allowance.
+\end{theorem}
+
+\begin{proof}
+Use
+$K^D_j=A_jK^L_jA_j^*+\Xi_j$ and substitute the two defect inequalities.
+\end{proof}
+
+\section{Predictive propagation criterion}
+\begin{corollary}[Summable layer-dissolving propagation]
+Assume all dissolving currencies are transported into a common space and satisfy
+\[
+ K^D_{j+1}\preceq(1+\varepsilon_j)K^D_j+E_j,
+\]
+with
+\[
+ \prod_j(1+\varepsilon_j)\le P<\infty,
+ \qquad
+ \sum_jE_j\preceq E_\infty.
+\]
+Then
+\[
+ K^D_n\preceq P(K^D_0+E_\infty)
+\]
+for every $n$.  Hence a common budget
+\[
+ P(K^D_0+E_\infty)\preceq\Theta^D
+\]
+implies a predictive layer-dissolving membrane.
+\end{corollary}
+
+\section{Witness and obstruction form}
+If a declared layer-dissolving membrane fails at stage $j$, then
+\[
+ S_jK^D_jS_j^*\npreceq\Theta^D.
+\]
+Equivalently there exists a dissolving recombination witness $z\in Z$ such that
+\[
+ z^*(S_jK^D_jS_j^*-\Theta^D)z>0.
+\]
+The witness must be charged to at least one of the following records:
+\begin{enumerate}[label=(\roman*)]
+\item native membrane failure $K^L_j\npreceq\Theta^Y_j$;
+\item adequacy failure $\Xi_j\npreceq\Omega^Z_j$;
+\item explanation transport failure $S_j(A_j\Theta^Y_jA_j^*+\Omega^Z_j)S_j^*\npreceq\Theta^D$;
+\item null-mode legality failure;
+\item predictive transport/defect accumulation failure;
+\item all-six record failure or scope/nonclaim boundary.
+\end{enumerate}
+Ignoring the witness is an overread.
+
+\section{Acceptance semantics}
+The mathematical equivalence is
+\[
+ S_jK^D_jS_j^*\preceq\Theta^D
+\iff
+\text{no dissolving recombination witness at stage }j.
+\]
+Six Birds acceptance is stronger.  It requires the formed closure, exact package, declared native and dissolving probe families, null-mode legality, adequacy records, predictive transports, all-six statuses, and a completed witness ledger.  Without those records, the inequality is support evidence, not an accepted layer-dissolving membrane claim.
+
+\section{Nonclaims}
+This theorem does not claim that raw substrates have no needles, that native membranes automatically cover dissolving probes, that public shadows certify intrinsic adequacy, that finite-stage safety implies predictive safety, or that RH/NS are solved.  It states the exact conditions under which a formed closure/layer has no declared layer-dissolving predictive needles.
+
+\end{document}

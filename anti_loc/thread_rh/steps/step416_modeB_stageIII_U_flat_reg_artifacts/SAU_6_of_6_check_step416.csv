@@ -1,0 +1,7 @@
+gate_id,gate_name,status,evidence
+1,primitive_exclusion,pass,"tau/kernel-preserving transfer is not a primitive; theta is a finite regularized parameter vector audited by R_crossval"
+2,dependency_trace,pass,"accepted descent depends on R_H_load, R_Z_load, R_compare, R_regularize, R_crossval, R_operator_audit; all listed in design"
+3,ablation_test,pass,"drop R_regularize admits lambda=0 interpolation with holdout/training ratio 16.66; drop R_crossval admits overfit settings; drop R_Z_load/R_H_load leaves no data"
+4,negative_controls,pass,"settings with train_log_RMSE>=0.5 or holdout/train>1.3 are blocked even if framed as candidate transfers"
+5,Stage_II_before_target_closure,pass,"Step 415 earned Stage II proper with 3/3 independent reproductions before this Stage III attempt"
+6,no_single_axiom_equivalence,pass,"R_crossval is an audit gate on finite errors, not an axiom equivalent to H6 bridge closure"

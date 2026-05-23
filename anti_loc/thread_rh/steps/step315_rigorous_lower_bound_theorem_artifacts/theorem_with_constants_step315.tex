@@ -1,0 +1,41 @@
+\section*{Step 315 Attempted Worst-Case-\(\alpha\) Lower Bound}
+
+\paragraph{Requested theorem form.}
+The requested argument would infer
+\[
+|\delta_{D,k}(\rho_1,G_\star)|
+\ge |T_{k,j_\ast}|\exp(-\pi^2 k/8),
+\]
+using \(|\alpha|\le \pi\) and \(\sigma^2\approx k/4\).
+
+\paragraph{Blocker.}
+This implication is not rigorous.  A worst-case bound
+\(|\alpha|\le\pi\) does not give a positive lower bound on the magnitude
+of a complex sum.  Even terms with phases in an interval of length
+\(\le 2\pi\) can cancel exactly.  A Gaussian-Fourier heuristic gives
+\(\exp(-\alpha^2\sigma^2/2)\) only after one has proved a Gaussian
+amplitude profile, an approximately linear phase, and a controlled
+stationary-phase remainder.
+
+There is also a direction issue: from \(\sigma^2\ge k/4\) one obtains
+\[
+\exp(-\pi^2\sigma^2/2)\le \exp(-\pi^2 k/8),
+\]
+not a lower bound by \(\exp(-\pi^2 k/8)\).  A lower bound of that shape
+would require an upper bound \(\sigma^2\le k/4\), or a separate direct
+interference estimate.
+
+\paragraph{Finite-sample diagnostic.}
+The formal expression
+\[
+|T_{k,j_\ast}|\exp(-\pi^2k/8)
+\]
+is below the certified \(|\delta_{D,k}|\) for \(k=10,20,30,50\).  This
+is a numerical diagnostic only; it is not a proof for all \(k\).
+
+\paragraph{Conclusion.}
+No fully rigorous constants \(A_0,b_0,k_0\) are derived in this step.
+The Step 310 theorem remains conditional.  The tightness gap remains the
+same: proving a uniform interference lower bound requires ratio-
+conjecture-grade or stationary-phase-grade phase control, not only
+\(|\alpha|\le\pi\).

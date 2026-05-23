@@ -1,0 +1,290 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\R}{\mathsf R}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\Loewner}{\preceq}
+
+\title{Step 49: Native Probe Adequacy Under Strict Extension}
+\author{Anti-localization working notes}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The formed-layer membrane theorem proves no needles for the declared native probe family.  To promote this to a claim about all layer-dissolving probes one needs an adequacy/exhaustivity bridge.  Step 48 gave the stagewise bridge
+\[
+        D_\Gamma = A L_\Gamma + R .
+\]
+Step 49 strengthens this by adding a canonical conditional currency for the residual part of a dissolving family not seen by the current native family, and by proving that strict extension by new native probes contracts that residual.  Thus adequacy is not a yes/no slogan: it is a Schur-complement ledger that can improve only through genuine new native information.
+
+\section{One-stage conditional adequacy currency}
+Let $E$ be a finite-dimensional packaged coordinate space with positive semidefinite audit $C\succeq0$.  Write $C^\dagger$ for the Moore--Penrose inverse, with the standing null-mode legality condition that all probes under discussion annihilate $\Ker C$.
+Let
+\[
+        L:E\to Y,\qquad D:E\to Z
+\]
+be the declared native probe family and a claimed layer-dissolving probe family.  Define the joint currency blocks
+\[
+K_{LL}=LC^\dagger L^*,\qquad
+K_{DL}=DC^\dagger L^*,\qquad
+K_{DD}=DC^\dagger D^*.
+\]
+
+\begin{definition}[conditional adequacy currency]
+Assume $\Ran K_{LD}\subseteq \Ran K_{LL}$, equivalently the Schur complement is lawful on the support of $K_{LL}$.  The conditional adequacy residual of $D$ relative to $L$ is
+\[
+        \boxed{
+        \R_C(D\mid L)
+        := K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}.
+        }
+\]
+It is the part of the layer-dissolving currency not explained by the native probe family.
+\end{definition}
+
+\begin{lemma}[least residual factorization]
+For any linear map $A:Y\to Z$, define
+\[
+        \R_C(D-AL)=(D-AL)C^\dagger(D-AL)^*.
+\]
+Then
+\[
+        \R_C(D-AL)
+        =\R_C(D\mid L)
+        +(A-A_*)K_{LL}(A-A_*)^*,
+\]
+where
+\[
+        A_*:=K_{DL}K_{LL}^\dagger.
+\]
+Consequently,
+\[
+        \boxed{\R_C(D\mid L)\Loewner \R_C(D-AL)\quad\text{for every }A.}
+\]
+\end{lemma}
+
+\begin{proof}
+Expand
+\[
+(D-AL)C^\dagger(D-AL)^*
+=K_{DD}-AK_{LD}-K_{DL}A^*+AK_{LL}A^*.
+\]
+Insert $A=A_*+(A-A_*)$ and use $A_*K_{LL}=K_{DL}$ and $K_{LL}A_*^*=K_{LD}$ on the lawful range.  The cross terms cancel and the displayed identity follows.  The last term is positive semidefinite.
+\end{proof}
+
+\begin{theorem}[adequacy promotion by conditional currency]
+If the native membrane has budget
+\[
+        K_{LL}\Loewner \Theta_Y,
+\]
+and the conditional adequacy residual has budget
+\[
+        \R_C(D\mid L)\Loewner \Xi_Z,
+\]
+then the layer-dissolving currency satisfies
+\[
+        \boxed{
+        K_{DD}
+        \Loewner
+        A_*\Theta_YA_*^*+\Xi_Z.
+        }
+\]
+In particular, if $\R_C(D\mid L)=0$, then $D$ is exactly adequate through the native probes and
+\[
+        K_{DD}=A_*K_{LL}A_*^*\Loewner A_*\Theta_YA_*^*.
+\]
+\end{theorem}
+
+\begin{proof}
+By the definition of the Schur complement,
+\[
+K_{DD}=A_*K_{LL}A_*^*+\R_C(D\mid L).
+\]
+Apply the two assumed Loewner bounds.
+\end{proof}
+
+\begin{corollary}[blind-spot criterion]
+Exact adequacy $\R_C(D\mid L)=0$ holds precisely when every finite-energy response of $D$ factors through $L$ on the legal energy quotient.  Equivalently, no legal finite-energy vector is invisible to $L$ but visible to $D$.
+\end{corollary}
+
+\section{Strict extension of the native family}
+Now let a strict extension add a new native probe family
+\[
+        M:E\to W,
+\]
+so that
+\[
+        L^+ := \begin{bmatrix}L\\M\end{bmatrix}:E\to Y\oplus W.
+\]
+
+\begin{theorem}[conditional adequacy contraction under added probes]
+The adequacy residual decreases under native-family extension:
+\[
+        \boxed{
+        \R_C(D\mid L^+)\Loewner \R_C(D\mid L).
+        }
+\]
+More precisely, define the conditional blocks
+\[
+K_{MM\mid L}=K_{MM}-K_{ML}K_{LL}^\dagger K_{LM},
+\]
+\[
+K_{DM\mid L}=K_{DM}-K_{DL}K_{LL}^\dagger K_{LM}.
+\]
+Then
+\[
+        \boxed{
+        \R_C(D\mid L^+)
+        =\R_C(D\mid L)
+        -K_{DM\mid L}K_{MM\mid L}^\dagger K_{MD\mid L}.
+        }
+\]
+The subtracted term is positive semidefinite.
+\end{theorem}
+
+\begin{proof}
+Apply the Schur-complement quotient formula to the joint currency matrix of $(L,M,D)$.  Conditioning first on $L$ and then on the conditional part of $M$ gives the displayed identity.  Since $K_{MM\mid L}\succeq0$, its Schur reduction is positive semidefinite.
+\end{proof}
+
+\begin{corollary}[strictness criterion]
+The extension strictly improves adequacy in a witness direction $z\in Z$ exactly when
+\[
+        K_{MM\mid L}^{\dagger/2}K_{MD\mid L}z\ne0.
+\]
+Equivalently, the newly admitted native probes see some part of the old dissolving residual.  If $K_{MD\mid L}=0$, the extension is native but not adequacy-improving.
+\end{corollary}
+
+\begin{warning}[same-family saturation]
+If no new native information is added, i.e. $L^+$ differs from $L$ only by an invertible response relabeling or by probes already in the response span of $L$, then
+\[
+        \R_C(D\mid L^+)=\R_C(D\mid L).
+\]
+Thus rerunning the same native family cannot close a blind spot.  Adequacy contraction requires strict extension.
+\end{warning}
+
+\section{Predictive adequacy ladder}
+At stage $j$, let
+\[
+        C_j,\quad L_j:E_j\to Y_j,\quad D_j:E_j\to Z_j
+\]
+be the packaged audit, native family, and layer-dissolving family.  Let response transports
+\[
+        R^Y_j:Y_j\to Y,
+        \qquad
+        R^Z_j:Z_j\to Z
+\]
+place all currencies in common response spaces.
+Define
+\[
+\widehat K^L_j
+=R^Y_jL_jC_j^\dagger L_j^*(R^Y_j)^*,
+\]
+\[
+\widehat K^D_j
+=R^Z_jD_jC_j^\dagger D_j^*(R^Z_j)^*,
+\]
+and the transported conditional residual
+\[
+\widehat \R_j
+=R^Z_j\R_{C_j}(D_j\mid L_j)(R^Z_j)^*.
+\]
+
+\begin{theorem}[native membrane promotes to dissolving membrane under predictive adequacy]
+Assume there are maps $A_j:Y_j\to Z_j$ and budgets $\Theta^Y_j,\Xi^Z_j$ such that
+\[
+        K^L_j\Loewner \Theta^Y_j,
+        \qquad
+        \R_{C_j}(D_j\mid L_j)\Loewner \Xi^Z_j.
+\]
+Then
+\[
+        K^D_j\Loewner A_{*,j}\Theta^Y_jA_{*,j}^*+\Xi^Z_j,
+\]
+where
+\[
+        A_{*,j}=K_{D_jL_j}K_{L_jL_j}^{\dagger}.
+\]
+After transport, if there is a common dissolving budget $\Psi$ such that
+\[
+R^Z_j\bigl(A_{*,j}\Theta^Y_jA_{*,j}^*+\Xi^Z_j\bigr)(R^Z_j)^*\Loewner \Psi
+\quad\text{for all accepted }j,
+\]
+then
+\[
+        \boxed{\widehat K^D_j\Loewner\Psi\quad\text{for all accepted }j.}
+\]
+Thus no native predictive blind spot promotes to a layer-dissolving needle.
+\end{theorem}
+
+\begin{theorem}[summable residual adequacy]
+Suppose in a common response space the residual currencies satisfy
+\[
+        \widehat \R_{j+1}
+        \Loewner
+        (1+\varepsilon_j)B_j\widehat\R_jB_j^*+F_j,
+\]
+with
+\[
+        \prod_j(1+\varepsilon_j)<\infty,
+        \qquad
+        \sum_jF_j\Loewner F_\infty.
+\]
+Then the adequacy residual remains uniformly bounded.  If, in addition, the transported native membrane budgets remain uniformly bounded and the regression maps $A_{*,j}$ are uniformly budgeted, then the dissolving membrane remains predictive.
+\end{theorem}
+
+\begin{proof}
+The first statement is the standard positive-semidefinite Gronwall iteration: repeatedly substitute the recurrence and use monotonicity under congruence.  The second statement follows from the predictive adequacy theorem stagewise.
+\end{proof}
+
+\section{No-go examples}
+\begin{example}[hidden blind spot reappears]
+Let
+\[
+E=\mathbb R^2,
+\quad C=I,
+\quad L(x_1,x_2)=x_1,
+\quad D(x_1,x_2)=Mx_2.
+\]
+Then $K_L=1$ but $\R_C(D\mid L)=K_D=M^2$.  Native anti-localization says nothing about the dissolving direction.
+\end{example}
+
+\begin{example}[non-summable adequacy defect]
+Let the native family be exact at each finite stage except for residual currency
+\[
+        \widehat\R_j=\sum_{k=1}^j \frac1k.
+\]
+Each finite stage has finite adequacy defect, but no predictive adequacy budget exists.
+\end{example}
+
+\begin{example}[null-mode fake adequacy]
+Let
+\[
+C=\begin{pmatrix}0&0\\0&1\end{pmatrix},
+\quad L(x_0,x_1)=x_1,
+\quad D(x_0,x_1)=x_0.
+\]
+The pseudoinverse expression can report zero finite-energy currency for $D$, but the variational capacity is infinite because $D$ sees a legal zero-energy direction.  Null-mode legality is therefore part of adequacy, not an optional technicality.
+\end{example}
+
+\section{Six Birds reading}
+This theorem clarifies the difference between a native membrane and a layer-dissolving membrane.  A formed closure may honestly claim no native needles once its native family is priced.  It may promote that claim to no layer-dissolving needles only when the native family is adequate for the dissolving readouts, either exactly or with a paid residual.  Strict extension is the lawful way adequacy improves: new native probes reduce the conditional residual precisely when they see the old blind spot.  Otherwise the status remains \texttt{native\_only}, \texttt{support\_only}, or \texttt{failed\_adequacy}.
+
+\end{document}

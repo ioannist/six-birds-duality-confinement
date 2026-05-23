@@ -1,0 +1,163 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+\title{Step 125: Prime-Conductor Finite Source-Frame Model}
+\author{RATCHET RH Membrane Program}
+\date{May 2026}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This step instantiates the conductor-decoupled source route at the most elementary finite level: complete Dirichlet character families modulo a prime conductor.  The goal is not to re-derive approximate functional equations, mollifier length bounds, or large-sieve technology.  Those are imported analytic-number-theory records.  The goal is to translate the finite orthogonality theorem into the membrane lower-frame language, then expose the defects that remain before any completed RH claim can be made.
+
+\section{Setup}
+Let $q$ be prime and let $\mathcal N\subset\{1,\ldots,L\}$ with $L<q$.  Let $d=|\mathcal N|$.  For each Dirichlet character $\chi\bmod q$ define
+\[
+Q_\chi a=\sum_{n\in\mathcal N}a_n\chi(n).
+\]
+The finite source Gram is
+\[
+G_q(m,n)=\sum_{\chi\bmod q}\chi(n)\overline{\chi(m)}.
+\]
+Because $q$ is prime and $L<q$, every $n\in\mathcal N$ is a unit and $m\equiv n\pmod q$ if and only if $m=n$.
+
+\section{Full-character frame}
+\begin{theorem}[Prime full-character finite frame]
+For $q$ prime and $L<q$,
+\[
+\sum_{\chi\bmod q} Q_\chi^*Q_\chi=(q-1)I_{\mathbb C^{\mathcal N}}.
+\]
+Equivalently,
+\[
+G_q=(q-1)I.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the standard orthogonality relation for the complete character group of $(\mathbb Z/q\mathbb Z)^\times$:
+\[
+\sum_{\chi\bmod q}\chi(n)\overline{\chi(m)}=
+\begin{cases}
+q-1,& n\equiv m\pmod q,\\
+0,& n\not\equiv m\pmod q.
+\end{cases}
+\]
+Since $1\le m,n<q$, congruence is equality.
+\end{proof}
+
+Thus the clean finite coefficient-frame prototype has lower-frame strength
+\[
+\gamma_q^{\rm full}=q-1
+\]
+if one uses the raw cumulative source sum.  If the family is normalized by averaging, the strength is $1$ instead.
+
+\section{Primitive-character removal}
+For prime $q$, the primitive characters are exactly the nonprincipal characters.  Removing the principal character subtracts the rank-one all-ones matrix
+\[
+J_d=\mathbf 1\mathbf 1^*.
+\]
+Thus
+\[
+G_q^{\rm prim}=(q-1)I-J_d.
+\]
+Its eigenvalues are
+\[
+q-1\quad(d-1\text{ times}),
+\qquad
+q-1-d\quad(1\text{ time}).
+\]
+Therefore
+\[
+G_q^{\rm prim}\succeq(q-1-d)I.
+\]
+This remains positive exactly when $d<q-1$.  Under average normalization by $q-2$, the lower-frame constant is
+\[
+\frac{q-1-d}{q-2}=1-O(d/q).
+\]
+So primitive removal is harmless only if the coefficient dimension is $o(q)$.
+
+\section{The source-normalization fork}
+The membrane lower-frame theorem uses
+\[
+F_N=\sum_{\omega\in\mathcal X_N}\lambda_{\omega,N}Q_\omega^*\Theta_\omega^{-1}Q_\omega.
+\]
+For prime characters, choosing $\lambda_{\chi,N}=1$ gives a raw cumulative source frame with strength $\gamma_N\asymp q_N$.  Choosing $\lambda_{\chi,N}=1/\varphi(q_N)$ gives an averaged frame with strength $O(1)$.
+
+\begin{warning}[Normalization is load-bearing]
+The divergence $\Lambda_N\to\infty$ is not a consequence of finite character orthogonality alone.  It depends on the audit currency assigned to source records.  Raw cumulative sources can give $\gamma_N\to\infty$; averaged families do not.  This must be declared as a $P_6$ audit record, not chosen after the proof needs growth.
+\end{warning}
+
+\section{Conductor-decoupled finite prototype}
+Let the regularized Burnol--Dirichlet shadow have effective coefficient length
+\[
+L_N\asymp X_NR_N.
+\]
+Choose a prime conductor
+\[
+q_N>L_N.
+\]
+Then the finite full-character frame gives
+\[
+G_{q_N}\succeq(q_N-1)I.
+\]
+The primitive frame gives
+\[
+G_{q_N}^{\rm prim}\succeq(q_N-1-L_N)I.
+\]
+If $L_N=q_N^\sigma$ with $\sigma<1$, then the primitive averaged lower-frame constant tends to $1$, while the raw primitive lower-frame strength grows like $q_N$.
+
+\section{Interface with the residual visibility gate}
+From Step 123,
+\[
+c_{\rm hyb,N}\ge 1-E_N^2,
+\]
+where
+\[
+E_N=\epsilon_{B,N}+\epsilon_{\rm Mell,N}+\tau_{M,N}+\kappa_{\rm tail,N}.
+\]
+Thus finite residual source absorption follows from
+\[
+R_N^*G_{q_N}R_N\succeq \gamma_N c_{\rm hyb,N}G_{R,N}.
+\]
+A positive floor is sufficient:
+\[
+E_N\le e<1,
+\qquad
+\gamma_N\to\infty
+\quad\Longrightarrow\quad
+\gamma_Nc_{\rm hyb,N}\to\infty.
+\]
+
+\section{Honest defects}
+The prime-conductor model has the following first defects:
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Aliasing defect.} If $L_N\ge q_N$, then distinct coefficients can be congruent modulo $q_N$, producing off-diagonal collisions.
+\item \textbf{Primitive removal defect.} Passing from all characters to primitive characters subtracts $J_d$ and costs the one-dimensional all-ones direction.
+\item \textbf{Composite-modulus oldform defect.} Prime conductors avoid imprimitive conductor stratification. Composite moduli require a separate oldform/imprimitive audit.
+\item \textbf{Source-weight normalization defect.} Raw and averaged source currencies give different growth behavior.
+\item \textbf{Finite-to-completed tail.} The finite coefficient frame is RH-relevant only after the residual ledger is fixed or exhaustive.
+\item \textbf{Matrix moment defect.} If the source frame is $L$-weighted, mollified, or restricted, scalar lower moments are insufficient; one needs a matrix lower-frame theorem.
+\end{enumerate}
+
+\section{What is imported versus new}
+The finite orthogonality relation is standard.  Approximate functional equations, smooth Muentz regularization, mollifier-length restrictions, and conductor-aspect bilinear forms are imported analytic-number-theory inputs.  The project-native contribution is the membrane reading:
+\[
+\text{finite source frame} + \Xi\text{-visibility} + \text{fixed/exhaustive tail} \Rightarrow \text{residual absorption}.
+\]
+
+\section{Next target}
+The next step is not another re-derivation of character orthogonality.  It is the source-weighted matrix lower-frame theorem:
+\[
+G_{\mathcal X,N}^{\rm weighted}\succeq\gamma_NH_N
+\]
+for the exact coefficient windows produced by the regularized Burnol--Dirichlet shadow.  Existing large-sieve and hybrid moment results should be treated as imported technology and audited for whether they provide lower-frame, not merely upper-bound or scalar-moment, content.
+
+\end{document}

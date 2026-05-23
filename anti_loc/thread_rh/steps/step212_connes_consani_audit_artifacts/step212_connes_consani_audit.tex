@@ -1,0 +1,75 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Step 212: Connes--Consani 2020 Audit for Branch A}
+
+The audited source is Connes--Consani, \emph{Weil positivity and Trace formula
+the archimedean place}, arXiv:2006.13771, using the manager-extracted text at
+\texttt{/tmp/burnol\_audit/connes\_weil\_archimedean.txt}.
+
+\subsection*{Translation}
+
+\[
+\begin{array}{lll}
+\text{Cascade} & \text{Connes--Consani} & \text{Status}\\
+\hline
+K_\lambda \text{ at }\lambda=1 & S(1,1) & \text{identified}\\
+P_\infty & S,\text{ projection onto }S(1,1) & \text{identified at }\lambda=1\\
+M_{m_\ell} & \vartheta(f) & \text{related scaling action}\\
+(I-P_\infty)M_{m_\ell}P_\infty & (I-S)\vartheta(f)S & \text{off-diagonal match}\\
+q_\eta(C_\ell P_\eta) & \operatorname{Tr}(\vartheta(f)S), K_I,T_q & \text{not identified}
+\end{array}
+\]
+
+\subsection*{Theorem 4.7}
+
+Connes--Consani Theorem 4.7 concerns the positivity of
+\[
+  \operatorname{Tr}(\vartheta(f)S)
+  =W_\infty(f)+\int f(\rho^{-1})\epsilon(\rho)\,d^*\rho.
+\]
+This is a compressed trace/positivity statement on the Sonin projection.
+Branch A asks for the Calkin class of the off-diagonal object
+\[
+  q_\eta((I-S)\vartheta(f)S\,P_\eta).
+\]
+The trace of the compressed scaling action and the essential class of the
+off-diagonal compression are different invariants.  Positivity of the former
+does not decide compactness of the latter.
+
+\subsection*{Section 6.2 Toeplitz approximation}
+
+Section 6.2 discretizes a compact operator \(K_I\) by Toeplitz matrices \(T_q\).
+It uses finite hermitian Toeplitz theory: largest eigenvectors, roots on the
+unit circle, and a co-rank-one decomposition
+\[
+  S=\lambda\operatorname{Id} - \cdots T_q,
+  \qquad
+  S=\lambda\sum_j d(j)e(z_j).
+\]
+This is a finite approximation/canonicalization of \(K_I\).  It is not a
+Toeplitz extension theorem for the infinite C*-algebra
+\[
+  A_\eta=C^*(P_\infty,M_{m_\ell},P_\eta,I),
+\]
+and does not give a faithful symbol
+\(\sigma_B:A_\eta/K_\eta\to C(X)\).
+
+\subsection*{Relation to Connes CRCFT-TE}
+
+The paper remains valuable for the Connes/Weil positivity route.  In the
+framework taxonomy it supports the Step 184 classification: the Connes/Weil
+route is target-equivalent to RH, not a direct Branch A Calkin-symbol closure.
+
+\subsection*{Verdict}
+
+\[
+\boxed{\texttt{V\_connes\_consani\_related\_but\_not\_sufficient}.}
+\]
+
+The Branch A G2 missing content remains a faithful boundary-symbol theorem for
+the full \((P_\infty,M_{m_\ell},P_\eta)\) algebra.
+
+\end{document}

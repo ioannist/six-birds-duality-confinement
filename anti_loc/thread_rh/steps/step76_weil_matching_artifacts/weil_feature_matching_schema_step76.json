@@ -1,0 +1,24 @@
+{
+  "step": 76,
+  "name": "Weil Feature Matching Criterion",
+  "central_bridge": "A_Z <= K_cmp iff V_Z = T W_cmp with ||T|| <= 1",
+  "feature_stack": ["W_pr", "W_infty", "W_pole", "W_tail"],
+  "forms": {
+    "zero": "q_Z[f] = ||V_Z f||^2",
+    "carrier": "q_cmp[f] = ||W_cmp f||^2",
+    "explicit_formula_residual": "q_EF[f] = q_cmp[f] - q_Z[f]"
+  },
+  "acceptance_condition": [
+    "positive feature decomposition",
+    "q_EF >= 0 on a form core",
+    "closability and core extension",
+    "null-mode legality",
+    "fixed or exhaustive tail record"
+  ],
+  "nonclaims": [
+    "does not prove RH",
+    "does not prove classical signed explicit formula is already a positive carrier",
+    "does not replace tail/exhaustivity records",
+    "does not allow trace equality to be overread as domination"
+  ]
+}

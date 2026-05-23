@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\geometry{margin=1in}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\title{Step 148: Source-Compatible Weight Normalization Audit}
+\author{RATCHET / Membrane RH Construction Notes}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 146 showed that the unweighted residual zero ledger is not trace-class-certified on the Burnol/Sonine residual carrier. Step 147 supplied a positive weighted ledger
+\[
+  K_R^\omega=(D_R^\omega)^*D_R^\omega,
+  \qquad
+  (D_R^\omega h)_{\rho,k}=\sqrt{\omega_{\rho,k}}\,q(\rho)\,\langle h,\Pi_RY^a_{\rho,k}\rangle,
+\]
+with
+\[
+  q(\rho)=\Re\rho-\frac12.
+\]
+The present step audits the remaining compatibility condition:
+\[
+  C_{\rm src}^\omega
+  :=\sup_N \operatorname{tr}(F_N^\Omega K_R^\omega)<\infty,
+\]
+or more generally
+\[
+  \operatorname{tr}(F_N^\Omega K_R^\omega)=o(\Lambda_N^\Omega).
+\]
+The verdict is that this is not a free normalization choice. It is a load-bearing source-audit theorem.
+
+\section{Objects}
+Let $H_R$ be the completed Burnol/Sonine residual carrier from Step 145. Let $G_R\succeq0$ denote the completed residual metric. Let
+\[
+  F_N^\Omega\succeq \Lambda_N^\Omega G_R - E_N
+\]
+be the lifted $\Omega$-compatible restricted source frame. In the idealized no-defect statement we write
+\[
+  F_N^\Omega\succeq \Lambda_N^\Omega G_R,
+  \qquad \Lambda_N^\Omega\to\infty.
+\]
+Let $K_R^\omega\ge0$ be the fixed positive trace-class weighted residual ledger.
+
+\section{Weighted source-trace formula}
+For the rank-one/evaluator representation
+\[
+  K_R^\omega
+  =\sum_{(\rho,k)} \omega_{\rho,k}q(\rho)^2
+     |\Pi_RY^a_{\rho,k}\rangle\langle \Pi_RY^a_{\rho,k}|,
+\]
+whenever the sum is trace-class and $F$ is positive bounded on the relevant form domain,
+\[
+\boxed{
+  \operatorname{tr}(F K_R^\omega)
+  =\sum_{(\rho,k)}\omega_{\rho,k}q(\rho)^2
+    \langle F\Pi_RY^a_{\rho,k},\Pi_RY^a_{\rho,k}\rangle.
+}
+\]
+Thus source compatibility is a source-evaluator response-envelope statement, not merely a height-weight summability statement.
+
+\section{No-free-normalization theorem}
+\begin{theorem}[No free source-compatible normalization]
+Assume $F_N\succeq\Lambda_NG_R$, $\Lambda_N\to\infty$, and $K\ge0$ is trace-class. Then
+\[
+  \operatorname{tr}(F_NK)
+  \ge
+  \Lambda_N\operatorname{tr}(G_RK).
+\]
+Consequently, if
+\[
+  \operatorname{tr}(F_NK)=o(\Lambda_N),
+\]
+then
+\[
+  \operatorname{tr}(G_RK)=0.
+\]
+In particular, a uniformly bounded source budget
+\[
+  \sup_N\operatorname{tr}(F_NK)<\infty
+\]
+forces completed weighted residual collapse.
+\end{theorem}
+
+\begin{proof}
+Since $F_N-\Lambda_NG_R\succeq0$ and $K\ge0$ is trace-class,
+\[
+  \operatorname{tr}((F_N-\Lambda_NG_R)K)\ge0.
+\]
+Hence
+\[
+  \operatorname{tr}(F_NK)\ge\Lambda_N\operatorname{tr}(G_RK).
+\]
+Dividing by $\Lambda_N$ gives the conclusion.
+\end{proof}
+
+\section{Interpretation}
+This theorem cuts both ways. It is exactly the completed squeeze mechanism, but it also says that source compatibility cannot be purchased by declaring faster-decaying fixed positive weights if the residual ledger has nonzero mass in the source metric. For a fixed separating ledger, bounded source exposure is already a collapse-level certificate.
+
+\section{Envelope-normalized schedules}
+Let dyadic height shells be denoted by $\mathcal Z_j$, with
+\[
+  n_j=\#\mathcal Z_j,
+  \qquad
+  E_j=\sup_{z\in\mathcal Z_j}\|\Pi_RY_z\|^2.
+\]
+If one also has a shell source exposure envelope
+\[
+  U_j=\sup_N\sup_{z\in\mathcal Z_j}
+  \frac{\langle F_N\Pi_RY_z,\Pi_RY_z\rangle}{\|\Pi_RY_z\|^2},
+\]
+then a formal envelope schedule
+\[
+  \omega_z=\frac{2^{-j}}{(1+n_j)(1+E_j)(1+U_j)},
+  \qquad z\in\mathcal Z_j,
+\]
+controls the shellwise source trace. However, when $F_N\succeq\Lambda_NG_R$ on a fixed nonzero direction and $\Lambda_N\to\infty$, the envelope $U_j$ is infinite unless that direction is absent from the completed residual ledger. Therefore this construction is an exposure-control lemma, not a proof of completed residual collapse.
+
+\section{Moving-weight warning}
+A window-dependent weight schedule such as
+\[
+  \omega_z^{(N)}\sim (\Lambda_N^\Omega)^{-1}\omega_z
+\]
+can artificially keep
+\[
+  \operatorname{tr}(F_NK_R^{\omega^{(N)}})
+\]
+bounded. But then the ledger is not fixed. The result has status
+\[
+  \texttt{moving\_window\_support\_only}.
+\]
+It cannot replace the completed fixed/exhaustive ledger needed for the residual theorem.
+
+\section{Source-compatible squeeze}
+With tail terms restored, the accepted completed squeeze has the form
+\[
+  \operatorname{tr}(G_RK_R^\omega)
+  \le
+  \frac{\operatorname{tr}(F_N^\Omega K_R^\omega)}{\Lambda_N^\Omega}
+  +\operatorname{tr}(T_NK_R^\omega)
+  +\text{declared defects}.
+\]
+Thus the completed residual ledger collapses if
+\[
+  \frac{\operatorname{tr}(F_N^\Omega K_R^\omega)}{\Lambda_N^\Omega}\to0,
+\]
+\[
+  \operatorname{tr}(T_NK_R^\omega)\to0,
+\]
+and all declared defects vanish.
+
+\section{Verdict}
+The Step 147 weighted ledger is trace-class and separating under its envelope assumptions. Step 148 shows that source compatibility is the next genuine audit theorem:
+\[
+\boxed{
+  \operatorname{tr}(F_N^\Omega K_R^\omega)=o(\Lambda_N^\Omega).
+}
+\]
+This cannot be obtained merely by renormalizing weights without either proving collapse, forfeiting fixed-ledger status, or adding a new source-budget law.
+
+\section{Next step}
+Step 149 should be the source audit budget theorem or obstruction:
+\[
+\boxed{
+  \operatorname{tr}(F_N^\Omega K_R^\omega)=o(\Lambda_N^\Omega)
+  \quad ?
+}
+\]
+If the theorem fails, the route must identify the source-exposed residual sector as a new $\Xi$-residual.
+
+\end{document}

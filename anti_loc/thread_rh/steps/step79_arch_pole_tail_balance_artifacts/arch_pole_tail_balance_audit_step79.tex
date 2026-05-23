@@ -1,0 +1,188 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{remark}{Remark}
+\DeclareMathOperator{tr}{tr}
+\DeclareMathOperator{Ran}{Ran}
+\DeclareMathOperator{Fix}{Fix}
+\begin{document}
+\begin{center}
+{\Large Step 79. Archimedean/Pole/Tail Balance Audit for the Completed Weil Feature Package}\[0.5em]
+{\large RH membrane program note}
+\end{center}
+
+\section{Purpose}
+The previous step showed that the signed prime autocorrelation term becomes a positive shift-difference feature only after adding a diagonal repair.  This note asks where that repair can live in the completed zeta carrier.  The point is not to prove the Riemann hypothesis, nor to assert that the classical explicit formula already provides the required positive carrier.  The point is to isolate the next exact gate:
+\[
+  \text{signed completed explicit formula}
+  \quad\Longrightarrow\quad
+  \text{positive completed feature package}.
+\]
+The active bridge remains
+\[
+  \mathsf A_Z \preceq \mathsf K_{\rm cmp}
+  = W_{\rm cmp}^{*}W_{\rm cmp},
+\]
+or equivalently, by Douglas factorization,
+\[
+  V_Z = T W_{\rm cmp},\qquad \|T\|\le 1.
+\]
+The feature package is written as
+\[
+  W_{\rm cmp}=egin{bmatrix}
+  W_{\rm pr}\\ W_\infty\\ W_{\rm pole}\\ W_{\rm tail}
+  \end{bmatrix}.
+\]
+
+\section{Prime-slot diagonal repair}
+Let
+\[
+  h_f(a)=(f*\widetilde f)(a)=\langle \tau_a f,f\rangle,
+  \qquad \widetilde f(t)=\overline{f(-t)}.
+\]
+For positive prime-shift weights \(w_a\ge0\), the signed prime autocorrelation term is
+\[
+  P_{\rm pr,L}(h_f)=-\sum_a w_a\bigl(h_f(a)+h_f(-a)\bigr).
+\]
+The positive prime shift feature is
+\[
+  q_{\rm pr,L}[f]=\sum_a w_a\|\tau_a f-f\|_2^2.
+\]
+Expanding gives
+\[
+  q_{\rm pr,L}[f]
+  =2\Bigl(\sum_a w_a\Bigr)\|f\|_2^2
+  -\sum_a w_a\bigl(h_f(a)+h_f(-a)\bigr).
+\]
+Thus
+\[
+  \boxed{q_{\rm pr,L}[f]=P_{\rm pr,L}(h_f)+d_{\rm pr,L}\|f\|_2^2,}
+  \qquad
+  \boxed{d_{\rm pr,L}=2\sum_a w_a.}
+\]
+This diagonal repair is a carrier bill.  It must be paid, quotiented, or carried as a defect.  It cannot be silently hidden inside a signed explicit formula.
+
+\section{The completed balance form}
+Write the non-prime signed remainder of the completed explicit formula abstractly as
+\[
+  R_{\rm sgn,L}=R_{\infty,\rm sgn,L}+R_{{\rm pole},\rm sgn,L}+R_{{\rm tail},\rm sgn,L}.
+\]
+A proposed positive completed feature package has the quadratic form
+\[
+  q_{\rm cmp,L}=q_{\rm pr,L}+q^+_{\infty,L}+q^+_{{\rm pole},L}+q^+_{{\rm tail},L}.
+\]
+The signed completed form is
+\[
+  q_{\rm sgn,L}=P_{\rm pr,L}+R_{\rm sgn,L}.
+\]
+The completion-balance form is
+\[
+  \boxed{
+  \mathcal B_L[f]
+  =q_{\rm cmp,L}[f]-q_{\rm sgn,L}[f]
+  =d_{\rm pr,L}\|f\|^2
+   +q^+_{\infty,L}[f]+q^+_{{\rm pole},L}[f]+q^+_{{\rm tail},L}[f]
+   -R_{\rm sgn,L}[f].}
+\]
+
+\begin{definition}[completion-balance gate]
+The completed positive feature package passes the balance gate on a core \(\mathcal C^-\) if
+\[
+  \boxed{\mathcal B_L[f]\ge0\qquad (f\in\mathcal C^-).}
+\]
+If the inequality holds only up to a nonnegative defect form \(e_{{\rm bal},L}\), then the status is defect-paid rather than exact.
+\end{definition}
+
+\begin{theorem}[balance-to-Douglas reduction]
+Suppose the zero-side form satisfies
+\[
+  q_Z[f]\le q_{\rm sgn,L}[f]+e_{{\rm Weil},L}[f]
+\]
+on a declared anti-invariant core.  Suppose also
+\[
+  \mathcal B_L[f]\ge -e_{{\rm bal},L}[f].
+\]
+Then
+\[
+  q_Z[f]\le q_{\rm cmp,L}[f]+e_{{\rm Weil},L}[f]+e_{{\rm bal},L}[f].
+\]
+Consequently, if the defects vanish and the form-core/closability gates hold, then
+\[
+  V_Z^*V_Z\preceq W_{\rm cmp,L}^*W_{\rm cmp,L},
+\]
+which is equivalent to the Douglas contraction
+\[
+  V_Z=T W_{\rm cmp,L},\qquad \|T\|\le1.
+\]
+\end{theorem}
+
+\begin{proof}
+The identity
+\[
+  q_{\rm cmp,L}=q_{\rm sgn,L}+\mathcal B_L
+\]
+is immediate from the definition.  Therefore
+\[
+  q_Z\le q_{\rm sgn,L}+e_{{\rm Weil},L}
+      \le q_{\rm cmp,L}+e_{{\rm Weil},L}+e_{{\rm bal},L}.
+\]
+If the defects vanish and the inequality holds on a form core, the standard closed-form extension gives the Loewner domination on the completed response space.  Douglas factorization then gives the contraction.
+\end{proof}
+
+\section{Archimedean/gamma candidate}
+The natural positive shift-feature template is
+\[
+  (W_\infty f)(a,t)=\sqrt{\kappa_\infty(a)}(f(t+a)-f(t)),
+\]
+with a kernel shaped by the gamma factor, formally of the type
+\[
+  \kappa_\infty(a)\sim {1\over 2\sinh(|a|/2)}.
+\]
+The corresponding Fourier symbol is
+\[
+  \Psi_\infty(\xi)=2\int_0^\infty {1-\cos(a\xi)\over 2\sinh(a/2)}\,da
+  =2\sum_{k\ge0}{\xi^2\over (k+1/2)((k+1/2)^2+\xi^2)}.
+\]
+This symbol is nonnegative.  The near-zero singularity of \(\kappa_\infty\) is compatible with difference forms because the difference contributes the factor \(a^2\).  However, the following remains unearned:
+\begin{itemize}[leftmargin=2em]
+\item exact matching to the archimedean gamma contribution in the completed explicit formula;
+\item the required renormalization/quotient records;
+\item proof that the archimedean slot participates in the balance gate \(\mathcal B_L\ge0\).
+\end{itemize}
+
+\section{Pole/completion candidate}
+Pole and completion terms are naturally finite-rank or quotient-level objects.  A positive feature model is
+\[
+  W_{\rm pole}f=(\sqrt{\beta_1}\langle f,p_1\rangle,\ldots,\sqrt{\beta_m}\langle f,p_m\rangle).
+\]
+This can pay finite-dimensional diagonal or null-mode obligations, but it is lawful only with explicit null-mode and pole records.  In particular, a pseudoinverse that kills a zero-energy direction is not a valid zero budget if the zero-side readout sees that direction.
+
+\section{Tail/support candidate}
+Finite prime cutoffs and finite zero windows are moving ledgers unless a tail bridge is supplied.  The tail slot may be represented either by a positive feature \(W_{\rm tail,L}\) or by a defect form \(E_{{\rm tail},L}\).  Exact confinement requires fixed-ledger squeeze or exhaustive finite windows with vanishing tail.
+
+\section{Audit status of the four slots}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+slot & positive status & unearned gate\\
+\midrule
+prime & positive after diagonal repair & diagonal payment/quotient/tail record\\
+gamma & positive kernel candidate & exact gamma matching and renormalization\\
+pole & finite-rank positive candidate & null-mode legality and completion matching\\
+tail & feature or defect budget & fixed/exhaustive ledger squeeze\\
+combined & \(\mathcal B_L\ge0\) & open analytic obligation\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Nonclaim boundary}
+This note does not prove RH.  It does not prove the Weil-Douglas bridge.  It does not prove that the candidate archimedean, pole, and tail features exactly match the completed zeta explicit formula.  It proves only the accounting gate: once the prime slot is made positive, a diagonal repair appears, and the completed feature package is accepted only if gamma, pole/completion, tail, quotient, or defect records make the balance form nonnegative on the completed anti-invariant core.
+
+\end{document}

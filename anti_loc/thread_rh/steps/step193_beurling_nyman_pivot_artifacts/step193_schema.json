@@ -1,0 +1,76 @@
+{
+  "step": 193,
+  "orientation": "adequacy",
+  "primary_carrier": "Beurling-Nyman criterion (L2[0,1] closure of Muntz fractions)",
+  "carrier_definition": {
+    "Hilbert_space": "H_BN = L2(0,1), with Lebesgue measure",
+    "distinguished_vector": "one(t)=1 on (0,1)",
+    "parameter_range": "0 < a <= 1",
+    "atom_definition": "rho_a(t) = {a/t} - a {1/t}, where {x} is fractional part",
+    "variant_note": "Equivalent formulations use dilations of {1/(a x)} on (0,infty) or restricted countable parameter sets after Bae z-Duarte refinement."
+  },
+  "muntz_subspace": {
+    "name": "M_BN",
+    "definition": "closed linear span of rho_a for 0<a<=1 in L2(0,1)",
+    "finite_windows": "M_A = span{rho_a : a in A} for finite A",
+    "dense_countable_refinement": "Bae z-Duarte permits restriction to discrete/countable parameter sets such as integer dilations in the strengthened criterion"
+  },
+  "native_probes": [
+    "fractional-part atoms rho_a",
+    "finite Gram matrices G_A(i,j)=<rho_{a_i},rho_{a_j}>",
+    "projection coefficients solving G_A c=b_A",
+    "Mellin transforms (a-a^s) zeta(s)/s"
+  ],
+  "parent_residual_on_BN": {
+    "name": "Xi_BN",
+    "definition": "Xi_BN = (I - P_{M_BN}) one",
+    "scalar_defect": "delta_BN^2 = ||Xi_BN||_2^2 = inf_{f in M_BN} ||one-f||_2^2",
+    "finite_defect": "delta_A^2 = 1 - b_A^* G_A^dagger b_A",
+    "zero_condition": "Xi_BN=0 iff one belongs to M_BN"
+  },
+  "CRE_status": "CRE",
+  "CRE_status_reason": "The Beurling-Nyman theorem states Xi_BN=0 iff RH.",
+  "CRCFT_mode_classification": {
+    "mode": "CRCFT-TE",
+    "reason": "The closure condition is target-equivalent to RH.  Gram matrix entries are computable, so the blocker is not missing matrix data but the infinite closure limit.",
+    "CTMT_subinterface": "finite Gram-matrix projection distances provide a carrier-native matrix interface, but controlling their limit is exactly the target-equivalent Beurling-Nyman criterion",
+    "BF_status": "not a bridge-failure; the carrier is native and well-defined"
+  },
+  "BN_verdict": "V_BN_CRCFT_TE",
+  "classical_theorems_cited": [
+    {
+      "source": "Nyman 1950, Uppsala thesis",
+      "use": "original closure-theoretic criterion"
+    },
+    {
+      "source": "Beurling 1955, A closure problem related to the Riemann zeta-function, PNAS 41, 312-314",
+      "use": "classical Beurling-Nyman RH equivalence"
+    },
+    {
+      "source": "Bae z-Duarte 2003, A strengthening of the Nyman-Beurling criterion for the Riemann hypothesis",
+      "use": "restriction/refinement to countable/integer dilation families"
+    },
+    {
+      "source": "Bae z-Duarte 2005, A class of invariant unitary operators",
+      "use": "operator-theoretic refinements around the BN carrier"
+    },
+    {
+      "source": "Bercovici-Foias 1984 generalizations",
+      "use": "broader invariant-subspace/generalized Nyman-Beurling context"
+    }
+  ],
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1",
+    "de Branges RH-carrier closure target-equivalence / Conrey-Li survival",
+    "Hilbert-Polya/Berry-Keating standard xp bridge failure and modified-operator target-equivalence",
+    "Connes adelic trace-formula full closure target-equivalence / completed spectral ledger not inherited"
+  ],
+  "final_verdict": "V_BN_CRCFT_TE"
+}
+

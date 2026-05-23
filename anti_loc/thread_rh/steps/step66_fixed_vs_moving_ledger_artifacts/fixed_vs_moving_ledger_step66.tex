@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\Kminus}{\mathsf K^-}
+\newcommand{\EF}{E_{\rm EF}}
+\newcommand{\Esrc}{E_{\rm src}}
+\newcommand{\Thetao}{\Theta_0^-}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ran}{\operatorname{Ran}}
+
+\title{Step 66: Fixed-Ledger versus Moving-Ledger Criteria for Exact Confinement}
+\author{Working note for formed-layer membrane theory}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 65 separated two proof shapes for zero confinement.  A finite completion proves exact confinement at a finite stage.  An infinite ladder can also prove exact confinement, but only when the shrinking budgets dominate a fixed zero ledger, or an exhaustive sequence of visible subledgers whose tails vanish.  A moving finite-stage ledger with no exhaustivity record is support-only.
+
+This note formalizes the distinction in the RH/root-composite notation.  The goal is to prevent the overread
+\[
+    \mathsf A_{Z,n} \preceq B_n,\quad \tr B_n\to0
+    \quad\Longrightarrow\quad
+    \AZ=0,
+\]
+when the objects \(\mathsf A_{Z,n}\) are not known to exhaust a single completed zero-side displacement ledger \(\AZ\).
+
+\section{Fixed zero ledgers}
+
+\begin{definition}[fixed anti-invariant zero ledger]
+A fixed zero ledger is a positive trace-class operator
+\[
+   \AZ\succeq0
+\]
+on a fixed anti-invariant response Hilbert space \(Y^-\), together with a zero readout \(\psi\) separating the fixed locus of an anti-linear involution \(J\).  For RH, the relevant involution is
+\[
+   J(s)=1-\overline{s},
+   \qquad
+   \Fix(J)=\{s:\Re(s)=1/2\}.
+\]
+The ledger is fixed if every stage of the strict-extension ladder dominates this same \(\AZ\), not a moving truncation or reselected public shadow.
+\end{definition}
+
+\begin{theorem}[fixed-ledger squeeze]
+Let \(\AZ\succeq0\) be trace-class on a fixed Hilbert space.  Suppose that for every \(n\),
+\[
+    \AZ\preceq B_n,
+    \qquad B_n\succeq0,
+\]
+and
+\[
+    \tr B_n\to0.
+\]
+Then
+\[
+    \AZ=0.
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(0\preceq\AZ\preceq B_n\), monotonicity of the trace on positive trace-class operators gives
+\[
+   0\le \tr\AZ\le \tr B_n
+\]
+for all \(n\).  Hence \(\tr\AZ=0\).  A positive trace-class operator with zero trace is the zero operator.
+\end{proof}
+
+\begin{remark}
+This is not finite termination.  It is an infinite squeeze of the same completed object.  The same-object condition is the load-bearing hypothesis.
+\end{remark}
+
+\section{Exhaustive ledgers}
+
+\begin{definition}[exhaustive visible subledger]
+Let \(\AZ\succeq0\) be a fixed trace-class ledger on \(Y^-\).  An exhaustive visible subledger is a sequence of orthogonal projections \(P_n\) with
+\[
+    P_n\uparrow I
+\]
+strongly.  The visible displacement at stage \(n\) is
+\[
+    \mathsf A_{Z,n}=P_n\AZ P_n.
+\]
+\end{definition}
+
+\begin{theorem}[exhaustive-ledger squeeze]
+Let \(\AZ\succeq0\) be trace-class and \(P_n\uparrow I\) strongly.  If
+\[
+    P_n\AZ P_n\preceq B_n,
+    \qquad B_n\succeq0,
+\]
+and
+\[
+    \tr B_n\to0,
+\]
+then
+\[
+    \AZ=0.
+\]
+\end{theorem}
+
+\begin{proof}
+For positive trace-class \(\AZ\), strong monotone convergence of projections gives
+\[
+    \tr(P_n\AZ P_n)\to\tr\AZ.
+\]
+Since \(P_n\AZ P_n\preceq B_n\),
+\[
+    \tr(P_n\AZ P_n)\le \tr B_n\to0.
+\]
+Thus \(\tr\AZ=0\), hence \(\AZ=0\).
+\end{proof}
+
+\begin{corollary}[tail-budget form]
+Suppose there are transported visible ledgers \(\mathsf A_{Z,n}\) and tail operators \(T_n\succeq0\) such that
+\[
+   \AZ\preceq \mathsf A_{Z,n}+T_n,
+   \qquad
+   \mathsf A_{Z,n}\preceq B_n,
+\]
+and
+\[
+   \tr(B_n+T_n)\to0.
+\]
+Then \(\AZ=0\).
+\end{corollary}
+
+\begin{proof}
+The inequalities imply \(\AZ\preceq B_n+T_n\).  Apply the fixed-ledger squeeze theorem.
+\end{proof}
+
+\section{Moving ledgers are support-only}
+
+\begin{warning}[moving ledger overread]
+Suppose a ladder proves only
+\[
+    \mathsf A_{Z,n}\preceq B_n,
+    \qquad \tr B_n\to0,
+\]
+where \(\mathsf A_{Z,n}\) is a moving finite-stage ledger, with no fixed completed ledger \(\AZ\), no monotone projections, and no tail/exhaustivity record.  Then no conclusion follows about exact confinement of the completed zero ledger.
+\end{warning}
+
+\begin{proposition}[moving-coordinate countermodel]
+There exist ledgers \(\mathsf A_{Z,n}\) and budgets \(B_n\) with \(\mathsf A_{Z,n}\preceq B_n\) and \(\tr B_n\to0\), while a nonzero completed ledger \(\AZ\ne0\) remains unconstrained.
+\end{proposition}
+
+\begin{proof}
+Let
+\[
+   Y^- = \ell^2(\mathbb N),
+   \qquad
+   \AZ=\operatorname{diag}(2^{-1},2^{-2},2^{-3},\ldots).
+\]
+Then \(\AZ\succeq0\) and \(\tr\AZ=1\).  At stage \(n\), let the moving ledger see only the coordinate \(e_n\):
+\[
+   \mathsf A_{Z,n}=2^{-n}\quad\text{on }\operatorname{span}\{e_n\},
+   \qquad
+   B_n=2^{-n}.
+\]
+Then \(\mathsf A_{Z,n}\preceq B_n\) and \(\tr B_n=2^{-n}\to0\), but the completed ledger remains \(\AZ\ne0\).  The failure is absence of a tail/exhaustivity bridge from the moving single-coordinate ledgers to the completed ledger.
+\end{proof}
+
+\section{RH/root-composite obstruction budget}
+
+The root-composite route gives an obstruction budget of the form
+\[
+  \AZ\preceq
+  B_n(t)
+  :=(1+t)\bigl(\Lambda_n^{-1}\Thetao + \Esrc^{(n)}\bigr)
+     +(1+t^{-1}){\EF}_n,
+  \qquad t>0.
+\]
+Let
+\[
+   a_n=\tr(\Lambda_n^{-1}\Thetao+\Esrc^{(n)}),
+   \qquad
+   b_n=\tr {\EF}_n.
+\]
+Then
+\[
+   \inf_{t>0}\tr B_n(t)=(\sqrt{a_n}+\sqrt{b_n})^2.
+\]
+
+\begin{corollary}[RH fixed-ledger squeeze criterion]
+If a completed RH zero ledger \(\AZ\) is fixed or exhaustively visible and, for every \(n\), the completed explicit-formula and source records prove
+\[
+   \AZ\preceq B_n(t_n)
+\]
+for some \(t_n>0\), with
+\[
+   a_n\to0,
+   \qquad
+   b_n\to0,
+\]
+then
+\[
+   \AZ=0.
+\]
+If the anti-invariant zero readout separates the fixed locus of \(J(s)=1-\overline{s}\), this gives visible zero confinement to the critical line.
+\end{corollary}
+
+\begin{proof}
+Choose \(t_n\) so that \(\tr B_n(t_n)\le (\sqrt{a_n}+\sqrt{b_n})^2+o(1)\).  Then \(\tr B_n(t_n)\to0\).  Apply the fixed-ledger or exhaustive-ledger squeeze theorem.
+\end{proof}
+
+\section{Statuses}
+
+\begin{definition}[ledger status]
+A root-composite zero-confinement record receives one of the following statuses.
+\begin{enumerate}[label=(\roman*)]
+\item \texttt{finite\_completion}: some finite stage proves \(\AZ=0\) on the completed ledger.
+\item \texttt{fixed\_ledger}: every stage dominates the same completed \(\AZ\), with budgets tending to zero.
+\item \texttt{exhaustive\_ledger}: every stage dominates an exhaustive subledger with tail tending to zero.
+\item \texttt{moving\_ledger\_support\_only}: stages dominate moving finite ledgers without an exhaustivity record.
+\item \texttt{failed\_visibility}: zero readout does not separate the fixed locus or the zero ledger is incomplete.
+\item \texttt{failed\_budget\_collapse}: EF/source defects or coercivity do not tend to zero.
+\end{enumerate}
+\end{definition}
+
+\section{Nonclaim boundary}
+The criterion does not claim that decreasing finite-stage defects imply exact confinement.  It claims exact confinement only under finite completion, fixed-ledger squeeze, or exhaustive-ledger squeeze.  A moving ladder of improving finite objects is support evidence unless a visibility/tail record promotes it.
+
+\end{document}

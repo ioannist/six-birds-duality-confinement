@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 203: Diagonal Gram Correction}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_diagonal\_corrected\_xi\_inconclusive}.}
+\]
+
+\section*{Burnol Kernel Convention}
+
+The arXiv source for Burnol 2002 (math/0208121), equation 1, writes
+\[
+K(z_1,z_2)=
+\frac{E(z_1)E(z_2)-E(1-z_1)E(1-z_2)}{z_1+z_2-1}.
+\]
+It then states that as a function of \(z_2\), this is the evaluator at
+\(\overline{z_1}\), and as a function of \(z_1\), the evaluator at
+\(\overline{z_2}\).  This is a bilinear de Branges normalization, not the
+literal conjugated Hilbert-kernel substitution used naively in Step 202.
+
+\section*{L'Hopital Diagonal}
+
+Let \(w=1/2+i\tau\).  The norm of the evaluator at \(w\) is obtained by
+taking \(z_1=\overline w\) and \(z_2\to w\):
+\[
+K(\overline w,w)
+=\lim_{z\to w}
+\frac{E(\overline w)E(z)-E(w)E(1-z)}{\overline w+z-1}.
+\]
+Differentiating the numerator with respect to \(z\) gives
+\[
+K(\overline w,w)
+=E(\overline w)E'(w)+E(w)E'(\overline w).
+\]
+For the real entire \(E\)-function this is
+\[
+\boxed{K(\overline w,w)=2\operatorname{Re}\left(\overline{E(w)}E'(w)\right)}.
+\]
+The opposite sign was tested.  The plus sign is selected by the nonnegative
+norm convention and is stable across the three tested zeros.
+
+\section*{Derivative of \(E_{1/2}\)}
+
+Burnol 2002, Theorem 8, gives
+\[
+E_\lambda(w)=A(w)B(w),\qquad
+A(w)=\pi^{-w/2}\Gamma(w/2),
+\]
+\[
+B(w)=\lambda^{1/2-w}
+\frac{\sqrt\lambda}{2}\int_\lambda^\infty
+(\psi_+^\lambda(t)-\psi_-^\lambda(t))t^{-w}\,dt.
+\]
+Therefore
+\[
+A'(w)=A(w)\left(-\frac{\log\pi}{2}+\frac{1}{2}\psi(w/2)\right),
+\]
+\[
+B'(w)=
+-\log(\lambda)\lambda^{1/2-w}
+-\frac{\sqrt\lambda}{2}\int_\lambda^\infty
+(\psi_+^\lambda(t)-\psi_-^\lambda(t))(\log t)t^{-w}\,dt.
+\]
+The script evaluates \(E'=A'B+AB'\) with the same finite cosine-resolvent
+model used in Step 202.
+
+\section*{Numerical Values}
+
+\begin{center}
+\begin{tabular}{c c c}
+\toprule
+zero & \(E'_{1/2}(\rho_i)\) & \(G_{ii}\)\\
+\midrule
+\(\rho_1\) & \(-2.18362493552\cdot10^{-5}+1.54944169115\cdot10^{-5}i\) & \(6.66157962829\cdot10^{-10}\)\\
+\(\rho_2\) & \(-1.87039981590\cdot10^{-8}-1.01285320801\cdot10^{-7}i\) & \(1.28713995247\cdot10^{-14}\)\\
+\(\rho_3\) & \(-4.34711344794\cdot10^{-9}-1.20194935955\cdot10^{-9}i\) & \(2.39433517220\cdot10^{-17}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The displayed diagonal candidates are stable under \(N=160,240,320\) for the
+finite resolvent and under \(50,70,100\) scalar decimal digits.  However, the
+cutoff-derived error bounds are much larger than the values, so the numbers
+are not certified.
+
+\section*{Dual-System Cross-Check}
+
+Burnol 2004 (math/0203120), Theorem 3.1, identifies the \(Y^a_{\rho,k}\)
+minimal/complete regimes and describes the dual system.  Theorem 3.2 identifies
+the \(Z^a_{\rho,k}\) minimal but not complete regime for \(a<1\).  The paper
+also records the Euclid bilinear form \([f,g]=\int f(t)g(t)\,dt\).  These
+records align structurally with the bilinear diagonal limit above, but this
+step did not find an independent numerical norm formula for \(a=1/2\).
+
+\section*{Full Gram and \(c\)-Matrix}
+
+The full \(3\times3\) Gram matrix was assembled by using the L'Hopital diagonal
+and Step 202 off-diagonal entries.  The commutator entries
+\[
+c_{ij}(\ell)=\langle e_i,(I-P_\infty)M_{m_\ell}P_\infty e_j\rangle
+\]
+were not certified, because the diagonal error dominates and the transported
+\(\kappa\)-boundary samples plus the full \(K_\infty^{op}\) PSWF correction
+still require a certified quadrature.
+
+\section*{Nonclaim}
+
+This step does not prove RH, does not close \(\Xi_{BC}\), and does not close
+Branch B.  It fixes the symbolic diagonal and exposes the next numerical
+certification gate.
+
+\end{document}
+

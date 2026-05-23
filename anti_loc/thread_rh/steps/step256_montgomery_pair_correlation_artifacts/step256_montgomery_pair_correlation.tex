@@ -1,0 +1,53 @@
+\section*{Step 256: Montgomery Pair Correlation}
+
+\paragraph{Carrier.}
+Let \(\rho_n=1/2+i\gamma_n\) be non-trivial zeta zeros, ordered by
+\(\gamma_n\).  Normalize
+\[
+\widetilde\gamma_n=\gamma_n\frac{\log\gamma_n}{2\pi}.
+\]
+The pair count is
+\[
+R_2(\alpha,\beta;T)
+=\frac{1}{N(T)}
+\#\{(n,m):\alpha<\widetilde\gamma_n-\widetilde\gamma_m<\beta,\ n\ne m\}.
+\]
+The conjectural GUE limit is
+\[
+R_2(\alpha,\beta;T)\to
+\int_\alpha^\beta
+\left(1-\left(\frac{\sin\pi u}{\pi u}\right)^2\right)\,du.
+\]
+
+\paragraph{Known status.}
+Montgomery proved a restricted pair-correlation theorem under RH, usually
+phrased in the Fourier-support/range \(|u|<1\).  The full GUE pair-correlation
+conjecture is open.  Odlyzko's computations gave strong high-zero numerical
+evidence.  Hejhal studied triple correlations, and Rudnick--Sarnak proved
+n-level correlation results for principal \(L\)-functions in restricted
+support.
+
+\paragraph{Classification.}
+Montgomery pair correlation is not known to be RH-equivalent and is not a
+single-\(L\) zero-location residual.  It therefore lies outside the Riemann
+Dichotomy and outside the single-\(L\) Selberg-Class Dichotomy Generalization.
+It does, however, belong to the broader Selberg-Class Cross-Correlation
+Extension after subtype refinement.
+
+\paragraph{Subtype refinement.}
+\[
+\begin{array}{c|c|c}
+\text{subtype} & \text{name} & \text{examples}\\
+\hline
+\text{Ia} & \text{multi-}L\text{ coefficient correlations} & \text{SOC, orthonormality}\\
+\text{Ib} & \text{single-}L\text{ zero correlations} & \text{Montgomery, Hejhal}\\
+\text{II} & \text{multi-}L\text{/family zero correlations} & \text{Rudnick--Sarnak, Katz--Sarnak}
+\end{array}
+\]
+
+\paragraph{Verdict.}
+\[
+\mathrm{V\_montgomery\_subtype\_refinement}.
+\]
+The framework finding is now verified on three Selberg instances and remains
+candidate/corpus-pending.

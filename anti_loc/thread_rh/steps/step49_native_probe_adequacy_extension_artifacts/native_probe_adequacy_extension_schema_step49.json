@@ -1,0 +1,31 @@
+{
+  "step": 49,
+  "name": "Native Probe Adequacy under Strict Extension",
+  "objects": {
+    "C_j": "packaged audit on stage coordinate carrier E_j",
+    "L_j": "native probe family",
+    "D_j": "layer-dissolving probe family",
+    "A_j": "adequacy amplification map from native responses to dissolving responses",
+    "R_j": "residual blind-spot readout",
+    "K_L_j": "native currency matrix L_j C_j^dagger L_j^*",
+    "K_D_j": "dissolving currency matrix D_j C_j^dagger D_j^*",
+    "K_R_j": "residual currency matrix R_j C_j^dagger R_j^*"
+  },
+  "gates": [
+    "formed closure/layer",
+    "native predictive membrane",
+    "adequacy factorization D_j = A_j L_j + R_j",
+    "amplification budget A_j Theta_L_j A_j^* <= Theta_A_j",
+    "residual currency budget K_R_j <= Xi_j",
+    "summable/contracting/promoted residual record",
+    "all-six strict-extension record"
+  ],
+  "statuses": {
+    "accepted": "native membrane promotes to layer-dissolving membrane",
+    "defect_paid": "residual budget included in dissolving membrane",
+    "strict_extension_accepted": "residual promoted into native family and retested",
+    "native_only": "native probes priced but layer-dissolving adequacy absent",
+    "failed_adequacy": "blind spot not factored, promoted, or excluded",
+    "overread": "native membrane asserted as full dissolving membrane without adequacy"
+  }
+}

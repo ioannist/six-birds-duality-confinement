@@ -1,0 +1,304 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newtheorem{example}{Example}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\rank}{rank}
+
+\title{Step 49: Native Probe Adequacy under Strict Extension}
+\author{Anti-Localization Working Notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 48 proved that a native probe membrane transfers to a layer-dissolving probe family only under an adequacy factorization
+\[
+D_\Gamma = A L_\Gamma + R.
+\]
+This note proves the refinement/strict-extension version.  The goal is to distinguish three claims:
+\begin{enumerate}[label=(\roman*)]
+\item a native membrane is bounded;
+\item the native family is adequate for the dissolving probes at one stage;
+\item adequacy remains true, or its residual remains budgeted, under strict extension/refinement.
+\end{enumerate}
+The third condition is necessary for a formed layer membrane rather than a merely scoped native membrane.
+
+\section{Setup}
+All spaces are finite-dimensional Hilbert spaces in this note; the closed-operator version is obtained by replacing inverses with Moore--Penrose inverses on the legal energy quotient and carrying null-mode legality records.
+
+Let
+\[
+C\succeq0
+\]
+be the exact packaged audit form on channel coordinates $E$, and let
+\[
+L:E\to Y,\qquad D:E\to Z
+\]
+be respectively the declared native probe family and the claimed layer-dissolving probe family.  Assume null-mode legality:
+\[
+L|_{\ker C}=0,
+\qquad
+D|_{\ker C}=0.
+\]
+Define the currency blocks
+\[
+K_L = L C^\dagger L^*,
+\qquad
+K_D = D C^\dagger D^*,
+\qquad
+K_{DL}=D C^\dagger L^*,
+\qquad
+K_{LD}=K_{DL}^*.
+\]
+The native membrane budget is
+\[
+K_L\preceq \Theta_Y.
+\]
+A dissolving membrane budget is an estimate for $K_D$.
+
+\section{Intrinsic adequacy residual}
+\begin{definition}[Adequacy residual]
+The intrinsic adequacy residual of $D$ relative to $L$ is
+\[
+\Xi_C(D\mid L)
+=
+K_D-K_{DL}K_L^\dagger K_{LD}.
+\]
+When $K_L=0$, the middle term is interpreted as $0$.
+\end{definition}
+
+\begin{lemma}[Residual is positive]
+\[
+\Xi_C(D\mid L)\succeq0.
+\]
+\end{lemma}
+\begin{proof}
+The block matrix
+\[
+\begin{pmatrix}
+K_L & K_{LD}\\
+K_{DL} & K_D
+\end{pmatrix}
+=
+\begin{pmatrix} L\\ D\end{pmatrix}
+C^\dagger
+\begin{pmatrix} L\\ D\end{pmatrix}^*
+\]
+is positive semidefinite.  Its Schur complement with respect to $K_L$ is positive after the usual range condition, which holds for covariance/Gram blocks:
+$\Ran K_{LD}\subseteq \Ran K_L$.
+\end{proof}
+
+\begin{theorem}[Best adequacy factorization]
+Let
+\[
+A_* = K_{DL}K_L^\dagger:Y\to Z.
+\]
+Then
+\[
+D=A_*L+R_*
+\]
+in the currency sense, and the residual currency is
+\[
+R_*C^\dagger R_*{}^*=
+\Xi_C(D\mid L).
+\]
+Moreover, for every $A:Y\to Z$,
+\[
+(D-AL)C^\dagger(D-AL)^*\succeq \Xi_C(D\mid L).
+\]
+Thus $\Xi_C(D\mid L)$ is the least unavoidable dissolving currency not visible through $L$.
+\end{theorem}
+
+\begin{proof}
+Expand
+\[
+(D-AL)C^\dagger(D-AL)^*
+=K_D-AK_{LD}-K_{DL}A^*+AK_LA^*.
+\]
+Write $A=A_*+B$.  Since $A_*K_L=K_{DL}$ on $\Ran K_L$, the cross terms cancel and
+\[
+(D-AL)C^\dagger(D-AL)^*
+=\Xi_C(D\mid L)+B K_L B^*\succeq\Xi_C(D\mid L).
+\]
+Taking $A=A_*$ gives equality.
+\end{proof}
+
+\begin{corollary}[Exact adequacy]
+The following are equivalent:
+\begin{enumerate}[label=(\alph*)]
+\item $\Xi_C(D\mid L)=0$;
+\item $D=A L$ on the legal energy quotient for some $A$;
+\item $\ker L\cap(\ker C)^\perp\subseteq \ker D$.
+\end{enumerate}
+\end{corollary}
+
+\section{Defect-paid promotion from native to dissolving membrane}
+\begin{theorem}[Adequacy promotion with residual]
+Assume
+\[
+K_L\preceq\Theta_Y.
+\]
+Let $A_*=K_{DL}K_L^\dagger$ and $\Xi=\Xi_C(D\mid L)$. Then
+\[
+\boxed{
+K_D\preceq A_*\Theta_YA_*^*+\Xi.
+}
+\]
+Consequently, if $\Xi\preceq\Xi_0$, then
+\[
+K_D\preceq A_*\Theta_YA_*^*+\Xi_0.
+\]
+\end{theorem}
+\begin{proof}
+The identity
+\[
+K_D=A_*K_LA_*^*+\Xi
+\]
+follows from the definition of the Schur residual.  Apply $K_L\preceq\Theta_Y$.
+\end{proof}
+
+\begin{warning}[Native-only membrane]
+A native membrane $K_L\preceq\Theta_Y$ is not a full layer-dissolving membrane unless $\Xi_C(D\mid L)$ is zero or explicitly budgeted.  Otherwise the claim status is \texttt{native\_only}, \texttt{support\_only}, or \texttt{failed\_adequacy}.
+\end{warning}
+
+\section{Strict extension and monotonicity of adequacy}
+Let $L^+:E\to Y\oplus W$ be a strict native-family extension
+\[
+L^+ = \begin{pmatrix} L\\ M\end{pmatrix}.
+\]
+
+\begin{theorem}[Strict extension improves adequacy]
+\[
+\boxed{
+\Xi_C(D\mid L^+)\preceq \Xi_C(D\mid L).
+}
+\]
+If the added native readout $M$ sees part of the old residual minimum-energy representer, the inequality is strict in that recombination direction.
+\end{theorem}
+\begin{proof}
+The adequacy residual is the minimum residual currency over all factorizations through the visible native family.  Since factorizations through $L^+$ include all factorizations through $L$ by ignoring $M$, the infimum over $L^+$ is no larger.  Equivalently, this is the monotonicity of Schur complements under enlarging the conditioning block.
+\end{proof}
+
+\begin{corollary}[Fixed-family saturation]
+Repeating the same native family, package, audit, and dissolving target cannot decrease the adequacy residual.  Any residual contraction requires a strict extension: new native readout, audit strengthening, carrier rewrite, packaging repair, route/protocol completion, or a lawful claim narrowing.
+\end{corollary}
+
+\section{Predictive adequacy under refinement}
+At stage $j$, let
+\[
+(E_j,C_j,L_j,D_j,R^Y_j,R^Z_j)
+\]
+be exact channel, audit, native probe, dissolving probe, native-response transport, and dissolving-response transport data.  Define transported currencies
+\[
+\widehat K_{L,j}=R^Y_j L_j C_j^\dagger L_j^*(R^Y_j)^*,
+\qquad
+\widehat K_{D,j}=R^Z_j D_j C_j^\dagger D_j^*(R^Z_j)^*.
+\]
+Define transported residuals by
+\[
+\widehat\Xi_j
+=R^Z_j\Xi_{C_j}(D_j\mid L_j)(R^Z_j)^*.
+\]
+
+\begin{theorem}[Predictive native-to-dissolving membrane]
+Suppose for every accepted stage $j$:
+\[
+\widehat K_{L,j}\preceq \Theta^Y_j,
+\]
+and the best adequacy factor $A_j$ after transport satisfies
+\[
+\widehat K_{D,j}=A_j\widehat K_{L,j}A_j^*+\widehat\Xi_j.
+\]
+If
+\[
+A_j\Theta^Y_jA_j^*+\widehat\Xi_j\preceq\Theta^D_j,
+\]
+then
+\[
+\boxed{
+\widehat K_{D,j}\preceq\Theta^D_j
+}
+\]
+for every accepted stage. Thus the native predictive membrane promotes to a layer-dissolving predictive membrane.
+\end{theorem}
+
+\begin{theorem}[Summable adequacy residual propagation]
+Assume a common dissolving response space and
+\[
+\widehat K_{D,j}\preceq A_j\widehat K_{L,j}A_j^*+\widehat\Xi_j,
+\]
+with
+\[
+A_j\Theta^Y_jA_j^*\preceq \Omega,
+\qquad
+\sum_j \widehat\Xi_j\preceq \Xi_\infty.
+\]
+Then the cumulative dissolving allowance is bounded by
+\[
+\widehat K_{D,j}\preceq \Omega+\widehat\Xi_j
+\]
+stagewise, and any aggregate ledger over accepted stages is bounded by the summable residual budget $\Xi_\infty$.
+If $\widehat\Xi_j\to0$ and the native budgets are uniformly bounded, the defect in promoting native anti-localization to dissolving anti-localization vanishes along the refinement ladder.
+\end{theorem}
+
+\section{Countermodels}
+\begin{example}[Hidden dissolving blind spot]
+Let
+\[
+E=\mathbb R^2,
+\qquad C=I,
+\qquad L(x_1,x_2)=x_1,
+\qquad D(x_1,x_2)=M x_2.
+\]
+Then
+\[
+K_L=1,
+\qquad K_D=M^2,
+\qquad \Xi_C(D\mid L)=M^2.
+\]
+The native membrane is perfectly safe, but the dissolving probe is arbitrarily expensive unless the residual is budgeted.
+\end{example}
+
+\begin{example}[Predictive blind spot]
+Let $K_{L,j}=1$ for all $j$, but let
+\[
+\Xi_j=j.
+\]
+Every native stage is safe, but dissolving adequacy fails predictively because the hidden residual grows without bound.
+\end{example}
+
+\begin{example}[Null-mode fake adequacy]
+Let
+\[
+C=\begin{pmatrix}0&0\\0&1\end{pmatrix},
+\qquad L=0,
+\qquad D(x_0,x_1)=x_0.
+\]
+The pseudoinverse currency expression can hide the problem, but true variational capacity is infinite because $D$ sees a zero-energy direction.  Null-mode legality is indispensable.
+\end{example}
+
+\section{Six Birds reading}
+This theorem is the adequacy part of the formed-layer membrane.  It says:
+\[
+\text{no native needles}
+\Rightarrow
+\text{no layer-dissolving needles}
+\]
+only when every dissolving readout factors through the native family up to an audited residual.  Under refinement, the residual itself is a predictive object and must be transported, budgeted, and completed.  If it decreases, that decrease must come from strict extension; same-family repetition saturates.
+
+\end{document}

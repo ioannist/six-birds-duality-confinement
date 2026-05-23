@@ -1,0 +1,1358 @@
+                                                                                                                      math.NT/9810169
+arXiv:math/9810169v2 [math.NT] 22 Nov 1998
+
+
+
+
+                                                            THE EXPLICIT FORMULA IN SIMPLE TERMS
+
+
+
+                                                                                Jean-François Burnol
+                                                                                    October 1998
+                                                                               revised November 1998
+
+
+                                             This is a semi-expository paper on the easier aspects of the Explicit Formula for the
+                                             Riemann Zeta Function. The topics reviewed here include: Weil’s criterion for the Riemann
+                                             Hypothesis and its probabilistic interpretation, various formulations of the contribution
+                                             corresponding to the real place, Haran’s version of the Explicit Formula, and the author’s
+                                             own derivation which puts all places on the same footing. This derivation, an addendum
+                                             to Tate’s Thesis, is in the spirit of Weil’s insights towards an adelic understanding of the
+                                             Explicit Formula. Whereas the analyst would likely formulate the Explicit Formula as a
+                                             multiplicative convolution, Haran’s theorem shows it is also an additive convolution. An
+                                             intriguing conductor operator is considered whose spectral analysis is equivalent to the
+                                             Explicit Formula. At a finite place it has a positive cuspidal spectrum. I also comment on
+                                             the flexibility still left in the Explicit Formula, which shows that it has a symmetry group
+                                             containing the non-zero rational numbers.
+
+
+
+
+                                             62 rue Albert Joly
+                                             F-78000 Versailles
+                                             France
+
+
+                                             jf.burnol@dial.oleane.com
+
+                                                                                          1
+TABLE OF CONTENTS
+
+
+The formula of Riemann - von Mangoldt as a distribution
+
+
+Weil’s positivity criterion and stochastic processes
+
+
+The explicit formula: classical approach
+
+
+A convolution algebra
+
+
+Weil’s Theorem
+
+
+The functional equation and homogeneous distributions
+
+
+Haran’s Theorem
+
+
+Mellin and Fourier
+
+
+The explicit formula: adelic approach
+
+
+The conductor operator
+
+
+The symmetries of the explicit formula
+
+
+References
+
+
+
+
+                                        2
+The formula of Riemann - von Mangoldt as a distribution
+
+
+The paper of Riemann [1] unveiled a deep relationship between the prime numbers and
+the zeros in the complex plane of a function already considered by Euler, the famous zeta
+function. A striking explicit formula was given by Riemann for the prime-counting function
+in terms of the zeros, and the generalizations obtained later all go by the name of “Explicit
+Formulae”. This classical theory is surveyed in the books of Edwards [2] and Ingham [3].
+A particularly elegant formula was rigorously proven by von Mangoldt:
+              X           1           X Xρ            1
+                    Λ(n) + Λ(X) = X −      − log(2π) − log(1 − X −2 )
+                          2           ρ
+                                        ρ             2
+            1<n<X
+
+
+Here X > 1 (not necessarily an integer) and Λ(Y ) = log(p) if Y > 1 is a positive power
+of the prime number p, and is 0 for all other values of Y . The ρ’s are the Riemann Zeros
+(in the critical strip), the sum over them is not absolutely convergent, even after pairing ρ
+                                       P
+with 1 − ρ. It is defined as limT →∞ |Im(ρ)|<T Xρ .
+                                                    ρ
+
+
+
+
+One can not directly plug X = 1 in this equation, but nevertheless one has another explicit
+evaluation, this time for an absolutely convergent sum:
+                              X         1
+                                             = 2 + γ − log(4π)
+                               ρ
+                                    ρ(1 − ρ)
+
+which follows (for example) from the functional equation combined with the Hadamard
+product representation for the zeta function (see [2] chap. 3, or Patterson [4], chap. 3).
+
+
+I can not help mentioning here a little joke reformulation of the Riemann Hypothesis.
+
+
+Lemma: The Riemann Hypothesis holds if and only if the following evaluation holds:
+                                   X 1
+                                          = 2 + γ − log(4π)
+                                   ρ
+                                     |ρ|2
+
+
+
+Proof: This statement follows from the equality:
+                                                                        2
+                   1 1      1                 1        1 (1 − 2Re(ρ))
+                    ( 2+         2
+                                   ) = Re(          )+
+                   2 |ρ| |1 − ρ|           ρ(1 − ρ)    2 |ρ|2 |1 − ρ|2
+
+                                              3
+The literature on the Explicit Formulae is vast, it seems (to the best of the author’s knowl-
+edge) that Weil’s version from 1952 [5] subsumes most previously known such formulae.
+Its true merit probably lies in the adelic direction as will be explained later in this paper,
+although it is often advertised as having introduced a characteristic distribution-theoretic
+flavor to the subject. It also introduced a funny psychological change in the understand-
+ing of what “explicit” stands for. In the Riemann-van Mangoldt result one expresses an
+arithmetical counting function in an explicit manner in terms of the zeros. This is why
+the primes stand on the left and the zeros on the right of the equality sign. In Weil’s
+tradition one expresses a sum over the zeros in an explicit manner in terms of the primes,
+hence the zeros are on the left and the primes on the right! Rieman wanted to say things
+about the primes from the zeros (and indeed this later led to a proof of the Prime Number
+Theorem), and Weil wanted to say things about the zeros from (some construction based
+on) the primes.
+
+
+Let g be a function on the positive half-line. Its Mellin transform is
+                                          Z ∞
+                                                       du
+                                  gb(s) =      g(u)us
+                                            0           u
+and Weil’s formula is
+                                               X             X
+                             g (0) + gb(1) −
+                             b                     g (ρ) =
+                                                   b             Wν (g)
+                                               ρ             ν
+
+Here ν indexes the valuations of the number field Q (the primes p and the archimedean
+place r corresponding to the real numbers). The Wν ’s are distributions on the positive
+half-line, whose explicit forms will be given later. For a finite prime p, Wp is supported
+on powers and inverse powers of p (except 1), whereas Wr has a singularity at 1 but
+is otherwise smooth. The singularity at 1 would reappear even for a finite place if we
+considered more general Dirichlet L-series instead of the Riemann Zeta function, so that
+we can imagine that the real place always has some ramification.
+
+
+Of course one has to be specific about the functions g allowed, and for simplicity sake we
+could restrict to the space D of “test functions” g (smooth and compactly supported), in
+which case all the involved sums and integrals are absolutely convergent (one has |b
+                                                                                   g (s)| =
+O((1 + |s|)−N ) for any fixed N , uniformly in each vertical strip A ≤ Re(s) ≤ B). But
+Weil proved his formula for a large class of g’s, including in particular the step-function for
+which gb(s) = (X s−1) , so that it is a genuine generalization of von Mangoldt’s theorem and
+                  s
+
+
+
+
+                                                   4
+requires in general the subtle definition mentioned above for the sum over the zeros (it is
+an interesting exercise to actually exhibit von Mangoldt’s result as a special case because
+of the delicate expression for Wr (g) given by Weil).
+
+
+In fact we could imagine trying to prove Weil’s formula by first generalizing von Mangoldt’s
+formula to all step functions, then applying a suitable density argument, but this quickly
+leads into complicated matters because of the subtle nature of the convergence. Note that
+this is a subtlety linked with the inversion problem for Fourier series or integrals and has
+nothing to do with primes per se.
+
+
+The actual location of the zeros is well hidden in Weil’s Formula. Its derivation uses only
+the basic properties of the zeta function and of the gamma function necessary for the
+proof of the Hadamard Product Formula. It is thus less deep than the Prime Number
+Theorem as it does not require the non vanishing on Re(s) = 1. As the joke reformulation
+of the Riemann Hypothesis shows, any explicit formula for a non-holomorphic summand
+would presumably immediately tell us much more on the zeros. But Weil has found a neat
+way to express the Riemann Hypothesis which greatly motivates the search for a better
+understanding of the Wν ’s. This is the topic of the next section.
+
+
+Weil’s positivity criterion and stochastic processes
+
+
+Lemma: The Riemann Hypothesis holds if and only if
+                                    X
+                                        gb(ρ) · gb(1 − ρ) ≥ 0
+                                    ρ
+
+
+for all smooth compactly supported functions g on (0, ∞).
+
+
+Proof: As ρ = 1 − ρ on the critical line one direction is clearly true. For the other
+                                                                                       2
+one, Weil’s proof uses a larger class of functions g (he needs gb(s) = P (s)e−A(s−1/2) for
+polynomials P (s)). Rather than applying a suitable density argument, it is easier to prove
+the Lemma directly as stated.
+
+
+First, there is the easy fact that given N distinct complex numbers z1 , z2 , ...., zN and
+N values a1 , a2 , ..., aN there is g ∈ D such that b
+                                                    g (zi ) = ai . If this were false there
+
+                                               5
+                                                                   c
+would be a linear relation among the linear forms g 7→ gb(zi ). As Dg(s) = sb
+                                                                            g (s) where
+(Dg)(x) = −xg ′ (x), we can eliminate one of the zi ’s and get a relation involving N − 1
+linear forms. One ends up with N = 1 where the situation is clear.
+
+
+So, let ρ0 be a bad zero, so that ρ0 6= 1 − ρ0 . We pick g such that gb(ρ0 ) = gb(1 − ρ0 ) = 1.
+There will be only finitely many other (“non-trivial”) zeros where |b
+                                                                    g(ρ)| ≥ 1/2. Let’s take
+now k with bk vanishing at all those zeros and taking the values 1 at ρ0 and −1 at 1 − ρ0 .
+Defining gN ∈ D to be the multiplicative convolution of g (N times) and of k, we find
+                           X
+                                                                 N
+                                gc
+                                 N (ρ) · g
+                                         c N (1 − ρ) = −2 + O(1/4 )
+                            ρ
+
+so that it is negative for N large enough. This completes the proof of Weil’s positivity
+criterion.
+
+
+Note: We can choose k so that b
+                              k(0) = b
+                                     k(1) = 0 so that we also have gc
+                                                                    N (0) = g
+                                                                            c N (1) = 0.
+
+
+
+As was alluded to before the main impulse about this positivity criterion has been to look
+for a suitable geometric understanding. This is natural if one takes into account the well-
+known function-field story. But another road can be contemplated: that of randomness.
+For this one first shifts the critical line by 1/2, and moves the contribution of the poles to
+the same side of the explicit formula as the primes. So the explicit formula is now seen (as
+in Weil’s paper [5]) to give a distribution C on (0, ∞) such that
+                                              X       1
+                                     C(g) =     gb(ρ − )
+                                              ρ
+                                                      2
+
+and Weil’s positivity criterion becomes
+
+                                        C(g ∗ g c ) ≥ 0
+
+where g c = g( u1 ).
+
+
+One obvious way ([6]) to obtain this positivity is to imagine that we have a probability
+measure µ on the (tempered) distributions Ω on (0, ∞) with the σ−algebra generated by
+the cylinder sets, invariant under multiplicative translations, and the identity:
+                             Z
+                               XF (d)XG (d) dµ(d) = C(F ∗ Gc )
+                                Ω
+
+                                               6
+where F and G are two arbitrary elements of D and XF and XG are the two associated
+“coordinates” on the space of distributions d 7→ XF (d) = d(F ), d 7→ XG (d) = d(G). For
+F = G it is obviously non-negative!
+
+                       R
+We also assume that     Ω
+                            XF (d) dµ(d) = 0 for all “coordinates” XF , so that C(F ∗ Gc ) is
+the covariance of the random variables defined by F and G. It is known (see [7]) that
+the covariance of any generalized stochastic process invariant under time translation and
+with zero mean has the shape C(F ∗ Gc ) for some distribution C (in general of course this
+is considered on the additive real line, so that ∗ is an additive convolution and Gc (x) =
+G(−x) ).
+
+
+The general case of Dirichlet L-series leads to expect an all-encompassing generalized
+stochastic process with “time” given by the idele classes of Q (which is where Weil’s
+distribution C naturally lives.)
+
+
+If such an “arithmetic stochastic process” could be constructed, then the Riemann Hypoth-
+esis for all Dirichlet L-series would follow. We could hope to identify this random process
+                                               R
+through its characteristic functional E(F ) = Ω exp(iXF (d)) dµ(d), perhaps by comparing
+with the function-field case, but I haven’t been able to go very far in this direction, so that
+I can not really advocate further this probabilistic point of view here. There are misgivings
+about the necessary shift by 1/2 and the fact of putting the contributions of the poles and
+of the primes together; they arise from a later topic of this paper, the adelic formulation
+of the Explicit Formula.
+
+
+The explicit formula: classical approach
+
+
+Let Kε (u) = u−ε + u1+ε for some ε > 0. Let g be a Lebesgue measurable function on
+(0, ∞) such that condition (Aε ) holds:
+
+
+(Aε )                g(u)Kε(u) has bounded total variation on (0, ∞)
+
+
+
+Lemma: Under condition (Aε ) gb(s) exists as an analytic function in the open strip −ε <
+Re(s) < 1 + ε, and satisfies |b
+                              g (s)| = O(1/|Im(s)|) uniformly in this strip.
+
+                                               7
+Proof: A well-known lemma (see [4], app. 1) tells us that for f (t) in L1 (R, dt), vanishing
+              R∞
+at infinity, | −∞ f (t)eiT t dt| ≤ T1 V (f ) with V (f ) the total variation of f . So |b
+                                                                                        g (c +
+iT )| ≤ T1 V0∞ (g(u)uc ) for −ε < c < 1 + ε. Now another lemma V (f g) ≤ sup(|g|)V (f ) +
+sup(|f |)V (g) implies
+
+              V0∞ (g(u)uc ) ≤ sup(|g(u)Kε(u)|)V0∞ (uc /Kε (u)) + V0∞ (g(u)Kε(u))
+
+and this is O(1) as V0∞ (uc /Kε (u)) ≤ 2.
+
+
+Furthermore g itself will have bounded total variation so that the right-limit g(u+) and
+left-limit g(u−) exist and we also assume condition (B):
+
+(B)                             ∀u     g(u+) + g(u−) = 2g(u)
+
+
+
+Theorem: Under conditions (Aε ) and (B)
+                                     Z c+iT                        X
+                                1               ζ ′ (s)
+                           lim                −         gb(s) ds =   Vp (g)
+                          T →∞ 2πi    c−iT      ζ(s)               p
+
+                                                        P         k
+for any c with 1 < c < 1 + ε, with Vp (g) := log(p)        k≥1 g(p ) (absolutely convergent).
+
+
+
+Proof: Note that the integral is not necessarily absolutely convergent. The trick (from
+                                                      P
+Weil [5]) is to work in reverse, defining first G(u) = p,k≥1 log(p) g(pk u). One checks in
+succession:
+
+
+        The sum defining G(u) is absolutely convergent (g(u)Kε (u) is bounded)
+        G(u) = G(u+) + G(u−)
+        G has locally bounded variation (as Va∞ (g) = O(a−1−ε ) uniformly in a ≥ a0 > 0)
+        P           R∞ c     k    du
+          p,k log(p) 0 u |g(p u)| u < ∞ (1 < c < 1 + ε)
+
+
+        b
+so that G(s) exists for 1 < Re(s) < 1 + ε and that the conditions are met for the validity
+of Fourier-Mellin inversion on each such vertical line. The last item is then the most
+important
+                                      ′
+                          b       ζ (s)
+                          G(s) =−       gb(s) for 1 < Re(s) < 1 + ε
+                                  ζ(s)
+and clinches the proof.
+
+                                                  8
+Let Lr (s) = π −s/2 Γ(s/2), the question of the existence of
+                                                 Z c+iT
+                                         1                    L′r (s)
+                           Vr (g) = lim                   −           gb(s) ds
+                                   T →∞ 2πi       c−iT        Lr (s)
+
+is more delicate (although we can now allow any 1 + ε > c > 0)
+
+
+One has (in this generality) to pair g with its transpose x 7→ g τ (x) = x1 g( x1 ) (so that
+gcτ (s) = gb(1 − s) when both sides are defined) and consider
+                                         Z c+iT
+                                  1                   L′r (s)
+                    Wr (g) = lim                  −           (b
+                                                               g (s) + gb(1 − s)) ds
+                            T →∞ 2πi      c−iT        Lr (s)
+                                                                     ′
+To study this we use the partial fraction expansion of − ΓΓ(s)
+                                                           (s)
+                                                               which gives
+
+               L′r (s)                    1     X          1
+             −         = (log(π) + γ)/2 + − s
+               Lr (s)                     s           2j(s + 2j)
+                                                j≥1
+                                          Z ∞               Z ∞
+               L′r (s)                          −s dt           1                 dt
+             −         = (log(π) + γ)/2 +     t        +s         ln(1 − t−2 )t−s
+               Lr (s)                      1        t        1  2                 t
+
+
+Still assuming that g satisfies conditions (Aε ) and (B), let
+                                       Z ∞
+                                                               dt
+                               H(u) =       (g(ut) + g τ (ut))
+                                        1                       t
+                                 Z ∞
+                                     1                                dt
+                       K(u) =          ln(1 − t−2 )(g(ut) + g τ (ut))
+                                  1  2                                 t
+
+
+Lemma:                  H(u) = O(1), u → 0
+                        H(u) = O(u−1−ε ), u → ∞
+                        K(u) = O(sup(uε , u2 ln(u))), u → 0
+                        K(u) = O(u−1−ε ), u → ∞
+
+
+The proof is left to the reader.
+
+                                   R∞
+Fubini’s theorem and t−s b
+                         g (s) =    0
+                                        us g(ut) dt
+                                                  t then give
+
+             L′r (s)                      log(π) + γ                       b       b
+         −           (b
+                      g(s) + gb(1 − s)) =            (b
+                                                      g (s) + gb(1 − s)) + H(s) + sK(s)
+             Lr (s)                           2
+
+                                                  9
+It is time to introduce condition (Cc )
+
+               R∞                                   R∞ c
+(Cc ) K(u) =   u
+                    L(t) dt
+                         t
+                            for some L(t) with       0
+                                                       t |L(t)| dt
+                                                                 t
+                                                                   < ∞, continuous at 1 (so that
+K ′ (1) exists and is −L(1)), and of bounded variation in a neighborhood of 1.
+
+                              b
+Lemma: Under condition (Cc ) sK(s)   b
+                                   = L(s) on Re(s) = c.
+
+                 R∞                           R∞ R∞                    R∞
+Proof: K(u) = 1 L(ut) dt              b
+                              so that K(s) = 1 ( 0 us L(ut) du   ) dt         b
+                                                                      = 1 t−s L(s) dt
+                                                                                      =
+                            t                                  u    t               t
+1b
+sL(s), the integrals being manipulated according to Fubini’s theorem.
+
+
+Theorem: Let g be such that it satisfies (Aε ), (B), (Cc). Then
+                                    Z c+iT
+                               1                 L′r (s)
+                          lim                −           (b
+                                                          g(s) + gb(1 − s)) ds
+                         T →∞ 2πi    c−iT        Lr (s)
+
+exists and its value Wr (g) is (log(π) + γ)g(1) + H(1) − K ′ (1).
+
+
+Proof: The conditions are satisfied for Fourier-Mellin inversion of each term: for b  g (s)
+    b
+and H(s)                                                                              b
+         thanks to (Aε ), (B) (H is continuous with left and right derivatives), for sK(s)
+thanks to (Cc ).
+
+
+The von Mangoldt case is included:
+
+
+Theorem: The function g(u) = 1 if 1 < u < X, g(1) = g(X) = 1/2, g(u) = 0 for other
+u’s satisfies (Aε ), (B), (Cc) and one has (X > 1)
+
+                                                                   1
+                      Wr (g) = (log(π) + γ)/2 + ln(X) +              ln(1 − X −2 )
+                                                                   2
+
+
+                                                              R∞ 1
+Proof: One obtains the following values for K(u) =             1     2 ln(1 − t
+                                                                                  −2
+                                                                                       )(g(ut) + g τ (ut)) dt
+                                                                                                            t
+
+
+
+u≥X                     K(u) = 0
+                                    R1
+1≤u≤X                   K(u) = 12         ln(1 − t2 ) dt
+                                                       t
+                                  Ru/X
+                                 1 u           2 dt     1
+                                                          R1         2
+1/X ≤ u ≤ 1             K(u) = 2  u/X
+                                      ln(1 − t  )  t + 2u u ln(1 − t ) dt
+                                 Ru                       R uX
+u ≤ 1/X                 K(u) = 12 u/X ln(1 − t2 ) dt    1
+                                                   t + 2u u    ln(1 − t2 ) dt
+
+                                                   10
+from which one checks −K ′ (1) = 21 ln(1 − X −2 ).
+
+
+It is possible to give Wr (g) as a more explicit finite integral if g satisfies some additional
+assumptions.
+
+
+Theorem: If g admits a derivative, continous and locally of bounded variation, with
+|g(u)| + |ug ′ (u)| = O(1/Kε (u)), then Wr (g) = Vr (g) + Vr (g τ ) with
+                             Z c+iT
+                           1           L′ (s)
+           Vr (g) = lim              − r b    g (s) ds
+                    T →∞ 2πi c−iT      Lr (s)
+                                        Z ∞            Z ∞
+                    (log(π) + γ)                   dt         1                 dt
+                  =              g(1) +      g(t) +               (g(t) − g(1))
+                          2              1          t   1  t2 − 1                t
+
+
+Notes: (1) Weil’s own formulation in [5] is in terms of a certain limit, and applies to a
+large class of g’s including the step-function necessary for von Mangoldt’s theorem. In the
+case of a C 1 function Weil does not require g ′ (u) to have locally bounded variation.
+(2) This finite form of Weil’s term is given in Haran [8]. Another finite form was obtained by
+Barner [9]. There are infinitely many finite forms, depending on the chosen regularisation
+at 1: a few more will be given later.
+
+
+Proof: One checks easily that (Aε′ )(0 < ε′ < ε), (B) hold. For (Cc ) let’s take one “half”
+of K(u)                                 Z ∞
+                                           1                     dt
+                              M (u) =        ln(1 − t−2 )g(ut)
+                                           2                      t
+                                      Z1 ∞
+                                           1
+                           uM ′ (u) =        ln(1 − t−2 )ug ′ (ut) dt
+                                           2
+                                      Z1 ∞
+                                              1                     dt
+                          −uM ′ (u) =             (g(ut) − g(u))
+                                       1   t2 − 1                    t
+The right-hand side L(u) is continuous, O(u−1−ε ) for u → ∞ and O(sup(u, uε ln(u))) for
+u → 0. To show that it is locally of bounded variation one uses a third representation:
+           Z 2                                           Z ∞
+                 1       −2   ′    dt 1  3                      1              dt
+L(u) = −           ln(1−t )utg (ut) + ln( )(g(2u)−g(u))+      2
+                                                                  (g(ut)−g(u))
+            1    2                  t 2  4                2  t −1               t
+
+So all conditions are met and the proof is complete.
+
+
+Theorem (“Explicit Formula”): Let g be such that (Aε ), (B) holds. Then, for any
+
+                                               11
+0< c< 1+ε
+                                                 Z c+iT
+                                        1                      L′r (s)
+                          Wr (g) = lim                    −            (b
+                                                                        g (s) + gb(1 − s)) ds
+                                  T →∞ 2πi        c−iT         Lr (s)
+exists if and only if
+                                                                        X
+                                 Z(g) = gb(0) + gb(1) − lim                       g (ρ)
+                                                                                  b
+                                                               T →∞
+                                                                      |Im(ρ)|<T
+
+exists and in case they do one has
+                                            X
+                                   Z(g) =        (Vp (g) + Vp (g τ )) + Wr (g)
+                                             p
+
+
+
+
+Proof: The limit if it exists is independant of c so we will take it > 1. Let Z(s) = Lr (s)ζ(s)
+be the completed zeta function, so that Z(1 − s) = Z(s). We need the following classical
+estimates (see [4], chap. 3):
+      ′
+(1) ZZ(s)
+      (s)
+          = O(log(|Im(s)|)) on Re(s) = 1 − c, Re(s) = c, |Im(s)| > 2
+(2) There are O(log(T )) zeros with T ≤ |Im(ρ)| ≤ T + 1
+(3) If T is not the imaginary part of a zero then on −1           3
+                                                      2 ≤ Re(s) ≤ 2 , |Im(s)| = T
+
+                                                                               
+                           Z ′ (s)                                     1
+                         |         | = O(log(T )) + O log(T )(sup             )
+                           Z(s)                                   T − |Im(ρ)|
+                                                                                              ′
+so that there is a sequence Tn going to infinity with Tn+1 ≤ Tn +1 and | ZZ(s)
+                                                                           (s)
+                                                                               | = O(log(Tn )2 )
+on −1           3
+    2 ≤ Re(s) ≤ 2 , |Im(s)| = Tn .
+
+
+
+As |b
+    g (s)| = O(1/|s|) in 1 − c ≤ Re(s) ≤ c, Wr (g) will exist if and only if the limit through
+the Tn ’s exists. Using the obvious contour integral and the functional equation one gets
+      Z c+iTn                                                                 X
+ 1                    Z ′ (s)
+                  −           (b
+                               g(s) + gb(1 − s)) ds = gb(0) + gb(1) −                     gb(ρ) + O(log(Tn )2 /Tn )
+2πi       c−iTn       Z(s)
+                                                                           |Im(ρ)|<Tn
+
+
+The theorem follows.
+
+
+                             g (s) = (X s − 1)/s one gets on one side
+Applying this to the case of b
+      X                    X           1                                1
+            Wν (g) =             Λ(n) + Λ(X) + (log(π) + γ)/2 + log(X) + log(1 − X −2 )
+                                       2                                2
+                         1<n<X
+
+
+                                                          12
+and on the other side
+                                                            X       (X ρ − 1)
+                         log(X) + X − 1 − lim
+                                                 T →∞                   ρ
+                                                        |Im(ρ)|<T
+
+
+so that
+ X            1                         X         (X ρ − 1)                       1
+        Λ(n) + Λ(X) = X − lim                               − 1 − (log(π) + γ)/2 − log(1 − X −2 )
+              2          T →∞                         ρ                           2
+1<n<X                                |Im(ρ)|<T
+
+
+This reduces to von Mangoldt’s formula if one uses
+                               X         1
+                                              = 2 + γ − log(4π)
+                                 ρ
+                                     ρ(1 − ρ)
+
+
+
+A convolution algebra
+
+
+The proof of the Explicit Formula would be quite easier if the complex integrals involved
+were absolutely convergent. This is possible only if g is continuous, so it excludes the step-
+function necessary for von Mangoldt’s Theorem. Nevertheless Weil’s positivity criterion
+tells us that it would be enough to understand what happens with smooth, compactly
+supported functions, so that we can restrict to continuous functions with not too many
+regrets.
+
+
+Here is a class of such functions, stable under convolution, for which an Explicit Formula
+can be proven:
+
+
+Theorem: Let (E) be the class of continuous functions g, such that gKε is of bounded
+                                                       R
+total variation on (0, ∞) for some ε > 0, and such that Re(s)=c |b
+                                                                 g (s)| log(|Im(s)|) ds < ∞
+for all c’s such that −ε < c < 1 + ε. Then (E) is stable under multiplicative convolution
+and under the transpose g 7→ g τ (x) = x1 g( x1 ). For each g in (E) the following explicit
+formula holds
+                                                   X                  X
+                        gb(0) + gb(1) − lim                 gb(ρ) =       Wν (g)
+                                       T →∞
+                                                |Im(ρ)|<T             ν
+
+with
+                                          X                       X 1           1
+                        Wp (g) = log(p)         g(pk ) + log(p)              g( k )
+                                                                        pk     p
+                                          k≥1                     k≥1
+
+
+                                                  13
+                                                         Z ∞
+                                                               du
+                Wr (g) = (log(π) + γ)g(1) +   (g(u) + g τ (u))
+                                            1                   u
+               XZ ∞                   du    X Z ∞
+                                                                       du
+             +      (g(u) − g(1))u−2j     +       (g τ (u) − g(1))u−2j
+                 1                     u       1                        u
+               j≥1                                       j≥1
+
+The sums defining the Wν (g)’s are absolutely convergent.
+
+
+Proof: Let g and k in (E) and ε working for both. To prove that uc (g ∗k)(u) has bounded
+total variation on u ≥ 1 when 1 < c < 1 + ε, we pick c < d < 1 + ε and apply Mellin
+inversion on the line Re(s) = d
+                                               Z
+                                         1
+                           (g ∗ k)(u) =                        gb(s)b
+                                                                    k(s)u−s ds
+                                        2πi        Re(s)=d
+
+
+Observing that u 7→ uc−d−iIm(s) has a total variation on u ≥ 1 which is O(1 + |Im(s)|)
+         R
+and that Re(s)=d bg (s)b
+                       k(s)Im(s) ds < ∞ completes the proof. Replacing g and k by g τ
+                                                ′
+and k τ we get the same conclusion for u−ε (g ∗ k)(u) on u ≤ 1 with 0 < ε′ < ε. The other
+conditions are trivially met. So (E) is indeed stable under convolution.
+
+                                                                                 R             ′
+For the existence of the explicit formula we just need to remark that            Re(s)=c
+                                                                                           − ZZ(s)
+                                                                                               (s)
+                                                                                                   g (s) ds
+                                                                                                   b
+is absolutely convergent (1 < c < 1 + ε). And the value of Wr (g) is obtained from
+
+                         L′r (s)                   1 X      1    1
+                     −           = (log(π) + γ)/2 + +  (        − )
+                         Lr (s)                    s     s + 2j  2j
+                                                                 j≥1
+
+
+which can be used term by term thanks to the estimate on Re(s) = c > 0
+                               X            1    1
+                                     |          − | = O(log(|s|))
+                                         s + 2j  2j
+                               j≥1
+
+
+                                           1
+                                                         Rb
+                                                          g (s)     R∞
+so the proof will be complete if we check 2πi     Re(s)=c s+2j
+                                                                ds = 1 g(u)u−2j duu
+                                                                                       . This
+                                                    1
+                                                          R ∞
+follows from interverting integrals starting with s+2j  = 1 u−s−2j du u , and applying Mellin
+inversion.
+
+
+Weil’s Theorem
+
+
+From now on we will take g in the class D of smooth, compactly supported functions on
+(0, ∞). Weil’s Theorem is the simple, but pregnant observation that the contributions
+
+                                                    14
+Wν (g) to the Explicit Formula become truly identical in functional form when they are
+expressed as integrals on the completions of Q, the Q′p s and R.
+
+
+Theorem (Weil [5]): For each completion Qν of Q let gν be x 7→ g(|x|ν ). Then
+                                                    Z
+                                                          gν ( x1 ) ×
+                                  Wν (g) = P Fν                      d x
+                                                      Q×
+                                                       ν
+                                                         |1 −   x| ν
+
+
+where d× x is the multiplicative Haar measure on Q×
+                                                  ν which assigns log(p) as volume to
+the units if ν = p and is push-forwarded to du                            ×     dx
+                                             u under x 7→ |x| for ν = r (d x = 2|x| ).
+The symbol P Fν stands for a suitable “finite part” regularizing the singularity at 1 of the
+integrand.
+
+
+Proof: For a finite prime we have (as |1 − x|ν = 1 for |x|ν < 1, = |x|ν for |x|ν > 1)
+
+                               X                      X 1                 Z
+                                        k                         1                  gν ( x1 ) ×
+             Wp (g) = log(p)         g(p ) + log(p)          k
+                                                               g( k ) =                        d x
+                                                            p    p         |x|ν 6=1 |1 − x|ν
+                               k≥1                    k≥1
+
+
+The manipulations are a little more magical for the real place (if g(1) 6= 0):
+
+  Wr (g) = Vr (g) + Vr (g τ )
+                                 Z ∞                     Z ∞ 1 1
+       τ      log(π) + γ                1 1 du                 u
+                                                                 g( u ) − g(1) du
+  Vr (g ) =              g(1) +          g( )          +
+                   2                   u u u                       u2 − 1           u
+                                 Z1 ∞                    1
+                                                                     
+              log(π) + γ                     u         1       g(1)      du
+  Vr (g τ ) =            g(1) +            2
+                                                    g( ) − 2
+                   2              1       u −1 u             u −1         u
+                                 Z ∞ 1                          Z ∞      1                 Z
+        τ     log(π) + γ               g( u ) − g(1) du               g( u ) du g(1) ∞                du
+  Vr (g ) =              g(1) +                             +                       +
+                   2              1        u−1           2u      1    u + 1 2u          2 1 u(u + 1)
+                                   Z ∞          1                     Z −1          1
+              log(2π) + γ                 gr ( x ) − gr (1) ×                 gr ( x ) ×
+  Vr (g τ ) =             gr (1) +                           d x+                      d x
+                   2                 1          |1 − x|                 −∞ |1 − x|
+                                   Z 1                                Z 0
+              log(2π) + γ                gr ( x1 ) − xgr (1) ×               gr ( x1 ) ×
+   Vr (g) =               gr (1) +                            d x+                    d x
+                   2                 0          |1 − x|                 −1 |1 − x|
+                                     Z                                    Z
+                                             gr ( x1 ) − xgr (1) ×                           gr ( x1 ) ×
+  Wr (g) = (log(2π) + γ)gr (1) +                                 d x+                                  d x
+                                       (0,2)        |1 − x|                 (−∞,0) ∪ (2,∞) |1 − x|
+
+
+Replacing g by g τ and making the change of variable x → x1 also gives
+                                             Z                                  Z
+                                                gr ( x1 ) − gr (1) ×                    gr ( x1 ) ×
+           Wr (g) = (log(2π) + γ)gr (1) +                         d x+                           d x
+                                          x> 21       |1 − x|                    x< 21 |1 − x|
+
+
+                                                      15
+This completes the proof of Weil’s theorem.
+
+
+Notes: (1) The result obtained at the archimedean place suggests to rewrite Wp (g) as
+                          Z                               Z
+                                 gν ( x1 ) − gν (1) ×               gν ( x1 ) ×
+                Wp (g) =                           d x+                       d x
+                         |x|ν =1     |1 − x|ν             |x|ν 6=1 |1 − x|ν
+
+
+and as shown by Weil [5] this is the correct form when dealing with a Dirichlet L-series (in
+which case gv (x) = χν (x)g(|x|ν ) for some local character χν (x)) .
+(2) Almost identical manipulations of Wr (g) are in the paper of Haran [8] .
+(3) Even more surprising is the case of a number field having a complex place: then the
+expression of WC (g) as an integral on the positive half-line is a posteriori seen to actually
+come from C× through the fibration z → u = zz .
+
+
+Weil’s definition of the symbol “PF” at the real place is in terms of a certain limit, hence
+the comparison with finite primes is less satisfying. Haran has given a reformulation of the
+various Wν ’s enabling to write them all in an exactly identical way, and this is our next
+topic.
+
+
+The functional equation and homogeneous distributions
+
+
+To explain Haran’s result I will first review some properties of homogeneous distributions
+on the local fields, and this will also give an opportunity to recall some aspects of Tate’s
+Thesis [10] (see also Iwasawa [11]).
+
+
+So let Qν be one of the completion of Q. Let χ be a (multiplicative) continuous character on
+Q×ν . A tempered distribution F (t) is said to have homogeneity χ is F (xt) = χ(x)|x|
+                                                                                      −1
+                                                                                         F (t)
+           R                   R
+(that is if F (t)ϕ(t) dt = χ(x) F (t)ϕ(xt) dt for all test-functions ϕ(t)). For example the
+additive Haar measure has homogeneity |x| whereas the Dirac δ function has homogeneity
+1. If ν is finite the Dirac δ is the only (tempered) distribution with support at the origin,
+whereas for the real place one also has its derivatives δ (k) which have homogeneity x−k .
+Note that it is only for even k that this homogeneity is a power of |x|.
+
+
+Theorem: There exists a unique (up to a multiplicative constant) homogeneous distribu-
+tion with homogeneity χ.
+
+                                              16
+Proof: The reader is referred to the book of Gel’fand,Graev,Pyatetskii-Shapiro [12] and
+the other paper of Weil [13]. An example of this is that there is no homogeneous distri-
+bution on Qν which coincides with 1/|x| away from the origin as it would have the same
+homogeneity as the Dirac δ-function. Of course there are some regularizations but they
+break the homogeneity. On the other hand there is a homogeneous distribution on R which
+coincides with 1/x away from the origin (so that it has homogeneity sign(x)), and this is
+Cauchy’s Principal Value.
+
+
+For Re(s) > 0 the function x 7→ |x|s−1 is locally integrable hence defines a (tempered)
+distribution ∆s whose homogeneity is |x|s .
+
+
+Theorem: ∆s , as a function of s, has a meromorphic continuation to the entire com-
+plex plane, never vanishing, and with simple poles at those values of s where the unique
+distribution with homogeneity |x|s is local (supported at the origin).
+
+
+Proof: Again I refer to [12], [13].
+
+
+So this means that the poles of ∆s are the same as the poles of the local Euler factor of the
+Riemann Zeta function: the 1−p1 −s ’s and π −s/2 Γ(s/2). This was pointed out by Weil [13].
+This suggests very strongly to try to look at adeles in the hope to establish a link between
+homogeneous distributions and the zeros. This is just the well-known Iwasawa-Tate set-up,
+so we are following history in reverse here.
+
+
+Of course on the adeles A there are some difficulties with |t| as it vanishes almost surely!
+                                                                      Q
+(dropping the real component and restricting to the integral adeles Zp one can use the
+                           P1
+Borel-Cantelli lemma and      p = ∞ to see that almost surely |t|p < 1 for infinitely many
+                  Q
+p’s so that |t| = |t|p = 0). The trick is to define ∆s (ϕ) as an integral over the ideles
+R           s ∗         ∗
+ A× ϕ(x)|x| d x where d x is a suitably normalized multiplicative Haar measure. But this
+works only for Re(s) > 1 where we can understand this integral as an infinite product.
+                                                                Q
+The test-function ϕ is a finite linear combination of products ν ϕν with, for almost all
+ν’s, ϕν the characteristic function of the p-adic integers.
+
+
+Theorem (Tate): The homogeneous distribution ∆s on the adeles A defined as above
+
+
+                                               17
+for Re(s) > 1 has a meromorphic continuation to the entire complex plane and its zeros
+and poles are exactly those of the (completed) Riemann Zeta Function. The following
+functional equation is satisfied (F = Fourier Transform)
+
+                                       F (∆s ) = ∆1−s
+
+from which one can deduce the functional equation of the Zeta Function. In fact Z(s) is
+obtained by evaluating ∆s against a suitable test-function (independant of s). Furthermore
+these statements hold for a general algebraic number field and character of its idele classes.
+
+
+Proof: The reader is referred to Tate [10]. See also Iwasawa [11].
+
+
+It is sometimes said that Tate’s Thesis showed that the deeper meaning of the Functional
+Equation is that it reflects the validity of the Poisson Summation Formula in the adelic
+setting, but I prefer to see Poisson Formula as a tool to establish the fundamental equality
+F (∆s ) = ∆1−s .
+
+
+After this brave excursion in the realm of adeles and ideles, we can go back to the local
+situation on Qν and ask: what is the Fourier Transform of ∆s ?
+
+
+Theorem: The Fourier Transform on Qν of ∆s is Γν (s)∆1−s for a certain meromorphic
+function in the complex plane Γν (s), analytic and non-vanishing in the critical strip.
+
+
+Proof: See Tate [10], Gel’fand [12], Weil [13].
+
+
+The “Tate-Gel’fand-Graev” Gamma function Γν (s) is simply the ratio of the ν-adic com-
+ponents of Z(s) and Z(1 − s)
+                                                1 − p−1+s
+                                     Γp (s) =
+                                                 1 − p−s
+
+                                                1     Γ( 2s )
+                                   Γr (s) = π 2 −s
+                                                     Γ( 1−s
+                                                         2 )
+
+One way of formulating the Functional Equation is through saying that it means that the
+“adelic” Gamma function is identically 1, but this is a misleading statement because, as
+we will see later, its “logarithmic derivative” is basically the Explicit Formula.
+
+                                                18
+Restricting to the critical strip where ∆s and ∆1−s are given by bona fide locally integrable
+functions, the Theorem means that for an arbitrary test-function ϕ(y) on Qν (in the
+Schwartz class for R, locally constant with compact support for Qp ), with Fourier transform
+ϕ(x)
+e    the following identity of analytic functions of s holds:
+                          Z                         Z
+                                     s−1
+                             ϕ(x)|x|
+                             e           dx = Γν (s) ϕ(y)|y|−sdy
+
+Lemma: The identity holds if one only assumes that both integrals are absolutely con-
+vergent (both ϕ(y) and ϕ(x)
+                       e    are supposed to be measurable locally integrable functions,
+ϕ(x)
+e    is the Fourier transform of ϕ(y) in the sense of distributions, and 0 < Re(s) < 1).
+
+
+Proof: One checks that the change of variable of Tate’s Thesis applies to the double
+integrals
+              R           s−1
+                                     R                              R                     R
+                  ϕ(x)|x|
+                  e           dx ·       ω(y)|y|−sdy and                 ϕ(y)|y|−s dy ·       e (x)|x|s−1 dx
+                                                                                              ω
+and hence shows that they are equal (for an arbitrary test-function ω).
+
+
+There is one last topic which pertains to this chapter, and this is the Fourier Transform
+G of − log(|x|). It was determined over Qp by Vladimirov [14] and of course is a well-
+known result in the real case. One way to obtain it is to expand the fundamental equation
+F (∆s ) = Γν (s)∆1−s around s = 1 (once an explicit representation of ∆s around s = 0 is
+available) and one gets (for the details see [6]):
+
+
+Theorem:
+                                         Z                                      Z                         !
+                      log(p)                                     dt                         dt 1
+(Qp )         G(ϕ) =                               (ϕ(t) − ϕ(0))     +                 ϕ(t)    + ϕ(0)
+                     1 − 1/p                 |t|≤1               |t|             |t|>1      |t| p
+
+                      Z                                      Z
+                                        dt                                       dt
+(R)         G(ϕ) =       (ϕ(t) − ϕ(0))      +                            ϕ(t)        + (log(2π) + γ) · ϕ(0)
+                   |t|≤1               2|t|                      |t|>1          2|t|
+
+
+Haran’s Theorem
+
+
+This is the discovery by Haran [8] that although the local Weil term Wν (g) starts its life
+as an inverse Mellin transform
+                                               Z
+                                    1                            L′ν (s)
+                          Wν (g) =                           −           (b
+                                                                          g (s) + gb(1 − s)) ds
+                                   2πi             Re(s)=c       Lν (s)
+
+                                                             19
+and hence is first obtained as a multiplicative convolution it also can be shown to be an
+additive convolution once it has been lifted to be ν−adics as advocated by Weil.
+
+
+Let Rs be the kernel Γ∆  s
+                      ν (s)
+                            on Qν . It is holomorphic in Re(s) < 1 as ∆s has the same poles
+                                                     ∂
+there as Γν (s). Its Fourier Transform is |x|−s , so ∂s    R is just the Fourier transform
+                                                        s=0 s
+G of − log(|x|).
+
+
+Theorem (Haran [8]): Let ∗ be the symbol of additive convolution on Qν .
+                                              ∂
+                                   Wν (g) =          (Rs ∗ gν )(1)
+                                              ∂s s=0
+Proof: One writes the right-hand side as (G ∗ gν )(1) = G(gν (1 − t)) = G(g(|1 − t|ν )) and it
+is then a matter of using the formula for G given in the previous section and comparing the
+outcome with the previously obtained formula for Wν (g) as an integral over the ν−adics.
+
+
+Of course, this is a little miraculous, and I will now turn to the ideas relevant to a more
+direct proof ([6]).
+
+
+Mellin and Fourier
+
+
+The Mellin inversion formula has been in constant use in this paper
+                                         Z
+                                      1
+                     for u ∈ (0, ∞)              gb(s)u−s ds = g(u)
+                                     2πi Re(s)=c
+There is a cousin to this identity which is not so well-known. As before starting with g a
+smooth compactly supported function on (0, ∞) we can define gν on Qν as y 7→ g(|y|ν ).
+This function will be a Schwartz-function hence its Fourier transform geν (x) will also be of
+Schwartz class (and will depend only on |x|ν ).
+
+
+Theorem: for 0 < c < 1, x 6= 0
+                                                   Z
+                             −1               1                          |x|s−1
+                                                                            ν
+                         F        (gν )(x) =                     gb(s)          ds
+                                             2πi       Re(s)=c           Γν (s)
+
+
+Note: Of course F −1 (gν ) = geν as gν is “even”, but this is the statement that generalizes
+when using the Γ function of a non-trivial character (in that case gν is twisted by the
+character).
+
+                                                   20
+Proof: The integral converges because gb(s) decreases faster than any inverse power of s
+                                                                                −1
+while Γν (s) is periodic for ν = p and satisfies the estimate Γr (s)                 = Γr (1 − s) = O(|s|1/2 )
+for ν = r (an interesting exercise using Stirling’s Formula). Both sides of the equation
+define continuous locally integrable functions of x (the right-hand side is O(|x|c−1 ), x 6= 0).
+It is enough to prove that they are equal as distributions:
+    Z        Z                         !               Z             Z                
+           1                 |x|s−1
+                                ν                    1                     |x|s−1
+                                                                              ν
+                       gb(s)         ds ϕ(x)
+                                         e dx =                gb(s)              ϕ(x)
+                                                                                  e dx ds
+          2πi Re(s)=c        Γν (s)                2πi Re(s)=c             Γν (s)
+           Z             Z                       Z       Z                       !
+        1                                                1
+   =               gb(s)       |y|−s
+                                  ν ϕ(y) dy   ds =                   gb(s)|y|−s
+                                                                             ν ds ϕ(y) dy
+       2πi Re(s)=c                                     2πi Re(s)=c
+                                Z                  Z
+                            = g(|yν |)ϕ(y) dy = F −1 (gν )(x)ϕ(x) e dx
+
+
+
+This means that one can compute a p−adic Fourier transform with a complex integral! In
+the real case it also establishes a connection between the Fourier transforms of t 7→ g(et )
+and of x 7→ g(|x|).
+
+
+The explicit formula: adelic approach
+
+
+The title of this chapter is more ambitious that what has been really accomplished. What
+I will explain now is a method to prove the Explicit Formula which treats all the places in
+exactly the same way, and which directly gives a ν−adic expression to Wν , but it is not
+quite adelic (yet).
+
+
+Starting from                        Z
+                                1                    L′ν (s)
+                      Wν (g) =                   −           (b
+                                                              g (s) + gb(1 − s)) ds
+                               2πi   Re(s)=3/2       Lν (s)
+one shifts the term containing b
+                               g (s) to the line Re(s) = c and the term containing gb(1 − s)
+to the line Re(s) = 1 − c, with 0 < c < 1 and then makes the change of variable s → 1 − s
+in that last integral to obtain:
+                                           Z
+                                      1                      Γ′ν (s)
+                            Wν (g) =                     −           gb(s) ds
+                                     2πi       Re(s)=c       Γν (s)
+
+So the Explicit Formula is the inverse Mellin transform of the logarithmic derivative of the
+                                                             Γ′ (s)
+“adelic” Gamma function. Let’s write Λν (s) for − Γνν (s) .
+
+                                                 21
+One then takes the derivative of the fundamental identity of integrals on Qν for an arbitrary
+test-function ϕ(y):                Z                              Z
+                                               s−1
+                                       ϕ(x)|x|
+                                       e       ν   dx = Γν (s)        ϕ(y)|y|−s
+                                                                             ν dy
+
+and rearranging terms, one obtains (0 < Re(s) < 1)
+               Z                       Z                                   Z
+                                                                                                    |x|s−1
+                                                                                                       ν
+      Λν (s)       ϕ(y)|y|−s
+                          ν dy =            ϕ(y)(− log(|y|ν ))|y|−s
+                                                                 ν dy +        ϕ(x)(−
+                                                                               e      log(|x|ν ))          dx
+                                                                                                    Γν (s)
+                                1
+                                                R
+Integrating both sides against 2πi               Re(s)=c
+                                                           gb(s) · ds gives
+  Z                            Z                                       Z
+       ϕ(y)Wν (g; y) dy =          ϕ(y)(− log(|y|ν )gν (y)) dy +           ϕ(x)(−
+                                                                           e      log(|x|ν )F −1 (gν )(x)) dx
+
+                  1
+                           R
+with Wν (g; y) = 2πi        Re(s)=c
+                                                 g(s)|y|−s
+                                           Λν (s)b                                      −c
+                                                        ν ds which is a continuous O(|y| ) function on
+Qν , y 6= 0 (hence locally integrable), so that the previous equation which is valid for an
+arbitrary test-function ϕ(y) can be converted into the pointwise identity (y 6= 0)
+                                                                                  
+                      Wν (g; y) = − log(|y|ν )gν (y) + F − log(|x|ν ) · F −1 (gν ) (y)
+
+(we know that the last term is continuous because it is the Fourier transform of an L1 -
+function)
+                               Wν (g; y) = − log(|y|ν )gν (y) + (Gν ∗ gν )(y)
+
+with Gν the Fourier transform of − log(|x|ν ) and ∗ the symbol of additive convolution
+on Qν . At y = 1 we end up with Haran’s Theorem, hence we have obtained the local
+contribution to the Explicit Formula directly as a ν−adic object, in a manner exactly
+identical for all places. Furthermore this method works for all Dirichlet-Hecke L-series
+([6]).
+
+
+The conductor operator
+
+
+Let H be the operator from S(Qν ) to L2 (Qν , dt)
+                                                                            
+                         H(ϕ)(t) = log(|t|ν )ϕ(t) + F log(|ξ|) · F −1 (ϕ)(ξ) (t)
+
+By construction H commutes with the Fourier transform. I have called it the “conductor
+operator” for reasons having to do with ramified characters at finite places [6]. A simple
+computation, left to the reader, shows it has a very important property:
+
+                                                            22
+Theorem: The conductor operator commutes with the isometric action of the multiplica-
+tive group ϕ(t) 7→ |u|1/2 ϕ(ut).
+
+
+In other words H is dilation invariant. At the real place a classical cousin to H is the
+Hardy Transform. The Hardy Transform is invariant under positive dilations only, this is
+an essential difference. The complete dilation invariance of H means that it can be analyzed
+in terms of multiplicative characters, and thus exhibited as a multiplicative convolution.
+Of course this is not news to us, we already know a presentation of H as a multiplicative
+convolution: the Explicit Formula! Indeed it can be shown [15] that the Explicit Formula,
+when put on the critical line, realizes the spectral analysis of H (for this one needs all the
+explicit formulae associated to all multiplicative characters, not only the trivial one).
+
+
+On Qp , restricting H to the “cuspidal” subspace L0 of L2 (the kernel of averaging over the
+units |u| = 1) one obtains a surprising positivity property:
+
+
+Theorem: The “cuspidal” spectrum of H is {log(p), 2 log(p), 3 log(p) . . .} for p > 2 and
+{2 log(2), 3 log(2) . . .} for p = 2.
+
+
+The proof is in [6]. The “invariant” spectrum of H is continuous and bounded [15].
+
+
+A further surprising property of the conductor operator, valid at every place, is that it
+commutes with the inversion: let D0 (Qν ) be the space of Schwartz-Bruhat functions with
+compact support away from the origin. H can be seen as a map D0 (Qν ) → L2 (Qν ). The
+                          1
+inversion I : ϕ 7→ (t 7→ |t| ϕ( 1t )) acts on the domain and (isometrically) on the target.
+
+
+Theorem: H commutes with the inversion I.
+
+
+Proof: I will prove it here for Qν = R and even functions only, the general case is
+done in [15]. The proof is just a matter of observing that with our previous notation
+ϕ(t) = g(|y|), y = t, one simply has
+
+
+
+                                                   Z
+                                             1
+                   H(ϕ)(t) = −Wr (g; y) = −                        g(s)|y|−s
+                                                             Λr (s)b      ν ds
+                                            2πi    Re(s)=c
+
+
+                                              23
+and this is also according to Λr (s) = Λr (1 − s)
+               Z
+            1                                         1        1
+        −                       g(1 − s)|y|s−1
+                          Λr (s)b          ν   ds = − Wr (g τ ; ) = I(H(I(ϕ)))(t)
+           2πi Re(s)=1−c                             |y|       y
+
+
+So the conductor operator, which gives an operator theoretic and spectral interpretation
+of the Explicit Formulae of Analytic Number Theory, has at every place some remnants of
+a conformal invariance, restricted to preserve {0} ∪ {∞}.
+
+
+The symmetries of the explicit formula
+
+
+The representation of Weil’s local terms as an additive convolution with the Fourier trans-
+form of − log(|x|) (Haran’s Theorem) seems at first sight to have a rather convincing
+rigidity. But at the same time it reveals the amount of hidden flexibility there was in
+Weil’s formulae, as all Fourier transforms depend on the choice of a basic additive char-
+acter. Of course we can not make completely arbitrary choices if we do want to get the
+sum over the zeros, and this restriction is the only truly adelic aspect of our result which
+is immediately apparent: the local additive characters have to be chosen so that globally
+the group of principal adeles remains its own annihilator in the adele ring for the duality
+corresponding to the ensuing global additive character. The set of global additive char-
+acters satisfying this condition is a torsor under the multiplicative group of the rational
+number field, which thus appears as a simple but non trivial symmetry of the Explicit
+Formula. Concretely this means that after the choice of a non-zero rational number q the
+shifted local terms Wν (g) + log(|q|ν )g(1) are equally valid. This can also be understood
+if one realizes that there is nothing sacred about the decomposition in Euler factors, each
+of which can be modified by a multiplicative factor |q|sν without affecting the Zeta Func-
+tion. This looks odd for the Riemann Zeta Function, but appears more natural when one
+considers the Euler Factors for Dirichlet L-series in case of ramification. And there is also
+the interesting inversion symmetry which acts trivially on each local term, but this is an
+“accident” due to the fact that 11 = 1.
+
+
+Goldfeld has given an interpretation of Weil’s explicit formula which has as its basis the
+group generated by the inversion and the non-zero rational numbers [16]. Connes [17] has
+also met the need for being very specific on what exactly are Weil’s local terms. I must
+refer the reader to these papers for further information on their author’s methods.
+
+                                             24
+My own conclusion ([6]) is that any attempt to solve the Riemann Hypothesis will have to
+incorporate, if not to put at its forefront, the dilation and inversion invariance examplified
+by the conductor operator and partially broken by the Explicit Formula.
+
+
+REFERENCES
+[1] B. Riemann,“Über die Anzahl der Primzahlen unter einer gegebenen Grösse”, Monatsber. Akadem.
+Berlin, 671-680, (1859).
+
+[2] H.M. Edwards, “Riemann’s Zeta Function”, Academic Press, (1974).
+[3] A.E. Ingham, “The Distribution of Prime Numbers”, Cambridge Univ. Press, (1932).
+[4] S.J. Patterson, “An introduction to the theory of the Riemann Zeta-Function”, Cambridge Univ.
+Press, (1988).
+[5] A. Weil,“Sur les “formules explicites” de la théorie des nombres premiers”, Comm. Lund (vol dédié
+à Marcel Riesz), (1952).
+[6] J.F. Burnol, “The Explicit Formula and a Propagator”, electronic manuscript, available at the
+http://xxx.lanl.gov server, math/9809119 (September 1998, revised November 1998)
+[7] Math.Soc.Japan, “Stationary Processes”, Article 395 from the Encyclopedic Dictionary of Mathe-
+matics, 3rd ed., translation MIT Press (1987).
+[8] S. Haran,“Riesz potentials and explicit sums in arithmetic”, Invent. Math. 101, 697-703 (1990).
+
+[9] K. Barner, “On A.Weil’s explicit formula”, Journal für Mathematik Band 323, 139-152, (198?).
+[10] J. Tate, Thesis, Princeton 1950, reprinted in Algebraic Number Theory, ed. J.W.S. Cassels and A.
+Fröhlich, Academic Press, (1967).
+[11] K. Iwasawa, “Letter to J. Dieudonné” (1952), in “Zeta Functions in Geometry”, Adv.Stud.Pure
+Math 21 ed. Kurokawa, Sunada, pub. Kinokuniya, (1992).
+[12] I. M. Gel’fand, M. I. Graev, I. I. Piateskii-Shapiro,“Representation Theory and automorphic
+functions”, Philadelphia, Saunders (1969).
+
+[13] A. Weil,“Fonctions zêtas et distributions”, Séminaire Bourbaki no 312, (1966).
+[14] V. S. Vladimirov,“Generalized functions over the fields of p-adic numbers”, Russian Math. Surveys
+43:5, 19-64 (1988).
+[15] J.F. Burnol, “Spectral analysis of the local conductor operator”, math/9811040 (November 1998).
+
+[16] D. Goldfeld, “A spectral interpretation of Weil’s explicit formula”, Lect. Notes Math 1593, p
+135-152, Springer Verlag (1994).
+
+[17] A. Connes, “Trace formula in non-commutative Geometry and the zeros of the Riemann zeta
+function”, math/9811068 (November 1998).
+
+
+
+                   Jean-François Burnol, 62 rue Albert Joly, F-78000 Versailles, France
+                                        jf.burnol@dial.oleane.com
+                                     October 1998, revised November 1998
+
+                                                     25
+

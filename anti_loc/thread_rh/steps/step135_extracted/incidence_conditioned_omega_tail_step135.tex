@@ -1,0 +1,146 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\title{Step 135: Incidence-Conditioned $\Omega$-Tail Theorem}
+\author{Six Birds / RH Membrane Working Notes}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 130--134 isolated the following obstruction.  The BPRZ shifted second moment gives a natural source-weighted Gram, but the shifted main kernel has squarefree Boolean near-null directions.  The actual Burnol/Müntz residual class is not arbitrary: it factors through a finite zeta/Müntz incidence convolution.  Deep Boolean blind modes only see high-divisibility seed coefficients.  Step 135 formulates the exact response-space estimate required to turn that observation into a lawful source record.
+
+\section{Finite Boolean incidence model}
+Let $P_y$ be a finite set of primes, $|P_y|=k$.  We identify squarefree divisors of $P_y$ with subsets $S\subseteq P_y$.  The finite zeta/incidence convolution is
+\[
+   (Z_y b)(T)=\sum_{S\subseteq T} b(S).
+\]
+Let $\mathcal B$ be a declared family of Boolean blind modes.  The upward closure of $\mathcal B$ is
+\[
+   \uparrow\mathcal B=\{S\subseteq P_y:\exists A\in\mathcal B,\ A\subseteq S\}.
+\]
+Let $P_{\uparrow\mathcal B}$ be the seed-space projection onto this upward closure and let $\Pi_{\mathcal B}$ be the response-space projection onto the blind Walsh modes.
+
+\begin{lemma}[upward-closure exactness]
+For every seed $b$,
+\[
+   \Pi_{\mathcal B}Z_y b=\Pi_{\mathcal B}Z_yP_{\uparrow\mathcal B}b.
+\]
+Thus the blind response is completely determined by the high-divisibility seed tail.
+\end{lemma}
+
+\section{The incidence-conditioned tail}
+Let
+\[
+   B_N:Y_{B,N}\to \ell^2(2^{P_y})
+\]
+be the actual regularized Burnol/Müntz residual seed synthesis map, with Gram
+\[
+   G_{B,N}=B_N^*B_N.
+\]
+Let $P_{\Omega\le K}$ be an upstream-declared Heap--Soundararajan style block cutoff:
+\[
+   \Omega_j(S)\le K_j\qquad\text{for each block }j.
+\]
+Define the incidence-conditioned high-divisibility defect by
+\[
+   \boxed{
+   \tau_{\Omega,N}^{Z}
+   :=\left\|Z_y(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\right\|.
+   }
+\]
+This is the correct tail.  The unconditioned seed tail
+\[
+   \|(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\|
+\]
+is not enough, because $Z_y$ may amplify high-divisibility coefficients.
+
+\section{Incidence-conditioned suppression theorem}
+\begin{theorem}[incidence-conditioned suppression]
+Assume the declared blind family $\mathcal B$ is covered by the block cutoff, meaning every blind negative-prime set violates at least one block cutoff unless it lies inside the tail:
+\[
+   \uparrow\mathcal B\subseteq\{S:\exists j,\ \Omega_j(S)>K_j\}.
+\]
+Then
+\[
+   \Pi_{\mathcal B}Z_yB_NG_{B,N}^{-1/2}
+   =\Pi_{\mathcal B}Z_y(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2},
+\]
+and hence
+\[
+   \boxed{
+   \left\|\Pi_{\mathcal B}Z_yB_NG_{B,N}^{-1/2}\right\|
+   \le \tau_{\Omega,N}^{Z}.
+   }
+\]
+Consequently, for the GCD-log blind residual
+\[
+   \Xi_{{\rm GCD},N}=R_N^*\Pi_{\mathcal B}R_N,
+   \qquad R_N=Z_yB_N,
+\]
+one has the Loewner bound
+\[
+   \boxed{
+   \Xi_{{\rm GCD},N}\preceq (\tau_{\Omega,N}^{Z})^2 G_{B,N}.
+   }
+\]
+\end{theorem}
+
+\section{Exponential moment sufficient condition}
+The previous theorem is exact but still shifts the burden to $\tau_{\Omega,N}^{Z}$.  A usable sufficient condition is an exponential moment bound.
+
+Let $\mathcal E_{j,\sigma}$ denote multiplication by $e^{\sigma\Omega_j(S)}$ on seed coefficients.  If
+\[
+   \left\|\mathcal E_{j,\sigma}B_NG_{B,N}^{-1/2}\right\|\le E_{j,N}(\sigma)
+\]
+and if the incidence tail operator has norm $C_{Z,j,N}$ on the corresponding block-tail support, then
+\[
+   \left\|Z_y1_{\Omega_j>K_j}B_NG_{B,N}^{-1/2}\right\|
+   \le
+   C_{Z,j,N}e^{-\sigma K_j}E_{j,N}(\sigma).
+\]
+Using a union bound over blocks gives
+\[
+   \boxed{
+   \tau_{\Omega,N}^{Z}
+   \le
+   \sum_j C_{Z,j,N}e^{-\sigma_jK_j}E_{j,N}(\sigma_j).
+   }
+\]
+The raw Boolean model has $\|Z_y\|=\varphi^k$ with $\varphi=(1+\sqrt5)/2$, so in an unweighted model one must beat the incidence amplification.  A lawful response-space theorem must either use a better weighted geometry or prove that the actual seed has tail decay strong enough to dominate this factor.
+
+\section{Restricted BPRZ salvage}
+Suppose the GCD-log main kernel has a lower frame on the nonblind response sector:
+\[
+   K_q\succeq \gamma_q I\quad\text{on }(I-\Pi_{\mathcal B})H,
+   \qquad \gamma_q\asymp \log q.
+\]
+If
+\[
+   \left\|\Pi_{\mathcal B}R_NG_{B,N}^{-1/2}\right\|
+   \le \delta_N<1,
+\]
+then
+\[
+   \boxed{
+   R_N^*K_qR_N\succeq \gamma_q(1-
+   \delta_N^2)G_{B,N}.
+   }
+\]
+Thus exact suppression $\delta_N\to0$ is sufficient, but a uniform floor $\delta_N<1$ is enough for source-coercivity growth when $\gamma_q\to\infty$.
+
+\section{Status}
+Step 135 does not prove the actual Burnol/Müntz seed estimate in full generality.  It proves the exact response-space gate:
+\[
+   \boxed{
+   \left\|Z_y(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\right\|\le \tau_{\Omega,N}.
+   }
+\]
+The route is accepted only if $\tau_{\Omega,N}\to0$ or $\tau_{\Omega,N}\le\tau<1$ together with a diverging source lower frame.  Otherwise $\Xi_{\rm GCD}$ remains a genuine residual requiring another source record or a scoped nonclaim.
+\end{document}

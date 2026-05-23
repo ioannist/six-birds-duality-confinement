@@ -1,0 +1,230 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\EE}{E_{\rm EF}}
+\newcommand{\Ccore}{\mathcal C^-_{\log}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+
+\title{Step 76: Signed-to-Positive Matching for the Completed Weil Feature Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+Step 75 proposed a log-side anti-invariant core
+\[
+  \Ccore=C_c^\infty(\mathbb R)^{J=-1},\qquad (Jf)(t)=\overline{f(-t)},
+\]
+and a completed candidate feature map
+\[
+  W_{\rm cmp}=\begin{bmatrix}W_{\rm pr}\\ W_\infty\\ W_{\rm pole}\\ W_{\rm tail}\end{bmatrix}.
+\]
+Step 76 asks what it would mean for these features to match the completed Weil explicit formula strongly enough to attempt the Douglas bridge
+\[
+  V_Z=T W_{\rm cmp},\qquad \|T\|\le 1,
+\]
+or equivalently
+\[
+  \AZ=V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}=\Kcmp.
+\]
+The main point is that a signed explicit formula is not yet a positive carrier.  It becomes one only after a positive feature representation, a form-core/closability record, and a domination record.
+
+\section{Signed Weil data and positive feature data}
+
+\begin{definition}[Signed Weil datum on a core]
+A signed Weil datum on a complex vector space/core \(\mathcal C\) consists of Hermitian quadratic forms
+\[
+ q_{\rm pr}^{\rm raw},\quad q_\infty^{\rm raw},\quad q_{\rm pole}^{\rm raw},\quad q_{\rm tail}^{\rm raw},\quad q_Z
+\]
+with the intended identity
+\[
+ q_W[f]=q_{\rm pr}^{\rm raw}[f]+q_\infty^{\rm raw}[f]+q_{\rm pole}^{\rm raw}[f]+q_{\rm tail}^{\rm raw}[f]-q_Z[f].
+\]
+The form \(q_Z\) is the zero-side anti-invariant displacement form.
+\end{definition}
+
+\begin{definition}[Positive completed feature realization]
+A positive completed feature realization of the signed datum is a Hilbert feature space
+\[
+ \mathcal E_{\rm cmp}=\mathcal E_{\rm pr}\oplus\mathcal E_\infty\oplus\mathcal E_{\rm pole}\oplus\mathcal E_{\rm tail}
+\]
+and linear maps
+\[
+ W_i:\mathcal C\to \mathcal E_i,
+ \qquad V_Z:\mathcal C\to\mathcal Z,
+\]
+such that
+\[
+ q_{\rm cmp}[f]=\sum_i\|W_i f\|^2,
+ \qquad q_Z[f]=\|V_Zf\|^2,
+\]
+and the signed Weil form is represented as
+\[
+ q_W[f]=q_{\rm cmp}[f]-q_Z[f]
+ \qquad (f\in\mathcal C).
+\]
+\end{definition}
+
+\begin{theorem}[Weil positivity to Douglas gate]
+Suppose \(q_{\rm cmp}\) and \(q_Z\) have a positive completed feature realization on a dense form core \(\mathcal C\), and suppose \(q_{\rm cmp}\) is closable with \(\mathcal C\) as a form core for the completed response space.  If
+\[
+ q_Z[f]\le q_{\rm cmp}[f]
+ \qquad (f\in\mathcal C),
+\]
+then the inequality extends to the completed response space and there is a contraction
+\[
+ V_Z=T W_{\rm cmp},\qquad \|T\|\le 1.
+\]
+Conversely, such a contraction implies \(q_Z\le q_{\rm cmp}\).
+\end{theorem}
+
+\begin{proof}
+On the core, \(\|V_Zf\|^2\le\|W_{\rm cmp}f\|^2\).  Hence the rule
+\[
+ W_{\rm cmp}f\mapsto V_Zf
+\]
+is well-defined on \(\operatorname{Ran}(W_{\rm cmp}|_{\mathcal C})\), because if \(W_{\rm cmp}f=0\) then \(V_Zf=0\). It is contractive on this range and therefore extends by continuity to a contraction on the closure. Extending it by zero on the orthogonal complement gives \(T\). The converse follows by applying \(\|T\|\le1\).
+\end{proof}
+
+\section{What must be matched}
+
+\begin{proposition}[Signed-to-positive matching gate]
+A classical signed explicit formula can enter the membrane framework only through one of the following accepted records:
+\begin{enumerate}[label=(\alph*)]
+\item an exact positive feature realization \(q_W=q_{\rm cmp}-q_Z\) and \(q_W\ge0\) on the full completed core;
+\item a defected realization
+\[
+ q_Z[f]\le q_{\rm cmp}[f]+e_{\rm EF}[f],
+\]
+with a positive explicit-formula defect \(e_{\rm EF}\);
+\item a scoped nonclaim recording that the signed identity is only support evidence and does not certify the Douglas bridge.
+\end{enumerate}
+Trace equality, scalar prime-zero balance, or positivity on a finite test family alone does not pass this gate.
+\end{proposition}
+
+\begin{warning}[No free positiveization]
+An indefinite Hermitian form cannot be represented as \(\|Wf\|^2\). It can only be represented as a difference of positive forms, repaired by adding positive completion terms, or recorded as a defect. Therefore the signed prime/gamma/pole/tail presentation of the explicit formula is not itself a completed carrier.
+\end{warning}
+
+\section{Translation-invariant shift features}
+
+For a positive even measure \(\mu\) on \(\mathbb R\), define
+\[
+ (W_\mu f)(a,t)=f(t+a)-f(t).
+\]
+Then
+\[
+ q_\mu[f]=\int\!\int |f(t+a)-f(t)|^2\,dt\,d\mu(a)
+ =\int \Psi_\mu(\xi)|\widehat f(\xi)|^2\,d\xi,
+\]
+where
+\[
+ \Psi_\mu(\xi)=\int |e^{ia\xi}-1|^2\,d\mu(a)
+ =2\int (1-\cos(a\xi))\,d\mu(a)\ge0.
+\]
+
+\begin{definition}[Shift-feature cone]
+A nonnegative even symbol \(\Psi\) belongs to the shift-feature cone if
+\[
+ \Psi(\xi)=2\int (1-\cos(a\xi))\,d\mu(a)
+\]
+for some positive even measure \(\mu\) satisfying the integrability needed for \(q_\mu\) on \(\Ccore\).
+\end{definition}
+
+\begin{proposition}[Translation-invariant positive feature criterion]
+A translation-invariant quadratic form
+\[
+ q[f]=\int \Psi(\xi)|\widehat f(\xi)|^2\,d\xi
+\]
+is a positive shift-difference feature form exactly when \(\Psi\) lies in the shift-feature cone. In particular, positivity of \(\Psi\) is necessary but not by itself an accepted shift-feature record; the measure representation and form-domain record are part of the gate.
+\end{proposition}
+
+\section{Candidate slot statuses}
+
+\subsection*{Prime-power slot}
+The candidate
+\[
+ (W_{{\rm pr},L}f)_n(t)
+ =\sqrt{\frac{\Lambda(n)}{\sqrt n}}\,\alpha_L(\log n)(f(t+\log n)-f(t))
+\]
+is a positive shift feature at every finite cutoff. It contributes symbol
+\[
+ \Psi_{{\rm pr},L}(\xi)=2\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2(1-\cos(\xi\log n)).
+\]
+Unearned record: exact matching to the prime side of the completed explicit formula, including cutoff/tail law.
+
+\subsection*{Archimedean slot}
+The candidate kernel
+\[
+ \kappa_\infty(a)\sim \frac1{2\sinh(|a|/2)}
+\]
+formally defines a positive shift-difference feature because the difference factor cancels the near-zero singularity:
+\[
+ |f(t+a)-f(t)|^2\sim a^2|f'(t)|^2,
+ \qquad a^2|a|^{-1}\text{ is locally integrable.}
+\]
+Unearned record: exact renormalized matching to the gamma factor, including constants, null modes, and pole interactions.
+
+\subsection*{Pole/completion slot}
+Finite rank features
+\[
+ W_{\rm pole}f=(\langle f,p_1\rangle,\ldots,\langle f,p_m\rangle)
+\]
+are positive. Unearned record: exact declaration of pole/null directions and proof that they repair the signed completion rather than hide it.
+
+\subsection*{Tail/support slot}
+This slot records omitted prime shifts, support leakage, and finite-to-completed promotion.  It is accepted either as a positive feature or as an explicit defect \(E_{\rm tail}\) participating in a fixed/exhaustive ledger squeeze.
+
+\section{Countermodels}
+
+\begin{proposition}[Trace balance is not domination]
+There exist positive matrices \(A,K\succeq0\) with \(\operatorname{tr}A=\operatorname{tr}K\), but \(A\npreceq K\).
+\end{proposition}
+
+\begin{proof}
+Take
+\[
+ A=\begin{pmatrix}2&0\\0&0\end{pmatrix},\qquad
+ K=\begin{pmatrix}1&0\\0&1\end{pmatrix}.
+\]
+Both have trace \(2\), but \(K-A=\operatorname{diag}(-1,1)\) is indefinite.
+\end{proof}
+
+\begin{proposition}[Finite core support is not full bridge]
+Positivity of \(q_{\rm cmp}-q_Z\) on a proper finite-dimensional subspace does not imply positivity on the completed response space.
+\end{proposition}
+
+\begin{proof}
+Let \(Y=\mathbb R^2\), \(\mathcal C=\operatorname{span}(e_1)\), and
+\[
+ K-A=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.
+\]
+The form is positive on \(\mathcal C\) but not on \(Y\).
+\end{proof}
+
+\section{Conclusion}
+Step 76 turns the matching problem into a precise gate:
+\[
+ \text{signed explicit formula}
+ \longrightarrow
+ \text{positive completed feature representation}
+ \longrightarrow
+ q_Z\le q_{\rm cmp}
+ \longrightarrow
+ \text{Douglas contraction}.
+\]
+The prime shift slot is already a positive feature candidate. The archimedean slot is plausible as a positive renormalized shift feature. The pole/completion and tail slots are necessary to avoid fake null budgets and moving-ledger overreads. The missing work is exact matching to the completed Weil formula on a completed anti-invariant response space.
+
+\end{document}

@@ -1,0 +1,54 @@
+{
+  "step": 233,
+  "orientation": "cross-track-framework-validation",
+  "target": "CRCFT modes test on BSD bridge components",
+  "BSD_components": [
+    "E_an/period",
+    "E_ht/reg",
+    "E_finite",
+    "sum_p E_p",
+    "E_det"
+  ],
+  "component_mode_table": [
+    {
+      "component": "E_an/period",
+      "primary_mode": "TE",
+      "secondary_interface": "BF if period normalization bridge absent",
+      "evidence": "analytic leading coefficient and period normalization are BSD analytic-side target content"
+    },
+    {
+      "component": "E_ht/reg",
+      "primary_mode": "TE",
+      "secondary_interface": "CTMT through height/regulator matrices",
+      "evidence": "regulator equality is BSD content but reduces to carrier-native height pairing determinants"
+    },
+    {
+      "component": "E_finite",
+      "primary_mode": "BF",
+      "secondary_interface": "CTMT after Cassels-Tate finite-source tower is supplied",
+      "evidence": "finite scalar factor and dim Sha[p] are noninjective public shadows"
+    },
+    {
+      "component": "sum_p E_p",
+      "primary_mode": "CTMT",
+      "secondary_interface": "BF for uncovered primes",
+      "evidence": "per-prime p-adic transfer/control rows are atomic terminal gates"
+    },
+    {
+      "component": "E_det",
+      "primary_mode": "CTMT",
+      "secondary_interface": "TE consequence when all component maps and vanishings are proved",
+      "evidence": "determinant-line component maps are the central b-52a terminal object"
+    }
+  ],
+  "literature_audit_summary": "Bloch-Kato and Burns-Flach supply determinant-line/Tamagawa-number frameworks; Gross-Zagier supplies rank-one height/L-derivative links; Cassels-Tate pairing sources expose finite-source structure; Skinner-Urban/Kato-style p-adic routes remain hypothesis-bound. These support TE/CTMT/BF component classifications.",
+  "framework_finding_upgrade_status": "CRCFT modes cross-track verified on BSD; framework finding upgraded to verified-on-2-track-instances with component-map adaptation.",
+  "retained_nogos": [
+    "Finite scalar BSD factor remains a noninjective public shadow.",
+    "dim Sha[p] remains a noninjective public shadow of Cassels-Tate pairing structure.",
+    "Density is not pointwise BSD.",
+    "Imported theorem rows retain scoped/hypothesis statuses.",
+    "No BSD proof is claimed."
+  ],
+  "final_verdict": "V_bsd_CRCFT_modes_verified"
+}

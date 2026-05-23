@@ -1,0 +1,147 @@
+{
+  "mpmath_dps": 80,
+  "x_max": 200000,
+  "pinv_rcond": 1e-12,
+  "data": [
+    {
+      "N": 5,
+      "delta_sq": "0.0363139368590198",
+      "raw_delta_sq": "0.0363139368590198",
+      "delta_sq_logN": "0.0584450267306446",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 4,
+      "largest_singular": "5.002177e-01",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    },
+    {
+      "N": 10,
+      "delta_sq": "0.0238470859060593",
+      "raw_delta_sq": "0.0238470859060593",
+      "delta_sq_logN": "0.0549099445186406",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 9,
+      "largest_singular": "9.051516e-01",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    },
+    {
+      "N": 20,
+      "delta_sq": "0.0165323317860087",
+      "raw_delta_sq": "0.0165323317860087",
+      "delta_sq_logN": "0.0495264398884486",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 19,
+      "largest_singular": "1.387492e+00",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    },
+    {
+      "N": 40,
+      "delta_sq": "0.0127296188449689",
+      "raw_delta_sq": "0.0127296188449689",
+      "delta_sq_logN": "0.0469580294159074",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 39,
+      "largest_singular": "1.906865e+00",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    },
+    {
+      "N": 80,
+      "delta_sq": "0.0109920955378177",
+      "raw_delta_sq": "0.0109920955378177",
+      "delta_sq_logN": "0.0481676554175969",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 79,
+      "largest_singular": "2.429019e+00",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    },
+    {
+      "N": 200,
+      "delta_sq": "0.00892242600836957",
+      "raw_delta_sq": "0.00892242600836957",
+      "delta_sq_logN": "0.0472738446718843",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 199,
+      "largest_singular": "3.087686e+00",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    },
+    {
+      "N": 500,
+      "delta_sq": "0.00741541353971342",
+      "raw_delta_sq": "0.00741541353971342",
+      "delta_sq_logN": "0.0460838890370526",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 499,
+      "largest_singular": "3.687938e+00",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    },
+    {
+      "N": 1000,
+      "delta_sq": "0.00654423096394308",
+      "raw_delta_sq": "0.00654423096394308",
+      "delta_sq_logN": "0.0452059459880561",
+      "tail_bound_per_entry": "5e-06",
+      "rank": 999,
+      "largest_singular": "4.097708e+00",
+      "smallest_singular": "0.000000e+00",
+      "condition_proxy": "inf"
+    }
+  ],
+  "fit": [
+    {
+      "model": "C_over_logN",
+      "fit_range": "N=80,200,500,1000 mean of delta_sq*log(N)",
+      "C": "0.0466828337786475",
+      "alpha_or_beta": "1",
+      "notes": "stable slow-log diagnostic constant"
+    },
+    {
+      "model": "C_over_logN_alpha",
+      "fit_range": "N>=20",
+      "C": "0.0541389792662914",
+      "alpha_or_beta": "1.0886679",
+      "notes": "least-squares fit delta ~ C/(log N)^alpha"
+    },
+    {
+      "model": "C_over_N_beta",
+      "fit_range": "N>=20",
+      "C": "0.0309018509140347",
+      "alpha_or_beta": "0.22951419",
+      "notes": "comparison-only power fit; not the expected BN asymptotic"
+    }
+  ],
+  "formula_checks": [
+    {
+      "p": 2,
+      "q": 3,
+      "periodic_digamma_value": "0.106308922802654589708360331229",
+      "truncated_series_value": "0.106308506138418485541437585569",
+      "absolute_difference": "4.166642361e-7",
+      "tail_bound": "5e-06",
+      "status": "verified_within_tail_bound"
+    },
+    {
+      "p": 3,
+      "q": 5,
+      "periodic_digamma_value": "0.111773549058414156817213015297",
+      "truncated_series_value": "0.111772882395636415148899072871",
+      "absolute_difference": "6.666627777e-7",
+      "tail_bound": "5e-06",
+      "status": "verified_within_tail_bound"
+    },
+    {
+      "p": 7,
+      "q": 11,
+      "periodic_digamma_value": "0.0796116164069559374021226021088",
+      "truncated_series_value": "0.0796106423796834925549972237463",
+      "absolute_difference": "9.740272724e-7",
+      "tail_bound": "5e-06",
+      "status": "verified_within_tail_bound"
+    }
+  ]
+}

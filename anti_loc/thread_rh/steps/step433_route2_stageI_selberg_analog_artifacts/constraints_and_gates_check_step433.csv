@@ -1,0 +1,14 @@
+kind,id,status,reason
+constraint,C_arithmetic_independence,PASS,Substrate uses Fenchel-Nielsen/Bers hyperbolic geometry; no arithmetic primitives.
+constraint,C_self_adjoint_native,PASS,Laplace-Beltrami operator on compact boundaryless M_0 is self-adjoint.
+constraint,C_no_adelic_substrate,PASS,Non-arithmetic Fuchsian substrate; no adelic/idclic construction.
+constraint,C_no_tautology,PASS,Spec(Delta_M) is not stipulated to equal zeta zeros.
+constraint,C_explicit_formula_natural,PARTIAL_FAIL,"Selberg trace formula is natural, but its geodesic side is not the zeta prime side."
+constraint,C_GUE_natural,FAIL,"Time-reversal-invariant real Laplacian naturally suggests GOE-type statistics, not GUE, absent symmetry breaking."
+constraint,C_trace_formula_compatibility,FAIL,Primitive geodesic lengths do not structurally match log rational primes.
+gate,Gate1_primitive_exclusion,PASS,No zeta/primes/modular/adeles used in construction primitives; primes only appear in post-hoc comparison.
+gate,Gate2_dependency_trace,PASS,Construction path is finite: FN coordinates -> M_0 -> L2 -> Delta -> Selberg trace formula.
+gate,Gate3_ablation,PASS,Removing target spectral-match assertion leaves a valid self-adjoint operator.
+gate,Gate4_negative_controls,PASS,"Other generic non-arithmetic surfaces also produce unrelated spectra, confirming no tautological match."
+gate,Gate5_stageII_small_spectrum,FAIL,No quantitative match to first zeta-zero ordinates is produced; Stage II cannot start.
+gate,Gate6_no_single_axiom_equivalence,PASS,No axiom equivalent to RH or Spec=zero ordinates is inserted.

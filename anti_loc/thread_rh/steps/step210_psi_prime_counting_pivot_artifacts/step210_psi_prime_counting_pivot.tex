@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Step 210: Chebyshev \(\psi\) Prime-Counting Carrier}
+
+Define
+\[
+  \psi(x)=\sum_{p^k\le x}\log p=\sum_{n\le x}\Lambda(n).
+\]
+The carrier is a scalar prime-counting function on \(\mathbb R_+\), modeled in
+\(L^2_{\rm loc}(\mathbb R_+,dx/x)\) or a weighted asymptotic-envelope space.
+Native probes are \(\psi(x)\), \(\psi(x)-x\), and weighted averages.  The
+dissolving envelopes are \(x^{1/2+\epsilon}\) and
+\(\sqrt{x}\log^2x\).
+
+\subsection*{Residuals}
+
+Two standard residuals are
+\[
+  \Xi_\psi(\epsilon)=\limsup_{x\to\infty}
+  {|\psi(x)-x|\over x^{1/2+\epsilon}}
+  \qquad(\epsilon>0)
+\]
+and
+\[
+  \Xi_\psi=\limsup_{x\to\infty}
+  {|\psi(x)-x|\over \sqrt{x}\log^2x}.
+\]
+By von Koch (1901),
+\[
+  \psi(x)-x=O(\sqrt{x}\log^2x)
+  \quad\Longleftrightarrow\quad \mathrm{RH}.
+\]
+
+\subsection*{Explicit formula}
+
+The Riemann--von Mangoldt explicit formula gives
+\[
+  \psi(x)-x=-\sum_\rho {x^\rho\over\rho}
+  +\log(2\pi)-{1\over2}\log(1-x^{-2})
+\]
+away from endpoint conventions.  This decomposition does not produce CTMT:
+each term \(x^\rho/\rho\) is explicit after choosing \(\rho\).  The problem is
+not an undecided matrix element; it is the global summability and cancellation
+needed for the von Koch bound.  That bound is exactly target-equivalent.
+
+\subsection*{Mertens relation}
+
+The Step 197 Mertens carrier and this \(\psi\)-carrier are related by Perron
+and Mellin transforms involving \(1/\zeta\) and \(-\zeta'/\zeta\).  Both are
+scalar asymptotic CRE carriers and both classify as CRCFT-TE.
+
+\subsection*{Verdict}
+
+\[
+  \boxed{\texttt{V\_psi\_CRCFT\_TE}.}
+\]
+
+Classical references: Riemann (1859), von Mangoldt (1895), de la Vallee
+Poussin (1899), von Koch (1901), and Edwards (1974).
+
+\end{document}

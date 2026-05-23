@@ -1,0 +1,9 @@
+comparison_axis,bergman_side,pswf_sinc_side,match_status,blocker
+coordinate,"punctured-disc z=exp(2*pi*i*w), radial height T=-log|z|^2/(4*pi)","critical-line additive tau variable, s=1/2+i*tau",partial,"Need unitary log-cusp transport with Jacobian matching dmu_Dstar to d tau/(2*pi)."
+kernel_available,"diagonal B_p^{D*}(z)=K_p(z,z) inherited from Auvray-Ma-Marinescu","full operational kernel K_infty^op=delta-sinc-sum Psi Psi* inherited from Step173",mismatch,"Bergman action on wavepackets requires off-diagonal K_p(z,z'), not just diagonal B_p(z)."
+large_parameter,"p -> infinity in L^p Bergman/cusp-form setting","fixed or transition bandwidth lambda in Slepian-Pollak time-band limiting",missing_dictionary,"No inherited scaling p <-> lambda,sigma,ell,T was found."
+modal_basis,"holomorphic monomials z^m with cusp metric weights","PSWF tails (I-P_lambda)phi_n/sqrt(1-mu_n)",mismatch,"Need asymptotic conversion of cusp monomial modes to PSWF transition modes."
+projector_type,"holomorphic Bergman projector on punctured disc / cusp sections","Sonine/prolate projection Proj(ker P_lambda cap ker Phat_lambda)",partial_structural,"Both are projections with cusp concentration, but their kernels encode different cutoffs."
+wavepacket_action,"(B_p u_tilde)(z)=integral K_p(z,z')u_tilde(z')dmu","P_infty u = u - sinc*u - sum Psi<Psi,u>",not_closed,"Cannot equate actions without off-diagonal kernel and normalization transport."
+candidate_limit,"Bergman half-mass leakage gives Phi approx 1/2","Step220 Phi_max=0.4904766190",numerically_close,"Explains scale but not theorem-grade transport identity."
+branch_implication,"Could anchor Branch A Phi and Branch C gamma if transported","Current cascade uses PSWF/sinc P_infty operationally",stalled,"Common blocker: off-diagonal log-cusp Bergman-to-PSWF transition asymptotic."

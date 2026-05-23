@@ -1,0 +1,113 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\title{Step 125: Prime-Conductor Finite Source-Frame Model}
+\author{RATCHET RH Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This step instantiates the finite coefficient source-frame skeleton using complete Dirichlet characters modulo a prime conductor.  It deliberately separates standard analytic number theory from the project-native membrane gates.  The standard part is finite character orthogonality; the project-native part is its role as a lawful source record for absorbing the residual
+\[
+\Xi^{\rm BC}=\mathfrak B^*\Pi_Y\mathfrak B
+\]
+inside the membrane and adequacy calculus.
+
+\section{Finite prime-conductor model}
+Let $q$ be prime and let
+\[
+\mathcal N\subset\{1,\dots,L\},\qquad L<q,
+\]
+be the finite coefficient support produced by the regularized Burnol-to-Dirichlet shadow.  For a coefficient vector $a=(a_n)_{n\in\mathcal N}$ define
+\[
+Q_\chi a=\sum_{n\in\mathcal N}a_n\chi(n).
+\]
+The full character Gram is
+\[
+G_q(m,n)=\sum_{\chi\bmod q}\chi(n)\overline{\chi(m)}.
+\]
+Since $m,n<q$, the congruence $m\equiv n\pmod q$ is equivalent to equality.  Hence
+\[
+G_q=(q-1)I_{\mathcal N}.
+\]
+This is the exact finite lower frame.
+
+\begin{theorem}[Complete prime-modulus finite lower frame]
+If $q$ is prime and $\mathcal N\subset\{1,\dots,L\}$ with $L<q$, then
+\[
+\sum_{\chi\bmod q}\left|\sum_{n\in\mathcal N}a_n\chi(n)\right|^2
+=(q-1)\sum_{n\in\mathcal N}|a_n|^2.
+\]
+Thus $G_q\succeq(q-1)I_{\mathcal N}$ exactly.
+\end{theorem}
+
+\section{Primitive/nonprincipal correction}
+For $q$ prime, the primitive characters modulo $q$ are precisely the nonprincipal characters.  Removing the principal character gives
+\[
+G_q^{\rm prim}=(q-1)I_{\mathcal N}-\mathbf 1\mathbf 1^*.
+\]
+If $M=|\mathcal N|$, then the eigenvalues are
+\[
+q-1\quad(M-1\text{ times}),
+\qquad q-1-M\quad(1\text{ time}).
+\]
+Thus the primitive/nonprincipal family has a finite lower frame iff $M<q-1$.
+
+\begin{theorem}[Prime primitive correction]
+For $q$ prime and $\mathcal N\subset\{1,
+\dots,L\}$ with $M=|\mathcal N|<q-1$,
+\[
+\sum_{\substack{\chi\bmod q\\ \chi\ne\chi_0}}
+\left|\sum_{n\in\mathcal N}a_n\chi(n)\right|^2
+\ge (q-1-M)\sum_{n\in\mathcal N}|a_n|^2.
+\]
+The removed principal character is therefore a rank-one defect.
+\end{theorem}
+
+\section{Residual source-frame consequence}
+Let $R_N:Y_{R,N}\to\mathbb C^{\mathcal N}$ be the residual coefficient map and let $H_N$ be the coefficient Hilbert metric.  If
+\[
+R_N^*H_NR_N\succeq c_{R,N}G_{R,N}
+\]
+and the character Gram satisfies
+\[
+G_{\mathcal X,N}\succeq \gamma_N H_N,
+\]
+then
+\[
+R_N^*G_{\mathcal X,N}R_N\succeq \gamma_N c_{R,N}G_{R,N}.
+\]
+In the complete prime-modulus skeleton, $\gamma_N=q-1$ before source-currency normalization.  In the primitive/nonprincipal skeleton, $\gamma_N=q-1-M$.
+
+\section{Normalization and no-free-strength}
+The raw factor $q-1$ is not automatically a membrane budget collapse.  One must declare the source currency.  If each character source is assigned unit unnormalized cost, the raw frame grows with family size.  If the family average is used, the normalized complete frame has strength one:
+\[
+(q-1)^{-1}G_q=I.
+\]
+Divergence of $\Lambda_N$ must therefore come from lawful strict extension, cumulative independent source records, or a declared source weight, not from duplicating or rescaling the same finite frame.
+
+\section{First defects}
+The finite model produces the following required records:
+\begin{enumerate}[leftmargin=2em]
+\item primitive/nonprincipal rank-one correction;
+\item parity restrictions and possible $n\equiv -m$ aliasing;
+\item oldform/imprimitive corrections for composite moduli;
+\item source-weight normalization;
+\item weighted matrix moment lower bounds if $L$-value or mollifier weights are used;
+\item finite-to-completed Plancherel/exhaustivity tail.
+\end{enumerate}
+
+\section{Conclusion}
+The prime-conductor finite frame is a clean exact skeleton:
+\[
+q>L_N\quad\Longrightarrow\quad G_q=(q-1)I.
+\]
+But it becomes an RH-relevant source record only after the residual visibility gate, source weighting, no-smuggling audit, and completed tail promotion pass.
+\end{document}

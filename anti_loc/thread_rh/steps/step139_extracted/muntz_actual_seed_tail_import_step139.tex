@@ -1,0 +1,214 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\title{Step 139: Actual Burnol/M\"untz Seed-Tail Import}
+\author{Six Birds / RH Membrane Construction Thread}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 130--138 isolated the obstruction to importing the Bui--Pratt--Robles--Zaharescu shifted second-moment theorem as an unrestricted lower frame.  The obstruction is a squarefree Boolean near-null sector of the GCD--log shifted main kernel.  Steps 131--138 showed that the actual residual coefficient class may avoid this sector if the regularized Burnol/M\"untz seed has a controlled high-divisibility tail after passing through the zeta/M\"untz incidence map.
+
+The present step asks whether the needed estimate can be imported from known analytic-number-theory machinery.  It treats the Heap--Soundararajan prime-block and \(\Omega\)-truncation architecture as imported infrastructure and translates it into the membrane gate.
+
+\section{Objects}
+Let \(P_y\) be a finite set of small primes, and identify squarefree divisors of
+\[
+P_y^\#=\prod_{p\le y}p
+\]
+with subsets \(S\subseteq P_y\).  The finite zeta/M\"untz incidence operator is
+\[
+  (Z_y b)(T)=\sum_{S\subseteq T}b(S).
+\]
+Let \(Y_{R,N}\) be the finite residual sector produced by the boundary-to-co-Poisson residual and the Burnol-to-Dirichlet regularized shadow.  Its actual seed synthesis map is
+\[
+  B_N:Y_{R,N}\longrightarrow \mathcal H_y,
+\]
+with Gram
+\[
+  G_{B,N}=B_N^*B_N.
+\]
+For a declared prime-block cutoff \(K=(K_j)_j\), let
+\[
+  P_{\Omega\le K}
+\]
+be the projection onto coefficients satisfying all block conditions
+\[
+  \Omega_j(S)\le K_j.
+\]
+The seed-tail gate is
+\[
+  \sigma_{K,N}
+  =
+  \left\|
+  (I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}
+  \right\|.
+\]
+The incidence-conditioned tail gate from Step 135 is
+\[
+  \tau_{\Omega,N}^{Z}
+  =
+  \left\|
+  Z_y(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}
+  \right\|.
+\]
+For a blind Walsh family \(\mathcal B_R\), Step 138 introduced
+\[
+L_{R,K}(y)=\|\Pi_{\mathcal B_R}Z_yP_{\Omega\le K}\|,
+\qquad
+T_{R,K}(y)=\|\Pi_{\mathcal B_R}Z_y(I-P_{\Omega\le K})\|.
+\]
+Thus
+\[
+\delta_{R,K,N}=L_{R,K}+T_{R,K}\sigma_{K,N}
+\]
+controls the GCD--log blind residual.
+
+\section{Imported analytic-number-theory architecture}
+The relevant imported architecture is not a new proof of lower moments.  It is the structural use of prime blocks and \(\Omega\)-cutoffs.  In the Heap--Soundararajan method one decomposes primes into blocks and builds short Dirichlet polynomials
+\[
+  \mathcal N(s,\alpha)=\prod_j \mathcal N_j(s,\alpha),
+\]
+where each block polynomial is truncated by a rule of the form
+\[
+  \Omega(n_j)\le K_j.
+\]
+The block thresholds are declared before the moment estimate and are not chosen after seeing a residual direction.
+
+\section{Main import theorem}
+\begin{theorem}[Actual seed-tail import trichotomy]
+Let \(B_N\) be the actual finite Burnol/M\"untz residual seed synthesis map.  Exactly one of the following records is needed.
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Exact \(\Omega\)-compatible seed.}  If
+\[
+  B_N=P_{\Omega\le K}B_N,
+\]
+then
+\[
+  \sigma_{K,N}=0
+\]
+and
+\[
+  \Xi_{\mathrm{GCD},N}\preceq L_{R,K}(y)^2G_{B,N}.
+\]
+
+\item \textbf{Tail-controlled seed.}  If
+\[
+  \left\|
+  (I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}
+  \right\|
+  \le \sigma_{K,N},
+\]
+then
+\[
+  \Xi_{\mathrm{GCD},N}
+  \preceq
+  \bigl(L_{R,K}(y)+T_{R,K}(y)\sigma_{K,N}\bigr)^2G_{B,N}.
+\]
+In particular, if
+\[
+  L_{R,K}+T_{R,K}\sigma_{K,N}\le \delta<1,
+\]
+then the restricted BPRZ source lower frame keeps a positive floor on the actual residual class.
+
+\item \textbf{Persistent \(\Omega\)-blind residual.}  If no upstream-declared \(K
+\) gives
+\[
+  L_{R,K}+T_{R,K}\sigma_{K,N}<1,
+\]
+then
+\[
+  \Xi_{\mathrm{GCD},N}=R_N^*\Pi_{\mathrm{sf}}R_N
+\]
+remains a genuine residual requiring a separate source-frame record, compact/tail payment, or scoped nonclaim.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The first case is immediate from the definition of \(\sigma_{K,N}\).  The second case is the Step 138 blind-projected incidence decomposition
+\[
+\|\Pi_{\mathcal B_R}Z_yB_NG_{B,N}^{-1/2}\|
+\le
+L_{R,K}+T_{R,K}\|(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\|.
+\]
+Squaring gives the operator inequality for \(\Xi_{\mathrm{GCD},N}\).  The third case is the contrapositive of the source-floor gate.
+\end{proof}
+
+\section{What is imported and what is not}
+Heap--Soundararajan supplies an \(\Omega\)-block architecture for constructing short Euler-product mimics.  It does not prove that an arbitrary Burnol/M\"untz seed has small \(\Omega\)-tail.  Burnol supplies the co-Poisson/M\"untz and Sonine carrier in which the seed lives.  It does not impose blockwise \(\Omega\)-cutoffs on arbitrary residual atoms.
+
+Therefore there is no free imported theorem of the form
+\[
+  \sigma_{K,N}\to0
+\]
+for a generic Burnol/M\"untz seed.  The lawful route is to build an \(\Omega\)-compatible residual dictionary from the beginning, or to prove a new Burnol-to-\(\Omega\) density theorem.
+
+\section{New defect: \(\Omega\)-compatible Burnol exhaustion}
+Let \(\mathcal D_{\Omega,N}\) be an upstream-declared Burnol/M\"untz atom family whose regularized Dirichlet shadows obey the block cutoffs.  Let \(P_{\mathcal D_{\Omega,N}}\) be the response-space projection onto their span.  Define
+\[
+  \epsilon_{B\to\Omega,N}
+  =
+  \left\|
+  (I-P_{\mathcal D_{\Omega,N}})M_{R,N}G_{R,N}^{-1/2}
+  \right\|.
+\]
+This is the geometric price of insisting that the residual dictionary be source-readable and \(\Omega\)-compatible.  The old seed-tail problem is replaced by the new density problem
+\[
+  \epsilon_{B\to\Omega,N}\to0
+\]
+or at least
+\[
+  \epsilon_{B\to\Omega,N}\le \epsilon<1.
+\]
+
+\section{Effective source gate after Step 139}
+The restricted BPRZ route now has the form
+\[
+  R_N^*K_qR_N
+  \succeq
+  \gamma_q\beta_R(1-\delta_{R,K,N}^2)G_{B,N},
+\]
+where
+\[
+  \gamma_q\asymp \log q
+\]
+is the imported source strength on the nonblind class and
+\[
+  \delta_{R,K,N}=L_{R,K}+T_{R,K}\sigma_{K,N}.
+\]
+Thus a uniform floor
+\[
+  \delta_{R,K,N}\le\delta<1
+\]
+is already enough for source strength to diverge, provided the finite residual windows promote through a fixed/exhaustive ledger.
+
+\section{No-smuggling record}
+The following choices must be declared upstream:
+\begin{itemize}
+\item prime blocks \(\mathcal P_j\),
+\item thresholds \(K_j\),
+\item Burnol/co-Poisson atom family,
+\item regularized M\"untz cutoff,
+\item source conductor and character family,
+\item residual window and tail-promotion scheme.
+\end{itemize}
+No threshold or atom may be selected because it makes the final GCD-log blind residual pass.
+
+\section{Status}
+Step 139 does not close RH and does not prove the actual \(\Omega\)-tail estimate.  It records that the only lawful import from Heap--Soundararajan is architectural.  The next constructive target is therefore an \(\Omega\)-compatible Burnol/M\"untz residual dictionary theorem.
+
+\end{document}

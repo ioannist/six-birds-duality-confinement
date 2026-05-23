@@ -1,0 +1,216 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,geometry}
+\geometry{margin=1in}
+
+\title{Step 73: Weil Positivity versus the Douglas Feature Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\Kcmp}{\mathsf K_{\mathrm{cmp}}}
+\newcommand{\Yminus}{Y^-}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note compares the framework's Douglas-contractivity obligation
+\[
+        \AZ \preceq \Kcmp
+        \quad\Longleftrightarrow\quad
+        V_Z=T W_{\mathrm{cmp}},\quad \|T\|\le1
+\]
+with classical Weil positivity.  The conclusion is precise: a full-domain
+Weil positivity identity for the exact same anti-invariant response space is
+equivalent to Loewner domination, hence to Douglas contraction.  However,
+classical Weil positivity as usually encountered is a positivity criterion on
+a test-function class, often with signed explicit-formula components.  To
+become the framework's O1 bridge it must be upgraded by: exact response-space
+identification, density/closure of the test class, positive carrier-side feature
+decomposition, completion/tail records, and no-smuggling of zero-side data into
+the carrier feature map.
+\end{abstract}
+
+\section{Objects}
+
+Let \(\Yminus\) be the anti-invariant response space for a formed zeta carrier.
+Let
+\[
+        V_Z:\Yminus\to \mathcal Z,
+        \qquad
+        \AZ=V_Z^*V_Z
+\]
+be the zero-side anti-invariant displacement readout.  Let
+\[
+        W_{\mathrm{cmp}}:\Yminus\to \mathcal E_{\mathrm{cmp}},
+        \qquad
+        \Kcmp=W_{\mathrm{cmp}}^*W_{\mathrm{cmp}}
+\]
+be the completed carrier-side feature map.
+
+The framework's explicit-formula domination gate is
+\[
+        \AZ\preceq \Kcmp.
+\]
+By the Douglas lemma this is equivalent to the existence of a contraction
+\[
+        V_Z=T W_{\mathrm{cmp}},
+        \qquad \|T\|\le1.
+\]
+
+\section{Weil positivity as a quadratic form}
+
+Classical Weil-style criteria are naturally expressed as positivity of a
+quadratic form
+\[
+        Q_W(y)\ge0
+        \qquad (y\in\mathcal T),
+\]
+where \(\mathcal T\) is a declared test class.  In the membrane notation the
+desired full anti-invariant form is
+\[
+        Q_{\mathrm{mem}}(y)
+        =
+        \langle y,(\Kcmp-\AZ)y\rangle.
+\]
+
+\begin{theorem}[Full-domain equivalence]
+Suppose \(\Yminus\) is a Hilbert space and \(\AZ,\Kcmp\) are bounded positive
+operators on \(\Yminus\).  Then the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item \( \AZ\preceq \Kcmp\);
+\item \( \langle y,(\Kcmp-\AZ)y\rangle\ge0\) for every \(y\in\Yminus\);
+\item there exists a contraction \(T\) such that \(V_Z=T W_{\mathrm{cmp}}\),
+      for any factorizations \(\AZ=V_Z^*V_Z\) and \(\Kcmp=W_{\mathrm{cmp}}^*W_{\mathrm{cmp}}\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of (i) and (ii) is the definition of the Loewner order.
+The equivalence of (i) and (iii) is Douglas factorization: \(V_Z^*V_Z\preceq
+W_{\mathrm{cmp}}^*W_{\mathrm{cmp}}\) iff
+\(\operatorname{Ran}(V_Z^*)\subseteq\operatorname{Ran}(W_{\mathrm{cmp}}^*)\)
+with the corresponding factor bounded by \(1\), equivalently \(V_Z=T
+W_{\mathrm{cmp}}\) for a contraction \(T\).
+\end{proof}
+
+\section{The exact gap}
+
+The theorem says that \emph{full-domain} Weil positivity, once identified with
+\(Q_{\mathrm{mem}}\), is exactly the Douglas gate.  The actual gap is not formal
+positivity; it is earning the identification.
+
+\begin{obligation}[Weil-to-Douglas upgrade]
+To use Weil positivity as O1, one must provide:
+\begin{enumerate}[label=O1.\arabic*]
+\item a precise anti-invariant response space \(\Yminus\);
+\item a zero readout \(V_Z\) whose ledger is \(\AZ=V_Z^*V_Z\);
+\item a completed carrier feature map
+      \[
+      W_{\mathrm{cmp}}=
+      \begin{bmatrix}
+      W_{\mathrm{pr}}\\ W_\infty\\ W_{\mathrm{pole}}\\ W_{\mathrm{tail}}
+      \end{bmatrix};
+      \]
+\item equality of the Weil quadratic form with
+      \[
+      y\mapsto \langle y,(\Kcmp-\AZ)y\rangle
+      \]
+      on a dense or exhaustive test class;
+\item closure of this positivity from the test class to the completed response space;
+\item a positive feature decomposition of the signed prime/gamma/pole/tail terms, or an accepted defect record
+      \[
+      \AZ\preceq\Kcmp+E_{\mathrm{EF}};
+      \]
+\item a no-smuggling record: \(W_{\mathrm{cmp}}\) must be built from upstream carrier data, not from target zero displacement.
+\end{enumerate}
+\end{obligation}
+
+\section{Why scalar or partial positivity is insufficient}
+
+\begin{warning}[Trace equality]
+Trace equality
+\[
+        \operatorname{tr}\AZ=\operatorname{tr}\Kcmp
+\]
+does not imply \(\AZ\preceq\Kcmp\).
+\end{warning}
+
+For example, on \(\mathbb R^2\),
+\[
+        \AZ=\begin{pmatrix}2&0\\0&0\end{pmatrix},
+        \qquad
+        \Kcmp=\begin{pmatrix}1&0\\0&1\end{pmatrix}
+\]
+have the same trace but \(\AZ\npreceq\Kcmp\).
+
+\begin{warning}[Cone or subspace-only testing]
+If positivity is checked only on a proper cone or a proper subspace, it need not
+imply \(\AZ\preceq\Kcmp\) on the full anti-invariant response space.
+\end{warning}
+
+For example
+\[
+        D=\Kcmp-\AZ=
+        \begin{pmatrix}1&0\\0&-1\end{pmatrix}
+\]
+is positive on the one-dimensional test subspace spanned by \(e_1\), but is not
+positive on the full space.
+
+\begin{warning}[Signed components]
+A signed explicit formula is not yet a feature-map certificate.  The framework
+needs positive carrier-side maps \(W_{\mathrm{pr}},W_\infty,W_{\mathrm{pole}},
+W_{\mathrm{tail}}\), or an accepted completed grouping whose total is positive.
+\end{warning}
+
+\section{Relation to classical Weil positivity}
+
+The classical Weil criterion may be read as saying that a certain completed
+explicit-formula quadratic form is positive for all admissible tests if and only
+if RH holds.  In the framework, this becomes:
+
+\[
+        Q_W(y)=\langle y,(\Kcmp-\AZ)y\rangle.
+\]
+
+If this identity is established on the exact anti-invariant response space and
+\(Q_W\ge0\) there, then the Douglas gate follows.  Conversely, the Douglas gate
+is a constructive operator-valued strengthening/packaging of the same
+positivity: it not only says the residual is positive, but asks for the carrier
+side to be expressed by declared positive features and for zero displacement to
+factor through those features without amplification.
+
+\section{Three statuses}
+
+\begin{description}[leftmargin=2.8cm]
+\item[\texttt{Weil-positive-full}] \(Q_W=\langle\cdot,(\Kcmp-\AZ)\cdot\rangle\) on the full completed response space and \(Q_W\ge0\).  This implies Douglas domination.
+\item[\texttt{Weil-positive-test}] Positivity is known only on an admissible test class.  This is support unless density/closure and tail records promote it.
+\item[\texttt{signed-EF-only}] A signed explicit formula has been written, but no positive feature decomposition or domination has been supplied.  This is not an O1 bridge.
+\end{description}
+
+\section{Conclusion}
+
+Classical Weil positivity is not irrelevant to the Douglas gate; it is the
+closest known analytic-number-theoretic shape.  But the gate requires a specific
+upgrade:
+\[
+        \text{Weil positivity}
+        \quad\leadsto\quad
+        \text{operator Loewner domination}
+        \quad\leadsto\quad
+        \text{Douglas contraction}
+        \quad\leadsto\quad
+        \text{positive completed feature maps}.
+\]
+The remaining RH work is to earn this upgrade on the actual completed zeta
+carrier, without replacing signed explicit-formula accounting by an unaudited
+positive shadow.
+\end{document}

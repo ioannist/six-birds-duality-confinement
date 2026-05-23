@@ -1,0 +1,182 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\E}{\mathsf E}
+\newcommand{\F}{\mathsf F}
+\newcommand{\Thetaop}{\Theta_0^-}
+\newcommand{\Y}{Y^-}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+
+\title{Step 89: Zeta Source-Coercivity Audit for the Low-Frequency Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Step 88 showed that the low-frequency cancellation route is viable only if the zero-side readout admits a uniform primitive factorization.  This note audits the other serious route: source coercivity.  The target is not to prove RH.  The target is to say exactly what a lawful strict-extension source ladder must do in order to charge the low-frequency anti-invariant sector of the paired completed Weil carrier.
+
+The paired carrier has a legal zero at log-frequency zero:
+\[
+  \Psi_{\rm pair}(0)=0.
+\]
+Therefore positivity of the paired prime/gamma feature package is not enough.  A source-coercivity ladder must provide an upstream-visible lower frame on the anti-invariant response family.
+
+\section{Response-space setup}
+
+Let \(\Y\) be the anti-invariant response space.  Let
+\[
+  L^-_\Gamma:E\to \Y
+\]
+be the anti-invariant probe family on the exact packaged carrier and let
+\[
+  C_{\rm pair}\succeq 0
+\]
+be the paired completed Weil carrier candidate.  We assume null-mode legality throughout; if a declared probe sees a legal null direction, capacity is infinite and the source-coercivity claim is not accepted.
+
+A source record is a tuple
+\[
+  s=(Q_s,\Theta_s,\lambda_s,D_s),
+\]
+where \(Q_s:\Y\to Z_s\) is an upstream-visible readout, \(\Theta_s\succ0\) is the source response budget, \(\lambda_s>0\) is source strength, and
+\[
+  D_s\succeq \lambda_s (Q_s L^-_\Gamma)^*\Theta_s^{-1}(Q_sL^-_\Gamma).
+\]
+The total source audit is
+\[
+  D_{\mathcal S}=\sum_{s\in\mathcal S}D_s,
+\qquad
+  C^+ = C_{\rm pair}+D_{\mathcal S}.
+\]
+The response-side source-frame operator is
+\[
+  \F_{\mathcal S}=\sum_{s\in\mathcal S}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+
+\begin{theorem}[source-frame coercivity]
+If
+\[
+  \F_{\mathcal S}\succeq \Lambda (\Thetaop)^{-1},
+\]
+then
+\[
+  C^+\succeq \Lambda (L^-_\Gamma)^*(\Thetaop)^{-1}L^-_\Gamma.
+\]
+Consequently, under null-mode legality,
+\[
+  \K^-_+ := L^-_\Gamma (C^+)^\dagger (L^-_\Gamma)^*\preceq \Lambda^{-1}\Thetaop.
+\]
+\end{theorem}
+
+\begin{proof}
+The source lower frame gives
+\[
+  \sum_sD_s\succeq (L^-_\Gamma)^*\F_{\mathcal S}L^-_\Gamma
+  \succeq \Lambda (L^-_\Gamma)^*(\Thetaop)^{-1}L^-_\Gamma.
+\]
+Since \(C_{\rm pair}\succeq0\), the same lower bound holds for \(C^+\).  For every response vector \(y\), put \(g=(L^-_\Gamma)^*y\).  The lower bound implies
+\[
+  \langle u,C^+u\rangle\ge \Lambda\langle L^-_\Gamma u,(\Thetaop)^{-1}L^-_\Gamma u\rangle.
+\]
+By the variational capacity identity this yields
+\[
+  y^*\K^-_+y
+  =\sup_{u\ne0}\frac{|\langle y,L^-_\Gamma u\rangle|^2}{\langle u,C^+u\rangle}
+  \le \Lambda^{-1}y^*\Thetaop y.
+\]
+\end{proof}
+
+\section{Low-frequency specialization}
+
+Suppose \(\Y\) admits a frequency decomposition
+\[
+  \Y=\int^\oplus \Y_\xi\,d\nu(\xi),
+\]
+and the paired carrier has symbol \(\Psi_{\rm pair}(\xi)\), with \(\Psi_{\rm pair}(0)=0\).  A source ladder is full-sector coercive if its response-frame field satisfies
+\[
+  \F_n(\xi)\succeq \Lambda_n \Theta_0(\xi)^{-1}
+\quad\text{for a.e. }\xi,
+\]
+with \(\Lambda_n\to\infty\).  Then \(\K^-_n\preceq \Lambda_n^{-1}\Theta_0^-\to0\).
+
+If instead the lower bound only holds on a low-frequency window \(|\xi|<\varepsilon_n\), then it resolves only that sector.  A full-RH confinement claim additionally needs either high-frequency carrier coercivity, finite-window exhaustivity, or a declared nonclaim/defect for the uncovered region.
+
+\section{Character-source version}
+
+If
+\[
+  \Y=\bigoplus_{\chi\in\widehat G^-}\Y_\chi
+\]
+is an anti-invariant character decomposition and \(P_\chi\) are the character projections, a character source ladder has
+\[
+  \F_n=\sum_{\chi\in\widehat G^-}\lambda_{\chi,n}P_\chi^*\Theta_\chi^{-1}P_\chi.
+\]
+If the character family is orthogonal and \(\Theta_\chi\) is compatible with \(\Theta_0^-\), then
+\[
+  \Lambda_n=\min_{\chi\in\widehat G^-}\lambda_{\chi,n}.
+\]
+Thus full anti-invariant budget collapse requires
+\[
+  \min_{\chi\in\widehat G^-}\lambda_{\chi,n}\to\infty.
+\]
+If a nonzero character direction is missing, then \(\Lambda_n=0\) for all \(n\), and the source ladder cannot prove full-sector collapse.
+
+\section{No-go alternatives}
+
+\begin{proposition}[partial low-frequency source is not full collapse]
+Let \(\Y=L^2([-1,1])\) and let
+\[
+  C_n(\xi)=\xi^2+\lambda_n\mathbf 1_{|\xi|<\epsilon}.
+\]
+Even if \(\lambda_n\to\infty\), the capacity of an arbitrary response family does not collapse on all of \(\Y\) unless the complement \(|\xi|\ge\epsilon\) is also controlled by the carrier, a tail bridge, or a nonclaim.
+\end{proposition}
+
+\begin{proposition}[missing character leaves a blind direction]
+Let \(\Y=\mathbb R^2\), \(\Theta_0^-=I\), and
+\[
+  \F_n=\lambda_n e_1e_1^*.
+\]
+Then \(e_2\) is an uncovered anti-invariant direction and no lower frame
+\[
+  \F_n\succeq \Lambda_n I
+\]
+holds with \(\Lambda_n>0\).  The budget in the \(e_2\)-direction does not collapse.
+\end{proposition}
+
+\begin{warning}[upstream visibility]
+A source chosen after observing the zero-side displacement or after optimizing the final Douglas inequality is not a lawful source.  It is a target-selected repair and is at best support-only.  The source ladder must be declared by upstream data: primes, characters, automorphic/trace-side structure, completion, or an explicit strict-extension rule.
+\end{warning}
+
+\section{RH-facing audit outcome}
+
+The source-coercivity route is accepted only if it provides all of the following:
+\begin{enumerate}[label=(S\arabic*)]
+\item an upstream-visible source family \(\mathcal S_n\), not selected from the target zeros;
+\item a lower frame \(\F_{\mathcal S,n}\succeq\Lambda_n(\Theta_0^-)^{-1}\);
+\item \(\Lambda_n\to\infty\), or a fixed/exhaustive ledger squeeze with total obstruction trace tending to zero;
+\item coverage of every anti-invariant character/frequency direction visible to the dissolving zero readout;
+\item null-mode legality and all-six channel records;
+\item defect accounting for low-frequency windows, tails, and noncovered sectors.
+\end{enumerate}
+
+Thus the source-coercivity route is structurally strong but analytically demanding.  Its load-bearing mathematical obligation is a full-sector lower frame from natural zeta-side source records.
+
+\end{document}

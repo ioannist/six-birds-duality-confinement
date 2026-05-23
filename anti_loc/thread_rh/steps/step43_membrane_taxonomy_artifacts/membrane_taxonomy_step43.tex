@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\D}{\mathsf D}
+\newcommand{\Y}{\mathcal Y}
+\newcommand{\E}{\mathcal E}
+\newcommand{\F}{\mathcal F}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Capacity}{\operatorname{Cap}}
+\newcommand{\esssup}{\operatorname*{ess\,sup}}
+\newcommand{\Id}{I}
+
+\title{Step 43: Membrane Taxonomy for Anti-Localization\\
+\large Intrinsic, Sectioned, Bundle/Fiber, and Protocol-Indexed Membranes}
+\author{Six Birds Anti-Localization Program}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note classifies accepted anti-localization membranes into four structural types: intrinsic, sectioned, bundle/fiber, and protocol-indexed. The common invariant is the probe-family currency matrix
+\[
+  \widehat K_j=R_jL_j\Gamma_j(\Gamma_j^*C_j\Gamma_j)^\dagger\Gamma_j^*L_j^*R_j^*.
+\]
+The type records specify which response coordinates are native and which recombinations are included. Intrinsic membranes are global Loewner budgets. Sectioned membranes are budgets over declared sections plus cross-section control. Bundle/fiber membranes are fiberwise budgets plus gluing and uniformity. Protocol-indexed membranes are stacked route/protocol budgets. The main theorem proves the transfer rules and non-implications: diagonal, section-local, fiber-local, or route-local certificates are not global membranes unless the missing recombinations are either controlled or excluded by a nonclaim record.
+\end{abstract}
+
+\section{Common currency notation}
+Let \(E_j\) be the packaged coordinate carrier at predictive stage \(j\), with audit form
+\[
+  C_{\Gamma,j}=\Gamma_j^*C_j\Gamma_j\succeq0,
+\]
+declared native probe family \(L_j\Gamma_j:E_j\to Y_j\), and response transport \(R_j:Y_j\to Y\). Assume null-mode legality:
+\[
+  \Ran (L_j\Gamma_j)^*R_j^*\subseteq\overline{\Ran C_{\Gamma,j}}.
+\]
+The transported currency matrix is
+\begin{equation}\label{eq:khat}
+  \widehat K_j=R_jL_j\Gamma_jC_{\Gamma,j}^{\dagger}\Gamma_j^*L_j^*R_j^*.
+\end{equation}
+For each recombination \(y\in Y\),
+\[
+  y^*\widehat K_jy
+  =\Capacity_{C_j}\bigl(y^*R_jL_j;\Ran\Gamma_j\bigr).
+\]
+Thus any membrane claim is ultimately a Loewner inequality for a currency matrix.
+
+\section{Four membrane types}
+
+\begin{definition}[Intrinsic membrane]
+An \emph{intrinsic membrane} is a formed-layer record with one common native response space \(Y\), one transported currency \(\widehat K_j\), and one budget \(\Theta\succeq0\) such that
+\begin{equation}\label{eq:intrinsic}
+  \widehat K_j\preceq\Theta\qquad(j\in J_{\rm acc}).
+\end{equation}
+It has no auxiliary section, fiber, or protocol index except those already absorbed by the lawful carrier.
+\end{definition}
+
+\begin{definition}[Sectioned membrane]
+A \emph{sectioned membrane} has declared section response spaces \(Y_a\), injections \(i_a:Y_a\to Y\), section currencies
+\[
+  K_j^{ab}=i_a^*\widehat K_ji_b,
+\]
+and section budgets \(\Theta_a\). A sectioned membrane is accepted either by a stacked block bound
+\begin{equation}\label{eq:section-stack}
+  K_j^{\rm sec}=[K_j^{ab}]_{a,b}\preceq\Theta^{\rm sec},
+\end{equation}
+or by a scoped nonclaim saying cross-section recombinations are not native. If only diagonal section bounds \(K_j^{aa}\preceq\Theta_a\) are recorded, the status is section-local, not global.
+\end{definition}
+
+\begin{definition}[Bundle/fiber membrane]
+A \emph{bundle/fiber membrane} has a measurable base \((B,\mu)\), response fibers \(Y_b\), fiber currencies \(K_{j,b}\), and fiber budgets \(\Theta_b\). It is uniform when
+\begin{equation}\label{eq:uniform-bundle}
+  K_{j,b}\preceq\Theta_b\preceq\Theta_0\quad\mu\text{-a.e.}
+\end{equation}
+for a common budget \(\Theta_0\). It is integrated when
+\begin{equation}\label{eq:integrated-bundle}
+  \int_B K_{j,b}\,d\mu(b)\preceq \int_B\Theta_b\,d\mu(b)<\infty.
+\end{equation}
+If fiber charts are transported by nontrivial transitions, transition defects must be included as a gluing budget.
+\end{definition}
+
+\begin{definition}[Protocol-indexed membrane]
+A \emph{protocol-indexed membrane} has protocol/route readouts \(L_j^p\) for \(p\in P\). The lawful response family is the stack
+\[
+  \mathbb L_j u=(R_j^pL_j^pu)_{p\in P}.
+\]
+The block currency is
+\begin{equation}\label{eq:protocol-block}
+  \mathbb K_j^{pq}=R_j^pL_j^p\Gamma_jC_{\Gamma,j}^\dagger\Gamma_j^*(L_j^q)^*(R_j^q)^*.
+\end{equation}
+The protocol-indexed membrane is the block inequality
+\[
+  \mathbb K_j\preceq\mathbb\Theta.
+\]
+Protocol-local diagonal budgets \(\mathbb K_j^{pp}\preceq\Theta_p\) are not enough for mixed protocol recombinations.
+\end{definition}
+
+\section{Transfer and failure rules}
+
+\begin{theorem}[Intrinsic membranes descend to all visible shadows]\label{thm:intrinsic-descends}
+If \(\widehat K_j\preceq\Theta\), then for every response map \(F:Y\to Z\),
+\[
+  F\widehat K_jF^*\preceq F\Theta F^*.
+\]
+Thus an intrinsic membrane induces every section, public shadow, fiber readout, and protocol projection. The converse is false without a bridge proving that no hidden response directions remain.
+\end{theorem}
+\begin{proof}
+Loewner order is preserved under congruence. The converse fails whenever \(F\) has nontrivial kernel containing a positive witness direction for \(\widehat K_j-\Theta\).
+\end{proof}
+
+\begin{theorem}[Sectioned completion rule]\label{thm:sectioned-completion}
+A sectioned record yields a global membrane exactly when the stacked block budget \eqref{eq:section-stack} holds, or when all cross-section recombinations are explicitly excluded by a nonclaim record. Diagonal section budgets alone do not imply a global membrane.
+\end{theorem}
+\begin{proof}
+The block budget is the family-currency theorem applied to the stacked section family. If it fails, the spectral theorem gives a recombination vector \(y=(y_a)_a\) with \(y^*(K_j^{\rm sec}-\Theta^{\rm sec})y>0\). For a two-section countermodel, take
+\[
+  K_\rho=\begin{pmatrix}1&\rho\\ \rho&1\end{pmatrix},\qquad\Theta=I_2,
+  \qquad 0<\rho\le1.
+\]
+Each section diagonal passes, but the normalized vector \((1,1)/\sqrt2\) has budget violation \(\rho\).
+\end{proof}
+
+\begin{theorem}[Bundle local-to-global rule]\label{thm:bundle-global}
+A uniform bundle membrane \eqref{eq:uniform-bundle} gives a direct-integral membrane. An integrated bundle membrane \eqref{eq:integrated-bundle} gives an averaged/public-shadow membrane only. Fiberwise finiteness does not imply uniform global anti-localization.
+\end{theorem}
+\begin{proof}
+For any direct-integral response \(y(b)\), fiberwise Loewner control gives
+\[
+ \int_B\langle y(b),K_{j,b}y(b)\rangle d\mu(b)
+ \le
+ \int_B\langle y(b),\Theta_by(b)\rangle d\mu(b).
+\]
+If \(\Theta_b\preceq\Theta_0\) a.e., this is a uniform membrane. If only the integral is bounded, then only the averaged readout is controlled. The family \(K_n=n\) on countably many fibers is finite on every fiber but has no uniform membrane.
+\end{proof}
+
+\begin{theorem}[Protocol-union rule]\label{thm:protocol-union}
+Protocol-indexed anti-localization is equivalent to the stacked block inequality \(\mathbb K_j\preceq\mathbb\Theta\). Protocol-local budgets do not imply a protocol-union membrane.
+\end{theorem}
+\begin{proof}
+The first statement is the probe-family currency theorem for \(\mathbb L_j\). For failure, let two protocols duplicate the same one-dimensional readout, giving
+\[
+  \mathbb K=\begin{pmatrix}1&1\\1&1\end{pmatrix}.
+\]
+Each diagonal protocol capacity is \(1\), but \(\lambda_{\max}(\mathbb K)=2\), so the mixed recombination fails budget \(I_2\).
+\end{proof}
+
+\begin{theorem}[Defective transfer across taxonomy types]\label{thm:defective-transfer}
+Suppose a membrane transfer has exact part \(A\widehat K_jA^*\) and residual readout currency \(E_R\). Then, for every \(t>0\),
+\[
+  K'\preceq(1+t)A\widehat K_jA^*+(1+t^{-1})E_R.
+\]
+The same formula applies after stacking section, fiber, or protocol coordinates.
+\end{theorem}
+\begin{proof}
+Write the target readout as exact contribution plus residual. For every response vector, use
+\[
+ \|x+r\|^2\le(1+t)\|x\|^2+(1+t^{-1})\|r\|^2
+\]
+in the currency representation. This is exactly the defective bridge estimate.
+\end{proof}
+
+\section{Taxonomic formed-layer theorem}
+
+\begin{theorem}[Membrane taxonomy theorem]\label{thm:taxonomy}
+Let a formed layer declare one of the four membrane types
+\[
+  \tau\in\{\mathrm{intrinsic},\mathrm{sectioned},\mathrm{bundle},\mathrm{protocol}\}.
+\]
+Let \(K_\tau\) and \(\Theta_\tau\) be the currency and budget produced by the corresponding accepted type record. Then the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item the layer has an accepted membrane of type \(\tau\);
+\item \(K_\tau\preceq\Theta_\tau\);
+\item there is no unresolved native critical-pair witness \(y\) of type \(\tau\) with
+\[
+   y^*(K_\tau-\Theta_\tau)y>0.
+\]
+\end{enumerate}
+If the inequality fails, a support-minimal witness exists on the declared section/fiber/protocol/native response coordinates.
+\end{theorem}
+\begin{proof}
+Each type record builds a single PSD currency object over the response coordinates declared native for that type. The equivalence between the Loewner inequality and absence of witnesses is the spectral theorem. If failure occurs, choose a positive-eigenvalue witness and restrict to minimal support among declared coordinates.
+\end{proof}
+
+\section{Status table}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Type & Accepted claim & Common overread \\
+\midrule
+Intrinsic & full native family membrane & public shadow treated as witness \\
+Sectioned & block budget or scoped nonclaim & section-local called global \\
+Bundle/fiber & uniform fibers plus gluing & fiberwise finite called uniform \\
+Protocol-indexed & stacked protocol block & route-local called protocol-union \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{remark}[Nonclaim boundary]
+The taxonomy is closure-relative. It does not say raw substrates, undeclared probe families, public shadows, non-transported fibers, or route-local diagonals contain no needles. It says that a formed layer with an accepted membrane of a declared type has no unresolved native witnesses of that type.
+\end{remark}
+
+\end{document}

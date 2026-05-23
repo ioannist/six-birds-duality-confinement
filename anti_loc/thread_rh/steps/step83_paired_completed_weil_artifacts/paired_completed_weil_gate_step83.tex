@@ -1,0 +1,206 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Step 83: Paired Completed Weil Feature Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{gate}{Gate}
+
+\newcommand{\Hc}{\mathcal H}
+\newcommand{\Cc}{\mathcal C}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\Az}{\mathsf A_Z}
+\newcommand{\ps}{\Psi}
+\newcommand{\R}{\mathbb R}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Steps 77--82 showed that separated signed-to-positive accounting creates a diagonal repair term which a finite-rank pole/completion slot cannot pay on the full completed anti-invariant response core.  This note formulates the correct alternative: a paired completed Weil feature gate.  The completed explicit-formula carrier should be represented, if possible, as a single paired positive Dirichlet form plus finite-rank completion and controlled tail defects, rather than as separated signed pieces with free diagonals.  The resulting gate is a conditional-negative-definiteness / L\'evy--Khintchine-type criterion on the completed translation symbol, together with core, null-mode, and tail records.
+\end{abstract}
+
+\section{Why this step is needed}
+
+The prime shift feature satisfies
+\[
+q_{{\rm pr},L}[f]
+=
+P_{{\rm pr},L}(h_f)+d_{{\rm pr},L}\norm{f}^2,
+\qquad
+ d_{{\rm pr},L}=2\sum_a w_{a,L}.
+\]
+Step 82 showed that the separated diagonal repair cannot be treated as free carrier currency.  A finite-rank pole slot cannot dominate a full-core scalar diagonal on an infinite-dimensional response space.
+
+Thus the next lawful target is not to allocate separated diagonals term-by-term.  It is to build a \emph{paired completed representation} in which the diagonal and correlation pieces remain coupled in a positive difference form.
+
+\section{Paired translation features}
+
+Let \(\tau_a f(t)=f(t+a)\).  For a positive symmetric measure \(\mu\) satisfying
+\[
+\int_{\R}\min(a^2,1)\,d\mu(a)<\infty,
+\]
+define the paired translation feature
+\[
+(W_\mu f)(a,t)=f(t+a)-f(t).
+\]
+The corresponding form is
+\[
+q_\mu[f]
+=
+\int_\R \norm{\tau_a f-f}_{L^2_t}^2\,d\mu(a).
+\]
+For \(f\in C_c^\infty(\R)\), Plancherel gives
+\[
+q_\mu[f]
+=
+\int_\R \Psi_\mu(\xi)|\widehat f(\xi)|^2\,d\xi,
+\]
+where
+\[
+\Psi_\mu(\xi)
+=
+\int_\R |e^{ia\xi}-1|^2\,d\mu(a)
+=
+2\int_\R (1-\cos(a\xi))\,d\mu(a).
+\]
+This is a positive paired feature even when the separated diagonal \(2\mu(\R)\) is infinite.
+
+\begin{definition}[Paired completed Weil symbol]
+A completed log-side translation-invariant Weil candidate is a nonnegative even symbol \(\Psi_{\rm cmp}\) for which there exist \(c\ge0\), a positive symmetric L\'evy measure \(\mu\), a finite-rank completion form \(P\succeq0\), and a tail defect \(E_{\rm tail}\succeq0\) such that on the anti-invariant core
+\[
+q_{\rm cmp}[f]
+=
+ c\norm{f'}_2^2+
+\int\norm{\tau_a f-f}_2^2\,d\mu(a)
++
+\ip{f}{P f}
++
+E_{\rm tail}[f].
+\]
+The first two terms are the paired full-sector carrier; \(P\) records pole/completion/null-mode data; \(E_{\rm tail}\) records finite-to-completed promotion defects.
+\end{definition}
+
+\begin{gate}[Paired completed Weil gate]
+The signed explicit formula passes the paired completed feature gate if its completed signed quadratic form \(q_{\rm sgn}\) can be rewritten on a dense anti-invariant core as
+\[
+q_{\rm sgn}[f]
+=
+q_{\rm pair}[f]+q_{\rm pole}[f]-e_{\rm match}[f]
+\]
+with
+\[
+q_{\rm pair}[f]=c\norm{f'}_2^2+\int \norm{\tau_a f-f}_2^2\,d\mu(a),
+\quad \mu\ge0,
+\]
+\[
+q_{\rm pole}\succeq0,
+\qquad
+ e_{\rm match}\succeq0 \text{ declared as a defect.}
+\]
+If \(e_{\rm match}=0\), this yields a positive completed feature form.  If \(e_{\rm match}\neq0\), the Douglas bridge obtains only with this defect added to the obstruction budget.
+\end{gate}
+
+\section{Conditional-negative-definite criterion}
+
+The following is the operative criterion for translation-invariant paired features.
+
+\begin{theorem}[Paired-feature criterion]
+Let \(\Psi:\R\to[0,\infty)\) be continuous, even, and \(\Psi(0)=0\).  Then \(\Psi\) is the symbol of a paired translation feature of the above type if it admits a symmetric L\'evy--Khintchine representation
+\[
+\Psi(\xi)
+=
+ c\xi^2+2\int_\R (1-\cos(a\xi))\,d\mu(a),
+\qquad
+c\ge0,
+\quad \mu\ge0,
+\quad \int \min(a^2,1)\,d\mu(a)<\infty.
+\]
+Equivalently, \(\Psi\) is a continuous conditionally negative definite function on \(\R\) with \(\Psi(0)=0\).  In this case
+\[
+q_\Psi[f]=\int\Psi(\xi)|\widehat f(\xi)|^2\,d\xi
+\]
+is a positive paired Dirichlet form on the log-side core.
+\end{theorem}
+
+\begin{proof}
+This is the symmetric real-line L\'evy--Khintchine theorem for continuous negative definite functions, applied to translation-invariant quadratic forms.  The displayed representation gives positivity immediately by Plancherel and the identity \(|e^{ia\xi}-1|^2=2(1-\cos(a\xi))\).  Conversely, a continuous negative definite even symbol with value zero at the origin admits the stated representation.
+\end{proof}
+
+\begin{warning}[Spectral positivity is weaker]
+A nonnegative even symbol need not be conditionally negative definite.  Thus spectral positivity \(\Psi(\xi)\ge0\) is enough for an abstract multiplication feature, but not enough for a shift-difference Weil feature.  If the zeta carrier is asserted to be a shift/prime/gamma feature carrier, the CND gate is part of the proof.
+\end{warning}
+
+\section{Completed carrier versus separated diagonal accounting}
+
+Let a signed completed form be written formally as
+\[
+q_{\rm sgn}=P_{\rm pr}+R_\infty+R_{\rm pole}+R_{\rm tail}.
+\]
+A separated conversion of \(P_{\rm pr}\) into a positive prime feature produces a diagonal \(d_{{\rm pr},L}\norm{f}^2\).  Step 82 shows this separated diagonal cannot be paid by finite-rank pole data on the full core.  Therefore the correct route is:
+\[
+\boxed{\text{avoid free separated diagonals by pairing the completed kernel before positivity is claimed.}}
+\]
+
+\begin{theorem}[No-free-diagonal paired completion]
+Suppose the completed carrier can be represented as
+\[
+q_{\rm cmp}[f]
+=
+q_{\rm pair}[f]+q_{\rm pole}[f]+e_{\rm tail}[f],
+\]
+where \(q_{\rm pair}\) is a CND paired full-sector translation form, \(q_{\rm pole}\succeq0\) is finite-rank, and \(e_{\rm tail}\succeq0\) is a tail feature or defect.  Then the completed carrier is positive on the core without requiring a finite-rank pole term to dominate a full diagonal.  If additionally
+\[
+q_Z[f]\le q_{\rm cmp}[f]+e_{\rm br}[f]
+\]
+on a form core, then
+\[
+V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}+E_{\rm br}
+\]
+after closure.  With \(E_{\rm br}=0\), Douglas factorization gives \(V_Z=TW_{\rm cmp}\), \(\norm{T}\le1\).
+\end{theorem}
+
+\begin{proof}
+The positivity of \(q_{\rm pair}\) follows from the CND representation; \(q_{\rm pole}\) and \(e_{\rm tail}\) are positive by assumption.  Hence \(q_{\rm cmp}\) is positive on the core.  The inequality against \(q_Z\) is exactly Loewner domination of the closed forms, provided the core and closure records pass.  Douglas factorization applies to the corresponding square roots.
+\end{proof}
+
+\section{Obstruction alternatives}
+
+If the paired completed gate fails, the failure must be recorded in one of the following slots:
+\begin{enumerate}[label=(O\arabic*)]
+\item the completed symbol is not conditionally negative definite on the claimed shift-feature carrier;
+\item the signed explicit formula has not been matched to the paired symbol;
+\item the pole/completion slot is used to pay a full-core diagonal, which is impossible if it is finite-rank;
+\item the tail/support slot is moving-window support evidence without a fixed or exhaustive ledger;
+\item the inequality is proved only on a finite test subspace rather than on a form core;
+\item the resulting public trace/shadow is overread as a lawful carrier witness.
+\end{enumerate}
+
+\section{RH specialization}
+
+For RH, the target is to build a completed anti-invariant log-side carrier for which
+\[
+V_Z^*V_Z\preceq W_{\rm cmp}^*W_{\rm cmp}.
+\]
+Step 83 says the most promising lawful route is not separated prime/gamma/pole accounting, but a paired completed Weil representation:
+\[
+W_{\rm cmp}=(W_{\rm pair},W_{\rm pole},W_{\rm tail}),
+\]
+with \(W_{\rm pair}\) generated by a CND completed symbol that incorporates prime and gamma effects before separated diagonals are claimed.
+
+\section{Nonclaim boundary}
+
+This note does not prove that the completed zeta Weil symbol is CND.  It does not prove RH.  It does not prove that the classical signed explicit formula already has the paired feature representation.  It proves the gate: what kind of paired positive representation would avoid the no-free-diagonal obstruction and be strong enough to support the Douglas bridge.
+
+\end{document}

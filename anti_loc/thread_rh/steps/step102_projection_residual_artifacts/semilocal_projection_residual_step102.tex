@@ -1,0 +1,177 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Step 102: Semilocal Projection Residual Derivation}
+\author{RATCHET / Six Birds RH Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Step 101 identified the next analytic object:
+\[
+\mathcal R_S=U_SP_SU_S^{-1}-P_\infty .
+\]
+Here \(P_\infty\) is the archimedean Sonin/prolate projection and
+\(P_S\) is the semilocal Sonin/prolate projection.  Step 102 derives
+\(\mathcal R_S\) as a metric-projection residual.
+
+The point is not to assert compactness. The point is to reduce compactness to
+a precise off-diagonal block estimate.
+
+\section{Semilocal setting}
+
+Let \(H_\infty\) be the archimedean response Hilbert space and \(H_S\) the
+semilocal response Hilbert space.  The semilocal Hardy--Titchmarsh transform
+gives a response measure
+\[
+dm_S(\xi)=\left|\prod_{v\in S}L_v(1/2-i\xi)\right|^2\,d\xi.
+\]
+The semilocal Sonin theory supplies a Hilbertian isomorphism
+\[
+\theta_S:H_\infty\to H_S
+\]
+which maps the archimedean Sonin space onto the semilocal Sonin space.  It is
+not automatically an isometry for every inner product used in the carrier.
+Thus the transported semilocal orthogonality is encoded by the pulled-back
+metric
+\[
+A_S:=\theta_S^*\theta_S
+\]
+on \(H_\infty\), or by the corresponding positive metric operator for the
+chosen response model.
+
+Let
+\[
+M:=\operatorname{Ran}P_\infty,\qquad N:=M^\perp.
+\]
+Write the block decomposition of \(A=A_S\) with respect to
+\[
+H_\infty=M\oplus N:
+\qquad
+A=
+\begin{pmatrix}
+A_{MM}&A_{MN}\\
+A_{NM}&A_{NN}
+\end{pmatrix}.
+\]
+
+\section{Metric projection residual}
+
+\begin{theorem}[Metric projection residual formula]
+Assume \(A=A^*>0\) is bounded and boundedly invertible on the completed core,
+and \(A_{MM}\) is boundedly invertible on \(M\).  Let \(P_A\) be the
+\(A\)-orthogonal projection onto \(M\), i.e. \(P_Ax\in M\) and
+\[
+\langle A(x-P_Ax),m\rangle=0,\qquad m\in M.
+\]
+Then, for \(x=m+n\in M\oplus N\),
+\[
+P_A(m+n)=m+A_{MM}^{-1}A_{MN}n.
+\]
+Therefore
+\[
+\boxed{
+\mathcal R_S=P_A-P_\infty
+=
+\begin{pmatrix}
+0&A_{MM}^{-1}A_{MN}\\
+0&0
+\end{pmatrix}.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+The \(A\)-orthogonality condition says
+\[
+0=P A(x-y)
+\]
+where \(P=P_\infty\) and \(y=P_Ax\in M\).  If \(x=m+n\) and \(y\in M\), this is
+\[
+A_{MM}(m-y)+A_{MN}n=0.
+\]
+Solving gives \(y=m+A_{MM}^{-1}A_{MN}n\).
+\end{proof}
+
+\begin{corollary}[Compactness criterion]
+Under the hypotheses above,
+\[
+\boxed{
+\mathcal R_S\text{ is compact}
+\iff
+A_{MN}=P_\infty A_S(I-P_\infty)\text{ is compact}
+}
+\]
+and the same equivalence holds for Hilbert--Schmidt, trace-class, or Schatten
+\(p\)-class membership whenever \(A_{MM}^{-1}\) is bounded.
+\end{corollary}
+
+\section{Consequences for \(\Delta_S\)}
+
+Let the semilocal obstruction be
+\[
+\Delta_S=q_{\mathrm{Weil},S}-q_{\mathrm{pos},S}.
+\]
+The archimedean Connes--Consani residue is compact-after-quotient.  Bounded
+semilocal transport preserves compactness of already compact pieces:
+\[
+K\text{ compact}\implies U_S K U_S^{-1}\text{ compact}.
+\]
+So the load-bearing new compactness question is not whether finite local
+factors preserve compactness.  They do.  The question is whether the
+orthogonality/projection change is compact:
+\[
+\boxed{
+P_\infty A_S(I-P_\infty)\text{ compact?}
+}
+\]
+
+If yes, then \(\Delta_S\) is compact up to finite-rank pole/null records and
+declared tail terms.
+
+If no, the noncompact block
+\[
+P_\infty A_S(I-P_\infty)
+\]
+is the exact anti-invariant sector that the Hecke/Dirichlet source ladder must
+cover.
+
+\section{No-free-multiplier warning}
+
+A nonzero multiplication operator on a non-atomic \(L^2\)-space is not compact.
+Therefore raw local-factor multiplication
+\[
+M_{|A_S|^2-1}
+\]
+cannot be treated as a compact correction merely because it is bounded.  It
+must enter through paired/projection geometry, through a compact commutator,
+through a quotient, or through source absorption.
+
+\section{Status}
+
+Step 102 earns the exact formula
+\[
+\mathcal R_S=
+\begin{pmatrix}
+0&A_{MM}^{-1}A_{MN}\\
+0&0
+\end{pmatrix}.
+\]
+It does not prove compactness.  It converts the compactness problem into a
+single off-diagonal metric-mixing estimate.
+
+\end{document}

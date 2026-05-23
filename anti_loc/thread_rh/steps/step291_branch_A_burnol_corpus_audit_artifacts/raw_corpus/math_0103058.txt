@@ -1,0 +1,1033 @@
+                                                                                                                      math.NT/0103058
+
+                                                                                                                            (submitted)
+arXiv:math/0103058v2 [math.NT] 20 Mar 2001
+
+
+
+
+                                                A lower bound in an approximation problem involving the zeros of the
+                                                                              Riemann zeta function
+
+
+
+                                                                                 Jean-François Burnol
+
+                                                                                      March 2001
+
+
+
+
+                                             Abstract: We slightly improve the lower bound of Báez-Duarte, Balazard, Landreau and Saias
+
+                                             in the Nyman-Beurling formulation of the Riemann Hypothesis as an approximation problem.
+
+                                             We construct Hilbert space vectors which could prove useful in the context of the so-called
+
+                                             “Hilbert-Pólya idea”.
+
+
+
+
+                                                                  Author’s affiliation:
+                                                                  Jean-François Burnol
+                                                                  Université de Nice - Sophia Antipolis
+                                                                  Laboratoire J.-A. Dieudonné
+                                                                  Parc Valrose
+                                                                  F-06108 Nice Cedex 02
+                                                                  France
+                                                                  electronic mail: burnol@math.unice.fr
+Contents
+
+
+1 Introduction                                                                                    2
+
+
+
+
+2 The prediction error for a singular MA(q)                                                       4
+
+
+
+
+3 Invariant analysis and a construction of Báez-Duarte                                           6
+
+
+
+                λ
+4 The vectors Ys,k                                                                                8
+
+
+
+               λ and completion of the proof
+5 The vectors Xρ,k                                                                               14
+
+
+
+
+6 Acknowledgements                                                                               16
+
+
+
+
+1    Introduction
+
+
+In [8] and the subsequent paper [9], Connes gave a rather intrinsic construction of a Hilbert
+
+space intimately associated with the zeros of the Riemann zeta function on the critical line.
+
+But the zeros having multiplicities higher than a certain level (which is a parameter in Connes’s
+
+construction), have (if they at all exist) their contributions limited to that level, and not to the
+
+extent given by their natural multiplicities. Thus subsists the problem of a natural definition
+
+of a so-called “Hilbert-Pólya space”, with orthonormal basis indexed by the zeros ρ of ζ and
+
+integers k varying from 0 to mρ − 1 where mρ is the multiplicity of ρ. We do not solve that
+                                                                                       λ ,
+problem here but we do propose a rather natural construction of Hilbert space vectors Xρ,k
+
+ζ(ρ) = 0, k < mρ , which in the limit when the parameter λ goes to 0 become perpendicular
+
+
+
+                                                 2
+(when they correspond to distinct zeros. The vectors corresponding to a multiple root ρ are
+
+independent but need to be orthogonalized.) As in Connes’s constructions these vectors live in
+
+a quotient space. Controlling the limit λ → 0 to obtain a so-called Hilbert-Pólya space probably
+
+involves considerations from mathematical scattering theory (we have previously studied in [5],
+
+[6] some connections with the problems of L−functions.)
+
+
+
+The context in which our construction takes place is that of the Nyman-Beurling formulation
+
+of the Riemann Hypothesis as an approximation problem [14], [3]. Let K = L2 (]0, ∞[, dt)
+
+(over the complex numbers), let χ be the indicator function of the interval ]0, 1], and let ρ be
+
+the function “fractional part” (the letter ρ is also used to refer to a zero of the Riemann zeta
+
+function, hopefully no confusion will arise.) Let 0 < λ < 1 and let Bλ be the sub-vector space
+
+of K consisting of the finite linear combinations of the functions t 7→ ρ( θt ), for λ ≤ θ ≤ 1.
+
+
+
+
+Theorem 1.1 (Nyman [14], Beurling [3]) The Riemann Hypothesis holds if and only if
+
+                                                 [
+                                           χ∈           Bλ
+                                                0<λ<1
+
+
+
+
+Actually we are following [2] here in using a slight variant of the original Nyman-Beurling
+
+formulation. It is a disappointing fact that this theorem can be proven without leading to any
+
+new information whatsoever on the zeros lying on the critical line (basically what is at works is
+
+the factorization of functions belonging to the Hardy space of a half-plane [12].) The following
+
+is thus rather remarkable:
+
+
+
+
+Theorem 1.2 (Báez-Duarte, Balazard, Landreau and Saias [2]) Let us write D(λ) for
+
+the Hilbert-space distance inf f ∈Bλ kχ − f k. We have
+                                              r        s
+                                                   1     X 1
+                                 lim inf D(λ) log( ) ≥
+                                   λ→0             λ     ρ
+                                                           |ρ|2
+
+
+
+
+                                                 3
+If the Riemann Hypothesis fails this result is true but trivial as the left-hand side then takes the
+
+value +∞. So we will assume that the Riemann Hypothesis holds. The sum on the right-hand
+
+side is over all non-trivial zeros ρ of the zeta function, counted only once independently of their
+
+multiplicities mρ . We prove the following:
+
+
+
+
+Theorem 1.3 We have:                            r      v
+                                                       uX 2
+                                                  1    u   mρ
+                                 lim inf D(λ) log( ) ≥ t
+                                   λ→0            λ      ρ
+                                                           |ρ|2
+
+
+
+So the zeros are counted according to the square of their multiplicities. To prove this lower
+                                                          λ , ζ(ρ) = 0, k < m and use them
+bound we will construct remarkable Hilbert space vectors Xρ,k                ρ
+
+to control D(λ). The following “toy-model” gives us reasons to expect that the lower bound in
+
+fact gives the exact order of decrease of D(λ):
+
+
+
+                             Q                mα be a polynomial of degree q ≥ 1 will all its roots α
+Theorem 1.4 Let Q(z) =           α (1 − α · z)
+
+on the unit circle (the root α having multiplicity mα ). Let P (z) be an arbitrary polynomial. Let
+                                                    Z
+                                                                                  dθ
+                         E(N, P ) :=      inf               |P (z) − Q(z)A(z)|2
+                                       deg(A)≤N     S1                            2π
+
+We have as N goes to infinity:
+
+                                                            X
+                                  lim N E(N, P ) =               m2α |P (α)|2
+                                                             α
+
+
+
+
+2    The prediction error for a singular MA(q)
+
+
+As motivation for our result we first consider a simpler approximation problem, in the context
+
+of the Hardy space of the unit disc rather than the Hardy space of a half-plane. Let Q(z) =
+Q              mα be a polynomial of degree q ≥ 1 will all its roots α on the unit circle (the root
+  α (1 − α · z)
+
+
+
+
+                                                        4
+                                       P
+α having multiplicity mα so that q =       α mα .) Let us define:
+                                                 Z
+                                                                            dθ
+                           E(N ) :=     inf               |1 − Q(z)A(z)|2
+                                      deg(A)≤N       S1                     2π
+            dθ
+The measure 2π is the rotation invariant probability measure on the circle S 1 , with z = exp(iθ).
+
+The minimum is taken over all complex polynomials A(z) with degree at most N . We are
+
+guaranteed that limN →∞ E(N ) = 0 as Q(z) is an outer factor ([12]). More precisely:
+
+
+
+Theorem 2.1 As N goes to infinity we have:
+                                                            X
+                                      lim N E(N ) =              m2α
+                                                             α
+
+
+
+
+Note 2.2 In case Q(z) has a root in the open unit disc then E(N ) is bounded below by a
+
+positive constant. In case Q(z) has all its roots outside the open unit disc, then the result
+
+above holds but only the roots on the unit circle contribute. Finally if all its roots are outside
+
+the closed unit disc then the decrease is exponential: E(N ) = O(cN ), with c < 1.
+
+
+
+The theorem, although not stated explicitely there, is easily extracted from the work of Grenan-
+
+der and Rosenblatt [11]. They state an O( N1 ) result, in a much wider set-up than the one
+
+considered here (which is limited to simple-minded q-th order moving averages.) Unfortunately
+
+the O( N1 ) bound is now believed not to be systematically true under their hypotheses (as is
+
+explained in [13]; I thank Professor W. Van Assche for pointing out this fact to me.) Never-
+
+theless their technique of proof goes through smoothly in the case at hand and yields the exact
+
+asymptotic result as stated above. We only sketch briefly the idea, as nothing beyond the tools
+
+used in [11] is needed.
+
+
+
+We point out in passing that it is of course possible to express E(N ) explicitely in terms of the
+                                                         dθ
+Toeplitz determinants for the measure dµ = |Q(exp(iθ))|2 2π . But already for an M A(2) this
+
+gives rise to unwieldy computations. . . . Rather: let PN be the vector space of polynomials of
+
+
+
+                                                     5
+degrees at most N + q, let VN be the subspace of polynomials divisible by Q(z), and let WN be
+
+its q-dimensional orthogonal complement. Then E(N ) is the squared norm of the orthogonal
+
+projection of the constant function 1 to WN . A spanning set in WN is readily identified: to
+                            N , Y N , ..., Y N
+each root α one associates Yα,0  α,1        α,mα −1 defined as
+
+
+                                 N
+                                Yα,0 := 1 + αz + . . . + αN +q z N +q
+
+                           N
+                          Yα,1 := z + 2αz 2 + . . . + (N + q)αN +q−1 z N +q
+
+and similarly for k = 2, . . . , mα − 1. We can then express E(N ) using a Gram formula in terms
+
+of (the inverse) of the positive matrix (of fixed size q × q but depending on N ) built with the
+
+scalar products of the Y ’s. It turns out that in the limit when N goes to infinity and after
+               N 7→ X N := N −k−1/2 Y N the Gram matrix decomposes into Cauchy blocks
+the rescaling Yα,k   α,k             α,k
+
+(1/(i + j + 1))0≤i,j<mα of size mα , one for each root α. It is known from Cauchy that the
+                                                                        P      2
+                                                                            α mα
+top-left element of the inverse matrix is m2α . This is how                 N         arises, after keeping track
+                            N ). Instead of the constant polynomial 1 we could have looked
+of the scalar products (1, Xα,k
+
+at the approximation rate to an arbitrary polynomial P (z). The proof just sketched applies
+
+identically and gives the Theorem 1.4 from the Introduction.
+
+
+
+
+3    Invariant analysis and a construction of Báez-Duarte
+
+
+                                        R
+The Mellin transform f (t) 7→ fb(s) =       t>0 f (t)t
+                                                         s−1 dt establishes the Plancherel isometry between
+
+                                                                                R
+K = L2 (]0, ∞[, dt) and L2 (s = 12 + iτ, 2π
+                                         dτ
+                                            ), with inverse F (s) 7→                s=1/2+iτ F (s)t
+                                                                                                      −s dτ .
+                                                                                                         2π     Let a(s)
+
+be a measurable function of s (as a rule when using the letter s we implicitely assume Re(s) = 12 .
+
+We will use letters w and z for general complex numbers.) If a(s) is essentially bounded then
+
+F (s) 7→ a(s)F (s) defines a bounded operator on K which commutes with the unitary group
+
+Dθ : f (t) 7→ √1θ f ( θt ), and all bounded operators commuting with the Dθ (0 < θ < ∞) are
+
+obtained in such a manner. More generally all closed invariant operators are associated to a
+
+measurable multiplier a(s) (finite almost everywhere, but not necessarily essentially bounded).
+
+For the details of this technical statement, see [7].
+
+
+
+                                                         6
+                                                               R
+For example the Hardy averaging operator M : f (t) 7→ 1t           ]0,t] f (u)du corresponds to the spectral
+            1                                                               s
+multiplier 1−s . The operator 1 − M corresponds to the spectral multiplier s−1 and is thus
+
+unitary. Another (see [4]) remarkable invariant operator is the (even) “Gamma” operator
+
+Γ+ = F+ I. Here I is the inversion f (t) 7→ 1t f ( 1t ) and F+ is the additive Fourier transform as
+
+applied to even functions (the cosine transform). The multiplier associated to Γ+ is the (Tate)
+
+function
+                                                                                    Z ∞
+             1         Γ(s/2)      ζ(1 − s)                 πs                                   sin(2πu)
+γ+ (s) = π   2
+               −s
+                                 =          = 21−s π −s cos( )Γ(s) = (1 − s)              us−1            du
+                    Γ((1 − s)/2)     ζ(s)                   2                        0              πu
+A further invariant operator is the operator U introduced by Báez-Duarte [1] in connection
+
+with the Nyman-Beurling formulation of the Riemann Hypothesis: its spectral multiplier is
+ s ζ(1−s)
+1−s ζ(s) , so U = (M − 1)F+ I = F+ I(M − 1).
+
+
+
+
+From the results recalled above on invariant operators, we see that invariant orthogonal projec-
+
+tors correspond to indicator functions of measurable sets on the critical line. So a function f (t)
+
+is such that its multiplicative translates Dθ (f ) (0 < θ < ∞) span K if and only if F (s) = fb(s)
+
+is almost everywhere non-vanishing (Wiener’s L2 -Tauberian Theorem.) In that case the phase
+
+function
+                                                       F (s)
+                                            Uf (s) =
+                                                       F (s)
+is almost everywhere defined and of modulus 1. It thus corresponds to an invariant unitary
+
+operator, also denoted Uf .
+
+
+
+Let us introduce the anti-unitary “time-reversal” operator J acting on K as g 7→ I(g). The
+
+operator Uf commutes with the contractions-dilations, is unitary, and sends f to J(f ). We call
+
+this the Báez-Duarte construction as it appears in [1] (up to some non-essential differences)
+
+in relation with the Nyman-Beurling problem (the phase function arises in other contexts,
+
+especially in scattering theory.)
+
+
+
+To relate this with the operator U = (M − 1)F+ I, one needs the formula
+                                           Z ∞
+                                   ζ(s)           1
+                                        =−     ρ( )ts−1 dt
+                                    s       0     t
+
+
+                                                   7
+which is fundamental in the Nyman-Beurling context. This formula shows that U is the phase
+
+operator associated with ρ( 1t ).
+
+
+
+Generally speaking, the operators Uf are related to the Hardy spaces H2 = L2 (]0, 1], dt) and
+    ⊥
+H2 = L2 ([1, ∞[, dt) (we will also use the notation H2 for the Mellin transform of L2 (]0, 1], dt).)
+                                                                                 ⊥
+Indeed the time-reversal J is an isometry (anti-unitary) between H2 and H2 . Let us assume
+
+that the function f belongs to H2 . The operator Uf has the same effect as J on f , but contrarily
+
+to J is an invariant operator. This puts the space Bλ (f ) (of finite linear combinations of
+
+contractions Dθ (f ) for λ ≤ θ ≤ 1) isometrically in a new light as a subspace of L2 ([λ, ∞[, dt).
+
+The marvelous thing is that in this new incarnation it appears to be sometimes possible to find
+
+vectors orthogonal to Bλ (f ) and thus to get some control on Bλ (f ) as λ decreases (as in the
+
+Grenander-Rosenblatt method.)
+
+
+
+                      λ
+4       The vectors Ys,k
+
+
+To get started on this we first replace the L2 function − ζ(s)                   2
+                                                           s with an element of H . This is
+
+elementary:
+
+
+
+                                                    ζ(s)
+Proposition 4.1 ([6], [10]) The function Z(s) = s−1
+                                                 s
+                                                                   2
+                                                     s belongs to H . Its inverse Mellin
+
+transform A(t) is given by the formula
+
+                                            1                1        1
+                                    A(t) = [ ] log(t) + log([ ] !) + [ ]
+                                            t                t        t
+
+One has ( for 0 < t ≤ 1) A(t) = 21 log( 1t ) + O(1).
+
+
+
+
+The Báez-Duarte construction will then associate to A(t) the operator V with spectral multiplier
+                                                          3
+                                                      s         ζ(1 − s)
+                                       V (s) =
+                                                     1−s          ζ(s)
+
+
+
+                                                      8
+so that
+
+                                         V = (1 − M )2 · U
+
+This last representation will prove useful as it allows to use the formulae related to U from
+
+[1] and [2]. Let Cλ (0 < λ < 1) be the sub-vector space of H2 of linear combinations of the
+
+contractions Dθ (A) for λ ≤ θ ≤ 1. The function s−1 1  1   1
+                                                 s s = s − s2 is the Mellin transform of
+
+χ1 (t) := (1 + log(t))χ(t). The quantity D(λ) considered by Báez-Duarte, Balazard, Landreau
+
+and Saias is thus the Hilbert space distance between χ1 (t) and Cλ . To bound it from below we
+                                               λ indexed by the zeros of the Riemann zeta
+will exhibit remarkable Hilbert space vectors Xρ,k
+
+function and perpendicular to Cλ . We then compute the exact asymptotics of the orthogonal
+                                                      λ , for a finite set of roots, exactly as in
+projection of χ1 to the vector spaces spanned by the Xρ,k
+
+the Grenander-Rosenblatt method.
+
+
+
+To each complex number w and natural integer k ≥ 0 we associate the funtion ψw,k (t) =
+
+(log( 1t ))k t−w χ(t) on ]0, ∞[. For Re(w) < 1 it is integrable, for Re(w) < 12 it is in K. Let Qλ be
+
+the orthogonal projector from K onto L2 ([λ, ∞[). The main point of this paper is the following:
+
+
+
+Theorem and Definition 4.2 For each 0 < λ ≤ 1, each s on the critical line, and each
+
+integer k ≥ 0 the L2 -limit in K of V −1 Qλ V (ψw,k ) exists as w tends to s from the left half-
+
+plane:
+                                   λ
+                                 Ys,k := l.i.m.
+                                          w→s
+                                                V −1 Qλ V (ψw,k )
+                                          Re(w)< 1
+                                                 2
+                                                                        λ are:
+For each λ ≤ θ ≤ 1 the scalar products between Dθ (A) and the vectors Ys,k
+                                                         
+                                              λ         d k s− 1
+                     λ ≤ θ ≤ 1 ⇒ (Dθ (A), Ys,k ) = −          θ 2 Z(s)
+                                                       ds
+
+
+
+Note 4.3 The proof shows the existence of an analytic continuation in w accross the critical
+
+line, but we shall not make use of this fact.
+
+
+
+Clearly one has the following statement as an immediate consequence:
+
+
+
+                                                     9
+                                          λ is perpendicular to C if and only if ζ (j) (s) = 0
+Corollary 4.4 Let 0 < λ < 1. The vector Ys,k                     λ
+
+for all j ≤ k, if and only if s is a zero ρ of the zeta function and k < mρ .
+
+
+
+
+Note 4.5 Our scalar products (f, g) are complex linear in the first factor and conjugate-linear
+
+in the second factor.
+
+
+
+
+                      d
+Note 4.6 The operator ds when applied to a not necessarily analytic function on the critical
+
+line is defined to act as 1i dτ
+                              d
+                                (where s = 21 + iτ .)
+
+
+
+Proof The proof of existence will be given later. Here we check the statement involving the
+
+scalar product, assuming existence. The following holds for λ ≤ θ ≤ 1 and Re(w) < 12 :
+
+                  (V −1 Qλ V (ψw,k ), Dθ (A)) = (Qλ V (ψw,k ), V Dθ (A))
+
+                                                  = (Qλ V (ψw,k ), Dθ · V (A))
+
+                                                  = (V (ψw,k ), Qλ · Dθ · J(A))
+
+                                                  = (V (ψw,k ), Dθ · V (A))
+
+                                                  = (ψw,k , Dθ (A))
+                                                     k
+                                                       d
+                                                  =          (ψw,0 , Dθ (A))
+                                                      dw
+                                                     k
+                                                       d
+                                                  =          (Dθ−1 (t−w χ(t)), A)
+                                                      dw
+                                                     k
+                                                       d
+                                                  =          (θ 1/2−w t−w χ(θt), A)
+                                                      dw
+                                                     k             Z
+                                                       d       1/2−w
+                                                  =          θ               t−w A(t) dt
+                                                      dw               ]0,1]
+
+
+
+
+Taking the limit when w → s gives
+                                                       Z
+                           λ                  d k 1/2−s
+                        (Ys,k , Dθ (A))   =          θ           t−s A(t) dt
+                                              ds           ]0,1]
+                                                       Z
+                                              1 d k −iτ             1
+                                          =            θ         t− 2 −iτ A(t) dt
+                                              i dτ         ]0,1]
+
+
+
+
+                                                     10
+Taking the complex conjugate:
+                                                       Z
+                                 λ               d k iτ             1
+                      (Dθ (A), Ys,k ) =              iθ         t− 2 +iτ A(t) dt
+                                                dτ        ]0,1]
+                                                          Z
+                                                  d k s− 1
+                                           =   −       θ 2          ts−1 A(t) dt
+                                                 ds           ]0,1]
+                                                   
+                                                  d k s− 1
+                                           =   −       θ 2 Z(s)
+                                                 ds
+
+which completes the proof (assuming existence.) •
+
+
+
+To prove the existence we will use in an essential manner the key Lemme 6 from [2]. We
+
+have seen that V = (1 − M )2 U where M is the Hardy averaging operator and U the Báez-
+
+Duarte operator. The spectral function U (s) extends to an analytic function U (w) in the strip
+
+0 < Re(w) < 1. We need pointwise expressions for V (ψw,k )(t), t > 0 (at first only Re(w) < 12
+
+is allowed here). Thanks to the general study of U given in [1], we know that for Re(w) < 21
+
+the vector U (ψw,k ) in K is given as the following limit in square mean:
+                                     Z 1
+                                             1          d sin(2πt/v)
+                            l.i.m.      (log( ))k v −w               dv
+                             δ→0      δ      v         dv    πt/v
+
+Following [2], with a slight change of notation, we now study for each complex number w with
+
+Re(w) < 1 (and each integer k ≥ 0) the pointwise limit as a function of t > 0 for δ → 0:
+                                           Z 1
+                                                   1          d sin(2πt/v)
+                       ϕw,k (t) := lim        (log( ))k v −w               dv
+                                     δ→0    δ      v         dv    πt/v
+
+
+
+
+Theorem 4.7 ([2]) Let k = 0. For each t > 0 and Re(w) < 1 the pointwise limit defining
+
+ϕw,0 (t) exists. It is holomorphic in w for each fixed t. When w is restricted to a compact set in
+
+Re(w) < 1, one has uniformly in w the bound ϕw,0 (t) = O( 1t ) on [1, ∞[. Uniformly with respect
+
+to w satisfying 0 < Re(w) < 1 one has ϕw,0 (t) = U (w) t−w + O(1) on 0 < t ≤ 1.
+
+
+
+
+Proof Everything is either stated explicitely in [2], Lemme 6 and Lemme 4, or follows from
+
+their proofs. We will give more details for k ≥ 1 as this is not treated in [2]. •
+
+
+
+                                                         11
+Corollary 4.8 For each w in the critical strip 0 < Re(w) < 1 the Hardy operator M : f (t) →
+ R
+1 t                                                                            L
+t 0 f (v) dv can be applied arbitrarily many times to ϕw,0 (t). The functions M (ϕw,0 ) (L ∈ N)
+               L
+are O( (1+log(t))
+            t     ) on [1, ∞[, uniformly with respect to w when it is restricted to a compact subset
+                                                                               L
+                                                                             1
+of the open strip, and satisfy on t ∈ ]0, 1] the estimate M L (ϕw,0 )(t) = 1−w     U (w) t−w + O(1),
+
+uniformly with respect to w.
+
+
+
+
+Proof A simple recurrence. •
+
+
+
+We thus obtain:
+
+
+
+                            λ exist (for Re(s) = 1 ). One has the estimates:
+Corollary 4.9 The vectors Ys,0                   2
+
+
+                               λ              (1 + log(t))2
+                          V (Ys,0 )(t) = O(                 )   (t ∈ [1, ∞[)
+                                                    t
+                               λ
+                          V (Ys,0 )(t) = V (s) t−s + O(1)       (λ < t ≤ 1)
+
+                                       λ
+                                  V (Ys,0 )(t) = 0       (0 < t < λ)
+
+uniformly with respect to s when its imaginary part is bounded.
+
+
+
+
+Theorem 4.10 Let k ≥ 1. For each t > 0 and Re(w) < 1 the pointwise limit defining ϕw,k (t)
+
+exists. It is holomorphic in w for each fixed t. When w is restricted to a compact set in
+
+Re(w) < 1, one has uniformly in w the bound ϕw,k (t) = O( 1t ) on [1, ∞[. Uniformly for
+                                    
+                                  d k
+0 < Re(w) < 1 one has ϕw,k (t) = dw   (U (w) t−w ) + O(1) on 0 < t ≤ 1.
+
+
+
+
+Proof The formula defining ϕw,k (t) is equivalent to (after integration by parts and the change
+
+of variable u = 1/v):
+                                  Z Λ
+                             1                                                       du
+              ϕw,k (t) = lim            (k + w log(u)) (log(u))k−1 uw−1 sin(2πt u)
+                        Λ→∞ π t    1                                                  u
+
+
+
+                                                    12
+This proves the existence of ϕw,k (t), its analytic character in w, and the uniform O( 1t ) bound
+
+on [1, ∞[. The formula can be rewritten as:
+                                               
+                                               Z ∞      k
+                                             w      d              du
+                         ϕw,k (t) =                uw−1 sin(2πt u)
+                                            πt 1   dw               u
+                                            R ∞ w−1
+When w is in the critical strip the integral 0 u    sin(2πt u) du
+                                                                u is absolutely convergent and
+                 R ∞
+its value is t1−w 0 uw−1 sin(2πu) du        1
+                                     u = 1−w (2π t)
+                                                   1−w cos( πw )Γ(w) from well-known integral
+                                                             2
+
+formulae, so that:
+                           k                                                Z 1                             
+                        d             w 1−w −w    πw            w                        w−1              du
+      ϕw,k (t) =                         2 π cos(    )Γ(w)t−w −                      u         sin(2πt u)
+                       dw            1−w           2            πt               0                         u
+                          
+                        d k
+The first term is      dw   (U (w) t−w ) and the second term can be explicitely evaluated using the
+
+series expansion of sin(2πt u) with the final result
+                                    k                              X
+                                 d                                           (2πt)2j      2j
+           ϕw,k (t) =                     (U (w) t−w ) + 2(−1)k k!    (−1)j
+                                dw                                          (2j + 1)! (w + 2j)k+1
+                                                                     j≥1
+
+                                   
+                                 d k
+which shows ϕw,k (t) =          dw   (U (w) t−w ) + O(1), on 0 < t ≤ 1, uniformly for 0 < Re(w) < 1.               •
+
+
+
+As was the case for k = 0 we then deduce that the Hardy operator can be applied arbitrarily
+                                                             λ follows.
+many times to ϕw,k for 0 < Re(w) < 1. The existence of the Ys,k
+
+
+
+                                      λ exist (for Re(s) = 1 ). One has the estimates:
+Theorem 4.11 Let k ≥ 0. The vectors Ys,k                   2
+
+                            λ            (1 + log(t))2
+                       V (Ys,k )(t) = O(               )     (t ∈ [1, ∞[)
+                                       k t
+                            λ           d
+                       V (Ys,k )(t) =         (V (s) t−s ) + O(1)      (λ < t ≤ 1)
+                                        ds
+                            λ
+                       V (Ys,k )(t) = 0     (0 < t < λ)
+
+
+
+the implied constants are independent of λ and are uniform with respect to s when its imaginary
+
+part is bounded.
+
+
+
+
+Proof Clearly a corollary to 4.10. •
+
+
+
+                                                             13
+                  λ
+5    The vectors Xρ,k and completion of the proof
+
+
+Definition 5.1 Let 0 < λ < 1. To each zero ρ of the Riemann zeta function on the critical
+
+line, of multiplicity mρ , and each integer 0 ≤ k < mρ we associate the Hilbert space vector
+                                                          1
+                                       λ                1 − 2 −k     λ
+                                      Xρ,k :=       log( )       · Yρ,k
+                                                        λ
+        λ = l.i.m.
+where Yρ,k               −1 Q V (ψ                                       3
+                   w→s V     λ    w,k ), V is the unitary operator (M −1) F+ I, Qλ is orthogonal
+
+projection to L2 ([λ, ∞[, dt), and ψw,k (t) = (log( 1t ))k t−w χ(t).
+
+
+
+
+Note 5.2 Of course there is no reason except psychological to allow only zeros of the Riemann
+
+zeta function at this stage.
+
+
+
+
+Theorem 5.3 As λ decreases to 0 one has:
+
+
+                               lim (Xρλ1 ,k , Xρλ2 ,l ) = 0       (ρ1 6= ρ2 )
+                               λ→0
+                                         λ      λ              1
+                                   lim (Xρ,k , Xρ,l ) =
+                                   λ→0                       k+l+1
+
+
+
+Proof To establish this we first consider, for Re(s1 ) = Re(s2 ) = 21 :
+                            Z 1                       
+                                        1 j1 −s1       1 j2 −(1−s2 )
+                                    log( )  t      log( )  t         dt
+                               λ        t              t
+                                                                j +j
+If s1 6= s2 an integration by parts shows that it is O log( λ1 ) 1 2 . On the other hand when s1 =
+                                          j +j +1
+s2 its exact value is j1 +j12 +1 log( λ1 ) 1 2 . With this information the theorem follows directly
+                                                                                                    
+from 4.11 as (for example) the leading divergent contribution as λ → 0 to V (Ys,k       λ ), V (Y λ )
+                                                                                                 s,l
+              R 1 d k −s d l                           1          1
+                                                                      k+l+1
+is V (s)V (s) λ ds       t      ds  t−s dt which gives k+l+1 log( λ )        . The rescaling Y 7→ X
+                                       λ , X λ ) is obtained. As the scalar products involving
+is chosen so that a finite limit for (Xρ,k  ρ,l
+
+distinct zeros have a smaller divergency, the rescaling let them converge to 0. •
+
+
+
+                                                       14
+Theorem 5.4 Let χ1 (t) = (1 + log(t))χ(t). As λ decreases to 0 one has:
+                            r
+                                   1         λ
+                       lim     log( ) (χ1 , Xρ,k ) = 0     (k ≥ 1)
+                       λ→0 r       λ
+                                   1         λ        ρ−1
+                       lim     log( ) (χ1 , Xρ,0 ) =
+                       λ→0         λ                   ρ2
+
+
+
+
+Proof We have (1 − M )χ1 = χ, and V = (1 − M )2 U so V χ1 = (1 − M ) U χ. From [1] we know
+                                                          Rt
+that U χ is sin(2πt)
+               πt    so V χ1 is the function sin(2πt)
+                                                πt    − 1t 0 sin(2πv)
+                                                                πv    dv. It is thus 0(t2 ) as t → 0, and
+                                                          λ ) admit finite limits as λ → 0. This
+from 4.11 we then deduce that the scalar products (χ1 , Yρ,k
+
+settles the case k ≥ 1. For k = 0, one uses the uniformity with respect to w in 4.7 to get
+
+                                                λ
+                                    lim (χ1 , Yρ,0 ) = lim (χ1 , ϕw,0 )
+                                    λ→0               w→ρ
+
+                  R1
+which gives limw→ρ 0 (1 + log(t)) tw−1 dt = ρ1 − ρ12 = ρ−1
+                                                        ρ2
+                                                           . •
+
+
+
+We can now conclude the proof of our estimate.
+
+
+
+
+Theorem 5.5 We have:                           r       v
+                                                       uX 2
+                                                  1    u   mρ
+                                 lim inf D(λ) log( ) ≥ t
+                                   λ→0            λ      ρ
+                                                           |ρ|2
+
+
+
+Proof Let R be a non-empty finite set of zeros. We showed that D(λ) is the Hilbert space
+                                               λ for 0 ≤ k < m are perpendicular to C . So
+distance from χ1 to Cλ , and that the vectors Xρ,k            ρ                      λ
+
+D(λ) is bounded below by the norm of the orthogonal projection of χ1 to the finite-dimensional
+                                        λ , 0 ≤ k < m , ρ ∈ R. This is given by a well-known
+vector space HR spanned by the vectors Xρ,k          ρ
+
+                                                         λ ’s as well as the scalar products
+formula involving the inverse of the Gram matrix of the Xρ,k
+       λ ). From 5.3 the Gram matrix converges to diagonal blocks, one for each zero, given
+(χ1 , Xρ,k
+
+by Cauchy matrices of sizes mρ × mρ . From Cauchy we know that the top-left element of the
+
+inverse matrix is m2ρ . Combining this with the scalar products evaluated in 5.4 we get that the
+
+
+
+
+                                                   15
+squared norm of the orthogonal projection of χ1 to HR is asymptotically equivalent as λ → 0
+     P     m2 ρ
+     ρ∈R |ρ|2
+to        1
+     log( λ )
+                  . The proof is complete. •
+
+
+
+We can apply our strategy to a fully singular MA(q) on the unit circle. The relevant Báez-
+
+Duarte phase operator will then be (up to a non-important constant of modulus 1) the operator
+
+of multiplication by z −q and it is apparent that this leads to a proof equivalent to the one we gave
+
+in our previous discussion, inspired by [11]. In the case of the Nyman-Beurling approximation
+
+problem for the zeta funtion, we expect in the quotient of H2 by Cλ a “continuous spectrum”
+
+additionally to the “discrete spectrum” provided by the (projection to H2 of the) Xρ,k
+                                                                                   λ ’s, ζ(ρ) =
+
+
+0, k < mρ . It is tempting to speculate that the rescaling will kill this continuous part as λ → 0,
+
+so that in the end only subsists a so-called “Hilbert-Pólya” space. This would appear to require
+
+5.5 to give the exact order of decrease of the quantity D(λ) and the numerical explorations
+
+reported by Báez-Duarte, Balazard, Landreau and Saias in [2] seem to support this.
+
+
+
+
+6        Acknowledgements
+
+
+                                    λ , and with the Lemme 6 of [2] they were suddenly there.
+I had been looking for the vectors Xρ,k
+
+I thank Michel Balazard for giving me copies of [1] and [2] in preprint form.
+
+
+
+
+                                                 16
+References
+
+ [1] L. Báez-Duarte, A class of invariant unitary operators, Adv. in Math. 144 (1999), 1-12.
+
+ [2] L. Báez-Duarte, M. Balazard, B. Landreau and E. Saias, Notes sur la fonction ζ de Rie-
+     mann 3, Adv. in Math. 149 (2000), 130-144.
+
+ [3] A. Beurling, A closure problem related to the Riemann Zeta–function, Proc. Nat. Acad.
+     Sci. 41 (1955), 312-314.
+
+ [4] J.-F. Burnol, “Sur les formules explicites I: analyse invariante”, C. R. Acad. Sci. Paris
+     331 (2000), Série I, 423-428.
+
+ [5] J.-F. Burnol, Scattering on the p-adic field and a trace formula, International Mathematical
+     Research Notices 2000:2 (2000), 57-70.
+
+ [6] J.-F. Burnol, An adelic causality problem related to abelian L−functions, Journal of Num-
+     ber Theory. To appear.
+
+ [7] J.-F. Burnol, Quaternionic gamma functions and their logarithmic derivatives as spectral
+     functions, Mathematical Research Letters. To appear.
+
+ [8] A. Connes, Formule de trace en géométrie non-commutative et hypothèse de Riemann, C.
+     R. Acad. Sci. Paris 323 (1996), Série I, 1231-1236.
+
+ [9] A. Connes, Trace formula in non-commutative Geometry and the zeros of the Riemann
+     zeta function, Selecta Math. (N.S.) 5 (1999) , no. 1, 29–106.
+
+[10] W. Ehm, A family of probability densities related to the Riemann zeta function, manuscript
+     (2000), 12 pp.
+
+[11] U. Grenander, M. Rosenblatt, An extension of a theorem of G. Szegö and its application
+     to the study of stochastic processes, Trans. Amer. Math. Soc. 76 (1954), 112-126.
+
+[12] K. Hoffman, Banach spaces of analytic functions, Prentice-Hall, Inc. (1962). (Dover Pub.,
+     1988).
+
+[13] P. Nevai, Géza Freud, Orthogonal Polynomials and Christoffel Functions. A Case Study,
+     Journ. Approx. Theory 48 (1986), 3-167.
+
+[14] B. Nyman, On the One-Dimensional Translation Group and Semi-Group in Certain Func-
+     tion Spaces. Thesis, University of Uppsala, 1950. 55 pp.
+
+
+
+
+                                               17
+

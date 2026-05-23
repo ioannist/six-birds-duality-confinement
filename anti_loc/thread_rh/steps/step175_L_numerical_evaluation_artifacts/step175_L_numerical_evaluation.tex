@@ -1,0 +1,249 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Mz}{M_\zeta}
+
+\title{Step 175: Numerical Evaluation of \(L_{\rho_1,0}(G_*)\)}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{L\_verdict = V\_L\_numerical\_nonzero}.}
+\]
+
+Under the Step 173/174 operational identity and the declared \(\lambda=1\)
+normalization,
+\[
+L_{\rho_1,0}(G_*)
+=-I_{\rm sinc}-\sum_{n\ge0}\Psi_n(\rho_1)J_n,
+\]
+with
+\[
+\rho_1=\frac12+14.134725141734693\,i.
+\]
+The numerical evaluation with the required \(n=0,1,2\) PSWF block gives
+\[
+\boxed{
+L_{\rho_1,0}^{[0,2]}(G_*)
+=0.12146653476134234
+-0.08985731971133760\,i
+}
+\]
+with total error radius
+\[
+\boxed{1.9648066412630187\times 10^{-4}.}
+\]
+Therefore
+\[
+\boxed{|L_{\rho_1,0}(G_*)|\ge 0.1508944091096583}
+\]
+within the numerical error budget used here.  The value is separated from zero.
+
+\section{T1. Moments and Coefficients}
+
+The Step 174 generator is
+\[
+g_*(t)=b_1(t)-\alpha b_2(t)+\beta_3 b_3(t),
+\quad
+b_j(t)=\beta\!\left(\frac{t-c_j}{1/5}\right),
+\]
+with \(c_1=3/2\), \(c_2=5/2\), \(c_3=7/2\), and
+\[
+\beta(u)=e^{-1/(1-u^2)}\quad (|u|<1).
+\]
+High-order Gauss--Legendre/scipy quadrature gives:
+\[
+\begin{array}{c|r}
+\toprule
+\text{quantity} & \text{value}\\
+\midrule
+A_1 & 8.8798763233615893\cdot10^{-2}\\
+A_2 & 8.8798763233615963\cdot10^{-2}\\
+A_3 & 8.8798763233615963\cdot10^{-2}\\
+B_1 & 5.9366578012354863\cdot10^{-2}\\
+B_2 & 3.5555525747111349\cdot10^{-2}\\
+B_3 & 2.5384188380051690\cdot10^{-2}\\
+\alpha & 3.3409952306131059\\
+\beta_3 & 2.3409952306131068\\
+\bottomrule
+\end{array}
+\]
+The numerical endpoint checks are
+\[
+G_*(0)=8.3266726846886741\cdot10^{-17},
+\qquad
+G_*(1)=5.5511151231257827\cdot10^{-17},
+\]
+consistent with the Step 119 legality conditions.
+
+\section{T2--T3. Sampling \(G_*\) and \(\zeta\)}
+
+For \(s=1/2+iu\),
+\[
+G_*(s)=\int_1^4 g_*(t)t^{-s}\,dt
+=\int_1^4 g_*(t)t^{-1/2}e^{-iu\log t}\,dt.
+\]
+The computation used Gauss--Legendre quadrature on each bump support with
+\(280\) nodes per support, hence \(840\) \(t\)-nodes total.  The zeta values
+\(\zeta(1/2+iu)\) were computed by \texttt{mpmath.zeta} at \(50\) decimal
+digits on the grid
+\[
+u\in[-200,200],\qquad h=0.05.
+\]
+Selected sampled values are recorded in
+\texttt{G\_zeta\_samples\_step175.csv}.
+
+\section{T4. Sinc Integral}
+
+The sinc integral is
+\[
+I_{\rm sinc}
+=\int_{\mathbb R}
+\frac{\sin(\gamma_1-u)}{\pi(\gamma_1-u)}
+\zeta(1/2+iu)G_*(1/2+iu)\,du,
+\]
+where the removable singularity uses the limiting value \(1/\pi\).
+Numerically,
+\[
+\boxed{
+I_{\rm sinc}
+=-0.11261872344887212
++0.08976645970797142\,i
+}
+\]
+and
+\[
+|I_{\rm sinc}|=0.14401733978850045.
+\]
+The error radius assigned to this component is
+\[
+1.8185144104892716\cdot10^{-4},
+\]
+composed of:
+\[
+\begin{array}{c|r}
+\toprule
+\text{component} & \text{size}\\
+\midrule
+\text{grid refinement } h=0.10\to0.05 & 6.4362848920259704\cdot10^{-10}\\
+\text{tail shell } [160,200] \text{ doubled} & 1.8185079641813977\cdot10^{-4}\\
+\text{\(G_*\) quadrature comparison } 180\to280 & 2.2981884777988851\cdot10^{-15}\\
+\text{zeta/double conversion allowance} & 10^{-12}\\
+\bottomrule
+\end{array}
+\]
+
+\section{T5. PSWF Sum}
+
+The Step 173 basis was computed by diagonalizing the sinc kernel
+\[
+K(x,y)=\frac{\sin(x-y)}{\pi(x-y)},\qquad x,y\in[-1,1],
+\]
+with \(320\) Gauss--Legendre nodes.  This implements the same normalization as
+the operational identity:
+\[
+\Psi_n=\mathcal U_\infty
+\left(\frac{(I-P_1)\phi_n^1}{\sqrt{1-\mu_n^1}}\right).
+\]
+For \(n=0,1,2\):
+\[
+\begin{array}{c|r|r|r|r}
+\toprule
+n & \mu_n & \Psi_n(\rho_1) & J_n & \Psi_n(\rho_1)J_n\\
+\midrule
+0 & 5.7258178063789256\cdot10^{-1}
+& 4.1322189808145601\cdot10^{-2}
+& -2.1260953610400818\cdot10^{-1}
+& -8.7854916059116103\cdot10^{-3}\\
+1 & 6.2791274149805884\cdot10^{-2}
+& -9.2849186138664966\cdot10^{-4}
+& -9.7857619592373851\cdot10^{-2}i
+& 9.0860003366189876\cdot10^{-5}i\\
+2 & 1.2374793284661086\cdot10^{-3}
+& 3.0995624623184163\cdot10^{-3}
+& -2.0105968928270435\cdot10^{-2}
+& -6.2319706558607477\cdot10^{-5}\\
+\bottomrule
+\end{array}
+\]
+Thus
+\[
+\sum_{n=0}^{2}\Psi_n(\rho_1)J_n
+=-0.008847811312470217
++0.00009086000336618477\,i.
+\]
+The extended diagnostic through \(n=11\) gives
+\[
+\sum_{n=0}^{11}\Psi_n(\rho_1)J_n
+=-0.008847825468795223
++0.00009125082134558793\,i.
+\]
+The observed absolute sum of \(n=3,\ldots,11\) terms is
+\[
+4.070701178842979\cdot10^{-7},
+\]
+and the conservative truncation bound used for \(n\ge3\) is
+\[
+1.0\cdot10^{-6}.
+\]
+
+\section{T6. Final Numerical Value and Error Budget}
+
+Using the required \(n=0,1,2\) block,
+\[
+\begin{aligned}
+L_{\rho_1,0}^{[0,2]}(G_*)
+&=-I_{\rm sinc}
+-\sum_{n=0}^{2}\Psi_n(\rho_1)J_n\\
+&=
+0.12146653476134234
+-0.08985731971133760\,i.
+\end{aligned}
+\]
+The total error radius is
+\[
+\begin{array}{c|r}
+\toprule
+\text{component} & \text{radius}\\
+\midrule
+I_{\rm sinc}\ \text{quadrature/tail} & 1.8185144104892716\cdot10^{-4}\\
+\text{PSWF \(n=0,1,2\) grid/normalization diagnostic} & 1.3629222077374727\cdot10^{-5}\\
+\text{PSWF tail bound \(n\ge3\)} & 1.0\cdot10^{-6}\\
+\midrule
+\text{total} & 1.9648066412630187\cdot10^{-4}\\
+\bottomrule
+\end{array}
+\]
+Since
+\[
+|L_{\rho_1,0}^{[0,2]}(G_*)|
+=0.15109088977378460,
+\]
+we obtain the lower bound
+\[
+0.15109088977378460-0.00019648066412630187
+=0.1508944091096583.
+\]
+
+\section{Branch C Status}
+
+This gives numerical nonzero evidence for the selected nontrivial legal
+generator.  Under the Step 173/174 normalization, the full-carrier annihilation
+route is not supported at \((\rho_1,0,G_*)\).  Branch C therefore requires
+strict subclass restriction, a normalization audit, or an external analytic
+countercheck before any global conclusion can be drawn.
+
+\section{Nonclaim Boundary}
+
+This step does not prove RH, does not prove \(\Xi_{\mathrm{BC}}=0\), does not
+close Branch C globally, and does not remove any retained no-go.  It is a
+numerical matrix-element evaluation for one generator and one zero label.
+
+\end{document}

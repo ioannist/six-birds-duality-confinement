@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 231: Ramanujan Tau Carrier and Dichotomy Classification}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section{Carrier}
+
+Ramanujan's tau function is defined by the modular discriminant
+\[
+  \Delta(z)=q\prod_{n\ge 1}(1-q^n)^{24}
+  =\sum_{n\ge 1}\tau(n)q^n,
+  \qquad q=e^{2\pi iz}.
+\]
+It is the normalized cusp form of weight \(12\) and level \(1\).
+
+The associated Dirichlet series is
+\[
+  L(\tau,s)=\sum_{n\ge 1}\tau(n)n^{-s}.
+\]
+The completed form may be written
+\[
+  \Lambda_\tau(s)=(2\pi)^{-s}\Gamma(s)L(\tau,s),
+\]
+with functional equation pairing \(s\) and \(12-s\). Thus the critical line is
+\[
+  \Re(s)=6.
+\]
+
+\section{Ramanujan--Petersson Versus RH}
+
+The Ramanujan--Petersson assertion for \(\tau\) controls the size of Fourier coefficients, for example
+\[
+  |\tau(p)|\le 2p^{11/2}.
+\]
+Deligne proved this coefficient bound using the Weil conjectures. This theorem is not the same as the RH analog for \(L(\tau,s)\).
+
+The \(L(\tau,s)\)-RH analog is:
+\[
+  \text{all nontrivial zeros of }L(\tau,s)\text{ lie on }\Re(s)=6.
+\]
+This is open.
+
+\section{Dichotomy Audit}
+
+The carrier is not CRE for Riemann RH: the zero-line conjecture for \(L(\tau,s)\) is a separate automorphic \(L\)-function RH analog. It is also not natively closed. Hence it is outside the current RH Dichotomy, which classifies CRE carriers and non-CRE carriers with proved native RH analogs.
+
+\section{Generalization Note}
+
+If the framework is generalized to a Selberg-class or automorphic-\(L\)-function RH analog family, the tau carrier would be target-equivalent to its own conjecture. In that generalized setting it would behave like a `CRCFT-TE' instance relative to the target \(L(\tau,s)\)-RH.
+
+\section{Verdict}
+
+\[
+  \boxed{\texttt{V\_tau\_outside\_dichotomy}.}
+\]
+
+\end{document}

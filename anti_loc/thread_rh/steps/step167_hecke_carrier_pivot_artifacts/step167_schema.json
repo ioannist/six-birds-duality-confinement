@@ -1,0 +1,161 @@
+{
+  "step": 167,
+  "orientation": "adequacy",
+  "primary_carrier": "Hecke L-functions over algebraic number field K with character class chi",
+  "inherited_carrier": "Burnol/Sonine pulled-evaluator carrier (carried forward, not modified)",
+  "inherited_residual": "Xi_BC",
+  "inherited_residual_status": "cascade diagnostic-complete from step 166",
+  "new_residual": "Xi_BC_Hecke",
+  "field_context": {
+    "admissible_K": [
+      {
+        "field": "Q",
+        "status": "instantiated_by_step92_for_C_Q"
+      },
+      {
+        "field": "Q(i)",
+        "status": "declared_small_quadratic_imaginary_test_field; inherited carrier records not instantiated"
+      }
+    ],
+    "character_class": "unitary Hecke/Groessencharacters of C_K = A_K^x/K^x, with narrow ray-class finite-order subfamilies as finite-window tests",
+    "functional_equation": "Lambda_K(s,chi)=epsilon(chi)Lambda_K(1-s,conjugate(chi)); pole factors recorded for trivial characters"
+  },
+  "carrier_context": {
+    "H_Hecke": "direct integral over anti-invariant Hecke character fibers H_{K,chi}^- with Plancherel measure mu_K",
+    "native_probes": [
+      "prime-ideal/Euler feature probes",
+      "archimedean gamma probes",
+      "conductor/root-number probes",
+      "pole and trivial-character exceptional probes",
+      "tail/completion probes",
+      "character readouts Q_chi"
+    ],
+    "dissolving_probes": [
+      "off-critical zero ledger readouts for completed Lambda_K(s,chi)",
+      "fiberwise anti-invariant displacement probes under s -> 1-conjugate(s)",
+      "zeta-fiber descent readout for K=Q, chi=trivial when bridged"
+    ]
+  },
+  "new_residual_definition": {
+    "formula": "Xi_BC_Hecke = Xi_{C_Hecke}(D_Hecke | L_Hecke) = K_DD^H - K_DL^H (K_LL^H)^dagger K_LD^H",
+    "fiber_decomposition": {
+      "status": "typed_obligation",
+      "statement": "If C_Hecke, L_Hecke, and D_Hecke are decomposable over chi with admissible domains and pseudoinverse compatibility, then Xi_BC_Hecke decomposes as a direct integral of Xi_{K,chi}."
+    }
+  },
+  "bridge_to_Xi_BC": {
+    "status": "open_external_bridge",
+    "typed_context": "K=Q, chi=trivial gives scalar L(s,chi)=zeta(s), but Burnol/Sonine pulled-evaluator Hilbert carrier and Hecke direct-integral fiber carrier are not identified without maps B_HB, R_BH, energy comparison, native probe compatibility, and dissolving probe compatibility.",
+    "scope": "scalar L-function identity is framework_defined; residual/carrier identity remains an open bridge obligation"
+  },
+  "no_go_transfer": {
+    "public_shadow_non_promotion": {
+      "transfers": true,
+      "scope_on_Hecke": "finite character sums, trace averages, modular/automorphic shadows, and scalar explicit-formula aggregates cannot promote to Hecke source or Calkin evidence without a carrier-faithful bridge"
+    },
+    "finite_window_calkin_blindness": {
+      "transfers": true,
+      "scope_on_Hecke": "finite conductor windows and finite character packets are support-only in the completed Hecke Calkin/response carrier until tail/exhaustivity is supplied"
+    },
+    "new_Hecke_specific_nogos": [
+      {
+        "name": "auxiliary-GRH smuggling",
+        "scope": "do not assume zero confinement for auxiliary L(s,chi) as a source record"
+      },
+      {
+        "name": "incomplete character spectrum support-only",
+        "scope": "proper finite/ray-class/primitive-only subfamilies do not cover the completed character response without imprimitive and tail records"
+      },
+      {
+        "name": "scalar L-function identity is not carrier identity",
+        "scope": "K=Q, chi=trivial identifies zeta as an L-function but not the Burnol/Sonine and Hecke Schur carriers"
+      }
+    ]
+  },
+  "source_audit": [
+    {
+      "source": "Step 92 Hecke/idele carrier",
+      "verdict": "imported_under_hypotheses; enlarged_carrier_candidate; bridge and tail open"
+    },
+    {
+      "source": "Steps 90-95 semilocal and character-source frame",
+      "verdict": "framework_defined source-frame gate; finite windows moving_window_support_only; semilocal absorption open"
+    },
+    {
+      "source": "Steps 37 and 91 character source frame",
+      "verdict": "framework_defined lower-frame theorem; actual Hecke Plancherel/lower-frame records unearned"
+    },
+    {
+      "source": "Steps 30-50 root composite and manuscript records",
+      "verdict": "framework_defined obligation and audit discipline; Hecke carrier not constructed there"
+    },
+    {
+      "source": "Steps 50-65 Xi standalone, companion, and layer-dissolving records",
+      "verdict": "framework_defined Xi calculus and fixed/exhaustive ledger discipline; no Hecke analytic closure supplied"
+    }
+  ],
+  "initial_branches": [
+    {
+      "branch_id": "H1_direct_integral_schur",
+      "typed_context": "decomposable C_Hecke, L_Hecke, D_Hecke over chi and pseudoinverse-compatible direct integral",
+      "status": "open_typed_obligation"
+    },
+    {
+      "branch_id": "H2_source_lower_frame_plancherel_tail",
+      "typed_context": "Hecke character source ladder F_n = U^* M_{lambda_n} U with fixed/exhaustive ledger and tail",
+      "status": "open_external_tail_and_lower_frame"
+    },
+    {
+      "branch_id": "H3_hecke_calkin_bridge",
+      "typed_context": "Hecke completed carrier Calkin/response algebra and public-shadow exclusion",
+      "status": "split_external_theorem"
+    },
+    {
+      "branch_id": "H4_per_character_finite_carrier",
+      "typed_context": "finite packets over selected K and finite character/zero windows",
+      "status": "finite_carrier_diagnostic_only"
+    },
+    {
+      "branch_id": "H5_auxiliary_explicit_formula_records",
+      "typed_context": "completed EF records for L(s,chi): conductor, gamma, root number, poles, primitive/imprimitive defects, tails",
+      "status": "open_external_records"
+    },
+    {
+      "branch_id": "H6_zeta_fiber_descent_to_Xi_BC",
+      "typed_context": "K=Q, chi=trivial bridge from Hecke fiber carrier to Burnol/Sonine pulled-evaluator carrier",
+      "status": "open_external_bridge"
+    }
+  ],
+  "pivot_verdict": "hecke_carrier_pivot_partial",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar L-function identity is not carrier identity"
+  ],
+  "final_verdict": "hecke_carrier_pivot_partial",
+  "next_step": 168,
+  "strategic_lanes": [
+    {
+      "lane": "instantiate_Q_trivial_bridge",
+      "rationale": "decide whether the zeta scalar identity gives a carrier equality, a defect-paid transfer, or an open non-comparability record"
+    },
+    {
+      "lane": "direct_integral_schur_audit",
+      "rationale": "make the per-character residual decomposition lawful before using fiberwise closure tests"
+    },
+    {
+      "lane": "hecke_source_tail_gate",
+      "rationale": "separate completed Plancherel lower-frame evidence from moving finite conductor windows"
+    },
+    {
+      "lane": "auxiliary_EF_record_audit",
+      "rationale": "record the conductor/gamma/root-number/pole/tail data needed for lawful Hecke source records"
+    },
+    {
+      "lane": "finite_diagnostic_packet",
+      "rationale": "test small fields and characters only as diagnostic support without completed-carrier promotion"
+    }
+  ]
+}

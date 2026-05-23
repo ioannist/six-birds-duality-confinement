@@ -1,0 +1,64 @@
+\section*{Step 271: Branch C Saddle Numerics}
+
+\paragraph{Setup.}
+For the Step 196 right-Mellin convention,
+\[
+  M(G)(z)=\int_0^\infty G(t)t^{-z}\,dt,
+  \qquad h(z)=\zeta(z)M(G)(z).
+\]
+The saddle equation tested in this step is
+\[
+  \frac{h'(z_*)}{h(z_*)}=\frac{k+1}{z_*-\rho},
+\]
+or equivalently
+\[
+  \frac{\zeta'(z_*)}{\zeta(z_*)}+\frac{M'(G)(z_*)}{M(G)(z_*)}
+  =\frac{k+1}{z_*-\rho}.
+\]
+
+\paragraph{Numerical solution.}
+The equation was solved with Newton iteration at `mpmath` 55 dps, using
+high-precision central finite differences for $\zeta'$ and $\zeta''$ and exact
+quadrature sums for derivatives of $M(G)$.  The tracked radii
+$|z_*-\rho|$ for $k=1,2,5,10,20$ are:
+\[
+\begin{array}{c|ccccc}
+\text{triple} & 1&2&5&10&20\\\hline
+\rho_1,G_* & .6715&1.2821&2.8671&5.0620&8.8422\\
+\rho_2,G_* & .6267&1.1387&2.3815&4.2792&8.0244\\
+\rho_1,G' & .7120&1.3814&3.1139&5.5126&9.4933
+\end{array}
+\]
+
+\paragraph{Saddle prediction.}
+Using
+\[
+  h^{(k)}(\rho)\approx
+  \frac{k!h(z_*)}{(z_*-\rho)^{k+1}}
+  \left(\frac{2\pi}{\Phi''(z_*)}\right)^{1/2},
+\]
+with
+\[
+  \Phi''(z_*)=(\log h)''(z_*)+\frac{k+1}{(z_*-\rho)^2},
+\]
+and fitting the resulting magnitudes to
+\[
+  a(k+1)^c e^{bk},
+\]
+gives:
+\[
+\begin{array}{c|cc|cc}
+\text{triple} & b_{\rm saddle}&c_{\rm saddle}&b_{\rm Step269}&c_{\rm Step269}\\\hline
+\rho_1,G_* & .7994&-.1380&.7497&-.2998\\
+\rho_2,G_* & .9504&-.1087&1.0832&-1.1248\\
+\rho_1,G' & .7129&-.0987&.6441&-.1369
+\end{array}
+\]
+
+\paragraph{Verdict.}
+The exponent $b$ is qualitatively close, but the polynomial exponent $c$ fails
+the requested ten-percent criterion.  The closed form is therefore not
+established:
+\[
+  \boxed{\texttt{V\_branch\_C\_closed\_form\_mismatched}}.
+\]

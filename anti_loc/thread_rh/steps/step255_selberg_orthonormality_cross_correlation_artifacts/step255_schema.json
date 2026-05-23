@@ -1,0 +1,29 @@
+{
+  "step": 255,
+  "orientation": "adequacy",
+  "target": "full Selberg orthonormality + cross-correlation extension",
+  "orthonormality_carrier_definition": {
+    "objects": "primitive Selberg-class L-functions L1,L2",
+    "prime_correlation": "S_12(x)=sum_{p<=x} a_p(L1) conjugate(a_p(L2))/p",
+    "residual": "Xi_orth(L1,L2)=limsup_x |S_12(x)-n_L delta_{L1,L2} log log x|/(1+log log x)",
+    "normalization_note": "n_L is the Selberg diagonal norm constant, expected 1 for primitive functions; it is not the pole order at s=1"
+  },
+  "diagonal_off_diagonal_components": {
+    "diagonal": "S_LL(x)=n_L log log x + O(1)",
+    "off_diagonal": "S_12(x)=O(1) for L1 != L2",
+    "closure": "bounded diagonal remainder and bounded off-diagonal correlations for all primitive pairs"
+  },
+  "cross_correlation_extension_statement": "Beyond per-L RH analogues, the Selberg class has second-order multi-L residuals: coefficient orthogonality, full orthonormality, joint-zero decorrelation, and pairwise/multiway correlation conditions.",
+  "multi_instance_evidence": [
+    {"instance": "SOC off-diagonal", "step": 254, "status": "open cross-correlation carrier"},
+    {"instance": "diagonal orthonormality", "step": 255, "status": "open diagonal norm carrier"}
+  ],
+  "corpus_pending_status": "candidate verified-on-2-Selberg-instances corpus-pending; deposited in anti_loc/findings_framework.md",
+  "retained_nogos": [
+    "does not claim SOC solved",
+    "does not claim full Selberg orthonormality solved",
+    "does not claim GRH or RH solved",
+    "does not weaken retained no-gos"
+  ],
+  "final_verdict": "V_selberg_orthonormality_cross_correlation_typed"
+}

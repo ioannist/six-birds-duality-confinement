@@ -1,0 +1,1220 @@
+\documentclass[a4paper,fleqn,leqno]{article}
+\def\ladate{26 mai 2011. Nouvelle introduction: 6 janvier 2012.}
+% LATIN-1 INPUT ENCODING
+% AUTHOR: BURNOL (LILLE, FRANCE)
+% JOURNAL: EXPOSITIONES MATHEMATICAE
+% TITLE: DEUX EXTENSIONS DES THEOREMES DE HAMBURGER
+
+% Fait au CRM � Barcelone, 26 mai 2011
+%
+% Soumis � Expositiones Mathematicae 24 juin 2011
+% Accept� 19 d�cembre 2011
+%
+% 6 janvier 2012: passage � elsarticle,
+% d�graissage de mon codage latex initial
+%
+% 6 janvier 2012: modifications dans l'introduction, pour
+% une meilleure pr�sentation, ajout de r�f�rences aux
+% articles de Molteni comme demand� par le referee. Pas de
+% modifications dans le corps des preuves
+
+% 7 janvier 2012: j'imite elsarticle, pour mettre la v2 sur arXiv, mais en
+% revenant ensuite � ma mise-en-page et � mes polices idiosyncratiques
+% Pas mal! Je remets aussi les pdfbookmark que j'avais retir�s.
+
+\usepackage[latin1]{inputenc}
+
+\usepackage{geometry}
+ \geometry{textheight=562pt,
+  textwidth=384pt,
+  centering,
+  headheight=50pt,
+  headsep=12pt,
+  footskip=12pt,
+  footnotesep=24pt plus 2pt minus 12pt,
+ }
+
+\usepackage[T1]{fontenc}
+
+\usepackage[german,french]{babel}
+\frenchbsetup{og=�,fg=�}
+
+\usepackage{amsmath,amsthm,amssymb}
+\allowdisplaybreaks
+
+\usepackage{enumerate} 
+
+\usepackage{mathtools}
+\DeclarePairedDelimiter\OO{\rbrack}{\lbrack}
+\DeclarePairedDelimiter\OF{\rbrack}{\rbrack}
+\DeclarePairedDelimiter\FO{\lbrack}{\lbrack}
+
+\usepackage[pdfencoding=pdfdoc]{hyperref}
+\hypersetup{%
+%hidelinks,
+% erreur arXiv 23 juin 2011: ! Package keyval Error: hidelinks undefined.
+linkcolor={blue},
+citecolor={red},
+colorlinks,%
+bookmarksopen,%
+pdfdisplaydoctitle,%
+pdfpagelayout=OneColumn,%
+pdfstartview=FitH,%
+pdftitle={Deux extensions de Th�or�mes de Hamburger},%
+pdfauthor={Jean-Fran�ois Burnol},%
+pdfkeywords={Zeta function, Functional equation, Dirichlet series},%
+pdfsubject={Number theory, Harmonic analysis}}
+
+\usepackage{bookmark}
+\usepackage{txfonts}
+
+
+%% private macros; don't touch under any circumstances!!
+%% (or there is no telling the consequences)
+
+\renewcommand{\familydefault}{\ttdefault}
+\renewcommand{\ttdefault}{txvtt}
+
+\makeatletter
+
+  \begingroup
+  \nfss@catcodes
+\DeclareFontFamily{T1}{txvtt}{\hyphenchar\font=127%
+\fontdimen2\font=0.33333\fontdimen6\font%
+\fontdimen3\font=0.16666\fontdimen6\font%
+\fontdimen4\font=0.11111\fontdimen6\font}%
+
+\DeclareFontShape{T1}{txvtt}{m}{n}{	%medium
+     <->t1xtt%
+}{}%
+\DeclareFontShape{T1}{txvtt}{m}{sc}{	%cap & small cap
+     <->t1xttsc%
+}{}%
+\DeclareFontShape{T1}{txvtt}{m}{sl}{	%slanted
+     <->t1xttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{m}{it}{	%italic
+     <->t1xttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{m}{ui}{   	%unslanted italic
+     <->t1xttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{bx}{n}{	%bold extended
+     <->t1xbtt%
+}{}%
+\DeclareFontShape{T1}{txvtt}{bx}{sc}{	%bold extended cap & small cap
+     <->t1xbttsc%
+}{}%
+\DeclareFontShape{T1}{txvtt}{bx}{sl}{	%bold extended slanted
+     <->t1xbttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{bx}{it}{	%bold extended italic
+     <->t1xbttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{bx}{ui}{  	%bold extended unslanted italic
+     <->t1xbttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{b}{n}{	%bold
+     <->t1xbtt%
+}{}%
+\DeclareFontShape{T1}{txvtt}{b}{sc}{	%bold cap & small cap
+     <->t1xbttsc%
+}{}%
+\DeclareFontShape{T1}{txvtt}{b}{sl}{	%bold slanted
+     <->t1xbttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{b}{it}{   	%bold italic
+     <->t1xbttsl%
+}{}%
+\DeclareFontShape{T1}{txvtt}{b}{ui}{   	%bold unslanted italic
+     <->t1xbttsl%
+}{}%
+  \endgroup
+
+
+% grec de txfonts en upright
+\re@DeclareMathSymbol{\Gamma}{\mathalpha}{lettersA}{0}
+\let\alpha\alphaup
+\let\beta\betaup
+\let\delta\deltaup
+\let\epsilon\epsilonup
+\let\zeta\zetaup
+\let\lambda\lambdaup
+\let\mu\muup
+\let\pi\piup
+\let\sigma\sigmaup
+\let\tau\tauup
+\let\phi\phiup
+\let\chi\chiup
+\let\omega\omegaup
+
+  \def\m@t@enc{\encodingdefault}
+  \def\m@t@fam{\familydefault}
+  \def\m@t@ser{\seriesdefault}
+  \def\m@t@opsh{\shapedefault}  
+  \def\m@t@bold{\bfdefault}
+\DeclareSymbolFont{mtoperatorfont}
+    {\m@t@enc}{\m@t@fam}{\m@t@ser}{\m@t@opsh}
+\DeclareSymbolFontAlphabet{\mathrm}{mtoperatorfont}
+\DeclareMathAlphabet{\mathbf}{\m@t@enc}{\m@t@fam}{\m@t@bold}{\m@t@opsh}
+  \SetSymbolFont{mtoperatorfont}{bold} {\m@t@enc}
+                                       {\m@t@fam}
+                                       {\m@t@ser}
+                                       {\m@t@opsh}
+  \SetMathAlphabet{\mathbf}{bold}{\m@t@enc}
+                                 {\m@t@fam}
+                                 {\m@t@ser}
+                                 {\m@t@opsh}
+\def\operator@font{\mathgroup\symmtoperatorfont}
+
+\DeclareMathSymbol{a}{\mathalpha}{mtoperatorfont}{`a}
+\DeclareMathSymbol{b}{\mathalpha}{mtoperatorfont}{`b}
+\DeclareMathSymbol{c}{\mathalpha}{mtoperatorfont}{`c}
+\DeclareMathSymbol{d}{\mathalpha}{mtoperatorfont}{`d}
+\DeclareMathSymbol{e}{\mathalpha}{mtoperatorfont}{`e}
+\DeclareMathSymbol{f}{\mathalpha}{mtoperatorfont}{`f}
+\DeclareMathSymbol{g}{\mathalpha}{mtoperatorfont}{`g}
+\DeclareMathSymbol{h}{\mathalpha}{mtoperatorfont}{`h}
+\DeclareMathSymbol{i}{\mathalpha}{mtoperatorfont}{`i}
+\DeclareMathSymbol{j}{\mathalpha}{mtoperatorfont}{`j}
+\DeclareMathSymbol{k}{\mathalpha}{mtoperatorfont}{`k}
+\DeclareMathSymbol{l}{\mathalpha}{mtoperatorfont}{`l}
+\DeclareMathSymbol{m}{\mathalpha}{mtoperatorfont}{`m}
+\DeclareMathSymbol{n}{\mathalpha}{mtoperatorfont}{`n}
+\DeclareMathSymbol{o}{\mathalpha}{mtoperatorfont}{`o}
+\DeclareMathSymbol{p}{\mathalpha}{mtoperatorfont}{`p}
+\DeclareMathSymbol{q}{\mathalpha}{mtoperatorfont}{`q}
+\DeclareMathSymbol{r}{\mathalpha}{mtoperatorfont}{`r}
+\DeclareMathSymbol{s}{\mathalpha}{mtoperatorfont}{`s}
+\DeclareMathSymbol{t}{\mathalpha}{mtoperatorfont}{`t}
+\DeclareMathSymbol{u}{\mathalpha}{mtoperatorfont}{`u}
+\DeclareMathSymbol{v}{\mathalpha}{mtoperatorfont}{`v}
+\DeclareMathSymbol{w}{\mathalpha}{mtoperatorfont}{`w}
+\DeclareMathSymbol{x}{\mathalpha}{mtoperatorfont}{`x}
+\DeclareMathSymbol{y}{\mathalpha}{mtoperatorfont}{`y}
+\DeclareMathSymbol{z}{\mathalpha}{mtoperatorfont}{`z}
+\DeclareMathSymbol{A}{\mathalpha}{mtoperatorfont}{`A}
+\DeclareMathSymbol{B}{\mathalpha}{mtoperatorfont}{`B}
+\DeclareMathSymbol{C}{\mathalpha}{mtoperatorfont}{`C}
+\DeclareMathSymbol{D}{\mathalpha}{mtoperatorfont}{`D}
+\DeclareMathSymbol{E}{\mathalpha}{mtoperatorfont}{`E}
+\DeclareMathSymbol{F}{\mathalpha}{mtoperatorfont}{`F}
+\DeclareMathSymbol{G}{\mathalpha}{mtoperatorfont}{`G}
+\DeclareMathSymbol{H}{\mathalpha}{mtoperatorfont}{`H}
+\DeclareMathSymbol{I}{\mathalpha}{mtoperatorfont}{`I}
+\DeclareMathSymbol{J}{\mathalpha}{mtoperatorfont}{`J}
+\DeclareMathSymbol{K}{\mathalpha}{mtoperatorfont}{`K}
+\DeclareMathSymbol{L}{\mathalpha}{mtoperatorfont}{`L}
+\DeclareMathSymbol{M}{\mathalpha}{mtoperatorfont}{`M}
+\DeclareMathSymbol{N}{\mathalpha}{mtoperatorfont}{`N}
+\DeclareMathSymbol{O}{\mathalpha}{mtoperatorfont}{`O}
+\DeclareMathSymbol{P}{\mathalpha}{mtoperatorfont}{`P}
+\DeclareMathSymbol{Q}{\mathalpha}{mtoperatorfont}{`Q}
+\DeclareMathSymbol{R}{\mathalpha}{mtoperatorfont}{`R}
+\DeclareMathSymbol{S}{\mathalpha}{mtoperatorfont}{`S}
+\DeclareMathSymbol{T}{\mathalpha}{mtoperatorfont}{`T}
+\DeclareMathSymbol{U}{\mathalpha}{mtoperatorfont}{`U}
+\DeclareMathSymbol{V}{\mathalpha}{mtoperatorfont}{`V}
+\DeclareMathSymbol{W}{\mathalpha}{mtoperatorfont}{`W}
+\DeclareMathSymbol{X}{\mathalpha}{mtoperatorfont}{`X}
+\DeclareMathSymbol{Y}{\mathalpha}{mtoperatorfont}{`Y}
+\DeclareMathSymbol{Z}{\mathalpha}{mtoperatorfont}{`Z}
+
+\DeclareMathSymbol{0}{\mathalpha}{mtoperatorfont}{`0}
+\DeclareMathSymbol{1}{\mathalpha}{mtoperatorfont}{`1}
+\DeclareMathSymbol{2}{\mathalpha}{mtoperatorfont}{`2}
+\DeclareMathSymbol{3}{\mathalpha}{mtoperatorfont}{`3}
+\DeclareMathSymbol{4}{\mathalpha}{mtoperatorfont}{`4}
+\DeclareMathSymbol{5}{\mathalpha}{mtoperatorfont}{`5}
+\DeclareMathSymbol{6}{\mathalpha}{mtoperatorfont}{`6}
+\DeclareMathSymbol{7}{\mathalpha}{mtoperatorfont}{`7}
+\DeclareMathSymbol{8}{\mathalpha}{mtoperatorfont}{`8}
+\DeclareMathSymbol{9}{\mathalpha}{mtoperatorfont}{`9}
+
+\DeclareMathSymbol{!}{\mathclose}{mtoperatorfont}{"21}
+\DeclareMathSymbol{?}{\mathclose}{mtoperatorfont}{"3F}
+\DeclareMathSymbol{*}{\mathalpha}{mtoperatorfont}{"2A}
+\DeclareMathSymbol{,}{\mathpunct}{mtoperatorfont}{"2C}
+\DeclareMathSymbol{.}{\mathord}{mtoperatorfont}{"2E}
+\DeclareMathSymbol{:}{\mathrel}{mtoperatorfont}{"3A} 
+\DeclareMathSymbol{;}{\mathpunct}{mtoperatorfont}{"3B}
+\edef\mt@minus@sign{\mathord{\expandafter\mathchar\number\mathcode`\-}}
+\def\relbar{\mathrel{\smash\mt@minus@sign}}
+\def\rightarrowfill{$\m@th\mt@minus@sign\mkern-7mu  %
+\cleaders\hbox{$\mkern-2mu\mt@minus@sign\mkern-2mu$}\hfill
+  \mkern-7mu\mathord\rightarrow$}
+\def\leftarrowfill{$\m@th\mathord\leftarrow\mkern-7mu %
+ \cleaders\hbox{$\mkern-2mu\mt@minus@sign\mkern-2mu$}\hfill
+  \mkern-7mu\smash\mt@minus@sign$}
+\DeclareMathSymbol{-}{\mathbin}{mtoperatorfont}{21}
+\DeclareMathSymbol{+}{\mathbin}{mtoperatorfont}{"2B}
+\edef\mt@equal@sign{{\expandafter\mathchar\number\mathcode`\=}}
+\DeclareRobustCommand\Relbar{\mathrel{\mt@equal@sign}}
+\DeclareMathSymbol{=}{\mathrel}{mtoperatorfont}{"3D}
+\DeclareMathDelimiter{(}{\mathopen} {mtoperatorfont}{"28}{largesymbols}{"00}
+\DeclareMathDelimiter{)}{\mathclose}{mtoperatorfont}{"29}{largesymbols}{"01}
+\DeclareMathDelimiter{[}{\mathopen} {mtoperatorfont}{"5B}{largesymbols}{"02}
+\DeclareMathDelimiter{]}{\mathclose}{mtoperatorfont}{"5D}{largesymbols}{"03}
+\DeclareMathDelimiter{/}{\mathord}{mtoperatorfont}{"2F}{largesymbols}{"0E}
+\DeclareMathSymbol{/}{\mathord}{mtoperatorfont}{"2F}
+\DeclareMathDelimiter{<}{\mathopen}{mtoperatorfont}{"3C}{largesymbols}{"0A}
+\DeclareMathDelimiter{>}{\mathclose}{mtoperatorfont}{"3E}{largesymbols}{"0B}
+\DeclareMathSymbol{<}{\mathrel}{mtoperatorfont}{"3C}
+\DeclareMathSymbol{>}{\mathrel}{mtoperatorfont}{"3E}
+\expandafter\DeclareMathDelimiter\@backslashchar
+                        {\mathord}{mtoperatorfont}{"5C}{largesymbols}{"0F}
+\DeclareMathDelimiter{\backslash}
+    {\mathord}{mtoperatorfont}{"5C}{largesymbols}{"0F}
+\DeclareMathSymbol\setminus\mathbin{mtoperatorfont}{"5C}
+\DeclareMathSymbol{|}\mathord{mtoperatorfont}{"7C}
+\DeclareMathDelimiter{|}{mtoperatorfont}{"7C}{largesymbols}{"0C}
+\DeclareMathDelimiter\vert
+                 \mathord{mtoperatorfont}{"7C}{largesymbols}{"0C}
+\DeclareMathSymbol\mid\mathrel{mtoperatorfont}{"7C}
+\DeclareMathDelimiter{\lbrace}
+   {\mathopen}{mtoperatorfont}{"7B}{largesymbols}{"08}
+\DeclareMathDelimiter{\rbrace}
+   {\mathclose}{mtoperatorfont}{"7D}{largesymbols}{"09}
+\def\defaultscriptratio{.8333}
+\def\defaultscriptscriptratio{.7}
+\DeclareMathSizes{9}{9}{7}{5}
+\DeclareMathSizes{\@xpt}{\@xpt}{8}{6}
+\DeclareMathSizes{\@xipt}{\@xipt}{9}{7}
+\DeclareMathSizes{\@xiipt}{\@xiipt}{10}{8}
+\DeclareMathSizes{\@xivpt}{\@xivpt}{\@xiipt}{10}
+\DeclareMathSizes{\@xviipt}{\@xviipt}{\@xivpt}{\@xiipt}
+\DeclareMathSizes{\@xxpt}{\@xxpt}{\@xviipt}{\@xivpt}
+\DeclareMathSizes{\@xxvpt}{\@xxvpt}{\@xxpt}{\@xviipt}
+\makeatother
+
+
+\let\oldexists\exists
+\renewcommand\exists{\oldexists\,}
+\let\oldforall\forall
+\renewcommand\forall{\oldforall\,}
+
+
+\newtheorem{theo}{Th�or�me}
+\def\theoautorefname{Th�or�me}
+
+\newtheorem*{theo*}{Th�or�me}
+\newtheorem*{cor1}{Corollaire 1}
+\newtheorem*{cor2}{Corollaire 2}
+
+\renewcommand{\Re}{\mathrm{Re}}
+\renewcommand{\Im}{\mathrm{Im}}
+\newcommand{\Oh}{\mathcal{O}}
+\newcommand{\cF}{\mathcal{F}}
+\newcommand{\NN}{\mathbf{N}}
+\newcommand{\ZZ}{\mathbf{Z}}
+\newcommand{\RR}{\mathbf{R}}
+\newcommand{\QQ}{\mathbf{Q}}
+\newcommand{\CC}{\mathbf{C}}
+
+\renewcommand\le\leqslant
+\renewcommand\ge\geqslant
+
+\newbox\boiteresume
+\newenvironment{resume}{\global\setbox\boiteresume=\vbox\bgroup
+  \hsize=\textwidth\def\baselinestretch{1}\small
+  \noindent\unskip\textbf{R�sum�}
+ \par\medskip\noindent\unskip\ignorespaces}
+ {\egroup}
+
+\newbox\boiteabstract
+\renewenvironment{abstract}{\global\setbox\boiteabstract=\vbox\bgroup
+  \hsize=\textwidth\def\baselinestretch{1}\small
+  \noindent\unskip\textbf{Abstract}
+ \par\medskip\noindent\unskip\ignorespaces}
+ {\egroup}
+
+\newbox\boiteclefs
+\newenvironment{clefs}{%
+  \global\setbox\boiteclefs=\vbox\bgroup
+  \hsize=\textwidth\def\baselinestretch{1}\small
+  \normalfont\parskip0pt
+  %\raggedright        
+  \ignorespaces}
+{\egroup}
+
+
+\newcommand*{\monheader}{{\normalfont
+\ifodd\value{page}%
+   \emph{sur l'�quation fonctionnelle de la fonction $\zeta$ de Riemann}
+  \hfil\thepage
+\else \thepage
+  \hfil\emph{Deux extensions de Th�or�mes de Hamburger}\fi}}
+
+\pagestyle{myheadings}
+
+\begin{document}
+\pdfbookmark[1]{Page de titre}{pagedetitre}
+
+\thispagestyle{empty}
+
+\markright{\protect\monheader}
+\makeatletter
+\def\@oddhead{\rightmark}
+\makeatother
+
+
+\begin{flushright} 
+\small\ladate\hspace{\the\leftmargin}
+\end{flushright}
+
+
+\long\def\letitre{Deux extensions de Th�or�mes de Hamburger\\
+\centerline{\hss\mbox{(portant sur l'�quation fonctionnelle de
+  la fonction z�ta)}\hss}}
+
+\long\def\letitreanglais{%
+Two extensions of Hamburger's theorems\\
+(on the functional equation of the zeta function)}
+
+\def\moi{Jean-Fran�ois~Burnol}
+
+\def\merci{L'auteur remercie le C.R.M. de Barcelone pour l'hospitalit� de son
+  accueil en mai 2011, lors d'un s�jour pendant lequel ce travail a �t� con�u
+  et r�dig�.}
+
+\def\courriel{burnol@math.univ-lille1.fr}
+
+\def\monadresse{Universit� Lille 1,  
+UFR de Math�matiques,
+Cit� Scientifique M2,
+F-59655 Villeneuve d'Ascq,
+France}
+
+\begin{resume}
+  Nous proposons deux types d'extensions aux th�or�mes de
+  Hamburger sur les s�ries de Dirichlet avec �quation
+  fonctionnelle comme celle de la fonction z�ta de Riemann,
+  sous des hypoth�ses plus faibles. Ceci repose sur le
+  dictionnaire entre les fonctions m�romorphes mod�r�es avec
+  cette �quation fonctionnelle et les distributions
+  temp�r�es avec la condition de support
+  $S$-�tendue.
+\end{resume}
+
+\begin{abstract}
+  We propose two types of extensions to Hamburger's theorems on the Dirichlet
+  series with functional equation like the one of the Riemann zeta function,
+  under weaker hypotheses. This builds upon the dictionary between the
+  moderate meromorphic functions with functional equation and the tempered
+  distributions with extended $S$-support condition.
+\end{abstract}
+
+\begin{clefs}
+  \noindent\textit{Keywords\string:} Riemann Zeta function, Dirichlet
+  series, Hamburger Theorem, functional equations, co-Poisson formula, Poisson
+  formula.
+  \par
+  \noindent\textit{MSC2000\string:} 11M06, 11F66.
+\end{clefs}
+
+\begin{center}
+  \def\baselinestretch{1}%
+    \Large\letitre\par\vskip18pt
+    \normalsize\moi\footnote{\texttt{\courriel}}\footnote{\merci}\par\vskip10pt
+    \footnotesize\itshape\centerline{\hss\mbox{\monadresse}\hss}\vskip18pt
+    \hrule\vskip12pt
+\pdfbookmark[2]{R�sum�}{resumei}%
+    \unvbox\boiteresume\par\vskip16pt
+\pdfbookmark[2]{Title and abstract}{resumeii}%
+    \large\normalfont\letitreanglais\par\vskip10pt
+    \unvbox\boiteabstract\par\vskip10pt
+    \unvbox\boiteclefs\par\vskip10pt
+    \hrule\vskip24pt
+\end{center}
+
+
+
+\section{Introduction et pr�sentation des r�sultats}
+
+Le Th�or�me de Hamburger \cite{hamb1} dit � peu pr�s que deux
+fonctions $f(s)$ et $g(s)$, m�romorphes dans le plan complexe, qui
+admettent chacune pour $\Re(s)\gg1$ une repr�sentation sous 
+forme de s�rie de Dirichlet $\sum_{n=1}^\infty a_n n^{-s}$, et
+sont reli�es par l'�quation fonctionnelle
+ \[ {\pi^{-\frac s2}\Gamma(\frac s2)} g(s) =
+{\pi^{-\frac{1-s}2}\Gamma(\frac{1-s}2)} f(1-s)\;, \] sont alors
+n�cessairement �gales � un multiple de la fonction z�ta de Riemann
+$\zeta(s)$. Ce r�sultat fameux illustre une certaine rigidit� de
+l'�quation fonctionnelle de la fonction z�ta. Notre but ici est,
+en utilisant quelques notions communes de la th�orie des
+distributions, de le reprouver sous des hypoth�ses nettement
+plus faibles que celles d'origine. En particulier nous
+n'aurons pas besoin de demander � $g$ d'admettre une repr�sentation
+en s�rie de Dirichlet, mais seulement de tendre rapidement vers
+une limite lorsque $\Re(s)\to\infty$. Et lorsque l'on supposera 
+seulement $g$ born�e dans un demi-plan alors $f$ sera n�cessairement
+une combinaison lin�aire finie de
+$\zeta(s)$, $\zeta(s+2)$, $\zeta(s+4)$, \dots{}~.
+
+
+L'article se veut accessible � tout lecteur disposant du bagage
+usuel de base de la th�orie des distributions: il faut y ajouter
+quelques �l�ments qui ont �t� d�velopp�s dans le chapitre IV de
+\cite{jfcopoisson}, chapitre qui peut �tre lu avec les m�mes
+pr�-requis: il y est construit une notion de �fonction m�romorphe
+mod�r�e avec �quation fonctionnelle� dont nous rappellerons les
+principaux �l�ments.
+
+
+Il est plus commode pour cet article de mettre l'�quation
+fonctionnelle de la fonction z�ta sous la forme $\zeta(s) =
+\chi(s) \zeta(1-s)$ avec
+\[ \chi(s) = \frac{\pi^{-\frac{1-s}2}\Gamma(\frac{1-s}2)}{\pi^{-\frac
+    s2}\Gamma(\frac s2)}\] La fonction m�romorphe $\chi(s)$ est � croissance
+au plus polynomiale dans toute bande verticale de largeur
+finie. Voici tout d'abord l'�nonc� originel d�montr� par Hamburger:
+
+\pdfbookmark[2]{Premier th�or�me de Hamburger}{hambi}
+
+\begin{theo*}[Hamburger, \cite{hamb1}]
+  Soit $f$ une fonction m�romorphe dans le plan complexe tout entier, et
+  d'ordre fini ($f$ est $\Oh(\cramped{e^{|s|^k}})$ avec un certain entier $k$
+  pour $|s|\to\nobreak\infty$, en particulier ne poss�de au plus qu'un nombre
+  fini de p�les). Si $f(s)$ est repr�sent�e pour $\Re(s)>\nobreak1$ par une
+  s�rie de Dirichlet $\sum_{n=1}^\infty {a_n}{n^{-s}}$ absolument
+  convergente, et si la fonction m�romorphe \[g(s) = \chi(s)f(1-s)\] admet
+  elle aussi, pour $\Re(s)\gg1$, une repr�sentation sous la
+  forme d'une s�rie de Dirichlet convergente $\sum_{n=1}^\infty
+  {b_n}{n^{-s}}$, alors $f$ est un multiple de la fonction z�ta. En
+  particulier si $f(s)$ est repr�sent�e pour $\Re(s)>\nobreak1$ par une s�rie
+  de Dirichlet absolument convergente $\sum_{n=1}^\infty {a_n}{n^{-s}}$ et
+  v�rifie l'�quation fonctionnelle
+ \[
+\pi^{-\frac
+    s2}\Gamma(\frac s2)f(s) = \pi^{-\frac{1-s}2}\Gamma(\frac{1-s}2) f(1-s)\;,
+\]
+alors elle est un multiple de la fonction z�ta de Riemann. 
+\end{theo*}
+
+�non�ons maintenant notre r�sultat principal:
+\begin{theo}\label{th:1}
+\addcontentsline{toc}{subsection}{\autoref{th:1}}
+%
+Soit $f(s) = \sum_{n=1}^\infty \frac{a_n}{n^s}$ une s�rie de Dirichlet qui
+converge pour $\Re(s)$ suffisamment grand. On suppose que:
+  \begin{enumerate}[\upshape(1)]
+  \item\label{cond:1} elle admet un prolongement m�romorphe au plan complexe
+    tout entier, avec un nombre fini de p�les,
+  \item\label{cond:2} dans toute bande verticale de largeur finie et pour tout $\epsilon>0$
+    on a $f(s) = \Oh(e^{\exp{\epsilon |s|}})$ lorsque $|\Im(s)|\to\infty$,
+  \item\label{cond:3} la fonction m�romorphe $g(s) = \chi(s) f(1-s)$ v�rifie
+\[ \exists N\in\NN, \exists y>\frac12, \qquad g(s) = \Oh(|s|^N y^{-s})\qquad
+\text{pour }\Re(s)\to+\infty\;.\]
+  \end{enumerate}
+Alors $f(s)$ est une somme finie:
+ \[f(s) = \sum_{k\in\ZZ} c_k \zeta(s-2k)\]
+\end{theo}
+
+
+Nous voyons que le \autoref{th:1} fait des hypoth�ses analytiques
+nettement plus faibles en ce qui concerne le comportement
+analytique de $f(s)$ et celui de $\chi(s)f(1-\nobreak s)$. La
+conclusion n'est plus, dans l'imm�diat,
+que $f$ est z�ta, mais il suffit d'�tre un peu plus exigeant envers la
+fonction $g$:
+
+\pdfbookmark[2]{Corollaires du \autoref{th:1}}{cor}%
+%
+\begin{cor1}
+  Avec les notations du \emph{\autoref{th:1}}, si \textup{(\ref{cond:1})},
+  \textup{(\ref{cond:2})}, et si
+  \begin{enumerate}[\upshape(1${}'$)] \setcounter{enumi}2
+  \item la fonction m�romorphe $g(s) = \chi(s) f(1-s)$ est born�e pour
+    $\Re(s)\gg 1$ ou m�me v�rifie seulement 
+\[ \exists y>\frac12\qquad g(s) \mathop{=}_{\Re(s)\to+\infty} \Oh(y^{-s})\;,\]
+ \end{enumerate}
+alors $f$ est une combinaison lin�aire finie de $\zeta(s)$, $\zeta(s+2)$,
+ ${\zeta(s+4)}$~\dots{}
+\end{cor1}
+%
+\begin{cor2}
+ Si \textup{(\ref{cond:1})}, \textup{(\ref{cond:2})}, \textup{(\ref{cond:3})},
+ et
+  \begin{enumerate}[\upshape(1)] \setcounter{enumi}3
+  \item\label{cond:4} il existe $c$ tel que pour sigma r�el tendant
+    vers $+\infty$ on a $g(\sigma) = c + \Oh(\sigma^{-k})$ pour tout
+    $k\in\NN$,
+ \end{enumerate}
+alors $f(s) = c\, \zeta(s)$.
+\end{cor2}
+
+
+Un deuxi�me th�or�me de Hamburger englobe son premier. Il demande toujours que
+$f(s)$ soit une s�rie de Dirichlet au sens strict, mais autorise $g(s)$ � �tre
+une s�rie de Dirichlet g�n�rale, c'est-�-dire de la forme
+$\sum_{n=1}^\infty \frac{b_n}{\lambda_n^s}$ avec $0<\lambda_n\to+\infty$.
+%
+\pdfbookmark[2]{Second th�or�me de Hamburger}{hambii}
+%
+\begin{theo*}[Hamburger, \cite{hamb2}]
+  Soit $f$ une fonction m�romorphe dans le plan complexe tout entier, d'ordre
+  fini, et �gale pour $\Re(s)>1$ � la somme d'une s�rie de Dirichlet
+  absolument convergente. Si la fonction \[g(s) = \chi(s)f(1-s)\] admet pour
+  $\Re(s)$ suffisamment grand une repr�sentation sous la forme d'une s�rie de
+  Dirichlet g�n�rale\footnote{On pourra toujours supposer que les entiers font
+    partie des $y_n$; mais on n'autorisera $b_n=0$ \emph{que} lorsque
+    $y_n\in \NN$.}
+  \[ g(s) = \sum_{n=1}^\infty \frac{b_n}{y_n^s},\quad \Re(s)\gg0,
+  0<y_n\to\infty, 0< y_1 < y_2 < \dots < y_k = 1 < \dots \] alors $y_{n+k} =
+  y_n+1$ pour tout $n\ge1$, avec $b_{n+k} = b_n$ et de plus, pour $1\le j < k$
+  on a les sym�tries $b_j = b_{k-j}$, $y_j+y_{k-j} = 1$. Ainsi, si tous les
+  $y_n$ sont $\ge1$, c'est que $k=1$ et que $f$ est un multiple de la fonction
+  z�ta. En g�n�ral on a
+\[ f(s) = \sum_{n=1}^\infty \frac{\sum_{1\le j \le k} b_j\cos(2\pi y_j
+  n)}{n^s},\qquad 0<y_1<\dots <y_k = 1\] 
+\end{theo*}
+
+Il subsiste dans cet �nonc� une certaine dissym�trie entre la
+s�rie $f(s)$ form�e avec des entiers et la s�rie $g(s)$. Nous
+ajouterons donc dans le pr�sent article � notre Th�or�me principal
+le suivant qui r�tablit la sym�trie entre $f$ et $g$:
+
+\begin{theo}\label{th:2}
+  \addcontentsline{toc}{subsection}{\autoref{th:2}} 
+%
+  Soit \[f(s) = \sum_{n=1}^\infty \frac{a_n}{x_n^s}\] une s�rie de Dirichlet
+  g�n�rale ($0 < x_n < \infty$, $x_n\to\infty$) qui converge pour $\Re(s)$
+  suffisamment grand. On suppose que:
+  \begin{enumerate}[\upshape(1)]
+  \item $f$ admet un prolongement m�romorphe au plan complexe tout entier,
+    avec un nombre fini de p�les,
+  \item dans toute bande verticale de largeur finie on a
+    $f(s) = \Oh(e^{\exp{\epsilon |s|}})$ pour tout $\epsilon>0$ lorsque
+    $|\Im(s)|\to\infty$,
+  \item la fonction m�romorphe $g(s) = \chi(s) f(1-s)$ est aussi, pour
+    $\Re(s)\gg0$ la somme d'une s�rie de Dirichlet g�n�rale $\sum_{n=1}^\infty
+    \frac{b_n}{y_n^s}$.
+  \end{enumerate}
+Alors les assertions suivantes sont �quivalentes:
+\begin{enumerate}[\upshape(i)]
+\item l'ensemble $\{x_n | a_n\neq 0\}$ est contenu dans un nombre fini de
+  progressions arithm�tiques de raison $1$,
+\item l'ensemble $\{y_n | b_n\neq 0\}$ est contenu dans un nombre fini de
+  progressions arithm�tiques de raison $1$,
+\item il existe un nombre fini de couples r�els $(d,e)$ tels que la s�rie
+  $f(s)$ soit de la forme:
+\[ f(s) = \sum  c(d,e) \Biggl(\smashoperator[r]{\sum_{\substack{x\equiv
+    d\bmod1\\x >0}}} \frac{\exp(2\pi i ex)}{x^s} + \smashoperator[r]{\sum_{\substack{x\equiv
+    -d\bmod1\\x >0}}} \frac{\exp(-2\pi i ex)}{x^s}\Biggr)\]
+\end{enumerate}
+\end{theo}
+
+Si l'on conna�t a priori le nombre $N$ de suites arithm�tiques n�cessaires pour
+$f$ alors on n'a plus besoin de supposer que $g$ soit aussi une s�rie
+de Dirichlet g�n�rale, il suffit d'en contr�ler le \og d�but\fg:
+
+\begin{theo}\label{th:3}
+  \addcontentsline{toc}{subsection}{\autoref{th:3}}
+%
+  Soit \[f(s) = \sum_{n=1}^\infty \frac{a_n}{x_n^s}\] une s�rie de Dirichlet
+  g�n�rale ($0 < x_n < \infty$, $x_n\to\infty$) qui converge pour $\Re(s)$
+  suffisamment grand. On suppose que:
+  \begin{enumerate}[\upshape(1)]
+  \item $f$ admet un prolongement m�romorphe au plan complexe tout entier,
+    avec un nombre fini de p�les,
+  \item dans toute bande verticale de largeur finie on a
+    $f(s) = \Oh(e^{\exp{\epsilon |s|}})$ pour tout $\epsilon>0$ lorsque
+    $|\Im(s)|\to\infty$,
+  \item l'ensemble $\{\pm x_n | a_n\neq0\}\subset \RR$ est contenu dans un
+    nombre fini 
+    $N$ de translat�s de $\ZZ$,
+\item il existe $Y>N$, ainsi que $(y_n,b_n)\in
+  \OO{0,+\infty}\times\CC$, $1\le n \le M$, tels que
+\[ g(s) \coloneqq \chi(s) f(1-s) \mathop{=}\limits_{\Re(s)\to+\infty}
+\sum_{1\le n\le M} b_n y_n^{-s} + \Oh(Y^{-s})\;.\] 
+  \end{enumerate}
+  Alors en fait $g$ est la somme d'une s�rie de Dirichlet g�n�rale et
+  conform�ment au th�or�me pr�c�dent il existe
+  une repr�sentation:
+\[ f(s) = \sum c(d,e) \Biggl(\smashoperator[r]{\sum_{\substack{x\equiv
+    d\bmod1\\x >0}}} \frac{\exp(2\pi i ex)}{x^s} + \smashoperator[r]{\sum_{\substack{x\equiv
+    -d\bmod1\\x >0}}} \frac{\exp(-2\pi i ex)}{x^s}\Biggr)\]
+\end{theo}
+
+\pdfbookmark[2]{Discussion}{discussion}
+
+Voici quelques r�f�rences, par n�cessit� tr�s br�ves, � la
+litt�rature.  Les r�sultats de Hamburger \cite{hamb1,hamb2,hamb3}
+(qui incluent aussi des �nonc�s semblables avec des �quations
+fonctionnelles form�es avec
+\smash{$\pi^{-\frac{s+1}2}\Gamma(\frac{s+1}2)$}) sont bien connus
+et ont eu une post�rit� riche et assez vari�e. En particulier les
+travaux de Hecke \cite{hecke} et de Weil \cite{weil}, sur le lien
+important avec l'invariance modulaire sur le demi-plan de
+Poincar�, et donc d'une mani�re g�n�rale avec les fonctions
+automorphes, ont eu une forte influence motivant l'�tablissement
+de �converse theorems� de plus en plus sophistiqu�s dans le cadre
+du programme de Langlands. �galement et de mani�re li�e, l'�tude
+des axiomes de Selberg est intimement concern�e par des th�or�mes
+inverses comme celui de Hamburger: ainsi Kaczorowski, Molteni et
+Perelli ont caract�ris� les conducteurs pour lesquels les
+fonctions de Dirichlet $L(s,\chi)$ sont les seules avec leur
+�quation fonctionnelle dans une certaine classe \cite{kmp}. Il
+s'agit l� de questions d'une nature infiniment plus arithm�tique
+que celles que nous examinerons ici-m�me, puisqu'il faut
+d�terminer les caract�res de Dirichlet partageant la m�me parit�
+et la m�me somme de Gauss. Molteni a obtenu dans \cite{molt1,
+  molt2} des r�sultats �tendant ceux de \cite{kmp} � une classe
+plus large de conducteurs.
+
+Pour en revenir au contexte originel, Hamburger avait d�j� insist�
+\cite{hamb4} sur la vari�t� des �critures �quivalentes de
+l'�quation fonctionnelle comme formule sommatoire.  On peut y voir
+comme une anticipation du point de vue des distributions, qui
+d�place la focalisation de la \og fonction test\fg{} vers la forme
+lin�aire sur ces fonctions tests (m�me si on doit garder pr�sent �
+l'esprit que ce n'est l� qu'une fa�on d'appr�hender la r�alit�
+d'une distribution). Ceci est dit uniquement dans la perspective
+de l'�quation fonctionnelle, car pour d'autres propri�t�s, on ne
+saurait pr�juger de ce qui s'av�rera plus ou moins utile. Par
+exemple chez Hamburger \cite{hamb4} et Siegel \cite{siegel}
+l'�quation fonctionnelle devient un d�veloppement en �l�ments
+simples d'une certaine transform�e de Laplace.
+
+Cette �criture fut g�n�ralis�e par Bochner et Chandrasekharan
+\cite{bc}; et par Chandrasekahran et Mandelbrojt \cite{cm1,
+  cm2}. On consid�re des s�ries de Dirichlet $\sum a_n
+\lambda_n^{-s}$ et $\sum b_n \mu_n^{-s}$ reli�es par des �quations
+fonctionnelles d'un certain type et on pose la question: �tant
+donn�s les $\lambda_n$ et les $\mu_n$ peut-on en fonction de leurs
+propri�t�s majorer la dimension de l'espace des choix possibles
+pour les $a_n$ et $b_n$?  Kahane et Mandelbrojt (\cite{km})
+interpr�tent l'�quation fonctionnelle comme une formule de
+transform�e de Fourier pour des distributions \og
+quasi-p�riodiques\fg. Ils prennent ensuite comme point de d�part
+une telle paire de Fourier, et prouvent dans ce contexte des
+�nonc�s sur le support et le spectre: pour certains de leurs
+r�sultats, ils reviennent � des fonctions analytiques, via une
+transform�e de Laplace-Carleman, pour d'autres ils mettent en plus
+� l'oeuvre des techniques de fonctions quasi-p�riodiques. Sous
+l'hypoth�se d'une densit� sup�rieure de r�partition finie pour les
+$\mu_n$, ils prouvent que les $\lambda_n$ sont combinaisons
+lin�aires � coefficients entiers d'un nombre fini de nombres r�els
+(ce qui g�n�ralise un r�sultat de \cite{cm1}). Ils ne s'attardent
+pas � consid�rer des supports limit�s d'embl�e � un nombre fini de
+suites arithm�tiques, cela ne serait chez eux qu'un exercice
+facile et imm�diat une fois dans le contexte des distributions,
+mais obtiennent des crit�res qui a posteriori donnent cette
+situation.\footnote{Chez nous, les suites arithm�tiques sont
+  restreintes � la raison $1$.}
+Lorsque les $\lambda_n$ sont a priori des entiers (ou plac�s sur un nombre
+fini de translat�s de $\ZZ$) la difficult� est  de faire
+la traduction vers les distributions: car apr�s il n'est m�me plus alors besoin
+d'outils avanc�s. 
+
+Apr�s tous les travaux cit�s, et d'autres encore certainement, il
+est donc devenu de plus en plus �bien connu� que l'�quation
+fonctionnelle traduit l'invariance de la distribution
+$\sum_{n\in\ZZ} \delta(x-n)$ sous la transformation de Fourier
+\footnote{La transformation de Fourier est d�finie ici avec le
+  noyau $\exp(2\pi i xy)$. Suivant que l'on �tudie l'�quation
+  fonctionnelle form�e avec $\Gamma(\frac s2)$ ou
+  $\Gamma(\frac{s+1}2)$ il faudra consid�rer des fonctions et
+  distributions paires ou impaires.}. Mais c'est avec l'id�e de
+co-Poisson \cite{jffourierzeta} que nous obtenons une vision plus
+compl�te de cette correspondance. C'est sur la base de l'id�e de
+co-Poisson que le chapitre IV de \cite{jfcopoisson} �tablit un
+dictionnaire (allant dans les deux sens) entre une certaine classe
+de fonctions m�romorphes et une certaine classe de distributions
+temp�r�es.
+
+%% Et en effet, les hypoth�ses faites dans la s�rie des travaux
+%% que nous avons bri�vement �voqu�s ont retir� de leur champ les
+%% combinaisons lin�aires de translat�es de la fonction z�ta
+%% figurant dans notre \autoref{th:1}; th�or�me qui appara�t
+%% pourtant comme une g�n�ralisation naturelle, et �l�mentaire, du
+%% premier r�sultat de Hamburger. Ne faisant d'hypoth�se de
+%% support discret au niveau de la distribution transform�e que
+%% localement, ou m�me pas du tout, les Th�or�mes \ref{th:1} et
+%% \ref{th:3} ne pouvaient pas appara�tre dans les travaux
+%% cit�s. Notre deuxi�me type de r�sultat, le \autoref{th:2},
+%% est trop �l�mentaire, une fois que l'on a fait la r�duction aux
+%% distributions, pour avoir �t� cit� explicitement dans ces
+%% travaux.
+
+Des questions fines (comme le r�sultat de Kahane-Mandelbrojt) apparaissent
+lorsque l'on veut �tudier en g�n�ral des mesures ou des distributions �
+support discret $D$ et dont la transform�e de Fourier $\cF(D)$ est encore �
+support discret\footnote{\emph{Cf.} \cite{cord} pour un r�sultat d'unicit�
+  dans $\RR^n$, lorsque l'on a deux mesures discr�tes positives dont l'une est
+  de la forme $\sum_k \delta_{x_k}$.}; l'objet du pr�sent travail n'est
+aucunement une telle �tude g�n�rale. Au contraire, nous b�n�ficierons (comme
+Hamburger) d�s notre point de d�part de la simplification �norme apport�e par
+l'hypoth�se que la distribution $D = \sum_{n\ge1} a_{n} (\delta_{x_n} +
+\delta_{-x_n})$ associ�e � la fonction analytique $f$ est une mesure support�e
+sur les entiers $\ZZ$ ou un nombre fini de ses translat�s. Mais le
+dictionnaire g�n�ral de \cite[Chap. IV]{jfcopoisson} nous donne les moyens
+d'affaiblir consid�rablement les hypoth�ses faites par Hamburger et d'en
+�tendre ses �nonc�s, et c'est l� tout l'objet de la pr�sente r�daction.
+
+
+
+
+\section{Preuves}
+
+\pdfbookmark[2]{Un dictionnaire et la preuve du \autoref{th:1}}{preuvei}
+
+
+Le chapitre IV de \cite{jfcopoisson} �tablit une correspondance g�n�rale via
+la transformation de Mellin \emph{droite} \og $\int_0^\infty D(x)
+x^{-s}\,dx$\fg{} entre des fonctions $f(s)$ avec un nombre fini de p�les dans
+tout le plan complexe et une certaine condition de croissance (pour tout
+demi-plan $\Re(s)>\sigma$ on a l'existence d'un entier $N$ et d'un r�el $A>0$
+avec, loin des p�les, $f(s) = O(|s|^N A^{\Re(s)})$, condition qui doit aussi
+�tre impos�e � $\chi(s) f(1-s)$), et, d'autre part, les distributions
+temp�r�es paires $D(x)$, nulles dans un voisinage de l'origine et dont la
+transform�e de Fourier $E(x)$ est, non pas forc�ment nulle (cela serait le cas
+si $f(s)$ et $\chi(s)f(1-s)$ n'avaient pas de p�les), mais
+\emph{quasi-homog�ne} dans un voisinage de l'origine.
+
+Une distribution $Q(x)$ est dite quasi-homog�ne si les $Q(tx)$, $t\neq 0$
+engendrent un espace vectoriel de dimension finie. Par exemple $\log|x|$ est
+quasi-homog�ne. Les distributions  \emph{homog�nes} sont essentiellement les
+$|x|^{w-1}$ (je ne m'occuperai que de distributions \emph{paires}), avec $w\in
+C$, � ceci pr�s que pour $w= 0$, $w=-2$, $w= -4$, \dots{}
+il faut en fait prendre $\delta(x)$, $\delta''(x)$,
+$\delta^{(4)}(x)$, \dots. Plus pr�cis�ment, soit:
+\[ Q_w(x) = \frac{|x|^{w-1}}{\pi^{-\frac w2}\Gamma(\frac w2)}\] Lorsque
+$0<\Re(w)$ cela d�finit directement une distribution homog�ne de $x$, et pour
+$\Re(w)\le 0$ on peut prouver que $Q_w$ se prolonge comme fonction analytique
+� valeurs dans les distributions (temp�r�es). On notera que la restriction de
+la distribution $Q_w$ � $x\neq 0$ est pr�cis�ment la fonction donn�e par la
+formule ci-dessus, donc identiquement z�ro si $\frac w2$ est un p�le de la
+fonction Gamma.\footnote{La fonction $1/|x|$ n'est pas une distribution mais
+  il y a une infinit� de distributions qui se restreignent sur $x\neq0$ �
+  cette fonction; parmi celles-ci il y a la transform�e de Fourier de
+  $-2\log|x|$.
+Ces distributions sont toutes
+  quasi-homog�nes, mais aucune n'est homog�ne, et la seule (� un multiple
+  pr�s) distribution avec l'homog�n�it� de $1/|x|$ c'est le Dirac �
+  l'origine. Par contre la fonction $1/x$ elle est une distribution homog�ne;
+  elle est impaire, et c'est la valeur principale de Cauchy.} On dispose de la
+formule utile $\cF(Q_w) = Q_{1-w}$, et par exemple $\cF(Q_0) = Q_1 = 1$ ce qui
+permet de voir $Q_0 = \delta$.
+
+Les homog�nes sont des vecteurs propres de la d�rivation $\frac{d}{dx} x$, et
+on peut aussi d�finir les quasi-homog�nes comme celles qui sont annul�es par
+des polyn�mes en cet op�rateur. Pour plus de d�tails, voir
+\cite[IV]{jfcopoisson}. 
+
+Rappelons aussi ce que l'on entend par $\int_0^\infty D(x) x^{-s}\,dx$,
+lorsque $D$ est une distribution temp�r�e paire. Nous ne faisons cette
+d�finition que lorsque $D$ restreinte � un intervalle $\OO{-a,a}$ est
+quasi-homog�ne.\footnote{Dans la vraie vie on a bien s�r besoin de calculer
+  des transform�es de Mellin plus g�n�rales, par exemple
+  \smash{$\int_0^\infty f(x) x^{-s}\,dx$} lorsque $f\in L^2(0,+\infty;dx)$
+  mais alors ce Mellin n'est ni moins ni mieux qu'une fonction de carr�
+  int�grable pour $\Re(s) = \frac12$. Si l'on veut de l'analyticit�, il se
+  trouve que la condition de support consid�r�e est la plus simple ayant d�j�
+  une utilit�. Le fait que la condition de support puisse faire bon m�nage
+  avec Fourier est d�j� en soi un fait remarquable. }  Il est important que
+les identit�s d'Euler $\sum_{n\in\ZZ} q^n = 0$ et $\int_0^\infty x^{s-1}dx =
+0$ indiquent que les transform�es de Mellin des distributions
+quasi-homog�nes sont identiquement nulles.  On commence donc par soustraire la
+partie quasi-homog�ne de $D$ (qui pour $x>0$ est une fonction analytique
+combinaison lin�aire d'expressions $(\log x)^N x^{w-1}$, $N\in\NN$, $w\in\CC\setminus(-2\NN)$;
+on fait la soustraction de cette expression analytique sur \emph{tout}
+l'intervalle $\OO{0,+\infty}$), donc on peut supposer $D$ nulle sur $\OO{0,a}$ (il
+peut rester des Dirac � l'origine, que l'on oublie). On peut alors �crire $D$
+pour $x>0$ comme la d�riv�e $N\ieme$ d'une fonction continue $C$ � croissance
+polynomiale, nulle sur $\OO{0,a}$, et on pose (\cite[4.11]{jfcopoisson}):
+\[ \widehat D(s) = s(s+1)\dots(s+N-1) \int_a^\infty C(x) x^{-s-N}\,dx,\qquad
+\Re(s)\gg0\] Toutes les formules raisonnables marchent avec cette
+d�finition. Par exemple (\cite[4.20]{jfcopoisson}) si $D$ est de la forme
+$\sum_n a_n (\delta(x - x_n) + \delta(x+x_n))$, $0<\nobreak x_1 < x_2 < \dots \to
+\infty$, $\sum_{x_n \le X} |a_n| =\Oh( X^A)$, $A<\infty$ alors $\widehat D(s)
+= \sum_{n\ge1} a_n x_n^{-s}$.
+
+\bigskip
+
+Venons-en � la d�monstration du \autoref{th:1}.
+Soit $D$ la distribution paire $\sum_{n\in Z} a_n \delta_n$ avec $a_0 = 0$ et
+$a_{-n} = a_n$. Comme la s�rie de Dirichlet converge quelque part les $a_n$
+ont croissance polynomiale et $D$ est une distribution temp�r�e. Et nous
+venons de pr�ciser que la s�rie de Dirichlet est aussi la transform�e de
+Mellin, en notre sens, de $D$.
+
+Ensuite, par hypoth�se $\chi(s) f(1-s)$ est pour $\Re(s) = \sigma$
+ � croissance polynomiale lorsque $\sigma\gg0$ donc $f(s) =
+\chi(s)\chi({1-s})f(s)$ est � croissance polynomiale sur toute droite
+$\Re(s) = -\sigma$ avec $\sigma\gg0$. Si on va
+suffisamment loin � droite $f(s)$ est born�e. Fixons donc deux telles droites
+verticales $\Re(s) = -\sigma$ et $\Re(s) = +\sigma$ avec $\sigma\gg0$. Entre les deux on a 
+l'hypoth�se a priori (modulo un nombre fini de p�les) d'une croissance en
+$\Oh(\exp( e^{\epsilon |s|}))$. Soit $P(s)$ un polyn�me correspondant aux
+p�les, prenons $A\gg0$ et $M$ entier suffisamment grand; le produit
+$P(s)f(s)/(s+A)^M$ tend vers z�ro sur chacune des deux droites $\Re(s) = \pm
+\sigma$ et est $\Oh(\exp( e^{\epsilon |s|}))$ entre, pour tout
+$\epsilon>0$. Par Phragm�n-Lindel�f $P(s)f(s)/(s+A)^M$ est born� dans cette bande, et
+$f$ y est � croissance polynomiale. Comme $f$ est donn�e par une s�rie de
+Dirichlet elle est born�e pour $\Re(s) \gg 0$, donc $f$ est � croissance
+polynomiale dans tout demi-plan droit. 
+
+La fonction $f(s)$ est donc une fonction m�romorphe \emph{mod�r�e} au sens de
+\cite[D�f. 4.27]{jfcopoisson}. Consid�rons la fonction $g(s) = \chi(s)
+f(1-s)$. Par ce qui a d�j� �t� �tabli pour $f$ elle est � croissance
+polynomiale dans toute bande verticale de largeur finie. Et par hypoth�se elle
+est $\Oh(|s|^N Y^{-s})$, pour $\Re(s)\ge \sigma_0$, lorsque $\sigma_0\gg 0$
+est bien choisi, avec $N$ entier et $Y>\frac12$. Les p�les de \smash{$g(s) =
+  \pi^{s-\frac12} \Gamma(\frac{1-s}2)\Gamma(\frac s2)^{-1} f(1-s)$}, mis �
+part ceux qui proviennent de $f$, ne peuvent �tre qu'en $1-s = 0$, $-2$, $-4$,
+\dots, mais comme il n'y en a pas pour $\Re(s)\gg 0$, c'est donc que $g$ n'a
+qu'un nombre fini de p�les dans tout le plan complexe. Soit $Q(s)$ un polyn�me
+correspondant � ces p�les, pour $\Re(s)\ge-\sigma_0$ la fonction analytique
+$Y^{s} Q(s)g(s)$ est � croissance polynomiale: car elle l'est d'une part pour
+$|\Re(s)|\le \sigma_0$ et d'autre part pour $\Re(s)>\sigma_0$. Et cela est
+vrai pour tout $\sigma_0$, donc $g$ est aussi une fonction \emph{mod�r�e} au
+sens de \cite{jfcopoisson}.
+
+Par \cite[Thm.{} 4.54]{jfcopoisson}: \emph{la distribution $D$ dont $f$ est la
+  transform�e de Mellin a une transformation de Fourier $E$ dont la
+  restriction a un certain intervalle $\OO{-Y_0,Y_0}$ est quasi-homog�ne; de
+  plus la transform�e de Mellin de la distribution temp�r�e paire $E$ est
+  �gale � $g(s) = \chi(s) f(1-s)$.}
+
+On dispose d'une information compl�mentaire importante \cite[Rem.{}
+4.29]{jfcopoisson}: notons $Q$ la composante quasi-homog�ne de $E$, et soit
+$E_1 = E - Q$, donc cet $E_1$ est identiquement nulle dans un certain
+intervalle $\OO{-Y_0,Y_0}$. Si on prend pour $Y_0$ le plus petit point positif du
+support de $E_1$ alors:
+\[ -\log Y_0 = \limsup_{\sigma\to+\infty} \frac1{\sigma}\log |g(\sigma)|\]
+Nous avons dans notre cas {\boldmath$Y_0 \ge Y >\frac12$}.
+
+
+Comme $D$ est une mesure support�e sur $\ZZ$ elle v�rifie l'�quation 
+\[ \exp(2\pi i x)D(x) = D(x)\]
+Donc, et cela sera fondamental �videmment:
+\[ E(x+1) = E(x)\quad\text{et ainsi } Q(x+1) - Q(x) = E_1(x) - E_1(x+1)\]
+
+La restriction de la partie quasi-homog�ne $Q$ � $x\neq 0$ est une certaine
+fonction $q(x)$. Cette fonction est paire. Pour $x>0$ elle est une expression
+finie de la forme $q(x) = \sum_{n,w} q_{n,w} (\log x)^n x^{w-1}$, en
+particulier elle est analytique sur $\CC\setminus\OF{-\infty,0}$ avec croissance
+polynomiale � l'infini. Regardons $\epsilon$ avec $0<\epsilon<\frac12$,
+$\frac12+\epsilon\le Y_0$. Sur $\frac12-\epsilon<x<\frac12+\epsilon$, $E_1(x)$
+comme $E_1(x-1)$ sont identiquement nuls, donc
+\[ \frac12-\epsilon<x<\frac12+\epsilon\implies q(x) = q(x-1) = q(1-x)\] La
+fonction $q$ est analytique sur $\CC\setminus \OF{\infty,0}$ et la
+fonction $q(1-x)$ est analytique sur $\CC\setminus
+\FO{1,+\infty}$. Ces deux fonctions co�ncident sur l'intervalle
+$\OO{\frac12-\epsilon,\frac12+\epsilon}$, \emph{donc $q$ est une fonction
+  enti�re.} Or elle est � croissance polynomiale. Donc $q$ est un polyn�me sur
+$x>0$. La conclusion est que $q(x) = P(|x|)$ avec $P$ un polyn�me qui v�rifie
+$P(x) = P(1-x)$.
+
+Consid�rons la fonction (continue) $1$-p�riodique $B(x)$ qui vaut $P(x)$ pour
+$0<x<1$. Nous avons $B(x) = q(x)$ pour $0<x<1$ puis, pour $-1<x<0$: $B(x) =
+B(x+1) = q(x+1) = q(x)$. Les polyn�mes de Bernoulli d'indices pairs $B_0 = 1$,
+$B_2 = x^2 - x + \frac16$, \dots{} forment une base de l'espace vectoriel des
+polyn�mes invariants par $x\mapsto 1-x$, et (� une constante multiplicative
+pr�s) la fonction $1$-p�riodique $B_{2n}(\{x\})$ (pour $n\ge1$) est la
+transform�e de Fourier de la distribution
+$\sum_{k\in\ZZ\setminus\{0\}} k^{-2n}\delta_k$. Ainsi, quitte � retirer de
+notre s�rie de Dirichlet d'origine une combinaison lin�aire finie de
+$\zeta(s+\nobreak2)$, $\zeta(s+4)$, \dots{} on peut faire en sorte que la
+fonction $1$-\nobreak p�riodique $B(x)$ soit r�duite � une constante. La
+transform�e de Fourier de $\sum_{k\neq 0} \delta_k$ est $\sum_{k\neq 0}
+\delta_k + \delta - 1$, et quitte � retirer en plus un multiple de $\zeta(s)$
+(� la serie de Dirichlet originellement consid�r�e) on peut r�duire $B(x)$ �
+la fonction nulle (au prix d'un Dirac � l'origine). Nous n'avons fait que
+modifier notre distribution $D$ en lui ajoutant une mesure support�e sur
+$\ZZ\setminus\{0\}$ donc elle reste une mesure support�e sur $\ZZ$ et sa
+transform�e de Fourier $E$ reste $1$-p�riodique et paire. Maintenant la
+restriction de $E$ � $\OO{0,\frac12+\epsilon}$ est identiquement nulle. Donc $E$
+restreinte � $\OO{-\frac12-\epsilon,\frac12+\epsilon}$ est une combinaison
+lin�aire finie de $\delta$, $\delta''$, \dots. Mais $E$ est $1$ p�riodique,
+donc en fait
+\[ E = P(\frac{d}{dx}) \sum_{k\in\ZZ} \delta_k(x)\] avec un polyn�me $P$
+pair. Ce qui signifie que $D$ qui est sa transform�e de Fourier est de la
+forme $R(x) \sum_{k\in\ZZ} \delta_k(x) = \sum_{k\in \ZZ} R(k)\delta_k(x)$ avec
+$R$ un certain polyn�me pair, qui doit en fait �tre nul � l'origine puisque
+notre $D$ est nulle sur $\OO{-1,1}$.
+Ainsi notre $f(s)$ du d�part a
+�t� r�duit � une combinaison lin�aire finie de $\zeta(s-2)$, $\zeta(s-4)$,
+\dots
+
+En conclusion, les hypoth�ses (1), (2), et (3) ont comme cons�quence que la
+s�rie de Dirichlet de d�part est une combinaison lin�aire finie $f(s) =
+\sum_{k\in\ZZ} c_k \zeta(s-2k)$ et le \autoref{th:1} est d�montr�.
+
+\pdfbookmark[2]{Preuve du premier corollaire}{preuvecori}
+
+
+Soit, pour $k\in \ZZ$, $f_k(s) = \zeta(s-2k)$ et $g_k(s) = \chi(s)
+f_k(1-s)$. Par la relation $\Gamma(s+1)  = s\Gamma(s)$ et l'�quation
+fonctionnelle on a:
+\begin{align*}
+  g_k(s) &= \frac{s(s+1)\dotsm (s+2k-1)}{(-4\pi^2)^k} \zeta(s+2k)\qquad
+  (k\ge0)\\
+  g_k(s) &= \frac{(-4\pi^2)^{-k}}{(s+2k)(s+2k+1)\dotsm (s-1)} \zeta(s+2k)
+  \qquad (k<0)
+\end{align*}
+Donc, pour tout $k$ donn�, et tout $\sigma\gg0$ on a $g_k(s) \asymp
+(-4\pi^2)^{-k} s^{2k}$ pour $\Re(s) = \sigma$, $|s|\to\infty$. Il en r�sulte
+qu'une combinaison lin�aire ne pourra �tre born�e, sur une droite quelconque
+prise suffisamment � droite, que si elle ne comporte que des $k\le0$. Ceci
+montre qu'en effet la condition (3${}'$) du Corollaire est �quivalente � ce
+que $f(s)$ soit une combinaison lin�aire des $\zeta(s-2k)$, $k\le 0$. 
+
+\pdfbookmark[2]{Preuve du second corollaire}{preuvecorii}
+
+Et comme $g_k(\sigma)\sim (-4\pi^2)^{-k} \sigma^{2k}$ pour $\sigma\to+\infty$,
+si on fait l'hypoth�se \ref{cond:4} qu'une combinaison lin�aire se rapproche
+d'une limite $c$ plus vite que tout polyn�me inverse ne se rapproche
+de z�ro, alors en particulier elle reste born�e lorsque $\sigma$ tend vers
+$+\infty$ par valeurs r�elles, ne peut comporter que des termes avec $k\le 0$,
+et finalement que le seul terme avec $k=0$. Ainsi $f = c\zeta$.
+
+
+\medskip
+
+\pdfbookmark[2]{Preuve du \autoref{th:2}}{preuveii}
+
+Nous d�butons maintenant les preuves des Th�or�mes \ref{th:2} et \ref{th:3}.
+Soit $D_0(x) = \sum_{p\in\ZZ} \delta(x-p)$ la distribution de Poisson, qui est
+sa propre transform�e de Fourier (\emph{cf.}
+\hyperref[annexe]{l'Annexe}). Consid�rons $\sum_{p\in\ZZ} e^{2\pi i (d+p)e}
+{\delta(x- d - p)} = e^{2\pi i ex} D_0(x-d)$. Sa transform�e de Fourier est
+$e^{2\pi i de} e^{2\pi i dx}D_0(x+\nobreak e)$. Nous d�finirons donc
+\[ D_{d,e}(x) = e^{-\pi i de}e^{2\pi i ex} D_0(x-d)\]
+de sorte que $\cF$ agit comme la rotation d'angle $\frac\pi2$ dans le plan des
+$(d,e)$:
+\[ \cF(D_{d,e}) = D_{-e,d}\;,\]
+Consid�rons  les distributions paires: $T_{d,e}(x) = \frac12
+D_{d,e}(x) + \frac12 D_{d,e}(-x)$.  Comme $D_{d,e}(-x) = D_{-d,-e}(x)$, on a $T_{d,e}
+= \frac12 D_{d,e} + \frac12 D_{-d,-e}$ et 
+sa transform�e de Fourier est:
+\[ \cF(T_{d,e}) = T_{-e,d}\]
+Compte tenu de
+$T_{d+1,e} = e^{-\pi ie}T_{d,e}$, $T_{d,e+1} = e^{\pi i d} T_{d,e}$ et de $T_{-d,-e} =
+T_{d,e}$, on peut toujours se ramener � $0<d\le 1$, $0<e\le1$, $0<d+e\le 1$,
+et, pour $d+e=1$, par exemple $\frac12\le d \le 1$.
+
+
+La transform�e de Mellin $f(s)$ de la distribution paire $T_{d,e}$ est donn�e
+par: 
+\[f(s) = \frac12 e^{-\pi i de} \sum_{x\equiv d\bmod 1,x>0} \frac{e^{2\pi i ex}}{x^{s}}
++  \frac12 e^{-\pi i de} \sum_{x\equiv -d\bmod 1,x>0} \frac{e^{-2\pi iex}}{x^{s}}\] La
+fonction $g(s) = \chi(s) f(1-s)$ est:
+\[ g(s) = \frac12 e^{\pi i de} \sum_{y\equiv e\bmod 1,y>0} \frac{e^{- 2\pi i
+    dy}}{y^{s}} +  \frac12 e^{\pi i de} \sum_{y\equiv -e\bmod 1,y>0} \frac{e^{2\pi i d
+    y}}{y^{s}}\] La fonction $\pi^{-\frac s2} \Gamma(\frac s2) f(s)$ a au plus
+des p�les en $0$ et $1$: d'apr�s \cite[Thm. 4.55]{jfcopoisson}, elle est
+enti�re lorsque $d$ et $e$ ne sont pas entiers; lorsque $d\in \ZZ$ et
+$e\notin\ZZ$, $\pi^{-\frac s2} \Gamma(\frac s2) f(s)$ poss�de un unique p�le,
+qui est en $s=0$ et le r�sidu est $-e^{-\pi i de}$; lorsque $d\notin\ZZ$ et
+$e\in\ZZ$, un unique p�le qui est en $s=1$ et de r�sidu $e^{\pi i de}$;
+lorsqu'� la fois $d$ et $e$ sont entiers, un p�le en $s=0$ de r�sidu
+$-(-1)^{de}$ et un p�le en $s=1$ de r�sidu $(-1)^{de}$.
+
+
+
+
+Comme pour le \autoref{th:1} les hypoth�ses faites dans les Th�or�mes
+\ref{th:2} ou \ref{th:3} assurent que $f$ et $g$ sont des fonctions mod�r�es,
+et donc transform�es de Mellin respectives de distributions paires $D$ et $E_1$ identiquement nulles dans un voisinage de l'origine, et telles que $E
+= \cF(D)$ ne diff�re de $E_1$ que par une distribution quasi-homog�ne (paire)
+$Q$. Pour le \autoref{th:2}, on a donc:
+\[ D = \sum_{n\ge1} a_{n} (\delta_{x_n} + \delta_{-x_n})\]
+\[ E = Q + \sum_{n\ge1} b_{n} (\delta_{y_n} + \delta_{-y_n})\] Supposons que
+l'on puisse trouver un nombre fini de suites arithm�tiques de raison $1$
+recouvrant le support de $D$ pour $x>0$. On a alors un nombre fini de nombres
+r�els $d_1$, \dots, $d_N$, distincts modulo $1$, obtenus comme les
+repr�sentants modulo $1$ dans $\OF{-\frac12,\frac12}$ de tous les $\pm
+x_n$, $n\ge1$ ($a_n\neq0$), et qui sont tels que le support de $D$ dans $\RR$
+est recouvert par les $d_j+\ZZ$. Les hypoth�ses ne font pas que les $d_j$
+soient parmi les $\pm x_n$ mais assurent que chaque $d_j$ est tel que soit
+$d_j+K$, soit $-d_j+K$ est un $x_n$ lorsque $K$ est suffisamment grand (et
+r�ciproquement pour $n$ avec $a_n\neq0$).
+
+Soit $\phi(x) = \prod_{1\le j\le N} (e^{2\pi i x} - e^{2\pi i
+    d_j}) = \sum_{k=0}^N c_k e^{2\pi i (N-k)x}$, $c_0 = 1$, $c_N = \pm1$. Comme $D$ est une mesure on a:
+  \begin{gather*}
+     \phi(x) D(x) = 0\qquad\text{et donc}\qquad 
+     E(x+N) + c_1 E(x+ N-1) + \dots + c_N E(x) = 0\;.
+  \end{gather*}
+Pour $x>0$ l'expression
+\[ Q(x+N) + c_1 Q(x+N-1) + \dots + c_N Q(x)\] est une fonction analytique
+(dans $\CC\setminus\OF{-\infty,0}$). Or elle a aussi, par l'�quation pour $E$,
+un support discret, et est par suite identiquement nulle. Et par cons�quent
+aussi \[ x>0\implies E_1(x+N) + c_1 E_1(x+ N-1) + \dots + c_N E_1(x) = 0\;.\]
+Montrons aussi au passage que $Q$ est (pour $x>0$) constante. Comme $|c_N| =
+1$, la formule de r�currence permet de voir que $Q$ est analytique dans
+$\CC\setminus\OF{-\infty,-1}$, puis dans $\CC\setminus\OF{-\infty,-2}$,
+\dots{} et donc que $Q$ est une fonction enti�re. Comme elle a a priori
+croissance polynomiale � l'infini, c'est qu'elle est un polyn�me. Le degr�
+d'un polyn�me $Q(x)$ ne change pas par son remplacement par $Q(x+1)- \omega
+Q(x)$, lorsque $\omega\neq1$, donc l'�quation pour $Q$ donne $Q=0$ si $0$
+n'est pas dans la liste des $d_j$, et se r�duit � $Q(x+1) - Q(x) = 0$ donc �
+$Q$ constante sinon. Ceci est valable pour $x>0$ et par parit� la distribution
+$Q$ est une constante sur $\RR\setminus\{0\}$.
+
+En ce qui concerne $E_1$, la formule montre que si $x>N$ appartient � son
+support alors il en est de m�me de l'un de $x-1$, $x-2$, \dots, $x-N$. Comme
+le support de $E_1$ est discret, cela prouve (comme affirm� dans l'�nonc�)
+qu'en effet il est contenu dans un nombre
+fini de suites arithm�tiques de raison $1$. 
+
+La situation est maintenant sym�trique entre $D$ et $E$ et compte tenu de ce
+que nous avons d�j� �tabli pour la restriction de $Q$ � $x\neq 0$, nous en
+d�duisons que $\cF(Q)$ est constant pour $x\neq0$ et donc au final que $Q$
+est de la forme $-\alpha + \beta \delta$. Quitte � remplacer $D$ par $D+\alpha
+\delta$ et $E$ par $E +\alpha$ on peut dor�navant supposer que $D$ comme $E$
+ont, au plus, chacun un Dirac � l'origine. Cette modification �ventuelle de
+$D$ (qui n'en est pas une de la s�rie de Dirichlet d'origine) peut nous
+amener � joindre $0$ � la liste des $d_j$ (et � remplacer $N$ par
+$N+1$). Dor�navant $E$ est une mesure paire, v�rifiant une r�currence
+\[ \prod_{j} (\tau - \exp(2\pi i d_j)) E = 0\qquad (\tau(E)(x) = E(x+1))\] et
+support�e sur un nombre fini de translat�s de $\ZZ$. Soient $e_1$, \dots,
+$e_M$ les repr�sentants dans $]-\frac12,+\frac12]$ de ce support de $E$ pris
+modulo $1$. On a:
+\[ E(x) = \sum_{1\le k\le M}\, \sum_{p\in\ZZ} c_k(p) \delta(x - e_k - p) \]
+Chacune des $M$ suites $(c_k(p))_{p\in\ZZ}$ doit v�rifier la r�currence
+lin�aire
+\[ \prod_{1\le j\le N} (\tau - \exp(2\pi i d_j)) c_k = 0\qquad (\tau(c_k)(p) =
+c_k(p+1))\] dont l'espace vectoriel des solutions est de dimension $N$ et
+engendr� par les fonctions lin�airement ind�pendantes $p\mapsto \exp(2\pi i
+d_j p)$, $1\le j \le N$. Cela prouve que $E$ est une combinaison lin�aire des
+$NM$ distributions $e^{2\pi i d_j x} D_0(x- e_k)$ consid�r�es pr�c�demment
+(avec $D_0$ la distribution de Poisson), $1\le j \le N$, $1\le k\le M$. Mais
+comme $E$ est une distribution paire elle est aussi combinaison lin�aire des
+parties paires de ces distributions, donc des $T_{e_k,d_j}$. Par cons�quent la
+distribution originale $D$ (incorporant, comme nous l'avons indiqu�, un
+certain multiple du Dirac � l'origine) est une combinaison lin�aire des
+$T_{-d_j,e_k}$, ou encore des $T_{d_j,e_k}$ puisque l'ensemble des $d_j$ est
+stable par passage � l'oppos� (sauf pour un �ventuel $\frac12$, mais $\frac12
+= -\frac12+1$ et $T_{d+1,e} = e^{-\pi i e}T_{d,e}$).
+Le \autoref{th:2} est  prouv�.
+
+\pdfbookmark[2]{Preuve du \autoref{th:3}}{preuveiii}
+
+Je passe maintenant � la preuve du \autoref{th:3}. En exploitant les
+hypoth�ses comme pr�c�demment nous avons ici une distribution temp�r�e paire
+$D = \sum_{n\ge1} a_n(\delta_{x_n} + \delta_{-x_n})$, dont le support est
+inclus (par hypoth�se) dans un nombre fini $N$ de translat�s de $\ZZ$, et la
+transform�e de Fourier $E$ est de la forme $Q + E_1$ avec $Q$ quasi-homog�ne,
+$E_1$ paire, �gale dans un certain intervalle ouvert $\OO{-Y_0,Y_0}$ ($Y_0>N$)
+� $\sum_{1\le n \le M} b_n(\delta_{y_n} + \delta_{-y_n})$. Comme pr�c�demment,
+par ce que nous savons du support de la mesure $D$ nous obtenons une certaine
+r�currence lin�aire $\prod_{1\le j \le N} (\tau - \exp(2\pi i d_j)) E =
+0$. Prenons $\epsilon>0$ avec $N+\epsilon < Y_0$ et de sorte que l'intervalle
+$]0,\epsilon[$ ne rencontre modulo $1$ aucun des $\pm y_n$, $1\le n \le
+M$. Sur cet intervalle $E_1(x)$, \dots, $E_1(x+N)$ sont identiquement nuls, et
+ainsi $\prod_{1\le j \le N} (\tau - \exp(2\pi i d_j)) Q = 0$. On peut donc
+exprimer $Q(x)$ en fonction de $Q(x+1)$, \dots, $Q(x+N)$, et par analyticit�
+cela restera valable pour $x = z \in \CC\setminus\OF{-\infty,0}$, puis permet
+d'�tendre le domaine d'analyticit� de $Q(z)$ � $\CC\setminus\OF{-\infty,-1}$,
+etc\dots{}, donc $Q(z)$ est une fonction enti�re et finalement un
+polyn�me. Pour les $\omega\neq1$ la transformation $P(x)\mapsto P(x+1)- \omega
+P(x)$ conserve le degr� des polyn�mes, donc notre polyn�me $Q(x)$ ou est
+directement vu comme �tant nul, ou v�rifie $Q(x+1) = Q(x)$ et est
+constant. Par parit� nous avons ainsi que la restriction de $Q$ � $x\neq0$ est
+une constante. Nous pouvons alors soustraire un Dirac � l'origine � $D$ afin
+de retirer cette constante � $E$, en maintenant la relation $\cF(D) = E$. La
+restriction de $E$ � $\OO{-\epsilon,+\epsilon}$ est paire et support�e �
+l'origine donc une combinaison de $\delta$, $\delta''$, \dots{}. Cependant $E$
+n'a en $1$, $2$, \dots, $N$ au plus que des Dirac, et c'est ainsi aussi le cas
+� l'origine, par la r�currence. La restriction de $E$ �
+$\OO{-\epsilon,N+\epsilon}$ est ainsi une somme d'un nombre fini de Dirac et
+par la relation de r�currence, il en r�sulte que $E$ est elle-m�me une mesure,
+au support discret inclus dans un nombre fini de suites arithm�tiques de raison
+$1$. � ce stade nous nous sommes ramen�s aux hypoth�ses du Th�or�me pr�c�dent.
+
+
+
+\section{Annexe:  preuve de l'identit� de Poisson distributionnelle}
+\label{annexe}
+
+Soit $D(x) = \sum_{n\in \ZZ} \delta(x-n)$ la distribution de Poisson, et $E$
+sa transform�e de Fourier, au sens des distributions temp�r�es. De $D(x+1) =
+D(x)$ il r�sulte $(e^{2\pi i x} - 1) E(x) = 0$ ce qui �tablit que $E$ est une
+mesure\footnote{puisque les seules distributions annul�es par $x$ sont le
+  Dirac et ses multiples!} support�e sur $\ZZ$. De $(e^{2\pi i x} - 1) D(x) =
+0$ il r�sulte que $E$ est $1$-p�riodique. Donc $E = cD$ pour une certaine
+constante $c$.
+
+Soit $f$ une fonction paire, infiniment d�rivable � support compact, positive,
+non identiquement nulle. Soit $k = f\mathbin{\mbox{\raisebox{-.25\height}{*}}}f + \cF(f)^2$. La fonction de Schwartz $k$
+est paire, positive, et sa propre transform�e de Fourier. Et $k(0)>0$. Donc
+$0 < (D,k) = (E,k)$ et $c=1$.
+
+\bigskip
+\clearpage
+
+\begin{thebibliography}{99}
+
+\addcontentsline{toc}{section}{R�f�rences}
+
+\bibitem{bc}{S.~Bochner, K.~Chandrasekharan} \emph{On Riemann's functional
+equation,}  Ann. of Math. (2) 63 (1956), 336-360
+
+\bibitem{jffourierzeta}{J.-F. Burnol} \emph{On Fourier and Zeta~({}'s),} Forum
+  Mathematicum 16 (2004), 789-840
+
+\bibitem{jfcopoisson}{J.-F. Burnol} \emph{Entrelacement de co-Poisson,} Annales de
+  l'Institut Fourier, 57 no. 2 (2007), 525-602
+
+\bibitem{cord}{A. C\'ordoba} 
+\emph{La formule sommatoire de Poisson,}
+C. R. Acad. Sci., S�r.~I Math. 306 (1988), no. 8, 373-376
+
+\bibitem{cm1}{K.~Chandrasekharan, S.~Mandelbrojt} \emph{On Riemann's functional
+equation,}  Ann. of Math. (2) 66 (1957), 285-296
+
+\bibitem{cm2}{K.~Chandrasekharan, S.~Mandelbrojt} \emph{On solutions of
+    Riemann's functional equation,} Bull. Amer. Math. Soc. 65 (1959), 358-362
+
+\selectlanguage{german}
+
+\bibitem{hamb1}{H. Hamburger} \emph{�ber die Riemannsche Funktionalgleichung
+    der $\zeta$-Funktion (erste mitt.),} Math. Z. 10 (1921), no. 3-4, 240-254
+
+\bibitem{hamb2}{H. Hamburger} \emph{�ber die Riemannsche Funktionalgleichung der
+  $\zeta$-Funktion (zweite mitt.),} Math. Z. 11 (1921), no. 3-4, 224-245
+
+\bibitem{hamb3}{H. Hamburger} \emph{�ber die Riemannsche Funktionalgleichung der
+  $\zeta$-Funktion (dritte mitt.),} Math. Z. 13 (1922), no. 1, 283-311
+
+\bibitem{hamb4}{H. Hamburger} \emph{�ber einige Beziehungen, die mit der
+  Funktionalgleichung der Riemannschen $\zeta$-Funktion �quivalent
+  sind,} Math. Ann. 85 (1922), no. 1, 129-140
+
+\bibitem{hecke}{E. Hecke} \emph{�ber die Bestimmung Dirichletscher Reihen durch
+ihre Funktionalgleichung,} Math. Ann. 112 (1936), no. 1, 664-699
+
+\selectlanguage{french}
+
+\bibitem{kmp}{J.~Kaczorowski, G.~Molteni, A.~Perelli} \emph{A converse theorem for
+Dirichlet $L$-functions,} Comment. Math. Helv. 85 (2010), no. 2, 463-483
+
+\bibitem{km}{J.-P. Kahane, S.~Mandelbrojt} \emph{Sur l'�quation fonctionnelle de
+Riemann et la formule sommatoire de Poisson,} Ann. Sci. �cole Norm. Sup. (3) 75
+(1958) 57-80
+
+\bibitem{molt1} G.~Molteni, \emph{Multiplicity results for the functional equation of the
+Dirichlet L-functions,} Acta Arith., 145 (1),  (2010), 43-70. 
+
+\bibitem{molt2} G.~Molteni, \emph{Multiplicity results for the
+functional equation of the Dirichlet L-functions: case p = 2,}
+Acta Arith., 145 (1), (2010) 71-81.
+
+\selectlanguage{german}
+
+\bibitem{siegel}{C. L. Siegel}
+\emph{Bemerkung zu einem Satz von Hamburger �ber die Funktionalgleichung der
+Riemannschen Zetafunktion,} 
+Math. Ann. 86 (1922), no. 3-4, 276-279
+
+\bibitem{weil}{A. Weil} \emph{�ber die Bestimmung Dirichletscher Reihen durch
+Funktionalgleichungen,} 
+Math. Ann. 168 (1967), 149-156
+
+\end{thebibliography}
+
+
+\end{document}

@@ -1,0 +1,106 @@
+{
+  "step": 240,
+  "orientation": "adequacy",
+  "target": "Hecke H2 source lower-frame + Plancherel tail",
+  "H2_specification": {
+    "name": "source lower-frame and Plancherel tail",
+    "source_ladder": "U: Y_H^- -> int_X^oplus Y_chi dmu(chi), F_n = U^* M_lambda_n U",
+    "lower_frame": "F_n >= Lambda_n (Theta0^-)^{-1} with Lambda_n -> infinity",
+    "fiber_form": "For each Hecke character chi, source zero-evaluator data must give a lower-frame bound on the adequate fiber sector.",
+    "tail_form": "Finite conductor/character windows must exhaust the completed response with a controlled vanishing Plancherel tail.",
+    "legality_requirements": [
+      "source family declared upstream",
+      "full character spectrum coverage",
+      "non-smuggled source strengths lambda_n(chi)",
+      "Lambda_n growth",
+      "tail/exhaustivity estimate",
+      "auxiliary explicit-formula records without auxiliary GRH"
+    ]
+  },
+  "inherited_records_audit": [
+    {
+      "record": "step 92 hecke_source_schema",
+      "finding": "Defines U, F_n, lower_bound, Lambda_n growth, and source/tail defects as formal source-ladder slots.",
+      "status": "framework slot declared; theorem not supplied"
+    },
+    {
+      "record": "step 92 source gate tables",
+      "finding": "Plancherel/exhaustivity is moving_window_support_only, full lower frame is no_budget_collapse if missing, source strengths are smuggled_if_target_selected if not upstream.",
+      "status": "H2 missing"
+    },
+    {
+      "record": "step 167 initial branches",
+      "finding": "H2 is source_lower_frame_plancherel_tail with status open_external_tail_and_lower_frame.",
+      "status": "open external"
+    },
+    {
+      "record": "step 172 external-content interface",
+      "finding": "Hecke_H1_H5 includes H2 source lower-frame and Plancherel tail as an external obligation.",
+      "status": "external requirement"
+    },
+    {
+      "record": "step 239",
+      "finding": "H1 remains blocked external, so H2 cannot be promoted through a completed direct-integral Schur carrier.",
+      "status": "H2 still independently auditable but not inherited"
+    }
+  ],
+  "no_go_check": [
+    {
+      "no_go": "auxiliary-GRH smuggling",
+      "status": "retained",
+      "impact": "H2 cannot use GRH for auxiliary L(s,chi) to certify source strength."
+    },
+    {
+      "no_go": "incomplete character spectrum support-only",
+      "status": "retained",
+      "impact": "Finite conductor or finite character windows require a tail theorem before promotion."
+    },
+    {
+      "no_go": "scalar L-identity is not carrier identity",
+      "status": "retained",
+      "impact": "The trivial Hecke fiber does not provide H2 for the completed Hecke carrier or the Burnol/Sonine carrier."
+    }
+  ],
+  "literature_audit": [
+    {
+      "source": "Plancherel/Pontryagin harmonic analysis",
+      "supplies": "abstract Fourier decomposition and Plancherel measure for locally compact abelian groups",
+      "gap": "does not supply source lower-frame growth or completed Hecke response tail"
+    },
+    {
+      "source": "Tate / Iwasawa-Tate",
+      "supplies": "adelic Hecke character Fourier analysis and Hecke L-function foundations",
+      "gap": "does not supply the framework H2 lower-frame plus tail theorem"
+    },
+    {
+      "source": "Iwaniec-Kowalski and large sieve literature",
+      "supplies": "large-sieve and average estimates for Dirichlet/Hecke families",
+      "gap": "mostly upper/average control; not the required non-smuggled lower frame with Lambda_n -> infinity"
+    },
+    {
+      "source": "Selberg orthogonality",
+      "supplies": "coefficient or family orthogonality principles",
+      "gap": "orthogonality is not Plancherel tail exhaustivity for the completed response"
+    },
+    {
+      "source": "Conrey-Iwaniec-Soundararajan Hecke family analysis",
+      "supplies": "family statistics and symmetry inputs",
+      "gap": "not an H2 source lower-frame theorem"
+    },
+    {
+      "source": "Bourgain-style density/subconvexity estimates",
+      "supplies": "analytic bounds in selected L-function or zeta settings",
+      "gap": "does not give the Hecke source lower-frame and tail closure"
+    }
+  ],
+  "hecke_H2_verdict": "V_hecke_H2_blocked_external",
+  "retained_nogos": [
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar L-identity is not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness"
+  ],
+  "final_verdict": "V_hecke_H2_blocked_external"
+}

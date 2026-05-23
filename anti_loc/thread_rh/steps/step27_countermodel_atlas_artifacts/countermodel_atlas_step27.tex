@@ -1,0 +1,260 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{countermodel}{Countermodel}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\ALCap}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\Kmat}{\mathsf K}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\psd}{\succeq}
+
+\title{Step 27: Countermodel and Matched-Control Atlas for Accepted Anti-Localization Test Families}
+\author{Six Birds Anti-Localization Program}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The previous steps established the static and predictive probe-family currency matrix
+\[
+  \Kmat_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*,
+  \qquad C_\Gamma=\Gamma^*C\Gamma,\quad L_\Gamma=L\Gamma,
+\]
+and the accepted test-family implication
+\[
+  \text{formed closure} + \text{accepted predictive test family}
+  \Longrightarrow
+  \text{no native predictive recombination needles}.
+\]
+This note proves that the gates in that accepted test-family judgment are not cosmetic.  For each gate we give a finite countermodel showing that if the gate is removed, a false anti-localization claim can be made.  Each countermodel is paired with a matched control that restores the missing gate and removes the failure.
+
+The slogan is:
+\[
+\boxed{\text{A true-looking scalar/current/route-local certificate is not an accepted family membrane.}}
+\]
+
+\section{Accepted test-family gates}
+\begin{definition}[Accepted anti-localization test family]
+A predictive anti-localization test family consists of finite data
+\[
+  (H_j,\Gamma_j,C_j,L_j,R_j,\Theta,\mathcal P,\mathcal A)_j
+\]
+with exact packaged carriers \(\Ran\Gamma_j\), audit forms \(C_j\), native probe families \(L_j\), response transports \(R_j\), and common budget \(\Theta\).  It is accepted only if the following gates are passed:
+\begin{enumerate}[label=G\arabic*.,leftmargin=2.2em]
+\item formed closure/layer scope;
+\item exact package, not fallback or proxy;
+\item null-mode legality;
+\item declared native probe family;
+\item recombination closure and matrix budget;
+\item route/protocol honesty;
+\item readout agreement between claimed equivalent protocols;
+\item predictive stability across refinement;
+\item lawful witness rather than public shadow;
+\item packaging order/confluence or explicit order record;
+\item no-smuggling/no-post-hoc selection;
+\item conditioning/control against branchwise cancellation.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[Necessity atlas]
+For each gate G0--G11 above, there is a finite-dimensional Hilbert package satisfying the surrounding algebraic identities but failing that gate, such that a scalar, diagonal, current-level, route-local, or public-shadow anti-localization claim appears to pass while the intended family-level predictive anti-localization claim is false, outside scope, or support-only.
+\end{theorem}
+
+\begin{proof}[Proof structure]
+The proof is by the countermodels below.  Each construction is finite-dimensional, hence domain issues do not obscure the gate being tested.  The matched controls show that the failure is caused by the named missing gate rather than by irrelevant dimension, norm, or probe conventions.
+\end{proof}
+
+\section{Countermodels}
+
+\begin{countermodel}[G0/G1: passive package without formed closure or exactness]
+Let
+\[
+  C_\varepsilon=\begin{pmatrix}\varepsilon&0\\0&1\end{pmatrix},
+  \qquad L=(1,0).
+\]
+Then \(C_\varepsilon\ge0\) and \(e^{-tC_\varepsilon}\) is passive, but
+\[
+  \Kmat=L C_\varepsilon^{-1}L^*=\varepsilon^{-1}.
+\]
+Thus positivity/passivity alone does not price a slow-mode probe.  A closure claim that does not forbid or charge the slow direction is outside the no-needle theorem.
+\end{countermodel}
+
+\begin{countermodel}[G2: null-mode legality]
+Let
+\[
+  C=\operatorname{diag}(0,1),\qquad L=(1,0).
+\]
+The probe sees a zero-energy direction.  Hence
+\[
+  \ALCap_C(L)=+\infty.
+\]
+Null modes must be quotiented or annihilated before an anti-localization claim is meaningful.
+\end{countermodel}
+
+\begin{countermodel}[G4: diagonal probe checks do not control recombination]
+Let \(H=\mathbb C\), \(C=1\), and
+\[
+  Lu=u(1,\ldots,1)\in\mathbb C^m.
+\]
+Then
+\[
+  \Kmat=LL^*=\mathbf 1\mathbf 1^*.
+\]
+Every coordinate probe has capacity one:
+\[
+  e_i^*\Kmat e_i=1,
+\]
+but the normalized all-ones recombination \(y=m^{-1/2}(1,\ldots,1)\) has
+\[
+  y^*\Kmat y=m.
+\]
+Therefore diagonal scalar bounds do not imply a family budget \(\Kmat\preceq I\).
+\end{countermodel}
+
+\begin{countermodel}[G5: protocol-local budgets do not control route-union recombinations]
+Let two protocols both read the same one-dimensional carrier:
+\[
+  \widetilde L^1u=u,
+  \qquad
+  \widetilde L^2u=u,
+  \qquad C=1.
+\]
+Each route has scalar budget one, but the stacked protocol family
+\[
+  \mathbb L u=(u,u)
+\]
+has
+\[
+  \mathbb K=\begin{pmatrix}1&1\\1&1\end{pmatrix},
+  \qquad \lambda_{\max}(\mathbb K)=2.
+\]
+A protocol-union claim therefore needs the block matrix budget, not only route-local diagonals.
+\end{countermodel}
+
+\begin{countermodel}[G6: readout disagreement blocks budget transfer]
+Let \(C=I_2\),
+\[
+  L^p=(1,0),\qquad L^q=(1,3).
+\]
+Then \(K^p=1\) but \(K^q=10\).  The disagreement defect is
+\[
+  D^{pq}=(L^q-L^p)C^{-1}(L^q-L^p)^*=9.
+\]
+The budget transfers from \(p\) to \(q\) only by paying this defect.  If the protocols are declared to have the same public readout without the defect, the claim is overread.
+\end{countermodel}
+
+\begin{countermodel}[G7: finite current budgets do not imply predictive budget]
+Let
+\[
+  K_j=\begin{pmatrix}1&0\\0&j\end{pmatrix}.
+\]
+Each finite stage has finite capacity, but
+\[
+  \sup_j \lambda_{\max}(K_j)=+\infty.
+\]
+Thus current-depth anti-localization is not predictive anti-localization.
+\end{countermodel}
+
+\begin{countermodel}[G8: public shadow versus lawful witness]
+Let
+\[
+  C=\operatorname{diag}(1,100),
+  \qquad g=e_1,
+  \qquad \Gamma=2^{-1/2}(1,1)^T.
+\]
+The compressed carrier capacity is
+\[
+  \ALCap_C(g;\Ran\Gamma)=
+  (\Gamma^*g)^*(\Gamma^*C\Gamma)^{-1}(\Gamma^*g)
+  ={1\over 101}.
+\]
+The public-shadow ambient Green value of the projected probe is
+\[
+  \langle P_\Gamma g,C^{-1}P_\Gamma g\rangle
+  ={1\over 4}\left(1+{1\over100}\right),
+\]
+which is larger by a factor about \(25.5\).  The ambient shadow is support evidence, not the lawful compressed witness unless a bridge proves equality.
+\end{countermodel}
+
+\begin{countermodel}[G9: noncommuting completions]
+Let \(P_1\) project onto \(e_1\) and \(P_2\) project onto \((e_1+e_2)/\sqrt2\).  Then
+\[
+  P_2P_1\ne P_1P_2.
+\]
+If two packaging completions do not commute, the resulting carrier and hence the capacity can depend on order.  A claim that omits the order or a confluence proof is not accepted.
+\end{countermodel}
+
+\begin{countermodel}[G10: post-hoc selector]
+Let a finite carrier \(M\) be given and choose \(\Phi\) by maximizing the downstream Schur margin
+\[
+  \alpha(\Phi;M)=\lambda_{\min}\bigl(A_\Phi^{-1/2}S_\Phi A_\Phi^{-1/2}\bigr).
+\]
+The resulting package may close \(S_6\), but the selection used the target predicate.  It is therefore support-only or smuggled unless the same selector is declared upstream without using \(S_6\).
+\end{countermodel}
+
+\begin{countermodel}[G11: branchwise delocalization plus ill conditioning creates a needle]
+Let
+\[
+  \psi_+=\sqrt{1-\varepsilon^2}\,e_1+\varepsilon e_2,
+  \qquad
+  \psi_- =\sqrt{1-\varepsilon^2}\,e_1-\varepsilon e_2.
+\]
+For the probe \(g=e_2\), each channel has tiny branchwise response \(\varepsilon^2\), but
+\[
+  \psi_+-\psi_-=2\varepsilon e_2
+\]
+spans the needle direction.  The exact span capacity of \(g\) is one, while the naive branchwise trace is \(2\varepsilon^2\).  The missing factor is the frame/conditioning defect.
+\end{countermodel}
+
+\section{Matched controls}
+Each countermodel should be paired with a matched control.  The control has the same dimension or comparable scope but restores the missing gate:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Failure & Matched control & Restored gate\\
+\midrule
+Slow mode & \(\varepsilon=1\) & no slow probe alignment\\
+Null mode & probe orthogonal to \(\Ker C\) & null legality\\
+All-ones recombination & orthogonal probe family, \(K=I\) & matrix budget\\
+Protocol duplicate & orthogonal route stack & protocol block budget\\
+Readout disagreement & \(L^q=L^p\) & zero readout defect\\
+Predictive growth & constant or summably perturbed \(K_j\) & predictive budget\\
+Public shadow & reducing subspace & bridge equality\\
+Noncommuting completion & commuting projections & confluence\\
+Post-hoc selector & upstream declared selector & no-smuggling\\
+Ill-conditioned branches & orthonormal channels & frame control\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Matched-control benchmark suite}
+The Marking--Erasure--Recombination benchmark family can be ported into anti-localization as follows:
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{Classical mixture:} orthogonal probes, \(K\) diagonal, no recombination growth.
+\item \textbf{Hidden memory without recombination:} labels exist but off-diagonal currency is zero.
+\item \textbf{Route-marked suppression:} route labels block mixed protocol probes.
+\item \textbf{Erasure-conditioned recovery:} removing route/marking data recovers the cancellation needle.
+\item \textbf{Cyclic-family generalization:} many branches produce a high-eigenvalue currency matrix despite bounded diagonals.
+\item \textbf{Dissipative washout:} transported currency defects are summable, hence predictive budget stays bounded.
+\item \textbf{Artifact controls:} zero-probe, no-probe, or identity controls should not show recombination growth.
+\end{enumerate}
+
+\section{Conclusion}
+The accepted test-family theorem is not overbuilt.  Its gates are forced by finite countermodels.  The correct anti-localization claim for formed closures is therefore:
+\[
+\boxed{\text{accepted predictive family budget on the lawful carrier} \Rightarrow \text{no native predictive recombination needles}.}
+\]
+Dropping any gate can convert a local, scalar, diagonal, public-shadow, or current-depth calculation into an overread.
+
+\end{document}

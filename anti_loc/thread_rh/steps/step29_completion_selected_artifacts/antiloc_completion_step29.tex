@@ -1,0 +1,330 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\D}{\mathsf D}
+\newcommand{\Sstate}{\mathsf S}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Pos}{\operatorname{Pos}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\pre}{\preceq}
+\newcommand{\suc}{\succeq}
+
+\title{Step 29: Closure Completion for Probe-Family Anti-Localization}
+\author{Working note}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+This note turns recombination witnesses into a completion calculus.  The guiding principle is:
+\[
+\text{detect a native witness}
+\quad\longrightarrow\quad
+\text{rewrite the family, carrier, budget, or status}
+\quad\longrightarrow\quad
+\text{retest.}
+\]
+The goal is not to claim that completion always terminates.  The honest statement is sharper:
+\begin{quote}
+Finite termination follows from an explicitly declared well-founded descent measure.  Without such a measure, monotone improvement can converge forever or cycle.
+\end{quote}
+This is the anti-localization analogue of critical-pair completion.  A formed layer has no native needles exactly when its native critical-pair witnesses are all resolved, priced, or lawfully excluded.
+
+\section{Anti-localization states and witnesses}
+
+\begin{definition}[Probe-family anti-localization state]
+A finite probe-family anti-localization state is a tuple
+\[
+\Sstate=(E,H,\Gamma,C,L,\Theta,\sigma),
+\]
+where $E$ is the coordinate space of the exact package, $\Gamma:E\to H$ is the package map, $C\suc0$ is the audit form on $H$, $L:H\to Y$ is the declared native probe-family readout, $\Theta\suc0$ is the declared family budget on $Y$, and $\sigma$ is a status/nonclaim record.  Put
+\[
+C_\Gamma=\Gamma^*C\Gamma,\qquad L_\Gamma=L\Gamma,
+\]
+and assume null-mode legality:
+\[
+L_\Gamma v=0\quad \text{for all }v\in\ker C_\Gamma.
+\]
+The currency matrix and defect matrix are
+\[
+\K(\Sstate)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*,
+\qquad
+\D(\Sstate)=\K(\Sstate)-\Theta.
+\]
+\end{definition}
+
+\begin{definition}[Native witness]
+A vector $y\in Y$ is a native anti-localization witness for $\Sstate$ if
+\[
+y^*\D(\Sstate)y>0.
+\]
+The state is witness-complete when no such $y$ exists, equivalently
+\[
+\K(\Sstate)\pre\Theta.
+\]
+\end{definition}
+
+\begin{proposition}[Witness completeness]
+For a finite state satisfying null-mode legality,
+\[
+\Sstate\text{ is witness-complete}
+\quad\Longleftrightarrow\quad
+\text{every native recombination is within budget.}
+\]
+More explicitly,
+\[
+\K\pre\Theta
+\quad\Longleftrightarrow\quad
+\operatorname{Cap}_C(y^*L;\Ran\Gamma)\le y^*\Theta y
+\quad\text{for all }y\in Y.
+\]
+\end{proposition}
+
+\begin{proof}
+By the probe-family currency theorem,
+\[
+\operatorname{Cap}_C(y^*L;\Ran\Gamma)=y^*\K y.
+\]
+The Loewner inequality $\K\pre\Theta$ is equivalent to $y^*(\K-\Theta)y\le0$ for all $y$.  This is exactly the stated family of recombination capacity inequalities.
+\end{proof}
+
+\section{Four lawful completion moves}
+
+A witness is not merely a counterexample.  In a formed closure it is an obligation.  A completion move is lawful only if it is recorded before the next accepted claim.  The four primitive moves below are the finite mathematical versions of the possible audit responses.
+
+\begin{definition}[Completion moves]
+Let $y$ be a witness for $\Sstate$.
+\begin{enumerate}[label=\textbf{M\arabic*.}]
+\item \textbf{Exclusion/nonclaim.}  Replace $Y$ by an audited subspace or quotient that removes $y$ from the native family, and record that the anti-localization claim no longer covers this recombination.  This does not prove the old claim; it narrows the claim.
+\item \textbf{Budget repair.}  Replace $\Theta$ by a larger budget $\Theta'\suc\Theta$ with $y^*(\Theta'-\Theta)y\ge y^*(\K-\Theta)y$.  This prices the witness by weakening the budget.
+\item \textbf{Audit/carrier repair.}  Replace $C_\Gamma$ by $C_\Gamma'\suc C_\Gamma$ or otherwise rewrite the exact carrier so that the witness capacity drops.  This is claim-strengthening only if the rewrite is lawful and the target budget is preserved.
+\item \textbf{Package/family completion.}  Add missing recombinations, protocols, or predictive transports to the declared family and retest the full block matrix.  This prevents branchwise or route-local overreads.
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}[Monotonicity under audit strengthening]
+If $C_\Gamma'\suc C_\Gamma\suc0$ and both states have the same null-legal probe family, then
+\[
+L_\Gamma (C_\Gamma')^\dagger L_\Gamma^*\pre L_\Gamma C_\Gamma^\dagger L_\Gamma^*
+\]
+on the common legal response space.
+\end{lemma}
+
+\begin{proof}
+On the quotient by the common nullspace, $C_\Gamma$ and $C_\Gamma'$ are positive definite.  The order-reversal of inversion gives $(C_\Gamma')^{-1}\pre C_\Gamma^{-1}$.  Conjugating by $L_\Gamma$ gives the result.  The general semidefinite case follows by applying this argument on the legal quotient.
+\end{proof}
+
+\begin{proposition}[Trivial budget completion]
+Every finite state admits a one-step witness-complete budget repair:
+\[
+\Theta' = \Theta + (\K-\Theta)_+,
+\]
+where $(\cdot)_+$ is the positive spectral part.  Then
+\[
+\K\pre\Theta'.
+\]
+\end{proposition}
+
+\begin{proof}
+Let $\D=\K-\Theta$ and write its spectral decomposition as $\D=\D_+-\D_-$ with $\D_+,\D_-\suc0$ and orthogonal supports.  Then
+\[
+\K-\Theta'=\D-\D_+=-\D_-\pre0.
+\]
+\end{proof}
+
+\begin{remark}
+This theorem is useful because it distinguishes weak completion from strong anti-localization.  Raising the budget always terminates, but it weakens the layer claim.  The nontrivial problem is fixed-budget or budget-controlled completion by lawful carrier/package rewrite.
+\end{remark}
+
+\section{Completion systems and termination}
+
+\begin{definition}[Anti-localization completion system]
+An anti-localization completion system is a relation
+\[
+\Sstate\leadsto \Sstate'
+\]
+generated by the four completion moves above, together with a status update map.  It is accepted relative to a target budget $\Theta_*$ if terminal accepted states satisfy
+\[
+\K(\Sstate)\pre\Theta_*.
+\]
+\end{definition}
+
+\begin{definition}[Descent measure]
+A descent measure is a map
+\[
+\mu:\{	ext{states}\}\to(W,<)
+\]
+into a well-founded ordered set such that every non-terminal strict completion move satisfies
+\[
+\Sstate\leadsto\Sstate'
+\quad\Longrightarrow\quad
+\mu(\Sstate')<\mu(\Sstate).
+\]
+\end{definition}
+
+\begin{theorem}[Finite termination under well-founded descent]
+If an anti-localization completion system has a descent measure into a well-founded order, then every completion chain terminates after finitely many strict moves.
+\end{theorem}
+
+\begin{proof}
+An infinite strict completion chain would give an infinite descending sequence
+\[
+\mu(\Sstate_0)>\mu(\Sstate_1)>\mu(\Sstate_2)>\cdots,
+\]
+contradicting well-foundedness.
+\end{proof}
+
+\begin{corollary}[Soundness of terminating completion]
+If a terminating completion chain ends in an accepted witness-complete state and no unresolved witness is excluded without a nonclaim record, then the final formed closure has no native recombination needles relative to its final budget.
+\end{corollary}
+
+\begin{proof}
+The terminal state is accepted and witness-complete, hence $\K\pre\Theta$ by Proposition 2.3.  Every excluded recombination is outside the claim by the nonclaim record.  Therefore every recombination still native to the final claim is within budget.
+\end{proof}
+
+\section{No general termination without strict descent}
+
+\begin{example}[Convergent but non-terminating completion]
+Let $Y=\mathbb C$, $\Theta=1$, and define a sequence of states with
+\[
+\K_n=1+\frac1n.
+\]
+Let the rewrite rule be $n\mapsto n+1$.  Then the defect
+\[
+\lambda_{\max}(\K_n-\Theta)=\frac1n
+\]
+monotonically decreases to $0$, but no finite state is witness-complete.  Thus monotone improvement in a real-valued defect is not enough for finite termination.
+\end{example}
+
+\begin{example}[Two-witness cycle]
+Let
+\[
+\D_A=\begin{pmatrix}1&0\\0&-1\end{pmatrix},
+\qquad
+\D_B=\begin{pmatrix}-1&0\\0&1\end{pmatrix}.
+\]
+A rewrite rule that repairs the current positive direction while reopening the other direction cycles:
+\[
+\D_A\leadsto \D_B\leadsto \D_A.
+\]
+Both states have a witness, and no termination occurs.  A route-union or family-block audit would detect that the union defect is unresolved.
+\end{example}
+
+\begin{theorem}[No termination theorem from monotonicity alone]
+There is no theorem of the form
+\[
+\text{defect decreases weakly at each completion step}
+\quad\Longrightarrow\quad
+\text{finite witness completion}.
+\]
+\end{theorem}
+
+\begin{proof}
+The convergent example has strictly decreasing positive defects $1/n$ but never reaches zero.  The cycle example has non-increasing defect size after suitable normalization but never reaches a terminal state.  Therefore weak monotonicity, or even strict real-valued convergence to zero, does not imply finite completion.
+\end{proof}
+
+\section{Local confluence and normal forms}
+
+The completion calculus may be order-dependent.  A Newman's-lemma style statement gives the honest condition under which order is irrelevant.
+
+\begin{definition}[Joinability and local confluence]
+Two one-step completions
+\[
+\Sstate\leadsto \Sstate_1,
+\qquad
+\Sstate\leadsto \Sstate_2
+\]
+are joinable if there exists $\Sstate_3$ such that
+\[
+\Sstate_1\leadsto^*\Sstate_3,
+\qquad
+\Sstate_2\leadsto^*\Sstate_3.
+\]
+The completion system is locally confluent if every such one-step pair is joinable.
+\end{definition}
+
+\begin{theorem}[Termination plus local confluence gives unique normal form]
+For a terminating anti-localization completion system, local confluence implies that all maximal completion sequences from a state terminate in equivalent normal forms.
+\end{theorem}
+
+\begin{proof}
+This is Newman's lemma applied to the abstract rewrite relation $\leadsto$.  Termination gives well-founded induction on states.  Local confluence lets any two first steps be joined; the induction hypothesis joins the remaining tails.  Hence the rewrite relation is confluent, and terminal normal forms are unique up to the declared equivalence.
+\end{proof}
+
+\begin{remark}
+This theorem is not a proof that Reflexive SBT completion terminates.  It identifies the two obligations: a well-founded strict-extension measure and local joinability of critical-pair repairs.
+\end{remark}
+
+\section{A concrete carrier-repair formula}
+
+For fixed package and full-rank $C_\Gamma$, one can see how an audit rewrite changes the price matrix.
+
+\begin{lemma}[Rank-one audit update]
+Let $C' = C + \mu rr^*$ with $\mu>0$ and $C>0$.  Then
+\[
+L(C')^{-1}L^*
+=
+LC^{-1}L^*
+-
+\frac{\mu\,LC^{-1}r\,r^*C^{-1}L^*}{1+\mu r^*C^{-1}r}.
+\]
+In particular the update subtracts a positive semidefinite matrix from the currency matrix.
+\end{lemma}
+
+\begin{proof}
+This is the Sherman--Morrison formula
+\[
+(C+\mu rr^*)^{-1}=C^{-1}-\frac{\mu C^{-1}rr^*C^{-1}}{1+\mu r^*C^{-1}r}
+\]
+conjugated by $L$.
+\end{proof}
+
+\begin{corollary}[Targeted witness repair]
+If $y$ is a witness and $y^*LC^{-1}r\ne0$, then increasing $\mu$ decreases the witnessed value $y^*\K y$.  If $r$ is chosen so that $LC^{-1}r$ aligns with the top positive eigendirection of $\D$, the rank-one update reduces the largest defect to first order.
+\end{corollary}
+
+\begin{remark}
+This is a local repair mechanism, not a global completion theorem.  A rank-one repair may open another witness direction.  Therefore the completion calculus must retest the full family block after each rewrite.
+\end{remark}
+
+\section{Closure-only interpretation}
+
+The completion theorem is scoped to formed closures.  A non-closed artifact may contain witnesses, cycles, non-summable predictive defects, or unstable routes; this does not refute anti-localization.  It means the artifact has not earned the layer claim.  In this sense:
+\[
+\text{closure completion} = \text{resolution of all native anti-loc critical pairs.}
+\]
+A formed layer is witness-complete only when every native recombination is priced, resolved by a lawful carrier/package rewrite, or excluded with an explicit nonclaim record.
+
+\section{Implications for the manuscript}
+
+The previous theorem stack defined scalar capacity, family currency matrices, predictive families, admissible test-family gates, and critical-pair witnesses.  The present note adds the completion layer:
+\[
+\text{family currency}
+\to
+\text{witness detection}
+\to
+\text{lawful completion moves}
+\to
+\text{termination/confluence obligations}.
+\]
+This makes the anti-localization theorem closer to the Six Birds reading: anti-loc is not merely a bounded number; it is a closure-completion state of a formed layer.
+
+\end{document}

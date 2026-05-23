@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+
+\title{Step 148: Source-Compatible Weight Normalization Audit}
+\author{RATCHET / RH Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 146 replaced the unweighted residual zero ledger by a positive weighted trace-class ledger
+\[
+K_R^\omega=(D_R^\omega)^*D_R^\omega,
+\qquad
+(D_R^\omega h)_{\rho,k}=\sqrt{\omega_{\rho,k}}\,q(\rho)\,\langle h,\Pi_RY^a_{\rho,k}\rangle,
+\]
+where
+\[
+q(\rho)=\Re\rho-\frac12.
+\]
+Step 147 supplied an envelope-normalized weight schedule making \(K_R^\omega\) trace-class while preserving separation, because all weights remain strictly positive.
+
+Step 148 audits the missing compatibility condition from Step 144:
+\[
+\boxed{
+C_{\rm src}^{\omega}:=\\sup_N\operatorname{tr}(F_N^\Omega K_R^\omega)<\infty.
+}
+\]
+Here \(F_N^\Omega\) is the cumulative \(\Omega\)-compatible restricted source frame and is supposed to satisfy a lower-frame inequality
+\[
+\boxed{
+F_N^\Omega\succeq \Lambda_N^\Omega G_R,
+\qquad
+\Lambda_N^\Omega\to\infty.
+}
+\]
+
+\section{Main warning: cumulative source budget is incompatible with nonzero residual mass}
+
+\begin{theorem}[Raw cumulative source-budget no-go]
+Let \(G_R\succeq0\), \(K_R^\omega\succeq0\), and suppose
+\[
+F_N^\Omega\succeq \Lambda_N^\Omega G_R,
+\qquad
+\Lambda_N^\Omega\to\infty.
+\]
+If
+\[
+m_\omega:=\operatorname{tr}(G_RK_R^\omega)>0,
+\]
+then
+\[
+\operatorname{tr}(F_N^\Omega K_R^\omega)
+\ge
+\Lambda_N^\Omega m_\omega
+\to\infty.
+\]
+Consequently,
+\[
+\boxed{
+\sup_N\operatorname{tr}(F_N^\Omega K_R^\omega)<\infty
+\quad\Longrightarrow\quad
+\operatorname{tr}(G_RK_R^\omega)=0.
+}
+\]
+If the weighted ledger is separating on the visible residual zero directions, this implication is already the residual-zero conclusion.
+\end{theorem}
+
+\begin{proof}
+Since \(F_N^\Omega-\Lambda_N^\Omega G_R\succeq0\) and \(K_R^\omega\succeq0\) is trace-class, monotonicity of the trace pairing gives
+\[
+\operatorname{tr}(F_N^\Omega K_R^\omega)
+\ge
+\Lambda_N^\Omega\operatorname{tr}(G_RK_R^\omega).
+\]
+If \(m_\omega>0\) and \(\Lambda_N^\Omega\to\infty\), the right hand side diverges. The contrapositive proves the assertion.
+\end{proof}
+
+\section{Interpretation}
+The bounded source-budget condition cannot be closed by merely choosing faster-decaying fixed positive weights while keeping the same cumulative source frame. If \(K_R^\omega\) has any positive residual mass in the \(G_R\)-metric, the cumulative lower frame forces
+\[
+\operatorname{tr}(F_N^\Omega K_R^\omega)\to\infty.
+\]
+Thus the condition
+\[
+\sup_N\operatorname{tr}(F_N^\Omega K_R^\omega)<\infty
+\]
+is not a harmless normalization gate. It is a contradiction/source-work record: paired with the lower-frame theorem, it already forces the completed residual ledger to vanish.
+
+\section{Normalized audit frames are useful but do not squeeze}
+Define a normalized source audit frame
+\[
+A_N^\Omega:=\frac{1}{1+\Lambda_N^\Omega}F_N^\Omega.
+\]
+Then
+\[
+A_N^\Omega\succeq \frac{\Lambda_N^\Omega}{1+\Lambda_N^\Omega}G_R.
+\]
+A bounded trace condition
+\[
+\sup_N\operatorname{tr}(A_N^\Omega K_R^\omega)<\infty
+\]
+can often be made compatible with trace-class weights, but it no longer implies residual collapse. It only supplies boundedness of the normalized audit.
+
+So the route separates two roles:
+\[
+\boxed{
+F_N^\Omega\text{ cumulative forcing frame: gives divergence/zero-squeeze if budget is bounded.}
+}
+\]
+\[
+\boxed{
+A_N^\Omega\text{ normalized audit frame: compatible with weights but does not by itself collapse residual mass.}
+}
+\]
+
+\section{A lawful shell-weight construction for bounded audit families}
+Let \(\mathcal A_N\succeq0\) be a declared bounded audit family, not the cumulative forcing frame. For dyadic zero-height shells
+\[
+\mathcal Z_j=\{(\rho,k):2^j\le 1+|\Im\rho|<2^{j+1}\},
+\]
+set
+\[
+n_j=\#\mathcal Z_j,
+\quad
+E_j=\sup_{(\rho,k)\in\mathcal Z_j}\|\Pi_RY^a_{\rho,k}\|^2,
+\quad
+S_j=\sup_N\sup_{(\rho,k)\in\mathcal Z_j}\langle \mathcal A_N\Pi_RY^a_{\rho,k},\Pi_RY^a_{\rho,k}\rangle.
+\]
+If \(E_j,S_j<\infty\), define
+\[
+\boxed{
+\omega^{\rm src}_{\rho,k}
+=
+\frac{2^{-j}}{(1+n_j)(1+E_j)(1+S_j)}
+\qquad ((\rho,k)\in\mathcal Z_j).
+}
+\]
+Then the weighted ledger is trace-class and source-audit compatible:
+\[
+\operatorname{tr}K_R^{\omega^{\rm src}}<\infty,
+\qquad
+\sup_N\operatorname{tr}(\mathcal A_NK_R^{\omega^{\rm src}})<\infty.
+\]
+This theorem is valid for normalized or auxiliary audit families. It does not repair the raw cumulative source-budget no-go, because for \(\mathcal A_N=F_N^\Omega\) the shell envelope \(S_j\) is infinite whenever the residual evaluator is nonzero and \(\Lambda_N^\Omega\to\infty\).
+
+\section{Repaired status of the Step 144 squeeze}
+The completed residual squeeze is valid in the following form.
+
+\begin{theorem}[Completed residual squeeze with explicit source-work record]
+Assume:
+\begin{enumerate}[label=(\roman*)]
+\item \(F_N^\Omega\succeq \Lambda_N^\Omega G_R\), with \(\Lambda_N^\Omega\to\infty\);
+\item finite-window promotion has a trace-class completed tail;
+\item an independent source-work identity or inequality gives
+\[
+\sup_N\operatorname{tr}(F_N^\Omega K_R^\omega)<\infty.
+\]
+\end{enumerate}
+Then
+\[
+\operatorname{tr}(G_RK_R^\omega)=0.
+\]
+If \(K_R^\omega\) is separating on visible residual zero directions, the visible residual off-critical ledger vanishes.
+\end{theorem}
+
+\section{Nonclaim boundary}
+Step 148 does not prove the independent source-work record. It shows that the record is load-bearing and cannot be replaced by weight normalization. Any proof of
+\[
+\sup_N\operatorname{tr}(F_N^\Omega K_R^\omega)<\infty
+\]
+for the cumulative source frame is already a decisive residual-collapse theorem.
+
+\section{Next target}
+The next step is to seek a genuine source-work identity or to replace the source-budget formulation by a non-circular contradiction record. The candidate next statement is:
+\[
+\boxed{\text{Step 149: source-work identity / contradiction record for the restricted BPRZ frame.}}
+\]
+
+\end{document}

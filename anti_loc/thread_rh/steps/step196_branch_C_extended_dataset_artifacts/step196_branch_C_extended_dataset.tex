@@ -1,0 +1,129 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs,geometry}
+\geometry{margin=1in}
+
+\title{Step 196: Extended Branch C Matrix-Element Dataset}
+\author{six-birds-foundations-iii}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Target}
+
+This step extends the Branch C foreclosure dataset from Steps 175--176.  The tested matrix element is
+\[
+  L_{\rho,k}(G)=\langle M_\zeta G,\mathsf P_\infty y_{\rho,k}\rangle.
+\]
+For \(k=0\), using the Step 173 operational identity and the Step 174 symbolic formula, the value is evaluated as
+\[
+  L_{\rho,0}(G)
+   =
+   \zeta(\rho)G(\rho)-I_{\mathrm{sinc}}(\rho;G)
+   -\sum_{n=0}^{N-1}\Psi_n^\lambda(\rho)J_n(G).
+\]
+At zeta zeros the first term is numerically negligible, giving the Step 175/176 convention
+\[
+  L_{\rho,0}(G)
+   =
+   -I_{\mathrm{sinc}}(\rho;G)
+   -\sum_{n=0}^{N-1}\Psi_n^\lambda(\rho)J_n(G).
+\]
+The \(k=1\) values in this step are diagnostic central finite differences of the already projected value:
+\[
+  L_{\rho,1}(G)
+   \approx
+   -i\frac{P_{\infty}M_\zeta G(1/2+i(\gamma+h/2))
+           -P_{\infty}M_\zeta G(1/2+i(\gamma-h/2))}{h},
+   \qquad h=0.02.
+\]
+
+\section*{Numerical Setup}
+
+The computation preserves the Step 175/176 normalization:
+\[
+  \lambda=1,\qquad U=200,\qquad \Delta u=0.05.
+\]
+The zeta values are computed with \texttt{mpmath} at 50 decimal digits.  Mellin transforms of the compact bump generators are evaluated by Gauss--Legendre quadrature.  The prolate terms are approximated by diagonalizing the sinc kernel on \([-1,1]\), with primary size \(320\) and an alternate size \(240\) used in the error estimate.
+
+\section*{Legal Burnol Generators}
+
+Each generator has the form
+\[
+  g(t)=b_1(t)-\alpha b_2(t)+\beta_3 b_3(t),\qquad
+  b_j(t)=\exp\!\left(-\frac{1}{1-((t-c_j)/\epsilon)^2}\right)
+\]
+on its bump support and \(0\) outside.  The coefficients are chosen by the two moment equations \(G(0)=0\) and \(G(1)=0\), so each generator is legal in the Step 174 sense.
+
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+Generator & centers & epsilon & note\\
+\midrule
+\texttt{G\_star} & \(1.5,2.5,3.5\) & \(0.20\) & Step 174/175 base\\
+\texttt{G\_prime} & \(2.0,2.5,3.0\) & \(0.25\) & Step 176 shifted\\
+\texttt{G\_spread} & \(1.25,2.25,3.75\) & \(0.15\) & new spread generator\\
+\texttt{G\_low} & \(1.20,1.85,2.80\) & \(0.12\) & new lower-support generator\\
+\texttt{G\_high} & \(2.20,3.00,3.75\) & \(0.12\) & new upper-support generator\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Dataset}
+
+\begin{center}
+\small
+\begin{tabular}{llllrrr}
+\toprule
+Case & \(\rho\) & \(k\) & \(G\) & \(\Re L\) & \(\Im L\) & \(|L|\)\\
+\midrule
+C01 & \(\rho_1\) & 0 & \texttt{G\_star} & \(1.2147{\times}10^{-1}\) & \(-8.9857{\times}10^{-2}\) & \(1.5109{\times}10^{-1}\)\\
+C02 & \(\rho_2\) & 0 & \texttt{G\_star} & \(1.6442{\times}10^{-1}\) & \(-2.7105{\times}10^{-2}\) & \(1.6664{\times}10^{-1}\)\\
+C03 & \(\rho_3\) & 0 & \texttt{G\_star} & \(-6.5574{\times}10^{-2}\) & \(8.9888{\times}10^{-2}\) & \(1.1126{\times}10^{-1}\)\\
+C04 & \(\rho_4\) & 0 & \texttt{G\_star} & \(-1.1943{\times}10^{-1}\) & \(-4.9488{\times}10^{-2}\) & \(1.2928{\times}10^{-1}\)\\
+C05 & \(\rho_5\) & 0 & \texttt{G\_star} & \(3.0035{\times}10^{-2}\) & \(1.0519{\times}10^{-1}\) & \(1.0939{\times}10^{-1}\)\\
+C06 & \(\rho_6\) & 0 & \texttt{G\_star} & \(-8.3389{\times}10^{-2}\) & \(-1.3186{\times}10^{-2}\) & \(8.4425{\times}10^{-2}\)\\
+C07 & \(\rho_1\) & 0 & \texttt{G\_prime} & \(2.0421{\times}10^{-1}\) & \(-7.3503{\times}10^{-2}\) & \(2.1704{\times}10^{-1}\)\\
+C08 & \(\rho_2\) & 0 & \texttt{G\_prime} & \(1.3333{\times}10^{-1}\) & \(-6.3421{\times}10^{-3}\) & \(1.3348{\times}10^{-1}\)\\
+C09 & \(\rho_3\) & 0 & \texttt{G\_prime} & \(-6.5564{\times}10^{-2}\) & \(4.8779{\times}10^{-2}\) & \(8.1719{\times}10^{-2}\)\\
+C10 & \(\rho_1\) & 0 & \texttt{G\_spread} & \(7.3604{\times}10^{-2}\) & \(1.2304{\times}10^{-1}\) & \(1.4338{\times}10^{-1}\)\\
+C11 & \(\rho_2\) & 0 & \texttt{G\_spread} & \(-4.7208{\times}10^{-2}\) & \(8.4194{\times}10^{-2}\) & \(9.6526{\times}10^{-2}\)\\
+C12 & \(\rho_3\) & 0 & \texttt{G\_spread} & \(9.0193{\times}10^{-3}\) & \(-1.3704{\times}10^{-1}\) & \(1.3734{\times}10^{-1}\)\\
+C13 & \(\rho_1\) & 0 & \texttt{G\_low} & \(-6.2956{\times}10^{-2}\) & \(-4.5505{\times}10^{-2}\) & \(7.7680{\times}10^{-2}\)\\
+C14 & \(\rho_2\) & 0 & \texttt{G\_low} & \(8.9449{\times}10^{-2}\) & \(-6.0218{\times}10^{-2}\) & \(1.0783{\times}10^{-1}\)\\
+C15 & \(\rho_1\) & 0 & \texttt{G\_high} & \(-7.6556{\times}10^{-3}\) & \(-3.3824{\times}10^{-2}\) & \(3.4680{\times}10^{-2}\)\\
+C16 & \(\rho_1\) & 1 & \texttt{G\_star} & \(-2.0349{\times}10^{-1}\) & \(2.0580{\times}10^{-1}\) & \(2.8942{\times}10^{-1}\)\\
+C17 & \(\rho_2\) & 1 & \texttt{G\_star} & \(-2.8850{\times}10^{-1}\) & \(6.5854{\times}10^{-3}\) & \(2.8857{\times}10^{-1}\)\\
+C18 & \(\rho_1\) & 1 & \texttt{G\_prime} & \(-3.9416{\times}10^{-1}\) & \(7.7969{\times}10^{-2}\) & \(4.0179{\times}10^{-1}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Error and Pattern Summary}
+
+All cases satisfy \(|L|-\mathrm{error}>0\).  The certified minimum lower bound is
+\[
+  \min(|L|-\mathrm{error})=3.4126458948014055\times 10^{-2}.
+\]
+For \(k=0\), the observed range is
+\[
+  3.467955\times 10^{-2}\le |L|\le 2.170389\times 10^{-1}.
+\]
+For \(k=1\), the observed range is
+\[
+  2.885740\times 10^{-1}\le |L|\le 4.017945\times 10^{-1}.
+\]
+The \(k=1\) results are numerically noisier because they are finite-difference diagnostics, but their lower bounds remain positive.
+
+No clean monotone law in \(\gamma\) is visible at this sample size.  The \(k=0\) correlation between \(\gamma\) and \(|L|\) is approximately \(-1.98\times 10^{-1}\), which is too weak to support a scaling law.
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_branch\_C\_dataset\_generic\_foreclosure}}
+\]
+
+The extended dataset reinforces the Step 176 Branch C full-carrier foreclosure.  Under the inherited Step 175/176 numerical conventions, the tested matrix elements are robustly nonzero across multiple zeta zeros, multiple legal Burnol generators, and the first derivative-evaluator diagnostics.  This does not close \(\Xi_{BC}\), prove RH, or settle all possible legal generators; it strengthens the empirical obstruction to the full-carrier Branch C ZI-COV(i) route.
+
+\end{document}
+

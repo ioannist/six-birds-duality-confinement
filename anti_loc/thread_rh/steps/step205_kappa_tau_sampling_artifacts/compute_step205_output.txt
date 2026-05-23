@@ -1,0 +1,19 @@
+Step 205 kappa_tau derivation
+Burnol_kernel: available -- K_a^Gamma(s,w)=[E_lambda(s)E_lambda(w)-E_lambda(1-s)E_lambda(1-w)]/(s+w-1) in Burnol bilinear convention
+pulled_evaluator: available -- U_infty(J_a^*Y^a_{w,k})=T_a^* partial_{bar w}^k K_a^Gamma(.,w)
+transport_adjoint: available_formal -- T_a=M_Gamma J_a U_infty^{-1}; hence T_a^*=U_infty J_a^* M_Gamma^*
+candidate_boundary_kernel: candidate_shadow_not_certified_as_kappa -- K_a^Gamma(1/2+i tau,rho_i)
+required_extra_record: missing -- T_a^*K_a^Gamma(.,rho_i)(1/2+i tau)=K_a^Gamma(1/2+i tau,rho_i) or corrected explicit U_infty J_a^*M_Gamma^* action
+verdict: V_kappa_tau_sampling_formula_corrected -- kappa_i(tau) remains T_a^*K_a^Gamma(.,rho_i), not the raw boundary kernel unless the missing transport theorem is supplied
+Step 205 candidate kappa_tau samples
+grid_nodes=200, tau_range=[-40.0,40.0], values=600
+tau~-25.0: rho_1 candidate=7.49470020947149395332435965784e-15+0.0i
+tau~-14.0: rho_1 candidate=8.42407963493095469211157142005e-10+0.0i
+tau~0.0: rho_1 candidate=0.000000467028549034242154488651362898+0.0i
+tau~14.0: rho_1 candidate=-3.66923017175786933295076040287e-12+0.0i
+tau~25.0: rho_1 candidate=-1.95825829371313080979274534324e-15+0.0i
+Step 205 c_matrix
+not_evaluated_certified: kappa_tau formula not verified as T_a^*K
+Step 205 Xi decision
+verdict=V_kappa_tau_sampling_formula_corrected
+required_record=explicit T_a^* boundary sampling formula

@@ -1,0 +1,235 @@
+
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\eps}{\varepsilon}
+\newcommand{\XiBD}{\Xi^{\rm reg}_{BD,N}}
+\newcommand{\XiBC}{\Xi^{\rm BC}}
+\newcommand{\cH}{c_{{\rm hyb},N}}
+\newcommand{\gN}{\gamma_N}
+\newcommand{\LamN}{\Lambda_{R,N}}
+
+\title{Step 123: Balanced-Length Theorem for the Regularized Müntz/co-Poisson Shadow}
+\author{Riemann membrane construction notes}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 119--122 made the Burnol-to-Dirichlet readability problem lawful.  The naive critical-line partial sum of \(\zeta\) was rejected.  The accepted shadow is a regularized Müntz/co-Poisson shadow
+\[
+Z_X^\omega(s)
+=\sum_{n\ge 1}\omega(n/X)n^{-s}-X^{1-s}\Omega(1-s),
+\]
+with the pole/Müntz correction included.  The associated readability defect is
+\[
+\delta^{\rm reg}_{BD,N}
+=\bigl\|(I-P^{\rm reg}_{D,N})B_NG_{B,N}^{-1/2}\bigr\|.
+\]
+Step 123 isolates the new quantitative compatibility gate:
+\[
+\text{the shadow length must be large enough for Müntz accuracy,}
+\]
+while
+\[
+\text{the same length must remain short enough for the source moment theorem.}
+\]
+This is the balanced-length problem.
+
+\section{Abstract data}
+Let \(Y_{R,N}\) be a finite window of the residual sector of \(\Xi^{\rm BC}\).  Let \(B_N\) be the Burnol/co-Poisson response synthesis and let \(D_N^{\rm reg}(X_N)\) be the regularized Dirichlet-readable synthesis at length \(X_N\).  The full source route has the form
+\[
+G_{\mathcal X,N}\succeq \gamma_N H_N,
+\qquad
+R_N^*H_NR_N\succeq c_{{\rm hyb},N}G_{R,N},
+\]
+so that
+\[
+R_N^*G_{\mathcal X,N}R_N\succeq \gamma_Nc_{{\rm hyb},N}G_{R,N}.
+\]
+The goal is
+\[
+\gamma_Nc_{{\rm hyb},N}\to\infty
+\]
+with fixed/exhaustive tail promotion.
+
+\section{Müntz shadow error model}
+\begin{definition}[Müntz shadow parameters]
+For a Burnol window \(N\), let
+\[
+T_N = \text{vertical/spectral height},
+\qquad
+A_N = \text{uniform Burnol atom complexity},
+\]
+and suppose the contour residual obeys
+\[
+\tau_{M,N}(X_N)
+\le C_M A_N(1+T_N)^\alpha X_N^{-\eta}
+\]
+for fixed \(C_M,\alpha,\eta>0\).  Let
+\[
+\epsilon_{B,N}=\text{Burnol geometric exhaustion defect},
+\]
+\[
+\epsilon_{\rm Mell,N}=\text{Mellin/Dirichlet modeling defect},
+\]
+\[
+\kappa_{\rm tail,N}=\text{coefficient/support/tail defect}.
+\]
+Define
+\[
+E_N(X_N):=
+\epsilon_{B,N}+\epsilon_{\rm Mell,N}+C_MA_N(1+T_N)^\alpha X_N^{-\eta}+\kappa_{\rm tail,N}.
+\]
+\end{definition}
+
+By Step 122,
+\[
+\delta^{\rm reg}_{BD,N}\le \epsilon_{\rm Mell,N}+\tau_{M,N}(X_N)+\kappa_{\rm tail,N},
+\]
+and hence
+\[
+c_{{\rm hyb},N}\ge 1-E_N(X_N)^2.
+\]
+
+\section{Source length cap}
+The source moment theorem is not available at arbitrary Dirichlet length.  We encode its admissible range by a scale \(Q_N\) and exponent \(\theta>0\):
+\[
+X_N\le Q_N^\theta.
+\]
+For example, in the Heap--Soundararajan lower-bound method, the source polynomials are deliberately short.  In their zeta setup the constructed Dirichlet polynomial has length bounded by a small power of the ambient scale, schematically \(\le T^{k/9}\).  In this note the analogous input is the black-box length cap \(X_N\le Q_N^\theta\).
+
+\section{Balanced-length theorem}
+\begin{theorem}[Balanced-length theorem]
+Assume:
+\begin{enumerate}[label=(\roman*)]
+\item the regularized Müntz/co-Poisson shadow satisfies
+\[
+\delta^{\rm reg}_{BD,N}
+\le
+\epsilon_{\rm Mell,N}+C_MA_N(1+T_N)^\alpha X_N^{-\eta}+\kappa_{\rm tail,N};
+\]
+\item the source theorem is valid for lengths \(X_N\le Q_N^\theta\), with
+\[
+G_{\mathcal X,N}\succeq \gamma_NH_N;
+\]
+\item the finite residual windows have fixed/exhaustive tail promotion.
+\end{enumerate}
+If there exists a choice \(X_N\le Q_N^\theta\) such that
+\[
+E_N(X_N)<1
+\]
+and
+\[
+\gamma_N\bigl(1-E_N(X_N)^2\bigr)\to\infty,
+\]
+then the residual sector is source-absorbed:
+\[
+\Xi^{\rm BC}\preceq F_N+E_N^{\rm abs}
+\]
+with vanishing completed defect after tail promotion.
+\end{theorem}
+
+\begin{proof}
+By the Step 122 angular-gap estimate,
+\[
+c_{{\rm hyb},N}\ge 1-E_N(X_N)^2.
+\]
+The finite matrix lower-frame theorem gives
+\[
+R_N^*G_{\mathcal X,N}R_N
+\succeq
+\gamma_Nc_{{\rm hyb},N}G_{R,N}
+\succeq
+\gamma_N\bigl(1-E_N(X_N)^2\bigr)G_{R,N}.
+\]
+If the last coefficient diverges and the finite residual windows promote through a fixed/exhaustive tail record, then the residual anti-invariant currency collapses on the completed residual sector.  This is precisely the source-absorption record for \(\Xi^{\rm BC}\). \end{proof}
+
+\begin{corollary}[Maximal admissible shadow]
+The best available choice under the source cap is \(X_N=Q_N^\theta\).  Thus a sufficient condition is
+\[
+\epsilon_{B,N}+\epsilon_{\rm Mell,N}+\kappa_{\rm tail,N}\to0,
+\]
+\[
+A_N(1+T_N)^\alpha Q_N^{-\theta\eta}\to0,
+\]
+and
+\[
+\gamma_N\to\infty.
+\]
+Then
+\[
+c_{{\rm hyb},N}\to1,
+\qquad
+\gamma_Nc_{{\rm hyb},N}\to\infty.
+\]
+\end{corollary}
+
+\begin{corollary}[Polynomial-growth phase boundary]
+Suppose
+\[
+A_N\asymp Q_N^a,
+\qquad
+T_N\asymp Q_N^t.
+\]
+Then the Müntz contour residual can vanish under the source length cap only if
+\[
+\boxed{a+\alpha t<\theta\eta.}
+\]
+The boundary case \(a+\alpha t=\theta\eta\) gives no vanishing without additional logarithmic savings; the supercritical case
+\[
+a+\alpha t>\theta\eta
+\]
+forces a persistent readability defect under the declared source cap.
+\end{corollary}
+
+\begin{corollary}[Positive visibility floor]
+Even if the visibility defect does not vanish, the source route may still close if there is a quantitative floor
+\[
+E_N(X_N)\le 1-\sigma_N,
+\]
+with
+\[
+\gamma_N\sigma_N\to\infty.
+\]
+Indeed
+\[
+1-E_N^2\ge 1-(1-\sigma_N)^2\ge \sigma_N.
+\]
+If \(\sigma_N\) decays too quickly for \(\gamma_N\) to compensate, the route remains support-only.
+\end{corollary}
+
+\section{Interpretation}
+Step 123 turns the route into a three-way quantitative obligation:
+\[
+\boxed{\text{Burnol side: }\epsilon_{B,N}\to0,}
+\]
+\[
+\boxed{\text{shadow side: }A_N(1+T_N)^\alpha X_N^{-\eta}\text{ small,}}
+\]
+\[
+\boxed{\text{source side: }X_N\le Q_N^\theta\text{ and }\gamma_N\text{ grows}.}
+\]
+The decisive inequality is
+\[
+\boxed{A_N(1+T_N)^\alpha\ll Q_N^{\theta\eta}.}
+\]
+It says that the Burnol/Müntz window cannot be allowed to grow faster than the admissible short-polynomial length supplied by the source theorem.
+
+\section{Nonclaims}
+This step does not prove RH.  It does not prove the Heap--Soundararajan matrix lift.  It does not prove Burnol atom exhaustion.  It does not prove the Müntz angular gap.  It proves the conditional quantitative compatibility theorem that these ingredients must satisfy.
+
+\end{document}

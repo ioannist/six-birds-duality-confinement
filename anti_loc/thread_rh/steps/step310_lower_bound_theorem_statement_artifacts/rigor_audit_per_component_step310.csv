@@ -1,0 +1,13 @@
+component,status,gap_if_empirical,source_or_basis
+Pole cancellation M(G_star)(1)=0,computable_verified,"Needs formal interval/ball arithmetic if promoted from numerical certification","Step 307: |M(G_star)(1)|=1.3394383491589159e-102"
+M(G_star)(rho_1) nonzero,computable_verified,"Needs formal interval/ball arithmetic if promoted","Step 307: M(G_star)(rho_1)=-0.06965146358+0.18763300553i"
+h=zeta*M(G_star) entire after pole cancellation,conditional_rigorous,"Rigorous if M(G_star)(1)=0 is proved exactly for the chosen coefficients","Step 307 pole-cancellation audit"
+Leibniz expansion for delta_Dk,rigorous_identity,"None","Product derivative identity"
+j=0 term vanishes,rigorous_conditional,"Requires rho_1 is a zeta zero; simple-zero assumption only needed for inherited simple-zero statement","zeta(rho_1)=0"
+M(G_star) derivative non-lacunarity,empirical_finite_range,"Need proof for all k or at least central-window lower bound","Step 308: all reported derivatives nonzero for k=0..30"
+Leibniz reconstruction accuracy,computable_verified,"Numerical validation not a proof; useful audit of implementation","Step 308 reconstruction relative errors near 1e-16"
+Central high-j saddle j*(k)≈k/2,empirical_finite_range,"Need asymptotic saddle proof for term magnitudes T_{k,j}","Step 309: j*=4,10,15,28 for k=10,20,30,50"
+Central-window magnitude lower bound,missing_load_bearing,"Prove sum_{j in J_k}|T_{k,j}| >= C_M B_M^k k^beta","Required Lemma 1 in theorem_statement_step310.tex"
+Phase/interference lower bound,missing_load_bearing,"Empirical fit exp(-0.0277874 k); needs rigorous phase analysis of zeta^(j)(rho_1) M^(k-j)(rho_1)","Required Lemma 2 in theorem_statement_step310.tex"
+Finite-type entire-function route,blocked,"h is not finite type because zeta functional-equation amplification gives R log R growth","Step 307 verdict V_delta_Dk_lower_bound_blocked_no_finite_type"
+Candidate constants A0=1e-2 B0=2.5 alpha0=0 k0=10,empirical_sample_calibrated,"Verified on certified k=10/20/30/50 only; depends on missing lemmata for all k","Step 305/308 certified delta values"

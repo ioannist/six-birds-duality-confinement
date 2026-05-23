@@ -1,0 +1,53 @@
+\section*{Step 239: Hecke H1 Direct-Integral Schur Legality}
+
+\subsection*{H1 Specification}
+
+Hecke H1 asks whether the Hecke carrier residual admits a legal direct-integral Schur decomposition
+\[
+\Xi^{\mathrm{Hecke}}_{\mathrm{BC}}
+  = \int_{\chi\in X_K^-}^{\oplus} \Xi_{K,\chi}\,d\mu_K(\chi),
+\]
+with fiber Schur form
+\[
+\Xi_{K,\chi}
+  = K_{DD,\chi}
+    - K_{DL,\chi} K_{LL,\chi}^{\dagger} K_{LD,\chi}.
+\]
+Legality requires a completed Hecke response space, a full Plancherel character ledger, measurable native/dissolving/audit operator fields, compatibility of the Moore-Penrose pseudoinverse with the direct integral, and tail/exhaustivity control.
+
+\subsection*{Inherited Records}
+
+Step 92 provides a Hecke/idele carrier sketch. It declares an anti-invariant response space as a direct integral over character fibers, but its gate table leaves completed response space, character readouts, Plancherel measure, tail/exhaustivity, auxiliary explicit formulae, source growth, and zeta descent open.
+
+Step 167 declares the Hecke sibling residual
+\[
+\Xi^{\mathrm{Hecke}}_{\mathrm{BC}}
+  = \Xi_{C_{\mathrm{Hecke}}}(D_{\mathrm{Hecke}}\mid L_{\mathrm{Hecke}})
+\]
+and states that the intended direct-integral Schur decomposition is a branch obligation. It explicitly requires measurability, domains, pseudoinverse compatibility, and tail/exhaustivity before the decomposition can be used.
+
+Step 168 decides only H6: the zeta-fiber descent bridge is non-comparable under inherited records. H1 remains open. Step 172 records Hecke H1-H5 as external obligations.
+
+\subsection*{No-Go Discipline}
+
+The three Hecke-specific no-gos remain active:
+\begin{enumerate}
+  \item auxiliary-GRH smuggling is forbidden;
+  \item incomplete character spectrum is support-only;
+  \item scalar L-function identity is not carrier identity.
+\end{enumerate}
+Therefore H1 cannot be proved by assuming auxiliary GRH, by finite conductor windows, or by using $L_{\mathbb Q}(s,1)=\zeta(s)$ as a carrier equality.
+
+\subsection*{Literature Audit}
+
+Tate's thesis and the Iwasawa-Tate framework supply Fourier analysis on adeles and Hecke L-functions through idele-class characters. Iwaniec-Kowalski supply the modern analytic number theory toolkit. Selberg orthogonality literature supplies coefficient or family orthogonality results. Hecke Grossencharacter family analyses by Conrey-Iwaniec-Soundararajan and related work supply family statistics.
+
+These are ingredients, not the H1 theorem. None of the audited literature supplies the cascade-specific theorem that the completed Hecke response space carries measurable Schur residual data with decomposable Moore-Penrose inverse and full tail/exhaustivity.
+
+\subsection*{Verdict}
+
+\[
+\texttt{V\_hecke\_H1\_blocked\_external}.
+\]
+
+H1 is not derivable from inherited records. It is not shown illegal. It remains a specific external theorem requirement for the Hecke sibling cascade.

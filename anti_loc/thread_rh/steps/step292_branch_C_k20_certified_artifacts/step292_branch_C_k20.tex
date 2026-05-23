@@ -1,0 +1,23 @@
+
+\documentclass{article}
+\usepackage{amsmath,amssymb,booktabs}
+\begin{document}
+\section*{Step 292 Branch C k=20 Delta Certification}
+The raw Burnol/Mellin derivative term is
+\[
+  \Delta D_k(\rho,G)=(\zeta M(G))^{(k)}(\rho)
+  =\sum_{j=0}^k {k\choose j}\zeta^{(j)}(\rho)M(G)^{(k-j)}(\rho).
+\]
+The generators are the Step 196 compact three-bump functions. The computation used mpmath dps 80 with a dps 100 check.
+
+\begin{center}\begin{tabular}{lrrr}\toprule
+triple & $k=10$ & $k=15$ & $k=20$\\\midrule
+$\rho_1,G_*$ & 165.4387 & 8515.2698 & 554847.0160\\
+$\rho_2,G_*$ & 667.7850 & 75532.1353 & 8744612.7858\\
+$\rho_1,G'$ & 115.5433 & 3851.2557 & 169965.6564\\
+\bottomrule\end{tabular}\end{center}
+
+Against the Step 269 polynomial-corrected exponential fit, high-k residuals grow by many orders relative to the k=0..7 RMSE. Hence the inherited law breaks for the raw delta proxy. A legacy projected k=10 spot check did not support replacing $L_k$ by $\Delta D_k$ at that order.
+
+\paragraph{Verdict.} \texttt{V\_branch\_C\_k20\_law\_breaks} for the raw delta proxy; projected high-k $L_k$ remains uncertified.
+\end{document}

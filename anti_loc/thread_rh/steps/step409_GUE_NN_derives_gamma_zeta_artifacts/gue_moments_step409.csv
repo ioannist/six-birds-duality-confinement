@@ -1,0 +1,11 @@
+quantity,formula,value,notes
+normalization,"integral_0_inf (32/pi^2) s^2 exp(-4 s^2/pi) ds",1.000000000000000000000000000000,"Wigner-Dyson beta=2 NN density integrates to 1"
+mean_spacing,"integral_0_inf s*(32/pi^2) s^2 exp(-4 s^2/pi) ds",1.000000000000000000000000000000,"Expected normalized nearest-neighbor spacing"
+second_moment,"integral_0_inf s^2*(32/pi^2) s^2 exp(-4 s^2/pi) ds",1.178097245096172464423491268730,"Equals 3*pi/8"
+variance,"E[s^2]-E[s]^2",0.178097245096172464423491268730,"GUE NN variance under Wigner surmise"
+T1,14.1347251417347,14.1347251417347,"First zeta zero height used for numerical comparison"
+gamma_GUE_T1,"<s>*pi/(T1*log(T1/(2*pi)))",0.274139452528282289424404915499,"Because <s>=1 this equals the RvM half-spacing prediction"
+empirical_gamma_T1_proxy,0.20,0.200000000000000000000000000000,"Prompt comparison value"
+empirical_gamma_T1_step324,0.2046,0.204600000000000000000000000000,"Step 324 inherited first-zero gamma table value"
+rel_err_vs_prompt_0p20,"abs(gamma_GUE_T1-0.20)/0.20",0.370697262641411447122024577494,"GUE/RvM smooth prediction is higher than the raw per-zero empirical value"
+rel_err_vs_step324_0p2046,"abs(gamma_GUE_T1-0.2046)/0.2046",0.339880022132367005984383751216,"Per-zero scatter/correction remains outside this mean-spacing derivation"

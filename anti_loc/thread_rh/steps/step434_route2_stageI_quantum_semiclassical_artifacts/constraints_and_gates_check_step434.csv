@@ -1,0 +1,16 @@
+kind,id,status,reason
+constraint,C_arithmetic_independence,PARTIAL_PASS,"The Hamiltonian primitives x,p,hbar,l_x,l_p are non-arithmetic; arithmetic enters only if boundary phase is selected by L-function labels."
+constraint,C_self_adjoint_native,FAIL,Self-adjointness requires U(1) boundary extension; exact target selection through theta risks arithmetic smuggling.
+constraint,C_no_adelic_substrate,PASS,No adeles/ideles or quotient of arithmetic adele classes.
+constraint,C_no_tautology,PASS,The model matches only average counting and does not stipulate exact zeta zeros.
+constraint,C_explicit_formula_natural,FAIL,Prime fluctuation side is not produced; only smooth RvM counting appears.
+constraint,C_GUE_natural_refined_TRS,PASS,"H=x(p+l_p^2/p) flips sign under T:p->-p, so time-reversal symmetry is broken at the classical Hamiltonian level."
+constraint,C_trace_formula_compatibility,FAIL,"Semiclassical quantization gives smooth counting, not a Weil explicit formula with log-prime terms."
+constraint,C_length_spectrum_arithmetic_mismatch,FAIL,Periodic-orbit actions are not canonically log(p); the Step 433 mismatch recurs in phase-space form.
+constraint,C_boundary_phase_arithmetic_smuggling,PROPOSED_FAIL,New failure shape: U(1) extension phase can encode Dirichlet/zeta target data unless fixed intrinsically.
+gate,Gate1_primitive_exclusion,PARTIAL_PASS,Core Hamiltonian primitives are arithmetic-free; target-selecting theta would fail this gate.
+gate,Gate2_dependency_trace,PASS,CCR -> Hamiltonian -> closed orbits -> Bohr-Sommerfeld -> average counting is explicit.
+gate,Gate3_ablation,PASS,Removing zeta target leaves a valid phase-space Hamiltonian family.
+gate,Gate4_negative_controls,PASS,"Changing l_x,l_p or theta changes spectra and should not preserve zeta matching."
+gate,Gate5_stageII_small_spectrum,FAIL,No exact small-spectrum zeta-zero match is derived; average levels only.
+gate,Gate6_no_single_axiom_equivalence,PASS,No axiom directly asserts Spec(H)=zero ordinates.

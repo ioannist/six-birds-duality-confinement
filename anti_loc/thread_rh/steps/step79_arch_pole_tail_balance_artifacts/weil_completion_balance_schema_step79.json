@@ -1,0 +1,26 @@
+{
+  "step": 79,
+  "name": "Archimedean/Pole/Tail Balance Audit",
+  "objects": {
+    "P_pr_L": "signed prime autocorrelation term",
+    "q_pr_L": "positive prime shift-difference feature",
+    "d_pr_L": "2 sum_a w_a diagonal repair",
+    "R_sgn_L": "non-prime signed completion remainder",
+    "q_cmp_L": "candidate positive completed feature form",
+    "B_L": "completion-balance form q_cmp_L - q_sgn_L"
+  },
+  "feature_slots": [
+    "prime-power",
+    "archimedean/gamma",
+    "pole/completion/null-mode",
+    "tail/support/promotion"
+  ],
+  "acceptance_gate": "B_L >= 0 on the completed anti-invariant core, with closability and tail records",
+  "defect_gate": "B_L >= -e_bal_L gives defect-paid Douglas domination",
+  "nonclaims": [
+    "RH not proved",
+    "Weil-Douglas bridge not proved",
+    "exact gamma matching not proved",
+    "tail/exhaustivity not proved"
+  ]
+}

@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{obligation}{Obligation}
+\title{Step 90: Candidate Zeta Source-Family Audit}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The low-frequency gate for the paired completed Weil carrier leaves two serious full-RH routes: zero-side primitive cancellation or source coercivity.  This note audits the source-coercivity route for the completed zeta carrier.
+
+The source route is not a numerical simulation and not a proof of RH.  It asks which upstream-visible source families could plausibly supply a full anti-invariant lower frame
+\[
+F_n\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty,
+\]
+on the completed anti-invariant response sector.
+
+\section{The source-coercivity gate}
+\begin{definition}[source record]
+Let \(L^-_\Gamma:E\to Y^-\) be the anti-invariant response family on the completed zeta carrier.  A source record is a tuple
+\[
+s=(Q_s,\Theta_s,\lambda_s,D_s)
+\]
+where \(Q_s:Y^-\to Z_s\) is an upstream-visible readout, \(\Theta_s\succ0\) is a source budget, \(\lambda_s>0\), and
+\[
+D_s\succeq \lambda_s (Q_sL^-_\Gamma)^*\Theta_s^{-1}(Q_sL^-_\Gamma).
+\]
+For a finite family \(\mathcal S_n\), define the response-side source frame
+\[
+F_n=\sum_{s\in\mathcal S_n}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+\end{definition}
+
+\begin{theorem}[source-frame budget collapse]
+If
+\[
+F_n\succeq \Lambda_n(\Theta_0^-)^{-1},
+\]
+then the extended audit satisfies
+\[
+C_n^+\succeq \Lambda_n (L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma,
+\]
+and therefore, under null-mode legality,
+\[
+K_n^-:=L^-_\Gamma(C_n^+)^\dagger(L^-_\Gamma)^*\preceq \Lambda_n^{-1}\Theta_0^-.
+\]
+If \(\Lambda_n\to\infty\), then \(K_n^-\to0\) in the Loewner sense on the fixed/exhaustive anti-invariant response sector.
+\end{theorem}
+
+\begin{proof}
+Summing the source inequalities gives
+\[
+\sum_sD_s\succeq (L^-_\Gamma)^*F_nL^-_\Gamma\succeq \Lambda_n(L^-_\Gamma)^*(\Theta_0^-)^{-1}L^-_\Gamma.
+\]
+The pseudoinverse capacity inequality is the standard coercive-domination inequality on the legal energy quotient.
+\end{proof}
+
+\section{Finite character frames}
+\begin{lemma}[finite abelian character frame]
+Let \(G\) be finite abelian and let \(Y=\ell^2(G)\).  The normalized characters \(\chi\in\widehat G\) form an orthonormal basis.  If \(Y^-\subseteq Y\) is spanned by a declared anti-invariant subset \(\widehat G^-\), then
+\[
+\sum_{\chi\in\widehat G^-}\lambda_\chi P_\chi\succeq \Bigl(\min_{\chi\in\widehat G^-}\lambda_\chi\Bigr)P_{Y^-}.
+\]
+If a character direction is omitted, the lower frame on \(Y^-\) is zero unless that direction is outside scope by an explicit nonclaim.
+\end{lemma}
+
+\begin{remark}
+This is the clean root-composite model for Dirichlet or Hecke character sources.  Orthogonality gives finite character frames, but RH needs an infinite/exhaustive conductor ladder with tail control, not merely finite character windows.
+\end{remark}
+
+\section{Candidate source families}
+\subsection{Prime-by-prime sources}
+Prime-by-prime sources are upstream-visible through Euler-product and explicit-formula staging.  They are natural shift sources in logarithmic space.  Their weakness is that they inherit the paired shift zero at low frequency and do not automatically form a full anti-invariant character frame.  They are support evidence unless paired with a low-frequency/cancellation/source-tail record.
+
+\subsection{Dirichlet and Hecke character sources}
+Dirichlet characters give a natural finite root-composite frame by conductor.  Hecke characters are the adelic/global analogue.  They are the most plausible source-family route because character orthogonality is an actual lower-frame mechanism.
+
+The open gates are severe:
+\begin{enumerate}[label=(\roman*)]
+\item sources must be declared upstream by conductor/refinement, not selected to make the zero-confinement bound pass;
+\item the conductor ladder must be exhaustive on the anti-invariant response sector;
+\item the tail over conductors and archimedean parameters must vanish;
+\item one must avoid smuggling GRH for twists as the positivity source.
+\end{enumerate}
+
+\subsection{Selberg trace and automorphic sources}
+Trace-formula and automorphic/representation sources may provide genuine spectral/geometric positivity.  They are promising only if the chosen completed carrier is automorphic/adelic and if Plancherel or trace formula data provide a full anti-invariant lower frame.  Otherwise they are public trace shadows.
+
+\subsection{de Branges kernel sources}
+de Branges spaces supply Hilbert kernels and positivity candidates.  Their obstruction is that the needed phase/kernel positivity is essentially the hard part of the de Branges RH program.  They remain a carrier candidate, not yet an accepted source ladder.
+
+\section{No-go gates}
+\begin{proposition}[partial coverage does not collapse]
+If there exists \(0\ne y\in Y^-\) with \(Q_sy=0\) for every accepted source \(s\), then \(F_ny=0\) for all \(n\).  Hence no positive lower frame exists on \(Y^-\), regardless of how large the visible source strengths become.
+\end{proposition}
+
+\begin{proposition}[moving source windows are support-only]
+If \(F_n\) is coercive only on a moving finite-dimensional sector \(Y_n\subset Y^-\), then \(F_n\succeq \Lambda_n P_{Y_n}\) does not imply a lower frame on a fixed completed \(Y^-\) unless one has a tail bridge
+\[
+I_{Y^-}\preceq P_{Y_n}+T_n,\qquad \operatorname{tr}T_n\to0
+\]
+in the appropriate currency metric.
+\end{proposition}
+
+\section{Audit verdict}
+The source-family route is viable only if it produces an upstream-visible, fixed/exhaustive, full anti-invariant character-source frame.  Among the surveyed candidates, the strongest root-composite path is a Dirichlet/Hecke character ladder, possibly inside an adelic carrier.  Prime-by-prime sources alone are natural but appear low-frequency-soft and not full-sector.  Selberg/automorphic sources are carrier-dependent and may be powerful if a trace-formula carrier is chosen.  de Branges kernels are a carrier path but not yet a source-frame ladder.
+
+\section{Nonclaim boundary}
+This note does not prove RH, does not construct the zeta carrier, and does not prove any of the candidate source families have the required lower frame.  It only states the source-frame gate and audits which candidate families could plausibly discharge it.
+
+\end{document}

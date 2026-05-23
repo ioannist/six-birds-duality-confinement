@@ -1,0 +1,293 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{enumitem}
+\usepackage{booktabs,longtable}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{nonclaim}[theorem]{Nonclaim}
+\newtheorem{remark}[theorem]{Remark}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Cost}{Cost}
+\DeclareMathOperator{\Capa}{Cap}
+\DeclareMathOperator{\tr}{tr}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\XiR}{\Xi}
+\newcommand{\AL}{\mathsf{AL}}
+\newcommand{\Mem}{\mathsf{Mem}}
+\newcommand{\Loewner}{\preceq}
+
+\title{Step 56: Proof-Polish Pass on Formed-Layer Membrane Theory v0.4}
+\author{RATCHET / Six Birds working note}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note tightens the load-bearing statements in the v0.4 manuscript.  It does not add a new application.  It repairs the exact hypotheses around singular audit operators, null-mode legality, the adequacy residual, and the distinction between a mathematical membrane inequality and an accepted Six Birds membrane record.
+
+\section{Legal quotient and null-mode discipline}
+
+Let $E$ be a finite-dimensional Hilbert space and let $C\succeq0$.  Define the legal energy quotient by
+\[
+  E_C=(\Ker C)^\perp,
+  \qquad
+  C_0=C|_{E_C}.
+\]
+In the finite-dimensional setting used here, $C_0$ is positive definite on $E_C$.
+
+\begin{definition}[Null-mode legality]
+A readout $L:E\to Y$ is null-legal relative to $C$ when
+\[
+  L(\Ker C)=0.
+\]
+Equivalently, $L$ descends to the legal quotient $E_C$.
+\end{definition}
+
+\begin{warning}[Pseudoinverse expressions require null legality]
+If $L$ sees a zero-energy direction, the variational capacity is infinite even when a pseudoinverse expression may appear finite.  Therefore every capacity, currency, and adequacy theorem in the manuscript must either assume null-mode legality or explicitly assign status \texttt{failed\_null\_legality}.
+\end{warning}
+
+\section{Singular minimum-spend duality}
+
+Let $L:E\to Y$ be null-legal and write $L_0=L|_{E_C}$.  Define
+\[
+  T_L=L_0C_0^{-1/2},
+  \qquad
+  \K_L=L_0C_0^{-1}L_0^*=T_LT_L^*.
+\]
+
+\begin{theorem}[Minimum-spend duality on the legal quotient]
+For $z\in Y$, define
+\[
+  \Cost_C(z;L)=\inf\{\langle u,Cu\rangle:u\in E_C,
+  \ Lu=z\}.
+\]
+Then
+\[
+  \Cost_C(z;L)=
+  \begin{cases}
+  z^*\K_L^\dagger z, & z\in\Ran L_0,\\
+  +\infty, & z\notin\Ran L_0.
+  \end{cases}
+\]
+Equivalently, since $\Ran L_0=\Ran T_L=\Ran\K_L$, the formula is finite exactly on the reachable response space.
+\end{theorem}
+
+\begin{proof}
+Set $w=C_0^{1/2}u$.  Then the constraint $L_0u=z$ becomes $T_Lw=z$ and the objective is $\|w\|^2$.  The minimum-norm solution of $T_Lw=z$ is $w=T_L^\dagger z$ when $z\in\Ran T_L$, with squared norm
+\[
+  \|T_L^\dagger z\|^2=z^*(T_LT_L^*)^\dagger z=z^*\K_L^\dagger z.
+\]
+If $z\notin\Ran T_L$, the feasible set is empty, hence the cost is $+\infty$.
+\end{proof}
+
+\begin{corollary}[Scalar capacity]
+For a scalar recombination $y\in Y$, the probe $y^*L$ has capacity
+\[
+  \Capa_C(y^*L)=y^*\K_Ly
+\]
+provided $L$ is null-legal.  If $y^*L$ does not annihilate $\Ker C$, the variational capacity is infinite.
+\end{corollary}
+
+\section{Adequacy residual as the optimal Schur residual}
+
+Let $D:E\to Z$ be a layer-dissolving readout, also null-legal.  Write
+\[
+  D_0=D|_{E_C},
+  \qquad
+  T_D=D_0C_0^{-1/2}.
+\]
+Define block currencies
+\[
+  K_{LL}=T_LT_L^*,\qquad
+  K_{DL}=T_DT_L^*,\qquad
+  K_{DD}=T_DT_D^*.
+\]
+
+\begin{definition}[Adequacy residual]
+The adequacy residual is
+\[
+  \boxed{\XiR_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}.}
+\]
+\end{definition}
+
+\begin{theorem}[Projection formula]
+Let $P_L$ be the orthogonal projection onto $\Ran T_L^*\subset E_C$.  Then
+\[
+  \boxed{\XiR_C(D\mid L)=T_D(I-P_L)T_D^*\succeq0.}
+\]
+\end{theorem}
+
+\begin{proof}
+Since $K_{LL}=T_LT_L^*$, the operator
+\[
+  T_L^*K_{LL}^\dagger T_L
+\]
+\noindent is the orthogonal projection onto $\Ran T_L^*$.  Hence
+\[
+  K_{DL}K_{LL}^\dagger K_{LD}=T_DT_L^*K_{LL}^\dagger T_LT_D^*=T_DP_LT_D^*.
+\]
+Subtracting from $T_DT_D^*$ gives the claim.
+\end{proof}
+
+\begin{theorem}[Optimal residual identity]
+Let
+\[
+  A_*=K_{DL}K_{LL}^\dagger.
+\]
+For every linear map $A:Y\to Z$,
+\[
+  (D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+  =\XiR_C(D\mid L)+(A-A_*)K_{LL}(A-A_*)^*.
+\]
+Consequently $\XiR_C(D\mid L)$ is the unique Loewner-minimal residual currency over all attempted factorizations $D\approx AL$.
+\end{theorem}
+
+\begin{proof}
+In $T$-notation the residual is
+\[
+  (T_D-AT_L)(T_D-AT_L)^*.
+\]
+Expand around $A_*$ and use $A_*T_LT_L^*=T_DT_L^*T_L T_L^\dagger$ in the Moore--Penrose normal equations, equivalently the orthogonal projection formula above.  The cross terms vanish because $T_D-A_*T_L=T_D(I-P_L)C_0^{1/2}$ is orthogonal to the row space seen by $T_L$.  The remaining terms are exactly the displayed identity.
+\end{proof}
+
+\begin{theorem}[Exact adequacy]
+In the finite-dimensional legal quotient setting, the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+  \item $\XiR_C(D\mid L)=0$;
+  \item $D_0=A_*L_0$;
+  \item there exists $A$ with $D_0=AL_0$;
+  \item $\Ker L_0\subseteq\Ker D_0$.
+\end{enumerate}
+Thus exact adequacy is precisely the absence of a legal hidden direction.
+\end{theorem}
+
+\begin{proof}
+The projection formula gives $\XiR=0$ iff $T_D=T_DP_L$, i.e. the row space of $T_D$ lies in the row space of $T_L$.  This is equivalent to $D_0=A L_0$ for some $A$, with the minimum-residual choice $A_*$.  In finite dimensions, $D_0$ factors through $L_0$ iff $\Ker L_0\subseteq\Ker D_0$.
+\end{proof}
+
+\begin{theorem}[Strict-extension monotonicity of adequacy]
+Let a lawful strict native-family extension add $M:E\to W$ and set
+\[
+  L^+=\begin{bmatrix}L\\M\end{bmatrix}.
+\]
+Then
+\[
+  \boxed{\XiR_C(D\mid L^+)\Loewner\XiR_C(D\mid L).}
+\]
+More sharply,
+\[
+  \XiR_C(D\mid L,M)=\XiR_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^\dagger K_{MD\mid L},
+\]
+where the conditional blocks are computed after conditioning on $L$.
+\end{theorem}
+
+\begin{proof}
+The row space of $T_{L^+}$ contains the row space of $T_L$.  Orthogonal projection onto a larger subspace leaves a smaller orthogonal complement, hence
+\[
+  T_D(I-P_{L^+})T_D^*\Loewner T_D(I-P_L)T_D^*.
+\]
+The sharper identity is the Schur-complement update for conditioning on the additional block $M$ after $L$.
+\end{proof}
+
+\section{Acceptance semantics: equivalence versus accepted claim}
+
+\begin{definition}[Mathematical membrane property]
+A mathematical membrane property is the Loewner budget
+\[
+  \widehat K_j\Loewner\Theta
+\]
+for every stage in the declared predictive index set.
+\end{definition}
+
+\begin{definition}[Accepted Six Birds membrane record]
+An accepted membrane record is a mathematical membrane property together with the accepted gates:
+formed closure, exact package, null-mode legality, declared native family, adequacy/exhaustivity when layer-dissolving claims are made, predictive transport, protocol honesty, public-shadow nonoverread, all-six channel statuses, completed witness ledger, and nonclaim boundary.
+\end{definition}
+
+\begin{theorem}[Correct acceptance implication]
+An accepted Six Birds membrane record implies the mathematical membrane property and hence no unresolved native predictive recombination witness.  Conversely, a bare matrix inequality $\widehat K_j\Loewner\Theta$ implies the no-witness statement at the mathematical ledger level, but it does not imply Six Birds acceptance unless the full record gates are supplied.
+\end{theorem}
+
+\begin{proof}
+The forward direction is by definition of the accepted record.  The equivalence
+\[
+  \widehat K_j\Loewner\Theta
+  \quad\Longleftrightarrow\quad
+  y^*(\widehat K_j-\Theta)y\le0\quad\forall y
+\]
+uses only finite-dimensional Loewner order.  The audit gates are additional semantic requirements; they are not consequences of the matrix inequality alone.
+\end{proof}
+
+\begin{warning}[Manuscript wording rule]
+Statements of the form ``accepted membrane iff $K\preceq\Theta$'' must be replaced by:
+\begin{quote}
+``At the mathematical ledger level, $K\preceq\Theta$ is equivalent to absence of native recombination witnesses.  Six Birds acceptance additionally requires the declared all-six record.''
+\end{quote}
+\end{warning}
+
+\section{Predictive and bridge hypotheses}
+
+\begin{theorem}[Predictive propagation with declared stage set]
+Let $J_{\mathrm{acc}}$ be the accepted predictive stage set.  Suppose
+\[
+  \widehat K_{j+1}\Loewner (1+\varepsilon_j)A_j\widehat K_jA_j^*+E_j
+\]
+for transitions inside $J_{\mathrm{acc}}$, and
+\[
+  (1+\varepsilon_j)A_j\Theta_jA_j^*+E_j\Loewner\Theta_{j+1}.
+\]
+Then $\widehat K_j\Loewner\Theta_j$ propagates along accepted transitions.  No claim is made for unaccepted stages or unrecorded transports.
+\end{theorem}
+
+\begin{theorem}[Bridge transfer with residual]
+For a bridge $P:E'\to E$ and response map $A:Y\to Y'$, suppose
+\[
+  C'\succeq \beta P^*CP,
+  \qquad
+  L'=ALP+R,
+\]
+with residual currency $E_R=R(C')^\dagger R^*$.  Then for every $t>0$,
+\[
+  K'\Loewner \frac{1+t}{\beta}AKA^*+(1+t^{-1})E_R.
+\]
+Thus transfer through public shadows, sections, bundles, or protocols is accepted only with a bridge record and residual budget.
+\end{theorem}
+
+\section{Patch list for v0.4}
+
+\begin{longtable}{p{0.25\linewidth}p{0.30\linewidth}p{0.35\linewidth}}
+\toprule
+Location & Current risk & Step 56 replacement \\
+\midrule
+Minimum spend theorem & Omits singular/range case & State on $E_C=(\ker C)^\perp$; finite iff $z\in\Ran L_0$ \\
+Family capacity & Pseudoinverse may hide null-mode failure & Add null-mode legality before every variational/pseudoinverse identity \\
+\(\Xi\) theorem & Treated as residual term & Promote to Schur residual / optimal blind-spot currency \\
+Exact adequacy & Informal ``no hidden direction'' & State equivalence $\Xi=0\iff \ker L_0\subseteq\ker D_0$ \\
+Strict extension & May sound automatic & Strict only if new probes enlarge the energy-dual row space; same-family repetition saturates \\
+Acceptance theorem & ``accepted iff matrix'' ambiguity & Mathematical iff for no-witness; Six Birds acceptance requires all gates \\
+Predictive theorem & Possible over all stages & Restrict to accepted stage set and declared transports \\
+Transfer theorem & Shadow could be overread & Add residual currency and nonclaim boundary \\
+\bottomrule
+\end{longtable}
+
+\section{Conclusion}
+The proof-polished v0.4 manuscript should land with three precise distinctions:
+\begin{enumerate}
+  \item pseudoinverse identities live only after null-mode legality and legal quotienting;
+  \item $\Xi_C(D\mid L)$ is the optimal blind-spot Schur residual, not a generic error term;
+  \item mathematical membrane inequalities are necessary ledger facts, while Six Birds acceptance is a stronger all-six audited record.
+\end{enumerate}
+
+\end{document}

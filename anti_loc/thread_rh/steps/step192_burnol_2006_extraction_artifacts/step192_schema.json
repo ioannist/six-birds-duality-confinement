@@ -1,0 +1,81 @@
+{
+  "step": 192,
+  "orientation": "adequacy",
+  "target": "Burnol 2006/2008 resolvent specialization to kappa at a=1/2",
+  "burnol_2006_content_summary": [
+    {
+      "item": "order-zero Hankel transform",
+      "candidate_form": "Hf(x)=int_0^infty J_0(2 sqrt(xy)) f(y) dy",
+      "source": "Burnol 2006/2008 arXiv:math/0602425 abstract",
+      "status": "available as paper-level content"
+    },
+    {
+      "item": "finite interval Fredholm determinants",
+      "candidate_form": "det(I - lambda H_a), where H_a has kernel J_0(2 sqrt(xy)) restricted to (0,a)",
+      "source": "Burnol 2006/2008 abstract and indexed contents",
+      "status": "available as method-template"
+    },
+    {
+      "item": "scattering gamma factor",
+      "candidate_form": "associated scattering is related to Gamma(1-s)/Gamma(s)",
+      "source": "Burnol 2006/2008 abstract",
+      "status": "available but mismatched with Step 153 A_infty"
+    },
+    {
+      "item": "resolvent-as-RKHS appendix",
+      "candidate_form": "appendix observation on the resolvent of the Dirichlet kernel as a Hilbert-space reproducing kernel",
+      "source": "Burnol 2006/2008 abstract/indexed contents",
+      "status": "analogous but not the inherited Sonine projection"
+    }
+  ],
+  "specialization_attempt": [
+    {
+      "stage": "T2a",
+      "question": "What is the natural projection from Burnol's J_0 kernel?",
+      "intermediate_result": "The natural compressed operator is H_a=P_{(0,a)} H P_{(0,a)} with kernel J_0(2 sqrt(xy)); its Fredholm resolvent R_a(lambda)=(I-lambda H_a)^{-1}H_a controls Hankel scattering and related extended spaces.",
+      "status": "analog_identified"
+    },
+    {
+      "stage": "T2b",
+      "question": "Which subspace corresponds to Step 153 L_a^Gamma?",
+      "intermediate_result": "No inherited or Burnol-2006 record identifies the order-zero Hankel extended space with the Fourier-cosine/zeta-completed L_a^Gamma whose ambient kernel contains A_infty(s)=pi^{-s/2}Gamma(s/2).",
+      "status": "fails_at_carrier_identification"
+    },
+    {
+      "stage": "T2c",
+      "question": "Can a lambda in the resolvent produce P_{L_a^Gamma}?",
+      "intermediate_result": "R_a(lambda) is a resolvent of the truncated Hankel operator, not generally an idempotent orthogonal projection.  No canonical lambda was found that yields P_{L_a^Gamma}.",
+      "status": "fails_at_projection_parameter"
+    },
+    {
+      "stage": "T2d",
+      "question": "Can a=1/2 remove the mismatch?",
+      "intermediate_result": "The interval scale a=1/2 changes support length but not the Mellin multiplier mismatch Gamma(1-s)/Gamma(s) versus the Step 153 zeta-completed Fourier-cosine A_infty package.",
+      "status": "fails_at_normalization_match"
+    },
+    {
+      "stage": "T3",
+      "question": "Can kappa_{1/2,rho_1}(tau) be derived?",
+      "intermediate_result": "Only an analog kappa_H for the H-transform carrier can be written formally.  The target kappa=T_a^*P_{L_a^Gamma}K_a^{Gamma,amb} remains unavailable.",
+      "status": "kappa_not_derived"
+    }
+  ],
+  "kappa_formula_if_derived": null,
+  "c_11_log_2_if_computed": null,
+  "extraction_verdict": "V_burnol_2006_specialization_fails",
+  "path_1_status_after": "still_blocked_refined",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1",
+    "de Branges RH-carrier closure target-equivalence / Conrey-Li survival",
+    "Hilbert-Polya/Berry-Keating standard xp bridge failure and modified-operator target-equivalence",
+    "Connes adelic trace-formula full closure target-equivalence / completed spectral ledger not inherited"
+  ],
+  "final_verdict": "V_burnol_2006_specialization_fails"
+}
+

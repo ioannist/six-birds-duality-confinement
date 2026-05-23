@@ -1,0 +1,57 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\begin{document}
+
+\section*{Step 216: Gram-Schmidt Weyl Diagnostic}
+
+\subsection*{Construction}
+
+Starting from sampled vectors \(\kappa_{\rho_n,0}^{1/2}\), form
+\[
+v_1=\frac{\kappa_{\rho_1}}{\|\kappa_{\rho_1}\|},\qquad
+w_n=\kappa_{\rho_n}-\sum_{k<n}\langle \kappa_{\rho_n},v_k\rangle v_k,\qquad
+v_n=\frac{w_n}{\|w_n\|}.
+\]
+The operator tested is
+\[
+C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,\qquad \ell=\log 2,
+\]
+using the finite PSWF/sinc model inherited from Steps 214--215.
+
+\subsection*{CAND1 Results}
+
+For the Burnol-boundary CAND1 model, the relative Gram-Schmidt residuals begin
+\[
+1,\ 0.3637,\ 0.0520,\ 0.00656,\ 5.52\cdot 10^{-4},\
+2.36\cdot 10^{-4},\ 4.56\cdot 10^{-5},\ldots
+\]
+The effective dimensions are:
+\[
+\#\{\|w_n\|/\|\kappa_n\|>10^{-2}\}=3,\quad
+\#\{>10^{-4}\}=6,\quad
+\#\{>10^{-6}\}=9.
+\]
+However, the absolute CAND1 raw norms collapse from \(4.16\cdot 10^{-7}\) to below \(10^{-29}\).  Thus after the first two directions, normalized vectors are low-absolute-signal finite-grid directions.
+
+The high-confidence CAND1 values are
+\[
+\|C_\ell v_1\|=1.7554,\qquad \|C_\ell v_2\|=0.5312.
+\]
+Low-absolute-signal directions give mixed values, including \(1.0164,0.1123,0.1591,0.5015,\ldots\), but these are not promoted to certified obstruction values.
+
+\subsection*{CAND2 Comparison}
+
+For the zeta-form CAND2 comparison model, the Gram-Schmidt residuals stay well-conditioned.  The orthonormalized values are
+\[
+0.2389,\ 0.4161,\ 0.4238,\ 0.6355,\ 0.6068,\ 0.6163,\ 0.6257,\ 0.6654,\ 0.4720,\ 0.6142.
+\]
+This shows stable multi-direction nonzero behavior for the comparison model, but CAND2 is not the verified \(a=1/2\) Burnol transport.
+
+\subsection*{Verdict}
+
+The Step 214 strong lower bound does not persist at the same scale across high-confidence orthogonal CAND1 directions.  It also does not cleanly decay to zero; instead the CAND1 orthogonalized directions become precision/transport limited.  The verdict is
+\[
+\boxed{\mathrm{V\_weyl\_gram\_schmidt\_inconclusive}}.
+\]
+
+\end{document}

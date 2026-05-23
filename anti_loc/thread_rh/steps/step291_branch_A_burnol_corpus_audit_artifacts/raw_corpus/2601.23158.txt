@@ -1,0 +1,998 @@
+                                            SOME SERIES REPRESENTING THE ZETA FUNCTION FOR ℜs > 1
+
+                                                                                 JEAN-FRANÇOIS BURNOL
+
+
+                                                   Abstract. We represent the Riemann zeta function in the half-plane ℜs > 1 via series
+                                                   whose terms admit geometrically decreasing bounds. Due to an underlying recurrence
+                                                   relation, which is used to compute coeﬃcients entering into the terms, the cost is probably
+                                                   at least quadratic in the number of terms. And the number of terms needed to reach a
+                                                   given ﬁxed-point precision grows linearly with the imaginary part, so, presumably, the
+arXiv:2601.23158v2 [math.NT] 7 Feb 2026
+
+
+
+
+                                                   usefulness is limited to small imaginary parts (up to the hundreds perhaps). The method
+                                                   is a development of tools introduced by the author for the evaluation of harmonic series
+                                                   with restricted digits in a given radix.
+
+
+
+
+                                                                                        1. Main result
+                                             In this section, we specialize to b = 2 the Theorem 2 which concludes this paper and
+                                          applies to all integers b > 1.
+                                             Let s ∈ C, ℜs > 1. Deﬁne coeﬃcients u∗m (s) via a linear recurrence:
+                                                                 2s
+                                                      u∗0 (s) = s     ,
+                                                               2 −2
+                                                                                      m
+                                                                               1     X   (s + m) . . . (s + m − j + 1) ∗
+                                          (1)        m ≥ 1 =⇒ u∗m (s) = s+m                                           um−j (s).
+                                                                           2     − 2 j=1                j!
+                                          Let ℓ be an integer at least 2. Then
+                                                                                                    ∞
+                                                          X       1       2s     X              1   X          ∗
+                                                                                                          m s um (s)
+                                                                                                                       X                     1
+                                          (2)    ζ(s) =              +                            +   (−1)           (                          ).
+                                                              ℓ−1
+                                                                  ns    2s − 2 ℓ−1            ℓ
+                                                                                                ns m=1       s + m ℓ−1                  ℓ
+                                                                                                                                          n s+m
+                                                         0<n<2                      2    ≤n<2                                 2    ≤n<2
+
+                                          The series with alternating signs at the end of (2) is absolutely convergent. For s real, its
+                                          partial sums provide lower and upper bounds depending only on parity of number of terms.
+                                            Explicitly, with ℓ = 2:
+                                                                                       ∞
+                                                                    2s    1     1 X             s u∗ (s)   1       1 
+                                                       ζ(s) = 1 + s        s
+                                                                             +    s
+                                                                                    +    (−1)m m           s+m
+                                                                                                               + s+m .
+                                                                  2 −2 2        3     m=1
+                                                                                                  s+m 2           3
+                                          With ℓ = 3, and the same u∗m (s):
+                                                                                    2s
+                                                          ζ(s) = 1 + 2−s + 3−s +         4−s + 5−s + 6−s + 7−s
+                                                                                                               
+                                                                                   s
+                                                                                 2 −2
+                                                                  ∞          ∗
+                                                                 X       s u   (s)
+                                                                    (−1)m m          4−s−m + 5−s−m + 6−s−m + 7−s−m .
+                                                                                                                  
+                                                               +
+                                                                 m=1
+                                                                          s+m
+                                          And similarly for ℓ = 4, 5, . . . . Previous experience from [4, 5] suggests that the formulas
+                                          are well suited to obtain hundreds or thousands of digits (at least for real s). We only tested
+
+                                              Date: February 6, 2026. Compared to v1 of 2026-01-30, various typos are ﬁxed, a superﬂuous “lim sup”
+                                          is removed and the Proposition 2 is added, as well as a link to arXiv:2602.05511.
+                                              2020 Mathematics Subject Classiﬁcation. Primary: 11M06, 33F05; Secondary: 11A63, 11Y35, 11Y60.
+                                              Key words and phrases. Zeta series, ellisephic series, computation of zeta values.
+                                                                                                1
+                                         SERIES FOR ζ(s)                                       2
+
+
+brieﬂy using Python double ﬂoat type, and numerical results matched (up to the unavoidable
+rounding errors) with those from the mpmath.zeta() function at a higher precision.
+   Due to the linear cost intrinsic to the recurrence (1) (and the fact that this recurrence
+impedes parallelization), the formula (2) will probably not be of much interest for obtaining
+tens of thousands of digits or more. Perhaps in relation to this, these series may well prove
+to be new, at least we found no mention of anything similar in references such as [3].
+   A priori bounds allow to estimate how many terms will be enough for a given target
+precision:
+                                            1         ∗         2σ
+                           s=σ>1:                 < u m (σ) ≤        ,
+                                         2σ − 2               2σ − 2
+                                                     Γ(σ + 1)     2σ
+                           s = σ + it : |u∗m (s)| ≤              s
+                                                                       .
+                                                    |Γ(s + 1)| |2 − 2|
+This proves that the series in (2) converges geometrically (with a bonus O(m−1 ) factor)
+with ratio 1/2ℓ−1 , also for a complex s, ℜs = σ > 1. The exponential increase of 1/|Γ(s)| on
+vertical lines suggests that large imaginary parts are a challenge to numerical implementation
+of the series, and indeed (see the discussion after Theorem 2), up to a factor of 2σ the above
+upper bound gives at least for some s with large imaginary parts a good idea of the order
+of magnitude of |u∗m (s)|.
+   Deﬁning um (s) such that
+                               (s + 1)m          (s + 1) . . . (s + m)
+                    u∗m (s) =           um (s) =                       um (s),
+                                  m!                      m!
+it turns out that |2s − 2||um (s)| ≤ (2σ − 2)um (σ), ℜs = σ > 1, from which the above upper
+bound is derived, and that for m ≥ 1:
+                   1     2s      2s+1               X             m!        B2k 2s+2k
+(3)   um (s) =               −            +                                                .
+                 m + 1 2s − 2 2(2s+1 − 2)                    (m − 2k + 1)! (2k)! 2s+2k − 2
+                                                 1≤k≤⌊ m
+                                                       2 ⌋
+
+
+(So, um (s) is 2πi/ log(2) periodic). But, this formula is much less appropriate for numerical
+computations than (1): for example with s = 3 and m = 30 some individual summands
+prove to be larger by many orders of magnitude than um (s), and computations using the
+IEEE-754 “double ﬂoat” type showed spectacular loss of precision.
+   The above expression gives the meromorphic continuation of the um (s) coeﬃcients to the
+whole complex plane. In particular, the linear recurrence (1), if started with the initial value
+1 at m = 0, makes sense for ℜs > 0. Especially with s = 1, the solution to this recurrence
+is the constant sequence (1)m≥0 , so it suggests:
+                                        ∞
+                         2s − 2        X          X                  1
+(4)                  lim     s
+                                ζ(s) =    (−1)m                            .
+                     s→1   2           m=0      ℓ−1            ℓ
+                                                                 (m + 1)nm
+                                                     2   ≤n<2
+
+On the right-hand side, we recognize 2ℓ−1 ≤n<2ℓ log n+1
+                                         P
+                                                         n = log 2. Thus, the identity ob-
+tained at s = 1 is indeed correct... The analytic continuation and validity of (2) for ℜs > 0
+is presented in a separate work [6].
+    The paper is organized as follows. In the ﬁrst section, we extend our earlier framework
+[4], which involves certain measures and moments tailored to compute harmonic series with
+restrictions on the allowed digits. For a given radix b and choice of admissible digits, we
+develop the apparatus to compute the associated Dirichlet series not only at s = 1 but
+everywhere in the half-plane of convergence (such “restricted” Dirichlet series have been
+considered earlier [1, 9, 11]).
+                                       SERIES FOR ζ(s)                                         3
+
+
+   In the second section we study the exponential moment generating function, and establish
+some of its analytic properties. These analytic aspects are related to an old theme going
+back all the way to Hardy [2, 7, 8, 10, 12, 13].
+   In the ﬁnal section, we remove all restrictions on the radix-b digits, so that we are comput-
+ing the Riemann zeta function ζ(s), ℜs > 1. From the point of view of obtaining “explicit”
+formulas, the removal of all restrictions brings a substantial theoretical simpliﬁcation and
+allows to express the series coeﬃcients in terms of Bernoulli numbers as is shown in equation
+(3) for b = 2. But, as pointed out already, these “explicit” formulas are mostly of theoretical
+interest, the recurrence (1) being numerically much more eﬃcient than equation (3), despite
+having roughly twice as many terms.
+
+                         2. Measures on words, and moments
+   Let b > 1 an integer. Let W be the space of words (also called ﬁnite strings) on the
+alphabet D = [[0, b − 1]] of the b-ary digits. The empty word is noted ǫ. The length of a word
+w is noted ℓ(w). The power notation wj means concatenation (w2 = ww, etc. . . ). And
+w0 = ǫ.
+Deﬁnition 1. For w = d1 . . . dl ∈ W we say that w “represents” the integer n(w) =
+d1 bl−1 + · · · + dl ∈ N. In particular n(ǫ) = 0. We deﬁne x(w) = n(w)/bℓ(w) . In other terms,
+x(w) is obtained in b-radix representation from positioning the word w immediately to the
+right of the radix separator. It belongs to [0, 1).
+    For n a non-negative integer, l = ℓ(n) is the length of the minimal-length representation
+of n by a word, i.e. it is the smallest non-negative integer such that n < bl .
+    Let A be some subset of D. Its elements will be called the “admissible” digits, and
+words using only them are said to be “admissible”. The admissible integers are those whose
+minimal b-representation is an admissible word. So 0 is always an admissible integer, but is
+not necessarily an admissible digit.
+   Throughout this section it is assumed that the set A of admissible digits is neither empty
+nor reduced to the singleton {0}. So the set x(W) contains positive elements. Contrarily to
+[4] it is now allowed for A to be the full alphabet of digits. We let N be the cardinality of
+A and N1 the one of A \ {0}. So 0 < N1 ≤ N ≤ b.
+Deﬁnition 2. Let s ∈ R. We deﬁne a positive measure µA,s on W.
+      • If the word w is admissible, µA,s ({w}) = b−sℓ(w) .
+      • Else, µA,s ({w}) = 0.
+For s complex non real, such that the positive measure µA,ℜs is ﬁnite (see next), we use the
+same formulas. So µA,s is a complex measure and its measure of variations is µA,ℜs .
+  Observe that µA,s ({ǫ}) = 1, whenever µA,s is deﬁned, and that µA,s+2πi/ log(b) = µA,s if
+µA,s is a complex measure.
+  We compute the total mass for real s:
+                                 ∞
+                                            ( s
+                                                 b
+                                X
+                                     −sl l      s    (s > logb (N )),
+                    µA,s (W) =      b N = b −N
+                                l=0
+                                               +∞    (s ≤ logb (N )).
+Thus, µA,s is well-deﬁned as a complex measure if and only if µA,ℜs is ﬁnite if and only if
+ℜs > logb (N ). Let us record this formula for the total “mass” (but this terminology is a bit
+misleading if s is non-real) for s in the open half-plane of convergence:
+                                                    bs
+(5)                                  µA,s (W) =            .
+                                                  bs − N
+                                        SERIES FOR ζ(s)                                     4
+
+
+Except for the sole case with A = D, one has N < b, logb (N ) < 1, so then s = 1 is in the
+open half-plane of those complex numbers to which we have associated a complex measure
+on the space of words W.
+  We record the following observation (which is not used elsewhere) for real s:
+Lemma 1. For any non-negative bounded function φ on W, such that  R there is at least
+one admissible non-empty word w with φ(w) > 0, the function g(σ) = W φ(w)dµA,σ (w) is
+positive, strictly decreasing, and log-convex on (logb (N ), ∞).
+Proof. The quantity g(σ) is, up to the additive constant φ(ǫ), a positive combination of
+strictly decreasing log-convex functions σ 7→ b−lσ , for some indices l ≥ 1 at least. 
+Deﬁnition 3. The “moments” uA,s (m) of the complex measure µA,s are:
+                                    Z
+                         uA,s (m) =     x(w)m dµA,s (w).
+                                             W
+   Note that the moments are invariant under s 7→ s + 2πi/ log(b). Observe further, using
+that A is neither empty nor reduced to {0}, the strict inequality:
+                               2πZ
+                         ℑs ∈/       =⇒ |uA,s (m)| < uA,ℜs (m).
+                               log b
+Indeed, if a 6= 0 is any admissible digit it contributes in particular am b−m−s + (ba +
+a)m b−2m−2s and the modulus of this can be equal to the sum of the moduli of the two
+summands only if their ratio is a positive real number, i.e. if and only if bs > 0. We obtain
+in Proposition 2, stated later, a (still relatively trivial) quantitative improvement on the
+above “trivial” estimate.
+   As we have assumed that A is neither empty nor reduced to the sole digit 0, the measure
+is not supported only on those w’s such that x(w) = 0. Consequently, if s is real (and
+> logb N ), the sequence of moments is strictly decreasing. And for every complex s with
+ℜ(s) > logb N , the moments converge to zero as m → ∞, from dominated convergence (or
+elementary arguments).
+Proposition 1. The moments of µA,s obey the following recurrence relation:
+                                             m   X
+                                            X     m
+(6)        m ≥ 1 =⇒ (bm+s − N )uA,s (m) =            (    aj )uA,s (m − j).
+                                            j=1
+                                                  j
+                                                                a∈A
+
+Proof. We decompose non-empty words as a one-digit preﬁx a and a suﬃx of length one
+less. The “weight” of aw is b−s times the weight of w. In the next equations δ0 is the Dirac
+delta function. Let m ≥ 0:
+                                     XZ
+                 uA,s (m) = δ0 (m) +        x(aw)m b−s dµA,s (w),
+                                       a∈A   W
+                                       XZ                    m
+                          = δ0 (m) +             b−m a + x(w) b−s dµA,s (w),
+                                       a∈A   W
+                                              m   X
+                                             X   m
+                 uA,s (m) = δ0 (m) + b−m−s         (  aj )uA,s (m − j).
+                                             j=0
+                                                 j
+                                                          a∈A
+                                   s
+For m = 0 we recover uA,s (0) = bsb−N . For m > 0, we obtain (6).                          
+  Let us record here:
+                                  bs a∈A a
+                                    P
+(7)                 uA,s (1) = s                  ,
+                              (b − N )(bs+1 − N )
+                                         SERIES FOR ζ(s)                                       5
+
+
+                                bs 2( a∈A a)2 + (bs+1 − N ) a∈A a2
+                                     P                        P     
+(8)                  uA,s (2) =                                       .
+                                    (bs − N )(bs+1 − N )(bs+2 − N )
+   The recurrence formula allows a quantitative improvement upon the “trivial” estimate
+|uA,s (m)| ≤ uA,σ (m), σ = ℜs.
+Proposition 2. Let s = σ + it, σ > logb N . There holds:
+                                                  bσ − N
+                                  |uA,s (m)| ≤             uA,σ (m).
+                                                 |bs − N |
+                        u   (m)
+Proof. Deﬁne cm (s) = uA,sA,s (0)
+                                  . The sequence (cm (s))m≥0 obeys the same recurrence (6) as
+(um (s)) save for the initial term, which is now 1. Observe that bm+s − N ≥ bm+σ − N .
+As the binomial coeﬃcients and the power sums which appear in the recurrence (6) are all
+non-negative, we conclude by induction that |cm (s)| ≤ cm (σ) for every m ≥ 0.             
+
+   Consider now the following “restricted” zeta value, where the ′ sign indicates that only
+those integers are kept, which are A-admissible:
+                                              X′ 1
+(9)                                  Kb,A,s =         .
+                                              n>0
+                                                   ns
+
+We have incorporated b into the subscript, it should arguably have been used earlier also
+with the measure and the moments. We choose a level ℓ ≥ 1, and consider the contributions
+from those admissible integers having at least ℓ digits. We gather them according to the
+admissible word w of their ﬁrst ℓ digits, so that the minimal representation of n is wz with
+some word z, possibly empty.
+                                   n = b|z| b|w|x(w) + x(z) ,
+                                                            
+
+                                  1
+                        X′              Z
+                                                           −s
+(10)                                s
+                                      =        n(w) + x(z)     dµA,s (z).
+                                  n       z∈W
+                     n starts with w
+
+Caution that here we do not allow w = ǫ, else, we would need to restrict the integral to those
+z’s not starting with a 0 (i.e. such that x(z) ≥ b−1 ), which would then indeed give a formula
+for the full Kb,A,s , but we do not use it here. In the process leading to the formula (10) with
+s ∈ R arbitrary, everything is non-negative and the re-writing of the Dirichlet series as an
+integral against a positive measure µA,s is valid for all s ∈ R. As any function x 7→ (a + x)−s
+on [0, 1) with a > 0 has a positive minimum and is bounded, its integral against a positive
+measure is ﬁnite if and only if that measure is ﬁnite. So the restricted harmonic series (9)
+converges if and only if the push-forward of µA,s under the map x : W → [0, 1) is a ﬁnite
+measure, i.e. if and only if µA,s (W) < ∞, i.e. if and only if s > logb N . See [1, 9, 11] for
+prior occurrences of this abscissa of convergence in the literature.
+   For ℜ(s) > logb (N ) the partial series are thus absolutely convergent and the formula (10)
+is valid. Throughout the paper from now on, we assume ℜ(s) > logb (N ).
+   We appeal to the binomial series and intervert series and integral in (10):
+                      ∞                                     ∞
+                               (s)m x(z)m                            (s)m uA,s (m)
+             Z      X                                      X
+(11)                    (−1)m            m+s
+                                              dµ A,s (z) =    (−1)m                 .
+              z∈W m=0           m!  n(w)                   m=0
+                                                                      m! n(w)m+s
+
+Here, (s)m = s(s + 1) . . . (s + m − 1) is the ascending factorial with m terms (Pochhammer
+symbol). We have assumed n(w) > 1 so that the series depending on x(z) is uniformly and
+absolutely convergent on W and termwise integration is justiﬁed. It is asserted in the next
+proposition that this interversion is valid also for n(w) = 1.
+                                           SERIES FOR ζ(s)                                   6
+
+
+Proposition 3. Let s be a complex number such that ℜs > logb (N ). The series
+                                            ∞
+                                            X              (s)m
+                              Lb,A (s) :=         (−1)m         uA,s (m),
+                                            m=0
+                                                            m!
+                                    −s
+                                        dµA,s (w). Let λ = max A
+                          R
+converges and is equal to W 1 + x(w)                        b−1 ∈ (0, 1].
+     • The remainders are o(λm ). If ℜs ≥ 1, they are more precisely O(λm /m).
+     • If λ = 1 and s is real, the series is only semi-convergent.
+Multiplying each term with an additional factor n−m−s for n some integer > 1 (or any real
+number > 1), we thus obtain a geometrically convergent series. For s real, its partial sums
+are upper and lower bounds depending on parity of number of terms.
+Proof. In this proof, we appeal to estimates which will be established only later. Let us
+start ﬁrst with a Taylor expansion with integral remainder for the function (n + x)−s where
+n > 0 is for now some arbitrary positive real number, s is a complex number, and x ≥ 0. It
+reads:
+                   m−1              k                  Z x
+                            k (s)k x         m (s)m
+                    X
+              −s
+       (n + x) −       (−1)           = (−1)                (x − t)m−1 (n + t)−s−m dt.
+                              k!ns nk          (m − 1)! 0
+                   k=0
+
+We observe in passing that, if s is a positive real number, the sign of the left-hand side has
+thus to be (−1)m , except of course for x = 0. Let now s again be some arbitrary complex
+number, with real part σ = ℜs. We get:
+                m−1                k                   Z x
+                          k (s)k x           |(s)m |
+                 X
+            −s
+     (n + x) −       (−1)             ≤                    (x − t)m−1 (1 + n−1 t)−σ−m dt.
+                            k!ns nk     (m − 1)!nσ+m 0
+                  k=0
+
+Suppose that σ + m ≥ 0. Then (and this is surely a standard calculus exercise):
+                                          m−1
+                                          X             (s)k xk   |(s)m |xm
+                         (n + x)−s −            (−1)k           ≤           .
+                                                        k!ns nk    m!nσ+m
+                                          k=0
+
+We assume from now on that σ = ℜs > logb N . So in particular the hypothesis σ + m ≥ 0
+is deﬁnitely true, even σ + m > 0. We apply the above upper bound after replacing x by
+the function x(w) on W. For now, we still do not suppose n to be an integer, only n > 0.
+                                                          m−1
+                                                                      (s)k
+                         Z
+                                          −s             X
+       Let δm (s, n) :=          n + x(z)     dµA,s (z) −     (−1)k           u (k)
+                                                                         s+k A,s
+                            z∈W                                      k!n
+                                                          k=0
+
+                                           −s m−1
+                                                                           
+                                                              (s)k
+                         Z                        X
+                     =            n + x(z)     −      (−1)k         x(z)  k
+                                                                             dµA,s (z)
+                           z∈W                               k!ns+k
+                                                 k=0
+
+                                          −s m−1            (s)k
+                        Z                       X
+                     ≤           n + x(z)     −      (−1)k         x(z)k dµA,σ (z)
+                          z∈W                              k!ns+k
+                                                k=0
+                               |(s)m |x(z)m               |(s)m |
+                        Z
+                     ≤                σ+m
+                                            dµA,σ (z) =            uA,σ (m).
+                          z∈W    m!n                     m!nσ+m
+Recall that, for any complex z, there holds (z)k /k! ∼k→∞ Γ(z)−1 k z−1 (with 0 ∼ 0 if
+                                                                  |(z)k |
+z ∈ −N). Thus, for σ = ℜz 6= 0, −1, −2, . . . , the sequence k 7→ |(σ) k|
+                                                                          , which is non-
+                                 |Γ(σ)|
+decreasing, has limit equal to |Γ(z)| , hence, it is bounded above by this limiting value. In
+                                        SERIES FOR ζ(s)                                     7
+
+
+particular, for our s (which has σ = ℜs > 0), and any real number n > 0, we have the upper
+bound:
+                   |(s)m | (σ)m uA,σ (m)    Γ(σ) (σ)m uA,σ (m)       mσ−1 uA,σ (m)
+      δm (s, n) ≤                σ+m
+                                         ≤              σ+m
+                                                               ∼m→∞                 .
+                    (σ)m     m!n           |Γ(s)| m! n               |Γ(s)| nσ+m
+Further, we know that uA,σ (m) is O(1), even that it decreases to zero. Thus, the quantity
+δm (s, n) is o(mσ−1 n−m ) (we will obtain a better bound for σ ≥ 1 below).
+   For n > 1, we thus have δm (s, n) = o(cm ) for any c > n−1 . This gives a more detailed
+justiﬁcation for the step from (10) to (11).
+   Let us now assume n = 1. The quantity δm (s, 1) is the distance from the m-th partial sum
+                                                                 R             −s
+of Lb,A (s) (i.e. keeping terms with indices < m) to the integral z∈W 1 + x(z)     dµA,s (z).
+                              Γ(σ) (σ)m
+We have obtained δm (s, 1) ≤ |Γ(s)| m! uA,σ (m).
+   Suppose ﬁrst that σ < 1. Thus δm (s, 1) = o(1). More precisely, from next Lemma 2,
+δm (s, 1) = o(mσ−1 λm ) = o(λm ) where λ = max A/(b − 1). This establishes the convergence
+and the value of Lb,A (s).
+   Take now σ ≥ 1. From Proposition 5, which is stated later, we deduce that δm (s, 1) is
+O(λm m−1 ) and consequently is o(λm ).
+   Finally, assuming s = σ is real, we have from Proposition 4, also stated later, the lower
+        (σ)               σ
+bound m!m uA,σ (m) > σ+m    λm /(bσ − N ). Hence, if λ = 1 the series deﬁning Lb,A (σ) is only
+semi-convergent.                                                                            
+   We shall now establish the various estimates used in the previous proof. We use the
+notation f = max A. So f ≤ b − 1. First, a result applying also to complex s:
+                                                                m
+Lemma 2. For any s with ℜs > logb (N ), the sequence ( b−1    f     uA,s (m))m≥0 has limit
+zero.
+Proof. Due to |uA,s (m)| ≤ uA,ℜs (m), we can assume s to be real. Deﬁne the rescaled
+function y(w) = b−1
+                  f x(w). Thus, 0 ≤ y(w) < 1 for every admissible w ∈ W. The non-
+admissible w may have y(w) ≥ 1 but they live in a set of zero measure. By the Lebesgue
+dominated convergence theorem, the integral against µA,s of the powers of the function y(w)
+go to zero (and as here s is real, we can even say that the rescaled moments decrease to
+zero).                                                                                   
+  Now for lower and upper bounds with s = σ real.
+Proposition 4. Let m ≥ 0. For σ > logb (N ) there holds (with f = max A):
+                                          σ    m! (f /(b − 1))m
+                           uA,σ (m) >                           .
+                                        m + σ (σ)m   bσ − N
+Proof. Let us temporarily set vA,σ (m) = uA,σ (m)/uA,σ (0). They obey the same recurrence
+(6) as the uA,σ (m):
+                                            m   X
+                       m+σ
+                                           X   m
+                    (b     − N )vA,σ (m) =        (     aj )vA,σ (m − j).
+                                           j=1
+                                                j
+                                                      a∈A
+                                                                         m+σ
+We can only decrease these quantities if wePreplacej in this recurrence b j − N by its upper
+         m+σ
+bound b      − 1 in the left-hand side, and a∈A a by its lower bound f , where f = max A.
+So vA,σ (m) ≥ wA,σ (m) where wA,σ (0) = 1 and for m ≥ 1:
+                                               m  
+                          m+σ
+                                              X     m j
+                       (b      − 1)wA,σ (m) =           f wA,σ (m − j).
+                                              j=1
+                                                     j
+                                          SERIES FOR ζ(s)                                      8
+
+
+But this means that wA,σ (m) = uA′ ,σ (m)/uA′ ,σ (0) where A′ is the singleton {f }. For the
+A′ -admissible words f j , one has x(f j ) = (f /(b − 1))(1 − b−j ). So:
+                                                      ∞
+                                                      X
+                         uA′ ,σ (m) = f m (b − 1)−m         b−σj (1 − b−j )m .
+                                                      j=0
+                                                      −1
+Now, consider the function t 7→ g(t) = (1 − tσ )m on [0, 1], and assume m > 0. This
+function is strictly decreasing. Considering the evaluation points ξj = b−σj , j ≥ 1, we
+obtain:
+   Z 1                                                              ∞
+                                                                    X
+              −1
+       (1 − tσ )m dt < g(ξ1 )(1 − ξ1 ) + g(ξ2 )(ξ1 − ξ2 ) + · · · =   (1 − b−j )m b−σj (bσ − 1).
+       0                                                             j=1
+
+So, putting everything together, we obtain, for σ > logb (N ) ≥ 0, m ≥ 1:
+                                       R1         −1
+                   bσ bσ − 1 f m        0
+                                          (1 − tσ )m dt        σ     m! (f /(b − 1))m
+     uA,σ (m) > σ                                         =                           .
+                b − N bσ (b − 1)m            bσ − 1          m + σ (σ)m    bσ − N
+We used the well-known formula for the eulerian beta integral. This ﬁnal result holds also
+for m = 0 and completes the proof of the lower bound.                                   
+
+  In view of the previous inequality we now deﬁne, for m ≥ 0 (and complex s):
+                               (s + 1)m            s + m (s)m
+(12)                  u∗A,s (m) =       uA,s (m) =            uA,s (m),
+                                  m!                  s    m!
+where again (s + 1)m is an ascending partial factorial. With these quantities, (6) becomes
+                                     m
+                                    X   (s + m) . . . (s + m − j + 1) X j ∗
+(13)       (bm+s − N )u∗A,s (m) =                                    ( a )uA,s (m − j).
+                                    j=1
+                                                       j!
+                                                                        a∈A
+
+  For the upper bound we will need the following lemma from calculus:
+Lemma 3. Let σ ≥ 1 be a real number, m a non-negative integer, and a a non-negative
+real number. Then
+               m
+              X   (σ + m) . . . (σ + m − j + 1) j
+                                               a ≤ (1 + a)σ+m − 1 − aσ+m .
+              j=1
+                                 j!
+
+Proof. Of course the left-hand side is deﬁned to be zero if m = 0. The proof can be done
+by induction on m, or, one can apply the Taylor formula with integral remainder for the
+expansion of (1 + a)σ+m in ascending powers of a to m-th order (i.e. with the remainder
+involving the (m+1)-th derivative). This expansion gives 1, plus the above sum on left-hand
+side, plus:
+                       Z a
+                           (a − t)m
+                                    (σ + m) . . . (σ + 1)σ(1 + t)σ−1 dt.
+                        0     m!
+As σ ≥ 1, we can use (1 + t)σ−1 ≥ tσ−1 in this integral. Then we conclude via a Beta
+integral formula or we recognize that we have now the remainder integral for the evaluation
+of (0 + a)σ+m in ascending powers of a up to order m. So this lower bound gives aσ+m and
+moving aσ+m and 1 to the other other side of the inequality we obtain the result.         
+
+Proposition 5. Let σ ≥ 1 (σ > 1 if N = b). Let f = max A. There holds, for every m ≥ 0:
+                      σ + m (σ)m                           fm       bσ
+                                 uA,σ (m) = u∗A,σ (m) ≤                 .
+                        σ    m!                         (b − 1)m bσ − N
+                                         SERIES FOR ζ(s)                                                  9
+
+
+Proof. Let c = u∗A,σ (0). Let m ≥ 1 and suppose by induction hypothesis u∗A,σ (m − j) ≤
+(f /(b − 1))m−j c for 1 ≤ j ≤ m. The power sums a∈A aj with j ≥ 1 are maximal when the
+                                                       P
+N admissible digits are f , f − 1, . . . , f − N + 1. In fact, we can stop with f − N1 + 1, because
+if N1 < N , this means that A contains the digit 0, and the latter does not contribute to the
+power sums anyhow. So, from (13):
+                             m
+                            X   (σ + m) . . . (σ + m − j + 1)  f m−j           X
+  (bm+σ − N )u∗A,σ (m) ≤ c                                                              aj
+                            j=1
+                                                 j!               b − 1
+                                                                           f −N1 <a≤f
+                          f m X m                                                    (b − 1)a j
+                                     (σ + m) . . . (σ + m − j + 1)          X
+                       ≤       c                                                                      .
+                          b−1    j=1
+                                                    j!                                     f
+                                                                         f −N1 <a≤f
+
+By hypothesis, σ ≥ 1, so, using Lemma 3, we obtain:
+                              f m      X  b−1                      b − 1 σ+m 
+(14) (bm+σ − N )u∗A,σ (m) ≤         c            (    a + 1)σ+m − 1 −      a       .
+                              b−1                   f                   f
+                                           f −N1 <a≤f
+
+As the smallest used a is at least 1, there holds:
+                               b−1        b−1
+                                     a≥        (a − 1) + 1 ≥ 1.
+                                 f          f
+We can thus, as σ + m ≥ 0 (even σ + m ≥ 2), replace (14) by a weaker upper bound which
+has the advantage of being telescopic. After summing the contributions, we replace the last
+term −( b−1
+         f (f − N1 ) + 1)
+                           σ+m
+                                by its upper bound −1. Hence,
+                                              f m
+                    (bm+σ − N )u∗A,σ (m) ≤             bσ+m − N1 − 1 c
+                                                                       
+                                              b−1
+                                              f m
+                                                       bσ+m − N c.
+                                                                  
+                                           ≤
+                                              b−1
+Hence, the validity for u∗A,σ (m) of the induction hypothesis is established and the proof is
+complete.                                                                                  
+   Having by now completely justiﬁed the Proposition 3 we return to the discusion, initiated
+with equations (10) and (11), of the restricted Dirichlet series.
+Theorem 1. Let ℓ ≥ 1. There holds:
+                        X′          1       b s X′             1
+               Kb,A,s =                +
+                           0<n<bℓ−1 ns    s
+                                         b −N      bℓ−1 ≤n<bℓ
+                                                               ns
+                           ∞
+                          X         (s)m          X′              1
+                        +     (−1)m      uA,s (m)                m+s
+                                                                     .
+                          m=1
+                                     m!             bℓ−1 ≤n<bℓ
+                                                               n
+The partial sums provide, for s real, lower and upper bounds depending on the parity of
+number of terms. For complex s, if either ℓ > 1, or ℓ = 1 and 1 ∈
+                                                                / A, or ℓ = 1 and b − 1 ∈
+                                                                                        / A,
+the series is geometrically convergent.
+Proof. It is only a matter to point out ﬁrst that for any positive integer n (or even any real
+number ≥ 1) one has:
+                                                                 ∞
+                      1                                                    (s)m uA,s (m)
+                                Z
+       X                                        −s             X
+                           s =        n + x(z)     dµA,s (z) =     (−1)m                ,
+                nb ℓ(m) +m        z∈W                           m=0
+                                                                            m! nm+s
+       m≥0
+     admissible
+
+where the ﬁrst equality is justiﬁed as was done for (10) where n was an admissible integer
+(that step only needs n to be a positive real number), and the second equality is easy if
+                                              SERIES FOR ζ(s)                                              10
+
+
+n > 1 from uniform and absolute convergence of the binomial series, whereas for n = 1 it is
+the main fact stated by Proposition 3.
+   Then for any level ℓ ≥ 1, we gather in Kb,A,s the subseries contributed by those admissible
+integers “starting with” the ﬁnitely many admissible integers in [[bℓ−1 , bℓ −1]]. The properties
+of the individual series stated in Proposition 3 (the only delicate case being with ℓ = 1, n = 1,
+1 ∈ A, b − 1 ∈ A) complete the proof of the theorem.                                           
+
+Remark 1. For numerical computations one should anyhow use at least ℓ = 2, except
+perhaps if b is large; and one can, from (1 + x)−s = (2 − (1 − x))−s and expansion in powers
+of 1 − x, hence using “complementary moments” as in [5], always provide a series with
+geometric convergence also for the partial K-series of those n−s with n “starting with” 1,
+or more generally (if 1 ∈/ A) the Lb,A (s) series of Proposition 3.
+Remark 2. With the quantities u∗A,s (m) (of equation (12)) the formula of Theorem 1 for
+Kb,A,s becomes:
+                         X′          1         b s X′             1
+(15)            Kb,A,s =                +
+                            0<n<bℓ−1 ns      s
+                                            b −N      bℓ−1 ≤n<bℓ
+                                                                  ns
+                            ∞
+                           X                      s   X  ′              1
+                         +     (−1)m u∗A,s (m)      (                  s+m
+                                                                           ).
+                           m=1
+                                               s+m       b ℓ−1 ≤n<bℓ
+                                                                     n
+
+                              3. Moment generating function
+  Let again b > 1 an integer, D = [[0, b − 1]], W the set of words on the alphabet D and
+A ⊂ D, N = #A, s ∈ C, ℜs > logb (N ). Recall from Deﬁnition 1 the map x : W → [0, 1).
+Deﬁnition 4. The (exponential) moment generating function EA,s is the entire function
+deﬁned by the formula:             Z
+                                   EA,s (t) =              etx(w) dµA,s (w).
+                                                       W
+                                              at
+                                 P
+Proposition 6. Let αA (t) =           a∈A e        . The following holds:
+                                                               X            j
+                                                                            Y
+(16)                      ∀t ∈ C      EA,s (t) = 1 +                 b−js         αA (b−i t).
+                                                               j≥1          i=1
+
+There is a functional equation:
+(17)                         EA,s (t) = 1 + b−s αA (b−1 t)EA,s (b−1 t).
+Proof. Indeed for j ≥ 1,
+                 j                                                                     X′
+                                                            −1
+                                                                 +···+aj b−j )t
+                 Y                        X
+                       αA (b−i t) =                   e(a1 b                       =            ex(w)t .
+                 i=1                  a1 ,...,aj ∈A                                    ℓ(w)=j
+
+This gives (16). And the functional equation (17) follows.                              
+                            Qj         −i       j max(0,ℜt)
+  In the series from (16),    i=1 αA (b t) ≤ N e            , as we see from the above ex-
+                                  j
+pansion of the product over the N admissible words of length j. One can also reformulate
+equation (16) to read:
+                                                                    j
+                                                   X         1     Y   αA (b−i t)
+(18)                        EA,s (t) = 1 +                                        .
+                                                         (bs /N )j i=1    N
+                                                   j≥1
+                                                SERIES FOR ζ(s)                                      11
+
+                                                                   Q∞         −i
+Indeed, as αA (z)/N = 1+Oz→0 (z), the inﬁnite product βA (t) := i=1 αA (bN t) is convergent,
+everywhere in the complex plane (it vanishes at the bj z0 , j ≥ 1, αA (z0 ) = 0, which exist
+except if A is a singleton). So, either the series (18) has only ﬁnitely many non-zero terms
+(if t is a zero of βA ) or its terms are equivalent up to some multiplicative factor to those of
+the geometric series of ratio N/bs . And we are assuming ℜ(s) > logb (N ) so this latter series
+converges.                                                                         Q∞
+    Suppose (provisorily) that 0 ∈ A, then for ℜt < 0 the inﬁnite product γA (t) = i=0 αA (bi t)
+                                                                                      X′
+is convergent. Expanding in powers of q = et , |q| < 1, we recognize the series              qn
+                                                                                               n≥0
+where the exponents are the admissible integers.
+   One checks that the product GA (t) = βA (t)γA (t) (deﬁned for ℜt < 0) veriﬁes the func-
+tional equation GA (bt) = N −1 GA (t). However, we prefer to not pursue that discussion,
+in favour of another direction, very much alike in terms of tools, which does not make
+the assumption that 0 is an admissible digit and is more focused on properties of E(t) for
+t → +∞.
+P For this,
+         at
+               let f = max A, BP= f − A so that it contains the zero digit, and let us write
+                                             ′
+   a∈A e    as  ef t αB (−t) = ef t a′ ∈B e−a t . The formula for the moment generating function
+becomes:
+                                                                          j
+                                                −js f (b−1)−1 (1−b−j )t
+                                      X                                   Y
+(19)                EA,s (t) = 1 +          b      e                            αB (−b−i t).
+                                      j≥1                                 i=1
+                                                               Q∞
+We observe that for ℜt > 0, deﬁning γB (−t) := i=0 αB (−bi t),     P we   obtain a convergent
+inﬁnite product, which in the variable q = e−t is the subseries of   q n where the exponents
+are restricted to have their radix b digits only from the set B = f − A (in particular n = 0
+is there). Let λ = f /(b − 1) ∈ (0, 1]. We observe that we can reformulate (19), for ℜt > 0,
+as:
+                                              ∞
+                     s −λt
+                                             X         s   −j
+(20)                t e γB (−t)EA,s (t) =         b−j t e−λb t γB (−b−j t).
+                                                       j=0
+
+We realize that negative j’s would give a very quickly convergent series. Let us exchange j
+with −j and deﬁne for ℜt > 0
+                                                ∞
+                                                X          s   j
+(21)                           FA,s (t) =              bj t e−λb t γB (−bj t).
+                                            j=−∞
+
+The “corrections” (now associated with positive j’s, the original series being with non-
+positive j’s) go to zero exponentially fast when t → +∞. The limit function being invariant
+under t 7→ bt, it is susceptible to be expanded, say for t > 0, into a Fourier series in the
+variable log t (or better, a Laurent series in the variable t2πi/ log b , but we do not go into this
+here).
+                                       f
+Proposition 7. Let f = max A, λ = b−1     , B the set f − A and B the set of B-admissible
+(non-negative) integers. Deﬁne φB (q) = n∈B q n for |q| < 1. For any t with positive real
+                                         P
+part there exists
+                                               k
+                                lim (bk t)s e−b λt EA,s (bk t),
+                                    k→+∞
+
+and its value is, using the notation q = e−t :
+                                                        ∞
+                          s −λt
+                                                        X         s   j         j
+                         t e      φB (q)EA,s (t) +            bj t e−λb t φB (q b ).
+                                                        j=1
+                                               SERIES FOR ζ(s)                                          12
+
+
+This limit FA,s (t) is an analytic function of t on the half-plane ℜt > 0 and it is invariant
+under t 7→ bt. Restricting to real positive t’s, its Fourier coeﬃcients as a 1-periodic function
+of logb t are:
+                Z 1
+                            u      −2πiku
+                                                   Γ(s − 2πi logk b ) X             1
+                      FA,s (b )e            du =                                        k
+                                                                                              .
+                                                         log b                  s−2πi log
+                 0                                                    n∈B (n + λ)
+                                                                                          b
+
+
+
+Proof. In equation (21), the non-positive indices contribute ts e−λt φB (q)EA,s (t), as shown
+in equation (20). Replacing in (21) t by some bk t, the value of FA,s remains invariant,
+but the total contribution of positive indices clearly goes to zero as k → +∞. We have
+       k                                     k
+φB (q b ) = γB (−bk t) = 1 + Ok→∞ (e−b t ), so we can remove that term when considering the
+                    k          k
+limit of (bk t)s e−b λt φB (q b )EA,s (bk t). This gives the existence and value of the limit from
+the proposition.
+    We compute the average of FA,s over a period.
+Z 1                  Z ∞                             Z ∞
+           u                su −λbu        −bu
+                                                                  X         dt     Γ(s) X       1
+    FA,s (b )du =         b e       φB (e      )du =      ts e−λt   e−nt         =                    .
+  0                   −∞                              0                  t log b   log b   (n  +  λ)s
+                                                                        n∈B                       n∈B
+
+There are no problems of convergence (everything converges absolutely): B has the same
+cardinality N as A, and ℜs > logb N . The general formula for the k-th Fourier coeﬃcient
+is obtained the same way.                                                             
+
+    Doubly inﬁnite sums over powers of b, similarly to what happens in (21), creating period-
+icity, the computation of Fourier coeﬃcients, the contrasting behaviour of the contributions
+from positive versus negative indices, all of that has been encountered in various contexts
+in the literature and we refer to [2, 7, 8, 10, 12, 13] for further considerations.
+
+
+                                4. The case of the zeta function
+   Let b > 1 an integer. Choosing A = D = [[0, b − 1]], Kb,A,s is nothing else than the
+Riemann zeta function ζ(s), ℜs > 1, and after choosing a level l ≥ 2, the Theorem 1 gives
+geometrically converging series representing ζ(s), in terms of some “moments” obeying the
+recurrence relations (6) or (13). This recurrence relation is also embedded in the properties
+of the moment-generating function EA,s (t) from the previous section. As here A is actu-
+ally determined by b, we change the notation into Eb,s , and similarly the function αA of
+Proposition 6 is now:
+                                                   b−1
+                                                   X             ebt − 1
+                                       αb (t) =          eat =           .
+                                                   a=0
+                                                                 et − 1
+
+We will also switch from uA,s (m) to ub,m (s) for the moments (from deﬁnition 3) or even
+um (s). So, equation (16) becomes
+                                ∞                         ∞
+                                X         et − 1   et − 1 X −j(s−1) t/bj
+(22)              Eb,s (t) =        b−js t/bj    =          b                .
+                                j=0
+                                        e     −1      t j=0        et/bj − 1
+
+The FA,s (t) from Proposition 7, now denoted Fb,s (t), is:
+                                              ∞         s   ∞         s
+                               ts            X     bj t      X    bj t
+                  Fb,s (t) = t    Eb,s (t) +               =              .
+                            e −1             j=1
+                                                 ebj t − 1 j=−∞ ebj t − 1
+                                         SERIES FOR ζ(s)                                            13
+
+
+We take note that for t > 0, it is a discretization of the representation of Γ(s)ζ(s) as an
+integral over (0, ∞):
+                                                                     ∞          s
+                                                                           bj t
+                      Z ∞ s−1         Z ∞
+                          u                      esx                X
+           Γ(s)ζ(s) =           du =                    dx ≈ log b                 ,
+                       0 eu − 1                   x
+                                        −∞ exp(e ) − 1             j=−∞
+                                                                         ebj t − 1
+where the approximation becomes exact in the limit b → 1+ . This Γ(s)ζ(s)/ log b is the
+zeroth Fourier coeﬃcient mentioned in Proposition 7.
+   We can express the moment generating function using the Bernoulli numbers:
+   ∞                      ∞               ∞               ∞           ∞
+  X              t/bj    X             t X −j(s−1) −j X B2k t2k X −j(s−1) −2kj
+      b−j(s−1) t/bj    =    b−j(s−1) −       b       b +                b      b
+  j=0
+              e     − 1 j=0            2 j=0                  (2k)! j=0
+                                                                  k=1
+                               s           s     ∞
+                               b     t b         X B2k t2k     b  s+2k
+                         =         −         +                         .
+                             bs − b 2 bs − 1           (2k)! bs+2k − b
+                                                 k=1
+Consequently,
+        ∞                                                        ∞
+       X   um (s) m    b s et − 1      bs        t        et − 1 X B2k t2k bs+2k
+(23)             t = s            −           (e   − 1) +                           ,
+       m=0
+              m!    b −b t          2(bs − 1)                t      (2k)! bs+2k − b
+                                                                         k=1
+                           bs                     bs (b − 1)
+                u0 (s) = s     ,     u1 (s) =                   ,
+                         b −b                 2(bs − b)(bs − 1)
+                         1 bs       1 bs+1        1 bs+2
+                u2 (s) =          −            +             .
+                         3 bs − b 2 bs+1 − b 6 bs+2 − b
+One checks that the given values for the ﬁrst three moments are compatible with the general
+formulas (5), (7), and (8) respectively.
+   From Theorem 1 (and equations (12), (13), (15)), Propositions 2, 4 and 5, and the above
+equation (23), we obtain the concluding statement of this paper:
+Theorem 2. Let b > 1 be an integer and s a complex number of real part σ greater than 1.
+Let
+                   bs
+        u0 (s) = s    ,
+                b −b
+and, for m ≥ 1:
+                    1   bs      bs+1         X          m!        B2k bs+2k
+       um (s) =             −            +                                       .
+                m + 1 bs − b 2(bs+1 − b)        m
+                                                   (m − 2k + 1)! (2k)! bs+2k − b
+                                                 1≤k≤⌊ 2 ⌋
+
+There holds, for every m ≥ 0:
+                               |(bs − b)um (s)| ≤ (bσ − b)um (σ).
+Let u∗m (s) = (s+1) m
+                m! um (s). They obey the recurrence relations:
+                                         m
+                                   1     X (s + m) . . . (s + m − j + 1)                X
+(24)   m ≥ 1 =⇒ u∗m (s) =                                                  u∗m−j (s)(       aj ),
+                               bm+s − b j=1                  j!
+                                                                                    0≤a<b
+
+and verify, for s = σ > 1 real, the uniform estimates:
+                                      1                  bσ
+                                    σ
+                                          < u∗m (σ) ≤ σ      .
+                                   b −b               b −b
+For general s, ℜs = σ > 1:
+                                 |(s + 1)m | bσ         Γ(σ + 1) bσ
+                     |u∗m (s)| ≤                    ≤                      .
+                                  (σ + 1)m |bs − b|    |Γ(s + 1)| |bs − b|
+                                            SERIES FOR ζ(s)                                            14
+
+
+For any integer ℓ ≥ 2, one has the absolutely convergent series representation:
+                                         ∞
+                           X      1     X         s u∗ (s)   X         1
+(25)             ζ(s) =             s
+                                      +    (−1)m m                     m+s
+                                                                           .
+                              ℓ−1
+                                  n     m=0
+                                                   s + m   ℓ−1     ℓ
+                                                                     n
+                            0<n<b                                  b   ≤n<b
+
+For s real, the partial sums provide alternatingly lower and upper bounds for ζ(s). The
+general term of this series is, for given complex s, O(rm /m) with r = b1−ℓ .
+Proof. The explicit expression in terms of Bernoulli numbers comes from (23). There holds
+by Proposition 2:
+                               (s + 1)m
+            (bs − b)u∗m (s) =            (bs − b)um (s)
+                                  m!
+                               (s + 1)m σ               |(s + 1)m | σ
+                             ≤          (b − b)um (σ) =            (b − b)u∗m (σ).
+                                  m!                     (σ + 1)m
+We have from Proposition 5 the bound (bσ −b)u∗m (σ) ≤ bσ . The sequence m 7→ |(s+1)m /(σ+
+                                                                    (z+1)             mz
+1)m | is non-decreasing and, for any complex number z, there holds m! m ∼m→+∞ Γ(z+1)
+(with 0 ∼ 0 for z a negative integer). We thus get:
+                                        |(s + 1)m | σ                Γ(σ + 1) σ
+                   (bs − b)u∗m (s) ≤               (b − b)u∗m (σ) ≤            b .
+                                         (σ + 1)m                   |Γ(s + 1)|
+The lower bound u∗m (σ) ≥ 1/(bσ − b) was established in Proposition 4.
+   The recurrence relation (24) is (13) with N = b and A = [[0, b − 1]].
+   The series is the one from Theorem 1. The O(rm /m) bound with r = b1−ℓ is a direct
+consequence of the fact that for a given s the sequence (u∗m (s)) is bounded. The behaviour
+of partial sums for s real was pointed out during the proof of Proposition 3. This concludes
+the proof.                                                                                
+Remark 3. For any σ > 1 and any integer k, there holds um (sk ) = um (σ) with sk =
+σ + k2πi/ log b, hence, one has:
+                                      (sk + 1)m          |(sk + 1)m | 1
+                      |u∗m (sk )| =             um (σ) >                  ,
+                                          m!              (σ + 1)m bσ − b
+and
+                                              Γ(σ + 1)      1
+                               lim inf |u∗m (sk )| ≥            .
+                                m→∞          |Γ(sk + 1)| bσ − b
+As |Γ(sk )|−1 grows exponentially when k → +∞ this indicates that using the series nu-
+merically, even though it is geometrically convergent, will require computing a number of
+terms equal to some aﬃne function of the imaginary part of s, if a given ﬁxed-point target
+precision is desired.
+   And as the series is constructed from the recurrence (24), it appears that the cost for
+computing N terms is at least quadratic in N .
+
+                                              References
+
+ [1] Allouche, J.-P., Shallit, J., Stipulanti, M.: Combinatorics on words and generating Dirichlet series
+     of automatic sequences. Discrete Math. 348(8), 114487–16 (2025) https://doi.org/10.1016/j.disc.
+     2025.114487
+ [2] Balazard, M., Mendès France, M., Sebbar, A.: Variations on a theme of Hardy’s. Ramanujan J. 9(1-2),
+     203–213 (2005) https://doi.org/10.1007/s11139-005-0833-5
+ [3] Borwein, J.M., Bradley, D.M., Crandall, R.E.: Computational strategies for the Riemann zeta function.
+     vol. 121, pp. 247–296 (2000). https://doi.org/10.1016/S0377-0427(00)00336-8 . Numerical analysis
+     in the 20th century, Vol. I, Approximation theory.
+                                             SERIES FOR ζ(s)                                               15
+
+
+ [4] Burnol, J.-F.: Moments in the Exact Summation of the Curious Series of Kempner Type. Amer. Math.
+     Monthly 132(10), 995–1006 (2025) https://doi.org/10.1080/00029890.2025.2554555
+ [5] Burnol, J.-F.: Moments for the Summation of Irwin Series. Integers 26 A11, 1–20 (2026) https://
+     doi.org/10.5281/zenodo.18154150
+ [6] Burnol, J.-F.: Some series representing the eta function for ℜs > 0 (2026). https://arxiv.org/abs/
+     2602.05511
+ [7] Hardy, G.: On certain oscillating series. Quart. J. Pure Appl. Math 38, 269–288 (1907)
+ [8] Keating, J.P., Reade, J.B.: Summability of alternating gap series. Proc. Edinburgh Math. Soc. (2)
+     43(1), 95–101 (2000) https://doi.org/10.1017/S001309150002071X
+ [9] Köhler, G., Spilker, J.: Dirichlet-Reihen zu Kempners merkwürdiger konvergenter Reihe. Math.
+     Semesterber. 56(2), 187–199 (2009) https://doi.org/10.1007/s00591-009-0059-5
+[10] Mendès France, M., Sebbar, A.: Pliages de papiers, fonctions thêta et méthode du cercle. Acta Math.
+     183(1), 101–139 (1999) https://doi.org/10.1007/BF02392948
+[11] Nathanson, M.B.: Dirichlet series of integers with missing digits. J. Number Theory 222, 30–37 (2021)
+     https://doi.org/10.1016/j.jnt.2020.10.002
+                                        z        z2        z3
+[12] Zhang, C.: La série entière 1 + Γ(1+i) + Γ(1+2i) + Γ(1+3i) + · · · possède une frontière naturelle! C. R.
+     Math. Acad. Sci. Paris 349(9-10), 519–522 (2011) https://doi.org/10.1016/j.crma.2011.03.010
+[13] Zhang, C.: Analytical study of the pantograph equation using Jacobi theta functions. J. Approx. Theory
+     296, 105974–21 (2023) https://doi.org/10.1016/j.jat.2023.105974
+
+   Université de Lille, Faculté des Sciences et technologies, Département de mathématiques,
+Cité Scientifique, F-59655 Villeneuve d’Ascq cedex, France
+   Email address: jean-francois.burnol@univ-lille.fr
+

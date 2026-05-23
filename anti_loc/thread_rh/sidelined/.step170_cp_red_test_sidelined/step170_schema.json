@@ -1,0 +1,58 @@
+{
+  "step": 170,
+  "orientation": "adequacy",
+  "active_residual": "Xi_BC / Xi_cP_shifted_l",
+  "main_object": "CP-RED_{l,a} membership test on explicit generators",
+  "inherited_records": [
+    119,
+    153,
+    154,
+    165,
+    169
+  ],
+  "test_generators": [
+    {
+      "id": "G170_1",
+      "type": "corrected C_c^infty bump triple",
+      "support": "[0.40,0.70] union [0.90,1.30] union [1.70,2.30] subset [1/4,4]",
+      "formula": "g(t)=beta_{0.40,0.70}(t)-2.42572377955429 beta_{0.90,1.30}(t)+1.11714918636953 beta_{1.70,2.30}(t), beta_{r,R}(t)=exp(-(R-r)^2/((t-r)(R-t))) on r<t<R and 0 otherwise"
+    }
+  ],
+  "per_generator_computation": [
+    {
+      "generator_id": "G170_1",
+      "transported_packet": "For u_G=Cg and G(s)=ghat(s): M(J_a P_infty tau_log2 (I-P_infty) u_G)(s)=[T_{1/4} mathsf P_infty M_{2^{s-1/2}}(I-mathsf P_infty) M_zeta G](s). Expanded: [T_{1/4} mathsf P_infty M_zeta(2^{s-1/2}G)](s)-[T_{1/4} mathsf P_infty M_{2^{s-1/2}} mathsf P_infty M_zeta G](s).",
+      "target_co_poisson_form": "C h(t)=sum_{n>=1} h(t/n)/n-hhat(1), M(C h)(s)=zeta(s) hhat(s). For h=g, the computed target is zeta(s)G(s).",
+      "comparison": "Direct h=g comparison would require [T_{1/4} mathsf P_infty M_{2^{s-1/2}}(I-mathsf P_infty)M_zeta G](s)=zeta(s)G(s). General CP-RED would require the same left side to equal zeta(s)H(s) for a legal H. The computation halts at applying mathsf P_infty and T_{1/4} to the explicit profile G; inherited records give their formal placement but not their kernel, matrix elements, or zeta-ideal covariance on this profile.",
+      "verdict_per_generator": "V_CPRED_STUCK"
+    }
+  ],
+  "factorization_verdict": "V_CPRED_STUCK",
+  "stuck_algebraic_step": {
+    "named_record_gap": "P_infty/T_a action gap on explicit co-Poisson profile",
+    "detail": "Inherited records provide T_a=M_Gamma J_a U_infty^{-1} and formal P_infty placement, but not the exact action needed to decide zeta-divisibility for G170_1."
+  },
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum is support-only without tail/exhaustivity",
+    "scalar L-function identity is not carrier identity"
+  ],
+  "branch_C_status_update": "unchanged",
+  "final_verdict": "V_CPRED_STUCK",
+  "next_step": 171,
+  "step171_forward_push_lanes": [
+    "derive_P_infty_zeta_ideal_covariance_on_G170_class",
+    "derive_Ta_zeta_ideal_covariance",
+    "operator_kernel_lookup_or_countertest"
+  ],
+  "numeric_checks": {
+    "moment_ghat_0": 0.0,
+    "moment_ghat_1": 8.673617379884035e-19,
+    "sample_files": [
+      "co_poisson_samples_step170.csv",
+      "mellin_samples_step170.csv"
+    ]
+  }
+}

@@ -1,0 +1,96 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\title{Step 115: Zeta-Factorization Attempt for Shifted Boundary Packets}
+\author{RH Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 113--114 reduced coefficient visibility to the question whether the shifted Sonin/prolate boundary-packet sector lands inside Burnol's co-Poisson complement.  This note attempts the strongest certificate first: a zeta-factorization of the Mellin transform of a shifted boundary packet.  When that certificate is not available, the note records the exact residual which must be absorbed by Hecke/Dirichlet sources.
+
+\section{Burnol carrier criterion}
+Let $L_a$ be Burnol's extended Sonine space and let $Y_a\subset L_a$ be the closed span of the zero-evaluator vectors $Y^a_{\rho,k}$ attached to the nontrivial zeros of $\zeta$, with $0\le k<m_\rho$.  For $0<a<1$, Burnol's theorem identifies the co-Poisson subspace as
+\[
+P_a=Y_a^\perp.
+\]
+Let
+\[
+\mathfrak B_\ell=J_aP_\infty\tau_\ell(I-P_\infty)
+\]
+be a transported shifted boundary block.  Then
+\[
+\operatorname{Ran}\mathfrak B_\ell\subseteq P_a
+\quad\Longleftrightarrow\quad
+\Pi_{Y_a}\mathfrak B_\ell=0.
+\]
+Equivalently,
+\[
+\partial_s^k M_a(\mathfrak B_\ell u)(\rho)=0
+\]
+for every legal input $u$, every nontrivial zero $\rho$, and every $0\le k<m_\rho$.
+
+\section{Zeta-factorization certificate}
+\begin{proposition}[Sufficient certificate]
+Suppose that for every legal input $u$ there exists a legal quotient function $\alpha_{\ell,u}$ such that
+\[
+M_a(\mathfrak B_\ell u)(s)=\zeta(s)\alpha_{\ell,u}(s),
+\]
+with the required Burnol growth, support, endpoint, pole and semilocal transport records.  Then
+\[
+\operatorname{Ran}\mathfrak B_\ell\subseteq P_a.
+\]
+\end{proposition}
+\begin{proof}
+The factor $\zeta(s)$ vanishes at every nontrivial zero with its multiplicity.  The legality records ensure that the quotient belongs to the same completed Sonine/Burnol response class, so all zero-evaluator derivatives vanish.  By $P_a=Y_a^\perp$, the range is contained in $P_a$.
+\end{proof}
+
+\begin{warning}[No automatic shift factor]
+A multiplicative log-shift acts on Mellin transforms by an exponential multiplier.  It does not introduce a factor $\zeta(s)$.  Thus a raw shifted Sonin/prolate block has no automatic zeta-factorization.  The factorization must come from a co-Poisson synthesis identity, not from the shift alone.
+\end{warning}
+
+\section{Residual object}
+When the factorization certificate is absent, define
+\[
+\Xi^{\rm BC}_{\ell,a}
+=\mathfrak B_\ell^*\Pi_{Y_a}\mathfrak B_\ell\succeq0.
+\]
+This is the boundary/co-Poisson adequacy residual.  It measures precisely the part of the shifted boundary packets seen by zero-evaluators and therefore missed by a co-Poisson atom family.
+
+For a finite zero window $Y_{a,N}$, write
+\[
+\Xi^{\rm BC}_{\ell,a,N}
+=\mathfrak B_\ell^*\Pi_{Y_{a,N}}\mathfrak B_\ell,
+\qquad
+T_N=\mathfrak B_\ell^*(\Pi_{Y_a}-\Pi_{Y_{a,N}})\mathfrak B_\ell.
+\]
+Finite-window annihilation promotes only if $T_N$ vanishes in the fixed/exhaustive ledger sense.
+
+\section{Source absorption fork}
+The alternative to factorization is source absorption:
+\[
+\Xi^{\rm BC}_{\ell,a}\preceq F_n+E_{{\rm abs},n},
+\]
+where
+\[
+F_n=\sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega
+\]
+is an upstream-visible Hecke/Dirichlet source frame.  If $F_n$ also satisfies the completed lower-frame growth condition, the failed co-Poisson inclusion residual is paid as source currency.
+
+\section{Conclusion}
+The accepted Step 115 output is the fork
+\[
+\boxed{\text{legal zeta-factorization}}
+\quad\lor\quad
+\boxed{\text{source absorption of }\Xi^{\rm BC}}.
+\]
+No zero-simplicity assumption or target-selected atom/source family is permitted.
+\end{document}

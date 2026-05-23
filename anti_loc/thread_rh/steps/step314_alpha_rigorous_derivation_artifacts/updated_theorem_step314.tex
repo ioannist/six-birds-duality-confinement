@@ -1,0 +1,51 @@
+\section*{Step 314 Updated Theorem Status}
+
+\paragraph{Derivative-ratio phase formula.}
+For
+\[
+T_{k,j}={k\choose j}\zeta^{(j)}(\rho_1)M(G_\star)^{(k-j)}(\rho_1),
+\]
+the binomial factor is positive real, hence
+\[
+\arg T_{k,j}
+=
+\arg\zeta^{(j)}(\rho_1)
++
+\arg M(G_\star)^{(k-j)}(\rho_1).
+\]
+The forward phase increment is
+\[
+\arg\frac{T_{k,j+1}}{T_{k,j}}
+=
+\arg\frac{\zeta^{(j+1)}(\rho_1)}{\zeta^{(j)}(\rho_1)}
++
+\arg\frac{M(G_\star)^{(k-j-1)}(\rho_1)}
+        {M(G_\star)^{(k-j)}(\rho_1)}.
+\]
+The continuous-index approximation requested in Step 314 is
+\[
+\alpha(k)\approx
+\arg\frac{\zeta^{(k/2+1)}(\rho_1)}{\zeta^{(k/2)}(\rho_1)}
+-
+\arg\frac{M(G_\star)^{(k/2+1)}(\rho_1)}
+        {M(G_\star)^{(k/2)}(\rho_1)}.
+\]
+
+\paragraph{Numerical status.}
+This formula matches the empirical central phase slopes to a few percent
+on \(k=10,20,30,50\), and the symmetric exact adjacent-ratio formula
+matches the local Step 313 phase derivative especially well for
+\(k\ge20\).
+
+\paragraph{Rigorous status.}
+The theorem is not upgraded.  The missing theorem is a uniform bound or
+asymptotic for
+\[
+\arg\frac{\zeta^{(j+1)}(\rho_1)}{\zeta^{(j)}(\rho_1)}
+\]
+near \(j\sim k/2\), plus the corresponding uniform control of the
+Mellin-derivative ratio.  Existing literature located in this audit
+addresses moments and ratios-conjecture averages of zeta derivatives at
+zeros; it does not supply the fixed-zero, high-order phase-ratio bound
+needed here.
+

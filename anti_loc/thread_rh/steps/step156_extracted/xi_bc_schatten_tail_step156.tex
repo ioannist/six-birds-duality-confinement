@@ -1,0 +1,196 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\title{Step 156: $\Xi^{\rm BC}$ Residual-Kernel Schatten/Tail Audit}
+\author{Riemann--membrane construction note}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newtheorem{audit}{Audit}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 151--154 reduced direct residual exclusion to the projected Sonine-kernel commutator
+\[
+        C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+        \qquad
+        m_\ell(s)=e^{-\ell(1/2-s)},
+\]
+acting on the pulled Burnol zero-evaluator family
+\[
+        \eta^a_{\rho,k}=J_a^*Y^a_{\rho,k}.
+\]
+The active adequacy residual is
+\[
+        \Xi^{\rm BC}_{\ell,a}
+        =\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}\succeq0.
+\]
+Step 156 asks whether this residual is compact, Schatten, tail-payable, or genuinely noncompact.
+
+\section{Normalized residual kernel}
+Let $\mathcal Z_a$ denote the zero-evaluator index set
+\[
+        z=(\rho,k),\qquad 0\le k<m_\rho,
+\]
+and write $\eta_z=\eta^a_{\rho,k}$.  Let
+\[
+        E:c_{00}(\mathcal Z_a)\to H_\infty,
+        \qquad E e_z=\eta_z,
+\]
+be the pulled-evaluator synthesis map, and let
+\[
+        G=E^*E
+\]
+be its Gram operator on finite windows.  On each finite legal window we work after quotienting by
+$\ker G$ and use the normalized synthesis
+\[
+        \widetilde E=E G^{-1/2}.
+\]
+The normalized residual-kernel operator is
+\[
+        \boxed{
+        \mathcal R_\ell
+        =\widetilde E^*C_\ell^*C_\ell\widetilde E.
+        }
+\]
+Equivalently,
+\[
+        \mathcal R_\ell(z,w)
+        =\left\langle C_\ell\widetilde\eta_z,
+        C_\ell\widetilde\eta_w\right\rangle,
+\]
+where $\{\widetilde\eta_z\}$ denotes a Gram-normalized evaluator window.
+
+\section{Schatten/tail classification}
+\begin{theorem}[Residual-kernel Schatten reduction]
+Let
+\[
+        A_\ell=C_\ell\widetilde E.
+\]
+Then
+\[
+        \mathcal R_\ell=A_\ell^*A_\ell.
+\]
+Consequently:
+\begin{enumerate}[label=(\roman*)]
+\item $\mathcal R_\ell=0$ if and only if $A_\ell=0$.
+\item $\mathcal R_\ell$ is compact if and only if $A_\ell$ is compact.
+\item For $1\le p<\infty$,
+\[
+        \mathcal R_\ell\in\mathcal S_p
+        \quad\Longleftrightarrow\quad
+        A_\ell\in\mathcal S_{2p}.
+\]
+In that case, if $s_n(A_\ell)$ are the singular values of $A_\ell$, then
+\[
+        \|\mathcal R_\ell\|_{\mathcal S_p}^p
+        =\sum_n s_n(A_\ell)^{2p}.
+\]
+\item In particular, $\mathcal R_\ell$ is trace-class if and only if $A_\ell$ is Hilbert--Schmidt.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The identity $\mathcal R_\ell=A_\ell^*A_\ell$ is the definition of the normalized residual kernel.  The singular values of $A_\ell^*A_\ell$ are the squares of the singular values of $A_\ell$.  The compact and Schatten equivalences follow immediately from this singular-value relation.
+\end{proof}
+
+\begin{corollary}[Trace-class criterion]
+Let $\{u_n\}$ be an orthonormal basis of the normalized pulled-evaluator domain.  Then
+\[
+        \mathcal R_\ell\in\mathcal S_1
+        \quad\Longleftrightarrow\quad
+        \sum_n\|C_\ell\widetilde E u_n\|^2<\infty.
+\]
+Moreover,
+\[
+        \operatorname{tr}\mathcal R_\ell
+        =\sum_n\|C_\ell\widetilde E u_n\|^2.
+\]
+\end{corollary}
+
+\section{Calkin-level obstruction}
+Let $P_\eta$ be the orthogonal projection onto the closed span of the pulled evaluator family in the archimedean/Sonin carrier.  Then the residual is compact only if the commutator block is compact after restriction to this pulled-evaluator span.
+
+\begin{theorem}[Essential residual criterion]
+If
+\[
+        [C_\ell P_\eta]\ne 0
+        \qquad\text{in the Calkin algebra }\mathcal B(H_\infty)/\mathcal K(H_\infty),
+\]
+then the residual kernel $\mathcal R_\ell$ is not compact on the completed pulled-evaluator sector.  Hence $\Xi^{\rm BC}$ is not tail-payable by compact exhaustion alone.
+\end{theorem}
+
+\begin{proof}
+If $\mathcal R_\ell$ were compact, then $A_\ell=C_\ell\widetilde E$ would be compact by the Schatten reduction theorem.  On the closed pulled-evaluator span this is precisely compactness of $C_\ell P_\eta$ after quotienting null modes.  Thus a nonzero Calkin class blocks compactness.
+\end{proof}
+
+\begin{warning}[Raw shift does not remove the Calkin sector]
+The multiplier $m_\ell$ is nonvanishing.  Thus the shift alone does not produce a $\zeta$-factor and does not force $C_\ell\eta_z=0$.  Any compactness or trace-class result must come from one of the following additional records:
+\begin{enumerate}[label=(\alph*)]
+\item the pulled zero-evaluator span avoids the essential sector of $C_\ell$;
+\item the projected Sonine kernel provides a smoothing envelope strong enough to make $C_\ell\widetilde E$ compact or Schatten;
+\item a separate tail/exhaustivity theorem shows the residual kernel has vanishing completed tail.
+\end{enumerate}
+None of these records is currently earned by the raw commutator formula.
+\end{warning}
+
+\section{Tail-payability criterion}
+Let $\Pi_N$ be an upstream-declared increasing projection ladder on the pulled-evaluator domain, and let $A_\ell=C_\ell\widetilde E$.
+
+\begin{theorem}[Compact tail criterion]
+If $A_\ell$ is compact and $\Pi_N\uparrow I$ strongly, then
+\[
+        \|A_\ell(I-\Pi_N)\|\to0.
+\]
+Equivalently, the normalized residual tails satisfy
+\[
+        \|(I-\Pi_N)\mathcal R_\ell(I-\Pi_N)\|\to0.
+\]
+If $A_\ell$ is Hilbert--Schmidt, then the trace tails also vanish:
+\[
+        \operatorname{tr}\big((I-\Pi_N)\mathcal R_\ell(I-\Pi_N)\big)\to0.
+\]
+\end{theorem}
+
+\begin{proof}
+Compact operators send strongly convergent projection tails to norm-zero tails.  The trace statement follows from Hilbert--Schmidt tail convergence.
+\end{proof}
+
+\section{Classification status after Step 156}
+The residual has four possible lawful statuses:
+\[
+\begin{array}{lll}
+\mathsf E & \text{exact} & C_\ell\eta_z=0\text{ for all zero evaluators};\\
+\mathsf K & \text{compact/tail-payable} & C_\ell P_\eta\in\mathcal K;\\
+\mathsf S_p & \text{Schatten-payable} & C_\ell\widetilde E\in\mathcal S_{2p};\\
+\mathsf N & \text{active nonclaim residual} & \text{none of the above has been earned.}
+\end{array}
+\]
+The current status is $\mathsf N$ with exact criteria for promotion to $\mathsf E$, $\mathsf K$, or $\mathsf S_p$.
+
+\section{Nonclaim boundary}
+Step 156 does not prove RH, does not prove $H_R=0$, and does not prove compactness of $\Xi^{\rm BC}$.  It proves the exact operator-theoretic classification gate.  The active next object is the Calkin interaction
+\[
+        \boxed{[C_\ell P_\eta]}
+\]
+and its finite-window singular-value tails.
+
+\section{Next step}
+Step 157 should audit the Calkin-level pulled-evaluator avoidance condition:
+\[
+        [C_\ell]P_\eta\stackrel{?}{=}0.
+\]
+If this fails, $\Xi^{\rm BC}$ is not compact/tail-payable and must remain as a scoped adequacy residual unless a genuinely new signed or co-Poisson mechanism is introduced.
+
+\end{document}

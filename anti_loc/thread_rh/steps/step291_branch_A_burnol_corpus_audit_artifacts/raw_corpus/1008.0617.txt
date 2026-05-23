@@ -1,0 +1,1750 @@
+                                                 Paley-Wiener spaces with vanishing conditions and
+                                                            Painlevé VI transcendents
+                                                                              Jean-François Burnol
+
+                                                                                   July 27, 2010
+arXiv:1008.0617v1 [math.CA] 3 Aug 2010
+
+
+
+
+                                                                                      Abstract
+                                                    We modify the classical Paley-Wiener spaces P Wx of entire functions of finite ex-
+                                              ponential type at most x > 0, which are square integrable on the real line, via the
+                                              additional condition of vanishing at finitely many complex points z1 , . . . , zn . We com-
+                                              pute the reproducing kernels and relate their variations with respect to x to a Krein
+                                              differential system, whose coefficient (which we call the µ-function) and solutions have
+                                              determinantal expressions. Arguments specific to the case where the “trivial zeros”
+                                              z1 , . . . , zn are in arithmetic progression on the imaginary axis allow us to establish
+                                              for expressions arising in the theory a system of two non-linear first order differential
+                                              equations. A computation, having this non-linear system at his start, obtains quasi-
+                                              algebraic and among them rational Painlevé transcendents of the sixth kind as certain
+                                              quotients of such µ-functions.
+
+
+
+                                              Université Lille 1
+                                              UFR de Mathématiques
+                                              Cité scientifique M2
+                                              F-59655 Villeneuve d’Ascq
+                                              France
+                                              burnol@math.univ-lille1.fr
+
+
+
+                                         1    Introduction and summary of results
+                                                                           R∞
+                                         Let φ ∈ L2 (R, dt) and F(φ)(z) = −∞ φ(t)eizt dt its Fourier transform. When φ is supported
+                                         in (−x, x), f (z) = F(φ)(z) is an entire function of exponential type at most x. Conversely
+                                         the Paley-Wiener theorem identifies the vector space P Wx of entire functions of exponential
+                                         type at most x, square-integrable on the real line, as the Hilbert space of such Fourier
+                                         transforms. Our convention for our scalar products is for them to be conjugate linear in
+                                                                                                                        R
+                                         the first factor and complex linear in the second factor. Specifically (φ, ψ) = R φ(t)ψ(t) dt,
+                                                                                       1
+                                                                                         R
+                                         hence for the transforms f and g: (f, g) = 2π     R f (z)g(z)dz = (φ, ψ).
+
+
+
+
+                                                                                          1
+   The evaluator Zz is the element of P Wx such that
+                                                    Z x
+       ∀g ∈ P Wx , g = F(ψ),      (Zz , g) = g(z) =     eizt ψ(t) dt = (F(e−izt ), g)          (1)
+                                                              −x
+
+Hence:
+                                   sin((z − w)x)   eizx e−iwx − e−izx eiwx
+                      Zz (w) = 2                 =                                             (2)
+                                       z−w                 i(z − w)
+Let E(w) = e−ixw and E ∗ (w) = E(w). The evaluators in P Wx are given by
+
+                                                E(z)E(w) − E ∗ (z)E ∗ (w)
+                        Zz (w) = (Zw , Zz ) =                                                  (3)
+                                                       i(z − w)
+Let us also define:
+                                         1
+                                   A(w) = (E(w) + E ∗ (w))                                    (4a)
+                                         2
+                                         i
+                                   B(w) = (E(w) − E ∗ (w))                                    (4b)
+                                         2
+Then E = A − iB, A = A∗ , B = B ∗ and:
+
+                                                  B(z)A(w) − A(z)B(w)
+                        (Zw , Zz ) = Zz (w) = 2                                                (5)
+                                                         z−w
+For the Paley-Wiener spaces, A(w) = cos(xw) is even and B(w) = sin(xw) is odd.
+
+   Let us consider generally a Hilbert space H, whose vectors are entire functions, and such
+that the evaluations at complex numbers are continuous linear forms, hence correspond to
+specific vectors Zz . Let σ = (z1 , . . . , zn ) be a finite sequence of distinct complex numbers.
+We let H σ be the closed subspace of H of functions vanishing at the zi ’s. Let
+                                                        1
+                                   γ(z) =                                                      (6)
+                                            (z − z1 ) . . . (z − zn )
+
+and define H(σ) = γ(z)H σ :
+
+                H(σ) = {F (z) = γ(z)f (z) | f ∈ H, f (z1 ) = · · · = f (zn ) = 0}              (7)
+
+We introduced this notion in [5]. We say that F (z) = γ(z)f (z) is the “complete” form of f ,
+and refer to z1 , . . . , zn as the “trivial zeros” of f . We give H(σ) the Hilbert space structure
+which makes f 7→ F an isometry with H σ . Let us note that evaluations F 7→ F (z) are again
+continuous linear forms on this new Hilbert space of entire functions: this is immediate if
+z∈/ σ and follows from the Banach-Steinhaus theorem if z ∈ σ. We thus define Kz in H(σ)
+to be the evaluator at z:
+
+                        Kz ∈ H(σ) ∀F ∈ H(σ)             F (z) = (Kz , F )H(σ)                  (8)
+
+
+                                                   2
+   Here is a summary of the results presented here. We start by showing how to find entire
+functions Aσ and Bσ , real on the real line, such that:
+
+                                               Bσ (z)Aσ (w) − Aσ (z)Bσ (w)
+                     (Kw , Kz ) = Kz (w) = 2                                               (9)
+                                                          z−w
+This will be done under the following hypotheses: (1) the initial Hilbert space of entire
+functions H satisfies the axioms of [2], hence its evaluators Zz are given by a formula (5)
+for some entire functions A and B which are real on the real line, (2) A can be chosen
+even and B can be chosen odd, and (3) the added “trivial zeros” are purely imaginary.
+The produced functions Aσ and Bσ giving the reproducing kernel (9) of the modified space
+H(σ) will be respectively even and odd. The restrictive hypotheses (2) and (3) can be
+disposed of, as is explained in companion paper [5]. We follow here another method, which
+proves formulas of a different type than those available from the general treatment [5].
+The interested reader will find in [5] the easy arguments establishing that H(σ) verifies the
+axioms of [2] if the initial space H does: this explains a priori why indeed a formula of the
+type (9) has to exist if (5) holds for H.
+
+    Then, we examine the case of a dependency of the initial space on a parameter x.
+Assuming that the initial Ax and Bx obey a first order differential system of the Krein
+type [10, 11] as functions of x (involving as coefficient what we call a µ-function) we prove
+that the new Aσ,x and Bσ,x do as well (in other words we compute the µσ -function in
+terms of the initial µ-function). The result is already notable when we start from the
+classical Paley-Wiener spaces for which the initial µ(x)-function (x > 0) vanishes identically.
+It will be achieved through establishing a “pre-Crum formula” for the effect of Darboux
+transformations on Schrödinger equations linked into Krein systems.
+
+   The final part of the paper establishes the main result. We consider the classical Paley-
+Wiener spaces P Wx modified by imaginary trivial zeros in an arithmetic progression σ. We
+prove that certain quotients of the µ-functions associated to the spaces P Wx (σ) obey the
+Painlevé VI differential equation.
+
+
+2    A determinantal identity
+
+The following identity is quasi identical with a formula of Okada [12, Theorem 4.2] and
+immediately equivalent to it. We give a different proof.
+
+Theorem 1. Let there be given indeterminates ui , vi , ki , xi , yi , li , for 1 ≤ i ≤ n. We
+
+
+
+
+                                                3
+define the following n × n matrices
+                                                                                             
+                   u1     u2 . . .   un                        v1    v2           ...     vn
+                 k1 v1 k2 v2 . . . kn vn                   k1 u1 k2 u2         ...    kn un 
+          Un = k2 u k2 u . . . k2 u                   Vn = k2 v k2 v                                   (10)
+                                                                                             
+                 1    1  2 2        n   n                    1 1    2 2         ...    kn2 vn 
+                    ..                ..                        ..                          ..
+                                                                                               
+                     .   ... ...       .                         .   ...          ...        .
+where the rows contain alternatively u’s and v’s. Similarly:
+                                                                                            
+                    x1    x2 . . . xn                    y1    y2             ...         yn
+                  l1 y1 l2 y2 . . . ln yn          l1 x1 l2 x2             ...       ln xn 
+           Xn = l2 x l2 x . . . l2 x          Yn =  l 2 y l 2 y                                        (11)
+                                                                                            
+                 1 1 2 2             n n           1 1 2 2                 ...       ln2 yn 
+                     ..                ..                 ..                               ..
+                                                                                               
+                      .   ... ...       .                  .  ...             ...           .
+There holds
+                                ui yj − vi xj          1        Un Xn
+                        det (                 )= Q                                                        (12)
+                      1≤i,j≤n      lj − ki           (l
+                                                  i,j j  − ki ) Vn Yn 2n×2n
+
+                                                                                                    A B
+                                                                                                          
+Proof. Let A, B,  C, D be n × n matrices, with A and C invertible. Using                           C D       =
+ A 0
+      I A−1 B 
+ 0 C     I C −1 D
+                  we obtain
+
+                                  A B
+                                      = |A||C||C −1 D − A−1 B|                                            (13)
+                                  C D
+                                                                                    Q
+where vertical bars denote determinants. Let d(u) = diag(u1 , . . . , un ) and pu = 1≤i≤n ui .
+We define similarly d(v), d(x), d(y) and pv , px , py . From the previous identity we get
+
+              Ad(u) Bd(x)
+                          = |A||C| pu pv d(v)−1 C −1 Dd(y) − d(u)−1 A−1 Bd(x)
+              Cd(v) Dd(y)                                                                                 (14)
+                                                 −1                  −1
+                                = |A||C| d(u)C        Dd(y) − d(v)A       Bd(x)
+
+The special case A = C, B = D, gives
+                 Ad(u) Bd(x)
+                                   = det(A)2 det ((ui yj − vi xj )(A−1 B)ij )                             (15)
+                 Ad(v) Bd(y) 2n×2n          1≤i,j≤n
+
+Let W (k) be the Vandermonde matrix with rows (1 . . . 1), (k1 . . . kn ), (k12 . . . kn2 ), . . . , and
+∆(k) = det W (k) its determinant. Let
+                                        Y
+                                 K(t) =    (t − km )                                                 (16)
+                                                1≤m≤n
+
+and let C be the n × n matrix (cim )1≤i,m≤n , where the cim ’s are defined by the partial
+fraction expansions:
+                                        ti−1     X      cim
+                        1≤i≤n                 =                                     (17)
+                                        K(t)          t − km
+                                                         1≤m≤n
+
+
+                                                   4
+We have the two matrix equations:
+
+                                         C = W (k) diag(K ′ (k1 )−1 , . . . , K ′ (kn )−1 )         (18a)
+                           1 
+                  C·                   = W (l) diag(K(l1 )−1 , . . . , K(ln )−1 )                   (18b)
+                       lj − km 1≤m,j≤n
+This gives the (well-known) identity:
+           
+       1
+                      = diag(K ′ (k1 ), . . . , K ′ (kn ))W (k)−1 W (l) diag(K(l1 )−1 , . . . , K(ln )−1 )
+   lj − km 1≤m,j≤n
+                                                                                                       (19)
+We can thus rewrite the determinant we want to compute as:
+    ui yj − vi xj          Y              Y
+                        =     K ′ (km )         K(lj )−1 (ui yj − vi xj )(W (k)−1 W (l))ij             (20)
+       lj − ki 1≤i,j≤n     m
+                                                                                               n×n
+                                               j
+
+We shall now make use of (15) with A = W (k) and B = W (l).
+     u i y j − vi x j                  Y           Y          W (k)d(u) W (l)d(x)
+                              = ∆(k)−2   K ′ (km )   K(lj )−1
+         lj − ki      1≤i,j≤n
+                                                              W (k)d(v) W (l)d(y)
+                                           m             j
+                                        n(n−1)
+                                                                                                      (21)
+                               (−1)        2    W (k)d(u) W (l)d(x)
+                              =Q
+                                 i,j (lj − ki ) W (k)d(v) W (l)d(y) 2n×2n
+                                   n
+The sign (−1)n(n−1)/2 = (−1)[ 2 ] is the signature of the permutation which exchanges rows
+i and n + i for i = 2, 4, . . . , 2[ n2 ] and transforms the determinant on the right-hand side into
+ Un Xn
+         . This concludes the proof.
+ Vn Yn
+
+
+3     A and B for spaces with imaginary trivial zeros
+
+Just using the existence of continuous evaluators but not yet (5), we have by a simple
+argument of orthogonal projection (see [5]):
+Proposition 2. Let H be a Hilbert space of entire functions with continuous evaluators
+Zz : ∀f ∈ H f (z) = (Zz , f ). Let σ = (z1 , . . . , zn ) be a finite sequence of distinct complex
+numbers with associated evaluators Z1 , . . . , Zn , assumed to be linearly independent. Let
+H(σ) be the Hilbert space of entire functions which are complete forms of the elements of
+H vanishing on σ. The evaluators of H(σ) are given by:
+                                      (Z1 , Z1 )         ...    (Z1 , Zn )   (Z1 , Zz )
+                             γ(w)γ(z) (Z2 , Z1 )         ...    (Z2 , Zn )   (Z2 , Zz )
+                    Kz (w) =              ..                        ..           ..                   (22)
+                                Gn         .             ...         .            .
+                                      (Zw , Z1 )         ...   (Zw , Zn ) (Zw , Zz )
+where Gn > 0 is the principal n × n minor of the matrix.
+
+
+                                                     5
+   Recalling the form (5) of the reproducing kernel:
+
+                                              B(w2 )A(w1 ) − A(w2 )B(w1 )
+                           (Zw1 , Zw2 ) = 2                                             (23)
+                                                       w 2 − w1
+we see that the choices:
+
+                    1 ≤ i ≤ n : ui = A(zi ), vi = B(zi ), ki = zi                      (24a)
+                                    un+1 = A(w), vn+1 = B(w), kn+1 = w,                (24b)
+                    1 ≤ j ≤ n : xj = A(zj ), yj = B(zj ), lj = zj ,                    (24c)
+                                    xn+1 = A(z), yn+1 = B(z), ln+1 = z                 (24d)
+
+allow to make use of Theorem 1. This gives:
+
+                       2n+1 γ(w)γ(z)(−1)n γ ∗ (w)γ(z) Un,w Xn,z
+            Kz (w) =                                                                    (25)
+                       Gn · 1≤i,j≤n (zj − zi ) · (z − w) Vn,w Yn,z (2n+2)×(2n+2)
+                           Q
+
+
+with                                                                            
+                            A(z1 )        A(z2 ) . . .          A(zn )    A(w)
+                         z1 B(z1 )      z2 B(z2 ) . . .      zn B(zn ) wB(w) 
+                  Un,w = z 2 A(z )                                                     (26)
+                                                                                
+                          1       1     z22 A(z2 ) . . .     zn2 A(zn ) w2 A(w)
+                                ..                                  ..        ..
+                                 .            ...       ...          .         .
+                                                                                
+                            B(z1 )        B(z2 ) . . .          B(zn )    B(w)
+                          z1 A(z1 )     z2 A(z2 ) . . .      zn A(zn ) wA(w) 
+                  Vn,w = z 2 B(z )                                                     (27)
+                                                                                
+                          1       1     z22 B(z2 ) . . .     zn2 B(zn ) w2 B(w)
+                               ..                                  ..        ..
+                                .             ...       ...         .         .
+                                              Xn,z = Un,z                               (28)
+
+                                               Yn,z = Vn,z                              (29)
+
+   We shall now make the following hypotheses: (1) the zi ’s are purely imaginery, (2) A is
+even and B is odd. Then A(zi ) = A(z i ) = A(−zi ) = A(zi ), and B(zi ) = B(zi ) = B(−zi ) =
+−B(zi ). The first n columns of the matrix Un,w are thus real and identical with the first
+n columns of Xn,z . The first n columns of the matrix Vn,w are purely imaginery and thus
+the opposite of the first n columns of Yn,z .
+                                           Un,w Xn,z
+   In order to compute the determinant                                , we substract, for 1 ≤
+                                            Vn,w Yn,z (2n+2)×(2n+2)
+j ≤ n, column j to column j + n + 1. This sets to zero all columns of Xn,z except its last
+and multiplies by 2 the n first columns of Yn,z . We then apply a Laplace expansion using
+the (n + 1) × (n + 1) minors built with the first and last (n + 1) rows. If the top minor has
+both the w and z columns, its complementary bottom minor will have two proportional
+
+
+                                                    6
+columns hence vanish. There are thus only two contributions, and taking (various) signs
+into account we obtain:
+       Un,w Xn,z
+                               = 2n det(Un,w ) det(Yn,z ) − det(Xn,z )(−2)n det(Vn,w )                  (30)
+       Vn,w Yn,z (2n+2)×(2n+2)
+
+So:
+
+            22n+1 γ(w)γ(z) γ(z)(−1)n γ ∗ (w) det(Un,w )det(Vn,z ) − det(Un,z )(−1)n det(Vn,w )
+Kz (w) =                   Q                   ·
+                  Gn         i,j≤n (z j − zi )                     z−w
+                                                                                         (31a)
+
+Let us also compute the Gram determinant Gn . The determinantal identity gives:
+
+                           2n         Un Un            22n (−1)n
+           Gn = Q                                  =Q                    det(Un ) det(Vn )              (32)
+                      i,j (z j − zi ) Vn −Vn 2n×2n   1≤i,j≤n (z j − zi )
+
+Finally:
+
+                                              det(Un,w )det(Vn,z ) − det(Un,z )(−1)n det(Vn,w )
+       Kz (w) = 2γ(w)γ ∗ (w)γ(z)γ ∗ (z)                                                                 (33)
+                                                          det(Un ) det(Vn )(z − w)
+
+Taking into account that in det(Vn ) is real we get:
+
+                                        det(Un,w )in det(Vn,z ) − det(Un,z )in det(Vn,w )
+Kz (w) = 2γ(w)γ ∗ (w)γ(z)γ ∗ (z)                                                                     (34a)
+                                                det(Un )(−i)n det(Vn )(z − w)
+                                                                                                         !
+               γ(w)γ ∗ (w)γ(z)γ ∗ (z)              det(V     ) det(U    )   det(U    ) (−1)n det(V     )
+                                                         n,z        n,w          n,z               n,w
+          =2                                 (−1)n                        −
+                       z−w                          det Vn      det Un       det Un         det Vn
+                                                                                                       (34b)
+
+      The following has been obtained:
+
+Theorem 3. Let H be a Hilbert space of entire functions with reproducing kernel Zz (w) =
+2 B(z)A(w)−A(z)B(w)
+         z−w        , where the entire functions A and B are real on the real line and re-
+spectively even and odd. Let σ = (zi )1≤i≤n be a finite sequence of distinct purely imaginary
+numbers. We assume that the associated evaluators are linearly independent, and also that
+zi + zj 6= 0 for all i, j. Let H(σ) be the Hilbert space of the functions γ(z)f (z), where
+        Q 1
+γ(z) = i z−z   i
+                 and f is in H with f (z) = 0 for z ∈ σ. Let
+
+                                              A(z1 )     A(z2 )      ...    A(zn )     A(w)
+                      n(n−1)
+               (−1)      2     γ(w)γ ∗ (w)   z1 B(z1 ) z2 B(z2 )     ...   zn B(zn ) wB(w)
+ Aσ (w) =                                    z12 A(z1 ) z22 A(z2 )   ...   zn2 A(zn ) w2 A(w)
+                        det Un
+                                                  ..                                      ..
+                                                   .        ...      ...       ...         .    (n+1)×(n+1)
+                                                                                                       (35a)
+
+
+                                                         7
+                                           B(z1 )     B(z2 )      ...     B(zn )    B(w)
+                   n(n+1)
+            (−1)      2     γ(w)γ ∗ (w)   z1 A(z1 ) z2 A(z2 )     ...   zn A(zn ) wA(w)
+ Bσ (w) =                                 z12 B(z1 ) z22 B(z2 )   ...   zn2 B(zn ) w2 B(w)
+                     det Vn
+                                               ..                                      ..
+                                                .        ...      ...       ...         .    (n+1)×(n+1)
+                                                                                  (35b)
+where the denominators det Un and det Vn are the principal n×n minors of the numerators.
+The space H(σ) has evaluators Kz satisfying the formula:
+
+                                                    Bσ (z)Aσ (w) − Aσ (z)Bσ (w)
+                       Kz (w) = (Kw , Kz ) = 2                                                       (36)
+                                                               z−w
+The functions Aσ and Bσ are entire, real on the real line, Aσ is even and Bσ is odd.
+                                          n(n−1)
+Remark 1. The additional (−1) 2 is to make Aσ (it) > 0 and −iBσ (it) > 0 for t > 0,
+at least in the case of the Paley-Wiener spaces (this sign is easily determined from the
+asymptotics as t → +∞; let us also mention that −iBσ (it)Aσ (it) > 0 for t > 0, from
+(36) and if H(σ) 6= {0}). We observe that if the initial A and B verify the normalization
+−iB(it)
+ A(it) →t→+∞ 1 then the new Aσ and Bσ also. This normalization has proven to be more
+natural in this and other investigations, than other normalizations such as, for example,
+A(0) = 1 (when possible).
+
+Remark 2. A formula of the type (36) for evaluators in a Hilbert space of entire functions
+is guaranteed by the axiomatic framework of [2]. The passage from an H to an H(σ) is
+compatible to these axioms (cf. [5]), hence existence of an Eσ = Aσ −iBσ function was known
+in advance. Determination of a suitable Eσ , without any of the restrictive hypotheses made
+here, is achieved in [5] with another method. Confrontation of the results thus establishes
+some interesting identities.
+
+    Let us record a special case of the computation (32) of the Gram determinant Gn , using
+                                                                  (i)
+the notation W (f1 , . . . , fn ) for Wronskian determinants det(fj )1≤i,j≤n (derivatives with
+respect to x):
+
+Proposition 4. The following identity holds:
+
+     sh((κi + κj )x)           W (ch(κ1 x), . . . , ch(κn x)) · W (sh(κ1 x), . . . , sh(κn x))
+                             =           Q               Q                      2
+                                                                                                     (37)
+         κi + κj     1≤i,j≤n                 1≤i≤n κi      1≤i<j≤n (κi + κj )
+
+
+Proof. Let ui = ch(κi x), vi = sh(κi x), ki = κi , xj = ch(κj x) = uj , yj = − sh(κj x) = −vj ,
+lj = −κj = −kj . With these choices:
+
+                                     sh((κi + κj )x)   ui yj − vi xj
+                                                     =                                               (38)
+                                         κi + κj          lj − ki
+
+
+                                                      8
+By Theorem 1:
+           ui yj − vi xj                 1        Un Xn        (−1)n (−2)n
+     det (                  )= Q                              =Q                det(Un ) det(Vn )
+   1≤i,j≤n      lj − ki            i,j (lj − ki ) Vn Yn 2n×2n    i,j (κi + κj )
+                                                                                               (39)
+where we used Un = Xn , Vn = −Yn . As det Un = W (ch(κ1 x), . . . , ch(κn x)) and det Vn =
+W (sh(κ1 x), . . . , sh(κn x)), this completes the proof.
+
+
+4    Crum formulas for Darboux transformations of Krein sys-
+     tems
+
+All derivatives in this chapter will be with respect to a variable x. We are interested in
+differential systems of the Krein type:
+                                         a′ − µa = −kb
+                                      
+                                  (S)                                                 (40)
+                                          b′ + µb = +ka
+Krein uses systems of this type in particular in his approach [10] to Inverse Scattering
+Theory and in his continuous analogues to topics of Orthogonal Polynomial Theory [11].
+The system couples two Schrödinger equations:
+
+                          −a′′ + V + a = k2 a       with V + = µ2 + µ′                       (41a)
+                              ′′    −       2                −     2     ′
+                           −b + V b = k b           with V       =µ −µ                       (41b)
+
+It proves quite convenient to introduce the notion of a tau-function, which is a function
+such that:
+                                     µ2 = −(log τ )′′                                (42)
+We shall also use the notation λ = (log τ )′ , so that µ2 = −λ′ .
+
+    The well-known Darboux transformation [7, §6] transforms the solutions of a Schrödinger
+equation −f ′′ + V f = Ef into solutions of another one, and the formulas of Crum [6] give
+Wronskian expressions for both solutions and potentials after successive such Darboux
+transformations. In this chapter we introduce a notion of “simultaneous” or “linked” such
+transformations which act at the level of the Krein system (40). This provides a kind of
+refinement to the formula of Crum, the change of the two potentials being lifted to the
+change of the “tau” function. We did not find in the litterature the results we prove here,
+but it is so extensive that we may have missed some important contributions.
+
+    We make use also of couples (α, β) of the type (a, −ib). Hence we also consider the
+differential systems:
+                                       α′ − µα = +κβ
+                                    
+                               (T )                                                (43)
+                                       β ′ + µβ = +κα
+
+                                                9
+It corresponds to (S) (40) via k = iκ, a = α, b = iβ. The Schrödinger equations become:
+
+                                              α′′ = (κ2 + V + )α                                             (44a)
+                                              β ′′ = (κ2 + V − )β.                                          (44b)
+
+Theorem 5. Let κ ∈ C and let (α, β) be a solution of the differential system (T ) (43), with
+neither α nor β identically zero. The simultaneous Darboux transformations:
+                                                           α′
+                                              a → a1 = a′ −   a                                              (45a)
+                                                           α
+                                                           β′
+                                              b → b1 = b′ − b                                               (45b)
+                                                           β
+transform any solution (a, b, k) of the differential system (S) (40) into a solution (a1 , b1 , k)
+of a transformed system:
+
+                                          a′1 − µ1 a1 = −kb1
+                                      
+                                (S1 )                                                      (46a)
+                                          b′1 + µ1 b1 = +ka1
+
+where the new coefficient µ1 is
+                                                          d     α
+                                              µ1 = µ −      log                                               (47)
+                                                         dx     β
+If µ2 = −(log τ )′′ then µ21 = −(log τ1 )′′ with
+
+                                                   τ1 = τ αβ                                                  (48)
+
+                                                                            α           a
+Proof. From αa1 = | αα′ aa′ |, we get (αa1 )′ = | αα′′ aa′′ | =        (V + +κ2 )α (V + −k 2 )a   = −(k2 + κ2 )aα,
+which we rewrite as
+                                  α′
+                          a′1 +      a1 = −(k2 + κ2 )a = −k(b′ + µb) − κ2 a                                   (49)
+                                  α
+Further
+                        αa1 = α(−kb + µa) − (κβ + µα)a = −kαb − κβa                                           (50)
+
+Eliminating a gives:
+                                     α′       α                     α
+                             a′1 +      a1 − κ a1 = −k(b′ + µb) + kκ b                                        (51)
+                                     α        β                     β
+                ′
+Using κ αβ = ββ + µ:
+                                            α′ β ′                 β′
+                                  a′1 + (     −    − µ)a1 = −k(b′ − b)                                        (52)
+                                            α   β                  β
+                                               ′                   ′
+With the definitions µ1 = µ − αα + ββ and b1 = b′ − ββ b this gives indeed:
+                                        ′
+
+
+
+
+                                              a′1 − µ1 a1 = −kb1                                              (53)
+
+
+                                                      10
+              β b                                β b                 β           b
+From βb1 =    β ′ b′   , we get (βb1 )′ =       β ′′ b′′   =    (V − +κ2 )β (V − −k 2 )b   = −(k2 + κ2 )bβ, which
+gives:
+                                      β′
+                              b′1 +      b1 = −(k2 + κ2 )b = k(a′ − µa) − κ2 b                               (54)
+                                      β
+On the other hand
+
+                             βb1 = β(ka − µb) − (κα − µβ)b = kβa − καb                                       (55)
+
+Eliminating b gives:
+                                          β′       β                    β
+                                  b′1 +      b1 − κ b1 = k(a′ − µa) − kκ a                                   (56)
+                                          β        α                    α
+Using κ αβ = αα − µ finally leads to:
+              ′
+
+
+
+
+                            β ′ α′                α′
+                  b′1 + (      −   + µ)b1 = k(a′ − a) =⇒ b′1 + µ1 b1 = +ka1                                  (57)
+                            β    α                α
+
+                              ′
+   Let λ1 = λ + αα + ββ = (log τ αβ)′ . We must also verify µ21 = −λ′1 .
+                       ′
+
+
+
+
+                                      α′ 2                 β′                α′     β′
+    λ′1 = λ′ + (V + + κ2 ) − (          ) + (V − + κ2 ) − ( )2 = µ2 + 2κ2 − ( )2 − ( )2                      (58)
+                                      α                    β                 α      β
+
+                                  (α′ − µα)(β ′ + µβ)   α′ β ′    β′  α′
+                           κ2 =                       =        − µ + µ − µ2                                  (59)
+                                          αβ            α β       β   α
+                                          α′ β ′      β ′ α′  α′     β′
+                   λ′1 = −µ2 + 2                 − 2µ( − ) − ( )2 − ( )2 = −µ21                              (60)
+                                          α β         β   α   α      β
+
+
+Remark 3. A solution (a, b, k) of system (S) (40) corresponds to a solution (α, β, κ) =
+(a, −ib, −ik) of system (T ) (43), and to a solution (α, β, κ) of (T ) we can switch to the
+solution (α, iβ, iκ) of (S), having the same logarithmic derivatives with respect to x. Hence
+it is just a matter of arbitrary choice to consider the Darboux transformations to be as-
+sociated to a specific solution of (T ) rather than to a specific solution of (S). Moreover,
+the same Darboux transformations (45a), (45b) which are associated to a given (α, β, κ)
+but now applied to a triple (γ, δ, ξ), solution of (T ), produces a solution of the transformed
+system
+
+                                            γ1′ − µ1 γ1 = ξδ1
+                                         
+                                   (T1 )                                                   (61a)
+                                            δ1′ + µ1 δ1 = ξγ1
+
+of type (T ) associated to the new coefficient µ1 .
+
+
+
+
+                                                           11
+Theorem 6. Let there be given n triples (αj , βj , κj ), solutions of the differential system
+(T ) (43). We assume that α1 , . . . , αn are linearly independent, and β1 , . . . , βn also. To
+each solution (a, b, k) of the system
+                                           a′ − µa = −kb
+                                        
+                                    (S)                                                      (62)
+                                           b′ + µb = +ka
+we associate
+                                           W (α1 , . . . , αn , a)
+                                      an =                                                  (63a)
+                                            W (α1 , . . . , αn )
+                                           W (β1 , . . . , βn , b)
+                                      bn =                                                  (63b)
+                                           W (β1 , . . . , βn )
+Going from (a, b) to (an , bn ) is the result of the n successive simultaneous Darboux trans-
+formations (45a) and (45b) associated to (α1 , β1 ), . . . , (αn , βn ) (themselves transformed
+along the way). There holds:
+                                          a′n − µn an = −kbn
+                                       
+                                 (Sn )                                                      (64)
+                                           b′n + µn bn = +kan
+where the coefficient µn is given by:
+                                               d     W (α1 , . . . , αn )
+                                µn = µ −         log                                         (65)
+                                              dx     W (β1 , . . . , βn )
+If furthermore one chooses a tau-function such that µ2 = −(log τ )′′ then
+                                                     d2
+                                         µ2n = −        log τn                               (66)
+                                                    dx2
+where
+                             τn = τ · W (α1 , . . . , αn )W (β1 , . . . , βn )               (67)
+
+Proof. Let us consider first the simultaneous Darboux transformations of system (S) (40)
+                                                                                  (1)  (1)
+and of its partner (T ) (43), defined by (α1 , β1 ). Let us write in particular (α2 , β2 ) for the
+transform of the couple (α2 , β2 ). We then apply the associated Darboux transformations
+                                                                                           (2) (2)
+to (S1 ) giving rise to (S2 ). The couple (α3 , β3 ) is transformed into a solution (α3 , β3 )
+of partner (T2 ). Etc. . . Although we speak of transformed systems to keep track of the
+coupling, each of the associated Schrödinger equation −f ′′ + V ± f = k2 f is transformed by
+               ′
+f 7→ f ′ − gg f where g is a solution of −g ′′ + V ± g = −κ2 g, hence independently of what
+happens to the other equation −φ′′ + V ∓ φ = k2 φ. One part of the Theorem of Crum [6]
+(which we do not reprove here) tells us that if we apply n successive Darboux transforma-
+                     ′
+tions f 7→ f ′ − gg f , first by g1 , then by the transformed g2 , then by the transformed g3 ,
+. . . the final action can be written directly as:
+                                              W (g1 , . . . , gn , f )
+                                       f 7→                                                  (68)
+                                               W (g1 , . . . , gn )
+
+                                                    12
+Hence definitions (63a) and (63b) of an and bn can be viewed as the final result of the n
+successive simultaneous Darboux transformations. Theorem 5 tells us how µ changes when
+system (S) is transformed once, hence iterative use of the Theorem gives a formula for
+µn involving in fact telescopic products of quotients of Wronskians, hence equation (65).
+Moreover if a tau function is initially chosen with −(log τ )′′ = µ2 , Theorem 5 can again be
+applied iteratively, leading to a function τn given by (67), and verifying −(log τn )′′ = µ2n .
+
+    Let us take note that µ2n +µ′n = −(log τ )′′ −(log W (α1 , . . . , αn ))′′ −(log W (β1 , . . . , βn ))′′ +
+      d2      W (α1 ,...,αn )  2         d2                                             2                 2
+µ′ − dx                            ′
+        2 log W (β ,...,β ) = µ + µ − 2 dx2 log W (α1 , . . . , αn ). And similarly µn − µn = µ −
+                  1       n
+                                                                                                 ′
+
+        d2
+µ′ − 2 dx 2 log W (β1 , . . . , βn ). Thus:
+
+
+Corollary 7. Using the notations of Theorem 6, there holds
+
+                                              −a′′n + Vn+ an = k2 an                                   (69a)
+                                              −b′′n + Vn− bn = k2 bn                                   (69b)
+
+with
+                                                d2
+                                  Vn+ = V + − 2    log W (α1 , . . . , αn )                            (70a)
+                                               dx2
+                                                d2
+                                  Vn− = V − − 2 2 log W (β1 , . . . , βn )                             (70b)
+                                               dx
+
+   These formulas are the part of Crum’s Theorem [6] regarding the effect of successive
+Darboux transformations on the potentials of Schrödinger equations.
+
+
+5      Modification of mu-functions by trivial zeros
+
+We are interested in Hilbert spaces Hx of entire functions in the sense of [2], whose repro-
+ducing kernels are given by formula (5), where the functions A (= Ax ) and B (= Bx ) are
+real valued on the real line, respectively even and odd, and obey a first order differential
+system with respect to x of the Krein type [10], with a real valued coefficient function µ(x):
+
+                                   d
+                                     Ax (w) − µ(x)Ax (w) = −wBx (w)                                    (71a)
+                                  dx
+                                   d
+                                     Bx (w) + µ(x)Bx (w) = wAx (w)                                     (71b)
+                                  dx
+Remark 4. More general integral equations play the important general structural role in
+[2]. We have found that the above restricted type arises naturally in the study of some
+specific instances of Hilbert spaces of entire functions [3]. It turns out to be well adapted
+
+
+                                                       13
+to the present study of the classical Paley-Wiener spaces modified by adding trivial zeros
+on the imaginary axis. If we remove the restriction for the zeros to lie on the imaginary
+axis, the functions Ax and Bx real on the real line will (generally speaking) cease to be
+respectively even and odd and they obey the more general type of Krein system from [11]
+which has both the real and imaginary parts of a complex valued µ-function as coefficients.
+
+   We want to combine Theorem 3 and Theorem 6. We will suppose that the functions
+Ax are even, the functions Bx odd, and the trivial zeros zi , 1 ≤ i ≤ n, are purely imaginary
+and verify zi 6= ±zj for all i, j.
+
+    From (71a) and (71b):
+                                                2p
+                                  d        d
+                               (    + µ)(    − µ)    Ax = (−1)p w2p Ax                                      (72a)
+                                 dx       dx
+                                                2p
+                       d          d        d
+                    (    − µ) (     + µ)(    − µ)    Ax = (−1)p+1 w2p+1 Bx                              (72b)
+                      dx         dx       dx
+                                                         d (2p)           d (2p+1)
+By recurrence the left side of (72a) (resp. (72b)) is ( dx ) Ax (resp. ( dx )      Ax ) up to
+a finite linear combination of lower derivatives of Ax with coefficients being function of x
+(independent of w). Hence, for n = 2m:
+                                            Ax (z1 )       ...      Ax (zn )        Ax (w)
+                                          z1 Bx (z1 )      ...    zn Bx (zn )      wBx (w)
+                                            2                     zn2 Ax (zn )     w2 Ax (w)
+ W (Ax (z1 ), . . . , Ax (zn ), Ax (w)) = 1 Ax (z1 )
+                                          z                ...
+                                               ..                                      ..
+                                                .      ...             ...              .
+                                         z12m Ax (z1 ) . . .           ...        w2m Ax (w) (2m+1)×(2m+1)
+                                                                                                       (73)
+and for n = 2m + 1:
+                                                         Ax (z1 )        ...       Ax (zn )      Ax (w)
+                                                        z1 Bx (z1 )      ...     zn Bx (zn )    wBx (w)
+                                                        z12 Ax (z1 )     ...     zn2 Ax (zn )   w2 Ax (w)
+W (Ax (z1 ), . . . , Ax (zn ), Ax (w)) = (−1)m+1             ..                       ..            ..
+                                                              .    ...                 .             .
+                                                     z12m Ax (z1 ) . . .   w2m Ax (w)
+                                                                                    ...
+                                                   z12m+1 Bx (z1 ) . . .  w2m+1 Bx (w) (2m+2)×(2m+2)
+                                                                                    ...
+                                                                                      (74)
+If we divide the Wronskians (constructed with derivations with respect to x) and the (n +
+1)×(n+1) determinants at the right by their respective n×n principal minors, the resulting
+fractions will thus coincide up to (−1)m for n = 2m and (−1)m+1 for n = 2m + 1, hence in
+                        1
+both cases up to (−1) 2 n(n+1) . We can thus rewrite the function Aσ of Theorem 3 as:
+                                              W (Ax (z1 ), Ax (z2 ), . . . , Ax (zn ), Ax (w))
+              Aσ (w) = (−1)n γ(w)γ ∗ (w)                                                                     (75)
+                                                 W (Ax (z1 ), Ax (z2 ), . . . , Ax (zn ))
+
+                                                    14
+    In the same manner
+                                                   2p
+                                     d        d
+                                  (    − µ)(    + µ)    Bx = (−1)p w2p Bx                              (76a)
+                                    dx       dx
+                                                   2p
+                          d          d        d
+                       (    + µ) (     − µ)(    + µ)    Bx = (−1)p w2p+1 Ax                            (76b)
+                         dx         dx       dx
+                                                         d (2p)           d (2p+1)
+By recurrence the left side of (76a) (resp. (76b)) is ( dx ) Bx (resp. ( dx )      Bx ) up to
+a finite linear combination of lower derivatives of Bx with coefficients being function of x
+(independent of w). Hence, for n = 2m:
+                                                     Bx (z1 )      ...      Bx (zn )      Bx (w)
+                                                    z1 Ax (z1 )    ...    zn Ax (zn )    wAx (w)
+W (Bx (z1 ), . . . , Bx (zn ), Bx (w)) = (−1)m      z12 Bx (z1 )   ...    zn2 Bx (zn )   w2 Bx (w)
+                                                         ..                                  ..
+                                                          .      ...           ...            .
+                                                   z12m Bx (z1 ) . . .         ...       w2m Bx (w) (2m+1)×(2m+1)
+                                                                                                         (77)
+and for n = 2m + 1:
+                                              Bx (z1 )       ...     Bx (zn )         Bx (w)
+                                             z1 Ax (z1 )     ...   zn Ax (zn )       wAx (w)
+                                             z12 Bx (z1 )    ...   zn2 Bx (zn )      w2 Bx (w)
+W (Bx (z1 ), . . . , Bx (zn ), Bx (w)) =          ..                    ..               ..
+                                                   .         ...         .                .
+                                             z12m Bx (z1 )   ...    w2m Bx (w)
+                                                                         ...
+                                           z12m+1 Ax (z1 )   ...   w2m+1 Ax (w) (2m+2)×(2m+2)
+                                                                         ...
+                                                                                       (78)
+If we divide the Wronskians and the determinants at the right by their respective n × n
+principal minors, the results will coincide up to (−1)m for n = 2m and (−1)m for n = 2m+1,
+                                 1
+hence in both cases up to (−1) 2 n(n−1) . We can rewrite the function Bσ of Theorem 3 as:
+                                                 W (Bx (z1 ), Bx (z2 ), . . . , Bx (zn ), Bx (w))
+                Bσ (w) = (−1)n γ(w)γ ∗ (w)                                                              (79)
+                                                    W (Bx (z1 ), Bx (z2 ), . . . , Bx (zn ))
+where the Wronskians are constructed with derivations with respect to x.
+
+    Taking into account that (−1)n γ ∗ (w) = γ(−w) we can thus sum up these computations
+in the following:
+Theorem 8. Let there be given Hilbert spaces Hx of entire functions, with functions Ax
+(even, real on the real line) and Bx (odd, real on the real line) computing the evaluators in
+Hx by formula (5), and whose variations with respect to the parameter x are given by:
+                                  d
+                                    Ax (w) − µ(x)Ax (w) = −wBx (w)                                     (80a)
+                                 dx
+                                  d
+                                    Bx (w) + µ(x)Bx (w) = wAx (w)                                      (80b)
+                                 dx
+
+
+                                                       15
+Let σ = (z1 , . . . , zn ) be a finite sequence of purely imaginary numbers (the associated eval-
+uators in Hx being supposed linearly independent) with zi 6= ±zj for 1 ≤ i, j ≤ n and let
+Hx (σ) be the Hilbert space Hx modified by σ. Its evaluators Kz are given by:
+
+                                                 Bσ (z)Aσ (w) − Aσ (z)Bσ (w)
+                     Kz (w) = (Kw , Kz ) = 2                                                 (81)
+                                                            z−w
+with
+                                     W (Ax (z1 ), Ax (z2 ), . . . , Ax (zn ), Ax (w))
+               Ax,σ (w) = γ(w)γ(−w)                                                         (82a)
+                                        W (Ax (z1 ), Ax (z2 ), . . . , Ax (zn ))
+                                     W (Bx (z1 ), Bx (z2 ), . . . , Bx (zn ), Bx (w))
+                Bx,σ (w) = γ(w)γ(−w)                                                        (82b)
+                                        W (Bx (z1 ), Bx (z2 ), . . . , Bx (zn ))
+
+where the Wronskians involve derivatives with respect to the variable x. The entire functions
+Ax,σ and Bx,σ are real on the real line, and respectively even and odd.
+
+   Taking into account Theorem 6 we thus learn that:
+
+Theorem 9. Let there be given Hilbert spaces Hx of entire functions, functions Ax and
+Bx , imaginary numbers z1 , z2 , . . . verifying the hypotheses of Theorem 8. Let Hx (n) =
+Hx (z1 , . . . , zn ) and let the functions Ax,n and Bx,n computing the reproducing kernel in
+Hx (n) be provided by Theorem 3. They are obtained by successive transformations (essen-
+tially) of Darboux type:
+                                                                                     !
+                                                            d
+                                      1       d               A  x,n (zn+1 )
+                    Ax,n+1 (w) = 2              Ax,n (w) − dx                Ax,n (w)   (83a)
+                                  zn+1 − w2 dx               Ax,n (zn+1 )
+                                                                                    !
+                                                            d
+                                      1       d               B x,n (zn+1 )
+                     Bx,n+1 (w) = 2             Bx,n (w) − dx               Bx,n (w)    (83b)
+                                  zn+1 − w2 dx               Bx,n (zn+1 )
+
+and verify the equations
+                            d
+                               Ax,n (w) − µn (x) Ax,n (w) = −wBx,n (w)                      (84a)
+                           dx
+                             d
+                               Bx,n (w) + µn (x) Bx,n (w) = +wAx,n (w)                      (84b)
+                            dx
+with
+                                         d     W (Ax (z1 ), . . . , Ax (zn ))
+                            µn = µ −       log                                               (85)
+                                        dx     W (Bx (z1 ), . . . , Bx (zn ))
+                                       d     2                d        2
+If a function τ is chosen with µ2 = − dx               2
+                                         2 log τ then µn = − dx2 log τn with
+
+
+
+                τn = τ · W (Ax (z1 ), . . . , Ax (zn ))W (−iBx (z1 ), . . . , −iBx (zn ))    (86)
+
+
+
+                                                   16
+   In the following, the index x shall be dropped from the notations. Combining (83a)
+with (84a) we obtain:
+
+        2                                                           Bn (zn+1 )
+      (zn+1 − w2 )An+1 (w) = µn An (w) − wBn (w) − (µn − zn+1                  )An (w)
+                                                                    An (zn+1 )
+                                     zn+1
+           = −(zn+1 + w)Bn (w) +              (Bn (zn+1 )An (w) + An (zn+1 )Bn (w))         (87)
+                                   An (zn+1 )
+                                                   zn+1
+                        = −(zn+1 + w)Bn (w) +               (zn+1 + w)K n (zn+1 , w)
+                                                2An (zn+1 )
+
+We have written K n (z, w) = Kzn (w) for the evaluator in H(n) = H(z1 , . . . , zn ). Combining
+(83b) with (84b) gives:
+
+       2                                                              An (zn+1 )
+     (zn+1 − w2 )Bn+1 (w) = −µn Bn (w) + wAn (w) − (−µn + zn+1                   )Bn (w)
+                                                                      Bn (zn+1 )
+                                       zn+1
+              = (zn+1 + w)An (w) −              (An (zn+1 )Bn (w) + Bn (zn+1 )An (w))       (88)
+                                     Bn (zn+1 )
+                                                     zn+1
+                           = (zn+1 + w)An (w) −               (zn+1 + w)K n (zn+1 , w)
+                                                  2Bn (zn+1 )
+
+We thus have the identities:
+
+Theorem 10. Let H = Hx , An , Bn , for n ≥ 1 be as in Theorem 9. There holds
+                                                   zn+1
+                  (w − zn+1 )An+1 (w) = Bn (w) −            K n (zn+1 , w)                 (89a)
+                                                2An (zn+1 )
+                                                     zn+1
+                  (w − zn+1 )Bn+1 (w) = −An (w) +             K n (zn+1 , w)               (89b)
+                                                  2Bn (zn+1 )
+
+where K n (z, w) = Kzn (w) is the reproducing kernel in H(n) = H(z1 , . . . , zn ).
+
+   From formula (22) in Theorem 2 we know that 1≤i≤n (w − zi ) · K n (zn+1 , w) is a linear
+                                                     Q
+
+combination of the initial evaluators Zi (w) (= Zzi (w)), 1 ≤ i ≤ n + 1. Hence by induction
+we obtain the following:
+
+Theorem 11. Let H = Hx , An , Bn , for n ≥ 1 be as in Theorem 9. Let En = An − iBn and
+Fn = En∗ = An + iBn . The function (−i)n 1≤i≤n (w − zi ) · En (w) differs from the initial
+                                             Q
+
+E = A−iB function by a finite linear combination of the initial evaluators Zi (w), 1 ≤ i ≤ n.
+Also the function in 1≤i≤n (w − zi ) · Fn (w) (Fn = En∗ ) differs from the initial F = A + iB
+                      Q
+
+function by a finite linear combination of the initial evaluators Zi (w), 1 ≤ i ≤ n.
+
+Remark 5. Let us note that this characterizes uniquely the En (and Fn ) provided by
+theorem 8, as the unknown linear combinations of (linearly independent) evaluators will be
+constrained by their values at the zi ’s. This theorem for the transition from H to H(σ)
+holds with much greater generality than achieved here (see the companion article [5]): it
+
+
+                                               17
+suffices for H to verify the axioms of [2]. Thus, reverting the steps we could have started
+from the results proven in [5] and, under the additional hypotheses made here (existence of a
+parameter x and of a differential system of Krein type, imaginary trivial zeros, . . . ), obtain
+the Darboux transformations ((83a) and (83b) in Theorem 9) and later the Wronskian
+formulas (Theorem 8) as corollaries.
+
+
+6    Non-linear equations for Paley-Wiener spaces with trivial
+     zeros
+
+On the basis of Theorem 11 it is convenient to work with the “incomplete” forms of the
+various objects encountered. As the main results of this chapter are for the classical Paley-
+Wiener spaces P Wx , we will from the start assume H = P Wx . We consider its modification
+H(σ) by finitely many “trivial” distinct zeros σ = (z1 , . . . , zn ) (the associated evaluators in
+                                                 Q               1
+H are always linearly independent). Let γ(w) = 1≤j≤n w−z           j
+                                                                      be the corresponding gamma
+                                           σ
+factor. We define the incomplete version K (z, w) of the reproducing kernel K(z, w) in H(σ)
+via the relation
+                     K(z, w) = Kz (w) = (Kw , Kz ) = γ(w)γ(z)K σ (z, w)                       (90)
+Theorem 2 is the statement that K σ (z, w) is the unique entire function of w which vanishes
+at z1 , . . . , zn and differs additively from the initial evaluator Z(z, w) by a finite linear
+combination of the initial evaluators Z(z1 , w), . . . , Z(zn , w).
+
+   Let us now consider the functions Eσ and Fσ characterized as in Theorem 11. We
+consider their incomplete versions, up to a factor in :
+                      Eσ (w) = in γ(w)Eσ (w)          Fσ (w) = in γ(w)Fσ (w)                  (91)
+
+Of course, there does not hold (for n ≥ 1) Fσ = Eσ∗ (this last function has its trivial zeros
+not at the zi ’s but at the zi ’s). The formula for the incomplete reproducing kernel is
+                                           Eσ (z)Eσ (w) − Fσ (z)Fσ (w)
+                            K σ (z, w) =                                                      (92)
+                                                     i(z − w)
+The rationale for the in in (91) is twofold: first Theorem 11, second the fact that if the zi ’s
+are imaginary the function Aσ and iBσ obtained in Theorem 3 are real on iR, hence Eσ
+and Fσ are real on iR, hence Eσ (it) and Fσ (it) as defined by (91) are real for t real. The
+differential system with respect to x for Eσ and Fσ (as for their complete versions Eσ , Fσ )
+is:
+                              d
+                                Eσ (it) = tEσ (it) + µσ (x)Fσ (it)                       (93a)
+                             dx
+                              d
+                                Fσ (it) = −tFσ (it) + µσ (x)Eσ (it)                      (93b)
+                             dx
+
+
+                                                 18
+We introduce the coefficients c1 , . . . , cn , d1 , . . . , dn which are the functions of x and of
+the imaginary points z1 = −iκ1 , . . . , zn = −iκn such that, according to Theorem 11, the
+following holds:
+                                                X           2 sh((t − κj )x)
+                             Eσ (it) = ext +           cj                                     (94a)
+                                                                 t − κj
+                                               1≤j≤n
+                                                            X         2 sh((t − κj )x)
+                             Fσ (it) = (−1)n e−xt +              dj                           (94b)
+                                                                           t − κj
+                                                        1≤j≤n
+
+The identity following from Fσ = Eσ∗ is (we use that Eσ and Fσ are real valued on iR):
+                       Y                          Y
+                          (t − κj )Fσ (it) = (−1)n (t + κj )Eσ (−it)                 (95)
+                               j                                j
+
+If one is interested in explicit formulas for the cj ’s and dj ’s, the initial recipe is to put
+t = −κ1 , . . . , t = −κn in (94a) (resp. (94b)) and to use the trivial zeros Eσ (−iκj ) = 0
+(resp. Fσ (−iκj ) = 0). Cramer’s formulas thus lead to determinantal representations for
+the cj ’s and dj ’s (which are seen to be real valued).
+
+Remark 6. We pause here to explain how to remove the restrictions κi + κj 6= 0. These
+constraints go back to Theorem 3. They were necessary to avoid vanishing of the denomi-
+nators Un and Vn , in the formulas for An , Bn . But (94a) and (94b) define Eσ and Fσ , and
+the validity of
+                                       Eσ (z)Eσ (w) − Fσ (z)Fσ (w)
+                          K σ (z, w) =                                                 (96)
+                                                 i(z − w)
+follows by continuity (for real κi ’s), as there is no singularity arising in the formulas for the
+coefficients c1 , . . . , cn , d1 , . . . , dn . The same remark applies to the mu-function µσ which
+will be expressed below in terms of these coefficients. Hence by continuity we again have a
+mu-function and a differential system (93a), (93b) even when κi + κj = 0 for some (i, j).
+The conditions κi + κj 6= 0 were inforced only in order to facilitate the writing of explicit
+formulas of Wronskian type for the A’s and B’s.
+
+     There is a plethora of various algebraic and differential identities involving the cj ’s and
+dj ’s. We propose a basic selection, sufficient for our goal in this chapter. From (94a), the
+            d
+value of ( dx − t)Eσ (it) is
+       X                     2 sh((t − κj )x)   X
+            (c′j − κj cj )                    +   cj (2 ch((t − κj )x) − 2 sh((t − κj )x))     (97)
+                                  t − κj
+      1≤j≤n                                     1≤j≤n
+
+Comparison with (93a) gives:
+                                                             X
+                                      µσ (x) = (−1)n                2cj eκj x                  (98)
+                                                            1≤j≤n
+
+
+                                                       19
+                                                               d
+                             and      1 ≤ j ≤ n =⇒               cj − κj cj = µσ dj                             (99)
+                                                              dx
+                                       d
+Similarly, from (94b), the value of ( dx + t)Fσ (it) is
+        X                    2 sh((t − κj )x)   X
+            (d′j + κj dj )                    +   dj (2 ch((t − κj )x) + 2 sh((t − κj )x))                    (100)
+                                  t − κj
+     1≤j≤n                                      1≤j≤n
+
+Thus:
+                                                      X
+                                           µσ (x) =           2dj e−κj x                                      (101)
+                                                      1≤j≤n
+
+                                                               d
+                             and     1 ≤ j ≤ n =⇒                dj + κj dj = µσ cj                           (102)
+                                                              dx
+We take note of the asymptotics:
+                                         
+                 xt      ασ (x)                                                          X
+ Eσ (it) =t→+∞ e      1−        + O(t )−2
+                                                                           ασ (x) = −2           cj e−κj x (103a)
+                           2t
+                                                                                         1≤j≤n
+                                               
+                     n −xt       δσ (x)                                                           X
+ Fσ (it) =t→−∞ (−1) e        1+              −2
+                                        + O(t )                            δσ (x) = −(−1)n 2             dj eκj x
+                                   2t
+                                                                                                 1≤j≤n
+                                                                                                             (103b)
+                                                 P
+Using (95) we obtain δσ (x) = ασ (x) + 4              1≤j≤n κj . Further,
+
+               d             X                             X
+                 ασ (x) = −2   (c′j − κj cj )e−κj x = −2µσ   dj e−κj x = −µ2σ                                 (104)
+              dx
+                                   1≤j≤n                                   1≤j≤n
+
+Using either the differential equations or the identities already known provides the two
+further asymptotics:
+                                                         
+                                      xt µσ (x)        −2
+                      Fσ (it) =t→+∞ e            + O(t )                          (105a)
+                                            2t
+                                                                  
+                                                 −µσ (x)
+                      Eσ (it) =t→−∞ (−1)n e−xt            + O(t−2 )               (105b)
+                                                    2t
+
+    We definitely switch to viewing functions depending on x as functions of the variable
+                                                                              d       d
+a = e−x . For example we write µσ (a), rather than µσ (− log(a)). We have a da  = − dx  . We
+also fix once and for all an integer n ≥ 1, and will study the spaces P Wx (ν, n) associated
+to a sequence of trivial zeros z1 , . . . , zn , in arithmetic progression:
+                     ν+1        ν+1                   ν+1
+              κ1 =       , κ2 =     + 1, . . . , κn =     +n−1                        zj = −iκj               (106)
+                      2          2                     2
+The transition from n to n + 1 is described by Theorem 10. Here n is fixed, and we shall
+study the relation between ν and ν + 1.
+
+
+                                                       20
+    We will use the notations Eν , Eν+1 , Fν , Fν+1 , µν , µν+1 , and K ν , K ν+1 for the incom-
+plete reproducing kernel. Neither the dependency on a nor on n is explicitely recalled in
+the notation. Also we shall write cν1 , . . . , cνn and dν1 , . . . , dνn , respectively cν+1          ν+1
+                                                                                          1 , . . . , cn ,
+and dν+1           ν+1
+      1 , . . . , dn , for the coefficients appearing in equations (94a) and (94b) for ν and
+ν + 1. These coefficients are functions of a (depending on n). We rewrite (94a) and (94b)
+as
+                                     Z x
+                                                ν+1   X
+                     Eν (it) = ext +     e−ty e 2 y          cνj e(j−1)y dy                         (107a)
+                                        −x                   1≤j≤n
+                                                Z x
+                                                               ν+1    X
+                       Fν (it) = (−1)n e−xt +           e−ty e 2 y           dνj e(j−1)y dy         (107b)
+                                                   −x                1≤j≤n
+
+According to (107a):
+                                             Z x
+                   1        1                                ν+2     X        1
+                 a Eν (i(t + )) = ext +
+                   2                               e−ty e 2 y                a 2 cνj+1 e(j−1)y dy    (108)
+                            2                 −x                   0≤j≤n−1
+
+                           1
+So the function w 7→ a 2 Eν (w+i 12 )−Eν+1 (w) is a finite linear combination of the n+1 initial
+Paley-Wiener evaluators Z(−i ν2 , w), Z(−i ν+2                    ν+2
+                                              2 , w), . . . , Z(−i 2 − i(n − 1), w). Moreover it
+                                                                                  1
+has trivial zeros at the trivial zeros of Eν+1 . By Theorem 2 this identifies a 2 Eν (w + i 21 ) −
+                                                                                       1
+Eν+1 (w) with a constant multiple of K ν+1 (−i ν2 , w), the factor being precisely a 2 cν1 . We
+prove in this manner the first of the following identities:
+
+Proposition 12. There holds
+                           1          1                  1             ν
+                         a 2 Eν (w + i ) = Eν+1 (w) + a 2 cν1 K ν+1 (−i , w)                        (109a)
+                                      2                                2
+                         − 21         1                  − 12 ν ν+1      ν
+                     a Fν (w + i ) = Fν+1 (w) + a d1 K               (−i , w)                       (109b)
+                                      2                                  2
+                    − 12              1              − 21 ν+1 ν       ν+1
+                   a Eν+1 (w − i ) = Eν (w) + a cn K (−i                    − in, w)                (109c)
+                                      2                                  2
+                       1              1              1               ν+1
+                    a 2 Fν+1 (w − i ) = Fν (w) + a 2 dν+1n K (−i
+                                                                ν
+                                                                           − in, w)                 (109d)
+                                      2                                2
+
+Proof. The additional three identities are proved by the same method as the first. We will
+not make direct use of the ensuing relation between the two kinds of evaluators.
+
+    Let us recall that:
+                         ν        Eν+1 (−i ν2 )Eν+1 (it) − Fν+1 (−i ν2 )Fν+1 (it)
+                K ν+1 (−i , it) =                                                                   (110a)
+                         2                            t − ν2
+                ν +1             Eν (−i( ν+1                      ν+1
+                                          2 + n))Eν (it) − Fν (−i( 2 + n))Fν (it)
+     K ν (−i(        + n), it) =                                                                    (110b)
+                  2                               t − ν+12 −n
+
+
+
+                                                        21
+In order to shorten the formulas we adopt the notations:
+                             ν+1                                                  ν
+                 eν = Eν (−i      − in)                            gν+1 = Eν+1 (−i )           (111a)
+                               2                                                  2
+                             ν +1                                                 ν
+                 fν = Fν (−i      − in)                            hν+1 = Fν+1 (−i )           (111b)
+                               2                                                  2
+Combining (109a) and (110a) gives (with the notation shx (y) = sh(xy)
+                                                                   y )
+                                                                         
+          ν      X      1                 ν       X                   ν
+     (t − )          a 2 cνj+1 2 shx (t − − j) −     cν+1
+                                                       j   2 shx (t − − j)
+          2                               2                           2                         (112)
+                 0≤j≤n−1                                     1≤j≤n
+                                                       1
+                                                 = a 2 cν1 (gν+1 Eν+1 (it) − hν+1 Fν+1 (it))
+Using (t − ν2 ) shx (t − ν2 − j) = sh(x(t − ν2 − j)) + j shx (t − ν2 − j) we can rearrange and
+obtain identities by termwise identifications. We record only the identity corresponding to
+the term with the highest value of j (j = n):
+                                         1
+                              n cν+1 = a 2 cν1 hν+1 dν+1 − gν+1 cν+1
+                                                                     
+                                 n                   n           n                       (113)
+
+Combining similarly (109b) with (110a) we obtain (among other identities!)
+                                    1
+                        ndν+1  = a− 2 dν1 hν+1 dν+1 − gν+1 cν+1
+                                                                
+                           n                    n           n                                   (114)
+
+Dealing in the same manner with (109c)n (109d) and (110b) gives two further identities of
+a symmetric type. Summing up, the four obtained relations are:
+
+Proposition 13. There holds:
+                                        1
+                           n cν+1 = a 2 cν1 hν+1 dν+1 − gν+1 cν+1
+                                                                         
+                              n                   n           n                                (115a)
+                                        − 21
+                           ndν+1               dν1   hν+1 dν+1 − gν+1 cν+1
+                                                                           
+                             n   =a                        n           n                       (115b)
+                                        − 21
+                            −ncν1 = a          cν+1
+                                                n   (fν dν1 − eν cν1 )                         (115c)
+                                      1
+                            −ndν1 = a 2 dν+1
+                                         n   (fν dν1 − eν cν1 )                                (115d)
+
+   We will need the following:
+
+Proposition 14. None of the eight quantities eν , fν , gν+1 , hν+1 , cν1 , dν1 , cν+1        ν+1
+                                                                                  n+1 , and dn+1
+can vanish.
+
+Proof. The proof introduces tacitly a link with techniques of orthogonal polynomial theory,
+which leads to some results we will expose elsewhere. Let us write explicitely the system
+of linear equations for the cjν ’s:
+                                     X       Z x
+                                           ν
+                      ∀i = 1 . . . n      cj     e(κi +κj )y dy = −e−xκi              (116)
+                                      1≤j≤n            −x
+
+
+
+                                                      22
+where we recall that κj = ν+1
+                           2 + j − 1. Let G be the matrix of this system, we have:
+                                   R x (κ +κ )y                R x (κ +κ )y
+                           −e−xκ1       e   1    2    dy . . .     e 1 n dy
+                              −xκ
+                                   R−x
+                                     x   (κ   +κ   )y
+                                                               R−x
+                                                                 x   (κ2 +κn )y dy
+                           −e 2      −x e
+                                            2    2    dy . . .  −x e
+              det(G)cν1 =                                                          (117)
+                             ...          ...            ... R
+                                     x                           x (κn +κn )y
+                           −e−xκn −x e(κn +κ2 )y dy . . .
+                                   R
+                                                                −x e            dy
+
+We now exploit the relation κj+1 = κj + 1 to transform by row manipulations the determi-
+nant on the right into:
+                    R x (κ +κ )y                            R x (κ +κ )y
+   −e−xκ1            −x e 1 2 dy              ...            −x e
+                                                                      1   n
+                                                                               dy
+            R x (κ +κ )y                             x   (κ   +κ
+                                  −x −y                          n )y
+                                                                      (1 − e e−y ) dy
+                                                                              −x
+                                                   R
+      0       −x e
+                    2   2 (1 − e e ) dy . . .        −x e
+                                                            2
+
+      0     R x (κ +κ )y. . . −x −y           ... R                   ...
+                                                     x (κn +κn )y
+      0       −x e
+                    n   2 (1 − e e ) dy . . .       −x e              (1 − e−x e−y ) dy
+                 R x (κ +κ )y y                            x (κ2 +κn )y y
+                           2 (e − e−x )e−y dy                               (e − e−x )e−y dy
+                                                         R
+                  −x e                            ...      −x e
+                        2
+
+     = −e−xκ1 R                ...                ... R                      ...               (118)
+                   x (κn +κ2 )y y     −x )e−y dy . . .     x (κn +κn )y y           −x )e−y dy
+                  −x e         (e  − e                    −x   e            (e   − e
+
+This new determinant is a Gramian for a positive measure, it is strictly positive. So cν1 < 0.
+It can be proven in the exact same manner dν1 > 0, (−1)n cν+1   n    > 0, (−1)n dnν+1 < 0,
+(−1)n eν > 0, (−1)n fν > 0, gν+1 > 0, and hν+1 > 0.
+
+    Using the asymptotics for t → −∞ (103b) and (105b) in (109a) (and (110a)) and also
+in (109c) (and (110b)), and also the asymptotics (103a), (105a) (t → +∞) in (109b) and
+(109d) give the following proposition.
+
+Proposition 15. There holds
+                                             1                   1
+                           aµν − µν+1 = 2a 2 cν1 hν+1 = −2a 2 cν+1
+                                                               n fν                         (119a)
+                                                 1                 1
+                           aµν+1 − µν = −2a      2   dν1 gν+1 = 2a 2 dν+1
+                                                                      n eν                  (119b)
+
+Proposition 16. There holds:
+
+                                       cν1 hν+1 = −cν+1
+                                                    n fν                                    (120a)
+                                        dν1 gν+1 = −dν+1
+                                                     n eν                                   (120b)
+                                      a cν1 gν+1 = −cν+1
+                                                     n eν                                    (120c)
+                                       dν1 hν+1 = −a dν+1
+                                                       n fν                                 (120d)
+
+Proof. The first two follow from the previous proposition. The last two follow from the
+                       acν     ν+1
+first and the relation dν1 = dcnν+1 (from (115a), (115b)). Alternatively they can be deduced
+                        1       n
+from a look at the asymptotics in (109a), (109c) for w = it, t → +∞ and in (109b) and
+(109d) for t → −∞.
+
+
+                                                     23
+Definition 1. We define the quantities X = X(ν, n, a) and Y (ν, n, a) by the following
+expressions:
+                                           gν+1     1 eν
+                                      X :=       =                                  (121a)
+                                           hν+1     a fν
+                                             1c ν+1      cν
+                                      Y := − nν+1 = − 1ν                            (121b)
+                                             a dn        d1
+
+                                              1
+                                     2a 2           ν         ν
+    From Proposition 15 we have µν = 1−a 2 (−ahν+1 c1 + gν+1 d1 ) and using the first two
+
+relations in Proposition 13 gives
+                           2na −hν+1 cν+1
+                                       n  + gν+1 dnν+1    2na X + aY
+                  µν =         2      ν+1        ν+1   =                             (122)
+                          1 − a hν+1 dn − gν+1 cn        1 − a2 1 + aXY
+                                                        1
+                                         2a 2          ν          ν
+Similarly from (119a) and (119b) µν+1 = 1−a  2 (−hν+1 c1 + agν+1 d1 ) which gives using
+
+Proposition 13 and Definition 1
+                                              2na aX + Y
+                                   µν+1 =                                            (123)
+                                             1 − a2 1 + aXY
+Theorem 17. The quantities X and Y from Definition 1 are related to the mu-functions
+µν and µν+1 by the equations:
+                            2na X + aY                           2na aX + Y
+                    µν =                               µν+1 =                        (124)
+                           1 − a2 1 + aXY                       1 − a2 1 + aXY
+They obey the following non-linear differential system:
+                        d                      2na aX + Y
+                      a   X = νX − (1 − X 2 )                                       (125a)
+                       da                     1 − a2 1 + aXY
+                        d                              2na X + aY
+                      a Y = −(ν + 1)Y + (1 − Y 2 )                                  (125b)
+                       da                            1 − a2 1 + aXY
+
+Proof. From X = hgν+1
+                  ν+1
+                      and (93a), (93b):
+
+                                 d          ν
+                              −a   gν+1 = − gν+1 + µν+1 hν+1                        (126a)
+                                da          2
+                                 d        ν
+                              −a hν+1 = hν+1 + µν+1 gν+1                            (126b)
+                                da        2
+         d                                                      cν
+Hence: a da X = νX − µν+1 (1 − X 2 ). And from Y = − d1ν and (99), (102) we have:
+                                                                 1
+
+                                   d ν    ν+1 ν
+                                 −a  c1 =     c + µν dν1                            (127a)
+                                  da       2 1
+                                   d       ν+1 ν
+                                −a dν1 = −     d1 + µν cν1                          (127b)
+                                  da        2
+                  d
+and this gives a da Y = −(ν + 1)Y + µν (1 − Y 2 ).
+
+
+                                                  24
+Theorem 18. Let (X, Y ) be two functions of a variable a. If they obey the differential
+system (V Iν,n ):
+
+                          d                      2na aX + Y
+                        a   X = νX − (1 − X 2 )                                             (128a)
+                         da                     1 − a2 1 + aXY
+                          d                              2na X + aY
+                        a Y = −(ν + 1)Y + (1 − Y 2 )                                       (128b)
+                         da                            1 − a2 1 + aXY
+
+then the quantity q = a aX+Y                               2
+                        X+aY satisfies as function of b = a the PV I differential equation:
+                                                  2 
+             d2 q
+                                                                           
+                    1       1     1         1      dq     1      1      1      dq
+                2
+                  =           +        +               −    +       +
+             db     2       q q−1 q−b              db     b b − 1 q − b db
+                                                                                           (129)
+                                 q(q − 1)(q − b)      βb γ(b − 1) δb(b − 1)
+                               +                   α+ 2 +           +
+                                    b2 (b − 1)2       q    (q − 1)2   (q − b)2
+                                          2            2   2   2
+with parameters (α, β, γ, δ) = ( (ν+n)
+                                    2  , −(ν+n+1)
+                                             2    , n2 , 1−n
+                                                           2 ).
+
+
+Proof. The computation being lengthy we only give some brief indications. It is useful to
+introduce the variable
+                                                1
+                                       T :=                                        (130)
+                                            1 + aXY
+It verifies the differential equation:
+
+                                        d      2a2 n 2 2
+                                   a      T =        T (Y − X 2 )                            (131)
+                                       da     1 − a2
+
+Let b = a2 . One has
+                                  d                   n(q 2 − b)
+                                     T = T (T − 1)                                           (132)
+                                  db               b(q − b)(q − 1)
+On the other hand one establishes:
+                dq   2n + ν + (ν + 1)b    (ν + n)q 2 + (ν + 1 + n)b 2nqT
+                   =                   q−                          +                         (133)
+                db       b(b − 1)                 b(b − 1)            b
+
+This equation gives an expression of T in terms of dq
+                                                    db , q, and b. Substituting this value of T in
+(132) gives a second order differential equation for q. With some tenacity one finally realizes
+                                                                         2 −(ν+n+1)2      2      2
+that it is nothing else than PV I with parameters (α, β, γ, δ) = ( (ν+n)
+                                                                      2   ,     2     , n2 , 1−n
+                                                                                               2 ).
+
+
+
+Remark 7. One also establishes that as functions of b = a2 , the expressions −aY     2 2
+                                                                              X and a X
+are PV I -transcendents.
+
+   We mention finally the following:
+
+
+
+                                                  25
+Theorem 19. Let (X, Y ) be a solution of the non-linear system (V Iν,n ). Let Z be defined
+by the following relation (n 6= 1):
+                      aY + Z      1     ν+1 Y          n     aY + X
+                               = ( − a)         2
+                                                  −                                           (134)
+                      1 + aY Z    a     n−1 1−Y     (n − 1) 1 + aXY
+
+Then (Y, Z) is a solution of system (V Iν+1,n−1 ). Let W be such that
+
+                      W + aX     1      ν   X         n     aX + Y
+                              = ( − a)         2
+                                                 −                                            (135)
+                     1 + aW X    a     n+1 1−X     (n + 1) 1 + aXY
+
+Then (W, X) is a solution of system (V Iν−1,n+1 ).
+
+Proof. One needs to eliminate X (resp. Y ) from the result of computing dZ        dW
+                                                                        da (resp. da ).
+This is a long computation.
+
+
+7     Conclusion
+
+We assemble some of our main results in the following summary:
+
+Theorem 20. Let x > 0, a = e−x , and let P Wx be the Paley-Wiener space of entire
+functions which are square integrable on the real line and of finite exponential type at most
+x > 0. Let
+                             σ = (z1 = −iκ1 , . . . , zn = −iκn )                       (136)
+
+be a finite sequence of n distinct purely imaginary numbers and
+                                    f (z)
+               P Wx (σ) = { Q                    |f ∈ P Wx , f (z1 ) = · · · = f (zn ) = 0}   (137)
+                                 1≤j≤n (z − zj )
+
+The modified space P Wx (σ) is a Hilbert space through its identification with the closed
+subspace of functions in P Wx vanishing on σ. There is a unique entire function Eσ verifying
+the conditions:
+
+    1. Eσ (it) is real for t real,
+
+    2. Eσ (0) > 0,
+
+    3. limt→+∞ EEσσ(−it)
+                    (it) = 0,
+
+
+and in terms of which the scalar produts of evaluators in P Wx (σ) are:
+
+                                              Eσ (z)Eσ (w) − Eσ (z)Eσ (w)
+                                Kσ (z, w) =                                                   (138)
+                                                        i(z − w)
+
+                                                    26
+Let Fσ (w) = Eσ (w) (= Eσ (−w)). There holds:
+                                     d
+                               −a      Eσ (w) = −iwEσ (w) + µσ (a)Fσ (w)                            (139)
+                                    da
+The function µσ (a) admits (among others) the two representations:
+
+                                            d     W (ch(κ1 x), . . . , ch(κn x))
+                              µσ (a) = a      log                                                   (140)
+                                           da     W (sh(κ1 x), . . . , sh(κn x))
+
+where W (f1 , . . . , fn ) is the Wronskian determinant (with respect to x = log a1 ) and
+                      R x (κ +κ )y     R x (κ +κ )y                      R x (κ +κ )y
+                       −x e 1 1 dy         e 1 2 dy                ...       e 1 n dy e−xκ1
+                      R x (κ +κ )y     R−x
+                                         x (κ2 +κ2 )y                    R−x
+                                                                           x (κ2 +κn )y
+                       −x e
+                             2    1 dy  −x e          dy           ...    −x e            dy e−xκ2
+            2(−1)n
+ µσ (a) =                   . . .            . . .                 ...                               (141)
+             gn (a)   R x (κ +κ )y     Rx                                R x (κ. .+κ
+                                                                                  .            ...
+                       −x e
+                             n    1 dy −x e(κn +κ2 )y dy           ...    −x e
+                                                                                n    n )y
+                                                                                          dy e−xκ  n
+
+                            exκ1             ...                   ...         exκ n
+                                                                                                0
+                   Rx
+where gn (a) = det( −x e(κi +κj )y dy)1≤i,j≤n is the principal n×n minor of the (n+1)×(n+1)
+determinant. There also holds
+                                                       d d
+                                     µσ (a)2 = −a        a log gn (a)                               (142)
+                                                       da da
+In the specific case where σ is an arithmetic progression:
+                              ν+1        ν+1                   ν+1
+                       κ1 =       , κ2 =     + 1, . . . , κn =     +n−1                             (143)
+                               2          2                     2
+the function µν,n (a) can be expressed as a quotient of two multiple integrals:
+
+                       ··· [a, 1 ]n−1 i<j (tj − ti )2 i tνi (ti − a)( a1 − ti )dt1 . . . dtn−1
+                     R    R           Q                Q
+      µν,n (a) = 2n            a
+                                                                                                    (144)
+                                    ··· [a, 1 ]n i<j (tj − ti )2 i tνi dt1 . . . dtn
+                                  R    R        Q               Q
+                                              a
+
+
+and the expression
+                                                       aµν+1,n
+                                              qν,n =           ,                                    (145)
+                                                        µν,n
+as a function of a2 , verifies the Painlevé VI equation with parameters
+
+                                          (ν + n)2 −(ν + n + 1)2 n2 1 − n2
+                       (α, β, γ, δ) = (           ,             , ,        )                        (146)
+                                             2          2        2     2
+                                                      Q        1
+Proof. We have established (138) with Eσ (it) = 1≤i≤n t+κ        i
+                                                                   Eσ (it) and Eσ (it) given by
+equation (94a). In particular Eσ hence Eσ is real on the imaginary axis. One has Eσ (it) ∼t→+∞
+ext , hence Eσ (it), which by (138) cannot vanish for t > 0, is positive for t > 0. It is easy
+to prove that given arbitrary points w1 , . . . , wm and non-negative integers n1 , . . . nm there
+is in P Wx a function vanishing exactly to the order nj at wj for all j. So in P Wx (σ) the
+
+
+                                                       27
+evaluator at z = 0 is non zero, which proves Eσ (0) 6= 0, hence Eσ (0) > 0. As Eσ is real
+on the imaginary line one has Fσ (w) = Eσ (−w). And from the representations (94a) and
+                   (it)
+(94b) we know FEσσ(it)  →t→+∞ 0. Let E be another function computing the reproducing
+kernel and with the properties (1), (2) and (3). Let A = 12 (E + E ∗ ), B = 2i (E − E ∗ ), which
+are respectively even and odd, real on the real line. The evaluator at the origin (as said
+above, necessarily non zero) is Kσ (0, w) = 2A(0) w1 B(w), hence the function B is known
+up to a positive real multiple, then the function A is known up to (the inverse of) this
+multiple. Condition (3) can be written −iB(it)
+                                         A(it) →t→+∞ 1, and this finally identifies A = Aσ
+and B = Bσ .
+
+   Formula (140) (in which κi + κj 6= 0 is assumed) follows from Theorem 9, and for-
+mula (142) from Theorem 9 and Proposition 4. According to (98) one has µσ (a) =
+2(−1)n 1≤j≤n cσj eκj x , the coefficients cσj solving:
+      P
+
+                                       X         Z x
+                     ∀i = 1 . . . n          cσj     e(κi +κj )y dy = −e−xκi  (147)
+                                      1≤j≤n      −x
+
+This gives the representation (141).
+
+   In the case of the arithmetic progression of reason one, row manipulations replace the
+(n + 1) × (n + 1) determinant by
+                  R x (κ +κ )y                         R x (κ +κ )y
+                       e 1 1 (1 − a1 ey ) dy . . .       −x e
+                                                               1   n
+                                                                        (1 − a1 ey ) dy
+                  R−x
+                    x (κ2 +κ1 )y                         x
+                                 (1 − a1 ey ) dy . . .       (κ2 +κn )y (1 − 1 ey ) dy
+                                                       R
+                   −x e                                  −x e                a
+           −xκn
+       −e                                                                               (148)
+                R x (κ +κ. .)y.          1 y
+                                                 ... R
+                                                       x (κn−1 +κn )y
+                                                                     ...
+                                                                                1 y
+                  −x e            (1 − a e ) dy . . .  −x e              (1 − a e ) dy
+                        n−1   1
+
+                            exκ1                 ...               exκn
+Column manipulations lead to:
+     R x (κ +κ )y                                    R x (κ +κ )y
+          e 1 1 (1 − aey )(1 − a1 ey ) dy       ...       e 1 n−1 (1 − aey )(1 − a1 ey ) dy
+     R−x
+       x (κ2 +κ1 )y                                  R−x
+                                                       x (κ2 +κn−1 )y
+          e         (1 − aey )(1 − a1 ey ) dy   ...   −x e            (1 − aey )(1 − a1 ey ) dy
+  − −x
+    R x (κ +κ )y . . . y                        ...R x (κ +κ )y . . .
+                 1 (1 − ae )(1 − 1 ey ) dy                        n−1 (1 − aey )(1 − 1 ey ) dy
+     −x e                                       ...  −x e
+            n−1                                            n−1
+                                      a                                                 a
+                                                             Z 1                                !
+                                                                    ν+i+j−2 1
+                                                                a
+                                              n
+                                        = (−1)     det            t        ( − t)(t − a) dt
+                                                1≤i,j≤n−1     a             a
+                                                                                              (149)
+
+So we have the representation of µν,n as a quotient of two gramians (for n = 1 the deter-
+minant at the numerator is taken to be 1):
+                                          R 1                             
+                              det1≤i,j≤n−1 aa tν+i+j−2 ( a1 − t)(t − a) dt
+                 µν,n (a) = 2                   R 1                               (150)
+                                      det1≤i,j≤n aa tν+i+j−2 dt
+
+
+                                                28
+This gives formula (144).
+
+   Finally the Painlevé VI assertion follows from Theorems 17 and 18.
+
+Remark 8. The change of variables tj = a + ( a1 − a)u transforms the multiple integrals at
+the numerator and denominator of expression (144) into, respectively:
+
+   1
+                     Z     Z
+        n2 −1 (n−1)ν
+                                     Y           Y
+  ( − a)     a         ···            (uj − ui )2 (1 + αui )ν ui (1 − ui )du1 . . . dun−1 (151)
+   a                        [0,1]n−1  i<j                   i
+
+                    1
+                                 Z         Z
+                          2
+                                                     Y           Y
+            and    ( − a)n anν       ···              (uj − ui )2 (1 + αui )ν du1 . . . dun   (152)
+                    a                          [0,1]n i<j          i
+
+with α = a12 − 1. Similar multiple integrals arise in the work of Forrester and Witte [8]
+relating the “Jacobi unitary ensemble” of random matrices to the Okamoto hamiltonian
+formulation of the Painlevé VI equation [13]. It seems however (cf. the introduction of
+[9]) that in this context of multiple integrals one had so far not yet encountered directly
+Painlevé VI transcendents per se, but rather solutions to Okamato’s “σ-equation”.
+
+Remark 9. We see from (150) or (141) that µν,n (a) is the product of aν+1 with a rational
+                                                µ
+function of a2 and a2ν . The quantity q = a µν+1,n ν,n
+                                                        is a rational function (with rational
+                        ν      2
+coefficients) of b and b (b = a ). In particular, for ν ∈ Z, q is a rational function of b.
+
+Remark 10. We have left aside most of the developments which have their origins in [3],
+[4] and which put the objects studied here in another context (which leads in particular
+to various further representations for the µ-functions), indeed a context which presided
+over their introduction. We have also left aside a number of other developments related
+to techniques of orthogonal polynomial theory, multiple integrals and non-linear relations.
+We hope to address these topics in further publications.
+
+
+    Acknowledgments. All results included in this manuscript were obtained between January and
+late April 2008, while I was spending a seven months visit at the I.H.E.S. Numerous conversations
+on various (mostly other) topics with permanent members, visitors and staff made this a particularly
+stimulating and memorable residence. I also benefited during this period from electronic exchanges
+with Philippe Biane. I had found non-linear equations in the framework I had developed to establish
+the Fourier transform as a scattering [3, 4] and Philippe Biane’s question about what this would
+give when the Gamma function was replaced by a finite rational expression gave a welcome impetus
+to my efforts of that time. I discovered in the process of answering this question the non-linear
+equations (125a), (125b), from which the previous ones derived by a process of confluence, and I
+related them to Painlevé VI. I thus thank him for many interesting interactions (for example, in
+relation with the Wronskians built with the trigonometric functions, which he had also encountered
+in his own enterprises), and for having then kept me informed of some of his works [1]. I also
+thank the organizers Joaquim Burna, Håkan Hedenmalm, Kristian Seip, and Mikhail Sodin of the
+mini-symposium on Hilbert spaces of entire functions (EMS congress, Amsterdam 2008) for having
+
+
+                                                       29
+given me the opportunity to present there aspects of this material. Finally, I would like to express
+special thanks to Michel Balazard for having made possible my participation to the Zeta Functions
+congresses I, II, and III in Moscow, in 2006, 2008, and 2010, which gave me also opportunities to
+present related material.
+
+
+
+References
+ [1] Ph. Biane, Orthogonal polynomials on the unit circle, q-Gamma weights, and discrete
+     Painlevé equations, arXiv:0901.0947, July 2010 (v1 January 2009), 26 pages.
+ [2] L. de Branges, Hilbert spaces of entire functions, Prentice Hall Inc., Englewood Cliffs,
+     1968.
+ [3] J.-F. Burnol, Des équations de Dirac et de Schrödinger pour la transformation de
+     Fourier, C. R. Acad. Sci. Paris Ser. I, 336 (2003) 919-924.
+ [4] J.-F. Burnol, Scattering, determinants, hyperfunctions in relation to Γ(1−s)
+                                                                            Γ(s) , 63 pages,
+     feb 2006. arXiv:math.NT/0602425.
+ [5] J.-F. Burnol, Hilbert spaces of entire functions with trivial zeros, 10 pages, July 2010.
+     arXiv:
+ [6] M. M. Crum, Associated Sturm-Liouville systems, Quart. J. Math. Oxford (2), 6 (1955)
+     121-127.
+ [7] G. Darboux, Sur une proposition relative aux équations linéaires, Comptes Rendus
+     Acad. Sci. 94 (1882) 1456-1459.
+ [8] P.J. Forrester and N.S. Witte, Application of the τ -function theory of Painlevé equa-
+     tions to random matrices: PV I , the JUE, CyUE, cJUE and scaled limits, Nagoya Math.
+     J. Vol. 174 (2004) 29-114.
+ [9] P.J. Forrester and N.S. Witte, Random matrix theory and the sixth Painlevé equation,
+     J. Phys. A: Math. Gen. 39 (2006) 12211-12233.
+[10] M. G. Krein, On the determination of the potential of a particle from its S-function,
+     Dokl. Akad. Nauk SSSR 105, no 3. (1955) 433-436.
+[11] M. G. Krein, Continual analogues of propositions on polynomials orthogonal on the
+     unit circle, Dokl. Akad. Nauk SSSR 105, no 4. (1955) 637-640.
+[12] S. Okada, Applications of Minor Summation Formulas to Rectangular-Shaped Repre-
+     sentations of Classical Groups, J. of Algebra, Vol. 205, no. 2 (1998) 337-367
+[13] K. Okamoto, Studies on the Painlevé equations. I. Sixth Painlevé equation PV I , Ann.
+     Mat. Pura Appl. (4), 146 (1987) 337-381.
+
+
+
+
+                                                30
+

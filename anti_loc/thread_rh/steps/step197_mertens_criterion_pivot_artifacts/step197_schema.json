@@ -1,0 +1,83 @@
+{
+  "step": 197,
+  "orientation": "adequacy",
+  "primary_carrier": "Mertens function M(x) and the weak Mertens criterion",
+  "carrier_definition": {
+    "domain": "integer sequence/asymptotic envelope over x in N",
+    "mobius_function": "mu(n)",
+    "mertens_function": "M(x)=sum_{n<=x} mu(n)",
+    "operator": "partial-sum operator applied to the Mobius sequence",
+    "native_probes": [
+      "mu(n) values",
+      "interval partial sums",
+      "dyadic partial sums",
+      "arithmetic-progression partial sums",
+      "Dirichlet-series probe 1/zeta(s)=sum mu(n)n^{-s}"
+    ],
+    "dissolving_probes": [
+      "x^(1/2+epsilon) barrier functions for epsilon>0"
+    ],
+    "carrier_note": "This is a discrete/asymptotic carrier rather than a narrow L2 Hilbert carrier."
+  },
+  "strong_mertens_refuted_status": {
+    "claim": "|M(x)| < sqrt(x)",
+    "status": "refuted",
+    "source": "Odlyzko-te Riele 1985, Disproof of the Mertens conjecture",
+    "framework_role": "strictly stronger sidecar conjecture foreclosed; refutation does not refute RH"
+  },
+  "weak_mertens_RH_equivalent_status": {
+    "claim": "M(x)=O(x^(1/2+epsilon)) for every epsilon>0",
+    "status": "open and RH-equivalent",
+    "source": "Littlewood 1912 criterion",
+    "framework_role": "primary CRE closure condition"
+  },
+  "parent_residual_on_mertens": {
+    "name": "Xi_M",
+    "definition": "Xi_M(epsilon)=limsup_{x->infty} |M(x)|/x^(1/2+epsilon)",
+    "closure": "Xi_M(epsilon)=0 for every epsilon>0",
+    "closure_equivalence": "closure iff RH"
+  },
+  "CRE_status": {
+    "status": "CRE",
+    "reason": "Closing the weak Mertens residual for every epsilon>0 is logically equivalent to RH."
+  },
+  "CRCFT_mode_classification": {
+    "primary_mode": "CRCFT-TE",
+    "reason": "The weak Mertens closure condition is target-equivalent to RH.",
+    "CTMT_audit": "Finite M(x) values are computable and provide a finite-data interface, but the obstruction is infinite asymptotic promotion, not a missing carrier-native matrix element.",
+    "BF_audit": "No bridge-failure is needed; the carrier is native and well-defined."
+  },
+  "mertens_verdict": "V_mertens_CRCFT_TE",
+  "classical_theorems_cited": [
+    {
+      "source": "Stieltjes 1885 correspondence/claims on Mobius summatory bounds",
+      "use": "historical antecedent"
+    },
+    {
+      "source": "Mertens 1897, Uber eine zahlentheoretische Funktion",
+      "use": "strong square-root conjecture"
+    },
+    {
+      "source": "Littlewood 1912, The converse of Abel's theorem on power series",
+      "use": "weak Mertens criterion equivalent to RH"
+    },
+    {
+      "source": "Odlyzko and te Riele 1985, Disproof of the Mertens conjecture",
+      "use": "refutation of strong Mertens conjecture"
+    }
+  ],
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1",
+    "de Branges RH-carrier closure target-equivalence / Conrey-Li survival",
+    "Hilbert-Polya/Berry-Keating standard xp bridge failure and modified-operator target-equivalence",
+    "Connes adelic trace-formula full closure target-equivalence / completed spectral ledger not inherited"
+  ],
+  "final_verdict": "V_mertens_CRCFT_TE"
+}
+

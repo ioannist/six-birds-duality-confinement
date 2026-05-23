@@ -1,0 +1,122 @@
+{
+  "step": 164,
+  "orientation": "adequacy",
+  "active_residual": "Xi_BC = B^* Pi_Y B",
+  "main_operator": "C_l P_eta",
+  "typed_context": "Burnol/Sonine pulled-evaluator carrier; per-zero stratification of H_eta on finite carrier H_{eta,fin}",
+  "per_zero_declarations": {
+    "D1": {
+      "name": "per-zero subspaces",
+      "object": "H_{eta,rho} = closure span_{a in A_adm, 0<=k<m_rho} {J_a^* Y^a_{rho,k}}",
+      "closure_topology": "Hilbert norm closure in H",
+      "index_ranges": "rho a critical-line zero of zeta; a in inherited Burnol/Sonine admissible scale set A_adm with 0<a<1 where J_a is defined; 0<=k<m_rho",
+      "type_context": "framework_defined structural object; no compactness or faithful symbol asserted"
+    },
+    "D2": {
+      "name": "per-zero projections",
+      "object": "P_{eta,rho} = orthogonal projection onto H_{eta,rho}",
+      "orthogonality": "mutually orthogonal per-zero working hypothesis inherited from Burnol/Sonine admissibility",
+      "residual_if_rejected": "Xi_orth_{eta,rho,rho'}",
+      "type_context": "framework_defined projection object"
+    },
+    "D3": {
+      "name": "per-zero algebra and compact ideal",
+      "object": "A_{eta,rho} = C*(P_infty, M_{m_l}, P_{eta,rho}, I); K_{eta,rho} = A_{eta,rho} intersect K(H)",
+      "bridge_atlas_inclusion": "A_{eta,rho} subset A_eta, framework-declared for this per-zero refinement",
+      "type_context": "framework_defined Calkin subcontext; no compactness or symbol theorem asserted"
+    },
+    "D4": {
+      "name": "per-zero quotient object",
+      "object": "q_{eta,rho}(C_l P_{eta,rho}) in A_{eta,rho}/K_{eta,rho}",
+      "type_context": "framework_defined quotient object; no zero quotient asserted"
+    }
+  },
+  "finite_carrier": {
+    "Rho_fin": [
+      {
+        "label": "rho_1",
+        "value": "1/2 + 14.134725141734693 i"
+      },
+      {
+        "label": "rho_2",
+        "value": "1/2 + 21.022039638771554 i"
+      },
+      {
+        "label": "rho_3",
+        "value": "1/2 + 25.010857580145688 i"
+      }
+    ],
+    "N": 3,
+    "A_fin": [
+      "a0 = 1/2"
+    ],
+    "K_fin": [
+      "0"
+    ],
+    "declared_admissibility_justification": "No inherited finite N is dictated; Rho_fin is the first three positive-ordinate admissible critical-line zeros under the inherited ordering, A_fin uses a0=1/2 with 0<a<1, and K_fin={0} is legal for every multiplicity m_rho."
+  },
+  "matrix_element_structure": {
+    "basis": "e_i = eta^{a0}_{rho_i,0}/||eta^{a0}_{rho_i,0}||",
+    "entries": "c_ij(l) = <e_i, C_l e_j>",
+    "imported_formula": "eta^a_{w,k} = T_a^* partial_{bar w}^k K_a^Gamma(.,w); C_l eta = (I-P_infty) M_{m_l} P_infty eta",
+    "source_ledger_ref": "SL164.1",
+    "matrix_status": "conditional on imported evaluator record"
+  },
+  "diagonal_structure": "indeterminate-on-fin",
+  "sub_residuals": [
+    {
+      "id": "Xi_matrix_source_{l,Rho_fin,A_fin,K_fin}",
+      "typed_context": "finite-carrier diagnostic matrix-element source obligation",
+      "status": "active_finite_carrier_diagnostic",
+      "parent": "Xi_BC"
+    },
+    {
+      "id": "Xi_coupling_{l,rho,rho'}",
+      "typed_context": "dormant off-diagonal coupling residual if exact entries are computed nonzero",
+      "status": "dormant_not_activated",
+      "parent": "Xi_matrix_source_{l,Rho_fin,A_fin,K_fin}"
+    },
+    {
+      "id": "Xi_summability_l",
+      "typed_context": "dormant summability residual if exact rho-diagonal structure is computed",
+      "status": "dormant_not_activated",
+      "parent": "Xi_matrix_source_{l,Rho_fin,A_fin,K_fin}"
+    }
+  ],
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness"
+  ],
+  "per_rho_gates": {
+    "G1_rho": {
+      "status": "framework_defined",
+      "description": "A_{eta,rho}/K_{eta,rho} declared"
+    },
+    "G2_rho": {
+      "status": "open_external_proof",
+      "description": "per-rho faithful symbol or accepted bridge"
+    },
+    "G3_rho": {
+      "status": "open_external_proof",
+      "description": "per-rho normal form for C_l"
+    },
+    "G4_rho": {
+      "status": "open_external_proof",
+      "description": "per-rho lower-faithfulness on the relevant boundary range"
+    },
+    "G5_rho": {
+      "status": "open_external_proof",
+      "description": "per-rho compact remainder in K(H)"
+    }
+  },
+  "final_verdict": "finite_carrier_diagnostic_indeterminate",
+  "next_step": {
+    "step": 165,
+    "strategic_lanes": [
+      "extend Rho_fin to test stability after exact evaluator matrix entries are available",
+      "pivot to per-rho G2-G5 attempt",
+      "pivot to shifted co-Poisson",
+      "record no-go if coupling structurally precludes a tractable bridge"
+    ]
+  }
+}

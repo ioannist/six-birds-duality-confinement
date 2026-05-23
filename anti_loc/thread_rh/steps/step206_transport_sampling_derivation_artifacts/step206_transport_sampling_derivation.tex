@@ -1,0 +1,88 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 206: Transport-Sampling Derivation Audit}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_transport\_sampling\_external\_required}.}
+\]
+
+\section*{Inherited Chain}
+
+Step 145 declares
+\[
+\mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty).
+\]
+Step 152 gives
+\[
+T_a=M_\Gamma J_aU_\infty^{-1},\qquad
+T_a^*=U_\infty J_a^*M_\Gamma^*.
+\]
+Step 153 gives
+\[
+U_\infty(J_a^*Y^a_{w,k})=
+T_a^*\partial_{\overline w}^{\,k}K_a^\Gamma(\cdot,w).
+\]
+For \(k=0\),
+\[
+\kappa_{\rho}(\tau)
+=\left[U_\infty J_a^*M_\Gamma^*K_a^\Gamma(\cdot,\rho)\right](1/2+i\tau).
+\]
+
+\section*{Decoded Operators}
+
+\begin{itemize}
+\item \(K_a^\Gamma(\cdot,\rho)\) is the reproducing kernel in the completed
+Mellin image \(\mathcal L_a^\Gamma=A_\infty\mathcal L_a\), with Burnol 2002
+equation 1 and Theorem 8 now supplying the projected kernel.
+\item \(J_a^*\) is only the adjoint of the declared transport
+\(J_a:H_\infty\to L_a\).  The inherited records do not give a concrete
+inclusion/projection formula.
+\item \(M_\Gamma\) is identified through
+\[
+M(f)(s)=\pi^{-s/2}\Gamma(s/2)\widehat f(s),
+\]
+but \(M_\Gamma^*\) on \(B(E_a)\) reproducing kernels is not specified as a
+pointwise multiplier or cancellation.
+\item \(U_\infty\) is the archimedean Hardy--Titchmarsh/Mellin realization;
+Step 173 uses it for the \(P_\infty\) operational identity, but not as a
+pointwise formula for this composite.
+\end{itemize}
+
+\section*{Boundary Identity Test}
+
+The desired identity is
+\[
+T_a^*K_a^\Gamma(\cdot,\rho)(1/2+i\tau)
+=K_a^\Gamma(1/2+i\tau,\rho).
+\]
+The inherited records do not prove it.  They also do not determine a corrected
+gamma-phase formula, because that would require the concrete adjoint action
+\[
+M_\Gamma^*K_a^\Gamma(\cdot,\rho)
+\]
+inside the completed de Branges kernel space and the concrete action of
+\(J_a^*\).
+
+\section*{External Dependency}
+
+The exact typed missing theorem is:
+\[
+\boxed{\text{explicit action of }U_\infty J_a^*M_\Gamma^*
+\text{ on }B(E_a)\text{ reproducing kernels}.}
+\]
+Equivalently, a Burnol/de Branges transport theorem must convert the projected
+completed Mellin kernel into critical-line samples of \(\kappa_\rho(\tau)\).
+
+\section*{Nonclaim}
+
+This step does not authorize ambient-shadow substitution.  It does not compute
+\(c_{ij}\), does not decide \(\Xi_{\mathrm{matrix\_source}}\), and does not
+close Branch B.
+
+\end{document}
+

@@ -1,0 +1,250 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\title{Step 108: Finite Burnol/Sonine Boundary Dictionary and Coefficient Map}
+\author{RH Membrane Construction Notes}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{warning}{Warning}
+
+\newcommand{\cB}{\mathcal B}
+\newcommand{\cN}{\mathcal N}
+\newcommand{\cD}{\mathcal D}
+\newcommand{\cX}{\mathcal X}
+\newcommand{\cH}{\mathcal H}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Span}{\operatorname{span}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Steps 104--105 showed that the raw shifted Sonin/prolate off-diagonal blocks
+\[
+        B_a=P_\infty\tau_a(I-P_\infty),\qquad a\ne0,
+\]
+are noncompact, and that compact or finite-rank repair of the archimedean projection cannot remove their Calkin-class sector. Step 106 therefore moved the active construction to source absorption of the boundary-packet sector. Step 107 identified the next required object: a finite boundary-packet model and a coefficient map
+\[
+        R_N:Y_{\cB,N}\longrightarrow \mathbb C^{\cN_N}
+\]
+which converts boundary-packet recombinations into short Dirichlet-polynomial coefficient vectors.
+
+This note gives the first precise version of that object.
+
+\section{Burnol/Sonine carrier}
+
+Let
+\[
+        K=L^2(0,\infty;dt)
+\]
+with cosine transform \(F_+\). For \(a>0\), the Sonine space \(K_a\) consists of functions in \(K\) whose values and cosine transforms vanish on \((0,a)\). The augmented space \(L_a\) consists of functions which are constant on \((0,a)\) and whose cosine transforms are also constant on \((0,a)\).
+
+Burnol's critical \(a=1\) theorem supplies the correct zero-ledger backbone:
+\[
+        \{Y_{\rho,k}^{1}: 0\le k<m_\rho\}
+\]
+is complete and minimal in \(L_1\), and the dual system is represented by inverse Mellin transforms of
+\[
+        \frac{\zeta(s)}{(s-\rho)^l}.
+\]
+For \(a<1\), the perpendicular complement to the zero-evaluator span is the co-Poisson subspace \(P_a\). Thus the critical \(L_1\) / \(K_1\) carrier is the natural place to define finite boundary dictionaries.
+
+\section{Boundary-packet sector}
+
+Let \(S\) be a finite semilocal place set and let
+\[
+        \mathcal L_S
+        =
+        \left\{
+        \sum_{p\in S_f}k_p\log p:k_p\in\mathbb Z
+        \right\}.
+\]
+The boundary-packet sector is
+\[
+        \cB_S
+        =
+        \overline{\Span}
+        \left\{
+        \Ran |P_\infty\tau_a(I-P_\infty)|:
+        a\in\mathcal L_S\setminus\{0\}
+        \right\}.
+\]
+The finite model will approximate this sector inside a Burnol/Sonine finite dictionary.
+
+\begin{definition}[finite Burnol/Sonine boundary dictionary]
+Fix a finite set of shifts
+\[
+        A_N\subset \mathcal L_S\setminus\{0\}
+\]
+and a finite Sonine core dictionary
+\[
+        U_N=\{u_1,\ldots,u_{r_N}\}\subset K_{1,\mathrm{core}}.
+\]
+Define raw boundary vectors
+\[
+        b_{a,j}:=P_\infty\tau_a(I-P_\infty)u_j,
+        \qquad a\in A_N,\quad 1\le j\le r_N.
+\]
+Let
+\[
+        Y_{\cB,N}:=\Span\{b_{a,j}\}_{a,j}/\ker G_{\cB,N},
+\]
+where
+\[
+        G_{\cB,N}(b_{a,j},b_{a',j'})
+        =
+        \langle b_{a,j},b_{a',j'}\rangle_{Y^-}
+\]
+is the inherited Burnol/Sonine Gram form.
+\end{definition}
+
+The quotient by \(\ker G_{\cB,N}\) is the finite null-mode legality record. If the boundary dictionary contains a zero-energy vector, that vector is not a source direction; it is a failed or redundant witness.
+
+\section{Dirichlet coefficient map}
+
+Let \(\cN_N\) be a finite Heap--Soundararajan-style short Dirichlet support. A typical choice is block-factorized:
+\[
+        \cN_N=
+        \left\{
+        n=\prod_j n_j:
+        p\mid n_j\Rightarrow T_{j-1}<p\le T_j,\quad
+        \Omega(n_j)\le K_j
+        \right\}.
+\]
+Define the finite Dirichlet synthesis operator
+\[
+        \cD_N:\mathbb C^{\cN_N}\to H_N,\qquad
+        (\cD_N a)(s)=\sum_{n\in\cN_N}a(n)n^{-s}.
+\]
+Let
+\[
+        M_N:Y_{\cB,N}\to H_N
+\]
+be the Mellin/spectral restriction of the boundary-packet model to the same finite response window. The coefficient map is the least-energy coefficient selector
+\[
+        \boxed{
+        R_N:=\cD_N^\dagger M_N.
+        }
+\]
+If \(M_NY_{\cB,N}\subseteq \Ran\cD_N\), this is exact. In general the residual is
+\[
+        E_{\mathrm{coef},N}
+        :=
+        (I-\cD_N\cD_N^\dagger)M_N,
+\]
+and the finite dictionary claim is accepted only with this defect explicitly recorded.
+
+\section{Character source frame}
+
+Let \(\cX_N\) be a finite character source family. Define
+\[
+        G_{\cX,N}(m,n)
+        =
+        \sum_{\chi\in\cX_N}
+        \lambda_{\chi,N}\chi(n)\overline{\chi(m)}.
+\]
+Then the boundary-sector source frame induced by the coefficient map is
+\[
+        \boxed{
+        F_{\cB,N}
+        =
+        R_N^*G_{\cX,N}R_N.
+        }
+\]
+
+\begin{theorem}[finite boundary source lower-frame gate]
+Suppose
+\[
+        R_N^*G_{\cX,N}R_N
+        \succeq
+        \Lambda_N G_{\cB,N}
+        -
+        E_{\mathrm{coef},N}
+        -
+        E_{\mathrm{win},N}.
+\]
+Then every finite boundary-packet recombination \(y\in Y_{\cB,N}\) obeys
+\[
+        y^*F_{\cB,N}y
+        \ge
+        \Lambda_N\|y\|_{\cB,N}^2
+        -
+        y^*(E_{\mathrm{coef},N}+E_{\mathrm{win},N})y.
+\]
+If, in addition, the finite windows exhaust the completed boundary sector,
+\[
+        I_{\cB}
+        \preceq
+        \iota_NG_{\cB,N}\iota_N^*
+        +
+        T_{\cB,N},
+        \qquad
+        \operatorname{tr}T_{\cB,N}\to0,
+\]
+and
+\[
+        \Lambda_N\to\infty
+\]
+with vanishing coefficient/window/source defects, then the completed boundary-packet sector is source-absorbed.
+\end{theorem}
+
+\begin{proof}
+The first inequality is the definition of a finite lower frame after transporting the character Gram through \(R_N\). The completed statement follows by inserting the exhaustivity inequality and applying the fixed/exhaustive-ledger squeeze criterion from the membrane framework.
+\end{proof}
+
+\section{Rank and no-go criteria}
+
+\begin{proposition}[rank obstruction]
+If \(R_N\) is not injective on \(Y_{\cB,N}\), then no character Gram \(G_{\cX,N}\) can produce a strict lower frame on \(Y_{\cB,N}\).
+\end{proposition}
+
+\begin{proof}
+If \(0\ne y\in\ker R_N\), then
+\[
+        y^*R_N^*G_{\cX,N}R_Ny=0
+\]
+for every positive \(G_{\cX,N}\), while \(\|y\|_{\cB,N}^2>0\). Hence no positive lower bound can hold.
+\end{proof}
+
+\begin{warning}[scalar moment lower bounds are not enough]
+Heap--Soundararajan scalar lower moment estimates provide source strength along selected Dirichlet-polynomial directions. The boundary membrane needs a matrix lower bound:
+\[
+        R_N^*G_{\cX,N}R_N\succeq \Lambda_NG_{\cB,N}.
+\]
+A single strong mollifier direction is rank one; it cannot charge all boundary-packet recombinations.
+\end{warning}
+
+\section{Finite sanity model}
+
+The accompanying script constructs a toy finite Sonin projection as the intersection of the kernels of a time cutoff and a Fourier cutoff. It builds shifted boundary blocks \(S\tau_m(I-S)\), extracts leading singular vectors as a finite boundary dictionary, fits them by a short Dirichlet dictionary, and tests finite character source frames.
+
+The sanity model is not RH evidence. Its purpose is to test the algebraic gates:
+\[
+        \text{boundary dictionary}\to R_N\to R_N^*G_\chi R_N.
+\]
+
+\section{Status after Step 108}
+
+Step 108 supplies the missing finite object for the source-coercivity route:
+\[
+        \boxed{
+        Y_{\cB,N},\quad R_N,\quad F_{\cB,N}=R_N^*G_{\cX,N}R_N.
+        }
+\]
+The active open problem is now:
+\[
+        \boxed{
+        \text{prove matrix moment / character lower-frame bounds for }R_N^*G_{\cX,N}R_N
+        \text{ and promote them through Burnol/Sonine exhaustivity.}
+        }
+\]
+
+\end{document}

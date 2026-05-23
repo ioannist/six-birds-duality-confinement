@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\rhoA}{\rho_a}
+\newcommand{\deltaA}{\delta_A}
+\newcommand{\BN}{\mathrm{BN}}
+
+\title{Step 194: Numerical Beurling--Nyman Gram Defects}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_BN\_numerical\_structural\_pattern}}.
+\]
+
+The finite Gram experiment shows a structural split.  The Beurling--Nyman reciprocal chain \(A_N=\{1/k:1\le k\le N\}\) decays slowly, with \(\delta_{A_N}^2\log N\) roughly stable near \(0.05\) for \(N\ge 20\).  Sparse reciprocal chains plateau at the tested scale.
+
+\section*{Method}
+
+For \(a=1/q\), put \(x=1/t\).  Then
+\[
+\rho_a(1/x)
+=
+\left\{ax\right\}-a\{x\}
+=
+a\lfloor x\rfloor-\lfloor ax\rfloor.
+\]
+For reciprocal-integer \(a\), this function is constant on each unit interval \((n,n+1)\).  Hence
+\[
+G_{ab}
+=
+\int_0^1 \rho_a(t)\rho_b(t)\,dt
+=
+\int_1^\infty
+\rho_a(1/x)\rho_b(1/x)\frac{dx}{x^2}
+\]
+is computed by the deterministic truncated sum
+\[
+\sum_{n=1}^{X_{\max}-1}
+\rho_a(1/(n+1/2))\rho_b(1/(n+1/2))
+\left(\frac1n-\frac1{n+1}\right).
+\]
+The script used \(X_{\max}=200000\), so the tail contribution to each Gram entry is bounded by \(5\cdot 10^{-6}\) from \(|\rho_a|\le 1\).  The scalar vector is
+\[
+b_a=\langle 1,\rho_a\rangle=a\log(1/a),
+\]
+computed with \(\texttt{mpmath}\) at 50 decimal digits.  The pseudoinverse \(G_A^\dagger\) is computed with NumPy float64 SVD and \(\texttt{rcond}=10^{-12}\).
+
+\section*{Finite Defects}
+
+\[
+\delta_A^2
+=
+1-b_A^*G_A^\dagger b_A.
+\]
+
+\begin{center}
+\begin{tabular}{lrrrr}
+family & \(N=5\) & \(N=10\) & \(N=20\) & \(N=80\)\\
+\hline
+\(\{1/k\}\) & 0.036313936859 & 0.023847085906 & 0.016532331786 & 0.010992095538\\
+\(\{2^{-k}\}\) & 0.127343192044 & 0.127044938811 & 0.127038005030 & 0.127035826960\\
+\(\{1/k^2\}\) & 0.207973000023 & 0.207311838637 & 0.207294900712 & 0.207292597760\\
+random reciprocal & 0.619587408711 & 0.618243356434 & 0.617952020015 & 0.617707146255\\
+\end{tabular}
+\end{center}
+
+\section*{Decay Analysis}
+
+For the harmonic reciprocal chain,
+\[
+\delta_{A_N}^2\log N
+\]
+has mean approximately \(0.04989\) over \(N=10,20,40,80\).  This is consistent with the slow logarithmic behavior expected in the Baez--Duarte/Nyman--Beurling numerical literature.
+
+The geometric, power, and random reciprocal chains plateau.  This does not contradict the Beurling--Nyman criterion: sparse or poorly placed parameter chains need not approximate the constant function efficiently.
+
+\section*{Structural Interpretation}
+
+The finite Gram interface is now concrete:
+\[
+G_A,\quad b_A,\quad \delta_A^2.
+\]
+This is CTMT-like in that it is a carrier-native matrix-element interface.  It is not CTMT-stuck: the matrix entries are computable.  The hard problem remains the infinite target-equivalent statement
+\[
+\inf_A \delta_A^2=0,
+\]
+which is exactly the Beurling--Nyman/RH closure condition.
+
+\section*{Nonclaim}
+
+These computations do not establish RH, do not close \(\Xi_{\BN}\), and do not promote finite-window decay to an infinite closure theorem.
+
+\end{document}
+

@@ -1,0 +1,341 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\providecommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Loewner}{\preceq}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Kfam}{\mathsf K}
+\newcommand{\Thetafam}{\Theta}
+
+\title{Step 26: Admissible Test-Family Gate and Protocol Honesty for Probe-Family Anti-Localization}
+\author{Working note for the anti-localization project}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Steps 23--25 upgraded scalar probe capacity to a finite predictive probe-family currency matrix.  This note adds the missing Six-Birds-facing gate: when is a mathematically bounded family an \emph{admissible anti-localization test family}?  The answer is not just the matrix inequality
+\[
+  \widehat K_j \Loewner \Theta.
+\]
+That inequality is the mathematical budget.  The admissibility gate also requires protocol honesty, readout agreement, route/transport records, all-six-channel statuses, and no-smuggling/no-overreading records.
+
+The point of this note is deliberately formal.  We do not simulate a Six Birds substrate.  We define the test-family record and prove the consequences of the record.
+
+\section{Predictive family currency recap}
+
+At refinement depth $j$, let
+\[
+  \Gamma_j:E_j\to H_j,
+  \qquad
+  C_j\succeq0,
+  \qquad
+  C_{\Gamma,j}:=\Gamma_j^*C_j\Gamma_j,
+\]
+where $\Ran\Gamma_j$ is the exact packaged carrier.  Let
+\[
+  L_j:H_j\to Y_j
+\]
+be a finite-dimensional native probe family and let
+\[
+  R_j:Y_j\to Y_*
+\]
+transport responses into a common response space.  The transported predictive family currency matrix is
+\[
+  \widehat K_j
+  :=
+  R_jL_j\Gamma_j C_{\Gamma,j}^\dagger\Gamma_j^*L_j^*R_j^*.
+\]
+Null-mode legality means
+\[
+  \Ker C_{\Gamma,j}\subseteq \Ker(R_jL_j\Gamma_j).
+\]
+Under this condition, for every recombination $y\in Y_*$,
+\[
+  y^*\widehat K_jy
+  =
+  \Cap_{C_j}\bigl(y^*R_jL_j;\Ran\Gamma_j\bigr).
+\]
+Predictive family anti-localization is the common budget
+\[
+  \widehat K_j\Loewner\Theta
+  \qquad
+  \text{for all accepted }j.
+\]
+
+\section{The anti-localization test-family record}
+
+\begin{definition}[Anti-localization test-family record]
+An anti-localization test-family record is a tuple
+\[
+\mathsf T
+=
+\bigl(
+\mathsf{Cl},\,J,\,\{H_j,E_j,\Gamma_j,C_j,L_j,R_j\}_{j\in J},\,
+Y_*,\Theta,\mathsf P,\mathsf V,\mathsf A,\mathsf S,\mathsf N
+\bigr),
+\]
+where:
+\begin{enumerate}[label=(T\arabic*)]
+\item $\mathsf{Cl}$ is the formed closure/layer record.  Anti-localization is asserted only inside this formed closure.
+\item $J$ is the accepted refinement/staging index set.
+\item $(H_j,E_j,\Gamma_j,C_j)$ is the exact packaged carrier and audit energy at depth $j$.
+\item $L_j:H_j\to Y_j$ is the declared native probe family at depth $j$.
+\item $R_j:Y_j\to Y_*$ is the declared response transport to a common response space.
+\item $\Theta\succeq0$ is the declared predictive family budget on $Y_*$.
+\item $\mathsf P$ is the protocol/route record, including route-union declarations when several routes are claimed.
+\item $\mathsf V$ is the visibility/suppression record.
+\item $\mathsf A$ is the audit record.
+\item $\mathsf S$ records statuses for all six primitive channels $P_1,\dots,P_6$.
+\item $\mathsf N$ is the nonclaim record forbidding substrate-level literalization, undeclared probes, diagonal-only overreads, and current-only overreads.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}[Accepted anti-localization test family]
+A record $\mathsf T$ is an accepted anti-localization test family if the following gates pass.
+\begin{description}[leftmargin=2.8cm]
+\item[G0: formed closure] $\mathsf{Cl}$ is accepted.  Non-closed artifacts are outside scope.
+\item[G1: exact package] each $(\Gamma_j,C_j)$ is declared on the exact packaged carrier, not a public shadow.
+\item[G2: null legality] $\Ker C_{\Gamma,j}\subseteq\Ker(R_jL_j\Gamma_j)$ for every accepted $j$.
+\item[G3: family declaration] the whole native response space $Y_*$ is declared; recombinations $y\in Y_*$ are in scope.
+\item[G4: matrix budget] $\widehat K_j\Loewner\Theta$ for all accepted $j$.
+\item[G5: protocol honesty] all route/protocol variants claimed by the statement are either included in one route-union/block family budget or explicitly excluded with a nonclaim.
+\item[G6: readout agreement] probes claimed to be the same public readout have controlled difference-capacity after transport.
+\item[G7: predictive stability] the transports $R_j$ and the common budget $\Theta$ are stable under refinement, or the defect is recorded and absorbed in the budget.
+\item[G8: all-six-channel record] $P_1,\dots,P_6$ have explicit statuses; missing $P_1,P_5,P_6$ records downgrade the claim from accepted to support-only.
+\item[G9: no-smuggling/no-overreading] $L_j,\Gamma_j,R_j,\Theta$ are selected upstream of the test and do not depend on successful $S_6$ margin evaluation; public shadows are not literalized as lawful witnesses.
+\end{description}
+\end{definition}
+
+\section{The accepted test-family theorem}
+
+\begin{theorem}[Accepted family anti-localization]
+If $\mathsf T$ is an accepted anti-localization test family, then every native predictive recombination has bounded capacity:
+\[
+  \sup_{j\in J}
+  \Cap_{C_j}\bigl(y^*R_jL_j;\Ran\Gamma_j\bigr)
+  \le
+  y^*\Theta y
+  \qquad
+  (y\in Y_*).
+\]
+Consequently there are no native predictive recombination needles inside the formed closure.
+\end{theorem}
+
+\begin{proof}
+By null legality and the probe-family capacity identity,
+\[
+  \Cap_{C_j}\bigl(y^*R_jL_j;\Ran\Gamma_j\bigr)
+  = y^*\widehat K_jy.
+\]
+By the matrix budget gate $\widehat K_j\Loewner\Theta$, this is at most $y^*\Theta y$ for every accepted $j$.  Taking the supremum over $j$ gives the claim.  The assertion is limited to native recombinations $y\in Y_*$ and to the formed closure recorded in $\mathsf{Cl}$.
+\end{proof}
+
+\begin{remark}[Closure-only scope]
+This theorem deliberately says nothing about raw substrates, unformed artifacts, hidden probes, or public shadows.  A non-closed object may contain needles; that is not a counterexample.  The theorem is a no-native-needle result for formed closures/layers only.
+\end{remark}
+
+\section{Protocol honesty as a block-family theorem}
+
+A protocol-honest claim must not certify each route separately and then overread those diagonal certificates as a union certificate.  The correct object is a block currency matrix.
+
+Let a common exact carrier $(\Gamma,C)$ be equipped with protocol-indexed transported probe families
+\[
+  \widetilde L^p:=R^pL^p:H\to Y_p,
+  \qquad p\in\mathcal P.
+\]
+Stack them:
+\[
+  \mathbb L u := (\widetilde L^p u)_{p\in\mathcal P}
+  \in
+  \mathbb Y:=\bigoplus_{p\in\mathcal P}Y_p.
+\]
+Then the route/protocol block currency is
+\[
+  \mathbb K
+  :=
+  \mathbb L\Gamma C_\Gamma^\dagger\Gamma^*\mathbb L^*.
+\]
+Its $(p,q)$ block is
+\[
+  K^{pq}=\widetilde L^p\Gamma C_\Gamma^\dagger\Gamma^*(\widetilde L^q)^*.
+\]
+
+\begin{theorem}[Protocol-block anti-localization]
+Assume null legality for the stacked family.  Then for every mixed protocol recombination $y=(y_p)_{p\in\mathcal P}\in\mathbb Y$,
+\[
+  \Cap_C(y^*\mathbb L;\Ran\Gamma)
+  =y^*\mathbb K y.
+\]
+Thus a protocol-union claim is accepted only from a block budget
+\[
+  \mathbb K\Loewner\mathbb\Theta,
+\]
+which implies
+\[
+  \Cap_C(y^*\mathbb L;\Ran\Gamma)
+  \le y^*\mathbb\Theta y.
+\]
+Diagonal route budgets $K^{pp}\Loewner\Theta_p$ alone do not certify mixed-protocol recombinations.
+\end{theorem}
+
+\begin{proof}
+This is the probe-family capacity theorem applied to the stacked family $\mathbb L$.  The warning about diagonal route budgets follows because the quadratic form $y^*\mathbb Ky$ depends on the off-diagonal blocks $K^{pq}$.
+\end{proof}
+
+\begin{example}[Diagonal protocol checks do not control the route union]
+Let $H=\mathbb C$, $C=1$, $\Gamma=1$, and let $r$ protocols all use the same scalar probe $\widetilde L^p u=u$.  Then $K^{pp}=1$ for every $p$, so every route-local scalar certificate passes at level $1$.  But
+\[
+  \mathbb K=\mathbf 1_r\mathbf 1_r^*,
+\]
+whose top eigenvalue is $r$.  The normalized all-ones recombination has capacity $r$.  Hence diagonal protocol checks understate the union danger by an arbitrary factor.
+\end{example}
+
+\section{Readout agreement and transfer of budgets}
+
+Protocol honesty also requires that different probes claiming to represent the same public readout agree after transport.  The agreement should be measured in capacity, not merely pointwise notation.
+
+\begin{definition}[Difference-capacity readout defect]
+For two transported families $\widetilde L^p,\widetilde L^q:H\to Y$ on the same exact carrier, define
+\[
+  D^{pq}:=(\widetilde L^q-\widetilde L^p)\Gamma C_\Gamma^\dagger\Gamma^*(\widetilde L^q-\widetilde L^p)^*.
+\]
+We call $D^{pq}$ the readout-agreement currency defect.
+\end{definition}
+
+\begin{theorem}[Budget transfer under readout agreement]
+Let
+\[
+  K^p=\widetilde L^p\Gamma C_\Gamma^\dagger\Gamma^*(\widetilde L^p)^*.
+\]
+If $K^p\Loewner\Theta_p$ and $D^{pq}\Loewner\Delta_{pq}$, then for every $t>0$,
+\[
+  K^q
+  \Loewner
+  (1+t)\Theta_p+(1+t^{-1})\Delta_{pq}.
+\]
+In particular, a budget can be transferred from protocol $p$ to protocol $q$ only with an explicit readout-agreement defect charge.
+\end{theorem}
+
+\begin{proof}
+Write $\widetilde L^q=\widetilde L^p+E^{pq}$, where $E^{pq}=\widetilde L^q-\widetilde L^p$.  For any response vector $y$,
+\[
+  \|(C_\Gamma^\dagger)^{1/2}\Gamma^*(\widetilde L^q)^*y\|^2
+  =
+  \|a+b\|^2,
+\]
+where
+\[
+  a=(C_\Gamma^\dagger)^{1/2}\Gamma^*(\widetilde L^p)^*y,
+  \qquad
+  b=(C_\Gamma^\dagger)^{1/2}\Gamma^*(E^{pq})^*y.
+\]
+The inequality
+\[
+  \|a+b\|^2\le(1+t)\|a\|^2+(1+t^{-1})\|b\|^2
+\]
+gives
+\[
+  y^*K^qy\le(1+t)y^*K^py+(1+t^{-1})y^*D^{pq}y.
+\]
+Using $K^p\Loewner\Theta_p$ and $D^{pq}\Loewner\Delta_{pq}$ proves the Loewner inequality.
+\end{proof}
+
+\section{No-smuggling and no-overreading gates}
+
+\begin{definition}[Upstream selection]
+Let $\mathcal U$ denote the upstream-visible data: formed closure, exact carrier, declared probe family, response transports, threshold/refinement records, and public readout instruments.  A selection rule for $(\Gamma,L,R,\Theta)$ is upstream if it is measurable with respect to $\mathcal U$ and does not use the target $S_6$ success predicate
+\[
+  \widehat K_j\Loewner\Theta
+\]
+or any hidden probe outside the declared response family.
+\end{definition}
+
+\begin{theorem}[No post-hoc test-family promotion]
+A family selected by optimizing or filtering on successful anti-localization, such as
+\[
+  L\in\operatorname*{argmin}_{L'}\lambda_{\max}\bigl(K(L')\bigr),
+\]
+without an upstream selection record is not an accepted anti-localization test family.  Its best possible status is \texttt{support-only}; if the dependence is hidden, the status is \texttt{smuggled} or \texttt{overread}.
+\end{theorem}
+
+\begin{proof}
+Accepted test-family status requires G9.  A selection rule depending on the target success predicate is not upstream-visible and therefore fails the gate.  The numerical truth of the resulting matrix inequality can remain support evidence, but it cannot serve as an accepted test-family certificate because it uses target-layer information to choose the test itself.
+\end{proof}
+
+\section{All-six-channel anti-localization record}
+
+\begin{definition}[All-six-channel anti-localization status]
+For an accepted family claim, the record must include statuses for:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Role & Anti-localization reading & Typical gate \\
+\midrule
+$P_1$ & carrier rewrite / gauge repair & rewrite declared or absent-with-record \\
+$P_2$ & feasible channels / conditioning & null legality, frame, family closure \\
+$P_3$ & route / holonomy & protocol block budget, route-union ledger \\
+$P_4$ & staging / sectors / refinement & predictive transport and defect summability \\
+$P_5$ & packaging / canonicalization & exact package, idempotence, upstream selector \\
+$P_6$ & audit / pricing & currency matrix, budget, audit monotonicity \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{definition}
+
+\begin{proposition}[All-six-channel downgrade]
+If an anti-localization claim asserts a formed layer without explicit $P_1,\dots,P_6$ statuses, then the strongest justified status is \texttt{support-only}.  If the missing channel is used implicitly, the status is \texttt{overread} or \texttt{smuggled} depending on visibility.
+\end{proposition}
+
+\begin{proof}
+The accepted test-family gate includes all-six-channel status as G8.  A missing channel prevents the record from distinguishing exact package, route protocol, and audit budget failures.  Therefore the claim cannot be promoted to accepted family anti-localization.  If the proof relies on the missing channel without record, the no-smuggling/no-overreading rule applies.
+\end{proof}
+
+\section{Summary theorem}
+
+\begin{theorem}[Admissible predictive family membrane theorem]
+Let $\mathsf{Cl}$ be a formed closure/layer.  Suppose $\mathsf T$ is an accepted anti-localization test-family record on $\mathsf{Cl}$.  Then:
+\begin{enumerate}[label=(\roman*)]
+\item all declared native recombinations have uniformly bounded predictive capacity;
+\item mixed protocol recombinations are controlled only when the block protocol budget is accepted;
+\item budgets transfer across readouts only through explicit difference-capacity defects;
+\item diagonal-only, current-only, route-local, public-shadow, or post-hoc-selected certificates do not promote to accepted anti-localization;
+\item the no-needle conclusion is scoped to the formed closure and declared native response family.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Part (i) is the accepted family anti-localization theorem.  Part (ii) is the protocol-block theorem.  Part (iii) is the readout-transfer theorem.  Part (iv) follows from the no-smuggling/no-overreading gate and the diagonal counterexample.  Part (v) is the closure-only scope of the record.
+\end{proof}
+
+\section{Next use in the manuscript}
+
+This note should become the ``admissible test family'' section of the anti-localization manuscript.  It sits after the predictive probe-family capacity theorem and before the RH/Navier obligation sections.  Its role is to turn the mathematical matrix budget
+\[
+  \widehat K_j\Loewner\Theta
+\]
+into a Six-Birds-admissible test-family judgment.
+
+\end{document}

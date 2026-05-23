@@ -1,0 +1,258 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{nogo}{No-Go}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\Hp}{H_{\mathrm{HP}}}
+\newcommand{\Hxp}{H_{xp}}
+\newcommand{\XiHP}{\Xi_{\mathrm{HP}}}
+\newcommand{\XiBC}{\Xi_{\mathrm{BC}}}
+\newcommand{\XidB}{\Xi_{\mathrm{dB}}}
+
+\title{Step 182: Hilbert--Polya / Berry--Keating Carrier Pivot}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{HP\_verdict}=V_{\mathrm{HP\_meta\_pattern\_confirmed}}.}
+\]
+
+Carrier-specific outcome: the standard Berry--Keating operator on the
+half-line has the wrong spectral type, while exact modified spectral matching
+is the Hilbert--Polya/RH assertion itself.  Thus the HP/BK pivot contributes a
+new typed no-go:
+\[
+\boxed{\text{Hilbert--Polya/Berry--Keating standard \(xp\) bridge failure and modified-operator target-equivalence}.}
+\]
+
+\section*{Inherited Record Audit}
+
+The local inherited records contain no accepted Hilbert--Polya or
+Berry--Keating carrier package.  A search through the active RH membrane
+records, \texttt{anti\_loc/adequacy.tex}, and \texttt{anti\_loc/needles.tex}
+does not provide an \(H_{xp}\) carrier, a self-adjoint extension ledger, or a
+spectral determinant bridge to \(\xi\).
+
+The closest inherited record is Step 93's Tier-0 triage.  It lists
+Connes--Consani--Moscovici finite spectral triples as strong finite evidence,
+but explicitly warns that convergence to the completed determinant or zero
+ledger remains the true gate.  Step 99 repeats the same promotion rule:
+finite spectral windows are support-only unless an exhaustive tail or
+completed ledger record is supplied.
+
+\section*{Carrier Declaration}
+
+\begin{definition}[Standard HP/BK half-line carrier]
+Choose
+\[
+\Hp=L^2(\R_+,dx),\qquad
+\langle f,g\rangle=\int_0^\infty f(x)\overline{g(x)}\,dx.
+\]
+The symmetrized Berry--Keating operator is
+\[
+\Hxp=\frac{xp+px}{2}
+     =-i\left(x\frac{d}{dx}+\frac12\right)
+\]
+on the core \(C_c^\infty(\R_+)\).
+\end{definition}
+
+The choice \(L^2(\R_+,dx)\) is deliberate: it is the carrier on which the
+operator has exactly the symmetrized form written above.  The logarithmic
+unitary
+\[
+(Uf)(t)=e^{t/2}f(e^t),\qquad
+U:L^2(\R_+,dx)\to L^2(\R,dt),
+\]
+gives
+\[
+U\Hxp U^{-1}=-i\frac{d}{dt}.
+\]
+Hence the closure has domain
+\[
+D(\Hxp)=U^{-1}H^1(\R),
+\]
+is self-adjoint, and satisfies
+\[
+\sigma(\Hxp)=\R,\qquad \sigma_p(\Hxp)=\varnothing,
+\]
+with purely absolutely continuous spectrum.  This is the standard spectral
+theorem for momentum on \(L^2(\R)\).
+
+\section*{Extension Audit}
+
+On the full half-line carrier, \(\Hxp\) has deficiency indices \((0,0)\);
+there is no one-parameter family of self-adjoint extensions.
+
+The familiar one-parameter family appears only after replacing the full
+logarithmic line by a finite logarithmic interval \(I=[a,b]\).  There the
+minimal operator \(-i\,d/dt\) has \(U(1)\)-extensions
+\[
+D_\theta=\{g\in H^1([a,b]):g(b)=e^{i\theta}g(a)\},
+\qquad \theta\in[0,2\pi),
+\]
+with eigenvalues
+\[
+\lambda_n(\theta)=\frac{2\pi n+\theta}{b-a},\qquad n\in\mathbb Z.
+\]
+These spectra are arithmetic progressions.  They are not the irregular zeta
+ordinate ledger \(\{\gamma_n\}\).  Therefore the finite-box extension family
+does not close the Hilbert--Polya route; it is at most a finite-window or
+model-spectrum diagnostic.
+
+\section*{Parent Residual}
+
+Define \(\XiHP\) as the typed spectral-defect residual:
+\[
+\XiHP=0
+\quad\Longleftrightarrow\quad
+\text{the declared self-adjoint HP operator has point spectrum }
+\{\gamma_n\}
+\text{ with the zeta multiplicity ledger and no extra spectral residue.}
+\]
+For the standard \(\Hxp\), this residual cannot vanish because
+\(\sigma_p(\Hxp)=\varnothing\).  For a modified Berry--Keating operator with
+cutoffs or nonstandard boundary data, \(\XiHP=0\) is precisely the
+Hilbert--Polya assertion.  It is therefore target-equivalent unless the
+modification and its spectral ledger are supplied independently of the zero
+target.
+
+\section*{Initial HP Cascade}
+
+\begin{center}
+\begin{tabular}{p{0.18\linewidth}p{0.28\linewidth}p{0.34\linewidth}p{0.15\linewidth}}
+\toprule
+Branch & Name & Target & Status\\
+\midrule
+HP-spectrum & standard \(xp\) spectral ledger
+& Compare \(\sigma(\Hxp)\) with \(\{\gamma_n\}\).
+& bridge failure\\
+HP-extension & self-adjoint extension boundary data
+& Test the full half-line and finite log-box extension families.
+& unique full extension; finite spectra arithmetic\\
+HP-modification & Berry--Keating cutoff or modified operator
+& Add phase-space cutoffs or boundary data to seek the zeta spectrum.
+& target-equivalent without independent records\\
+HP-ledger & determinant/trace formula bridge
+& Compare a spectral determinant or trace formula to \(\xi\) without target selection.
+& no inherited completed ledger bridge\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{No-Go Transfer}
+
+\begin{center}
+\begin{tabular}{p{0.34\linewidth}p{0.14\linewidth}p{0.42\linewidth}}
+\toprule
+No-go & Transfer & Reason\\
+\midrule
+public-shadow non-promotion & yes
+& formal spectral analogy or finite plots do not promote to a completed zero ledger\\
+finite-window Calkin blindness & yes
+& finite-box \(xp\) spectra and finite spectral triples require tail/determinant promotion\\
+auxiliary-GRH smuggling & yes
+& the zeta ordinates cannot be assumed to be a self-adjoint spectrum\\
+incomplete character spectrum support-only & retained
+& source-side no-go remains for any spectral/source ladder\\
+scalar identity not carrier identity & yes
+& \(\xi\), an explicit formula, or a determinant analogy does not identify the \(xp\) carrier\\
+ledger-relative Hecke non-comparability & retained
+& no Hecke-to-HP spectral ledger bridge is supplied\\
+Branch C full-carrier ZI-COV(i) foreclosure & retained
+& Burnol/Sonine route-local no-go remains separate\\
+de Branges target-equivalence / Conrey--Li survival & retained
+& de Branges route-local no-go remains separate\\
+HP/BK standard \(xp\) bridge failure and modified target-equivalence & new
+& standard \(xp\) has continuous spectrum; exact modified matching is HP/RH content\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{nogo}[HP/BK carrier no-go]
+Under the inherited records, the standard Berry--Keating half-line operator
+does not provide a spectral carrier for the zeta zero ledger, and modified
+operators that would provide exact spectral matching are target-equivalent to
+the Hilbert--Polya/RH assertion unless independently constructed.
+\end{nogo}
+
+\begin{proof}
+The logarithmic unitary \(Uf(t)=e^{t/2}f(e^t)\) sends the standard
+symmetrized \(xp\) operator to \(-i\,d/dt\) on \(L^2(\R)\).  The latter is
+self-adjoint on \(H^1(\R)\), has purely absolutely continuous spectrum
+\(\R\), and has no eigenvalues.  It therefore cannot have the discrete zero
+ordinate ledger as point spectrum.
+
+If one instead cuts the logarithmic line to a finite interval, von Neumann
+extension theory gives \(U(1)\)-many self-adjoint extensions.  Their spectra
+are arithmetic progressions \((2\pi n+\theta)/L\), not the zeta ordinates.
+They are finite-window diagnostics, not a completed zeta carrier.
+
+The remaining Berry--Keating possibility is to modify the operator or impose
+phase-space boundary data.  But exact equality of the modified spectrum with
+\(\{\gamma_n\}\) is the Hilbert--Polya conjecture in operator form.  Without
+an independently specified operator, domain, determinant, and completed
+ledger bridge, using that equality would be target-equivalence smuggling.
+\end{proof}
+
+\section*{CTMT Check}
+
+The HP/BK pivot does not instantiate CTMT as the primary obstruction.  The
+standard carrier fails before a carrier-native matrix-element terminus is
+reached: its spectral type is continuous.  Matrix entries of a finite-box or
+finite spectral approximation would fall under finite-window blindness unless
+they are promoted by a completed determinant/ledger theorem.
+
+\section*{Meta-Pattern Status}
+
+\[
+\boxed{\mathrm{meta\_pattern\_status}=\text{meta\_pattern\_confirmed}.}
+\]
+
+The supporting instances are:
+\begin{enumerate}
+\item Hecke H6: ledger-relative bridge non-comparability.
+\item de Branges \(H(E_{\mathrm{RH}})\): target-equivalence plus
+Conrey--Li survival.
+\item Hilbert--Polya / Berry--Keating \(H_{xp}\): standard bridge failure and
+modified-operator target-equivalence.
+\end{enumerate}
+The precise meta-pattern is: classical RH-equivalent carriers do not supply
+independent closure under inherited records; they terminate as typed no-go
+modes unless an independent completed carrier ledger is supplied.
+
+\section*{Classical Theorems Cited}
+
+\begin{itemize}
+\item Pólya 1914 / Hilbert--Polya conjecture: self-adjoint spectral
+formulation of RH by the zero ordinates.
+\item Spectral theorem for \(-i\,d/dt\) on \(L^2(\R)\): continuous momentum
+spectrum.
+\item von Neumann self-adjoint extension theorem for \(-i\,d/dt\) on a finite
+interval: \(U(1)\) boundary family and arithmetic eigenvalues.
+\item Berry 1986 and Berry--Keating 1999: \(H=xp\) and phase-space cutoff
+proposal.
+\item Connes 1999: adelic/noncommutative trace-formula alternative.
+\end{itemize}
+
+\section*{Nonclaim Boundary}
+
+This step does not prove RH, does not assume RH, and does not construct a
+Hilbert--Polya operator.  It does not close \(\XiHP\), \(\XiBC\), or
+\(\XidB\).  It does not claim that every possible modified Berry--Keating
+model fails.  It records that the standard \(xp\) carrier has the wrong
+spectral type and that exact modified spectral matching is target-equivalent
+without independent carrier records.
+
+\end{document}

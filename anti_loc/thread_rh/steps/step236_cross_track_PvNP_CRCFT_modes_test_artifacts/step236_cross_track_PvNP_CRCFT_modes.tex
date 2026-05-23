@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 236: Cross-Track CRCFT Modes on P-vs-NP Components}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+This step tests whether the CRCFT modes classify the P-vs-NP track. The track is obstruction-oriented: \(\Xi_{\rm pack}>0\) is the useful separation direction for a declared lawful package.
+
+\section{Package residual}
+
+The active package residual is
+\[
+\Xi_{\rm pack}^{\Sigma}(\Pi)
+=CD_{\Sigma}(B\mid\Pi)
+=H(B(\Phi)\mid\Pi(\Phi)),
+\]
+where \(B(\varphi)=1[\mathrm{SAT}(\varphi)]\). Positive residual means that a package cell mixes SAT and UNSAT instances. This proves fixed-package non-descent, not a class lower bound.
+
+The atlas residual is
+\[
+\Xi_{\rm pack-atlas}(P),
+\]
+the gap between scoped packages and an accepted non-circular atlas for polynomial-time visibility.
+
+\section{Mode table}
+
+\begin{center}
+\begin{tabular}{p{0.34\linewidth}p{0.16\linewidth}p{0.40\linewidth}}
+\toprule
+Component & Mode & Reason\\
+\midrule
+\(\Xi_{\rm pack}\) for lawful package & TE/CTMT & Fixed-package non-descent target; cell/witness audit is terminal.\\
+Fixed quotient non-descent & BF/TE scoped & Does not bridge to class lower bound without atlas.\\
+Local-status Tseitin obstruction & TE scoped & Target-equivalent for sealed local carrier, not for \(P\).\\
+Proof-system bridge leaves & BF & Resolution/SOS lower bounds remain scoped.\\
+\(\Xi_{\rm atlas}(P)\) & TE & Closing atlas gap is P-visibility coverage.\\
+Universal \(P\)-machine atlas & TE & Target-equivalent no-go in records.\\
+Packaging-axis level-1 host & CTMT & Package carrier/gate terminality.\\
+Abstract transformer package atlas & CTMT & Abstract domain, transformer, fixed-point, residual gates.\\
+No-smuggling/readability/scope gates & BF & SAT label, identity, unreadable packages fail bridge discipline.\\
+Relativization/natural/algebrization & BF & Barrier stack blocks bridge classes.\\
+Algorithmic/GCT route gates & CTMT/BF & Route-specific terminal conditions with barrier guards.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Literature audit}
+
+Cook and Karp supply NP-completeness foundations. Baker--Gill--Solovay supplies relativization. Razborov--Rudich supplies natural proofs. Aaronson--Wigderson supplies algebrization. Williams supplies an algorithmic lower-bound route for ACC/NEXP. Mulmuley--Sohoni supplies the GCT route template. These are foundational routes and barriers, not a non-circular P-atlas closure.
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{V\_pvnp\_CRCFT\_modes\_verified}}
+\]
+
+CRCFT is now verified on five track instances: RH, BSD, Hodge, NS, and P-vs-NP. No P-vs-NP proof is claimed.
+
+\end{document}

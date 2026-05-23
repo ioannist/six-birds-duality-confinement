@@ -1,0 +1,28 @@
+{
+  "step": 256,
+  "orientation": "adequacy",
+  "target": "Montgomery pair correlation as third instance of Cross-Correlation Extension",
+  "carrier_definition": {
+    "zeros": "rho_n=1/2+i gamma_n",
+    "normalization": "tilde_gamma=gamma log(gamma)/(2*pi)",
+    "R_2": "(1/N(T))*#{(n,m): alpha < tilde_gamma_n-tilde_gamma_m < beta, n!=m}",
+    "GUE_limit": "int_alpha^beta (1-(sin(pi*u)/(pi*u))^2) du",
+    "residual": "Xi_MPC(alpha,beta;T)=|R_2(alpha,beta;T)-GUE_integral(alpha,beta)|",
+    "closure": "lim_{T->infty} Xi_MPC(alpha,beta;T)=0 for all alpha<beta"
+  },
+  "montgomery_partial_proved_range": "Montgomery proved the restricted Fourier-support/range theorem under RH, conventionally described as the |u|<1 pair-correlation range; the full GUE conjecture remains open.",
+  "classification_within_extension": "inside Selberg-Class Cross-Correlation Extension after subtype refinement",
+  "refinement_call": {
+    "verdict": "V_montgomery_subtype_refinement",
+    "Type_Ia": "multi-L coefficient correlations: SOC and full Selberg orthonormality",
+    "Type_Ib": "single-L zero correlations: Montgomery pair correlation and Hejhal triple correlation",
+    "Type_II": "multi-L/family zero correlations: Rudnick-Sarnak and Katz-Sarnak style n-level statistics"
+  },
+  "retained_nogos": [
+    "does not claim Montgomery pair correlation solved",
+    "does not claim RH or GRH solved",
+    "does not classify MPC as RH-equivalent",
+    "does not weaken retained no-gos"
+  ],
+  "final_verdict": "V_montgomery_subtype_refinement"
+}

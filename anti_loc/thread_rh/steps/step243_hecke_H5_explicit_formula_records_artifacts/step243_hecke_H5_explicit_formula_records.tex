@@ -1,0 +1,59 @@
+\section*{Step 243: Hecke H5 Auxiliary Explicit-Formula Records}
+
+\subsection*{H5 Specification}
+
+For a Hecke character \(\chi\) over a number field \(K\), H5 asks for a
+lawful explicit-formula record for \(L(s,\chi)\). Schematically,
+\[
+\widetilde f(0)\cdot \mathrm{pole/trivial}
+  - \sum_{\rho:L(\chi,\rho)=0}\widetilde f(\rho)
+  + \widetilde f(1)\cdot \mathrm{dual\ pole/trivial}
+  = \sum_v W_{v,\chi}(f).
+\]
+The record must include conductor, gamma factors, root number, pole terms,
+primitive/imprimitive handling, local prime-power terms, zero-sum convergence,
+test-function class, and tail/null records.
+
+\subsection*{Inherited Records}
+
+Step 92 lists auxiliary explicit-formula records as open: each source
+\(L(s,\chi)\) needs prime, gamma, conductor, pole, and tail data. Its source
+gate table marks the missing status as \(\texttt{unreturned\_source}\).
+
+Step 167 names H5 as
+\[
+\texttt{auxiliary\_explicit\_formula\_records}
+\]
+with status \(\texttt{open\_external\_records}\). Step 172 lists H5 inside
+the external Hecke H1-H5 interface. These records advance only the Hecke
+sibling cascade; step 168 H6 still blocks transfer to the Burnol/Sonine
+residual.
+
+\subsection*{No-Go Discipline}
+
+H5 cannot assume auxiliary GRH. It can record zeros and explicit-formula
+terms, but it cannot assert all auxiliary zeros lie on the critical line.
+Records for selected characters remain support-only without full character
+coverage. The trivial character's zeta explicit formula is not a carrier
+identity.
+
+\subsection*{Literature Audit}
+
+Weil's explicit formula supplies the general explicit-formula framework for
+global \(L\)-functions. Tate's thesis and Iwasawa-Tate theory supply adelic
+local factors and functional equations for Hecke \(L\)-functions.
+Iwaniec-Kowalski gives modern explicit-formula normalization. Explicit
+zero-estimate papers for Hecke \(L\)-functions show the formula in use with
+conductors and local data.
+
+These sources make H5 externally supplyable, but inherited records do not yet
+contain the normalized character-family record table needed by the cascade.
+
+\subsection*{Verdict}
+
+\[
+\texttt{V\_hecke\_H5\_blocked\_external}.
+\]
+
+H5 is blocked external: classical source material exists, but it has not been
+incorporated as a lawful Hecke carrier record.

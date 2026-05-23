@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\title{Step 246: Analytical Refinement of \(\Phi(\sigma,\ell)\)}
+\author{anti\_loc RH track}
+\date{2026-05-16}
+
+\begin{document}
+\maketitle
+
+\section{Setup}
+
+We refine the wavepacket essential-norm function
+\[
+  \Phi(\sigma,\ell)=\lim_{T\to\infty}\|C_\ell u_T\|,
+  \qquad C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+\]
+using the inherited step 217--220 numerical model:
+\[
+  K_\infty^{op}=\delta-\frac{\sin(\tau-\tau')}{\pi(\tau-\tau')}
+  -\sum_n \Psi_n(\tau)\overline{\Psi_n(\tau')}.
+\]
+The packet is the same 3\(\sigma\)-truncated Gaussian used in the prior wavepacket steps.
+
+\section{Grid}
+
+The grid has \(10\times 9=90\) points with \(T=10000\), 24 PSWF terms, and 100-digit mpmath constants:
+\[
+\sigma\in\{0.1,0.2,\ldots,1.0\},
+\]
+\[
+\ell\in\{0.5,\log2,1,\log3,1.5,\log5,2,\log(10)/4,2.5\}.
+\]
+The grid maximum is
+\[
+  \Phi(0.4,2.0)=0.4898488467749268,
+\]
+consistent with the inherited step 220 refined value near \(0.4904766190\).
+
+\section{Candidate Closed Form}
+
+The best theorem-shaped candidate is the ideal high-pass/low-pass overlap for an untruncated Gaussian:
+\[
+\Phi_{\rm band}(\sigma,\ell)^2 =
+\frac12\left[
+\operatorname{erf}(\sigma(1+\ell))-\operatorname{erf}(\sigma a(\ell))
+\right],
+\]
+where
+\[
+a(\ell)=
+\begin{cases}
+1, & 0\le \ell\le 2,\\
+\ell-1, & \ell>2.
+\end{cases}
+\]
+This gives the right qualitative shape and explains why the maximum occurs near \(\ell=2\), but it is not numerically exact for the inherited truncated/PSWF pipeline:
+\[
+\operatorname{RMSE}=3.5846804717\times 10^{-3}.
+\]
+Allowing a scale and effective \(\sigma\) improves only to
+\[
+\operatorname{RMSE}=3.4233392285\times 10^{-3}.
+\]
+
+\section{Fit Audit}
+
+\begin{center}
+\begin{tabular}{lrr}
+\toprule
+Model & RMSE & Max residual\\
+\midrule
+two-erf band shift & \(3.5847\cdot 10^{-3}\) & \(1.3588\cdot 10^{-2}\)\\
+scaled two-erf band shift & \(3.4233\cdot 10^{-3}\) & \(1.2414\cdot 10^{-2}\)\\
+pure erf affine & \(6.4869\cdot 10^{-2}\) & \(2.2927\cdot 10^{-1}\)\\
+Voigt profile & \(6.3328\cdot 10^{-2}\) & \(1.6695\cdot 10^{-1}\)\\
+sinc model & \(7.3356\cdot 10^{-2}\) & \(1.7720\cdot 10^{-1}\)\\
+two-erf affine edges & \(2.5877\cdot 10^{-2}\) & \(6.6337\cdot 10^{-2}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Verdict}
+
+No model reaches the \(10^{-4}\) closed-form precision threshold. The verdict is
+\[
+\texttt{V\_phi\_no\_simple\_closed\_form}.
+\]
+
+\end{document}

@@ -1,0 +1,19 @@
+Step 201 symbolic kappa operationalization
+provenance=manager-led Burnol audit 2026-05-16; Burnol 2002 math/0208121 Theorems 4 and 8; Burnol 2004 math/0112254 Section 6
+lambda=1/2
+ell=log(2)
+projection=pi_lambda=P_{K_lambda}=P_{L_a^Gamma} from Burnol 2002 Theorem 4
+E_formula=E_lambda(w)=pi^(-w/2) Gamma(w/2) [lambda^(1/2-w) + (sqrt(lambda)/2) int_lambda^infty (psi_plus^lambda(t)-psi_minus^lambda(t)) t^(-w) dt]
+K_formula=K_lambda(z,w)=(E_lambda(z) conjugate(E_lambda(w)) - E_lambda(1-z) conjugate(E_lambda(1-w)))/(z+w-1)
+kappa_formula=kappa_{a,w,k}(tau) = (T_a^* partial_{bar w}^k K_lambda(.,w))(1/2+i tau), T_a=M_Gamma J_a U_infty^{-1}, a=lambda
+branch_B_Gram=G_ij=<kappa_i,kappa_j>_{Mellin boundary}=<partial_{bar z}^0 K_lambda(.,rho_i), partial_{bar w}^0 K_lambda(.,rho_j)>_{B(E_lambda)}=K_lambda(rho_j,rho_i) up to the inherited inner-product convention
+branch_B_commutator=c_ij(ell)=<e_i,(I-P_infty) M_{m_ell} P_infty e_j>, e_i=kappa_{a,rho_i,0}/sqrt(G_ii), m_ell(s)=exp(-ell(1/2-s)); P_infty acts by K_infty^op, so c_ij is the double integral over tau,tau' of conjugate(e_i(tau)) [(I-P_infty)M_m P_infty e_j](tau).
+branch_A_matrix=<eta_i,C_ell P_eta eta_j> = <kappa_i,(I-P_infty)M_{m_ell}P_infty kappa_j> after T_a pullback; all entries are explicit functionals of E_lambda, psi_pm^lambda, and K_infty^op.
+Branch_A_status=kappa-level lifted; compactness/HS/Weyl closure requires downstream summability/essential-norm theorem
+Branch_B_status=kernel Gram closed symbolically; Xi_matrix_source not numerically decided in this step
+rho_1=1/2 + 14.134725141734693 i
+kappa_rho_1=T_(1/2)^* K_(1/2)^Gamma(.,1/2 + 14.134725141734693 i)
+rho_2=1/2 + 21.022039638771554 i
+kappa_rho_2=T_(1/2)^* K_(1/2)^Gamma(.,1/2 + 21.022039638771554 i)
+rho_3=1/2 + 25.010857580145688 i
+kappa_rho_3=T_(1/2)^* K_(1/2)^Gamma(.,1/2 + 25.010857580145688 i)

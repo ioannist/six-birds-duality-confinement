@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\geometry{margin=1in}
+
+\title{Step 91: Dirichlet/Hecke Character-Source Frame Abstraction}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\F}{\mathsf F}
+\newcommand{\Y}{Y^-}
+\newcommand{\Thetao}{\Theta^-_0}
+\newcommand{\Xn}{\mathcal X_n}
+\newcommand{\Hc}{\widehat G^-}
+\newcommand{\pre}{\preceq}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note formulates the Dirichlet/Hecke character-source ladder as an abstract lower-frame problem for the anti-invariant response space of the completed zeta carrier.  The source route can collapse the anti-invariant currency only if the upstream-declared character readouts form a full lower frame whose frame constant diverges.  Finite conductor windows or trace/invariant subfamilies are support evidence unless they are tied to a fixed completed response space with a vanishing tail or to a genuine Plancherel/exhaustivity record.
+\end{abstract}
+
+\section{Purpose}
+The paired prime/gamma Weil carrier is positive but has a legal low-frequency zero.  Step 89 identified source coercivity as the strongest non-gating way to resolve this softness.  Step 90 identified Dirichlet/Hecke character sources as the most plausible zeta-native source family.  The present note abstracts the required theorem.
+
+The target source inequality is
+\begin{equation}
+  \F_n
+  :=\sum_{\chi\in\Xn}\lambda_{\chi,n}Q_\chi^*\Theta_\chi^{-1}Q_\chi
+  \preceq? \quad\text{no: we need}\quad
+  \F_n\succeq \Lambda_n(\Thetao)^{-1},
+  \qquad \Lambda_n\to\infty .
+\end{equation}
+If this holds on the whole anti-invariant response space, then the source-extended anti-invariant currency collapses:
+\begin{equation}
+  \K_n^-\preceq \Lambda_n^{-1}\Thetao + E_{{\rm src},n}.
+\end{equation}
+
+\section{Abstract character-source record}
+
+\begin{definition}[Character-source record]
+Let \(\Y\) be the anti-invariant response Hilbert space. A character-source record is a tuple
+\[
+  s=(\chi,Q_\chi,\Theta_\chi,\lambda_{\chi,n},D_\chi),
+\]
+where \(Q_\chi:\Y\to Z_\chi\) is an upstream-visible character readout, \(\Theta_\chi\succ0\) is its local response budget, \(\lambda_{\chi,n}\ge0\) is its source strength at stage \(n\), and \(D_\chi\succeq0\) is a carrier-side source satisfying
+\begin{equation}
+  D_\chi\succeq
+  \lambda_{\chi,n}(Q_\chi L^-)^*\Theta_\chi^{-1}(Q_\chi L^-).
+\end{equation}
+The response-side frame associated to a finite source family \(\Xn\) is
+\begin{equation}
+  \F_n=\sum_{\chi\in\Xn}\lambda_{\chi,n}Q_\chi^*\Theta_\chi^{-1}Q_\chi .
+\end{equation}
+\end{definition}
+
+\begin{theorem}[Source-frame collapse]
+Assume the exact packaged anti-invariant audit is strengthened by accepted source records \(\{D_\chi:\chi\in\Xn\}\). If
+\begin{equation}
+  \F_n\succeq \Lambda_n(\Thetao)^{-1},
+\end{equation}
+then, under null-mode legality,
+\begin{equation}
+  \K_n^-
+  =L^-(C_n^+)^\dagger(L^-)^*
+  \preceq \Lambda_n^{-1}\Thetao .
+\end{equation}
+If a defect record is present, the honest conclusion is
+\begin{equation}
+  \K_n^-\preceq \Lambda_n^{-1}\Thetao + E_{{\rm src},n}.
+\end{equation}
+Thus \(\Lambda_n\to\infty\) and \(E_{{\rm src},n}\to0\) imply anti-invariant budget collapse.
+\end{theorem}
+
+\begin{proof}
+By the source record,
+\[
+ C_n^+=C_0+\sum_{\chi\in\Xn}D_\chi
+ \succeq
+ (L^-)^*\F_n L^-.
+\]
+If \(\F_n\succeq \Lambda_n(\Thetao)^{-1}\), then
+\[
+ C_n^+\succeq \Lambda_n (L^-)^*(\Thetao)^{-1}L^- .
+\]
+The usual currency/coercivity inequality gives
+\[
+ L^-(C_n^+)^\dagger(L^-)^*\preceq \Lambda_n^{-1}\Thetao
+\]
+on the legal quotient.  Defects add by Loewner monotonicity and the previously established defective-bridge rule.
+\end{proof}
+
+\section{Orthogonal and Plancherel cases}
+
+\begin{proposition}[Orthogonal character blocks]
+Suppose
+\[
+  \Y=\bigoplus_{\chi\in\Hc}Y_\chi,
+  \qquad Q_\chi=P_\chi
+\]
+with orthogonal projections \(P_\chi\), and \(\Theta_\chi=\Thetao|_{Y_\chi}\). Then
+\begin{equation}
+  \F_n=\sum_{\chi\in\Xn}\lambda_{\chi,n}P_\chi(\Thetao)^{-1}P_\chi .
+\end{equation}
+On the covered subspace \(Y_{\Xn}=\oplus_{\chi\in\Xn}Y_\chi\), the lower-frame constant is
+\begin{equation}
+  \Lambda_n^{\rm covered}=\min_{\chi\in\Xn}\lambda_{\chi,n}.
+\end{equation}
+On the whole space \(\Y\), the lower-frame constant is zero unless \(\Xn\) covers every nonzero character block or an independent tail/exhaustivity record controls the complement.
+\end{proposition}
+
+\begin{warning}[Finite windows do not give full lower frames]
+If \(\Y\) has infinitely many anti-invariant character blocks and \(\Xn\) is finite, then
+\[
+  \inf_{\|y\|=1}\langle y,\F_n y\rangle =0
+\]
+unless the finite window is accompanied by a tail/gap/exhaustivity record.  Therefore finite conductor windows are \emph{moving-ledger support evidence}, not full anti-invariant budget collapse.
+\end{warning}
+
+\begin{proposition}[Finite abelian tight frame]
+Let \(G\) be a finite abelian group and \(\widehat G\) its full character group. For \(f\in\ell^2(G)\),
+\begin{equation}
+  \sum_{\chi\in\widehat G}|\langle f,\chi\rangle|^2 = |G|\|f\|^2
+\end{equation}
+with unnormalized characters. Thus the full character family is a tight frame. A proper subset can fail to see nonzero functions, hence has lower-frame constant zero on the full space.
+\end{proposition}
+
+\section{Dirichlet and Hecke source ladders}
+
+\subsection{Dirichlet characters}
+For a fixed modulus \(q\), the complete Dirichlet character family on \((\mathbb Z/q\mathbb Z)^\times\) is a finite tight frame. This is encouraging: at a fixed finite arithmetic quotient, the character source family is natural, upstream-visible, and non-post-hoc.
+
+However, the RH carrier is not a fixed finite quotient. A conductor ladder \(q\le Q_n\) is a moving finite-window source unless embedded into a fixed completed response space, such as an adelic/idele-class character space, with a Plancherel or tail-exhaustivity theorem.
+
+\subsection{Hecke characters}
+The Hecke/idele-class formulation is more plausible as a true fixed-ledger source frame, because it naturally lives on a global character group. The required record is not merely the existence of Hecke characters, but a completed Plancherel-type decomposition of the anti-invariant response space together with source strengths satisfying a divergent lower-frame bound on that fixed space.
+
+\section{Upstream visibility and no-smuggling}
+A character family is lawful only if:
+\begin{enumerate}[label=\textbf{G\arabic*.}]
+  \item the character set \(\Xn\) is declared by conductor, Hecke data, or carrier-native spectral structure before the zero-confinement test;
+  \item the source weights \(\lambda_{\chi,n}\) are arithmetic/audit-defined, not selected from the final zero-displacement residual;
+  \item auxiliary explicit-formula records for the selected \(L(s,\chi)\) or Hecke family are present if the source uses them;
+  \item imprimitive/primitive restrictions carry a defect or completeness record;
+  \item finite-window families carry tail/exhaustivity records.
+\end{enumerate}
+
+\section{Status for RH}
+The character-source route is plausible but not earned. Its strongest honest form is:
+\begin{equation}
+  \boxed{\text{completed zeta/Hecke carrier} + \text{Plancherel character frame} + \Lambda_n\to\infty.}
+\end{equation}
+Prime-by-prime sources are canonical but soft at low frequency. Dirichlet/Hecke sources are the most plausible route to full anti-invariant coverage, but they require a larger completed carrier and auxiliary explicit-formula records. Trace-only and finite-window sources remain support-only.
+
+\section{Nonclaims}
+This note does not prove RH, does not prove that Dirichlet or Hecke characters supply the required lower frame on the completed zeta response space, and does not assert that finite conductor windows collapse the full anti-invariant budget. It only states the abstract source-frame theorem and the precise records needed to instantiate it.
+
+\end{document}

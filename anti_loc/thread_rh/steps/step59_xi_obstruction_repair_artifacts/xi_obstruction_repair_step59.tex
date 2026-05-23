@@ -1,0 +1,298 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs,geometry}
+\geometry{margin=1in}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\supp}{supp}
+
+\title{Step 59: $\Xi$-Obstruction and Repair Calculus}
+\author{Six Birds formed-layer membrane project}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The adequacy residual
+\[
+\Xi_C(D\mid L)
+\]
+measures the part of a layer-dissolving probe family $D$ that is invisible to the native probe family $L$ in the audit geometry $C$.  Step 52 made $\Xi$ a standalone object and Step 58 proved transfer laws.  This note gives the obstruction-and-repair calculus for $\Xi$: when an adequacy claim fails, what witness appears, which repairs truly reduce the blind spot, and which moves merely narrow or weaken the claim.
+
+\section{Legal quotient and the adequacy residual}
+Let $E$ be finite-dimensional and let $C=C^*\succeq0$.  The legal energy quotient is
+\[
+E_C=(\ker C)^\perp,
+\qquad C_0=C|_{E_C}>0.
+\]
+All probe families are assumed null-legal unless explicitly marked as a failure:
+\[
+L|_{\ker C}=0,\qquad D|_{\ker C}=0.
+\]
+Write
+\[
+L_0=L|_{E_C},\qquad D_0=D|_{E_C},
+\]
+and define
+\[
+T_L=L_0 C_0^{-1/2},\qquad T_D=D_0 C_0^{-1/2}.
+\]
+Let $P_L$ be the orthogonal projection onto $\Ran(T_L^*)$.  Then
+\[
+\Xi_C(D\mid L)=T_D(I-P_L)T_D^*.
+\]
+Equivalently, with
+\[
+K_{LL}=L_0C_0^{-1}L_0^*,\quad
+K_{DL}=D_0C_0^{-1}L_0^*,\quad
+K_{DD}=D_0C_0^{-1}D_0^*,
+\]
+we have
+\[
+\boxed{\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}.}
+\]
+
+\begin{definition}[Adequacy claim]
+A $\Xi$-adequacy claim with budget $\Omega\succeq0$ is the Loewner assertion
+\[
+\Xi_C(D\mid L)\preceq\Omega.
+\]
+The exact adequacy claim is the special case $\Omega=0$.
+\end{definition}
+
+\section{Obstruction witnesses}
+\begin{theorem}[Adequacy obstruction witness]
+Let
+\[
+\Delta_\Xi=\Xi_C(D\mid L)-\Omega.
+\]
+Then
+\[
+\Xi_C(D\mid L)\npreceq\Omega
+\]
+if and only if there exists a dissolving recombination vector $z$ such that
+\[
+\boxed{z^*(\Xi_C(D\mid L)-\Omega)z>0.}
+\]
+The maximum additive violation is
+\[
+\lambda_{\max}(\Delta_\Xi),
+\]
+and, when $\Omega\succ0$, the maximum relative violation is
+\[
+\lambda_{\max}(\Omega^{-1/2}\Xi_C(D\mid L)\Omega^{-1/2})-1.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the spectral characterization of the Loewner order for finite-dimensional self-adjoint matrices.  The relative statement is the same characterization after congruence by $\Omega^{-1/2}$.
+\end{proof}
+
+\begin{theorem}[Exact adequacy and blind spots]
+The following are equivalent:
+\[
+\Xi_C(D\mid L)=0,
+\]
+\[
+D_0=A L_0\text{ for some }A,
+\]
+\[
+D_0=A_*L_0\text{ with }A_*=K_{DL}K_{LL}^{\dagger},
+\]
+\[
+\boxed{\ker L_0\subseteq\ker D_0.}
+\]
+Consequently, if there exists $v\in E_C$ with $L_0v=0$ but $D_0v\ne0$, then exact adequacy fails.  If such a vector also has arbitrarily small audit energy under an approximating sequence, the dissolving capacity is unbounded.  If $D$ sees $\ker C$, the true variational capacity is infinite and the $\Xi$ record fails null-mode legality.
+\end{theorem}
+
+\begin{proof}
+$\Xi=0$ is equivalent to $T_D=T_DP_L$, so the rows of $T_D$ lie in the row span of $T_L$, equivalently $D_0=A L_0$ after multiplying by the invertible $C_0^{1/2}$ on the right.  The kernel condition is the standard factorization criterion for finite-dimensional linear maps.  The null-mode statement follows because a nonzero $D$-readout on a zero-energy direction gives positive response at zero cost.
+\end{proof}
+
+\section{Lawful repair moves}
+A repair is proof-strengthening only when it reduces the same-sector blind-spot budget.  Other moves may be lawful but are status changes: claim narrowing, public-shadow support, or nonclaim records.
+
+\subsection{Native strict extension}
+Let a strict native extension add probes $M:E\to W$ and set
+\[
+L^+=\begin{bmatrix}L\\ M\end{bmatrix}.
+\]
+
+\begin{theorem}[Native-extension repair]
+Define conditional currency blocks relative to $L$:
+\[
+K_{MM\mid L}=K_{MM}-K_{ML}K_{LL}^{\dagger}K_{LM},
+\]
+\[
+K_{DM\mid L}=K_{DM}-K_{DL}K_{LL}^{\dagger}K_{LM}.
+\]
+Then
+\[
+\boxed{\Xi_C(D\mid L^+)=\Xi_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^{\dagger}K_{MD\mid L}.}
+\]
+In particular
+\[
+\Xi_C(D\mid L^+)\preceq\Xi_C(D\mid L).
+\]
+The repair is strict in witness direction $z$ exactly when
+\[
+z^*K_{DM\mid L}K_{MM\mid L}^{\dagger}K_{MD\mid L}z>0.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the block Schur-complement chain rule applied to the joint covariance/currency matrix of $(D,L,M)$ in the audit-dual geometry.  The subtracted term is positive semidefinite.
+\end{proof}
+
+\begin{corollary}[Same-family saturation]
+If $M=BL$ for some linear map $B$, then
+\[
+\Xi_C(D\mid [L;M])=\Xi_C(D\mid L).
+\]
+Thus repeating, relabeling, or linearly reparameterizing the same native family does not repair an adequacy blind spot.
+\end{corollary}
+
+\subsection{Native coarsening and faithful restoration}
+If the native family is coarsened to $AL$, then
+\[
+\Ran((AL)_0^*)\subseteq\Ran(L_0^*),
+\]
+so
+\[
+\boxed{\Xi_C(D\mid AL)\succeq\Xi_C(D\mid L).}
+\]
+A coarsening-induced obstruction is repaired only by restoring a faithful native presentation or by recording a nonclaim for the hidden directions.
+
+\subsection{Dissolving readout bridge residuals}
+Suppose a target dissolving readout is represented as
+\[
+D'=B D U+R
+\]
+under a lawful carrier bridge $U$ and response map $B$, with native side transported compatibly.  If the exact part obeys the Step 58 transfer law, then for every $t>0$,
+\[
+\boxed{
+\Xi_{C'}(D'\mid L')
+\preceq
+(1+t)B\Xi_C(D\mid L)B^*+(1+t^{-1})\Xi_{C'}(R\mid L').
+}
+\]
+Thus the residual $R$ becomes an explicit blind-spot defect.  A repair lowers the target blind-spot budget only if it lowers $\Xi(R\mid L')$ or improves the exact transferred budget.
+
+\subsection{Public shadows}
+For a public response map $F:Z\to Z_{\rm pub}$,
+\[
+\Xi_C(FD\mid L)=F\Xi_C(D\mid L)F^*.
+\]
+This descent is valid.  The converse is false: small public $\Xi$ need not imply small intrinsic $\Xi$ unless a reconstruction map $S:Z_{\rm pub}\to Z$ and defect record are supplied.  If $F$ has a hidden kernel, an intrinsic blind spot can be invisible in the public shadow.
+
+\subsection{Budget repair and claim weakening}
+Raising the adequacy budget to
+\[
+\Omega'\succeq\Xi_C(D\mid L)
+\]
+always makes the adequacy inequality true, but it does not reduce the blind spot.  It weakens the claim.  It is a lawful move only when recorded as budget repair / claim narrowing, not as proof of stronger adequacy.
+
+\subsection{Null-mode repair}
+If $D|_{\ker C}\ne0$, the dissolving family sees a zero-energy direction.  The repair must be one of:
+\begin{enumerate}[label=(\roman*)]
+\item quotient or annihilate the null mode and prove $D$ descends;
+\item strengthen the audit so the direction is no longer null;
+\item record that the dissolving claim is outside scope.
+\end{enumerate}
+Using the pseudoinverse without this record is a fake zero-budget error.
+
+\section{Predictive repair calculus}
+At predictive stage $j$ write
+\[
+\Xi_j=\Xi_{C_j}(D_j\mid L_j).
+\]
+A predictive adequacy claim has budget $\Omega_j$ and accepts when
+\[
+\Xi_j\preceq\Omega_j.
+\]
+
+\begin{theorem}[Predictive adequacy propagation]
+Suppose
+\[
+\Xi_{j+1}\preceq (1+\varepsilon_j)A_j\Xi_jA_j^*+E_j
+\]
+and budgets satisfy
+\[
+(1+\varepsilon_j)A_j\Omega_jA_j^*+E_j\preceq \Omega_{j+1}.
+\]
+Then
+\[
+\Xi_j\preceq\Omega_j\quad\Longrightarrow\quad \Xi_{j+1}\preceq\Omega_{j+1}.
+\]
+In a common response space with $A_j=I$, if
+\[
+\prod_j(1+\varepsilon_j)<\infty,
+\qquad
+\sum_j E_j\preceq E_\infty,
+\]
+then
+\[
+\Xi_n\preceq P_\infty(\Xi_0+E_\infty)
+\]
+for all $n$.
+\end{theorem}
+
+\begin{proof}
+The one-step implication is substitution.  The common-space bound follows by iterating the recurrence and using the product and Loewner summability assumptions.
+\end{proof}
+
+\begin{warning}[Non-summable repair defects]
+Finite adequacy at each stage is not predictive adequacy.  For instance $\Xi_n=\sum_{j=1}^n j^{-1}$ is finite at every $n$ but diverges as $n\to\infty$.
+\end{warning}
+
+\begin{theorem}[Residual-contraction ladder]
+Suppose
+\[
+0\preceq \Xi_{j+1}\preceq (1-\alpha_j)\Xi_j+E_j,
+\qquad 0<\alpha_j<1.
+\]
+If
+\[
+\prod_j(1-\alpha_j)=0
+\]
+and the accumulated residuals satisfy
+\[
+\sum_{k< n}\left(\prod_{i=k+1}^{n-1}(1-\alpha_i)\right)E_k\to0,
+\]
+then
+\[
+\Xi_n\to0.
+\]
+Thus a strict-extension ladder collapses blind spots only when it repeatedly sees the residual strongly enough and the new residual defects decay fast enough.
+\end{theorem}
+
+\section{Obstruction-to-repair ledger}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Obstruction & Proof-strengthening repair & Non-proof / status repair\\
+\midrule
+Hidden public kernel & restore faithful readout or add hidden readouts & public-shadow nonclaim\\
+Native coarsening & strict native extension & scoped native-only claim\\
+Dissolving residual & reduce $\Xi(R\mid L')$ & defect-paid weaker bound\\
+Uncovered blind spot & add probes seeing residual & budget repair / claim weakening\\
+Null-mode failure & quotient, annihilate, or audit-strengthen & failed null-mode record\\
+Non-summable defects & summable defect control & downgrade predictive claim\\
+Post-hoc native extension & upstream-declared extension & support-only / smuggled\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Interpretation}
+A $\Xi$-obstruction is a legal hidden direction or response that the native family cannot see.  A proof-strengthening repair must make that direction visible, reduce the bridge residual that exposes it, or lawfully remove it from the claim with a nonclaim record.  Repeating the same family or checking a public shadow does not repair intrinsic adequacy.
+
+\end{document}

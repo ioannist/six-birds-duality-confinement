@@ -1,0 +1,155 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem}
+\usepackage[margin=1in]{geometry}
+\title{Step 141: $\Omega$-Compatible Density Audit on Burnol/Sonine Residual Windows}
+\author{RATCHET / Six Birds RH Membrane Thread}
+\date{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 130--140 converted the source-coercivity route into a restricted BPRZ source-frame problem on the actual residual coefficient class.  The unrestricted GCD--log lower frame is blocked by a squarefree Boolean near-null sector.  The repair is to use an upstream-declared $\Omega$-compatible Burnol/M\"untz residual dictionary whose zeta/M\"untz shadows avoid that blind sector.
+
+The active question is whether this dictionary remains dense enough in the finite residual Burnol/Sonine windows.  This step audits the density side.
+
+\section{Finite residual window}
+Let
+\[
+M_{R,N}:Y_{R,N}\to H_N
+\]
+be a finite residual-window synthesis map, with Gram form
+\[
+G_{R,N}=M_{R,N}^{*}M_{R,N}.
+\]
+Let $\mathcal D_{\Omega,N}\subset H_N$ be the declared span of Burnol/co-Poisson atoms whose regularized M\"untz/Dirichlet shadows obey the upstream prime-block cutoffs
+\[
+\Omega(n_j)\le K_j.
+\]
+Let $P_{\Omega,N}$ be the orthogonal projection onto $\mathcal D_{\Omega,N}$.
+
+\begin{definition}[Omega-compatible density defect]
+The finite density defect is
+\[
+\boxed{
+\epsilon_{B\to\Omega,N}
+=
+\left\|(I-P_{\Omega,N})M_{R,N}G_{R,N}^{-1/2}\right\|.
+}
+\]
+Equivalently the missed adequacy residual is
+\[
+\boxed{
+\Xi_{B\to\Omega,N}
+=
+M_{R,N}^{*}(I-P_{\Omega,N})M_{R,N}.
+}
+\]
+\end{definition}
+
+This is the corrected meaning of the $c_N$-side of the route: it is a spanning residual of a constructible family, not a column-norm bound on a fixed map.
+
+\section{Finite density identity}
+\begin{proposition}
+If
+\[
+R_{\Omega,N}=D_{\Omega,N}^{\dagger}M_{R,N}
+\]
+is the coefficient map through the declared $\Omega$-compatible dictionary, then
+\[
+R_{\Omega,N}^{*}H_{\Omega,N}R_{\Omega,N}
+=
+G_{R,N}-\Xi_{B\to\Omega,N}.
+\]
+Consequently
+\[
+\boxed{
+R_{\Omega,N}^{*}H_{\Omega,N}R_{\Omega,N}
+\succeq
+(1-\epsilon_{B\to\Omega,N}^{2})G_{R,N}.
+}
+\]
+\end{proposition}
+
+\section{Bicriteria source theorem}
+Let $\delta_{R,K,N}$ be the GCD--log blind-sector defect from Step 138,
+\[
+\delta_{R,K,N}=L_{R,K}+T_{R,K}\sigma_{K,N}.
+\]
+Assume that the restricted BPRZ source kernel has lower frame
+\[
+K_q\succeq \gamma_q I
+\]
+on the nonblind residual coefficient class, with $\gamma_q\asymp \log q$.
+
+\begin{theorem}[Bicriteria restricted source frame]
+If
+\[
+\epsilon_{B\to\Omega,N}\le \epsilon_N<1,
+\qquad
+\delta_{R,K,N}\le \delta_N<1,
+\]
+then the restricted residual source frame satisfies
+\[
+\boxed{
+F_{R,N}^{\Omega}
+\succeq
+\gamma_q(1-\epsilon_N^2)(1-\delta_N^2)G_{R,N}
+}
+\]
+up to the declared BPRZ asymptotic-error and finite-window tail records.
+\end{theorem}
+
+Thus a positive floor is enough.  Exact density is sufficient but not necessary.
+
+\section{Generic non-density warning}
+Burnol completeness and co-Poisson density do not imply $\Omega$-compatible density.  If the residual window contains a normalized direction whose seed coefficients are supported outside every declared $\Omega$ cutoff, then
+\[
+\epsilon_{B\to\Omega,N}=1.
+\]
+Therefore the $\Omega$-compatible route requires a new density theorem:
+\[
+\boxed{
+\epsilon_{B\to\Omega,N}\to0
+\quad\text{or at least}\quad
+\epsilon_{B\to\Omega,N}\le \epsilon<1.
+}
+\]
+If this fails, the missed sector
+\[
+\Xi_{B\to\Omega,N}
+\]
+becomes a genuine residual requiring a separate source-frame record.
+
+\section{Interpretation}
+The source route now has two independent floor factors:
+\[
+\boxed{
+\text{density floor } 1-\epsilon_{B\to\Omega,N}^{2}
+}
+\]
+and
+\[
+\boxed{
+\text{GCD-blind floor } 1-\delta_{R,K,N}^{2}.
+}
+\]
+The effective source strength is
+\[
+\boxed{
+\Lambda_N^{\Omega}
+\gtrsim
+\gamma_q
+(1-\epsilon_{B\to\Omega,N}^{2})
+(1-\delta_{R,K,N}^{2}).
+}
+\]
+
+\section{Audit verdict}
+The finite algebra is clean.  The density theorem is not earned.  The next analytic obligation is to prove that the declared $\Omega$-compatible Burnol/M\"untz dictionary has a positive visibility floor on the actual residual Burnol/Sonine windows.
+
+\end{document}

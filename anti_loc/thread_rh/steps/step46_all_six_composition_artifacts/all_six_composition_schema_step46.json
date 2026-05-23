@@ -1,0 +1,41 @@
+{
+  "step": 46,
+  "name": "All-Six Record Composition and Propagation",
+  "objects": {
+    "membrane_record": ["E", "C", "L", "Y", "Theta", "P1", "P2", "P3", "P4", "P5", "P6", "Nonclaims"],
+    "currency": "K = L C^dagger L^*",
+    "bridge": ["carrier_map_P", "response_map_A", "residual_R", "residual_currency_EB", "channel_bridges_P1_to_P6"]
+  },
+  "theorems": [
+    {
+      "name": "Exact all-six transfer",
+      "statement": "C' >= P^* C P and L' = A L P imply K' <= A K A^*."
+    },
+    {
+      "name": "Defective all-six transfer",
+      "statement": "L' = A L P + R with R C'^dagger R^* <= E_B implies K' <= (1+t) A K A^* + (1+t^-1) E_B."
+    },
+    {
+      "name": "Two-step composition",
+      "statement": "E_13 = A_23 E_12 A_23^* + E_23 and A_13 = A_23 A_12."
+    },
+    {
+      "name": "Path composition",
+      "statement": "K_n <= A_0n K_0 A_0n^* + sum_j A_{j+1:n} E_j A_{j+1:n}^*."
+    },
+    {
+      "name": "All-six record composition",
+      "statement": "A composed membrane is accepted iff all six channels compose and accumulated defects fit the terminal budget."
+    },
+    {
+      "name": "Summable-defect propagation",
+      "statement": "K_{j+1} <= (1+eps_j)K_j + D_j with product and sum control gives uniform membrane budget."
+    }
+  ],
+  "statuses": ["accepted", "support_only", "local_only", "failed_defect", "smuggled", "overread", "outside_scope"],
+  "nonclaims": [
+    "public shadow transfer does not imply intrinsic membrane",
+    "matrix transfer without channel records is support-only",
+    "non-summable predictive defects do not yield a formed predictive membrane"
+  ]
+}

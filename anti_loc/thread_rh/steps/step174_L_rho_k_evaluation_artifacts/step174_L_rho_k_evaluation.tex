@@ -1,0 +1,251 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Mz}{M_\zeta}
+\newcommand{\Uinf}{\mathcal U_\infty}
+\newcommand{\Blegal}{\mathcal B}
+
+\title{Step 174: Evaluation Attempt for \(L_{\rho,k}(G)\)}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{L\_verdict = V\_L\_symbolic\_form}.}
+\]
+
+This step evaluates \(L_{\rho_1,0}(G_*)\) for a concrete nonzero legal Burnol
+generator to an explicit PSWF-series formula.  It does not prove that the value
+is zero or nonzero.  In this evaluation, zero/nonzero is undecided.
+
+\section{Inherited Evaluator Convention}
+
+Step 158 declares the pulled-evaluator context
+\[
+H_\eta=\overline{\operatorname{span}\{\eta^a_{\rho,k}:
+\eta^a_{\rho,k}=J_a^*Y^a_{\rho,k}\}}.
+\]
+Step 162 records \(P_\eta\) as the projection onto this closed pulled
+zero-evaluator span.  Step 162 does not introduce a new normalization for
+\(y_{\rho,k}\).
+
+Step 153 gives the actual evaluator convention:
+\[
+[f,Y^a_{w,k}]_{L_a}=M(f)^{(k)}(w),
+\qquad f\in L_a.
+\]
+In the Hilbert convention,
+\[
+\mathcal M_\Gamma(Y^a_{w,k})(s)
+=\partial_{\overline w}^{\,k}K_a^\Gamma(s,w),
+\]
+and under Burnol's bilinear convention the derivative is \(\partial_w^k\).
+For this step, at \(k=0\), the convention issue is only conjugation placement;
+we use the Hilbert convention
+\[
+\langle f,y_{\rho,0}\rangle=f(\rho).
+\]
+Thus
+\[
+L_{\rho,0}(G)=(\Psym\Mz G)(\rho).
+\]
+
+\section{Concrete Legal Generator}
+
+Set
+\[
+a=1,\qquad A=4,\qquad \lambda=1,
+\qquad
+\rho_1=\frac12+14.134725141734693\,i.
+\]
+The inherited records do not fix \(\lambda\), so \(\lambda=1\) is a concrete
+normalization choice for this data point.
+
+Let
+\[
+\beta(u)=
+\begin{cases}
+e^{-1/(1-u^2)},& |u|<1,\\
+0,& |u|\ge1.
+\end{cases}
+\]
+With \(\varepsilon=1/5\) and centers
+\[
+c_1=\frac32,\qquad c_2=\frac52,\qquad c_3=\frac72,
+\]
+define
+\[
+b_j(t)=\beta\left(\frac{t-c_j}{\varepsilon}\right).
+\]
+These are nonzero \(C_c^\infty(1,4)\) bumps with disjoint supports.  Let
+\[
+A_j=\int_1^4 b_j(t)\,dt,\qquad
+B_j=\int_1^4 b_j(t)t^{-1}\,dt,
+\]
+and
+\[
+D=B_2A_3-A_2B_3.
+\]
+Since the supports have different \(t^{-1}\)-averages, \(D\ne0\).  Set
+\[
+\alpha=\frac{A_3B_1-A_1B_3}{D},
+\qquad
+\beta_3=\frac{A_2B_1-A_1B_2}{D},
+\]
+and
+\[
+g_*(t)=b_1(t)-\alpha b_2(t)+\beta_3 b_3(t).
+\]
+Then
+\[
+\int_1^4 g_*(t)\,dt=0,\qquad
+\int_1^4 g_*(t)t^{-1}\,dt=0.
+\]
+Therefore the right Mellin transform
+\[
+G_*(s)=\widehat g_*(s)=\int_1^4 g_*(t)t^{-s}\,dt
+\]
+satisfies the Step 119 endpoint vanishings
+\[
+G_*(0)=0,\qquad G_*(1)=0.
+\]
+It is a nontrivial legal Burnol generator.
+
+\section{T3a. Zeta-Multiplied Profile}
+
+Define
+\[
+F_*(s)=(\Mz G_*)(s)=\zeta(s)G_*(s).
+\]
+At the chosen zero,
+\[
+F_*(\rho_1)=\zeta(\rho_1)G_*(\rho_1)=0.
+\]
+
+\section{T3b. Apply the Step 173 Operational Identity}
+
+Step 173 gives, for \(s=1/2+i\tau\),
+\[
+(\Psym F)(s)
+=
+F(s)
+-
+\int_{\mathbb R}
+\frac{\sin(\tau-u)}{\pi(\tau-u)}
+F(1/2+iu)\,du
+-
+\sum_{n\ge0}\Psi_n(s)\langle F,\Psi_n\rangle,
+\]
+where \(\lambda=1\) and
+\[
+\Psi_n(s)=
+\Uinf\left(
+\frac{(I-P_1)\phi_n^1}{\sqrt{1-\mu_n^1}}
+\right)(s).
+\]
+Here \(\phi_n^1\) are the Slepian--Pollak PSWFs diagonalizing
+\[
+\widehat P_1P_1\widehat P_1\phi_n^1=\mu_n^1\phi_n^1.
+\]
+Applying this to \(F_*\) gives the three-term decomposition:
+\[
+(\Psym F_*)(s)=D_*(s)-C_*(s)-R_*(s),
+\]
+with
+\[
+D_*(s)=F_*(s),
+\]
+\[
+C_*(1/2+i\tau)=
+\int_{\mathbb R}
+\frac{\sin(\tau-u)}{\pi(\tau-u)}
+\zeta(1/2+iu)G_*(1/2+iu)\,du,
+\]
+and
+\[
+R_*(s)=
+\sum_{n\ge0}\Psi_n(s)
+\int_{\mathbb R}
+\zeta(1/2+iu)G_*(1/2+iu)
+\overline{\Psi_n(1/2+iu)}\,du.
+\]
+The displayed leading truncation through \(n=2\) is
+\[
+R_*^{[0,2]}(s)=
+\sum_{n=0}^{2}\Psi_n(s)
+\int_{\mathbb R}
+\zeta(1/2+iu)G_*(1/2+iu)
+\overline{\Psi_n(1/2+iu)}\,du.
+\]
+The remainder is
+\[
+R_*^{[>2]}(s)=R_*(s)-R_*^{[0,2]}(s).
+\]
+
+\section{T3c. Pair with the Zero Evaluator}
+
+For \(k=0\),
+\[
+L_{\rho_1,0}(G_*)=(\Psym F_*)(\rho_1).
+\]
+Since \(D_*(\rho_1)=0\), the symbolic value is
+\[
+\boxed{
+L_{\rho_1,0}(G_*)
+=
+-C_*(\rho_1)-R_*(\rho_1).
+}
+\]
+Writing \(\gamma_1=14.134725141734693\), this is
+\[
+\boxed{
+\begin{aligned}
+L_{\rho_1,0}(G_*)
+&=
+-\int_{\mathbb R}
+\frac{\sin(\gamma_1-u)}{\pi(\gamma_1-u)}
+\zeta(1/2+iu)G_*(1/2+iu)\,du\\
+&\quad
+-\sum_{n\ge0}\Psi_n(\rho_1)
+\int_{\mathbb R}
+\zeta(1/2+iu)G_*(1/2+iu)
+\overline{\Psi_n(1/2+iu)}\,du.
+\end{aligned}
+}
+\]
+The first three PSWF terms are obtained by replacing the infinite sum by
+\(\sum_{n=0}^{2}\), with remainder \(R_*^{[>2]}(\rho_1)\).
+
+\section{T3d. Parameter Choices}
+
+The concrete choices used are:
+\[
+\lambda=1,\qquad \rho=\rho_1,\qquad k=0,\qquad
+\text{PSWF leading block } n=0,1,2.
+\]
+No inherited record fixes \(\lambda\); \(\lambda=1\) is a declared data-point
+normalization.
+
+\section{Branch C Implication}
+
+The result is a symbolic formula, not an annihilation proof and not an
+obstruction proof.  Branch C is advanced from an undefined matrix element to a
+specific PSWF/sinc integral expression for one nontrivial legal generator.
+Numerical sign or nonvanishing now depends on evaluating the PSWF transforms
+\(\Psi_n\) and the zeta-weighted integrals.
+
+\section{Nonclaim Boundary}
+
+This step does not prove RH, does not prove \(\Xi_{\mathrm{BC}}=0\), does not
+prove full ZI-COV, does not prove projected jet-surjectivity, and does not
+decide whether \(L_{\rho_1,0}(G_*)\) is zero or nonzero.  It does not weaken
+any retained no-go and does not replace the inherited Sonin/prolate projection
+by a zeta-zero spectral projection.
+
+\end{document}

@@ -1,0 +1,435 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Capa}{\operatorname{Cap}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Kmat}{\mathsf K}
+\newcommand{\AL}{\mathsf{AL}}
+
+\title{Anti-Localization as Layer Membrane:\\ Probe-Family Currency, Compressed Schur Geometry, and Exact-Carrier Audit}
+\author{Working draft, Step 24}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This draft consolidates the anti-localization theorem stack around a stronger principle: anti-localization is finite shadow pricing of a formed closure against its native probe family.  The scalar capacity identity is upgraded to a matrix-valued probe-family currency theorem.  The currency matrix controls every recombination of the declared probes, and its pseudoinverse gives the minimum audit spend required to buy a declared response.  The manuscript also records the compressed Schur identity, the family Schur square, the compression data-processing inequality, and the closure-only no-native-needle theorem.  The scope is deliberately restricted: non-closed artifacts are not claimed to anti-localize.  A Six Birds layer earns a no-needle claim only after exact carrier formation, native probe-family declaration, null-mode legality, route/defect records, and no-smuggling/no-overreading gates pass.
+\end{abstract}
+
+\section{Thesis and scope}
+
+The guiding claim is not that every positive or passive carrier forbids needles.  That is false.  The guiding claim is instead:
+\[
+\boxed{\text{a formed closure/layer has finite native shadow prices precisely when its native probe-family currency is bounded.}}
+\]
+A needle is a native response that can be bought at arbitrarily small audit cost.  A formed closure has a membrane when all native recombinations of its declared probes have finite audited prices.
+
+\begin{definition}[formed anti-localization closure]
+A finite-dimensional formed anti-localization closure is a record
+\[
+\mathfrak L=(H,E,\Gamma,C,L,\Theta,\mathsf A),
+\]
+where:
+\begin{enumerate}[label=(\roman*)]
+\item $H$ is the ambient Hilbert carrier;
+\item $E$ is the coordinate/package space;
+\item $\Gamma:E\to H$ is the exact package map, with feasible carrier $\mathcal F=\Ran\Gamma$;
+\item $C=C^*\succeq0$ is the audit energy on $H$;
+\item $L:H\to Y$ is the declared native probe family into a finite-dimensional probe space $Y$;
+\item $\Theta=\Theta^*\succeq0$ is the declared probe-family budget on $Y$;
+\item $\mathsf A$ is the audit record: exactness, probe declaration, null-mode legality, route-union record, defect record, visibility/no-smuggling record, and nonclaim ledger.
+\end{enumerate}
+The compressed objects are
+\[
+C_\Gamma=\Gamma^*C\Gamma,
+\qquad
+L_\Gamma=L\Gamma.
+\]
+The closure is null-legal for $L$ when
+\[
+L_\Gamma n=0\quad\text{for all }n\in\Ker C_\Gamma.
+\]
+\end{definition}
+
+The closure-only scope is essential.  If $\mathfrak L$ is not formed, not exact, or lacks a declared native probe family, then the no-needle theorem below is simply inapplicable.  Such an artifact may have needles; this is not a counterexample to the theorem.
+
+\section{Scalar capacity identities}
+
+Let $g\in E$ be a coordinate probe and $C=C^*\succeq0$ on $E$.  Define
+\[
+\Capa_C(g)=\sup_{a\ne0}\frac{|\langle g,a\rangle|^2}{\langle a,Ca\rangle},
+\]
+with the convention that the quotient is infinite if $g$ sees a zero-energy direction.
+
+\begin{theorem}[scalar capacity identity]
+If $g\perp\Ker C$, then
+\[
+\Capa_C(g)=\langle g,C^\dagger g\rangle.
+\]
+If $g\not\perp\Ker C$, then $\Capa_C(g)=+\infty$.
+\end{theorem}
+
+\begin{proof}
+Decompose $E=\Ker C\oplus (\Ker C)^\perp$ and diagonalize $C$ on $(\Ker C)^\perp$.  If $g$ has a null component, choosing $a$ in that null direction gives positive numerator and zero denominator.  Otherwise Cauchy--Schwarz in the $C$-inner product gives
+\[
+|\langle g,a\rangle|^2
+=|\langle C^{\dagger/2}g,C^{1/2}a\rangle|^2
+\le \langle g,C^\dagger g\rangle\langle a,Ca\rangle,
+\]
+with equality along $a=C^\dagger g$ up to approximation if needed.
+\end{proof}
+
+\begin{theorem}[semigroup persistence]
+If $C\succeq0$ and $g\perp\Ker C$, then
+\[
+\Capa_C(g)=\int_0^\infty \langle g,e^{-tC}g\rangle\,dt.
+\]
+\end{theorem}
+
+\begin{proof}
+Diagonalize $C=\sum_i \lambda_i P_i$ on $(\Ker C)^\perp$.  Then
+\[
+\int_0^\infty \langle g,e^{-tC}g\rangle\,dt
+=\sum_{\lambda_i>0}\|P_i g\|^2\int_0^\infty e^{-t\lambda_i}\,dt
+=\sum_{\lambda_i>0}\frac{\|P_i g\|^2}{\lambda_i}
+=\langle g,C^\dagger g\rangle.
+\]
+\end{proof}
+
+\begin{theorem}[dual witness]
+If $C=B^*B$ and $g\perp\Ker C$, then
+\[
+\Capa_C(g)=\inf\{\|q\|^2:B^*q=g\}.
+\]
+Any witness $q$ with $B^*q=g$ gives $\Capa_C(g)\le\|q\|^2$.
+\end{theorem}
+
+\begin{proof}
+The condition $B^*q=g$ means $\langle g,a\rangle=\langle q,Ba\rangle$ for all $a$.  Hence $|\langle g,a\rangle|^2\le\|q\|^2\|Ba\|^2$.  Taking the infimum over witnesses gives an upper bound.  The minimum-norm solution is $q=B C^\dagger g$ on $\overline{\Ran B}$, with norm squared $\langle g,C^\dagger g\rangle$.
+\end{proof}
+
+\section{Probe-family currency}
+
+The scalar theorem is not enough for layer anti-localization.  A native layer is tested by a family of probes and by all of their legal recombinations.
+
+\begin{definition}[probe-family currency matrix]
+For a formed closure with $C_\Gamma\succeq0$ and $L_\Gamma=L\Gamma$, define
+\[
+\boxed{\Kmat_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*.}
+\]
+This is the compliance or shadow-value matrix of the native probe family.
+\end{definition}
+
+For $y\in Y$, the recombined scalar probe is
+\[
+\ell_y(\Gamma a)=\langle y,L_\Gamma a\rangle.
+\]
+
+\begin{theorem}[family capacity theorem]
+Assume null-mode legality: $L_\Gamma n=0$ for all $n\in\Ker C_\Gamma$.  Then for every $y\in Y$,
+\[
+\boxed{\Capa_C(\ell_y;\Ran\Gamma)=y^*\Kmat_{C,\Gamma}(L)y.}
+\]
+Equivalently, $\Kmat$ is the quadratic form whose values are the capacities of all native recombinations.
+\end{theorem}
+
+\begin{proof}
+The coordinate representative of $\ell_y$ is $L_\Gamma^*y$.  Null-mode legality gives $L_\Gamma^*y\perp\Ker C_\Gamma$.  Applying the scalar identity,
+\[
+\Capa_C(\ell_y;\Ran\Gamma)
+=\langle L_\Gamma^*y,C_\Gamma^\dagger L_\Gamma^*y\rangle
+=y^*L_\Gamma C_\Gamma^\dagger L_\Gamma^*y.
+\]
+\end{proof}
+
+\begin{definition}[family anti-localization]
+A formed closure is family anti-localized against $(L,\Theta)$ when
+\[
+\boxed{\Kmat_{C,\Gamma}(L)\preceq\Theta.}
+\]
+\end{definition}
+
+This matrix inequality is the family-level membrane condition.  It controls not only listed probes but every recombination $y^*L$:
+\[
+|\langle y,L\Gamma a\rangle|^2
+\le y^*\Theta y\,\langle a,C_\Gamma a\rangle.
+\]
+
+\begin{theorem}[minimum-spend duality]
+Assume null-mode legality.  For a desired native response $z\in Y$, define
+\[
+\Cost_C(z;L,\Gamma)=\inf\{\langle a,C_\Gamma a\rangle:L_\Gamma a=z\}.
+\]
+If $z\in\Ran L_\Gamma$, then
+\[
+\boxed{\Cost_C(z;L,\Gamma)=z^*\Kmat_{C,\Gamma}(L)^\dagger z.}
+\]
+If $z\notin\Ran L_\Gamma$, the cost is $+\infty$.
+\end{theorem}
+
+\begin{proof}
+Quotient away $\Ker C_\Gamma$, where $L_\Gamma$ vanishes by legality.  Write $x=C_\Gamma^{1/2}a$.  The constraint becomes
+\[
+L_\Gamma C_\Gamma^{\dagger/2}x=z.
+\]
+The minimum of $\|x\|^2$ subject to $Ax=z$ is $z^*(AA^*)^\dagger z$.  Here
+\[
+AA^*=L_\Gamma C_\Gamma^\dagger L_\Gamma^*=\Kmat_{C,\Gamma}(L).
+\]
+\end{proof}
+
+Thus $\Kmat$ is the compliance matrix: how much response can be bought per unit audit budget.  Its pseudoinverse is the resistance matrix: how much audit budget a requested response costs.
+
+\begin{theorem}[family Schur square]
+Let $\Theta\succeq0$ on $Y$.  The block matrix
+\[
+\mathcal S=\begin{pmatrix}
+\Theta & L_\Gamma\\
+L_\Gamma^* & C_\Gamma
+\end{pmatrix}
+\]
+is positive semidefinite if and only if null-mode legality holds and
+\[
+\boxed{\Kmat_{C,\Gamma}(L)\preceq\Theta.}
+\]
+\end{theorem}
+
+\begin{proof}
+This is the generalized Schur complement for a semidefinite lower block.  Positivity requires $C_\Gamma\succeq0$, $L_\Gamma n=0$ for $n\in\Ker C_\Gamma$, and
+\[
+\Theta-L_\Gamma C_\Gamma^\dagger L_\Gamma^*\succeq0.
+\]
+\end{proof}
+
+\begin{theorem}[family semigroup envelope]
+Assume $C_\Gamma\succeq0$ and null-mode legality.  Then
+\[
+\boxed{\Kmat_{C,\Gamma}(L)=\int_0^\infty L_\Gamma e^{-tC_\Gamma}L_\Gamma^*\,dt.}
+\]
+Consequently, if a declared operator-valued envelope satisfies
+\[
+L_\Gamma e^{-tC_\Gamma}L_\Gamma^*\preceq H(t),
+\qquad
+\int_0^\infty H(t)\,dt\preceq\Theta,
+\]
+then $\Kmat_{C,\Gamma}(L)\preceq\Theta$.
+\end{theorem}
+
+\begin{proof}
+Apply the scalar semigroup identity to $y^*\Kmat y$ for every $y\in Y$.
+\end{proof}
+
+\begin{theorem}[family dual witness]
+Suppose $C_\Gamma=B_\Gamma^*B_\Gamma$ and there is a bounded witness map $W$ such that
+\[
+L_\Gamma=WB_\Gamma.
+\]
+Then
+\[
+\boxed{\Kmat_{C,\Gamma}(L)\preceq WW^*.}
+\]
+Thus $WW^*\preceq\Theta$ certifies family anti-localization.
+\end{theorem}
+
+\begin{proof}
+For every $y\in Y$,
+\[
+\ell_y(\Gamma a)=\langle y,WB_\Gamma a\rangle=\langle W^*y,B_\Gamma a\rangle.
+\]
+The scalar dual-witness theorem gives
+\[
+y^*\Kmat y=\Capa_C(y^*L;\Ran\Gamma)\le\|W^*y\|^2=y^*WW^*y.
+\]
+\end{proof}
+
+\section{Recombination countermodel}
+
+\begin{warning}[diagonal checks do not control recombinations]
+Scalar probe checks control only the diagonal of $\Kmat$.  They do not control its operator norm.
+\end{warning}
+
+\begin{proposition}[all-ones recombination needle]
+Let $H=E=\mathbb C$, $C=1$, $Y=\mathbb C^m$, and
+\[
+Lu=u(1,\ldots,1).
+\]
+Then
+\[
+\Kmat=\mathbf 1\mathbf 1^*.
+\]
+Each coordinate probe has capacity $1$, but for $y=m^{-1/2}\mathbf 1$,
+\[
+\Capa_C(y^*L)=y^*\Kmat y=m.
+\]
+Hence $\Kmat_{ii}\le1$ for all $i$ does not imply $\Kmat\preceq I$.
+\end{proposition}
+
+\begin{proof}
+Immediate from $\Kmat=LL^*$.  The vector $y=m^{-1/2}\mathbf1$ is the normalized coherent recombination.
+\end{proof}
+
+This is the finite linear algebra form of the cancellation needle: branchwise probes are harmless, while a recombination is not.
+
+\section{Compression DPI and lawful witnesses}
+
+Let $V\subset H$ be a closed feasible subspace and let $P_V$ be its orthogonal projection.  The compressed capacity of a family $L:H\to Y$ on $V$ is
+\[
+\Kmat_V=L_V C_V^\dagger L_V^*,
+\qquad
+C_V=P_V C P_V|_V,
+\qquad
+L_V=L|_V.
+\]
+The ambient public-shadow capacity is
+\[
+\Kmat_H=LC^\dagger L^*.
+\]
+
+\begin{theorem}[capacity data processing under compression]
+Assume null-mode legality for both $H$ and $V$.  Then
+\[
+\boxed{\Kmat_V\preceq\Kmat_H.}
+\]
+Moreover, equality on a recombination vector $y$ holds precisely when the ambient minimum-energy representer $C^\dagger L^*y$ can be chosen in $V$ modulo $\Ker C$.
+\end{theorem}
+
+\begin{proof}
+For every $y\in Y$,
+\[
+y^*\Kmat_V y
+=\sup_{0\ne v\in V}\frac{|\langle y,Lv\rangle|^2}{\langle v,Cv\rangle}
+\le
+\sup_{0\ne h\in H}\frac{|\langle y,Lh\rangle|^2}{\langle h,Ch\rangle}
+=y^*\Kmat_H y.
+\]
+The equality condition is the equality condition for restricting a variational supremum to the subspace $V$: the full-space optimizer or its approximating sequence must lie in $V$ modulo null directions.
+\end{proof}
+
+This theorem is the DPI-style form of the public-shadow warning.  The ambient value may be an upper bound or diagnostic, but the lawful anti-localization witness is the compressed carrier value unless the audit proves equality.
+
+\section{Closure-only no-native-needle theorem}
+
+\begin{definition}[native recombination needle]
+Given a formed closure $(H,E,\Gamma,C,L,\Theta,\mathsf A)$, a native recombination needle at threshold $\Theta$ is a vector $a\in E$ and a recombination $y\in Y$ such that
+\[
+|\langle y,L_\Gamma a\rangle|^2> y^*\Theta y\,\langle a,C_\Gamma a\rangle.
+\]
+\end{definition}
+
+\begin{theorem}[no native recombination needles for formed closures]
+If a formed closure satisfies
+\[
+\Kmat_{C,\Gamma}(L)\preceq\Theta,
+\]
+then it has no native recombination needles at threshold $\Theta$.
+\end{theorem}
+
+\begin{proof}
+For every $y$ and $a$,
+\[
+|\langle y,L_\Gamma a\rangle|^2
+\le \Capa_C(y^*L;\Ran\Gamma)\langle a,C_\Gamma a\rangle
+=y^*\Kmat y\,\langle a,C_\Gamma a\rangle
+\le y^*\Theta y\,\langle a,C_\Gamma a\rangle.
+\]
+\end{proof}
+
+\begin{remark}[closure scope]
+The theorem says nothing about unformed artifacts, raw substrates, hidden probe families, or public shadows.  In Six Birds language, a non-closed package has not earned the layer whose membrane is being asserted.
+\end{remark}
+
+\section{Admissible anti-localization test families}
+
+A family bound is claim-bearing only when the test family is admissible.  A minimal anti-localization test record is
+\[
+\mathsf{ALTest}=(L,\Kmat,\Theta,I,\Gamma,V,R,\Delta,\mathsf A,\mathsf N),
+\]
+where $I$ is the instrument, $V$ the visibility record, $R$ the route-union record, $\Delta$ the probe-wise defect record, $\mathsf A$ the audit status, and $\mathsf N$ the nonclaim ledger.
+
+The gates are:
+\begin{enumerate}[label=G\arabic*.]
+\item exact formed carrier and package;
+\item declared finite/native probe family;
+\item null-mode legality;
+\item family currency bound $\Kmat\preceq\Theta$;
+\item recombination closure: all $y^*L$ are included in the claim;
+\item route-union and protocol honesty;
+\item probe-wise finite-to-exact defect control;
+\item no public-shadow literalization;
+\item nonclaim: no statement about undeclared probes or unformed substrates.
+\end{enumerate}
+
+\section{Compressed Schur geometry}
+
+Let $M=M^*>0$ on $H$, and let $\Phi:\mathbb C^k\to H$ be an isometric low package.  Set
+\[
+P=\Phi\Phi^*,\quad Q=I-P,
+\]
+\[
+A=\Phi^*M\Phi,
+\quad
+B=QM\Phi,
+\quad
+C_Q=QMQ|_{QH}.
+\]
+Then
+\[
+M=\begin{pmatrix} A&B^*\\ B&C_Q\end{pmatrix}.
+\]
+
+\begin{theorem}[compressed Schur harmonic identity]
+If $M>0$, then
+\[
+\boxed{A-B^*C_Q^{-1}B=(\Phi^*M^{-1}\Phi)^{-1}.}
+\]
+For semidefinite $M$, the same identity holds on the legal quotient using pseudoinverses, provided null-mode legality is satisfied.
+\end{theorem}
+
+\begin{proof}
+This is the inverse block formula applied to $M$ in the decomposition $PH\oplus QH$.  The inverse of the Schur complement is the upper-left block of $M^{-1}$, namely $\Phi^*M^{-1}\Phi$.
+\end{proof}
+
+The Schur anti-localization square with target $0<\theta<1$ is
+\[
+(\Phi^*M^\dagger\Phi)^{-1}\succeq(1-\theta)\Phi^*M\Phi.
+\]
+This is not the same as an ambient diagonal integral unless a reducing bridge is audited.
+
+\section{RH and Navier obligations}
+
+For RH, the live obligation remains
+\[
+\boxed{(\Phi_L^*M_L^\dagger\Phi_L)^{-1}\succeq(1-\theta)\Phi_L^*M_L\Phi_L}
+\]
+for the actual completed carrier $M_L$ and the lawful upstream-selected low package $\Phi_L$.  This manuscript supplies the anti-localization geometry and audit grammar, not the RH estimate.
+
+For Navier, the live obligation is a scale-indexed native probe family $L_j$ and exact flow carrier $C_j$ satisfying a predictive family bound
+\[
+\sup_j \Kmat_{C_j,\Gamma_j}(L_j)\preceq\Theta_j
+\]
+with route/defect persistence under the dynamics.  This manuscript supplies the no-native-needle criterion, not the PDE regularity theorem.
+
+\section{Status of support-only diagnostics}
+
+Finite toy carriers, naive Weil matrices, and ad hoc spectral-flow scripts are support-only diagnostics.  They can illustrate recombination, compression, and selection traps, but they are not Six Birds simulations and do not certify RH or Navier.  Claim-bearing results in this manuscript are the abstract theorems above.
+
+\end{document}

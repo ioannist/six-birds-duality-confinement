@@ -1,0 +1,200 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,booktabs,geometry,hyperref}
+\geometry{margin=1in}
+\title{Step 111: Burnol-Native Coefficient Visibility Repair}
+\author{RH Membrane Construction Notes}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Step 110 split the boundary-packet source route into two gates:
+\[
+\gamma_N=\text{character/source lower-frame strength},
+\qquad
+c_N=\text{coefficient visibility of the boundary dictionary}.
+\]
+The present step asks whether the observed collapse of \(c_N\) is a defect of a
+naive short-Dirichlet dictionary, or a genuine obstruction.  The repair proposed here
+is to replace the naive dictionary by a Burnol/co-Poisson-native dictionary.
+
+\section{Burnol-native coefficient dictionaries}
+
+Burnol's co-Poisson/Sonine framework supplies the natural carrier.  At the critical
+threshold \(a=1\), the zeta-zero evaluator vectors are complete/minimal in the
+extended Sonine space \(L_1\), while for \(a<1\) the perpendicular complement is
+the co-Poisson subspace \(P_a\).  This suggests that the coefficient dictionary should
+not be an arbitrary short Dirichlet dictionary.  It should be generated from declared
+co-Poisson/Sonine data:
+\[
+g_\nu\in L^1(a,A),\qquad A=1/a,
+\]
+with parity, support, Mellin, and vanishing records declared before the target
+boundary-packet test.
+
+In Mellin language the co-Poisson mechanism gives a native coefficient map of the
+form
+\[
+g_\nu
+\longmapsto
+\zeta(s)\widehat g_\nu(s)
+\]
+on the critical strip, subject to the usual pole/completion records.  Thus a
+Burnol-native dictionary is a declared finite family
+\[
+\mathcal D_N^{\mathrm{B}}
+=
+\operatorname{span}\{C(g_\nu):\nu\in I_N\},
+\]
+where \(C(g_\nu)\) denotes the co-Poisson synthesis of \(g_\nu\), or equivalently
+its completed Mellin-side representative.
+
+\section{Finite visibility identity}
+
+Let
+\[
+M_N:Y_{\mathcal B,N}\to H_N
+\]
+synthesize a finite boundary-packet dictionary in the response Hilbert space, and let
+\[
+D_N:\mathbb C^{I_N}\to H_N
+\]
+synthesize the coefficient dictionary.  Put
+\[
+G_{\mathcal B,N}=M_N^*M_N,\qquad H_N=D_N^*D_N,
+\]
+and define
+\[
+R_N=D_N^\dagger M_N.
+\]
+Let \(P_N\) be the orthogonal projection onto \(\operatorname{Ran}D_N\), and
+\[
+E_{\mathrm{coef},N}=(I-P_N)M_N.
+\]
+
+\begin{theorem}[Coefficient visibility identity]
+On the legal quotient of \(G_{\mathcal B,N}\),
+\[
+R_N^*H_NR_N
+=
+M_N^*P_NM_N
+=
+G_{\mathcal B,N}-E_{\mathrm{coef},N}^*E_{\mathrm{coef},N}.
+\]
+Consequently the visibility constant is
+\[
+c_N
+=
+\lambda_{\min}\!\left(
+G_{\mathcal B,N}^{-1/2}R_N^*H_NR_NG_{\mathcal B,N}^{-1/2}
+\right)
+=
+1-\|E_{\mathrm{coef},N}G_{\mathcal B,N}^{-1/2}\|^2.
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(R_N=D_N^\dagger M_N\), one has \(D_NR_N=P_NM_N\).  Hence
+\[
+R_N^*H_NR_N
+=
+M_N^*(D_N^\dagger)^*D_N^*D_ND_N^\dagger M_N
+=
+M_N^*P_NM_N.
+\]
+The second equality follows from \(I=P_N+(I-P_N)\):
+\[
+M_N^*M_N-M_N^*P_NM_N
+=
+M_N^*(I-P_N)M_N
+=
+E_{\mathrm{coef},N}^*E_{\mathrm{coef},N}.
+\]
+The formula for \(c_N\) is the minimum generalized eigenvalue after quotienting
+null directions.
+\end{proof}
+
+\section{Visibility repair by native strict extension}
+
+\begin{proposition}[Projection monotonicity]
+If \(D_N\) is replaced by a strict extension
+\[
+D_N^+=[D_N\;D_N^{\mathrm{new}}],
+\]
+then
+\[
+c_N(D_N^+)\ge c_N(D_N).
+\]
+\end{proposition}
+
+\begin{proof}
+The range projection satisfies \(P_N^+\succeq P_N\), so
+\[
+M_N^*P_N^+M_N\succeq M_N^*P_NM_N.
+\]
+Taking minimum generalized eigenvalues relative to \(G_{\mathcal B,N}\) gives the
+claim.
+\end{proof}
+
+\begin{theorem}[Native repair sufficiency]
+Suppose a declared Burnol-native dictionary satisfies
+\[
+\|(I-P_N^{\mathrm{B}})M_NG_{\mathcal B,N}^{-1/2}\|\le \varepsilon_N.
+\]
+Then
+\[
+c_N^{\mathrm{B}}\ge 1-\varepsilon_N^2.
+\]
+If \(\varepsilon_N\to0\), the coefficient blind spot vanishes at finite-window level.
+\end{theorem}
+
+\section{Source-frame composition}
+
+If the character/source Gram matrix satisfies
+\[
+G_{\mathcal X,N}\succeq \gamma_N H_N
+\]
+and the coefficient visibility gate satisfies
+\[
+R_N^*H_NR_N\succeq c_NG_{\mathcal B,N},
+\]
+then
+\[
+R_N^*G_{\mathcal X,N}R_N
+\succeq
+\gamma_Nc_NG_{\mathcal B,N}.
+\]
+Thus the effective source strength is
+\[
+\Lambda_N=\gamma_Nc_N.
+\]
+The completed route requires \(\Lambda_N\to\infty\), together with fixed/exhaustive
+promotion and vanishing tail records.
+
+\section{No-smuggling boundary}
+
+The Burnol-native dictionary may not be chosen by looking at the final boundary
+singular vectors and then adding them as atoms.  It must be declared through
+co-Poisson/Sonine data: support interval, parity, Mellin transform, pole/completion
+record, semilocal transport, and all-six channel status.  Otherwise the visibility
+repair is target-selected and does not count as a lawful source record.
+
+\section{Interpretation}
+
+The identity
+\[
+G_{\mathcal B,N}-R_N^*H_NR_N=E_{\mathrm{coef},N}^*E_{\mathrm{coef},N}
+\]
+is exactly an adequacy residual.  It measures what the boundary-packet sector sees
+that the coefficient dictionary cannot see.  In the notation of the membrane
+framework, it is the finite \( \Xi \)-residual of the coefficient interface.
+
+\end{document}

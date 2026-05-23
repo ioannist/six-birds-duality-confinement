@@ -1,0 +1,202 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 103: Semilocal Metric Off-Diagonal Block Audit}
+\author{Six Birds / Formed-Layer Membrane RH Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+Step 101 reduced compactness of the semilocal cross-term obstruction
+\[
+  \Delta_S=q_{\mathrm{Weil},S}-q_{\mathrm{pos},S}
+\]
+to the compactness of a transported semilocal projection residual.  Step 102
+showed that, after pulling the semilocal Hilbert metric back to the
+archimedean model,
+\[
+  \mathcal R_S=U_SP_SU_S^{-1}-P_\infty
+\]
+is controlled by the off-diagonal metric block
+\[
+  A_{MN}=P_\infty A_S(I-P_\infty).
+\]
+This note audits that block for the concrete finite-place semilocal metric.
+
+\section{Semilocal metric}
+
+For a finite set of places \(S\), with \(\infty\in S\), write
+\[
+  S_f=S\setminus\{\infty\}.
+\]
+On the Mellin/Fourier response coordinate \(\xi\), the finite local factors
+give
+\[
+  A_S(\xi)=\prod_{p\in S_f}L_p\left(\frac12-i\xi\right),
+  \qquad
+  L_p(z)=(1-p^{-z})^{-1}.
+\]
+Thus the pulled semilocal metric is multiplication by
+\[
+  a_S(\xi):=|A_S(\xi)|^2
+  =
+  \prod_{p\in S_f}
+  \left|1-p^{-1/2+i\xi}\right|^{-2}.
+\]
+So, in the common response model,
+\[
+  A_S=M_{a_S}.
+\]
+
+\section{Bohr expansion of the finite-place metric}
+
+Let \(r_p=p^{-1/2}\) and \(\theta_p=\xi\log p\).  The elementary Poisson
+expansion gives
+\[
+  |1-r_pe^{i\theta_p}|^{-2}
+  =
+  \frac{1}{1-r_p^2}
+  \sum_{k\in\mathbb Z} r_p^{|k|}e^{ik\theta_p}.
+\]
+Therefore, for finite \(S_f\),
+\[
+  a_S(\xi)
+  =
+  \sum_{\mathbf k\in\mathbb Z^{S_f}}
+  c_{\mathbf k}
+  e^{i\xi\ell_{\mathbf k}},
+\]
+where
+\[
+  c_{\mathbf k}
+  =
+  \prod_{p\in S_f}
+  \frac{p^{-|\mathbf k_p|/2}}{1-p^{-1}},
+  \qquad
+  \ell_{\mathbf k}
+  =
+  \sum_{p\in S_f}\mathbf k_p\log p.
+\]
+The series is absolutely convergent.
+
+\begin{lemma}[Off-diagonal translation decomposition]
+Let \(P=P_\infty\) be the imported archimedean Sonin/prolate projection in
+the common response model. Then
+\[
+  P A_S(I-P)
+  =
+  \sum_{\mathbf k\ne0}
+  c_{\mathbf k}\,
+  P\tau_{\ell_{\mathbf k}}(I-P),
+\]
+where \(\tau_a\) denotes the log-side translation corresponding to
+multiplication by \(e^{ia\xi}\) on the Mellin/Fourier side.  The constant
+mode drops out because \(P(I-P)=0\).
+\end{lemma}
+
+\begin{proof}
+The expansion of \(a_S\) is absolutely convergent, so multiplication by
+\(a_S\) is the norm-convergent sum of the multiplication operators
+\(c_{\mathbf k}M_{e^{i\xi\ell_{\mathbf k}}}\).  Under the inverse
+Fourier/Mellin transform \(M_{e^{ia\xi}}\) is the translation \(\tau_a\).
+Multiplying on the left by \(P\) and on the right by \(I-P\) gives the
+claim.
+\end{proof}
+
+\section{Compactness gate}
+
+The previous lemma shows that compactness is not a scalar property of the
+local Euler factor.  It is a property of the shifted off-diagonal blocks
+\[
+  P\tau_{\ell}(I-P).
+\]
+
+\begin{proposition}[Compactness reduction]
+Assume the block inverse appearing in the Step 102 projection formula is
+bounded.  If, for every nonzero Bohr shift \(\ell_{\mathbf k}\), the block
+\[
+  P_\infty\tau_{\ell_{\mathbf k}}(I-P_\infty)
+\]
+is compact and the corresponding compact tails are summable against
+\(c_{\mathbf k}\), then \(A_{MN}\) is compact.  The analogous statement holds
+for Hilbert--Schmidt, trace-class, or Schatten classes.
+\end{proposition}
+
+\begin{warning}[Raw local-factor multiplication does not create compactness]
+On a non-atomic \(L^2\)-space, multiplication by a nonzero bounded function is
+not compact.  The local Euler factor can transport compactness through a
+bounded invertible equivalence, but it does not by itself create compactness.
+Compactness must come from the Sonin/prolate projection geometry, quotienting,
+tail control, or source absorption.
+\end{warning}
+
+\section{Hard-cutoff noncompactness model}
+
+The following model explains why the compactness gate is nontrivial.  Let
+\(P_H\) be multiplication by the indicator of a half-line or interval
+complement in \(L^2(\mathbb R)\), and let \(a\ne0\).  If the crossing region
+has positive measure, then
+\[
+  P_H\tau_a(I-P_H)
+\]
+contains a partial translation between two positive-measure \(L^2\)-regions.
+It is therefore a partial isometry on an infinite-dimensional subspace and is
+not compact.
+
+Thus finite-place shifts should be treated as noncompact-risk modes unless
+the imported Sonin/prolate projection \(P_\infty\) supplies additional
+compact smoothing after the legal quotient.
+
+\section{Verdict}
+
+The semilocal metric block has the concrete form
+\[
+  A_{MN}
+  =
+  \sum_{\mathbf k\ne0}c_{\mathbf k}
+  P_\infty\tau_{\ell_{\mathbf k}}(I-P_\infty).
+\]
+The archimedean Connes--Consani residual remains compact-after-quotient, but
+the finite-place semilocal metric block is not compact-certified merely by
+boundedness or finite-place truncation.
+
+The compactness shortcut is therefore reduced to the following exact analytic
+statement:
+\[
+  P_\infty\tau_{\ell}(I-P_\infty)
+  \quad\text{is compact/Hilbert--Schmidt after the legal quotient}
+\]
+for every finite-place shift \(\ell\) appearing in the local-factor Bohr
+spectrum.
+
+If this statement fails for any persistent mode, the noncompact sector is
+precisely the sector that must be charged by the Hecke/Dirichlet source
+lower-frame ladder.
+
+\section{Membrane status}
+
+In Six Birds membrane language, the finite-place semilocal metric is now a
+declared \(P_3/P_4\) route-refinement object, but its compactness is not
+accepted.  The honest status is
+\[
+  \texttt{source\_absorbable\_candidate}
+\]
+unless the Sonin/prolate off-diagonal compactness theorem is proved.  The
+unresolved noncompact block is also an adequacy-risk object: it may contain
+directions visible to off-critical-zero dissolving probes but not yet priced by
+the native semilocal membrane.  Such directions belong in the \(\Xi\)-ledger
+until paid by compact tail or source coercivity.
+
+\end{document}

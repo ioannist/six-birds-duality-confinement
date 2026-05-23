@@ -1,0 +1,60 @@
+{
+  "step": 205,
+  "orientation": "adequacy",
+  "target": "κ_i(τ) sampling + c_ij + Ξ_matrix_source decision",
+  "kappa_tau_formula_derivation": {
+    "candidate": "kappa_i(tau)=K_{1/2}^Gamma(1/2+i tau,rho_i)",
+    "status": "not_verified",
+    "reason": "Step153 gives kappa_i=T_a^*K_a^Gamma(.,rho_i), and Step152/153 gives T_a^*=U_infty J_a^*M_Gamma^*; inherited records do not collapse this to boundary evaluation",
+    "required_record": "explicit T_a^* boundary sampling formula or proof that T_a^*K=boundary K in the inherited normalization"
+  },
+  "kappa_tau_grid_values": {
+    "grid": "200 Gauss-Legendre nodes on [-40,40]",
+    "rows": 600,
+    "status": "candidate_boundary_kernel_not_certified_as_kappa",
+    "representative_rho1": [
+      {"tau": "approx -25", "value": "7.4947002094714939533e-15"},
+      {"tau": "approx -14", "value": "8.4240796349309546921e-10"},
+      {"tau": "approx 0", "value": "4.6702854903424215449e-7"},
+      {"tau": "approx 14", "value": "-3.6692301717578693330e-12"},
+      {"tau": "approx 25", "value": "-1.9582582937131308098e-15"}
+    ]
+  },
+  "c_matrix": {
+    "status": "not_evaluated_certified",
+    "reason": "candidate samples are not certified T_a^*K samples"
+  },
+  "G_matrix": {
+    "source": "G_matrix_step205.csv copied from Step204 unnormalized matrix",
+    "status": "available_nominal_but_conditioned_by Step203 diagonal errors"
+  },
+  "xi_matrix_source_value": null,
+  "xi_matrix_source_error": "not_certified",
+  "xi_matrix_source_verdict": "V_kappa_tau_sampling_formula_corrected",
+  "robustness_table": [
+    {
+      "test": "operator_chain",
+      "status": "failed_verification",
+      "observation": "T_a^* is not identity in inherited records"
+    },
+    {
+      "test": "tau_grid",
+      "status": "candidate_samples_computed",
+      "observation": "N=200, T=40"
+    },
+    {
+      "test": "PSWF_N_12_24_36",
+      "status": "not_run",
+      "observation": "not lawful before kappa formula is certified"
+    }
+  ],
+  "retained_nogos": [
+    "Does not prove RH",
+    "Does not close Xi_BC",
+    "Does not close Branch B",
+    "Does not decide Xi_matrix_source",
+    "Does not weaken Branch C foreclosure or independent carrier no-gos"
+  ],
+  "final_verdict": "V_kappa_tau_sampling_formula_corrected"
+}
+

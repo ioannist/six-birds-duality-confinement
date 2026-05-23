@@ -1,0 +1,188 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+
+\title{Step 146: Trace-Class Residual Ledger Theorem for $K_R$}
+\author{RATCHET / Formed-Layer Membrane RH Thread}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 145 instantiated the completed residual carrier
+\[
+H_R=\overline{\operatorname{span}\{\operatorname{Ran}\Pi_{Y_a}\mathfrak B_{\ell,a}:\ell\in\mathcal L\setminus\{0\}\}}
+\subseteq Y_a\subset L_a,
+\]
+where $Y_a$ is Burnol's closed span of zero-evaluator vectors and $P_a=Y_a^\perp$ is the co-Poisson complement.
+Step 146 asks whether the completed residual ledger
+\[
+K_R=\Pi_RK_Z\Pi_R
+\]
+is trace-class on $H_R$.  The answer is: not automatically.  A trace-class residual ledger is available only after an explicit weight schedule and evaluator-norm summability record are declared.
+
+\section{Zero-evaluator readout}
+Let
+\[
+\mathcal Z=\{(\rho,k):\zeta(\rho)=0,\;0\le k<m_\rho\}
+\]
+be the nontrivial zero/multiplicity index set.  Burnol supplies evaluator vectors
+\[
+Y^a_{\rho,k}\in L_a,
+\qquad
+\langle f,Y^a_{\rho,k}\rangle=M(f)^{(k)}(\rho),
+\]
+for $\rho\neq 0,1$.  Let $\Pi_R:L_a\to H_R$ denote the orthogonal projection.  Define the off-critical readout
+\[
+q(\rho):=\Re\rho-\frac12.
+\]
+
+\begin{definition}[Weighted residual analysis operator]
+Let $\omega_{\rho,k}>0$ be an upstream-declared weight schedule.  Define
+\[
+D_R^{\omega}:H_R\to \ell^2(\mathcal Z),
+\qquad
+(D_R^{\omega}h)_{\rho,k}
+=\sqrt{\omega_{\rho,k}}\,q(\rho)\,\langle h,\Pi_RY^a_{\rho,k}\rangle.
+\]
+The weighted residual ledger is
+\[
+K_R^{\omega}:=(D_R^{\omega})^*D_R^{\omega}.
+\]
+Equivalently,
+\[
+K_R^{\omega}
+=\sum_{(\rho,k)\in\mathcal Z}
+\omega_{\rho,k}q(\rho)^2
+\,|\Pi_RY^a_{\rho,k}\rangle\langle\Pi_RY^a_{\rho,k}|,
+\]
+where the sum is understood in the monotone positive-form sense.
+\end{definition}
+
+\section{Trace-class criterion}
+\begin{theorem}[Trace-class residual ledger criterion]
+The following are equivalent for the positive ledger defined above:
+\[
+D_R^{\omega}\in\mathcal S_2(H_R,\ell^2(\mathcal Z)),
+\]
+\[
+K_R^{\omega}\in\mathcal S_1(H_R),
+\]
+and
+\[
+\boxed{
+\sum_{(\rho,k)\in\mathcal Z}
+\omega_{\rho,k}q(\rho)^2
+\|\Pi_RY^a_{\rho,k}\|_{H_R}^2<\infty.
+}
+\]
+When these conditions hold,
+\[
+\boxed{
+\operatorname{tr}K_R^{\omega}
+=\sum_{(\rho,k)\in\mathcal Z}
+\omega_{\rho,k}q(\rho)^2
+\|\Pi_RY^a_{\rho,k}\|_{H_R}^2.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+For a rank-one positive operator $|v\rangle\langle v|$, the trace is $\|v\|^2$.  The monotone partial sums
+\[
+K_F^\omega=\sum_{(\rho,k)\in F}\omega_{\rho,k}q(\rho)^2|\Pi_RY^a_{\rho,k}\rangle\langle\Pi_RY^a_{\rho,k}|
+\]
+are positive and have traces equal to the corresponding finite sums.  The positive series defines a trace-class operator if and only if these traces are uniformly bounded; the trace is then the monotone limit.  Equivalently, the analysis operator has Hilbert--Schmidt norm equal to the displayed sum.
+\end{proof}
+
+\section{Tail promotion}
+Let $P_N\uparrow I_{H_R}$ be the finite residual-window ladder from Step 145: shift modes, zero-height cutoff, and source-readable $\Omega$-compatible dictionary windows.  Set
+\[
+T_N:=I_{H_R}-P_N.
+\]
+
+\begin{theorem}[Trace-class tail promotion]
+If $K_R^{\omega}\in\mathcal S_1(H_R)$ and $P_N\uparrow I_{H_R}$ strongly, then
+\[
+\boxed{
+\operatorname{tr}(T_NK_R^{\omega}T_N)\to0.
+}
+\]
+In particular, the completed residual-tail term in Step 144 is paid.
+\end{theorem}
+
+\begin{proof}
+For a positive trace-class operator $K$, strong convergence $P_N\uparrow I$ implies $(I-P_N)K^{1/2}\to0$ in Hilbert--Schmidt norm.  Hence
+\[
+\operatorname{tr}((I-P_N)K(I-P_N))
+=\|(I-P_N)K^{1/2}\|_{\mathcal S_2}^2\to0.
+\]
+\end{proof}
+
+\section{Separation and nonclaim}
+Trace-class weighting does not destroy separation provided every weight is strictly positive.
+
+\begin{proposition}[Weighted separation]
+Assume $\omega_{\rho,k}>0$ for all $(\rho,k)$ and $\|\Pi_RY^a_{\rho,k}\|>0$ for every residual zero-evaluator direction under consideration.  Then
+\[
+\operatorname{tr}K_R^{\omega}=0
+\]
+implies
+\[
+q(\rho)=0
+\]
+for every zero direction visible in $H_R$.  Thus the weighted ledger separates off-critical residual zero directions.
+\end{proposition}
+
+\begin{remark}[Scope]
+This is not yet RH.  It is the residual-carrier statement:
+\[
+\text{no visible residual off-critical zero direction in }H_R.
+\]
+To upgrade it to the zeta ledger one still needs the already-named adequacy/separation records: every off-critical zero probe must be visible in the residual carrier or paid by a declared $\Xi$-residual.
+\end{remark}
+
+\section{Unweighted ledger warning}
+The unweighted ledger
+\[
+\sum_{(\rho,k)}q(\rho)^2|\Pi_RY^a_{\rho,k}\rangle\langle\Pi_RY^a_{\rho,k}|
+\]
+is not trace-class certified.  Since the number of zeros up to height $T$ grows on the order of $T\log T$, and the evaluator norms need not decay, no unweighted trace-class claim is admissible without a separate zero-evaluator norm theorem.
+
+\section{Completed squeeze}
+Combining Step 144 with the trace-class ledger gives the completed residual squeeze
+\[
+\operatorname{tr}(G_RK_R^\omega)
+\le
+\frac{C_{\rm src}}{\Lambda_N^\Omega}
++
+\operatorname{tr}((I-P_N)K_R^\omega(I-P_N)).
+\]
+Therefore the residual zero mass vanishes if
+\[
+\Lambda_N^\Omega\to\infty
+\]
+and the trace-class tail theorem applies.
+
+\section{Next obligation}
+The active analytic obligation is now a lawful weight/evaluator-norm envelope:
+\[
+\sum_{(\rho,k)}\omega_{\rho,k}q(\rho)^2\|\Pi_RY^a_{\rho,k}\|^2<\infty,
+\qquad
+\omega_{\rho,k}>0.
+\]
+The next step should choose an upstream-declared schedule $\omega_{\rho,k}$ using Burnol evaluator-norm growth and zero-counting, then verify that it remains separating and source-compatible.
+
+\end{document}

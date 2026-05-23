@@ -1,0 +1,260 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\FixSetx}{\operatorname{Fix}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\dist}{\operatorname{dist}}
+\newcommand{\Supp}{\operatorname{supp}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\bbR}{\mathbb R}
+\newcommand{\bbC}{\mathbb C}
+
+\title{Step 68: Zero-Readout Separation for Anti-Linear Duality}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 65--67 distinguished exact confinement from merely decreasing finite-stage defects.  The present note isolates the remaining bridge: when does the anti-invariant zero ledger
+\[
+  \mathsf A_Z=0
+\]
+actually imply that the visible zeros lie on the fixed locus of the completed anti-linear duality?  The answer is a readout-separation condition.  Exact confinement follows only if the anti-invariant readout sees every off-fixed zero.
+
+\section{Anti-linear duality and readouts}
+Let $X$ be a root or zero parameter space with an involution
+\[
+  J:X\to X,\qquad J^2=1.
+\]
+For RH the relevant map is
+\[
+  J(s)=1-\overline{s},
+\]
+whose fixed locus is
+\[
+  \FixSetx(J)=\{s:\operatorname{Re}s=1/2\}.
+\]
+
+Let $Y$ be a real Hilbert space with an orthogonal involution $\mathcal J:Y\to Y$.  Write
+\[
+  Y=Y^+\oplus Y^-,\qquad P_\pm=\frac{I\pm\mathcal J}{2}.
+\]
+A readout map
+\[
+  \psi:X\to Y
+\]
+is $J$-compatible if
+\[
+  \psi(Jx)=\mathcal J\psi(x).
+\]
+The anti-invariant readout is
+\[
+  \psi_-(x)=P_-\psi(x).
+\]
+Then
+\[
+  \psi_-(Jx)=-\psi_-(x),
+\]
+so $\|\psi_-(x)\|$ is invariant on $J$-orbits.
+
+\begin{definition}[Zero ledger]
+A visible zero ledger is a positive atomic measure
+\[
+  \mu_Z=\sum_{z\in Z}w_z\delta_z,\qquad w_z>0,
+\]
+possibly finite after localization/windowing, or trace-class in the infinite case.  Its anti-invariant displacement matrix is
+\[
+  \mathsf A_Z=\int_X \psi_-(x)\psi_-(x)^*\,d\mu_Z(x).
+\]
+When $Z$ is finite,
+\[
+  \mathsf A_Z=\sum_{z\in Z} w_z\,\psi_-(z)\psi_-(z)^*.
+\]
+\end{definition}
+
+\begin{definition}[Fixed-locus separation]
+The readout $\psi_-$ separates the fixed locus on a visible domain $\Omega\subseteq X$ if
+\[
+  \psi_-(x)=0\quad\Longleftrightarrow\quad x\in\FixSetx(J)
+  \qquad (x\in\Omega).
+\]
+It quantitatively separates the fixed locus with gauge $m_\Omega(\varepsilon)>0$ if
+\[
+  m_\Omega(\varepsilon)
+  :=\inf\{\|\psi_-(x)\|:\,x\in\Omega,\ \dist(x,\FixSetx(J))\ge\varepsilon\}>0.
+\]
+\end{definition}
+
+\section{The separation theorem}
+\begin{lemma}[Trace of the zero ledger]
+If $\mathsf A_Z$ is trace-class, then
+\[
+  \Tr \mathsf A_Z=\int_X \|\psi_-(x)\|^2\,d\mu_Z(x).
+\]
+In particular, $\mathsf A_Z=0$ if and only if $\psi_-(x)=0$ for $\mu_Z$-almost every $x$.
+\end{lemma}
+
+\begin{proof}
+For a rank-one operator $vv^*$ on a real Hilbert space, $\Tr(vv^*)=\|v\|^2$.  The statement follows by monotone convergence for positive trace-class sums or integrals.  A positive trace-class operator has trace zero if and only if it is zero, giving the final claim.
+\end{proof}
+
+\begin{theorem}[Zero-readout separation]
+Let $\mu_Z$ be a visible zero ledger supported in a domain $\Omega$, and suppose $\psi_-$ separates the fixed locus on $\Omega$.  If
+\[
+  \mathsf A_Z=0,
+\]
+then
+\[
+  \Supp\mu_Z\subseteq \FixSetx(J).
+\]
+Equivalently, every visible zero with positive weight lies on the fixed locus.
+\end{theorem}
+
+\begin{proof}
+By the trace lemma, $\psi_-(z)=0$ for every positive-weight visible atom, or $\mu_Z$-almost everywhere in the measure case.  Separation gives $z\in\FixSetx(J)$.
+\end{proof}
+
+\begin{theorem}[Quantitative separation]
+Suppose $\psi_-$ quantitatively separates $\FixSetx(J)$ on $\Omega$.  For every $\varepsilon>0$,
+\[
+  \mu_Z\{x\in\Omega:\dist(x,\FixSetx(J))\ge\varepsilon\}
+  \le
+  \frac{\Tr\mathsf A_Z}{m_\Omega(\varepsilon)^2}.
+\]
+Consequently, if $\mathsf A_Z\preceq B$ and $\Tr B\to0$ in a fixed-ledger or exhaustive-ledger squeeze, then the visible off-fixed mass tends to zero at every positive separation threshold.
+\end{theorem}
+
+\begin{proof}
+On the set $\dist(x,\FixSetx(J))\ge\varepsilon$, the integrand obeys $\|\psi_-(x)\|^2\ge m_\Omega(\varepsilon)^2$.  Hence
+\[
+  \Tr\mathsf A_Z
+  =\int \|\psi_-(x)\|^2\,d\mu_Z(x)
+  \ge m_\Omega(\varepsilon)^2\,\mu_Z\{\dist(x,\FixSetx(J))\ge\varepsilon\}.
+\]
+If $\mathsf A_Z\preceq B$, then $\Tr\mathsf A_Z\le\Tr B$.
+\end{proof}
+
+\section{RH coordinate readout}
+For the RH anti-linear involution
+\[
+  J(s)=1-\overline{s},
+\]
+write
+\[
+  s=\frac12+x+i\gamma,
+\]
+so
+\[
+  J(s)=\frac12-x+i\gamma.
+\]
+Define the real readout
+\[
+  \psi(s)=(x,\gamma)\in\bbR^2,
+\]
+with
+\[
+  \mathcal J(x,\gamma)=(-x,\gamma).
+\]
+Then
+\[
+  P_-(x,\gamma)=(x,0),
+\]
+and
+\[
+  \|\psi_-(s)\|=|x|=\left|\operatorname{Re}s-\frac12\right|.
+\]
+Thus
+\[
+  \psi_-(s)=0\quad\Longleftrightarrow\quad \operatorname{Re}s=\frac12.
+\]
+Moreover the quantitative gauge is
+\[
+  m(\varepsilon)=\varepsilon.
+\]
+Therefore
+\[
+  \sum_{\left|\operatorname{Re}\rho-1/2\right|\ge\varepsilon} w_\rho
+  \le
+  \frac{\Tr\mathsf A_Z}{\varepsilon^2}.
+\]
+If the completed zero ledger is fixed or exhaustive and $\mathsf A_Z$ is squeezed to zero, the visible zero mass off the critical line is zero.
+
+\begin{corollary}[RH-facing separation consequence]
+Assume the completed zero ledger is visible and exhaustive, with positive weights for all nontrivial zeros in the claimed scope.  If the root-composite route proves
+\[
+  \mathsf A_Z=0
+\]
+for the coordinate readout above, then every visible nontrivial zero in the scope satisfies
+\[
+  \operatorname{Re}\rho=\frac12.
+\]
+\end{corollary}
+
+\section{Failure modes}
+\begin{warning}[Invariant readout failure]
+If one uses only the invariant readout
+\[
+  \psi_{\mathrm{inv}}(s)=\operatorname{Im}s,
+\]
+then $P_-\psi_{\mathrm{inv}}=0$ for every zero.  Hence $\mathsf A_Z=0$ regardless of whether zeros are off the critical line.  Invariant or trace-shadow readouts cannot certify RH-style confinement.
+\end{warning}
+
+\begin{warning}[Non-separating anti-invariant readout]
+An anti-invariant readout may still fail separation.  For example,
+\[
+  \psi_-(s)=\sin\bigl(\pi(\operatorname{Re}s-1/2)\bigr)
+\]
+vanishes at $\operatorname{Re}s=1/2+k$ for integers $k$.  It cannot distinguish the fixed line from off-line aliases.
+\end{warning}
+
+\begin{warning}[Visible-only status]
+Even with a separating readout, the conclusion is only about the support of the visible zero ledger.  To promote from visible confinement to full zero confinement, one needs zero-ledger exhaustivity and tail control.  Without those records the status is \texttt{visible\_only} or \texttt{moving\_ledger\_support\_only}.
+\end{warning}
+
+\section{Exact-confinement status labels}
+The zero-readout separation square has the following statuses.
+\begin{center}
+\begin{tabular}{ll}
+\hline
+Status & Meaning \\
+\hline
+\texttt{separating\_fixed\_ledger} & fixed completed ledger and separating readout; squeeze gives exact confinement \\
+\texttt{separating\_exhaustive\_ledger} & finite windows plus vanishing tail; squeeze gives exact confinement \\
+\texttt{visible\_only} & readout separates, but only on visible scoped ledger \\
+\texttt{failed\_separation} & $\psi_-$ has off-fixed zeros; no confinement conclusion \\
+\texttt{invariant\_shadow\_only} & readout controls only $Y^+$; anti-invariant sector untested \\
+\texttt{moving\_ledger\_support\_only} & finite moving ledgers have no tail/exhaustivity bridge \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Root-composite route insertion}
+Combining this note with Steps 32--67 gives the RH-facing implication:
+\[
+\begin{gathered}
+  \mathsf A_Z\preceq B_n,
+  \qquad \Tr B_n\to0, \\
+  \text{fixed or exhaustive completed zero ledger}, \\
+  \psi_-(\rho)=0\iff \rho=1-\overline{\rho}
+\end{gathered}
+\]
+implies
+\[
+  \operatorname{Re}\rho=\frac12
+\]
+for all visible/exhaustive nontrivial zeros in the scope.  The missing RH burden is not this separation theorem; it is earning the completed fixed/exhaustive zero-ledger squeeze through explicit-formula domination and anti-invariant budget collapse.
+
+\end{document}

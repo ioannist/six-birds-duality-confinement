@@ -1,0 +1,239 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newtheorem{example}{Example}
+
+\newcommand{\Kmat}{\mathsf K}
+\newcommand{\Tbud}{\Theta}
+\newcommand{\ALrec}{\mathsf{AL}}
+\newcommand{\Wit}{\mathcal W}
+\newcommand{\Non}{\mathcal N}
+\newcommand{\Loew}{\preceq}
+\DeclareMathOperator{\Capacity}{Cap}
+\DeclareMathOperator{\Trace}{tr}
+\DeclareMathOperator{\Range}{Ran}
+\DeclareMathOperator{\suppop}{supp}
+
+\title{Step 47: Reflexive Membrane Ladder Theorem}
+\author{RATCHET / Six Birds Anti-Localization Workstream}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note assembles strict extension, completion, predictive propagation, and all-six composition into a single reflexive anti-localization ladder theorem.  The guiding point is that a same-package rerun cannot improve anti-localization.  A genuine improvement requires a strict extension, a lawful bridge, a completed witness repair, or a predictive defect budget.  Thus the Reflexive SBT anti-localization claim is not a generic convergence slogan; it is a ladder theorem with explicit hypotheses.
+
+\section{All-six membrane states}
+
+\begin{definition}[All-six anti-localization state]
+An all-six anti-localization state is a record
+\[
+  \ALrec_j=(E_j,C_j,L_j,Y_j,\Tbud_j;P_{1,j},\ldots,P_{6,j};\Wit_j,\Non_j),
+\]
+where \(E_j\) is the packaged feasible coordinate carrier, \(C_j\succeq0\) is the audit energy on the legal quotient, \(L_j:E_j\to Y_j\) is the declared native probe family, \(\Tbud_j\succeq0\) is the native budget, \(P_{i,j}\) are the six role-channel status records, \(\Wit_j\) is the critical-pair witness ledger, and \(\Non_j\) is the nonclaim record.  Its currency matrix is
+\[
+  \Kmat_j=L_jC_j^\dagger L_j^*.
+\]
+The state is membrane-complete when
+\[
+  \Kmat_j\Loew \Tbud_j.
+\]
+If \(\Tbud_j\succ0\), define the normalized positive defect
+\[
+  \delta_j:=\lambda_{\max}\!\left(\Tbud_j^{-1/2}\Kmat_j\Tbud_j^{-1/2}-I\right)_+.
+\]
+Then \(\delta_j=0\) iff the state is membrane-complete.
+\end{definition}
+
+\begin{definition}[Strict all-six extension]
+A transition \(\ALrec_j\to\ALrec_{j+1}\) is a strict all-six extension if:
+\begin{enumerate}[label=(\roman*)]
+\item every role-channel bridge \(P_{i,j}\to P_{i,j+1}\) is declared and accepted or carries an explicit defect/nonclaim record;
+\item at least one channel supplies genuinely new strict structure rather than a same-package re-audit;
+\item there are response and carrier bridge data producing a predictive comparison
+\[
+  \Kmat_{j+1}\Loew (1+\varepsilon_j)A_j\Kmat_jA_j^*+E_j,
+\]
+with \(\varepsilon_j\ge0\) and \(E_j\succeq0\);
+\item the transition is not selected by target success, i.e. the witness repair source is upstream-visible before testing the new membrane inequality.
+\end{enumerate}
+\end{definition}
+
+\section{Fixed package saturation}
+\begin{proposition}[Same-package re-audit saturates]
+Suppose the carrier, audit, probe family, budget, response space, and all-six statuses are unchanged up to unitary relabeling.  Then
+\[
+  \Kmat_{j+1}=U\Kmat_jU^*,\qquad \Tbud_{j+1}=U\Tbud_jU^*
+\]
+for the relabeling unitary \(U\).  Hence \(\delta_{j+1}=\delta_j\).  In particular, a fixed package cannot strictly contract anti-localization defect by being rechecked.
+\end{proposition}
+
+\begin{proof}
+The currency is defined functorially as \(\Kmat=L C^\dagger L^*\).  A unitary coordinate relabeling changes \(L\) and \(C\) by conjugation, hence changes \(\Kmat\) by congruence.  The normalized spectrum of \(\Tbud^{-1/2}\Kmat\Tbud^{-1/2}\) is invariant under the same relabeling.
+\end{proof}
+
+\section{Persistent membrane propagation}
+\begin{theorem}[Predictive propagation under all-six bridges]
+Assume a strict all-six ladder satisfies
+\[
+  \Kmat_{j+1}\Loew (1+\varepsilon_j)A_j\Kmat_jA_j^*+E_j
+\]
+and the budgets obey
+\[
+  (1+\varepsilon_j)A_j\Tbud_jA_j^*+E_j\Loew \Tbud_{j+1}.
+\]
+If \(\Kmat_0\Loew\Tbud_0\), then
+\[
+  \Kmat_j\Loew\Tbud_j\qquad\text{for every accepted stage }j.
+\]
+\end{theorem}
+
+\begin{proof}
+Induct.  If \(\Kmat_j\Loew\Tbud_j\), then
+\[
+\Kmat_{j+1}\Loew (1+\varepsilon_j)A_j\Tbud_jA_j^*+E_j\Loew\Tbud_{j+1}.
+\]
+\end{proof}
+
+\begin{corollary}[Common-space summable defects]
+If all response spaces are identified and
+\[
+  \Kmat_{j+1}\Loew (1+\varepsilon_j)\Kmat_j+D_j,
+\]
+with
+\[
+  \prod_j(1+\varepsilon_j)\le P<\infty,
+  \qquad
+  \sum_jD_j\Loew D_\infty,
+\]
+then
+\[
+  \Kmat_n\Loew P(\Kmat_0+D_\infty).
+\]
+Thus a common budget \(\Tbud\) satisfying \(P(\Kmat_0+D_\infty)\Loew\Tbud\) gives a persistent membrane.
+\end{corollary}
+
+\section{Eventual completion by well-founded descent}
+\begin{definition}[Completion measure]
+A completion measure is a map \(\mu\) from all-six states to a well-founded ordered set \((\mathcal M,<)\).  It is valid for a strict extension policy if every non-complete accepted state \(\ALrec_j\) has an accepted strict extension \(\ALrec_j\to\ALrec_{j+1}\) with
+\[
+  \mu(\ALrec_{j+1})<\mu(\ALrec_j).
+\]
+\end{definition}
+
+\begin{theorem}[Finite reflexive completion]
+If a strict all-six extension policy has a valid well-founded completion measure, then every reflexive completion chain terminates after finitely many strict moves in a membrane-complete state.
+\end{theorem}
+
+\begin{proof}
+An infinite chain of non-complete states would produce an infinite strictly descending sequence in the well-founded order \(\mathcal M\), impossible by definition.
+\end{proof}
+
+\begin{warning}[Asymptotic improvement is not finite completion]
+The scalar ladder
+\[
+  \Kmat_n=1+\frac1{n+1},\qquad \Tbud=1
+\]
+has strictly decreasing positive defect \(1/(n+1)\to0\), but no finite stage is complete.  Therefore a proof of finite closure cannot be replaced by a claim of monotone improvement.
+\end{warning}
+
+\section{Asymptotic reflexive membrane theorem}
+\begin{theorem}[Contractive-plus-defect recursion]
+Let \(\delta_j\ge0\) measure normalized positive membrane defect.  Suppose
+\[
+  \delta_{j+1}\le q_j\delta_j+e_j,
+  \qquad 0\le q_j\le1,
+  \qquad e_j\ge0.
+\]
+Then
+\[
+  \delta_n\le Q_{0,n}\delta_0+
+  \sum_{k=0}^{n-1}Q_{k+1,n}e_k,
+\]
+where
+\[
+  Q_{a,b}=\prod_{r=a}^{b-1}q_r,
+  \qquad Q_{b,b}=1.
+\]
+If the right-hand side tends to zero, then the ladder has asymptotic membrane completion.  If, additionally, the system has a discrete witness gap \(\eta>0\) such that every non-complete state has \(\delta_j\ge\eta\), then asymptotic completion implies finite completion.
+\end{theorem}
+
+\begin{proof}
+Iterating the recurrence gives the displayed bound.  If the bound tends to zero and non-complete states have a uniform positive gap \(\eta\), then eventually \(\delta_j<\eta\), so the state must be complete.
+\end{proof}
+
+\section{Strict source contraction}
+\begin{proposition}[Audit strengthening contracts currency]
+Let
+\[
+  C^+=C+D,
+  \qquad D\succeq0.
+\]
+Then
+\[
+  L(C+D)^\dagger L^*\Loew LC^\dagger L^*
+\]
+on the legal quotient.  For a recombination \(y\), strict contraction occurs when the new audit sees the old minimum-energy representer of \(L^*y\).
+\end{proposition}
+
+\begin{proof}
+On the legal quotient the forms are positive definite after quotienting null modes.  Since \(C+D\succeq C\), operator monotonicity of inversion gives \((C+D)^{-1}\preceq C^{-1}\).  Congruence by \(L\) gives the claim.  Strictness follows from equality conditions in the quadratic form.
+\end{proof}
+
+\begin{proposition}[Feasibility restriction contracts capacity]
+If a strict extension lawfully restricts the feasible carrier
+\[
+  \mathcal F^+\subseteq \mathcal F,
+\]
+with the same audit and probe family, then for every recombination \(y\)
+\[
+  \Capacity_C(y^*L;\mathcal F^+)\le \Capacity_C(y^*L;\mathcal F).
+\]
+This is proof-strengthening only if the restriction is recorded as a lawful gate rather than a hidden nonclaim.
+\end{proposition}
+
+\begin{proof}
+The variational supremum is taken over a smaller feasible set.
+\end{proof}
+
+\section{Reflexive ladder theorem}
+\begin{theorem}[Reflexive membrane ladder]
+A reflexive anti-localization ladder is accepted as producing a formed membrane if one of the following certified mechanisms holds.
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Persistent propagation:} The initial state is membrane-complete and every all-six bridge satisfies the budget propagation inequalities of the predictive propagation theorem.
+\item \textbf{Finite completion:} Every non-complete state has an accepted strict all-six repair move decreasing a well-founded completion measure.
+\item \textbf{Asymptotic completion with gap:} The normalized defect satisfies a contractive-plus-defect recursion whose bound tends to zero, and the witness calculus has a positive discrete non-completion gap.
+\end{enumerate}
+In all cases the resulting claim is scoped to formed closures and their declared native predictive test family.  It makes no claim about raw substrates, undeclared probes, or public shadows without an accepted transfer bridge.
+\end{theorem}
+
+\begin{proof}
+Case (a) is the predictive propagation theorem.  Case (b) is the finite completion theorem.  Case (c) is the contractive recursion theorem plus the discrete witness-gap conclusion.  The scope statement is part of the all-six record: the membrane property is a statement about the exact package, declared native family, lawful transports, and completed witness ledger.
+\end{proof}
+
+\section{Failure alternatives}
+If a reflexive ladder does not produce a membrane, at least one of the following records is missing or failed:
+\begin{enumerate}[label=(F\arabic*)]
+\item the transition was a same-package re-audit rather than a strict extension;
+\item the all-six bridge failed in at least one channel \(P_i\);
+\item defects were not summable or energy constants degraded multiplicatively;
+\item the witness repairs improved scalar diagnostics but did not decrease a well-founded completion measure;
+\item the ladder used a public shadow without a transfer bridge;
+\item the claim silently narrowed the native probe family or feasible carrier without a nonclaim record.
+\end{enumerate}
+
+\section{Interpretation}
+The reflexive ladder theorem is the anti-localization analogue of completion.  A needle is a critical-pair witness.  A strict extension is a lawful rewrite, new source, or package repair.  A membrane is complete when all native predictive witnesses are priced, resolved, or explicitly excluded.  Rechecking the same package does not help; only strict extension, summable propagation, or well-founded completion can produce genuine progress.
+
+\end{document}

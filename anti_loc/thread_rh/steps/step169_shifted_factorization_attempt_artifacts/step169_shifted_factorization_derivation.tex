@@ -1,0 +1,336 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+
+\newcommand{\Pinfty}{P_{\infty}}
+\newcommand{\Pinfm}{\mathsf P_{\infty}}
+\newcommand{\Mell}{M}
+\newcommand{\Uinf}{\mathcal U_{\infty}}
+\newcommand{\Cell}{C_{\ell}}
+\newcommand{\Chat}{\mathcal C}
+\newcommand{\zetaF}{\zeta}
+
+\title{Step 169: Shifted Burnol Packet Factorization Attempt}
+\author{Six Birds RH Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Mode And Target}
+
+This is an attempt-mode computation. The target is the shifted Burnol packet
+factorization
+\[
+  \Mell(B_{\ell,a}u)(s)=\zetaF(s)\alpha_{\ell,a,u}(s),
+\]
+where \(B_{\ell,a}u\) denotes the inherited shifted packet. No new carrier is
+introduced.
+
+\section{T1. Inherited Records Quoted}
+
+\paragraph{R1, Step 165.}
+The shifted packet is
+\[
+  u_{\ell,a}:=B_{\ell,a}u
+  :=
+  J_a\Pinfty\tau_\ell(I-\Pinfty)u.
+\]
+The same step records the active multiplier convention
+\[
+  m_\ell(s)=\exp[-\ell(1/2-s)].
+\]
+
+\paragraph{R2, Step 119.}
+For a Burnol generator \(g_j\in C_c^\infty([a,A])\), the right Mellin
+transform and co-Poisson synthesis are
+\[
+  \widehat g_j(s)=\int_0^\infty g_j(t)t^{-s}\,dt,
+\qquad
+  \Chat g_j(t)=\sum_{n\ge1}\frac{g_j(t/n)}{n}-\widehat g_j(1).
+\]
+With endpoint vanishings imposed, the inherited identity is
+\[
+  \Mell(\Chat g_j)(s)=\zetaF(s)\widehat g_j(s).
+\]
+
+\paragraph{R3, Step 154.}
+The shifted commutator form is
+\[
+  \Cell=(I-\Pinfty)M_{m_\ell}\Pinfty,
+\qquad
+  r_{\ell,w,k}=\Cell\eta^a_{w,k}.
+\]
+This records that in the Mellin model \(P_\infty\) is represented by the
+projection used with the multiplier \(M_{m_\ell}\).
+
+\paragraph{R4, Step 153.}
+The pulled evaluator and transport formulas are
+\[
+  T_a=\mathcal M_\Gamma J_a\Uinf^{-1},
+\qquad
+  \Uinf(J_a^*Y^a_{w,k})
+  =
+  T_a^*\partial_{\bar w}^{\,k}K_a^\Gamma(\cdot,w).
+\]
+Thus, on the legal transport domain,
+\[
+  \Mell(J_av)=T_a\Uinf v.
+\]
+
+\paragraph{R5, Steps 114--115.}
+Step 114 names the sufficient certificate
+\[
+  \Mell(J_a\Pinfty\tau_\ell(I-\Pinfty)u)(s)
+  =
+  \zetaF(s)\alpha_{\ell,u}(s).
+\]
+Step 115 records that a log-shift is a nonvanishing exponential multiplier in
+Mellin/Fourier variables and does not itself create a zeta factor.
+
+\section{T2. Derivation}
+
+Let
+\[
+  F_u:=\Uinf u.
+\]
+
+\subsection*{(a) Expand the shifted packet}
+
+By R1 and linearity of \(\Mell\),
+\[
+\begin{aligned}
+  \Mell(B_{\ell,a}u)(s)
+  &=
+  \Mell(J_a\Pinfty\tau_\ell(I-\Pinfty)u)(s).
+\end{aligned}
+\]
+
+\subsection*{(b1) Mellin action of \(J_a\)}
+
+R4 defines \(T_a=\mathcal M_\Gamma J_a\Uinf^{-1}\). Therefore for
+\[
+  v=\Pinfty\tau_\ell(I-\Pinfty)u
+\]
+in the legal domain,
+\[
+  \Mell(J_av)=T_a\Uinf v.
+\]
+Hence
+\[
+  \Mell(B_{\ell,a}u)
+  =
+  T_a\Uinf\Pinfty\tau_\ell(I-\Pinfty)u.
+\]
+
+\subsection*{(b2) Mellin action of \(P_\infty\)}
+
+The commutator formulas in R3 use the Mellin-side projection \(\Pinfm\).
+Thus
+\[
+  \Uinf\Pinfty\Uinf^{-1}=\Pinfm,
+\qquad
+  \Uinf(I-\Pinfty)u=(I-\Pinfm)F_u.
+\]
+
+\subsection*{(b3) Mellin action of \(\tau_\ell\)}
+
+Using the R1 multiplier convention,
+\[
+  \Uinf\tau_\ell\Uinf^{-1}=M_{m_\ell},
+\qquad
+  m_\ell(s)=\exp[-\ell(1/2-s)].
+\]
+Therefore
+\[
+  \Uinf\tau_\ell(I-\Pinfty)u
+  =
+  M_{m_\ell}(I-\Pinfm)F_u.
+\]
+
+\subsection*{(c) Compose the actions}
+
+Substitution gives the concrete partial expression
+\[
+\boxed{
+  \Mell(B_{\ell,a}u)(s)
+  =
+  \left[
+  T_a\Pinfm M_{m_\ell}(I-\Pinfm)F_u
+  \right](s).
+}
+\]
+This is the full expression obtained from the inherited operator records.
+
+\subsection*{(d) Compare with the co-Poisson identity}
+
+R2 gives a zeta factor only for expressions of the form \(\Mell(\Chat g)\):
+\[
+  \Mell(\Chat g)(s)=\zetaF(s)\widehat g(s).
+\]
+Thus the shifted packet would factor if the preceding expression came from a
+co-Poisson synthesis:
+\[
+  J_a\Pinfty\tau_\ell(I-\Pinfty)u=\Chat g_{\ell,a,u}.
+\]
+In that case
+\[
+  \Mell(B_{\ell,a}u)(s)
+  =
+  \zetaF(s)\widehat g_{\ell,a,u}(s),
+\qquad
+  \alpha_{\ell,a,u}(s)=\widehat g_{\ell,a,u}(s).
+\]
+
+\subsection*{(e) Can the correction be absorbed into \(\alpha\)?}
+
+Formally one can write
+\[
+  \alpha_{\ell,a,u}^{\rm form}(s)
+  =
+  \frac{\left[T_a\Pinfm M_{m_\ell}(I-\Pinfm)F_u\right](s)}{\zetaF(s)}.
+\]
+This is a lawful \(\alpha\) only if the numerator vanishes at the nontrivial
+zeros to the required multiplicities and satisfies Burnol endpoint, pole, strip,
+and carrier conditions. R5 says the shift multiplier is nonvanishing and cannot
+itself supply these zeros. Therefore the missing step is not division by
+\(\zeta\); it is proving that the transported shifted packet lies in the
+co-Poisson range or in the corresponding zeta-divisible Mellin class.
+
+\section{Subclass attempt: u = Cg}
+
+Now specialize to the manager-requested subclass
+\[
+  u=\Chat g
+\]
+where \(g\) is a legal Step 119 Burnol generator. Write
+\[
+  G(s):=\widehat g(s).
+\]
+By R2,
+\[
+  \Mell(\Chat g)(s)=\zetaF(s)G(s).
+\]
+Identifying this with the inherited Mellin realization on the legal subclass,
+\[
+  F_{\Chat g}:=\Uinf(\Chat g)=M_{\zetaF}G.
+\]
+Substituting \(F_u=F_{\Chat g}\) into the parent expression gives
+\[
+\begin{aligned}
+  \Mell(B_{\ell,a}\Chat g)
+  &=
+  T_a\Pinfm M_{m_\ell}(I-\Pinfm)M_{\zetaF}G
+  \\
+  &=
+  T_a\Pinfm M_{m_\ell}
+    \bigl(M_{\zetaF}G-\Pinfm M_{\zetaF}G\bigr).
+\end{aligned}
+\]
+The shift multiplier is scalar multiplication, so it commutes with
+\(M_{\zetaF}\). Hence
+\[
+\begin{aligned}
+  M_{m_\ell}(I-\Pinfm)M_{\zetaF}G
+  &=
+  M_{m_\ell}M_{\zetaF}G
+  -
+  M_{m_\ell}\Pinfm M_{\zetaF}G
+  \\
+  &=
+  M_{\zetaF}(m_\ell G)
+  -
+  M_{m_\ell}\Pinfm M_{\zetaF}G.
+\end{aligned}
+\]
+After the outgoing projection and the Burnol transport this becomes
+\[
+\boxed{
+\begin{aligned}
+  \Mell(B_{\ell,a}\Chat g)
+  &=
+  T_a\Pinfm M_{\zetaF}(m_\ell G)
+  -
+  T_a\Pinfm M_{m_\ell}\Pinfm M_{\zetaF}G.
+\end{aligned}}
+\]
+Thus the subclass does add information: the zeta factor enters at the input and
+the raw shift preserves it in the first term. The remaining obstruction is not
+the shift. It is whether the two projected/transported terms preserve the
+zeta-divisible ideal.
+
+\subsection*{Conditional reduction}
+
+The subclass factorization follows from the following more specific identity.
+
+\[
+\boxed{\textbf{ZI-COV}^{\rm CP}_{\ell,a}}
+\]
+There exist legal operators \(A_\infty\) and \(A_{T,a}\) on the relevant
+Mellin generator profiles such that
+\[
+  \Pinfm M_{\zetaF}G=M_{\zetaF}A_\infty G
+\]
+and, for every profile \(H\) produced below,
+\[
+  T_a\Pinfm M_{\zetaF}H=M_{\zetaF}A_{T,a}H.
+\]
+If this zeta-ideal covariance holds, then
+\[
+\begin{aligned}
+  (I-\Pinfm)M_{\zetaF}G
+  &=
+  M_{\zetaF}(G-A_\infty G),
+  \\
+  M_{m_\ell}(I-\Pinfm)M_{\zetaF}G
+  &=
+  M_{\zetaF}\bigl(m_\ell(G-A_\infty G)\bigr),
+  \\
+  \Mell(B_{\ell,a}\Chat g)
+  &=
+  M_{\zetaF}
+  A_{T,a}\bigl(m_\ell(G-A_\infty G)\bigr).
+\end{aligned}
+\]
+So the conditional quotient is explicit:
+\[
+  \boxed{
+  \alpha_{\ell,a,\Chat g}
+  =
+  A_{T,a}\bigl(m_\ell(G-A_\infty G)\bigr).
+  }
+\]
+The inherited records do not supply \(A_\infty\), \(A_{T,a}\), or the
+zeta-ideal covariance identities. They also do not supply a legal \(g\) for
+which a zero-evaluator derivative of either projected term is nonzero. Hence
+the subclass result is conditional rather than success or failure.
+
+\section{T3. Upgraded Verdict}
+
+\[
+\boxed{\texttt{factorization\_verdict = V\_conditional\_subclass}.}
+\]
+
+The parent computation reduced H2 to \(\textbf{CP-RED}_{\ell,a}\). On the
+specific subclass \(u=\Chat g\), the calculation sharpens that gap to the
+strictly more specific lemma \(\textbf{ZI-COV}^{\rm CP}_{\ell,a}\):
+zeta-ideal covariance of \(\Pinfm\) and \(T_a\Pinfm\) on profiles already known
+to be \(M_{\zetaF}G\) by Step 119.
+
+\section{T4. Grade}
+
+This upgrade is conditional subclass reduction content. It contains
+theorem-grade inherited identities and a new explicit computation on the
+co-Poisson subclass. It is not a completed factorization and not a concrete
+counterexample.
+
+\section{Inline Nonclaims}
+
+This step does not establish the Riemann Hypothesis. It does not establish
+\(\Xi_{\rm BC}=0\) without conditions. It does not prove G2--G5. It does not
+prove SL164.1. It does not close any Burnol/Sonine branch. It does not remove
+any retained no-go. It does not pivot to a different carrier. It does not claim
+that \(\textbf{CP-RED}_{\ell,a}\) is impossible to fill.
+
+\end{document}

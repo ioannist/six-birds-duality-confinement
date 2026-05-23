@@ -1,0 +1,59 @@
+{
+  "step": 195,
+  "orientation": "adequacy",
+  "target": "BN arithmetic Gram refinement, harmonic A_N to N=1000",
+  "arithmetic_gram_formula": {
+    "series_formula": "G_{p,q}=sum_{n>=1} ((n mod p)/p)((n mod q)/q)/(n(n+1)) for a=1/p,b=1/q",
+    "periodized_finite_formula": "G_{p,q}=(1/L) sum_{r=1}^L {r/p}{r/q}[psi((r+1)/L)-psi(r/L)], L=lcm(p,q)",
+    "derivation": "Use x=1/t and rho_{1/p}(1/x)=floor(x)/p-floor(x/p)={floor(x)/p}; on x in (n,n+1), this equals (n mod p)/p.",
+    "verification": "periodized finite formula checked against truncated arithmetic series for (p,q)=(2,3),(3,5),(7,11) within tail bound"
+  },
+  "mpmath_precision": {
+    "mpmath_dps": 80,
+    "linear_algebra": "numpy float64 SVD pseudoinverse",
+    "pinv_rcond": 1e-12,
+    "X_MAX": 200000,
+    "tail_bound_per_entry": "5e-6"
+  },
+  "computed_data": [
+    {"N": 5, "delta_sq": 0.0363139368590198, "delta_sq_logN": 0.0584450267306446},
+    {"N": 10, "delta_sq": 0.0238470859060593, "delta_sq_logN": 0.0549099445186406},
+    {"N": 20, "delta_sq": 0.0165323317860087, "delta_sq_logN": 0.0495264398884486},
+    {"N": 40, "delta_sq": 0.0127296188449689, "delta_sq_logN": 0.0469580294159074},
+    {"N": 80, "delta_sq": 0.0109920955378177, "delta_sq_logN": 0.0481676554175969},
+    {"N": 200, "delta_sq": 0.00892242600836957, "delta_sq_logN": 0.0472738446718843},
+    {"N": 500, "delta_sq": 0.00741541353971342, "delta_sq_logN": 0.0460838890370526},
+    {"N": 1000, "delta_sq": 0.00654423096394308, "delta_sq_logN": 0.0452059459880561}
+  ],
+  "decay_fit": {
+    "C_over_logN_tail_mean": 0.0466828337786475,
+    "tail_mean_range": "N=80,200,500,1000",
+    "C_over_logN_alpha_fit": {
+      "fit_range": "N>=20",
+      "C": 0.0541389792662914,
+      "alpha": 1.0886679
+    },
+    "power_law_comparison": {
+      "fit_range": "N>=20",
+      "C": 0.0309018509140347,
+      "beta": 0.22951419,
+      "status": "comparison_only_not_BN_expected_model"
+    }
+  },
+  "BN_refinement_verdict": "V_BN_arithmetic_refined_RH_consistent",
+  "verdict_reason": "Harmonic reciprocal defects continue slow decay through N=1000; delta_sq log(N) remains near 0.045-0.047, consistent with Bae z-Duarte/Nyman-Beurling slow logarithmic behavior.",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1",
+    "de Branges RH-carrier closure target-equivalence / Conrey-Li survival",
+    "Hilbert-Polya/Berry-Keating standard xp bridge failure and modified-operator target-equivalence",
+    "Connes adelic trace-formula full closure target-equivalence / completed spectral ledger not inherited"
+  ],
+  "final_verdict": "V_BN_arithmetic_refined_RH_consistent"
+}
+

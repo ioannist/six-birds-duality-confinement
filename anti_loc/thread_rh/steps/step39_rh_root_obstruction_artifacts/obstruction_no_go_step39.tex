@@ -1,0 +1,256 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newtheorem{remark}{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\EF}{\mathrm{EF}}
+\newcommand{\src}{\mathrm{src}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Id}{\operatorname{Id}}
+\newcommand{\pre}{\preceq}
+\newcommand{\notpre}{\npreceq}
+\newcommand{\eps}{\varepsilon}
+
+\title{Step 39: Obstruction and No-Go Theorem for the RH Root-Composite Route}
+\author{Six Birds / Anti-Localization Working Notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Steps 32--38 formulated a root-composite route to RH-style zero confinement.  The forward implication was:
+\[
+\text{anti-linear duality}+	ext{zero visibility}+\text{explicit-formula domination}+\text{character-source coercivity}
+\Longrightarrow
+\text{zero confinement.}
+\]
+This note proves the converse-style obstruction ledger.  If zero confinement is not obtained, then at least one declared square/gate must fail: zero visibility/exhaustivity, null-mode legality, explicit-formula domination, anti-invariant budget collapse, full character-frame coverage, source legality, or finite-to-continuum defect control.  Each failure has a native witness: a separating vector, an unpriced null-mode, a positive Loewner residual, an uncovered character direction, or an invisible zero record.  The theorem is not an RH proof.  It is the precise no-go ledger for the root-composite anti-localization route.
+\end{abstract}
+
+\section{Purpose and scope}
+
+The root-composite route introduced the following objects.
+\begin{itemize}[leftmargin=2em]
+  \item An anti-linear involution $J$ on a response/root space, with anti-invariant sector $Y^-$.
+  \item A zero-side anti-invariant displacement operator $V_Z:Y^-\to\mathcal Z$, with
+  \[
+  \A_Z:=V_Z^*V_Z\succeq0.
+  \]
+  \item A completed carrier-side anti-invariant currency matrix $\K^-\succeq0$.
+  \item An explicit-formula defect $E_{\EF}\succeq0$.
+  \item A source/coercivity defect $E_{\src}\succeq0$.
+  \item A base anti-invariant budget $\Theta_0^-\succ0$ and source strength $\Lambda>0$.
+\end{itemize}
+
+The forward theorem from Step 38 says that if, for some $t>0$,
+\begin{equation}\label{eq:ef-domination}
+\A_Z\pre (1+t)\K^-+(1+t^{-1})E_{\EF},
+\end{equation}
+and
+\begin{equation}\label{eq:budget-collapse}
+\K^-\pre \Lambda^{-1}\Theta_0^-+E_{\src},
+\end{equation}
+then
+\begin{equation}\label{eq:confinement-bound}
+\A_Z\pre B_{t,\Lambda}:=(1+t)(\Lambda^{-1}\Theta_0^-+E_{\src})+(1+t^{-1})E_{\EF}.
+\end{equation}
+If $\A_Z$ measures all visible off-fixed displacement, this gives a quantitative confinement bound.
+
+The present note is the obstruction theorem for the same route.  It states that failure of zero confinement forces one of the records above to fail, and moreover produces an explicit witness of the failure.
+
+\section{Zero visibility and mass accounting}
+
+\begin{definition}[visible zero displacement ledger]
+Let $Z_{\rm vis}$ be the visible zero/root ledger with weights $w_z>0$ and anti-invariant coordinate $\psi_-(z)\in Y^-$.  The visible displacement matrix is
+\[
+\A_Z=\sum_{z\in Z_{\rm vis}} w_z\,\psi_-(z)\psi_-(z)^*.
+\]
+For a separation threshold $\eps>0$, define the visible off-fixed mass
+\[
+M_{\eps}^{\rm vis}:=\sum_{z\in Z_{\rm vis}:\,\|\psi_-(z)\|\ge\eps} w_z.
+\]
+\end{definition}
+
+\begin{lemma}[mass bound from Loewner domination]\label{lem:mass-bound}
+If $\A_Z\pre B$ for some $B\succeq0$, then
+\[
+M_{\eps}^{\rm vis}\le \eps^{-2}\tr B.
+\]
+\end{lemma}
+
+\begin{proof}
+For each $z$ with $\|\psi_-(z)\|\ge\eps$, the trace contribution satisfies
+\[
+w_z\|\psi_-(z)\|^2\ge w_z\eps^2.
+\]
+Therefore
+\[
+\eps^2M_\eps^{\rm vis}\le\sum_z w_z\|\psi_-(z)\|^2=\tr\A_Z\le\tr B.
+\]
+\end{proof}
+
+\begin{warning}[visibility is not exhaustivity]
+Lemma~\ref{lem:mass-bound} controls the visible ledger.  It implies an RH-level statement only if the zero ledger is exhaustive for the nontrivial zeros in the claimed support/class.  Invisible zeros are not charged by $\A_Z$ and therefore become an explicit $\texttt{failed\_visibility}$ or $\texttt{outside\_scope}$ record.
+\end{warning}
+
+\section{The obstruction theorem}
+
+\begin{definition}[root-composite RH obligation record]
+A root-composite RH obligation record consists of
+\[
+\mathsf R=(J,Y^-,Z_{\rm vis},\A_Z,\K^-,\Theta_0^-,\Lambda,E_{\EF},E_{\src},t,\mathsf{Audit})
+\]
+with the following gates.
+\begin{enumerate}[label=G\arabic*.,leftmargin=3em]
+  \item \textbf{Anti-linear duality:} $J^2=1$ after realification and $Y^-$ is the anti-invariant sector.
+  \item \textbf{Zero visibility/exhaustivity:} $\A_Z$ is the visible displacement matrix for the zero ledger claimed.
+  \item \textbf{Null-mode legality:} the anti-invariant probe family annihilates legal zero-energy modes of the carrier.
+  \item \textbf{Explicit-formula domination:} \eqref{eq:ef-domination} holds with declared $E_{\EF}$.
+  \item \textbf{Character-source/budget domination:} \eqref{eq:budget-collapse} holds with declared $E_{\src}$ and $\Lambda$.
+  \item \textbf{Full character frame:} the sources cover the whole anti-invariant sector, not only the invariant/trace shadow.
+  \item \textbf{Defect convergence:} $\Lambda^{-1}\Theta_0^-+E_{\src}$ and $E_{\EF}$ are sufficiently small for the claimed confinement strength.
+  \item \textbf{No-smuggling/no-overreading:} all maps, defects, sources, and budgets are declared before testing the zero-confinement claim.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[obstruction/no-go ledger]\label{thm:obstruction}
+Fix $\eps>0$ and suppose the record claims the confinement bound
+\begin{equation}\label{eq:claimed-bound}
+M_{\eps}^{\rm vis}\le \eps^{-2}\tr B_{t,\Lambda},
+\end{equation}
+where $B_{t,\Lambda}$ is defined in \eqref{eq:confinement-bound}.  If \eqref{eq:claimed-bound} fails, then at least one of the gates G1--G8 fails.  More precisely, at least one of the following alternatives holds:
+\begin{enumerate}[label=(O\arabic*),leftmargin=3em]
+  \item \textbf{visibility/exhaustivity failure:} $\A_Z$ is not the declared visible displacement matrix for the roots being counted, or the claimed zero set contains invisible mass;
+  \item \textbf{explicit-formula domination failure:} there exists $y\in Y^-$ such that
+  \[
+  y^*\Bigl[\A_Z-(1+t)\K^--(1+t^{-1})E_{\EF}\Bigr]y>0;
+  \]
+  \item \textbf{budget/coercivity failure:} there exists $y\in Y^-$ such that
+  \[
+  y^*\Bigl[\K^--\Lambda^{-1}\Theta_0^- -E_{\src}\Bigr]y>0;
+  \]
+  \item \textbf{null-mode legality failure:} the anti-invariant probe sees a legal null direction, so the true variational capacity is infinite or undefined despite a pseudoinverse shadow;
+  \item \textbf{character-frame failure:} the source records do not give a lower frame over all of $Y^-$, so some nonzero anti-invariant character direction is uncharged;
+  \item \textbf{defect-budget failure:} $E_{\EF}$, $E_{\src}$, or $\Lambda^{-1}\Theta_0^-$ is too large for the claimed confinement;
+  \item \textbf{source-legality failure:} a source was chosen using the zero-confinement target or $S_6$ result rather than upstream-visible data;
+  \item \textbf{overread:} invariant/trace-sector control, determinant/norm control, or public-shadow equality was used in place of Loewner domination on $Y^-$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Assume all gates pass.  Then \eqref{eq:ef-domination} and \eqref{eq:budget-collapse} imply \eqref{eq:confinement-bound} by transitivity of the Loewner order.  Lemma~\ref{lem:mass-bound} then gives \eqref{eq:claimed-bound}.  Therefore failure of the claimed bound forces at least one gate to fail.
+
+The witness alternatives follow from the elementary separation property of the positive semidefinite cone: for self-adjoint $D$, $D\npreceq0$ iff there exists $y$ with $y^*Dy>0$.  Applying this to
+\[
+D_{\EF}=\A_Z-(1+t)\K^--(1+t^{-1})E_{\EF}
+\]
+and
+\[
+D_{\rm bud}=\K^- -\Lambda^{-1}\Theta_0^- -E_{\src}
+\]
+gives (O2) and (O3).  The remaining alternatives are precisely the other gates required to justify the two Loewner inequalities and their interpretation as a zero-confinement statement.
+\end{proof}
+
+\section{Minimal native witnesses}
+
+\begin{proposition}[explicit-formula residual witness]
+If
+\[
+D_{\EF}:=\A_Z-(1+t)\K^--(1+t^{-1})E_{\EF}\npreceq0,
+\]
+then there is a native anti-invariant vector $y$ such that
+\[
+\|V_Zy\|^2>(1+t)\|W_Ey\|^2+(1+t^{-1})\|E_{\EF}^{1/2}y\|^2.
+\]
+Thus the zero-side anti-invariant displacement in direction $y$ is not contractively paid for by the completed carrier plus the declared explicit-formula defect.
+\end{proposition}
+
+\begin{proof}
+Pick $y$ with $y^*D_{\EF}y>0$ and use $\A_Z=V_Z^*V_Z$ and $\K^-=W_E^*W_E$.
+\end{proof}
+
+\begin{proposition}[budget residual witness]
+If
+\[
+D_{\rm bud}:=\K^- -\Lambda^{-1}\Theta_0^- -E_{\src}\npreceq0,
+\]
+then there is a native anti-invariant direction $y$ whose carrier-side currency exceeds the declared source/budget allowance:
+\[
+y^*\K^-y>\Lambda^{-1}y^*\Theta_0^-y+y^*E_{\src}y.
+\]
+This witness must be resolved by stronger source records, a larger budget/nonclaim, or a status downgrade.
+\end{proposition}
+
+\begin{proposition}[uncovered character witness]
+Let character/source maps $Q_s:Y^-\to Z_s$ have response-side source frame
+\[
+F_{\mathcal S}:=\sum_s\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+If
+\[
+F_{\mathcal S}\npreceq \Lambda(\Theta_0^-)^{-1},
+\]
+then there exists $0\ne y\in Y^-$ such that
+\[
+\sum_s\lambda_s\|\Theta_s^{-1/2}Q_sy\|^2<\Lambda\|\Theta_0^{-1/2}y\|^2.
+\]
+If the left side vanishes, $y$ is an entirely uncharged anti-invariant character direction.
+\end{proposition}
+
+\section{No-go consequences}
+
+\begin{corollary}[no trace-shadow RH route]
+A proof that controls only the invariant/trace sector cannot, by itself, close the root-composite RH route.  Unless it also proves Loewner domination on the anti-invariant sector $Y^-$, it has status at most \texttt{support\_only} for zero confinement.
+\end{corollary}
+
+\begin{corollary}[no finite-source exact confinement]
+If $E_{\EF}$ and $E_{\src}$ vanish but $\Lambda$ remains bounded, then the best conclusion is
+\[
+\A_Z\pre (1+t)\Lambda^{-1}\Theta_0^-.
+\]
+This gives a finite off-fixed mass bound, not exact confinement, unless $\Lambda^{-1}\Theta_0^-=0$ on the visible sector.
+\end{corollary}
+
+\begin{corollary}[no unrecorded zero ledger]
+Even if $\A_Z^{\rm vis}=0$, RH-level confinement does not follow unless the visible ledger is exhaustive for the zero set claimed.  Otherwise the claim is scoped to the visible ledger and the missing roots carry an \texttt{outside\_scope} or \texttt{failed\_visibility} status.
+\end{corollary}
+
+\section{Status table}
+
+The obstruction alternatives can be stored as an audit table.
+\[
+\begin{array}{lll}
+\textbf{Failure} & \textbf{Witness} & \textbf{Status}\\[3pt]
+\hline
+\text{EF domination} & y^*D_{\EF}y>0 & \texttt{failed\_explicit\_formula\_domination}\\
+\text{Budget/coercivity} & y^*D_{\rm bud}y>0 & \texttt{failed\_anti\_invariant\_budget}\\
+\text{Character frame} & F_{\mathcal S}\not\succeq\Lambda\Theta_0^{-1} & \texttt{uncovered\_character}\\
+\text{Null-mode} & L^-_\Gamma v\ne0,\ C_\Gamma v=0 & \texttt{failed\_null\_mode\_legality}\\
+\text{Visibility} & Z\ne Z_{\rm vis}\text{ without defect} & \texttt{failed\_visibility}\\
+\text{Defects} & E_{\EF},E_{\src}\text{ too large} & \texttt{support\_only\_with\_defect}\\
+\text{Source legality} & \text{source selected by target} & \texttt{smuggled}\\
+\text{Trace shadow} & \text{trace/invariant only} & \texttt{overread}
+\end{array}
+\]
+
+\section{Conclusion}
+
+The root-composite route is now a finite obstruction ledger.  The forward implication is useful only if its gates are accepted.  Conversely, if zero confinement does not follow, the proof has not merely ``failed vaguely'': it must exhibit one of the finite obstruction types above.  This is the desired no-go theorem for the RH-facing root-composite anti-localization route.
+
+\end{document}

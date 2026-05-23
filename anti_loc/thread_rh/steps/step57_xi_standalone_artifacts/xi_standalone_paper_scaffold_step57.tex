@@ -1,0 +1,317 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\E}{\mathsf E}
+\newcommand{\K}{\mathsf K}
+\newcommand{\XiC}{\Xi_C}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Tr}{\operatorname{tr}}
+\newcommand{\ALCap}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\Loewner}{\preceq}
+
+\title{Adequacy Residuals and Blind-Spot Currency in Formed-Layer Membrane Theory\\
+\large Standalone Scaffold, Step 57}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note extracts the adequacy residual
+\[
+\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}
+\]
+from formed-layer membrane theory and treats it as a standalone object.  The native probe family
+\(L\) records how a formed layer sees itself; the dissolving probe family \(D\) records ways the layer can be broken.  The residual \(\Xi_C(D\mid L)\) is the exact Schur complement, conditional currency, and minimum blind-spot audit cost measuring what \(D\) sees that \(L\) cannot.  The central theorem proves its equivalent forms: projection residual, optimal residual, kernel adequacy, strict-extension monotonicity, and predictive residual propagation.  The slogan is: \emph{a native membrane controls layer-dissolving needles exactly when the adequacy residual is zero or budgeted.}
+\end{abstract}
+
+\section{Why a standalone \texorpdfstring{$\Xi$}{Xi} theory is needed}
+
+Formed-layer membrane theory controls native recombination needles using a predictive probe-family currency matrix.  But a native membrane is not automatically a full layer-dissolving membrane.  A layer may price all of its declared native probes while remaining blind to a probe family that dissolves the layer.
+
+The adequacy residual isolates this gap.  It is not an informal error term.  It is the Schur residual of the dissolving currency after conditioning on the native currency.  In applications, it measures, for example:
+\begin{itemize}[leftmargin=2em]
+\item the gap between energy/enstrophy ledgers and pointwise blow-up probes;
+\item the gap between declared adversaries and unknown attack vectors;
+\item the gap between known antigen classes and novel pathogen features;
+\item the gap between a theory's declared formulas and formulas it cannot resolve internally.
+\end{itemize}
+
+This note intentionally remains finite-dimensional or closed-range Hilbertian unless otherwise stated.  Infinite-dimensional extensions require the same null-mode, range, and closed-operator hypotheses used for the surrounding membrane theory.
+
+\section{Legal quotient and currency matrices}
+
+Let \(E\) be a finite-dimensional Hilbert space and let \(C=C^*\succeq0\) be an audit energy.  The legal energy quotient is
+\[
+E_C=(\Ker C)^\perp,
+\qquad C_0=C|_{E_C}>0.
+\]
+A probe family \(L:E\to Y\) is \emph{null-legal} if \(L|_{\Ker C}=0\).  In that case it descends to \(L_0:E_C\to Y\).  Likewise a dissolving family \(D:E\to Z\) is null-legal if \(D|_{\Ker C}=0\).
+
+\begin{definition}[Probe-family currency]
+For a null-legal probe family \(L:E\to Y\), define
+\[
+K_{LL}=L_0C_0^{-1}L_0^*.
+\]
+For two null-legal families \(D:E\to Z\) and \(L:E\to Y\), define the cross-currencies
+\[
+K_{DL}=D_0C_0^{-1}L_0^*,\qquad
+K_{LD}=K_{DL}^*,\qquad
+K_{DD}=D_0C_0^{-1}D_0^*.
+\]
+\end{definition}
+
+\begin{remark}[Null-mode warning]
+If \(L\) or \(D\) sees a vector in \(\Ker C\), then the corresponding variational capacity is infinite, even if a pseudoinverse expression returns a finite-looking number.  This is a failed null-mode legality record, not a harmless degeneracy.
+\end{remark}
+
+\section{Definition and first identities}
+
+\begin{definition}[Adequacy residual / blind-spot currency]
+The adequacy residual of \(D\) after conditioning on \(L\) is
+\[
+\boxed{
+\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}.
+}
+\]
+\end{definition}
+
+Let
+\[
+T_L=L_0C_0^{-1/2},\qquad T_D=D_0C_0^{-1/2}.
+\]
+Let \(P_L\) be the orthogonal projection of \(E_C\) onto \(\Ran(T_L^*)\).
+
+\begin{theorem}[Projection formula]
+\[
+\boxed{
+\Xi_C(D\mid L)=T_D(I-P_L)T_D^*\succeq0.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(K_{LL}=T_LT_L^*\) and \(K_{DL}=T_DT_L^*\), the term
+\(K_{DL}K_{LL}^{\dagger}K_{LD}\) equals
+\[
+T_DT_L^*(T_LT_L^*)^{\dagger}T_LT_D^*.
+\]
+The middle factor gives the orthogonal projection onto \(\Ran(T_L^*)\), hence the expression equals \(T_DP_LT_D^*\).  Subtracting from \(K_{DD}=T_DT_D^*\) gives the claim.
+\end{proof}
+
+\section{Optimal residual and exact adequacy}
+
+\begin{theorem}[Optimal residual identity]
+For every linear map \(A:Y\to Z\),
+\[
+\boxed{
+(D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+=
+\Xi_C(D\mid L)+(A-A_*)K_{LL}(A-A_*)^*,
+}
+\]
+where
+\[
+A_*=K_{DL}K_{LL}^{\dagger}.
+\]
+Consequently,
+\[
+\boxed{
+\Xi_C(D\mid L)=\inf_A (D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+}
+\]
+in Loewner order.
+\end{theorem}
+
+\begin{proof}
+Expand the left-hand side and complete the square using the Moore--Penrose identities for \(K_{LL}\).  The cross term vanishes at \(A_*=K_{DL}K_{LL}^{\dagger}\), and the remaining Schur complement is exactly \(K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}\).
+\end{proof}
+
+\begin{theorem}[Exact adequacy]
+The following are equivalent:
+\begin{enumerate}[label=(\alph*),leftmargin=2em]
+\item \(\Xi_C(D\mid L)=0\);
+\item \(D_0=A_*L_0\);
+\item there exists \(A:Y\to Z\) such that \(D_0=AL_0\);
+\item \(\Ker L_0\subseteq\Ker D_0\).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence of (b), (c), and (d) is the standard factorization criterion for linear maps.  By the projection formula, \(\Xi_C(D\mid L)=0\) iff \(T_D\) vanishes on \(\Ran(T_L^*)^\perp\), equivalently \(D_0\) factors through \(L_0\) on the legal quotient.
+\end{proof}
+
+\section{Promotion from native membrane to dissolving membrane}
+
+\begin{theorem}[Adequacy promotion]
+Suppose the native membrane is bounded:
+\[
+K_{LL}\preceq\Theta_Y,
+\]
+and the adequacy residual is budgeted:
+\[
+\Xi_C(D\mid L)\preceq\Xi_Z.
+\]
+Then
+\[
+\boxed{
+K_{DD}\preceq A_*\Theta_YA_*^*+\Xi_Z.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+By the Schur decomposition,
+\[
+K_{DD}=K_{DL}K_{LL}^{\dagger}K_{LD}+\Xi_C(D\mid L)=A_*K_{LL}A_*^*+\Xi_C(D\mid L).
+\]
+Substitute the two assumed Loewner bounds.
+\end{proof}
+
+\begin{corollary}[No layer-dissolving needles]
+If \(K_{LL}\preceq\Theta_Y\), \(\Xi_C(D\mid L)=0\), and \(D_0=A_*L_0\), then every dissolving recombination is priced by \(A_*\Theta_YA_*^*\).
+\end{corollary}
+
+\section{Strict extension and the chain rule}
+
+Let \(M:E\to W\) be a new native probe family and let
+\[
+L^+=\begin{bmatrix}L\\M\end{bmatrix}.
+\]
+Define conditional currencies with respect to \(L\):
+\[
+K_{MM\mid L}=K_{MM}-K_{ML}K_{LL}^{\dagger}K_{LM},
+\]
+\[
+K_{DM\mid L}=K_{DM}-K_{DL}K_{LL}^{\dagger}K_{LM},
+\]
+and similarly for adjoints.
+
+\begin{theorem}[Strict-extension chain rule]
+\[
+\boxed{
+\Xi_C(D\mid L^+)
+=
+\Xi_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^{\dagger}K_{MD\mid L}.
+}
+\]
+In particular,
+\[
+\boxed{
+\Xi_C(D\mid L^+)\preceq\Xi_C(D\mid L).
+}
+\]
+\end{theorem}
+
+\begin{proof}
+Apply the Schur complement identity twice to the block currency matrix of \((D,L,M)\): first condition on \(L\), then on the additional family \(M\) modulo \(L\).  The difference is a positive semidefinite Schur term.
+\end{proof}
+
+\begin{corollary}[Same-family saturation]
+If \(M=BL\) on the legal quotient, then
+\[
+K_{MM\mid L}=0
+\]
+and hence
+\[
+\Xi_C(D\mid L^+)=\Xi_C(D\mid L).
+\]
+Repeating or relabeling the native family does not reduce the blind spot.
+\end{corollary}
+
+\section{Predictive adequacy ladders}
+
+At stage \(j\), let
+\[
+(E_j,C_j,L_j,D_j)
+\]
+be a formed-layer record, with response transports into common spaces.  Write
+\[
+\Xi_j=\Xi_{C_j}(D_j\mid L_j).
+\]
+
+\begin{theorem}[Summable predictive adequacy]
+Suppose transported adequacy residuals satisfy
+\[
+\Xi_{j+1}\preceq (1+\varepsilon_j)B_j\Xi_jB_j^*+F_j,
+\]
+with
+\[
+\prod_j(1+\varepsilon_j)<\infty,
+\qquad
+\sum_jF_j\preceq F_\infty
+\]
+in a common response space.  Then the adequacy residuals admit a uniform predictive budget.  In particular,
+\[
+\Xi_j\preceq P_\infty(\Xi_0+F_\infty)
+\]
+whenever the transports are norm-bounded by the identity in the chosen budget geometry.
+\end{theorem}
+
+\begin{remark}
+Finite adequacy at each stage is not predictive adequacy.  Non-summable residual defects can keep every stage finite while the supremum over stages diverges.
+\end{remark}
+
+\section{Countermodels}
+
+\begin{example}[Hidden blind spot]
+Let \(E=\mathbb R^2\), \(C=I\),
+\[
+L(x_1,x_2)=x_1,
+\qquad
+D(x_1,x_2)=Mx_2.
+\]
+Then \(K_{LL}=1\), but
+\[
+\Xi_C(D\mid L)=M^2.
+\]
+The native membrane is safe, while the dissolving blind spot is arbitrarily large.
+\end{example}
+
+\begin{example}[Null-mode fake zero]
+Let \(C=\operatorname{diag}(0,1)\) and \(D(x_0,x_1)=x_0\).  The pseudoinverse expression on the null component can return a misleading zero, but the true variational capacity is infinite.  Null-mode legality is part of adequacy.
+\end{example}
+
+\begin{example}[Same-family repetition]
+If \(L^+=(L,L)\), then \(\Xi_C(D\mid L^+)=\Xi_C(D\mid L)\).  Repetition is not strict extension.
+\end{example}
+
+\section{Application templates}
+
+\subsection{Navier--Stokes}
+Native probes \(L_j\) may be energy, enstrophy, shell-localized Sobolev, or channelized feasible probes.  Dissolving probes \(D_j\) are pointwise velocity, vorticity, strain, or scale-local concentration probes.  The residual \(\Xi_{C_j}(D_j\mid L_j)\) is the blind spot between the energy ledger and blow-up control.
+
+\subsection{Root-composite RH}
+Native probes are completed carrier-visible anti-invariant character probes.  Dissolving probes are zero-side anti-invariant displacement readouts.  The residual \(\Xi\) measures zero displacement not explained by the completed explicit-formula carrier currency.
+
+\subsection{Cryptography and security}
+Native probes are declared adversary classes.  Dissolving probes are attack vectors outside the declared model.  \(\Xi\) is the security blind spot.
+
+\subsection{Logic and incompleteness}
+Native probes are formulas or derivations visible inside a theory package.  Dissolving probes are external truth predicates or formulas not represented by the package.  \(\Xi\) measures the gap between internal proof visibility and external formula visibility.
+
+\section{Nonclaims}
+
+This theory does not claim that a formed layer has no needles against undeclared probes.  It does not claim that a native membrane implies a dissolving membrane without adequacy.  It does not claim that pseudoinverse formulas are valid when probes see legal null modes.  It does not claim that repeated measurement of the same native family reduces \(\Xi\).  It claims precisely: \emph{adequacy residuals measure, and strict native-family extension can reduce, the blind-spot currency between native and layer-dissolving probe families.}
+
+\section{Conclusion}
+
+The adequacy residual \(\Xi_C(D\mid L)\) is a standalone invariant of formed-layer membrane theory.  It is the Schur complement of dissolving currency conditioned on native currency, the minimum residual energy-dual readout error, and the exact obstruction to promoting native anti-localization into layer-dissolving anti-localization.  It formalizes the statement: a layer survives as a formed layer only to the extent that its native probes see the ways it can be dissolved, or the unseen part is explicitly budgeted.
+
+\end{document}

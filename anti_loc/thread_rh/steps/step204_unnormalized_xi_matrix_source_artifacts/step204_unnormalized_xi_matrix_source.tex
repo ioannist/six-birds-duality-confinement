@@ -1,0 +1,100 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 204: Unnormalized \(\Xi_{\mathrm{matrix\_source}}\) Attempt}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_unnormalized\_partial}.}
+\]
+
+\section*{Inherited Matrix Context}
+
+Step 162 declares \(P_\eta\) as the projection onto the closed pulled
+zero-evaluator span \(H_\eta\), and \(C_\ell=(I-P_\infty)M_{m_\ell}P_\infty\).
+Step 177 records
+\[
+c_{ij}(\ell)=\langle e_i,C_\ell e_j\rangle,\qquad
+e_i=\eta_{\rho_i,0}^{1/2}/\|\eta_{\rho_i,0}^{1/2}\|,
+\]
+on \(Rho_{\rm fin}=\{\rho_1,\rho_2,\rho_3\}\), \(a_0=1/2\), \(K_{\rm fin}=\{0\}\).
+
+\section*{Unnormalized Trace Identity}
+
+Let \(\kappa_i=\kappa_{1/2,\rho_i,0}\) and
+\[
+G_{ij}=\langle \kappa_i,\kappa_j\rangle.
+\]
+Then the finite projection is
+\[
+P_\eta x=\sum_{i,j}\kappa_i(G^{-1})_{ij}\langle \kappa_j,x\rangle.
+\]
+For the full Hilbert--Schmidt residual,
+\[
+\|C_\ell P_\eta\|_{\rm HS}^2
+=\operatorname{tr}_{H_\eta}(C_\ell^*C_\ell)
+=\operatorname{tr}(G^{-1}H),
+\qquad
+H_{ij}=\langle C_\ell\kappa_i,C_\ell\kappa_j\rangle.
+\]
+Thus the full residual requires \(H\), not only
+\[
+c_{ij}=\langle\kappa_i,C_\ell\kappa_j\rangle.
+\]
+The \(c\)-only identity
+\[
+\operatorname{tr}(G^{-1}c^*G^{-1}c)
+\]
+is the Hilbert--Schmidt norm of the compressed operator
+\(P_\eta C_\ell P_\eta\).  It equals the full residual only with an additional
+range-in-\(H_\eta\) hypothesis, or if the finite diagnostic is explicitly
+defined as the compression.
+
+\section*{Gram Matrix}
+
+The Step 204 off-diagonal convention uses
+\[
+G_{ij}=K_{1/2}^{\Gamma}(\rho_j,\overline{\rho_i}),\qquad i\ne j,
+\]
+with the Step 203 L'Hopital diagonal.  Representative entries are
+\[
+G_{11}=6.661579628286\cdot10^{-10},\quad
+G_{12}=-1.913153364500\cdot10^{-13},\quad
+G_{22}=1.287139952474\cdot10^{-14},\quad
+G_{33}=2.394335172196\cdot10^{-17}.
+\]
+The nominal determinant is
+\[
+\det(G)\approx 2.10033807151\cdot10^{-40},
+\]
+and \(\|G^{-1}\|_F\approx 4.09992478506\cdot10^{16}\).  The diagonal error
+bounds inherited from Step 203 still dominate the diagonal entries.
+
+\section*{\(c\)-Matrix Attempt}
+
+The unnormalized entries are
+\[
+c_{ij}=\langle\kappa_i,(I-P_\infty)M_{m_\ell}P_\infty\kappa_j\rangle.
+\]
+The unnormalized formulation removes division by \(\sqrt{G_{ii}}\), but it
+does not remove the need for concrete boundary-line samples
+\[
+\kappa_i(\tau)=T_{1/2}^*K_{1/2}^{\Gamma}(\cdot,\rho_i)(1/2+i\tau)
+\]
+and the full \(K_\infty^{op}\) PSWF quadrature.  Burnol's \(E\)-kernel gives
+pairings and the projected reproducing kernel, but this step did not obtain a
+certified numerical \(T_a^*\)-sampling formula.
+
+\section*{Conclusion}
+
+\(\Xi_{\mathrm{matrix\_source}}\) is not decided.  The next gate is either:
+derive the full \(H_{ij}=\langle C_\ell\kappa_i,C_\ell\kappa_j\rangle\) matrix
+for the true Hilbert--Schmidt residual, or explicitly demote the finite
+diagnostic to the compressed \(P_\eta C_\ell P_\eta\) norm and compute
+\(c_{ij}\) with certified \(\kappa\)-boundary samples.
+
+\end{document}
+

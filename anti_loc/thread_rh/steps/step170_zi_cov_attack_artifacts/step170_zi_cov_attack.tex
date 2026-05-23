@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\Pinf}{P_\infty}
+\newcommand{\Psym}{\mathsf P_\infty}
+\newcommand{\Mz}{M_\zeta}
+\newcommand{\Mell}{M}
+\newcommand{\Uinf}{\mathcal U_\infty}
+\newcommand{\zetaF}{\zeta}
+\newcommand{\Chat}{\mathcal C}
+\newcommand{\Ran}{\operatorname{Ran}}
+
+\title{Step 170: Direct Attack on ZI-COV}
+\author{Six Birds Foundations III}
+\date{2026-05-15}
+
+\begin{document}
+\maketitle
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{zi\_cov\_verdict = V\_subclass\_proved}.}
+\]
+
+The full-carrier statement is not proved and not refuted. The target-equivalence
+test returns \(\texttt{not\_target\_equivalent}\) for the inherited projection,
+because the inherited \(\Pinf\) is an archimedean Sonin/prolate projection, not
+a projection onto a zeta-zero spectral region. A concrete subclass is proved:
+when the output \(\Psym\Mz G\) is supported in a zero-free region \(\Omega\)
+where \(1/\zeta\) is bounded, then
+\[
+  A_\infty^\Omega G:=M_{1/\zeta}\Psym\Mz G
+\]
+is bounded on that subclass and
+\[
+  \Psym\Mz G=\Mz A_\infty^\Omega G.
+\]
+
+\section{T1. Inherited Mellin-Side Definitions}
+
+\subsection*{Step 104: raw archimedean Sonin projection}
+
+Source:
+\[
+\texttt{/home/repos/six-birds-foundations-iii/anti\_loc/thread/step104\_shifted\_sonin\_artifacts/shifted\_sonin\_compactness\_step104.tex:25--34}.
+\]
+The exact inherited definition is:
+\[
+  H=L^2(\mathbb R),
+\]
+or the even subspace when the functional-equation grading is imposed. Let
+\(P_\lambda\) denote the spatial cutoff projection onto \([-\lambda,\lambda]\),
+and let
+\[
+  \widehat P_\lambda=\mathcal F^{-1}P_\lambda\mathcal F
+\]
+be the corresponding Fourier cutoff. The archimedean Sonin space is
+\[
+  \mathcal S_\lambda=\ker P_\lambda\cap\ker\widehat P_\lambda.
+\]
+Let \(S_\lambda\) be the orthogonal projection onto \(\mathcal S_\lambda\).
+
+\subsection*{Steps 102, 103, 162: identification with \texorpdfstring{\(P_\infty\)}{P_infty}}
+
+Step 102 states:
+\[
+  \text{\(P_\infty\) is the archimedean Sonin/prolate projection.}
+\]
+Step 103 states:
+\[
+  \text{Let \(P=P_\infty\) be the imported archimedean Sonin/prolate projection in the common response model.}
+\]
+Step 162 records:
+\[
+  \text{\(P_\infty\), archimedean/Sonin projection, Burnol/Sonine pulled-evaluator Hilbert context.}
+\]
+Thus the Mellin-side projection used in Steps 153--154 is
+\[
+  \Psym=\Uinf P_\infty\Uinf^{-1},
+\]
+the transported projection onto the Mellin realization of the archimedean
+Sonin/prolate subspace. The inherited records do not give an integral kernel
+\(K_\infty(s,s')\) for \(\Psym\), and they do not identify its range with a
+zeta-zero spectral region. The raw measure in Step 104 is Lebesgue measure on
+\(\mathbb R\); Step 153 uses Mellin boundary variables \(s=1/2+i\tau\).
+
+\subsection*{Step 119: co-Poisson convention}
+
+For legal \(g\),
+\[
+  \widehat g(s)=\int_0^\infty g(t)t^{-s}\,dt,
+\]
+\[
+  \Chat g(t)=\sum_{n\ge1}\frac{g(t/n)}{n}-\widehat g(1),
+\]
+and
+\[
+  \Mell(\Chat g)(s)=\zetaF(s)\widehat g(s).
+\]
+Therefore on the Step 169 subclass \(u=\Chat g\), writing \(G=\widehat g\),
+\[
+  F_{\Chat g}=\Mz G.
+\]
+
+\section{T2a. Direct Operator Computation}
+
+The full ZI-COV(i) target is
+\[
+  \Psym\Mz G=\Mz A_\infty G.
+\]
+If an inherited kernel \(K_\infty(s,s')\) were available, then
+\[
+  (\Psym\Mz G)(s)
+  =
+  \int K_\infty(s,s')\zetaF(s')G(s')\,d\mu(s'),
+\]
+and the condition would be
+\[
+  \zetaF(s)(A_\infty G)(s)
+  =
+  \int K_\infty(s,s')\zetaF(s')G(s')\,d\mu(s')
+  \quad\text{for all legal }G.
+\]
+The inherited records do not supply such a \(K_\infty\). They supply instead
+the abstract orthogonal projection \(\Psym=\Uinf P_\infty\Uinf^{-1}\). Hence
+the exact direct formula is
+\[
+  A_\infty^{\rm form}G
+  =
+  M_{1/\zeta}\Psym\Mz G,
+\]
+where this is a bounded legal operator exactly on domains where division by
+\(\zeta\) is controlled and the output satisfies the Burnol carrier records.
+
+\section{T2b. Target-Equivalence Test}
+
+Suppose full ZI-COV(i) holds. Then for every legal \(G\),
+\[
+  \Psym\Mz G=\Mz A_\infty G.
+\]
+Let \(\rho\) be a zeta zero in an evaluation region where the Mellin functions
+are defined. Then for all \(0\le k<m_\rho\),
+\[
+  \partial_s^k(\Psym\Mz G)(\rho)=0.
+\]
+Thus full ZI-COV implies that the projected zeta ideal is annihilated by every
+zero-evaluator jet. This is a condition on \(\Psym\):
+\[
+  Y_{\rho,k}\Psym M_\zeta=0
+  \quad\text{on the legal profile class}.
+\]
+It is not, by itself, a statement that \(\zeta\) has no zeros.
+
+The converse target-equivalence step would require an additional inherited fact:
+for each zero \(\rho\) in the projection's alleged spectral region, the family
+\(\Psym\Mz G\) can realize a nonzero \(k\)-jet at \(\rho\). No inherited
+definition of \(P_\infty\) provides this jet-surjectivity. Moreover, the exact
+definition of \(P_\infty\) is Sonin/prolate support-Fourier geometry, not a
+projection onto a zeta-zero region. Therefore:
+\[
+  \boxed{\text{TE result: not target-equivalent from inherited records}.}
+\]
+
+\section{T2c. Subclass Proof}
+
+Let \(\Omega\) be a measurable region in the Mellin boundary or typed strip
+such that
+\[
+  \|1/\zeta\|_{L^\infty(\Omega)}<\infty.
+\]
+Define the zero-free-output subclass
+\[
+  \mathcal G_\Omega
+  =
+  \{G\ \text{legal}:
+    \Psym\Mz G\ \text{is supported in }\Omega
+    \text{ and belongs to the legal Mellin carrier}\}.
+\]
+For \(G\in\mathcal G_\Omega\), set
+\[
+  A_\infty^\Omega G
+  :=
+  M_{1/\zeta}\Psym\Mz G.
+\]
+Since \(1/\zeta\) is bounded on \(\Omega\), \(A_\infty^\Omega\) is bounded on
+this subclass with the inherited Hilbert norm restricted to the output support.
+Then
+\[
+\begin{aligned}
+  \Mz A_\infty^\Omega G
+  &=
+  M_\zeta M_{1/\zeta}\Psym\Mz G
+  \\
+  &=
+  \Psym\Mz G,
+\end{aligned}
+\]
+so ZI-COV(i) holds on \(\mathcal G_\Omega\).
+
+This subclass is deliberately narrower than the full carrier. It avoids the
+unbounded division by \(1/\zeta\) near zeta zeros and therefore does not imply
+any global zero-location statement.
+
+\section{Implication for Step 169}
+
+On the Step 169 subclass \(u=\Chat g\), if \(G=\widehat g\in\mathcal G_\Omega\),
+then the first ZI-COV identity holds with
+\[
+  A_\infty=A_\infty^\Omega.
+\]
+The Step 169 conditional quotient becomes
+\[
+  \alpha_{\ell,a,\Chat g}
+  =
+  A_{T,a}\bigl(m_\ell(G-A_\infty^\Omega G)\bigr)
+\]
+only if the second covariance identity
+\[
+  T_a\Psym\Mz H=\Mz A_{T,a}H
+\]
+is also proved on the corresponding profiles. Step 170 proves only ZI-COV(i)
+on the zero-free-output subclass.
+
+\section{Nonclaim Boundary}
+
+This step does NOT prove RH. It does NOT prove \(\Xi_{\rm BC}=0\). It does not
+prove full-carrier ZI-COV. It does not affirmatively close Branch C. It does
+not promote a public Hardy shadow, finite-window computation, scalar
+\(L\)-identity, incomplete character spectrum, or Hecke comparison into the
+Burnol/Sonine carrier.
+
+\end{document}

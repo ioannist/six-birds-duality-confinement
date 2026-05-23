@@ -1,0 +1,168 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+\title{Step 120: Burnol--to--Dirichlet Shadow Asymptotic Criterion}
+\author{RATCHET RH Membrane Program}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 119 introduced the Burnol--to--Dirichlet shadow map.  A Burnol/co-Poisson atom is geometrically natural, but it is useful for the Hecke/Dirichlet source ladder only if it has a source-readable Dirichlet shadow.  This step states the exact asymptotic criterion for the shadow defect
+\[
+\delta_{BD,N}=\|(B_N-D_NA_N)G_{B,N}^{-1/2}\|
+\]
+to vanish, or, if it does not vanish, for the missed shadow subspace to be declared as a new residual.
+
+\section{Finite setup}
+Let $H_N$ be a finite response window.  Let
+\[
+B_N:Y_{B,N}\to H_N
+\]
+be the finite Burnol/co-Poisson response synthesis map, with Gram form
+\[
+G_{B,N}=B_N^*B_N.
+\]
+Let
+\[
+D_N:\mathbb C^{I_N}\to H_N
+\]
+be the declared Dirichlet-readable synthesis map.  Let $P_{D,N}$ be the orthogonal projection onto $\operatorname{Ran}D_N$.  The optimal shadow map is
+\[
+A_N=(D_N^*W_ND_N)^\dagger D_N^*W_NB_N
+\]
+for the declared window weight $W_N$; in the unweighted Hilbert model this is simply $A_N=D_N^\dagger B_N$.
+
+\begin{definition}[Burnol--to--Dirichlet shadow defect]
+The normalized shadow defect is
+\[
+\delta_{BD,N}
+=
+\|(I-P_{D,N})B_NG_{B,N}^{-1/2}\|.
+\]
+Equivalently, the shadow adequacy residual is
+\[
+\Xi_{BD,N}=B_N^*(I-P_{D,N})B_N.
+\]
+\end{definition}
+
+\begin{lemma}[Projection identity]
+One has
+\[
+B_N^*P_{D,N}B_N
+=G_{B,N}-\Xi_{BD,N}.
+\]
+Hence the source-readable visibility constant is
+\[
+c_{BD,N}=1-\delta_{BD,N}^2.
+\]
+\end{lemma}
+
+\section{Asymptotic criterion}
+Let $H$ be the completed response space.  Let $\mathcal D_N=\operatorname{Ran}D_N$ and let $P_{D,N}$ be their projections.  Let $B_N$ be an exhausting sequence of finite Burnol windows for a completed Burnol target operator $B:Y_B\to H$.
+
+\begin{theorem}[Uniform angular-gap criterion]
+Assume the finite Burnol windows exhaust the completed target in the fixed/exhaustive sense.  Then
+\[
+\delta_{BD,N}\to0
+\]
+if and only if the declared Dirichlet-readable subspaces approximate the Burnol target ranges uniformly on normalized finite windows:
+\[
+\sup_{0\ne y\in Y_{B,N}}
+\frac{\operatorname{dist}(B_Ny,\mathcal D_N)}{\|B_Ny\|}
+\to0.
+\]
+Equivalently, the operator-norm gap
+\[
+\|(I-P_{D,N})B_NG_{B,N}^{-1/2}\|
+\]
+tends to zero.
+\end{theorem}
+
+\begin{warning}[Strong convergence is not enough]
+It is not enough that $P_{D,N}\to I$ strongly on each fixed Burnol atom.  The windows $Y_{B,N}$ grow.  The needed statement is a uniform gap estimate on the whole current window, plus a tail record.
+\end{warning}
+
+\begin{theorem}[Missed-shadow residual]
+Suppose the projections $P_{D,N}$ converge strongly to $P_D$, the projection onto the completed Dirichlet-readable closure $\mathcal D$.  Then any nonzero limiting defect is exactly
+\[
+\Xi_{BD}=B^*(I-P_D)B.
+\]
+If
+\[
+\Xi_{BD}\ne0,
+\]
+then the hybrid route has a Burnol-to-Dirichlet readability blind spot.  This blind spot must be source-absorbed, compact/tail-promoted, or declared as a scoped nonclaim.
+\end{theorem}
+
+\section{Regularized shadow requirement}
+Burnol's co-Poisson/Müntz formula gives the native target
+\[
+M(\mathcal Cg)(s)=\zeta(s)\widehat g(s).
+\]
+However, ordinary Dirichlet series for $\zeta(s)$ converge only in the half-plane $\operatorname{Re}s>1$.  Therefore, on critical-line response windows, a lawful shadow map cannot be merely a naive partial sum
+\[
+\sum_{n\le X}n^{-s}.
+\]
+It must be a declared regularized shadow, for example through co-Poisson/Müntz synthesis, approximate functional equations, smoothed Euler products, or another audited response-space approximation.
+
+\begin{definition}[Regularized Dirichlet-readable shadow]
+A Dirichlet-readable shadow family is accepted if the maps $D_NA_N$ are produced from declared arithmetic/refinement rules and satisfy
+\[
+\|(B_N-D_NA_N)G_{B,N}^{-1/2}\|\le \delta_{BD,N}
+\]
+with a stated asymptotic status: vanishing, bounded below one, compact/tail, or nonzero blind sector.
+\end{definition}
+
+\section{Hybrid source consequence}
+Let $\epsilon_{B,N}$ be the Burnol geometric exhaustion defect for the residual sector, and let $\delta_{BD,N}$ be the Dirichlet shadow defect.  Then
+\[
+\epsilon_{\mathrm{hyb},N}\le \epsilon_{B,N}+\delta_{BD,N}
+\]
+and hence
+\[
+c_{\mathrm{hyb},N}\ge 1-(\epsilon_{B,N}+\delta_{BD,N})^2.
+\]
+If the Hecke/Dirichlet source Gram satisfies
+\[
+G_{\mathcal X,N}\succeq \gamma_NH_N,
+\]
+then the effective residual source strength obeys
+\[
+\Lambda_{R,N}=\gamma_Nc_{\mathrm{hyb},N}.
+\]
+Thus the route needs
+\[
+\gamma_Nc_{\mathrm{hyb},N}\to\infty
+\]
+after fixed/exhaustive tail promotion.
+
+\section{Status trichotomy}
+The Burnol-to-Dirichlet bridge now has three lawful outcomes.
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{Shadow complete.}  $\delta_{BD,N}\to0$.  Then Burnol visibility becomes Dirichlet/Hecke-readable.
+\item \textbf{Positive floor.}  $\delta_{BD,N}$ does not vanish, but $\epsilon_{B,N}+\delta_{BD,N}<1$ quantitatively.  Then the source route may still close if $\gamma_Nc_{\mathrm{hyb},N}\to\infty$.
+\item \textbf{Blind shadow sector.}  $\Xi_{BD}=B^*(I-P_D)B\ne0$ and the lower bound for $c_{\mathrm{hyb},N}$ collapses.  Then the missed shadow sector needs a separate source-frame record or must become a nonclaim.
+\end{enumerate}
+
+\section{Conclusion}
+The active gate is no longer a vague readability question.  It is the angular-gap estimate
+\[
+\|(I-P_{D,N})B_NG_{B,N}^{-1/2}\|\to0
+\]
+or its exact residual replacement
+\[
+\Xi_{BD}=B^*(I-P_D)B.
+\]
+The next construction should derive a lawful regularized Dirichlet shadow family from the co-Poisson/Müntz formula, rather than using naive critical-line Dirichlet partial sums.
+\end{document}

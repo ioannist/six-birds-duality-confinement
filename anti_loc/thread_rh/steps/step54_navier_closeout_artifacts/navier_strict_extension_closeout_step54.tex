@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+
+\title{Step 54: Navier Strict-Extension Adequacy Mechanisms and Closeout}
+\author{Anti-Localization / Formed-Layer Membrane Theory}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose and scope}
+This note closes the Navier--Stokes aside at the level appropriate for the formed-layer membrane paper. It is not a Navier--Stokes regularity proof and it is not a Six Birds simulation. Its purpose is to classify, in the language of the adequacy residual
+\[
+\Xi_C(D\mid L),
+\]
+which lawful strict extensions could reduce the blind spot between native energy/enstrophy ledgers and layer-dissolving blow-up probes.
+
+The conclusion is that classical energy and enstrophy are not adequate for pointwise blow-up probes in three dimensions. A Navier membrane proof must therefore supply one of several explicit strict-extension records: higher-order coercive audit, channelized feasible carrier, parabolic smoothing with source-admission, geometric/nonlinear source constraint, or an honest scoped nonclaim.
+
+\section{Navier membrane setup}
+At a scale or shell level $j$, let
+\[
+E_j
+\]
+be the exact packaged flow carrier, for example a divergence-free shell carrier or a finite Galerkin/shell package after all constraints are declared. Let
+\[
+C_j\succeq0
+\]
+be the audit energy, such as energy, enstrophy, dissipation, or a stronger Sobolev audit. Let
+\[
+L_j:E_j\to Y_j
+\]
+be the native probe family supplied by the formed flow layer, and let
+\[
+D_j:E_j\to Z_j
+\]
+be the layer-dissolving probe family, such as pointwise velocity, vorticity, strain, gradient, or local blow-up-rate probes.
+
+On the legal quotient $(\ker C_j)^\perp$, define
+\[
+\Xi_{C_j}(D_j\mid L_j)
+=
+K_{DD,j}-K_{DL,j}K_{LL,j}^{\dagger}K_{LD,j}.
+\]
+This is the blind-spot currency of the blow-up probes after conditioning on the native flow probes.
+
+\section{Sobolev scaling obstruction}
+On $\mathbb T^d$ with Fourier cutoff $N$, let
+\[
+C_{s,N}e_k=(1+|k|^2)^s e_k
+\]
+and let $D_{q,x,N}$ be a pointwise derivative probe of order $q$. Then
+\[
+\operatorname{Cap}_{s,N}(D_q)
+=\sum_{|k|\le N}\frac{|k|^{2q}}{(1+|k|^2)^s}.
+\]
+
+\begin{proposition}[Sobolev blow-up probe threshold]
+As $N\to\infty$,
+\[
+\operatorname{Cap}_{s,N}(D_q)<\infty \text{ uniformly in }N
+\]
+if and only if
+\[
+s>q+\frac d2.
+\]
+At the endpoint the capacity grows logarithmically, and below the endpoint it grows like
+\[
+N^{d+2q-2s}.
+\]
+\end{proposition}
+
+\begin{corollary}[Three-dimensional obstruction]
+For $d=3$, pointwise velocity probes require $s>3/2$, and pointwise gradient/vorticity/strain probes require
+\[
+s>5/2.
+\]
+Thus the standard energy audit $s=0$ and enstrophy/dissipation audit $s=1$ are not adequate for pointwise blow-up probes.
+\end{corollary}
+
+\section{Strict-extension mechanisms}
+\subsection{Native-family extension}
+If a strict extension adds native probes
+\[
+M_j:E_j\to W_j,
+\qquad
+L_j^+=\begin{bmatrix}L_j\\ M_j\end{bmatrix},
+\]
+then
+\[
+\Xi_{C_j}(D_j\mid L_j^+)
+=
+\Xi_{C_j}(D_j\mid L_j)
+-
+K_{DM\mid L,j}K_{MM\mid L,j}^{\dagger}K_{MD\mid L,j}.
+\]
+Hence
+\[
+\Xi_{C_j}(D_j\mid L_j^+)\preceq \Xi_{C_j}(D_j\mid L_j).
+\]
+The blind spot decreases strictly only when the new native probes see the old residual.
+
+\subsection{Higher-order coercive audit}
+A stronger audit can bound the blow-up probes if it supplies the Sobolev threshold $s>q+d/2$ or an equivalent source-frame inequality
+\[
+C_j^+\succeq \lambda_jD_j^*\Theta_D^{-1}D_j.
+\]
+Then
+\[
+D_j(C_j^+)^{\dagger}D_j^*\preceq \lambda_j^{-1}\Theta_D.
+\]
+This is proof-strengthening only if the stronger audit is lawfully available from the flow closure. Adding an artificial high-order audit is not a Navier proof.
+
+\subsection{Channelized feasible carrier}
+If the exact flow carrier restricts feasible states to a channelized subcarrier
+\[
+\mathcal F_j=\operatorname{Ran}\Gamma_j
+\]
+with lower frame/energy bounds and delocalized channels, then pointwise probes may be controlled even when the ambient Sobolev audit is too weak. This is a genuine strict-extension mechanism only if the channelization is produced by the lawful dynamics or closure, not imposed post hoc.
+
+\subsection{Parabolic smoothing bridge}
+For the heat semigroup,
+\[
+\|\nabla^q e^{\tau\nu\Delta}u\|_{L^\infty}
+\lesssim
+\tau^{-\frac{q+d/2-s}{2}}\|u\|_{H^s}.
+\]
+This supplies a lagged smoothing bridge for $\tau>0$, but it does not by itself control instantaneous blow-up as $\tau\downarrow0$. It becomes a membrane mechanism only with source-admission and predictive transport records preventing nonlinear refocusing from reopening the blind spot.
+
+\subsection{Nonlinear source-admission and geometric constraints}
+Vorticity alignment, depletion of vortex stretching, pressure cancellation, or scale-local flux restrictions may reduce $\Xi$ only if they are expressed as an adequacy residual bound
+\[
+D_j=A_jL_j+R_j,
+\qquad
+R_jC_j^{\dagger}R_j^*\preceq \Xi_j,
+\]
+with predictive control of $\Xi_j$. Without this residual inequality, they are support evidence, not membrane proof.
+
+\subsection{Scoped nonclaim / gating}
+Restricting to a class already known to have stronger regularity, such as a high-Sobolev or Besov class, can produce a valid scoped membrane. It does not prove full Navier regularity unless the dynamics lawfully keeps all solutions in that class.
+
+\section{Navier strict-extension adequacy theorem}
+\begin{theorem}[Navier membrane obligation theorem]
+Let $(E_j,C_j,L_j,D_j,\Gamma_j,R_j)$ be a formed predictive flow-layer record. Suppose:
+\begin{enumerate}
+\item the native membrane is accepted:
+\[
+K^L_j\preceq\Theta^L_j;
+\]
+\item the blow-up adequacy residual is controlled:
+\[
+\Xi_{C_j}(D_j\mid L_j)\preceq\Xi^D_j;
+\]
+\item the induced dissolving budget satisfies, after response transport,
+\[
+R_j\left(A_{*,j}\Theta^L_jA_{*,j}^*+\Xi^D_j\right)R_j^*\preceq\Theta^D
+\]
+for a common predictive budget $\Theta^D$;
+\item all-six channel records are accepted, including null-mode legality, route-union honesty, packaging/canonicalization, predictive transport, and audit/currency records.
+\end{enumerate}
+Then no declared layer-dissolving Navier probe has a predictive native needle:
+\[
+\sup_j\operatorname{Cap}_{C_j}(y^*R_jD_j;E_j)\le y^*\Theta^D y
+\qquad(y\in Z).
+\]
+\end{theorem}
+
+\begin{remark}[Nonclaim]
+The theorem does not prove Navier regularity. It states the exact membrane obligation a Navier proof must earn. Classical energy/enstrophy estimates alone fail the adequacy requirement for pointwise blow-up probes in dimension three.
+\end{remark}
+
+\section{Closeout for the present paper}
+For the formed-layer membrane manuscript, Navier should be treated as a sanity-check application and obligation map. The main paper should not pursue a Navier proof. The load-bearing general object is the adequacy residual $\Xi_C(D\mid L)$, not any specific PDE calculation.
+
+\end{document}

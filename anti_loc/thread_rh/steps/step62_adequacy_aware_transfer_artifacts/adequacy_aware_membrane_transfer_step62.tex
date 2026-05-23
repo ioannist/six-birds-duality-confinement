@@ -1,0 +1,220 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\Rng}{\operatorname{Ran}}
+\newcommand{\Null}{\operatorname{Ker}}
+\newcommand{\XiC}{\Xi_C}
+\newcommand{\Km}{\mathsf K}
+\newcommand{\pre}{\preceq}
+
+\title{Step 62: Adequacy-Aware Membrane Transfer}
+\author{Six Birds / Formed-Layer Membrane Theory Working Note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The formed-layer membrane paper proves transfer of native membrane currency.  The companion $\Xi$-paper proves transfer of adequacy residuals.  This note combines them:
+\[
+\text{native membrane}+\Xi\text{-adequacy}+\text{lawful bridge}
+\Longrightarrow
+\text{transferred layer-dissolving membrane with explicit defects}.
+\]
+
+\section{Legal quotient conventions}
+Let $E$ be a finite-dimensional Hilbert space and $C=C^*\succeq0$.  Work on the legal energy quotient
+\[
+E_C=(\Null C)^\perp,
+\qquad
+C_0=C|_{E_C}>0.
+\]
+Probe families are finite-budget eligible only when they annihilate $\Null C$.  After quotienting, we suppress the subscript $0$.
+
+For native probes $L:E_C\to Y$ and layer-dissolving probes $D:E_C\to Z$, define
+\[
+K_{LL}=LC^{-1}L^*,\qquad
+K_{DL}=DC^{-1}L^*,\qquad
+K_{DD}=DC^{-1}D^*.
+\]
+The adequacy residual is
+\[
+\boxed{
+\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^{\dagger}K_{LD}.
+}
+\]
+
+\section{Native membrane plus adequacy implies dissolving membrane}
+
+\begin{theorem}[Adequacy promotion]
+Suppose
+\[
+K_{LL}\pre \Theta_Y,
+\qquad
+\Xi_C(D\mid L)\pre \Omega_Z.
+\]
+Let
+\[
+A_*=K_{DL}K_{LL}^{\dagger}.
+\]
+Then
+\[
+\boxed{
+K_{DD}\pre A_*\Theta_YA_*^*+\Omega_Z.
+}
+\]
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[
+K_{DD}=K_{DL}K_{LL}^{\dagger}K_{LD}+\Xi_C(D\mid L)
+=A_*K_{LL}A_*^*+\Xi_C(D\mid L).
+\]
+The two assumed inequalities give the result.
+\end{proof}
+
+\section{Exact adequacy-aware bridge}
+Let $(E,C,L,D)$ be a source record and $(E',C',L',D')$ a target record.  A state bridge is a map
+\[
+P:E'\to E.
+\]
+Assume an energy comparison
+\[
+C'\succeq \beta P^*CP,
+\qquad \beta>0.
+\]
+Assume target native probes contain the transported source native probes:
+\[
+L'=\begin{bmatrix}ALP\\M'\end{bmatrix},
+\]
+where $A:Y\to Y'$ and $M'$ is additional native information.  Let the target dissolving probe be exact:
+\[
+D'=BDP.
+\]
+
+\begin{theorem}[Exact adequacy-aware membrane transfer]
+Under the preceding hypotheses,
+\[
+\boxed{
+\Xi_{C'}(D'\mid L')\pre \beta^{-1}B\Xi_C(D\mid L)B^*.
+}
+\]
+Consequently, if the source has
+\[
+K_{LL}\pre\Theta_Y,
+\qquad
+\Xi_C(D\mid L)\pre\Omega_Z,
+\]
+then the target obtains a native transferred budget for the transported source component and an adequacy budget
+\[
+\Xi_{C'}(D'\mid L')\pre \beta^{-1}B\Omega_ZB^*.
+\]
+Combining these with target native membrane records yields a target layer-dissolving membrane by adequacy promotion.
+\end{theorem}
+
+\begin{proof}
+Conditioning on $L'=[ALP;M']$ is stronger than conditioning on $ALP$, so
+\[
+\Xi_{C'}(D'\mid L')\pre \Xi_{C'}(D'\mid ALP).
+\]
+The energy comparison $C'\succeq\beta P^*CP$ scales transported capacities and Schur residuals by at most $\beta^{-1}$.  Since $D'=BDP$, exact $\Xi$ transfer gives
+\[
+\Xi_{C'}(BDP\mid ALP)\pre \beta^{-1}B\Xi_C(D\mid L)B^*.
+\]
+Combining the two inequalities proves the claim.
+\end{proof}
+
+\section{Defective dissolving bridges}
+The realistic bridge has a dissolving residual:
+\[
+D'=BDP+R_D.
+\]
+
+\begin{theorem}[Defective adequacy-aware transfer]
+Assume
+\[
+C'\succeq\beta P^*CP,
+\qquad
+L'=\begin{bmatrix}ALP\\M'\end{bmatrix},
+\qquad
+D'=BDP+R_D.
+\]
+Then for every $t>0$,
+\[
+\boxed{
+\Xi_{C'}(D'\mid L')
+\pre
+(1+t)\beta^{-1}B\Xi_C(D\mid L)B^*
++(1+t^{-1})\Xi_{C'}(R_D\mid ALP).
+}
+\]
+\end{theorem}
+
+\begin{proof}
+It suffices to condition on $ALP$.  Write $D'_0=BDP$.  In the projection representation
+\[
+\Xi(D\mid L)=T_D(I-P_L)T_D^*,
+\]
+apply the positive semidefinite Cauchy inequality to $T_{D'_0}+T_{R_D}$:
+\[
+(X+Y)(I-P)(X+Y)^*\pre (1+t)X(I-P)X^*+(1+t^{-1})Y(I-P)Y^*.
+\]
+The first term is bounded by exact transfer and the second is $\Xi_{C'}(R_D\mid ALP)$.
+\end{proof}
+
+\section{Predictive adequacy-aware propagation}
+At stage $j$, let
+\[
+K^L_j\pre\Theta^Y_j,
+\qquad
+\Xi_j:=\Xi_{C_j}(D_j\mid L_j)\pre\Omega^Z_j.
+\]
+A bridge $j\to j+1$ is adequacy-aware if it supplies declared positive maps and defects such that
+\[
+K^L_{j+1}\pre \mathcal T_j(K^L_j)+E^L_j,
+\qquad
+\Xi_{j+1}\pre \mathcal S_j(\Xi_j)+E^\Xi_j.
+\]
+
+\begin{theorem}[Predictive layer-dissolving membrane propagation]
+If budgets satisfy
+\[
+\mathcal T_j(\Theta^Y_j)+E^L_j\pre\Theta^Y_{j+1},
+\qquad
+\mathcal S_j(\Omega^Z_j)+E^\Xi_j\pre\Omega^Z_{j+1},
+\]
+then native membrane and adequacy propagate:
+\[
+K^L_j\pre\Theta^Y_j,
+\quad
+\Xi_j\pre\Omega^Z_j
+\Longrightarrow
+K^L_{j+1}\pre\Theta^Y_{j+1},
+\quad
+\Xi_{j+1}\pre\Omega^Z_{j+1}.
+\]
+Consequently the layer-dissolving membrane propagates through adequacy promotion.
+\end{theorem}
+
+\section{Public-shadow warning}
+For a public readout $F:Z\to Z_{\rm pub}$,
+\[
+\Xi_C(FD\mid L)=F\Xi_C(D\mid L)F^*.
+\]
+Thus intrinsic adequacy descends to public shadows.  The converse is false without reconstruction and residual accounting.  Small public $\Xi$ can hide arbitrarily large intrinsic blind spots.
+
+\section{Gate summary}
+An adequacy-aware membrane transfer requires: source native membrane, source adequacy budget, bridge energy comparison, native coverage, dissolving bridge, residual adequacy budget, target native membrane, all-six status records, and an explicit nonclaim boundary.
+
+\end{document}

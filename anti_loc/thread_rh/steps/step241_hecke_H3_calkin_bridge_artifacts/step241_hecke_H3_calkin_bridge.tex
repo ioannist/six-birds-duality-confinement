@@ -1,0 +1,68 @@
+\section*{Step 241: Hecke H3 Calkin Bridge}
+
+\subsection*{H3 Specification}
+
+The Hecke H3 gate asks for a Calkin algebra on the completed Hecke carrier,
+\[
+A_{\eta,\mathrm{Hecke}}
+  = C^*(P_{\mathrm{Hecke}},M_{\mathrm{Hecke}},P_{\eta,\mathrm{Hecke}},I)
+  \subset B(H_{\mathrm{Hecke}}),
+\]
+with
+\[
+K_{\eta,\mathrm{Hecke}}
+  = A_{\eta,\mathrm{Hecke}}\cap K(H_{\mathrm{Hecke}}),
+\qquad
+q_{\eta,\mathrm{Hecke}}:A_{\eta,\mathrm{Hecke}}\to
+A_{\eta,\mathrm{Hecke}}/K_{\eta,\mathrm{Hecke}}.
+\]
+It also asks for a carrier-faithful bridge between this Hecke quotient and the
+Burnol/Sonine quotient from step 162.
+
+\subsection*{Inherited Records}
+
+Step 162 defines the Burnol/Sonine Calkin context
+\[
+A_\eta=C^*(P_\infty,M_{m_\ell},P_\eta,I),
+\qquad
+K_\eta=A_\eta\cap K(H),
+\]
+with active object \(q_\eta(C_\ell P_\eta)\). But step 162 leaves the faithful
+symbol, normal form, lower-faithfulness, and compact remainder as open external
+proof obligations.
+
+Step 167 names H3 as a Hecke Calkin bridge with status
+\(\texttt{split\_external\_theorem}\). Step 168 records H6
+non-comparability, so scalar \(L_{\mathbb Q}(s,1)=\zeta(s)\) cannot identify
+Hecke and Burnol/Sonine carriers or Calkin quotients. Step 211 then attempts
+the RH-side Calkin symbol and returns
+\[
+\texttt{V\_branch\_A\_calkin\_symbol\_not\_faithful}.
+\]
+
+\subsection*{No-Go Discipline}
+
+H3 cannot use auxiliary GRH, finite character windows, or scalar L-function
+identity as a substitute for a completed Hecke Calkin theorem. Finite-window
+Calkin blindness and public-shadow non-promotion also remain active.
+
+\subsection*{Literature Audit}
+
+Bost-Connes constructs Hecke \(C^*\)-algebras and a quantum statistical
+mechanical system. Laca-Raeburn and related work analyze semigroup crossed
+products, faithful representations, and ideal structures of Bost-Connes
+Hecke algebras. Connes-style adelic noncommutative geometry supplies
+operator-algebraic number-theoretic systems. General Toeplitz/Calkin theory
+supplies abstract quotient methods.
+
+These sources are relevant but insufficient: none supplies the cascade-specific
+completed Hecke adequacy Calkin quotient, faithful boundary symbol, normal form
+with compact remainder, and accepted bridge to the Burnol/Sonine quotient.
+
+\subsection*{Verdict}
+
+\[
+\texttt{V\_hecke\_H3\_blocked\_external}.
+\]
+
+H3 is not derivable from inherited records.

@@ -1,0 +1,2632 @@
+arXiv:1105.1176v1 [math.NT] 5 May 2011
+
+ASYMPTOTIC LARGE SIEVE
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+Abstract. Motivated by applications to the study of L-functions, we develop an asymptotic
+version of the large sieve inequality for linear forms in primitive Dirichlet characters.
+
+1. Introduction
+Before stating our goal and the main results we shall discuss several points which highlight
+the essence of the Asymptotic Large Sieve versus the classical Large Sieve Inequality.
+Given a sequence of complex numbers A = (an ) of some significance in analytic number
+theory we often need to know if and how much does there exist a cancellation in the sum
+X
+an
+n≤N
+
+which is due to the variation in the arguments of its terms? For example, if an = µ(n) is the
+Möbius function we expect that
+X
+µ(n) ≪ N 1/2+ε
+n≤N
+
+which bound is equivalent to the Riemann Hypothesis for
+Y
+X
+(1 − p−s )−1 .
+n−s =
+ζ(s) =
+p
+
+n
+
+In other words the RH implies that the series
+X
+ζ(s)−1 =
+µ(n)n−s
+n
+
+converges and does not vanish in the complex half plane ℜs > 1/2. Today we know weaker
+estimates, nevertheless very useful ones, such as
+X
+p
+(1.1)
+µ(n) ≪ X exp (− log X).
+n≤X
+
+It is a popular view that the Möbius function changes sign quite randomly. Indeed we
+expect the twisted sum
+X
+µ(n)an
+n≤X
+
+with quite general coefficients retains a considerable cancellation, of course with obvious exceptions such like twisting against itself or cutting the support of µ(n) in a combinatorial
+fashion as in the sieve theory.
+Loosely speaking the Riemann Hypothesis for L-functions ensures cancellation in relevant
+sums which is in the order of magnitude equal to the square-root of the number of summation
+1
+
+2
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+terms. In analytic number theory this point of view on the RH is most enlightening because
+it offers a guideline on to how much cancellation one can rely on when handling sums of
+randomly chosen sequences. The rule of thumb tells us it should be the square-root of the
+number of terms, but definitely not more. Indeed the L-functions do have zeros on the critical
+line ℜs = 1/2 which set the limit in question. How many critical zeros are there is the question
+which has drawn us in the first place to the development of the ALS in this paper (see [CIS]).
+Although in practice we investigate a specific sequence A = (an ), its structure is often so
+complicated that it leaves us no other option than to regard an as any given numbers. How in
+such a scenario could anyone hope to produce a cancellation? Obviously this is not possible
+for the individual sequence A. But when processing a problem at hand in analytic number
+theory one applies to A a family of suitable “harmonics”, say χ’s, and the issue of cancellation
+extends to the family of twisted sequences Aχ = (an χ(n)). Think of the Dirichlet idea of
+twisting prime numbers by multiplicative characters χ (mod q) in order to capture primes in
+an arithmetic progression p ≡ a (mod q) with (a, q) = 1.
+In this paper we choose the family of primitive characters not only of a fixed conductor q,
+but more effectively we also let q vary over a large segment. Since A = (an ) is fixed, it cannot
+be biased to many characters χ(n) because the vectors [. . . , χ(n), . . .] are almost orthogonal.
+Therefore the twisted sums
+X
+(1.2)
+an χ(n)
+n≤N
+
+enjoy a considerable cancellation for almost all characters. Let us call χ a “singular” character
+for A = (an ) if the twisted sum (1.2) does not show a significant cancellation. In real life the
+number of singular characters with respect to a given sequence A is fixed by the degree of the
+corresponding zeta function
+X
+an n−s .
+ζA (s) =
+n
+
+For example, if ζA (s) = ζ(s)g then the principal character is the only singular one. If ζA (s) =
+ζK (s) is the zeta function of an abelian number field K of degree g, then A admits exactly
+g singular characters. If ζA (s) = L(s, f ) or L(s, sym2 f ) where f is a Hecke cusp form on
+SL2 (Z), then no character is singular. These series have Euler products of degree g = 2 or
+g = 3 respectively. Finally if ζA (s) = ζ(s)−1 then no character is singular.
+Using the orthogonality formula
+
+X
+1
+1 if m = n (mod q)
+χ(m)χ(n) =
+(1.3)
+0 otherwise
+ϕ(q)
+χ ( mod q)
+
+which is valid for (mn, q) = 1, one quickly shows that for any complex numbers an
+X
+X
+X
+2
+|an |2 .
+an χ(n) ≤ (q + N )
+n≤N
+
+χ ( mod q) n≤N
+
+This easy result is quite interesting, it exhibits the law of a square-root of cancellation as soon
+as the family of characters is large enough. Indeed, by Cauchy’s inequality applied to every
+single sum one gets
+X
+X
+2
+an χ(n) ≤ N
+|an |2
+n≤N
+
+n≤N
+
+ASYMPTOTIC LARGE SIEVE
+
+3
+
+whereas the averaging over χ (mod q) shows that the whole factor N in the above trivial
+estimation can be saved, provided q ≫ N .
+The classical Large Sieve Inequality for primitive characters reveals a much stronger property of orthogonality, it asserts that
+X∗ X
+X
+X q
+2
+an χ(n) ≤ (Q2 + N )
+|an |2 .
+(1.4)
+ϕ(q)
+q≤Q
+
+χ ( mod q) n≤N
+
+n≤N
+
+The superscript ∗ indicates that the summation runs over primitive characters. Without this
+restriction, the inequality (1.4) √
+would be obviously false. Here the saving of factor N occurs
+much sooner, that is if Q ≫ N . Yes, to achieve this effect one still needs a family of
+respectful size, however of a lot smaller conductor and this is the key attraction of the LSI.
+The power of the LSI is so huge that it is capable to produce results which can compete
+with those obtainable by the Generalised Riemann Hypothesis for the Dirichlet L-functions.
+Actually the LSI is more versatile a tool than the GRH, the point being that it works for
+general sequences A = (an ) while the latter only for coefficients of L-functions, that is no
+additional structure of A = (an ) in (1.4) is required. Moreover, (1.4) also holds for sums
+restricted to any interval M < n ≤ M + N of length N ≥ 1, regardless where it is located
+X∗
+X
+X
+X q
+2
+|an |2
+an χ(n) ≤ (Q2 + N )
+(1.5)
+ϕ(q)
+q≤Q
+
+M <n≤M +N
+
+χ ( mod q) M <n≤M +N
+
+(cf. Theorem 7.13 of [IK]). We have also the Hybrid Large Sieve Inequality due to P. X.
+Gallagher (cf. Theorem 7.17 of [IK]),
+X X∗ Z T X
+X
+2
+(1.6)
+an χ(n)nit dt ≤ (Q2 T + N )
+|an |2 .
+q≤Q χ( mod q) −T
+
+n≤N
+
+n≤N
+
+As a matter of fact (1.6) follows from (1.5) by smoothing in t, squaring out, and splitting the
+resulting sum of am an χ(m)χ(n)(m/n)it into short segments.
+A slightly more ready to use estimate can be derived from (1.4) for bilinear forms of type
+X X∗ X X
+(1.7)
+am bn F (m, n)χ(m)χ(n)
+q≤Q χ ( mod q) m
+
+n
+
+where A = (an ), B = (bn ) are any sequences of complex numbers and F (x, y) is a nice smooth
+function supported in the box [1, M ] × [1, N ]. For example, suppose the Mellin transform of
+F (x, y) satisfies
+ZZ
+−2
+(1.8)
+(2π)
+|Fb(iu, iv)|dudv ≤ L(M, N ).
+
+Then separating the variables m, n in (1.7) by Mellin’s inversion and applying Cauchy’s inequality one shows that (1.7) is bounded by
+1/2
+1/2  X
+X
+|bn |2
+.
+|an |2
+(1.9)
+L(M, N )(Q2 + M )1/2 (Q2 + N )1/2
+n≤M
+
+n≤N
+
+The separation of variables is not expensive since (1.8) is often quite small
+L(M, N ) ≪ (log 2M )(log 2N ).
+
+4
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+The terminology “Large Sieve” has been used in the literature for seventy years, originating
+from Yu. V. Linnik’s work [Lin]. Subsequently the method has been modified and generalized
+to the extent that the trace of sieve genes is no longer recognizable. Our goal is to develop the
+“Asymptotic Large Sieve” which gives a more precise asymptotic formula for special bilinear
+forms in place of general upper bounds like (1.9). At this point we feel it is appropriate to
+call any result of type (1.4) a “Large Sieve Inequality” and we are going to explain how this
+extra word “Inequality” addresses the essence of the results.
+Yes, the upper bound (1.4) is almost best possible, but it is not perfect; for one reason the
+number of characters in the family is smaller than Q2 by a constant factor. Some applications
+are sensitive to constant factors, so losing the true cardinality of the family is not acceptable.
+On the other hand there is no chance to turn the LSI into an asymptotic formula by refining
+standard arguments. Every known approach makes an appeal in one way or another to the
+duality principle for bilinear forms, hence no chance to maintain asymptotic values. This
+seemingly little sacrifice, nevertheless makes the duality arguments so powerful.
+To get a better understanding of what is at stake, let us examine the Large Sieve Inequality
+with additive characters
+ an  2
+X
+X X∗ X
+≤ (Q2 + N )
+|an |2 .
+(1.10)
+an e
+q
+q≤Q a ( mod q) n≤N
+
+n≤N
+
+By the way (1.4) follows from (1.10) by using Gauss sums. Here the dual form of (1.10) asserts
+that
+ an  2
+X X X∗
+X X∗
+(1.11)
+≤ (Q2 + N )
+γa/q e
+|γa/q |2 .
+q
+n≤N
+
+q≤Q a ( mod q)
+
+q≤Q a ( mod q)
+
+for any complex numbers γa/q . Be aware that this equivalence requires testing (1.10) for all
+vectors [. . . , an , . . .] versus (1.11) for all vectors [. . . , γa/q , . . .], not just a few chosen ones.
+Therefore, during the passage through duality one has no access to special features of the
+sequence A = (an ) which might be usable, but are discarded.
+Next, due to positivity, the dual from (1.11) can be smoothed in n before squaring out
+and changing the order of summation. The benefit of such procedure is that one can execute
+the summation over integers n quite precisely, because all integers in an interval are evenly
+spaced. If one treats (1.10) directly then a problem occurs with the distribution of the rational
+points a/q modulo one. These points are well-spaced (the consecutive gaps are ≥ Q−2 ), but
+not evenly. Therefore some levelling and smoothing is necessary, which operations create the
+source where the cardinality factor is lost. Had one decided to control the gaps between the
+points a/q, then the most adequate tool for the job would have been the spectral analysis on
+the modular surface, which is in a different league than that on R. Fortunately a little use of
+the Möbius function does the job adequately.
+As explained above we have to quit the robust duality ideas and start treating the bilinear
+form (1.7) directly. Therefore, from the very beginning the positivity aspect does not rule the
+show. The success comes at the price that the coefficients an , bn are no longer arbitrary. Our
+conditions will be imposed gradually to keep the intermediate results as general as we can.
+The results of this paper are used in [CIS] to obtain lower bounds for the proportion of
+simple zeros on the critical line of families of twists of GL1 , GL2 and GL3 L-functions.
+
+ASYMPTOTIC LARGE SIEVE
+
+5
+
+ACKNOWLEDGEMENTS. These works were begun at AIM in 1998 and continued over
+the years at AIM, Rutgers, IAS, Stanford, Bristol, and MSRI. We gratefully acknowledge the
+support of all of these institutions. This work was also supported in part by grants from the
+National Science Foundation.
+2. General Results
+Our objective is to evaluate asymptotically the bilinear form
+X Ψ(q/Q) X∗ X X
+am bn F (m, n)χ(m)χ(n)
+(2.1)
+SS(A × B) =
+ϕ(q)
+m n
+q
+χ ( mod q)
+
+for two sequences A = (am ), B = (bn ) of complex numbers which will be specialized in due
+course. Here the conductor q is restricted by a smooth function Ψ of compact support in
+R+ , so q ≍ Q, and Q is a large parameter. Such a smooth cut-off makes no difference in
+applications, yet it helps in technical arguments.
+The function F (x, y) is assumed to be smooth and supported in a square box
+(2.2)
+
+1 ≤ x, y ≤ N,
+
+N ≥ 2.
+
+We assume that
+(2.3)
+
+xi y j |F (i,j) (x, y)| ≤ 1,
+
+if 0 ≤ i, j ≤ 2.
+
+Sometimes we need the variables m, n to run independently, so they need to be separated in
+F (m, n). To this end one can use the Mellin inversion technique, that is we write
+II
+Fb(u, v)x−u y −v dudv
+F (x, y) =
+with
+
+Fb(u, v) =
+
+ZZ
+
+F (x, y)xu−1 y v−1 dxdy.
+
+We may only need the Mellin transform Fb on the purely imaginary lines. Then (2.3) yields
+(by partial integration)
+(2 log N )2
+|Fb(iu, iv)| ≤
+(1 + u2 )(1 + v 2 )
+for u, v real, hence
+ZZ
+|Fb (iu, iv)|dudv ≤ (2π log N )2 .
+
+We shall make some modifications of F (x, y) in Section 9.
+Next we put some growth conditions for the coefficients. We assume
+(2.4)
+
+|am | ≤ m−1/2 τ (m)A ,
+
+|bn | ≤ n−1/2 τ (n)A .
+
+Note that these conditions do not limit very much the applicability of results. If one has
+apparently weaker conditions am ≪ mε−1/2 , bn ≪ nε−1/2 , then a re-normalization by factor
+N ε brings them down to (2.4) while the error term in the obtained asymptotic formula gets
+worse by the factor N ε .
+
+6
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+In applications our coefficients appear as the convolution
+1 X
+λ(l)ρ(r)
+(2.5)
+am = √
+m
+lr=m
+
+with λ(l) being the coefficients of an L-function
+X
+(2.6)
+L(s) =
+λ(l)l−s
+l
+
+and ρ(r) being the coefficients of L(s)−1 modified by smooth weights supported on
+
+(2.7)
+
+1 ≤ r ≤ X.
+
+In this example
+ζA (s) =
+
+X
+
+1
+1
+am m−s = L(s + )M(s + )
+2
+2
+m
+
+where
+M(s) =
+
+X
+
+ρ(r)r −s
+
+1≤r≤X
+
+is a Dirichlet polynomial called a “mollifier”. We shall succeed with L(s) having the Euler
+product of degree g ≤ 3 (barely missing degree four). Therefore |λ(l)| ≤ τg (l), |ρ(r)| ≤ τg (r),
+|am | ≤ m−1/2 τ (m)τg (m) ≤ m−1/2 τ (m)g , hence (2.4) holds with A = g.
+There is plenty of room for modifications in the above setting. Let us illustrate some of
+these. At some point we shall need results for coefficients (2.5) where the generating function
+(2.6) is slightly shifted to L(s + α) with a small complex number α,
+(2.8)
+
+|α| ≪ (log Q)−1 .
+
+This can easily be covered by the case α = 0. To this end, multiply (2.5) throughout by
+m−α and use r −α ρ(r), mα F (m, n) in place of ρ(r), F (m, n). The same can be done for the
+coefficients bn .
+However, we are going to work for a while with free coefficients am , bn satisfying only (2.4)
+until the structure (2.5) becomes necessary. In this somewhat general presentation we obtain
+prefabricated products some of which can be taken for further developments in the future.
+For all positive integers m, n we put
+X Ψ(q/Q) X∗
+χ(m)χ(n).
+(2.9)
+∆(m, n) =
+ϕ(q)
+q
+χ ( mod q)
+
+This is an averaging operator over our family of harmonics (which are the primitive characters
+of conductor of size Q). There is nothing special with our choice of arithmetic weight 1/ϕ(q);
+other natural choices would be 1/ϕ∗ (q) where ϕ∗ (q) denotes the number of primitive characters
+modulo q (ϕ∗ = µ ∗ ϕ). This is less convenient, because ϕ∗ (q) = 0 if 2kq.
+The bilinear form (2.1) becomes
+XX
+(2.10)
+SS(A × B) =
+am bn F (m, n)∆(m, n).
+m
+
+n
+
+A substantial part of our work on SS(A × B) concerns ∆(m, n) acting on individual m, n.
+Along the lines one can find various decompositions of ∆(m, n) whose constituents emerge
+
+ASYMPTOTIC LARGE SIEVE
+
+7
+
+from meaningful sources. Some of these are matured and simple, but unfortunately we have
+to state some important ones in a crude form before giving final estimations. In particular
+the exact expression (6.1) is hard to grasp, but we do not want to settle with just estimates
+which would close the door for future exploration.
+The hardest job is to excavate the leading terms. In order to find it a bit easier we shall
+accept conditions on A, B such that only the contribution of diagonal terms
+X
+(2.11)
+SSdiag (A × B) =
+am bm F (m, m)∆(m, m)
+m
+
+makes the leading term. Here we have
+(2.12)
+
+∆(m, m) = δ(m)∆(1, 1) + O(τ (m)Q1/2 )
+
+with
+(2.13)
+
+δ(m) =
+
+Y
+1
+1 −1
+1 
+1− 2 − 3
+.
+1−
+p
+p
+p
+
+p|m
+
+For
+(2.14)
+
+∆(1, 1) =
+
+X  q  ϕ∗ (q)
+Ψ
+Q ϕ(q)
+q
+
+(the cardinality measure of our family of characters) we get
+(2.15)
+
+∆(1, 1) = ΨSQ + O(Q1/2 )
+
+with
+(2.16)
+
+(2.17)
+
+Ψ=
+
+S=
+
+Z
+
+Y
+p
+
+Ψ(x)dx,
+
+1−
+
+1
+1
+−
+.
+p2 p3
+
+Hence
+Proposition 2.1. For am , bn and F (m, n) satisfying (2.4),(2.3), we have
+X
+(2.18)
+SSdiag (A × B) = ΨSQ
+am bm δ(m)F (m, m) + O(Q1/2 (log N )A ).
+m
+
+Convention. The exponent A in (2.18) depends on that in the growth conditions (2.4). For
+notational convenience we are going to use A as an exponent which is not necessarily the same
+in each occurence, it is allowed to depend on foregoing acceptable constants.
+Besides the primary terms of the diagonal, a secondary source for contribution to the main
+term is not so obvious as the diagonal one; it rests in narrow strips parallel to the diagonal.
+A substantial contribution may come out of the terms am bn F (m, n) with |m − n| ≍ Q, but
+not from strips of much smaller width. Hence we shall get quickly
+
+8
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+Theorem 2.2. For any complex numbers am , bn satisfying (2.4) and F (m, n) satisfying (2.3)
+with N ≤ Q1−ε we have
+(2.19)
+
+SS(A × B) = SSdiag (A × B) + O(Q(log Q)−C )
+
+for any C > 0, the implied constant depends only on ε, C and A in (2.4).
+If N is much
+than Q, then one is faced with the problem of asymptotic evaluation of
+P larger
+P
+double sums
+am bn F (m, n) with relatively small m − n, and it is difficult to grasp such
+skinny domains when counting with most general coefficients am , bn . These off-diagonal sums,
+which may yield the secondary main term, result from switching moduli, hence the plain sum
+without twists by characters emerged here despite that the principal character is absent in
+our original family (the completeness in arithmetic comes to prominence!)
+Our goal is to show that (2.19) holds for N ≤ Q2−ε , but subject to some conditions on the
+coefficients am ,bn .
+Theorem 2.3. Let A = (am ) be given by (2.5) with any complex numbers ρ(r) for 1 ≤ r ≤ X
+satisfying
+|ρ(r)| ≤ τ (r)A
+
+(2.20)
+
+for some constant A ≥ 0. Moreover, suppose that the L-function (2.6) has Euler product of
+degree g ≤ 3, and no character is singular for L(s), i.e.
+∞
+X
+λ(l)χ(l)l−s
+(2.21)
+L(s, χ) =
+1
+
+is entire for all χ. Assume similar conditions for B = (bn ). Then (2.19) holds if N ≤ Q2−ε
+and
+(2.22)
+
+X ≤ Q1−ε
+
+if g = 1, 2,
+
+(2.23)
+
+X ≤ Q1/2
+
+if g = 3.
+
+Note. It needs to be said that by an L-function we mean one of those whose twists by primitive
+characters satisfy proper functional equation, see Section 5.1 of [IK].
+Remark. The case g = 4 could be also covered by our arguments giving (2.19) if X ≤ Qδ ,
+however it is not interesting because our condition N ≤ Q2−ε does not go far enough for
+applications. The problem is that (2.21) of degree g = 4 can be approximated by two partial
+sums of length N ≍ Q2 , but not shorter.
+
+Actually the case of degree g = 1 is void in the statement of Theorem 2.3. Indeed in this
+case L(s, χ) is just a Dirichlet L-function, and for χ = 1 it becomes L(s) = ζ(s) which has a
+simple pole at s = 1. In order to cover this case we make an extra cancellation condition for
+the factor sequence ρ(r);
+X
+(2.24)
+ρ(dr) ≪ τ (d)y(log y)−C , if y ≥ 2
+r≤y
+
+with any C ≥ 0, the implied constant depending on C.
+
+Theorem 2.4. Let A = (am ), B = (bn ) be sequences given by (2.5) satisfying the conditions
+of Proposition 8.1. Then (2.19) holds if X ≤ Q1−ε and N ≤ Q2−δ .
+
+ASYMPTOTIC LARGE SIEVE
+
+9
+
+It is obvious what factors ρ(r) are in our mind when creating the condition (2.24). Since in
+applications the ρ(r) come as coefficients in a mollifier of ζ(s), it takes the form
+(2.25)
+
+ρ(r) = µ(r)w(r)
+
+where w(r) is a smooth function supported on 1 ≤ r ≤ X with
+
+(2.26)
+
+r|w′ (r)| ≤ 1.
+
+|w(r)| ≤ 1,
+
+In this case the cancellation condition (2.24) follows from (1.1).
+Of course, there are other choices for ρ(r) satisfying (2.24), for example the Fourier coefficients of a cusp form.
+3. Decomposition of ∆(m, n)
+The proofs of theorems from Section 2 go in several steps. We begin by decomposing
+∆(m, n) into distinct parts and split the bilinear form SS(A × B) accordingly.
+If (mn, q) = 1 then
+X
+X∗
+µ(c)ϕ(d).
+χ(m)χ(n) =
+cd=q
+d|(m−n)
+
+χ ( mod q)
+
+Hence for any m, n we have
+∆(m, n) =
+
+X
+
+X
+
+Ψ
+
+(cd,mn)=1
+d|(m−n)
+
+ cd  µ(c)ϕ(d)
+Q
+
+ϕ(cd)
+
+.
+
+We split this into
+(3.1)
+
+∆(m, n) = ∆′ (m, n) + ∆′′ (m, n),
+
+say, where ∆′ (m, n) is the double sum over c,d restricted by c ≤ C and ∆′′ (m, n) is the
+complimentary sum, which is restricted by c > C. Here C is at our disposal and it will be
+chosen later as a small power of Q.
+We continue decomposing ∆′′ (m, n). First notice that cd ≍ Q, hence for c > C we have
+d ≪ QC −1 . Since d is relatively small we reverse the above transformation, that is we return
+to characters detecting the congruence m ≡ n (mod d) by the orthogonality formula (1.3).
+We write
+X
+X
+X∗
+1
+1
+χ(m)χ(n) =
+χ(m)χ(n).
+ϕ(d)
+ϕ(d)
+kl=d χ ( mod k)
+(l,mn)=1
+
+χ ( mod d)
+
+On the left side χ runs over all characters of modulus d whereas on the right side χ runs over
+the primitive characters of conductor k for every k | d. The complimentary factor l appears
+as a free variable (well, almost free apart from minor arithmetical obstacles). Now we get
+X X Ψ(ckl/Q) X∗
+X
+χ(m)χ(n)
+µ(c)
+∆′′ (m, n) =
+ϕ(ckl)
+c>C
+(cl,mn)=1
+
+l
+
+k≤K
+
+where
+(3.2)
+
+K ≍ QC −1 .
+
+χ ( mod k)
+
+10
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+The restriction k ≤ K in ∆′′ (m, n) with K of size (3.2) is redundant with the support of Ψ
+because c > C and l ≥ 1, nevertheless we keep it for the record. At some point later we shall
+not be able to track the restriction k ≤ K from the support of Ψ when we lose sight of it in
+Fourier analysis. Note that cl ≥ C > 1, so by Möbius inversion we can switch the range c > C
+to c ≤ C getting
+Lemma 3.1. For every m, n ≥ 1 we have
+X
+X X Ψ(ckl/Q) X∗
+χ(m)χ(n).
+(3.3)
+∆′′ (m, n) = −
+µ(c)
+ϕ(ckl)
+c≤C
+(cl,mn)=1
+
+l
+
+k≤K
+
+χ ( mod k)
+
+It is in the above transformation where properties of the Möbius function are used with
+manifestation that our original bilinear form SS(A × B) goes over the primitive characters
+rather than over all characters.
+What we accomplished in the expression (3.3) is that the involved characters have conductor
+k ≤ K significantly smaller than q ≍ Q in SS(A × B). We postpone further transformations
+of ∆′′ (m, n) to the next section.
+Now we are going to perform transformations of ∆′ (m, n), although quite differently than in
+′′
+∆ (m, n), but with similar objective to reduce the size of the conductor of involved characters.
+Recall that
+ cd  µ(c)ϕ(d)
+X
+X
+.
+Ψ
+(3.4)
+∆′ (m, n) =
+Q
+ϕ(cd)
+(cd,mn)=1
+c≤C,d|(m−n)
+
+For m = n (the diagonal terms in SS(A × B)) the condition d | (m − n) holds automatically
+and ∆′ (m, n) is close to the full sum
+ cd  µ(c)ϕ(d)
+X X
+(3.5)
+∆(m, n) =
+Ψ
+Q
+ϕ(cd)
+(cd,m)=1
+
+X
+
+=
+
+(q,m)=1
+
+The difference is estimated trivially by
+X 1 X
+c>C
+
+ϕ(c)
+
+d
+
+|Ψ
+
+Ψ
+
+ q  ϕ∗ (q)
+Q
+
+ϕ(q)
+
+.
+
+ cd 
+X Q
+Q
+|≪
+≪ .
+Q
+cϕ(c)
+C
+c>C
+
+Lemma 3.2. For every m ≥ 1 we have
+(3.6)
+
+∆′ (m, m) = ∆(m, m) + O(QC −1 ).
+
+Now let m 6= n. Note that d in (3.4) is pretty large, d ≍ QC −1 . Our intention is to switch
+the divisor d of |m − n| to the complementary one which is much smaller. This requires a few
+steps to relax the minor arithmetical obstacles. First writing
+1 X µ(a)
+ϕ(d)
+=
+(3.7)
+ϕ(cd)
+ϕ(c)
+a
+a|(c,d)
+
+ASYMPTOTIC LARGE SIEVE
+
+we get
+∆′ (m, n) =
+
+X
+
+X
+
+(ac,mn)=1
+ac≤C
+
+µ(a)µ(ac)
+aϕ(ac)
+
+11
+
+X
+
+Ψ
+
+(d,mn)=1
+ad|(m−n)
+
+ a2 cd 
+.
+Q
+
+Next we remove the condition (d, mn) = 1 by Möbius formula getting
+ a2 cd 
+ a2 cdg 
+X
+X
+X
+Ψ
+=
+µ(g)
+Ψ
+.
+Q
+Q
+(d,mn)=1
+ad|(m−n)
+
+g|(m,n)
+
+adg|(m−n)
+
+Here d is a free divisor of |m − n|/ag, so we can switch d to its complimentary divisor, say b,
+getting
+ ac
+
+X X µ(a)µ(ac) X X
+∆′ (m, n) =
+µ(g)Ψ
+|m − n| .
+aϕ(ac)
+bQ
+(ac,mn)=1
+ac≤C
+
+g|(m,n)
+abg|(m−n)
+
+Pull out the common factor (b, m/g) = (b, n/g) = h, say, getting
+ ac
+
+X
+X X µ(a)µ(ac) X X
+µ(g)
+Ψ
+|m − n|
+∆′ (m, n) =
+aϕ(ac)
+bhQ
+gh|(m,n)
+
+(ac,mn)=1
+ac≤C
+
+ab|(m−n)
+(b,mn)=1
+
+where here and thereafter we put for notational simplicity
+(3.8)
+
+m = ghm,
+
+n = ghn.
+
+Since (ab, mn) = 1 we detect the divisibility ab | (m − n) by characters χ (mod ab) getting
+X X µ(a)µ(ac) X X
+∆′ (m, n) =
+µ(g)
+aϕ(ac)
+(ac,mn)=1
+ac≤C
+
+X
+b
+
+1
+ϕ(ab)
+
+gh|(m,n)
+
+X
+
+χ(m)χ(n)Ψ
+
+χ ( mod ab)
+
+ ac
+
+bhQ
+
+
+|m − n| .
+
+Finally we express this in terms of primitive characters as follows.
+Lemma 3.3. For every m, n ≥ 1, m 6= n we have
+X X µ(a)µ(ac) X X
+µ(g)
+∆′ (m, n) =
+aϕ(ac)
+(3.9)
+
+(ac,mn)=1
+ac≤C
+
+X
+
+X
+
+kl≡0 ( mod a)
+(l,mn)=1
+
+gh|(m,n)
+
+ ac
+
+X∗
+1
+χ(m)χ(n)Ψ
+|m − n| .
+ϕ(kl)
+klhQ
+χ ( mod k)
+
+Remark. The right side of (3.9) vanishes if m = n, so we do not need to remember that
+m 6= n when inserting this expression in to the bilinear form SS(A × B). The characters in
+(3.9) have conductor k ≍ ac|m − n|/lhQ ≪ CN Q−1 which is significantly smaller than q ≍ Q
+in SS(A × B). The variable l is essentially free, it emerges in the transition from arbitrary
+
+12
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+characters to the primitive ones. Although the source of l seems to be technical, nevertheless
+this variable features in forthcoming transformations.
+4. The Euler-Maclaurin Summation
+Our next step will be to execute the summation over the variable l in (3.3) and (3.9). Since
+l is not yet entirely free we are going to state formulas which liberate l from all relevant
+constraints.
+Lemma 4.1. For (a, s) = 1 and l ≥ 1 we have
+
+X♭
+ϕ((u, s))
+ϕ(a)l/ϕ(al)
+=
+(4.1)
+µ((u, s))
+0
+ϕ(u)
+
+if (l, s) = 1
+otherwise
+
+u|l
+(u,a)=1
+
+where the superscript ♭ restricts the summation to squarefree numbers.
+Proof. It suffices to prove (4.1) for l prime, in which case the result is easy to check.
+Lemma 4.2. For m, n, u ≥ 1, u squarefree, we have
+XX
+(4.2)
+µ((u, mn))ϕ((u, mn)) =
+
+X
+
+
+
+αβγµ(βγ).
+
+αβγ|u
+αβ|m,αγ|n
+
+Proof. It suffices to prove (4.2) for u prime, in which case the result is easy to check.
+
+
+
+Applying (4.1) to (3.3) we obtain
+Corollary 4.3. For every m, n ≥ 1 we have
+X X µ(c) X♭
+ϕ((u, mn))
+∆′′ (m, n) = −
+µ((u, mn))
+ϕ(ck)
+uϕ(u)
+c≤C k≤K
+(c,mn)=1
+
+(4.3)
+
+X
+
+l
+
+−1
+
+Ψ
+
+l
+
+(u,ck)=1
+
+ ckul  X∗
+Q
+
+χ(m)χ(n).
+
+χ ( mod k)
+
+Similarly we apply (4.1) to (3.9). We have l = l′ a/(a, k) in (3.9), where l′ runs over positive
+integers with (l′ , mn) = 1 and ϕ(kl) = ϕ(l′ [a, k]). Hence (4.1) with a, s, l replaced by [a, k],
+mn, l′ respectively, yields
+Corollary 4.4. For every m, n ≥ 1, m 6= n we have (recall the notation (3.8))
+∆′ (m, n) =
+(4.4)
+
+X
+
+X
+
+(ac,mn)=1
+ac≤C
+
+X♭
+
+(u,ak)=1
+
+X
+µ(a)µ(ac) X X
+1
+µ(g)
+aϕ(ac)
+ϕ([a, k])
+
+µ((u, mn))
+
+gh|(m,n)
+
+k
+
+ϕ((u, mn)) X −1  (a, k)c|m − n|  X∗
+l Ψ
+χ(m)χ(n).
+uϕ(u)
+kulhQ
+l
+
+χ ( mod k)
+
+ASYMPTOTIC LARGE SIEVE
+
+13
+
+From the support of Ψ in (4.4) it follows that k ≪ CN Q−1 . Assuming
+N ≪ Q2 C −2
+
+(4.5)
+
+we find that k ≤ K in (4.4), and we keep this redundant restriction in the forthcoming
+expressions.
+Next we execute the free summation over l in (4.3) and (4.4) by the Euler-MacLaurin
+formula
+Z ∞
+∞
+X
+(4.6)
+[F (t) + {t}F ′ (t)]dt
+F (l) =
+0
+
+l=1
+
+where {t} denotes the fractional part of t. All we need about {t} is the estimate
+0 ≤ {t} ≤ min(1, t).
+
+In case of (4.3) we use (4.6) with F (t) = t−1 Ψ(tT −1 ) getting
+∞
+l
+X
+b
+= Ψ(0)
++ T −1 Ψ2 (T ),
+for T = Q/cku
+l−1 Ψ
+T
+l=1
+
+where
+(4.7)
+
+Ψ2 (T ) =
+
+Z ∞
+0
+
+(t−1 Ψ(t))′ {tT }dt ≪ min(1, T ).
+
+In case of (4.4) we use (4.6) with F (t) = t−1 Ψ(T t−1 ) getting
+∞
+T 
+X
+b
+= Ψ(0)
++ Ψ1 (T ),
+for T = |m − n|(a, k)c/kuhQ
+l−1 Ψ
+l
+l=1
+
+where
+(4.8)
+
+Ψ1 (T ) =
+
+Z
+
+Ω(tT ){t−1 }dt,
+
+Ω(x) = (xΨ(x))′ .
+
+Note that in both cases the integral
+Z
+Z
+b
+F (t)dt = Ψ(t)t−1 = Ψ(0)
+
+takes the same value which does not depend on T .
+According to (4.6) we write
+(4.9)
+
+′′
+b
+∆′′ (m, n) = Ψ(0)∆
+0 (m, n) + ∆2 (m, n)
+
+′
+b
+∆′ (m, n) = Ψ(0)∆
+0 (m, n) + ∆1 (m, n)
+
+where the terms ∆′′0 (m, n), ∆′0 (m, n) are obtained from (4.3), (4.4) respectively, with the
+summation over l being dropped. We shall see in the following lemma that these terms cancel
+out.
+Lemma 4.5. For every m, n ≥ 1, m 6= n, we have
+(4.10)
+
+∆′′0 (m, n) + ∆′0 (m, n) = 0.
+
+14
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+Proof. We have
+∆′′0 (m, n) = −
+
+X µ(c) X♭
+ϕ((u, mn)) X∗
+µ((u, mn))
+χ(m)χ(n).
+ϕ(ck)
+uϕ(u)
+
+X
+
+c≤C
+k≤K
+(c,mn)=1
+
+(u,ck)=1
+
+χ ( mod k)
+
+On the other hand
+∆′0 (m, n) =
+
+X
+
+X
+
+(ac,mn)=1
+ac≤C
+
+X♭
+
+X
+1
+µ(a)µ(ac) X X
+µ(g)
+aϕ(ac)
+ϕ([a, k])
+gh|(m,n)
+
+µ((u, mn))
+
+(u,ak)=1
+
+k≤K
+
+ϕ((u, mn)) X∗
+χ(m)χ(n).
+uϕ(u)
+χ ( mod k)
+
+By Möbius formula gh = 1, so m = m, n = n. Put ac = b, so (b, mn) = 1, b ≤ C. The sum
+over u with (u, ak) = 1 is equal to the same sum over u with (u, bk) = 1 times the same sum
+over u | c with (u, k) = 1, which is
+
+X
+ϕ((u, mn)) Y 
+1
+µ((u, mn))
+.
+=
+1+
+uϕ(u)
+p(p − 1)
+u|c
+(u,k)=1
+
+p|c
+p∤k
+
+Then we have
+
+X µ(a) Y 
+1
+1+
+=
+aϕ([a, k])
+p(p − 1)
+ac=b
+
+p|c
+p∤k
+
+=
+
+
+Y
+1
+1 X
+µ(a)
+1+
+ϕ(k)
+aϕ(a/(a, k))
+p(p − 1)
+ac=b
+
+p|c
+p∤k
+
+1
+ϕ(b)
+1 Y
+1−
+=
+.
+ϕ(k)
+p
+ϕ(bk)
+p|b
+p∤k
+
+This shows that the sums ∆′0 (m, n), ∆′′0 (m, n) agree except for the sign (to see it clearly
+re-name c to b in ∆′′0 (m, n)). This completes the proof of Lemma 4.5.
+
+Let us write explicitly the remaining parts of the decompositions (4.9). These come from
+the second part of the Euler-MacLaurin formula (4.6). We have
+X ck
+1 X
+µ(c)
+∆2 (m, n) = −
+Q
+ϕ(ck)
+c≤C
+(c,mn)=1
+
+(4.11)
+
+X♭
+
+µ((u, mn))
+
+(u,ck)=1
+
+∆1 (m, n) =
+(4.12)
+
+X
+
+X
+
+(ac,mn)=1
+ac≤C
+
+X♭
+
+(u,ak)=1
+
+k≤K
+
+ϕ((u, mn))  Q  X∗
+Ψ2
+χ(m)χ(n),
+ϕ(u)
+cku
+χ ( mod k)
+
+X
+1
+µ(a)µ(ac) X X
+µ(g)
+aϕ(ac)
+ϕ([a, k])
+
+µ((u, mn))
+
+gh|(m,n)
+
+k≤K
+
+ϕ((u, mn))  |m − n|(a, k)c  X∗
+χ(m)χ(n).
+Ψ1
+uϕ(u)
+kuhQ
+χ ( mod k)
+
+ASYMPTOTIC LARGE SIEVE
+
+15
+
+In the next two sections we shall make further transformations of (4.11) and (4.12) by applying
+(4.2).
+We shall show that ∆2 (m, n) and ∆1 (m, n) yield small contributions, not for every m, n,
+but due to cancellation in the bilinear forms
+XX
+(4.13)
+SS2 (A × B) =
+am bn F (m, n)∆2 (m, n)
+m
+
+(4.14)
+
+SS1 (A × B) =
+
+n
+
+XX
+
+am bn F (m, n)∆1 (m, n).
+
+m n6=m
+
+Estimation of SS2 (A × B) is given in Section 5 by a straightforward application of the large
+sieve inequality. The bilinear form SS1 (A × B) will be treated by more subtle arguments in
+Sections 6, 7, 8.
+We end this section by a further partition of ∆1 (m, n). To simplify this partition we assume
+that all characters are non-singular, except possibly the trivial one χ = 1. If the trivial
+character is singular then it takes a special place in (4.12), so we pull out its contribution, say
+∆+ (m, n). Therefore
+(4.15)
+
+∆1 (m, n) = ∆+ (m, n) + ∆∗ (m, n)
+
+where ∆∗ (m, n) is the sum (4.12) with the terms for k = 1 being omitted, but only if χ = 1
+is singular. Hence ∆∗ (m, n) = ∆1 (m, n) and ∆+ (m, n) = 0, unless χ = 1 is singular, in which
+case
+X X
+µ(a)µ(ac) X X
+µ(g)
+∆+ (m, n) =
+aϕ(a)ϕ(ac)
+gh|(m,n)
+
+(ac,mn)=1
+ac≤C
+
+(4.16)
+
+X♭
+
+µ((u, mn))
+
+(u,a)=1
+
+ϕ((u, mn))  |m − n|ac 
+.
+Ψ1
+uϕ(u)
+uhQ
+
+Accordingly we split the bilinear form
+(4.17)
+
+SS1 (A × B) = SS + (A × B) + SS ∗ (A × B).
+
+If the trivial character is singular then ∆+ (m, n) potentially could yield an extra main term
+other than the one previously extracted from the diagonal terms ∆(m, m). We shall avoid
+this possibility due to the extra condition (2.24) which kills the problem before computations
+become unbearable.
+5. Estimation of SS2 (A × B)
+First we apply (4.2) to (4.11) getting
+X XX X
+1 X
+αβγck
+µ(c)
+∆2 (m, n) = −
+µ(α)µ(αβγ)
+Q
+ϕ(αβγck)
+c≤C
+(c,mn)=1
+
+X♭
+
+(u,αβγck)=1
+
+k≤K
+
+ϕ(u)−1 Ψ2
+
+
+
+αβ|m
+αγ|n
+
+Q  X∗
+χ(m)χ(n).
+αβγcku
+χ ( mod k)
+
+16
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+Hence
+SS2 (A × B) = −
+
+1
+Q
+
+X
+
+µ(c)
+
+c≤C
+(c,mn)=1
+
+X♭
+
+X XXX
+
+k≤K α
+
+ϕ(u)−1 Ψ2
+
+(u,αβγck)=1
+
+
+
+β
+
+µ(α)µ(αβγ)
+
+γ
+
+Q  X∗ X
+αβγcku
+χ ( mod k)
+
+αβγck
+ϕ(αβγck)
+
+X
+
+am bn χ(m)χ(n)F (m, n).
+
+m≡0(αβ)
+n≡0(αγ)
+
+By (4.7) we have Ψ2 (Q/αβγcku) ≪ min(1/Qαβγcku). Moreover we have
+X
+u
+
+ϕ(u)−1 min(1, Q/αβγku) ≪ min(1, Q/αβγk) log Q.
+
+Hence we obtain
+SS2 (A × B) ≪(log Q)2
+X∗
+
+C X XXX
+min(1, Q/αβγk)
+Q
+γ
+k≤K α
+β
+X
+X
+am bn χ(m)χ(n)F (m, n) .
+
+χ ( mod k) m≡0(αβ) n≡0(αγ)
+
+Recall (2.4) and (3.2). Then by the large sieve inequality we derive (see (1.7) and (1.9))
+SS2 (A × B) ≪ (log Q)2A+2 K −1
+
+XX X
+
+αβγ≤N 2
+
+
+min 1,
+
+
+K02 +
+
+N 1/2
+Q  2
+K0 +
+αβγK0
+αβ
+
+−1/2
+N 1/2 
+αβγ
+αγ
+
+with some 1 ≤ K0 ≤ K. Here the summation term is bounded by
+√
+
+p
+√
+Q K + 2 N
+N
+√
+min K,
++
+≤ [ KQ(K + 2 N ) + N ]/αβγ.
+αβγ
+αβγ
+αβγ
+Hence
+SS2 (A × B) ≪ [(KQ)1/2 + (QN K −1 )1/2 + N K −1 ](log Q)2A+5
+≪ [QC −1/2 + (CN )1/2 + CN Q−1 ](log Q)2A+5 .
+
+This proves the following
+Proposition 5.1. Let C = Qε and N ≤ Q2−2ε . Then for any complex numbers am , bn
+satisfying (2.4) for 1 ≤ m, n ≤ N we have
+(5.1)
+
+SS2 (A × B) ≪ Q1−ε/3 .
+
+ASYMPTOTIC LARGE SIEVE
+
+17
+
+6. Estimation of SS ∗ (A × B)
+We start from (4.12) with k = 1 being omitted if χ = 1 is singular. Applying (4.2) this
+becomes
+(6.1)
+X
+X X µ(a)µ(ac) X X
+1
+µ(g)
+∆∗ (m, n) =
+aϕ(ac)
+ϕ([a, k])
+gh|(m,n)
+
+(ac,mn)=1
+ac≤C
+
+XX X
+
+αβ|m
+αγ|n
+
+µ(α)
+
+µ(αβγ)
+ϕ(αβγ)
+
+X♭
+
+(u,αβγak)=1
+
+k≤K
+
+ |m − n|(a, k)c  X♯
+1
+χ(m)χ(n).
+Ψ1
+uϕ(u)
+αβγkuhQ
+χ ( mod k)
+
+Here the superscript ♯ in the summation over χ indicates that the singular character is removed.
+Recall the notation (3.8). Hence
+X X |µ(ac)| X X X 1 X X X |µ(αβγ)| X 1
+SS ∗ (A × B) =
+aϕ(ac) g
+ϕ(k) α
+ϕ(αβγ) u uϕ(u)
+γ
+ac≤C
+h k≤K
+β
+ |m − n| 
+X♯ X X
+(6.2)
+am bn F (m, n)Ψ1
+χ(m)χ(n) ,
+H
+χ ( mod k)
+
+(mn,ac)=1
+m≡0(ghαβ)
+n≡0(ghαγ)
+
+where H = αβγkuhQ/(a, k)c. Separate |m − n| and H by changing the variable t in (4.8) to
+H/y and use the estimate H{y/H} ≤ y. Then we put ac = b getting
+X 1
+X♭ b X X X X X |µ(αβγ)| Z
+−1
+y
+SS ∗ (A × B) =
+ϕ(b)2 g
+ϕ(αβγ)
+ϕ(k)
+α
+γ
+h
+β
+k≤K
+b≤C
+ |m − n| 
+X♯ X X
+(6.3)
+am bn F (m, n)Ω
+χ(m)χ(n) .
+y
+χ ( mod k)
+
+(mn,b)=1
+m≡0(ghαβ)
+n≡0(ghαγ)
+
+Note and remember that y runs over a segment 1 ≪ y ≪ N .
+Put d1 = ghαβ, d2 = ghαγ, so [d1 , d2 ] = ghαβγ. The inner double sum in (6.3) is equal to
+χ(β)χ(γ) times the sum
+ |m − n|   m   n 
+X X
+(6.4)
+SSχ (d1 , d2 ) =
+am bn F (m, n)Ω
+χ
+χ
+.
+y
+d1
+d2
+(mn,b)=1
+m≡0(d1 )
+n≡0(d2 )
+
+Keep in mind that SSχ (d1 , d2 ) depends also on b and y. In the next section we are going to
+estimate SSχ (d1 , d2 ) by using the Hybrid Large Sieve Inequality (1.6). Applying (7.1) to (6.3)
+we conclude the following estimates for SS ∗ (A × B).
+Proposition 6.1. Suppose A = (am ) is given by (2.5) with any complex numbers ρ(r) for
+1 ≤ r ≤ X satisfying (2.20). Moreover, suppose the L-function (2.6) has Euler product of
+
+18
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+degree g ≤ 3. Assume similar conditions for B = (bn ). Then
+(6.5)
+
+SS ∗ (A × B) ≪ (QC −1 + X)(log Q)A
+
+if g ≤ 2, and (6.5) holds for g = 3 but with X replaced by N 1/3 X 2/3 .
+
+Note that if g ≤ 2 then the bound (6.2) with C = Qε and X = Q1−ε yields
+SS ∗ (A × B) ≪ Q1−ε/2 .
+
+(6.6)
+
+Next consider an L-function of degree three mollified by a Dirichlet polynomial of length X.
+The twisted L-function L(s, χ) with χ (mod q), q ≍ Q, can be approximated by two Dirichlet
+polynomials of length ≍ Q3/2 . Therefore our sequences A, B have length ≪ N = XQ3/2 .
+Then the bound (6.5) with X replaced by N 1/3 X 2/3 = XQ1/2 yields (6.6) provided
+X ≪ Q1/2−ε .
+
+(6.7)
+
+7. Estimation of SSχ (d1 , d2 )
+In this section we assume that A = (am ) is given by (2.5) with any complex numbers
+ρ(r) for 1 ≤ r ≤ X satisfying (2.20). Moreover, we assume that the L-function (2.6) has
+Euler product of degree g ≤ 3 and no character is singular for L(s) except possibly the trivial
+character χ = 1. We also assume similar conditions for B = (bn ).
+Lemma 7.1. For any d1 , d2 ≥ 1, K ≥ 1 and g = 1, 2, we have
+X♯
+X 1
+τ (d1 d2 )2g
+|SSχ (d1 , d2 )| ≪ √
+(7.1)
+(K + X)(log Q)A .
+ϕ(k)
+d
+d
+1 2
+k≤K
+χ ( mod k)
+
+This estimate also holds if g = 3, but with X replaced by X 1/3 N 2/3 . Here the superscript ♯
+indicates that the singular character is removed.
+Proof. We write
+F (m, n)Ω
+
+ |m − n| 
+
+with
+f (s1 , s2 ) =
+
+y
+
+ZZ
+
+=
+
+II
+
+F (u, v)Ω
+
+f (s1 , s2 )m−s1 n−s2 ds1 ds2
+
+ |u − v| 
+us1 −1 v s2 −1 dudv.
+y
+
+Change the variables u = v(1 + w) getting
+ZZ
+ v|w| 
+(1 + w)s1 −1 v s1 +s2 −1 dvdw.
+f (s1 , s2 ) =
+F (v + vw, v)Ω
+y
+Note that |w| ≍ y/v and N −1 ≤ 1 + w ≤ N . Let 0 ≤ σ1 , σ2 ≤ 1. Estimating trivially we get
+(7.2)
+
+f (s1 , s2 ) ≪ N σ1 +σ2 (log N )2 .
+
+We shall do better by partial integration. Integrating a ≥ 1 times (a = 1, 2 only because of
+the restriction in (2.3)) with respect to w we get
+ZZ 
+ v|w| (a)
+(−1)a
+(1 + w)s1 +a−1 v s1 +s2 −1 dvdw
+F (v(1 + w), v)Ω
+f (s1 , s2 ) =
+s1 · · · (s1 + a − 1)
+y
+
+ASYMPTOTIC LARGE SIEVE
+
+19
+
+where
+ v a
+
+(a)
+∂a
+F (·)Ω(a) (·) ≪ (1 + w)−a + |w|−a .
+F (·)Ω(·)
+= v a a F (·)Ω(·) + · · · +
+∂u
+y
+Hence
+f (s1 , s2 ) ≪ |s1 |−a
+
+Z NZ
+1
+
+[(1 + w)σ1 −1 + (1 + w)σ1 +a−1 |w|−a ]v σ1 +σ2 −1 dvdw
+
+Z N
+
+v a−1 σ1 +σ2 −1
+y σ1
+−a
+[log N + 1 +
+]v
+dv
+1+
+≪ |s1 |
+v
+y
+1
+
+N a−1 σ2
+≪ |s1 |−a (N + y)σ1 [log N + 1 +
+]N log N
+y
+ N a−1
+−1
+N σ1 +σ2 (log N )2 .
+≪ |s1 |
+|s1 |y
+
+By symmetry this bound holds with |s1 | replaced by |s2 |. Combining the result with the trivial
+bound (7.2) we get
+
+y 1−a σ1 +σ2
+(7.3)
+f (s1 , s2 ) ≪ (1 + |s1 | + |s2 |)−1 1 + (|s1 | + |s2 |)
+N
+(log N )2 .
+N
+Next, integrating b ≥ 1 times (b = 1, 2 only because of the restriction in (2.3)) with respect
+to v we get
+ZZ 
+ v|w| (b)
+(−1)b
+F (v(1 + w), v)Ω
+f (s1 , s2 ) =
+(s1 + s2 ) · · · (s1 + s2 + b − 1)
+y
+(1 + w)s1 −1 v s1 +s2 +b−1 dvdw
+
+where
+
+
+
+(b)
+ |w| b
+F (·)Ω(·)
+≪ v −b +
+≪ v −b .
+y
+
+Hence
+−b
+
+f (s1 , s2 ) ≪ |s1 + s2 |
+
+Z N
+y σ1 σ1 +σ2 −1
+1+
+v
+dv
+v
+1
+
+≪ |s1 + s2 |−b N σ1 +σ2 log N.
+Combining this with the trivial bound (7.2) we get
+(7.4)
+
+f (s1 , s2 ) ≪ (1 + |s1 + s2 |)−b N σ1 +σ2 (log N )2 .
+
+Finally, combining (7.3) and (7.4) with a = b = 2 we deduce the following estimate for the
+Mellin transform
+y −1 σ1 +σ2
+N
+(log N )2 .
+(7.5) f (s1 , s2 ) ≪ (1 + |s1 | + |s2 |)−1 (1 + |s1 + s2 |)−1 1 + (|s1 | + |s2 |)
+N
+By contour integration on vertical lines ℜs1 = σ1 > 1/2, ℜs2 = σ2 > 1/2,
+II
+1
+1
+(7.6)
+SSχ (d1 , d2 ) =
+f (s1 , s2 )Ad1 (s1 + , χ)Bd2 (s2 + , χ)ds1 ds2
+2
+2
+
+20
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+where
+(7.7)
+
+Ad (s, χ) =
+
+X
+
+am χ
+
+m≡0(d)
+
+m
+m1/2−s
+d
+
+and Bd (s, χ) is defined similarly. We assume that both series have analytic continuation to
+the lines σ1 = 0, σ2 = 0 without poles because χ is non-singular. For am given by (2.5) we get
+ rl 
+X
+(rl)−s
+Ad (s, χ) =
+ρ(r)λ(l)χ
+d
+rl≡0(d)
+−s
+
+= d
+
+X
+r
+
+∞ 
+ r  (d, r) s X
+dl 
+ρ(r)χ
+χ(l)l−s .
+λ
+(d, r)
+r
+(d, r)
+l=1
+
+Lemma 7.2. For ℜs ≥ 0 we have
+∞
+X
+
+λ(δl)χ(l)l−s = L(s, χ)Pδ (s, χ)
+
+l=1
+
+where
+Pδ (s, χ) ≪ τ (δ)2g .
+Proof. This is an easy exercise with the Euler product
+L(s) =
+
+∞
+X
+
+λ(l)l−s =
+
+Y
+(1 − α1 (p)p−s )−1 · · · (1 − αg (p)p−s )−1 .
+p
+
+l=1
+
+
+Hence
+ r  (d, r) s
+Pd/(d,r) (s, χ)
+(d, r)
+r
+r
+X
+X d 
+Pδ (s, χ)
+ρ r χ(r)r −s .
+= L(s, χ)d−s
+δ
+
+Ad (s, χ) = L(s, χ)d−s
+
+X
+δ|d
+
+ρ(r)χ
+
+(r,δ)=1
+
+Lemma 7.3. For any complex numbers ρ(r), 1 ≤ r ≤ X, we have
+X X♯ Z T X
+2
+
+1
+ρ(r)χ(r)r −1/2−it |L + it, χ |2 dt
+2
+−T
+k≤K χ ( mod k)
+
+r≤X
+
+ X |ρ(r)|2 
+≪ [K 2 T + X(KT )g/2 ]
+(log KT )2g
+r
+r≤X
+
+where K ≥ 1, T ≥ 1 and the superscript ♯ tells us that the singular character is omitted.
+Proof. This follows by standard arguments using the approximate functional equation for
+L(s, χ) (cf. Theorem 5.3 of [IK]) and the HLSI as stated in (1.6).
+
+
+ASYMPTOTIC LARGE SIEVE
+
+21
+
+By Lemma 7.3 it follows that
+X X♯ Z T
+
+1
+|Ad + it, χ |2 dt ≪ d−1 τ (d)2g [K 2 T + X(KT )g/2 ](log KT X)A .
+(7.8)
+2
+−T
+k≤K χ ( mod k)
+
+By (7.6), (7.5) we find that the left side of (7.1) is bounded by
+X♯ Z T
+1 X
+1
+1
+|Ad1 ( + it, χ)||Bd2 ( + it, χ)|dt(log Q)4
+K0 T
+2
+2
+−T
+k≤K0 χ ( mod k)
+
+for some 1 ≤ K0 ≤ K and T ≥ 1. Hence by Cauchy’s inequality and (7.7) we get
+1 τ (d1 d2 )2g 2
+√
+[K0 T + X(K0 T )g/2 ](log Q)A .
+K0 T
+d1 d2
+
+(7.9)
+
+This proves (7.1) if g ≤ 2. for g = 3 we combine (7.9) with another estimate of similar type
+1 τ (d1 d2 )2g 2
+√
+[K0 T + N ](log Q)A .
+K0 T
+d1 d2
+
+(7.10)
+
+This estimate is derived in a similar way as was (7.9) except that we keep the information
+m, n ≤ N from the support of F (m, n). Then (7.7) is a Dirichlet polynomial of length N and
+without appealing to any L-function we get (7.10) straight by the HLSI. Now we can replace
+the second terms in (7.9), (7.10) by their minimum
+This proves (7.1) if g = 3.
+
+min(N, X(K0 T )3/2 ) ≤ N 1/3 X 2/3 K0 T.
+
+
+
+8. Estimation of SS + (A × B)
+
+Here ∆+ (m, n) is given by (4.16) and it goes through the same transformations as ∆∗ (m, n),
+so ∆+ (m, n) is also given by (6.1) with k = 1. Hence SS + (A × B) satisfies (6.2) with k = 1
+and H = αβγuhQ/c. To get (6.3) from (6.2) we used the estimate H{y/H} ≤ y, but now we
+need a slightly better estimate
+Moreover we have
+
+H{y/H} ≤ min(y, H) ≤ min(y, αβγuhQ).
+X
+
+1
+min(y, αβγuhQ) ≪ min(y, αβγhQ) log Q.
+uϕ(u)
+
+u
++
+Hence (6.3) for SS (A × B) becomes
+
+SS + (A × B) ≪(log Q)
+Z
+
+y
+
+−2
+
+X♭
+
+b≤C
+
+b X X X X X |µ(αβγ)|
+ϕ(b)2 g
+ϕ(αβγ)
+α
+γ
+
+min(y, αβγhQ)
+
+h
+
+β
+
+X
+
+X
+
+(mn,b)=1
+m≡0(ghαβ)
+n≡0(ghαγ)
+
+am bn F (m, n)Ω
+
+ |m − n| 
+y
+
+dy.
+
+The co-primality conditions (m, b) = 1 and (n, b) = 1 can be resolved separately by Möbius
+formula. The resulting divisors of (m, b) and (n, b) can be attached to β and γ respectively,
+
+22
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+except for their greatest common factor which can be attached to α. This way we arrive at
+the following estimate
+X X X X X |µ(αβγ)|
+SS + (A × B) ≪(log Q)2
+ϕ(αβγ)
+g
+α
+γ
+h
+β
+Z
+ |m − n| 
+X X
+dy.
+y −2 min(y, αβγhQ)
+am bn F (m, n)Ω
+y
+m≡0(ghαβ)
+n≡0(ghαγ)
+
+We make further simplifications by putting ghα = d. We get
+X
+X X 1 Z
++
+3
+τ (d)
+y −2 min(y, βγdQ)
+SS (A × B) ≪ (log Q)
+βγ
+d
+
+(β,γ)=1
+
+X
+
+(8.1)
+
+X
+
+am bn F (m, n)Ω
+
+m≡0(dβ)
+n≡0(dγ)
+
+ |m − n| 
+y
+
+dy.
+
+Note and remember that y runs over a segment 1 ≪ y ≪ N .
+Using the bound βγdQ for the minimum in (8.1) and estimating the double inner sum
+trivially, one could show that SS + (A × B) ≪ Q(log Q)A , while our goal is
+SS + (A × B) ≪ Q(log Q)−C
+
+for any C ≥ 0. Therefore we need to save only a little bit from the trivial estimation. This
+saving will come from cancellation in the coefficients am , bn . It is just for this purpose that
+we now assume these coefficients to be of the form (2.5) with
+(8.2)
+
+λ(l) = 1
+
+and ρ(r) satisfying (2.24). In order to be able to use these special features we first need to
+eliminate the contribution of large divisors dβ and dγ, because they may take so much out of
+m and n respectively that there is nothing left in l or r to play with.
+We split the right side of (8.1) into two parts according to
+(8.3)
+
+βγdQ > yQε
+
+(8.4)
+
+βγdQ ≤ yQε
+
+and we estimate min(y, βγdQ) by y or βγdQ in the ranges (8.3) or (8.4), respectively. We get
+SS + (A × B) ≪ (S1 + S2 )(log Q)3
+
+(8.5)
+say, where
+
+Z XX
+
+X
+
+βγdQ>yQ
+
+τ (d) X
+βγ
+ε
+
+Z XX
+
+X
+
+τ (d)d
+
+S1 =
+
+S2 = Q
+
+βγdQ≤yQε
+(β,γ)=1
+
+Z
+
+X
+
+am bn F (m, n)Ω
+
+m≡0(dβ)
+n≡0(dγ)
+
+X
+
+X
+
+m≡0(dβ)
+n≡0(dγ)
+
+ |m − n|  dy
+
+am bn F (m, n)Ω
+
+y
+
+y
+
+,
+
+ |m − n|  dy
+y
+
+y2
+
+.
+
+ASYMPTOTIC LARGE SIEVE
+
+23
+
+We estimate S1 using only the crude bounds (2.4) for the coefficients am ,bn . We get
+X X X τ (d) X
+X
+τ (m)A τ (n)A
+√
+S1 ≪
+βγ
+mn
+β≤N γ≤N d≤N
+
+≪
+
+(8.6)
+
+≪
+
+m,n≤N
+dβ|m, dγ|n
+|m−n|<βγdQ1−ε
+
+X X X τ (βγd)A X
+
+β≤N γ≤N d≤N
+
+(βγ)3/2 d
+
+X X X τ (βγd)A
+
+β≤N γ≤N d≤N
+
+βγd
+
+h γ 1/2 τ (m)2A
+
+X
+
+β
+
+m,n≤N
+
+m
+
++
+
+ β 1/2 τ (n)2A i
+γ
+
+n
+
+|m
+−n
+|<Q1−ε
+γ
+β
+
+Q1−ε (log Q)A ≪ Q1−ε (log Q)A .
+
+Estimation of S2 requires extra conditions for the coefficients am ,bn and the test function
+F (m, n). We assume the these coefficients are of the form (2.5) with λ(l) = 1, that is with
+(2.6) being the zeta function ζ(s), and that ρ(r) satisfy (2.24). Actually the ρ(r) in am and
+those in bn can be different, say they are ρA (r), ρB (r) respectively. Assume they are supported
+in dyadic segments XA ≤ r ≤ 2XA , XB ≤ r ≤ 2XB respectively, with
+1 ≤ XA , XB ≤ X ≤ Q1−2δ .
+
+(8.7)
+
+So far we have been assuming that the support of F (m, n) is in the box (2.2). Now we need
+to localize the variables a little more. We assume, in addition to the former properties, that
+the support of F (m, n) implies
+m
+≤ Qδ ,
+mn ≤ XA XB Q2−2δ
+(8.8)
+Q−δ ≤
+n
+for some constant δ > 0 (in our applications any 0 < δ < 1/2 will be sufficient). Moreover we
+extend (2.3) to
+xi y j F (ij) (x, y) ≪ 1
+
+(8.9)
+
+for any i, j ≥ 0, the implied constant depending on i, j.
+First we are going to evaluate the inner double sum
+ |m − n| 
+X X
+(8.10)
+Vd1 d2 (y) =
+am bn F (m, n)Ω
+.
+y
+m≡0(d1 )
+n≡0(d2 )
+
+By (2.5), m = lr ≡ 0 (mod d) means l = d′ l′ with d′ = d/(d, r). Therefore (8.10) becomes
+X X ρA (r1 )ρB (r2 ) X X F ([r1 , d1 ]l1 , [r2 , d2 ]l2 )  | · | 
+p
+√
+.
+Ω
+Vd1 d2 (y) =
+y
+l1 l2
+[r1 , d1 ][r2 , d2 ]
+r
+r
+1
+
+2
+
+l1
+
+l2
+
+Here l1 , l2 run over positive integers, free of any arithmetical constraints but with smooth
+weights given by F and Ω. From the support of Ω(| · |/y) we see that |m − n| ≍ y which range
+translates to
+(8.11)
+
+|[r1 , d1 ]l1 − [r2 , d2 ]l2 | ≍ y.
+
+On the ther hand (8.4) tells us that y is not very small, precisely for d1 = dβ, d2 = dγ we get
+y ≥ [d1 , d2 ]Q1−ε ≥ d1 Q1−ε ≥ d1 r1 X −1 Q1−ε ≥ [d1 , r1 ]Q2δ−ε .
+
+24
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+Similarly y ≥ [d2 , r2 ]Q2δ−ε . Therefore the integers l1 , l2 have considerable room to run over
+intervals of length at least Q2δ−ε . Moreover, by |m − n| ≍ y combined with the first condition
+in (8.8) it follows that m, n ≫ yQ−δ . For m = [r1 , d1 ]l1 this gives
+d1 l1 Q1−2δ ≫ r1 d1 l1 ≫ [r1 , d1 ]l1 ≫ [d1 , d2 ]Q1−δ−ε ≥ d1 Q1−δ−ε
+
+by (8.7), hence l1 ≫ Qδ−ε . Similarly we show that l2 ≫ Qδ−ε . Since l1 ,l2 are weighted
+smoothly, it allows us to replace the summation by the corresponding integration with a small
+error term, smaller than any negative power of Q. Next l1 ,l2 being continuous variables we
+change them by factors [r1 , d1 ], [r2 , d2 ] respetively getting
+ X ρ (r)  X ρ (r)  Z Z F (u, v)  |u − v| 
+B
+A
+√
+dudv + O(Q−1 ).
+Ω
+Vd1 d2 (y) =
+[r,
+d
+]
+[r,
+d
+]
+y
+uv
+1
+2
+r
+r
+We have not yet exploited the second condition in (8.8) which says uv ≤ XA XB Q2−2δ . On
+the other hand we have |u − v| ≍ y and Q−δ ≤ u/v ≤ Qδ which imply uv ≫ y 2 Q−δ . Hence
+XA XB ≫ y 2 Qδ−2 > [d1 , d2 ]2 Qδ−2ε ≥ d1 d2 Qδ−2ε ,
+
+so either XA ≥ d1 Qδ/2−ε or XB ≥ d2 Qδ/2−ε . This shows there is more than Qδ/2−ε room
+for summation over r in one of the above sums, and due to the assumption (2.24) we gain a
+factor (log Q)−C relative to a trivial estimate. The double integral in u, v is easily estimated
+by O(y log N ). Therefore
+ X τ (r)A  X τ (r)A 
+τ (d1 d2 )A
+≪y
+(log Q)−C .
+Vd1 d2 (y) ≪ (log Q)1−C y
+[r, d1 ]
+[r, d2 ]
+d1 d2
+r≤X
+
+r≤X
+
+Hence
+(8.12)
+
+S2 ≪ Q(log Q)−C
+
+X X τ (d1 d2 )A
+
+d1 <N d2 <N
+
+d1 d2
+
+(d1 , d2 ) ≪ Q(log Q)−C .
+
+Finally, adding (8.12) to (8.6) we conclude by (8.5)
+Proposition 8.1. Suppose A = (am ) is given by (2.5) with complex numbers ρ(r) supported
+on XA ≤ r ≤ 2XA , satisfying (2.20) and (2.24). Moreover suppose the L-function (2.6) is
+exactly the zeta function ζ(s). Assume similar conditions for B = (bn ). Let F (m, n) be a
+smooth function supported in the box (2.2) whose partial derivatives satisfy (8.9). Finally
+assume the support of F (m, n) implies the restrictions (8.8) with some small constant δ > 0.
+Then
+(8.13)
+
+SS + (A × B) ≪ Q(log Q)−C
+
+with any C ≥ 0, the implied constant depending on C.
+Adding (8.13) to (6.6) we get
+(8.14)
+
+SS1 (A × B) ≪ Q(log Q)−C .
+
+Then adding (8.14) to (5.1) we complete (by Lemma 3.2 and Lemma 4.5) the proof of Theorem
+2.4.
+
+ASYMPTOTIC LARGE SIEVE
+
+25
+
+9. Modifications of the test function
+The conditions for the test function F (m, n) in the bilinear form SS(A × B) are robust,
+but not quite flexible for some applications. As it is (in basic Theorems 2.2, 2.3, 2.4) F (m, n)
+depends on the variables m,n and so it does not capture the factorization properties of our
+coefficients am ,bn given by (2.5). To bring the results a bit closer to applications environment
+one should consider test functions of type
+(9.1)
+
+F (l1 , r1 ; l2 , r2 ; q)
+
+where l1 r1 = m, l2 r2 = n are our original variables and q runs over the moduli of our family
+of characters, so the restrictions (2.2) imply l1 r1 ≤ N , l2 r2 ≤ N and q ≍ Q, while the ones in
+(8.8) imply
+l1 r1
+< Qδ ,
+l1 l2 ≪ Q2−2δ .
+(9.2)
+Q−δ <
+l2 r2
+Note that we do not need precise restrictions for l1 and l2 separately, but only for the product
+l1 l2 .
+Assuming that the function (9.1) is smooth and has sufficiently many partial derivatives
+relatively small, one can reduce this case (by separation of variables techniques) to the one
+already considered with F (m, n). A little contamination in the separation process is tolerable
+by the quite flexible conditions on our coefficients am ,bn , while the fact that the bilinear form
+SS(A × B) is linear in F makes the process straightforward.
+One does not even need to assume that (9.1) is compactly supported. If some of the
+variables l1 , r1 , l2 , r2 exceed the range of our previous results, then (9.1) is very small in size
+and a direct, crude application of the LSI in this excessive range gives a sufficiently strong
+estimate to be neglected by comparison with the main term. We leave out the details how
+exactly the desirable adjustments are executed for experienced readers.
+We are going to reformulate our basic theorems for the bilinear form SS(A × B) with the
+test function of the special shape
+l r l l 
+1 1 1 2
+,
+(9.3)
+F (l1 , r1 ; l2 , r2 ; q) = G
+l2 r2 q g
+where G(x, y) is a nice smooth function, rapidly decaying to zero as x → 0, or x → ∞, or
+y → ∞. This means that the main activity happens in the range l1 r1 ≍ l2 r2 , l1 l2 ≪ Qg . We
+can write
+ m mn 
+l r
+l1 l2 
+1 1
+,
+,
+=
+G
+(9.4)
+G
+l2 r2 r1 r2 q g
+n r1 r2 q g
+where m = l1 r1 , n = l2 r2 are our original variables. Hence it suffices to perform the separation
+arguments only with respect to the single variable y.
+Suppose G(x, y) is smooth on R+ × R+ with partial derivatives satisfying
+(9.5)
+
+xa y b G(a,b) (x, y) ≪ (1 + | log x|)−c (1 + y)−c (log Q)aA
+
+for some A ≥ 1 and any a, b, c ≥ 0, the implied constant depending on a, b, c.
+
+Theorem 2.5. Assuming the conditions of Theorems 2.2, 2.3, 2.4 adjusted to the context of
+the test function G(x, y) we have
+(9.6)
+
+SS(A × B) = SSdiag (A × B) + O(Q(log Q)−C )
+
+26
+
+J.B. CONREY, H. IWANIEC AND K. SOUNDARARAJAN
+
+for any C ≥ 0. Here the leading term is defined by (2.11) and it is also given by the adjusted
+form of (2.18) which becomes
+(9.7)
+SSdiag (A × B) =SQ
+
+XXX
+
+X
+
+ρA (r1 )ρB (r2 )λ(l1 )λ(l2 )
+
+r1 l1 =r2 l2
+
+1 
+1
+1 −1
+1 Y 
+1−
+1− 2 − 3
+r1 l1
+p
+p
+p
+p|r1 l1
+
+Z
+
+Ψ(t)G(1, l1 l2 (tQ)−g )dt + O(Q1/2+ε ).
+
+References
+[CIS] J.B. Conrey, H. Iwaniec and K. Soundararajan, Critical Zeros of Dirichlet L-functions, preprint.
+[IK] H. Iwaniec and E. Kowalski, Analytic number theory, AMS Colloquium Publications, vol 53, AMS, Providence, RI, 2004.
+[Lin] Yu.V. Linnik The large sieve, Dokl. Akad. Nauk SSSR 30 (1941), 292 – 294.
+American Institute of Mathematics and University of Bristol
+Rutgers University
+Stanford University
+
+

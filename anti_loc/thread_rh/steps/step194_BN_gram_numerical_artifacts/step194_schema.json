@@ -1,0 +1,78 @@
+{
+  "step": 194,
+  "orientation": "adequacy",
+  "target": "numerical Beurling-Nyman delta_A^2 for explicit a-sets",
+  "a_set_families": [
+    {
+      "family": "harmonic",
+      "definition": "A_N={1/k:1<=k<=N}",
+      "N_values": [5, 10, 20, 40, 80]
+    },
+    {
+      "family": "geometric",
+      "definition": "A_N={2^{-k}:0<=k<N}",
+      "N_values": [5, 10, 20, 40, 80]
+    },
+    {
+      "family": "power",
+      "definition": "A_N={1/k^2:1<=k<=N}",
+      "N_values": [5, 10, 20, 40, 80]
+    },
+    {
+      "family": "random_reciprocal",
+      "definition": "A_N={1/q_j:j<=N}, fixed random q_j in [1,999]",
+      "N_values": [5, 10, 20, 40, 80]
+    }
+  ],
+  "gram_matrix_method": {
+    "atom_identity": "rho_a(1/x)=a floor(x)-floor(a x)",
+    "restriction": "tested sets use reciprocal-integer a=1/q",
+    "integration": "deterministic unit-interval summation on x in [1,X_MAX]",
+    "X_MAX": 200000,
+    "tail_bound_per_entry": "at most 1/X_MAX = 5e-6 because |rho_a|<=1",
+    "mpmath_dps": 50,
+    "linear_algebra": "numpy float64 SVD pseudoinverse with rcond=1e-12"
+  },
+  "numerical_results": [
+    {
+      "family": "harmonic",
+      "N_values": [5, 10, 20, 40, 80],
+      "delta_sq_values": [0.0363139368590195, 0.0238470859060611, 0.016532331786013, 0.0127296188449737, 0.01099209553781],
+      "decay_rate": "slow_log_decay; delta_sq*log(N) mean for N>=10 is 0.0498905173101487"
+    },
+    {
+      "family": "geometric",
+      "N_values": [5, 10, 20, 40, 80],
+      "delta_sq_values": [0.127343192044431, 0.127044938811275, 0.127038005029924, 0.127035826959717, 0.127035826959718],
+      "decay_rate": "plateau at tested scale"
+    },
+    {
+      "family": "power",
+      "N_values": [5, 10, 20, 40, 80],
+      "delta_sq_values": [0.207973000023398, 0.207311838636572, 0.207294900712182, 0.20729314174656, 0.207292597759632],
+      "decay_rate": "plateau at tested scale"
+    },
+    {
+      "family": "random_reciprocal",
+      "N_values": [5, 10, 20, 40, 80],
+      "delta_sq_values": [0.619587408711135, 0.618243356433843, 0.617952020014972, 0.61778503363989, 0.617707146255107],
+      "decay_rate": "plateau at tested scale"
+    }
+  ],
+  "BN_numerical_verdict": "V_BN_numerical_structural_pattern",
+  "verdict_reason": "The harmonic reciprocal family shows slow logarithmic decay consistent with Bae z-Duarte expectations, while sparse reciprocal families plateau; this identifies the finite Gram subinterface structure but does not decide the infinite closure target.",
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1",
+    "de Branges RH-carrier closure target-equivalence / Conrey-Li survival",
+    "Hilbert-Polya/Berry-Keating standard xp bridge failure and modified-operator target-equivalence",
+    "Connes adelic trace-formula full closure target-equivalence / completed spectral ledger not inherited"
+  ],
+  "final_verdict": "V_BN_numerical_structural_pattern"
+}
+

@@ -1,0 +1,217 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{hyperref}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{nogo}{No-Go}
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\HC}{H_{\mathrm C}}
+\newcommand{\DC}{D_{\mathrm C}}
+\newcommand{\XiConnes}{\Xi_{\mathrm{Connes}}}
+\newcommand{\CRCFT}{\mathrm{CRCFT}}
+
+\title{Step 184: Connes Adelic / Noncommutative-Geometric Carrier Pivot}
+\author{RH Membrane Adequacy Track}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\mathrm{connes\_verdict}=V_{\mathrm{connes\_CRCFT\_TE}}.}
+\]
+
+The Connes adelic/noncommutative-geometric carrier lands in
+\(\CRCFT\)-TE.  The native full-strength trace-formula closure is the
+classical Connes RH-equivalent spectral-realization condition.  No inherited
+record supplies an independent completed spectral ledger, determinant
+convergence theorem, or tail/exhaustivity record.
+
+\section*{Inherited Record Audit}
+
+\paragraph{Step 90.}
+Trace-formula and automorphic/representation sources are recorded as
+potentially genuine only if the chosen completed carrier is automorphic or
+adelic and if Plancherel or trace-formula data provide a full anti-invariant
+lower frame.  Otherwise they are public trace shadows.
+
+\paragraph{Step 91.}
+The character-source record states that a conductor ladder is a moving
+finite-window source unless embedded into a fixed completed response space,
+such as an adelic/idele-class character space, with a Plancherel or
+tail-exhaustivity theorem.
+
+\paragraph{Step 93.}
+The Tier-0 triage imports Connes--Consani 2020 as the archimedean positivity
+slot and identifies Connes--Consani--Moscovici semilocal spaces as the natural
+arena for the cross-term.  It also records that finite spectral triples give
+evidence but require convergence to the completed zero ledger.
+
+\paragraph{Steps 99--100.}
+The Plancherel/exhaustivity records state that finite windows and finite
+source frames promote only with a fixed exhaustive tail form.  Step 100
+instantiates a semilocal carrier
+\[
+Y_S^- = L^2(\mathbb R,dm_S)^-,
+\qquad
+dm_S(\xi)=\left|\prod_{v\in S}L_v(1/2-i\xi)\right|^2d\xi,
+\]
+but leaves the active analytic target as the completed source/tail domination
+problem.  It does not construct the full Connes adelic spectral ledger.
+
+\section*{Connes Carrier Declaration}
+
+\begin{definition}[Typed Connes carrier]
+Let
+\[
+X_\Q=\A_\Q/\Q^*,\qquad C_\Q=\A_\Q^*/\Q^*
+\]
+be the adele class space and idele class group.  The typed Connes carrier
+\(\HC\) is the completed adelic/cohomological Hilbert carrier associated to
+\(X_\Q\), with the trivial modes removed, on which \(C_\Q\) acts by scaling.
+\end{definition}
+
+The operator \(\DC\) is declared as the infinitesimal generator of the modulus
+subgroup of the scaling action, or equivalently the generator whose
+distributional trace is used on the spectral side of Connes' trace formula.
+This declaration is typed rather than computational: the exact completed
+domain, cokernel model, and regularization are classical Connes/Meyer records
+and are not supplied by the inherited artifacts.
+
+\section*{Trace Formula and Parent Residual}
+
+For a suitable test function \(h\) on \(C_\Q\), the Connes trace formula has
+the schematic shape
+\[
+\operatorname{Tr}\bigl(\pi_{\mathrm C}(h)\mid \HC\bigr)
+=
+\mathcal E_{\mathrm{arith}}(h),
+\]
+where the right side is the explicit-formula distribution: prime or
+von-Mangoldt orbital terms, archimedean terms, and pole/trivial-zero
+corrections.
+
+Define
+\[
+\XiConnes(h)
+:=
+\operatorname{Tr}\bigl(\pi_{\mathrm C}(h)\mid \HC\bigr)
+-
+\mathcal E_{\mathrm{arith}}(h)
+\]
+after quotienting trivial modes and after imposing the required completed
+tail/exhaustivity conditions.  Thus
+\[
+\XiConnes=0
+\]
+means that the completed Connes spectral ledger realizes the zeta zero ledger
+with the full trace-formula positivity/effectivity required by the classical
+Connes program.
+
+\section*{CRCFT Mode Audit}
+
+\begin{center}
+\begin{tabular}{p{0.18\linewidth}p{0.18\linewidth}p{0.54\linewidth}}
+\toprule
+Audit & Result & Reason\\
+\midrule
+T3a CTMT & not primary
+& No inherited carrier-native basis or kernel reduces \(\XiConnes\) to a
+matrix-element family before the trace/ledger gate.\\
+T3b TE & yes
+& Full trace-formula/spectral-realization closure is the Connes RH-equivalent
+condition at full strength.\\
+T3c BF & secondary
+& Bridges to Hecke, Burnol, or zeta residuals are missing, but the native
+Connes route already lands in TE.\\
+T3d non-CRCFT & none found
+& Finite spectral triples and semilocal source routes require determinant or
+zero-ledger convergence plus tail records.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section*{Initial Cascade}
+
+\begin{center}
+\begin{tabular}{p{0.18\linewidth}p{0.25\linewidth}p{0.34\linewidth}p{0.16\linewidth}}
+\toprule
+Branch & Name & Target & Status\\
+\midrule
+C-trace & completed trace-formula closure
+& prove spectral trace equals arithmetic explicit-formula side over the full test class
+& \(\CRCFT\)-TE\\
+C-ledger & completed spectral ledger
+& promote finite spectral triples or approximants to the completed zero ledger
+& finite-window support only\\
+C-bridge & bridge to prior carriers
+& compare Connes to Hecke/Burnol/zeta residuals without scalar identity collapse
+& bridge missing\\
+C-source & idele character/source coercivity
+& turn idele Plancherel sources into a fixed exhaustive lower frame
+& tail required\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{nogo}[Connes target-equivalence no-go]
+Under inherited records, the native Connes adelic/NCG carrier exhibits
+\(\CRCFT\)-TE: full closure of \(\XiConnes\) is target-equivalent to RH unless
+an independent completed spectral ledger and tail/exhaustivity theorem are
+supplied.
+\end{nogo}
+
+\begin{proof}
+The carrier is genuinely native and adelic, so the primary failure is not
+that the carrier is a scalar shadow.  However, the inherited records only
+import semilocal and finite-window parts: archimedean positivity,
+Hardy--Titchmarsh semilocal response spaces, finite spectral triples, and
+Plancherel/tail promotion rules.  Each inherited finite or semilocal object is
+explicitly scoped as support-only until a completed zero ledger and exhaustive
+tail record are supplied.
+
+The full Connes statement that the spectral trace on the completed adelic
+carrier realizes the zeta zero ledger is exactly the classical
+Connes/RH-equivalent closure condition.  Using that closure as a tool would
+therefore be target-equivalence smuggling.  Since no inherited basis or kernel
+gives a prior \(\CTMT\)-style matrix-element terminus, and no independent
+carrier bridge supplies the missing ledger, the typed classification is
+\(\CRCFT\)-TE.
+\end{proof}
+
+\section*{Classical Theorems Cited}
+
+\begin{itemize}
+\item A. Connes, \emph{Trace formula in noncommutative geometry and the zeros
+of the Riemann zeta function}, Selecta Mathematica, 1999.
+\item R. Meyer, work from 2005 onward on functional-analytic reformulations of
+Connes' spectral realization.
+\item C. Deninger's cohomological/motivic RH program, used here only as
+context for the target-equivalence risk in cohomological spectral carriers.
+\end{itemize}
+
+\section*{Coverage Status}
+
+\[
+\boxed{\mathrm{CRCFT\_coverage\_conjecture\_status}=\mathrm{strengthens}.}
+\]
+The Connes carrier adds another \(\CRCFT\)-TE instance.  It does not refute
+the CRCFT coverage conjecture because no non-\(\CRCFT\), non-target-equivalent
+route is supplied by the inherited records.
+
+\section*{Nonclaim Boundary}
+
+This step does not prove RH, does not assume RH, and does not construct the
+completed Connes spectral ledger.  It does not close \(\XiConnes\) or any
+previous residual.  It records a target-equivalence typed no-go and preserves
+all retained no-gos.
+
+\end{document}

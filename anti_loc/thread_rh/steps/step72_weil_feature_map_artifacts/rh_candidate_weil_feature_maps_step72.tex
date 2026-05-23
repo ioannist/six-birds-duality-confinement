@@ -1,0 +1,257 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Step 72: Candidate Completed Weil Feature Maps for the RH Membrane Route}
+\author{Working note}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+\newtheorem{remark}{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\T}{\mathcal T}
+\newcommand{\Wcmp}{W_{\rm cmp}}
+\newcommand{\Wpr}{W_{\rm pr}}
+\newcommand{\Winf}{W_{\infty}}
+\newcommand{\Wpole}{W_{\rm pole}}
+\newcommand{\Wtail}{W_{\rm tail}}
+\newcommand{\EF}{E_{\rm EF}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Ran}{\operatorname{Ran}}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+This note is the first RH-specific construction step after the abstract
+formed-layer membrane framework.  The framework asks for a Douglas-type
+contractive bridge
+\[
+  V_Z = T\Wcmp, \qquad \|T\|\le 1,
+\]
+where \(V_Z\) is the zero-side anti-invariant displacement readout and
+\(\Wcmp\) is a positive completed carrier feature map.  Equivalently,
+\[
+  \AZ=V_Z^*V_Z \preceq \Wcmp^*\Wcmp=\K_{\rm cmp}.
+\]
+The aim here is not to prove this bridge for zeta.  The aim is to choose a
+concrete test-function side and write the candidate completed Weil carrier in
+feature-map language, separating the prime-power, archimedean, pole/completion,
+and tail slots.
+
+\section{Admissible test side}
+Let \(\T\subset \mathcal S(\mathbb R)\) be a real, even, smooth test-function
+space in the logarithmic variable \(t=\log x\).  We write
+\[
+  (\tau_a f)(t)=f(t+a),
+  \qquad
+  \widehat f(\xi)=\int_{\mathbb R} f(t)e^{-i\xi t}\,dt.
+\]
+The evenness condition is not essential for the algebra below, but it is the
+natural starting point for the completed self-dual zeta package.
+
+The anti-linear RH symmetry is
+\[
+  J(s)=1-\overline{s}.
+\]
+In centered coordinates \(s=1/2+x+i\gamma\), the anti-invariant coordinate is
+\[
+  \psi_-(s)=x=\Re(s)-\frac12.
+\]
+A zero-side displacement feature can therefore be represented abstractly as
+\[
+  (V_Z f)_\rho = \sqrt{w_\rho}\,\bigl(\Re\rho-\tfrac12\bigr)\,\mathcal E_\rho(f),
+\]
+where \(\mathcal E_\rho\) is the selected zero-evaluation/readout and
+\(w_\rho\ge0\) is the zero-ledger weight.  This is a formal visible zero ledger;
+the completed zero-side visibility and tail records are separate obligations.
+
+\section{Positive shift-feature template}
+A positive feature map has the form
+\[
+  (W_\mu f)(a,t)=\sqrt{\mu(a)}\,\bigl(f(t+a)-f(t)\bigr),
+\]
+for a positive measure or weighted counting measure \(\mu\) on shifts.  Then
+\[
+  \|W_\mu f\|^2
+  =\int \mu(a)\,\|\tau_a f-f\|_{L^2_t}^2\,da
+  =\int_{\mathbb R}\Psi_\mu(\xi)|\widehat f(\xi)|^2\,d\xi,
+\]
+where
+\[
+  \Psi_\mu(\xi)=\int \mu(a)|e^{ia\xi}-1|^2\,da\ge0.
+\]
+This template is useful because it turns arithmetic shifts into an honest
+positive Dirichlet-form feature.  The crucial question is whether the completed
+Weil form can be represented, after lawful quotienting and completion, by a sum
+of such positive features plus finite-dimensional completion features.
+
+\section{Candidate four-feature decomposition}
+For a support/refinement parameter \(L\), define a smooth nonnegative cutoff
+\(\alpha_L(a)\in[0,1]\), with \(\alpha_L(a)=1\) on the accepted visible range
+and \(\alpha_L(a)=0\) outside the finite/refined range.  A candidate completed
+feature map is
+\[
+  \Wcmp f
+  =
+  \begin{bmatrix}
+    \Wpr,L f\\
+    \Winf f\\
+    \Wpole f\\
+    \Wtail,L f
+  \end{bmatrix}.
+\]
+The four slots are as follows.
+
+\subsection{Prime-power slot}
+A natural positive prime-power shift feature is
+\[
+  (\Wpr,L f)_{n}(t)
+  =
+  \sqrt{\frac{\Lambda(n)}{\sqrt n}}\,\alpha_L(\log n)
+  \bigl(f(t+\log n)-f(t)\bigr),
+\]
+for \(n\ge2\).  Its quadratic form is
+\[
+  \|\Wpr,L f\|^2
+  =
+  \sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2
+  \|\tau_{\log n}f-f\|^2.
+\]
+This is positive by construction.  It is not, by itself, the classical prime
+side of the explicit formula; rather, it is the positive feature candidate that
+would have to be shown to dominate the anti-invariant zero displacement after
+completion.
+
+\subsection{Archimedean/gamma slot}
+The archimedean slot is modeled by a positive continuous shift feature
+\[
+  (\Winf f)(a,t)
+  =\sqrt{\kappa_\infty(a)}\,\bigl(f(t+a)-f(t)\bigr),
+  \qquad a>0,
+\]
+where one formal candidate kernel is
+\[
+  \kappa_\infty(a)=\frac{1}{2\sinh(a/2)}.
+\]
+The kernel has a singularity at \(a=0\), so this slot requires a declared
+renormalization or a quotient by the zero-shift/pole modes.  The positive-slot
+record is therefore:
+\[
+  \Winf \text{ is accepted only after the archimedean singular part is
+  quotient-handled or paired with }\Wpole.
+\]
+
+\subsection{Pole/completion slot}
+The pole/completion feature is finite-dimensional.  It records the completion
+and null/pole constraints that remove illegal zero-energy modes.  Abstractly,
+\[
+  \Wpole f=(\langle f,p_1\rangle,\ldots,\langle f,p_m\rangle)
+\]
+for declared completion functionals \(p_i\).  This slot is not optional: omitting
+it can create a fake zero budget or a false tail-free explicit formula.
+
+\subsection{Tail/support slot}
+The tail slot records omitted shifts, support leakage, and promotion defects:
+\[
+  \Wtail,L f
+  =\text{positive feature for omitted visible shifts and support/tail defects}.
+\]
+At a finite stage, this may be represented only by a defect matrix
+\(E_{{\rm tail},L}\).  A finite-window claim is exact only if
+\[
+  E_{{\rm tail},L}\to0
+\]
+in the fixed-ledger or exhaustive-ledger sense.
+
+\section{The candidate gate}
+The Step--72 candidate gate is the following.
+
+\begin{obligation}[Candidate Weil--Douglas feature-map gate]
+Choose \(\T\), zero readout \(V_Z\), and completed features
+\(\Wpr,\Winf,\Wpole,\Wtail\).  The bridge gate passes only if there exists a
+contraction \(T\) such that
+\[
+  V_Z=T
+  \begin{bmatrix}
+    \Wpr\\ \Winf\\ \Wpole\\ \Wtail
+  \end{bmatrix},
+  \qquad \|T\|\le1.
+\]
+Equivalently,
+\[
+  \AZ\preceq
+  \K_{\rm pr}+\K_\infty+\K_{\rm pole}+\K_{\rm tail}.
+\]
+If only a visible finite carrier has been constructed, the honest statement is
+\[
+  \AZ\preceq \K_{\rm pr}+\K_\infty+\K_{\rm pole}+E_{\rm tail}+E_{\rm EF}.
+\]
+\end{obligation}
+
+\section{Signed explicit formula versus positive feature maps}
+The classical explicit formula contains signed terms.  A signed identity of the
+form
+\[
+  Z(f)=P_{\rm pr}(f)-P_\infty(f)+P_{\rm pole}(f)+P_{\rm tail}(f)
+\]
+does not automatically provide a positive feature map.  The Douglas gate needs
+a Loewner domination
+\[
+  V_Z^*V_Z\preceq \sum_i W_i^*W_i,
+\]
+not a scalar equality of distributions or traces.
+
+\begin{warning}[Trace balance is not domination]
+Even if
+\[
+  \operatorname{tr}(V_Z^*V_Z)=\operatorname{tr}(\Wcmp^*\Wcmp),
+\]
+it need not follow that
+\[
+  V_Z^*V_Z\preceq\Wcmp^*\Wcmp.
+\]
+The bridge is accepted only by Loewner domination, equivalently by Douglas
+factorization.
+\end{warning}
+
+\section{Classification of the four slots}
+\begin{center}
+\begin{tabular}{lll}
+Slot & Positive-feature status & Remaining obligation\\
+\hline
+Prime-power & Positive as shift Dirichlet feature & Show it matches/completes prime side\\
+Archimedean & Positive after renormalization/quotient & Handle singularity and gamma normalization\\
+Pole/completion & Positive finite-dimensional feature & Declare pole/null quotient and completion modes\\
+Tail/support & Positive or defect-budgeted & Prove vanishing tail/exhaustive ledger\\
+\end{tabular}
+\end{center}
+
+\section{Nonclaim boundary}
+This note does not prove RH.  It does not prove the Weil positivity criterion in
+Douglas form.  It does not prove that the shift-feature candidate is the correct
+zeta carrier.  It only identifies a concrete feature-map target and separates
+which classical pieces are already positive candidates from which pieces require
+completion, quotienting, or defect records before the Douglas gate can be
+attempted.
+
+\section{Next target}
+The next target is to compare this candidate feature-map gate with an actual
+Weil positivity formulation.  The question is:
+\[
+  \text{Does Weil positivity imply, or can it be strengthened to, the Douglas
+  domination }V_Z^*V_Z\preceq\Wcmp^*\Wcmp?
+\]
+If not, the gap between scalar/bilinear Weil positivity and operator-valued
+contractive domination must be recorded as the central RH bridge defect.
+
+\end{document}

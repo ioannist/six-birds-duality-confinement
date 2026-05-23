@@ -1,0 +1,228 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{obligation}{Obligation}
+
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\Kcmp}{\mathsf K_{\rm cmp}}
+\newcommand{\Ccore}{\mathcal C^-_{\log}}
+\newcommand{\Yminus}{Y^-}
+\newcommand{\Wcmp}{W_{\rm cmp}}
+\newcommand{\Wpr}{W_{\rm pr}}
+\newcommand{\Winfty}{W_\infty}
+\newcommand{\Wpole}{W_{\rm pole}}
+\newcommand{\Wtail}{W_{\rm tail}}
+
+\title{Step 76: Weil Feature Matching Criterion\\
+Signed Explicit Formula to Positive Douglas Carrier}
+\author{Working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 75 chose the candidate log-side Weil core
+\[
+\Ccore=C_c^\infty(\mathbb R)^{J=-1}
+\]
+and the candidate completed feature stack
+\[
+\Wcmp=
+\begin{bmatrix}
+\Wpr\\ \Winfty\\ \Wpole\\ \Wtail
+\end{bmatrix}.
+\]
+Step 76 records the exact matching criterion needed to turn the classical signed explicit formula into the framework's positive Douglas bridge
+\[
+\AZ\preceq \Kcmp.
+\]
+The point is to isolate the gap between ``we have written the explicit formula'' and ``we have a positive completed carrier feature map that dominates zero displacement.''
+
+\section{Abstract bridge}
+Let \(\Yminus\) be the completed anti-invariant response space or a dense form core thereof. Let
+\[
+V_Z:\Yminus\to \mathcal Z,
+\qquad \AZ=V_Z^*V_Z,
+\]
+be the zero-side anti-invariant displacement readout, and let
+\[
+\Wcmp:\Yminus\to \mathcal E_{\rm cmp},
+\qquad \Kcmp=\Wcmp^*\Wcmp,
+\]
+be the completed carrier-side positive feature map. The desired bridge is
+\[
+\AZ\preceq\Kcmp.
+\]
+By Douglas factorization, this is equivalent to the existence of a contraction
+\[
+V_Z=T\Wcmp,
+\qquad \|T\|\le 1.
+\]
+
+\section{Feature matching data}
+\begin{definition}[Completed feature matching record]
+A completed Weil feature matching record on a core \(\Ccore\) consists of:
+\begin{enumerate}[label=(M\arabic*)]
+\item a zero displacement form
+\[
+q_Z[f]=\|V_Z f\|^2;
+\]
+\item positive carrier features
+\[
+q_{\rm cmp}[f]
+=\|\Wcmp f\|^2
+=\|\Wpr f\|^2+\|\Winfty f\|^2+\|\Wpole f\|^2+\|\Wtail f\|^2;
+\]
+\item a signed explicit-formula residual form
+\[
+q_{\rm EF}[f]=q_{\rm cmp}[f]-q_Z[f];
+\]
+\item a core-completion record: \(\Ccore\) is a form core for \(q_{\rm cmp}\) and \(q_Z\), with null-mode legality.
+\end{enumerate}
+The O1 Douglas gate closes when
+\[
+q_{\rm EF}[f]\ge0\qquad(f\in\Ccore)
+\]
+and the inequality extends to the completed response space.
+\end{definition}
+
+\begin{theorem}[Feature matching criterion]
+Assume the matching record above, and assume the forms are closable with \(\Ccore\) as a common form core. Then the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+\item \(q_Z[f]\le q_{\rm cmp}[f]\) on the completed response space;
+\item \(\AZ\preceq\Kcmp\);
+\item there exists a contraction \(T\) such that \(V_Z=T\Wcmp\);
+\item \(q_{\rm EF}\) is a positive quadratic form on the completed response space.
+\end{enumerate}
+Thus the signed explicit formula becomes an accepted Douglas bridge only when its completed positive feature representation has a positive residual.
+\end{theorem}
+
+\begin{proof}
+The equivalence between (i) and (ii) is the definition of Loewner domination for the quadratic forms. The equivalence between (ii) and (iii) is Douglas factorization, applied to the positive forms \(V_Z^*V_Z\) and \(\Wcmp^*\Wcmp\). The equivalence between (i) and (iv) follows from
+\[
+q_{\rm EF}=q_{\rm cmp}-q_Z.
+\]
+The core version follows by closure of the forms and the form-core hypothesis.
+\end{proof}
+
+\section{Shift-difference features}
+Let \(\tau_a f(t)=f(t+a)\). For a positive measure \(\mu\) with
+\[
+\int \min(a^2,1)\,d\mu(a)<\infty,
+\]
+define
+\[
+(W_\mu f)(a,t)=f(t+a)-f(t).
+\]
+Then
+\[
+q_\mu[f]=\|W_\mu f\|^2
+=\int \Psi_\mu(\xi)|\widehat f(\xi)|^2\,d\xi,
+\]
+where
+\[
+\Psi_\mu(\xi)=\int |e^{ia\xi}-1|^2\,d\mu(a)\ge0.
+\]
+
+\begin{proposition}[Shift-feature symbol criterion]
+A translation-invariant difference feature on the log side has nonnegative Fourier symbol of the form
+\[
+\Psi(\xi)=\int |e^{ia\xi}-1|^2\,d\mu(a),
+\qquad \mu\ge0,
+\]
+possibly plus a nonnegative derivative/Gaussian term \(\sigma^2\xi^2\) and finite-rank completion terms. Conversely, any such symbol defines a positive closable difference form on the natural Sobolev-type form domain.
+\end{proposition}
+
+\section{The four slots}
+\subsection{Prime-power slot}
+At finite support scale \(L\), the positive prime-shift candidate is
+\[
+(\Wpr,L f)_n(t)
+=\sqrt{\frac{\Lambda(n)}{\sqrt n}}\,\alpha_L(\log n)\bigl(f(t+\log n)-f(t)\bigr).
+\]
+It contributes
+\[
+q_{{\rm pr},L}[f]
+=\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\alpha_L(\log n)^2\|\tau_{\log n}f-f\|^2.
+\]
+This slot is positive by construction. Its matching obligation is not positivity, but exact identification with the completed explicit-formula prime contribution plus tail.
+
+\subsection{Archimedean/gamma slot}
+A plausible positive feature has kernel
+\[
+\kappa_\infty(a)\sim \frac{1}{2\sinh(|a|/2)},
+\]
+and form
+\[
+q_\infty[f]=\int\!\int\kappa_\infty(a)|f(t+a)-f(t)|^2\,dt\,da.
+\]
+The difference kills the near-zero singularity because \(|f(t+a)-f(t)|^2=O(a^2)\). The slot is positive after a renormalized kernel is specified. The matching obligation is to prove that this feature is exactly the gamma/archimedean component of the completed explicit formula in the declared core.
+
+\subsection{Pole/completion slot}
+Pole and completion terms are represented by finite-rank features
+\[
+\Wpole f=(\langle f,p_1\rangle,\dots,\langle f,p_m\rangle).
+\]
+This slot records null-mode, pole, endpoint, and completion constraints. Omitting it risks a fake zero budget or a null-mode overread.
+
+\subsection{Tail/support slot}
+The tail/support slot records the difference between finite features and the completed ledger. It may be positive, or it may be a defect record
+\[
+E_{\rm tail,L}.
+\]
+For exact confinement, finite-window records require a fixed-ledger or exhaustive-ledger tail squeeze.
+
+\section{Signed formula versus positive carrier}
+The classical explicit formula naturally produces signed terms. The framework does not accept signed balance as the carrier. It requires a positive completed carrier \(q_{\rm cmp}\) and the residual positivity
+\[
+q_{\rm cmp}-q_Z\ge0.
+\]
+
+\begin{warning}[Signed identity is not a feature map]
+A formula of the schematic form
+\[
+\text{zero side}=\text{prime side}-\text{gamma side}+\text{pole side}+\text{tail}
+\]
+does not by itself define \(\Wcmp\). The signed pieces must be grouped into positive features and an explicit positive residual. Otherwise the record remains support-only.
+\end{warning}
+
+\begin{warning}[Trace balance is not domination]
+Even if
+\[
+\operatorname{tr}\AZ=\operatorname{tr}\Kcmp,
+\]
+it need not follow that \(\AZ\preceq\Kcmp\). The Douglas gate is Loewner/operator domination, not scalar accounting.
+\end{warning}
+
+\section{Relation to Weil positivity}
+If classical Weil positivity can be written as
+\[
+Q_W[f]=q_{\rm cmp}[f]-q_Z[f]\ge0
+\]
+on the completed anti-invariant response space, with \(q_{\rm cmp}\) coming from the four positive feature slots above, then O1 closes. If Weil positivity is known only on a smaller test family, or only as scalar positivity, then the record is support-only until the core-completion and full-domain gates are discharged.
+
+\begin{obligation}[O1 positive feature matching]
+To instantiate the RH membrane proof one must provide:
+\begin{enumerate}[label=(O1.\arabic*)]
+\item the full anti-invariant response space \(\Yminus\) or a dense form core;
+\item the zero displacement readout \(V_Z\);
+\item positive feature maps \(\Wpr,\Winfty,\Wpole,\Wtail\);
+\item the identity \(q_{\rm EF}=q_{\rm cmp}-q_Z\) with all completion terms visible;
+\item positivity \(q_{\rm EF}\ge0\) on a form core;
+\item closability/core extension to the full completed response space.
+\end{enumerate}
+Only then does the explicit formula provide the Douglas bridge.
+\end{obligation}
+
+\section{Nonclaims}
+This note does not prove the positive feature matching for zeta. It does not prove RH. It does not prove that the signed explicit formula is already a positive carrier. It states the exact matching criterion and identifies which slots are positive candidates and which still require completion, quotienting, or tail repair.
+
+\end{document}

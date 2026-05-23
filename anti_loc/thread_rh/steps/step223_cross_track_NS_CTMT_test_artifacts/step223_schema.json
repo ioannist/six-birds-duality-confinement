@@ -1,0 +1,95 @@
+{
+  "step": 223,
+  "orientation": "cross-track-framework-validation",
+  "target": "CTMT recursion test on NS track",
+  "NS_diagnostic_state": {
+    "track_state": "diagnostic-complete at ns55; no internal lane active",
+    "parent_target": "Xi_C(D_BG | L_phys) <= Omega_BG",
+    "typed_context": "(E_{J,t}, C_{J,t}, L_phys_{J,t}, D_BG_{J,t})",
+    "residual_chain": [
+      "root_Xi_BG",
+      "Omega_src",
+      "Omega_gap",
+      "Omega_rem",
+      "Omega_bb",
+      "Omega_mm",
+      "Omega_amp",
+      "Radius_window_theorem"
+    ],
+    "read_only_records": [
+      "anti_loc/thread_ns/cascade_map_ns.md",
+      "anti_loc/thread_ns/steps/ns55_extracted/ns55_results_summary.md",
+      "anti_loc/thread_ns/steps/ns55_extracted/residual_tree_ns55.csv",
+      "anti_loc/thread_ns/steps/ns54_extracted/ns54_results_summary.md",
+      "anti_loc/thread_ns/steps/ns54_extracted/ns54_gate_table.csv",
+      "anti_loc/thread_ns/steps/ns50_extracted/ns50_results_summary.md",
+      "anti_loc/thread_ns/steps/ns48_extracted/ns48_results_summary.md",
+      "anti_loc/thread_ns/steps/ns46_extracted/ns46_results_summary.md",
+      "anti_loc/thread_ns/steps/ns43_extracted/ns43_results_summary.md",
+      "anti_loc/thread_ns/steps/ns28_extracted/ns28_results_summary.md"
+    ]
+  },
+  "NS_external_theorem_typed": {
+    "central_obligation": "EXT1 sector-matched radius-window product theorem",
+    "statement": "lambda_J(t) rho(t) >= kappa log(lambda_J(t)) + h(t) on the fixed/exhaustive BG mismatch ledger",
+    "auxiliary_obligations": [
+      "EXT2 BKM/BG time gate for Gevrey envelope",
+      "EXT3 sector match for BG mismatch ledger",
+      "EXT4 tail/lift budget in the same context"
+    ],
+    "status": "precisely stated by framework; proof remains external PDE content"
+  },
+  "literature_audit_summary": [
+    {
+      "source": "Leray 1934 / Hopf 1951 / Ladyzhenskaya 1969",
+      "finding": "weak-solution and PDE infrastructure; no smooth global regularity closure"
+    },
+    {
+      "source": "Beale-Kato-Majda 1984",
+      "finding": "blowup criterion in vorticity; imported as target readout/guardrail, not a physical-native closure"
+    },
+    {
+      "source": "Caffarelli-Kohn-Nirenberg 1982",
+      "finding": "partial regularity and dimension control; does not pay amplitude residual"
+    },
+    {
+      "source": "Constantin-Fefferman 1993",
+      "finding": "vorticity-direction geometric depletion criterion; not the sector-matched radius-window product theorem"
+    },
+    {
+      "source": "Escauriaza-Seregin-Sverak 2003 and Koch-Tataru 2001",
+      "finding": "endpoint/critical-space criteria and small-data theory; conditions stronger or different from fixed BG mismatch ledger closure"
+    },
+    {
+      "source": "Tao 2016 and Buckmaster-Vicol 2019",
+      "finding": "guardrails against energy-only or weak-solution-only strategies"
+    },
+    {
+      "source": "Bradshaw-Grujic / Grujic-Xu sparseness and analyticity work",
+      "finding": "route templates for sparseness, analyticity, derivative stack; expose fixed-ledger, amplitude, and time-gate sub-obligations"
+    }
+  ],
+  "recursion_layers_observed": [
+    "Xi(D_BG | L_phys) adequacy target",
+    "source/gap split",
+    "Omega_src component recurrence",
+    "Omega_gap/Omega_rem localization",
+    "Omega_bb packing-amplitude gate",
+    "Omega_mm sector mismatch gate",
+    "Omega_amp amplitude obstruction",
+    "derivative-stack fixed/exhaustive ledger gate",
+    "Gevrey metric correction and dominance gate",
+    "sector-matched radius-window product theorem plus BKM/BG time gate"
+  ],
+  "framework_finding_upgrade_status": "verified-on-4-track-instances_structural_form",
+  "retained_nogos": [
+    "criterion-native circularity",
+    "energy/enstrophy-only",
+    "packing-only amplitude",
+    "marker-only",
+    "metric-shadow/Gevrey dominance",
+    "moving-window support-only",
+    "raw-nonlinearity"
+  ],
+  "final_verdict": "V_ns_CTMT_recursion_verified"
+}

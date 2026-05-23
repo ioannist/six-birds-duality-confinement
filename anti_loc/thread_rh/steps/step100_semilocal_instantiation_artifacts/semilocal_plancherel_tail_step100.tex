@@ -1,0 +1,184 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\pre}{\preceq}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+
+\title{Step 100: Semilocal Plancherel/Tail Instantiation on the Connes--Consani--Moscovici Response Space}
+\author{RATCHET / Six Birds RH Membrane Program}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 99 stated the abstract promotion gate:
+\[
+\text{finite character/source frame}
++\text{Plancherel/exhaustivity}
++\text{vanishing tail}
+\Longrightarrow
+\text{completed anti-invariant lower frame}.
+\]
+Step 100 instantiates this gate on a concrete carrier-native choice: the semilocal Connes--Consani--Moscovici response space
+\[
+Y_S^- = L^2(\R,dm_S)^-,
+\]
+where \(S\) is a finite set of rational places containing \(\infty\), the superscript \(-\) denotes the anti-invariant sector for \(\xi\mapsto-\xi\), and
+\[
+ dm_S(\xi)=\left|L_\infty\!\left(\frac12-i\xi\right)
+ \prod_{p\in S_f} L_p\!\left(\frac12-i\xi\right)\right|^2d\xi.
+\]
+This is the smallest honest semilocal arena for the hybrid route: the archimedean/Sonin positivity record, finite Euler factors, anti-invariant symmetry, and spectral windows live in one Hilbert geometry.
+
+\section{Semilocal response carrier}
+Let
+\[
+S=\{\infty\}\cup S_f,
+\qquad
+L_p(s)=(1-p^{-s})^{-1},
+\qquad
+L_\infty(s)=\pi^{-s/2}\Gamma(s/2).
+\]
+Define
+\[
+E_S(\xi)=L_\infty\!\left(\frac12-i\xi\right)
+\prod_{p\in S_f}L_p\!\left(\frac12-i\xi\right).
+\]
+Then
+\[
+Y_S=L^2(\R,|E_S(\xi)|^2d\xi),
+\qquad
+Y_S^-:=\{y\in Y_S:y(-\xi)=-y(\xi)\}.
+\]
+The semilocal Hardy--Titchmarsh transform puts finite Euler factors into the measure of this response space. Thus primes are no longer an external signed sum; they deform the response geometry.
+
+\section{Windows and tail forms}
+There are two independent truncations.
+
+\subsection{Spectral windows}
+For \(T>0\), let
+\[
+P_T:Y_S^-\to Y_S^- ,\qquad (P_Ty)(\xi)=1_{|\xi|\le T}y(\xi).
+\]
+The tail projection is
+\[
+P_T^\perp=I-P_T.
+\]
+A tail form against a budget operator \(B\succ0\) is
+\[
+\mathcal T_T[y]=\ip{P_T^\perp y}{B P_T^\perp y}_{Y_S}.
+\]
+For exact confinement, the relevant condition is not norm convergence alone but zero-ledger exhaustivity:
+\[
+\operatorname{tr}(P_T^\perp\mathsf A_ZP_T^\perp)\to0.
+\]
+
+\subsection{Finite-place windows}
+Let \(S_n=\{\infty\}\cup\{p\le X_n\}\). The finite-place response space is
+\[
+Y_{S_n}^-=L^2(\R,dm_{S_n})^-.
+\]
+The inclusion from one semilocal geometry to another is not automatically isometric. A lawful bridge must record either a unitary identification, an equivalent-norm estimate, or a defect form.
+
+\subsection{Character/conductor windows}
+Let \(\mathcal X_n\) be a finite conductor/Hecke-character window. It defines readouts
+\[
+Q_\omega:Y_S^-\to Z_\omega,
+\qquad \omega\in\mathcal X_n,
+\]
+and source frame
+\[
+F_n=\sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega.
+\]
+Finite character orthogonality proves an exact frame on the finite quotient it sees; it does not prove the completed lower frame unless the quotient windows exhaust \(Y_S^-\).
+
+\section{Promotion theorem on the semilocal carrier}
+\begin{theorem}[Semilocal Plancherel/tail promotion]
+Let \(Y_S^-\) be as above. Let \(\Pi_n:Y_S^-\to Y_n^-\) be a window map, and suppose the finite/window source frame satisfies
+\[
+F_n^{\rm win}\succeq \Lambda_n B_n
+\quad\text{on }Y_n^-.
+\]
+Assume a completed Plancherel/exhaustivity record
+\[
+(\Theta_0^-)^{-1}\preceq \Pi_n^*B_n\Pi_n+T_n
+\quad\text{on }Y_S^-.
+\]
+Then the lifted source frame
+\[
+\widetilde F_n:=\Pi_n^*F_n^{\rm win}\Pi_n
+\]
+satisfies
+\[
+\widetilde F_n+\Lambda_nT_n\succeq \Lambda_n(\Theta_0^-)^{-1}.
+\]
+Equivalently,
+\[
+\widetilde F_n\succeq\Lambda_n(\Theta_0^-)^{-1}-\Lambda_nT_n.
+\]
+Thus finite source frames promote to completed lower frames only up to the declared tail form.
+\end{theorem}
+
+\begin{proof}
+The finite lower-frame hypothesis gives
+\[
+\Pi_n^*F_n^{\rm win}\Pi_n\succeq \Lambda_n\Pi_n^*B_n\Pi_n.
+\]
+The exhaustivity hypothesis gives
+\[
+\Pi_n^*B_n\Pi_n\succeq (\Theta_0^-)^{-1}-T_n.
+\]
+Combining,
+\[
+\widetilde F_n\succeq \Lambda_n(\Theta_0^-)^{-1}-\Lambda_nT_n,
+\]
+which is equivalent to the claimed tail-paid lower-frame inequality.
+\end{proof}
+
+\section{Carrier-native RH source gate}
+In the hybrid semilocal route, the completed source gate is
+\[
+F_n\succeq \Lambda_n(\Theta_0^-)^{-1},
+\qquad \Lambda_n\to\infty,
+\]
+plus absorption of the semilocal cross-term
+\[
+\Delta_S^+\preceq F_n+E_{{\rm abs},n}.
+\]
+If these hold with vanishing defects in a fixed/exhaustive zero-ledger sense, then
+\[
+K_n^-=L^-C_n^\dagger(L^-)^*\preceq \Lambda_n^{-1}\Theta_0^-+E_{{\rm src},n},
+\]
+and the anti-invariant budget collapses.
+
+\section{What is now concrete}
+The semilocal instantiation supplies the following carrier-native records:
+\begin{enumerate}[label=(\roman*)]
+\item \(Y_S^-=L^2(\R,dm_S)^-\) as response space.
+\item \(P_T\) as the spectral window map.
+\item finite-place windows \(S_n\) through the local-factor measure \(dm_{S_n}\).
+\item character/conductor readouts \(Q_\omega\) as source probes.
+\item tail forms \(T_n\) as explicit promotion defects.
+\item the lower-frame target \(F_n\succeq\Lambda_n(\Theta_0^-)^{-1}\).
+\end{enumerate}
+
+\section{What remains unearned}
+This step does not prove RH. It leaves two hard analytic obligations:
+\begin{enumerate}[label=(\alph*)]
+\item Prove \(\Delta_S^+\preceq F_n+E_{{\rm abs},n}\) on the semilocal response core.
+\item Prove the Plancherel/exhaustivity tail condition for the completed zero ledger.
+\end{enumerate}
+The high-leverage next attempt is the semilocal prolate compactness question: if \(\Delta_S\) is compact after quotient/tail records, then source absorption becomes a compact-perturbation problem rather than a full infinite-dimensional lower-frame problem.
+
+\section{Nonclaim boundary}
+Finite character orthogonality is accepted only on its finite quotient. Finite semilocal windows are accepted only as windows. A moving finite-window ladder is not a proof of exact confinement unless it is tied to a fixed/exhaustive zero ledger with vanishing tail. The Conrey--Li survival test remains active: this route must not collapse into a de Branges/RKHS shift-positivity condition.
+
+\end{document}

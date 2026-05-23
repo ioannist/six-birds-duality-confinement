@@ -1,0 +1,250 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{enumitem}
+\usepackage{booktabs,longtable}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{nonclaim}[theorem]{Nonclaim}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Cost}{Cost}
+\DeclareMathOperator{\Capacity}{Cap}
+\newcommand{\K}{\mathsf K}
+\newcommand{\XiRes}{\Xi}
+\newcommand{\Loewner}{\preceq}
+
+\title{Step 56 Proof Polish:\ Legal Quotients, \texorpdfstring{$\Xi$}{Xi} Residuals, and Acceptance Semantics}
+\author{Six Birds / RATCHET working note}
+\date{Step 56}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note tightens the most load-bearing hypotheses in the formed-layer membrane manuscript v0.4.  The three repairs are: (i) all capacity, cost, and currency theorems over singular audits are stated on the legal energy quotient; (ii) the adequacy residual \(\Xi_C(D\mid L)\) is treated as a Schur residual on that quotient, with exact null-mode legality and range conditions; and (iii) mathematical membrane equivalence is separated from Six Birds acceptance.  The result is a safer v0.5 theorem layer.
+\end{abstract}
+
+\section{Standing legal-quotient convention}
+
+\begin{definition}[Legal energy quotient]
+Let \(E\) be a finite-dimensional Hilbert space and let \(C=C^*\succeq0\).  Write
+\[
+  N_C=\Ker C,
+  \qquad
+  E_C=N_C^\perp,
+  \qquad
+  C_0=C|_{E_C}.
+\]
+Then \(C_0\succ0\) on \(E_C\).  A probe family \(L:E\to Y\) is \emph{null-legal} if
+\[
+  L|_{N_C}=0.
+\]
+In that case \(L\) descends to \(L_0:E_C\to Y\).  If \(L|_{N_C}\ne0\), the family has a zero-energy visible direction and any anti-localization claim involving it has status \texttt{failed\_null\_mode} unless the null direction is quotiented, annihilated, or excluded by an explicit nonclaim.
+\end{definition}
+
+\begin{lemma}[Capacity dichotomy]
+Let \(\ell(u)=\langle g,u\rangle\).  If \(\ell\) does not annihilate \(N_C\), then
+\[
+  \Capacity_C(\ell;E)=+\infty.
+\]
+If \(\ell|_{N_C}=0\), then
+\[
+  \Capacity_C(\ell;E)=\langle g_0,C_0^{-1}g_0\rangle
+  =\langle g,C^\dagger g\rangle,
+\]
+where \(g_0\) is the legal quotient representative.
+\end{lemma}
+
+\begin{proof}
+If \(\ell(n)\ne0\) for some \(n\in N_C\), then \(\langle n,Cn\rangle=0\) while \(|\ell(n)|>0\), so the Rayleigh quotient is infinite.  Otherwise the quotient reduces the variational problem to the positive definite form \(C_0\), where Cauchy--Schwarz in the \(C_0\)-inner product gives the usual value \(\langle g_0,C_0^{-1}g_0\rangle\), attained along \(C_0^{-1}g_0\) when nonzero.
+\end{proof}
+
+\section{Singular probe-family currency and minimum spend}
+
+\begin{definition}[Legal currency matrix]
+For a null-legal family \(L:E\to Y\), define
+\[
+  \K_L=L_0C_0^{-1}L_0^*=LC^\dagger L^*.
+\]
+For \(y\in Y\), the scalar recombination probe is \(\ell_y(u)=\langle y,Lu\rangle\).
+\end{definition}
+
+\begin{theorem}[Family capacity over a singular audit]
+If \(L\) is null-legal, then for every \(y\in Y\),
+\[
+  \Capacity_C(\ell_y;E)=y^*\K_Ly.
+\]
+If \(L\) is not null-legal, there exists \(y\) with infinite recombination capacity.
+\end{theorem}
+
+\begin{proof}
+The first statement is the scalar lemma applied to \(g=L^*y\), which annihilates \(N_C\) because \(L\) does.  For the second, choose \(n\in N_C\) with \(Ln\ne0\), then \(y=Ln\) yields \(\ell_y(n)=\|Ln\|^2\ne0\) at zero energy.
+\end{proof}
+
+\begin{theorem}[Minimum-spend duality with range condition]
+Assume \(L\) is null-legal.  For a desired response \(z\in Y\), define
+\[
+  \Cost_C(z;L)=\inf\{\langle u,Cu\rangle: u\in E_C,
+  \ L_0u=z\}.
+\]
+Then
+\[
+  \Cost_C(z;L)=
+  \begin{cases}
+  z^*\K_L^\dagger z, & z\in\Ran L_0=\Ran\K_L,\\
+  +\infty, & z\notin\Ran L_0.
+  \end{cases}
+\]
+\end{theorem}
+
+\begin{proof}
+Set \(v=C_0^{1/2}u\) and \(T=L_0C_0^{-1/2}\).  The constraint is \(Tv=z\), and the cost is \(\|v\|^2\).  The minimum-norm solution has squared norm \(z^*(TT^*)^\dagger z\) when \(z\in\Ran T\), and no solution otherwise.  Since \(TT^*=\K_L\) and \(\Ran T=\Ran\K_L\), the formula follows.
+\end{proof}
+
+\section{The adequacy residual \texorpdfstring{$\Xi_C(D\mid L)$}{Xi}}
+
+\begin{definition}[Null-legal adequacy pair]
+A pair \((L,D)\), with \(L:E\to Y\) native and \(D:E\to Z\) layer-dissolving, is null-legal if both \(L|_{N_C}=0\) and \(D|_{N_C}=0\).  Write \(L_0,D_0\) for the descended maps on \(E_C\).
+\end{definition}
+
+\begin{definition}[Adequacy residual]
+For a null-legal pair, define
+\[
+  K_{LL}=L_0C_0^{-1}L_0^*,\quad
+  K_{DL}=D_0C_0^{-1}L_0^*,\quad
+  K_{DD}=D_0C_0^{-1}D_0^*.
+\]
+The adequacy residual is
+\[
+  \boxed{\Xi_C(D\mid L)=K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}.}
+\]
+\end{definition}
+
+\begin{theorem}[Projection form and positivity]
+Let
+\[
+  T_L=L_0C_0^{-1/2},\qquad T_D=D_0C_0^{-1/2},
+\]
+and let \(P_L\) be the orthogonal projection onto \(\Ran(T_L^*)\subseteq E_C\).  Then
+\[
+  \boxed{\Xi_C(D\mid L)=T_D(I-P_L)T_D^*\succeq0.}
+\]
+\end{theorem}
+
+\begin{proof}
+Since \(K_{LL}=T_LT_L^*\), the operator
+\[
+  T_L^*(T_LT_L^*)^\dagger T_L
+\]
+is the orthogonal projection onto \(\Ran(T_L^*)\).  Substituting \(K_{DL}=T_DT_L^*\) gives
+\[
+  K_{DL}K_{LL}^\dagger K_{LD}=T_D P_L T_D^*.
+\]
+Thus \(K_{DD}-K_{DL}K_{LL}^\dagger K_{LD}=T_D(I-P_L)T_D^*\).
+\end{proof}
+
+\begin{theorem}[Optimal residual identity]
+Let \(A_*=K_{DL}K_{LL}^\dagger\).  For every linear map \(A:Y\to Z\),
+\[
+  (D_0-AL_0)C_0^{-1}(D_0-AL_0)^*
+  =\Xi_C(D\mid L)+(A-A_*)K_{LL}(A-A_*)^*.
+\]
+Consequently \(\Xi_C(D\mid L)\) is the unique Loewner-minimal residual currency over all attempts to express \(D\) through \(L\).
+\end{theorem}
+
+\begin{proof}
+Put \(T_L=L_0C_0^{-1/2}\) and \(T_D=D_0C_0^{-1/2}\).  The residual is \((T_D-AT_L)(T_D-AT_L)^*\).  For each row of \(T_D\), the least-squares projection onto the row space of \(T_L\) is obtained by the Moore--Penrose normal-equation solution \(A_*=T_DT_L^*(T_LT_L^*)^\dagger=K_{DL}K_{LL}^\dagger\).  The Pythagorean identity for orthogonal projection gives
+\[
+  (T_D-AT_L)(T_D-AT_L)^*
+  =T_D(I-P_L)T_D^*+(A-A_*)T_LT_L^*(A-A_*)^*,
+\]
+which is the asserted formula because \(T_LT_L^*=K_{LL}\) and \(T_D(I-P_L)T_D^*=\Xi_C(D\mid L)\).  The second term is positive semidefinite, so the first term is the Loewner-minimal residual.
+\end{proof}
+
+\begin{corollary}[Exact adequacy]
+The following are equivalent:
+\[
+  \Xi_C(D\mid L)=0,
+\]
+\[
+  \exists A\text{ with }D_0=AL_0,
+\]
+\[
+  \Ker L_0\subseteq\Ker D_0.
+\]
+Hence \(\Xi=0\) is precisely ``no legal hidden direction.''
+\end{corollary}
+
+\begin{theorem}[Strict-extension chain rule]
+Let \(M:E\to W\) be an additional null-legal native family and put \(L^+=(L,M)^T\).  Then
+\[
+  \Xi_C(D\mid L^+)
+  =\Xi_C(D\mid L)-K_{DM\mid L}K_{MM\mid L}^\dagger K_{MD\mid L},
+\]
+where the conditional blocks are Schur residual blocks after conditioning on \(L\).  In particular
+\[
+  \Xi_C(D\mid L^+)\preceq\Xi_C(D\mid L).
+\]
+Equality holds when \(M\) is generated by \(L\) on the legal quotient.
+\end{theorem}
+
+\begin{proof}
+This is the block Schur-complement associativity identity applied to the positive Gram matrix of \((L,M,D)C_0^{-1/2}\).  Equivalently, in projection form, adding \(M\) enlarges the projection subspace from \(\Ran(T_L^*)\) to \(\Ran(T_L^*)+\Ran(T_M^*)\); the residual projection \(I-P_{L,M}\) is dominated by \(I-P_L\).  The explicit decrement is the Schur complement of the newly visible component of \(M\) modulo \(L\).
+\end{proof}
+
+\section{Acceptance semantics}
+
+\begin{definition}[Mathematical membrane predicate]
+For transported predictive currency matrices \(\widehat K_j\) and budget \(\Theta\), define
+\[
+  \mathsf{MathMem}(\widehat K,\Theta)
+  \quad\Longleftrightarrow\quad
+  \widehat K_j\preceq\Theta\text{ for every accepted stage }j.
+\]
+\end{definition}
+
+\begin{theorem}[Witness equivalence]
+At the mathematical ledger level,
+\[
+  \mathsf{MathMem}(\widehat K,\Theta)
+  \quad\Longleftrightarrow\quad
+  \text{there is no native predictive recombination witness }(j,y)
+\]
+with
+\[
+  y^*(\widehat K_j-\Theta)y>0.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the spectral characterization of Loewner order applied to \(\widehat K_j-\Theta\) at each stage.
+\end{proof}
+
+\begin{theorem}[Six Birds acceptance implication]
+An accepted all-six membrane record implies \(\mathsf{MathMem}(\widehat K,\Theta)\), provided all declared defects are included in \(\Theta\).  The converse is not valid from the matrix inequality alone.  The converse holds only relative to a completed acceptance schema containing formed closure, exact package, null-mode legality, native-family declaration, adequacy/exhaustivity, predictive transport, protocol honesty, all-six channel statuses, witness ledger completion, and nonclaim boundary.
+\end{theorem}
+
+\begin{warning}[No bare-matrix overread]
+A matrix inequality \(\widehat K_j\preceq\Theta\) is a mathematical membrane predicate.  It is not by itself a Six Birds accepted membrane.  Missing channels downgrade the claim to \texttt{support\_only}, \texttt{native\_only}, \texttt{local\_only}, \texttt{failed\_adequacy}, \texttt{failed\_null\_mode}, or \texttt{overread}, depending on the omitted record.
+\end{warning}
+
+\section{Consequences for the manuscript}
+
+The v0.5 manuscript should use the following replacements.
+\begin{enumerate}[label=\textbf{R\arabic*.},leftmargin=2em]
+\item Every currency theorem with a singular audit must begin on \(E_C=(\Ker C)^\perp\).
+\item Every probe family in a finite-budget claim must be null-legal.
+\item Minimum-spend duality must include the range condition \(z\in\Ran L_0\).
+\item \(\Xi_C(D\mid L)\) must be introduced as a Schur/projection residual on the legal quotient.
+\item Exact adequacy is \(\Ker L_0\subseteq\Ker D_0\), not a statement on the raw substrate.
+\item Acceptance is implication from all-six record to the matrix predicate; equivalence is mathematical only after the acceptance schema is fixed.
+\end{enumerate}
+
+\end{document}

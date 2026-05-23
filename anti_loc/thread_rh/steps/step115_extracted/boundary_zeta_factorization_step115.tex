@@ -1,0 +1,178 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{gate}{Gate}
+
+\DeclareMathOperator{Ran}{Ran}
+\DeclareMathOperator{Ker}{Ker}
+\DeclareMathOperator{Cap}{Cap}
+\DeclareMathOperator{Tr}{Tr}
+
+\title{Step 115: Zeta-Factorization Attempt for the Boundary Block and the Source-Absorption Fallback}
+\author{RATCHET RH Membrane Program}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 113--114 reduced coefficient visibility for the RH source route to the question whether the shifted Sonin/prolate boundary-packet sector lands in Burnol's co-Poisson complement.  In notation,
+\[
+  \mathcal B
+  =\overline{\operatorname{span}}
+  \{\operatorname{Ran}|P_\infty\tau_\ell(I-P_\infty)|:\ell\in\mathcal L_S\setminus\{0\}\}
+\]
+and Burnol's theorem gives
+\[
+  P_a=Y_a^\perp,
+\]
+where \(Y_a\) is the closed span of the zeta-zero evaluator vectors in the Sonine space \(L_a\).  The inclusion test is therefore
+\[
+  \mathcal B_a\subseteq P_a
+  \quad\Longleftrightarrow\quad
+  \Pi_{Y_a}\mathcal B_a=0.
+\]
+Step 115 attempts the strongest possible certificate for this inclusion: a zeta-factorization of one shifted boundary block.
+
+\section{Boundary block}
+Let \(J_a\) denote the legal transport from the semilocal/archimedean response geometry into Burnol's \(L_a\)-carrier.  For a log-shift mode \(\ell\), define
+\[
+  \mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty).
+\]
+The Burnol co-Poisson inclusion gate is
+\[
+  \operatorname{Ran}\mathfrak B_{\ell,a}\subseteq P_a.
+\]
+Since \(P_a=Y_a^\perp\), this is equivalent to zero-evaluator annihilation:
+\[
+  \langle \mathfrak B_{\ell,a}u,Y^a_{\rho,k}\rangle=0
+  \quad
+  \text{for all legal }u,\rho,0\le k<m_\rho.
+\]
+Equivalently,
+\[
+  M(\mathfrak B_{\ell,a}u)^{(k)}(\rho)=0.
+\]
+
+\section{The zeta-factorization certificate}
+Burnol's co-Poisson atoms have Mellin transforms containing a zeta factor.  The desired strong certificate is therefore:
+\[
+  M(\mathfrak B_{\ell,a}u)(s)=\zeta(s)\alpha_{\ell,u}(s),
+\]
+with \(\alpha_{\ell,u}\) legal in the appropriate Hardy/Sonine class and with all endpoint, pole, support, and trivial-zero records declared.
+
+\begin{gate}[Zeta-factorization gate]
+The shifted boundary block \(\mathfrak B_{\ell,a}\) passes the zeta-factorization gate if there exists a lawful linear map
+\[
+  A_\ell:u\mapsto \alpha_{\ell,u}
+\]
+such that
+\[
+  M(\mathfrak B_{\ell,a}u)=\zeta\,A_\ell u
+\]
+on the declared domain, with no target-zero information used to select \(A_\ell\).
+\end{gate}
+
+\begin{proposition}[Factorization implies inclusion]
+If the zeta-factorization gate passes, then
+\[
+  \operatorname{Ran}\mathfrak B_{\ell,a}\subseteq P_a.
+\]
+\end{proposition}
+
+\begin{proof}
+For every nontrivial zero \(\rho\) of multiplicity \(m_\rho\), the factorization gives
+\[
+  M(\mathfrak B_{\ell,a}u)^{(k)}(\rho)=0,
+  \qquad 0\le k<m_\rho,
+\]
+because \(\zeta\) has a zero of order \(m_\rho\) at \(\rho\).  Thus every zero-evaluator vector annihilates the range of \(\mathfrak B_{\ell,a}\), so the range is contained in \(Y_a^\perp=P_a\).
+\end{proof}
+
+\section{What the log-shift alone can and cannot do}
+A log-shift does not itself create a zeta factor.  In Mellin/Fourier variables it is a nonvanishing exponential multiplier.  Schematically,
+\[
+  M(\tau_\ell f)(s)=e^{\ell\cdot\kappa(s)}M(f)(s),
+\]
+where the multiplier is nonzero at the nontrivial zeros.  Thus the shift cannot be the source of universal vanishing at \(\zeta\)-zeros.  If factorization holds, the vanishing must come from the Sonin/prolate projection geometry, co-Poisson synthesis, or an additional declared source/quotient record.
+
+\begin{warning}[No automatic zeta divisor]
+The implication
+\[
+  \text{log-shifted Sonin boundary packet}
+  \Longrightarrow
+  \zeta(s)\text{-divisible Mellin transform}
+\]
+is not automatic.  Treating the shift as if it produced a zeta factor is a smuggling error.
+\end{warning}
+
+\section{Residual if factorization fails}
+If exact factorization is not proved, the unresolved visible-to-zero component is the positive residual
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  =\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+This is a genuine adequacy residual: it measures the part of the boundary packet outside the declared Burnol/co-Poisson atom span.
+
+\begin{theorem}[Boundary residual trichotomy]
+For each legal shift mode \(\ell\), exactly one of the following proof statuses is available:
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Exact co-Poisson inclusion:}
+\[
+  \Xi^{\rm BC}_{\ell,a}=0.
+\]
+This follows, for example, from a lawful zeta-factorization.
+\item \textbf{Defect-paid inclusion:}
+\[
+  \Xi^{\rm BC}_{\ell,a}\preceq E_{\ell,a},
+\]
+where the defect is declared and vanishes in a fixed/exhaustive ledger.
+\item \textbf{Source absorption:}
+\[
+  \Xi^{\rm BC}_{\ell,a}\preceq F_n+E_{\ell,a,n},
+\]
+where \(F_n\) is an upstream-visible Hecke/Dirichlet source frame with a lower-frame record and the defects vanish.
+\end{enumerate}
+Without one of these records, the boundary-to-co-Poisson claim is support-only.
+\end{theorem}
+
+\section{Source-absorption fallback}
+Let \(\mathcal R_{\rm BC}\) be the closure of the range of \((\Xi^{\rm BC})^{1/2}\).  Let
+\[
+  F_n=\sum_{\omega\in\mathcal X_n}\lambda_{\omega,n}Q_\omega^*\Theta_\omega^{-1}Q_\omega.
+\]
+A residual-specific source frame is accepted if
+\[
+  \Pi_{\mathcal R_{\rm BC}}F_n\Pi_{\mathcal R_{\rm BC}}
+  \succeq
+  \Lambda_n
+  \Pi_{\mathcal R_{\rm BC}}(\Theta_0^-)^{-1}\Pi_{\mathcal R_{\rm BC}}
+  -R_n^{\rm BC},
+  \qquad \Lambda_n\to\infty.
+\]
+Then the residual is paid by the source ladder, provided the residual-sector tails vanish in the fixed/exhaustive sense.
+
+\section{Decision of Step 115}
+The zeta-factorization route is the cleanest possible route, but it is not earned by the raw shift block.  The shift mode supplies a nonvanishing Mellin multiplier, not a zeta divisor.  Therefore, the live proof obligation becomes:
+\[
+  \Pi_{Y_a}\mathfrak B_{\ell,a}=0
+  \quad\text{by a genuine Sonin/co-Poisson theorem,}
+\]
+or else:
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  \text{ is absorbed by the Hecke/Dirichlet source ladder.}
+\]
+
+\section{Nonclaim boundary}
+This step does not prove RH.  It does not prove \(\mathcal B\subseteq P_a\).  It does not prove that shifted Sonin boundary packets are co-Poisson.  It proves the exact gate: factorization implies inclusion, and failure to prove factorization produces a positive adequacy residual that must be source-absorbed.
+
+\end{document}

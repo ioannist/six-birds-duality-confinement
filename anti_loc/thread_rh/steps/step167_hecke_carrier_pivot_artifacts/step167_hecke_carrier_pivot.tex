@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,enumitem}
+
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+
+\newcommand{\A}{\mathbb A}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\K}{\mathsf K}
+\newcommand{\Hh}{\mathcal H_{\rm Hecke}}
+\newcommand{\X}{\mathcal X}
+\newcommand{\XiH}{\Xi_{\rm BC}^{\rm Hecke}}
+\newcommand{\XiBC}{\Xi_{\rm BC}}
+\newcommand{\dd}{\,d}
+
+\title{Step 167: Pivot to the Hecke Carrier}
+\author{Six Birds RH thread working note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Orientation and inherited state}
+
+The orientation remains adequacy.  The prior primary carrier, the Burnol/Sonine pulled-evaluator carrier, is carried forward without modification.  Its adequacy residual remains
+\[
+  \XiBC=B^*\Pi_YB,
+\]
+with the step 166 cascade diagnostic-complete and three open child branches: Branch A Calkin bridge G2--G5, Branch B per-zero finite-carrier SL164.1, and Branch C shifted co-Poisson H1--H5.  The present note starts a new primary carrier.  The inherited Burnol/Sonine tree is a sibling ledger, not a subtree of the Hecke tree.
+
+\section{Typed Hecke carrier declaration}
+
+\begin{definition}[Step 167 field and character context]
+The admissible field set for this pivot is
+\[
+  \mathcal K_{167}=\{\Q,\Q(i)\}.
+\]
+The field \(K=\Q\) is instantiated by the step 92 idelic carrier record \(C_{\Q}=\A_\Q^\times/\Q^\times\).  The field \(\Q(i)\) is declared as a small quadratic-imaginary test field for future finite diagnostics, but the inherited records do not instantiate its completed carrier data.
+
+For \(K\in\mathcal K_{167}\), let
+\[
+  C_K=\A_K^\times/K^\times,
+  \qquad
+  \X_K=\widehat C_K
+\]
+be the unitary Hecke/Groessencharacter spectrum.  Finite-order narrow ray-class characters are allowed only as finite-window subfamilies of \(\X_K\).
+\end{definition}
+
+\begin{definition}[Hecke \(L\)-function package]
+For \(\chi\in\X_K\), let \(L_K(s,\chi)\) be the Hecke \(L\)-function.  The completed package is written
+\[
+  \Lambda_K(s,\chi)
+  =
+  A_K(\chi)^{s/2}L_{\infty,K}(s,\chi)L_K(s,\chi),
+\]
+with conductor/discriminant factor \(A_K(\chi)\), archimedean gamma factor \(L_{\infty,K}\), and the usual pole factors recorded separately for trivial characters.  The functional equation is
+\[
+  \Lambda_K(s,\chi)
+  =
+  \varepsilon(\chi)\Lambda_K(1-s,\overline{\chi}),
+  \qquad |\varepsilon(\chi)|=1.
+\]
+For \(K=\Q\) and the trivial character \(1_\Q\), the scalar \(L\)-function is \(L_\Q(s,1_\Q)=\zeta(s)\).
+\end{definition}
+
+\begin{definition}[Hecke response carrier]
+The Hecke carrier is the direct-integral anti-invariant response space
+\[
+  \Hh(K)=
+  \int_{\X_K^-}^{\oplus}\mathcal H_{K,\chi}^{-}\,\dd\mu_K(\chi),
+\]
+where \(\mu_K\) is the Plancherel measure and the involution is induced by
+\[
+  (s,\chi)\mapsto (1-\overline{s},\overline{\chi}).
+\]
+The native probe family \(L_{\rm H}\) consists of upstream-declared Hecke explicit-formula features: prime-ideal/Euler probes, archimedean gamma probes, conductor and root-number probes, pole and trivial-character probes, tail/completion probes, and character readouts \(Q_\chi\).  The dissolving probe family \(D_{\rm H}\) consists of off-critical zero ledger readouts for \(\Lambda_K(s,\chi)\), plus the zeta-fiber descent readout when the \(K=\Q,\chi=1_\Q\) bridge is supplied.
+\end{definition}
+
+\section{The Hecke residual}
+
+\begin{definition}[Hecke adequacy residual]
+Let \(C_{\rm H}\) be the Hecke audit form on the legal quotient of \(\Hh(K)\).  Define
+\[
+  K^{\rm H}_{DD}=D_{\rm H}C_{\rm H}^{\dagger}D_{\rm H}^*,\quad
+  K^{\rm H}_{DL}=D_{\rm H}C_{\rm H}^{\dagger}L_{\rm H}^*,\quad
+  K^{\rm H}_{LL}=L_{\rm H}C_{\rm H}^{\dagger}L_{\rm H}^*.
+\]
+The Hecke-side residual is
+\[
+  \boxed{
+  \XiH
+  =
+  K^{\rm H}_{DD}
+  -
+  K^{\rm H}_{DL}(K^{\rm H}_{LL})^\dagger K^{\rm H}_{LD}.
+  }
+\]
+\end{definition}
+
+\begin{proposition}[Fiberwise form, conditional]
+If \(C_{\rm H}\), \(L_{\rm H}\), and \(D_{\rm H}\) are decomposable over \(\chi\), and if domains and pseudoinverses are compatible with the direct integral, then
+\[
+  \XiH
+  =
+  \int_{\X_K^-}^{\oplus}
+  \Xi_{K,\chi}\,\dd\mu_K(\chi),
+\]
+where
+\[
+  \Xi_{K,\chi}
+  =
+  K_{DD}^{K,\chi}
+  -
+  K_{DL}^{K,\chi}(K_{LL}^{K,\chi})^\dagger K_{LD}^{K,\chi}.
+\]
+For finite character windows this becomes a finite direct sum only on the finite carrier and has status \texttt{moving\_window\_support\_only} unless a fixed completed ledger and tail record are supplied.
+\end{proposition}
+
+\section{Bridge to the Burnol/Sonine residual}
+
+The scalar identity \(L_\Q(s,1_\Q)=\zeta(s)\) is accepted at the \(L\)-function level.  It does not identify the Schur carriers.  Equality or transfer between \(\XiBC\) and the \(K=\Q,\chi=1_\Q\) Hecke fiber requires maps
+\[
+  B_{\rm HB}:\mathcal H_{\rm BC}\to \mathcal H_{\Q,1_\Q},
+  \qquad
+  R_{\rm BH}:\mathcal H_{\Q,1_\Q}\to \mathcal H_{\rm BC},
+\]
+with an energy comparison, native-probe compatibility, dissolving-probe compatibility, and a bridge defect ledger.  The target shape is
+\[
+  K_{\rm BC}\preceq R_{\rm BH}K_{\rm H,Q,1}R_{\rm BH}^*+E_{\rm br},
+\]
+or an exact equality as a special case.  Inherited records do not supply these maps.  Therefore the bridge status is \texttt{open\_external\_bridge}.
+
+\section{Framework no-go audit}
+
+\begin{center}
+\begin{tabular}{p{0.27\linewidth}p{0.18\linewidth}p{0.45\linewidth}}
+\toprule
+No-go & Transfer status & Hecke scope\\
+\midrule
+Public-shadow non-promotion & transfers & Finite character sums, scalar explicit-formula balances, modular or automorphic trace shadows, and aggregate arithmetic readouts cannot become carrier-side source records without a faithful Hecke response bridge.\\
+Finite-window Calkin blindness & transfers & Finite conductor windows, finite ray-class packets, and finite zero packets are support evidence until tail/exhaustivity promotes them to a fixed completed Hecke ledger.\\
+Auxiliary-GRH smuggling & new Hecke no-go & A zero-confinement conclusion for auxiliary \(L(s,\chi)\) cannot be assumed as a source record.\\
+Incomplete character spectrum & new Hecke no-go & Primitive-only, conductor-bounded, or selected-character subfamilies leave uncovered fibers unless completion and tail records are supplied.\\
+Scalar identity versus carrier identity & new Hecke no-go & The equality \(L_\Q(s,1_\Q)=\zeta(s)\) does not by itself identify \(\XiBC\) with the Hecke Schur residual.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Source audit}
+
+\begin{center}
+\begin{tabular}{p{0.22\linewidth}p{0.22\linewidth}p{0.46\linewidth}}
+\toprule
+Source record & Status taxonomy & Hecke carrier reading\\
+\midrule
+Step 92 & \texttt{imported\_under\_hypotheses} / enlarged carrier candidate & Supplies the strongest idelic skeleton, but leaves the completed response space, Plancherel measure, auxiliary explicit formulae, tail record, and zeta descent bridge open.\\
+Steps 90--95 & mixed: framework gate plus \texttt{moving\_window\_support\_only} & Character source coercivity is the natural route; finite windows and semilocal cross-term evidence do not close the completed Hecke carrier.\\
+Steps 37 and 91 & \texttt{framework\_defined} theorem schema & The source-frame theorem and missing-character-block no-go apply, but the actual Hecke lower frame is unearned.\\
+Steps 30--50 & \texttt{framework\_defined} obligation/audit content & Root-composite confinement, no-smuggling, and public-shadow discipline apply; these steps do not build \(H_{\rm Hecke}\).\\
+Steps 50--65 & \texttt{framework\_defined} \(\Xi\) calculus and ledger discipline & The Schur residual, transfer, and exact fixed/exhaustive squeeze theorems define the legal form of \(\XiH\); no Hecke analytic estimate is supplied.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Initial residual branches}
+
+The natural Hecke cascade is not a copy of the Burnol/Sonine cascade.  It has analogues of Calkin bridging and finite-carrier diagnostics, but its native first axes are character fibers, Plancherel tails, and auxiliary \(L\)-function explicit-formula records.
+
+\begin{enumerate}[label=\textbf{H\arabic*.}]
+\item \textbf{Direct-integral Schur branch.}  Audit decomposability and pseudoinverse compatibility for the formula \(\XiH=\int^\oplus\Xi_{K,\chi}\dd\mu_K\).
+\item \textbf{Source lower-frame / Plancherel-tail branch.}  Audit \(F_n=U^*M_{\lambda_n}U\) and whether \(\lambda_n(\chi)\ge \Lambda_n\) holds on a fixed or exhaustive character ledger.
+\item \textbf{Hecke Calkin bridge branch.}  Build the Hecke completed response/Calkin algebra and reject public-shadow substitutions unless a faithful bridge is supplied.
+\item \textbf{Per-character finite-carrier branch.}  Run finite \(K,\chi,\rho\) packets only as finite-carrier diagnostics.
+\item \textbf{Auxiliary explicit-formula branch.}  Supply conductor, gamma, root-number, pole, primitive/imprimitive, and tail records for \(L(s,\chi)\).
+\item \textbf{Zeta-fiber descent branch.}  Audit the \(K=\Q,\chi=1_\Q\) bridge to the Burnol/Sonine pulled-evaluator residual.
+\end{enumerate}
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{hecke\_carrier\_pivot\_partial}.}
+\]
+
+The pivot is established as a typed primary context with a declared residual \(\XiH\), transferred framework no-gos, source-record audit, and named initial branches.  It is partial because the inherited records do not provide a completed Hecke carrier, do not prove the Plancherel/tail lower-frame gate, do not supply the family of auxiliary explicit-formula records, and do not bridge the \(K=\Q,\chi=1_\Q\) Hecke fiber to the Burnol/Sonine carrier.
+
+\section{Nonclaims}
+
+This note does not prove RH.  It does not prove \(\XiBC=0\).  It does not close the Burnol/Sonine cascade.  It does not close \(\XiH\) or any Hecke branch.  It does not provide external analytic content for any inherited gate.  It does not weaken public-shadow non-promotion or finite-window Calkin blindness.  It does not begin any step 168 lane.
+
+\end{document}

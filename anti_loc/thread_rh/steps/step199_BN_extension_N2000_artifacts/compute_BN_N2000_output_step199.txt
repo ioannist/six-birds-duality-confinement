@@ -1,0 +1,14 @@
+Step 199 BN harmonic chain extension
+mpmath_dps=80
+N_max=2000
+X_MAX=40000
+tail_bound_per_entry=2.5e-05
+linear_algebra=symmetric_eigen_pseudoinverse_active_matrix_rcond_1e-12
+formula=G_pq=sum_{n>=1} ((n mod p)/p)((n mod q)/q)/(n(n+1))
+note=full mpmath 2000x2000 SVD infeasible; Step195-comparable eigen pseudoinverse used
+N=1000,delta_sq=0.00646330050367,delta_sq_logN=0.0446468981738,rank=999,cond=5.0051e+06,delta_vs_step195=-8.09304602769102e-05
+N=1500,delta_sq=0.00611039863612,delta_sq_logN=0.0446866918789,rank=1499,cond=1.2654e+07,delta_vs_step195=
+N=2000,delta_sq=0.00592901311818,delta_sq_logN=0.0450658503926,rank=1999,cond=2.4906e+07,delta_vs_step195=
+fit=tail_mean_delta_sq_logN,range=N=200,500,1000,1500,2000,C=0.0456632443937048,alpha=1,spread=0.000926351
+fit=C_over_logN_alpha,range=N>=20 including Step195 inherited plus Step199 N=1500,2000,C=0.0547051524798759,alpha=1.096343229,spread=
+fit=recent_C_over_logN_alpha,range=N>=200 including Step195 inherited plus Step199 N=1500,2000,C=0.0606633898663218,alpha=1.15047847,spread=

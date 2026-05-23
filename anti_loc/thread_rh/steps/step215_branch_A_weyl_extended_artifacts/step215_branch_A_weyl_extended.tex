@@ -1,0 +1,70 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\begin{document}
+
+\section*{Step 215: Branch A Weyl Extension}
+
+\subsection*{Setup}
+
+We extend the Step 214 finite-grid singular/Weyl diagnostic for
+\[
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,\qquad \ell=\log 2,
+\]
+using
+\[
+  u_n=\frac{\kappa_{\rho_n,0}^{1/2}}{\|\kappa_{\rho_n,0}^{1/2}\|}.
+\]
+The CAND1 model is the Burnol-boundary kernel model
+\[
+  \kappa_{\rho_n}^{(1)}(\tau)=K_{1/2}^{\Gamma}(1/2+i\tau,\rho_n),
+\]
+with \(K_{1/2}^{\Gamma}\) sourced from Burnol 2002, Theorem 8 and equation 1.  The CAND2 comparison model is the Step 207 zeta-form single-term expression
+\[
+  \kappa_{\rho_n}^{(2)}(\tau)=
+  \frac{\zeta(1/2+i\tau)}
+  {(1/2+i\tau-\rho_n)\zeta'(\rho_n)\pi^{-\rho_n/2}\Gamma(\rho_n/2)}.
+\]
+CAND2 is not asserted to be the correct \(a=1/2\) transport formula; it is a robustness probe.
+
+\subsection*{Numerical Result}
+
+The CAND1 test was extended to \(n=1,\dots,20\).  The minimum over all twenty values is
+\[
+  \min_{1\le n\le 20}\|C_\ell u_n^{(1)}\|=0.7937590184564269,
+\]
+and the conservative lower bound after the displayed \(5\cdot 10^{-2}\) error budget is
+\[
+  \delta_{20}^{(1)}\ge 0.7437590184564269.
+\]
+On the new tail \(n=11,\dots,20\),
+\[
+  \min_{11\le n\le 20}\|C_\ell u_n^{(1)}\|=1.4403036850155422,
+\]
+so no decay appears in the extended range.
+
+For CAND2, computed on \(n=1,\dots,10\),
+\[
+  \min_{1\le n\le 10}\|C_\ell u_n^{(2)}\|=0.2388748880100559,
+\]
+with conservative lower bound \(0.1888748880100559\).  The lower-bound pattern is therefore nonzero in the comparison model, but much weaker than CAND1.
+
+\subsection*{Weak-Null Caveat}
+
+The finite-span weak-null diagnostic does not pass:
+\[
+  \max_{i<j}|\langle u_i,u_j\rangle|=0.9999887398876486,
+\]
+and on the tail \(11\le i<j\le20\),
+\[
+  \max_{11\le i<j\le20}|\langle u_i,u_j\rangle|=0.9999845657507579.
+\]
+Thus the test sequence is not certified weakly null in the sampled span, and a theorem-grade Calkin obstruction is not obtained here.
+
+\subsection*{Verdict}
+
+The Step 214 finite-grid lower-bound diagnostic is strengthened, especially on \(n=11,\dots,20\), and the CAND2 comparison remains nonzero.  However, the weak-null caveat remains unresolved and in fact fails the finite-span test.  The verdict is
+\[
+  \boxed{\mathrm{V\_weyl\_extended\_obstruction\_diagnostic}}.
+\]
+
+\end{document}

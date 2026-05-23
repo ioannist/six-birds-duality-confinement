@@ -1,0 +1,301 @@
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{example}[theorem]{Example}
+\newcommand{\Kmat}{\mathsf K}
+\newcommand{\ThetaB}{\mathsf\Theta}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Capacity}{\operatorname{Cap}}
+\newcommand{\trc}{\operatorname{tr}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\ip}[2]{\langle #1,#2\rangle}
+
+\title{Step 32: Anti-Linear Duality and Zero-Confinement Witnesses}
+\author{Anti-Localization Project}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+This note adds the anti-linear/root-composite zero-confinement profile to the anti-localization stack.
+The target is not to prove RH.  The target is to formalize the abstract statement behind the RH-facing slogan:
+\[
+\rho\notin \Fix(s\mapsto 1-\bar s)
+\quad\Longrightarrow\quad
+\text{there is an anti-invariant root-composite witness.}
+\]
+A completed carrier can confine its spectral support to the fixed locus only if the anti-invariant witness sector is priced out, resolved, or absent.
+
+The main result is a finite/audited theorem:
+\[
+\text{anti-invariant budget }\Theta_- = 0
++
+\text{orbit-separating witness family}
+\quad\Longrightarrow\quad
+\text{visible spectral support lies on the fixed locus.}
+\]
+A quantitative version says that small anti-invariant budget bounds the total visible off-fixed leakage.
+
+\section{Anti-linear duality ledgers}
+
+\begin{definition}[Anti-linear duality ledger]
+An anti-linear duality ledger is a tuple
+\[
+\mathfrak D=(X,J,Y,\mathcal Y_-,\Kmat,\ThetaB,\mathcal O,V),
+\]
+where:
+\begin{enumerate}[label=(\roman*)]
+\item $X$ is a spectral or root-composite index set;
+\item $J:X\to X$ is an involution, usually anti-linear in the underlying analytic variable;
+\item $\Fix(J)=\{x\in X:Jx=x\}$ is the symmetry/fixed locus;
+\item $Y$ is a finite-dimensional real Hilbert response space of declared root-composite responses;
+\item $\mathcal Y_-\subseteq Y$ is the anti-invariant response subspace;
+\item $\Kmat\succeq0$ is the probe-family currency matrix on $Y$;
+\item $\ThetaB\succeq0$ is the declared response budget;
+\item $\mathcal O$ is a set of visible $J$-orbits in $X$;
+\item $V$ is a visibility/separation record assigning off-fixed orbits to anti-invariant witnesses.
+\end{enumerate}
+\end{definition}
+
+For the RH-facing case the underlying involution is
+\[
+J(s)=1-\bar s,
+\]
+and
+\[
+\Fix(J)=\{s:\Re(s)=1/2\}.
+\]
+Thus an off-critical zero is exactly an off-fixed orbit under the completed anti-linear duality.
+
+\begin{definition}[Anti-invariant witness]
+Let $O=\{x,Jx\}$ be an off-fixed visible orbit.  An anti-invariant witness for $O$ is a vector
+\[
+y_O\in\mathcal Y_-
+\]
+which separates $x$ from $Jx$.  In an atomic orbit basis this is the signed recombination
+\[
+y_O=\frac{\delta_x-\delta_{Jx}}{\sqrt2}.
+\]
+The witness is effective if
+\[
+y_O^*\Kmat y_O>0.
+\]
+It violates the budget if
+\[
+y_O^*(\Kmat-\ThetaB)y_O>0.
+\]
+\end{definition}
+
+\section{Orbit witnesses}
+
+\begin{lemma}[Off-fixed orbits produce anti-invariant witnesses]
+Let $X$ be a set with involution $J$, and let $O=\{x,Jx\}$ be an off-fixed orbit.  In the orbit response space $Y_O=\mathbb R\delta_x\oplus\mathbb R\delta_{Jx}$, the vector
+\[
+y_O=\frac{\delta_x-\delta_{Jx}}{\sqrt2}
+\]
+is anti-invariant.  If $x\in\Fix(J)$, the corresponding anti-invariant orbit vector vanishes.
+\end{lemma}
+
+\begin{proof}
+On an off-fixed two-point orbit, $J$ exchanges the two basis vectors.  Hence
+\[
+J y_O=\frac{\delta_{Jx}-\delta_x}{\sqrt2}=-y_O.
+\]
+If $x=Jx$, then $\delta_x-\delta_{Jx}=0$.
+\end{proof}
+
+\begin{corollary}[Fixed-locus confinement is anti-invariant witness absence]
+A visible atomic spectral set is supported on $\Fix(J)$ if and only if it has no nonzero visible anti-invariant orbit witnesses.
+\end{corollary}
+
+\section{Anti-invariant budget confinement}
+
+Let $P_-$ denote the orthogonal projection onto $\mathcal Y_-$.  Define
+\[
+\Kmat_-:=P_-\Kmat P_-|_{\mathcal Y_-},
+\qquad
+\Theta_-:=P_-\ThetaB P_-|_{\mathcal Y_-}.
+\]
+
+\begin{theorem}[Exact anti-invariant budget implies zero confinement]
+Assume:
+\begin{enumerate}[label=(\roman*)]
+\item $\Kmat\preceq\ThetaB$;
+\item $\Theta_-=0$;
+\item the ledger has orbit separation: every visible off-fixed orbit $O$ has an effective anti-invariant witness $y_O\in\mathcal Y_-$ with $y_O^*\Kmat y_O>0$.
+\end{enumerate}
+Then there are no visible off-fixed orbits.  Equivalently, all visible spectral/root-composite support is confined to $\Fix(J)$.
+\end{theorem}
+
+\begin{proof}
+If $\Theta_-=0$ and $\Kmat\preceq\ThetaB$, then for every $y\in\mathcal Y_-$,
+\[
+0\le y^*\Kmat y\le y^*\ThetaB y=0.
+\]
+Thus $y^*\Kmat y=0$ for every anti-invariant witness.  This contradicts effectiveness for any visible off-fixed orbit.  Hence no visible off-fixed orbit exists.
+\end{proof}
+
+\begin{theorem}[Quantitative off-fixed leakage bound]
+Let $\{y_1,\dots,y_N\}\subset\mathcal Y_-$ be an orthonormal family of anti-invariant witnesses for disjoint visible off-fixed orbits.  If
+\[
+\Kmat\preceq\ThetaB
+\]
+and each orbit has witness weight
+\[
+w_i\le y_i^*\Kmat y_i,
+\]
+then
+\[
+\sum_{i=1}^N w_i
+\le
+\trc(P_-\ThetaB).
+\]
+In particular, if $w_i\ge w_0>0$, then
+\[
+N\le \frac{\trc(P_-\ThetaB)}{w_0}.
+\]
+\end{theorem}
+
+\begin{proof}
+Let $P_W$ be the projection onto $W=\operatorname{span}\{y_i\}$.  Since $W\subseteq\mathcal Y_-$ and $\Kmat\preceq\ThetaB$,
+\[
+\sum_i w_i
+\le
+\sum_i y_i^*\Kmat y_i
+=
+\trc(P_W\Kmat)
+\le
+\trc(P_W\ThetaB)
+\le
+\trc(P_-\ThetaB).
+\]
+\end{proof}
+
+\begin{corollary}[Vanishing anti-invariant budget gives asymptotic confinement]
+For a sequence of formed closures $\mathfrak D_n$ with common orbit-separating witness scale $w_0>0$, if
+\[
+\trc(P_-\ThetaB_n)\to0,
+\]
+then the number of visible off-fixed orbits with witness weight at least $w_0$ tends to zero.  If the visible atomic spectral mass is counted by such witnesses, then visible off-fixed mass tends to zero.
+\end{corollary}
+
+\section{Anti-linear root-composite capacity}
+
+The previous theorem is a statement about the response budget.  In anti-localization language the budget is supplied by a probe-family currency matrix.
+Let a formed closure have exact packaged carrier $\mathcal F=\Ran\Gamma$, audit energy $C\succeq0$, and root-composite response family $L:H\to Y$.  Define
+\[
+C_\Gamma=\Gamma^*C\Gamma,
+\qquad
+L_\Gamma=L\Gamma,
+\qquad
+\Kmat=L_\Gamma C_\Gamma^\dagger L_\Gamma^*.
+\]
+Then for any anti-invariant recombination $y\in\mathcal Y_-$,
+\[
+\Capacity_C(y^*L;\Ran\Gamma)=y^*\Kmat y.
+\]
+Thus the anti-invariant confinement theorem says: if the accepted family budget annihilates or vanishes on the anti-invariant sector, then off-fixed root-composite witnesses cannot survive.
+
+\begin{theorem}[Anti-invariant root-composite anti-localization]
+Let $(H,C,\Gamma,L,J,\ThetaB)$ be a formed root-composite closure with null-mode legality and an accepted family budget
+\[
+\Kmat=L_\Gamma C_\Gamma^\dagger L_\Gamma^*\preceq\ThetaB.
+\]
+If the budget satisfies
+\[
+P_-\ThetaB P_-=0,
+\]
+and the native root-composite family separates visible off-fixed orbits, then the visible support of the closure is contained in the fixed locus of $J$.
+\end{theorem}
+
+\begin{proof}
+Apply the exact anti-invariant budget theorem to the currency matrix $\Kmat$.
+\end{proof}
+
+\begin{warning}[Finite price is not zero confinement]
+A finite anti-invariant budget
+\[
+0\prec \Theta_-<\infty
+\]
+prices off-fixed witnesses but does not forbid them.  Exact zero confinement requires either a zero anti-invariant budget, a vanishing-budget limit, or an additional theorem converting finite pricing into exclusion through a strict layer rule.  Thus a bounded anti-invariant capacity estimate is not by itself an RH proof.
+\end{warning}
+
+\section{RH-facing specialization}
+
+For the completed zeta/xi package, the relevant duality is the anti-linear involution
+\[
+J(s)=1-\bar s.
+\]
+Its fixed locus is the critical line
+\[
+\Re(s)=1/2.
+\]
+A nontrivial zero $\rho$ off the critical line generates the orbit
+\[
+\{\rho,1-\bar\rho\}
+\]
+and therefore an anti-invariant signed witness
+\[
+y_\rho=\frac{\delta_\rho-\delta_{1-\bar\rho}}{\sqrt2}.
+\]
+Hence the RH-facing algebraic anti-localization obligation can be stated as:
+\[
+\boxed{
+\text{the completed RH carrier admits no effective anti-invariant root-composite witnesses.}
+}
+\]
+A sufficient abstract certificate is
+\[
+\boxed{
+\Kmat_-\preceq \Theta_-,\quad \Theta_-\to0
+\quad\text{on the accepted closure/refinement ledger.}
+}
+\]
+In the exact terminal form, $\Theta_-=0$ gives fixed-locus confinement.
+
+\section{Relation to Schur squares}
+
+This step is not a replacement for the Schur square
+\[
+S=(\Phi^*M^\dagger\Phi)^{-1}\succeq(1-\theta)\Phi^*M\Phi.
+\]
+Rather, it identifies a root-composite witness family for the algebraic off-fixed sector.  The Schur square controls the cost of resolving a low package through the complement; the anti-linear witness theorem says that an off-fixed orbit is visible precisely through the anti-invariant sector.  Therefore an RH-ready anti-localization proof must either:
+\begin{enumerate}[label=(\alph*)]
+\item show that the anti-invariant sector has vanishing accepted budget, or
+\item show that every anti-invariant witness is resolved by a Schur margin with a strict exclusion rule, or
+\item lawfully exclude the anti-invariant witness family with a nonclaim, which would no longer be an RH claim.
+\end{enumerate}
+
+\section{Conclusion}
+
+The abstract zero-confinement mechanism is now precise:
+\[
+\rho\notin\Fix(J)
+\Rightarrow
+\text{anti-invariant witness }y_\rho,
+\]
+while
+\[
+\Kmat\preceq\ThetaB,
+\qquad
+\Theta_- =0
+\Rightarrow
+\text{no anti-invariant witnesses.}
+\]
+Thus anti-linear duality converts off-fixed spectral mass into a native recombination witness.  Anti-localization, in its root-composite form, is the pricing-out or elimination of those witnesses.
+
+\end{document}

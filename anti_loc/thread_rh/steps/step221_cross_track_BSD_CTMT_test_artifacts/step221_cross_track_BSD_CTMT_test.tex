@@ -1,0 +1,54 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\begin{document}
+
+\section*{Step 221: CTMT Recursion Test on BSD}
+
+\subsection*{BSD Diagnostic State}
+
+The BSD cascade map declares the explored route diagnostic-complete but not proof-complete.  The b-52a record decomposes the Bloch--Kato bridge defect as
+\[
+\Delta_{\rm BSD}^{\rm BK}
+=E_{\rm an/period}+E_{\rm ht/reg}+E_{\rm finite}+\sum_p E_p+E_{\rm det}.
+\]
+The typed external obligation is to construct component maps
+\[
+\rho_{\rm an/period},\rho_{\rm ht/reg},\rho_{\rm finite},\rho_p,\rho_{\rm det}
+\]
+into the Bloch--Kato determinant line and prove all component defects vanish under the declared hypotheses.
+
+\subsection*{Literature Audit}
+
+Bloch--Kato formulate the motivic Tamagawa-number special-value target.  Fontaine--Perrin-Riou refine the cohomological formulation.  Burns--Flach develop determinant functors and the equivariant Tamagawa formulation, including relative \(K_0\) targets.  Their 2006 result proves ETNC for Tate motives in specific abelian settings, not for all elliptic curves.
+
+The p-adic component does not close globally by citation alone.  Kato supplies Euler-system/Selmer bounds and one divisibility-type input.  Skinner--Urban prove Iwasawa-Greenberg main-conjecture cases for large classes under explicit hypotheses.  Howard proves one divisibility in a Heegner-point Iwasawa setting.  These results refine the p-adic gate into further theorem/hypothesis gates rather than closing the BSD determinant-line bridge globally.
+
+\subsection*{Recursion Pattern}
+
+The BSD determinant-line lane exhibits the same structural recursion as the RH CTMT lanes:
+\[
+\text{external gate }X
+\quad\leadsto\quad
+\text{more refined gate }Y
+\quad\leadsto\quad
+\text{hypothesis/control/divisibility gates}.
+\]
+Here:
+\[
+\text{BK component maps}
+\leadsto
+\text{ETNC/BK determinant line}
+\leadsto
+\text{relative }K_0\text{ and determinant functors}
+\leadsto
+\text{Iwasawa/Euler-system/control rows}.
+\]
+
+\subsection*{Verdict}
+
+\[
+\boxed{\mathrm{V\_bsd\_CTMT\_recursion\_verified}}.
+\]
+The RH-derived CTMT recursion pattern is verified on a second track in structural-recursion form.  BSD is determinant-line/component-map terminal rather than literal RH matrix-element terminal, but the cascade behavior is the same: resolving a named external theorem exposes deeper typed gates.
+
+\end{document}

@@ -1,0 +1,145 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,geometry,booktabs}
+\geometry{margin=1in}
+\title{Step 157: Calkin-Level Pulled-Evaluator Avoidance Audit}
+\author{Six Birds / RH Membrane Construction Notes}
+\date{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{warning}{Warning}
+\begin{document}
+\maketitle
+
+\section*{Orientation and typed context}
+This step is \emph{adequacy-oriented}.  The residual
+\[
+  \Xi^{\rm BC}_{\ell,a}=\mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a}
+\]
+is bad news unless it is zero, tail-payable, compact/Schatten-payable, or explicitly budgeted.  The typed context is the Burnol/Sonine residual carrier pulled back to the archimedean/Sonin model:
+\[
+  H_\eta:=\overline{\operatorname{span}\{\eta^a_{\rho,k}:\rho\in Z_\zeta,
+  0\leq k<m_\rho\}},\qquad
+  \eta^a_{\rho,k}=J_a^*Y^a_{\rho,k}.
+\]
+The comparison algebra for this step is not the Hilbert-space operator algebra itself, but the Calkin algebra
+\[
+  \mathcal Q(H):=\mathcal B(H)/\mathcal K(H),
+  \qquad q:\mathcal B(H)\to\mathcal Q(H).
+\]
+The Calkin question is therefore meaningful only after declaring the carrier Hilbert space, the pulled-evaluator projection, and the compact ideal.
+
+\section*{Objects from Steps 153--156}
+The projected shifted Sonine block is
+\[
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+  \qquad m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+Let
+\[
+  P_\eta:\ H\to H_\eta
+\]
+be the orthogonal projection onto the closed pulled zero-evaluator span.  The Calkin-level residual is
+\[
+  \mathfrak c_{\ell,\eta}:=q(C_\ell P_\eta)\in \mathcal Q(H),
+\]
+and its size is the essential norm
+\[
+  \|C_\ell P_\eta\|_{\rm e}
+  :=\inf_{K\in\mathcal K(H)}\|C_\ell P_\eta-K\|.
+\]
+Exact residual exclusion requires
+\[
+  C_\ell P_\eta=0.
+\]
+Compact/tail payment requires the weaker Calkin condition
+\[
+  \boxed{\mathfrak c_{\ell,\eta}=0.}
+\]
+If \(\mathfrak c_{\ell,\eta}\neq0\), then \(\Xi^{\rm BC}\) contains a genuinely essential residual and cannot be paid by ordinary compact exhaustion.
+
+\section*{Calkin avoidance theorem}
+\begin{theorem}[Calkin-level pulled-evaluator avoidance]
+For the declared pulled-evaluator carrier \(H_\eta\), the following are equivalent:
+\begin{enumerate}[label=(\roman*)]
+  \item \([C_\ell]P_\eta=0\) in the Calkin algebra.
+  \item \(C_\ell P_\eta\in\mathcal K(H)\).
+  \item For every bounded sequence \(u_n\in H_\eta\) with \(u_n\rightharpoonup0\), one has
+  \[
+     \|C_\ell u_n\|\to0.
+  \]
+  \item For one, equivalently every, finite-rank exhaustion \(Q_N\uparrow P_\eta\) strongly,
+  \[
+     \|C_\ell(P_\eta-Q_N)\|\to0.
+  \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+The equivalence between (i) and (ii) is the definition of the Calkin quotient.  The equivalence between compactness and weak-null sequence decay is a standard characterization of compact operators on Hilbert space.  If \(C_\ell P_\eta\) is compact and \(Q_N\uparrow P_\eta\) strongly, then compactness upgrades strong convergence on bounded sets to norm convergence on the image of the unit ball, hence \(\|C_\ell(P_\eta-Q_N)\|\to0\).  Conversely, if the latter holds for a finite-rank exhaustion, then \(C_\ell Q_N\) is finite-rank and \(C_\ell Q_N\to C_\ell P_\eta\) in norm, so \(C_\ell P_\eta\) is compact.
+\end{proof}
+
+\section*{Finite-section warning}
+Finite sections cannot certify Calkin vanishing by themselves.  A sequence of finite matrices can have small bottom singular values and still converge to an operator with nonzero essential norm.  Conversely, finite sections can show persistent plateaux that suggest essential mass but do not prove it unless promoted to a Weyl sequence or an accepted symbol theorem.
+
+\begin{definition}[Weyl-sequence certificate]
+A Calkin obstruction certificate for \(C_\ell P_\eta\) is a sequence \(u_n\in H_\eta\) such that
+\[
+  \|u_n\|=1,
+  \qquad u_n\rightharpoonup0,
+  \qquad \liminf_n\|C_\ell u_n\|>0.
+\]
+Such a certificate proves
+\[
+  \|C_\ell P_\eta\|_{\rm e}>0.
+\]
+\end{definition}
+
+\section*{Hardy-shadow lane and status}
+There is a useful public-shadow comparison.  If \(P_\infty\) is replaced by a Hardy projection \(P_+\), then the block
+\[
+  (I-P_+)M_mP_+
+\]
+is a classical Hankel operator, and compactness can often be studied by symbol theorems.  But this is only a shadow lane.  To import it into the Burnol/Sonine carrier one must supply a bridge
+\[
+  P_\infty-P_+\in\mathcal K(H)
+  \quad\text{or another Calkin-faithful comparison,}
+\]
+plus a transport record for \(P_\eta\).  Without that bridge, Hardy compactness or noncompactness is \texttt{public\_shadow}, not an accepted Burnol/Sonine certificate.
+
+\section*{Classification after Step 157}
+The residual now has the following status taxonomy.
+\[
+\begin{array}{lll}
+\mathsf E & \text{Exact} & C_\ell P_\eta=0.\\
+\mathsf K & \text{Compact/tail-payable} & C_\ell P_\eta\in\mathcal K(H).\\
+\mathsf S_p & \text{Schatten-payable} & C_\ell\widetilde E\in\mathcal S_{2p}.\\
+\mathsf C & \text{Calkin obstruction} & \|C_\ell P_\eta\|_{\rm e}>0.\\
+\mathsf N & \text{Active residual} & \text{no accepted exact, compact, or essential record.}
+\end{array}
+\]
+Step 157 does not prove \(\mathsf K\), and it does not prove \(\mathsf C\).  It identifies the certificate required for either status.
+
+\section*{No-go scope}
+This step forecloses the following route only:
+\[
+  \text{finite singular-value decay or finite-window evidence}
+  \Rightarrow
+  \text{completed compact/tail payment.}
+\]
+That route is invalid without a Calkin promotion.  The step does \emph{not} foreclose co-Poisson factorization, a semilocal prolate symbol theorem, a signed trace mechanism, or a genuine Weyl-sequence proof.
+
+\section*{Next theorem leaf}
+The next proof-producing object is the Weyl/symbol alternative:
+\[
+  \boxed{\text{prove }C_\ell P_\eta\in\mathcal K(H)\text{ by a Sonine/prolate compactness theorem,}}
+\]
+or
+\[
+  \boxed{\text{prove }\|C_\ell P_\eta\|_{\rm e}>0\text{ by a pulled-evaluator Weyl sequence.}}
+\]
+The recommended next step is therefore \textbf{Step 158: pulled-evaluator Weyl sequence / essential-symbol test}.
+
+\end{document}

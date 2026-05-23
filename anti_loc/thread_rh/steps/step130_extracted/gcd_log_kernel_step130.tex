@@ -1,0 +1,183 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newcommand{\N}{\mathbb N}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\gcdm}[2]{(#1,#2)}
+\title{Step 130: GCD--Log Kernel Lower-Frame Audit}
+\author{Six Birds / RH Membrane Working Note}
+\date{}
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+Step 129 isolated the shifted main-term kernel which would have to be promoted to a matrix lower-frame theorem in order to import the Bui--Pratt--Robles--Zaharescu twisted second moment into the membrane source route.  Step 130 audits that kernel directly.
+
+The answer is negative for the unrestricted coefficient space: the GCD--log main kernel does not satisfy a lower frame of size $\gg \log q$ on all coefficient vectors.  In fact, an explicit squarefree Boolean-cube subspace gives Rayleigh quotients tending to zero.  Thus the BPRZ theorem remains relevant, but it cannot be imported as a full residual lower-frame theorem without either restricting the residual coefficient class, adding another source component, or source-absorbing the newly identified GCD--log blind sector.
+
+\section{The normalized kernel}
+Let $L=q^{\kappa}$ be the Dirichlet support length, and write the coefficient norm as
+\[
+  H_q(\alpha)=\sum_{n\le L}\frac{|\alpha_n|^2}{n}.
+\]
+After the Step 129 normalization, the candidate main kernel becomes
+\[
+  K_q(m,n)=\frac{\gcdm{m}{n}}{mn}
+  \left(C_q-\log\frac{mn}{\gcdm{m}{n}^2}\right),
+\]
+where $C_q=\log q+O(1)$, up to the precise imported theorem normalization.
+
+Relative to $H_q$, the conjugated matrix is
+\[
+  \widetilde K_q(m,n)
+  =\sqrt{mn}\,K_q(m,n)
+  =\frac{\gcdm{m}{n}}{\sqrt{mn}}
+  \left(C_q-\log\frac{mn}{\gcdm{m}{n}^2}\right).
+\]
+The desired full coefficient lower frame would be
+\[
+  \widetilde K_q\succeq c_0\log q\,I.
+\]
+
+\section{Euler-product form of the kernel}
+For $s>0$ define the standard GCD kernel
+\[
+  A_s(m,n)=\frac{\gcdm{m}{n}^{2s}}{(mn)^s}.
+\]
+Then
+\[
+  \frac{d}{ds}A_s(m,n)igg|_{s=1/2}
+  =-\frac{\gcdm{m}{n}}{\sqrt{mn}}
+  \log\frac{mn}{\gcdm{m}{n}^2}.
+\]
+Therefore
+\[
+  \boxed{
+  \widetilde K_q=C_q A_{1/2}+\left.\frac{d}{ds}A_s\right|_{s=1/2}.
+  }
+\]
+This identity is useful because $A_s$ diagonalizes exactly on squarefree Boolean cubes.
+
+\section{Squarefree Boolean-cube obstruction}
+Let $\mathcal P_y$ be the set of primes $p\le y$, and let
+\[
+  \mathcal N_y=\left\{\prod_{p\in S}p:S\subseteq \mathcal P_y\right\}.
+\]
+Every element of $\mathcal N_y$ is at most
+\[
+  \prod_{p\le y}p=\exp((1+o(1))y).
+\]
+Thus for fixed $\kappa>0$, taking $y\le(1-o(1))\kappa\log q$ puts the whole cube inside $n\le q^\kappa$.
+
+For $m,n\in\mathcal N_y$, write $m=\prod_{p\in S}p$, $n=\prod_{p\in T}p$.  Then
+\[
+  A_s(m,n)=\prod_{p\in S\triangle T}p^{-s}.
+\]
+For a sign vector $\sigma=(\sigma_p)_{p\le y}$, $\sigma_p\in\{\pm1\}$, define
+\[
+  v_\sigma(S)=\prod_{p\in S}\sigma_p.
+\]
+Then $v_\sigma$ is an eigenvector of $A_s$ on the cube with eigenvalue
+\[
+  \Lambda_\sigma(s)=\prod_{p\le y}(1+\sigma_p p^{-s}).
+\]
+Consequently $v_\sigma$ is also an eigenvector of $\widetilde K_q$ restricted to this cube, with eigenvalue
+\[
+  \boxed{
+  \lambda_\sigma(q,y)=
+  \Lambda_\sigma(1/2)
+  \left(
+    C_q-
+    \sum_{p\le y}\frac{\sigma_p p^{-1/2}\log p}{1+\sigma_p p^{-1/2}}
+  \right).
+  }
+\]
+
+Taking the all-minus vector $\sigma_p=-1$ gives
+\[
+  \lambda_-(q,y)=
+  \prod_{p\le y}(1-p^{-1/2})
+  \left(
+    C_q+
+    \sum_{p\le y}\frac{p^{-1/2}\log p}{1-p^{-1/2}}
+  \right).
+\]
+Using the prime number theorem estimates
+\[
+  \sum_{p\le y}p^{-1/2}\sim \frac{2\sqrt y}{\log y},
+  \qquad
+  \sum_{p\le y}p^{-1/2}\log p\sim 2\sqrt y,
+\]
+we get
+\[
+  \prod_{p\le y}(1-p^{-1/2})
+  =\exp\left(-(2+o(1))\frac{\sqrt y}{\log y}\right),
+\]
+and hence, with $y\asymp \kappa\log q$,
+\[
+  \boxed{
+  \lambda_-(q,y)
+  \le
+  (\log q+O(\sqrt{\log q}))
+  \exp\left(-(2+o(1))\frac{\sqrt{\kappa\log q}}{\log\log q}\right)
+  \to0.
+  }
+\]
+
+\begin{theorem}[Full coefficient lower-frame failure]
+Assume the Step 129 shifted-limit main kernel is represented by $\widetilde K_q$ above on all coefficient vectors supported in $n\le q^\kappa$, with any fixed $\kappa>0$.  Then the lower-frame assertion
+\[
+  \widetilde K_q\succeq c_0\log q\,I
+\]
+for fixed $c_0>0$ is false on the unrestricted coefficient space.  In fact, the smallest eigenvalue of $\widetilde K_q$ on the squarefree cube $\mathcal N_y\subset[1,q^\kappa]$ is bounded above by $\lambda_-(q,y)\to0$.
+\end{theorem}
+
+\begin{proof}
+The cube $\mathcal N_y$ is a lawful coefficient subspace when $y\le(1-o(1))\kappa\log q$.  The all-minus Boolean eigenvector is an admissible coefficient vector.  Its Rayleigh quotient is the eigenvalue $\lambda_-(q,y)$ computed above, which tends to zero.  Therefore no lower bound of order $\log q$, or even a uniform positive lower bound, can hold on the unrestricted coefficient space.
+\end{proof}
+
+\section{Interpretation}
+This is not a contradiction with BPRZ.  The twisted second moment is a positive weighted Gram because it is a sum of nonnegative terms
+\[
+  \sum_\chi |L(1/2,\chi)|^2 |A(\chi)|^2.
+\]
+The point is that the shifted-limit main kernel extracted in Step 129 has small directions on the full coefficient space.  Thus the theorem cannot be imported as a membrane source certificate unless one proves that the residual coefficient class avoids those directions or adds another source component that charges them.
+
+\section{Membrane consequence}
+The source route now has an additional adequacy residual.  Let $\mathcal H_{\rm sf}$ denote the squarefree Boolean blind-sector generated above.  The active alternative is:
+\[
+  \Pi_{\rm sf}R_NY_{R,N}=0
+\]
+or
+\[
+  \Pi_{\rm sf}F_N\Pi_{\rm sf}\succeq \Lambda_N\Pi_{\rm sf}(\Theta_0^-)^{-1}\Pi_{\rm sf}
+\]
+by an additional declared source, or else the theorem is scoped to the complement of this sector.
+
+In $\Xi$ language, the new residual is
+\[
+  \boxed{
+  \Xi_{\rm GCD,N}=R_N^*\Pi_{\rm sf}R_N.
+  }
+\]
+This is the part of the residual coefficient image that falls into the GCD--log near-null sector.
+
+\section{Route status after Step 130}
+The BPRZ platform remains useful, but only as a restricted-class or complemented-source theorem.  The full unrestricted lower-frame import fails.
+
+Therefore the next load-bearing step is no longer ``import the BPRZ main term.''  It is:
+\[
+  \boxed{
+  \text{audit whether the residual coefficient class intersects the GCD--log blind sector.}
+  }
+\]
+If the intersection is zero or tail-small, the route survives on the residual class.  If it is nonzero, that intersection must be source-absorbed by a separate, non-smuggled source record.
+
+\end{document}

@@ -1,0 +1,283 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{warning}[theorem]{Warning}
+
+\providecommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\C}{\mathbb C}
+\newcommand{\K}{\mathsf K}
+\newcommand{\D}{\mathsf D}
+\newcommand{\G}{\mathcal G}
+\newcommand{\cH}{\mathcal H}
+
+\title{Step 31: Root-Composite / Algebraic-Extension Anti-Localization Profile}
+\author{Six Birds Anti-Localization Project}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The scalar and family currency theorems developed so far are analytic: probes are represented by linear functionals, and capacity is the shadow price matrix
+\[
+  \K=L_\Gamma C_\Gamma^\dagger L_\Gamma^* .
+\]
+The corpus reading identifies a missing fourth profile of anti-localization: the \emph{root-composite} or algebraic-extension profile.  This note formulates that profile.  It is not an RH proof.  It is a theorem schema for the case in which the anti-localization carrier lives in an algebraic extension and lower-layer claims descend through traces, characters, norms, or characteristic-polynomial data.
+
+The guiding idea is:
+\[
+\boxed{\text{root-composite anti-localization is character-wise pricing of an algebraic orbit of probes.}}
+\]
+
+\section{Algebraic extension carriers}
+
+\begin{definition}[finite algebraic extension carrier]
+A finite algebraic anti-localization carrier is a tuple
+\[
+  \mathfrak A=(H,C,\Gamma,G,U,\rho,L,\Theta),
+\]
+where:
+\begin{enumerate}[label=(\roman*)]
+  \item $H$ is a finite-dimensional Hilbert carrier;
+  \item $C\succeq0$ is the audit energy;
+  \item $\Gamma:E\to H$ is the exact package map and $C_\Gamma=\Gamma^*C\Gamma$;
+  \item $G$ is a finite group acting unitarily on $H$ by $U_g$;
+  \item $\rho:G\to U(Y)$ is a finite-dimensional unitary response representation;
+  \item $L:H\to Y$ is a declared probe family satisfying the equivariance law
+  \[
+    L U_g=\rho_g L;
+  \]
+  \item $\Theta\succeq0$ is a declared response budget, normally required to commute with $\rho(G)$.
+\end{enumerate}
+The package is algebraically lawful when the audit and package are compatible with the group action:
+\[
+  U_g^*CU_g=C,
+\]
+and, when the package coordinates are used, $\Ran\Gamma$ is $G$-stable or has a declared transported quotient action.
+\end{definition}
+
+\begin{definition}[root-composite currency matrix]
+The root-composite currency matrix of an algebraic extension carrier is
+\[
+  \K_{G}=L_\Gamma C_\Gamma^\dagger L_\Gamma^*,
+  \qquad L_\Gamma=L\Gamma.
+\]
+For $y\in Y$, the recombined probe is
+\[
+  \ell_y(u)=\langle y,Lu\rangle_Y.
+\]
+The response $y$ may be a trace mode, a character mode, or a more general algebraic recombination.
+\end{definition}
+
+\section{Equivariant descent and character blocks}
+
+\begin{theorem}[equivariant currency descent]
+Assume $C_\Gamma\succeq0$, $L_\Gamma$ annihilates $\ker C_\Gamma$, and the package/audit/probe data are $G$-equivariant.  Then
+\[
+  \rho_g \K_G \rho_g^*=\K_G
+  \qquad(g\in G).
+\]
+Consequently, $\K_G$ belongs to the commutant of the response representation $\rho$ and decomposes into isotypic blocks.  If
+\[
+  Y=\bigoplus_{\pi\in\widehat G}Y_\pi
+\]
+is the isotypic decomposition, then
+\[
+  \K_G=\bigoplus_{\pi\in\widehat G}\K_\pi
+\]
+up to multiplicity blocks in the commutant.
+\end{theorem}
+
+\begin{proof}
+Equivariance gives $L_\Gamma T_g=\rho_gL_\Gamma$ for the induced action $T_g$ on package coordinates.  Audit equivariance gives $T_g^*C_\Gamma T_g=C_\Gamma$ and hence $T_g^*C_\Gamma^\dagger T_g=C_\Gamma^\dagger$.  Therefore
+\[
+  \rho_g\K_G\rho_g^*
+  =\rho_g L_\Gamma C_\Gamma^\dagger L_\Gamma^*\rho_g^*
+  =L_\Gamma T_g C_\Gamma^\dagger T_g^* L_\Gamma^*
+  =L_\Gamma C_\Gamma^\dagger L_\Gamma^*
+  =\K_G .
+\]
+The block decomposition follows from complete reducibility of finite-dimensional unitary representations and Schur's lemma applied to the commutant.
+\end{proof}
+
+\begin{corollary}[abelian character ledger]
+If $G$ is abelian and the response representation is a direct sum of characters, then the root-composite budget condition
+\[
+  \K_G\preceq\Theta
+\]
+is equivalent to the character-wise inequalities
+\[
+  \K_\chi\preceq\Theta_\chi
+  \qquad(\chi\in\widehat G).
+\]
+If $Y$ is the regular representation of a cyclic group $C_m$ and $\Theta=I$, then $\K_G$ is circulant and
+\[
+  \K_G\preceq I
+  \iff
+  \widehat k(\ell)\le1\quad(\ell=0,\dots,m-1),
+\]
+where $\widehat k$ is the discrete Fourier transform of the first row of $\K_G$.
+\end{corollary}
+
+\section{Capacity, trace modes, and character witnesses}
+
+\begin{theorem}[root-composite capacity identity]
+For every algebraic recombination $y\in Y$,
+\[
+  \Cap_C(\ell_y;\Ran\Gamma)=y^*\K_Gy.
+\]
+Thus the extension carrier is anti-localized against all algebraic recombinations exactly when
+\[
+  \K_G\preceq\Theta.
+\]
+If the inequality fails, then there is a character/isotypic witness $y_\pi\in Y_\pi$ such that
+\[
+  y_\pi^*(\K_G-\Theta)y_\pi>0.
+\]
+\end{theorem}
+
+\begin{proof}
+The first identity is the family currency theorem applied to $L_\Gamma$.  If $\K_G\npreceq\Theta$, then $\D=\K_G-\Theta$ has a positive Rayleigh quotient.  When $\Theta$ is equivariant, $\D$ is equivariant and decomposes by isotypic blocks; a positive eigenvector may therefore be chosen in one block or in a multiplicity component inside that block.
+\end{proof}
+
+\begin{definition}[trace mode and character modes]
+For an orbit probe family indexed by $G$, the normalized trace response is
+\[
+  y_{\mathrm{tr}}=|G|^{-1/2}\sum_{g\in G}e_g.
+\]
+It is the trivial character mode.  Nontrivial character modes are the remaining components of the regular representation.  Testing only $y_{\mathrm{tr}}$ is a trace-shadow check; testing all characters is the root-composite check.
+\end{definition}
+
+\begin{warning}[trace descent is not enough]
+The trace mode can pass while a nontrivial character mode fails.  Let
+\[
+  \K=(1-c)I+cJ_m,
+  \Theta=I,
+\]
+where $J_m$ is the all-ones matrix.  The coordinate capacities are all $1$.  The trivial character eigenvalue is
+\[
+  \lambda_{\mathrm{tr}}=1+(m-1)c,
+\]
+and each nontrivial character eigenvalue is
+\[
+  \lambda_{\mathrm{nt}}=1-c.
+\]
+For $-1/(m-1)<c<0$, the matrix is positive semidefinite, the trace mode has $\lambda_{\mathrm{tr}}<1$, but every nontrivial character mode has $\lambda_{\mathrm{nt}}>1$.  Thus trace descent can miss a root-composite needle.
+\end{warning}
+
+\section{Characteristic-polynomial descent}
+
+\begin{definition}[root ledger]
+Assume $\Theta\succ0$.  The relative root-composite operator is
+\[
+  R=\Theta^{-1/2}\K_G\Theta^{-1/2}.
+\]
+Its characteristic polynomial
+\[
+  p_R(z)=\det(zI-R)
+\]
+records the descended root ledger.  The accepted anti-localization condition is
+\[
+  \lambda_{\max}(R)\le1.
+\]
+When $G$ is abelian, this root ledger factors into character polynomials.
+\end{definition}
+
+\begin{theorem}[root ledger criterion]
+For $\Theta\succ0$,
+\[
+  \K_G\preceq\Theta
+  \iff
+  \lambda\le1\quad\text{for every root }\lambda\text{ of }p_R.
+\]
+Equivalently, every character/block root ledger lies in $(-\infty,1]$.
+\end{theorem}
+
+\begin{proof}
+Since $R$ is self-adjoint positive semidefinite, $\K_G\preceq\Theta$ is equivalent to $R\preceq I$, which is equivalent to all eigenvalues of $R$ being at most $1$.  These eigenvalues are the roots of $p_R$ counted with multiplicity.  If the data are equivariant, $R$ decomposes into isotypic blocks and the characteristic polynomial factors accordingly.
+\end{proof}
+
+\begin{warning}[norm or determinant shadows are insufficient]
+A determinant or norm descent can be a public shadow rather than a lawful root ledger.  For example,
+\[
+  R=\begin{pmatrix}2&0\\0&1/4\end{pmatrix}
+\]
+has determinant $1/2<1$, but $R\npreceq I$ because its largest root is $2$.  Root-composite anti-localization requires a largest-root or Loewner certificate, not merely a product norm.
+\end{warning}
+
+\section{Algebraic descent as a strict-extension profile}
+
+The root-composite profile differs from the invariant, coefficient, and obstruction-ledger profiles as follows.
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Profile & Carrier lives in & Descent expression \\
+\midrule
+Invariant & extended operator family & trace / sector capacity \\
+Coefficient & infinitesimal or perturbative extension & standard part / coefficient \\
+Obstruction-ledger & cohomological or route extension & obstruction class / union ledger \\
+Root-composite & algebraic/Galois extension & roots / characters / characteristic ledger \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The root-composite profile is therefore not ``more Fourier analysis.''  It is a strict-extension mode in which the native probes are algebraic conjugates and the lower-layer anti-localization statement is obtained by a full root ledger.
+
+\section{Closure-only theorem}
+
+\begin{theorem}[root-composite no-native-root-needle theorem]
+Let $\mathfrak A=(H,C,\Gamma,G,U,\rho,L,\Theta)$ be a formed algebraic closure: exact package, declared group action, equivariant audit, native orbit probe family, null-mode legality, and accepted response budget.  If
+\[
+  \K_G=L_\Gamma C_\Gamma^\dagger L_\Gamma^*\preceq\Theta,
+\]
+then no native algebraic recombination has over-budget capacity.  Equivalently, there is no native root-composite critical-pair witness.
+\end{theorem}
+
+\begin{proof}
+For every native algebraic recombination $y$, the capacity identity gives
+\[
+  \Cap_C(\ell_y;\Ran\Gamma)=y^*\K_Gy\le y^*\Theta y.
+\]
+Thus no $y$ can be an over-budget witness.  Conversely, if such a witness existed, $\K_G\npreceq\Theta$ by the separating-vector criterion.
+\end{proof}
+
+\section{Audit statuses and nonclaims}
+
+A root-composite anti-localization record must include:
+\begin{enumerate}[label=(\roman*)]
+  \item the extension law $G$ or algebraic extension $B/A$;
+  \item the action on the carrier and on the response family;
+  \item audit equivariance $U_g^*CU_g=C$;
+  \item package equivariance or a transported quotient action;
+  \item the full character/root budget, not only a trace or determinant shadow;
+  \item a nonclaim forbidding literalization: a root-composite bound licenses no native algebraic recombination needle under this audit, not the statement that the substrate has no abstract needle-like eigenvectors.
+\end{enumerate}
+
+\section{Numerical sanity checks}
+The accompanying script checks four finite identities and countermodels:
+\begin{enumerate}
+  \item cyclic character modes can fail although all coordinate probes have unit scalar capacity;
+  \item circulant currency matrices diagonalize by characters;
+  \item determinant shadows can pass while Loewner budgets fail;
+  \item equivariance defects block algebraic descent.
+\end{enumerate}
+These checks are not Six Birds simulations.  They are finite sanity checks for the algebraic identities above.
+
+\end{document}

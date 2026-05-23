@@ -1,0 +1,157 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 144: Completed Residual-Tail Promotion for the \texorpdfstring{$\Omega$}{Omega}-Compatible Ladder}
+\author{Six Birds / Membrane--\texorpdfstring{$\Xi$}{Xi} RH Construction Notes}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+The previous steps reduced the residual source route to a finite \(\Omega\)-compatible lower-frame statement.  Step 144 asks whether those finite certificates promote to the completed residual ledger, or whether they remain moving-window support evidence.
+
+The finite effective source strength has the form
+\begin{equation}
+\Lambda_N^\Omega
+=
+\gamma_{q_N}
+(1-\epsilon_{B\to\Omega,N}^{2})
+(1-\delta_{R,K,N}^{2}).
+\end{equation}
+Here \(\gamma_{q_N}\) is the restricted source-weighted lower-frame strength, \(\epsilon_{B\to\Omega,N}\) is the \(\Omega\)-compatible density defect, and \(\delta_{R,K,N}\) is the GCD-log blind-sector defect.
+
+\section{Completed residual carrier}
+Let \(H_R\) be the completed residual Hilbert carrier, and let \(G_R\) be the completed residual metric.  Let \(P_N\) be finite-window projections or window maps, with finite metric \(G_{R,N}\).  The finite window source frame is accepted only if
+\begin{equation}
+F_N^{\Omega,\mathrm{win}}\succeq \Lambda_N^\Omega G_{R,N}.
+\end{equation}
+
+\begin{definition}[Plancherel/exhaustivity tail]
+A completed Plancherel/exhaustivity record is a positive form \(T_N\succeq0\) such that
+\begin{equation}
+G_R\preceq P_N^*G_{R,N}P_N+T_N.
+\end{equation}
+The form \(T_N\) is the completed residual tail missed by the finite window.
+\end{definition}
+
+\section{Finite-to-completed promotion}
+\begin{theorem}[Lifted lower frame]
+Assume
+\[
+F_N^{\Omega,\mathrm{win}}\succeq \Lambda_N^\Omega G_{R,N}
+\]
+and
+\[
+G_R\preceq P_N^*G_{R,N}P_N+T_N.
+\]
+Let
+\[
+F_N^\Omega=P_N^*F_N^{\Omega,\mathrm{win}}P_N.
+\]
+Then
+\begin{equation}
+F_N^\Omega+\Lambda_N^\Omega T_N\succeq \Lambda_N^\Omega G_R.
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+By the finite window lower frame,
+\[
+P_N^*F_N^{\Omega,\mathrm{win}}P_N\succeq \Lambda_N^\Omega P_N^*G_{R,N}P_N.
+\]
+By the Plancherel/exhaustivity record,
+\[
+P_N^*G_{R,N}P_N\succeq G_R-T_N.
+\]
+Combining gives
+\[
+F_N^\Omega\succeq \Lambda_N^\Omega(G_R-T_N),
+\]
+which is equivalent to
+\[
+F_N^\Omega+\Lambda_N^\Omega T_N\succeq \Lambda_N^\Omega G_R.
+\]
+\end{proof}
+
+\section{Completed residual budget squeeze}
+Let \(K_R\succeq0\) be the completed residual ledger/covariance to be confined.
+
+\begin{theorem}[Completed residual squeeze]
+Assume the lifted lower frame of the previous theorem.  Suppose the source audit budget is bounded:
+\begin{equation}
+\sup_N\operatorname{tr}(F_N^\Omega K_R)\le C_{\rm src}<\infty,
+\end{equation}
+and the completed tail is paid:
+\begin{equation}
+\operatorname{tr}(T_NK_R)\to0.
+\end{equation}
+Then
+\begin{equation}
+\operatorname{tr}(G_RK_R)
+\le
+\frac{C_{\rm src}}{\Lambda_N^\Omega}
++
+\operatorname{tr}(T_NK_R).
+\end{equation}
+In particular, if \(\Lambda_N^\Omega\to\infty\), then \(\operatorname{tr}(G_RK_R)\to0\).
+\end{theorem}
+
+\begin{proof}
+Taking the trace of
+\[
+\Lambda_N^\Omega G_R\preceq F_N^\Omega+\Lambda_N^\Omega T_N
+\]
+against \(K_R\succeq0\) gives
+\[
+\Lambda_N^\Omega\operatorname{tr}(G_RK_R)
+\le
+\operatorname{tr}(F_N^\Omega K_R)+
+\Lambda_N^\Omega\operatorname{tr}(T_NK_R).
+\]
+Divide by \(\Lambda_N^\Omega\) and use the source budget bound.
+\end{proof}
+
+\section{Moving-window non-promotion}
+\begin{warning}[Finite windows are not completed evidence]
+If the finite source frames pass but
+\[
+\liminf_N\operatorname{tr}(T_NK_R)>0,
+\]
+then the result is only a moving-window certificate.  Its honest status is
+\[
+\boxed{\texttt{moving\_window\_support\_only}.}
+\]
+No completed residual confinement follows.
+\end{warning}
+
+\section{Omega-compatible route status}
+The restricted source route now requires all four records:
+\begin{enumerate}
+\item \(\epsilon_{B\to\Omega,N}<1\) or preferably \(\to0\),
+\item \(\delta_{R,K,N}<1\) or preferably \(\to0\),
+\item \(\Lambda_N^\Omega=\gamma_{q_N}(1-\epsilon^2)(1-\delta^2)\to\infty\),
+\item completed tail payment \(\operatorname{tr}(T_NK_R)\to0\).
+\end{enumerate}
+Only then does the finite \(\Omega\)-compatible ladder become a completed source absorption theorem.
+
+\section{Next target}
+The next construction target is to instantiate the completed residual carrier, window maps, and tail form in the actual Burnol/Sonine residual model:
+\[
+H_R,
+\quad
+P_N,
+\quad
+T_N,
+\quad
+K_R.
+\]
+This is the point at which Burnol completeness, co-Poisson support, and the semilocal Hardy--Titchmarsh response geometry must become a fixed/exhaustive ledger rather than a moving finite-window ladder.
+
+\end{document}

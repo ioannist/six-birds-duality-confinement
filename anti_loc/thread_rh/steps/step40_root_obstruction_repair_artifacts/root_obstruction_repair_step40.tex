@@ -1,0 +1,280 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{warning}[theorem]{Warning}
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\AZ}{\mathsf A_Z}
+\newcommand{\Kminus}{\mathsf K^-}
+\newcommand{\ThetaZero}{\Theta^-_0}
+\newcommand{\EEF}{E_{\rm EF}}
+\newcommand{\Esrc}{E_{\rm src}}
+\newcommand{\Evis}{E_{\rm vis}}
+\newcommand{\Escope}{E_{\rm scope}}
+\newcommand{\Loewner}{\preceq}
+\newcommand{\Range}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\diag}{\operatorname{diag}}
+
+\title{Step 40: Obstruction-to-Repair Theorem for the Root-Composite Anti-Localization Route}
+\author{Six Birds Anti-Localization Working Notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Step 39 turned root-composite zero confinement into an obstruction ledger: if confinement is not obtained, then some named record must fail.  This note adds the repair calculus.  Each obstruction slot has lawful repair moves, each repair has an explicit effect on the anti-invariant confinement budget, and several tempting repairs are marked as claim weakening rather than proof strengthening.  The main theorem states that completed explicit-formula repair, character-source repair, source-growth repair, and probe-wise promotion repair decrease the obstruction budget in Loewner order when their defects decrease and their coercivity constants increase.  Null-mode quotient and scope gating are separately classified because they may make a claim true by narrowing the visible sector rather than by proving zero confinement in the original sector.
+\end{abstract}
+
+\section{The root-composite obstruction budget}
+
+Let $J$ be an anti-linear involution and let $Y^-$ be the anti-invariant response sector.  In the RH reading $J(s)=1-\bar s$ and $Y^-$ measures displacement from the critical line.  The zero-side displacement matrix is
+\[
+  \AZ\succeq 0.
+\]
+The completed carrier-side anti-invariant currency is $\Kminus$.  Step 38/39 used two records:
+\begin{align}
+  \AZ &\Loewner (1+t)\Kminus+(1+t^{-1})\EEF,\qquad t>0,\label{eq:efdef}\\
+  \Kminus &\Loewner \Lambda^{-1}\ThetaZero+\Esrc.\label{eq:srcdef}
+\end{align}
+Thus the visible confinement budget is
+\begin{equation}
+  \boxed{
+  \AZ\Loewner \mathcal B_t(\Lambda,\EEF,\Esrc)
+  :=(1+t)(\Lambda^{-1}\ThetaZero+\Esrc)+(1+t^{-1})\EEF .
+  }
+  \label{eq:budget}
+\end{equation}
+For every separation threshold $\varepsilon>0$,
+\begin{equation}
+  \sum_{z:\,\|P_-\psi(z)\|\ge \varepsilon} w_z
+  \le
+  \varepsilon^{-2}\tr\,\mathcal B_t(\Lambda,\EEF,\Esrc).
+\end{equation}
+A repair is useful only to the extent that it reduces $\mathcal B_t$ or makes the target claim explicitly narrower.
+
+\section{Repair records}
+
+\begin{definition}[Root-composite obstruction repair record]
+A repair record is a tuple
+\[
+  \mathcal R=(\mathrm{slot},\mathrm{move},\mathrm{old},\mathrm{new},\mathrm{defect},\mathrm{status})
+\]
+attached to one of the obstruction slots:
+\begin{enumerate}[label=(\roman*)]
+\item explicit-formula domination defect;
+\item character/source-frame hole;
+\item bounded coercivity growth;
+\item null-mode legality;
+\item zero visibility/exhaustivity;
+\item closure/promotion/finite-to-continuum control;
+\item scope/nonclaim honesty.
+\end{enumerate}
+A repair is \emph{proof-strengthening} if it decreases the obstruction budget in the same declared visible sector.  It is \emph{scope-narrowing} if it makes a restricted claim true by removing readouts, probes, zeros, or sectors from the claim.  It is \emph{support-only} if it supplies evidence but no Loewner decrease of the accepted obstruction budget.
+\end{definition}
+
+\section{Budget-decreasing repairs}
+
+\begin{theorem}[Monotone obstruction repair]
+Fix $t>0$.  Suppose a repaired record satisfies
+\[
+  \Lambda'\ge \Lambda>0,
+  \qquad
+  \EEF'\Loewner \EEF,
+  \qquad
+  \Esrc'\Loewner \Esrc.
+\]
+Then
+\[
+  \mathcal B_t(\Lambda',\EEF',\Esrc')
+  \Loewner
+  \mathcal B_t(\Lambda,\EEF,\Esrc).
+\]
+More precisely,
+\begin{align}
+&\mathcal B_t(\Lambda,\EEF,\Esrc)-\mathcal B_t(\Lambda',\EEF',\Esrc') \\
+&\qquad =(1+t)(\Lambda^{-1}-\Lambda'^{-1})\ThetaZero
+ +(1+t)(\Esrc-\Esrc')+(1+t^{-1})(\EEF-\EEF')\succeq 0.
+\end{align}
+Thus completed explicit-formula defect reduction, source defect reduction, and character-frame coercivity growth are proof-strengthening repairs.
+\end{theorem}
+
+\begin{proof}
+Immediate from the displayed identity and positivity of each term.
+\end{proof}
+
+\begin{corollary}[Optimized scalar confinement bound]
+Let
+\[
+  a=\tr(\Lambda^{-1}\ThetaZero+\Esrc),
+  \qquad
+  b=\tr \EEF.
+\]
+Then
+\[
+  \inf_{t>0}\tr\,\mathcal B_t= (\sqrt a+\sqrt b)^2.
+\]
+The minimizer is $t=\sqrt{b/a}$ when $a,b>0$.
+\end{corollary}
+
+\begin{proof}
+$\tr\mathcal B_t=(1+t)a+(1+t^{-1})b=a+b+ta+b/t$.  Minimize $ta+b/t$.
+\end{proof}
+
+\begin{corollary}[Strict repair]
+If one of the following holds:
+\begin{enumerate}[label=(\alph*)]
+\item $\Lambda'>\Lambda$ and $\ThetaZero$ is nonzero on the claimed anti-invariant sector;
+\item $\Esrc-\Esrc'$ is positive on a visible witness direction;
+\item $\EEF-\EEF'$ is positive on a visible witness direction;
+\end{enumerate}
+then the obstruction bound is strictly improved in that witness direction.
+\end{corollary}
+
+\section{Character-frame repair}
+
+A character/source repair adds records $s=(Q_s,\Theta_s,\lambda_s,D_s)$ satisfying
+\[
+  D_s\succeq \lambda_s(Q_sL^-_\Gamma)^*\Theta_s^{-1}(Q_sL^-_\Gamma).
+\]
+Define the response-side frame
+\[
+  F_{\mathcal S}=\sum_s \lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+The coverage constant is
+\[
+  \Lambda(F_{\mathcal S};\ThetaZero)
+  :=\lambda_{\min}\bigl({\ThetaZero}^{1/2}F_{\mathcal S}{\ThetaZero}^{1/2}\bigr),
+\]
+with the usual quotient convention on $\Range\ThetaZero$.
+
+\begin{theorem}[Character repair is effective exactly by lower-frame gain]
+Adding character sources is proof-strengthening for the anti-invariant budget precisely to the extent that it increases
+\[
+  \Lambda(F_{\mathcal S};\ThetaZero).
+\]
+If a new source acts only on a direction already orthogonal to all active anti-invariant witnesses, it may be lawful but has no effect on the claimed confinement budget.
+\end{theorem}
+
+\begin{proof}
+Step 37 gives
+\[
+  \Kminus\Loewner \Lambda(F_{\mathcal S};\ThetaZero)^{-1}\ThetaZero+\Esrc.
+\]
+The claim follows from the monotone obstruction repair theorem.
+\end{proof}
+
+\begin{warning}[Trace/invariant repair is not character-frame repair]
+Increasing source strength on the invariant or trace sector does not increase $\Lambda(F_{\mathcal S};\ThetaZero)$ on $Y^-$.  It therefore gives no anti-invariant confinement budget decrease.
+\end{warning}
+
+\section{Explicit-formula repair}
+
+The explicit-formula bridge has the contractive form
+\[
+  V_Z=T W_{\rm cmp}+R,
+  \qquad \|T\|\le 1,
+  \qquad R^*R\Loewner\EEF.
+\]
+The completed feature map is
+\[
+  W_{\rm cmp}=\begin{bmatrix}W_{\rm pr}\\W_\infty\\W_{\rm pole}\\W_{\rm tail}\end{bmatrix}.
+\]
+
+\begin{proposition}[Completion repair]
+Adding a missing feature component $W_{\rm new}$ is a proof-strengthening EF repair only if the new component yields a smaller residual $R'$, hence $\EEF'\Loewner \EEF$.  Merely adding a term to the formal explicit formula is support-only unless it is integrated into a positive carrier-side feature map and a contractive factorization.
+\end{proposition}
+
+\begin{proof}
+By the defective bridge theorem, the EF contribution to the obstruction bound is $(1+t^{-1})\EEF$.  Its Loewner decrease is exactly the proof-strengthening effect.
+\end{proof}
+
+\section{Null-mode and visibility repairs}
+
+\begin{definition}[Null-mode legality repair]
+A null-mode repair replaces the carrier quotient so that every declared anti-invariant probe annihilates legal zero-energy directions:
+\[
+  L^-_\Gamma|_{\ker C_\Gamma}=0.
+\]
+If this condition is not met, the true variational capacity is infinite even when the pseudoinverse expression is misleadingly finite.
+\end{definition}
+
+\begin{proposition}[Null repair changes legality, not merely budget]
+A null-mode quotient repair may convert an undefined or infinite capacity claim into a legal finite claim.  It is proof-strengthening only if the quotient is supplied by the closure ledger and does not remove zero-side displacement that remains in the target theorem.  If it removes such displacement, it is a scope-narrowing nonclaim.
+\end{proposition}
+
+\begin{definition}[Visibility repair]
+A visibility repair enlarges the zero ledger or the response readout so that previously invisible roots or displacement sectors are included.
+\end{definition}
+
+\begin{proposition}[Visibility repair can increase the obstruction]
+Extending the visible zero ledger may increase $\AZ$.  It improves exhaustivity but need not improve the confinement budget.  Therefore visibility repair is generally a truthfulness repair, not a budget-decreasing repair.
+\end{proposition}
+
+\section{Scope repair and claim weakening}
+
+\begin{proposition}[Gating/nonclaim is not zero-confinement]
+Let $P:Y^-\to Y^-_0$ be a projection to a restricted anti-invariant sector.  A bound
+\[
+  P\AZ P^*\Loewner P\Theta^-P^*
+\]
+proves confinement only for the restricted readout.  Unless $P=I$ on the claimed zero-displacement sector, this is a scoped nonclaim, not a proof of full zero confinement.
+\end{proposition}
+
+\section{Obstruction-to-repair theorem}
+
+\begin{theorem}[Root-composite obstruction-to-repair alternative]
+Suppose the root-composite RH route has not obtained zero confinement.  Then at least one obstruction slot from Step 39 is active.  For each active slot, the lawful repair alternatives are:
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Obstruction slot & Proof-strengthening repair & Non-proof / weaker repair\\
+\midrule
+EF domination defect & lower $\EEF$ via completed contractive feature map & trace equality, formal term addition\\
+Character-frame hole & add source increasing lower frame $\Lambda$ & invariant-only/trace-only source\\
+Bounded coercivity & strict extension with $\Lambda\uparrow$ & finite source only\\
+Null-mode failure & lawful quotient with probes annihilating nulls & hiding visible displacement\\
+Visibility failure & extend zero/readout ledger & may increase obstruction\\
+Promotion/tail defect & reduce $E_{\rm tail}$ probe-wise & global norm closeness only\\
+Scope failure & explicit nonclaim/gating & pretending restricted proof is full proof\\
+\bottomrule
+\end{tabular}
+\end{center}
+Moreover, the obstruction budget decreases in Loewner order exactly for the proof-strengthening components that reduce $\EEF$, reduce $\Esrc$, or increase $\Lambda$ on the claimed anti-invariant sector.  Other repairs may be lawful but do not by themselves prove stronger zero confinement.
+\end{theorem}
+
+\begin{proof}
+The forward theorem from Steps 38--39 says that confinement follows from EF domination, character-frame/source coercivity, null-mode legality, visibility/exhaustivity, and promotion control.  If confinement is not obtained, at least one record is missing or defective.  The repair classifications are consequences of the monotone obstruction repair theorem and the propositions above.  Repairs that change the claimed sector or erase a visible displacement are not Loewner decreases of the original budget; they are scope changes.
+\end{proof}
+
+\section{No-go examples}
+
+\begin{example}[Trace repair no-go]
+Let $Y^-=\mathbb R^2$ and suppose the active obstruction is in the second coordinate.  Adding arbitrary source strength on an orthogonal invariant coordinate does not change the lower frame on $Y^-$.  The anti-invariant budget remains unchanged.
+\end{example}
+
+\begin{example}[Visibility repair increases truth and may increase defect]
+If $\AZ=0$ because a zero family is not visible, adding it to the ledger may yield $\AZ'>0$.  This is not a failure of the repair; it is a correction of an overclaim.
+\end{example}
+
+\begin{example}[Finite source gives finite allowance]
+If $\Lambda$ has a finite upper bound, then $\Lambda^{-1}\ThetaZero$ has a nonzero lower scale.  The proof may give quantitative confinement but not exact fixed-locus confinement.
+\end{example}
+
+\section{Conclusion}
+
+The root-composite route now has three layers: a forward theorem, an obstruction alternative, and a repair calculus.  The repair calculus is intentionally strict.  A move is not accepted as a proof repair merely because it makes a formal expression prettier.  It must decrease the completed anti-invariant obstruction budget in the same claimed sector, or else it must record a weakened scope.
+
+\end{document}

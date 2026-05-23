@@ -1,0 +1,99 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\title{Step 152: Adjoint Zero-Evaluator Transport Formula}
+\author{RH Membrane / Burnol--Sonine Residual Route}
+\date{Step 152}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 150 blocked the positive source-frame/fixed positive ledger squeeze as a proof-producing route: the missing source-budget condition is already collapse-strength. Step 151 therefore pivoted to direct residual exclusion. The present step computes the exact adjoint transport formula for the shifted boundary block
+\[
+\mathfrak B_{\ell,a}=J_aP_\infty\tau_\ell(I-P_\infty).
+\]
+The target is to decide whether
+\[
+\Pi_{Y_a}\mathfrak B_{\ell,a}=0
+\]
+has a structural cancellation mechanism.
+
+\section{Burnol criterion}
+Let \(Y_a\subset L_a\) be the closed span of Burnol zero-evaluator vectors \(Y^a_{\rho,k}\), and let \(P_a=Y_a^\perp\) be the co-Poisson complement for \(a<1\). Then
+\[
+\operatorname{Ran}\mathfrak B_{\ell,a}\subseteq P_a
+\quad\Longleftrightarrow\quad
+\mathfrak B_{\ell,a}^*Y^a_{\rho,k}=0
+\quad\forall \rho,k.
+\]
+
+\section{Adjoint transport formula}
+Assume \(P_\infty=P_\infty^*\) and \(\tau_\ell^*=\tau_{-\ell}\). Then
+\begin{theorem}[Adjoint transport]
+For every zero evaluator \(Y^a_{\rho,k}\),
+\[
+\boxed{
+\mathfrak B_{\ell,a}^*Y^a_{\rho,k}
+=
+(I-P_\infty)\tau_{-\ell}P_\infty J_a^*Y^a_{\rho,k}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+\mathfrak B_{\ell,a}^*Y^a_{\rho,k}
+=
+(I-P_\infty)[\tau_{-\ell},P_\infty]J_a^*Y^a_{\rho,k}.
+}
+\]
+\end{theorem}
+\begin{proof}
+Taking the adjoint of \(J_aP_\infty\tau_\ell(I-P_\infty)\) gives
+\[
+(I-P_\infty)\tau_{-\ell}P_\infty J_a^*.
+\]
+The commutator form follows since \((I-P_\infty)P_\infty=0\):
+\[
+(I-P_\infty)[\tau_{-\ell},P_\infty]
+=(I-P_\infty)\tau_{-\ell}P_\infty.
+\]
+\end{proof}
+
+\section{Mellin convention and triangular raw shift}
+Use the right Mellin transform
+\[
+\widehat f(s)=\int_0^\infty f(t)t^{-s}\,dt.
+\]
+The unitary log-shift \(\tau_\ell\) is normalized so that in logarithmic coordinates it is ordinary translation. In \(t\)-coordinates,
+\[
+(\tau_\ell f)(t)=e^{-\ell/2}f(e^{-\ell}t),
+\]
+and hence
+\[
+\widehat{\tau_\ell f}(s)=e^{\ell(1/2-s)}\widehat f(s).
+\]
+Thus raw shifts act on derivative evaluators by
+\[
+(\tau_\ell^*Y_{\rho,k})(f)
+=e^{\ell(1/2-\rho)}\sum_{r=0}^k {k\choose r}(-\ell)^{k-r}Y_{\rho,r}(f).
+\]
+This is triangular same-zero mixing. It preserves the zero-evaluator span but does not annihilate it.
+
+\section{Diagnostic verdict}
+A raw log-shift does not create a \(\zeta\)-factor. Direct exclusion requires
+\[
+(I-P_\infty)[\tau_{-\ell},P_\infty]J_a^*Y^a_{\rho,k}=0.
+\]
+This is a Sonin/prolate projection commutator theorem, not a consequence of Burnol completeness or of the semilocal Hardy--Titchmarsh transport alone. If the commutator vector is nonzero, the active residual is
+\[
+\Xi^{\rm BC}_{\ell,a}
+=\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}.
+\]
+
+\section{Nonclaim boundary}
+This note does not prove RH, does not prove \(H_R=0\), and does not prove \(\Xi^{\rm BC}=0\). It gives the exact formula whose vanishing must be established or explicitly budgeted.
+
+\end{document}

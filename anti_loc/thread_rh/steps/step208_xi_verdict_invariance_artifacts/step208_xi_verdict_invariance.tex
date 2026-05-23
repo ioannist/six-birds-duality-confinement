@@ -1,0 +1,83 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Step 208: Candidate-Invariance Test for \(\Xi_{\rm matrix\_source}\)}
+
+This step computes the finite matrix-source residual under both Step 207
+candidate samples for
+\[
+  \kappa_i(\tau)=\bigl[T_{1/2}^*K_{1/2}^{\Gamma}(\cdot,\rho_i)\bigr](1/2+i\tau).
+\]
+The computation is diagnostic: it tests verdict invariance without choosing
+which candidate is the true transport sample.
+
+\subsection*{Finite-grid operator}
+
+Using the Step 173 operational identity,
+\[
+K_\infty^{op}(s,s')=\delta(\tau-\tau')
+-\frac{\sin(\lambda(\tau-\tau'))}{\pi(\tau-\tau')}
+-\sum_n\Psi_n^\lambda(s)\overline{\Psi_n^\lambda(s')},
+\]
+the discretized projection is
+\[
+  Pf=f-\operatorname{sinc}*f-\sum_{n<N}\Psi_n\langle \Psi_n,f\rangle .
+\]
+For \(\ell=\log 2\),
+\[
+  C f=(I-P)M_{m_\ell}Pf,\qquad
+  (M_{m_\ell}f)(\tau)=e^{i\ell\tau}f(\tau).
+\]
+The matrix entries are
+\[
+  c_{ij}^{(k)}
+  ={1\over 2\pi}\int
+  \overline{\kappa_i^{(k)}(\tau)}
+  \bigl[(I-P)M_{m_\ell}P\kappa_j^{(k)}\bigr](\tau)\,d\tau.
+\]
+
+\subsection*{Computed commutator scale}
+
+With 200 \(\tau\)-nodes and 24 PSWF terms:
+\[
+\max |c_{ij}^{\rm CAND1}|=9.03975455\cdot10^{-11},\qquad
+\|c^{\rm CAND1}\|_F=9.03980135\cdot10^{-11}.
+\]
+\[
+\max |c_{ij}^{\rm CAND2}|=2.20220836\cdot10^{16},\qquad
+\|c^{\rm CAND2}\|_F=2.20332330\cdot10^{16}.
+\]
+
+\subsection*{Compressed-HS residual}
+
+The inherited unnormalized formula is
+\[
+  \Xi_{\rm matrix\_source}
+  =\operatorname{tr}(G^{-1}c^\dagger G^{-1}c).
+\]
+Using the Step 204/207 Gram matrix:
+\[
+\Xi_{\rm CAND1}
+=0.0287707490271961-4.5574170385\cdot10^{-6}i,
+\]
+with \(|\Xi_{\rm CAND1}|=2.8770749388\cdot10^{-2}\) and error bound
+\(1.4685454221\cdot10^{14}\).
+\[
+\Xi_{\rm CAND2}
+=8.1516178439\cdot10^{65}+9.8051151700\cdot10^{61}i,
+\]
+with \(|\Xi_{\rm CAND2}|=8.1516179028\cdot10^{65}\) and error bound
+\(2.6239388729\cdot10^{66}\).
+
+\subsection*{Verdict}
+
+Both candidate computations are precision-limited after compression by the
+ill-conditioned inherited Gram inverse.  The closure/nonzero verdict is not
+certified invariant.
+\[
+  \boxed{\texttt{V\_xi\_invariant\_partial}.}
+\]
+
+\end{document}

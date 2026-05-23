@@ -1,0 +1,33 @@
+{
+  "step": 42,
+  "name": "Layer Membrane Transfer Theorem",
+  "objects": {
+    "source_record": ["E", "C", "L", "Y", "K", "Theta"],
+    "target_record": ["E_prime", "C_prime", "L_prime", "Y_prime", "K_prime", "Theta_prime"],
+    "exact_bridge": ["P:E_prime_to_E", "A:Y_to_Y_prime", "C_prime >= P^* C P", "L_prime = A L P"],
+    "defective_bridge": ["residual R", "E_R = R C_prime_dagger R^*"],
+    "public_shadow": ["F:Y_to_Z", "K_Z = F K F^*"]
+  },
+  "theorems": {
+    "exact_transfer": "K_prime <= A K A^*",
+    "defective_transfer": "K_prime <= (1+t) A K A^* + (1+t^{-1}) E_R",
+    "composition": "defects compose by conjugation plus addition",
+    "public_shadow_descent": "K <= Theta implies F K F^* <= F Theta F^*",
+    "predictive_transfer": "uniformly budgeted bridge defects transfer predictive membranes"
+  },
+  "statuses": [
+    "accepted_exact_transfer",
+    "accepted_defective_transfer",
+    "support_shadow",
+    "failed_energy_bridge",
+    "failed_readout_bridge",
+    "overread",
+    "smuggled"
+  ],
+  "nonclaims": [
+    "public shadow passing does not certify full carrier membrane",
+    "bridge chosen after target success is not lawful transfer",
+    "unbudgeted readout residual invalidates transfer",
+    "energy underpayment invalidates transfer"
+  ]
+}

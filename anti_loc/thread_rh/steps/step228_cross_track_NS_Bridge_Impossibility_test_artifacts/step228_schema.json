@@ -1,0 +1,73 @@
+{
+  "step": 228,
+  "orientation": "cross-track-framework-validation",
+  "target": "Bridge Impossibility test on NS",
+  "NS_non_equivalent_carriers": [
+    "2D Navier-Stokes regularity",
+    "Caffarelli-Kohn-Nirenberg partial regularity",
+    "Axisymmetric no-swirl regularity",
+    "Small-data global regularity",
+    "Local-in-time smooth regularity",
+    "Leray-Hopf global weak existence",
+    "Buckmaster-Vicol weak nonuniqueness",
+    "Tao averaged Navier-Stokes blowup",
+    "BKM and Escauriaza-Seregin-Sverak conditional criteria"
+  ],
+  "bridge_assessment_table": [
+    {
+      "carrier": "2D regularity",
+      "bridge": "dimension lift to 3D",
+      "assessment": "NS-strength"
+    },
+    {
+      "carrier": "CKN partial regularity",
+      "bridge": "singular set empty",
+      "assessment": "NS-strength"
+    },
+    {
+      "carrier": "Axisymmetric/no-swirl",
+      "bridge": "remove symmetry restriction",
+      "assessment": "NS-strength"
+    },
+    {
+      "carrier": "Small-data regularity",
+      "bridge": "large-data continuation",
+      "assessment": "NS-strength"
+    },
+    {
+      "carrier": "Local regularity",
+      "bridge": "global continuation",
+      "assessment": "NS-strength"
+    },
+    {
+      "carrier": "Leray-Hopf weak existence",
+      "bridge": "smooth uniqueness and regularity upgrade",
+      "assessment": "NS-strength"
+    },
+    {
+      "carrier": "Weak nonuniqueness",
+      "bridge": "translate weak-solution pathology to smooth regularity decision",
+      "assessment": "NS-strength or not a valid bridge"
+    },
+    {
+      "carrier": "Averaged NS",
+      "bridge": "transfer modified-equation blowup to true NS",
+      "assessment": "NS-strength"
+    },
+    {
+      "carrier": "Conditional criteria",
+      "bridge": "prove criterion norm bounded unconditionally",
+      "assessment": "NS-strength"
+    }
+  ],
+  "literature_audit_summary": "Classical and modern PDE results provide scoped regularity, weak existence, conditional criteria, or modified-equation evidence. None bridges to full 3D smooth global regularity without importing the full target-strength continuation theorem.",
+  "framework_finding_upgrade_status": "Bridge Impossibility cross-track verified on NS; status upgraded to verified-on-4-track-instances across RH, BSD, Hodge, and NS.",
+  "retained_nogos": [
+    "Criterion-native circularity no-go remains active.",
+    "Energy/enstrophy-only no-go remains active.",
+    "Packing-only amplitude no-go remains active.",
+    "Marker-only and metric-shadow/Gevrey-dominance no-gos remain active.",
+    "No Navier-Stokes regularity proof or disproof is claimed."
+  ],
+  "final_verdict": "V_ns_Bridge_Impossibility_verified"
+}

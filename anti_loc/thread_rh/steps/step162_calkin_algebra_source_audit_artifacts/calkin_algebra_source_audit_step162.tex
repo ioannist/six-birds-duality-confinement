@@ -1,0 +1,171 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{nogo}{No-Go Theorem}
+
+\title{Step 162: Calkin Algebra Declaration and Source-Theorem Extraction Audit}
+\author{Six Birds / RH Membrane Working Note}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Inherited state}
+
+The track remains \emph{adequacy-oriented}.  The active residual is
+\[
+  \Xi^{\rm BC}_{\ell,a}
+  =
+  \mathfrak B_{\ell,a}^{*}\Pi_{Y_a}\mathfrak B_{\ell,a},
+\]
+and the active operator is
+\[
+  C_\ell P_\eta,
+  \qquad
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+  \qquad
+  m_\ell(s)=e^{-\ell(1/2-s)}.
+\]
+The Step 161 verdict was that no local Calkin-faithful boundary-symbol theorem
+had been extracted.  Step 162 refines that verdict by declaring the exact
+Calkin algebra and splitting the missing bridge theorem into source-testable
+sub-obligations.
+
+\section{Typed Calkin algebra}
+
+\begin{definition}[Pulled-evaluator Calkin algebra]
+Let \(H\) be the Burnol/Sonine pulled-evaluator Hilbert context containing
+\[
+  H_\eta=
+  \overline{\operatorname{span}\{J_a^*Y^a_{\rho,k}\}}.
+\]
+Let
+\[
+  \mathcal A_\eta
+  =
+  C^*(P_\infty,M_{m_\ell},P_\eta,I)
+  \subseteq \mathcal B(H),
+\]
+where \(P_\eta\) is the projection onto \(H_\eta\).  The compact ideal in this
+context is
+\[
+  \mathcal K_\eta=\mathcal A_\eta\cap\mathcal K(H).
+\]
+The quotient map is
+\[
+  q_\eta:\mathcal A_\eta\to\mathcal A_\eta/\mathcal K_\eta.
+\]
+\end{definition}
+
+The active quotient object is
+\[
+  q_\eta(C_\ell P_\eta)
+  \in
+  \mathcal A_\eta/\mathcal K_\eta.
+\]
+This is the object that a boundary-symbol theorem must classify.  A theorem on
+an ambient Hardy algebra, a hard-support algebra, or a finite section is not a
+theorem about \(q_\eta(C_\ell P_\eta)\) unless it is connected to this quotient
+by an accepted bridge.
+
+\section{Split bridge theorem}
+
+Step 162 rewrites the missing Step 161 bridge as five sub-obligations:
+\begin{enumerate}[label=(G\arabic*)]
+  \item \textbf{Algebra gate.} The source theorem is stated on
+  \(\mathcal A_\eta/\mathcal K_\eta\), or supplies an accepted bridge into it.
+  \item \textbf{Symbol gate.} There is a boundary symbol
+  \[
+    \sigma_B:\mathcal A_\eta/\mathcal K_\eta\to\mathcal S_B
+  \]
+  faithful on \(q_\eta(C_\ell P_\eta)\).
+  \item \textbf{Normal-form gate.} The active operator admits
+  \[
+    C_\ell=U_\ell W_\ell+K_\ell,
+    \qquad
+    K_\ell\in\mathcal K(H).
+  \]
+  \item \textbf{Lower-faithfulness gate.} \(U_\ell\) is bounded below on the
+  boundary range relevant to \(H_\eta\).
+  \item \textbf{Compact-ideal gate.} Compactness of \(W_\ell P_\eta\) is
+  equivalent to compactness of \(C_\ell P_\eta\) in the declared quotient.
+\end{enumerate}
+
+These gates are independent.  Supplying only one of them does not accept the
+bridge.
+
+\section{Source extraction audit}
+
+The audited sources split as follows.
+
+\begin{center}
+\begin{tabular}{llll}
+\hline
+Source & Provides & Missing & Verdict\\
+\hline
+Burnol & carrier and zero-evaluator criterion & Calkin symbol and normal form & support only\\
+Steps 104--105 & raw Sonin Calkin obstruction & bridge to \(H_\eta\) and repair symbol & structural input\\
+Steps 114--115 & co-Poisson exactness criterion & shifted zeta factorization & open route\\
+Step 154 & commutator formula \(C_\ell\eta\) & annihilation or compactness theorem & open route\\
+Steps 160--161 & conditional bridge theorem and source audit & bridge existence & conditional\\
+Hardy/hard-support shadows & candidate symbol intuition & typed carrier bridge & public shadow\\
+\hline
+\end{tabular}
+\end{center}
+
+No source passes all five gates.  The status is therefore
+\[
+  \boxed{\texttt{split\_external\_theorem}.}
+\]
+
+\section{Retained framework results}
+
+\begin{nogo}[Public-shadow discipline]
+A Hardy/Hankel or hard-support symbol cannot decide \(q_\eta(C_\ell P_\eta)\)
+without an accepted bridge into \(\mathcal A_\eta/\mathcal K_\eta\).
+\end{nogo}
+
+\begin{nogo}[Finite-window Calkin blindness]
+Finite singular-value data can diagnose likely structure but cannot certify the
+completed Calkin class of \(C_\ell P_\eta\).
+\end{nogo}
+
+\begin{theorem}[Conditional bridge normal form]
+If a source supplies gates G1--G5 above, then the Step 160 equivalence applies:
+\[
+  C_\ell P_\eta\in\mathcal K(H)
+  \quad\Longleftrightarrow\quad
+  W_\ell P_\eta\in\mathcal K(H).
+\]
+\end{theorem}
+
+\section{Verdict and next leaf}
+
+Step 162 makes the external theorem proof-ready but does not prove it.  The
+missing theorem is now split into:
+\[
+  \boxed{
+  \mathcal A_\eta/\mathcal K_\eta
+  \;+\;
+  \sigma_B
+  \;+\;
+  C_\ell=U_\ell W_\ell+K_\ell
+  \;+\;
+  U_\ell\text{ lower-faithful}
+  \;+\;
+  K_\ell\in\mathcal K(H).
+  }
+\]
+The next step should choose one branch:
+\begin{enumerate}[label=(\alph*)]
+  \item prove the split theorem from CCM/Sonin operator theory;
+  \item build a pulled-evaluator Weyl sequence in \(H_\eta\);
+  \item prove shifted co-Poisson factorization; or
+  \item record a scoped residual theorem carrying \(\Xi^{\rm BC}\).
+\end{enumerate}
+
+\end{document}

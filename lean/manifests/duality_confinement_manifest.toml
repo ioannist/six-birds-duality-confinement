@@ -1,0 +1,29 @@
+# Lean validation manifest for the duality-confinement paper axis.
+#
+# Each entry corresponds to a paper_label from
+# formalization/inventory/duality_confinement_paper_inventory.toml whose
+# intended_status is "mechanize_now". The manifest is populated
+# incrementally as codex produces Lean realizations.
+#
+# Status meanings (verbatim from F2/F3):
+# - definition:   paper definition has a Lean definition-like declaration
+# - theorem:      paper claim has a Lean theorem/lemma whose dependency audit passes
+# - axiomatic:    declaration is or depends on project-local axioms (NOT allowed in this repo)
+# - partial:      declaration mechanizes only a supporting fragment
+# - unformalized: no Lean correspondent is present yet
+#
+# Schema (per entry):
+#   paper_label    = "<kind>:duality_confinement:<short-name>"  # from per-axis paper_inventory
+#   paper_section  = "<section title>"
+#   description    = "<one-line summary>"
+#   status         = "<one of the values above>"
+#   lean_subproject = "."                                       # single lakefile project
+#   lean_module    = "SixBirdsDualityConfinement.DualityConfinement.<Section>"
+#   lean_decl      = "SixBirdsDualityConfinement.DualityConfinement.<Section>.<name>"
+#   notes          = ""
+#
+# Use `[[definition]]` for definition_kind entries, `[[claim]]` for
+# theorem/lemma/proposition/corollary entries. This mirrors F2/F3's
+# manifest TOML idiom.
+
+# TODO: populate after Phase C from the per-axis paper inventory.

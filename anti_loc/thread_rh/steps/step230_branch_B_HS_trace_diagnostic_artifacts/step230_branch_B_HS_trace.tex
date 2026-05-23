@@ -1,0 +1,58 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\title{Step 230: Hilbert--Schmidt Trace Diagnostic for \(C_\ell P_\eta\)}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+\begin{document}
+\maketitle
+
+\section{Target}
+
+The tested operator is
+\[
+  C_\ell P_\eta = (I-P_\infty)M_{m_\ell}P_\infty P_\eta
+\]
+where \(P_\eta\) projects onto
+\[
+  H_\eta=\overline{\operatorname{span}}\{\kappa_{\rho_i,k}^{1/2}\}.
+\]
+With simple zeta zeros this becomes the countable span of the zero-order vectors \(\kappa_{\rho_i,0}^{1/2}\).
+
+\section{Hilbert--Schmidt Diagnostic}
+
+For an orthonormal basis \(\{v_n\}\) of \(H_\eta\),
+\[
+  \|C_\ell P_\eta\|_{\rm HS}^2
+  =
+  \sum_n \|C_\ell v_n\|^2.
+\]
+If this sum is finite, \(C_\ell P_\eta\) is Hilbert--Schmidt and hence compact. If it diverges, the operator is not Hilbert--Schmidt, although compactness is not thereby decided.
+
+\section{Computation}
+
+The computation reuses the Step 216 Gram--Schmidt data generated from the Step 214/215 finite PSWF/sinc model. CAND1 is the Burnol-boundary model; CAND2 is the zeta-form comparison model.
+
+\begin{center}
+\begin{tabular}{lrrrr}
+\toprule
+model & tested basis & finite terms & usable terms & partial sum\\
+\midrule
+CAND1 & 20 & 15 & 2 & 8.8864712371\\
+CAND2 & 10 & 10 & 10 & 2.9957793326\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The CAND1 tail contains apparent nondecaying positive terms, but they occur after the Gram--Schmidt residual norms have collapsed to low absolute signal. Hence they cannot certify divergence. CAND2 remains stable and nondecaying, but it is not the verified \(a=1/2\) transport formula.
+
+\section{Verdict}
+
+\[
+  \boxed{\texttt{V\_HS\_partial}.}
+\]
+
+The HS route remains open. The next required input is a stable infinite orthonormal basis model for \(H_\eta\) under the verified Burnol transport, or a theorem replacing finite-grid Gram--Schmidt.
+
+\end{document}

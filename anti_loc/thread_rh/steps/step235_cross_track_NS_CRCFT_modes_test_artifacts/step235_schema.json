@@ -1,0 +1,92 @@
+{
+  "step": 235,
+  "orientation": "cross-track-framework-validation",
+  "target": "CRCFT modes test on NS components",
+  "NS_components": [
+    "EXT1 sector-matched radius-window product theorem",
+    "EXT2 BKM/BG time gate",
+    "EXT3 sector match for BG mismatch ledger",
+    "EXT4 tail/lift budget",
+    "Omega_src",
+    "Omega_gap/Omega_rem",
+    "Omega_bb",
+    "Omega_mm",
+    "Omega_amp"
+  ],
+  "component_mode_table": [
+    {
+      "component": "EXT1 sector-matched radius-window product theorem",
+      "primary_mode": "TE",
+      "secondary_mode": "CTMT",
+      "classification": "Target-equivalent within the NS cascade once auxiliary gates are included; proof is a terminal PDE estimate."
+    },
+    {
+      "component": "EXT2 BKM/BG time gate",
+      "primary_mode": "TE",
+      "secondary_mode": "CTMT for integrability verification",
+      "classification": "Continuation time class is target-strength for smooth continuation in the chosen readout."
+    },
+    {
+      "component": "EXT3 sector match for BG mismatch ledger",
+      "primary_mode": "BF",
+      "secondary_mode": "CTMT if paid by explicit sector containment",
+      "classification": "Bridge from sparse/Gevrey evidence fails unless it controls the same BG mismatch sector."
+    },
+    {
+      "component": "EXT4 tail/lift budget",
+      "primary_mode": "CTMT",
+      "secondary_mode": "BF if lift bridge absent",
+      "classification": "Specific quantitative tail and tangent-lift estimates are terminal PDE obligations."
+    },
+    {
+      "component": "Omega_src",
+      "primary_mode": "BF",
+      "secondary_mode": "CTMT after source-admission decomposition",
+      "classification": "Raw nonlinear source shadows do not promote without lawful source-admission representation."
+    },
+    {
+      "component": "Omega_gap/Omega_rem",
+      "primary_mode": "CTMT",
+      "secondary_mode": "none",
+      "classification": "Localization and remainder terms are explicit PDE-budget terminal components."
+    },
+    {
+      "component": "Omega_bb",
+      "primary_mode": "BF",
+      "secondary_mode": "CTMT threshold computation",
+      "classification": "Packing-only transport to amplitude control fails unless the sharp threshold is paid."
+    },
+    {
+      "component": "Omega_mm",
+      "primary_mode": "BF",
+      "secondary_mode": "CTMT if sector containment estimate is supplied",
+      "classification": "The sector mismatch residual is a bridge failure between candidate probe sector and BG mismatch sector."
+    },
+    {
+      "component": "Omega_amp",
+      "primary_mode": "TE",
+      "secondary_mode": "CTMT",
+      "classification": "Final amplitude obstruction; closure by EXT1 is target-strength and estimate-terminal."
+    }
+  ],
+  "literature_audit_summary": [
+    "Beale-Kato-Majda 1984: vorticity blowup/continuation criterion; target readout, not physical-native proof.",
+    "Caffarelli-Kohn-Nirenberg 1982: partial regularity and singular-set size control; not amplitude closure.",
+    "Constantin-Fefferman 1993: geometric depletion criterion; does not supply fixed-ledger radius-window theorem.",
+    "Koch-Tataru 2001: critical-space well-posedness; not the EXT1 theorem.",
+    "Tao 2016: averaged NS blowup guardrail against energy-only arguments.",
+    "Buckmaster-Vicol 2019: weak-solution nonuniqueness guardrail.",
+    "Bradshaw-Grujic and Grujic-Xu: frequency/sparseness templates; leave sector/time/amplitude gates."
+  ],
+  "framework_finding_upgrade_status": "CRCFT modes verified-on-4-track-instances: RH + BSD + Hodge + NS",
+  "retained_nogos": [
+    "Criterion-native circularity retained.",
+    "Energy / enstrophy-only retained.",
+    "Packing-only amplitude retained.",
+    "Marker-only retained.",
+    "Metric-shadow / Gevrey dominance retained.",
+    "Moving-window support-only retained.",
+    "Raw-nonlinearity retained."
+  ],
+  "final_verdict": "V_ns_CRCFT_modes_verified"
+}

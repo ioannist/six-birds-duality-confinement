@@ -1,0 +1,41 @@
+{
+  "step": 267,
+  "orientation": "attempt_external_derivation",
+  "target": "Burnol kappa_i(tau) transport-sampling derivation",
+  "burnol_verbatim_formulas": {
+    "Burnol_2002_Theorem_4": "pi_lambda(f)=f-(1-D_lambda)^(-1)(P_lambda f-F_lambda F_+ f)-F_+(1-D_lambda)^(-1)(P_lambda F_+ f-F_lambda f)",
+    "Burnol_2002_equation_1": "K(z1,z2)=(E(z1)E(z2)-E(1-z1)E(1-z2))/(z1+z2-1)",
+    "Burnol_2002_Theorem_8": "E_lambda(w)=pi^(-w/2) Gamma(w/2)(lambda^(1/2-w)+(sqrt(lambda)/2) integral_lambda^infty (psi_+^lambda(t)-psi_-^lambda(t))t^(-w)dt)",
+    "Burnol_2004_Section_6": "[f,Z^lambda_{w,k}]=M(f)^(k)(w); K_lambda is the closed span of zero evaluators for lambda>=1"
+  },
+  "derivation_attempt": [
+    "Start with explicit pi_lambda from Burnol 2002 Theorem 4.",
+    "Apply zeta multiplication and evaluate: Eval_w(M_zeta pi_lambda f)=zeta(w) M(pi_lambda f)(w).",
+    "Use Burnol 2004 evaluators: M(pi_lambda f)(w)=[pi_lambda f,Z^lambda_{w,0}].",
+    "Move the projection onto the representing vector: [pi_lambda f,Z_w]=[f,pi_lambda^* Z_w].",
+    "Finite sampling requires the extra identity pi_lambda^* M_zeta^* Z_w=sum_i c_i Z^lambda_{tau_i,0} with finitely many i."
+  ],
+  "gap_assessment": {
+    "gap": "finite transported-evaluator expansion",
+    "found_in_burnol_2002": false,
+    "found_in_burnol_2004": false,
+    "reason": "Burnol provides continuous evaluators and closed infinite spans, not a finite interpolation/quadrature theorem for pi_lambda^* M_zeta^* Z_w.",
+    "post_step267_class": "iii framework-internal claim",
+    "post_step267_score": 1
+  },
+  "branch_B_terminus_status": {
+    "terminus": "Burnol kappa_i(tau) transport-sampling theorem",
+    "pre_step266_status": "score 2 literature-adjacent",
+    "post_step267_status": "blocked; not derivable from fetched Burnol formulas",
+    "post_step267_score": 1,
+    "next_required_external": "finite transported-evaluator expansion / interpolation theorem"
+  },
+  "retained_nogos": [
+    "do not conflate RKHS reproducing formula with finite sampling",
+    "do not infer finite-rank behavior from Burnol's closed infinite zero-evaluator span",
+    "CAND1/CAND2 disagreement remains active",
+    "G^{-1} precision wall remains active",
+    "does not claim RH solved"
+  ],
+  "final_verdict": "V_burnol_transport_sampling_blocked"
+}

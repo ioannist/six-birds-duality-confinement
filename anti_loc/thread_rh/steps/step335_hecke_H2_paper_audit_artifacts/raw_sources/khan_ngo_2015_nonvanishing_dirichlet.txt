@@ -1,0 +1,943 @@
+arXiv:1512.04030v2 [math.NT] 17 Dec 2015
+
+NONVANISHING OF DIRICHLET L-FUNCTIONS
+RIZWANUR KHAN AND HIEU T. NGO
+Abstract. We show that for at least 3/8 of the primitive Dirichlet characters
+χ of large prime modulus, the central value L(1/2, χ) does not vanish.
+
+1. Introduction
+The zeros of L-functions on the critical line are as important in number theory
+as they are mysterious. At the real point on the critical line (the central point), an
+L-function is expected to vanish only for either a good reason or a trivial reason.
+A good reason is when the central value has some arithmetic signiﬁcance which
+explains why it may vanish. For example, the central value of the L-function
+attached to an elliptic curve over a number ﬁeld is expected to vanish if and only
+if the elliptic curve has positive rank (according to the Birch and SwinnertonDyer conjecture). A trivial reason is when the functional equation implies that the
+central value is zero. For instance, the L-function of any odd Hecke-Maass form
+has functional equation L( 21 , f ) = −L( 12 , f ). In all other cases, the most extensive
+success in proving the nonvanishing of L-functions has been achieved through the
+use of molliﬁers. For notable examples of the molliﬁer method, see [11, 12, 10, 16]
+as well as the works discussed below.
+In this paper, we study the classical nonvanishing problem of primitive Dirichlet L-functions. It is conjectured that L( 21 , χ) 6= 0 for every primitive Dirichlet
+character χ. Consider for each odd prime p the family of L-functions
+{L(s, χ) : χ is primitive modulo p};
+this family has size p − 2. Viewing L( 12 , χ) as a statistical object, we would like to
+understand its distribution as p → ∞. One way to get a handle on the distribution
+is through understanding the moments of L( 21 , χ), but currently only moments of
+small order are known. Nevertheless this is enough to make some progress in the
+way of proving that a positive proportion of the family is nonvanishing.
+Asymptotic expressions for the ﬁrst and second moments of L( 21 , χ) are well
+known. By a result of Heath-Brown [8], we have
+X⋆
+1
+L( 21 , χ) ∼ 1
+p−2
+χ mod p
+
+X⋆
+1
+|L( 21 , χ)|2 ∼ log p,
+p−2
+χ mod p
+
+P⋆
+
+where
+restricts the summation to the primitive characters. The discrepancy
+between the ﬁrst and second moments indicates ﬂuctuations in the sizes of the
+2010 Mathematics Subject Classification. 11M20.
+Key words and phrases. L-functions, Dirichlet characters, nonvanishing, molliﬁer.
+1
+
+2
+
+RIZWANUR KHAN AND HIEU T. NGO
+
+central values. Using these moments and the Cauchy-Schwarz inequality, one can
+only infer that at least 0% of the family is nonvanishing, since
+1 P⋆
+1
+2
+X⋆
+| p−2
+1
+1
+χ mod p L( 2 , χ)|
+1 ≥ 1 P⋆
+≫
+.
+1
+2
+p−2
+log
+p
+,
+χ)|
+|L(
+χ mod p
+p−2
+2
+χ mod p
+L( 12 ,χ)6=0
+
+The molliﬁer method is used to remedy this situation. The origin of the method
+traces back to the works of Bohr and Landau [3] and of Selberg [14] on zeros of the
+Riemann zeta function. The starting idea is to introduce a quantity M (χ), called
+the “molliﬁer”, which, on average, approximates the inverses of the supposedly
+nonvanishing values L( 21 , χ). The goal is to choose a molliﬁer such that the molliﬁed
+ﬁrst and second moments are comparable; that is,
+X⋆
+1
+L( 12 , χ)M (χ) ≍ 1
+p−2
+χ mod p
+
+X⋆
+1
+|L( 21 , χ)M (χ)|2 ≍ 1.
+p−2
+χ mod p
+
+From this a positive nonvanishing proportion can be inferred:
+(1.1)
+1
+p−2
+
+X⋆
+
+χ mod p
+L( 12 ,χ)6=0
+
+1
+1≥
+p−2
+
+X⋆
+
+1≥
+
+χ mod p
+
+1
+| p−2
+1
+p−2
+
+L( 21 ,χ)M(χ)6=0
+
+P⋆
+
+P⋆
+
+1
+2
+χ mod p L( 2 , χ)M (χ)|
+≫ 1.
+1
+2
+χ mod p |L( 2 , χ)M (χ)|
+
+Balasubramanian and Murty [1] were the ﬁrst to do this; however their molliﬁer was
+ineﬃcient and they obtained only a very small positive proportion of nonvanishing.
+Next came the work of Iwaniec and Sarnak [9], who introduced a systematic
+technique that has since served as a model for other families of L-functions. Iwaniec
+and Sarnak took the molliﬁer
+X ym χ(m)
+(1.2)
+,
+M (χ) =
+1
+m2
+m≤M
+where M = pθ is the molliﬁer length and (ym ) is a sequence of real numbers
+satisfying ym ≪ pǫ . They established the asymptotics of the molliﬁed ﬁrst and
+second moments for θ < 12 and found that the choice of coeﬃcients which maximizes
+the ratio in (1.1) is essentially
+(1.3)
+
+ym = µ(m)
+
+yielding a nonvanishing proportion of
+X⋆
+1
+p−2
+
+log( M
+m)
+,
+log M
+
+χ mod p
+L( 12 ,χ)6=0
+
+1≥
+
+θ
+.
+1+θ
+
+This can be taken as close to 31 as possible on letting θ approach 12 . Computing
+the molliﬁed moments for larger values of θ would result in a higher proportion of
+nonvanishing, but this appears to be very diﬃcult to do. The problem seems to have
+been attempted by Bettin, Chandee, and Radziwill. In [2], these authors solved
+
+NONVANISHING OF DIRICHLET L-FUNCTIONS
+
+3
+
+the parallel problem for the Riemann zeta function, by obtaining the asymptotics
+as T → ∞ of
+Z 2T
+X ym
+|2 dt,
+|ζ( 12 + it)|2 |
+1
+2 +it
+m
+T
+m≤M
+where M = T θ , for values of θ slightly larger than 21 . However with regard to
+the problem for Dirichlet L-functions, the authors remarked, “Our proof would not
+extend to give an asymptotic formula in this case, and additional input is needed.”
+Shortly after the work of Iwaniec and Sarnak, in their study of the nonvanishing
+of high derivatives of Dirichlet L-functions, Michel and VanderKam [13] used the
+“twisted” molliﬁer
+(1.4)
+
+M (χ) =
+
+X ym χ(m)
+
+m≤M
+
+m
+
+1
+2
+
++
+
+τ χ X ym χ(m)
+1
+
+p 2 m≤M
+
+1
+
+m2
+
+,
+
+where M = pθ , ym is as in (1.3), and τχ is the Gauss sum as deﬁned in their
+paper. Heuristically, this is a better mimic of L( 12 , χ)−1 because the approximate
+functional equation of L( 12 , χ) essentially consists of a sum of two Dirichlet polynomials, one multiplied by a Gauss sum. A similar two-piece molliﬁer was ﬁrst used
+by Soundararajan [15] in the context of the Riemann zeta function. Michel and
+VanderKam [13] proved for θ < 14 a nonvanishing proportion of
+1
+p−2
+
+X⋆
+
+χ mod p
+L( 12 ,χ)6=0
+
+1≥
+
+2θ
+,
+1 + 2θ
+
+recovering the 13 proportion of Iwaniec and Sarnak [9]. For this method too, computing the molliﬁed moments for larger θ would result in a higher proportion of
+nonvanishing.
+The nonvanishing problem was stuck at the proportion 31 for ten years until Bui
+[4] dexterously proved a nonvanishing proportion of 0.3411. His breakthrough was
+not to increase the length of any existing molliﬁer but to use an ingenious new
+two-piece molliﬁer. Bui [4, page 1857] commented that “There are two different
+approaches to improve the results in this and other problems involving mollifiers.
+One can either extend the length of the Dirichlet polynomial or use some “better”
+mollifiers. The former is certainly much more difficult.” We take the former, more
+diﬃcult approach.
+Our ﬁrst idea to attack the nonvanishing problem is to increase the length of the
+Michel-VanderKam molliﬁer. This may be a somewhat unexpected avenue because
+previous attempts at lengthening molliﬁers has, as far as we are aware, been directed
+at the Iwaniec-Sarnak molliﬁer. Our second idea is to establish an estimate for a
+trilinear sum of Kloosterman sums with general coeﬃcients (Lemma 3.2). To prove
+this, we appeal to some work of Fouvry, Ganguly, Kowalski and Michel [6]. The
+authors thereof proved best possible estimates for sums of products of Kloosterman
+sums to prime moduli by using powerful algebro-geometric methods (this work built
+on [7] and was later generalized in [5]). We stress that although the deepest part of
+our proof comes from [6], it is not clear how this work is related to the nonvanishing
+problem. We ﬁgure out this relationship.
+
+4
+
+RIZWANUR KHAN AND HIEU T. NGO
+
+Before stating our result, it should be said that the works [9, 13, 4] actually
+treat general moduli while we are restricting to prime moduli (which is arguably
+the most interesting case).
+Theorem 1.1. Let ǫ > 0 be arbitrary. For all primes p large enough in terms of ǫ,
+there are at least 38 − ǫ of the primitive Dirichlet characters χ (mod p) for which
+L( 21 , χ) 6= 0.
+The signiﬁcance of our work is that we show for the ﬁrst time how to increase the
+length of a classical molliﬁer in this context. An interesting open problem that
+remains is to increase the length of the Iwaniec-Sarnak molliﬁer. Our nonvanishing
+proportion 83 improves upon that of Bui for prime moduli. For general moduli,
+Bui’s nonvanishing proportion 0.3411 is still the best known.
+Throughout the paper, we use the standard convention that ǫ denotes an arbitrarily small positive constant which may diﬀer from one occurrence to the next,
+and that the implied constants in the various estimates depend on ǫ.
+2. The work of Michel and VanderKam
+We brieﬂy summarize the molliﬁer method of Michel and VanderKam [13], setting the ground for our further discussion.
+Let the molliﬁer M (χ) be given by (1.4) where the molliﬁer length is M = pθ
+and the real mollifying coeﬃcients ym are given by (1.3). Michel and VanderKam
+asymptotically evaluated the molliﬁed ﬁrst moment
+X+
+2
+L( 12 , χ)M (χ)
+p−2
+χ mod p
+
+P+
+
+restricts the summation to the even primitive characters. The
+for θ < 21 , where
+evaluation for the odd primitive characters is entirely similar. They evaluated the
+molliﬁed second moment
+X+
+2
+|L( 21 , χ)M (χ)|2
+(2.1)
+p−2
+χ mod p
+
+X+
+X ym χ(m) 2
+4
+|L( 21 , χ)|2
+1
+p−2
+m2
+χ mod p
+m≤M
+X+
+τχ  X ym χ(m) 2
+4
++
+|L( 21 , χ)|2 1
+1
+p−2
+p 2 m≤M m 2
+χ mod p
+=
+
+for θ < 14 ; see [13, Equation (10)] for the above identity. An asymptotic for the ﬁrst
+sum on the right hand side of (2.1) is derived for θ < 21 , as was done by Iwaniec
+and Sarnak [9], but the second sum is more diﬃcult and could only be handled
+for θ < 14 . In the end, the main terms of the molliﬁed moments of Michel and
+2θ
+VanderKam yield a nonvanishing proportion of 1+2θ
+, by taking P0 (t) = t in [13,
+section 7].
+Let us concentrate on the second sum on the right hand side of (2.1). Recall the
+standard approximate functional equation (see for example [13, Equation (3)]):
+X χ(n1 )χ(n2 )  n1 n2 
+(2.2)
+,
+V
+|L( 21 , χ)|2 = 2
+1
+p
+(n1 n2 ) 2
+n1 ,n2 ≥1
+
+NONVANISHING OF DIRICHLET L-FUNCTIONS
+
+5
+
+where
+V (x) =
+
+1
+2πi
+
+Γ( 2s + 14 )2
+ds
+(πx)−s .
+1 2
+s
+)
+Γ(
+(2)
+4
+
+Z
+
+By moving the line of integration, one shows that V (x) ≪c x−c for any c > 0,
+whence the sum in (2.2) is essentially supported on n1 n2 ≤ p1+ǫ . Therefore
+X+
+4
+τχ  X ym χ(m) 2
+|L( 21 , χ)|2 1
+1
+p−2
+p 2 m≤M m 2
+χ mod p
+n n  4
+X+ τχ
+X
+y m1 y m2
+1 2
+=
+V
+(2.3)
+1
+1 χ(n1 m1 m2 )χ(n2 ).
+p
+p−2
+(n1 n2 m1 m2 ) 2
+p2
+χ mod p
+n1 ,n2 ≥1
+m1 ,m2 ≤M
+
+By [13, Equation (17)] or [9, Equation (3.4)], for (n, p) = 1 we have
+ 2π n 
+X+
++ O(1),
+τχ χ(n) = p cos
+p
+χ mod p
+
+so that (2.3) equals
+(2.4)
+4
+1 Re
+p2
+
+X
+
+y m1 y m2
+
+n1 ,n2 ≥1
+m1 ,m2 ≤M
+(n1 n2 m1 m2 ,p)=1
+
+(n1 n2 m1 m2 )
+
+1
+2
+
+V
+
+n n  n n m m 
+ M
+
+1 2
+2 1 1 2
+e
++ O 1−ǫ + p−ǫ
+p
+p
+p
+
+for any ǫ > 0, where e(x) = e2πix and n denotes the multiplicative inverse of n mod
+p for (n, p) = 1. The terms with m1 m2 = 1 contain a main term of (2.3); see [13,
+section 6]. Consider the rest of the terms in dyadic intervals. Let
+(2.5)
+B(M1 , M2 , N1 , N2 )
+1
+=
+1
+(pM1 M2 N1 N2 ) 2
+
+X
+
+n1 ,n2 ≥1
+M1 ≤m1 ≤2M1
+M2 ≤m2 ≤2M2
+(n1 n2 m1 m2 ,p)=1
+
+y m1 y m2 e
+
+n n m m  n n   n   n 
+2 1 1 2
+1
+2
+1 2
+V
+f1
+f2
+p
+p
+N1
+N2
+
+for 2 ≤ M1 M2 ≤ M 2 , 1 ≤ N1 N2 ≤ p1+ǫ and any smooth functions f1 , f2 compactly
+supported on the positive reals. Michel and VanderKam [13, Equations (24) and
+(27)] proved the bounds
+ M 2 N  21
+1
+(2.6)
+B(M1 , M2 , N1 , N2 ) ≪ pǫ
+pN2
+and
+ M 2 N  12
+M
+2
+B(M1 , M2 , N1 , N2 ) ≪ pǫ
+(2.7)
++ 1−ǫ .
+N1
+p
+1
+
+These bounds together yield B(M1 , M2 , N1 , N2 ) ≪ p−ǫ , provided that M ≤ p 4 −ǫ .
+Thus the contribution to (2.4) of the terms with m1 m2 ≥ 2 is O(p−ǫ ) for θ < 14 .
+In the next section we will show how to improve the bound (2.7), in the ranges
+where (2.6) is not useful. This together with (2.6) will imply that
+B(M1 , M2 , N1 , N2 ) ≪ p−ǫ
+
+6
+
+RIZWANUR KHAN AND HIEU T. NGO
+
+for larger values of θ, thereby extending the asymptotics of Michel and VanderKam.
+3. Proof of Theorem 1.1
+To get the bounds (2.6) and (2.7), Michel and VanderKam obtained cancellation
+in only the (n1 , n2 )-sums of B(M1 , M2 , N1 , N2 ). On the other hand, we will use the
+(m1 , m2 )-sums to our advantage. To set up for this, we ﬁrst prove some estimates
+for averages of products of Kloosterman sums. Let
+ ax + bx 
+X
+S(a, b; c) =
+e
+c
+x mod c
+xx≡1 mod c
+
+denote the Kloosterman sum. The following lemma is a consequence of a result of
+Fouvry, Ganguly, Kowalski and Michel [6].
+Lemma 3.1. For B ≤ p we have
+(3.1)
+X
+X
+5
+S(h, b1 ; p)S(h, b2 ; p)S(h, b3 ; p)S(h, b4 ; p) ≪ B 4 p 2 + B 2 p3 .
+b1 ,b2 ,b3 ,b4 ≤B h mod p
+(b1 b2 b3 b4 ,p)=1
+
+Proof. Write the left hand side of (3.1) as
+X
+X
+=
+b1 ,b2 ,b3 ,b4 ≤B
+(b1 b2 b3 b4 ,p)=1
+
+b1 ,b2 ,b3 ,b4 ≤B
+(b1 ,b2 ,b3 ,b4 )∈D
+(b1 b2 b3 b4 ,p)=1
+
++
+
+X
+
+b1 ,b2 ,b3 ,b4 ≤B
+(b1 ,b2 ,b3 ,b4 )∈D
+/
+(b1 b2 b3 b4 ,p)=1
+
+where D is the set of tuples (b1 , b2 , b3 , b4 ) such that no component bi is distinct
+mod p from the others. Note that |D| ≪ B 2 .
+On the one hand, it follows from the Weil bound for Kloosterman sums that
+X
+X
+S(h, b1 ; p)S(h, b2 ; p)S(h, b3 ; p)S(h, b4 ; p) ≪ B 2 p3 .
+b1 ,b2 ,b3 ,b4 ≤B h mod p
+(b1 ,b2 ,b3 ,b4 )∈D
+(b1 b2 b3 b4 ,p)=1
+
+On the other hand, if (b1 , b2 , b3 , b4 ) ∈
+/ D, then in the language of [6, Deﬁnition 3.1],
+(b1 , b2 , b3 , b4 ) is not in “mirror conﬁguration”. Thus [6, Proposition 3.2] asserts that
+X
+5
+S(h, b1 ; p)S(h, b2 ; p)S(h, b3 ; p)S(h, b4 ; p) ≪ p 2 ,
+h mod p
+1
+
+saving a factor of p 2 over Weil’s bound. So
+X
+X
+5
+S(h, b1 ; p)S(h, b2 ; p)S(h, b3 ; p)S(h, b4 ; p) ≪ B 4 p 2 .
+b1 ,b2 ,b3 ,b4 ≤B h mod p
+(b1 ,b2 ,b3 ,b4 )∈D
+/
+(b1 b2 b3 b4 ,p)=1
+
+The lemma follows.
+
+
+
+Let now
+S=
+
+X
+
+xn ya zb S(n, ab; p),
+
+1≤|n|≤N
+1≤a≤A
+1≤b≤B
+
+where the coeﬃcients satisfy xn , ya , zb ≪ pǫ , ya = 0 for p|a, and zb = 0 for p|b.
+
+NONVANISHING OF DIRICHLET L-FUNCTIONS
+
+7
+
+Lemma 3.2. For N A ≤ p2 and B ≤ p, we have
+3
+
+3
+
+5
+
+1
+
+3
+
+S ≪ pǫ N 4 A 4 (Bp 8 + B 2 p 4 ).
+Proof. On applying the Cauchy-Schwarz inequality, we infer
+X X
+2
+2
+zb S(n a, b; p) .
+|S| ≪ pǫ N A
+|n|≤N
+a≤A
+
+b≤B
+
+Hence
+|S|2 ≪ pǫ N A
+
+(3.2)
+
+X
+
+ν(h)
+
+ν(h) =
+
+X
+
+h mod p
+
+X
+
+zb S(h, b; p)
+
+2
+
+b≤B
+
+where
+1.
+
+|n|≤N
+a≤A
+n a≡h mod p
+
+On applying Cauchy-Schwarz to (3.2), we ﬁnd that
+ X
+ X X
+4
+4
+|S| ≪ pǫ N 2 A2
+ν(h)2
+zb S(h, b; p) .
+(3.3)
+h mod p
+
+h mod p b≤B
+
+Observe that
+X
+
+ν(h)2 =
+
+h mod p
+
+X
+
+1=
+
+|n1 |,|n2 |≤N
+a1 ,a2 ≤A
+n1 a1 ≡n2 a2 mod p
+
+1.
+
+|n1 |,|n2 |≤N
+a1 ,a2 ≤A
+n1 a2 ≡n2 a1 mod p
+
+Since N A ≤ p2 by assumption, it follows that
+X
+X
+ν(h)2 =
+
+1 ≪ pǫ N A.
+
+n1 a2 =n2 a1
+|n1 |,|n2 |≤N
+a1 ,a2 ≤A
+
+h mod p
+
+Therefore (3.3) becomes
+X
+4
+|S| ≪ pǫ N 3 A3
+
+X
+
+X
+
+S(h, b1 ; p)S(h, b2 ; p)S(h, b3 ; p)S(h, b4 ; p) .
+
+b1 ,b2 ,b3 ,b4 ≤B h mod p
+(b1 b2 b3 b4 ,p)=1
+
+Finally, we apply Lemma 3.1 to conclude that
+|S|4 ≪ pǫ N 3 A3 (B 4 p 2 + B 2 p3 ).
+5
+
+The lemma is proved.
+
+
+
+We are in a position to prove a new bound for our nonvanishing problem.
+1
+
+ǫ
+1
+2 −ǫ , we have
+Lemma 3.3. For N
+N2 > p M and M < p
+
+(3.4)
+
+B(M1 , M2 , N1 , N2 ) ≪ pǫ
+
+3
+ N M 3  14  5
+p4 
+M
+2
+8 +
++ 1 −ǫ .
+p
+1
+N 1 p3
+M2
+p2
+
+8
+
+RIZWANUR KHAN AND HIEU T. NGO
+
+Proof. In (2.5), separate n1 into residue classes modulo p and apply the Poisson
+summation formula to get
+B(M1 , M2 , N1 , N2 )
+N1
+1
+(3.5) =
+1
+(pM1 M2 N1 N2 ) 2 p
+
+X
+
+ym1 ym2 S(kn2 , m1 m2 ; p)f2
+
+−∞<k<∞
+n2 ≥1
+M1 ≤m1 ≤2M1
+M2 ≤m2 ≤2M2
+(n2 m1 m2 ,p)=1
+
+n 
+2
+
+N2
+
+F (k)
+
+where
+Z ∞
+
+ xN n   −xkN 
+1 2
+1
+e
+dx.
+p
+p
+−∞
+−c
+1
+for any c > 0.
+Repeatedly integrating by parts, we ﬁnd that F (k) ≪c kN
+p
+F (k) =
+
+f1 (x)V
+
+1+ǫ
+
+Thus the k-sum may be restricted to |k| ≤ pN1 .
+The contribution to (3.5) of the terms with k = 0 is
+n 
+X
+N1
+1
+2
+m
+m
+;
+p)f
+F (0)
+S(0,
+y
+y
+1
+2
+2
+m
+m
+1
+2
+1
+N2
+(pM1 M2 N1 N2 ) 2 p
+n2 ≥1
+M1 ≤m1 ≤2M1
+M2 ≤m2 ≤2M2
+(n2 m1 m2 ,p)=1
+
+1
+
+≪
+
+M
+(N1 N2 M1 M2 ) 2
+≪ 1 −ǫ .
+p1−ǫ
+p2
+
+This is the last term in (3.4). The contribution of the terms with |k| > 0 is bounded
+using Lemma 3.2, by putting
+
+1+ǫ
+n = kn2 , xn = f2 nN2 F (k) if (n2 , p) = 1, xn = 0 if p|n2 , N = N2Np1
+a = m1 , ya = ym1 , A = 2M1
+
+b = m2 , zb = ym2 , B = 2M2 .
+Note that the conditions of Lemma 3.2, namely B ≤ p and N A ≤ p2 , are satisﬁed by
+1
+ǫ
+1
+the assumptions that M < p 2 −ǫ and that N
+N2 > p M . The bound (3.4) follows. 
+Finally, we sum up the work done to arrive at the following power-saving result.
+3
+
+Lemma 3.4. We have B(M1 , M2 , N1 , N2 ) ≪ p−ǫ for M < p 10 −ǫ .
+1
+
+ǫ
+1
+Proof. Assume ﬁrst that M < p 3 −ǫ . If N
+N2 ≤ p M , it follows from (2.6) that
+B(M1 , M2 , N1 , N2 ) ≪ p−ǫ , whence the lemma follows.
+N1
+> pǫ M . Now since the conditions of Lemma 3.3
+We therefore suppose that N
+2
+2
+
+M
+2
+are met, we have the bound (3.4). In this bound, we may suppose that N
+N1 < p1−ǫ ,
+−ǫ
+since otherwise by (2.6), we have B(M1 , M2 , N1 , N2 ) ≪ p . Thus (3.4) becomes
+5
+3
+1
+M4  5
+p4 
++ p− 6 +ǫ .
+B(M1 , M2 , N1 , N2 ) ≪ 1−ǫ p 8 +
+1
+p
+M2
+3
+
+The bound is O(p−ǫ ) precisely when M ≪ p 10 −ǫ . The lemma follows.
+
+
+
+2θ
+Proof of Theorem 1.1. By Lemma 3.4, the nonvanishing proportion 1+2θ
+of Michel
+3
+3
+and VanderKam is valid for any θ < 10 . On letting θ approach 10 , we infer that
+
+the nonvanishing proportion is at least 38 − ǫ for any ǫ > 0.
+
+NONVANISHING OF DIRICHLET L-FUNCTIONS
+
+9
+
+References
+1. R. Balasubramanian and V. K. Murty, Zeros of Dirichlet L-functions, Ann. Sci. École Norm.
+Sup. (4) 25 (1992), no. 5, 567–615.
+2. S. Bettin, V. Chandee, and M. Radziwill, The mean square of the product of the Riemann
+zeta-function with Dirichlet polynomials, J. Reine Angew. Math., to appear.
+3. H. Bohr and E. Landau, Sur les zéros de la fonction ζ(s) de Riemann., C. R. Acad. Sci.,
+Paris 158 (1914), 106–110.
+4. H. M. Bui, Non-vanishing of Dirichlet L-functions at the central point, Int. J. Number Theory
+8 (2012), no. 8, 1855–1881.
+5. É. Fouvry, E. Kowalski, and P. Michel, A study in sums of products, Philos. Trans. A 373
+(2015), no. 2040, 1–26.
+6. Étienne Fouvry, Satadal Ganguly, Emmanuel Kowalski, and Philippe Michel, Gaussian distribution for the divisor function and Hecke eigenvalues in arithmetic progressions, Comment.
+Math. Helv. 89 (2014), no. 4, 979–1014.
+7. Étienne Fouvry, Philippe Michel, Joël Rivat, and András Sárközy, On the pseudorandomness
+of the signs of Kloosterman sums, J. Aust. Math. Soc. 77 (2004), no. 3, 425–436.
+8. D. R. Heath-Brown, An asymptotic series for the mean value of Dirichlet L-functions, Comment. Math. Helv. 56 (1981), no. 1, 148–161.
+9. H. Iwaniec and P. Sarnak, Dirichlet L-functions at the central point, Number theory in
+progress, Vol. 2 (Zakopane-Kościelisko, 1997), de Gruyter, Berlin, 1999, pp. 941–952.
+, The non-vanishing of central values of automorphic L-functions and Landau-Siegel
+10.
+zeros, Israel J. Math. 120 (2000), no. part A, 155–177.
+11. E. Kowalski, P. Michel, and J. VanderKam, Mollification of the fourth moment of automorphic
+L-functions and arithmetic applications, Invent. Math. 142 (2000), no. 1, 95–151.
+12.
+, Non-vanishing of high derivatives of automorphic L-functions at the center of the
+critical strip, J. Reine Angew. Math. 526 (2000), 1–34.
+13. P. Michel and J. VanderKam, Non-vanishing of high derivatives of Dirichlet L-functions at
+the central point, J. Number Theory 81 (2000), no. 1, 130–148.
+14. A. Selberg, On the zeros of Riemann’s zeta-function, Skr. Norske Vid. Akad. Oslo I. 1942
+(1942), no. 10, 1–59.
+15. K. Soundararajan, Mean-values of the Riemann zeta-function, Mathematika 42 (1995), no. 1,
+158–174.
+, Nonvanishing of quadratic Dirichlet L-functions at s = 12 , Ann. of Math. (2) 152
+16.
+(2000), no. 2, 447–488.
+Science Program, Texas A&M University at Qatar, PO Box 23874, Doha, Qatar
+E-mail address: rizwanur.khan@qatar.tamu.edu, trunghieu.ay@gmail.com
+
+

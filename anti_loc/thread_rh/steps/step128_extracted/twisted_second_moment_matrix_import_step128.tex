@@ -1,0 +1,116 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,geometry,hyperref}
+\geometry{margin=1in}
+\title{Step 128: Auditing the $q$-Aspect Twisted Second Moment as a Matrix Lower-Frame Theorem}
+\author{Six Birds / Membrane RH Working Notes}
+\date{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+Step 127 identified the next import target: a source-weighted character Gram
+\[
+G_{q,w}(m,n)=\sum_{\chi\in\mathcal X_q} w_\chi\chi(n)\overline{\chi(m)}
+\]
+must dominate a coefficient metric $H_N$ uniformly over coefficient vectors. Step 128 audits the
+most natural existing platform:
+\[
+\sum_{\chi\bmod q}^{+} |L(1/2,\chi)|^2\left|\sum_{n\le q^\kappa} a_n\chi(n)n^{-1/2}\right|^2,
+\]
+using the $q$-aspect twisted second moment with an arbitrary Dirichlet polynomial.
+
+The goal is not to rederive the approximate functional equation, mollifier-length technology, or
+large-sieve machinery. Those are imported analytic-number-theory infrastructure. The framework-native
+question is whether the published asymptotic is strong enough in \emph{operator norm} to imply a lower frame.
+
+\section{Imported theorem shape}
+The Bui--Pratt--Robles--Zaharescu theorem has the form, for prime $q$, even primitive characters, shifts
+$\alpha,\beta$, and arbitrary coefficients $\alpha_a\ll a^\varepsilon$,
+\[
+I_{\alpha,\beta}(a)=\frac1{\varphi^+(q)}\sum_{\chi\bmod q}^{+}
+L(1/2+\alpha,\chi)L(1/2+\beta,\overline\chi)|A(\chi)|^2
+=M_{\alpha,\beta,q}(a)+E_{\alpha,\beta,q}(a),
+\]
+where
+\[
+A(\chi)=\sum_{a\le q^\kappa}\alpha_a\chi(a)a^{-1/2},
+\qquad \kappa<\frac{51}{101}.
+\]
+The project reads this as a candidate source-weighted quadratic form.
+
+\section{Matrix lower-frame import criterion}
+\begin{definition}[Matrix lower-frame import]
+The twisted second moment imports as a membrane source record on a coefficient window $V_q$ if there are
+positive constants $\gamma_q$ and $\varepsilon_q<1$ such that, for every coefficient vector $a\in V_q$,
+\[
+M_q(a)\ge \gamma_q\|a\|_{H_q}^2,
+\qquad |E_q(a)|\le \varepsilon_q\gamma_q\|a\|_{H_q}^2.
+\]
+Then
+\[
+G_{q,w}\succeq (1-\varepsilon_q)\gamma_q H_q.
+\]
+\end{definition}
+
+\begin{theorem}[Conditional matrix import]
+Assume that the shifted second-moment asymptotic admits a homogeneous, coefficient-uniform formulation on
+$V_q$, and that the shifted main term has a positive critical-line limit satisfying
+\[
+M_q(a)\ge c_0(\log q)\|a\|_{H_q}^2
+\]
+for all $a\in V_q$, with the error bounded by
+\[
+|E_q(a)|\le \varepsilon_q c_0(\log q)\|a\|_{H_q}^2,
+\qquad \varepsilon_q<1.
+\]
+Then the normalized weighted Gram
+\[
+G_{q,|L|^2}^{\rm norm}(m,n)
+=\frac1{\varphi^+(q)}\sum_{\chi\bmod q}^{+}|L(1/2,\chi)|^2\chi(m)\overline{\chi(n)}
+\]
+satisfies
+\[
+G_{q,|L|^2}^{\rm norm}\succeq (1-\varepsilon_q)c_0(\log q)H_q.
+\]
+Thus the source strength is $\gamma_q\asymp\log q$ in normalized currency.
+\end{theorem}
+
+\section{Audit verdict}
+The existing theorem is structurally adjacent, but it is not yet a finished framework import. The remaining
+records are:
+\begin{enumerate}[label=\textbf{R\arabic*.}]
+\item \textbf{Homogeneous coefficient norm.} Convert the arbitrary coefficient hypothesis into a normalized operator domain $V_q$.
+\item \textbf{Main-term positivity.} Prove the $\alpha,\beta\to0$ main kernel is positive with a uniform lower eigenvalue.
+\item \textbf{Uniform error.} Replace scalar/asymptotic error notation by an operator-norm bound subordinate to the main form.
+\item \textbf{Parity and primitive records.} Even-character restriction and principal removal must be tracked as finite-rank or sector records.
+\item \textbf{Length compatibility.} The length $q^\kappa$ must be compatible with the regularized Müntz shadow and the residual coefficient window.
+\item \textbf{Source normalization.} Decide whether the source currency is normalized by $\varphi^+(q)$ or accumulated unnormalized.
+\end{enumerate}
+
+\section{Framework coupling}
+The source lower frame couples to the residual visibility gate by
+\[
+R_N^*H_NR_N\succeq c_{{\rm hyb},N}G_{R,N}.
+\]
+If
+\[
+G_{q,w}\succeq\gamma_{q,w}H_N,
+\]
+then
+\[
+R_N^*G_{q,w}R_N\succeq \gamma_{q,w}c_{{\rm hyb},N}G_{R,N}.
+\]
+The completed membrane route requires
+\[
+\gamma_{q,w}c_{{\rm hyb},N}\to\infty
+\]
+with fixed/exhaustive residual-tail promotion.
+
+\section{Conclusion}
+The $q$-aspect twisted second moment with arbitrary Dirichlet polynomial is the right first external theorem platform. It already supplies the closest scalar/bilinear object to our source-weighted Gram. What remains genuinely new is converting that theorem into a lower-eigenvalue statement on the residual coefficient class, i.e. the matrix-lift / $\Xi$-adequacy import.
+\end{document}

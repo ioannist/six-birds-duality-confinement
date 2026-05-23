@@ -1,0 +1,408 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{hyperref}
+
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{remark}{Remark}
+\newtheorem{example}{Example}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\Tr}{\operatorname{tr}}
+\let\Cap\relax
+\newcommand{\Cap}{\operatorname{Cap}}
+\newcommand{\Cost}{\operatorname{Cost}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\preceqK}{\preceq}
+\newcommand{\succeqK}{\succeq}
+
+\title{Step 23: Probe-Family Currency, Recombination, and Closure-Scoped Anti-Localization}
+\author{Six Birds anti-localization workstream}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note upgrades scalar probe capacity to a finite probe-family currency theorem.
+For a formed closure with exact packaged carrier $\mathcal F=\Ran\Gamma$, audit energy $C$, and declared native probe family $L:H\to Y$, the family compliance matrix
+\[
+        \mathsf K_{C,\Gamma}(L)=L\Gamma(\Gamma^*C\Gamma)^\dagger (L\Gamma)^*
+\]
+records the shadow value of all recombinations of the declared probes.  The reciprocal object $\mathsf K^\dagger$ is the minimum audit-spend matrix for realizing declared probe responses.  The family-level anti-localization condition is therefore the matrix inequality
+\[
+        \mathsf K_{C,\Gamma}(L)\preceq \Theta,
+\]
+not merely diagonal scalar bounds.  This theorem is explicitly scoped to formed closures/layers.  Non-closed artifacts are outside the accepted anti-localization claim; they may contain needles, but they have not yet earned layerhood under the declared audit.
+\end{abstract}
+
+\section{Purpose of this step}
+The previous scalar formulation proved that, for one probe $g$, anti-localization is bounded probe addressability:
+\[
+        \Cap_C(g;\Ran\Gamma)=g_\Gamma^*C_\Gamma^\dagger g_\Gamma.
+\]
+The corpus reading and the currency lens force a stronger formulation.  A layer is not tested by one probe.  It is tested by a declared finite family of native probes and by all lawful recombinations of that family.  The scalar theorem controls only branchwise probes.  Recombination needles live in the off-diagonal structure.
+
+The goal of this note is to establish the finite-dimensional matrix theorem that will be inserted into the manuscript as the probe-family currency layer.
+
+\section{Closure-scoped convention}
+We adopt the following convention throughout this note.
+
+\begin{definition}[Formed closure, mathematical skeleton]
+A finite Hilbert-layer skeleton is a tuple
+\[
+        \mathcal C=(H,E,\Gamma,C,L,\Theta,\mathsf A)
+\]
+where:
+\begin{enumerate}[label=(\roman*)]
+\item $H$ is a finite-dimensional Hilbert carrier;
+\item $E$ is the declared package/closure record, whose exact feasible carrier is $\mathcal F=\Ran\Gamma\subset H$;
+\item $C=C^*\succeq0$ is the audit energy on $H$;
+\item $L:H\to Y$ is the declared finite-dimensional native probe family;
+\item $\Theta=\Theta^*\succeq0$ is the declared response-budget matrix on $Y$;
+\item $\mathsf A$ is the audit/status record, including visibility, route, null-mode, nonclaim, and closure-scope records.
+\end{enumerate}
+It is a \emph{formed closure for $L$} if the package is exact on $\Ran\Gamma$, the probe family is declared before the test, and the null-mode legality condition
+\[
+        \Ker C_\Gamma\subseteq \Ker L_\Gamma
+\]
+passes, where
+\[
+        C_\Gamma=\Gamma^*C\Gamma,\qquad L_\Gamma=L\Gamma.
+\]
+\end{definition}
+
+\begin{remark}[Closure-only scope]
+This convention deliberately does not claim that arbitrary, unclosed, pre-emergent substrates have no needles.  In the Six Birds reading adopted here, a non-closed artifact has not yet earned layerhood.  The theorem below says what is true once an exact closure/layer has declared its carrier, audit, and native probe family.  Thus the nonclaim is part of the theorem: no substrate-level literalization is licensed.
+\end{remark}
+
+\section{Probe-family capacity as currency}
+Let $Y\cong\C^m$ be the finite probe-output space.  The map $L$ returns the vector of probe readouts.  A recombination of the probe family is a vector $y\in Y$, producing the scalar probe
+\[
+        \ell_y(u)=\langle y,Lu\rangle_Y.
+\]
+
+\begin{definition}[Family compliance / shadow-value matrix]
+For a formed closure, define
+\[
+        \boxed{\mathsf K_{C,\Gamma}(L)=L_\Gamma C_\Gamma^\dagger L_\Gamma^*.}
+\]
+We call $\mathsf K$ the \emph{probe-family compliance matrix}, \emph{capacity matrix}, or \emph{shadow-value matrix}.
+\end{definition}
+
+\begin{theorem}[Recombination capacity identity]
+Assume $\Ker C_\Gamma\subseteq\Ker L_\Gamma$.  Then for every $y\in Y$,
+\[
+        \boxed{
+        \Cap_C(\ell_y;\Ran\Gamma)=y^*\mathsf K_{C,\Gamma}(L)y.
+        }
+\]
+Equivalently, $\mathsf K$ is the matrix whose quadratic form gives the scalar capacity of every lawful recombination of the declared probes.
+\end{theorem}
+
+\begin{proof}
+For $u=\Gamma a$, the scalar probe is
+\[
+        \ell_y(\Gamma a)=\langle y,L_\Gamma a\rangle=\langle L_\Gamma^*y,a\rangle.
+\]
+Thus the scalar capacity is
+\[
+        \sup_{a\ne0}\frac{|\langle L_\Gamma^*y,a\rangle|^2}{\langle a,C_\Gamma a\rangle}.
+\]
+The null legality condition says $L_\Gamma^*y\in \Ran C_\Gamma$ for every $y$, so the scalar pseudoinverse capacity identity applies:
+\[
+        \Cap_C(\ell_y;\Ran\Gamma)
+        =(L_\Gamma^*y)^*C_\Gamma^\dagger(L_\Gamma^*y)
+        =y^*L_\Gamma C_\Gamma^\dagger L_\Gamma^*y.
+\]
+\end{proof}
+
+\begin{definition}[Family anti-localization]
+Let $\Theta\succeq0$ be a declared probe-response budget.  The formed closure is \emph{family anti-localized at budget $\Theta$} if
+\[
+        \boxed{\mathsf K_{C,\Gamma}(L)\preceq \Theta.}
+\]
+When $\Theta$ is clear, this is written $\mathsf{FamilyAntiLoc}(\mathcal C,L)$.
+\end{definition}
+
+\begin{corollary}[All recombinations are controlled]
+A formed closure is family anti-localized at budget $\Theta$ if and only if
+\[
+        \Cap_C(\ell_y;\Ran\Gamma)\le y^*\Theta y
+\]
+for every recombination $y\in Y$.
+\end{corollary}
+
+\section{Minimum spend and reciprocal prices}
+The currency interpretation has a reciprocal form.  Compliance $\mathsf K$ says how much response one audit unit can buy.  Its pseudoinverse says how much audit spend is required to realize a declared response.
+
+\begin{definition}[Minimum audit spend]
+For a desired response $z\in Y$, define
+\[
+        \Cost_C(z;L,\Gamma)
+        =\inf\{\langle a,C_\Gamma a\rangle:
+                L_\Gamma a=z\}.
+\]
+If no feasible $a$ realizes $z$, set $\Cost_C(z;L,\Gamma)=+\infty$.
+\end{definition}
+
+\begin{theorem}[Minimum-spend theorem]
+Assume $\Ker C_\Gamma\subseteq\Ker L_\Gamma$.  If $z\in\Ran L_\Gamma=\Ran\mathsf K$, then
+\[
+        \boxed{
+        \Cost_C(z;L,\Gamma)=z^*\mathsf K^\dagger z.
+        }
+\]
+If $z\notin\Ran L_\Gamma$, then $\Cost_C(z;L,\Gamma)=+\infty$.
+\end{theorem}
+
+\begin{proof}
+Work on $(\Ker C_\Gamma)^\perp$.  Write $x=C_\Gamma^{1/2}a$.  Null legality means the null component of $a$ is invisible to $L_\Gamma$, so the constraint becomes
+\[
+        L_\Gamma (C_\Gamma^\dagger)^{1/2}x=z.
+\]
+The cost is $\|x\|^2$.  For a linear map $A$, the minimum norm solution of $Ax=z$ has squared norm $z^*(AA^*)^\dagger z$ when $z\in\Ran A$.  Here
+\[
+        A=L_\Gamma (C_\Gamma^\dagger)^{1/2},
+        \qquad AA^*=L_\Gamma C_\Gamma^\dagger L_\Gamma^*=\mathsf K.
+\]
+This gives the stated formula.
+\end{proof}
+
+\begin{corollary}[Resistance form of anti-localization]
+Assume $\Theta\succ0$.  If $\mathsf K\preceq\Theta$, then every feasible $a$ satisfies
+\[
+        \boxed{
+        (L_\Gamma a)^*\Theta^{-1}(L_\Gamma a)
+        \le
+        a^*C_\Gamma a.
+        }
+\]
+Thus probe responses measured in the budget geometry cannot be purchased more cheaply than the declared audit spend.
+\end{corollary}
+
+\begin{proof}
+The block Schur complement theorem below gives the equivalent operator inequality
+\[
+        L_\Gamma^*\Theta^{-1}L_\Gamma\preceq C_\Gamma,
+\]
+which is exactly the displayed inequality on quadratic forms.
+\end{proof}
+
+\section{Family Schur square}
+The scalar Schur wall generalizes to a matrix-valued response budget.
+
+\begin{theorem}[Family Schur-capacity theorem]
+Let $\Theta\succeq0$ and $C_\Gamma\succeq0$.  The block operator
+\[
+        \mathcal M_{\Theta,L,C}
+        =
+        \begin{pmatrix}
+        \Theta & L_\Gamma\\
+        L_\Gamma^* & C_\Gamma
+        \end{pmatrix}
+\]
+acts on $Y\oplus E$.  Then
+\[
+        \mathcal M_{\Theta,L,C}\succeq0
+\]
+if and only if
+\[
+        \Theta\succeq0,
+        \qquad
+        C_\Gamma\succeq0,
+        \qquad
+        \Ker C_\Gamma\subseteq\Ker L_\Gamma,
+        \qquad
+        \mathsf K_{C,\Gamma}(L)\preceq\Theta.
+\]
+In this case the family Schur defect is
+\[
+        \Delta=\Theta-\mathsf K_{C,\Gamma}(L)\succeq0.
+\]
+\end{theorem}
+
+\begin{proof}
+This is the generalized Schur complement criterion for positive semidefinite block matrices.  Positivity requires the off-diagonal block to vanish on $\Ker C_\Gamma$, i.e. $\Ker C_\Gamma\subseteq\Ker L_\Gamma$.  On $(\Ker C_\Gamma)^\perp$, the Schur complement of $C_\Gamma$ is
+\[
+        \Theta-L_\Gamma C_\Gamma^\dagger L_\Gamma^*=\Theta-\mathsf K.
+\]
+The block is positive if and only if this Schur complement is positive semidefinite.
+\end{proof}
+
+\section{Recombination countermodel}
+Branchwise scalar anti-localization is not family anti-localization.
+
+\begin{example}[All diagonals safe, recombination unsafe]
+Let $H=\C$, $C=1$, $\Gamma=\id$, and define
+\[
+        L:H\to\C^m,
+        \qquad
+        Lu=u(1,1,\dots,1)^T.
+\]
+Then
+\[
+        \mathsf K=L C^{-1}L^*=\mathbf 1\mathbf 1^*.
+\]
+Every coordinate probe has capacity one:
+\[
+        \mathsf K_{ii}=1.
+\]
+But for the normalized recombination
+\[
+        y=m^{-1/2}(1,\dots,1)^T,
+\]
+we get
+\[
+        y^*\mathsf K y=m.
+\]
+Thus diagonal scalar certificates $\mathsf K_{ii}\le1$ do not imply the family certificate $\mathsf K\preceq I$.  The recombination of $m$ individually safe probes produces an $m$-fold needle.
+\end{example}
+
+\begin{remark}[Recombination as the family-level needle]
+The example is the matrix version of the two-broad-atoms-difference-is-a-needle phenomenon.  The individual probes are branchwise safe.  Their coherent recombination is not.  Therefore an accepted anti-localization test family must audit the entire PSD matrix $\mathsf K$, not merely its diagonal.
+\end{remark}
+
+\section{Route-union and probe-family monotonicity}
+Let $\mathcal F_r\subseteq\mathcal F_\cup$ be feasible route carriers for the same audit $C$ and probe family $L$.  Define the corresponding compliance matrices $\mathsf K_r$ and $\mathsf K_\cup$.
+
+\begin{proposition}[Route-union family monotonicity]
+If $\mathcal F_r\subseteq\mathcal F_\cup$, then
+\[
+        \boxed{\mathsf K_r\preceq\mathsf K_\cup.}
+\]
+Consequently a route-union family certificate
+\[
+        \mathsf K_\cup\preceq\Theta
+\]
+certifies every route-local family.
+\end{proposition}
+
+\begin{proof}
+For every recombination $y$, scalar capacity is monotone under enlargement of the feasible class:
+\[
+        \Cap_C(y^*L;\mathcal F_r)\le\Cap_C(y^*L;\mathcal F_\cup).
+\]
+Using the recombination identity gives
+\[
+        y^*\mathsf K_r y\le y^*\mathsf K_\cup y
+\]
+for every $y$, hence $\mathsf K_r\preceq\mathsf K_\cup$.
+\end{proof}
+
+\begin{proposition}[Probe-readout data processing]
+Let $R:Y\to Z$ be a public readout/coarsening of the native probe family, and set $L'=RL$.  Then
+\[
+        \boxed{\mathsf K_{C,\Gamma}(L')=R\mathsf K_{C,\Gamma}(L)R^*.}
+\]
+Thus if $\mathsf K\preceq\Theta$, then
+\[
+        \mathsf K(L')\preceq R\Theta R^*.
+\]
+\end{proposition}
+
+\begin{proof}
+Immediate from
+\[
+        L'_\Gamma C_\Gamma^\dagger L_\Gamma'^*
+        =RL_\Gamma C_\Gamma^\dagger L_\Gamma^*R^*.
+\]
+\end{proof}
+
+\section{Closure-layer no-needle theorem}
+We can now state the closure-scoped anti-localization result.
+
+\begin{theorem}[No native recombination needles in formed closures]
+Let $\mathcal C=(H,E,\Gamma,C,L,\Theta,\mathsf A)$ be a formed closure for the native probe family $L$.  Suppose
+\[
+        \mathsf K_{C,\Gamma}(L)\preceq\Theta
+\]
+with $\Theta\succ0$.  Then no feasible sequence $a_n$ with bounded audit spend can produce unbounded native probe response in the declared budget geometry.  Precisely, if
+\[
+        a_n^*C_\Gamma a_n\le 1,
+\]
+then
+\[
+        (L_\Gamma a_n)^*\Theta^{-1}(L_\Gamma a_n)\le1.
+\]
+Equivalently, every desired response $z$ costs at least
+\[
+        z^*\Theta^{-1}z
+\]
+units of audit spend.  Thus native recombination needles are priced out by the closure.
+\end{theorem}
+
+\begin{proof}
+The displayed response bound is the resistance corollary.  The minimum-spend theorem says the exact minimum cost is $z^*\mathsf K^\dagger z$, and $\mathsf K\preceq\Theta$ with $\Theta\succ0$ implies $\mathsf K^\dagger\succeq\Theta^{-1}$ on $\Ran\mathsf K$.  Hence every feasible response costs at least the declared budget price.
+\end{proof}
+
+\begin{remark}[Why closure-only is legitimate]
+The theorem is intentionally not a universal substrate theorem.  It says that once a layer is formed as a closure with exact package, declared native probe family, and accepted currency matrix, the layer has a membrane against its native recombination probes.  An artifact lacking those records is not a counterexample; it is outside the accepted closure claim.
+\end{remark}
+
+\section{Six-channel record for family anti-localization}
+A formed closure record should carry six channel statuses.
+\[
+\begin{array}{lll}
+P_1 & \text{rewrite/gauge} & \text{carrier rewrite or gauge-fix status},\\
+P_2 & \text{feasibility} & \text{exact feasible package and null-mode legality},\\
+P_3 & \text{route} & \text{route-union/protocol surface and holonomy defect},\\
+P_4 & \text{staging/sector} & \text{refinement, sector, and threshold activation record},\\
+P_5 & \text{packaging} & \text{idempotent/canonical package and upstream selection rule},\\
+P_6 & \text{audit/currency} & \text{family compliance matrix and budget threshold}.
+\end{array}
+\]
+The new object of $P_6$ is not a scalar capacity but the full matrix
+\[
+        \mathsf K=L_\Gamma C_\Gamma^\dagger L_\Gamma^*.
+\]
+
+\section{Manuscript insertion point}
+This note should become a new central section in the manuscript, between scalar capacity and Schur-square applications.  The revised theorem stack is:
+\begin{enumerate}[label=\textbf{T\arabic*.}]
+\item scalar capacity identity;
+\item semigroup and dual-witness identities;
+\item family compliance matrix $\mathsf K$;
+\item minimum-spend reciprocal theorem;
+\item recombination countermodel;
+\item family Schur square;
+\item closure-layer no-needle theorem;
+\item upper-to-$S_5$ selection theorem;
+\item RH/Navier obligations stated as native test-family obligations.
+\end{enumerate}
+
+\section{RH and Navier obligation upgrade}
+For RH the scalar obligation
+\[
+        b_L^*C_L^\dagger b_L\le\theta a_L
+\]
+should be promoted to a native family obligation.  If $L_L$ is the upstream-selected family of low-mode/off-critical probes, then the obligation becomes
+\[
+        \boxed{\mathsf K_L=L_L C_L^\dagger L_L^*\preceq\Theta_L.}
+\]
+The scalar Schur wall is a one-dimensional shadow of this family statement.
+
+For Navier the native family consists of scale-localized vorticity, gradient, enstrophy, or shell concentration probes.  The corresponding obligation is
+\[
+        \boxed{\mathsf K_{j,t}=L_{j,t}C_{j,t}^\dagger L_{j,t}^*\preceq\Theta_{j,t}}
+\]
+uniformly across the declared predictive/refinement range.
+
+\section{Nonclaims}
+This step does not prove RH, Navier regularity, or universal anti-localization of all Six Birds artifacts.  It proves a finite-dimensional currency theorem for formed closures and identifies the correct matrix object needed for family-level anti-localization.  Non-closed artifacts and undeclared probes remain outside scope.
+
+\end{document}

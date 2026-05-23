@@ -1,0 +1,161 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,geometry}
+\geometry{margin=1in}
+\title{Step 136: Response-Metric Normalization for the Incidence Operator}
+\author{Six Birds / RH Membrane Working Note}
+\date{}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Steps 130--135 showed that the unrestricted BPRZ shifted second-moment main kernel has squarefree Boolean near-null modes, but that the actual Burnol--Müntz residual coefficient class may avoid them after the finite zeta/incidence convolution.  Step 135 corrected the tail gate by placing the incidence operator inside the response norm:
+\[
+\tau_{\Omega,N}^{Z}
+=
+\left\|Z_y(I-P_{\Omega\le K})B_NG_{B,N}^{-1/2}\right\|.
+\]
+This step asks whether the natural response metric reduces the raw Boolean amplification
+\[
+\|Z_y\|_{\ell^2\to\ell^2}=\varphi^k,
+\qquad \varphi=\frac{1+\sqrt5}{2},
+\]
+or whether the seed tail must beat that full amplification.
+
+\section{Weighted squarefree response metric}
+Let $P_y$ be the set of primes $p\le y$, $k=|P_y|$, and identify squarefree divisors with subsets $S\subseteq P_y$.  The finite zeta/incidence operator is
+\[
+(Z_yb)(T)=\sum_{S\subseteq T}b(S).
+\]
+Let the coefficient response metric be a product metric
+\[
+\|b\|_h^2=\sum_{S\subseteq P_y}h(S)|b(S)|^2,
+\qquad
+h(S)=\prod_{p\in S} r_p,
+\qquad r_p>0.
+\]
+For the usual Dirichlet-polynomial coefficient norm
+\[
+\sum_n \frac{|a_n|^2}{n},
+\]
+restricted to the squarefree cube, one has
+\[
+r_p=p^{-1}.
+\]
+
+\section{Local singular-value computation}
+\begin{lemma}[one-prime incidence block]
+In the weighted metric with local ratio $r>0$, the one-prime incidence block is unitarily represented on ordinary $\ell^2(\{0,1\})$ by
+\[
+A(r)=
+\begin{pmatrix}
+1&0\\
+\sqrt r&1
+\end{pmatrix}.
+\]
+Its singular values satisfy
+\[
+\sigma_\pm(r)^2=
+\frac{2+r\pm\sqrt{r^2+4r}}{2}.
+\]
+In particular, for $r=1$,
+\[
+\sigma_+(1)=\varphi.
+\]
+\end{lemma}
+
+\begin{theorem}[product-metric incidence norm]
+For the product response metric above,
+\[
+\boxed{
+\|Z_y\|_{h\to h}=
+\prod_{p\le y}\sigma_+(r_p).
+}
+\]
+Consequently, for the Dirichlet coefficient metric $r_p=p^{-1}$,
+\[
+\log \|Z_y\|_{H\to H}
+=
+\sum_{p\le y}\log\sigma_+(p^{-1})
+=
+\frac12\sum_{p\le y}p^{-1/2}+O\left(\sum_{p\le y}p^{-1}\right)
+=
+(1+o(1))\frac{\sqrt y}{\log y}.
+\]
+Thus the Dirichlet response metric reduces the raw amplification
+\[
+\varphi^{\pi(y)}=\exp\left((\log\varphi+o(1))\frac{y}{\log y}\right)
+\]
+to the subexponential amplification
+\[
+\boxed{
+\|Z_y\|_{H\to H}
+=
+\exp\left((1+o(1))\frac{\sqrt y}{\log y}\right),
+}
+\]
+but it does not make the incidence operator uniformly bounded as $y\to\infty$.
+\end{theorem}
+
+\section{Consequence for the blind-sector tail}
+Let $P_{\Omega>K}$ denote the upstream-declared high-divisibility tail projection.  The response-correct tail satisfies
+\[
+\tau_{\Omega,N}^{Z}
+=
+\|Z_yP_{\Omega>K}B_NG_{B,N}^{-1/2}\|.
+\]
+The product-metric estimate gives the safe but generally non-sharp bound
+\[
+\boxed{
+\tau_{\Omega,N}^{Z}
+\le
+\left(\prod_{p\le y}\sigma_+(r_p)\right)
+\tau_{\Omega,N}^{\rm seed}.
+}
+\]
+For the Dirichlet coefficient metric this becomes
+\[
+\tau_{\Omega,N}^{Z}
+\le
+\exp\left((1+o(1))\frac{\sqrt y}{\log y}\right)
+\tau_{\Omega,N}^{\rm seed}.
+\]
+Therefore the raw seed tail must beat this subexponential incidence amplification unless a sharper structure-specific estimate is proved.
+
+\section{Metric trichotomy}
+Step 136 gives three lawful outcomes.
+\begin{enumerate}
+\item \textbf{Metric contraction.}  A carrier-native Burnol/Müntz or semilocal metric proves a better bound than the Dirichlet $H$ metric and suppresses the incidence operator uniformly or nearly uniformly.
+\item \textbf{Subexponential amplification.}  The standard Dirichlet $H$ metric applies.  Then the full raw $\varphi^k$ amplification is avoided, but the seed tail must beat $\exp((1+o(1))\sqrt y/\log y)$.
+\item \textbf{Full residual.}  If the actual response metric gives no improvement, or if the seed tail cannot beat the amplification, then $\Xi_{\rm GCD}$ remains a genuine residual requiring a separate source-frame record.
+\end{enumerate}
+
+\section{Membrane implication}
+If the BPRZ main kernel has a lower frame on the nonblind sector,
+\[
+K_q\succeq \gamma_q I,
+\qquad \gamma_q\asymp\log q,
+\]
+and
+\[
+\|\Pi_{\mathcal B}R_NG_{B,N}^{-1/2}\|
+\le \delta_N<1,
+\]
+then
+\[
+R_N^*K_qR_N\succeq \gamma_q(1-\delta_N^2)G_{B,N}.
+\]
+The incidence-metric estimate supplies the bound
+\[
+\delta_N\le \tau_{\Omega,N}^{Z}.
+\]
+Thus a uniform floor $\tau_{\Omega,N}^{Z}\le\tau<1$ is already enough for source-coercivity growth, provided $\gamma_q\to\infty$ and the residual-tail promotion gate passes.
+
+\section{Nonclaim boundary}
+This step does not prove the actual Burnol/Müntz seed estimate.  It proves the response-metric normalization formula for the finite incidence operator and shows that the standard Dirichlet coefficient metric reduces but does not remove incidence amplification.  The next analytic record must estimate the actual seed tail in the lawful metric.
+
+\end{document}

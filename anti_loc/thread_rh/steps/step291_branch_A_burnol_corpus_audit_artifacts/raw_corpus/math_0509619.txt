@@ -1,0 +1,1266 @@
+                                                Spacetime causality in the study of the Hankel transform
+                                                                                Jean-François Burnol
+arXiv:math/0509619v4 [math.NT] 5 Mar 2006
+
+
+
+
+                                                                                           Abstract
+                                                    We study Hilbert space aspects of the Klein-Gordon equation in two-dimensional
+                                                 spacetime. We associate to its restriction to a spacelike wedge a scattering from the
+                                                 past light cone to the future light cone, which is then shown to be (essentially) the
+                                                 Hankel transform of order zero. We apply this to give a novel proof, solely based on
+                                                 the causality of this spatio-temporal wave propagation, of the theorem of de Branges
+                                                 and V. Rovnyak concerning Hankel pairs with a support property. We recover their
+                                                 isometric expansion as an application of Riemann’s general method for solving Cauchy-
+                                                 Goursat problems of hyperbolic type.
+
+
+                                                 keywords: Klein-Gordon equation; Hankel and Fourier transforms; Scattering.
+
+                                                 Université Lille 1
+                                                 UFR de Mathématiques
+                                                 Cité scientifique M2
+                                                 F-59655 Villeneuve d’Ascq
+                                                 France
+                                                 burnol@math.univ-lille1.fr
+                                                 v1: 25 Sept. 2005; Final: 5 March 2006
+
+
+
+
+                                            1    Introduction
+
+                                            We work in two-dimensional spacetime with metric c2 dt2 − dx2 . We shall use units such
+                                                                                                                           ∂     ∂ 2     2
+                                            that c = 1. Points are denoted P = (t, x). And the d’Alembertian operator  is ∂t2 − ∂x2 .
+
+                                            We consider the Klein-Gordon equation (with m = 1, ~ = 1; actually we shall only study
+                                            the classical wave field, no quantization is involved in this paper):
+
+                                                                                          φ + φ = 0                                     (1)
+
+
+
+
+                                                                                              1
+We have an energy density:1
+
+                                                             ∂φ 2   ∂φ 2
+                                             E = |φ|2 +           +                                            (2)
+                                                             ∂x     ∂t
+
+which gives a conserved quantity:
+                                                      Z +∞
+                                                  1
+                                           E=                E(φ)(t, x) dx ,                                   (3)
+                                                 2π    −∞
+
+in the sense that if the Cauchy data at time t = 0 has E < ∞ then E is finite (and
+constant. . . ) at all times (past and future). We shall mainly work with such finite energy
+solutions. Although we failed in locating a reference for the following basic observation, we
+can not imagine it to be novel:
+
+Theorem 1. If φ is a finite energy solution to the Klein-Gordon equation then:
+                                   Z
+                              lim        E(φ)(t, x) dx = 0 .
+                                          t→+∞ |x|>t
+
+
+
+         Obviously this would be completely wrong for the zero mass equation. We shall give
+a (simple) self-contained proof, because it is the starting point of all that we do here. Let
+us nevertheless state that the result follows immediately from Hörmander’s fine pointwise
+estimates ([8, 9]; see also the paper of S. Klainerman [11] and the older papers of S. Nelson
+[14, 15].) I shall not reproduce the strong pointwise results of Hörmander, as they require
+notations and preliminaries. Let me simply mention that Hörmander’s Theorem 2.1 from
+[8] can be applied to the positive and negative frequency parts of a solution with Cauchy
+data which is gaussian times polynomial. So theorem 1 holds for them, and it holds then
+in general, by an approximation argument.
+
+         The energy conservation follows from:
+
+                            ∂     ∂                                     ∂φ ∂φ ∂φ ∂φ
+                               E+    P=0              with       P=−          −                                (4)
+                            ∂t    ∂x                                    ∂x ∂t   ∂x ∂t
+If we apply Gauss’ theorem to the triangle with vertices O = (0, 0), A = (t, t), B = (t, −t),
+we obtain (t > 0):
+Z                            Z 0                                  2         Z t                              2
+                                                       d                                            d
+            E(φ)(t, x)dx =          (|φ(|x|, x)|2 +      φ(|x|, x) ) dx +          (|φ(x, x)|2 +      φ(x, x) ) dx
+    |x|≤t                      −t                     dx                       0                   dx
+     1
+         as this paper is principally of a mathematical nature, we do not worry about an overall 12 factor.
+
+
+
+
+                                                             2
+                   R
+This proves that       |x|>t E(φ)(t, x) dx decreases as t → +∞. It shows also that theorem 1 is
+equivalent to:
+          Z 0                             2          Z ∞                         2
+        1                  2   d                   1                    d
+  E=           (|φ(|x|, x)| +    φ(|x|, x) ) dx +        (|φ(x, x)|2 +    φ(x, x) ) dx (5)
+       2π −∞                  dx                  2π 0                 dx
+
+   Otherwise stated, there is a unitary representation of φ on the future light cone. Here
+is now the basic idea: as solutions to hyperbolic equations propagate causally, equation (5)
+gives a unitary representation from the Hilbert space of Cauchy data at time t = 0 with
+support in x ≥ 0 to the Hilbert space of functions p(v) = φ(v, v) on [0, +∞[ with squared
+      1
+         R∞        2    ′    2
+norm 2π   0 (|p(v)| + |p (v)| ) dv. Instead of Cauchy data vanishing for x < 0, it will be
+useful to use Cauchy data invariant under (t, x) → (−t, −x). Then p will be considered
+                                             1
+                                               R∞                                1
+as an even, and p′ as an odd, function, and 2π           2    ′    2
+                                                0 (|p(v)| + |p (v)| ) dv will be 2 E(φ), for
+φ(t, x) = φ(−t, −x). We can also consider the past values g(u) = φ(−u, u), t = −u, x = u,
+0 ≤ u < ∞. So there is a unitary map from such g’s to the p’s:
+                                                            R∞
+Theorem 2. Let g(u), u > 0, and p(v), v > 0 be such that 0 |g(u)|2 + |g′ (u)|2 du < ∞,
+R∞                                                                              √       2
+         2    ′    2
+ 0 |p(v)| + |p (v)| dv < ∞. The necessary and sufficient condition for A(r) =     r g( r2 )
+               √      2
+and B(s) = − s p′ ( s2 ) to be Hankel transforms of order zero of one another (A(r) =
+R∞√
+ 0   rsJ0 (rs)B(s) ds) is for g and p to be the values on the past and future boundaries
+of the Rindler wedge 0 < |t| < x of a finite energy solution φ(t, x) of the Klein-Gordon
+equation (g(u) = φ(−u, u), p(v) = φ(v, v).) For any a > 0 the vanishing on 0 < x < 2a
+of the Cauchy data for φ(t, x) at t = 0 is the necessary and sufficient condition for the
+simultaneous vanishing of g(u) for 0 < u < a and of p(v) for 0 < v < a.
+
+
+   The statements relative to the support properties are corollaries to the relativistic
+causality of the propagation of solutions to the Klein-Gordon equation. Regarding the
+function B, if k(v) = −p′ (v) vanishes identically on (0, a), then p(v) is constant there, and
+this constant has to be 0 if g(u) is also identically zero on (0, a): indeed the finite energy
+solution φ is continuous on spacetime (this follows from the well-known explicit formulas
+                                        √       2              √      2
+(32)). We employed temporarily A(r) = r g( r2 ) and B(s) = − s p′ ( s2 ) in the statement
+of Theorem 2 in order to express the matter with the zero order Hankel transform. It
+proves more natural to stay with g(u) and k(v) = −p′ (v). They are connected by the
+                         R∞     √
+integral formula: g(u) = 0 J0 (2 uv)k(v) dv, so this motivates the definition of the H
+transform:                                    Z ∞
+                                                         √
+                                 H(f )(x) =         J0 (2 xy)f (y) dy                       (6)
+                                              0
+
+
+                                                    3
+The H transform is a unitary operator on L2 (0, +∞; dx) which is self-reciprocal. As is
+          √    1 2
+well-known xe− 2 x is an invariant function for the Hankel transform of order zero, so,
+for the H transform we have e−x as invariant function in L2 (0, ∞; dx). The H operator is
+“scale-reversing”: by this we mean that H(f (λy))(x) = λ−1 H(f )(λ−1 x), or, equivalently,
+that the operator H · I is scale invariant, where I is the unitary operator f (x) 7→ x1 f ( x1 ).
+As we explain later, H is the unique scale-reversing operator on L2 (0, ∞; dx) having among
+its self-reciprocal functions the function e−x . Let us restate Theorem 2 as it applies to H:
+
+Theorem 3. Let φ(t, x) be a finite energy solution of the Klein-Gordon equation. Let
+g(u) = φ(−u, u) for u > 0 and p(v) = φ(v, v) for v > 0 be the values taken by φ on the
+past, respectively future, boundaries of the Rindler wedge 0 < |t| < x. Then k(v) = −p′ (v)
+                                      R∞      √
+is the H transform of g(u): k(v) = 0 J0 (2 uv)g(u) du. For any a > 0 the vanishing for
+0 < x < 2a, t = 0, of the Cauchy data for φ(t, x) is the necessary and sufficient condition
+for the simultaneous vanishing of g(u) for 0 < u < a and p(v) for 0 < v < a.
+
+
+   In this manner a link has been established between the relativistic causality and a math-
+ematical theorem of de Branges [3], and V. Rovnyak [16] (see further [17]). They proved
+an explicit isometric representation of L2 (0, +∞; dx) onto L2 (0, +∞; dy) ⊕ L2 (0, +∞; dy),
+h 7→ (f, g), such that the zero order Hankel transform on L2 (0, +∞; dx) is conjugated to
+the simple map (f, g) → (g, f ), and such that the pair (f (y), g(y)) vanishes identically on
+(0, a) if and only h(x) and its Hankel transform of order zero both identically vanish on
+(0, a). Their formulas ((5) and (7) of [3] should be corrected to read as (3) and (2) of [16])
+are:
+             Z ∞               p     √
+   f (y) =                 x2 − y 2 ) xy dx
+                   h(x)J0 (y                                                                (7a)
+           y
+                 Z ∞               p
+                              J1 (y x2 − y 2 ) √
+   g(y) = h(y) −      h(x)y p                     xy dx                                     (7b)
+                  y                 x2 − y 2
+                 Z x                                   Z x          p
+                                p            √                 J1 (y x2 − y 2 ) √
+   h(x) = g(x) +                    2    2
+                     f (y)J0 (y x − y ) xy dy −            g(y) p                 xy y dy   (7c)
+                  0                                     0           x2 − y 2
+   Z ∞              Z ∞
+             2
+       |h(x)| dx =       (|f (y)|2 + |g(y)|2 ) dy                                           (7d)
+       0                 0
+
+
+   We shall give an independent, self-contained proof, that these formulas are mutually
+compatible and have the stated relation to the Hankel tranform of order zero. The main
+underlying idea has been to realize the Hankel transform of order zero as a scattering related
+to a causal propagation of waves. The support condition initially considered by de Branges
+
+
+                                               4
+and Rovnyak has turned out to be related to relativistic causality, and the looked-after
+scattering has been realized as the transition from the past to the future boundary of the
+Rindler wedge 0 < |t| < x. Also, in the technique of proof we apply, in a perhaps unusual
+manner, the classical Riemann method ([10, IV§1], [6, VI§5]) from the theory of hyperbolic
+equations. Let us reformulate here the isometric expansion of de Branges-Rovnyak into a
+version which applies to the H transform. For this we write, for x > 0,
+                                √          x2                      √                        √
+                   h(x) =           x k(      ),         f (x) =       xF (x2 ),   g(x) =       xG(x2 )
+                                           2
+Then the equations above become:
+          Z ∞     p
+  F (x) =     J0 ( x(2v − x))k(v) dv                                                                      (8a)
+            x/2
+                       Z ∞  p
+           x            J1 ( x(2v − x))
+  G(x) = k( ) −       x p                k(v) dv                                (8b)
+           2      x/2        x(2v − x)
+                    Z                               Z       p
+                  1 2v       p                     1 2v J1 ( x(2v − x))
+  k(v) = G(2v) +         J0 ( x(2v − x))F (x) dx −     x p              G(x) dx (8c)
+                  2 0                              2 0       x(2v − x)
+ Z ∞              Z ∞
+            2
+     2|k(v)| dv =      (|F (x)|2 + |G(x)|2 ) dx                                 (8d)
+   0                        0
+
+The de Branges Rovnyak theorem is thus the equivalence between equations (8a), (8b) and
+(8c), the validity of (8d), the fact that the pair (F, G) is identically zero on (0, 2a) if and
+only if both k and H(k) vanish identically on (0, a), and finally the fact that permuting F
+and G is equivalent to k ↔ H(k).
+
+   It proves convenient to work with the first order “Dirac” system:
+                                                         ∂ψ ∂ψ
+                                                            −    = +φ                                     (9a)
+                                                         ∂t   ∂x
+                                                         ∂φ ∂φ
+                                                            +    = −ψ                                     (9b)
+                                                         ∂t   ∂x
+               h            i       h           i                                   R +∞
+                   ψ(0,x)               G(x)                          2       12
+Let us write       φ(0,x)
+                                =       F (x)              −∞ (|F (x)| + |G(x)| ) dx as
+                                                    . We shall use K(ψ, φ) = 2π
+the Hilbert space (squared) norm. We shall require ∂φ     ∂ψ            2
+                                                   ∂x and ∂x to be in L at t = 0 (then
+φ and ψ are continuous on space-time). Our previous E(φ) is not invariant under Lorentz
+boosts: it is only the first component of a Lorentz vector (E(φ), P (φ)) (see equation (17) for
+the expression of P ). And it turns out that in fact K(ψ, φ) = E(φ) − P (φ) = E(ψ) + P (ψ).
+The point is that in order to define an action of the Lorentz group on the solutions of the
+Dirac system it is necessary to rescale in opposite ways ψ and φ. When done symmetrically,
+K then becomes an invariant under the Lorentz boosts. This relativistic covariance of the
+                  h i
+spinorial quantity ψφ is important for the proof of the next theorem:
+
+
+                                                                   5
+                                               R∞
+Theorem 4. Let F and G be two functions with 0 |F |2 + |F ′ |2 + |G|2 + |G′ |2 dx < ∞. Let
+h i
+ ψ
+ φ be the unique solution in the Rindler wedge x > |t| > 0 of the first order system:
+
+                                       ∂ψ ∂ψ
+                                           −    = +φ                                      (10a)
+                                       ∂t    ∂x
+                                       ∂φ ∂φ
+                                           +    = −ψ                                      (10b)
+                                        ∂t   ∂x
+with Cauchy data φ(0, x) = F (x), ψ(0, x) = G(x). The boundary values:
+
+               g(u) = φ(−u, u)   (u > 0),  and      k(v) = ψ(v, v) (v > 0),
+      R∞                              R∞
+verify 0 |g(u)|2 + |g′ (u)|2 du < ∞, 0 |k(v)|2 + |k′ (v)|2 dv < ∞ and are a H transform
+pair. For any a > 0 the identical vanishing of F (x) and G(x) for 0 < x < 2a is equivalent
+to the identical vanishing of g(u) for 0 < u < a and of k(v) for 0 < v < a. All H pairs
+     R∞                      R∞
+with 0 |g|2 + |g′ |2 du < ∞, 0 |k|2 + |k′ |2 dv < ∞ are obtained in this way. The functions
+F (x), G(x), g(u) and k(v) are related by the following formulas:
+          Z ∞                                     Z ∞         p
+                   p                         x           J1 ( x(2u − x))
+  F (x) =      J0 ( x(2v − x))k(v) dv = g( ) −         x p                 g(u) du        (10c)
+           x/2                               2     x/2         x(2u − x)
+                   Z ∞        p                      Z ∞
+             x            J1 ( x(2v − x))                      p
+  G(x) = k( ) −         x p               k(v) dv =        J0 ( x(2u − x))g(u) du         (10d)
+             2      x/2        x(2v − x)              x/2
+                      Z                                 Z           p
+                    1 2u       p                       1 2u J1 ( x(2u − x))
+   g(u) = F (2u) +         J0 ( x(2u − x))G(x) dx −            x p               F (x) dx
+                    2 0                                2 0           x(2u − x)
+                                                                                          (10e)
+                      Z 2v                              Z           p
+                    1          p                      1     2v
+                                                                J1 ( x(2v − x))
+   k(v) = G(2v) +          J0 ( x(2v − x))F (x) dx −           x p               G(x) dx (10f)
+                    2 0                               2 0            x(2v − x)
+ Z ∞                Z ∞                           Z ∞
+             2                   2        2
+      2|k(v)| dv =       (|F (x)| + |G(x)| ) dx =      2|g(u)|2 du                        (10g)
+   0                  0                            0
+          Z ∞                                     Z ∞
+                    √                                        √
+   k(v) =      J0 (2 uv)g(u) du           g(u) =       J0 (2 uv)k(v) dv                   (10h)
+           0                                        0
+The integrals converge as improper Riemann integrals.
+
+
+   The Lorentz boost parameter can serve as “time” as K is conserved under it. In this
+manner going-over from φ on the past light cone to ψ on the future light cone becomes a
+scattering. We shall explain its formulation in the Lax-Phillips [12] terminology.
+
+   In conclusion we can say that this paper identifies the unique scale reversing operator H
+on L2 (0, +∞; dx) such that e−x is self-reciprocal as the scattering from the past (positive x)-
+light-cone to the future (positive x)-light-cone for finite energy solutions of the Dirac-Klein-
+Gordon equation in two-dimensional space-time. Some further observations and remarks
+
+
+                                               6
+will be found in the concluding section of the paper. The operator H, which is involved in
+some functional equations of number theory, is studied further by the author in [5].
+
+
+
+2    Plane waves
+
+Throughout this paper we shall use the following light cone coordinates, which are positive
+on the right wedge:
+                                          x+t              x−t
+                                    v=                u=                               (11a)
+                                           2                2
+                                                                                 ∂2
+              x=u+v            t = −u + v       t2 − x2 = 4(−u)v          =−          (11b)
+                                                                                ∂u∂v
+We write sometimes φ(t, x) = φ[u, v].
+
+    Let us begin the proof of Theorem 1. We can build a solution to the Klein-Gordon
+equation by superposition of plane waves:
+                         Z +∞                        Z +∞
+                                      1
+               φ(t, x) =      e+i(λu− λ v) α(λ) dλ =      e−i(ωt−µx) α(λ) dλ           (12a)
+                              −∞                           −∞
+                                       1    1                    1     1
+                            with    ω = (λ + ),            µ=      (λ − )              (12b)
+                                       2    λ                    2     λ
+The full range −∞ < λ < +∞ allows to keep track simultaneously of the “positive fre-
+quency” (λ > 0, ω ≥ 1), and “negative frequency” (λ < 0, ω ≤ −1) parts.
+
+    At first we only take α to be a smooth, compactly supported function of λ, vanishing
+identically in a neighborhood of λ = 0. Then the corresponding φ is a smooth, finite energy
+solution of the Klein Gordon equation. Let us compute this energy. At t = 0 we have
+                  Z +∞                                 Z +∞
+                        +iµx            ∂φ                       1     1
+        φ(0, x) =      e     α(λ) dλ       (0, x) = −i      e+iµx (λ + )α(λ) dλ
+                   −∞                   ∂t              −∞       2     λ
+So we will apply Plancherel’s theorem, after the change of variable λ → µ. We must be
+careful that if λ is sent to µ, then λ′ = − λ1 , is too. Let λ1 > 0 and λ2 < 0 be the ones
+being sent to µ. Let us also define:
+                                       α(λ1 )                   α(λ2 )
+                             a(µ) = 1       1 ,       b(µ) = 1       1
+                                    2 (1 + λ2 )
+                                            1
+                                                             2 (1 + λ2 )
+                                                                      2
+
+Then:
+            Z +∞                                             Z +∞
+                   +iµx                     ∂φ                       1     1
+φ(0, x) =          e      (a(µ)+b(µ))dµ        (0, x) = −i      e+iµx (λ1 + )(a(µ)−b(µ))dµ
+            −∞                              ∂t               −∞      2     λ 1
+
+
+                                                  7
+                    Z +∞                     Z +∞
+                1               ∂ 22
+                       (|φ| + | φ| )dx =           |a(µ) + b(µ)|2 (1 + µ2 ) dµ
+               2π  −∞          ∂x             −∞
+                  Z +∞               Z +∞                             
+               1         ∂                                 1        1 2
+                       | φ|2 dx =         |a(µ) − b(µ)|2     (λ1 + )        dµ
+              2π −∞ ∂t                −∞                   2        λ1
+                                     2              2
+Observing that 1 + µ2 = 12 (λ1 + λ11 ) = 12 (λ2 + λ12 ) , this gives
+                                    Z +∞                                               
+                                                        1       1 2
+                                                                  2
+                 E(φ) = 2         (|a(µ)|                 (1 + 2 ) dµ + |b(µ)| )λ21
+                                                                                  2
+                             −∞                         2       λ1
+           Z ∞                                  Z 0                       
+                     2 2 1          1 3                     2 2 1         1 3
+        =2     |a(µ)| λ1     (1 + 2 )     dλ1 + 2     |b(µ)| λ2      (1 + 2 )  dλ2
+            0              2       λ1              −∞              2     λ2
+                   Z ∞                            Z 0
+                                1                             1
+               =2       |α(λ)|2 (1 + λ2 ) dλ + 2      |α(λ)|2 (1 + λ2 ) dλ
+                     0          2                  −∞         2
+                                                          Z +∞
+                                       E(φ) =                          |α(λ)|2 (1 + λ2 ) dλ                         (13)
+                                                              −∞
+
+
+   Let us now compute the energy on the future light cone. We write g(u) = φ(−u, u),
+p(v) = φ(+v, v). We have:                                     Z +∞
+                                              g(u) =                     e+iλu α(λ) dλ                              (14)
+                                                                  −∞
+Let α = α+ + α− be the decomposition of α as the sum of α+ , belonging to the Hardy
+space of the upper half-plane ℑ(λ) > 0 and of α− , belonging to the Hardy space of the
+lower half-plane. We have:
+                                       Z 0                                   Z +∞
+                                1
+                                                  |g(u)|2 du =                         |α+ (λ)|2 dλ                (15a)
+                               2π       −∞                                    −∞
+
+                                  1
+                                    R0    ′    2             ′
+We must be careful regarding 2π      −∞ |g (u)| du. We have g (u) 1u<0 (u) − g(0)δ(u) =
+R +∞ +iλu
+ −∞ e     iλα+ (λ) dλ as a distribution identity so
+                              Z 0                                     Z +∞
+                          1               ′           2                                       g(0) 2
+                                       |g (u)| du =                               λα+ (λ) +          dλ
+                         2π    −∞                                       −∞                    2πi
+                                  1
+                                                          R∞          tα(t) dt          g(0)
+On the other hand (tα(t))+ (λ) = 2πi                          −∞        t−λ = λα+ (λ) + 2πi so the formula is:
+                                    Z 0                                      Z +∞
+                               1                  ′           2
+                                              |g (u)| du =                            |(tα)+ (λ)|2 dλ              (15b)
+                              2π       −∞                                    −∞
+                        R +∞ +iλv
+Similarly, as p(v) =     −∞ e     α(− λ1 ) λ12 dλ, and defining β(λ) = α(− λ1 ) λ12 we obtain:
+                   Z ∞                                                   Z +∞
+               1                   2          ′           2
+                         (|p(v)| + |p (v)| )dv =                                  (|β− (λ)|2 + |(tβ)− (λ)|2 ) dλ
+              2π    0                                                        −∞
+
+
+                                                                         8
+                                                                       R +∞
+Now, from tβ(t) = 1t α( −1                               1     −1                     2
+                         t ) it is seen that (tβ)− (λ) = λ α− ( λ ), so −∞ |(tβ)− (λ)| dλ =
+R +∞        2                       1   −1
+                                                                        R +∞          2
+ −∞ |α− (λ)| dλ. And, as tα(t) = t β( t ) one has in a similar manner −∞ |(tα)+ (λ)| dλ =
+R +∞        2
+ −∞ |β+ (λ)| dλ. Combining, we get
+                     Z 0                                 Z ∞
+                 1                2     ′    2     1
+                         (|g(u)| + |g (u)| ) du +               (|p(v)|2 + |p′ (v)|2 )dv
+                2π    −∞                          2π       0
+                     Z +∞
+                =           (|α+ (λ)|2 + |β+ (λ)|2 + |β− (λ)|2 + |α− (λ)|2 ) dλ
+                      −∞
+
+and as the two Hardy spaces are mutually perpendicular in L2 (−∞, +∞; dλ) we finally
+obtain:                               Z +∞
+                                             |α(λ)|2 (1 + λ2 ) dλ
+                                       −∞
+as the energy on the future light cone.
+
+   So, with this, the theorem that E(φ) is entirely on the future light cone is proven for
+the φ’s corresponding to α’s which are smooth and compactly supported away from λ = 0.
+Obviously the Cauchy data for such φ’s is a dense subspace of the full initial data Hilbert
+                                                              R
+space. As energy is conserved as t → ∞, the fact that limt→∞ |x|>t E(φ)dx = 0 holds for
+all finite energy φ’s then follows by approximation. Furthermore we see that a finite energy
+solution is uniquely written as a wave packet:
+                Z +∞                               Z +∞
+                              1
+      φ(t, x) =       e+i(λu− λ v) α(λ) dλ  E(φ) =      (1 + λ2 )|α(λ)|2 dλ < ∞            (16)
+                 −∞                                            −∞
+
+At this stage Theorem 1 is established.
+
+   When studying the Klein-Gordon equation in the right wedge x > 0, |t| < x, we can
+arbitrarily extend the Cauchy data to x < 0. Setting it to 0 on x < 0, however, will be
+compatible with the finite energy condition only if φ(0, 0+ ) = 0. If this is the case then
+this choice makes g(u) vanish for u < 0 and p(v) vanish for v < 0, which is a Hardy space
+constraint on α, in fact it means that α belongs to the Hardy space of the lower half-plane.
+Another manner to extend the Cauchy data to x < 0 is to make it invariant under the P T
+                                                       R∞                ∂
+operation (t, x) → (−t, −x). This has the advantage, if 0 |φ(0, x)|2 + | ∂x φ(0, x)|2 dx < ∞,
+to produce Cauchy data of finite energy on the full line −∞ < x < ∞. The condition on α
+is to be even. We shall often use this convention when studying the Klein-Gordon equation
+in the right wedge.
+
+
+
+
+                                                   9
+3      Energy and momentum
+
+The momentum density P = − ∂φ ∂φ   ∂φ ∂φ
+                           ∂x ∂t − ∂x ∂t also satisfies a conservation law:
+                                                          !
+                                              2         2
+                     ∂      ∂             ∂φ        ∂φ
+                        P+       −|φ|2 +        +           =0
+                     ∂t     ∂x            ∂x         ∂t
+
+So                                        Z +∞                                 
+                                    1                     ∂φ ∂φ ∂φ ∂φ
+                              P =−                              +                   dx                     (17)
+                                   2π      −∞             ∂x ∂t   ∂x ∂t
+is also a conserved quantity. We have:
+                                          Z +∞                                      !
+                                    1                          2∂φ ∂φ 2
+                             E−P =                        |φ| +    +                     dx               (18a)
+                                   2π          −∞               ∂x   ∂t
+                                          Z +∞                                      !
+                                    1                            ∂φ ∂φ 2
+                             E+P =                        |φ|2 +    −                    dx               (18b)
+                                   2π          −∞                ∂x   ∂t
+
+Applying Gauss’ theorem to P we obtain for t > 0:
+Z                       Z 0                           2     Z t                      2
+                                           2d                               d
+          P(φ)(t, x)dx =    (−|φ(−x, x)| +    φ(−x, x) ) dx+ (|φ(x, x)|2 −    φ(x, x) ) dx
+    |x|≤t                −t                dx                0             dx
+
+The integral of |P| for |x| > t tends to zero for t → +∞ as it is bounded above by the one
+for E. So:
+                       Z 0                                              Z ∞
+                   1                 2         ′      1
+                                                      2
+              P =          (−|g(u)| + |g (u)| ) du +                          (|p(v)|2 − |p′ (v)|2 ) dv    (19)
+                  2π    −∞                           2π                 0
+
+with, again, g(u) = φ(−u, u), p(v) = φ(+v, v). Hence:
+                                         Z 0                            Z ∞
+                                     1                              1
+                         E−P =                     |g(u)|2 du +               |p′ (v)|2 dv                (20a)
+                                     π    −∞                        π    0
+                                         Z 0                            Z ∞
+                                     1                              1
+                         E+P =                     |g′ (u)|2 du +              |p(v)|2 dv                 (20b)
+                                     π    −∞                        π    0
+
+From (15a) and the similar formulas relative to p we can express all four integrals in terms
+of α(λ). Doing so we find after elementary steps:
+                         Z +∞                        Z +∞
+                                      2
+              E −P = 2          |α(λ)| dλ     E+P =2      λ2 |α(λ)|2 dλ                                    (21)
+                               −∞                                             −∞
+
+So:                                       Z +∞
+                                    P =              (λ2 − 1)|α(λ)|2 dλ                                    (22)
+                                           −∞
+
+
+
+                                                          10
+This confirms that a λ with |λ| ≥ 1 gives a “right-moving” component of the wave packet
+(its phase is constant for ωt − µx = C, ω = 12 (λ + λ1 ), µ = 21 (λ − λ1 ).) The values of λ
+with |λ| ≤ 1 give “left-moving” wave components. As a check, we can observe that it is
+impossible to have a purely right-moving packet with vanishing Cauchy data for t = 0,
+x < 0, because as we saw above, for such Cauchy data α has to belong to the Hardy space
+of the lower half-plane and can thus (by a theorem of Wiener) not vanish identically on
+(−1, 1). A purely right-moving packet starting entirely on x > 0 would have a hard time
+hitting the light cone, and this would emperil Theorem 1. Such wave-packets exist for
+the zero-mass equation, one way of reading Theorem 1 is to say that they don’t exist for
+non-vanishing real mass.
+
+    Let us consider the effect of a Lorentz boost on E and P . We take Λ = eξ (ξ ∈ R) and
+replace φ by:
+
+                  φΛ (t, x) = φ(cosh(ξ)t + sinh(ξ)x, sinh(ξ)t + cosh(ξ)x)                (23a)
+                                                  1
+                                    φΛ [u, v] = φ[ u, Λv]                                (23b)
+                                                  Λ
+                                               1
+                       gΛ (u) = φΛ [u, 0] = g( u)      pΛ (v) = p(Λv)                    (23c)
+                                               Λ
+                                 α(λ) 7→ αΛ (λ) = Λα(Λλ)                                 (23d)
+                                                                 1
+                  EΛ − PΛ = Λ · (E − P )            EΛ + PΛ = (E + P )                   (23e)
+                                                                 Λ
+                                EΛ = cosh(ξ)E − sinh(ξ)P                                 (23f)
+                                PΛ = − sinh(ξ)E + cosh(ξ)P                               (23g)
+
+
+    So the conserved quantities E and P are not Lorentz invariant but the Einstein rest
+mass squared E 2 − P 2 is.
+
+
+
+4    Scale reversing operators
+
+We begin the proof of Theorem 2. Let us consider the manner in which the function
+g(u) for u > 0 is related to the function p(v) > 0. We know that they are in unitary
+                              R                      R
+correspondence for the norms u>0 |g|2 + |g′ |2 du and v>0 |p|2 + |p′ |2 dv, and the formulas
+(20a) for E − P and E + P suggest that one should pair g with p′ and g′ with p. In fact if we
+take into consideration the wave which has values φ(t, x) = e−|x| for space-like points, we
+are rather led to pair g with −p′ and g ′ with −p (the values of φ at time-like points are more
+
+
+                                              11
+involved and we don’t need to know about them here; suffice it to say that certainly e−x
+solves Klein-Gordon, so it gives the unique solution in the right wedge with φ(0, x) = e−x ,
+∂φ
+∂t (0, x) = 0.)
+
+
+   Let us denote by H the operator which acts as g 7→ −p′ , on even g’s. Under a Lorentz
+boost: g 7→ gΛ (u) = g( Λ1 u), −p′ 7→ −Λp′ (Λv) and also the assignment g 7→ −p′ is unitary
+for the L2 norm:
+                           Z +∞                                 Z +∞
+                                  iuλ                                      1 1
+                  g(u) =          e       α(λ) dλ      p(v) =      eiλv α(− ) 2 dλ
+                           −∞                                   −∞         λ λ
+                                                    Z +∞
+                                      ′                        1 1
+                                −p (v) = −i            eiλv α(− ) dλ
+                                                    −∞         λ λ
+Going from g to α is unitary, from α to −iα(− λ1 ) λ1 also, and back to −p′ also, in the various
+L2 norms. So the assignment from g to −p′ is unitary.
+
+   Identifiying the L2 space on u > 0 with the L2 space on v > 0, through v = u, H is
+a unitary operator on L2 (0, +∞; du). Furthermore it is “scale reversing”: we say that an
+operator K (bounded, more generally, closed) is scale reversing if its composition KI with
+                                                                            √
+I : g(u) 7→ g(1/u)
+               u   commutes with the unitary group of scale changes g 7→ Λg(Λu). The
+                            R∞
+                      g(s) = 0 g(u)u−s du, for s = 12 + iτ , τ ∈ R, is the additive Fourier
+Mellin transform g 7→ b
+transform of et/2 g(et ) ∈ L2 (−∞, +∞; dt). The operator KI commutes with multiplicative
+translations hence is diagonalized by the Mellin transform: we have a certain (bounded
+for K bounded) measurable function χ on the critical line ℜ(s) = 12 such that for any
+g(u) ∈ L2 (0, ∞; du), and almost everywhere on the critical line:
+
+                   (Kg)∧ (s) = (KI(Ig))∧ (s) = χ(s)(Ig)∧ (s) = χ(s)b
+                                                                   g (1 − s)
+
+Let us imagine for a minute that we know a g which is invariant under K and which,
+furthermore has b
+                g(s) almost everywhere non vanishing (by a theorem of Wiener, this means
+exactly that the linear span of its orbit under the unitary group of scale changes is dense in
+L2 ). Then we know χ(s) hence, we know K. So K is uniquely determined by the knowledge
+of one such invariant function.
+
+   In the case of our operator H which goes from the data of g(u), u > 0, to the data of
+k(v) = −p′ (v), v > 0, where g and p are the boundary values of a finite energy solution
+of the Klein-Gordon equation in the right wedge, we know that it is indeed unitary, scale
+reversing, and has e−u as a self-reciprocal function (so, here, χ(s) = Γ(1−s)
+                                                                        Γ(s) ).
+
+
+                                                      12
+   On the other hand the Hankel transform of order zero is unitary, scale reversing, and has
+√     2                                                                             √          2
+  ue−u /2 as self-reciprocal invariant function. So we find that the assignment of − v k ′ ( v2 )
+   √      2
+to u g( u2 ) is exactly the Hankel transform of order zero. This may also be proven directly
+by the method we will employ in section 7.
+
+
+
+5    Causality and support conditions
+
+The Theorem 2 is almost entirely proven: if the Cauchy data vanishes identically for 0 <
+x < 2a, then by unicity and causal propagation, g(u) = φ(−u, u) vanishes identically for
+0 < u < a and p(v) = φ(+v, v) vanishes identically for 0 < v < a. Conversely, if A and
+                                                     √
+B from Theorem 2 vanish identically for 0 < r, s < 2a, then g(u) and −p′ (v) vanish
+identically for 0 < u < a and 0 < v < a. We explained in the introduction that p itself
+                                                       RR
+also vanishes identically for 0 < v < a. Then φ[u, v] = 0≤r≤u φ[r, s] drds for 0 ≤ u ≤ a,
+                                                               0≤s≤v
+0 ≤ v ≤ a, hence φ vanishes identically in this range, and the Cauchy data for φ at t = 0,
+0 < x < 2a, vanishes identically. The proof of Theorem 2 (hence also in its equivalent form
+3) is complete.
+
+    We would like also to relax the finite energy condition on φ. Let us imagine that our
+g, say even, is only supposed L2 . It has an L2 Fourier transform α such that g(u) =
+R +∞ +iuλ
+ −∞ e     α(λ) dλ. Let us approximate α by an L2 converging sequence of αn ’s, corre-
+sponding to finite energy Klein-Gordon solutions φn . We have by (18a) and (21):
+       Z +∞                                              !        Z +∞
+     1                   2    ∂(φn − φm ) ∂(φn − φm ) 2
+               |φn − φm | +              +                 dx = 2       |αn − αm |2 dλ
+    2π −∞                         ∂x            ∂t                 −∞
+
+So the φn converge for t = 0 in the L2 sense, and also the ∂φ   ∂φn
+                                                            ∂x + ∂t . We can then consider,
+                                                              n
+
+
+as is known to exist, the distribution solution φ with this Cauchy data.
+
+    Let us suppose that we start from an even g which, together with its H transform,
+vanish in (0, a). First we show that we can find, with 0 < bn < 1, bn → 1, a sequence of
+gn ’s, such that gn′ is in L2 , and gn → g in L2 , with the gn ’s satisfying the support condition
+for (0, bn a). We obtain such gn by multiplicative convolution of g with a test function
+supported in (bn , b1n ). At the level of Mellin transforms, this multiplies by a Schwartz
+                d                                                      d
+function. As u du corresponds to multiplication by −s certainly the u du of our gn ’s are
+                  d
+in L2 . But then du gn itself is in L2 as we know that it vanishes in (0, bn a). And its H
+transform also vanishes there.
+
+
+                                               13
+    So the corresponding φn ’s will have for t = 0 vanishing Cauchy data in intervals only
+arbitrarily slightly smaller than (0, 2a). The L2 functions φ(0, x) and ( ∂φ   ∂φ
+                                                                          ∂x + ∂t )(0, x) will
+thus vanish identically, in (0, 2a). Conversely if we have two L2 functions L and M vanishing
+in (0, 2a) we can approximate then by Schwartz functions Ln and Mn vanishing in (0, bn 2a)
+(0 < bn < 1, bn → 1), solve the Cauchy problem with data φ = Ln and ∂φ   ∂φ
+                                                                    ∂x + ∂t = Mn at
+t = 0, consider the corresponding gn ’s which vanish identically for 0 < u < bn a and get an
+L2 limit g vanishing identically in (0, a). The H transform of g will be the limit in L2 of
+the H transforms of the gn , so it will also vanish in (0, a).
+
+    In conclusion the space-time representation of Hankel pairs with support condition as
+given in Theorem 2 extends to the general case of L2 Hankel pairs if one allows Klein-
+Gordon solutions of possibly infinite energy but such that φ(0, x) and ∂φ          ∂φ
+                                                                       ∂x (0, x) + ∂t (0, x)
+are in L2 .
+
+
+
+6    The Dirac system and its associated scattering
+
+We return to finite energy solutions which are associated to functions α verifying the con-
+      R +∞                                                        h i
+dition −∞ (1 + λ2 )|α(λ)|2 dλ < ∞. Let us consider in fact a pair ψφ of such finite energy
+solutions satisfying the first order system:
+
+
+
+                              ∂ψ ∂ψ                     ∂ψ
+                                 −    = +φ                 = −φ                         (24a)
+                              ∂t   ∂x                   ∂u
+                              ∂φ ∂φ                     ∂φ
+                                 +    = −ψ                 = −ψ                         (24b)
+                              ∂t   ∂x                   ∂v
+
+
+   If α corresponds to φ and β corresponds to ψ, then there is the relation: α(λ) = −iλβ(λ)
+                  R +∞
+so we must have −∞ λ12 |α(λ)|2 dλ < ∞. To enact a Lorentz boost we could imagine
+replacing φ and ψ by
+
+                 φ(cosh(ξ)t + sinh(ξ)x, sinh(ξ)t + cosh(ξ)x) = φ[e−ξ u, eξ v]
+
+                 ψ(cosh(ξ)t + sinh(ξ)x, sinh(ξ)t + cosh(ξ)x) = ψ[e−ξ u, eξ v]
+
+but this does not give a solution of the Dirac type system (24). To obtain a solution we
+
+
+
+
+                                               14
+must rescale φ, or ψ, or both. We choose:2
+
+                     φξ [u, v] = e−ξ/2 φ[e−ξ u, eξ v]              ψξ [u, v] = eξ/2 ψ[e−ξ u, eξ v]      (25)
+
+In other words, if we want to consider our φ as a component of such a system we must
+cease treating it as a scalar. It is a (spinorial) quantity which transforms as indicated
+under a Lorentz boost. We note further that with this modification both E(φ) − P (φ) and
+                                                                                1
+                                                                                  R +∞ 2
+E(ψ) + P (ψ) are Lorentz invariant. In fact they are identical: E(φ) − P (φ) = 2π  −∞ |φ| +
+ ∂φ   ∂φ
+         2
+                                1
+                                  R +∞     2    ∂ψ    ∂ψ
+                                                         2
+ ∂x + ∂t   dx, E(ψ) + P (ψ) = 2π    −∞ |ψ| + ∂x − ∂t        dx, hence:
+                                                               Z +∞
+                                              1                                                 
+               E(φ) − P (φ) = E(ψ) + P (ψ) =                             |φ(0, x)|2 + |ψ(0, x)|2 dx     (26)
+                                             2π                    −∞
+
+
+      We again focus on what happens in the right wedge. Thus, we can as well take φ to be
+P T invariant. But then as ψ = − ∂φ
+                                 ∂v , ψ must acquire a sign under the P T transformation:
+ψ(−x, −t) = −ψ(x, t). So the function g(u) = φ(−u, u) = φ[u, 0] is even but the function
+k(v) = ψ(v, v) = ψ[0, v] is odd. In fact k(v) = −p′ (v) with our former notation. So we
+know that the P T invariant φ is uniquely determined by g(u) for u > 0 which gives under
+the H transform the function k(v) for v > 0 which must be considered odd and correspond
+to the P T anti-invariant ψ. We note that if k(0+ ) 6= 0 then this ψ is not of finite energy.
+Using only that φ is finite energy, we have from equation (20a):
+                                       Z                 Z
+                                     1 0                1 ∞
+                     E(φ) − P (φ) =        |g(u)|2 du +      |k(v)|2 dv
+                                     π −∞               π 0
+   Z +∞                                                  Z                 Z
+ 1                 2            2
+                                                       1 ∞         2     1 ∞
+          |φ(0, x)| + |ψ(0, x)| dx = E(φ) − P (φ) =           |g(u)| du +     |k(v)|2 dv
+2π −∞                                                   π 0               π 0
+
+                           Z ∞                                               Z ∞
+                                                         
+                                  |φ(0, x)|2 + |ψ(0, x)|2 dx = 2                   |g(u)|2 du          (27a)
+                            0                                                0
+                           Z ∞                                               Z ∞
+                                            2              2
+                                                               
+                                  |φ(0, x)| + |ψ(0, x)|             dx = 2         |k(v)|2 dv          (27b)
+                            0                                                0
+
+                                                          R∞
+   We now begin the proof of Theorem 4. To prove that 0 |F (x)|2 + |G(x)|2 dx =
+ R∞               R∞
+2 0 |g(u)|2 du = 2 0 |k(v)|2 dv, we extend F to be even and G to be odd. Then φ is
+P T even of finite energy, and ψ is P T odd and equations (27a) and (27b) apply. Note
+that if G(0+ ) 6= 0 then ψ is not of finite energy but only the fact that φ is of finite en-
+                                                         R∞
+ergy was used for (27a) and (27b). That k = H(g) and 0 |g(u)|2 + |g′ (u)|2 du < ∞ hold
+  2
+      this conflicts with our previous notation φΛ [u, v] = φ[ Λ1 u, Λv]; no confusion should arise.
+
+
+                                                         15
+are among our previous results. If we choose G to be even and F to be odd, then it is
+                                    R∞
+ψ which is of finite energy and so 0 |k(v)|2 + |k′ (v)|2 dv < ∞ holds true. We can also
+      R∞                         R∞
+prove 0 |g|2 + |g ′ |2 du < ∞, 0 |k|2 + |k′ |2 dv < ∞ after extending F and G such that
+R∞      2    ′ 2        2    ′ 2
+ −∞ |F | + |F | + |G| + |G | dx < ∞ so that both φ and ψ are then of finite energy. The
+boundary values g(u), u > 0, and k(v), v > 0 do not depend on choices. Furthermore
+the vanishing of F and G on (0, 2a) at t = 0 is equivalent by our previous arguments to
+                                                                   R∞
+the vanishing of g and k on (0, a). To show that all H pairs with 0 |g|2 + |g′ |2 du < ∞,
+R∞ 2       ′ 2                                                                      + −v
+ 0 |k| +|k | dv < ∞ are obtained, let k1 be the odd function with k1 (v) = k(v)−k(0 )e
+for v > 0 and let g1 be the even function with g1 (u) = g(u) − k(0+ )e−u for u ≥ 0. Then
+                 R∞                           R∞
+k1 = H(g1 ) and −∞ |g1 |2 + |g1′ |2 du < ∞ and −∞ |k1 |2 + |k1′ |2 dv < ∞. They thus corre-
+spond to φ1 and ψ1 both of finite energy. We define for x > 0: F (x) = φ1 (0, x) + k(0+ )e−x
+                                                     R∞
+and G(x) = ψ1 (0, x) + k(0+ )e−x , it then holds that 0 |F |2 + |F ′ |2 + |G|2 + |G′ |2 dx < ∞
+    h i h                 i
+             ψ +k(0+ )e−x
+and ψφ = φ1+k(0+ )e−x is the unique solution in the Rindler wedge of the Dirac system
+              1
+                    
+with Cauchy data G  F on x > 0, t = 0, and it has g(u) and k(v) as boundary values. To
+complete the proof of Theorem 4 there only remains to show the formulas relating F , G,
+g, and k and this will be done in the next section.
+
+   On the Hilbert space L2 (0, ∞; dx) ⊕ L2 (0, ∞; dx) of the pairs (F, G), we can define a
+unitary group U (ξ), −∞ < ξ < ∞, as follows: we define its action at first for (F, G) with
+                   h i
+F ′ , G′ ∈ L2 . Let ψφ be the solution of first order system (24) such that φ(0, x) = F (x),
+ψ(0, x) = G(x). Then we take:
+
+                              U (ξ)(F, G) = ( φ−ξ |t=0 , ψ−ξ |t=0 )                      (28)
+
+where (25) has been used. As ξ increases from −∞ to +∞ this has the effect of transporting
+φ and ψ forward along the Lorentz boosts trajectories. We can also implement U (ξ) as a
+unitary group acting on the L2 space of the g(u) = φ(−u, u) functions, or on the space of
+the k(v) = ψ(v, v) functions. We then have, taking into account (25) (and −ξ):
+                                  ξ                             ξ
+                       gξ (u) = e 2 g(eξ u)         kξ (v) = e− 2 k(e−ξ v)               (29)
+
+
+   Following the terminology of Lax-Phillips [12] (the change of variable u → log(u)
+would reduce to the additive language of [12]) we shall say that (F, G) 7→ I(g) pro-
+vides an incoming (multiplicative) translation representation (U (ξ) moves the graph of
+ey/2 I(g)(ey ) = e−y/2 g(e−y ) to the right by an amount of additive time ξ) and (F, G) 7→ k
+is an outgoing translation representation. We use (Ig)(u) = u1 g( u1 ) as it is translated by
+
+
+                                               16
+U (ξ) in the same direction as k. The assignment Ig → k will be called the “scattering
+matrix” S (it is canonical only up to a translation in “time”, which means here only up
+to a scale change in u). With our previous notation it is S = HI. Let us give a “spec-
+tral” representation of S. For this we represent g as a superposition of (multiplicative)
+                    1
+                      R                                    R∞
+harmonics, g(u) = 2π            b(s)us−1 |ds|, with gb(s) = 0 g(u) u−s du, s = 21 + iτ . Then
+                        ℜ(s)= 1 g
+                              2
+the unitary operator S will be represented as multiplication by a unit modulus function
+χ(s). Multiplication by χ(s) must send the Mellin transform Γ(s) of I(e−u ) to the Mellin
+transform Γ(1 − s) of e−u , in other words:
+                                                 Γ(1 − s)
+                                        χ(s) =                                                (30)
+                                                   Γ(s)
+We thus see that the first order system in the wedge of two dimensional space-time provides
+an interpretation of this function (for ℜ(s) = 12 ) as a scattering matrix. To obtain the
+Hankel transform of order zero, and not its succédané H, one writes s = 41 + w2 , where again
+ℜ(w) = 12 . In fact, with our normalizations, the scattering matrix corresponding to the
+                         R∞√                                      1    Γ( 3 − w )
+tranform g(t) 7→ f (u) = 0     utJ0 (ut)g(t) dt is the function 2 2 −w Γ( 14 + w2 ) on the critical
+                                                                            4   2
+line ℜ(w) = 12 .
+
+
+
+7     Application of Riemann’s method
+
+The completion of the proof of Theorem 4 will now be provided. I need to briefly review
+Riemann’s method ([10, IV§1], [6, VI§5]), although it is such a classical thing, as I will
+use it in a special manner later. In the case of the (self-adjoint) Klein-Gordon equation
+ ∂2φ        2   2
+∂u∂v = +φ, t − x = 4(−u)v, Riemann’s method combines:
+
+
+
+    1. whenever φ and ψ are two solutions, the differential form ω = φ ∂ψ        ∂φ
+                                                                       ∂u du + ψ ∂v dv is
+      closed,
+
+    2. it is advantageous to use either for φ or for ψ the special solution (Riemann’s func-
+      tion) R(P, Q) which reduces to the constant value 1 on each of characteristics issued
+      from a given point P . Here R(P, Q) = R(P − Q, 0) = R(Q − P, 0), R((t, x), 0) =
+          √                 √
+      J0 ( t2 − x2 ) = J0 (2 −uv).
+
+
+    Usually one uses Riemann’s method to solve for φ when its Cauchy data is given on a
+curve transversal to the characteristics. But one can also use it when the data is on the
+
+
+                                                 17
+characteristics (Goursat problem). Also, one usually symmetrizes the formulas obtained in
+                                                 ∂φ
+combining the information from using φ ∂R
+                                       ∂u du + R ∂v dv with the information from using
+R ∂φ        ∂R
+  ∂u du + φ ∂v dv. For our goal it will be better not to symmetrize in this manner. Let
+us recall as a warming-up how one can use Riemann’s method to find φ(t, x) for t > 0
+when φ and ∂φ
+           ∂t are known for t = 0. Let P = (t, x), A = (0, x − t), B = (0, x + t), and
+R(Q) = R(P − Q).
+                     Z               Z                                  Z          Z         Z
+                        ∂φ                 ∂φ      ∂R
+     φ(P ) − φ(A) =        dv =           R dv + φ    du =                     +         =
+                    A→P ∂v            A→P  ∂v      ∂u                    A→B       B→P           A→B
+Hence:                                       Z
+                                                            ∂φ    ∂R dx
+                          φ(P ) = φ(A) +               (R      +φ   )
+                                          A→B               ∂v    ∂u 2
+        ∂φ        ∂R
+Using R ∂u du + φ ∂v dv we get in the same manner:
+                                              Z
+                                                            ∂φ    ∂R dx
+                          φ(P ) = φ(B) −               (R      +φ   )                                  (31)
+                                                 A→B        ∂u    ∂v 2
+After averaging:                                       Z
+                               φ(A) + φ(B) 1                      ∂φ    ∂R
+                     φ(P ) =              +                  (R      −φ    )dx
+                                    2       2          A→B        ∂t    ∂t
+This gives the classical formula (t > 0):
+                                                  Z x+t    p
+               φ(0, x − t) + φ(0, x + t) 1             J1 ( t2 − (x − x′ )2 )
+     φ(t, x) =                          −             t p                     φ(0, x′ )dx′
+                           2              2      x−t         2         ′
+                                                            t − (x − x )  2
+                                                Z x+t                                                  (32)
+                                              1           p                 ∂φ
+                                            +         J0 ( t2 − (x − x′ )2 ) (0, x′ )dx′
+                                              2 x−t                         ∂t
+
+I have not tried to use it to establish theorem 1. Anyway, when φ, ∂φ   ∂φ
+                                                                   ∂x , ∂t all belong to L
+                                                                                           2
+
+at t = 0, this formula shows that φ(P ) is continuous in P for t > 0. Replacing t = 0 with
+t = −T , we find that φ is continuous on spacetime.
+
+   Let us now consider the problem, with the notations of Theorem 4, of determining
+k(v) = ψ(v, v) for v > 0 when F (x) = φ(0, x) = − ∂ψ                               ∂φ
+                                                  ∂u (0, x) and G(x) = ψ(0, x) = − ∂v (0, x)
+are known for x > 0. We use P = (v0 , v0 ), A = (0, 0), B = (0, 2v0 ). We then have:
+               p                               p                              p
+ R(t, x) = J0 ( (v0 − t)2 − (v0 − x)2 ) = J0 (2 u(v0 − v))      R(0, x) = J0 ( x(2v0 − x))
+                          p                                    p
+               ∂R    J1 (2 u(v0 − v))          ∂R          J1 ( x(2v0 − x))
+                  =      p              2u        (0, x) = p                 x
+               ∂v      2 u(v0 − v)             ∂v               x(2v0 − x)
+
+   Hence, using (31) (for ψ):
+                        Z                                  p
+                      1 2v        p                    J1 ( x(2v0 − x))
+   ψ(v, v) = G(2v) +         (J0 ( x(2v0 − x))F (x) − x p               G(x)) dx                       (33)
+                      2 0                                   x(2v0 − x)
+
+                                                  18
+   We then consider the converse problem of expressing G(x) = ψ(0, x) in terms of k(v) =
+ψ(v, v). We choose x0 > 0, and consider the rectangle with vertices P = ( 21 x0 , 12 x0 ),
+Q = (0, x0 ), Q′ = (X, X + x0 ), P ′ = (X + 12 x0 , X + 21 x0 ) for X ≫ 0. We take Riemann’s
+function S to be 1 on the edges P → Q and Q → Q′ . We then write:
+                                   Z              Z
+                                          ∂ψ                ∂ψ        ∂S
+                ψ(Q) − ψ(P ) =               du =        (S    du + ψ      dv)
+                                     P →Q ∂u        P →Q    ∂u        ∂v
+                Z          Z          Z       Z                 Z
+                                                        ∂S                 ∂ψ
+             =           +         +        =         ψ    dv +          S     du
+                  P →P ′     ′
+                            P →Q ′      ′
+                                       Q →Q    P →P ′   ∂v         ′
+                                                                  P →Q ′   ∂u
+                                              Z                      Z
+                                x0 x0                      ∂S
+                     G(x0 ) = ψ( , ) +                   ψ    dv −              Sφ du               (34)
+                                2 2               P →P ′   ∂v         P ′ →Q′
+
+Now, |S| ≤ 1 on the segment leading from P ′ to Q′ , so we can bound the last integral,
+using Cauchy-Schwarz, then the energy integral, and finally the theorem 1. So this term
+goes to 0. On the light cone half line from P to ∞ we have:
+                                                          p
+                            p                  ∂S     J1 ( x0 (2v − x0 ))
+              S(v, v) = J0 ( x0 (2v − x0 ))       =− p                    x0
+                                               ∂v          x0 (2v − x0 )
+
+                                         Z ∞           p
+                               x0 x0               J1 ( x0 (2v − x0 ))
+                    G(x0 ) = ψ( , ) −                p                 x0 ψ(v, v) dv                (35)
+                               2 2           x0 /2      x0 (2v − x0 )
+
+   Our last task is to obtain the formula for F (x0 ). We use the same rectangle and same
+function S.
+                Z                Z                               Z                        Z
+                       ∂φ                    ∂φ     ∂S                             ∂S              ∂φ
+φ(Q)−φ(Q′ ) =             dv =           S      dv+φ du =                      φ      du+         S dv+0
+                 Q′ →Q ∂v        Q′ →Q       ∂v     ∂u               Q′ →P ′       ∂u      P ′ →P  ∂v
+
+On the segment Q′ → P ′ we integrate by parts to get:
+                Z                                        Z
+                         ∂S                                      ∂φ
+                        φ du = φ(P ′ )S(P ′ ) − φ(Q′ ) −            S du
+                  ′
+                 Q →P ′  ∂u                                Q →P ∂u
+                                                            ′  ′
+
+                                                             R
+Again we can bound S by 1 and apply Cauchy-Schwarz to Q′ →P ′ ∂φ     ∂u S du. Then we observe
+    R          ∂φ 2
+that Q′ →P ′ | ∂u | |du| is bounded above by the energy integral, which itself is bounded above
+by the energy integral on the horizontal line having P ′ as its left end. By Theorem 1 this
+goes to 0. And regarding φ(P ′ ) one has limv→+∞ φ(v, v) = 0 as φ(v, v) and its derivative
+belong to L2 (0, +∞; dv). We cancel the φ(Q′ )’s on both sides of our equations and obtain:
+                              Z                       Z
+                                          ∂φ
+                     φ(Q) = −            S dv = +                Sψdv
+                               P →(∞,∞) ∂v              P →(∞,∞)
+
+
+
+                                                    19
+Hence                                Z ∞         p
+                         F (x0 ) =           J0 ( x0 (2v − x0 ))ψ(v, v) dv                 (36)
+                                     x0 /2
+
+
+     In conclusion: the functions F (x) = φ(0, x), G(x) = ψ(0, x), and k(v) = ψ(v, v) of
+Theorem 4 are related by the following formulas:
+         Z ∞     p
+ F (x) =     J0 ( x(2v − x))k(v) dv                                                       (37a)
+           x/2
+                  Z ∞       p
+          x             J1 ( x(2v − x))
+ G(x) = k( ) −         x p              k(v) dv                                 (37b)
+          2        x/2       x(2v − x)
+                     Z                              Z       p
+                   1 2v      p                     1 2v J1 ( x(2v − x))
+    k(v) = G(2v) +       J0 ( x(2v − x))F (x) dx −     x p              G(x) dx (37c)
+                   2 0                             2 0       x(2v − x)
+Exchanging F and G is like applying a time reversal so it corresponds exactly to exchanging
+k(v) = ψ(v, v) with g(u) = φ(−u, u). So the proof of Theorem 4 is complete.
+
+
+
+8     Conformal coordinates and concluding remarks
+
+The Rindler coordinates (ξ, η) in the right wedge are defined by the equations x = η cosh ξ,
+t = η sinh ξ. Let us use the conformal coordinate system:
+                      1     x+t                     1                             η
+                 ξ=     log                    ζ=     log(x2 − t2 ) − log 2 = log
+                      2     x−t                     2                             2
+where −∞ < ξ < +∞, −∞ < ζ < +∞. The variable ξ plays the rôle of time for our
+scattering. The reason for − log 2 in ζ is the following: at t = 0 this gives eζ = 12 x = u = v.
+The differential equations we shall write are related to the understanding of the vanishing
+condition for an H pair on an interval (0, a). And a = 21 (2a) hence the − log 2 (to have
+equations identical with those in [5].) The Klein-Gordon equation becomes:
+
+                                     ∂2φ ∂2φ
+                                          − 2 + 4e2ζ φ = 0                                 (38)
+                                     ∂ξ 2  ∂ζ
+
+If we now look for “eigenfunctions”, oscillating harmonically in time, φ = e−iγξ Φ(ζ), γ ∈ R,
+we obtain a Schrödinger eigenvalue equation:
+
+                                −Φ′′ (ζ) + 4e2ζ Φ(ζ) = γ 2 Φ(ζ)                            (39)
+
+This Schrödinger operator has a potential function which can be conceived of as acting as
+a repulsive exponential barrier for the de Broglie wave function of a quantum mechanical
+
+
+                                                  20
+particle coming from −∞ and being ultimately bounced back to −∞. The solutions of (39)
+are the modified Bessel functions ([18]) of imaginary argument iγ in the variable 2eζ . For
+each γ ∈ C the unique (up to a constant factor) solution of (39) which is square integrable
+at +∞ is Kiγ (2eζ ).
+
+   From Theorem 4 it is more convenient to express the H transform as a scattering for
+                                                                        h i
+the two-component, “Dirac”, differential system. The spinorial nature of ψφ leads under
+                                                  ζ    ξ                         ζ   ξ
+the change of coordinates (t, x) 7→ (ξ, ζ) to e 2 e− 2 φ rather than φ, and to e 2 e+ 2 ψ rather
+than ψ. In order to get quantities which, in the past at ξ → −∞, look like φ and, in the
+future at ξ → +∞, look like ψ we consider the linear combinations:
+                                       1 ζ        ξ       ξ
+                                    A=   e 2 (+e− 2 φ + e 2 ψ)                            (40a)
+                                       2
+                                       i ζ        ξ       ξ
+                                    B = e 2 (−e− 2 φ + e 2 ψ)                             (40b)
+                                       2
+Their differential system is:
+                                                       
+                                       ∂A      ∂      ζ
+                                    +i    =+      − 2e B                                  (41a)
+                                       ∂ξ      ∂ζ
+                                                       
+                                       ∂B      ∂      ζ
+                                    +i    =−      + 2e A                                  (41b)
+                                       ∂ξ      ∂ζ
+
+Or, if we look for solutions oscillating in time as e−iγξ :
+                                                 
+                                          ∂     ζ
+                                            − 2e B = γA                                   (42a)
+                                         ∂ζ
+                                                 
+                                         ∂      ζ
+                                      −     − 2e A = γB                                   (42b)
+                                         ∂ζ
+
+and this gives Schrödinger equations:
+
+                                 ∂2A
+                                −     + (4e2ζ − 2eζ )A = γ 2 A                            (43a)
+                                 ∂ζ 2
+                                 ∂2B
+                                − 2 + (4e2ζ + 2eζ )B = γ 2 B                              (43b)
+                                  ∂ζ
+So we have two exponential barriers, and two associated “scattering functions” giving the
+induced phase shifts. From our previous discussion of the scattering in the Lax-Phillips
+formalism we can expect from equation (30) that a formalism of Jost functions will confirm
+these functions to be
+                                         Γ( 12 − iγ)
+                                S(γ) =                     (γ ∈ R) ,                       (44)
+                                         Γ( 12 + iγ)
+
+
+
+                                                21
+for the equation associated with A and −S(γ) for the equation associated with B. And
+                    h i
+                     A
+indeed the solution Bγγ of the system (42) which is square-integrable at +∞ is given by
+the formula
+                           " ζ                          #
+                    Aγ (ζ)     e 2 Ks (2eζ ) + K1−s (2eζ )            1
+                            =     ζ                           (s =     + iγ)           (45)
+                    Bγ (ζ)    i e 2 Ks (2eζ ) − K1−s (2eζ )           2
+
+Let jγ (ζ) be the solution of (43a) which satisfies the Jost condition jγ (ζ) ∼ e−iγζ as
+ζ → −∞. Then the exact relation holds (a detailed treatment is given in [5]):
+                            1                                         1
+                Aγ (ζ) =      (Γ(s)jγ (ζ) + Γ(1 − s)j−γ (ζ))   (s =     + iγ)           (46)
+                            2                                         2
+We interpret this as saying that the A-wave comes from −∞ and is bounced back with a
+                                                Γ( 1 −iγ)
+phase-shift which at frequency γ equals arg Γ( 12 +iγ) = arg S(γ). For the B equation one
+                                                    2
+obtains −S(γ) as the phase shift function.
+
+   We have associated in [4] Schrödinger equations to the cosine and sine kernels whose
+potential functions also have exponential vanishing at −∞ and exponential increase at
++∞, and whose associated scattering functions are the functions arising in the functional
+equations of the Riemann and Dirichlet L-functions. The equations (13a), (13b) of [4]
+are analogous to (40a), (40b) above, and (14a), (14b) of [4] are analogous to (42a) and
+(42b) above. The analogy is no accident. The reasoning of [4] leading to the consideration
+of Fredholm determinants when trying to understand self- and skew-reciprocal functions
+under a scale reversing operator on L2 (0, +∞; dx) is quite general. The (very simple)
+potential functions in the equations (43a) and (43b) can be written in terms of Fredholm
+determinants associated with the H transform. The detailed treatment is given in [5].
+
+   The function S(γ) arises in number theoretical functional equations (for the Dedekind
+zeta functions of imaginary quadratic fields). We don’t know if its interpretation obtained
+here in terms of the Klein-Gordon equation may lead us to legitimately hope for number
+theoretical applications. An interesting physical context where S(γ) has appeared is the
+method of angular quantization in integrable quantum field theory [13, App. B]. And, of
+course the group of Lorentz boosts and the Rindler wedge are connected by the Bisognano-
+Wichman theorem [1, 2, 7].
+
+   The potentials associated in [4] to the cosine and sine kernels are, contrarily to the
+simple-minded potentials obtained here, mainly known through their expressions as Fred-
+holm determinants, and these are intimately related to the Fredholm determinant of the
+
+
+                                               22
+Dirichlet kernel, which has been found to be so important in random matrix theory. It
+is thus legitimately considered an important problem to try to acquire for the cosine and
+sine kernels the kind of understanding which has been achieved here for the H transform.
+Will it prove possible to achieve this on (a subset, with suitable conformal coordinates) of
+(possibly higher dimensional) Minkowski space?
+
+   We feel that some kind of non-linearity should be at work. A tantalizing thought
+presents itself: perhaps the kind of understanding of the Fourier transform which is hoped
+for will arise from the study of the causal propagation and scattering of (quantum mechan-
+ical?) waves on a certain curved Einsteinian spacetime.
+
+
+
+References
+
+ [1] J. J. Bisognano, E. H. Wichman, On the duality condition for a hermitian scalar
+     field, J. Math. Phys. 16 (1975) 985–1007.
+ [2] J. J. Bisognano, E. H. Wichman, On the duality condition for quantum fields,
+     Jour. Math. Phys. 17 (1976), 303–321.
+ [3] L. de Branges, Self-reciprocal functions, J. Math. Anal. Appl. 9 (1964) 433–457.
+ [4] J.-F. Burnol, Des équations de Dirac et de Schrödinger pour la transformation de
+     Fourier, C. R. Acad. Sci. Paris, Ser. I 336 (2003), 919–924.
+
+ [5] J-F. Burnol, Scattering, determinants, hyperfunctions in relation to Γ(1−s)
+                                                                           Γ(s) , Feb.
+     2006, 63 pages, arXiv:math.NT/0602425
+ [6] R. Courant, D. Hilbert, Methods of Mathematical Physics, II, Wiley, 1962.
+ [7] R. Haag, Local Quantum Physics, Springer, Berlin, 1996.
+
+ [8] L. Hörmander, Remarks on the Klein-Gordon equation, Journées Équations aux
+     dérivées partielles, Saint-Jean-de-Monts, juin 1987, pp I-1-I-9.
+ [9] L. Hörmander, Remarks on the Klein-Gordon and Dirac equations, 101–125, Con-
+     temp. Math. 205, AMS, Providence, RI, 1997.
+[10] F. John, Partial differential equations, New York University, 1953.
+[11] S. Klainerman, Remark on the asymptotic behavior of the Klein Gordon equation
+     in Rn+1 , Comm. Pure and Appl. Math., XLXI, 137-144 (1993).
+[12] P. Lax, R. S. Phillips, Scattering Theory, rev. ed., Pure and Applied Mathematics,
+     v.26, Academic Press, 1989.
+[13] S. Lukyanov, A. Zamolodchikov, Exact expectation values of local fields in quan-
+     tum sine-Gordon model, Nucl.Phys. B493 (1997) 571–587.
+
+
+                                            23
+[14] S. Nelson, L2 asymptotes for the Klein-Gordon equation, Proc. Amer. Math. Soc.,
+     Volume 27, Number 1, (1971) 110–116.
+[15] S. Nelson, On some solutions to the Klein-Gordon equation related to an integral of
+     Sonine, Trans. Amer. Math. Soc., Volume 154, (1971) 227–237.
+[16] V. Rovnyak, Self-reciprocal functions, Duke Math. J. 33 (1966) 363–378.
+[17] J. Rovnyak, V. Rovnyak, Self-reciprocal functions for the Hankel transformation
+     of integer order, Duke Math. J. 34 (1967) 771–785.
+[18] G. N. Watson, A Treatise on the Theory of Bessel Functions, 2nd ed., Cambridge
+     University Press, 1944.
+
+
+
+
+                                          24
+

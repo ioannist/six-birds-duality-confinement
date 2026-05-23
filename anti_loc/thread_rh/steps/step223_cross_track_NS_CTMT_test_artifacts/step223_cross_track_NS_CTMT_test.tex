@@ -1,0 +1,90 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Step 223: Cross-Track CTMT Recursion Test on Navier--Stokes}
+\author{Six Birds Foundations III}
+\date{2026-05-16}
+
+\begin{document}
+\maketitle
+
+\section{Target}
+
+This step tests whether the CTMT recursion pattern, already observed on RH, BSD, and Hodge, also appears on the Navier--Stokes regularity track.
+
+\section{NS Track State}
+
+The NS track is diagnostic-complete as of NS-55. The parent target is an adequacy statement
+\[
+\Xi_C(D^{\rm BG}\mid L^{\rm phys})\leq \Omega_{\rm BG},
+\]
+in the typed context
+\[
+(E_{J,t},C_{J,t},L^{\rm phys}_{J,t},D^{\rm BG}_{J,t}).
+\]
+The principal residual chain is
+\[
+\Xi(D^{\rm BG}\mid L^{\rm phys})
+\to
+\Omega_{\rm src}
+\to
+\Omega_{\rm gap}
+\to
+\Omega_{\rm rem}
+\to
+\Omega_{\rm bb}
+\to
+\Omega_{\rm mm}
+\to
+\Omega_{\rm amp}.
+\]
+
+\section{External PDE Theorem}
+
+The central remaining theorem is the sector-matched radius-window product estimate
+\[
+\lambda_{J(t)}\rho(t)\geq \kappa\log\lambda_{J(t)}+h(t)
+\]
+on the fixed/exhaustive BG mismatch ledger, with a BKM/BG continuation time gate. Auxiliary obligations are sector matching, tail/lift budgets, and the Gevrey envelope time gate.
+
+\section{Literature Audit}
+
+The classical literature supplies large parts of the landscape but not the exact remaining theorem. Leray, Hopf, and Ladyzhenskaya supply weak-solution and PDE foundations. Beale--Kato--Majda gives a blowup criterion. Caffarelli--Kohn--Nirenberg supplies partial regularity. Constantin--Fefferman gives a geometric depletion criterion. Escauriaza--Seregin--Sverak and Koch--Tataru supply endpoint and critical-space criteria. Tao's averaged Navier--Stokes blowup and Buckmaster--Vicol nonuniqueness provide guardrails against energy-only or weak-solution-only strategies. Bradshaw--Grujic and Grujic--Xu sparseness/analyticity work supplies route templates but still exposes fixed-ledger, amplitude, and time-gate obligations.
+
+\section{Recursion}
+
+The NS recursion chain is:
+\[
+\Xi
+\to
+\Omega_{\rm src}
+\to
+\Omega_{\rm gap}
+\to
+\Omega_{\rm bb}
+\to
+\Omega_{\rm mm}
+\to
+\Omega_{\rm amp}
+\to
+\text{derivative-stack fixed ledger}
+\to
+\text{Gevrey dominance}
+\to
+\text{radius-window product plus time gate}.
+\]
+This is CTMT recursion in PDE estimate-terminal form, not literal matrix-element terminality.
+
+\section{Verdict}
+
+\[
+\boxed{\texttt{V\_ns\_CTMT\_recursion\_verified}}
+\]
+
+The CTMT recursion pattern upgrades to \(\texttt{verified-on-4-track-instances}\) in structural form: RH, BSD, Hodge, and NS.
+
+No Navier--Stokes regularity proof is claimed.
+
+\end{document}

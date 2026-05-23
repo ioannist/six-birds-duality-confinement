@@ -1,0 +1,58 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 276: Branch A Essential-Norm Universality Test}
+\author{Six Birds Foundations III}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Inherited Baseline}
+Step 220 recorded the Branch A wavepacket Weyl value
+\[
+\Phi_{\max}(\sigma=0.35,\ell=2.0)=0.4904766190
+\]
+for the inherited Burnol/Sonine local-window PSWF approximation.  This is a
+CRCFT--CTMT diagnostic for the Branch A commutator-with-projection essential
+norm, not a proof of RH or of Branch A closure.
+
+\section*{Sweep}
+The Step 276 sweep used
+\[
+\sigma\in\{0.10,0.20,0.30,0.35,0.40,0.50,0.60,0.70,0.80,0.90\}
+\]
+and
+\[
+\ell\in\{0.5,1.0,1.5,2.0,2.5,3.0,4.0,5.0\}.
+\]
+At \(T=5000\), the requested grid maximum was again attained at
+\((\sigma,\ell)=(0.35,2.0)\), with
+\[
+\Phi=0.490476620029825228.
+\]
+
+\section*{Filter Families}
+At the inherited maximizer, the filter-family diagnostic values were
+\[
+\begin{array}{c|c}
+\text{filter} & \Phi\\
+\hline
+\text{Burnol/Sonine PSWF24 baseline} & 0.490476620029825\\
+\text{Burnol/Sonine PSWF12 truncated} & 0.490476620029825\\
+\text{sinc-only hard truncation} & 0.490476618976904\\
+\text{smoothed step-function diagnostic} & 0.465502995589057
+\end{array}
+\]
+The hard-truncation family preserves the inherited value, while the smoothed
+filter changes it at the \(2.5\times 10^{-2}\) scale.
+
+\section*{Verdict}
+\[
+\boxed{\texttt{V\_branch\_A\_essential\_norm\_family\_specific}}
+\]
+The observed value is stable for the inherited Sonine/hard-band diagnostic but
+not universal across the tested filter families.
+
+\end{document}

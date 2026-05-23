@@ -1,0 +1,158 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+
+\title{Step 158: Pulled-Evaluator Weyl Sequence / Essential-Symbol Test}
+\author{Six Birds RH Membrane Construction Thread}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+
+\begin{document}
+\maketitle
+
+\section{Orientation and typed context}
+This step is \emph{adequacy-oriented}: the active residual
+\[
+  \Xi^{\rm BC}_{\ell,a}=\mathfrak B_{\ell,a}^*\Pi_{Y_a}\mathfrak B_{\ell,a}\succeq 0
+\]
+is bad news unless it is zero, compact/tail-paid, or carried as a scoped residual.  Positive
+mass is not separation evidence in this track; it is missed adequacy.
+
+The typed context is the Burnol/Sonine pulled-evaluator carrier.  Let
+\[
+  C_\ell=(I-P_\infty)M_{m_\ell}P_\infty,
+  \qquad m_\ell(s)=e^{-\ell(1/2-s)},
+\]
+where $P_\infty$ is the declared archimedean/Sonin projection and $M_{m_\ell}$ is Mellin-side
+multiplication by the log-shift symbol.  Let
+\[
+  H_\eta=\overline{\operatorname{span}\{\eta^a_{\rho,k}:\eta^a_{\rho,k}=J_a^*Y^a_{\rho,k}\}},
+  \qquad P_\eta=\operatorname{Proj}_{H_\eta}.
+\]
+The Calkin-level object is
+\[
+  q(C_\ell P_\eta)\in\mathcal B(H)/\mathcal K(H).
+\]
+
+\section{The active dichotomy}
+\begin{theorem}[Calkin dichotomy for the pulled-evaluator residual]
+The residual is compact/tail-payable by finite residual-window exhaustion if
+\[
+  C_\ell P_\eta\in\mathcal K(H).
+\]
+It has a Calkin obstruction if there exists a normalized weak-null sequence
+\[
+  u_n\in H_\eta,
+  \qquad \|u_n\|=1,
+  \qquad u_n\rightharpoonup0,
+\]
+such that
+\[
+  \liminf_{n\to\infty}\|C_\ell u_n\|>0.
+\]
+In that case
+\[
+  \|C_\ell P_\eta\|_{\rm e}>0,
+\]
+and the residual cannot be paid by ordinary compact-tail promotion.
+\end{theorem}
+
+\section{Hard support shadow: explicit Weyl sequence}
+Consider the support-cutoff shadow $P_+=\mathbf 1_{[0,\infty)}$ on $L^2(\mathbb R)$ and the translation
+$T_{-\ell}f(x)=f(x+\ell)$ for $\ell>0$.  Define
+\[
+  C_\ell^{\rm supp}=(I-P_+)T_{-\ell}P_+.
+\]
+Then $C_\ell^{\rm supp}$ is a partial translation from $L^2([0,\ell])$ onto $L^2([-\ell,0])$.
+For
+\[
+  u_n(x)=\ell^{-1/2}e^{2\pi i n x/\ell}\mathbf 1_{[0,\ell]}(x),
+\]
+one has
+\[
+  \|u_n\|=1,
+  \qquad u_n\rightharpoonup0,
+  \qquad \|C_\ell^{\rm supp}u_n\|=1.
+\]
+Thus
+\[
+  \|C_\ell^{\rm supp}\|_{\rm e}=1.
+\]
+
+\begin{warning}[Public-shadow status]
+This proves only a hard-support shadow obstruction.  It is not yet a Burnol/Sonine Calkin theorem.
+Promotion requires a typed bridge from the hard support model to the true $P_\infty$ and pulled
+evaluator span.
+\end{warning}
+
+\section{Hardy analytic shadow}
+In a Hardy half-plane shadow, multiplication by $m_\ell(s)$ may be analytic and bounded in the
+relevant half-plane.  In such a typed Hardy model,
+\[
+  (I-P_+)M_{m_\ell}P_+=0
+\]
+when the multiplier is in $H^\infty$.  This lane suggests a possible compact/exact repair only if a
+Calkin-faithful bridge is proved:
+\[
+  P_\infty-P_+\in\mathcal K
+  \quad\text{on the pulled-evaluator context,}
+\]
+or an equivalent essential-symbol bridge.
+Without this bridge the Hardy computation is a public shadow, not a carrier theorem.
+
+\section{Essential-symbol test}
+Let $\Gamma_\ell$ denote a boundary-leakage microlocal region for the pair $(P_\infty,M_{m_\ell})$.
+The following is the precise next external-content obligation.
+
+\begin{theorem}[Conditional essential-symbol obstruction]
+Assume there exists a sequence $u_n\in H_\eta$ with $\|u_n\|=1$, $u_n\rightharpoonup0$, microlocalized
+in $\Gamma_\ell$, such that the principal leakage symbol $\sigma(C_\ell)$ is bounded below by
+$c_\ell>0$ on the microlocal support of $u_n$.  Then
+\[
+  \liminf_n\|C_\ell u_n\|\ge c_\ell,
+\]
+and therefore
+\[
+  \|C_\ell P_\eta\|_{\rm e}\ge c_\ell>0.
+\]
+\end{theorem}
+
+\begin{theorem}[Conditional compact avoidance]
+If every normalized weak-null sequence in $H_\eta$ avoids the boundary-leakage region in the sense
+that
+\[
+  \|\operatorname{Op}(\chi_{\Gamma_\ell})u_n\|\to0,
+\]
+and the off-leakage part of $C_\ell$ is compact, then
+\[
+  C_\ell P_\eta\in\mathcal K.
+\]
+\end{theorem}
+
+\section{Status after Step 158}
+No completed Calkin theorem is earned in this step.  The result is diagnostic-complete at this leaf:
+\begin{itemize}[leftmargin=2em]
+\item Exact exclusion remains open: $C_\ell P_\eta=0$ is not proved.
+\item Compact/tail payment remains open: $C_\ell P_\eta\in\mathcal K$ is not proved.
+\item Calkin obstruction is not yet proved on the Burnol carrier, but an explicit Weyl-sequence model identifies the natural obstruction mechanism.
+\item The active residual remains $\Xi^{\rm BC}$ unless a Calkin-faithful bridge or pulled-evaluator avoidance theorem is supplied.
+\end{itemize}
+
+\section{Next theorem}
+The next step is the boundary-Weyl inclusion/avoidance theorem for the pulled zero-evaluator span:
+\[
+  H_\eta\cap\text{boundary-leakage Weyl sector}
+  \stackrel{?}{=}0.
+\]
+If this intersection is nonzero in the weak-sequential sense, $\Xi^{\rm BC}$ is a genuine noncompact
+adequacy residual.  If it is zero and the off-leakage part is compact, the residual becomes tail-payable.
+
+\end{document}

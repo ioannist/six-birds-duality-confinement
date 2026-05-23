@@ -1,0 +1,250 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\newtheorem{theorem}{Theorem}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{warning}{Warning}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\HS}{\mathcal H}
+\newcommand{\CS}{\mathcal C}
+\newcommand{\QS}{\mathsf Q}
+\newcommand{\DeltaS}{\Delta_S}
+\newcommand{\Pos}{\mathrm{pos}}
+\newcommand{\Weil}{\mathrm{Weil}}
+\newcommand{\cc}{\mathrm{CC}}
+\newcommand{\pr}{\mathrm{pr}}
+\newcommand{\tail}{\mathrm{tail}}
+\newcommand{\pole}{\mathrm{pole}}
+\newcommand{\src}{\mathrm{src}}
+\newcommand{\EF}{\mathrm{EF}}
+\begin{document}
+\title{Step 95: Extracting the Semilocal Cross-Term Operator $\Delta_S$}
+\author{Six Birds / Formed-Layer Membrane RH Program}
+\date{}
+\maketitle
+
+\section{Purpose}
+This note executes the first construction step of the hybrid semilocal RH program.  We now treat the archimedean/gamma slot as an imported Connes--Consani positivity record and focus on the finite-place interaction that remains when prime-place features are inserted into the semilocal Hardy--Titchmarsh carrier.
+
+The goal is not to prove positivity.  The goal is to put all objects on one response core and define the actual residual form
+\[
+\boxed{
+\Delta_S
+=
+q_{\Weil,S}-q_{\Pos,S}.
+}
+\]
+This is the semilocal cross-term operator.  If its positive part is zero, defect-budgeted, or absorbed by a Hecke/Dirichlet source lower frame, then the Weil--Douglas bridge can advance.  If not, the route is support-only.
+
+\section{Semilocal response core}
+Let $S$ be a finite set of rational places with $\infty\in S$.  Write $S_f=S\setminus\{\infty\}$.  The semilocal adele class space is
+\[
+X_S=A_S/\Gamma,
+\qquad
+\Gamma=\{\pm p_1^{n_1}\cdots p_k^{n_k}:p_i\in S_f,\ n_i\in\mathbb Z\}.
+\]
+The semilocal Hardy--Titchmarsh map sends a real even function $f$ to a $K_S$-invariant semilocal vector $\eta_S(f)\in L^2(X_S)^{K_S}$, and on the Mellin/Fourier side it inserts finite local Euler factors:
+\[
+F_\mu w_S(\eta_S f)(\xi)
+= L_{S_f}(1/2-i\xi)\,F_\mu w_\infty f(\xi),
+\qquad
+L_{S_f}(z):=\prod_{p\in S_f}(1-p^{-z})^{-1}.
+\]
+The canonical semilocal spectral response space is
+\[
+Y_S:=L^2(\R,dm_S),
+\qquad
+ dm_S(\xi)=|L_\infty(1/2-i\xi)L_{S_f}(1/2-i\xi)|^2d\xi,
+\]
+with canonical unitary $V_S=M_SU_S$.
+
+The anti-invariant response sector is denoted $Y_S^-$.  The core used in this note is
+\[
+\boxed{
+\CS_S^-:=V_S\eta_S(\mathcal S_0(\R)^{\mathrm{ev}})\cap Y_S^-.
+}
+\]
+Here $\mathcal S_0$ records the usual zero/pole vanishing conditions required by the explicit formula.  A later proof must replace this core-level object by a full completed response space plus a closability/core-extension record.
+
+\section{Actual semilocal Weil form}
+Let $QW_S$ denote the semilocal Weil quadratic form on $L^2(X_S)^{K_S}$ or its compact-support form core.  Pull it to the response side:
+\[
+\boxed{
+q_{\Weil,S}[y]
+:=QW_S(V_S^{-1}y,V_S^{-1}y),
+\qquad y\in\CS_S^-.
+}
+\]
+This form is the target signed/semibounded object.  It is not automatically a positive feature package.
+
+At finite support/cutoff, $QW_S$ should decompose into the standard pieces
+\[
+q_{\Weil,S}
+= q_{0,2,S}^{\mathrm{sgn}}
+-q_{\infty,S}^{\mathrm{sgn}}
+-\sum_{p\in S_f}q_{p,S}^{\mathrm{sgn}}
++q_{\tail,S}^{\mathrm{sgn}},
+\]
+with convention-dependent signs.  The signs themselves are not the proof object; the carrier proof object is the domination inequality obtained after positive packaging.
+
+\section{Positive imported/candidate package}
+The hybrid route imports the archimedean positive piece from the Connes--Consani Sonin/prolate compression theorem.  Write it as
+\[
+q_\infty^{\cc}[y]
+=\|W_\infty^{\cc}y\|^2
+\]
+where its domain, support, vanishing, finite-codimension correction, and Sonin/prolate records are part of the archimedean gate.
+
+For finite primes we use a paired candidate, not separated diagonal accounting:
+\[
+q_{\pr,S}^{\mathrm{pair}}[y]
+=
+\sum_{p\in S_f}\sum_{k\ge1}^{\mathrm{visible}}
+(\log p)p^{-k/2}\,
+\|\tau_{k\log p}R_{\log}y-R_{\log}y\|^2.
+\]
+Here $R_{\log}$ is the response-to-log-core bridge.  In a full proof it must be declared as part of the semilocal carrier.  The formula is a paired CND feature template, not a claim that the signed explicit formula has already been matched.
+
+Add pole/completion and tail slots:
+\[
+q_{\Pos,S}[y]
+:=q_\infty^{\cc}[y]+q_{\pr,S}^{\mathrm{pair}}[y]+q_{\pole,S}^+[y]+q_{\tail,S}^+[y].
+\]
+The pole slot is finite-rank and can only pay pole/null/endpoint modes.  The tail slot records finite-prime omissions, support leakage, and finite-to-completed promotion defects.
+
+\section{Definition of the semilocal cross-term}
+\begin{definition}[Semilocal cross-term operator]
+On the common form core $\CS_S^-$ define
+\[
+\boxed{
+\Delta_S[y]
+:=q_{\Weil,S}[y]-q_{\Pos,S}[y].
+}
+\]
+Equivalently, if the forms are represented by self-adjoint form operators on a common Hilbert space,
+\[
+\boxed{
+\Delta_S=A_{\Weil,S}-A_{\Pos,S}.
+}
+\]
+The positive part $\Delta_S^+$ is the obstruction to replacing the signed semilocal Weil form by the positive feature package.
+\end{definition}
+
+\begin{theorem}[Cross-term extraction gate]
+Suppose on $\CS_S^-$ the zero-side form satisfies
+\[
+q_Z[y]\le q_{\Weil,S}[y]+e_{\Weil,S}[y],
+\]
+and the semilocal cross-term satisfies
+\[
+\Delta_S[y]\le e_{\Delta,S}[y].
+\]
+Then
+\[
+\boxed{
+q_Z[y]\le q_{\Pos,S}[y]+e_{\Weil,S}[y]+e_{\Delta,S}[y].
+}
+\]
+If both defects vanish and the core-to-full Douglas gate passes, then
+\[
+V_Z^*V_Z\preceq W_{\Pos,S}^*W_{\Pos,S},
+\]
+so there is a contraction
+\[
+V_Z=T W_{\Pos,S},
+\qquad \|T\|\le1.
+\]
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[
+q_{\Weil,S}=q_{\Pos,S}+\Delta_S.
+\]
+Substitute this identity into the first inequality and bound $\Delta_S$ by $e_{\Delta,S}$.
+\end{proof}
+
+\section{Source absorption of the cross-term}
+The source-coercivity route does not require $\Delta_S\le0$.  It requires the positive part of $\Delta_S$ to be paid by upstream-visible source records.
+
+A source family $\mathcal S_n$ supplies a response-side frame
+\[
+F_n=
+\sum_{s\in\mathcal S_n}
+\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+The absorption gate is
+\[
+\boxed{
+\Delta_S^+\preceq F_n+E_{\mathrm{abs},n}.
+}
+\]
+If in addition
+\[
+F_n\succeq \Lambda_n(\Theta_0^-)^{-1},
+\qquad
+\Lambda_n\to\infty,
+\]
+then the positive cross-term is not merely bounded; it is converted into anti-invariant currency collapse, provided the source records are upstream-visible and exhaustive.
+
+\section{What $\Delta_S$ contains}
+The extracted cross-term is not one scalar.  It is a ledger of mismatches:
+\begin{enumerate}[leftmargin=*]
+\item \textbf{Semilocal measure deformation.}  The response measure changes from the archimedean measure to
+\[
+ dm_S=|L_\infty(1/2-i\xi)|^2|L_{S_f}(1/2-i\xi)|^2d\xi.
+\]
+This changes orthogonal polynomials, the number/grading operator, and the prolate/Sonin decomposition.
+
+\item \textbf{Non-unitary semilocal injection.}  The map $\eta_S$ inserts finite local Euler factors but is not unitary in the archimedean response geometry.  Hence semilocal grading and archimedean grading do not commute in general.
+
+\item \textbf{Prime--archimedean cross-term.}  The finite local factors enter multiplicatively in the Hardy--Titchmarsh transform, while the candidate positive package is additive in feature norms.  The gap between multiplicative insertion and additive feature spending is the heart of $\Delta_S$.
+
+\item \textbf{Pole/completion modes.}  Pole, endpoint, and null-mode constraints must be recorded as finite-rank positive features or quotient data.
+
+\item \textbf{Tail/promotion defects.}  A finite $S$ statement is exact only at finite semilocal level.  Full RH requires a fixed-ledger or exhaustive-ledger squeeze as $S\nearrow\mathcal P$.
+\end{enumerate}
+
+\section{Acceptance statuses}
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+Status & Criterion & Meaning\\
+\midrule
+accepted & $\Delta_S\preceq0$ or absorbed by source frame & positive package dominates signed Weil form\\
+defect-paid & $\Delta_S\preceq E_{\Delta,S}$ with vanishing tail & support can promote under squeeze\\
+source-absorbed & $\Delta_S^+\preceq F_n+E_n$, $\Lambda_n\to\infty$ & source ladder pays cross-term\\
+support-only & finite $S$ or finite tests without tail & useful evidence only\\
+failed & positive cross-term on hidden sector & Douglas bridge blocked\\
+smuggled & source chosen from target success & invalid record\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Conrey--Li survival note}
+The extracted $\Delta_S$ gate must not collapse into a de Branges/RKHS shift-positivity ansatz.  The hybrid route is semilocal, paired, source-aware, and adequacy-aware.  If it reduces to a condition of the form $\Re\langle F(z),F(z+i)\rangle>0$ in a zeta RKHS, it inherits the Conrey--Li obstruction and should be abandoned or radically rephrased.
+
+\section{Conclusion}
+Step 95 gives the first concrete analytic object of the hybrid program:
+\[
+\boxed{
+\Delta_S=q_{\Weil,S}-q_{\Pos,S}.
+}
+\]
+The next RH construction task is no longer vague.  For finite $S$, compute or estimate this form on the semilocal response core.  Then prove one of:
+\[
+\Delta_S\preceq0,
+\qquad
+\Delta_S\preceq E_S\to0,
+\qquad
+\Delta_S^+\preceq F_n+E_n
+\text{ with source-frame collapse.}
+\]
+Without one of these, the hybrid semilocal route remains support-only.
+
+\end{document}

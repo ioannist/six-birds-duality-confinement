@@ -1,0 +1,118 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+
+\newcommand{\rhoN}{\rho_{1/p}}
+\newcommand{\deltaN}{\delta_N}
+
+\title{Step 195: Beurling--Nyman Arithmetic Gram Refinement}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section*{Verdict}
+
+\[
+\boxed{\texttt{V\_BN\_arithmetic\_refined\_RH\_consistent}}.
+\]
+
+The harmonic Beurling--Nyman chain \(A_N=\{1/k:1\le k\le N\}\) was extended to \(N=1000\).  The refined data remain consistent with the slow logarithmic decay expected in the Baez--Duarte/Nyman--Beurling framework.
+
+\section*{Arithmetic Gram Formula}
+
+For \(a=1/p\), after the substitution \(x=1/t\),
+\[
+\rho_{1/p}(1/x)
+=
+\frac{\lfloor x\rfloor}{p}-\left\lfloor \frac{x}{p}\right\rfloor.
+\]
+On the unit interval \(x\in(n,n+1)\), this equals
+\[
+\frac{n\bmod p}{p}.
+\]
+Therefore
+\[
+G_{p,q}
+=
+\langle \rho_{1/p},\rho_{1/q}\rangle
+=
+\sum_{n\ge1}
+\frac{(n\bmod p)(n\bmod q)}{pq\,n(n+1)}.
+\]
+Using periodicity with \(L=\operatorname{lcm}(p,q)\), this is equivalently
+\[
+G_{p,q}
+=
+\frac1L\sum_{r=1}^L
+\left\{\frac rp\right\}\left\{\frac rq\right\}
+\left[
+\psi\!\left(\frac{r+1}{L}\right)
+-
+\psi\!\left(\frac rL\right)
+\right],
+\]
+where \(\psi\) is the digamma function.  The implementation spot-checks this periodized formula at 80 decimal digits for \((p,q)=(2,3),(3,5),(7,11)\).
+
+For the dense \(N=1000\) computation, the script uses the arithmetic series in vectorized form with \(X_{\max}=200000\).  This is no longer a discontinuous integral quadrature.  The remaining arithmetic tail is bounded entrywise by \(5\cdot 10^{-6}\).
+
+\section*{Precision}
+
+\begin{itemize}
+\item \(\texttt{mpmath}\) precision: 80 decimal digits.
+\item Source vector \(b_p=(1/p)\log p\): computed using \(\texttt{mpmath}\).
+\item Dense pseudoinverse: NumPy float64 SVD, \(\texttt{rcond}=10^{-12}\).
+\item Tail bound per Gram entry: \(5\cdot10^{-6}\).
+\end{itemize}
+
+\section*{Computed Harmonic Defects}
+
+\begin{center}
+\begin{tabular}{rcc}
+\(N\) & \(\delta_N^2\) & \(\delta_N^2\log N\)\\
+\hline
+5 & 0.0363139368590198 & 0.0584450267306446\\
+10 & 0.0238470859060593 & 0.0549099445186406\\
+20 & 0.0165323317860087 & 0.0495264398884486\\
+40 & 0.0127296188449689 & 0.0469580294159074\\
+80 & 0.0109920955378177 & 0.0481676554175969\\
+200 & 0.00892242600836957 & 0.0472738446718843\\
+500 & 0.00741541353971342 & 0.0460838890370526\\
+1000 & 0.00654423096394308 & 0.0452059459880561\\
+\end{tabular}
+\end{center}
+
+\section*{Decay Fit}
+
+For the tail values \(N=80,200,500,1000\),
+\[
+\operatorname{mean}(\delta_N^2\log N)
+=
+0.0466828337786475.
+\]
+A least-squares fit over \(N\ge20\) to
+\[
+\delta_N^2\sim \frac{C}{(\log N)^\alpha}
+\]
+gives
+\[
+C=0.0541389792662914,
+\qquad
+\alpha=1.0886679.
+\]
+The comparison-only power fit \(\delta_N^2\sim C N^{-\beta}\) gives
+\[
+\beta=0.22951419,
+\]
+but the logarithmic model is the Beurling--Nyman/Baez--Duarte relevant one.
+
+\section*{Comparison to Baez--Duarte}
+
+Baez--Duarte's strengthening makes the \(1/k\) chain a legitimate countable carrier for the criterion, and the numerical literature around this criterion predicts very slow logarithmic-scale decay rather than fast algebraic convergence.  The \(N\le1000\) data are consistent with that slow-log regime.  They do not establish the limiting statement.
+
+\section*{Nonclaim}
+
+This is a finite numerical refinement.  It does not establish RH and does not close the Beurling--Nyman residual.
+
+\end{document}
+

@@ -1,0 +1,34 @@
+{
+  "step": 62,
+  "name": "Adequacy-Aware Membrane Transfer",
+  "source_record": ["E", "C", "L", "D", "Theta_Y", "Omega_Z"],
+  "target_record": ["E_prime", "C_prime", "L_prime", "D_prime"],
+  "bridge_maps": {
+    "carrier": "P:E_prime->E",
+    "native_response": "J:Y->Y_prime",
+    "native_reconstruction": "R:Y_prime->Y",
+    "dissolving_response": "B:Z->Z_prime"
+  },
+  "exact_bridge_conditions": [
+    "C_prime >= beta P^* C P",
+    "L_prime = J L P",
+    "D_prime = B D P",
+    "R J = I_Y"
+  ],
+  "defective_bridge_conditions": [
+    "L_prime = J L P + S",
+    "D_prime = B D P + T",
+    "E_Xi = (T - B A_* R S) C_prime^dagger (T - B A_* R S)^*"
+  ],
+  "main_outputs": [
+    "K_Lprime <= beta^-1 J Theta_Y J^*",
+    "Xi_prime <= beta^-1 B Omega_Z B^*",
+    "defective Xi_prime <= (1+s) beta^-1 B Xi B^* + (1+s^-1) E_Xi"
+  ],
+  "nonclaims": [
+    "public-shadow Xi does not imply intrinsic Xi",
+    "native membrane does not imply dissolving membrane without adequacy",
+    "coarsened native response may enlarge Xi",
+    "finite transfer is not predictive without defect control"
+  ]
+}

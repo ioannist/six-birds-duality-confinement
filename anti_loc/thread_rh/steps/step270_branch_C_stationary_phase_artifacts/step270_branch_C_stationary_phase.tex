@@ -1,0 +1,65 @@
+\section*{Step 270: Branch C Stationary-Phase Diagnostic}
+
+\paragraph{Burnol evaluator input.}
+Burnol's Section 6 evaluator theorem states that for each complex $w$ and
+integer $k$, the linear forms $f\mapsto M(f)^{(k)}(w)$ are continuous and are
+represented by vectors $Z^\lambda_{w,k}$ in the Sonine space.  In the Step
+196/269 normalization this gives the unprojected identity
+\[
+  \Delta D_k(\rho,G) = (\zeta M(G))^{(k)}(\rho).
+\]
+By Leibniz,
+\[
+  \Delta D_k(\rho,G)
+   = \sum_{j=0}^{k} {k\choose j}\zeta^{(j)}(\rho) M(G)^{(k-j)}(\rho).
+\]
+Since $\zeta(\rho)=0$, the $j=0$ term vanishes for a nontrivial zeta zero.
+
+\paragraph{Projected Branch C value.}
+The inherited Branch C pipeline does not use only $\Delta D_k$.  Its projected
+matrix element is
+\[
+  L_{\rho,k}(G)=\Delta D_k(\rho,G)-I_k(\rho,G)-R_k(\rho,G),
+\]
+where $I_k$ is the sinc projection integral and $R_k$ is the finite PSWF
+projection correction.  Therefore the proposed closed identity is exact for
+the raw source term but not for the projected Branch C carrier.
+
+\paragraph{Cauchy--Laplace template.}
+For $h(z)=\zeta(z)M(G)(z)$,
+\[
+  h^{(k)}(\rho)=\frac{k!}{2\pi i}\oint
+  \frac{h(z)}{(z-\rho)^{k+1}}\,dz.
+\]
+The formal saddle point satisfies
+\[
+  (\log h)'(z_*)=\frac{k+1}{z_*-\rho}.
+\]
+If the effective saddle is nondegenerate and the naive factorial scale is
+cancelled by the oscillatory Mellin kernel, the resulting envelope has the
+form
+\[
+  |L_{\rho,k}(G)| \sim A\,k^{-1/2}\exp(bk).
+\]
+This predicts only the baseline $c=-1/2$ in the polynomial-corrected
+exponential model.  It does not determine $b$ without an asymptotic theorem for
+the projected correction $I_k+R_k$.
+
+\paragraph{Comparison.}
+The raw-to-projected absolute ratios over $k=1,\dots,7$ approach one:
+\[
+\begin{array}{c|ccccccc}
+\text{triple} & 1&2&3&4&5&6&7\\\hline
+\rho_1,G_* & .548&.782&.900&.952&.978&.989&.995\\
+\rho_2,G_* & .544&.806&.934&.979&.996&.999&1.000\\
+\rho_1,G' & .567&.801&.914&.960&.984&.993&.998
+\end{array}
+\]
+This is evidence that the raw source term explains the high-$k$ envelope in
+the tested range, but it is not a closed asymptotic derivation.
+
+\paragraph{Verdict.}
+\[
+  \boxed{\texttt{V\_branch\_C\_stationary\_phase\_partial}}
+\]
+No RH closure is claimed.

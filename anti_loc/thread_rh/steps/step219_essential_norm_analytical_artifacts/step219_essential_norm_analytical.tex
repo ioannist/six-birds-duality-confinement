@@ -1,0 +1,62 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\begin{document}
+
+\section*{Step 219: Analytical Pattern for \(\Phi(\sigma,\ell)\)}
+
+\subsection*{Definition}
+
+For the large-\(T\) Gaussian wavepacket sequence, define
+\[
+\Phi(\sigma,\ell)=\lim_{T\to\infty}\|C_\ell u_T\|,
+\qquad C_\ell=(I-P_\infty)M_{m_\ell}P_\infty.
+\]
+Numerically this is evaluated at \(T=10000\).
+
+\subsection*{\(\ell\)-Sweep at \(\sigma=1\)}
+
+The values rise from \(0.1309\) at \(\ell=0.1\) to a plateau near \(0.279\) for \(\ell\in[1.5,2]\), then decay for larger shifts:
+\[
+\Phi(1,\log 2)=0.2638458688,\qquad
+\Phi(1,2)=0.2778803484,\qquad
+\Phi(1,5)=0.0011147046.
+\]
+
+\subsection*{\(\sigma\)-Sweep at \(\ell=\log 2\)}
+
+\[
+\Phi(0.25,\log 2)=0.2931,\quad
+\Phi(0.5,\log 2)=0.3512,\quad
+\Phi(1,\log 2)=0.2638,\quad
+\Phi(2,\log 2)=0.0470,\quad
+\Phi(5,\log 2)=0.0012.
+\]
+Thus the dependence on \(\sigma\) is non-monotone.
+
+\subsection*{Band-Shift Model}
+
+Ignoring finite PSWF correction, \(P_\infty\) is modeled by a sinc cutoff, i.e. a spectral projection onto a band.  The modulation \(e^{i\ell\tau}\) shifts the Gaussian spectrum by \(\ell\).  The amount moved from the high-pass region into the low-pass region is modeled by
+\[
+\Phi(\sigma,\ell)^2\approx
+\frac12\left(\operatorname{erf}(\sigma b(\ell))-\operatorname{erf}(\sigma a(\ell))\right),
+\]
+where
+\[
+a(\ell)=
+\begin{cases}
+1,& 0\le \ell\le 2,\\
+\ell-1,& \ell>2,
+\end{cases}
+\qquad
+b(\ell)=\ell+1.
+\]
+For the \(\ell\)-sweep at \(\sigma=1\), this model has RMSE \(2.40\cdot10^{-3}\).  With fitted scale and effective width, the RMSE improves to \(1.47\cdot10^{-3}\).  For the \(\sigma\)-sweep at \(\ell=\log 2\), the same model has RMSE \(1.47\cdot10^{-3}\).
+
+\subsection*{Verdict}
+
+The data show a clean band-shift error-function pattern, but not a closed form at the \(10^{-4}\) residual standard:
+\[
+\boxed{\mathrm{V\_essential\_norm\_ell\_dependence\_numerical\_pattern}}.
+\]
+
+\end{document}

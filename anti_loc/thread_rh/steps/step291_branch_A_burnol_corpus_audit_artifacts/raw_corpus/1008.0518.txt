@@ -1,0 +1,575 @@
+                                                 Hilbert spaces of entire functions with trivial zeros
+                                                                            Jean-François Burnol
+
+                                                                                 July 19, 2010
+
+
+                                                                                     Abstract
+arXiv:1008.0518v1 [math.FA] 3 Aug 2010
+
+
+
+
+                                                  LetQH be a Hilbert space of entire functions. Let H ′ be the space of the functions
+                                              f (z)/ i (z − zi ) where f belongs to H and vanishes at n given complex points zi . We
+                                              compute a suitable E function for H ′ when one is given for H.
+
+
+                                              Université Lille 1
+                                              UFR de Mathématiques
+                                              Cité scientifique M2
+                                              F-59655 Villeneuve d’Ascq
+                                              France
+                                              burnol@math.univ-lille1.fr
+
+
+
+                                         1    Hilbert space of entire functions with vanishing conditions
+
+                                         Let H be an Hilbert space, whose vectors are entire functions, and such that the evaluations
+                                         at complex numbers are continuous linear forms, hence correspond to specific vectors Zz :
+
+                                                                     Zz ∈ H,     ∀f ∈ H       (Zz , f ) = f (z)                         (1)
+
+                                         Scalar products (g, f ) in this paper will be complex linear in f and conjugate linear in
+                                         g. Using the Banach-Steinhaus theorem we know that evaluations of derivatives f 7→
+                                         f (k) (z) are also bounded linear forms on the Hilbert space H. We will write Zz,k for the
+                                         corresponding vectors.
+
+                                             If H satisfies the axiomatic framework of [1] (and is not the zero space), there is an
+                                         entire function E (not unique) with the property:
+
+                                                                        Im(z) > 0 =⇒ |E(z)| > |E(z)|                                    (2)
+
+                                         and in terms of which the evaluators are given as:
+
+                                                                                 E(z)E(w) − E ∗ (z)E ∗ (w)
+                                                                      Zz (w) =                                                          (3)
+                                                                                        i(z − w)
+
+                                                                                        1
+We have written E ∗ for the function w 7→ E(w).
+
+    Conversely to each entire function satisfying (2) there is associated a Hilbert space
+H(E) with evaluators given by (3): the elements of H(E) are the entire functions f such
+that both f /E and f ∗ /E belong to the Hardy space of the upper half-plane (f ∗ (z) = f (z)).
+A basic instance of this theory is the Paley-Wiener space H = P Wx (x > 0) of entire
+functions, square integrable on the real line, and of exponential type at most x. For these
+                                                                     1            2
+                                                                       R
+classical Paley-Wiener spaces we use the scalar product (f, f ) = 2π     R |f (z)| dz, and the
+                     1
+presence here of a 2π   is related to its absence in (3); we find this more convenient. An
+appropriate E function for P Wx is E(z) = e−ixz .
+
+    One of the axioms of [1] is: (1) if f ∈ H verifies f (z0 ) = 0 then z−z
+                                                                        z−z0 f (z) belongs to H
+                                                                            0
+
+
+and has the same norm as f . The others are: (2) H is a Hilbert space and evaluating at
+a complex point is a bounded linear form, and (3) for any f ∈ H, the function f ∗ belongs
+to H and has the same norm as f . From axiom (1) one sees that for z0 non real, we can
+always find in H (if it is not the zero space) a function not vanishing at z0 . So the evaluator
+Zz0 can not be zero if z0 is non real (and if H is not the zero space). Of course when H is
+known as an H(E), then Im(z) 6= 0 =⇒ Zz (z) = kZz k2 > 0 by (3) and (2).
+
+     Let σ = (z1 , . . . , zn ) be a finite sequence of non necessarily distinct complex numbers
+with associated evaluators Z1 , . . . , Zn in H. More precisely, in the case where the zi ’s are
+not all distinct, we assemble in succession the indices corresponding to the same complex
+number, and if for example z1 = z2 = z3 6= z4 , we let Z1 = Zz1 , Z2 = Zz1 ,1 , Z3 = Zz1 ,2 ,
+and Z4 = Zz4 etc. . . Also, when f is an arbitrary analytic function, we introduce a notation
+f [zj ] such that in the example above f [z1 ] = f (z1 ), f [z2 ] = f ′ (z2 )(= f ′ (z1 )), f [z3 ] = f ′′ (z3 ),
+f [z4 ] = f (z4 ) etc. . .
+
+     Let H σ be the closed subspace of H of functions vanishing at the zi ’s, in other words this
+is the orthogonal complement to the Zi ’s, 1 ≤ i ≤ n. For the classical Paley-Wiener spaces
+H = P Wx , such subspaces P Wxσ have been considered in the work of Lyubarskii and Seip
+[3], where however the sequences σ arising are infinite. We restrict ourselves here to the
+finite case which is already interesting: as will be shown in the companion paper [2] this has
+given a way from the classical Paley-Wiener spaces to explicit Painlevé VI transcendents.
+
+    Let
+                                                             1
+                                       γ(z) =                                                                (4)
+                                                 (z − z1 ) . . . (z − zn )
+and define H(σ) = γ(z)H σ :
+
+                   H(σ) = {F (z) = γ(z)f (z) | f ∈ H, f [z1 ] = · · · = f [zn ] = 0}                         (5)
+
+    We call F (z) = γ(z)f (z) the “complete” form of f (for any f , in H or not, vanishing
+
+
+                                                        2
+at the zi ’s), and call z1 , . . . , zn the “trivial zeros”. We say that we switch from the space
+H to the space H(σ) by adding trivial zeros, but this is of course slightly misleading as the
+zi ’s are trivial zeros only for the incomplete functions f (z), not for the complete functions
+F (z) which are vectors in the space H(σ).
+
+   We give H(σ) the Hilbert space structure which makes f 7→ F an isometry with H σ . Let
+us note that evaluations F 7→ F (z) are again continuous linear forms on this new Hilbert
+space of entire functions: this is immediate if z ∈
+                                                  / σ and follows from the Banach-Steinhaus
+theorem if z ∈ σ. Let F ∈ H(σ) with incomplete form f . If F (z0 ) = 0 then f (z0 ) = 0, with
+multiplicity suitably increased if z0 belongs to σ. The function g(z) = z−zz−z0 f (z) belongs to
+                                                                              0
+
+                                                                             z−z0
+H and still vanishes on σ (multiplicities included), hence its complete form z−z  0
+                                                                                    F (z) belongs
+to H(σ). Finally, let us consider for F ∈ H(σ) its conjugate in the real axis F ∗ (z) = F (z).
+With F (z) = γ(z)f (z) we thus have F ∗ (z) = γ ∗ (z)f ∗ (z) = γ(z) 1≤i≤n z−z       i ∗
+                                                                      Q
+                                                                                z−zi f (z). But
+the function f ∗ belongs to H (with the same norm as f ) and has zeros at the zi ’s. Hence
+Q        z−zi ∗
+  1≤i≤n z−zi f (z) belongs to H with the same norm. And it has zeros at the zi ’s, it is thus
+an element of H σ and its complete form is an element of H(σ) (with the same norm as F ).
+This completes the verification that H(σ) verifies the axioms of [1] if H does.
+
+Remark 1. Let us suppose that z0 is not real. From what precedes if we can find a non-
+zero element F in H(σ) we can find one with F (z0 ) 6= 0. This proves in particular that if
+Z1 , . . . , Zn do not already span H, then any evaluator Zz0 with z0 non-real and distinct
+from the zi ’s is not a linear combination of Z1 , . . . , Zn .
+
+    Let us give a first formula (which does not use (3) but only (1)) for the evaluators Kz
+in H(σ) and their scalar products (Kw , Kz ) = Kz (w). Let kz ∈ H σ be the incomplete form
+of Kz , so that Kz (w) = γ(w)kz (w). One has to be careful that for f ∈ H σ , with complete
+form F , we have by definition (kz , f ) = (Kz , F ) = F (z) = γ(z)f (z) = γ(z)(Zz , f ). Hence
+kz is γ(z) times the orthogonal projection π(Zz ) of Zz ∈ H onto H σ ⊂ H. As is well-known,
+orthogonal projections can be written in Gram determinantal form:
+                                         (Z1 , Z1 )     ...   (Z1 , Zn ) (Z1 , Zz )
+                                       1 (Z2 , Z1 )     ...   (Z2 , Zn ) (Z2 , Zz )
+               kz = γ(z)π(Zz ) = γ(z)        ..                   ..         ..               (6)
+                                      Gn      .         ...        .          .
+                                           Z1           ...     Zn         Zz
+
+We wrote Gn for the principal n × n minor. Then (Kw , Kz ) = Kz (w) = γ(w)kz (w), and we
+have thus obtained, writing now Kzσ for Kz :
+
+Proposition 1. Let H be a Hilbert space of entire functions with continuous evaluators
+Zz : ∀f ∈ H f (z) = (Zz , f ). Let σ = (z1 , . . . , zn ) be a finite sequence of (non necessarily
+distinct) complex numbers with associated evaluators Z1 , . . . , Zn , assumed to be linearly
+
+
+                                                3
+independent. Let H(σ) be the Hilbert space of entire functions which are complete forms of
+the elements of H vanishing on σ. The evaluators of H(σ) are given by:
+
+                                     (Z1 , Z1 )       ...    (Z1 , Zn )   (Z1 , Zz )
+                            γ(w)γ(z) (Z 2 , Z1 )      ...    (Z2 , Zn )   (Z2 , Zz )
+                  Kzσ (w) =               ..                     ..           ..           (7)
+                              Gσn          .          ...         .            .
+                                     (Zw , Z1 )       ...    (Zw , Zn ) (Zw , Zz )
+
+where Gσn is the principal n × n minor of the matrix at the numerator. Of course this
+formula must be interpreted as a limit when z or w belongs to σ.
+
+    Assume that an E function is known such that the evaluators in H are given by formula
+(3). We find a function Eσ playing the analogous role for H(σ):
+
+Theorem 2. Let Eσ (w) be the unique entire function such that its “incomplete form”
+                  Q
+(its product with 1≤i≤n (w − zi )) differs from E(w) by a finite linear combination of the
+evaluators Z1 (w), . . . , Zn (w). In other words, let
+
+                                    (Z1 , Z1 ) . . .        (Z1 , Zn ) E[z1 ]
+                               γ(w) (Z2 , Z1 ) . . .        (Z2 , Zn ) E[z2 ]
+                      Eσ (w) =          ..                      ..       ..                (8)
+                                Gσn      .     ...               .        .
+                                     Z1 (w) . . .            Zn (w) E(w)
+
+where Gσn is the principal n × n minor. The evaluator Kzσ at z for the space H(σ) verifies:
+
+                                                Eσ (z)Eσ (w) − Eσ∗ (z)Eσ∗ (w)
+                     Kzσ (w) = (Kwσ , Kzσ ) =                                              (9)
+                                                          i(z − w)
+
+Remark 2. We mentioned earlier that, if H is not already spanned by the Zi , 1 ≤ i ≤ n,
+any evaluator Zz with Im(z) 6= 0 is linearly independent from the Zi ’s. This implies Kzσ 6= 0,
+hence for Im(z) > 0 and by (9): |Eσ (z)|2 −|Eσ∗ (z)|2 > 0, thus Eσ given by (8) indeed verifies
+(2) if H(σ) is not the zero space.
+
+Remark 3. Let us write F (w) = E ∗ (w) = E(w) and similarly Fσ (w) = Eσ∗ (w) = Eσ (w).
+It will be shown in the proof that Fσ follows the same recipe as Eσ :
+
+                                    (Z1 , Z1 ) . . .        (Z1 , Zn ) F [z1 ]
+                               γ(w) (Z2 , Z1 ) . . .        (Z2 , Zn ) F [z2 ]
+                      Fσ (w) =          ..                      ..        ..              (10)
+                                Gσn      .     ...               .         .
+                                     Z1 (w) . . .            Zn (w) F (w)
+
+Remark 4. We did not see an immediate easy manipulation of determinants leading to (9)
+from (7) and (8). Even the compatibility of the two equations (8) and (10) with the relation
+
+
+                                                  4
+Fσ = Eσ∗ does not seem to be immediately visible from easy manipulations of determinants.
+However, under the additional hypotheses that the space H has the additional symmetry
+f (z) 7→ f (−z) and that the “trivial zeros” are purely imaginary and distinct, a relatively
+simple determinantal approach is proposed in [2]. It leads in fact to other determinantal
+expressions for Eσ and Fσ than (8) and (10), thus giving further determinantal identities.
+
+
+2    Adding one zero
+
+We establish the case n = 1 of Theorem 2 by direct computation. Appropriate notations
+are needed in order to complete this deceptively simple looking task. We define:
+                                                                    
+                                    1                      Z1 (w)
+                         E(w) =           E(w) − E(z1 )                          (11)
+                                 w − z1                   (Z1 , Z1 )
+                                                                    
+                                    1                      Z1 (w)
+                        F(w) =            F (w) − F (z1 )                        (12)
+                                 w − z1                   (Z1 , Z1 )
+                           e1 = E(z1 )     f1 = F (z1 )                          (13)
+
+
+                                                               e1 E(w) − f1 F (w)
+                       hence:        E(w) = (w − z1 )E(w) + e1                                 (14)
+                                                                i(Z1 , Z1 )(z1 − w)
+                                                                 e1 F (w) − f1 E(w)
+                                =⇒ F (w) = (w − z1 )E ∗ (w) − e1                               (15)
+                                                                 i(Z1 , Z1 )(z1 − w)
+                                                                  e1 E(w) − f1 F (w)
+           on the other hand:        F (w) = (w − z1 )F(w) + f1                                (16)
+                                                                  i(Z1 , Z1 )(z1 − w)
+
+We multiply the last identity by z1 − w, the one before by z1 − w and substract:
+
+                                                                    |e1 |2 − |f1 |2
+          (z1 − z1 )F (w) = (w − z1 )(z1 − w)(E ∗ (w) − F(w)) −                     F (w)      (17)
+                                                                      i(Z1 , Z1 )
+
+Thus (w − z1 )(z1 − w)(E ∗ (w) − F(w)) = 0 and we have established:
+
+                                         F(w) = E ∗ (w)                                        (18)
+
+
+    We will also need the following identity:
+
+                                 e1 E(w) − f1 F(w) = −iZ1 (w)                                  (19)
+
+Indeed, from (14) and (16):
+
+                                                                                   Z1 (w)
+         e1 E(w) − f1 F (w) = (w − z1 )(e1 E(w) − f1 F(w)) + (|e1 |2 − |f1 |2 )                (20)
+                                                                                  (Z1 , Z1 )
+
+
+                                                5
+            =⇒ i(z1 − w)Z1 (w) = (w − z1 )(e1 E(w) − f1 F(w)) + i(z1 − z1 )Z1 (w)                (21)
+
+This proves (19).
+
+    Let us now compute the determinant
+
+             (Z1 , Z1 ) (Z1 , Zz )              E(z)E(w) − F (z)F (w)
+                                   = (Z1 , Z1 )                       − Z1 (z)Z1 (w)             (22)
+             (Zw , Z1 ) (Zw , Zz )                    i(z − w)
+
+We first consider:
+
+           (Z1 , Z1 )E(z)E(w) − (Z1 , Z1 )F (z)F (w) − i(z1 − w)Z1 (z)Z1 (w)                     (23)
+            = (Z1 , Z1 )E(z)E(w) − (Z1 , Z1 )F (z)F (w) − Z1 (z)(e1 E(w) − f1 F (w))             (24)
+                                                       
+            = (Z1 , Z1 )(z − z1 ) E(z)E(w) − F(z)F (w)                                           (25)
+
+Using (14) and (16) this is equal to
+                                                                                             
+                                             e1 Z1 (w)                             f1 Z1 (w)
+(Z1 , Z1 )(z − z1 ) E(z)(w − z1 )E(w) + E(z)            − F(z)(w − z1 )F(w) − F(z)
+                                             (Z1 , Z1 )                            (Z1 , Z1 )
+                                                                                          (26)
+= (Z1 , Z1 )(z − z1 )(w − z1 )(E(z)E(w) − F(z)F(w)) + (e1 E(z) − f1 F(z))(z − z1 )Z1 (w)
+                                                                                                 (27)
+= (Z1 , Z1 )(z − z1 )(w − z1 )(E(z)E(w) − F(z)F(w)) + i(z − z1 )Z1 (z)Z1 (w)                     (28)
+
+where (19) was used. Identity of (23) and (28) gives:
+
+                (Z1 , Z1 )E(z)E(w) − (Z1 , Z1 )F (z)F (w) − i(z − w)Z1 (z)Z1 (w)
+                                                                                               (29)
+                           = (Z1 , Z1 )(w − z1 )(z − z1 ) E(z)E(w) − F(z)F(w)
+
+Comparison with (22) gives the final result:
+
+                  γ1 (w)γ1 (z) (Z1 , Z1 ) (Z1 , Zz )   E(z)E(w) − F(z)F(w)
+                                                     =                                           (30)
+                   (Z1 , Z1 ) (Zw , Z1 ) (Zw , Zz )          i(z − w)
+
+As we know from (18) that F = E ∗ this completes the proof of Theorem 2 in the case n = 1.
+
+
+3    General case with distinct trivial zeros
+
+An induction establishes Theorem 2 when the zi ’s are distinct. Let us suppose it true for the
+n−1 added “trivial zeros” z1 , . . . ,zn−1 . From (7) we know that for any z ∈ C\{z1 , . . . , zn−1 },
+Q                     z1 ,...,zn−1
+    1≤i≤n−1 (w − zi )Kz            (w) is a linear combination of the original evaluators Z1 (w),
+. . . , Zn−1 (w) and Zz (w). This applies in particular to z = zn . The induction hypothesis
+
+
+                                                  6
+tells us that 1≤i<n (w − zi )E z1 ,...,zn−1 (w) differs from E(w) by a linear combination of the
+             Q
+
+original evaluators Z1 (w), . . . , Zn−1 (w). The case n = 1 tells us that (w − zn )E z1 ,...,zn (w)
+                                                  z ,...,z
+differs from E z1 ,...,zn−1 (w) by a multiple of Kzn1 n−1 (w). Hence 1≤i≤n (w−zi )E z1 ,...,zn (w)
+                                                                      Q
+
+differs from E(w) by a linear combination of the original evaluators Z1 (w), . . . , Zn−1 (w)
+and Zn (w), as was to be established. This linear combination is fixed in a unique manner
+by evaluating at the trivial zeros of 1≤i≤n (w − zi )E z1 ,...,zn (w). This completes the proof
+                                          Q
+
+of Theorem 2. Furthermore we proved that the same iterative recipe as for Eσ works for
+the construction of Fσ = Eσ∗ . Hence the formula (10) holds.
+
+
+4    General case with multiplicities
+
+We introduce some notations for the case of repetitions among z1 , . . . , zn . We define k1 , . . . ,
+kn such that i′ = i−ki is the first index with zi′ = zi . For example if z1 = z2 = z3 6= z4 = z5 ,
+k1 = 0, k2 = 1, k3 = 2, k4 = 0, k5 = 1, etc. . . Then, for f an analytic function, we recall
+the notation f [zi ] := f (ki ) (zi ). For f ∈ H we also have the scalar product (Zi , f ) = f [zi ].
+
+    Let kσ (z, w) be the incomplete form of the reproducing kernel K σ (z, w) in H(σ):
+
+                       (Z1 , Z1 )   ...     (Z1 , Zn )       (Z1 , Zz )
+                   1   (Z2 , Z1 )   ...     (Z2 , Zn )       (Z2 , Zz )            X
+    kσ (z, w) =            ..                   ..               ..     = Zz (w) −   βjσ Zj (w)   (31)
+                  Gn        .     ...            .                .                1≤j≤n
+                       (Zw , Z1 ) . . .    (Zw , Zn ) (Zw , Zz )
+
+where the coefficients β1σ , . . . , βnσ (which are also functions of z) are determined by the
+constraints:
+                                     X
+                       ∀i                 βjσ Zj [zi ] = Zz [zi ] (= (Zi , Zz ))          (32)
+                                    1≤j≤n
+
+
+   Let ǫ > 0 and ziǫ = zi −ki ǫ for 1 ≤ i ≤ n. We let kǫ (z, w) be the (completely) incomplete
+form of the reproducing kernel in H(z1ǫ , . . . , znǫ ). It thus has the shape:
+                                                              X
+                                kǫ (z, w) = Zz (w) −                 αj Zzjǫ (w)                  (33)
+                                                             1≤j≤n
+
+with the constraints
+                                      ∀i        k ǫ (z, zi − ki ǫ) = 0                            (34)
+
+Let us use the definitions
+                                                               
+                                                X              kj
+                               Zjǫ := ǫ−kj               (−1)  m
+                                                                  Zzj −mǫ                         (35)
+                                                               m
+                                              0≤m≤kj
+
+
+
+
+                                                         7
+to obtain vectors Zjǫ ∈ H which span the same subspace of H as the Zzjǫ = Zzj −kj ǫ . So
+there are coefficients β1ǫ , . . . , βnǫ such that
+                                                                X
+                                 kǫ (z, w) = Zz (w) −                   βjǫ Zjǫ (w)               (36)
+                                                               1≤j≤n
+
+with the constraints
+                                        X
+                            ∀i                  βjǫ Zjǫ (zi − ǫki ) = Zz (zi − ǫki )              (37)
+                                    1≤j≤n
+
+We define the symbol, for any arbitrary analytic function on C:
+                                                   
+                                                 l ki
+                                          X
+                             ǫ        −ki
+                         f [zi ] := ǫ       (−1)       f (zi − lǫ)                                (38)
+                                                    l
+                                                 0≤l≤ki
+
+With the help of these symbols, the constraints on the βjǫ can be equivalently rewritten:
+                                                 X
+                                   ∀i                   βjǫ Zjǫ [ziǫ ] = Zz [ziǫ ]                (39)
+                                                1≤j≤n
+
+We examine the behavior for ǫ → 0 of the quantities Zjǫ [ziǫ ]. In terms of the reproducing
+kernel Z(z, w) = Zz (w) = (Zw , Zz ), which from equation (3) is analytic in w and anti-
+analytic in z we have:
+                                                
+                 ǫ ǫ        1     X
+                                           l+m ki  kj
+               Zj [zi ] = k +k         (−1)             Z(zj − mǫ, zi − lǫ)            (40)
+                         ǫ i   j               l   m
+                                 0≤l≤k      i
+                                   0≤m≤kj
+
+                              ∂                                    ∂
+Thus, with (∂F )(w1 , w2 ) = ∂w 2
+                                  F (w1 , w2 ), (δF )(w1 , w2 ) = ∂w 1
+                                                                       F (w1 , w2 ):
+
+                                    lim Zjǫ [ziǫ ] = (∂ ki δkj Z)(zj , zi )                       (41)
+                                    ǫ→0
+
+On the other hand we have:
+
+                  ∂ ki               ∂ ki                    ∂ ki      ∂ kj
+  (Zi , Zj ) =             Zj (w) =           (Zj , Z w ) =                      Z(w, ω)
+                 ∂wki w=zi          ∂wki w=zi               ∂wki w=zi ∂ω kj ω=zj
+                                                                                                  (42)
+                                           ∂ ki      ∂ kj
+                                        =                      Z(ω, w) = (∂ ki δkj Z)(zj , zi )
+                                          ∂wki w=zi ∂ω kj ω=zj
+
+which gives
+                             (Zi , Zj ) = (∂ ki δkj Z)(zj , zi ) = lim Zjǫ [ziǫ ]                 (43)
+                                                                          ǫ→0
+There also holds, for any z:
+                                          (Zi , Zz ) = lim Zz [ziǫ ]                              (44)
+                                                           ǫ→0
+
+
+                                                          8
+So in the limit ǫ → 0 the linear constraints (39) on (βjǫ )1≤j≤n become the constraints on
+the coefficients β1σ , . . . , βnσ which give in (31) the incomplete reproducing kernel kσ (z, w).
+This shows in passing that for ǫ 6= 0 small the vectors Zjǫ are also linearly independent, and
+proves ∀j limǫ→0 βjǫ = βjσ . We have further
+
+                                      Zj (w) = lim Zjǫ (w)                                   (45)
+                                                  ǫ→0
+
+and this finally establishes:
+                                     lim kǫ (z, w) = kσ (z, w)                               (46)
+                                    ǫ→0
+
+    In the exact same manner we can examine the quantities:
+
+                                   (Z1 , Z1 ) . . .         (Z1 , Zn ) E[z1 ]
+                                 1 (Z2 , Z1 ) . . .         (Z2 , Zn ) E[z2 ]
+                        eσ (w) = σ     ..                       ..       ..                  (47)
+                                Gn      .     ...                .        .
+                                    Z1 (w) . . .             Zn (w) E(w)
+
+and
+                                 (Zz1ǫ , Zz1ǫ )       ...   (Zz1ǫ , Zznǫ ) E(z1ǫ )
+                               1 (Zz2ǫ , Zz1ǫ )       ...   (Zz2ǫ , Zznǫ ) E(z2ǫ )
+                      eǫ (w) = ǫ       ..                         ..         ..              (48)
+                              Gn        .             ...          .          .
+                                  Zz1ǫ (w)            ...    Zznǫ (w)      E(w)
+and prove
+                                       lim eǫ (w) = eσ (w)                                   (49)
+                                       ǫ→0
+There is also an immediate limit to be taken in the gamma factor, and in the end we obtain
+the reproducing kernel formula (9) for the space H(σ). The formula Eσ∗ = Fσ with Fσ given
+by (10) is proven in the same manner.
+
+
+5     An example
+
+We take H = P Wx (x > 0), the Paley-Wiener space of entire functions of exponential type
+                                                          1            2
+                                                            R
+at most x, square integrable on the real line ((f, f ) = 2π   R |f (z)| dz). The evaluators are
+given by the formula
+                                                             Z x
+                                        sin((z − w)x)
+                Zz (w) = (Zw , Zz ) = 2                  (=        eiwt e−izt dt)          (50)
+                                            z−w                −x
+
+We can choose E(z) = e−ixz , F (z) = E ∗ (z) = e+ixz . Let z1 , z2 , . . . , zn and z be distinct
+complex numbers and define
+
+
+
+                                                  9
+                       2 sin((z 1 −z1 )x)
+                             z1 −z1                2 sin((z 2 −z1 )x)
+                                                         z 2 −z1            ...      2 sin((z n −z1 )x)
+                                                                                           zn −z1
+                       2 sin((z 1 −z2 )x)
+                             z 1 −z2               2 sin((z 2 −z2 )x)
+                                                         z2 −z2             ...      2 sin((z n −z2 )x)
+                                                                                           zn −z2
+                  Gn =          ..                                                            ..                          (51)
+                                 .                         ...              ...                .
+                           2 sin((z 1 −zn )x)
+                                 z1 −zn                    ...              ...      2 sin((z n −zn )x)
+                                                                                           zn −zn
+
+
+                   2 sin((z 1 −z1 )x)
+                         z1 −z1             2 sin((z 2 −z1 )x)
+                                                  z2 −z1             ...      2 sin((z n −z1 )x)
+                                                                                    zn −z1             2 sin((z−z
+                                                                                                             z−z1
+                                                                                                                  1 )x)
+
+
+                   2 sin((z 1 −z2 )x)
+                         z1 −z2             2 sin((z 2 −z2 )x)
+                                                  z2 −z2             ...      2 sin((z n −z2 )x)
+                                                                                    zn −z2             2 sin((z−z
+                                                                                                             z−z2
+                                                                                                                  2 )x)
+
+       Gn (z, z) =          ..                                        ..               ..                      ..         (52)
+                             .                     ...                 .                .                       .
+                      2 sin((z 1 −z)x)
+                            z1 −z                  ...               ...      2 sin((z n −z)x)
+                                                                                    zn −z              2 sin((z−z)x)
+                                                                                                             z−z
+
+
+                     2 sin((z 1 −z1 )x)
+                           z1 −z1             2 sin((z 2 −z1 )x)
+                                                    z2 −z1            ...       2 sin((z n −z1 )x)
+                                                                                      zn −z1            e−ixz1
+                     2 sin((z 1 −z2 )x)
+                           z1 −z2             2 sin((z 2 −z2 )x)
+                                                    z2 −z2            ...       2 sin((z n −z2 )x)
+                                                                                      zn −z2            e−ixz2
+            en (z) =          ..                                       ..                ..               ..              (53)
+                               .                     ...                .                 .                .
+                        2 sin((z 1 −z)x)
+                              z1 −z                  ...              ...         2 sin((z n −z)x)
+                                                                                        zn −z            e−ixz
+
+                      2 sin((z 1 −z1 )x)
+                            z1 −z1              2 sin((z 2 −z1 )x)
+                                                      z2 −z1            ...       2 sin((z n −z1 )x)
+                                                                                        zn −z1            eixz1
+                      2 sin((z 1 −z2 )x)
+                            z1 −z2              2 sin((z 2 −z2 )x)
+                                                      z2 −z2            ...       2 sin((z n −z2 )x)
+                                                                                        zn −z2            eixz2
+             fn (z) =          ..                                        ..                ..               ..            (54)
+                                .                     ...                 .                 .                .
+                         2 sin((z 1 −z)x)
+                               z1 −z                  ...               ...        2 sin((z n −z)x)
+                                                                                         zn −z            eixz
+
+  Then
+                          |en (z)|2 − |fn (z)|2                                             Y z − zi
+         Gn (z, z)Gn =                                          and           fn (z) =               en (z)               (55)
+                                2 Im(z)                                                       z − zi
+                                                                                           1≤i≤n
+
+
+
+References
+[1] L. de Branges, Hilbert spaces of entire functions, Prentice Hall Inc., Englewood Cliffs,
+    1968.
+[2] J.-F. Burnol, Paley-Wiener spaces with vanishing conditions and Painlevé VI tran-
+    scendents, July 2010, 30 pages. arXiv:
+[3] Y. I. Lyubarskii and K. Seip, Weighted Paley-Wiener spaces, J.A.M.S., vol. 15, n. 4,
+    pages 979–1006, 2002.
+
+
+
+
+                                                           10
+

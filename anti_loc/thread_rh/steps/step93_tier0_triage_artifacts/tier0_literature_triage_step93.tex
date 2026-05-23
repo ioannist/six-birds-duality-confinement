@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,booktabs,array,longtable}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\title{Step 93: Tier-0 Literature Triage and Hybrid RH Strategy Reset}
+\author{RATCHET / Six Birds RH Membrane Program}
+\date{May 2026}
+\begin{document}
+\maketitle
+
+\section*{Purpose}
+This note performs a Tier-0 triage of the six RH-adjacent papers supplied for the switch from framework building to zeta-carrier construction.  It is not a full multi-week reading.  It is a first routing pass: identify which existing results should be imported, which constructions must be tested against the framework gates, and which routes should be avoided before further construction.
+
+\section*{Executive conclusion}
+The active RH route should be reset to a hybrid program:
+\[
+\boxed{
+\text{paired Weil/membrane gates}
++
+\text{Connes--Consani archimedean positivity}
++
+\text{Hecke-character source coercivity for the semilocal cross-term}.
+}
+\]
+The small paired carrier remains useful as a diagnostic and as a paired-CND research object, but it should no longer be pursued as a standalone RH path.  The enlarged Hecke/adelic carrier should remain the backup if the semilocal cross-term cannot be closed in the hybrid setting.
+
+\section*{Six-paper triage}
+\begin{longtable}{p{0.19\linewidth}p{0.24\linewidth}p{0.31\linewidth}p{0.18\linewidth}}
+\toprule
+Paper & What it contributes & Framework interpretation & Route status\\
+\midrule
+Conrey--Li 2000 & Counterexamples to de Branges-type positivity for zeta and Dirichlet $L$-functions. & A hard no-overread test: any new RKHS/positivity ansatz must avoid being just a disguised de Branges positivity condition. & Mandatory obstruction test.\\
+Connes--Consani 2020 & Archimedean Weil positivity via Sonin/prolate compression; positive trace functional compared to the archimedean Weil distribution. & Import as the gamma/archimedean slot rather than reconstructing it from scratch. & Tier-1 base theorem.\\
+Connes--Consani--Moscovici 2024 & Semilocal prolate operator program; semilocal Sonin spaces; Hardy--Titchmarsh transform; semilocal stage where explicit formula and radical of Weil form have operator meaning. & The natural arena for the cross-term.  Our paired-CND and source-coercivity gates should be applied here. & Tier-1 target setting.\\
+Connes--Consani--Moscovici 2025 & Rank-one perturbations of scaling spectral triples; restricted Euler products; self-adjoint finite approximants with zeros on the critical line and striking numerical convergence. & Empirical finite-stage evidence for our finite-source / exact-line approximant mechanism; also warns that convergence-to-completed-ledger remains the true gate. & Tier-1 empirical anchor.\\
+Chiral Adelic Dirac 2025 & Idèle-class Hilbert space, chiral involution, Hecke mass deformation, finite-prime truncations, spectral shift. & A candidate enlarged carrier that naturally realizes functional-equation symmetry and source ladders, but requires descent to zeta ledger. & Tier-2 backup carrier.\\
+Yakaboylu 2024/2026 & Non-symmetric operator with zeros as spectrum; positive semidefinite intertwiner $W$ forces critical-line location under simplicity. & Very close to the duality-confinement theorem, but it uses zero-indexed compression and simplicity assumptions; must be tested for smuggling/ledger circularity. & Parallel test / controlled-subset route.\\
+\bottomrule
+\end{longtable}
+
+\section*{Route reset}
+The previous Steps 78--89 rediscovered the canonical positivity wall: separated prime/gamma/pole diagonal accounting cannot pay the infinite-dimensional anti-invariant core.  The literature confirms this is not a private artifact of our framework.  The active target should therefore be changed from
+\[
+\text{separated diagonal repair}
+\]
+to
+\[
+\boxed{
+\text{paired semilocal Weil feature representation with source-coercive cross-term control}.
+}
+\]
+
+\subsection*{Tier 1 program}
+The recommended Tier-1 construction is:
+\begin{enumerate}
+\item Treat Connes--Consani 2020 as the accepted archimedean/gamma slot, subject to importing its support, vanishing, and Sonin-compression hypotheses into our all-six records.
+\item Work in the semilocal Connes--Consani--Moscovici setting, not the bare small carrier, for the prime--archimedean cross-term.
+\item Use the framework's Hecke-character source ladder to try to produce a full anti-invariant lower frame
+\[
+F_n\succeq \Lambda_n(\Theta_0^-)^{-1},\qquad \Lambda_n\to\infty.
+\]
+\item Maintain the fixed/exhaustive zero-ledger squeeze gate; finite spectral triples are support-only unless determinant/zero-ledger convergence is proved.
+\end{enumerate}
+
+\section*{Conrey--Li survival test}
+Any proposed positivity or feature package must pass the following test:
+\begin{quote}
+It must not imply the de Branges positivity conditions shown false by Conrey--Li for the Hilbert spaces naturally associated to $\xi(s)$ or $1/\xi(s)$.
+\end{quote}
+In framework language, the proposed carrier must not be a public-shadow RKHS positivity condition. It must either be semilocal/adelic, paired-feature, quotient-corrected, source-coercive, or explicitly scoped.
+
+\section*{Yakaboylu bridge test}
+Yakaboylu's positive intertwiner has the right duality-confinement shape:
+\[
+W R = R^\dagger W,\qquad W\ge0\quad\Rightarrow\quad \rho=1-\bar\rho.
+\]
+But in our framework the decisive questions are:
+\begin{enumerate}
+\item Is $W$ constructed upstream of the zero-confinement test, or is it zero-ledger selected?
+\item Does the compression to the zero subspace already assume the zero ledger we need to prove exhaustive?
+\item Can the simplicity assumption be represented as a lawful scoped hypothesis rather than a hidden gate?
+\item Can the positive intertwiner be expressed as a Douglas bridge or source-frame budget on a carrier not indexed by the target conclusion?
+\end{enumerate}
+
+\section*{Near-term construction target}
+The next proof move should not continue generic Hecke descent.  It should import the Connes--Consani archimedean theorem as a named black-box slot and formulate the semilocal cross-term membrane problem:
+\[
+\boxed{
+\text{CC archimedean positivity}
++
+\text{semilocal prime/Hecke source ladder}
+\Rightarrow
+\text{paired Weil domination on the anti-invariant core?}
+}
+\]
+This is the precise Tier-1 problem.
+
+\section*{Nonclaims}
+This triage does not prove RH, does not validate the Yakaboylu positivity argument, does not prove the convergence of the Connes--Consani--Moscovici finite spectral triples, and does not assert that the chiral adelic Dirac model is an accepted zeta carrier.  It only reorders the construction strategy based on the current literature and our framework gates.
+
+\end{document}

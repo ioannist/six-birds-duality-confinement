@@ -1,0 +1,87 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\title{Step 105: Semilocal Prolate Repair Test}
+\author{RH Membrane Construction Notes}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 104 showed that the raw archimedean Sonin projection does not compactly absorb nonzero log-shifts:
+\[
+B_a=P_\infty\tau_a(I-P_\infty)
+\]
+has a noncompact boundary-packet sector for every nonzero shift $a$. Step 105 asks whether the actual semilocal prolate projection $P_S$ can repair this sector.
+
+\section{The Calkin repair criterion}
+Let $\mathcal K(H)$ be the compact operators and let $\pi:B(H)\to B(H)/\mathcal K(H)$ be the quotient map. Write $[T]=\pi(T)$.
+
+\begin{lemma}[compact perturbations cannot repair an essential off-diagonal block]
+Let $P$ and $\widetilde P$ be orthogonal projections on $H$, let $U$ be unitary, and suppose $\widetilde P-P$ is compact. Then
+\[
+\widetilde P U(I-\widetilde P)-P U(I-P)\in\mathcal K(H).
+\]
+Consequently,
+\[
+[\widetilde P][U](1-[\widetilde P])=[P][U](1-[P]).
+\]
+If $P U(I-P)$ is nonzero in the Calkin algebra, then so is $\widetilde P U(I-\widetilde P)$.
+\end{lemma}
+
+\begin{proof}
+Expand
+\[
+\widetilde P U(I-\widetilde P)-P U(I-P)
+=(\widetilde P-P)U(I-P)+\widetilde P U(P-\widetilde P).
+\]
+Both terms are compact because compact operators form a two-sided ideal in $B(H)$.
+\end{proof}
+
+\begin{definition}[semilocal prolate repair equation]
+Let $\mathcal L_S$ denote the finite-place Bohr shift set
+\[
+\mathcal L_S=\left\{\sum_{p\in S_f}k_p\log p: k_p\in\mathbb Z,\; \text{finitely supported}\right\}.
+\]
+A transported semilocal prolate projection $P_S$ repairs the shifted Sonin obstruction if
+\[
+[P_S][\tau_\ell](1-[P_S])=0
+\qquad(\ell\in\mathcal L_S\setminus\{0\})
+\]
+in the Calkin algebra.
+\end{definition}
+
+\begin{proposition}[essential repair is necessary]
+Assume Step 104's boundary-packet result:
+\[
+[P_\infty][\tau_a](1-[P_\infty])\ne0
+\qquad(a\ne0).
+\]
+If $P_S-P_\infty$ is compact, then $P_S$ cannot repair the obstruction. Therefore any successful semilocal prolate repair must change the essential Calkin class of the projection.
+\end{proposition}
+
+\section{Consequence for semilocal prolate programs}
+The semilocal Hardy--Titchmarsh framework supplies the correct room and the isomorphism connecting archimedean and semilocal Sonin spaces. However, that is not yet the same as proving the Calkin repair equation. If the semilocal prolate projection differs from the transported archimedean Sonin projection only by finite-dimensional or compact discrepancy, then Step 104's noncompact shifted boundary-packet sector survives.
+
+The actual semilocal prolate projection must therefore do essential work: it must cancel the nonzero Calkin class of the shifted block, not merely repair finitely many modes.
+
+\section{Route dichotomy}
+The compactness shortcut for $\Delta_S$ has the following status:
+\[
+\boxed{\text{not compact-certified.}}
+\]
+There are two lawful exits:
+\begin{enumerate}
+\item prove a genuine semilocal prolate projection $P_S$ satisfying the Calkin repair equation;
+\item accept that the noncompact sector survives and charge it by a full Hecke/Dirichlet source lower frame.
+\end{enumerate}
+
+\section{Nonclaim boundary}
+This step does not prove that the semilocal prolate program fails. It proves that compact perturbative repair is insufficient. The actual semilocal prolate projection remains a possible route only if it performs essential, noncompact cancellation of the shifted boundary-packet sector.
+\end{document}

@@ -1,0 +1,120 @@
+{
+  "step": 178,
+  "orientation": "adequacy",
+  "target": "kappa_{a,w}(tau) = T_a^* K_a^Gamma(.,w)(1/2+i tau)",
+  "inherited_records": [
+    {
+      "source": "step145",
+      "quote": "L_a is Burnol's extended Sonine space: functions constant on (0,a) whose cosine transform is again constant on (0,a)."
+    },
+    {
+      "source": "step153",
+      "quote": "T_a:=M_Gamma J_a U_infty^{-1}; U_infty(J_a^*Y^a_{w,k})=T_a^* partial_{bar w}^k K_a^Gamma(.,w)."
+    },
+    {
+      "source": "step153",
+      "quote": "K_a^Gamma(.,w)=P_{L_a^Gamma}K_a^{Gamma,amb}(.,w); the projection is load-bearing."
+    },
+    {
+      "source": "step153",
+      "quote": "K_a^{Gamma,amb}(s,w)=A_infty(s)conj(A_infty(w)) s/(s-1) conj(w/(w-1)) a^{s+conj(w)-1}/(s+conj(w)-1)."
+    },
+    {
+      "source": "step152",
+      "quote": "B_{ell,a}^*Y^a_{rho,k}=(I-P_infty)tau_{-ell}P_infty J_a^*Y^a_{rho,k}."
+    },
+    {
+      "source": "step113",
+      "quote": "Burnol's theorem gives, for a<1, Y_a^perp=P_a; at a=1 the zero-evaluator system is complete and minimal in L_1."
+    }
+  ],
+  "attack_pursued": "hybrid A/B/C: closed-form projected-kernel attack, transport-kernel attack, and spectral expansion attack",
+  "derivation_chain": [
+    {
+      "stage": "Attack A",
+      "result": "kappa_{a,w}=T_a^*P_{L_a^Gamma}K_a^{Gamma,amb}(.,w). Ambient kernel is explicit, but P_{L_a^Gamma} is not.",
+      "status": "blocked_at_projected_sonine_kernel"
+    },
+    {
+      "stage": "Attack B",
+      "result": "kappa_{a,w}(tau)=int overline{T_a(z,tau)}K_a^Gamma(z,w) dz.",
+      "status": "blocked_at_T_a_kernel_and_K_a^Gamma"
+    },
+    {
+      "stage": "Attack C",
+      "result": "If P_{L_a^Gamma}=sum_r |u_r><u_r|, then kappa_{a,w}(tau)=sum_r <K_a^{Gamma,amb}(.,w),u_r>(T_a^*u_r)(tau).",
+      "status": "blocked_at_Bessel_Hankel_spectral_data"
+    }
+  ],
+  "classical_theorems_cited": [
+    {
+      "name": "Hardy-space reproducing kernel theorem on the half-plane",
+      "use": "Justifies the ambient kernel already recorded in step153.",
+      "status": "available"
+    },
+    {
+      "name": "Mellin-Plancherel theorem for the critical line",
+      "use": "Justifies the boundary-line Hilbert model for T_a and U_infty.",
+      "status": "available"
+    },
+    {
+      "name": "Burnol explicit Bessel/Hankel resolvent formula for the orthogonal projection P_{L_a^Gamma} and reproducing kernel K_a^Gamma of extended Sonine spaces",
+      "use": "Needed to compute kappa_{1/2,rho_1}(tau).",
+      "status": "needed_missing"
+    }
+  ],
+  "kappa_formula": null,
+  "kappa_sample_values": [
+    {
+      "tau": -14.134725141734693,
+      "value": null,
+      "status": "not_computed_classical_projection_theorem_needed"
+    },
+    {
+      "tau": -5.0,
+      "value": null,
+      "status": "not_computed_classical_projection_theorem_needed"
+    },
+    {
+      "tau": -1.0,
+      "value": null,
+      "status": "not_computed_classical_projection_theorem_needed"
+    },
+    {
+      "tau": 0.0,
+      "value": null,
+      "status": "not_computed_classical_projection_theorem_needed"
+    },
+    {
+      "tau": 1.0,
+      "value": null,
+      "status": "not_computed_classical_projection_theorem_needed"
+    },
+    {
+      "tau": 5.0,
+      "value": null,
+      "status": "not_computed_classical_projection_theorem_needed"
+    },
+    {
+      "tau": 14.134725141734693,
+      "value": null,
+      "status": "not_computed_classical_projection_theorem_needed"
+    }
+  ],
+  "kappa_verdict": "V_kappa_classical_theorem_needed",
+  "c_11_log_2": {
+    "status": "not_attempted_kappa_unavailable",
+    "value": null,
+    "gap": "kappa_{1/2,rho_1} not derived"
+  },
+  "retained_nogos": [
+    "public-shadow non-promotion",
+    "finite-window Calkin blindness",
+    "auxiliary-GRH smuggling",
+    "incomplete character spectrum support-only",
+    "scalar identity not carrier identity",
+    "ledger-relative Hecke non-comparability",
+    "Branch C full-carrier ZI-COV(i) foreclosure under inherited U_infty and lambda=1"
+  ],
+  "final_verdict": "V_kappa_classical_theorem_needed"
+}

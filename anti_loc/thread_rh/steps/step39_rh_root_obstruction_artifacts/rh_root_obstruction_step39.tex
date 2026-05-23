@@ -1,0 +1,223 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{xcolor}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{corollary}{Corollary}
+\newtheorem{warning}{Warning}
+\newtheorem{remark}{Remark}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\ThetaB}{\Theta}
+\newcommand{\EF}{\mathrm{EF}}
+\newcommand{\src}{\mathrm{src}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\Ker}{\operatorname{Ker}}
+\newcommand{\pre}{\preceq}
+
+\title{Step 39: Obstruction Ledger for the Root-Composite RH Anti-Localization Route}
+\author{Six Birds / Anti-Localization Working Notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+This note records the contrapositive form of the root-composite RH anti-localization route.  Steps 32--38 gave a forward implication: anti-linear duality, zero-side visibility, completed explicit-formula domination, character-source lower-frame coercivity, and anti-invariant budget collapse imply confinement of visible root mass to the fixed locus.  Step 39 proves the corresponding obstruction theorem.  If the confinement conclusion is not obtained under a claimed budget, then at least one named square/gate fails, and the failure has a concrete witness: an explicit-formula domination witness, a source-budget witness, a character-frame hole, a null-mode witness, a visibility/exhaustivity failure, or a no-smuggling/public-shadow overread.  The result is not an RH proof; it is an RH obstruction ledger for the route.
+\end{abstract}
+
+\section{Setup}
+
+Let $J$ be an anti-linear involution on the root/readout side.  After realification, write
+\[
+Y_{\mathbb R}=Y^+\oplus Y^-,
+\qquad
+P_\pm=\frac{1\pm J}{2}.
+\]
+For RH one has
+\[
+J(s)=1-\overline{s},
+\qquad
+\Fix(J)=\{s:\Re(s)=1/2\}.
+\]
+Let $Z$ be a visible zero/root ledger with weights $w_z>0$ and anti-invariant displacement readout $\psi(z)\in Y^-$.  Define
+\[
+\A_Z=\sum_{z\in Z}w_z\,\psi(z)\psi(z)^*.
+\]
+Let $\K^-$ be the completed carrier-side anti-invariant currency matrix.  Let $E_{\EF}\succeq0$ be the completed explicit-formula defect and $E_{\src}\succeq0$ the source/coercivity defect.  Let $\Theta_0^-\succ0$ be a reference anti-invariant budget and $\Lambda>0$ a source strength.
+
+\begin{definition}[Root-composite RH obstruction record]
+A root-composite RH anti-localization record consists of
+\[
+\mathcal R=(J,Y^-,Z,\psi,\A_Z,\K^-,\Theta_0^-,\Lambda,E_{\EF},E_{\src},\mathsf G),
+\]
+where $\mathsf G$ is a list of gate statuses:
+\begin{enumerate}[label=G\arabic*.,leftmargin=2.5em]
+\item anti-linear duality and fixed-locus visibility;
+\item completed explicit-formula domination;
+\item character-source lower-frame/coercivity;
+\item anti-invariant null-mode legality;
+\item zero-ledger visibility/exhaustivity;
+\item no-smuggling and no public-shadow overread.
+\end{enumerate}
+\end{definition}
+
+\section{Forward bound recalled}
+
+\begin{lemma}[Visible mass from displacement matrix]
+For $\delta(z)=\|\psi(z)\|$ and $\varepsilon>0$,
+\[
+\sum_{z:\delta(z)\ge \varepsilon}w_z
+\le
+\varepsilon^{-2}\tr\A_Z.
+\]
+More generally, if $\A_Z\pre B$, then
+\[
+\sum_{z:\delta(z)\ge \varepsilon}w_z
+\le
+\varepsilon^{-2}\tr B.
+\]
+\end{lemma}
+
+\begin{proof}
+Since $\tr\A_Z=\sum_z w_z\|\psi(z)\|^2$, the first inequality follows from Markov's inequality.  The second follows from $\tr\A_Z\le\tr B$.
+\end{proof}
+
+\begin{theorem}[Root-composite confinement bound]
+Suppose that for some $t>0$ the completed explicit-formula square gives
+\[
+\A_Z\pre (1+t)\K^-+(1+t^{-1})E_{\EF},
+\]
+and the character-source/coercivity square gives
+\[
+\K^-\pre \Lambda^{-1}\Theta_0^-+E_{\src}.
+\]
+Then
+\[
+\A_Z\pre (1+t)(\Lambda^{-1}\Theta_0^-+E_{\src})+(1+t^{-1})E_{\EF}.
+\]
+Consequently,
+\[
+\boxed{
+\sum_{z:\|\psi(z)\|\ge\varepsilon}w_z
+\le
+\varepsilon^{-2}\tr\left[(1+t)(\Lambda^{-1}\Theta_0^-+E_{\src})+(1+t^{-1})E_{\EF}\right].
+}
+\]
+\end{theorem}
+
+\section{The obstruction theorem}
+
+\begin{theorem}[Root-composite RH obstruction alternative]
+Fix $\varepsilon>0$, $t>0$, $\Lambda>0$, and a claimed budget
+\[
+B_{t,\Lambda}=(1+t)(\Lambda^{-1}\Theta_0^-+E_{\src})+(1+t^{-1})E_{\EF}.
+\]
+If the visible off-fixed mass violates the bound
+\[
+\sum_{z:\|\psi(z)\|\ge\varepsilon}w_z
+>
+\varepsilon^{-2}\tr B_{t,\Lambda},
+\]
+then at least one of the following obstruction records is nonempty:
+\begin{enumerate}[label=O\arabic*.,leftmargin=2.5em]
+\item \textbf{Explicit-formula domination failure:}
+\[
+\A_Z\npreceq (1+t)\K^-+(1+t^{-1})E_{\EF}.
+\]
+Equivalently there exists $y\in Y^-$ such that
+\[
+y^*\bigl[\A_Z-(1+t)\K^--(1+t^{-1})E_{\EF}\bigr]y>0.
+\]
+\item \textbf{Source/coercivity failure:}
+\[
+\K^-\npreceq \Lambda^{-1}\Theta_0^-+E_{\src}.
+\]
+Equivalently there exists $y\in Y^-$ such that
+\[
+y^*\bigl[\K^- -\Lambda^{-1}\Theta_0^- -E_{\src}\bigr]y>0.
+\]
+\item \textbf{Character-frame hole:} the source frame $F_{\mathcal S}$ fails
+\[
+F_{\mathcal S}\succeq \Lambda(\Theta_0^-)^{-1}.
+\]
+Equivalently there exists $0\ne y\in Y^-$ such that
+\[
+y^*F_{\mathcal S}y<\Lambda\,y^*(\Theta_0^-)^{-1}y.
+\]
+If $y^*F_{\mathcal S}y=0$, the direction is completely invisible to the accepted character sources.
+\item \textbf{Null-mode legality failure:} there exists $a\in E$ such that
+\[
+C_\Gamma a=0,
+\qquad
+L^-_\Gamma a\ne0.
+\]
+Then the true variational anti-invariant capacity is infinite, even if a pseudoinverse expression appears finite.
+\item \textbf{Zero visibility or exhaustivity failure:} an off-fixed zero/root is absent from $Z$, or $\psi$ fails to separate the fixed locus, so that some off-fixed $z$ has $\psi(z)=0$ or is not charged by $\A_Z$.
+\item \textbf{No-smuggling/public-shadow failure:} the proof uses an invariant trace, a determinant/norm shadow, an ambient diagonal integral, or target-selected sources in place of the lawful anti-invariant currency and its completed bridge.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Assume none of O1--O6 occurs.  Then the explicit-formula domination and source/coercivity inequalities both hold, null-mode legality makes the currency expression equal to the true variational capacity, and visibility/exhaustivity ensures that $\A_Z$ accounts for the relevant off-fixed mass.  The forward confinement theorem applies and yields the displayed mass bound, contradiction.  The witness forms in O1--O3 are the finite-dimensional separating-vector characterization of failure of Loewner order.
+\end{proof}
+
+\section{Minimal witness forms}
+
+\begin{proposition}[PSD separation witnesses]
+For Hermitian $A,B$, one has $A\npreceq B$ iff there exists $y$ such that $y^*(A-B)y>0$.  The maximum additive violation is
+\[
+\lambda_{\max}(A-B).
+\]
+If $B\succ0$, the maximum relative violation is
+\[
+\lambda_{\max}(B^{-1/2}AB^{-1/2})-1.
+\]
+\end{proposition}
+
+\begin{proposition}[Incomplete character frame witness]
+Let
+\[
+F_{\mathcal S}=\sum_s\lambda_sQ_s^*\Theta_s^{-1}Q_s.
+\]
+If $F_{\mathcal S}$ is not bounded below on $Y^-$, then there exists a sequence $y_n$ with $\|y_n\|=1$ and
+\[
+y_n^*F_{\mathcal S}y_n\to0.
+\]
+If $\Ker F_{\mathcal S}\ne0$, any nonzero $y\in\Ker F_{\mathcal S}$ is a hidden anti-invariant character witness.
+\end{proposition}
+
+\begin{warning}[Trace and determinant shadows]
+The equalities
+\[
+\tr\A_Z=\tr\K^-,
+\qquad
+\det A_Z\le\det\K^-
+\]
+do not imply $\A_Z\pre\K^-$.  RH-facing confinement requires anti-invariant Loewner domination or contractive factorization, not trace balance or product-norm balance.
+\end{warning}
+
+\section{RH obligation ledger}
+
+The root-composite route now has two forward records and one obstruction ledger:
+\begin{align*}
+\text{EF bridge:}\quad& \A_Z\pre (1+t)\K^-+(1+t^{-1})E_{\EF},\\
+\text{source budget:}\quad& \K^-\pre \Lambda^{-1}\Theta_0^-+E_{\src},\\
+\text{obstruction ledger:}\quad& \text{if confinement fails, record O1--O6 with witness data.}
+\end{align*}
+For RH the exact proof still needs to earn the EF bridge, the full anti-invariant character frame, source growth, null legality, and zero-ledger visibility.  Step 39 does not prove RH; it makes the route falsifiable and audit-complete.
+
+\section{Conclusion}
+
+The obstruction theorem turns the root-composite RH route into a finite disjunction of named failures.  This is the Six Birds form of a no-go theorem: any failure of zero confinement must become an explicit defect in a square, a missing character source, a null-mode problem, a visibility failure, or an overread.  The route is therefore no longer an informal aspiration; it is an obstruction ledger.
+
+\end{document}

@@ -1,0 +1,28 @@
+{
+  "operator": "C_l P_eta",
+  "numerical_status": "blocked_before_numeric_calkin_test",
+  "gap": "missing kappa_{a,rho,k}=T_a^* partial K_a^Gamma(.,rho), equivalently the Burnol projected Sonine kernel P_{L_a^Gamma}K_a^{Gamma,amb}",
+  "attempts": [
+    {
+      "attack": "T2a_matrix_elements",
+      "status": "blocked_at_kappa",
+      "evidence": "<eta_i,C_l eta_j> requires U_infty eta_i=kappa_i and U_infty eta_j=kappa_j."
+    },
+    {
+      "attack": "T2b_HS_trace",
+      "status": "blocked_at_P_eta_kernel",
+      "evidence": "Trace/HS test requires the projection P_eta or an orthonormal frame for H_eta; both require kappa data."
+    },
+    {
+      "attack": "T2c_Weyl_sequence",
+      "status": "blocked_at_actual_H_eta_vectors",
+      "evidence": "PSWF or hard-support Weyl vectors are not known to lie in H_eta without kappa or a density theorem."
+    },
+    {
+      "attack": "T2d_step175_L_values",
+      "status": "blocked_at_pairing_identification",
+      "evidence": "L_{rho,k}(G) data do not identify <eta_i,C_l eta_j> without the evaluator vector kappa."
+    }
+  ],
+  "verdict": "V_branch_a_stuck_at_kappa"
+}

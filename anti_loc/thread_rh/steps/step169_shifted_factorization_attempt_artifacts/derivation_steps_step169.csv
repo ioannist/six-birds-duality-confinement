@@ -1,0 +1,13 @@
+step_id,description,inherited_record_cited,intermediate_expression
+T2a,"Expand shifted packet and apply Mellin linearity",R1,"M(B_{l,a}u)(s)=M(J_a P_infty tau_l(I-P_infty)u)(s)"
+T2b_J,"Apply J_a transport via T_a",R4,"M(J_a v)=T_a U_infty v"
+T2b_P,"Move P_infty into Mellin-side projection",R3/R4,"U_infty P_infty U_infty^{-1}=mathsf P_infty; U_infty(I-P_infty)u=(I-mathsf P_infty)F_u"
+T2b_tau,"Apply log-shift multiplier",R1/R3,"U_infty tau_l(I-P_infty)u=M_{m_l}(I-mathsf P_infty)F_u"
+T2c,"Compose the actions",R1/R3/R4,"M(B_{l,a}u)(s)=[T_a mathsf P_infty M_{m_l}(I-mathsf P_infty)F_u](s)"
+T2d,"Compare with inherited co-Poisson identity",R2,"If J_aP_infty tau_l(I-P_infty)u=Cg_{l,a,u}, then M(B_{l,a}u)(s)=zeta(s)ghat_{l,a,u}(s)"
+T2e,"Identify precise stuck point",R2/R5,"Need T_a mathsf P_infty M_{m_l}(I-mathsf P_infty)F_u in zeta times the admitted Burnol generator Mellin class"
+U2a,"Specialize to co-Poisson input",R2,"For u=Cg and G=ghat, F_{Cg}=U_infty(Cg)=M_zeta G"
+U2b,"Apply complementary projection",R3/R4,"(I-mathsf P_infty)F_{Cg}=M_zeta G-mathsf P_infty M_zeta G"
+U2c,"Apply shift and commute scalar multipliers",R1/R5,"M_{m_l}(I-mathsf P_infty)M_zeta G=M_zeta(m_l G)-M_{m_l}mathsf P_infty M_zeta G"
+U2d,"Apply outgoing projection and transport",R3/R4,"M(B_{l,a}Cg)=T_a mathsf P_infty M_zeta(m_l G)-T_a mathsf P_infty M_{m_l}mathsf P_infty M_zeta G"
+U2e,"Reduce to deeper lemma",R2/R3/R4/R5,"Need ZI-COV_{l,a}^{CP}: mathsf P_infty M_zeta G=M_zeta A_infty G and T_a mathsf P_infty M_zeta H=M_zeta A_{T,a}H"

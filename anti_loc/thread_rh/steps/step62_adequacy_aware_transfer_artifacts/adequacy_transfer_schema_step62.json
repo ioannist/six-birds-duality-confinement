@@ -1,0 +1,40 @@
+{
+  "name": "AdequacyAwareMembraneTransfer",
+  "source_record": {
+    "carrier": "E",
+    "audit": "C",
+    "native_probe_family": "L",
+    "dissolving_probe_family": "D",
+    "native_currency": "K_LL = L C^dagger L^*",
+    "adequacy_residual": "Xi_C(D|L)",
+    "native_budget": "Theta_Y",
+    "adequacy_budget": "Xi_Z"
+  },
+  "bridge_record": {
+    "carrier_map": "P: E' -> E",
+    "native_response_map": "A: Y -> Y'",
+    "dissolving_response_map": "B: Z -> Z'",
+    "explanation_transport": "H: Y' -> Z'",
+    "energy_constant": "beta",
+    "native_residual": "R_L",
+    "dissolving_residual": "R_D",
+    "native_residual_currency": "E_L",
+    "adequacy_residual_currency": "E_{D|L,H}"
+  },
+  "target_record": {
+    "carrier": "E'",
+    "audit": "C'",
+    "native_probe_family": "L'",
+    "dissolving_probe_family": "D'"
+  },
+  "conclusion": {
+    "native_transfer": "K_L' <= ((1+s)/beta) A Theta_Y A^* + (1+s^-1) E_L",
+    "xi_transfer": "Xi' <= ((1+t)/beta) B Xi_Z B^* + (1+t^-1) E_{D|L,H}",
+    "dissolving_transfer": "K_D' bounded by native transfer plus Xi transfer"
+  },
+  "nonclaims": [
+    "A public shadow Xi bound does not promote to intrinsic adequacy without reconstruction.",
+    "Native membrane transfer without Xi transfer does not certify layer-dissolving membrane transfer.",
+    "Bridge residuals must be paid explicitly."
+  ]
+}

@@ -1,0 +1,18 @@
+item_id,item_type,status,audit_note
+C_arithmetic_independence,ledger_active,PASS,"Substrate uses circle geometry, Fourier modes, and Dirac operator only; no zeta/primes/adeles in primitive definition."
+C_self_adjoint_native,ledger_active,PASS,D_R=-i R^{-1} d/dtheta is self-adjoint on H^1(S^1) by compact spin-manifold elliptic theory.
+C_no_adelic_substrate,ledger_active,PASS,"No adele, idele, class field, or quotient of adelic spaces appears."
+C_no_tautology,ledger_active,FAIL,The only route to zeta-zero relevance is reinterpreting zeros of zeta_D(s) as operator spectrum; this is not derived and would replace the target by a different object.
+C_explicit_formula_natural,ledger_active,FAIL,"Circle Poisson summation gives integer-lattice duality, not Weil explicit formula with rational-prime log(p) terms."
+C_GUE_natural,ledger_active,FAIL,"Circle Dirac spectrum is integrable/picket-fence and time-reversal symmetric, not GUE/TRS-breaking."
+C_trace_formula_compatibility,ledger_active,FAIL,The trace formula is the commutative circle/Poisson trace formula and does not structurally match the zeta explicit formula.
+C_length_spectrum_arithmetic_mismatch,ledger_active,PARTIAL_FAIL,"There is no geodesic length spectrum in the chosen triple; the primitive object spectrum is the integer lattice, still not log(p)."
+C_boundary_phase_arithmetic_smuggling,ledger_active,PASS,No boundary phase or self-adjoint extension parameter is used.
+C_ensemble_distributional_not_pointwise,ledger_active,PASS,"The construction is deterministic, not an ensemble; however it still fails pointwise by matching spectral zeta rather than Spec(D)."
+C_spectral_zeta_not_spectrum,proposed_step436,FAIL,"New failure shape: zeta_D(s)=2R^s zeta(s) matches zeta as spectral zeta, but Spec(D_R)=R^{-1}Z is not the zero-ordinate set."
+Gate_1_primitive_exclusion,gate,PASS,"No zeta/primes/modular/adeles in A, H_space, or D."
+Gate_2_dependency_trace,gate,PASS,Dependency chain from circle spectral triple to zeta_D(s)=2R^s zeta(s) is explicit.
+Gate_3_ablation,gate,PASS,Removing the zeta-correspondence claim leaves a valid spectral triple.
+Gate_4_negative_controls,gate,PASS,Generic non-adelic spectral triples do not produce zeta_D proportional to zeta; the S^1 case is a special integer-lattice case.
+Gate_5_small_spectrum_match,gate,FAIL,Spec(D_R)=R^{-1}Z does not match first zeta-zero ordinates for any fixed R.
+Gate_6_no_single_axiom_equivalence,gate,FAIL,Treating spectral-zeta equality as the target would be an axiom-level replacement of the Hilbert-Polya objective.

@@ -1,0 +1,172 @@
+
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\title{Step 88: Zero-Side Low-Frequency Cancellation Audit}
+\author{Six Birds / Formed-Layer Membrane Project}
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+
+After the paired completed Weil feature gate, the active low-frequency obstruction is the legal zero of a paired shift/CND carrier.  If the completed paired symbol has
+\[
+\Psi(\xi)\sim c|\xi|^{2r}
+\quad (\xi\to 0),
+\]
+then positivity does not imply coercivity.  A zero-side readout can be controlled by this carrier only if it either cancels at the legal zero with a uniform witness, or the carrier supplies an independent low-frequency source.
+
+This note audits the first option: zero-side cancellation.
+
+\section{Setup}
+
+Let \(Y^{-}\) be the completed anti-invariant response space and suppose a translation-side paired carrier is diagonalized by a nonnegative symbol
+\[
+q_{\rm cmp}[f]=\int \Psi(\xi)|\widehat f(\xi)|^2\,d\xi,
+\qquad
+\Psi(\xi)\simeq c|\xi|^{2r}\text{ near }0 .
+\]
+Let \(g_y=V_Z^*y\) denote the representer of a zero-side anti-invariant readout recombination \(y\).  The local capacity contribution is
+\[
+\operatorname{Cap}_{0}(y)
+\sim
+\int_{|\xi|<\varepsilon}
+\frac{|\widehat g_y(\xi)|^2}{\Psi(\xi)}\,d\xi .
+\]
+
+\section{Cancellation order is not enough without a uniform witness}
+
+\begin{proposition}[Local cancellation threshold]
+Suppose in local dimension \(d\),
+\[
+\Psi(\xi)\gtrsim |\xi|^{2r},
+\qquad
+|\widehat g_y(\xi)|\lesssim |\xi|^{s}.
+\]
+Then the local capacity integral is finite near the legal zero if
+\[
+s>r-\frac d2 .
+\]
+In the one-dimensional shift-zero case \(r=1,d=1\), this is
+\[
+s>\frac12 .
+\]
+\end{proposition}
+
+\begin{proof}
+In polar coordinates the local integral is bounded by
+\[
+\int_0^\varepsilon \rho^{2s-2r}\rho^{d-1}\,d\rho,
+\]
+which converges precisely when \(2s-2r+d>0\).
+\end{proof}
+
+\begin{warning}[Pointwise cancellation is not a uniform membrane]
+The statement \(\widehat g_y(0)=0\), or even first-order cancellation for each fixed \(y\), does not by itself give a uniform anti-localization membrane for a family of recombinations.  A sequence of probes may vanish at \(\xi=0\) while concentrating closer and closer to the legal zero, causing
+\[
+\int |\widehat g_y(\xi)|^2/\Psi(\xi)\,d\xi
+\]
+to diverge.
+\end{warning}
+
+\section{Uniform primitive gate}
+
+The useful cancellation certificate is not merely a pointwise order statement.  It is a bounded factorization through the legal zero.
+
+\begin{definition}[Uniform primitive / derivative factorization]
+A zero-side readout family satisfies the uniform primitive gate if for every recombination \(y\) there exists \(h_y\) such that
+\[
+\widehat g_y(\xi)=\xi\,\widehat h_y(\xi)
+\]
+and
+\[
+\|h_y\|^2\le y^*\Theta_{\rm prim}y .
+\]
+Equivalently, \(V_Z^*\) factors as
+\[
+V_Z^*=D\,H,
+\]
+where \(D\) is the derivative multiplier \(i\xi\) and \(H\) is a bounded response-to-primitive map.
+\end{definition}
+
+\begin{theorem}[Derivative-factorized low-frequency capacity bound]
+Assume
+\[
+\Psi(\xi)\ge c|\xi|^2
+\]
+near the legal zero and \(\Psi(\xi)\ge m(\xi)>0\) away from it.  If
+\[
+\widehat g_y(\xi)=\xi\widehat h_y(\xi)
+\]
+with
+\[
+\|h_y\|^2\le y^*\Theta_{\rm prim}y,
+\]
+then the low-frequency capacity contribution satisfies
+\[
+\int_{|\xi|<\varepsilon}
+\frac{|\widehat g_y(\xi)|^2}{\Psi(\xi)}\,d\xi
+\le
+c^{-1}y^*\Theta_{\rm prim}y .
+\]
+If the high-frequency region is separately budgeted, then the full capacity is bounded.
+\end{theorem}
+
+\begin{proof}
+On the low-frequency region,
+\[
+\frac{|\widehat g_y(\xi)|^2}{\Psi(\xi)}
+=
+\frac{|\xi|^2|\widehat h_y(\xi)|^2}{\Psi(\xi)}
+\le
+c^{-1}|\widehat h_y(\xi)|^2.
+\]
+Integrating gives the result.
+\end{proof}
+
+\section{Oddness is not a gap}
+
+On the log side \(Jf(t)=\overline{f(-t)}\).  For real functions, anti-invariance \(Jf=-f\) means \(f\) is odd, hence \(\widehat f(0)=0\).  But this does not yield a uniform membrane.  Odd packets can concentrate arbitrarily close to \(\xi=0\).  For example
+\[
+\widehat g_\varepsilon(\xi)
+=
+N_\varepsilon \xi e^{-\xi^2/(2\varepsilon^2)}
+\]
+has \(\|g_\varepsilon\|_2=1\), but relative to \(\Psi(\xi)\sim \xi^2\),
+\[
+\int \frac{|\widehat g_\varepsilon(\xi)|^2}{\xi^2}\,d\xi
+\simeq \varepsilon^{-2}.
+\]
+Thus anti-invariance supplies formal cancellation but not a uniform low-frequency budget.
+
+\section{Zeta-specific status}
+
+For the RH root-composite route, the separating readout
+\[
+\psi_-(s)=\Re(s)-\frac12
+\]
+detects off-critical zeros.  This is a fixed-locus separation record.  It is not the same as a low-frequency cancellation record for the log-side paired Weil carrier.
+
+Therefore the zero-side cancellation path requires an additional operator statement:
+\[
+V_Z^*=D\,H
+\quad\text{with }H\text{ bounded on the completed anti-invariant response space,}
+\]
+or an equivalent moment/primitive certificate.  Without this, the cancellation route remains support-only.
+
+\section{Conclusion}
+
+The zero-side cancellation alternative is viable only in its uniform primitive form.  Mere anti-invariance, oddness, or fixed-locus separation does not resolve the low-frequency legal zero of the paired Weil carrier.
+
+The next viable alternative is therefore to test whether the zeta carrier supplies a source-coercivity ladder over the low-frequency anti-invariant sector, or to construct the required primitive factorization for \(V_Z\).
+\end{document}

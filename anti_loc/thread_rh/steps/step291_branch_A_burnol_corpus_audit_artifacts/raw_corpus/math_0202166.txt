@@ -1,0 +1,445 @@
+                                             ON AN ANALYTIC ESTIMATE IN THE THEORY OF THE
+                                               RIEMANN ZETA FUNCTION AND A THEOREM OF
+arXiv:math/0202166v1 [math.NT] 18 Feb 2002
+
+
+
+
+                                                             BÁEZ-DUARTE
+
+                                                                         JEAN-FRANÇOIS BURNOL
+
+
+                                                     Abstract. We establish a uniform upper estimate for the values of
+                                                     ζ(s)/ζ(s + A), 0 ≤ A, on the critical line (conditionally on the Riemann
+                                                     Hypothesis). We use this to give a variant, purely complex analytic, to
+                                                     Báez-Duarte’s proof of a strengthened Nyman-Beurling criterion for the
+                                                     validity of the Riemann Hypothesis.
+
+
+
+
+                                                                             1. Introduction
+                                               The following theorem has been established by Báez-Duarte [4] ({x} =
+                                             x − [x] is the fractional part of the real number x):
+                                             Theorem 1.1 (Báez-Duarte [4]). If the Riemann Hypothesis holds then the
+                                             function 10<t≤1 belongs to the closure in L2 ((0, ∞), dt) of the finite linear
+                                             combinations of the functions t → {1/nt}, n ≥ 1, n ∈ N.
+                                                That the converse holds is (a special case of) the easy half of the classical
+                                             Nyman-Beurling criterion [15] [8] (in a minor variant as the original for-
+                                             mulation is entirely inside L2 ((0, 1), dt).) The not-so-easy other half of the
+                                             original version of this criterion states that the Riemann Hypothesis implies
+                                             that 10<t≤1 belongs to the span of the functions t → {1/Λt} where Λ varies
+                                             in the continuous interval [1, ∞). The connection with the Riemann zeta
+                                             function is established with the help of the classical formula
+                                                                        Z ∞ 
+                                                                               1 s−1         −ζ(s)
+                                                                                   t    dt =
+                                                                          0    t                s
+                                             where the integral is absolutely convergent for 0 < Re(s) < 1. Generally
+                                                                                               R∞
+                                             speaking the Mellin transform f (t) 7→ fb(s) = 0 f (t)ts−1 dt establishes an
+                                             isometry between L2 ((0, ∞), dt) and the Hilbert space of square-integrable
+                                             functions on the critical line for the measure |ds|/2π. So the Nyman-Beurling
+                                             criterion is that the Riemann Hypothesis holds if and only if one can ap-
+                                             proximate in the square-mean sense the   P function  1/s on the critical line by
+                                                                                              −s
+                                             expressions ζ(s)P (s)/s where P (s) = k ck Λk , Λk ≥ 1.
+                                                This topic has attracted some interest in recent years in a number of
+                                             publications, among them [1], [2], [3], [5], [6], [7], [12], [13], [14], [17], [18]
+                                               Date: 18 February 2002.
+                                               Key words and phrases. Riemann hypothesis, Nyman-Beurling theorem.
+                                                                                        1
+2                             JEAN-FRANÇOIS BURNOL
+                                                 P
+and it was expected from the expression 1/ζ(s) = ∞  n=1 µ(n)n
+                                                              −s that the
+
+values Λk = n, n ∈ N \ {0} are enough. This is what has been established
+by Báez-Duarte. We state again here for future reference his theorem in
+complex analytic form:
+Theorem 1.2 (Báez-Duarte [4]). If the Riemann Hypothesis holds then 1/s
+can be arbitrarily well approximated
+                                  P in square-mean   on the critical line by
+functions ζ(s)P (s)/s with P (s) = N    c
+                                     n=1 n,N n −s a Dirichlet polynomial.
+
+
+Remark 1.1. It remains an open problem P      to exhibit for N → ∞ an ex-
+plicit sequence of “natural approximations” N             −s
+                                                n=1 cn,N n . It is known [5]
+that the Hilbert spacepdistance from ζ(s)P (s)/s to 1/s is bounded below
+asymptotically by C/ log(N ) for a C > 0 (and from [9] it is known that
+                                                                   P
+C ≥ 2 + γ − log(4π).) This applies even to Dirichlet polynomials k ck Λ−s k
+allowing non-integer Λk ’s (1 ≤ Λk ≤ N ). It is not known whether the
+restriction to integer Λ’s may result in a worse rate of convergence. It is
+naturally expected that this is not the case. But no explicit upper bound to
+the Hilbert space distance to the optimal natural approximation of degree
+N is currently known.
+   It is a quite notable feature of Báez-Duarte’s proof that it frees completely
+the Nyman-Beurling criterion from any appeal to the theory of invariant sub-
+spaces of Hardy spaces. In this manner the topic of the Nyman-Beurling
+criterion becomes less foreign to the more classical analytic number theoret-
+ical topics as they are treated in Titchmarsh’s book [16].
+   The purpose of this paper is to reinforce this with the help of a purely
+complex analytical proof of 1.2. While inspired by the original proof and
+quite directly related to it, our approach relies on a novel analytic estimate
+on the Riemann zeta function, conditional on the Riemann Hypothesis:
+Theorem 1.3. Let ǫ > 0. Conditional on the Riemann Hypothesis one has:
+                             ζ(s)
+                                    = Oǫ (|s|inf(ǫ,A/2) )
+                           ζ(s + A)
+on the critical line, uniformly with respect to 0 ≤ A < ∞.
+   The other main component of the proof, as in Báez-Duarte’s, is the use of
+a Theorem of Balazard and Saias [6,P Lemme 2], which is a version with a fine
+error estimate of the convergence of ∞          s
+                                      n=1 µ(n)/n to 1/ζ(s) for Re(s) > 1/2.
+We state a slightly weakened form of this Theorem which is directly suitable
+for our later use:
+Theorem 1.4 (Balazard-Saias [6]). Let 12 > ǫ > 0 and θ > 0. Conditional
+on the Riemann Hypothesis one has:
+                        N
+                        X µ(n)           1           |s|θ
+                                    =        + Oǫ,θ ( ǫ/3 )
+                        n=1
+                               ns       ζ(s)         N
+on Re(s) = 1/2 + ǫ.
+                    AN ESTIMATE OF THE ZETA FUNCTION                            3
+
+   It will be apparent that the proof of the strengthened Nyman-Beurling
+criterion in fact would go through equally well with much coarser error esti-
+mates than the ones provided by 1.3 and 1.4. But the future developments
+could possibly use the finer estimates.
+   This paper is organized as follows: in the first section we prove the Báez-
+Duarte strengthened “only if” Nyman-Beurling criterion using 1.3 and 1.4.
+This takes only a few lines. The second section proves 1.3. In a third
+section we show that the Riemann Hypothesis holds if and only if certain
+functions considered by Báez-Duarte are square-integrable, and we conclude
+with some related comments.
+
+                               2. Proof of 1.2
+  From 1.3 we have in particular on the critical line a uniform upper esti-
+mate for 0 ≤ A ≤ 1/2:
+                                ζ(s)
+                                        ≤ C|s|1/4
+                              ζ(s + A)
+which implies that the functions ζ(s)/sζ(s + A) converge in square-mean on
+the critical line to 1/s as A → 0. If we now pick one such fixed small A = ǫ
+we have from 1.4 that
+                      N                           θ          
+                ζ(s) X µ(n)        ζ(s)            |s| ζ(s)
+                              =           + Oǫ,θ
+                 s       ns+ǫ   sζ(s + ǫ)         N ǫ/3 s
+                     n=1
+We then only need to invoke (as θ > 0 may be chosen arbitrarily) a weak
+bound like |ζ(s)| = O(|s|1/4 ) ([16, 5.1.8]) on the critical line to conclude that
+the left hand side converge in square-mean sense as N → ∞ to ζ(s)/ζ(s+ǫ)s.
+This concludes the proof of 1.2.
+  It is apparent from this proof that any θ < 1/4 in 1.4 will do, even any
+θ < 1/2 if we are ready to use the Lindelöf Hypothesis, which is a known
+corollary to the Riemann Hypothesis ([16, XIV]). Similarly we used only
+a coarse version of 1.3. What is essential nevertheless is the uniformity as
+A → 0 which is granted by 1.3.
+
+                               3. Proof of 1.3
+  We restate 1.3:
+Theorem 3.1. If the Riemann Hypothesis holds one has for ǫ > 0
+                             ζ(s)
+                                    = 0ǫ (|s|inf(ǫ,A/2) )
+                           ζ(s + A)
+on the critical line, uniformly for 0 ≤ A < ∞.
+Proof. We fix ǫ > 0 and we may assume ǫ < 1/4. The range 2 ≤ A obviously
+reduces to the known Lindelöf Hypothesis bound |ζ(s)| = O(|s|ǫ ). For the
+range 2ǫ ≤ A ≤ 2 it is enough to combine |ζ(s)| = O(|s|ǫ/2 ) on the critical
+line with |1/ζ(s)| = O(|s|ǫ/2 ) on Re(s) ≥ 1/2 + 2ǫ which is known to be true
+4                         JEAN-FRANÇOIS BURNOL
+
+under the Riemann Hypothesis ([16, XIV]). Finally for the range 0 ≤ A ≤ 2ǫ
+we invoke the next lemma.
+
+Lemma 3.1. If the Riemann Hypothesis holds one has on the critical line
+                         ζ(s)
+                                = O(|s|A/2 )
+                       ζ(s + A)
+uniformly for 0 ≤ A ≤ 1/2.
+Proof. Assuming the validity of the Riemann Hypothesis we consider the
+function
+                               ζ(s − A/2)
+                               ζ(s + A/2)
+for Re(s) = 1/2. Let γ+ (s) be the function appearing in the functional
+equation of the zeta function:
+                                   π −s/2 Γ(s/2)
+                      γ+ (s) =
+                              π −(1−s)/2 Γ((1 − s)/2)
+The following uniform estimate
+                                                1
+                             |γ+ (w)| = O(|w|σ− 2 )
+on Re(w) = σ, 1/4 ≤ σ ≤ 3/4, is known ([16, 4.12.3]).
+  So on the critical line and uniformly for 0 ≤ A ≤ 1/2:
+                 ζ(s − A/2)
+                             = |γ+ (s + A/2)| = O(|s|A/2 )
+                 ζ(s + A/2)
+  Next we consider for a fixed A > 0 the holomorphic function of s, for
+Re(s) ≥ 1/2, given by
+                       (s − 1 − A/2)ζ(s − A/2) 1
+                       (s − 1 + A/2)ζ(s + A/2) sA/2
+On a closed vertical strip 21 ≤ Re(s) ≤ Λ we are in a position to apply
+the Phragmen-Lindelöf principle. Modest growth information is necessary
+inside the strip for |ζ(s − A/2)| and for |1/ζ(s + A/2)| and in fact as in
+the previous proof both functions are O(|s|C ) for a suitable C. We then let
+Λ → ∞ and the conclusion is that
+                    (s − 1 − A/2) ζ(s − A/2)
+                                              = O(|s|A/2 )
+                    (s − 1 + A/2) ζ(s + A/2)
+on the closed half-plane Re(s) ≥ 1/2, with an implied constant which is
+uniform with respect to 0 < A ≤ 1/2. We may of course include A = 0 now.
+The Lemma then follows from looking at the line Re(s) = 21 + A2 .
+
+Remark 3.1. A slightly more direct method (in place of the Phragmen-
+Lindelöf principle) is to invoke the theory of Nevanlinna functions and a
+result such as [10, Lemma 2.2]. This or the simpler Phragmen-Lindelöf
+principle will also extend the bound 1.3 from the critical line to the closed
+half-plane Re(s) ≥ 1/2 (avoiding a neighborhood of s = 1 of course.)
+                    AN ESTIMATE OF THE ZETA FUNCTION                             5
+
+Remark 3.2. The bound |ζ(s − ǫ)/ζ(s + ǫ)| = |γ+ (s + ǫ)| = O(|s|ǫ ) on the
+critical line also plays an important rôle in Báez-Duarte’s proof [4]. We
+comment more on this proof in the next section.
+
+  4. On the functions fǫ considered by Báez-Duarte and their
+              relation with the Riemann Hypothesis
+   Báez-Duarte considers for ǫ > 0 the function of t > 0, defined pointwise
+as:
+                                    X∞
+                                        µ(n) 1
+                           fǫ (t) =         { }
+                                    n=1
+                                         nǫ nt
+for 0 < ǫ. From the bound {1/nt} ≤ 1/nt one has absolute convergence and
+|fǫ (t)| ≤ ζ(1 + ǫ)/t. Another expression is given by:
+                                              ∞
+                                              X µ(n) 1
+                                      1
+                       fǫ (t) =             −       [ ]
+                                  ζ(1 + ǫ)t      nǫ nt
+                                             n=1
+
+where the second term is pointwise a finite sum.
+                                             √
+    Let Cn be the unitary operator φ(t) → nφ(nt). One has pointwise
+         P
+fǫ (t) = n≥1 µ(n)n−ǫ−1/2 Cn ({1/t}), so for ǫ > 1/2 the series is absolutely
+convergent in L2 and the L2 -Mellin transform fbǫ (s) is
+                   X µ(n)         1 −ζ(s)       −ζ(s)
+                         ǫ+1/2   s−1/2
+                                            =
+                       n       n       s      ζ(s + ǫ)s
+                     n≥1
+
+It is known (from [16, 3.6.5]) that 1/ζ(s) is O(|s|η ) in Re(s) ≥ 1 (η >
+0 arbitrary) and also that ζ(s) = O(|s|1/4 ) on Re(s) = 1/2 ([16, 5.1.8]).
+             +
+So as ǫ → 12 the functions fbǫ (s) on the critical line converge in square
+mean. Clearly fǫ (t) → f1/2 (t) pointwise so this implies that f1/2 (t) is square-
+integrable. Let us recapitulate these simple results:
+Lemma 4.1. For ǫ ≥ 21 the functions fǫ (t) are square-integrable and their
+L2 -Mellin transforms are:
+                                           −1 ζ(s)
+                             fbǫ (s) =
+                                         ζ(s + ǫ) s
+   It is apparent from this expression that the square-integrability of fǫ (t)
+for ǫ < 1/2 should be related with the Riemann Hypothesis. Indeed Báez-
+Duarte proves, conditionally on the Riemann Hypothesis, that these func-
+tions are square integrable (at least for small ǫ). He actually proves the
+stronger result that t−ǫ/2 fǫ (t) is square-integrable and that its (L2 )-Mellin
+Transform is −ζ(s − ǫ/2)/(s − ǫ/2)ζ(s + ǫ/2). This is done so that the limit
+ǫ → 0 is easy to deal with. But we can copy his argument and apply it
+directly to fǫ (t): under the Riemann Hypothesis, and using the Theorem
+of Balazard-Saias 1.4, the (L2 )-Mellin transforms of the finite partial sums
+converge in square-mean to the function −ζ(s)/ζ(s + ǫ)s. So the function
+6                             JEAN-FRANÇOIS BURNOL
+
+fǫ (t) which is their pointwise limit must be square-integrable. We sum this
+up as a Lemma, essentially contained in [4]:
+Lemma 4.2. If the Riemann Hypothesis holds the functions fǫ (t) for 0 <
+ǫ < 1/2 are square-integrable and their L2 -Mellin transforms are:
+                                             −1 ζ(s)
+                               fbǫ (s) =
+                                           ζ(s + ǫ) s
+    What we wish to point out here is the simple observation that the square-
+-integrability of the function fǫ (t) in itself allows to say things about the
+Riemann Hypothesis quite independently of its connection with the Nyman-
+Beurling criterion.
+    Let ǫ > 0. We have fǫ (t) = O(1/t) and in particular the function
+R1         s−1 du is analytic for Re(s) > 1. We first identify this function
+  0 fǫ (u)u
+unconditionally:
+Lemma 4.3. One has unconditionally for Re(s) > 1:
+          Z 1
+                                 1       1      1    ζ(s)
+              fǫ (u)us−1 du =               −
+           0                  ζ(1 + ǫ) s − 1 ζ(s + ǫ) s
+Proof.
+     Z 1                       Z 1                 ∞
+                                                                 !
+                                    1     1       X    µ(a) 1
+                 s−1
+           fǫ (u)u     du =                     −            [ ] us−1 du
+                                                          ǫ au
+      0                         0   u ζ(1  + ǫ)         a
+                                                  a=1
+                                                X∞         Z
+                                  1       1         µ(a) 1 1 s−1
+                         =                    −               [ ]u    du
+                               ζ(1 + ǫ) s − 1         aǫ 0 au
+                                                a=1
+                                                X∞         Z
+                                  1       1         µ(a) 1/a 1 s−1
+                         =                    −                 [ ]u    du
+                               ζ(1 + ǫ) s − 1 a=1 aǫ 0           au
+                                                X∞         Z
+                                  1       1         µ(a) 1 1 s−1
+                         =                    −               [ ]v   dv
+                               ζ(1 + ǫ) s − 1       as+ǫ 0 v
+                                                  a=1
+                                  1       1      1    ζ(s)
+                         =                   −
+                               ζ(1 + ǫ) s − 1 ζ(s + ǫ) s
+
+
+
+
+Theorem 4.1. If fǫ ∈ L2 then its L2 -Mellin transform on the critical line
+is the function
+                               −1 ζ(s)
+                            ζ(s + ǫ) s
+Furthermore this function is analytic in Re(s) ≥ 21 except for a simple pole
+at s = 1.
+                    AN ESTIMATE OF THE ZETA FUNCTION                           7
+
+Proof. Let us assume that fǫ ∈ L2 . Its restriction to t > 1 is a non-zero
+                                                                1    1
+multiple of 1/t and the corresponding Mellin transform is − ζ(1+ǫ) (s−1) . Let
+us write kǫ for the restriction of fǫ to the interval 0 < t < 1. Its Mellin
+transform defines an element of the Hardy space of Re(s) > 21 , in particular
+it has to be analytic there. We have obviously for Re(s) = 12 :
+                                                   1       1
+                          fbǫ (s) = kbǫ (s) +
+                                                ζ(1 + ǫ) 1 − s
+and we have computed explicitely kbǫ (s) for Re(s) > 1 hence also for Re(s) ≥
+1/2. This gives the formula
+                                      −1 ζ(s)
+                                    ζ(s + ǫ) s
+and that it cannot have any pole in Re(s) ≥ 1/2 apart from s = 1.
+  So the square-integrability of fǫ (t) is already a strong statement; we will
+be content with a trivial observation:
+Corollary 4.1. If fǫ ∈ L2 and ρ is a zero with Re(ρ) ≥ 21 + ǫ then ρ − ǫ is
+again a zero.
+  This leads to:
+Theorem 4.2. If fǫ ∈ L2 for a sequence of ǫ > 0 going to 0 then the
+Riemann Hypothesis holds.
+Proof. The ρ − ǫ have to be among the zeros for an infinite sequence of
+ǫ → 0, but they accumulate at ρ.
+   We have considered the functions fǫ (t) but we could as well consider
+the functions t−ǫ/2 fǫ (t) (0 < ǫ < 1/2). But here arises the situation that
+under the hypothesis that t−ǫ/2 fǫ (t) is square-integrable its Fourier-Mellin
+transform on the critical line has to be the function
+                              −ζ(s − ǫ/2)    1
+                               ζ(s + ǫ/2) s − ǫ/2
+which is already known to be square-integrable!
+   Let us define the function gǫ (t) to be the inverse (L2 )-Mellin transform of
+this function from the critical line to the half-axis 0 < t < ∞. The Riemann
+Hypothesis then becomes equivalent to the statement that gǫ (t) = t−ǫ/2 fǫ (t)
+(for small ǫ’s) or even seemingly weaker statements like gǫ (t) = Cǫ /t1+ǫ/2
+for t > 1. We state here just one such strange reformulation of the Riemann
+Hypothesis:
+Theorem 4.3. The Riemann hypothesis holds if and only if for small ǫ > 0
+(a sequence going to 0 is enough), and for all Re(z) < 21 one has:
+              Z
+            1          ζ(s − 2ǫ ) 1 |ds|          1         1
+                              ǫ     ǫ       =
+           2π Re(s)= ζ(s + 2 ) s − 2 s − z
+                     1                         ζ(1 + ǫ) z − 2ǫ − 1
+                      2
+8                               JEAN-FRANÇOIS BURNOL
+
+Proof. Let us assume that the integral formula is true. As is known this
+kind of integral corresponds to orthogonal projection to the Hardy space of
+the left half-plane Re(z) < 21 . Indeed the right hand side is up to a constant
+the Mellin transform of the function 1x>1 (x)x−1−ǫ/2 . But this then implies
+that
+                     ζ(s − 2ǫ ) 1          1         1
+                            ǫ       ǫ −
+                     ζ(s + 2 ) s − 2    ζ(1 + ǫ) s − 2ǫ − 1
+belongs to the Hardy space of the right half-plane Re(s) > 21 . From the
+absence of poles one then sees using a sequence of ǫ → 0 that this implies
+the Riemann Hypothesis.
+  If the Riemann Hypothesis holds then
+                                      ζ(s − 2ǫ ) 1
+                                      ζ(s + 2ǫ ) s − 2ǫ
+is the Mellin transform of −x−ǫ/2 fǫ (x) which restricts to −x−1−ǫ/2 /ζ(1 + ǫ)
+for x > 1 and this gives its orthogonal projection to the Hardy space of
+Re(z) < 21 :
+                      Z ∞
+                 −1                              1          1
+                           x−1−ǫ/2 xz−1 dx =
+              ζ(1 + ǫ) 1                      ζ(1 + ǫ) z − 2ǫ − 1
+
+
+   We may envision this formulation as a kind of causality statement about
+the Riemann Zeta function: the ratio ζ(s − ǫ/2)/ζ(s + ǫ/2) has the same
+modulus (Re(s) = 1/2) but not the same phase as the spectral function
+γ+ (s + ǫ/2) of the Fourier cosine transform. In [10] we formulated, gen-
+erally speaking, the Riemann Hypothesis for all abelian L-functions as a
+statement of causality. And we expressed elsewhere [11] the wish to see this
+implemented in a novel framework, more truly arithmetical in nature than
+the ones we have been working in in this and other papers.
+   Ackowledgements. I thank L. Báez-Duarte for communicating his man-
+uscript and also M. Balazard and É. Saias for the lively discussion that
+followed.
+
+                                      References
+    1. L. Báez-Duarte, On Beurling’s Real Variable Reformulation of the Riemann Hypoth-
+       esis, Advances in Mathematics, 101, No. 1 (1993), 10-30.
+    2. L. Báez-Duarte, A class of invariant unitary operators, Advances in Mathematics,
+       144, No. 1 (1999), 1-12.
+    3. L. Báez-Duarte, Arithmetical versions of the Nyman-Beurling criterion for the Rie-
+       mann hypothesis, submitted to IJJMS (2001).
+    4. L. Báez-Duarte, A strengthening of the Nyman-Beurling criterion for the Riemann
+       Hypothesis, preprint, 13 February 2002. Available on arXiv.org as math/0202141.
+    5. L. Báez-Duarte, M. Balazard, B. Landreau, and E. Saias, Notes sur la fonction ζ de
+       Riemann, 3, Advances in Mathematics, 149, No. 1 (2000), 130-144.
+    6. M. Balazard, E. Saias, Notes sur la fonction ζ de Riemann, 1, Adv. in Maths. 139
+       (1998), 310-321.
+                       AN ESTIMATE OF THE ZETA FUNCTION                                  9
+
+ 7. M. Balazard, E. Saias, The Nyman-Beurling equivalent form for the Riemann hypoth-
+    esis, Expo. Math. 18 (2000), 131-138.
+ 8. A. Beurling, A closure problem related to the Riemann Zeta-function, Proc. Nat. Acad.
+    Sci. 41 (1955), 312-314.
+ 9. J.-F. Burnol, A lower bound in an approximation problem involving the zeros of the
+    Riemann zeta function, accepted for publication (Adv. in Math.), math/0103058.
+10. J.-F. Burnol, An adelic causality problem related to abelian L-functions, Jour. Number
+    Theory 87 (2001), 253-269.
+11. J.-F. Burnol, On Fourier and Zeta(s), Habilitationsschrift, Dec. 2001. Available on
+    arXiv.org as math/0112254.
+12. J. B. Conrey, G. Myerson, On the Balazard-Saias criterion for the Riemann hypothesis,
+    preprint, Feb. 2000. Available on arXiv.org as math/0002254.
+13. J. Lee, Convergence and the Riemann Hypothesis, Comm. Korean Math. Soc. 11,
+    (1996), 57-62.
+14. N. Nikolski, Distance formulae and invariant subspaces, with an application to local-
+    ization of zeroes of the Riemann ζ-function, Ann. Inst. Fourier (Grenoble) 45 (1995),
+    no. 1, 1-17.
+15. B. Nyman, On some groups and semigroups of translations, Thesis, Uppsala, 1950.
+16. E. C. Titchmarsh, The Theory of the Riemann-Zeta Function, Clarendon Press, Ox-
+    ford, 1951.
+17. V. I. Vasyunin, Sur un système biorthogonal relié a l’hypothèse de Riemann, (in Rus-
+    sian) Algebra i Annaliz 7 (1995), 118-135.
+    Also appeared as: On a biorthogonal system related with the Riemann hypothesis, St.
+    Petersburg Math. J. 7 (1996), 405-419.
+18. V. I. Vasyunin, On a system of step functions, (Russian. English, Russian summary)
+    Zap. Nauchn. Sem. S.-Peterburg. Otdel. Mat. Inst. Steklov. (POMI) 262 (1999),
+    Issled. po Linein. Oper. i Teor. Funkts. 27, 49-70, 231-232.
+   E-mail address: burnol@math.unice.fr
+

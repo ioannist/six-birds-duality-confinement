@@ -1,0 +1,41 @@
+{
+  "carrier": {
+    "carrier": "de Bruijn-Newman Lambda",
+    "H_t_definition": "H_t(z)=int_0^infty exp(t u^2) Phi(u) cos(z u) du",
+    "Phi_definition": "sum_{n>=1}(2*pi^2*n^4*exp(9u)-3*pi*n^2*exp(5u))*exp(-pi*n^2*exp(4u))",
+    "Lambda_definition": "inf{t in R: all zeros of H_t are real}",
+    "residual": "Xi_DBN=max(Lambda,0) after Rodgers-Tao Lambda>=0; closure Lambda<=0 equivalently Lambda=0",
+    "closure": "Lambda=0 iff RH, using Rodgers-Tao lower bound plus de Bruijn-Newman equivalence"
+  },
+  "CRE_audit": [
+    {
+      "claim": "RH iff Lambda <= 0; Rodgers-Tao proves Lambda >= 0; hence RH iff Lambda = 0",
+      "CRE_status": "CRE",
+      "notes": "Closure is target-equivalent to RH, not a weaker native theorem."
+    }
+  ],
+  "CRCFT_mode": "TE",
+  "bounds": [
+    {
+      "year": "1950",
+      "source": "N. G. de Bruijn, The roots of trigonometric integrals",
+      "bound_or_result": "monotonicity/real-zero persistence under heat flow; real zeros for sufficiently large t"
+    },
+    {
+      "year": "1976",
+      "source": "C. M. Newman, Fourier transforms with only real zeros",
+      "bound_or_result": "existence of finite Lambda threshold; Newman conjecture Lambda>=0"
+    },
+    {
+      "year": "2018",
+      "source": "B. Rodgers and T. Tao, The de Bruijn-Newman constant is non-negative",
+      "bound_or_result": "Lambda>=0"
+    },
+    {
+      "year": "2019",
+      "source": "D. H. J. Polymath, Effective approximation of heat flow evolution of the Riemann xi function",
+      "bound_or_result": "Lambda<=0.22 unconditional"
+    }
+  ],
+  "verdict": "V_de_Bruijn_Newman_CRCFT_TE"
+}

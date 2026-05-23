@@ -1,0 +1,185 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumitem}
+\usepackage{booktabs}
+
+\title{Step 89: Source--Coercivity Resolution of the Low-Frequency Gate}
+\author{Six Birds / Formed-Layer Membrane Program}
+\date{}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{definition}{Definition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+
+\newcommand{\K}{\mathsf K}
+\newcommand{\A}{\mathsf A}
+\newcommand{\ThetaB}{\Theta}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Ran}{\operatorname{Ran}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Fix}{\operatorname{Fix}}
+\newcommand{\pre}{\preceq}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 88 showed that the zero-side cancellation route requires a uniform primitive certificate. Mere oddness or fixed-locus separation does not remove the low-frequency legal zero of a paired shift/CND Weil carrier. This note audits the second serious route: source coercivity.
+
+The question is:
+\[
+\text{Can upstream-visible source records charge the low-frequency anti-invariant sector strongly enough?}
+\]
+
+This is not yet an RH proof. It is the low-frequency resolution module needed before the paired Weil feature package can function as an accepted carrier-side currency.
+
+\section{Setup}
+Let $Y^-$ be the anti-invariant response space, and let it be decomposed as
+\[
+Y^- = Y^-_{\rm low}\oplus Y^-_{\rm hi},
+\qquad
+P_{\rm low}+P_{\rm hi}=I.
+\]
+The paired Weil carrier $C_{\rm pair}$ is positive but may vanish at low frequency. The high sector may have a local gap after quotienting a low-frequency neighborhood:
+\[
+C_{\rm pair}\succeq \gamma_{\rm hi} P_{\rm hi}^*\Theta_{\rm hi}^{-1}P_{\rm hi},
+\qquad \gamma_{\rm hi}>0.
+\]
+The low sector requires additional source records.
+
+\begin{definition}[Source record]
+A source record is a tuple
+\[
+s=(Q_s,\Theta_s,\lambda_s,D_s)
+\]
+where $Q_s:Y^-\to Z_s$ is an upstream-visible character/probe readout, $\Theta_s\succ0$ is its response budget, $\lambda_s\ge0$ is its strength, and
+\[
+D_s\succeq \lambda_s (Q_s L^-_\Gamma)^*\Theta_s^{-1}(Q_s L^-_\Gamma).
+\]
+The cumulative response-side source frame is
+\[
+F_{\mathcal S}=\sum_{s\in\mathcal S}\lambda_s Q_s^*\Theta_s^{-1}Q_s.
+\]
+\end{definition}
+
+\section{Low-sector source frame theorem}
+
+\begin{theorem}[Low-frequency source coercivity]
+Suppose the source records satisfy the low-sector lower-frame condition
+\[
+P_{\rm low}^*F_{\mathcal S,n}P_{\rm low}
+\succeq
+\Lambda_n P_{\rm low}^*\Theta_{\rm low}^{-1}P_{\rm low}.
+\]
+Let
+\[
+C_n=C_{\rm pair}+\sum_{s\in\mathcal S_n}D_s.
+\]
+If the high-sector gap also holds,
+\[
+C_{\rm pair}\succeq \gamma_{\rm hi} P_{\rm hi}^*\Theta_{\rm hi}^{-1}P_{\rm hi},
+\]
+and the low/high split is lawful on the legal quotient, then the carrier-side anti-invariant currency satisfies the block bound
+\[
+\K_n^-
+\preceq
+\Lambda_n^{-1}\Theta_{\rm low}
+\oplus
+\gamma_{\rm hi}^{-1}\Theta_{\rm hi},
+\]
+up to declared cross-sector bridge defects.
+\end{theorem}
+
+\begin{proof}
+On the low sector, the source-frame hypothesis gives
+\[
+\sum_s D_s\succeq \Lambda_n (L^-_{\rm low})^*\Theta_{\rm low}^{-1}L^-_{\rm low}.
+\]
+On the high sector, the paired carrier gap gives
+\[
+C_{\rm pair}\succeq \gamma_{\rm hi}(L^-_{\rm hi})^*\Theta_{\rm hi}^{-1}L^-_{\rm hi}
+\]
+after response normalization. Combining the two inequalities and applying the standard currency bound
+\[
+C\succeq \lambda L^*\Theta^{-1}L
+\quad\Longrightarrow\quad
+LC^\dagger L^*\preceq \lambda^{-1}\Theta
+\]
+on each legal block proves the claim. Cross-sector terms are either absent by an accepted reducing split or become explicit bridge defects.\end{proof}
+
+\begin{corollary}[Low-sector collapse]
+If $\Lambda_n\to\infty$, then the low-sector budget collapses:
+\[
+P_{\rm low}\K_n^-P_{\rm low}^*\preceq \Lambda_n^{-1}\Theta_{\rm low}\to0.
+\]
+\end{corollary}
+
+\begin{warning}[Low-sector collapse is not full RH collapse]
+The preceding corollary resolves only the low-frequency obstruction. Exact zero confinement still requires either full-sector budget collapse,
+\[
+\K_n^-\preceq B_n,
+\qquad \tr B_n\to0,
+\]
+or a fixed/exhaustive zero-ledger squeeze showing that the high-sector budget is irrelevant to the anti-invariant zero ledger. A bounded high-sector budget is not the same as exact confinement.
+\end{warning}
+
+\section{Incomplete source warning}
+
+\begin{proposition}[Hidden low-frequency direction]
+If there exists $0\ne y\in Y^-_{\rm low}$ such that
+\[
+Q_s y=0
+\qquad\text{for all }s\in\mathcal S_n,
+\]
+then the lower-frame constant on the low sector is zero:
+\[
+\Lambda_n=0.
+\]
+No source-strength growth on the visible directions charges this hidden low-frequency direction.
+\end{proposition}
+
+\begin{proof}
+For such $y$,
+\[
+y^*F_{\mathcal S,n}y=0.
+\]
+Thus no positive lower bound of the form $F_{\mathcal S,n}\succeq\Lambda_n\Theta_{\rm low}^{-1}$ can hold on all of $Y^-_{\rm low}$ with $\Lambda_n>0$.\end{proof}
+
+\section{Upstream visibility and no target-selected sources}
+A source family is lawful only if the records $Q_s$, $\Theta_s$, $\lambda_s$, and $D_s$ are declared by upstream zeta data before the zero-confinement test. Sources selected because they make
+\[
+\A_Z\preceq \K_n^-
+\]
+pass are post-hoc and have status \texttt{smuggled} or \texttt{support-only}.
+
+Candidate upstream-visible source families for zeta include:
+\begin{enumerate}[label=(\roman*)]
+\item prime-threshold source records generated by Euler/explicit-formula staging;
+\item root-composite/character source records generated by a declared symmetry or automorphic family;
+\item trace-formula spectral source records, if a trace carrier is chosen;
+\item de Branges or adelic source records, if their carrier supplies the readout before the confinement test.
+\end{enumerate}
+None of these is accepted merely by being named. Each must satisfy the lower-frame inequality on the anti-invariant low sector.
+
+\section{Exact-confinement relation}
+Together with the fixed/exhaustive ledger theorem, a source route can yield exact confinement only if the final obstruction budgets satisfy
+\[
+\A_Z\preceq B_n,
+\qquad
+\tr B_n\to0.
+\]
+If the source route resolves only a low-frequency sector, then the remaining sectors must either be squeezed separately, shown absent from the zero ledger, or carried as a vanishing defect/tail. Otherwise the result is not RH but a scoped membrane statement.
+
+\section{Status}
+This note does not construct the zeta source ladder. It proves the gate that such a ladder must pass:
+\[
+F_{\mathcal S,n}\succeq \Lambda_n\Theta_0^{-1},
+\qquad \Lambda_n\to\infty
+\]
+on the relevant anti-invariant sector, with upstream visibility and no post-hoc selection.
+
+\end{document}

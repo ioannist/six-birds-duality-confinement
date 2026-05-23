@@ -1,0 +1,41 @@
+\section*{Step 295: Endpoint-Saddle Asymptotic for $I_k$}
+
+The Step 293 implementation identifies
+\[
+ I_k=\int (-i)^k S^{(k)}(\gamma-u)F(u)\,du,\qquad
+ S(x)=\frac{\sin x}{\pi x}.
+\]
+The key identity is
+\[
+ S(x)=\frac1{2\pi}\int_{-1}^1 e^{itx}\,dt,
+\]
+hence
+\[
+ (-i)^kS^{(k)}(\gamma-u)
+ =\frac1{2\pi}\int_{-1}^1 t^k e^{it(\gamma-u)}\,dt.
+\]
+Writing
+\[
+ H(t)=\int F(u)e^{-itu}\,du,
+\]
+one obtains the exact transformed form
+\[
+ I_k=\frac1{2\pi}\int_{-1}^1 t^k e^{it\gamma}H(t)\,dt.
+\]
+The saddle set is therefore at the endpoints $t=\pm1$; there is no positive
+interior exponential saddle.  For even $k$,
+\[
+ I_k\sim \frac{e^{i\gamma}H(1)+e^{-i\gamma}H(-1)}{2\pi(k+1)}.
+\]
+Thus
+\[
+ |I_k|\sim A k^c e^{bk},\qquad
+ b=0,\quad c=-1,\quad
+ A=1.2574502221992334e-01.
+\]
+
+\paragraph{Comparison.}
+The endpoint formula is incompatible with the inherited high-k values
+reported in Steps 293--294.  This points to numerical instability in the
+high-order explicit derivative formula for $\operatorname{sinc}^{(k)}$,
+not to a genuine super-exponential saddle.

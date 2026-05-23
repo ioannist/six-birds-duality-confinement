@@ -1,0 +1,60 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+\begin{document}
+
+\section*{Step 209: Riemann--Siegel \(Z(t)\) Carrier}
+
+Define
+\[
+  \theta(t)=\Im\log\Gamma(1/4+it/2)-{t\over2}\log\pi,
+  \qquad
+  Z(t)=e^{i\theta(t)}\zeta(1/2+it).
+\]
+The carrier is the critical-line \(t\)-axis, modeled as
+\(L^2_{\rm loc}(\mathbb R,dt)\) or a weighted \(L^2(\mathbb R,w(t)dt)\)
+for windowed probes.  Native probes are point values \(Z(t_n)\), sign changes,
+and zero-counting windows.
+
+\subsection*{Real-valuedness is not RH}
+
+For real \(t\), \(\overline{\zeta(1/2+it)}=\zeta(1/2-it)\).  The functional
+equation and the definition of \(\theta(t)\) imply
+\[
+  \overline{Z(t)}=Z(t).
+\]
+Thus \(Z(t)\) is real-valued on \(\mathbb R\) independently of RH.  The residual
+\(\|\Im Z\|^2\) is therefore a degenerate identity and cannot be the RH carrier
+residual.
+
+\subsection*{RH-equivalent residual}
+
+Let \(N(T)\) be the Riemann--von Mangoldt count of all nontrivial zeros with
+height in \([0,T]\), and let \(N_0(T)\) be the number of real zeros of \(Z(t)\)
+in \([0,T]\), counted with multiplicity and endpoint conventions.  Define
+\[
+  \Delta_Z(T)=N(T)-N_0(T).
+\]
+Then
+\[
+  \Delta_Z(T)=0\quad \hbox{for all }T
+  \quad\Longleftrightarrow\quad \hbox{RH}.
+\]
+A Hilbert/distributional version may test \(\Delta_Z\) against a separating
+family of Schwartz windows, but this does not remove the target equivalence.
+
+\subsection*{CRCFT audit}
+
+The carrier is classically-RH-equivalent.  It does not expose a CTMT
+matrix-element terminus; it states the target zero-count equality directly.
+Therefore the mode is CRCFT-TE:
+\[
+  \boxed{\texttt{V\_Z\_CRCFT\_TE}.}
+\]
+
+Classical references: Riemann's Nachlass; Siegel (1932) for the
+Riemann--Siegel formula; Edwards (1974, Ch. 7); Odlyzko's numerical
+zero computations; the zeta functional equation; and the
+Riemann--von Mangoldt zero-count formula.
+
+\end{document}

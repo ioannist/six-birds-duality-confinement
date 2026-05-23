@@ -1,0 +1,95 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,booktabs}
+\usepackage[margin=1in]{geometry}
+
+\title{Step 247: Proper \(k=1\) Branch C Evaluation}
+\author{anti\_loc RH track}
+\date{2026-05-16}
+
+\begin{document}
+\maketitle
+
+\section{Burnol Kernel Jet}
+
+Burnol's completed reproducing kernel is recorded as
+\[
+K_a^\Gamma(z,w)=
+\frac{E_\lambda(z)\overline{E_\lambda(w)}
+-E_\lambda(1-z)\overline{E_\lambda(1-w)}}{z+w-1}.
+\]
+Burnol's Theorem 8 formula is
+\[
+E_\lambda(w)=\pi^{-w/2}\Gamma(w/2)
+\left[
+\lambda^{1/2-w}
+\frac{\sqrt{\lambda}}2
+\int_\lambda^\infty (\psi_+^\lambda(t)-\psi_-^\lambda(t))t^{-w}\,dt
+\right].
+\]
+Writing \(E=P B\), its derivative is
+\[
+E'(w)=P'(w)B(w)+P(w)B'(w),
+\]
+\[
+\frac{P'(w)}{P(w)}=-\frac12\log\pi+\frac12\psi(w/2),
+\]
+\[
+B'(w)=-\log(\lambda)\lambda^{1/2-w}
+-\frac{\sqrt\lambda}{2}
+\int_\lambda^\infty
+(\psi_+^\lambda-\psi_-^\lambda)(t)t^{-w}\log t\,dt.
+\]
+Therefore, under the inherited \(z+w-1\) denominator convention,
+\[
+\partial_{\bar w}K_a^\Gamma(z,w)
+=
+\frac{
+E(z)\overline{E'(w)}
++E(1-z)\overline{E'(1-w)}
+}{z+w-1}.
+\]
+
+\section{Operational Evaluation}
+
+The step 196 finite-difference convention was
+\[
+L_{\rho,1}(G)
+=-i\frac{d}{d\gamma}
+\left(P_\infty M_\zeta G\right)(1/2+i\gamma)
+\bigg|_{\gamma=\operatorname{Im}\rho}.
+\]
+Step 247 differentiates the same sinc-plus-PSWF projected-value expression analytically:
+\[
+P_\infty F(\gamma)
+=\zeta(\rho)G(\rho)
+-\int \operatorname{sinc}(\gamma-u)F(u)\,du
+-\sum_n \Psi_n(\gamma)J_n.
+\]
+
+\section{Results}
+
+\begin{center}
+\begin{tabular}{llllrrr}
+\toprule
+Case & \(\rho\) & \(G\) & Method & \(|L|\) & Error & Lower\\
+\midrule
+C16 & \(\rho_1\) & \(G_\star\) & analytic derivative & 0.2894358013 & \(9.65\cdot10^{-6}\) & 0.2894261536\\
+C17 & \(\rho_2\) & \(G_\star\) & analytic derivative & 0.2885915404 & \(6.56\cdot10^{-6}\) & 0.2885849807\\
+C18 & \(\rho_1\) & \(G'\) & analytic derivative & 0.4018167625 & \(2.80\cdot10^{-6}\) & 0.4018139639\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The maximum difference from the step 196 finite-difference values is
+\[
+2.30\cdot 10^{-5},
+\]
+well inside the old \(k=1\) error bars.
+
+\section{Verdict}
+
+\[
+\texttt{V\_branch\_C\_k1\_proper\_foreclosure}.
+\]
+
+\end{document}

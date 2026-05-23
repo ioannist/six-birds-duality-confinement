@@ -1,0 +1,36 @@
+{
+  "schema_name": "AcceptedAntiLocTestFamilyRecord",
+  "version": "step26",
+  "scope": "formed closures/layers only",
+  "mathematical_objects": {
+    "carrier": "H_j",
+    "package_map": "Gamma_j:E_j->H_j",
+    "audit_energy": "C_j >= 0",
+    "compressed_energy": "C_{Gamma,j}=Gamma_j^* C_j Gamma_j",
+    "native_probe_family": "L_j:H_j->Y_j",
+    "response_transport": "R_j:Y_j->Y_*",
+    "predictive_currency": "Khat_j=R_j L_j Gamma_j C_{Gamma,j}^dagger Gamma_j^* L_j^* R_j^*",
+    "budget": "Theta >= 0"
+  },
+  "gates": [
+    {"id":"G0","name":"formed_closure","passes_if":"closure/layer accepted before anti-localization claim"},
+    {"id":"G1","name":"exact_package","passes_if":"capacity computed on exact packaged carrier"},
+    {"id":"G2","name":"null_legality","passes_if":"ker(C_Gamma,j) subset ker(R_j L_j Gamma_j)"},
+    {"id":"G3","name":"family_declaration","passes_if":"native response space and recombinations declared"},
+    {"id":"G4","name":"matrix_budget","passes_if":"Khat_j <= Theta for all accepted j"},
+    {"id":"G5","name":"protocol_honesty","passes_if":"protocol union controlled by block currency budget or excluded by nonclaim"},
+    {"id":"G6","name":"readout_agreement","passes_if":"same-readout protocols have difference-capacity defect records"},
+    {"id":"G7","name":"predictive_stability","passes_if":"transport and common budget persist or defects are absorbed"},
+    {"id":"G8","name":"all_six_channels","passes_if":"P1-P6 statuses recorded"},
+    {"id":"G9","name":"no_smuggling_no_overreading","passes_if":"objects selected upstream; no target-layer success used in selection"}
+  ],
+  "accepted_conclusion": "For all y in Y_*, sup_j Cap_Cj(y^* R_j L_j; Ran Gamma_j) <= y^* Theta y.",
+  "nonclaims": [
+    "No claim about raw substrates or unformed artifacts.",
+    "No claim about undeclared probes.",
+    "No promotion from diagonal-only budgets to family budgets.",
+    "No promotion from route-local budgets to protocol-union budgets.",
+    "No promotion from current-depth budgets to predictive budgets.",
+    "No literalization of public shadows as lawful witnesses."
+  ]
+}

@@ -1,0 +1,200 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb,amsthm,mathtools,enumitem,booktabs,geometry}
+\geometry{margin=1in}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{warning}{Warning}
+\newtheorem{corollary}{Corollary}
+\title{Step 122: Regularized co-Poisson/M\"untz Shadow Angular-Gap Estimate}
+\author{RATCHET / RH Membrane Construction Notes}
+\date{May 2026}
+
+\begin{document}
+\maketitle
+
+\section{Purpose}
+Step 121 rejected the naive critical-line partial sum
+\[
+  \sum_{n\le X} n^{-s}
+\]
+as a lawful Dirichlet shadow for the Burnol/co-Poisson target
+\[
+  B g(s)=\zeta(s)\widehat g(s).
+\]
+Step 122 chooses a specific lawful regularization: the smooth M\"untz/co-Poisson shadow.  The goal is not to prove RH, but to turn the Burnol-to-Dirichlet readability defect
+\[
+  \delta_{BD,N}^{\rm reg}
+  =\|(I-P_{D,N}^{\rm reg})B_NG_{B,N}^{-1/2}\|
+\]
+into an explicit angular-gap estimate with named error terms.
+
+\section{Admissible M\"untz cutoff}
+\begin{definition}[M\"untz cutoff]
+A smooth M\"untz cutoff is a function \(\omega\in C^\infty([0,\infty))\) such that:
+\begin{enumerate}[label=(\roman*)]
+  \item \(\omega(x)=1\) for \(0\le x\le 1\);
+  \item \(\omega\) is compactly supported or rapidly decreasing;
+  \item its Mellin transform
+  \[
+    \Omega(w)=\int_0^\infty \omega(x)x^{w-1}\,dx
+  \]
+  extends meromorphically with a simple pole at \(w=0\) of residue \(1\), and has rapid vertical decay on fixed strips after subtracting the pole.
+\end{enumerate}
+\end{definition}
+
+For \(X\ge1\), define the regularized M\"untz shadow of \(\zeta(s)\) by
+\[
+  Z_X^\omega(s)
+  :=
+  \sum_{n\ge1}\omega(n/X)n^{-s}
+  -X^{1-s}\Omega(1-s).
+\]
+The second term is the pole/M\"untz correction.  It is a required channel, not optional bookkeeping.
+
+\section{Contour formula}
+\begin{lemma}[M\"untz contour residual]
+Let \(s\) lie in a fixed strip \(\sigma_0\le \Re s\le \sigma_1\subset(0,1)\).  For any \(\eta>0\) for which the shifted contour is admissible,
+\[
+  Z_X^\omega(s)=\zeta(s)+\mathcal E_X^\omega(s),
+\]
+where
+\[
+  \mathcal E_X^\omega(s)
+  =
+  \frac{1}{2\pi i}\int_{(-\eta)}X^w\Omega(w)\zeta(s+w)\,dw.
+\]
+Consequently, for every finite vertical window \(|\Im s|\le T\),
+\[
+  \sup_{|\Im s|\le T}|\mathcal E_X^\omega(s)|
+  \le
+  C_{\omega,\eta,T}X^{-\eta}.
+\]
+With standard zeta-growth input this can be written as
+\[
+  \sup_{|\Im s|\le T}|\mathcal E_X^\omega(s)|
+  \le
+  C_{\omega,\eta,A}(1+T)^A X^{-\eta}.
+\]
+\end{lemma}
+
+\begin{proof}[Sketch]
+Use Mellin inversion:
+\[
+  \sum_{n\ge1}\omega(n/X)n^{-s}
+  =
+  \frac1{2\pi i}\int_{(c)}X^w\Omega(w)\zeta(s+w)\,dw.
+\]
+When shifting the contour left, the pole of \(\Omega(w)\) at \(w=0\) gives \(\zeta(s)\), and the pole of \(\zeta(s+w)\) at \(w=1-s\) gives \(X^{1-s}\Omega(1-s)\). Subtracting the latter leaves \(\zeta(s)\) plus the shifted contour.
+\end{proof}
+
+\section{Burnol-to-Dirichlet regularized shadow}
+For a Burnol/co-Poisson atom \(g\), define
+\[
+  B g(s)=\zeta(s)\widehat g(s),
+\]
+where \(\widehat g(s)=\int_0^\infty g(t)t^{-s}\,dt\) is the right Mellin transform.
+The regularized shadow is
+\[
+  B_X^{\rm reg}g(s)=Z_X^\omega(s)\widehat g(s).
+\]
+The regularization residual is
+\[
+  T_X^\omega g(s)=B g(s)-B_X^{\rm reg}g(s)
+  =-\mathcal E_X^\omega(s)\widehat g(s).
+\]
+
+\section{Finite angular-gap theorem}
+Let \(Y_{B,N}\) be a finite Burnol window and let
+\[
+  B_N:Y_{B,N}\to H_N
+\]
+be the exact Burnol target map \(g\mapsto \zeta\widehat g\), with Gram
+\[
+  G_{B,N}=B_N^*B_N.
+\]
+Let \(D_N^{\rm reg}\) be the declared regularized Dirichlet-readable synthesis family, consisting of a Dirichlet coefficient bank, the M\"untz pole channel, optional dual approximate-functional-equation channel, and a tail channel.  Let \(P_N^{\rm reg}\) project onto its range.
+
+\begin{definition}[Angular-gap defect]
+\[
+  \delta_{BD,N}^{\rm reg}
+  :=
+  \|(I-P_N^{\rm reg})B_NG_{B,N}^{-1/2}\|.
+\]
+Equivalently,
+\[
+  \Xi_{BD,N}^{\rm reg}
+  =B_N^*(I-P_N^{\rm reg})B_N.
+\]
+\end{definition}
+
+\begin{theorem}[Regularized shadow angular-gap estimate]
+Assume the finite Burnol window is normalized by \(G_{B,N}\). Suppose the declared regularized shadow satisfies three records:
+\begin{align*}
+  \epsilon_{\rm Mell,N} &:=\sup_{\|y\|_{G_B}=1}\operatorname{dist}(\widehat g_y,\mathcal M_N),\\
+  \tau_{\rm M,N} &:=\sup_{\|y\|_{G_B}=1}\|\mathcal E_{X_N}^{\omega}(s)\widehat g_y(s)\|_{H_N},\\
+  \kappa_{\rm tail,N} &:=\text{declared coefficient/support/tail defect}.
+\end{align*}
+Then
+\[
+  \boxed{
+  \delta_{BD,N}^{\rm reg}
+  \le
+  \epsilon_{\rm Mell,N}+\tau_{\rm M,N}+\kappa_{\rm tail,N}.
+  }
+\]
+Consequently
+\[
+  c_{BD,N}^{\rm reg}
+  \ge
+  1-(\epsilon_{\rm Mell,N}+\tau_{\rm M,N}+\kappa_{\rm tail,N})^2.
+\]
+If the right-hand side tends to zero, then \(\delta_{BD,N}^{\rm reg}\to0\).  If it stays below one, it gives a positive visibility floor.  If it reaches one, the missed sector
+\[
+  \Xi_{BD}^{\rm reg}=B^*(I-P_D^{\rm reg})B
+\]
+is nonzero and must be source-absorbed or declared as a nonclaim.
+\end{theorem}
+
+\section{Growth tradeoff}
+On growing vertical windows \(|t|\le T_N\), the M\"untz contour estimate has the shape
+\[
+  \tau_{\rm M,N}
+  \lesssim
+  A_N(1+T_N)^A X_N^{-\eta},
+\]
+where \(A_N\) records the uniform Mellin-size of the Burnol atom window.  Thus the shadow needs
+\[
+  X_N^\eta \gg A_N(1+T_N)^A.
+\]
+But Heap--Soundararajan style source estimates require the Dirichlet polynomial to remain short relative to the family parameter.  Hence the regularized route has a real compatibility gate:
+\[
+  \boxed{
+  \text{large enough for M\"untz accuracy, short enough for moment estimates.}
+  }
+\]
+This is the new length-balancing obstruction.
+
+\section{No-overread boundary}
+This step proves an angular-gap criterion, not RH.  It does not prove:
+\begin{itemize}
+  \item \(\delta_{BD,N}^{\rm reg}\to0\) for the completed Burnol boundary sector;
+  \item the Heap--Soundararajan scalar estimates imply an operator-valued lower frame;
+  \item finite windows promote without tail control;
+  \item the regularized Dirichlet shadow avoids all missed sectors.
+\end{itemize}
+It states exactly what must be proved for the smooth M\"untz/co-Poisson shadow to become a lawful Hecke/Dirichlet-readable bridge.
+
+\section{Next target}
+The next analytic target is the balanced-length theorem:
+\[
+  \epsilon_{\rm Mell,N}+\tau_{\rm M,N}+\kappa_{\rm tail,N}<1
+\]
+with
+\[
+  \gamma_N\bigl(1-(\epsilon_{\rm Mell,N}+\tau_{\rm M,N}+\kappa_{\rm tail,N})^2\bigr)\to\infty.
+\]
+This is the first point where the Burnol geometry, M\"untz regularization, and Heap--Soundararajan source-strength estimates must be made quantitatively compatible.
+
+\end{document}

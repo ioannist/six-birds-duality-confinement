@@ -1,0 +1,76 @@
+{
+  "step": 269,
+  "orientation": "numerical_extension",
+  "target": "Branch C k=5,6,7 extension; exponential law test",
+  "dataset_k_0_to_7": {
+    "rho1_G_star": [0.15109088977378465, 0.2894358013332896, 0.5733722876009435, 1.1164964358869975, 2.2021731760951169, 4.373822966988187, 8.804781976433501, 17.958730549969506],
+    "rho2_G_star": [0.16664019014408424, 0.2885915403926387, 0.5552190856295628, 1.1457543043685279, 2.5868233084753922, 6.187878923391984, 15.417394277713791, 39.18929396877891],
+    "rho1_G_prime": [0.21703889910486754, 0.4018167624744154, 0.75379771319416, 1.37784728594098, 2.5398826196610593, 4.676864962800694, 8.700017345945478, 16.316879205384605]
+  },
+  "exponential_fit_extended": [
+    {
+      "triple": "rho1_G_star",
+      "a": 0.12930406382567788,
+      "b": 0.7046255999346526,
+      "rmse_k0_7": 0.03689155450075735,
+      "rmse_k0_4_recomputed": 0.002740726052586139
+    },
+    {
+      "triple": "rho2_G_star",
+      "a": 0.061270994408724855,
+      "b": 0.9228326092468828,
+      "rmse_k0_7": 0.12450712132795697,
+      "rmse_k0_4_recomputed": 0.03383249836910428
+    },
+    {
+      "triple": "rho1_G_prime",
+      "a": 0.20825978193213854,
+      "b": 0.6228614951973941,
+      "rmse_k0_7": 0.024701447583720764,
+      "rmse_k0_4_recomputed": 0.003495158992629998
+    }
+  ],
+  "residual_analysis": {
+    "pure_exponential": "directionally continues but k=0..7 RMSE increases relative to k=0..4",
+    "largest_pure_exp_residuals": {
+      "rho1_G_star": 0.060697595950681915,
+      "rho2_G_star": 0.16942065262179784,
+      "rho1_G_prime": 0.04251547567930558
+    },
+    "polynomial_correction": [
+      {
+        "triple": "rho1_G_star",
+        "model": "a*(k+1)^c*exp(b*k)",
+        "a": 0.17609673636422168,
+        "b": 0.7496826448932887,
+        "c": -0.2997872225970014,
+        "rmse_k0_7": 0.01653179838489435
+      },
+      {
+        "triple": "rho2_G_star",
+        "model": "a*(k+1)^c*exp(b*k)",
+        "a": 0.2069855811384888,
+        "b": 1.0831978784277692,
+        "c": -1.1247707107194447,
+        "rmse_k0_7": 0.02112656584272654
+      },
+      {
+        "triple": "rho1_G_prime",
+        "model": "a*(k+1)^c*exp(b*k)",
+        "a": 0.2387370675800667,
+        "b": 0.6440994529632772,
+        "c": -0.1368611511025679,
+        "rmse_k0_7": 0.015410705658925907
+      }
+    ]
+  },
+  "deviation_assessment": "The high-k values remain nonzero and exponentially growing, but the extended k=0..7 data favor an exponential law with negative polynomial correction rather than the pure k=0..4 exponential.",
+  "retained_nogos": [
+    "Branch C numerical growth does not imply RH closure",
+    "no simple zeta/xi derivative bridge is restored",
+    "polynomial correction fit is diagnostic, not theorem-grade",
+    "foreclosure-growth theorem remains missing",
+    "does not claim RH solved"
+  ],
+  "final_verdict": "V_branch_C_polynomial_correction"
+}
