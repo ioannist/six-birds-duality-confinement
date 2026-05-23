@@ -138,6 +138,28 @@ typed real-arithmetic structure to express square roots,
 non-negativity of squares, and the derivation of
 \((\sqrt a-\sqrt b)^2\geq0\).
 
+\paragraph{Anti-invariant readout as typed field.}
+The body definition of the anti-invariant readout is
+\(\psim(x)=\Pminus\psi(x)\), and equivariance of \(\psi\) under the
+involution then forces \(\psim(Jx)=-\psim(x)\).  In the
+mathlib-free typed-cone encoding the response-side projector
+\(\Pminus\) is not represented, so \(\psim\) is realized in Lean as
+an independent typed field of the separating-readout carrier and of
+the anti-invariant-ledger carrier.  The two occurrences are linked
+by a coherence hypothesis that they agree pointwise on the carrier,
+and downstream theorems consume \(\psim\) only through these typed
+fields.
+
+Accordingly, the projection definition
+\(\psim=\Pminus\psi\) and the resulting equivariance identity
+\(\psim(Jx)=-\psim(x)\) are paper-side mathematical content and are
+not derived inside Lean from the ledger's \(\psi\) and \(\Jiso\)
+fields.  A future strengthening would add a response-side
+\(\Pminus\) primitive (or an anti-action on the readout codomain)
+sufficient to derive the projection identity and equivariance
+internally; in the present typed-cone scope these are carried as
+typed-interface data.
+
 \begin{landscape}
 \begin{table}[H]
 \centering
@@ -255,15 +277,22 @@ of this paper.  Lean declarations omit the common
 
 \Cref{tab:dc-formalization-coverage} records the per-row coverage
 for the thirteen inventory entries of this paper.  Three rows
-require the
-representation discipline stated above: Douglas factorization is the
-typed-cone form recorded by the \texttt{DouglasData} carrier; the
-optimized scalar trace budget is tracked over the
-\texttt{am\_gm\_optimization} hypothesis; and the defected
-obstruction budget is support-only material with no Lean citation.
-The remaining ten rows are direct definition entries or faithful
-theorem entries in the typed positive-cone formalization, so all
-twelve mechanize-now entries carry faithful semantic alignment.
+require the representation discipline stated above: Douglas
+factorization is the typed-cone form recorded by the
+\texttt{DouglasData} carrier; the optimized scalar trace budget is
+tracked over the \texttt{am\_gm\_optimization} hypothesis; and the
+defected obstruction budget is support-only material with no Lean
+citation.  In addition, the anti-invariant-readout typed-field
+disclosure above applies across the separating-readout,
+anti-invariant-ledger, and direct-confinement entries: \(\psim\)
+itself is supplied as a typed field with a coherence hypothesis
+between its two occurrences, and the projection identity
+\(\psim=\Pminus\psi\) and equivariance
+\(\psim(Jx)=-\psim(x)\) are paper-side content rather than
+Lean-derived from \(\psi\) and \(\Jiso\).  The remaining ten rows
+are direct definition entries or faithful theorem entries in the
+typed positive-cone formalization, so all twelve mechanize-now
+entries carry faithful semantic alignment under these disclosures.
 The real-part abstraction used for the Riemann-hypothesis zero
 ledger is the corresponding representation note for the RH-side
 development; that note and the recognition-source carrier row both

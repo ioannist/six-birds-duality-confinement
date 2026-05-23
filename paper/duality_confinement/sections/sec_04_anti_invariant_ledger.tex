@@ -166,6 +166,20 @@ trace identity in this formulation; the formalization appendix
 records that the equality is a constructor unfolding rather than an
 independent analytic derivation.
 
+One further encoding disclosure belongs here.  The anti-invariant
+readout \(\psim\) is realized in Lean as an independent typed field
+of both the separating-readout and anti-invariant-ledger carriers,
+supplied together with a coherence hypothesis that the two
+occurrences agree.  Lean does not construct \(\psim\) as the
+projection \(\Pminus\psi\) and does not derive the equivariance
+identity \(\psim(Jx)=-\psim(x)\) from equivariance of \(\psi\):
+the projection definition and the resulting equivariance are
+paper-side content carried over to the Lean carriers as
+typed-interface data.  This matches the typed-cone scope of the
+formalization, which does not encode the response-side projector
+\(\Pminus\); the formalization appendix records the disclosure
+alongside the per-row coverage table.
+
 Consequently, vanishing of \(\trace\AX\), vanishing of \(\AX\), and
 vanishing of \(\psim\) almost everywhere are equivalent under the
 trace identity and the positivity axioms of the cone.  Combining
