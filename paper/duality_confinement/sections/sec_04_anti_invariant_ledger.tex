@@ -48,21 +48,19 @@ identity gives \(\psim(x)=-\psim(x)\), hence \(\psim(x)=0\) over a
 real response space.  The converse need not hold automatically; it
 is precisely the separation condition defined below.
 
-The positive object associated with \(\psim\) is not introduced as a
-full trace-class operator theorem.  Instead, this paper works in a
-typed positive cone: an abstract ordered setting with a positive
-order \(\preceq\), a distinguished trace functional \(\trace\), and
-the two positivity principles needed later.  First, trace is
-monotone:
+The positive object associated with \(\psim\) is introduced in a
+typed positive cone rather than as a trace-class operator: an
+ordered setting with a positive order \(\preceq\), a trace
+functional \(\trace\), and two positivity principles.  Trace is
+monotone,
 \[
-  A\preceq B \quad\Longrightarrow\quad \trace A\leq \trace B.
+  A\preceq B \quad\Longrightarrow\quad \trace A\leq \trace B,
 \]
-Second, a positive element of trace zero is the zero element.  The
+and a positive element of trace zero is the zero element.  The
 classical model is the cone of positive trace-class operators on a
-Hilbert space, but the typed abstraction records only the order,
-trace, and positivity facts used by the confinement proof.  This is
-the local substitute for full operator-theoretic infrastructure; the
-formalization appendix records the corresponding encoding choice.
+Hilbert space; the typed abstraction records only the order, trace,
+and positivity facts used by the confinement proof.  The
+formalization appendix records the encoding choice.
 
 \begin{definition}[Anti-invariant object ledger]
 \label{def:duality_confinement:anti-invariant-ledger}
@@ -91,16 +89,14 @@ measure-theoretic ledger, the integral notation records the
 corresponding positive accumulation over the visible support of
 \(\mu\).
 
-In the classical trace-class reading, the displayed integral is a
-positive operator on \(Y\), assembled from rank-one positive
-operators \(\psim(x)\psim(x)^*\).  In the typed-cone reading used
-for the formal apparatus, the integral notation specifies the
-positive element \(\AX\) together with the trace and order structure
-needed to compare \(\AX\) with later domination bounds.  The point
-of this abstraction is narrow: it preserves the algebra of positive
-operators that enters the master theorem while avoiding any claim
-that the paper has developed the full analytic theory of
-trace-class operators.
+In the classical trace-class reading the displayed integral is a
+positive operator on \(Y\) assembled from rank-one positive
+operators \(\psim(x)\psim(x)^*\).  In the typed-cone reading the
+integral notation specifies the positive element \(\AX\) together
+with the trace and order structure needed to compare \(\AX\) with
+later domination bounds.  The abstraction preserves the algebra of
+positive operators that enters the master theorem without claiming a
+development of the full analytic theory of trace-class operators.
 
 \begin{definition}[Separating anti-invariant readout]
 \label{def:duality_confinement:separating-readout}
@@ -162,18 +158,16 @@ integration against the positive measure \(\mu\) gives the displayed
 identity.  Thus the right-hand side measures the mean-square
 amplitude of the anti-invariant readout.
 
-In the typed positive cone used by this paper, the same identity is
-built into the construction of \(\AX\).  The cone packages the
-Gram-type positive element together with a trace functional arranged
-so that applying \(\trace\) to \(\AX\) unfolds to the squared-norm
-integral above.  This is faithful to the classical computation, but
-it is not a separate development of trace-class operator theory.
-Lean verifies the trace identity in this typed-cone formulation; the
-formalization appendix records that the equality is a constructor
-unfolding rather than an independent analytic derivation.
+In the typed positive cone the same identity is built into the
+construction of \(\AX\): the cone packages the Gram-type element
+together with a trace functional arranged so that \(\trace\AX\)
+unfolds to the squared-norm integral above.  Lean verifies the
+trace identity in this formulation; the formalization appendix
+records that the equality is a constructor unfolding rather than an
+independent analytic derivation.
 
 Consequently, vanishing of \(\trace\AX\), vanishing of \(\AX\), and
-vanishing of \(\psim\) almost everywhere are tied together by the
+vanishing of \(\psim\) almost everywhere are equivalent under the
 trace identity and the positivity axioms of the cone.  Combining
-that chain with separating readout is the direct route to the
-fixed-locus confinement statement proved in the next section.
+this with separating readout is the direct route to the fixed-locus
+confinement statement proved in the next section.

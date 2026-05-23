@@ -84,7 +84,7 @@ theorem
 \]
 not as an unconditional standard-ZFC proof of RH.
 
-The translation step is deliberately elementary.  \Cref{sec:translation_theorem}
+The translation step is elementary.  \Cref{sec:translation_theorem}
 proves Theorem T:
 \[
   \AZ=0
@@ -93,45 +93,34 @@ proves Theorem T:
 \]
 The forward direction uses only that each summand
 \(m_\rho |\Real(\rho)-1/2|^2\) is nonnegative and that
-\(m_\rho>0\).  If the total sum is zero, every squared distance from
-the critical line is zero.  The reverse direction is substitution:
-if every typed zero has real part \(1/2\), then every summand
-vanishes, so \(\AZ=0\).  This theorem is proven by direct positivity
-argument: it does not carry the recognition-source burden.
-Rather, it cleanly translates the positive ledger statement produced
-by the duality-confinement mechanism into the number-theoretic
-critical-line statement.
+\(m_\rho>0\): if the total sum is zero, every squared distance from
+the critical line is zero.  The reverse direction is substitution.
+Theorem T carries no recognition-source content; it translates the
+positive ledger statement produced by the duality-confinement
+mechanism into the number-theoretic critical-line statement.
 
-The paper's scope is correspondingly narrow and explicit.  First, the
-main result is conditional on \(\GamSDTCSelberg\).  We do not claim
-unconditional RH in standard ZFC, and we do not claim that
-\(\GamSDTCSelberg\) is derivable from framework primitives.  The
-development history includes a three-route derivation sweep whose role
-is due diligence: it supports the recognition-source status by
-documenting that the domination content is not obtained from the lower
-primitive vocabulary alone.  Second, the recognition source is not
-installed as a Lean axiom.  It is represented in the formalization as a
-typed structure carrier whose fields record the required domination
-data; the project-wide source rule bans declarations using the tokens
-\texttt{axiom}, \texttt{opaque}, \texttt{constant}, \texttt{sorry}, and
-\texttt{admit}.  The conditional theorem takes a value of that carrier
-as an explicit hypothesis.
-
-Third, the zero ledger is typed.  The formal encoding parameterizes the
-real-part coordinate by a typed real-coordinate carrier, and the
-identification of that coordinate with the usual real part of a
-classical nontrivial zero of \(\zeta\) is made by construction-parameter
-assignment when the shell is instantiated.  This is the correct
-mathlib-free abstraction for the present formalization; a Lean-side
-derivation of the analytic identification with the classical zero set
-is left as a future extension.  Fourth, admissibility of \(\Sel\) under
-the seven Foundations-II schemas is carried as an audit/admissibility
-witness in the shell, not derived in this paper.  Finally, the
-classical RH programs named above are neither refuted nor circumvented
-in their native sense.  They aim at unconditional RH inside classical
-analytic number theory; the present paper establishes a conditional
-formed-layer result on the typed Selberg trace shell.  The generalized
-Riemann hypothesis is also outside the scope of this paper: we
+The paper's scope is correspondingly narrow.  The main result is
+conditional on \(\GamSDTCSelberg\); we do not claim unconditional
+RH in standard ZFC, and we do not claim that \(\GamSDTCSelberg\) is
+derivable from framework primitives.  The recognition source is not
+installed as a Lean axiom: it is represented as a typed structure
+carrier whose fields record the required domination data, and the
+project-wide source rule bans the tokens \texttt{axiom},
+\texttt{opaque}, \texttt{constant}, \texttt{sorry}, and
+\texttt{admit}.  The conditional theorem takes a value of that
+carrier as an explicit hypothesis.  The formal encoding
+parameterizes the real-part coordinate by a typed real-coordinate
+carrier; identification with the classical real part of a nontrivial
+zero of \(\zeta\) is fixed by construction-parameter assignment when
+the shell is instantiated, and a Lean-side derivation of that
+identification is left as a future extension.  Admissibility of
+\(\Sel\) under the seven Foundations-II schemas is carried as an
+audit witness in the shell, not derived here.  The classical RH
+programs named above are neither refuted nor circumvented in their
+native sense: they aim at unconditional RH within their classical
+substrates, while the present paper establishes a conditional
+formed-layer result on the typed Selberg trace shell.  The
+generalized Riemann hypothesis lies outside the scope; we
 instantiate the construction for \(L=\zeta\) only.
 
 The remainder of the paper follows this division of labor.

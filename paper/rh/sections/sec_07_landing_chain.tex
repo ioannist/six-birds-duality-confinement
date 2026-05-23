@@ -103,13 +103,8 @@ Paper 1 master theorem and instantiates it on the typed zero ledger
 through the bridge parameter carrying the shell-specific measure and
 readout data into the master theorem's hypotheses.
 
-The pointwise critical-line conclusion is now one step away: the
-headline conditional theorem composes \(\GamSDTCSelberg\), the bridge
-theorem above, and the forward direction of Theorem T.
-
-Composing the recognition source from \Cref{sec:recognition_source}
-with the bridge theorem above and the forward direction of Theorem T
-yields the headline conditional landing chain.
+The headline conditional theorem composes \(\GamSDTCSelberg\), the
+bridge theorem above, and the forward direction of Theorem T.
 
 \begin{theorem}[Conditional landing chain]
 \label{thm:rh:conditional}
@@ -145,22 +140,21 @@ therefore gives \(\AZ=0\) in the typed positive cone associated to
 \]
 \end{proof}
 
-The conditional structure of this result is essential.  The theorem
-asserts that, under the standing Foundations-II admissibility of
-\(\Sel\) recorded in \Cref{def:rh:sat-sel-shell}, under the Six Birds
+The conditional structure of this result is essential.  Three
+hypotheses are in force: the standing Foundations-II admissibility
+of \(\Sel\) (\Cref{def:rh:sat-sel-shell}); the Six Birds
 closure-content discipline that treats \(\GamSDTCSelberg\) as
 supplied structural content of the formed self-dual Selberg trace
-layer, and under the typed real-coordinate identification described in
-\Cref{sec:involution_and_ledger}, every typed nontrivial zero of the
-saturated Selberg trace shell lies on the critical line.  Outside the
-Six Birds framing, the result reads as the conditional theorem
+layer; and the typed real-coordinate identification described in
+\Cref{sec:involution_and_ledger}.  Outside the Six Birds framing the
+theorem reads as the conditional implication
 \[
   \GamSDTCSelberg \Longrightarrow \mathrm{RH},
 \]
-not as an unconditional proof of RH in standard ZFC.  The conditional
-structure is preserved by the formalization: the conditional landing
-chain takes a value of the recognition-source carrier as an explicit
-hypothesis parameter.
+not as an unconditional proof of RH in standard ZFC.  The
+formalization preserves this conditional structure: the landing
+chain takes a value of the recognition-source carrier as an
+explicit hypothesis parameter.
 
 The same conclusion can also be rendered in the framework's BirdInt
 judgment form.  A BirdInt judgment is a framework-relative typed
@@ -178,18 +172,12 @@ This framework rendering is not load-bearing for the proof above; it
 records the same conditional theorem in the audited judgment
 vocabulary used by Foundations III.
 
-Lean proves the conditional landing chain, as recorded in the
-formalization appendix, with the recognition source supplied as an
-explicit hypothesis parameter.  The formal realization takes a value
-of the typed-structure carrier representing \(\GamSDTCSelberg\) as
-input, applies the bridge theorem
-\Cref{thm:rh:dc-master-applied}, and then applies the forward
-direction of translation theorem T,
-\Cref{thm:rh:translation-T-forward}.  The resulting conclusion is the
-typed-ledger statement that every typed nontrivial zero of \(\Sel\)
-lies on the critical line.
+Lean proves the conditional landing chain (per the formalization
+appendix): the formal realization takes a value of the
+typed-structure carrier representing \(\GamSDTCSelberg\) as input,
+applies \Cref{thm:rh:dc-master-applied}, and then applies
+\Cref{thm:rh:translation-T-forward}.
 
-This completes the conditional landing chain.  The scope, nonclaim
-discipline, structural-program positioning, and pending formalization
-extensions are the subject of \Cref{sec:scope_and_nonclaims} and the
-sections that follow.
+The scope, nonclaim discipline, structural-program positioning, and
+pending formalization extensions are the subject of
+\Cref{sec:scope_and_nonclaims} and the sections that follow.

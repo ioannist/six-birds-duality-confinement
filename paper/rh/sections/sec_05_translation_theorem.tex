@@ -63,27 +63,18 @@ the assertion that every \(\rho\in\Znt\) satisfies
 Theorem T depends only on \(\Znt\), the positive multiplicities
 \(m_{\rho}\), the readout \(\psimRH\), and the definition of \(\AZ\).
 
-For that reason, Theorem T should be read as a translation theorem
-rather than as the place where the conditional content enters.  It
-does not assume RH, does not use the recognition source, and does not
-invoke a trace-formula positivity theorem.  Its positivity is the
-elementary positivity of a finite multiplicity-weighted sum of
-squares.  The later sections supply a structural reason for the
-left-hand side, \(\AZ=0\), to hold under the stated conditional
-hypothesis.  Once that left-hand side is available, the theorem above
-contains the entire conversion to the right-hand side.
+Theorem T is therefore a translation theorem rather than the place
+where the conditional content enters: it does not assume RH, does
+not use the recognition source, and does not invoke a trace-formula
+positivity theorem.  Its positivity is the elementary positivity of
+a finite multiplicity-weighted sum of squares.  The later sections
+supply the structural reason for \(\AZ=0\) under the conditional
+hypothesis; once \(\AZ=0\) is available, the theorem above contains
+the entire conversion to the right-hand side.
 
-Lean proves translation theorem T, as recorded in the formalization
-appendix.  The biconditional combines the forward and reverse halves,
-both of which are themselves verified on the typed zero ledger with
-faithful semantic alignment.  The statement is proven by direct
-positivity argument in both directions: it uses finite typed-multiset
-summation, positive multiplicities, and nonnegativity of the squared
-anti-invariant readout, not any recognition-source hypothesis.
-
-The forward and reverse halves follow.
-
-Both halves of the biconditional admit short positivity-based proofs.
+Both halves admit short positivity-based proofs; Lean verifies each
+half with faithful semantic alignment, and the formalization
+appendix records the declaration-level correspondence.
 
 \begin{theorem}[Translation theorem T, forward direction]
 \label{thm:rh:translation-T-forward}
@@ -113,9 +104,6 @@ for each \(\rho\in\Znt\).  Since \(m_{\rho}>0\), the squared factor
 must be zero.  Thus \(\Real(\rho)-1/2=0\), and hence
 \(\Real(\rho)=1/2\).
 \end{proof}
-
-Lean proves the forward direction of Theorem T, as recorded in the
-formalization appendix.
 
 \begin{theorem}[Translation theorem T, reverse direction]
 \label{thm:rh:translation-T-reverse}
@@ -147,12 +135,9 @@ Each summand in the definition of \(\AZ\) is consequently
 Thus \(\AZ\) is a finite sum of zero summands, so \(\AZ=0\).
 \end{proof}
 
-Lean proves the reverse direction of Theorem T, as recorded in the
-formalization appendix.
-
 Together, the two halves give the biconditional of
-\Cref{thm:rh:translation-T}.  Theorem T is now in place: \(\AZ=0\) if
-and only if every typed zero lies on the critical line.  The remaining
-structural task is to supply the recognition source that delivers
-\(\AZ=0\) through the duality-confinement mechanism, which is the
-subject of \Cref{sec:recognition_source} and \Cref{sec:landing_chain}.
+\Cref{thm:rh:translation-T}: \(\AZ=0\) if and only if every typed
+zero lies on the critical line.  The remaining structural task is
+to supply the recognition source that delivers \(\AZ=0\) through
+the duality-confinement mechanism, which is the subject of
+\Cref{sec:recognition_source} and \Cref{sec:landing_chain}.

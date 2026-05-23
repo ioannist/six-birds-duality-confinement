@@ -9,23 +9,17 @@
 \section{The duality-confinement membrane theorem}
 \label{sec:master_theorem}
 
-This section states the headline result of the paper: the
-duality-confinement membrane theorem, also called the master
-theorem.  It takes the apparatus built in the preceding sections and
-turns a sequence of domination records into fixed-locus confinement.
-The input is algebraic and trace-theoretic: \(\AX\) is dominated by
-positive bounds \(B_n\), and the traces of those bounds tend to
-zero.  The output is geometric: visible mass is confined to
-\(\Fix(J)\).
-
-This theorem is the apparatus theorem of Self-Dual Trace
-Confinement, denoted \(\GamSDTC\).  The structural law names the
-recognition source: the formed-layer content that supplies the
-domination-record sequence.  The theorem below does not derive that
-source.  It proves the mathematical consequence once the source has
-provided the sequence \(\AX\preceq B_n\) with vanishing trace
-budget.  In this sense SDTC is the named structural law, while the
-master theorem is the squeeze mechanism that extracts confinement.
+This section states the headline result: the duality-confinement
+membrane theorem, also called the master theorem.  It takes the
+apparatus built in the preceding sections and turns a sequence of
+domination records into fixed-locus confinement.  The input is
+algebraic and trace-theoretic---\(\AX\) is dominated by positive
+bounds \(B_n\) whose traces tend to zero---and the output is
+geometric: visible mass is confined to \(\Fix(J)\).  In framework
+terms, this is the apparatus theorem for the SDTC structural law
+\(\GamSDTC\): the theorem does not derive the recognition source,
+only the mathematical consequence once the source has supplied the
+required sequence.
 
 \begin{theorem}[Duality-confinement membrane theorem]
 \label{thm:duality_confinement:master-theorem}
@@ -71,13 +65,7 @@ present theorem is therefore the verified typed-cone squeeze theorem
 needed by the SDTC apparatus, not a claim to have mechanized that
 larger operator-theoretic setting.
 
-Lean proves the duality-confinement master theorem in this
-typed-cone formulation; the formalization appendix records the
-declaration-level correspondence.  The proof sketch, including the
-squeeze step and the relation to the worked single-substrate
-validation, follows next.
-
-The proof composes the apparatus assembled in
+The proof composes the apparatus of
 \Cref{sec:anti_invariant_ledger,sec:direct_confinement,sec:domination}
 with the direct-confinement consequence of
 \Cref{thm:duality_confinement:separation-confinement}.
@@ -121,22 +109,14 @@ That theorem in turn rests on the trace identity
 \(\trace\AX\) with the squared-norm integral of \(\psim\).
 \end{proof}
 
-The typed-cone abstraction is what makes the proof modular.  The
-first three steps use only the structural primitives of the cone:
-order, trace, monotonicity, and positivity-to-zero.  The fourth
-step is imported from the direct-confinement result of
-\Cref{sec:direct_confinement}.  In a fully operator-theoretic
-treatment, the same proof would require the trace-class topology,
-Schatten-ideal calculus, and the analytic lemmas justifying the
-trace and positivity steps.  Here those ingredients are represented
-by the typed-cone interface, and the formal proof composes that
-interface with the separation theorem.
-
 Lean proves the duality-confinement membrane theorem at this typed
-positive-cone level.  The formalization appendix records the
-declaration-level correspondence and the representation choice:
-the theorem is a verified typed-cone squeeze result, while full
-operator-theoretic generality remains an open extension.
+positive-cone level; the formalization appendix records the
+declaration-level correspondence.  A fully operator-theoretic
+treatment would require the trace-class topology, Schatten-ideal
+calculus, and the analytic lemmas justifying the trace and
+positivity steps; here those ingredients are represented by the
+typed-cone interface, and operator-theoretic generality remains an
+open extension.
 
 \paragraph{Worked single-substrate validation.}
 The master theorem applies to any involutive object ledger whose

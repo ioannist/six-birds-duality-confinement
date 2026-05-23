@@ -81,68 +81,59 @@ involutive self-duality and a
 separating anti-invariant readout cannot host visible mass away from
 the fixed locus of that duality.
 
-The word ``structural'' is important.  SDTC is not presented as a
-theorem derived from the framework's primitive rules alone.  It is
-named as a recognition source, meaning a structural hypothesis
-supplied as content of the formed layer rather than proved from
-earlier primitives.  In standard mathematical terms, a recognition
-source is an explicit hypothesis about the substrate being studied;
-inside the Six Birds organization, it is treated as closure content
-rather than as an added metalogical axiom.  The role of the present
-paper is therefore twofold.  First, it states the SDTC structural law
-and explains the closure shape in which it applies.  Second, it
-proves the duality-confinement membrane theorem: once the appropriate
-domination records \(\AX \preceq B_n\) with \(\trace B_n\to0\) are
-available, fixed-locus confinement follows by the typed positive-cone
+SDTC is named as a recognition source: a structural hypothesis
+about the substrate, supplied as content of the formed layer rather
+than proved from earlier framework primitives.  In standard
+mathematical terms it is an explicit hypothesis about the substrate
+being studied; inside the Six Birds organization it is treated as
+closure content rather than as a metalogical axiom.  The present
+paper has two roles.  It states the SDTC structural law and the
+closure shape in which it applies, and it proves the
+duality-confinement membrane theorem: once domination records
+\(\AX \preceq B_n\) with \(\trace B_n\to0\) are available,
+fixed-locus confinement follows from the typed positive-cone
 squeeze described above.
 
-A useful mental model is supplied by the functional-equation symmetry
-of the Riemann zeta function.  There the involution on the complex
-plane is
+A useful mental model is the functional-equation symmetry of the
+Riemann zeta function.  The involution
 \[
-  J_L(s)=1-\bar{s},
+  J_L(s)=1-\bar{s}
 \]
-and its fixed locus is the critical line \(\Re(s)=1/2\).  The
-anti-invariant coordinate is the signed distance from that line,
-\(\Re(s)-1/2\).  This paper does not use that example as an input,
-nor does it use any result about the zeta function below.  It is
-only a guide to the shape of the abstraction: an involution, a fixed
-locus, an anti-invariant readout, and a positive ledger measuring
-off-fixed-locus mass.
+on the complex plane has critical-line fixed locus
+\(\Re(s)=1/2\), and the signed real-part displacement
+\(\Re(s)-1/2\) is its anti-invariant coordinate.  The example serves
+only as a guide to the shape of the abstraction---an involution, a
+fixed locus, an anti-invariant readout, and a positive ledger
+measuring mass away from the fixed locus.  No result about
+\(\zeta\) is used below.
 
-The mechanized part of the present paper is the apparatus, not the
+The mechanized part of the paper is the apparatus, not the
 recognition source itself.  Lean proves the duality-confinement
 master theorem at the typed positive-cone level, and the
-formalization appendix records the twelve faithfully aligned
-mechanized entries used by this paper and separately notes the
-defected-budget shape that is not mechanized.  The typed cone is
-deliberately leaner than full operator theory: it records the order
-\(\preceq\), the
-trace functional \(\trace\), trace monotonicity, and the positivity
-principle that a positive element of trace zero is the zero element.
-This is exactly the algebra used by the squeeze proof, but it is not
-a full Lean development of trace-class operators, Hilbert--Schmidt
-operators, Schatten ideals, or the trace-norm topology.  Extending
-the theorem to that fully operator-theoretic setting is an open
-extension.
+formalization appendix records the twelve mechanized entries used
+here together with the defected-budget shape that is not mechanized.
+The typed cone records only what the squeeze proof needs: the order
+\(\preceq\), the trace functional \(\trace\), trace monotonicity,
+and the principle that a positive element of trace zero is the zero
+element.  It is not a full Lean development of trace-class operators,
+Hilbert--Schmidt operators, Schatten ideals, or the trace-norm
+topology; extending the theorem to that operator-theoretic setting
+is an open extension.
 
-The same scope discipline applies throughout the paper.  The
-classical ingredients that appear here---Loewner order, trace
+The classical ingredients in the apparatus---Loewner order, trace
 functionals, Markov-style estimates, AM--GM optimization, and
 Douglas factorization---are not claimed as novel.  The contribution
 is the structural packaging: the anti-invariant ledger, the
 domination-record discipline, and the master theorem that converts
-vanishing trace budgets into fixed-locus confinement.  Likewise, the
-optimized scalar trace budget in \Cref{sec:exhaustive_squeeze_and_budgets}
-tracks the AM--GM step through the formalization harness as a
-typed-Scalar hypothesis; a substantive derivation of AM--GM would
-require additional typed real-arithmetic structure.  Finally,
-cross-substrate examples such as CPT symmetry, gauge invariance,
-particle--antiparticle duality, quantum self-adjointness, and
-function-field analogues are treated as structural predictions and
-future validation targets, not as theorems established in this
-paper.  These boundaries are stated explicitly so that the main
-claim remains sharp: SDTC is a named recognition source, and the
-duality-confinement membrane theorem is the verified typed-cone
+vanishing trace budgets into fixed-locus confinement.  The optimized
+scalar trace budget in \Cref{sec:exhaustive_squeeze_and_budgets}
+takes the AM--GM step as a typed-Scalar hypothesis; the formalization
+tracks it as such, and a substantive derivation would require
+additional typed real-arithmetic structure.  Cross-substrate
+examples such as CPT symmetry, gauge invariance, particle--antiparticle
+duality, quantum self-adjointness, and function-field analogues are
+structural predictions and future validation targets, not theorems
+established in this paper.  SDTC is the named recognition source,
+and the duality-confinement membrane theorem is the typed-cone
 mechanism that turns its domination records into confinement on
 \(\Fix(J)\).

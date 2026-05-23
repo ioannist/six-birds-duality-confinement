@@ -18,13 +18,12 @@ Selberg-class instance of Self-Dual Trace Confinement,
 framing; the present paper specializes that framing to the saturated
 completed Selberg trace closure \(\Sel\) \cite{TsiokosSDTC2026}.
 
-A recognition source is not a calculation internal to the proof of
-Theorem T.  It is structural content of the formed layer: typed data
-which the formed closure recognizes as present.  In this case, the
-content is precisely the completed domination-record sequence needed
-by the duality-confinement master theorem.  Once that sequence is
-available, the master theorem will force \(\AZ=0\), and Theorem T
-will then convert \(\AZ=0\) into the critical-line statement.
+The recognition source supplies structural content of the formed
+layer rather than a calculation internal to the proof of Theorem T.
+In this case the content is the completed domination-record sequence
+required by the duality-confinement master theorem.  Once that
+sequence is available, the master theorem forces \(\AZ=0\), and
+Theorem T converts \(\AZ=0\) into the critical-line statement.
 
 \begin{definition}[The recognition source \(\GamSDTCSelberg\)]
 \label{obl:rh:gamma-sdtc-selberg}
@@ -74,33 +73,22 @@ hypothesis parameter,
   \gamma : \texttt{GammaSdtcSelberg}\ \texttt{shell}.
 \]
 
-This encoding reflects the Six Birds closure discipline.  A formed
-layer may carry structural content that is not re-derived from lower
-framework primitives every time it is used.  The formalization
-therefore records what the source supplies, and the later conditional
-theorem is explicit about taking that source as a hypothesis.  The
-result is a typed structural assumption with named fields, not a
-free-standing theorem that the paper claims to derive and not an
-unrestricted metatheoretic postulate.
-
 The development history includes a three-route derivation sweep
 testing whether \(\GamSDTCSelberg\) could be obtained directly from
-framework primitives.  The three candidate paths were the framework's
-primitive role inventory, the audited interaction calculus, and the
-closure-formation discipline.  Each route was found insufficient to
-produce the trace-vanishing domination sequence as an output.  This
-is paper-prose due diligence, not a Lean-mechanized premise: it
-supports the recognition-source framing by documenting that the SDTC
-content is closure content of the formed layer, not a separately
-derivable consequence of the primitive vocabulary.
-
-This conclusion matches the one-way import from Paper 1.  Paper 1
-names Self-Dual Trace Confinement as the structural law for
+framework primitives.  The three candidate paths were the
+framework's primitive role inventory, the audited interaction
+calculus, and the closure-formation discipline; each was found
+insufficient to produce the trace-vanishing domination sequence.
+This is paper-prose due diligence, not a Lean-mechanized premise,
+and it supports the recognition-source framing by documenting that
+the SDTC content is closure content of the formed layer rather than
+a separately derivable consequence of the primitive vocabulary.
+Paper 1 names Self-Dual Trace Confinement as the structural law for
 involutive self-dual formed closures and supplies the abstract
-duality-confinement apparatus \cite{TsiokosSDTC2026}.  Paper 2 does
-not rederive that structural law.  It instantiates the Selberg-class
-recognition source on \(\Sel\), exposes the domination records it
-carries, and then uses those records in the conditional landing chain.
+duality-confinement apparatus \cite{TsiokosSDTC2026}; Paper 2
+instantiates the Selberg-class recognition source on \(\Sel\) and
+uses the domination records it carries in the conditional landing
+chain.
 
 With \(\GamSDTCSelberg\) in place, the remaining composition is
 straightforward: apply the duality-confinement master theorem to the

@@ -117,13 +117,8 @@ fixed-locus characterization, vanishing condition, and anti-invariance
 calculation are checked in Lean with faithful semantic alignment to the
 statements just displayed.
 
-The next step is to package the nontrivial zeros of the completed
-Riemann zeta function as a typed multiset ledger and to build the
-scalar anti-invariant zero ledger on which the master theorem will act.
-
-We now carry out that packaging.  With the involution and readout in
-place, the typed objects this paper acts on are the nontrivial-zero
-ledger and the scalar built from it.
+With the involution and readout in place, the remaining objects are
+the typed multiset of nontrivial zeros and the scalar built from it.
 
 \begin{definition}[Nontrivial-zero ledger]
 \label{def:rh:nontrivial-zero-ledger}
@@ -191,23 +186,21 @@ calculation above, this is exactly the assertion that every typed zero
 lies on the critical line.  \Cref{sec:translation_theorem} packages
 this positivity argument as Theorem T.
 
-An important encoding disclosure is needed here.  In the formalization,
-the real-part coordinate is parameterized by a typed real-coordinate
-carrier, not by the standard real numbers with their full analytic
-infrastructure.  The identification of this typed coordinate with the
-actual \(\mathbb{R}\)-valued real part of a classical nontrivial zero
-of \(\zeta\) is made by construction-parameter assignment: when the
-saturated Selberg trace shell is instantiated, the user fixes that
-identification as part of the input data.  It is not derived as an
-internal Lean predicate.  The mathlib-free constraint of this
-development forbids importing the standard \(\mathbb{R}\)-typed
-analytic machinery needed for such a derivation; a substantive Lean
-identification would require extending the encoding with analytic
-real-coordinate structure for nontrivial zeros of \(\zeta\).  The
-mathematical content is unchanged: RH on the typed zero ledger says
-that every such real-part coordinate equals \(1/2\), and the
-user-supplied assignment makes that typed statement isomorphic to the
-classical RH statement.
+One encoding disclosure belongs here.  In the formalization, the
+real-part coordinate is parameterized by a typed real-coordinate
+carrier rather than by the standard real numbers with their full
+analytic infrastructure.  The identification of this typed
+coordinate with the \(\mathbb{R}\)-valued real part of a classical
+nontrivial zero of \(\zeta\) is fixed by construction-parameter
+assignment when the saturated Selberg trace shell is instantiated;
+it is not derived as an internal Lean predicate.  The mathlib-free
+constraint forbids importing the analytic \(\mathbb{R}\)-typed
+machinery needed for such a derivation, and a substantive Lean
+identification is left as an extension.  The mathematical content is
+unchanged: RH on the typed zero ledger says that every such
+real-part coordinate equals \(1/2\), and the user-supplied
+assignment makes that typed statement equivalent to the classical
+RH statement.
 
 The saturated completed Selberg trace closure \(\Sel\), which
 packages these typed objects together with the trace instrument and
