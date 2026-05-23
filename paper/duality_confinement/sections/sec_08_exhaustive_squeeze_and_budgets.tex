@@ -92,11 +92,20 @@ The right-hand side tends to zero by vanishing-exhaustiveness, so
 displayed fixed-locus confinement.
 \end{proof}
 
-Lean proves the exhaustive ledger squeeze in this typed-cone
-formulation; the formalization appendix records the
-declaration-level correspondence.  The remainder of this section treats the
-case where the finite-window-plus-tail approximation comes with a
-structured defect budget optimized by a scalar parameter.
+Lean records the exhaustive ledger squeeze in this typed-cone
+formulation.  The corresponding carrier structure bundles the
+finite-window data \((A_{X,n}, \iota_n, T_n, B_n)\) with both the
+moving bound \(A_{X,n}\preceq B_n\) and the ambient bound
+\(\AX\preceq \iota_n B_n\iota_n^*+T_n\) as typed fields, and the
+theorem composes the ambient bound with the supplied trace
+squeeze.  The reduction of the ambient bound to the moving bound
+under \(\iota_n\) and \(T_n\) is therefore an interface assumption
+of the moving ledger, not derived from monotonicity-of-transport
+primitives in the typed cone.  The formalization appendix records
+the declaration-level correspondence.  The remainder of this
+section treats the case where the finite-window-plus-tail
+approximation comes with a structured defect budget optimized by
+a scalar parameter.
 
 The exhaustive squeeze covers the case where the domination
 records vanish after transport and tail control.  A common

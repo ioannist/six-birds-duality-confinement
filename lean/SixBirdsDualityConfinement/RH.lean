@@ -23,8 +23,10 @@ takes a value of this structure as an explicit hypothesis parameter.
 The forbidden-tokens rule bans `axiom`/`opaque`/`constant`/`sorry`/`admit`
 anywhere in the source tree.
 
-The `GammaSdtcSelberg` module is not listed in the
-section_module_map because the obligation row in the inventory has
-`intended_status = out_of_scope_recognition_source`, which the
-validator chain treats as a non-queueable item.
+The inventory row `obl:rh:gamma-sdtc-selberg` is not listed in the
+section_module_map because `GammaSdtcSelberg` is not a standalone module:
+it is colocated with `RHConditional` as an inline structure next to its only
+consumer, per `lean/codex_kickoff.md` §12. The row carries
+`intended_status = out_of_scope_recognition_source`, which the validator
+chain treats as a non-queueable item, so no per-module slot is reserved for it.
 -/

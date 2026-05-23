@@ -84,10 +84,14 @@ The trace identity identifies the final integral with
 \(m(\varepsilon)^2\) gives the displayed bound.
 \end{proof}
 
-Lean proves the quantitative-confinement bound; the formalization
-appendix records the declaration-level correspondence.  Mathematically,
-this is a Markov-style consequence of the trace identity and the
-lower bound supplied by quantitative separation.
+Lean records the quantitative-confinement bound via a typed
+Markov interface: the Markov-style scalar step
+(``\(m(\varepsilon)^2\,\mu(E_\varepsilon) \leq \trace\AX\) follows
+from the integrand lower bound and the trace identity'') is
+supplied as a typed hypothesis on the modulus side rather than
+derived from an ordered-scalar primitive, and the theorem composes
+it with the trace identity.  The formalization appendix records
+the declaration-level correspondence.
 
 \Cref{sec:master_theorem} will combine these direct consequences
 with a domination squeeze: once a sequence of records
