@@ -1,30 +1,39 @@
-% Shared manuscript macros for the paper.
-% Stable, cross-section macros — keep wording mechanically enforced via these.
-% Add macros incrementally as new vocabulary stabilizes during drafting; never redefine locally.
+% Duality Confinement paper — controlled-vocabulary macros.
+% Authority: paper/notation_and_terminology.md (single source of truth).
+% Reserved-symbol policy: macros below carry the meanings declared in the
+% notation governance file; local proofs MUST NOT repurpose a reserved symbol.
 
-%--- paper-local mnemonics ---------------------------------------------------
-% TODO: define paper-local mnemonics for any short labels reused across sections.
-% Example pattern (delete or rename as needed):
-% \newcommand{\OldLayer}{TODO}
-% \newcommand{\NewLayer}{TODO}
+%--- mathematical operators -------------------------------------------------
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\dist}{dist}
+% Trace functional on the typed positive cone (and classical operator
+% trace where applicable). Named \trace to avoid clobbering local uses of
+% \tr in pgf/tikz contexts.
+\DeclareMathOperator{\trace}{tr}
 
-%--- result identity ---------------------------------------------------------
-% TODO: define macros that name the paper itself, sibling papers it cites, and
-% any quantity (counts, status labels, final-verdict tags) that must be reused
-% verbatim across sections.
-% Example pattern (delete or rename as needed):
-% \newcommand{\PaperN}{Paper~N}
-% \newcommand{\AcceptedTestCount}{TODO}
-% \newcommand{\FinalVerdict}{\textsc{TODO\_FINAL\_VERDICT}}
+%--- anti-invariant ledger apparatus ---------------------------------------
+% Anti-invariant projector P_- = (I_Y - J_iso) / 2.
+\newcommand{\Pminus}{P_{-}}
+% Anti-invariant readout psi_- := P_- psi.
+\newcommand{\psim}{\psi_{-}}
+% Anti-invariant object ledger A_X := int psi_- psi_-^* d mu.
+\newcommand{\AX}{A_{X}}
+% Carrier-side anti-invariant currency K^-.
+\newcommand{\Kminus}{K^{-}}
+% Linear isometric involution on the response space Y.
+\newcommand{\Jiso}{J_{\mathrm{iso}}}
+% Involutive object ledger tuple shorthand (used sparingly in body prose;
+% body usually spells out the six-tuple at first use per
+% paper/notes/audience-translation.md discipline).
+\newcommand{\IOL}{\hat{\mathfrak{X}}}
 
-%--- canonical slot identities ----------------------------------------------
-% TODO: define stable typewriter identifiers for slots, families, or other
-% machine-readable identities that need to stay consistent across the manuscript.
-% Example pattern (delete or rename as needed):
-% \newcommand{\SlotExample}{\texttt{slot.example\_identifier}}
+%--- recognition source ----------------------------------------------------
+% Self-Dual Trace Confinement (named structural law / recognition source).
+\newcommand{\GamSDTC}{\Gamma_{\mathrm{SDTC}}}
 
-%--- canonical test-family identities ---------------------------------------
-% TODO: define stable identifiers for test families or other named objects
-% used in the body and appendices.
-% Example pattern (delete or rename as needed):
-% \newcommand{\TestFamilyExample}{\texttt{test.example\_identifier}}
+%--- paper identity --------------------------------------------------------
+% Reference to this paper's sibling (the RH closure paper). Use only in
+% the two sanctioned forward-reference paragraphs in sec:involutive_ledger
+% and sec:master_theorem per paper/notes/cross-paper-boundary.md.
+\newcommand{\SiblingRH}{[2]}

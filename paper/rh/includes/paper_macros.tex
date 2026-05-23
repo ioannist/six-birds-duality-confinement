@@ -1,30 +1,52 @@
-% Shared manuscript macros for the paper.
-% Stable, cross-section macros — keep wording mechanically enforced via these.
-% Add macros incrementally as new vocabulary stabilizes during drafting; never redefine locally.
+% RH paper — controlled-vocabulary macros.
+% Authority: paper/notation_and_terminology.md (single source of truth).
+% Reserved-symbol policy: macros below carry the meanings declared in the
+% notation governance file; local proofs MUST NOT repurpose a reserved symbol.
+% Shared notation (J, Fix, psi_-, A_X, preceq, tr, B_n, etc.) is defined
+% identically to Paper 1; cross-paper coherence pass verifies identical
+% rendering across both PDFs.
 
-%--- paper-local mnemonics ---------------------------------------------------
-% TODO: define paper-local mnemonics for any short labels reused across sections.
-% Example pattern (delete or rename as needed):
-% \newcommand{\OldLayer}{TODO}
-% \newcommand{\NewLayer}{TODO}
+%--- mathematical operators (shared with Paper 1) --------------------------
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Ran}{Ran}
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\Real}{Re}
 
-%--- result identity ---------------------------------------------------------
-% TODO: define macros that name the paper itself, sibling papers it cites, and
-% any quantity (counts, status labels, final-verdict tags) that must be reused
-% verbatim across sections.
-% Example pattern (delete or rename as needed):
-% \newcommand{\PaperN}{Paper~N}
-% \newcommand{\AcceptedTestCount}{TODO}
-% \newcommand{\FinalVerdict}{\textsc{TODO\_FINAL\_VERDICT}}
+%--- RH-specific symbols ---------------------------------------------------
+% Functional-equation involution J_L(s) = 1 - bar(s).
+\newcommand{\JL}{J_{L}}
+% Separating anti-invariant readout for RH: psi_-(s) = Re(s) - 1/2.
+% Body prose may use this or the generic \psim (shared with Paper 1); the
+% subscript-RH form is used where the RH-specific specialization needs
+% emphasis.
+\newcommand{\psimRH}{\psi_{-}}
+% Completed Riemann zeta function (opaque; only the zero ledger is used).
+\newcommand{\Lzeta}{\Lambda_{\zeta}}
+% Nontrivial zero ledger Z_zeta^nt.
+\newcommand{\Znt}{Z_{\zeta}^{\mathrm{nt}}}
+% Anti-invariant zero ledger A_Z(zeta).
+\newcommand{\AZ}{A_{Z}(\zeta)}
+% Saturated completed Selberg trace closure Sel^!_{zeta,tr}.
+\newcommand{\Sel}{\mathrm{Sel}^{!}_{\zeta,\mathrm{tr}}}
+% Lawful trace instrument I_tr.
+\newcommand{\Itr}{I_{\mathrm{tr}}}
+% Recognition source Gamma_{SDTC-Selberg}.
+\newcommand{\GamSDTCSelberg}{\Gamma_{\mathrm{SDTC\text{-}Selberg}}}
 
-%--- canonical slot identities ----------------------------------------------
-% TODO: define stable typewriter identifiers for slots, families, or other
-% machine-readable identities that need to stay consistent across the manuscript.
-% Example pattern (delete or rename as needed):
-% \newcommand{\SlotExample}{\texttt{slot.example\_identifier}}
+%--- shared notation with Paper 1 (anti-invariant ledger apparatus) -------
+% These appear in Paper 2 because the conditional landing chain uses the
+% master theorem from Paper 1 and inherits its notation.
+\newcommand{\Pminus}{P_{-}}
+\newcommand{\psim}{\psi_{-}}
+\newcommand{\AX}{A_{X}}
+\newcommand{\Kminus}{K^{-}}
+\newcommand{\Jiso}{J_{\mathrm{iso}}}
+\newcommand{\IOL}{\hat{\mathfrak{X}}}
+\newcommand{\GamSDTC}{\Gamma_{\mathrm{SDTC}}}
 
-%--- canonical test-family identities ---------------------------------------
-% TODO: define stable identifiers for test families or other named objects
-% used in the body and appendices.
-% Example pattern (delete or rename as needed):
-% \newcommand{\TestFamilyExample}{\texttt{test.example\_identifier}}
+%--- paper identity --------------------------------------------------------
+% Reference to this paper's sibling (the Duality Confinement / SDTC paper).
+% Paper 2 cites Paper 1 substantively for the master theorem; see
+% paper/notes/cross-paper-boundary.md for citation conventions.
+\newcommand{\SiblingDC}{[1]}
