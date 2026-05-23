@@ -155,10 +155,12 @@ as a metalogical postulate.
 
 \subsection*{Cross-paper Lean import}
 
-Paper~2 imports the duality-confinement master theorem from Paper~1.
-The Lean theorem \texttt{dcMasterApplied} imports
-\nolinkurl{SixBirdsDualityConfinement.DualityConfinement.MasterTheorem.masterTheorem}
-and instantiates it on the Selberg-class data.  The parameter
+Paper~2 imports the duality-confinement master theorem from
+Paper~1.  The Lean theorem \texttt{dcMasterApplied} imports the
+declaration \texttt{masterTheorem} from the Paper~1 module
+\texttt{DualityConfinement.MasterTheorem} (inside the
+\texttt{SixBirdsDualityConfinement} namespace) and instantiates it
+on the Selberg-class data.  The parameter
 substitution is the formal version of the body proof: \(\Sel\) plays
 the role of \(\IOL\), \(\AZ\) plays the role of \(\AX\), \(\JL\)
 plays the role of \(J\), \(\psimRH\) plays the role of \(\psim\), and
@@ -168,83 +170,81 @@ shell-specific separation data into the master theorem's hypotheses.
 This is a one-way cross-paper Lean import, matching the paper-level
 dependency on Paper~1's SDTC apparatus \cite{TsiokosSDTC2026}.
 
-The per-row coverage table for the eleven Paper~2 inventory entries,
-followed by the six-gates audit detail, appears next.
-
+\begin{landscape}
 \begin{table}[H]
 \centering
-\tiny
-\setlength{\tabcolsep}{2pt}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
 \begin{tabularx}{\linewidth}{@{}
-  >{\raggedright\arraybackslash}p{0.14\linewidth}
+  >{\raggedright\arraybackslash}p{0.16\linewidth}
   >{\raggedright\arraybackslash}p{0.16\linewidth}
   >{\raggedright\arraybackslash}X
   >{\raggedright\arraybackslash}p{0.18\linewidth}
-  >{\raggedright\arraybackslash}p{0.105\linewidth}
-  >{\raggedright\arraybackslash}p{0.09\linewidth}@{}}
+  >{\raggedright\arraybackslash}p{0.09\linewidth}
+  >{\raggedright\arraybackslash}p{0.07\linewidth}@{}}
 \toprule
 Paper label & Paper-prose name & Lean declaration &
 Proof mode & Coverage & Alignment \\
 \midrule
 \nolinkurl{def:rh:fe-involution} &
 functional-equation involution \(\JL\) &
-\nolinkurl{SixBirdsDualityConfinement.RH.Involution.feInvolution} &
+\nolinkurl{RH.Involution.feInvolution} &
 definition entry &
 definition &
 faithful \\
 
 \nolinkurl{def:rh:psi-minus-rh} &
 anti-invariant readout \(\psimRH(s)=\Real(s)-1/2\) &
-\nolinkurl{SixBirdsDualityConfinement.RH.Involution.psiMinusRh} &
+\nolinkurl{RH.Involution.psiMinusRh} &
 definition entry &
 definition &
 faithful \\
 
 \nolinkurl{def:rh:nontrivial-zero-ledger} &
 nontrivial-zero ledger \(\Znt\) &
-\nolinkurl{SixBirdsDualityConfinement.RH.ZeroLedger.NontrivialZeroLedger} &
+\nolinkurl{RH.ZeroLedger.NontrivialZeroLedger} &
 definition entry; A3 real-part abstraction &
 definition &
 faithful \\
 
 \nolinkurl{def:rh:anti-invariant-zero-ledger} &
 anti-invariant zero ledger \(\AZ\) &
-\nolinkurl{SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger.AntiInvariantZeroLedger} &
+\nolinkurl{RH.AntiInvariantZeroLedger.AntiInvariantZeroLedger} &
 definition entry &
 definition &
 faithful \\
 
 \nolinkurl{def:rh:sat-sel-shell} &
 saturated completed Selberg trace closure \(\Sel\) &
-\nolinkurl{SixBirdsDualityConfinement.RH.SatSelShell.SatSelShell} &
+\nolinkurl{RH.SatSelShell.SatSelShell} &
 definition entry; admissibility as \(\mathrm{Audit}_L\) hypothesis &
 definition &
 faithful \\
 
 \nolinkurl{thm:rh:translation-T-forward} &
 Theorem~T, forward direction &
-\nolinkurl{SixBirdsDualityConfinement.RH.TranslationT.translationTForward} &
+\nolinkurl{RH.TranslationT.translationTForward} &
 lean substantive &
 theorem &
 faithful \\
 
 \nolinkurl{thm:rh:translation-T-reverse} &
 Theorem~T, reverse direction &
-\nolinkurl{SixBirdsDualityConfinement.RH.TranslationT.translationTReverse} &
+\nolinkurl{RH.TranslationT.translationTReverse} &
 lean substantive &
 theorem &
 faithful \\
 
 \nolinkurl{thm:rh:translation-T} &
 translation theorem T, biconditional &
-\nolinkurl{SixBirdsDualityConfinement.RH.TranslationT.translationT} &
+\nolinkurl{RH.TranslationT.translationT} &
 lean substantive &
 theorem &
 faithful \\
 
 \nolinkurl{obl:rh:gamma-sdtc-selberg} &
 recognition source \(\GamSDTCSelberg\) &
-\nolinkurl{SixBirdsDualityConfinement.RH.RHConditional.GammaSdtcSelberg} &
+\nolinkurl{RH.RHConditional.GammaSdtcSelberg} &
 typed structure carrier; not a Lean axiom; inline in
 \texttt{RHConditional.lean} &
 recognition source &
@@ -252,7 +252,7 @@ not applicable \\
 
 \nolinkurl{thm:rh:dc-master-applied} &
 duality-confinement master theorem applied to \(\Sel\) &
-\nolinkurl{SixBirdsDualityConfinement.RH.DCMasterApplied.dcMasterApplied} &
+\nolinkurl{RH.DCMasterApplied.dcMasterApplied} &
 lean substantive; imports Paper~1 \texttt{masterTheorem} via
 \texttt{mu\_zero\_of\_ae} &
 theorem &
@@ -260,26 +260,30 @@ faithful \\
 
 \nolinkurl{thm:rh:conditional} &
 conditional landing chain &
-\nolinkurl{SixBirdsDualityConfinement.RH.RHConditional.rhConditional} &
+\nolinkurl{RH.RHConditional.rhConditional} &
 lean substantive; takes
 \(\gamma : \texttt{GammaSdtcSelberg shell}\) explicitly &
 theorem &
 faithful \\
 \bottomrule
 \end{tabularx}
-\caption{Per-row Lean coverage for the eleven Paper~2 inventory entries.}
+\caption{Per-row Lean coverage for the eleven Paper~2 inventory
+entries.  Lean declarations omit the common
+\texttt{SixBirdsDualityConfinement.} namespace prefix.}
 \label{tab:rh-formalization-coverage}
 \end{table}
+\end{landscape}
 
-Three rows in \Cref{tab:rh-formalization-coverage} carry explicit
-encoding-disclosure notes: A3 for the nontrivial-zero ledger,
+\Cref{tab:rh-formalization-coverage} records the per-row coverage
+for the eleven Paper~2 inventory entries.  Three rows carry
+explicit encoding-disclosure notes: A3 for the nontrivial-zero ledger,
 admissibility as the \(\mathrm{Audit}_L\) hypothesis for \(\Sel\),
 and typed-structure-carrier treatment for \(\GamSDTCSelberg\).  All
 ten mechanize-now entries have faithful semantic alignment.  The
 single recognition-source row has semantic alignment marked not
 applicable because it is a typed hypothesis carrier, not a theorem.
 The cross-paper Lean import in
-\nolinkurl{SixBirdsDualityConfinement.RH.DCMasterApplied.dcMasterApplied}
+\nolinkurl{RH.DCMasterApplied.dcMasterApplied}
 is the only Lean-side dependency from Paper~2 back to Paper~1.
 
 \subsection*{No-smuggling gates}
