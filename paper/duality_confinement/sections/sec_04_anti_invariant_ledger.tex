@@ -1,15 +1,179 @@
 % Duality Confinement paper — § Anti-invariant ledger and separation
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body, pass A: projector, readout, typed cone, ledger,
+% and separation definitions.  Pass B appends the trace identity.
 %
-% statements-of-record rows resolved here: see
-% paper/duality_confinement/notes/section-outline.md (this file's
-% row) and paper/notes/statements-of-record.yml
-% (target_section_hint field).
+% statements-of-record rows resolved here in pass A:
+% def:duality_confinement:anti-invariant-ledger;
+% def:duality_confinement:separating-readout.
 
 \section{Anti-invariant ledger and separation}
 \label{sec:anti_invariant_ledger}
 
-% TODO: drafting populates this section per
-% paper/duality_confinement/notes/drafting-plan.md and
-% paper/duality_confinement/notes/section-outline.md.
+Fix an involutive object ledger
+\(\IOL=(X,J,\mu,\psi,Y,\Jiso)\).  The preceding section supplied
+the carrier-side involution \(J\) and the response-side involution
+\(\Jiso\).  This section extracts the part of the readout that
+changes sign under the duality and turns that part into a positive
+observable.  Plainly, the isometric involution \(\Jiso\) splits the
+response space \(Y\) into invariant and anti-invariant directions.
+The confinement mechanism only reads the second component: the
+direction in which the response is reversed by the involution.
+
+The anti-invariant projector is
+\[
+  \Pminus=\frac{I_Y-\Jiso}{2}.
+\]
+Since \(\Jiso^2=I_Y\), this is the orthogonal projection onto the
+subspace of vectors \(v\in Y\) satisfying \(\Jiso v=-v\).  Applying
+it to the ledger readout gives the anti-invariant readout
+\[
+  \psim(x)=\Pminus\psi(x).
+\]
+Equivariance of \(\psi\) makes this readout odd with respect to the
+carrier involution:
+\[
+  \psim(Jx)
+  =
+  \Pminus\psi(Jx)
+  =
+  \Pminus\Jiso\psi(x)
+  =
+  -\Pminus\psi(x)
+  =
+  -\psim(x).
+\]
+Thus \(\psim\) is the component of the observable that can detect
+departure from the fixed locus.  If \(x\in\Fix(J)\), then the same
+identity gives \(\psim(x)=-\psim(x)\), hence \(\psim(x)=0\) over a
+real response space.  The converse need not hold automatically; it
+is precisely the separation condition defined below.
+
+The positive object associated with \(\psim\) is not introduced as a
+full trace-class operator theorem.  Instead, this paper works in a
+typed positive cone: an abstract ordered setting with a positive
+order \(\preceq\), a distinguished trace functional \(\trace\), and
+the two positivity principles needed later.  First, trace is
+monotone:
+\[
+  A\preceq B \quad\Longrightarrow\quad \trace A\leq \trace B.
+\]
+Second, a positive element of trace zero is the zero element.  The
+classical model is the cone of positive trace-class operators on a
+Hilbert space, but the typed abstraction records only the order,
+trace, and positivity facts used by the confinement proof.  This is
+the local substitute for full operator-theoretic infrastructure; the
+formalization appendix records the corresponding encoding choice.
+
+\begin{definition}[Anti-invariant object ledger]
+\label{def:duality_confinement:anti-invariant-ledger}
+The \emph{anti-invariant object ledger} of \(\IOL\) is the positive
+cone element
+\[
+  \AX
+  :=
+  \int_X \psim(x)\psim(x)^*\,d\mu(x),
+  \qquad
+  \psim(x)=\Pminus\psi(x).
+\]
+Equivalently, \(\AX\) is the Gram-type positive element generated
+by integrating the anti-invariant readout against the object-ledger
+measure \(\mu\).
+\end{definition}
+
+In a finite weighted ledger, the same formula reads
+\[
+  \AX=\sum_{x\in X}\mu(x)\,\psim(x)\psim(x)^*.
+\]
+This finite expression is the easiest way to see positivity: every
+summand is a rank-one positive contribution from the part of the
+readout that changes sign under the involution.  In a
+measure-theoretic ledger, the integral notation records the
+corresponding positive accumulation over the visible support of
+\(\mu\).
+
+In the classical trace-class reading, the displayed integral is a
+positive operator on \(Y\), assembled from rank-one positive
+operators \(\psim(x)\psim(x)^*\).  In the typed-cone reading used
+for the formal apparatus, the integral notation specifies the
+positive element \(\AX\) together with the trace and order structure
+needed to compare \(\AX\) with later domination bounds.  The point
+of this abstraction is narrow: it preserves the algebra of positive
+operators that enters the master theorem while avoiding any claim
+that the paper has developed the full analytic theory of
+trace-class operators.
+
+\begin{definition}[Separating anti-invariant readout]
+\label{def:duality_confinement:separating-readout}
+The anti-invariant readout \(\psim\) is
+\emph{qualitatively separating} when, on the visible support of
+\(\mu\),
+\[
+  \psim(x)=0
+  \quad\Longleftrightarrow\quad
+  x\in\Fix(J).
+\]
+In the finite weighted case this means the equivalence holds for
+every \(x\in X\) with positive weight.  In the measure-theoretic
+case it means the equivalence holds outside a \(\mu\)-null set.
+
+It is \emph{quantitatively separating} with modulus \(m\) when
+\[
+  m:(0,\infty)\to(0,\infty)
+\]
+and, for every \(\varepsilon>0\) and every \(x\in X\),
+\[
+  \dist(x,\Fix(J))\geq\varepsilon
+  \quad\Longrightarrow\quad
+  \|\psim(x)\|\geq m(\varepsilon).
+\]
+\end{definition}
+
+Qualitative separation says that vanishing of the anti-invariant
+readout identifies the fixed locus.  Quantitative separation says
+more: once a point is at least \(\varepsilon\) away from
+\(\Fix(J)\), the anti-invariant readout is bounded below by a
+positive amount depending only on that distance scale.  The modulus
+is often chosen nondecreasing in applications, but the confinement
+estimate only needs the displayed positive lower bound.
+
+The next statement is the trace identity relating \(\trace\AX\) to
+the integral of \(\|\psim(x)\|^2\); together with separation, it is
+what turns vanishing of \(\AX\) into fixed-locus confinement.
+
+\begin{lemma}[Trace identity]
+\label{lem:duality_confinement:trace-identity}
+Let \(\AX\) be the anti-invariant ledger of an involutive object
+ledger \(\IOL\), with anti-invariant readout \(\psim\).  Then
+\[
+  \trace\AX
+  =
+  \int_X \|\psim(x)\|^2\,d\mu(x).
+\]
+\end{lemma}
+
+In the classical operator-theoretic regime, where
+\[
+  \AX=\int_X \psim(x)\psim(x)^*\,d\mu(x)
+\]
+is a positive trace-class operator on \(Y\), this is the standard
+rank-one trace computation.  Taking the trace of each rank-one
+operator \(\psim(x)\psim(x)^*\) gives \(\|\psim(x)\|^2\), and
+integration against the positive measure \(\mu\) gives the displayed
+identity.  Thus the right-hand side measures the mean-square
+amplitude of the anti-invariant readout.
+
+In the typed positive cone used by this paper, the same identity is
+built into the construction of \(\AX\).  The cone packages the
+Gram-type positive element together with a trace functional arranged
+so that applying \(\trace\) to \(\AX\) unfolds to the squared-norm
+integral above.  This is faithful to the classical computation, but
+it is not a separate development of trace-class operator theory.
+Lean verifies the trace identity in this typed-cone formulation; the
+formalization appendix records that the equality is a constructor
+unfolding rather than an independent analytic derivation.
+
+Consequently, vanishing of \(\trace\AX\), vanishing of \(\AX\), and
+vanishing of \(\psim\) almost everywhere are tied together by the
+trace identity and the positivity axioms of the cone.  Combining
+that chain with separating readout is the direct route to the
+fixed-locus confinement statement proved in the next section.

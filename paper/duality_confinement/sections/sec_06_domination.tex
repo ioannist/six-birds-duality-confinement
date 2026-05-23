@@ -1,15 +1,114 @@
 % Duality Confinement paper — § Domination and Douglas factorization
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body, pass A: completed-domination bridge definition.
+% Pass B appends the Douglas factorization theorem and typed-cone
+% encoding disclosure.
 %
-% statements-of-record rows resolved here: see
-% paper/duality_confinement/notes/section-outline.md (this file's
-% row) and paper/notes/statements-of-record.yml
-% (target_section_hint field).
+% statements-of-record rows resolved here in pass A:
+% def:duality_confinement:completed-domination-bridge.
 
 \section{Domination and Douglas factorization}
 \label{sec:domination}
 
-% TODO: drafting populates this section per
-% paper/duality_confinement/notes/drafting-plan.md and
-% paper/duality_confinement/notes/section-outline.md.
+The direct confinement results of \Cref{sec:direct_confinement}
+show what happens once \(\AX\) has vanished.  The master theorem
+will need a way to force that vanishing from upper bounds whose
+trace tends to zero.  Domination records supply that input.  They
+compare the anti-invariant ledger \(\AX\) to a positive
+carrier-side quantity, denoted \(\Kminus\), together with an
+explicit positive defect \(E\).  The bridge formalism keeps the
+useful carrier-side contribution and the residual error visible as
+separate pieces.
+
+\begin{definition}[Completed domination bridge]
+\label{def:duality_confinement:completed-domination-bridge}
+A \emph{completed domination bridge} from \(\AX\) to a
+carrier-side anti-invariant currency \(\Kminus\) consists of a
+positive defect \(E\) in the typed positive cone, with
+\[
+  0\preceq E,
+\]
+together with the domination relation
+\[
+  \AX\preceq \Kminus+E.
+\]
+The bridge is \emph{exact} when \(E=0\) and \emph{defected} when
+the defect term is retained.  A sequence of bridges
+\[
+  \AX\preceq \Kminus_{n}+E_n
+\]
+is a \emph{domination-record sequence} when the associated positive
+bounds
+\[
+  B_n=\Kminus_{n}+E_n
+\]
+satisfy
+\[
+  \trace B_n\to0
+  \qquad (n\to\infty).
+\]
+\end{definition}
+
+In ordinary operator language, the bridge says that the obstruction
+\(\AX\) is controlled by something built on the carrier side, up to
+a declared positive error.  The term \(\Kminus\) is the usable
+anti-invariant currency: it is the part of the construction that an
+application tries to make small by structural or analytic means.
+The defect \(E\) records the part not absorbed into that currency.
+If both terms can be arranged so that the trace of their sum tends
+to zero along a sequence, then the trace monotonicity from the
+typed positive cone gives the squeeze input needed later.
+
+The formalization appendix records this bridge as a faithful
+definition entry.  No proof is attached to the bridge itself; the
+content is the explicit bookkeeping of the domination relation and
+the defect.  The proof work starts when one explains how such
+relations are recognized or transported.  In the classical
+operator-theoretic setting, exact bridges are often detected through
+operator-square-root data, and the relevant factorization principle
+is the Douglas factorization taken up next.
+
+The factorization principle behind exact bridges is the classical
+Douglas factorization (Douglas 1966), traditionally stated as a
+Hilbert-space operator equivalence.  In the present paper it is used
+only through the typed-cone formulation needed by the bridge
+apparatus.
+
+\begin{theorem}[Douglas factorization, typed-cone form]
+\label{thm:duality_confinement:douglas-domination}
+Let \(A=V^*V\) and \(K=W^*W\) be bounded positive operators on the
+same response space, represented as positive elements of the typed
+positive cone.  Then
+\[
+  A\preceq K
+  \quad\Longleftrightarrow\quad
+  \exists\,T\ \text{a contraction such that}\ V=TW.
+\]
+\end{theorem}
+
+\begin{proof}
+In the classical operator-theoretic setting, this is Douglas's
+factorization theorem: domination \(V^*V\preceq W^*W\) is equivalent
+to the range-inclusion and norm-control condition that permits a
+contractive factor \(T\) with \(V=TW\).  Conversely, if such a
+contraction exists, then
+\[
+  V^*V = W^*T^*TW \preceq W^*W,
+\]
+because \(T^*T\preceq I\).
+
+For the typed positive cone used in this paper, the equivalence and
+its witness data are bundled into a typed carrier.  This records the
+domination witness and the contractive-factor witness together, so
+downstream arguments may pass between the two forms without
+developing the full Hilbert-space proof inside the typed calculus.
+\end{proof}
+
+Lean derives Douglas factorization at the typed-cone level; the
+formalization appendix records the declaration-level correspondence
+and the carrier packaging.  This is faithful to the classical
+operator-theoretic content, but it is not a claim that the full
+operator theorem has been re-proved in the paper's typed-cone
+infrastructure.  The bridge framework can therefore realize exact
+completed-domination bridges from operator-square-root data whenever
+the typed-cone carrier supplies the domination and contractive-factor
+witnesses together.

@@ -1,15 +1,162 @@
 % Duality Confinement paper — § The duality-confinement membrane theorem
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body, pass A: master theorem statement and typed-cone
+% abstraction disclosure. Pass B appends the proof sketch and the
+% sanctioned forward reference.
 %
-% statements-of-record rows resolved here: see
-% paper/duality_confinement/notes/section-outline.md (this file's
-% row) and paper/notes/statements-of-record.yml
-% (target_section_hint field).
+% statements-of-record rows resolved here:
+% thm:duality_confinement:master-theorem.
 
 \section{The duality-confinement membrane theorem}
 \label{sec:master_theorem}
 
-% TODO: drafting populates this section per
-% paper/duality_confinement/notes/drafting-plan.md and
-% paper/duality_confinement/notes/section-outline.md.
+This section states the headline result of the paper: the
+duality-confinement membrane theorem, also called the master
+theorem.  It takes the apparatus built in the preceding sections and
+turns a sequence of domination records into fixed-locus confinement.
+The input is algebraic and trace-theoretic: \(\AX\) is dominated by
+positive bounds \(B_n\), and the traces of those bounds tend to
+zero.  The output is geometric: visible mass is confined to
+\(\Fix(J)\).
+
+This theorem is the apparatus theorem of Self-Dual Trace
+Confinement, denoted \(\GamSDTC\).  The structural law names the
+recognition source: the formed-layer content that supplies the
+domination-record sequence.  The theorem below does not derive that
+source.  It proves the mathematical consequence once the source has
+provided the sequence \(\AX\preceq B_n\) with vanishing trace
+budget.  In this sense SDTC is the named structural law, while the
+master theorem is the squeeze mechanism that extracts confinement.
+
+\begin{theorem}[Duality-confinement membrane theorem]
+\label{thm:duality_confinement:master-theorem}
+Let \(\IOL\) be an involutive object ledger with carrier \(X\),
+involution \(J\), measure \(\mu\), anti-invariant readout
+\(\psim\), and anti-invariant ledger \(\AX\).  Assume that
+\(\psim\) is qualitatively separating.  Suppose there is a sequence
+of positive cone elements \(B_n\) such that
+\[
+  \AX\preceq B_n
+  \qquad (n=1,2,\ldots)
+\]
+and
+\[
+  \trace B_n\to0
+  \qquad (n\to\infty).
+\]
+Then \(\AX=0\) in the typed positive cone.  Consequently,
+\[
+  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
+\]
+\end{theorem}
+
+The plain mathematical reading is an operator-style squeeze.  Trace
+monotonicity turns \(\AX\preceq B_n\) into
+\[
+  0\leq \trace\AX\leq \trace B_n
+\]
+for every \(n\).  The vanishing trace budget for \(B_n\) therefore
+forces \(\trace\AX=0\).  Positivity in the cone then gives
+\(\AX=0\), and the separation--confinement theorem converts this
+algebraic collapse into the displayed measure conclusion.
+
+The theorem is stated and mechanized at the typed positive-cone
+level.  The cone records exactly the primitives used by the proof:
+the order \(\preceq\), the trace functional \(\trace\), trace
+monotonicity, and the positivity-to-zero principle.  Operator-
+theoretic generality remains an open extension: a full treatment
+over trace-class operators on Hilbert space would require the
+trace-norm topology, Hilbert--Schmidt and Schatten-ideal
+infrastructure, and the corresponding analytic closure lemmas.  The
+present theorem is therefore the verified typed-cone squeeze theorem
+needed by the SDTC apparatus, not a claim to have mechanized that
+larger operator-theoretic setting.
+
+Lean proves the duality-confinement master theorem in this
+typed-cone formulation; the formalization appendix records the
+declaration-level correspondence.  The proof sketch, including the
+squeeze step and the relation to the worked single-substrate
+validation, follows next.
+
+The proof composes the apparatus assembled in
+\Cref{sec:anti_invariant_ledger,sec:direct_confinement,sec:domination}
+with the direct-confinement consequence of
+\Cref{thm:duality_confinement:separation-confinement}.
+
+\begin{proof}[Proof sketch of
+\Cref{thm:duality_confinement:master-theorem}]
+The argument has four steps.  First, trace monotonicity in the
+typed positive cone turns each domination record into a scalar
+inequality:
+\[
+  \AX\preceq B_n
+  \quad\Longrightarrow\quad
+  \trace\AX\leq\trace B_n.
+\]
+Since \(\AX\) is positive, \(\trace\AX\geq0\).  Thus, for every
+\(n\),
+\[
+  0\leq\trace\AX\leq\trace B_n.
+\]
+
+Second, the vanishing trace budget for the bounds gives the
+squeeze.  The scalar quantity \(\trace\AX\) is independent of
+\(n\), while the upper bounds \(\trace B_n\) tend to zero.  Hence
+\(\trace\AX=0\).
+
+Third, positivity-to-zero in the typed positive cone converts
+trace-zero positivity into equality in the cone: \(\AX=0\).  This
+is the point at which the proof uses the typed-cone abstraction
+rather than a full trace-class operator theory.  In a classical
+positive trace-class cone, the corresponding statement is that a
+positive trace-class operator with trace zero is the zero operator.
+
+Fourth, the qualitative separation hypothesis converts algebraic
+vanishing into confinement.  With \(\AX=0\), the
+separation--confinement theorem gives
+\[
+  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
+\]
+That theorem in turn rests on the trace identity
+\Cref{lem:duality_confinement:trace-identity}, which identifies
+\(\trace\AX\) with the squared-norm integral of \(\psim\).
+\end{proof}
+
+The typed-cone abstraction is what makes the proof modular.  The
+first three steps use only the structural primitives of the cone:
+order, trace, monotonicity, and positivity-to-zero.  The fourth
+step is imported from the direct-confinement result of
+\Cref{sec:direct_confinement}.  In a fully operator-theoretic
+treatment, the same proof would require the trace-class topology,
+Schatten-ideal calculus, and the analytic lemmas justifying the
+trace and positivity steps.  Here those ingredients are represented
+by the typed-cone interface, and the formal proof composes that
+interface with the separation theorem.
+
+Lean proves the duality-confinement membrane theorem at this typed
+positive-cone level.  The formalization appendix records the
+declaration-level correspondence and the representation choice:
+the theorem is a verified typed-cone squeeze result, while full
+operator-theoretic generality remains an open extension.
+
+\paragraph{Worked single-substrate validation.}
+The master theorem applies to any involutive object ledger whose
+recognition source supplies the domination records required by the
+squeeze hypothesis.  In the present paper we develop the typed
+apparatus and prove the squeeze.  A worked single-substrate
+validation, instantiating the apparatus on the saturated completed
+Selberg trace closure of the Riemann zeta function and applying the
+master theorem to the corresponding zero ledger, is the subject of
+the companion paper.  That companion paper specifies the involution
+\(J_L(s)=1-\bar{s}\), identifies its fixed locus with the critical
+line, treats the saturated Selberg trace shell as the typed
+substrate, and uses the Selberg-class instance of the SDTC
+recognition source.  Its headline theorem is conditional on the
+standard Six Birds closure assumption and that Selberg-class
+instance of SDTC; it imports the master theorem developed here.
+The present paper makes no use of any result from the companion
+paper, and the statement in this section is the statement that the
+companion paper reproduces when it invokes the master theorem.
+
+The next section develops refinements, including exhaustive moving
+ledgers and optimized scalar trace budgets, that adapt the master
+theorem to finite-window and tail-defect situations.
