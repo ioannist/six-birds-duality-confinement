@@ -105,12 +105,14 @@ ALLOWED_SEMANTIC_ALIGNMENT = {
 # also become an allowed value.
 EXPECTED_SOURCE_FILES = {
     "duality_confinement": {
-        "anti_loc/extracted_math/duality_confinement_csl.md",
+        "anti_loc/extracted_math/duality_confinement_master.md",
         "paper/duality_confinement/main.tex",
     },
     "dropped": {
-        "anti_loc/extracted_math/duality_confinement_csl.md",
+        "anti_loc/extracted_math/duality_confinement_master.md",
+        "anti_loc/extracted_math/rh_construction.md",
         "paper/duality_confinement/main.tex",
+        "paper/rh/main.tex",
     },
     "rh": {
         "anti_loc/extracted_math/rh_construction.md",

@@ -396,14 +396,108 @@ before starting Phase I.
     upstream `description`-environment defect breaks `make
     paper-build` (independent decision — patch upstream then resync,
     or downstream-patch with placeholder `\item` rows).
-- Phase A: **pending**.
-- Phase B: **pending**.
-- Phase C: **pending**.
-- Phase D: **pending** (deferred to post-Phase C).
-- Phase E: **pending** (deferred to post-Phase C).
-- Phase F: **pending**.
-- Phase G: **pending**.
-- Phase H: **pending**.
+- Phase A: **complete** (2026-05-23). Math extraction & consolidation
+  per axis:
+  - [anti_loc/extracted_math/dependency_map.md](anti_loc/extracted_math/dependency_map.md)
+    walks both proposals, identifies cited cascade steps, lists
+    per-item math content needed for mechanization.
+  - [anti_loc/extracted_math/duality_confinement_master.md](anti_loc/extracted_math/duality_confinement_master.md)
+    — duality-confinement axis consolidated math (8 top-level sections
+    matching queue sections; 13 items, 12 mechanize_now + 1
+    support_only + 1 out_of_scope_recognition_source on RH side).
+  - [anti_loc/extracted_math/rh_construction.md](anti_loc/extracted_math/rh_construction.md)
+    — RH axis consolidated math (8 top-level sections matching queue
+    sections; 11 items, 10 mechanize_now + 1 recognition_source).
+  - Primary mathematical sources: RH cascade step 69 (master theorem
+    statement and proof, self-contained as RH-specialization of
+    needles.tex §5), step 448 (Sel^!_{ζ,tr} construction + Theorem T),
+    step 449 (master theorem applicability audit), step 454
+    (recognition closure landing chain). The framework
+    `needles.tex` (§5) is the upstream apparatus but is not vendored;
+    step 69 is the self-contained presentation.
+- Phase B: **complete** (2026-05-23). Math-substance audit at the
+  highest math-proof standards
+  ([anti_loc/extracted_math/audit_summary.md](anti_loc/extracted_math/audit_summary.md)).
+  All 25 claims pass; 3 mechanization-representation notes (Douglas
+  factorization encoding choice, AM-GM in abstract Scalar setting,
+  real-part type for the RH zero ledger) flagged to be carried into
+  per-subsection dispatch prompts. No mathematical gaps surfaced to
+  user.
+- Phase C: **complete** (2026-05-23). Populated per-axis inventories
+  (13 DC + 11 RH = 24 entries), queue CSVs (12 DC + 10 RH = 22
+  mechanize_now items in document order), the
+  [section_module_map.toml](lean/manifests/section_module_map.toml)
+  (8 DC + 7 RH sections), and the
+  [statements-of-record.yml](paper/notes/statements-of-record.yml)
+  (24 rows). The
+  [imported_foundations.yml](formalization/inventory/imported_foundations.yml)
+  cross-walk was audited; the existing 25 entries enumerate
+  foundation primitives codex may consume, consumer fields populate
+  during Phase G as actual use materializes. C.5 verdict: file is
+  structurally sound; no curation changes needed pre-mechanization.
+- Phase D: **complete** (2026-05-23). `cd lean && lake build` clean
+  against the empty per-axis-section stubs (24 modules: 8 DC + 7 RH
+  + alignment trio + foundations + 2 axis umbrellas).
+- Phase E: **complete** (2026-05-23). Full validator chain green
+  pre-mechanization (`make validate`).
+- Phase F: **complete** (2026-05-23). Two codex threads bootstrapped
+  via stdin:
+  - Duality Confinement axis: `019e54ad-ec86-7560-9496-5afac11cb639`
+    at [lean/.codex_thread_id_duality_confinement](lean/.codex_thread_id_duality_confinement).
+    Bootstrap turn included the first per-subsection dispatch and
+    produced the first Involution module.
+  - RH axis: `019e54cc-8015-7570-a50e-582aca58ca74` at
+    [lean/.codex_thread_id_rh](lean/.codex_thread_id_rh). Bootstrap
+    turn included the first per-subsection dispatch and produced the
+    first Involution module (RealCoordinate + Complex record +
+    feInvolution + psiMinusRh with substantive proofs of involutivity,
+    fixed_locus, anti_invariance).
+- Phase G: **complete** (2026-05-23). All 22 mechanize_now queue items
+  accepted as 22 manifest entries across 15 per-section modules:
+  - **Duality Confinement axis** (8 dispatches → 12 manifest entries):
+    Involution → Separation → AntiInvariantLedger → DirectConfinement
+    → Domination → MasterTheorem → ExhaustiveSqueeze → DefectedBudget.
+    Load-bearing master theorem
+    (`SixBirdsDualityConfinement.DualityConfinement.MasterTheorem.masterTheorem`)
+    composes typed-cone monotonicity + squeeze + positivity-to-zero +
+    separation theorem (4 non-`rfl` steps).
+  - **RH axis** (7 dispatches → 10 manifest entries):
+    Involution → ZeroLedger → AntiInvariantZeroLedger → SatSelShell →
+    TranslationT → DCMasterApplied → RHConditional.
+    Headline conditional theorem
+    (`SixBirdsDualityConfinement.RH.RHConditional.rhConditional`)
+    chains `GammaSdtcSelberg γ → dcMasterApplied → A_Z = 0 →
+    translationTForward → RH (every ρ has Re(ρ) = 1/2)`.
+    `GammaSdtcSelberg` is a typed `structure` carrier (not a Lean
+    `axiom`) placed inline in RHConditional.lean.
+  - Known weakness: `prop:duality_confinement:optimized-trace-budget`
+    has AM-GM taken as hypothesis (projection-packaged at the
+    abstract-Scalar level — see audit_summary §A2). Off the critical
+    path; would require introducing typed real-arithmetic structure to
+    derive substantively.
+- Phase H: **complete** (2026-05-23):
+  - **H.1** Full validator chain green across both axes (`make
+    validate`).
+  - **H.2** Per-theorem `#print axioms` audit (full `check_manifests
+    --check` without `--skip-probe`): all 12+10 manifest entries pass;
+    every theorem's axiom closure lies within
+    `lean/manifests/trust_base.txt` (`Classical.choice`, `propext`,
+    `Quot.sound`, `choice`, `funext`).
+  - **H.3** No forbidden tokens (`sorry`, `admit`, `axiom`, `opaque`,
+    `constant`) in active source under
+    `lean/SixBirdsDualityConfinement/*`. Single grep hit is a
+    documentation reference in
+    [lean/SixBirdsDualityConfinement/RH.lean](lean/SixBirdsDualityConfinement/RH.lean):22
+    (doc-comment naming the rule; benign — comments are stripped
+    before the validator scans).
+  - **H.4** SoR sync: all 22 mechanized SoR rows updated from
+    `lean_coverage = not_mechanized` to `definition`/`theorem` with
+    populated `lean_decl` and `semantic_alignment = faithful`. The
+    1 `support_only` def (defected-budget) stays `not_mechanized`;
+    the 1 recognition_source (`obl:rh:gamma-sdtc-selberg`) at
+    `recognition_source` with `lean_decl` pointing at the inline
+    typed carrier
+    `SixBirdsDualityConfinement.RH.RHConditional.GammaSdtcSelberg`.
 - Phase I: **deferred** (paper writing — not a prerequisite for
   mechanization, governed by separate workflow + memories).
 

@@ -14,7 +14,7 @@ mechanize_now labels in one section); the kickoff document
 session's first turn.
 
 CLI:
-  python scripts/build_codex_prompt.py --axis {main,xi} --paper-label <label>
+  python scripts/build_codex_prompt.py --axis {duality_confinement,rh} --paper-label <label>
                                        [--out /tmp/prompt.txt]
 
 If --out is omitted, the prompt is written to stdout.
@@ -47,7 +47,7 @@ TRUST_BASE = MANIFESTS_DIR / "trust_base.txt"
 # Per-axis math artifact paths. Used as the source body when
 # source_items.jsonl is empty (markdown-driven workflow).
 MATH_ARTIFACTS = {
-    "duality_confinement": ROOT / "anti_loc" / "extracted_math" / "duality_confinement_csl.md",
+    "duality_confinement": ROOT / "anti_loc" / "extracted_math" / "duality_confinement_master.md",
     "rh": ROOT / "anti_loc" / "extracted_math" / "rh_construction.md",
 }
 
@@ -163,34 +163,33 @@ def relevant_notation_hints(axis: str) -> list[str]:
     reminder, not the source of truth.
     """
     common = [
-        "`L`  = native probe family `E → Y`",
-        "`D`  = layer-dissolving probe family `E → Z`",
-        "`C`  = audit energy operator (positive self-adjoint)",
-        "`\\Gamma`  = exact package",
-        "`\\K_{C,Gamma}(L)`  = packaged native currency `L_Gamma C_Gamma^\\dagger L_Gamma^*`",
-        "`\\Xi_C(D | L)`  = adequacy residual; reserved exclusively for this object",
-        "`\\Fix(J)`  = fixed locus of an anti-linear involution",
-        "`\\Theta`, `\\Theta^Y_j`, `\\Theta^-`  = budgets (positive operators)",
-        "`A_*`  = optimal native explanation map `K_{DL} K_{LL}^\\dagger`",
-        "`\\preceqq`  = Loewner order (alias for `\\preceq`)",
+        "`Fix(J)`  = fixed locus of an involution `J`",
+        "`tr`  = trace functional on the typed positive cone",
+        "`preceq`  = Loewner-style order on the typed positive cone",
+        "`dist`  = distance function on the carrier (abstract)",
     ]
     duality = [
-        "`J`  = anti-linear involution (duality-confinement)",
-        "`\\psi`, `\\psi_-`  = readout and its anti-invariant component",
-        "`\\mathsf A_X`  = anti-invariant object ledger",
-        "`\\K^-`  = carrier-side anti-invariant currency",
-        "`B_n`, `T_n`, `\\iota_n`  = domination record, tail, transport",
+        "`J`  = involution on the object ledger (`J ∘ J = id`)",
+        "`J_iso`  = linear isometric involution on the response space `Y`",
+        "`P_-`  = anti-invariant projector `(I - J_iso) / 2`",
+        "`psi`, `psi_-`  = readout and its anti-invariant component `P_- psi`",
+        "`A_X`  = anti-invariant object ledger `int psi_- psi_-* dmu`",
+        "`K^-`  = carrier-side anti-invariant currency",
+        "`B_n`, `T_n`, `iota_n`  = domination record, tail, transport",
     ]
-    xi_specific = [
-        "`T_L`, `T_D`  = energy-scaled probe operators `L_0 C_0^{-1/2}`, `D_0 C_0^{-1/2}`",
-        "`P_L`  = orthogonal projection onto `Ran T_L^*`",
-        "`K_{MM | L}`, `K_{DM | L}`  = conditional currencies",
-        "`\\Delta_\\Xi`  = adequacy defect `Xi - Omega`",
+    rh_specific = [
+        "`J_L(s) = 1 - conj(s)`  = functional-equation involution",
+        "`psi_-(s) = Re(s) - 1/2`  = separating anti-invariant readout for RH",
+        "`Lambda_zeta`  = completed Riemann zeta `pi^(-s/2) Gamma(s/2) zeta(s)` (opaque; only its zero ledger is used)",
+        "`Z_zeta^nt`  = nontrivial zero ledger (typed finite multiset with multiplicities `m_rho > 0`)",
+        "`A_Z(zeta) = Sigma_rho m_rho * |Re(rho) - 1/2|^2`  = anti-invariant zero ledger",
+        "`Sel^!_{zeta,tr}`  = saturated completed Selberg trace closure (typed shell record)",
+        "`Gamma_{SDTC-Selberg}`  = recognition source (typed structure carrier, NOT axiom; out of scope per RH proposal §11.4)",
     ]
     if axis == "duality_confinement":
         return common + duality
     if axis == "rh":
-        return common + xi_specific
+        return common + duality + rh_specific
     return common
 
 
