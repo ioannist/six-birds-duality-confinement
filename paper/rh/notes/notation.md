@@ -86,7 +86,7 @@ the writing-plan):
 | Anti-invariant ledger (abstract) | `\AX` | `\AX` (cross-paper) | `A_X` |
 | Anti-invariant zero ledger (RH-specific) | (not used) | `\AZ` | `A_Z(\zeta)` |
 | Loewner order | `\preceq` (standard) | `\preceq` (standard) | `\preceq` |
-| Trace functional | `\tr` (standard) | `\tr` (standard) | `tr` |
+| Trace functional | `\trace` (declared in `paper_macros.tex`) | `\trace` (declared in `paper_macros.tex`) | `tr` |
 | Carrier-side anti-invariant currency | `\Kminus` | `\Kminus` (cross-paper) | `K^-` |
 | Isometric involution | `\Jiso` | `\Jiso` (cross-paper) | `J_{iso}` |
 | Ledger tuple shorthand | `\IOL` | `\IOL` (cross-paper) | `\hat{\mathfrak{X}}` |

@@ -86,7 +86,7 @@ ALLOWED_LEAN_COVERAGE = {
     "definition",
     "not_mechanized",
     # `recognition_source` — typed structure carrier (e.g. RH's
-    # `Γ_{CSL-SAT-hidden}`); not a Lean theorem/definition entry.
+    # `Γ_{SDTC-Selberg}`); not a Lean theorem/definition entry.
     "recognition_source",
     # `obligation` — manifest-only obligation (e.g. RH's BirdInt judgment).
     "obligation",

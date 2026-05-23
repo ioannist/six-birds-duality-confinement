@@ -21,9 +21,20 @@ directory).
 | --- | --- | --- |
 | `TsiokosFoundationsII2026` | F2 (admissibility, FATCD, primitive roles) — used when the body invokes Foundations II vocabulary (e.g., closure formation per Foundations I; FATCD records as the audit substrate). First cite in `sec:framework`. | `sec:framework` |
 | `TsiokosFoundationsIII2026` | F3 (BirdInt judgment, visibility tags, gate-status family, claim records) — used in App D when the formalization disclosure references the F3 alias surface (e.g., `F3VisibilityTag` aliases in `Terminology.lean`). | `sec:framework`, `app:formalization` |
-| `TsiokosRHviaSDTC2026` | Sibling cross-reference; used ONLY in the two sanctioned forward-reference paragraphs in `sec:involutive_ledger` (RH worked example) and `sec:master_theorem` (Paper 2 as worked single-substrate validation). | `sec:involutive_ledger`, `sec:master_theorem` |
 
-Paper 1 references count: 3 Tsiokos. **Limit not exceeded.**
+Paper 1 references count: 2 Tsiokos. **Limit not exceeded.**
+
+The two sanctioned forward-reference paragraphs in
+`sec:involutive_ledger` (RH worked example) and `sec:master_theorem`
+(Paper 2 as worked single-substrate validation) are **prose-only**;
+they do NOT use a `\cite{TsiokosRHviaSDTC2026}` bibkey. This keeps
+Paper 1 self-contained per the writing-plan, the DC drafting-plan,
+and the DC claim-revision register, which all forbid a `TsiokosRH*`
+bibkey in Paper 1. The `TsiokosRHviaSDTC2026` entry remains in the
+shared `paper/references.bib` for Paper 2's use; if the manager
+later elects to enable optional sibling cross-citation in those two
+paragraphs, this row should be re-added and the writing-plan +
+drafting-plan + claim-revision register updated together.
 
 ### Paper 2 — RH closure
 
@@ -67,8 +78,8 @@ inserting `\cite{}` for the deferred references).
 | --- | --- | --- |
 | 2026-05-23 | Shared `paper/references.bib` for both papers | Both papers share the same Foundations II/III references; symlinked from each paper's directory. Hiddenness uses the same convention. |
 | 2026-05-23 | Tsiokos-only in the prep arc | Per locked global decision in prep-plan.md: external classical references deferred to user's end-of-process pipeline. Drafting arc prose may reference classical works descriptively ("the classical Douglas factorization") without inserting `\cite{}` for deferred bibkeys. |
-| 2026-05-23 | Max 3 Tsiokos refs per paper | Same constraint as hiddenness, kept for parity. Both papers land at exactly 3. |
-| 2026-05-23 | One-way sibling cross-citation | Paper 2 cites Paper 1 substantively (`TsiokosSDTC2026` in three body sections); Paper 1 cites Paper 2 only in two forward-reference paragraphs (`TsiokosRHviaSDTC2026`). Per `paper/notes/cross-paper-boundary.md`. |
+| 2026-05-23 | Max 3 Tsiokos refs per paper | Same constraint as hiddenness, kept for parity. Paper 1 lands at 2; Paper 2 lands at 3. |
+| 2026-05-23 | One-way sibling cross-citation, asymmetric form | Paper 2 cites Paper 1 substantively (`TsiokosSDTC2026` in three body sections); Paper 1 mentions Paper 2 only in two **prose-only** forward-reference paragraphs (no `TsiokosRHviaSDTC2026` bibkey). The forbid-`TsiokosRH*`-in-Paper-1 rule is asserted in `paper/writing-plan.md`, `paper/duality_confinement/notes/drafting-plan.md`, and the DC claim-revision register; this references-selection file aligns with that rule. |
 | 2026-05-23 | No Foundations I bibkey | Foundations I (`ClosureLadder`) is referenced via Foundations II/III citations and via the framework apparatus citations in `sec:framework`. A standalone `TsiokosFoundationsI2026` bibkey is not in the per-paper picks above (it would consume one of the 3 Tsiokos slots without adding substantive citation content). If F1 becomes a load-bearing standalone citation during drafting, add as `TsiokosFoundationsI2026` and adjust the per-paper picks. |
 
 ## Validation against drafting needs

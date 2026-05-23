@@ -10,11 +10,14 @@ Schema overview (per `scripts/check_statements_of_record.py`):
 - `paper_label`: stable label like `def:duality_confinement:involutive-object-ledger`
 - `env_kind`: definition / theorem / lemma / proposition / corollary / obligation
 - `source_file`: `anti_loc/extracted_math/<axis>_*.md`
-- `source_section`: e.g. `Involution`, `MasterTheorem`
+- `source_section`: e.g. `Involution`, `MasterTheorem` (math-artifact
+  section header in `anti_loc/extracted_math/`)
 - `theorem_title`: human-readable name
 - `target_paper`: `duality_confinement` / `rh` / `dropped`
 - `target_destination`: `body` / `appendix` / `source_only` / `evidence_pack_only`
-- `target_section_hint`: e.g. `Involution`, `RHConditional`
+- `target_section_hint`: paper-side section label, e.g.
+  `sec:master_theorem`, `sec:landing_chain` (matches the frozen
+  section labels in `paper/<axis>/notes/section-outline.md`)
 - `proof_presentation`: `body_full` / `body_sketch` / `appendix_only` /
   `lean_substantive` / `lean_traceability_only` / `standard_reference` /
   `definition_entry`
@@ -36,19 +39,19 @@ Validator status (post Phase H.4 sync):
 
 | # | paper_label | env_kind | target_section_hint | proof_presentation | lean_coverage | semantic_alignment | notes |
 | --: | --- | --- | --- | --- | --- | --- | --- |
-| 1 | `def:duality_confinement:involutive-object-ledger` | definition | Involution | definition_entry | definition | faithful | Phase G mechanize_now per inventory; central typed object |
-| 2 | `def:duality_confinement:separating-readout` | definition | Separation | definition_entry | definition | faithful | Both qualitative and quantitative encoded |
-| 3 | `def:duality_confinement:anti-invariant-ledger` | definition | AntiInvariantLedger | definition_entry | definition | faithful | Typed positive cone encoding with explicit trace functional (audit_summary §A1 representation note) |
-| 4 | `lem:duality_confinement:trace-identity` | lemma | AntiInvariantLedger | lean_substantive | theorem | faithful | Definitional unfolding in the typed-cone encoding |
-| 5 | `thm:duality_confinement:separation-confinement` | theorem | DirectConfinement | lean_substantive | theorem | faithful | |
-| 6 | `thm:duality_confinement:quantitative-confinement` | theorem | DirectConfinement | lean_substantive | theorem | faithful | Markov consequence of the trace identity |
-| 7 | `def:duality_confinement:completed-domination-bridge` | definition | Domination | definition_entry | definition | faithful | |
-| 8 | `thm:duality_confinement:douglas-domination` | theorem | Domination | lean_substantive | theorem | faithful | Typed-cone encoding via `DouglasData` carrier (audit_summary §A1) |
-| 9 | `thm:duality_confinement:master-theorem` | theorem | MasterTheorem | lean_substantive | theorem | faithful | **HEADLINE — load-bearing master theorem**; reused by RH axis as `thm:rh:dc-master-applied` |
-| 10 | `def:duality_confinement:exhaustive-moving-ledger` | definition | ExhaustiveSqueeze | definition_entry | definition | faithful | |
-| 11 | `thm:duality_confinement:exhaustive-squeeze` | theorem | ExhaustiveSqueeze | lean_substantive | theorem | faithful | |
-| 12 | `def:duality_confinement:defected-budget` | definition | DefectedBudget | definition_entry | **not_mechanized** | not_applicable | `support_only` per inventory; no Lean decl; body prose introduces the shape as motivation for `prop:duality_confinement:optimized-trace-budget` |
-| 13 | `prop:duality_confinement:optimized-trace-budget` | proposition | DefectedBudget | lean_substantive | theorem | faithful | AM-GM step taken as typed-Scalar axiom (audit_summary §A2); disclosure wording "tracked by the formalization harness" |
+| 1 | `def:duality_confinement:involutive-object-ledger` | definition | `sec:involutive_ledger` | definition_entry | definition | faithful | Phase G mechanize_now per inventory; central typed object |
+| 2 | `def:duality_confinement:separating-readout` | definition | `sec:anti_invariant_ledger` | definition_entry | definition | faithful | Both qualitative and quantitative encoded; co-located with `def:anti-invariant-ledger` in the compressed section structure |
+| 3 | `def:duality_confinement:anti-invariant-ledger` | definition | `sec:anti_invariant_ledger` | definition_entry | definition | faithful | Typed positive cone encoding with explicit trace functional (audit_summary §A1 representation note) |
+| 4 | `lem:duality_confinement:trace-identity` | lemma | `sec:anti_invariant_ledger` | lean_substantive | theorem | faithful | Definitional unfolding in the typed-cone encoding |
+| 5 | `thm:duality_confinement:separation-confinement` | theorem | `sec:direct_confinement` | lean_substantive | theorem | faithful | |
+| 6 | `thm:duality_confinement:quantitative-confinement` | theorem | `sec:direct_confinement` | lean_substantive | theorem | faithful | Markov consequence of the trace identity |
+| 7 | `def:duality_confinement:completed-domination-bridge` | definition | `sec:domination` | definition_entry | definition | faithful | |
+| 8 | `thm:duality_confinement:douglas-domination` | theorem | `sec:domination` | lean_substantive | theorem | faithful | Typed-cone encoding via `DouglasData` carrier (audit_summary §A1) |
+| 9 | `thm:duality_confinement:master-theorem` | theorem | `sec:master_theorem` | lean_substantive | theorem | faithful | **HEADLINE — load-bearing master theorem**; reused by RH axis as `thm:rh:dc-master-applied` |
+| 10 | `def:duality_confinement:exhaustive-moving-ledger` | definition | `sec:exhaustive_squeeze_and_budgets` | definition_entry | definition | faithful | |
+| 11 | `thm:duality_confinement:exhaustive-squeeze` | theorem | `sec:exhaustive_squeeze_and_budgets` | lean_substantive | theorem | faithful | |
+| 12 | `def:duality_confinement:defected-budget` | definition | `sec:exhaustive_squeeze_and_budgets` | definition_entry | **not_mechanized** | not_applicable | `support_only` per inventory; no Lean decl; body prose introduces the shape as motivation for `prop:duality_confinement:optimized-trace-budget` |
+| 13 | `prop:duality_confinement:optimized-trace-budget` | proposition | `sec:exhaustive_squeeze_and_budgets` | lean_substantive | theorem | faithful | AM-GM step taken as typed-Scalar axiom (audit_summary §A2); disclosure wording "tracked by the formalization harness" |
 
 DC counts:
 - definition_entry: 6 (rows 1, 2, 3, 7, 10, 12)
@@ -66,17 +69,17 @@ DC counts:
 
 | # | paper_label | env_kind | target_section_hint | proof_presentation | lean_coverage | semantic_alignment | notes |
 | --: | --- | --- | --- | --- | --- | --- | --- |
-| 14 | `def:rh:fe-involution` | definition | Involution | definition_entry | definition | faithful | `J_L(s) = 1 - \bar{s}`; involutive + critical-line fixed locus + RH involution disclosures (audit_summary §A3 real-part-type abstraction) |
-| 15 | `def:rh:psi-minus-rh` | definition | Involution | definition_entry | definition | faithful | Anti-invariant readout `\psi_-(s) = Re(s) - 1/2` |
-| 16 | `def:rh:nontrivial-zero-ledger` | definition | ZeroLedger | definition_entry | definition | faithful | Typed multiset with `m_\rho > 0` multiplicities; `Λ_ζ` opaque |
-| 17 | `def:rh:anti-invariant-zero-ledger` | definition | AntiInvariantZeroLedger | definition_entry | definition | faithful | `A_Z(ζ) = Σ_ρ m_ρ |Re(ρ) - 1/2|²` |
-| 18 | `def:rh:sat-sel-shell` | definition | SatSelShell | definition_entry | definition | faithful | 13-field typed shell; admissibility encoded as opaque `Audit_L` field |
-| 19 | `thm:rh:translation-T-forward` | theorem | TranslationT | lean_substantive | theorem | faithful | `A_Z(ζ) = 0 ⟹ ∀ρ, Re(ρ) = 1/2` |
-| 20 | `thm:rh:translation-T-reverse` | theorem | TranslationT | lean_substantive | theorem | faithful | `∀ρ, Re(ρ) = 1/2 ⟹ A_Z(ζ) = 0` |
-| 21 | `thm:rh:translation-T` | theorem | TranslationT | lean_substantive | theorem | faithful | Biconditional combining 19 + 20; the construction-grade headline |
-| 22 | `obl:rh:gamma-sdtc-selberg` | obligation | RecognitionSource | appendix_only | **recognition_source** | not_applicable | Typed structure carrier `GammaSdtcSelberg` declared inline in `RHConditional.lean` (per kickoff §12 sanctioned inline placement); NOT a Lean axiom |
-| 23 | `thm:rh:dc-master-applied` | theorem | DCMasterApplied | lean_substantive | theorem | faithful | Bridges Paper 1's `masterTheorem` to `Sel^!_{ζ,tr}` via `mu_zero_of_ae` parameter |
-| 24 | `thm:rh:conditional` | theorem | RHConditional | lean_substantive | theorem | faithful | **HEADLINE — conditional landing chain**; takes `γ : GammaSdtcSelberg shell` as explicit hypothesis |
+| 14 | `def:rh:fe-involution` | definition | `sec:involution_and_ledger` | definition_entry | definition | faithful | `J_L(s) = 1 - \bar{s}`; involutive + critical-line fixed locus + RH involution disclosures (audit_summary §A3 real-part-type abstraction) |
+| 15 | `def:rh:psi-minus-rh` | definition | `sec:involution_and_ledger` | definition_entry | definition | faithful | Anti-invariant readout `\psi_-(s) = Re(s) - 1/2` |
+| 16 | `def:rh:nontrivial-zero-ledger` | definition | `sec:involution_and_ledger` | definition_entry | definition | faithful | Typed multiset with `m_\rho > 0` multiplicities; `Λ_ζ` opaque |
+| 17 | `def:rh:anti-invariant-zero-ledger` | definition | `sec:involution_and_ledger` | definition_entry | definition | faithful | `A_Z(ζ) = Σ_ρ m_ρ |Re(ρ) - 1/2|²` |
+| 18 | `def:rh:sat-sel-shell` | definition | `sec:sat_sel_shell` | definition_entry | definition | faithful | 13-field typed shell; admissibility encoded as opaque `Audit_L` field |
+| 19 | `thm:rh:translation-T-forward` | theorem | `sec:translation_theorem` | lean_substantive | theorem | faithful | `A_Z(ζ) = 0 ⟹ ∀ρ, Re(ρ) = 1/2` |
+| 20 | `thm:rh:translation-T-reverse` | theorem | `sec:translation_theorem` | lean_substantive | theorem | faithful | `∀ρ, Re(ρ) = 1/2 ⟹ A_Z(ζ) = 0` |
+| 21 | `thm:rh:translation-T` | theorem | `sec:translation_theorem` | lean_substantive | theorem | faithful | Biconditional combining 19 + 20; the construction-grade headline |
+| 22 | `obl:rh:gamma-sdtc-selberg` | obligation | `sec:recognition_source` | appendix_only | **recognition_source** | not_applicable | Typed structure carrier `GammaSdtcSelberg` declared inline in `RHConditional.lean` (per kickoff §12 sanctioned inline placement); NOT a Lean axiom |
+| 23 | `thm:rh:dc-master-applied` | theorem | `sec:landing_chain` | lean_substantive | theorem | faithful | Bridges Paper 1's `masterTheorem` to `Sel^!_{ζ,tr}` via `mu_zero_of_ae` parameter |
+| 24 | `thm:rh:conditional` | theorem | `sec:landing_chain` | lean_substantive | theorem | faithful | **HEADLINE — conditional landing chain**; takes `γ : GammaSdtcSelberg shell` as explicit hypothesis |
 
 RH counts:
 - definition_entry: 5 (rows 14, 15, 16, 17, 18)
@@ -111,35 +114,46 @@ RH counts:
 
 The Phase 9 deliverable `paper/<axis>/notes/drafting-plan.md`
 refines each row's `target_section_hint` into a specific dispatch
-unit. The mapping is:
+unit. The mapping (post Phase 9 closure):
 
-- DC dispatch 3: row 1 (Involution section)
-- DC dispatch 4: row 2 (Separation section, drafted as part of
-  AntiInvariantLedger flow in the compressed 11-section structure)
-- DC dispatch 5A: row 3 (AntiInvariantLedger section, definition pass)
-- DC dispatch 5B: row 4 (AntiInvariantLedger section, trace-identity pass)
-- DC dispatch 6: rows 5+6 (DirectConfinement section, both theorems together)
-- DC dispatch 7A: row 7 (Domination section, bridge definition)
-- DC dispatch 7B: row 8 (Domination section, Douglas factorization)
-- DC dispatch 8A+8B: row 9 (MasterTheorem section, statement + proof
-  sketch + headline framing)
-- DC dispatch 9A: rows 10+11 (ExhaustiveSqueeze section)
-- DC dispatch 9B: rows 12+13 (DefectedBudget section, defected shape
-  + optimized scalar trace budget with AM-GM disclosure)
-- RH dispatch 3: rows 14+15 (Involution section, J_L + ψ_-)
-- RH dispatch 4: row 16 (ZeroLedger section)
-- RH dispatch 5: row 17 (AntiInvariantZeroLedger section)
-- RH dispatch 6: row 18 (SatSelShell section)
-- RH dispatch 7A+7B+7C: rows 19, 20, 21 (TranslationT section, three
-  theorems)
-- RH dispatch 8: row 22 (RecognitionSource section, typed-carrier
+- DC dispatch 3: row 1 (`sec:involutive_ledger`)
+- DC dispatch 4A: rows 2 + 3 (`sec:anti_invariant_ledger`,
+  separating-readout + anti-invariant-ledger pass)
+- DC dispatch 4B: row 4 (`sec:anti_invariant_ledger`, trace-identity
+  pass)
+- DC dispatch 5: rows 5 + 6 (`sec:direct_confinement`, both theorems
+  together)
+- DC dispatch 6A: row 7 (`sec:domination`, bridge definition)
+- DC dispatch 6B: row 8 (`sec:domination`, Douglas factorization)
+- DC dispatch 7A: row 9 (`sec:master_theorem`, statement)
+- DC dispatch 7B: row 9 (`sec:master_theorem`, proof sketch +
+  headline framing)
+- DC dispatch 8A: rows 10 + 11
+  (`sec:exhaustive_squeeze_and_budgets`, exhaustive squeeze)
+- DC dispatch 8B: rows 12 + 13
+  (`sec:exhaustive_squeeze_and_budgets`, defected shape +
+  optimized scalar trace budget with AM-GM disclosure)
+- RH dispatch 3A: rows 14 + 15 (`sec:involution_and_ledger`, `J_L`
+  + `\psi_-`)
+- RH dispatch 3B: rows 16 + 17 (`sec:involution_and_ledger`,
+  nontrivial-zero ledger + anti-invariant zero ledger; A3
   disclosure)
-- RH dispatch 9: row 23 (DCMasterApplied section)
-- RH dispatch 10: row 24 (RHConditional section, headline)
+- RH dispatch 4: row 18 (`sec:sat_sel_shell`)
+- RH dispatch 5A: row 21 (`sec:translation_theorem`, biconditional
+  statement)
+- RH dispatch 5B: rows 19 + 20 (`sec:translation_theorem`, forward
+  + reverse directions)
+- RH dispatch 6: row 22 (`sec:recognition_source`, typed-carrier
+  disclosure)
+- RH dispatch 7A: row 23 (`sec:landing_chain`, master-theorem
+  application)
+- RH dispatch 7B: row 24 (`sec:landing_chain`, conditional landing
+  chain — headline)
 
-(Each dispatch is one codex turn per `feedback_no_batching.md`; the
-above grouping is the working draft of the dispatch table; Phase 9
-finalizes per-axis `drafting-plan.md` for both axes.)
+(Each dispatch is one codex turn per `feedback_no_batching.md`.
+The per-axis `drafting-plan.md` files are the authoritative
+dispatch tables; this list is the row-to-dispatch cross-reference
+for review convenience.)
 
 ## Validator wiring
 

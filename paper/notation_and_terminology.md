@@ -77,7 +77,7 @@ foundations-vocabulary level (typically in App D or in `sec:framework`).
 | `ψ_-` | Anti-invariant readout `P_- ψ` | `\psim` | `DualityConfinement.AntiInvariantLedger` (`psi_minus` field) |
 | `\Fix(J)` | Fixed locus `{x ∈ X | J x = x}` | `\Fix(J)` | (paper-side only; the Lean encoding records membership through `J x = x` predicates) |
 | `A_X` | Anti-invariant object ledger `∫_X ψ_- ψ_-^* dμ`, a typed positive cone element | `\AX` | `DualityConfinement.AntiInvariantLedger` (`A_X` field) |
-| `\tr` | Trace functional on the typed positive cone; `A ⪯ B ⟹ tr A ≤ tr B` | `\tr` (standard) | `DualityConfinement.AntiInvariantLedger` (`tr` field) |
+| `\trace` | Trace functional on the typed positive cone; `A ⪯ B ⟹ tr A ≤ tr B` | `\trace` (declared in `paper_macros.tex` as `\DeclareMathOperator{\trace}{tr}` to avoid clobbering local `\tr` in pgf/tikz) | `DualityConfinement.AntiInvariantLedger` (`tr` field) |
 | `⪯` | Loewner-style partial order on the typed positive cone | `\preceq` (standard) | `DualityConfinement.AntiInvariantLedger` (`preceq` field) |
 | `\dist(x, \Fix(J))` | Distance from `x` to the fixed locus | `\dist` | (paper-side; abstract Scale in Lean) |
 | `m(\varepsilon)` | Modulus function for quantitative separation | `m(\varepsilon)` inline | `DualityConfinement.Separation` (`modulus` field) |

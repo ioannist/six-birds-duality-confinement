@@ -20,9 +20,9 @@ new symbol that emerges during drafting and may need promotion.
 | `(X, J, μ, ψ, Y, J_iso)` | Involutive object ledger tuple | `\IOL` for the tuple shorthand; individual letters used inline | `sec:involutive_ledger` |
 | `Fix(J)` | Fixed locus of `J` | `\Fix` | `sec:involutive_ledger` |
 | `P_-` | Anti-invariant projector `(I - J_iso) / 2` | `\Pminus` | `sec:anti_invariant_ledger` |
-| `ψ_-` | Anti-invariant readout `P_- ψ` | `\psiminus` | `sec:anti_invariant_ledger` |
+| `ψ_-` | Anti-invariant readout `P_- ψ` | `\psim` | `sec:anti_invariant_ledger` |
 | `A_X` | Anti-invariant object ledger `∫ ψ_- ψ_-^* dμ` | `\AX` | `sec:anti_invariant_ledger` |
-| `tr` | Trace functional on the typed positive cone | `\tr` (already standard) | `sec:anti_invariant_ledger` |
+| `tr` | Trace functional on the typed positive cone | `\trace` (declared in `paper_macros.tex` as `\DeclareMathOperator{\trace}{tr}` — avoids collision with `\tr` in pgf/tikz) | `sec:anti_invariant_ledger` |
 | `⪯` | Loewner-style order on the typed positive cone | `\preceq` (already standard) | `sec:anti_invariant_ledger` |
 | `dist(x, Fix(J))` | Distance from `x` to the fixed locus | `\dist` | `sec:anti_invariant_ledger`, `sec:direct_confinement` |
 | `m(ε)` | Modulus function for quantitative separation | `m(\varepsilon)` inline (no macro) | `sec:anti_invariant_ledger`, `sec:direct_confinement` |
@@ -45,8 +45,9 @@ elsewhere in the paper:
   theory)
 - `A_X` (anti-invariant ledger; never repurposed for any other "A")
 - `Fix(J)` (fixed locus)
-- `tr`, `⪯` (typed-cone primitives; never repurposed for other trace
-  or order notions in informal asides)
+- `\trace` (the trace functional macro; renders as `tr`); `⪯`
+  (typed-cone primitives; never repurposed for other trace or order
+  notions in informal asides)
 
 ## Macro promotion checklist
 
@@ -59,9 +60,10 @@ When promoting a symbol from this workspace to
 
 Initial Phase 1 promotion set (already in
 `paper/duality_confinement/includes/paper_macros.tex`): `\Fix`,
-`\Pminus`, `\psim`, `\AX`, `\Jiso`, `\Kminus`, `\IOL`, `\GamSDTC`,
-plus the cross-paper macros `\SiblingRH` (Paper 2 forward-reference
-placeholder), `\preceqDC`, `\trDC`. The others remain inline.
+`\Ran`, `\dist`, `\trace`, `\Pminus`, `\psim`, `\AX`, `\Kminus`,
+`\Jiso`, `\IOL`, `\GamSDTC`, plus the cross-paper macro
+`\SiblingRH` (Paper 2 forward-reference placeholder). The others
+remain inline.
 
 New symbols that emerge during drafting are added to this workspace
 first; promotion to `paper_macros.tex` (and to

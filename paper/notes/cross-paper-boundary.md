@@ -106,15 +106,22 @@ Paper 2 by name as the worked single-substrate validation:
    forward reference, NOT a citation of Paper 2 results.
 
 No `\Cref` to Paper-2 labels from Paper 1. No `TsiokosRH*` bibkey
-in Paper 1's `references.bib`. The sibling-citation entry in
-Paper 1's bibliography (if any) is `TsiokosRHviaSDTC2026` and is
-used ONLY in the two forward-reference paragraphs.
+is used by Paper 1; the two forward-reference paragraphs are
+**prose-only** ("the sibling paper on the worked single-substrate
+RH validation"). The `TsiokosRHviaSDTC2026` entry remains in the
+shared `paper/references.bib` for Paper 2's use only; Paper 1
+does not cite it. This is the asymmetric form of the one-way
+dependency (Paper 2 cites Paper 1 substantively; Paper 1 does not
+cite Paper 2). The rule is mirrored in `paper/writing-plan.md`,
+`paper/duality_confinement/notes/drafting-plan.md`,
+`paper/duality_confinement/notes/claim-revision-register.md`, and
+`paper/notes/references-selection.md`.
 
 ## Citation conventions across the boundary
 
 | From | To | Citation form |
 | --- | --- | --- |
-| Paper 1 → Paper 2 | Forward reference (in `sec:involutive_ledger` or `sec:master_theorem`) | `[2]` (bibkey `TsiokosRHviaSDTC2026`); no `\Cref` to Paper 2 labels |
+| Paper 1 → Paper 2 | Forward reference (in `sec:involutive_ledger` or `sec:master_theorem`) | **prose-only**: "the sibling paper" / "the worked single-substrate validation"; no `\cite{}`; no `\Cref` to Paper 2 labels |
 | Paper 2 → Paper 1 (master theorem) | Substantive import | Section number + bibkey `[1]` (`TsiokosSDTC2026`); reproduce master theorem statement verbatim where invoked |
 | Paper 2 → Paper 1 (SDTC framing) | Substantive import | Section number + bibkey `[1]`; paraphrase the SDTC structural law statement as appropriate for the RH-specific specialization |
 | Paper 2 → Paper 1 (V-Differential) | Substantive import | Section number + bibkey `[1]`; one-sentence summary of the trace-state-only column condition |

@@ -108,8 +108,10 @@ not failures of the prep arc.
   after both papers have completed their drafting closure.
 - That figures / tables are populated. The figure-table-plan
   artifacts (`paper/<axis>/notes/figure-table-plan.md`) catalogue
-  what is needed; the actual table / figure `.tex` files are
-  TODO-only.
+  what is needed; the per-paper `tables/` and `figures/`
+  directories are empty (each carries a README.md placeholder
+  pointing at the plan). Concrete table / figure `.tex` files are
+  created during the drafting arc, one per dispatch.
 
 ## Re-running the gate
 
