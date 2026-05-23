@@ -125,34 +125,45 @@ records the encoding rationale.  A substantive Lean derivation of
 this identification is one of the open extensions named in
 \Cref{sec:discussion}.
 
-\subsection*{Recognition-source carrier}
+\subsection*{Recognition-source carrier (typed bridge)}
 
-The recognition source \(\GamSDTCSelberg\) is the distinctive formal
-object of the RH paper.  It is realized in Lean as a typed structure
-carrier \texttt{GammaSdtcSelberg}.  Its fields encode the abstract
-requirements supplied by the Selberg-class instance of
-Self-Dual Trace Confinement: in particular, the existence of a
-domination-record sequence on \(\Sel\) witnessing
+The recognition source \(\GamSDTCSelberg\) is the distinctive
+formal object of the RH paper.  It is realized in Lean as a typed
+structure carrier \texttt{GammaSdtcSelberg} that packages, in one
+record, the entire duality-confinement apparatus needed by the
+bridge theorem (involutive object ledger, separating
+anti-invariant readout, anti-invariant ledger, completed-domination
+records, and the typed-cone primitives \(\preceq\), \(\trace\),
+positivity-to-zero) together with the bridge propositions
+\texttt{same\_readout}, \texttt{mu\_zero\_of\_ae}, and
+\texttt{visible\_zero\_of\_ae}.  These bridge propositions express
+the assertion that the supplied DC apparatus is coherent with the
+shell---in particular, that \(\psim\) vanishing \(\mu\)-almost
+everywhere implies \(\AZ = 0\) on the shell.  They are typed
+hypotheses, not derivations: the carrier supplies the DC apparatus
+together with its claimed coherence with the shell, not a
+construction of the DC apparatus from the shell's own data.  The
+domination-record content witnesses
 \[
   \AZ \preceq B_n,
   \qquad
   \trace B_n \to 0 .
 \]
-The carrier is declared inline in the Lean module that consumes it,
-\texttt{RHConditional.lean}, following the placement convention that
-a type with a single consumer lives next to that consumer.
 
-This carrier is not a Lean axiom.  The project-wide forbidden-tokens
-rule bans \texttt{axiom}, \texttt{opaque}, \texttt{constant},
-\texttt{sorry}, and \texttt{admit} throughout the source tree.
-Consequently, the recognition source is supplied as a typed-record
-hypothesis, not as a postulated logical axiom.  The conditional
-landing-chain theorem \texttt{rhConditional} takes a value of this
-carrier as an explicit hypothesis parameter,
+The carrier is declared inline in the Lean module that consumes
+it, \texttt{RHConditional.lean}, following the placement
+convention that a type with a single consumer lives next to that
+consumer.  It is not a Lean axiom.  The project-wide
+forbidden-tokens rule bans \texttt{axiom}, \texttt{opaque},
+\texttt{constant}, \texttt{sorry}, and \texttt{admit} throughout
+the source tree.  The recognition source is therefore supplied as
+a typed-record hypothesis, not as a postulated logical axiom, and
+the conditional landing-chain theorem \texttt{rhConditional} takes
+a value of this carrier as an explicit hypothesis parameter,
 \(\gamma : \texttt{GammaSdtcSelberg shell}\).  This is the formal
 counterpart of the structural-law discipline in the body: closure
-content of a formed layer is named as a recognition source, not added
-as a metalogical postulate.
+content of a formed layer is named as a recognition source, not
+added as a metalogical postulate.
 
 \subsection*{Cross-paper Lean import}
 
@@ -226,29 +237,32 @@ faithful \\
 \nolinkurl{thm:rh:translation-T-forward} &
 Theorem~T, forward direction &
 \nolinkurl{RH.TranslationT.translationTForward} &
-lean substantive &
+lean substantive; typed-interface composition over
+\texttt{AntiInvariantZeroLedger} fields &
 theorem &
 faithful \\
 
 \nolinkurl{thm:rh:translation-T-reverse} &
 Theorem~T, reverse direction &
 \nolinkurl{RH.TranslationT.translationTReverse} &
-lean substantive &
+lean substantive; typed-interface composition over
+\texttt{AntiInvariantZeroLedger} fields &
 theorem &
 faithful \\
 
 \nolinkurl{thm:rh:translation-T} &
 translation theorem T, biconditional &
 \nolinkurl{RH.TranslationT.translationT} &
-lean substantive &
+lean substantive; typed-interface composition over
+\texttt{AntiInvariantZeroLedger} fields &
 theorem &
 faithful \\
 
 \nolinkurl{obl:rh:gamma-sdtc-selberg} &
 recognition source \(\GamSDTCSelberg\) &
 \nolinkurl{RH.RHConditional.GammaSdtcSelberg} &
-typed structure carrier; not a Lean axiom; inline in
-\texttt{RHConditional.lean} &
+typed-bridge carrier (DC apparatus + bridge propositions); not a
+Lean axiom; inline in \texttt{RHConditional.lean} &
 recognition source &
 not applicable \\
 

@@ -2,10 +2,10 @@ import SixBirdsDualityConfinement.DualityConfinement.AntiInvariantLedger
 import SixBirdsDualityConfinement.DualityConfinement.Separation
 
 /-!
-Duality Confinement paper — module DirectConfinement.
+# Duality Confinement paper -- `DirectConfinement`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+Direct confinement consequences, qualitative and quantitative, derived
+from the trace identity plus separation.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.DirectConfinement

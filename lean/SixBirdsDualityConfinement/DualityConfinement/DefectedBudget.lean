@@ -1,10 +1,10 @@
 import SixBirdsDualityConfinement.Terminology
 
 /-!
-Duality Confinement paper — module DefectedBudget.
+# Duality Confinement paper -- `DefectedBudget`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+Defected obstruction budget and optimized scalar trace budget, with
+AM-GM supplied as a typed-Scalar hypothesis; see App D A2.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.DefectedBudget

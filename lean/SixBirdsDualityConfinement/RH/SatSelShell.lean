@@ -1,10 +1,11 @@
 import SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger
 
 /-!
-RH paper — module SatSelShell.
+# RH paper — `SatSelShell`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_rh.csv`.
+Saturated completed Selberg trace shell packaging the trace instrument,
+quotient and audit data, functional-equation involution, typed zero ledger, and
+anti-invariant zero ledger used downstream.
 -/
 
 namespace SixBirdsDualityConfinement.RH.SatSelShell

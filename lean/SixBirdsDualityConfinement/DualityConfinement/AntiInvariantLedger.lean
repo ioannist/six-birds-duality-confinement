@@ -1,10 +1,10 @@
 import SixBirdsDualityConfinement.DualityConfinement.Involution
 
 /-!
-Duality Confinement paper — module AntiInvariantLedger.
+# Duality Confinement paper -- `AntiInvariantLedger`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+Typed anti-invariant ledger `A_X` over a typed positive cone, with the
+trace identity built into the constructor.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.AntiInvariantLedger

@@ -1,10 +1,10 @@
 import SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger
 
 /-!
-RH paper — module TranslationT.
+# RH paper — `TranslationT`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_rh.csv`.
+Theorem T for the typed zero ledger: vanishing of the anti-invariant zero ledger
+is equivalent to every typed nontrivial zero lying on the critical line.
 -/
 
 namespace SixBirdsDualityConfinement.RH.TranslationT

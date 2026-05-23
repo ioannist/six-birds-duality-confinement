@@ -1,10 +1,10 @@
 import SixBirdsDualityConfinement.DualityConfinement.DirectConfinement
 
 /-!
-Duality Confinement paper — module ExhaustiveSqueeze.
+# Duality Confinement paper -- `ExhaustiveSqueeze`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+Exhaustive moving ledger and exhaustive ledger squeeze: the
+finite-window-plus-tail refinement of the master theorem.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.ExhaustiveSqueeze

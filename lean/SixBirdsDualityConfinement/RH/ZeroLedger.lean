@@ -1,10 +1,11 @@
 import SixBirdsDualityConfinement.RH.Involution
 
 /-!
-RH paper — module ZeroLedger.
+# RH paper — `ZeroLedger`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_rh.csv`.
+Typed finite ledger of nontrivial zeros for the completed zeta input,
+including critical-strip membership, support exhaustion, and positive integer
+multiplicities.
 -/
 
 namespace SixBirdsDualityConfinement.RH.ZeroLedger

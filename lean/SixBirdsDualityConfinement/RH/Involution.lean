@@ -1,10 +1,11 @@
 import SixBirdsDualityConfinement.Terminology
 
 /-!
-RH paper — module Involution.
+# RH paper — `Involution`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_rh.csv`.
+Functional-equation involution `J_L(s) = 1 - conj(s)`, separating
+anti-invariant readout `psi_-(s) = Re(s) - 1/2`, and their elementary
+properties: involutivity, critical-line fixed locus, and anti-invariance.
 -/
 
 namespace SixBirdsDualityConfinement.RH.Involution

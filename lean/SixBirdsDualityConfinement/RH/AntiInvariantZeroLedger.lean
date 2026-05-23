@@ -1,10 +1,11 @@
 import SixBirdsDualityConfinement.RH.ZeroLedger
 
 /-!
-RH paper — module AntiInvariantZeroLedger.
+# RH paper — `AntiInvariantZeroLedger`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_rh.csv`.
+Multiplicity-weighted anti-invariant zero ledger `A_Z(zeta)` over the typed
+zero ledger, with the abstract scalar and positivity interfaces used by the
+translation theorem.
 -/
 
 namespace SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger

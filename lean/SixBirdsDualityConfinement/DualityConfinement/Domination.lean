@@ -1,10 +1,10 @@
 import SixBirdsDualityConfinement.Terminology
 
 /-!
-Duality Confinement paper — module Domination.
+# Duality Confinement paper -- `Domination`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+Completed-domination bridges and the typed-cone form of Douglas
+factorization.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.Domination

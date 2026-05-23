@@ -2,10 +2,11 @@ import SixBirdsDualityConfinement.DualityConfinement.DirectConfinement
 import SixBirdsDualityConfinement.DualityConfinement.Domination
 
 /-!
-Duality Confinement paper — module MasterTheorem.
+# Duality Confinement paper -- `MasterTheorem`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+The duality-confinement membrane theorem: a typed positive-cone
+squeeze converting a vanishing-trace domination sequence into
+fixed-locus confinement.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.MasterTheorem

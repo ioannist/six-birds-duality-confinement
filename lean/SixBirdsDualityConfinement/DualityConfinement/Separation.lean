@@ -1,10 +1,10 @@
 import SixBirdsDualityConfinement.DualityConfinement.Involution
 
 /-!
-Duality Confinement paper — module Separation.
+# Duality Confinement paper -- `Separation`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+Separating anti-invariant readout, in qualitative and quantitative
+modulus forms, used by direct confinement and the master theorem.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.Separation

@@ -2,10 +2,16 @@ import SixBirdsDualityConfinement.RH.DCMasterApplied
 import SixBirdsDualityConfinement.RH.TranslationT
 
 /-!
-RH paper — module RHConditional.
+# RH paper — `RHConditional`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_rh.csv`.
+Conditional landing chain. This module defines the typed recognition-source
+carrier `GammaSdtcSelberg`, packaging the bridge hypotheses required by
+`DCMasterApplied.dcMasterApplied`, and proves `rhConditional`: given a
+saturated Selberg shell and a value of the carrier, every typed nontrivial zero
+in the shell has real-part coordinate `R.half`. The carrier is a typed bridge
+assumption, not a derived instantiation of the DC apparatus on the shell; it
+supplies the DC apparatus together with the bridge propositions that connect it
+to the shell's `A_Z` ledger.
 -/
 
 namespace SixBirdsDualityConfinement.RH.RHConditional
@@ -13,16 +19,20 @@ namespace SixBirdsDualityConfinement.RH.RHConditional
 universe u x y z cone trace scale
 
 /--
-Typed carrier for the RH recognition source `Gamma_{SDTC-Selberg}`.
-
-The recognition source is not derived in Lean.  It supplies the
-completed domination records and the exact duality-confinement
-instantiation data needed by `dcMasterApplied`.
+Typed recognition-source carrier `Gamma_{SDTC-Selberg}`. A value of this
+structure supplies, in one record, all Duality-Confinement apparatus parameters
+(involutive ledger, separating readout, anti-invariant ledger,
+completed-domination records, typed-cone primitives) together with the explicit
+bridge propositions (`same_readout`, `mu_zero_of_ae`, `visible_zero_of_ae`)
+needed by `DCMasterApplied.dcMasterApplied` to conclude `shell.A_Z.A_Z =
+shell.A_Z.zero`. These bridge propositions are typed hypotheses: the DC
+carrier/readout/operator-ledger data is assumed compatible with `shell.A_Z`,
+not derived from it. The project forbidden-token rule keeps this carrier in
+record form rather than as a logical postulate.
 -/
 structure GammaSdtcSelberg
     {R : Involution.RealCoordinate.{u}}
     (shell : SatSelShell.SatSelShell R) where
-  rh_readout : Involution.SeparatingAntiInvariantReadout R shell.J_L
   ledger :
     _root_.SixBirdsDualityConfinement.DualityConfinement.Involution.InvolutiveObjectLedger.{x, y, z}
   sep :
@@ -56,9 +66,14 @@ structure GammaSdtcSelberg
     A.tr A.A_X = TraceZero → A.A_X = A.zero
 
 /--
-Conditional RH theorem: if the saturated Selberg shell is equipped
-with the `Gamma_{SDTC-Selberg}` recognition source, then every typed
-nontrivial zero in the shell has real part `1 / 2`.
+Conditional landing chain: given a saturated Selberg shell `shell` and a typed
+recognition-source carrier `gamma : GammaSdtcSelberg shell`, every typed
+nontrivial zero in `shell` has real-part coordinate `R.half`. The proof
+composes `DCMasterApplied.dcMasterApplied` (yielding
+`shell.A_Z.A_Z = shell.A_Z.zero` from `gamma`'s bridge hypotheses) with
+`TranslationT.translationTForward` (yielding the pointwise critical-line
+statement from `A_Z = 0`). The conclusion is conditional on `gamma`; the
+carrier is not derived in Lean.
 -/
 theorem rhConditional
     {R : Involution.RealCoordinate.{u}}
@@ -67,7 +82,7 @@ theorem rhConditional
     ∀ ρ : shell.Z_nt.Z_zeta_nt, (shell.Z_nt.rho ρ).re = R.half := by
   have hAZ : shell.A_Z.A_Z = shell.A_Z.zero :=
     DCMasterApplied.dcMasterApplied
-      shell gamma.rh_readout gamma.sep gamma.A gamma.same_readout
+      shell gamma.sep gamma.A gamma.same_readout
       gamma.mu_zero_of_ae gamma.visible_zero_of_ae gamma.B_n
       gamma.domination_records gamma.B_n_positive
       gamma.tr_B_n_tends_zero gamma.h_tr_B_n_tends_zero

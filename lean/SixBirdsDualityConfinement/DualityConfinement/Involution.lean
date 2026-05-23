@@ -1,10 +1,10 @@
 import SixBirdsDualityConfinement.Terminology
 
 /-!
-Duality Confinement paper — module Involution.
+# Duality Confinement paper -- `Involution`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_duality_confinement.csv`.
+Involutive object ledger `IOL = (X, J, mu, psi, Y, J_iso)` together
+with the equivariance condition `psi (J x) = J_iso (psi x)`.
 -/
 
 namespace SixBirdsDualityConfinement.DualityConfinement.Involution

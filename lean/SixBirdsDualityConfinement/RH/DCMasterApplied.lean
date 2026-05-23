@@ -2,10 +2,15 @@ import SixBirdsDualityConfinement.DualityConfinement.MasterTheorem
 import SixBirdsDualityConfinement.RH.SatSelShell
 
 /-!
-RH paper — module DCMasterApplied.
+# RH paper — `DCMasterApplied`
 
-Stub. Populated by codex during Phase G per the queue at
-`formalization/traceability/queue_rh.csv`.
+Application of the Duality-Confinement master theorem to Selberg-class data
+carried by a `SatSelShell`. The DC apparatus is supplied as parameters
+together with explicit bridge propositions (`same_readout`, `mu_zero_of_ae`,
+`visible_zero_of_ae`) that connect the abstract DC conclusion to the shell's
+`A_Z` ledger. The bridge propositions are typed hypotheses, not derivations:
+this theorem combines them with `MasterTheorem.masterTheorem` to conclude
+`S.A_Z.A_Z = S.A_Z.zero`.
 -/
 
 namespace SixBirdsDualityConfinement.RH.DCMasterApplied
@@ -13,15 +18,14 @@ namespace SixBirdsDualityConfinement.RH.DCMasterApplied
 universe u v w q x y z cone trace scale
 
 /--
-Application of the duality-confinement master theorem to the
-RH-specific zero ledger.  The saturated Selberg shell supplies the
-load-bearing `J_L`, `Z_nt`, and `A_Z` objects; the completed domination
-records and trace-squeeze hypotheses are the theorem parameters.
+Typed bridge: the Duality-Confinement master theorem of
+`MasterTheorem.masterTheorem`, fed through user-supplied bridge hypotheses,
+yields `S.A_Z.A_Z = S.A_Z.zero` on the saturated Selberg shell `S`. The DC
+apparatus parameters are supplied as bridge data, not derived from the shell.
 -/
 theorem dcMasterApplied
     {R : Involution.RealCoordinate.{u}}
     (S : SatSelShell.SatSelShell R)
-    (_rh_readout : Involution.SeparatingAntiInvariantReadout R S.J_L)
     {ledger :
       _root_.SixBirdsDualityConfinement.DualityConfinement.Involution.InvolutiveObjectLedger.{x, y, z}}
     (sep :

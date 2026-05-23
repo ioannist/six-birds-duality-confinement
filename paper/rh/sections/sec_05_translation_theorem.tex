@@ -73,8 +73,14 @@ hypothesis; once \(\AZ=0\) is available, the theorem above contains
 the entire conversion to the right-hand side.
 
 Both halves admit short positivity-based proofs; Lean verifies each
-half with faithful semantic alignment, and the formalization
-appendix records the declaration-level correspondence.
+half with faithful semantic alignment.  As recorded in the
+formalization appendix, the Lean proof composes the
+\texttt{AntiInvariantZeroLedger} structure fields that supply the
+multiplicity-weighted-sum positivity content (vanishing summand from
+vanishing sum, vanishing displacement from vanishing summand, and
+their converses); the underlying finite-sum and scalar arithmetic
+are part of the typed interface rather than derivations from lower
+arithmetic primitives.
 
 \begin{theorem}[Translation theorem T, forward direction]
 \label{thm:rh:translation-T-forward}
