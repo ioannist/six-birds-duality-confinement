@@ -334,9 +334,10 @@ rows:
   lean_decl: SixBirdsDualityConfinement.RH.RHConditional.GammaSdtcSelberg
   semantic_alignment: not_applicable
   notes: Out of scope for Lean derivation per RH proposal §11.4. Encoded as typed
-    structure carrier; the conditional theorem takes a value of this type as explicit
-    hypothesis parameter. NOT a Lean `axiom`. RecognitionSource.lean is added by codex
-    during the RHConditional dispatch.
+    structure carrier named GammaSdtcSelberg, declared inline in
+    lean/SixBirdsDualityConfinement/RH/RHConditional.lean (the conditional theorem
+    is its only consumer). The conditional theorem takes a value of this structure
+    as explicit hypothesis parameter. NOT a Lean `axiom`.
 - paper_label: thm:rh:dc-master-applied
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_construction.md

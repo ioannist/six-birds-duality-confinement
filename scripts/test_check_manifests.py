@@ -247,15 +247,20 @@ def test_cross_reference_rejects_out_of_scope_rh() -> None:
 def test_parse_section_module_map_real_file() -> None:
     """Smoke-test the parser against the committed section_module_map.toml.
 
-    Pre-Phase-C the map has both axis tables present but no entries; the
-    parser should return two empty dicts. Spot-checks against specific
-    section titles are added back during Phase C as the map is
-    populated.
+    Post-Phase-C the map contains the per-axis sections that codex
+    mechanizes. Spot-check headline entries that anchor each axis's
+    load-bearing chain.
     """
     mapping = cm.parse_section_module_map()
     assert set(mapping) == {"duality_confinement", "rh"}, mapping
-    assert mapping["duality_confinement"] == {}, mapping["duality_confinement"]
-    assert mapping["rh"] == {}, mapping["rh"]
+    # DC axis: load-bearing master theorem section.
+    assert mapping["duality_confinement"]["MasterTheorem"] == \
+        "SixBirdsDualityConfinement.DualityConfinement.MasterTheorem", \
+        mapping["duality_confinement"]
+    # RH axis: headline conditional theorem section.
+    assert mapping["rh"]["RHConditional"] == \
+        "SixBirdsDualityConfinement.RH.RHConditional", \
+        mapping["rh"]
 
 
 def test_section_module_map_check_passes_on_current_state() -> None:

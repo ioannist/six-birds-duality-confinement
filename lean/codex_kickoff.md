@@ -317,18 +317,18 @@ One RH claim is explicitly out of scope for Lean derivation and
   It appears in `formalization/inventory/rh_paper_inventory.toml`
   with `intended_status = out_of_scope_recognition_source`.
 
-  **Encoding**: a typed `structure` carrier in
-  `lean/SixBirdsDualityConfinement/RH/RecognitionSource.lean` with
-  one `Prop` field naming the domination-records existence claim.
-  Downstream theorems (`DCMasterApplied`, `RHConditional`) take a
-  value of this type as an explicit hypothesis parameter. The
+  **Encoding**: a typed `structure` carrier named `GammaSdtcSelberg`
+  declared inline in
+  `lean/SixBirdsDualityConfinement/RH/RHConditional.lean` (the
+  conditional theorem is its only consumer; the type lives next to
+  its only consumer). The conditional theorem takes a value of this
+  structure as an explicit hypothesis parameter. The
   forbidden-tokens rule bans `axiom`/`opaque`/`constant` anywhere
   in the source tree.
 
-  Add `RecognitionSource.lean` as part of the `RHConditional`
-  dispatch (the conditional theorem is its only consumer). The
-  section_module_map does not list it (the obligation row in the
-  inventory is queue-excluded by `intended_status` filtering).
+  The `GammaSdtcSelberg` structure is not listed in the
+  section_module_map because the obligation row in the inventory is
+  queue-excluded by `intended_status = out_of_scope_recognition_source`.
 
 The duality-confinement axis does not encode `Γ_{SDTC}` (the
 abstract structural law); the axis is purely apparatus

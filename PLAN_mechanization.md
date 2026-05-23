@@ -475,7 +475,8 @@ before starting Phase I.
     abstract-Scalar level — see audit_summary §A2). Off the critical
     path; would require introducing typed real-arithmetic structure to
     derive substantively.
-- Phase H: **complete** (2026-05-23):
+- Phase H: **complete** (2026-05-23, revised after Phase A-H external
+  review at [reviews/REVIEW_REQUEST_phaseG.md](reviews/REVIEW_REQUEST_phaseG.md)):
   - **H.1** Full validator chain green across both axes (`make
     validate`).
   - **H.2** Per-theorem `#print axioms` audit (full `check_manifests
@@ -487,7 +488,7 @@ before starting Phase I.
     `constant`) in active source under
     `lean/SixBirdsDualityConfinement/*`. Single grep hit is a
     documentation reference in
-    [lean/SixBirdsDualityConfinement/RH.lean](lean/SixBirdsDualityConfinement/RH.lean):22
+    [lean/SixBirdsDualityConfinement/RH.lean](lean/SixBirdsDualityConfinement/RH.lean)
     (doc-comment naming the rule; benign — comments are stripped
     before the validator scans).
   - **H.4** SoR sync: all 22 mechanized SoR rows updated from
@@ -498,6 +499,21 @@ before starting Phase I.
     `recognition_source` with `lean_decl` pointing at the inline
     typed carrier
     `SixBirdsDualityConfinement.RH.RHConditional.GammaSdtcSelberg`.
+  - **H.5** `make test` (`pytest scripts/test_check_manifests.py`):
+    17/17 pass.
+  - Post-review REVISE fixes (2026-05-23):
+    1. `test_parse_section_module_map_real_file` was asserting the
+       pre-Phase-C empty-map state. Updated to spot-check the
+       headline DC `MasterTheorem` and RH `RHConditional` entries
+       in the now-populated map.
+    2. Doc-drift correction: `lean/SixBirdsDualityConfinement/RH.lean`
+       and `paper/notes/statements-of-record.yml` obligation-row
+       notes (and `lean/codex_kickoff.md` §12) were describing a
+       separate `RecognitionSource.lean` module. The actual
+       `GammaSdtcSelberg` carrier was placed inline in
+       `RHConditional.lean` (which is the sanctioned alternative per
+       the kickoff §12 — type lives next to its only consumer).
+       Documentation now matches the actual placement.
 - Phase I: **deferred** (paper writing — not a prerequisite for
   mechanization, governed by separate workflow + memories).
 
