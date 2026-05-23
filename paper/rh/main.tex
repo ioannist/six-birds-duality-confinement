@@ -81,13 +81,12 @@
   \renewcommand{\footrulewidth}{0pt}
 }
 
-% TODO: replace with this paper's title.
-\title{TODO: Paper Title}
+\title{A Six Birds Closure of the Riemann Hypothesis via Self-Dual Trace Confinement on the Saturated Selberg Trace Layer}
 \author{Ioannis Tsiokos\,\orcidlink{0009-0009-7659-5964}}
 \date{\today}
 \hypersetup{
-  % TODO: keep pdftitle in sync with \title above.
-  pdftitle={TODO: Paper Title},
+  % PDF title mirrors \title above.
+  pdftitle={A Six Birds Closure of the Riemann Hypothesis via Self-Dual Trace Confinement on the Saturated Selberg Trace Layer},
   pdfauthor={Ioannis Tsiokos},
   hidelinks
 }
@@ -98,13 +97,37 @@
 \thispagestyle{firstpage}
 
 \begin{abstract}
-% TODO: write the abstract.  Keep it self-contained: state the question, the
-% method, the principal result, and the boundary of what is and is not claimed.
+This paper gives a conditional Six Birds closure of the Riemann
+hypothesis by moving the question from classical analytic number
+theory to a formed-layer trace setting.  The substrate is the
+saturated completed Selberg trace closure of the completed Riemann
+zeta function, equipped with the functional-equation involution and
+with a typed ledger of nontrivial zeros.  The auxiliary translation
+theorem T proves that the anti-invariant zero ledger vanishes,
+\(A_Z(\zeta)=0\), if and only if every typed nontrivial zero has real
+part \(1/2\).  The conditional landing chain then uses the
+Selberg-class instance of Self-Dual Trace Confinement supplied by
+Paper 1: its recognition source gives domination records whose
+vanishing trace forces \(A_Z(\zeta)=0\), and theorem T converts that
+ledger collapse into the critical-line statement.
+
+The outside-Six-Birds reading is the conditional theorem
+\(\Gamma_{\mathrm{SDTC}\text{-}\mathrm{Selberg}}\Rightarrow
+\mathrm{RH}\), not an unconditional proof of the Riemann hypothesis
+in standard ZFC.  The saturated trace shell's admissibility is a
+standing Foundations-II hypothesis, and the formal zero ledger uses a
+typed real-coordinate carrier whose identification with the classical
+real part of a zeta zero is fixed by construction-parameter
+assignment.  The recognition source is encoded in Lean as a typed
+structure carrier, not as a Lean axiom.  The mathlib-free
+formalization covers ten theorem or definition entries with faithful
+semantic alignment, plus the recognition-source carrier, including
+the translation theorem, the duality-confinement bridge, and the
+conditional landing chain.
 \end{abstract}
 
 \medskip
-% TODO: list keywords for the paper, separated by semicolons.
-\noindent\textbf{Keywords.} TODO; TODO; TODO.
+\noindent\textbf{Keywords.} Riemann hypothesis; conditional theorem; Selberg-class trace; self-dual trace confinement; closure formation; Six Birds Theory; Lean formalization.
 
 \input{sections/sec_01_intro}
 \input{sections/sec_02_framework}

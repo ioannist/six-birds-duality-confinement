@@ -1,6 +1,7 @@
 % RH paper — § Introduction
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body for the introduction. This section is framing only and
+% forward-references the definitions and theorem statements resolved in
+% §§3--7.
 %
 % statements-of-record rows resolved here: none (this section is
 % framing only; theorem/definition rows resolve in §3–§7 per
@@ -9,6 +10,142 @@
 \section{Introduction}
 \label{sec:intro}
 
-% TODO: drafting populates this section per
-% paper/rh/notes/drafting-plan.md and
-% paper/rh/notes/section-outline.md.
+What would it take to settle whether all nontrivial zeros of the
+Riemann zeta function lie on the critical line?  In its standard
+form, the Riemann hypothesis asserts that every nontrivial zero
+\(\rho\) of \(\zeta\) satisfies
+\[
+  \Real(\rho)=\frac12.
+\]
+Classical attacks on this statement seek an unconditional proof inside
+the analytic-number-theoretic substrate itself: spectral Hilbert--Pólya
+programs, adelic and noncommutative-geometric approaches, Hilbert
+spaces of entire functions, Weil-positivity formulations, and related
+programs all work within their own classical carriers.  This paper
+takes a different route.  It asks whether RH can be read as the
+vanishing of a positive typed quantity and then made to vanish by a
+structural closure mechanism.  The quantity is the anti-invariant zero
+ledger
+\[
+  \AZ=\sum_{\rho\in \Znt} m_\rho\,
+       \left|\Real(\rho)-\frac12\right|^2,
+\]
+where \(\Znt\) is the multiplicity-weighted ledger of nontrivial zeros
+of the completed zeta function.  Its vanishing is, by a direct
+positive-sum calculation, equivalent to the critical-line statement.
+The remaining question is not how to prove RH by one of the classical
+routes above, but how a formed closure can force \(\AZ\) to vanish.
+
+The framework used here is Six Birds Theory, a typed and audited
+calculus for naming closure formation in mathematical structures.  A
+formed closure, in the sense used in this paper, is a typed presentation
+of a mathematical substrate together with the assumption that its
+carriers, observables, comparison maps, and audit data have been
+admissibly closed under the framework's formation discipline.  The
+substrate for the present paper is the saturated completed Selberg trace
+closure \(\Sel\): a typed shell aggregating the completed zeta data, a
+lawful trace instrument \(\Itr\), the functional-equation symmetry, the
+nontrivial-zero ledger, the anti-invariant zero ledger, visibility data,
+and audit provenance.  The functional-equation involution is
+\[
+  \JL(s)=1-\bar{s},
+\]
+whose fixed locus is the critical line.  The corresponding
+anti-invariant readout is the signed real-part displacement
+\[
+  \psimRH(s)=\Real(s)-\frac12.
+\]
+These objects are defined in \Cref{sec:involution_and_ledger}; the
+shell \(\Sel\) is defined in \Cref{sec:sat_sel_shell}.
+
+The headline theorem is conditional.  Under the standard Six Birds
+closure assumption on \(\Sel\), and given the recognition source
+\(\GamSDTCSelberg\), the Riemann hypothesis holds on the typed zero
+ledger of \(\Sel\).  Here a recognition source means a named structural
+hypothesis supplied as content of the formed layer, not a theorem
+derived from lower framework primitives.  In this instance,
+\(\GamSDTCSelberg\) is the Selberg-class instance of Self-Dual Trace
+Confinement from the sibling duality-confinement paper
+\cite{TsiokosSDTC2026}.  It supplies, on the formed Selberg trace
+layer, a sequence of completed domination records
+\[
+  \AZ \preceq B_n,
+  \qquad
+  \trace B_n \to 0.
+\]
+The duality-confinement membrane theorem of the sibling paper then
+forces \(\AZ=0\) in the typed positive cone, and the translation
+theorem of the present paper converts that vanishing into
+\(\Real(\rho)=1/2\) for every \(\rho\in\Znt\).  Outside the Six Birds
+framing, the result should therefore be read exactly as the conditional
+theorem
+\[
+  \GamSDTCSelberg \Longrightarrow \mathrm{RH},
+\]
+not as an unconditional standard-ZFC proof of RH.
+
+The translation step is deliberately elementary.  \Cref{sec:translation_theorem}
+proves Theorem T:
+\[
+  \AZ=0
+  \quad\Longleftrightarrow\quad
+  \forall \rho\in\Znt,\ \Real(\rho)=\frac12.
+\]
+The forward direction uses only that each summand
+\(m_\rho |\Real(\rho)-1/2|^2\) is nonnegative and that
+\(m_\rho>0\).  If the total sum is zero, every squared distance from
+the critical line is zero.  The reverse direction is substitution:
+if every typed zero has real part \(1/2\), then every summand
+vanishes, so \(\AZ=0\).  This theorem is proven by direct positivity
+argument: it does not carry the recognition-source burden.
+Rather, it cleanly translates the positive ledger statement produced
+by the duality-confinement mechanism into the number-theoretic
+critical-line statement.
+
+The paper's scope is correspondingly narrow and explicit.  First, the
+main result is conditional on \(\GamSDTCSelberg\).  We do not claim
+unconditional RH in standard ZFC, and we do not claim that
+\(\GamSDTCSelberg\) is derivable from framework primitives.  The
+development history includes a three-route derivation sweep whose role
+is due diligence: it supports the recognition-source status by
+documenting that the domination content is not obtained from the lower
+primitive vocabulary alone.  Second, the recognition source is not
+installed as a Lean axiom.  It is represented in the formalization as a
+typed structure carrier whose fields record the required domination
+data; the project-wide source rule bans declarations using the tokens
+\texttt{axiom}, \texttt{opaque}, \texttt{constant}, \texttt{sorry}, and
+\texttt{admit}.  The conditional theorem takes a value of that carrier
+as an explicit hypothesis.
+
+Third, the zero ledger is typed.  The formal encoding parameterizes the
+real-part coordinate by a typed real-coordinate carrier, and the
+identification of that coordinate with the usual real part of a
+classical nontrivial zero of \(\zeta\) is made by construction-parameter
+assignment when the shell is instantiated.  This is the correct
+mathlib-free abstraction for the present formalization; a Lean-side
+derivation of the analytic identification with the classical zero set
+is left as a future extension.  Fourth, admissibility of \(\Sel\) under
+the seven Foundations-II schemas is carried as an audit/admissibility
+witness in the shell, not derived in this paper.  Finally, the
+classical RH programs named above are neither refuted nor circumvented
+in their native sense.  They aim at unconditional RH inside classical
+analytic number theory; the present paper establishes a conditional
+formed-layer result on the typed Selberg trace shell.  The generalized
+Riemann hypothesis is also outside the scope of this paper: we
+instantiate the construction for \(L=\zeta\) only.
+
+The remainder of the paper follows this division of labor.
+\Cref{sec:framework} gives the minimal Six Birds background needed for
+the closure reading.  \Cref{sec:involution_and_ledger} constructs the
+functional-equation involution, the anti-invariant readout, the
+nontrivial-zero ledger, and \(\AZ\).  \Cref{sec:sat_sel_shell}
+packages the saturated Selberg trace closure.  \Cref{sec:translation_theorem}
+proves Theorem T.  \Cref{sec:recognition_source} states the recognition
+source and its provenance, and \Cref{sec:landing_chain} composes it
+with the duality-confinement master theorem and Theorem T to obtain the
+conditional landing chain.  \Cref{sec:scope_and_nonclaims} records the
+nonclaims explicitly, and \Cref{sec:discussion,sec:conclusion} place
+the result in the broader structural program.  The formalization
+appendix records the ten mechanized RH entries with faithful semantic
+alignment, together with the one recognition-source carrier and the
+representation notes needed to read the Lean coverage correctly.

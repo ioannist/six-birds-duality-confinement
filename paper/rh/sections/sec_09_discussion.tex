@@ -1,6 +1,6 @@
 % RH paper — § Discussion
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body: structural parallels, classical-positioning, and
+% future-work discussion.
 %
 % statements-of-record rows resolved here: none (this section is
 % structural-parallel discussion and future-work pointers; no
@@ -9,6 +9,135 @@
 \section{Discussion}
 \label{sec:discussion}
 
-% TODO: drafting populates this section per
-% paper/rh/notes/drafting-plan.md and
-% paper/rh/notes/section-outline.md.
+The conditional landing chain invites three lines of further thought:
+where it sits in the broader Six Birds program of formed-layer
+structural laws, how it should be compared with classical approaches
+to RH, and which extensions remain open after the present
+formalization.
+
+\paragraph{Structural parallels.}
+The structural template used here is not isolated.  It has the same
+shape as two sibling Six Birds layer-level results: the no-needles
+closure of incompressible Navier--Stokes regularity and the
+CSL-SAT-hiddenness closure of the PvNP problem.  In all three cases
+the substrate is first organized as a formed closure; a recognition
+source names the structural content supplied by that closure; and an
+apparatus theorem extracts the advertised mathematical consequence
+once that content is present.  The sibling results are mentioned here
+only as structural parallels, not as inputs to the RH argument.
+
+The SDTC structural law used in this paper is the involutive
+self-dual member of that family \cite{TsiokosSDTC2026}.  Its
+particular apparatus is the duality-confinement membrane theorem:
+given a separating anti-invariant readout and a vanishing trace
+domination sequence, the anti-invariant ledger collapses.  In the RH
+instance, the recognition source \(\GamSDTCSelberg\) supplies the
+domination records for \(\AZ\), and the bridge theorem in
+\Cref{thm:rh:dc-master-applied} applies the Paper 1 master theorem to
+\(\Sel\).  Thus the present paper is the worked single-substrate
+validation of SDTC on the saturated Selberg trace shell, just as the
+sibling tracks are worked validations of their own formed-layer
+structural laws.  The unconditional analytic content of any one of
+these tracks is not derived from a common primitive calculus; it is
+closure content of its formed layer, supplied as recognition source.
+This is why the parallels are useful but not load-bearing.  They show
+that the paper is following a stable formed-layer pattern inside the
+Six Birds program, while the actual RH argument still depends only on
+the RH-specific shell, the Paper 1 SDTC apparatus, and the
+Selberg-class recognition source.
+
+\paragraph{Classical RH programs.}
+The comparison with classical RH approaches should be made at the
+right level.  The present paper does not circumvent or refute the
+classical programs.  Hilbert--Pólya's spectral framing seeks an
+unconditional spectral interpretation of the zero set.  Connes'
+adelic and noncommutative-geometric framing seeks an unconditional
+trace-formula interpretation in a different geometric substrate.  De
+Branges' Hilbert spaces of entire functions program seeks an
+unconditional positivity mechanism in its own functional-analytic
+setting.  Beurling--Nyman seeks an unconditional density criterion in
+\(L^{p}\)-type spaces.  Weil's number-theoretic positivity framing
+seeks unconditional positivity through the explicit formula.  These
+are all programs aimed at unconditional RH inside classical
+mathematical substrates.
+
+The conditional theorem here lives at a different layer.  Its
+substrate is the typed saturated trace shell \(\Sel\), and its
+load-bearing hypothesis is \(\GamSDTCSelberg\), the recognition source
+that supplies domination records as closure content.  That distinction
+is sharpest in the comparison with Weil positivity.  Weil-style
+positivity is close in spirit to the target: it sees the
+explicit-formula positivity phenomena that a successful RH argument
+must control.  In the V-Differential classification, however, this is
+readout-level or target-adjacent content.  It does not by itself
+become the source-level content required by the duality-confinement
+mechanism, namely the formed-layer existence of completed domination
+records \(\AZ\preceq B_n\) with \(\trace B_n\to0\).  The development
+history records this audit-currency tension: classical positivity
+content may illuminate the right trace quantities, but it does not
+supply the recognition source used by the conditional landing chain.
+
+This distinction is the central comparison point for an
+outside-Six-Birds reader.  The paper is not claiming that the classical programs
+failed and that the present method bypasses them.  It is claiming a
+conditional theorem on a different object: the typed Selberg-class
+trace shell under the standard Six Birds closure assumption and the
+recognition source \(\GamSDTCSelberg\).  Accepting or rejecting the
+result therefore turns on whether one accepts that formed-layer
+recognition source as the correct structural input, not on whether
+one accepts a claimed classical proof of Weil positivity, a spectral
+operator, or a de Branges-space positivity theorem.
+Put differently, the paper changes the question being certified.  It
+does not certify an unconditional analytic construction of all zeros
+on the critical line.  It certifies that, once the saturated Selberg
+trace shell is admitted and the SDTC recognition source is supplied,
+the landing chain from domination records to \(\AZ=0\) to
+\(\Real(\rho)=1/2\) is direct.  This is exactly the conditional
+reading stated in \Cref{sec:landing_chain,sec:scope_and_nonclaims}.
+
+\paragraph{Future work.}
+Three extension targets are natural.  First, the admissibility of
+\(\Sel\) should be derived rather than carried as construction-time
+audit data.  In the present paper, \(\Sel\) contains an audit field
+recording admissibility with respect to the seven Foundations-II
+schemas.  A stronger formal development would unfold those schemas as
+predicates and verify them for the completed Selberg trace instance.
+This would replace a construction-time hypothesis by a derived
+formed-layer admissibility theorem.
+Such a derivation would not change Theorem T or the conditional
+landing chain; it would strengthen the construction of the shell on
+which those statements are evaluated.
+
+Second, the real-coordinate parameter identification should be
+formalized at the analytic level.  The current mathlib-free encoding
+uses a typed real-coordinate carrier, with the identification to the
+classical \(\Real(\rho)\) made at shell-construction time.  A stronger
+development would connect the typed zero ledger \(\Znt\) and its
+real-coordinate field to the actual nontrivial zeros of \(\zeta\) by
+analytic-number-theoretic infrastructure.  This would lift the
+real-part abstraction boundary disclosed in
+\Cref{sec:involution_and_ledger}.
+This is the extension most directly relevant to readers who want a
+fully classical interpretation of the typed zero ledger inside the
+formal system itself.
+
+Third, the natural generalization is to primitive Selberg-class
+\(L\)-functions.  The functional-equation involution, completed
+\(L\)-function, nontrivial-zero ledger, and anti-invariant ledger all
+have evident analogues for a primitive \(L\).  But the analogy is not
+itself a theorem.  Each \(L\) would need its own typed shell, its own
+admissibility verification, and its own recognition-source provenance
+argument.  The resulting statement would be a per-\(L\) conditional
+landing chain for the corresponding generalized Riemann hypothesis,
+not an automatic GRH theorem obtained by changing notation.
+The recognition-source question would also repeat for each \(L\):
+the formal similarity of the ledgers does not by itself provide the
+domination records.
+
+Among these, the admissibility derivation and the real-coordinate
+identification are closest to the existing formalization.  The GRH
+extension is structurally specified by the SDTC pattern, but its
+substantive realization is a per-\(L\) development problem.  The
+present paper should therefore be read as a worked single-substrate
+validation for \(L=\zeta\), not as the final form of the broader
+RH-for-\(L\) program.

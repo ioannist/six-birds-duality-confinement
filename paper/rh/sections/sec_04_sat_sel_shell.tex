@@ -1,6 +1,6 @@
 % RH paper — § The saturated Selberg trace closure
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body introducing the formed-layer shell \Sel and its
+% admissibility-as-hypothesis disclosure.
 %
 % statements-of-record rows resolved here: see
 % paper/rh/notes/section-outline.md (this file's row) and
@@ -9,6 +9,105 @@
 \section{The saturated Selberg trace closure}
 \label{sec:sat_sel_shell}
 
-% TODO: drafting populates this section per
-% paper/rh/notes/drafting-plan.md and
-% paper/rh/notes/section-outline.md.
+With the functional-equation involution, the anti-invariant readout,
+and the typed zero ledger in place, the formed-layer object of this
+paper can be named.  It is the saturated completed Selberg trace
+closure \(\Sel\).  In plain mathematical terms, \(\Sel\) is a typed
+shell that packages, in one structure, the carriers, trace
+instrument, quotient data, zero ledger, and audit data needed to apply
+the duality-confinement mechanism to the Riemann-zeta substrate.  The
+word ``saturated'' records the closure status of the shell; the phrase
+``completed Selberg trace'' records the substrate being organized:
+the completed zeta function together with the trace-relevant data
+through which the later domination records are stated.
+
+\begin{definition}[Saturated completed Selberg trace closure]
+\label{def:rh:sat-sel-shell}
+The saturated completed Selberg trace closure \(\Sel\) is a typed
+shell consisting of the following thirteen fields:
+\begin{enumerate}[label=\textup{(\arabic*)}]
+  \item \(H_L\), the completed \(L\)-history carrier;
+  \item \(\Itr\), a lawful trace instrument;
+  \item \(\mathrm{EQ}_{\mathrm{tr}}\), the saturated trace-observable
+        family;
+  \item \(\mathrm{EM}_{\mathrm{zero}}\), the predictive verifier
+        events for the zero-side data;
+  \item \(Q_L\), the current quotient carrier \(H_L/{\sim_Q}\);
+  \item \(M_L\), the predictive quotient carrier \(H_L/{\sim_M}\);
+  \item \(\pi_L : M_L\to Q_L\), the comparison map between the two
+        quotient sides;
+  \item \(\JL\), the functional-equation involution from
+        \Cref{def:rh:fe-involution};
+  \item \(\Lambda_L\), the completed \(L\)-function, specialized here
+        to \(\Lzeta\);
+  \item \(\Znt\), the nontrivial-zero ledger from
+        \Cref{def:rh:nontrivial-zero-ledger};
+  \item \(\AZ\), the anti-invariant zero ledger from
+        \Cref{def:rh:anti-invariant-zero-ledger};
+  \item \(\mathrm{Vis}_{L}\), the instrument-relative visibility map;
+  \item \(\mathrm{Audit}_{L}\), the audit provenance and admissibility
+        field for the shell.
+\end{enumerate}
+The standing assumption attached to \(\Sel\) is that this shell is
+admissible for the relevant Foundations-II formation schemas.
+\end{definition}
+
+The field list separates the three kinds of data that will be used
+below.  The first cluster, \(H_L,\mathrm{EQ}_{\mathrm{tr}},
+\mathrm{EM}_{\mathrm{zero}},Q_L,M_L\), and \(\pi_L\), records the
+history and quotient architecture of the formed closure.  These fields
+say which typed carrier is being studied, which trace observables are
+available, which verifier events have been retained, and how the
+current and predictive quotient views are compared.  They are not a
+new analytic construction of the zeta function; they are the
+formed-layer bookkeeping that lets the trace mechanism refer to the
+same substrate throughout the paper.
+
+The second cluster contains the load-bearing RH objects from
+\Cref{sec:involution_and_ledger}.  The involution \(\JL\) supplies the
+critical-line symmetry.  The completed function \(\Lambda_L=\Lzeta\)
+names the zeta substrate whose nontrivial zeros populate \(\Znt\).
+The ledger \(\Znt\) carries the multiplicity-weighted zero data, and
+\(\AZ\) is the nonnegative scalar built from the signed readout
+\(\psimRH\).  These are the fields through which the later translation
+theorem speaks: \(\AZ=0\) is the trace-side statement that will be
+converted into the critical-line statement for all zeros in \(\Znt\).
+
+The third cluster, \(\Itr,\mathrm{Vis}_{L}\), and
+\(\mathrm{Audit}_{L}\), is the instrument and audit layer.  The trace
+instrument \(\Itr\) is the lawful trace functional attached to the
+positive-cone side of the shell.  The visibility map records which
+instrument-relative observations are available at the formed layer.
+The audit field records the provenance of the construction-time data
+and carries the admissibility status of the shell.  This is the
+precise sense in which \(\Sel\) is the object on which the conditional
+landing chain operates: it is not merely a list of zeros, but a typed
+trace shell in which the zero ledger, trace instrument, and audit
+status coexist.
+
+An important encoding disclosure belongs to this definition.  The
+admissibility of \(\Sel\) with respect to the seven Foundations-II
+schemas is encoded as a Foundations-II-level hypothesis carried by
+\(\mathrm{Audit}_{L}\) \cite{TsiokosFoundationsII2026}.  It is not
+derived in this paper from a separate construction of the completed
+Selberg trace instance.  A substantive formal derivation of
+admissibility would require unfolding those seven schemas as explicit
+predicates and verifying each one for the completed-zeta trace shell.
+For the present paper, admissibility is a standing assumption of the
+typed shell, recorded at construction time in the audit field.
+
+The Selberg trace formula context behind the terminology is the
+classical trace-formula machinery associated with Selberg's original
+work and later expositions such as Iwaniec's \emph{Spectral Methods
+of Automorphic Forms} and the Iwaniec--Kowalski analytic number
+theory text.  Those classical references belong to the external
+bibliography curation stage.  Here the role of that context is more
+specific: the paper uses the typed shell above to record exactly what
+the duality-confinement mechanism needs from the Selberg trace setting
+without re-developing the full analytic trace-formula apparatus.
+
+The next section proves translation theorem T: \(\AZ=0\) is
+equivalent to the RH statement on the typed zero ledger of \(\Sel\).
+With that translation in place and the recognition source supplied in
+\Cref{sec:recognition_source}, the conditional landing chain can apply
+the duality-confinement master theorem from the companion paper.

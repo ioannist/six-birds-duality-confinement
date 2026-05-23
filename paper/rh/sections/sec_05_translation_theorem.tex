@@ -1,6 +1,6 @@
 % RH paper — § Translation theorem T
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Pass A drafted: biconditional statement and role in the landing chain.
+% Pass B adds the forward and reverse positivity proofs.
 %
 % statements-of-record rows resolved here: see
 % paper/rh/notes/section-outline.md (this file's row) and
@@ -9,6 +9,150 @@
 \section{Translation theorem T}
 \label{sec:translation_theorem}
 
-% TODO: drafting populates this section per
-% paper/rh/notes/drafting-plan.md and
-% paper/rh/notes/section-outline.md.
+With the saturated trace shell \(\Sel\) in hand, the next step is to
+translate the typed-ledger statement \(\AZ=0\) into the
+number-theoretic critical-line statement.  This translation is
+elementary.  It uses only the definition of \(\AZ\) as a
+multiplicity-weighted sum of squared signed displacements from the
+critical line.  Its importance is structural: the
+duality-confinement mechanism will later deliver \(\AZ=0\), and
+translation theorem T is the bridge that turns this ledger vanishing
+into the RH statement on the typed zero ledger.
+
+The theorem is stated on the zero ledger carried by \(\Sel\).  The
+real-part coordinate is the typed coordinate fixed in
+\Cref{sec:involution_and_ledger}; under the construction-parameter
+assignment described there, this typed statement is the corresponding
+classical assertion about the real parts of nontrivial zeros of
+\(\zeta\).
+
+\begin{theorem}[Translation theorem T]
+\label{thm:rh:translation-T}
+On the typed zero ledger \(\Znt\) of the saturated completed Selberg
+trace closure \(\Sel\),
+\[
+  \AZ=0
+  \quad\Longleftrightarrow\quad
+  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
+\]
+Equivalently, the anti-invariant zero ledger vanishes if and only if
+every typed zero lies on the critical line \(\Fix(\JL)\).
+\end{theorem}
+
+The plain mathematical content is a direct positivity argument.  For
+each typed zero \(\rho\), the summand
+\[
+  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}
+  =
+  m_{\rho}\left|\psimRH(\rho)\right|^{2}
+\]
+is nonnegative, and the multiplicity \(m_{\rho}\) is positive by the
+definition of \(\Znt\).  Thus a zero value of \(\AZ\) can only occur
+when every squared displacement is zero.  Conversely, if every typed
+zero has \(\Real(\rho)=1/2\), then every displacement term is zero and
+the entire sum defining \(\AZ\) is zero.  The forward and reverse
+directions are short enough to be written out explicitly; they are the
+content of the next pass of this section.
+
+This theorem is what makes the conditional landing chain land on RH
+rather than on an internal trace statement.  The trace-side output of
+the later argument is \(\AZ=0\).  Theorem T converts that output into
+the assertion that every \(\rho\in\Znt\) satisfies
+\(\Real(\rho)=1/2\), which is precisely RH on the typed zero ledger of
+\(\Sel\).  No recognition-source content is used in this translation:
+Theorem T depends only on \(\Znt\), the positive multiplicities
+\(m_{\rho}\), the readout \(\psimRH\), and the definition of \(\AZ\).
+
+For that reason, Theorem T should be read as a translation theorem
+rather than as the place where the conditional content enters.  It
+does not assume RH, does not use the recognition source, and does not
+invoke a trace-formula positivity theorem.  Its positivity is the
+elementary positivity of a finite multiplicity-weighted sum of
+squares.  The later sections supply a structural reason for the
+left-hand side, \(\AZ=0\), to hold under the stated conditional
+hypothesis.  Once that left-hand side is available, the theorem above
+contains the entire conversion to the right-hand side.
+
+Lean proves translation theorem T, as recorded in the formalization
+appendix.  The biconditional combines the forward and reverse halves,
+both of which are themselves verified on the typed zero ledger with
+faithful semantic alignment.  The statement is proven by direct
+positivity argument in both directions: it uses finite typed-multiset
+summation, positive multiplicities, and nonnegativity of the squared
+anti-invariant readout, not any recognition-source hypothesis.
+
+The forward and reverse halves follow.
+
+Both halves of the biconditional admit short positivity-based proofs.
+
+\begin{theorem}[Translation theorem T, forward direction]
+\label{thm:rh:translation-T-forward}
+On the typed zero ledger \(\Znt\) of \(\Sel\), if \(\AZ=0\), then
+\[
+  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
+\]
+\end{theorem}
+
+\begin{proof}
+By definition,
+\[
+  \AZ
+    =
+  \sum_{\rho\in\Znt}
+    m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}.
+\]
+For every typed zero \(\rho\), the multiplicity satisfies
+\(m_{\rho}>0\), and the square
+\(\left|\Real(\rho)-1/2\right|^{2}\) is nonnegative.  Hence every
+summand is nonnegative.  If \(\AZ=0\), then the finite sum of these
+nonnegative summands is zero, so each summand must be zero.  Therefore
+\[
+  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}=0
+\]
+for each \(\rho\in\Znt\).  Since \(m_{\rho}>0\), the squared factor
+must be zero.  Thus \(\Real(\rho)-1/2=0\), and hence
+\(\Real(\rho)=1/2\).
+\end{proof}
+
+Lean proves the forward direction of Theorem T, as recorded in the
+formalization appendix.
+
+\begin{theorem}[Translation theorem T, reverse direction]
+\label{thm:rh:translation-T-reverse}
+On the typed zero ledger \(\Znt\) of \(\Sel\), if
+\[
+  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2},
+\]
+then \(\AZ=0\).
+\end{theorem}
+
+\begin{proof}
+Assume that every \(\rho\in\Znt\) satisfies \(\Real(\rho)=1/2\).
+Then
+\[
+  \Real(\rho)-\frac{1}{2}=0
+\]
+for every typed zero, and therefore
+\[
+  \left|\Real(\rho)-\frac{1}{2}\right|^{2}=0.
+\]
+Each summand in the definition of \(\AZ\) is consequently
+\[
+  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}
+    =
+  m_{\rho}\cdot 0
+    =
+  0.
+\]
+Thus \(\AZ\) is a finite sum of zero summands, so \(\AZ=0\).
+\end{proof}
+
+Lean proves the reverse direction of Theorem T, as recorded in the
+formalization appendix.
+
+Together, the two halves give the biconditional of
+\Cref{thm:rh:translation-T}.  Theorem T is now in place: \(\AZ=0\) if
+and only if every typed zero lies on the critical line.  The remaining
+structural task is to supply the recognition source that delivers
+\(\AZ=0\) through the duality-confinement mechanism, which is the
+subject of \Cref{sec:recognition_source} and \Cref{sec:landing_chain}.

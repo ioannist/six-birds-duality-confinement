@@ -1,6 +1,6 @@
 % RH paper — § The conditional landing chain
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Pass A drafted: Paper 1 master-theorem reproduction and the
+% RH-specific bridge theorem. Pass B adds the headline conditional.
 %
 % statements-of-record rows resolved here: see
 % paper/rh/notes/section-outline.md (this file's row) and
@@ -9,6 +9,187 @@
 \section{The conditional landing chain}
 \label{sec:landing_chain}
 
-% TODO: drafting populates this section per
-% paper/rh/notes/drafting-plan.md and
-% paper/rh/notes/section-outline.md.
+The previous section identified the structural input needed by the RH
+closure: the recognition source \(\GamSDTCSelberg\) supplies a
+sequence of domination records for the anti-invariant zero ledger
+\(\AZ\).  The present section begins the landing chain by importing
+the one abstract theorem from the sibling paper that acts on such a
+sequence.  Paper 1 \cite{TsiokosSDTC2026} states the following
+duality-confinement membrane theorem, reproduced verbatim here for
+reference.
+
+\begin{theorem}[Duality-confinement membrane theorem]
+Let \(\IOL\) be an involutive object ledger with carrier \(X\),
+involution \(J\), measure \(\mu\), anti-invariant readout
+\(\psim\), and anti-invariant ledger \(\AX\).  Assume that
+\(\psim\) is qualitatively separating.  Suppose there is a sequence
+of positive cone elements \(B_n\) such that
+\[
+  \AX\preceq B_n
+  \qquad (n=1,2,\ldots)
+\]
+and
+\[
+  \trace B_n\to0
+  \qquad (n\to\infty).
+\]
+Then \(\AX=0\) in the typed positive cone.  Consequently,
+\[
+  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
+\]
+\end{theorem}
+
+Two points about the imported theorem are important for the RH
+application.  First, it is a typed positive-cone statement: it needs
+an order \(\preceq\), a trace functional \(\trace\), and a separating
+anti-invariant readout, but it does not ask for an independent
+classical analytic proof of RH.  Second, the theorem consumes
+domination records; it does not supply their source.  In the present
+paper that source is exactly \(\GamSDTCSelberg\), introduced in
+\Cref{sec:recognition_source}.
+
+We now apply this theorem to the Selberg-class instance.  The
+abstract involutive object ledger becomes the saturated completed
+Selberg trace closure \(\Sel\) restricted to its typed zero ledger.
+The abstract carrier \(X\) is the zero-carrier underlying \(\Znt\);
+the involution \(J\) becomes the functional-equation involution
+\(\JL\); the measure \(\mu\) becomes the multiplicity-weighted zero
+measure; the separating readout \(\psim\) becomes the signed
+real-part displacement \(\psimRH\); and the anti-invariant ledger
+\(\AX\) becomes the anti-invariant zero ledger \(\AZ\).
+
+\begin{theorem}[Duality-confinement master theorem, applied to \(\Sel\)]
+\label{thm:rh:dc-master-applied}
+Let \(\Sel\) be the saturated completed Selberg trace closure with
+functional-equation involution \(\JL\), separating anti-invariant
+readout \(\psimRH\), and anti-invariant zero ledger \(\AZ\).  Suppose
+there is a sequence \(B_n\) of positive cone elements such that
+\[
+  \AZ\preceq B_n
+  \qquad (n=1,2,\ldots)
+\]
+and
+\[
+  \trace B_n\to0
+  \qquad (n\to\infty).
+\]
+Then \(\AZ=0\) in the typed positive cone associated to \(\Sel\).
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+This is the duality-confinement membrane theorem of Paper 1
+\cite{TsiokosSDTC2026} applied under the substitutions just listed.
+The qualitative-separation hypothesis is the concrete calculation of
+\Cref{def:rh:psi-minus-rh}: \(\psimRH(s)=0\) exactly on
+\(\Fix(\JL)\), and \(\psimRH(\JL(s))=-\psimRH(s)\).  The domination
+records are precisely the records supplied by the recognition source
+of \Cref{obl:rh:gamma-sdtc-selberg}.  Once the records give
+\(\AZ\preceq B_n\) and \(\trace B_n\to0\), the typed-cone squeeze of
+Paper 1 forces \(\AZ=0\).
+\end{proof}
+
+The bridge theorem is therefore the point at which the conditional
+input from \(\GamSDTCSelberg\) becomes the concrete ledger equality
+\(\AZ=0\).  In the notation of Paper 1, the fixed-locus consequence
+would say that the typed zero-ledger mass is confined to
+\(\Fix(\JL)\), the critical line.  In the notation of the present
+paper, Theorem T gives the sharper pointwise formulation on the
+finite typed ledger: every \(\rho\in\Znt\) has
+\(\Real(\rho)=1/2\).
+
+Lean derives this RH-specific application of the master theorem, as
+recorded in the formalization appendix.  The formal proof imports the
+Paper 1 master theorem and instantiates it on the typed zero ledger
+through the bridge parameter carrying the shell-specific measure and
+readout data into the master theorem's hypotheses.
+
+The pointwise critical-line conclusion is now one step away: the
+headline conditional theorem composes \(\GamSDTCSelberg\), the bridge
+theorem above, and the forward direction of Theorem T.
+
+Composing the recognition source from \Cref{sec:recognition_source}
+with the bridge theorem above and the forward direction of Theorem T
+yields the headline conditional landing chain.
+
+\begin{theorem}[Conditional landing chain]
+\label{thm:rh:conditional}
+Let \(\Sel\) be a saturated completed Selberg trace closure.  Under
+the standing assumption that \(\Sel\) is Foundations-II admissible,
+and given the recognition source \(\GamSDTCSelberg\), the
+Selberg-class instance of Self-Dual Trace Confinement supplied by
+Paper 1 \cite{TsiokosSDTC2026}, the Riemann hypothesis holds on the
+typed zero ledger \(\Znt\) of \(\Sel\): every typed nontrivial zero
+\(\rho\in\Znt\) satisfies
+\[
+  \Real(\rho)=\frac{1}{2}.
+\]
+\end{theorem}
+
+\begin{proof}
+The proof is a direct three-step chain.  First, the recognition
+source \(\GamSDTCSelberg\), as stated in
+\Cref{obl:rh:gamma-sdtc-selberg}, supplies a sequence \(B_n\) of
+positive cone elements with
+\[
+  \AZ\preceq B_n,
+  \qquad
+  \trace B_n\to0.
+\]
+Second, \Cref{thm:rh:dc-master-applied} applies the
+duality-confinement master theorem to this Selberg-class instance and
+therefore gives \(\AZ=0\) in the typed positive cone associated to
+\(\Sel\).  Third, the forward direction of translation theorem T,
+\Cref{thm:rh:translation-T-forward}, converts \(\AZ=0\) into
+\[
+  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
+\]
+\end{proof}
+
+The conditional structure of this result is essential.  The theorem
+asserts that, under the standing Foundations-II admissibility of
+\(\Sel\) recorded in \Cref{def:rh:sat-sel-shell}, under the Six Birds
+closure-content discipline that treats \(\GamSDTCSelberg\) as
+supplied structural content of the formed self-dual Selberg trace
+layer, and under the typed real-coordinate identification described in
+\Cref{sec:involution_and_ledger}, every typed nontrivial zero of the
+saturated Selberg trace shell lies on the critical line.  Outside the
+Six Birds framing, the result reads as the conditional theorem
+\[
+  \GamSDTCSelberg \Longrightarrow \mathrm{RH},
+\]
+not as an unconditional proof of RH in standard ZFC.  The conditional
+structure is preserved by the formalization: the conditional landing
+chain takes a value of the recognition-source carrier as an explicit
+hypothesis parameter.
+
+The same conclusion can also be rendered in the framework's BirdInt
+judgment form.  A BirdInt judgment is a framework-relative typed
+sequent: it packages a source, a formed layer, an instrument, and a
+proposition together with the audit data that records the judgment's
+status \cite{TsiokosFoundationsIII2026}.  In the present case the
+judgment reads schematically as
+\[
+  \GamSDTCSelberg;\ \Sel;\ \Itr
+  \;\vdash\;
+  \bigl(\forall\,\rho\in\Znt,\ \Real(\rho)=\tfrac{1}{2}\bigr)
+  : \mathrm{accepted}.
+\]
+This framework rendering is not load-bearing for the proof above; it
+records the same conditional theorem in the audited judgment
+vocabulary used by Foundations III.
+
+Lean proves the conditional landing chain, as recorded in the
+formalization appendix, with the recognition source supplied as an
+explicit hypothesis parameter.  The formal realization takes a value
+of the typed-structure carrier representing \(\GamSDTCSelberg\) as
+input, applies the bridge theorem
+\Cref{thm:rh:dc-master-applied}, and then applies the forward
+direction of translation theorem T,
+\Cref{thm:rh:translation-T-forward}.  The resulting conclusion is the
+typed-ledger statement that every typed nontrivial zero of \(\Sel\)
+lies on the critical line.
+
+This completes the conditional landing chain.  The scope, nonclaim
+discipline, structural-program positioning, and pending formalization
+extensions are the subject of \Cref{sec:scope_and_nonclaims} and the
+sections that follow.

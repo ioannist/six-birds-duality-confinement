@@ -1,6 +1,7 @@
 % RH paper — App D Formalization
-% Appendix file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body pass A: disclosure discipline, typed-cone overview,
+% representation note, recognition-source carrier disclosure, and
+% cross-paper Lean-import note.
 %
 % This appendix renders the per-row Lean-coverage table for all 11
 % RH inventory rows (10 mechanize_now + 1 recognition_source) plus
@@ -14,5 +15,326 @@
 \section{Lean formalization}
 \label{app:formalization}
 
-% TODO: drafting populates this appendix per
-% paper/rh/notes/drafting-plan.md dispatches.
+This appendix records how the Lean development is cited by the RH
+paper.  The governing rule is that the prose must distinguish a
+theorem proved in Lean, a definition realized as a Lean structure, a
+recognition source encoded as a typed carrier, and material merely
+tracked by the formalization harness.  The body sections use
+paper-level mathematical names except where a disclosure explicitly
+requires Lean syntax; full Lean identifiers and module-level
+bookkeeping appear here.
+
+\subsection*{Disclosure discipline}
+
+\begin{table}[H]
+\centering
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.23\linewidth}
+  >{\raggedright\arraybackslash}p{0.30\linewidth}
+  >{\raggedright\arraybackslash}X}
+\toprule
+Mode & Permitted wording & Use in this paper \\
+\midrule
+\texttt{lean\_substantive} &
+``Lean proves the result,'' ``a Lean derivation establishes the
+statement,'' or equivalent wording. &
+Used only when the Lean theorem has faithful semantic alignment with
+the paper statement.  In this paper this covers Theorem~T
+(\texttt{translationTForward}, \texttt{translationTReverse}, and
+\texttt{translationT}), the RH-specific bridge
+\texttt{dcMasterApplied}, and the conditional landing chain
+\texttt{rhConditional}. \\
+\texttt{definition\_entry} &
+``realized in Lean as the corresponding structure or definition.'' &
+Used for the functional-equation involution, the anti-invariant
+readout, the nontrivial-zero ledger, the anti-invariant zero ledger,
+and the saturated completed Selberg trace shell.  Definitions are not
+described as proved. \\
+\begin{tabular}[t]{@{}l@{}}\texttt{typed}\\\texttt{structure}\\\texttt{carrier}\end{tabular} &
+``encoded as a typed structure carrier'' and explicitly ``not a Lean
+axiom.'' &
+Used for the recognition source \(\GamSDTCSelberg\).  This is the
+Paper~2-specific mode: the carrier records the supplied
+formed-layer content and downstream theorems take a value of that
+carrier as an explicit hypothesis. \\
+\texttt{harness\_tracked} &
+``tracked by the formalization harness.'' &
+Included for cross-paper wording consistency.  No RH inventory row
+uses this mode; it is the wording used when a formal object is a
+projection over an explicit auxiliary hypothesis rather than a
+substantive theorem derivation. \\
+\bottomrule
+\end{tabularx}
+\caption{Lean-disclosure wording used by the RH paper.}
+\label{tab:rh-lean-disclosure-discipline}
+\end{table}
+
+The validator audits the theorem rows against the project trust base
+and checks that no forbidden Lean tokens appear in the source tree.
+The coverage table in the next pass renders the eleven RH inventory
+rows using the modes in \Cref{tab:rh-lean-disclosure-discipline}.
+
+\subsection*{Typed positive-cone encoding}
+
+The formalization uses the same mathlib-free typed positive-cone
+interface as Paper~1.  The interface records exactly the primitives
+used by the arguments: an order \(\preceq\), a trace functional
+\(\trace\), trace monotonicity under the order, nonnegativity of the
+relevant scalar summands, and the positivity-to-zero principles that
+turn vanishing trace or vanishing square into vanishing obstruction.
+No full Hilbert-space operator theory is imported.  The point of the
+encoding is to isolate the trace-order content needed by the
+duality-confinement membrane theorem and by the RH translation
+argument.
+
+For the RH paper, this typed cone is the substrate on which the
+anti-invariant zero ledger \(\AZ\) lives.  Theorem~T is a finite
+typed-multiset argument over this cone: \(\AZ\) is the
+multiplicity-weighted sum of squared anti-invariant readout values,
+so \(\AZ=0\) is equivalent to every typed zero lying on the critical
+line.  The bridge theorem \texttt{dcMasterApplied} then applies the
+Paper~1 master theorem to this RH-specific typed cone.  A full
+operator-theoretic realization over trace-class operators or over the
+classical Selberg trace formula apparatus is an extension target, not
+a hidden claim of the Lean development.
+
+\subsection*{Representation note A3: real-part coordinate}
+
+The RH formalization contains one representation note specific to the
+zero ledger.  The paper definition of \(\AZ\) uses the classical
+expression \(\Real(\rho)-1/2\).  In the mathlib-free Lean
+development, however, the real-part coordinate is parameterized by a
+typed carrier \texttt{RealCoordinate}, not by the standard
+\(\mathbb{R}\) with analytic-number-theoretic infrastructure.  The
+carrier supplies the algebraic structure needed for the proof:
+\(1/2\), subtraction from \(1/2\), squaring, nonnegativity of squares,
+and the implication that a zero square displacement forces equality
+with \(1/2\).
+
+The identification of \texttt{RealCoordinate} with the actual
+\(\mathbb{R}\)-valued real part of a classical nontrivial zero of
+\(\zeta\) is made by construction-parameter assignment when the
+shell \(\Sel\) is instantiated.  It is not a derived Lean predicate.
+This is forced by the mathlib-free constraint: the development does
+not import the standard real-analysis and complex-analytic
+infrastructure needed to prove inside Lean that the typed coordinate
+equals the classical real-part function on zeta zeros.  The body
+discloses this point in the ledger section; the present appendix
+records the encoding rationale.  A substantive Lean derivation of
+this identification is one of the open extensions named in
+\Cref{sec:discussion}.
+
+\subsection*{Recognition-source carrier}
+
+The recognition source \(\GamSDTCSelberg\) is the distinctive formal
+object of the RH paper.  It is realized in Lean as a typed structure
+carrier \texttt{GammaSdtcSelberg}.  Its fields encode the abstract
+requirements supplied by the Selberg-class instance of
+Self-Dual Trace Confinement: in particular, the existence of a
+domination-record sequence on \(\Sel\) witnessing
+\[
+  \AZ \preceq B_n,
+  \qquad
+  \trace B_n \to 0 .
+\]
+The carrier is declared inline in the Lean module that consumes it,
+\texttt{RHConditional.lean}, following the placement convention that
+a type with a single consumer lives next to that consumer.
+
+This carrier is not a Lean axiom.  The project-wide forbidden-tokens
+rule bans \texttt{axiom}, \texttt{opaque}, \texttt{constant},
+\texttt{sorry}, and \texttt{admit} throughout the source tree.
+Consequently, the recognition source is supplied as a typed-record
+hypothesis, not as a postulated logical axiom.  The conditional
+landing-chain theorem \texttt{rhConditional} takes a value of this
+carrier as an explicit hypothesis parameter,
+\(\gamma : \texttt{GammaSdtcSelberg shell}\).  This is the formal
+counterpart of the structural-law discipline in the body: closure
+content of a formed layer is named as a recognition source, not added
+as a metalogical postulate.
+
+\subsection*{Cross-paper Lean import}
+
+Paper~2 imports the duality-confinement master theorem from Paper~1.
+The Lean theorem \texttt{dcMasterApplied} imports
+\nolinkurl{SixBirdsDualityConfinement.DualityConfinement.MasterTheorem.masterTheorem}
+and instantiates it on the Selberg-class data.  The parameter
+substitution is the formal version of the body proof: \(\Sel\) plays
+the role of \(\IOL\), \(\AZ\) plays the role of \(\AX\), \(\JL\)
+plays the role of \(J\), \(\psimRH\) plays the role of \(\psim\), and
+the multiplicity-weighted zero measure plays the role of \(\mu\).
+The bridge parameter \texttt{mu\_zero\_of\_ae} carries the
+shell-specific separation data into the master theorem's hypotheses.
+This is a one-way cross-paper Lean import, matching the paper-level
+dependency on Paper~1's SDTC apparatus \cite{TsiokosSDTC2026}.
+
+The per-row coverage table for the eleven Paper~2 inventory entries,
+followed by the six-gates audit detail, appears next.
+
+\begin{table}[H]
+\centering
+\tiny
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{@{}
+  >{\raggedright\arraybackslash}p{0.14\linewidth}
+  >{\raggedright\arraybackslash}p{0.16\linewidth}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}p{0.18\linewidth}
+  >{\raggedright\arraybackslash}p{0.105\linewidth}
+  >{\raggedright\arraybackslash}p{0.09\linewidth}@{}}
+\toprule
+Paper label & Paper-prose name & Lean declaration &
+Proof mode & Coverage & Alignment \\
+\midrule
+\nolinkurl{def:rh:fe-involution} &
+functional-equation involution \(\JL\) &
+\nolinkurl{SixBirdsDualityConfinement.RH.Involution.feInvolution} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{def:rh:psi-minus-rh} &
+anti-invariant readout \(\psimRH(s)=\Real(s)-1/2\) &
+\nolinkurl{SixBirdsDualityConfinement.RH.Involution.psiMinusRh} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{def:rh:nontrivial-zero-ledger} &
+nontrivial-zero ledger \(\Znt\) &
+\nolinkurl{SixBirdsDualityConfinement.RH.ZeroLedger.NontrivialZeroLedger} &
+definition entry; A3 real-part abstraction &
+definition &
+faithful \\
+
+\nolinkurl{def:rh:anti-invariant-zero-ledger} &
+anti-invariant zero ledger \(\AZ\) &
+\nolinkurl{SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger.AntiInvariantZeroLedger} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{def:rh:sat-sel-shell} &
+saturated completed Selberg trace closure \(\Sel\) &
+\nolinkurl{SixBirdsDualityConfinement.RH.SatSelShell.SatSelShell} &
+definition entry; admissibility as \(\mathrm{Audit}_L\) hypothesis &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:translation-T-forward} &
+Theorem~T, forward direction &
+\nolinkurl{SixBirdsDualityConfinement.RH.TranslationT.translationTForward} &
+lean substantive &
+theorem &
+faithful \\
+
+\nolinkurl{thm:rh:translation-T-reverse} &
+Theorem~T, reverse direction &
+\nolinkurl{SixBirdsDualityConfinement.RH.TranslationT.translationTReverse} &
+lean substantive &
+theorem &
+faithful \\
+
+\nolinkurl{thm:rh:translation-T} &
+translation theorem T, biconditional &
+\nolinkurl{SixBirdsDualityConfinement.RH.TranslationT.translationT} &
+lean substantive &
+theorem &
+faithful \\
+
+\nolinkurl{obl:rh:gamma-sdtc-selberg} &
+recognition source \(\GamSDTCSelberg\) &
+\nolinkurl{SixBirdsDualityConfinement.RH.RHConditional.GammaSdtcSelberg} &
+typed structure carrier; not a Lean axiom; inline in
+\texttt{RHConditional.lean} &
+recognition source &
+not applicable \\
+
+\nolinkurl{thm:rh:dc-master-applied} &
+duality-confinement master theorem applied to \(\Sel\) &
+\nolinkurl{SixBirdsDualityConfinement.RH.DCMasterApplied.dcMasterApplied} &
+lean substantive; imports Paper~1 \texttt{masterTheorem} via
+\texttt{mu\_zero\_of\_ae} &
+theorem &
+faithful \\
+
+\nolinkurl{thm:rh:conditional} &
+conditional landing chain &
+\nolinkurl{SixBirdsDualityConfinement.RH.RHConditional.rhConditional} &
+lean substantive; takes
+\(\gamma : \texttt{GammaSdtcSelberg shell}\) explicitly &
+theorem &
+faithful \\
+\bottomrule
+\end{tabularx}
+\caption{Per-row Lean coverage for the eleven Paper~2 inventory entries.}
+\label{tab:rh-formalization-coverage}
+\end{table}
+
+Three rows in \Cref{tab:rh-formalization-coverage} carry explicit
+encoding-disclosure notes: A3 for the nontrivial-zero ledger,
+admissibility as the \(\mathrm{Audit}_L\) hypothesis for \(\Sel\),
+and typed-structure-carrier treatment for \(\GamSDTCSelberg\).  All
+ten mechanize-now entries have faithful semantic alignment.  The
+single recognition-source row has semantic alignment marked not
+applicable because it is a typed hypothesis carrier, not a theorem.
+The cross-paper Lean import in
+\nolinkurl{SixBirdsDualityConfinement.RH.DCMasterApplied.dcMasterApplied}
+is the only Lean-side dependency from Paper~2 back to Paper~1.
+
+\subsection*{No-smuggling gates}
+
+The final audit layer is paper-side discipline rather than a family
+of Lean predicates.  It checks that the conditional theorem says
+exactly what its hypotheses support and that no structural input has
+been hidden inside the prose.
+
+\begin{description}[leftmargin=0pt,labelsep=0.75em,itemsep=0.35em]
+\item[Gate 1: no overreading.]
+The conclusion is conditional on \(\GamSDTCSelberg\) and on
+Foundations-II admissibility of \(\Sel\).  The typed-ledger
+conclusion is exactly the parameterized statement
+\(\rho\in\Znt \Rightarrow \Real(\rho)=1/2\).
+
+\item[Gate 2: no undisclosed hypothesis.]
+Every load-bearing assumption is named: the recognition source
+\(\GamSDTCSelberg\), the \(\mathrm{Audit}_L\) admissibility field,
+the typed real-coordinate identification, and the typed positive-cone
+primitives.
+
+\item[Gate 3: no hidden mechanism.]
+The proof composition is explicit.  The recognition source supplies
+domination records, \Cref{thm:rh:dc-master-applied} yields
+\(\AZ=0\), and \Cref{thm:rh:translation-T-forward} yields the
+critical-line statement on \(\Znt\).
+
+\item[Gate 4: no conflation of grades.]
+Recognition-source content and theorem-grade content are separated.
+\(\GamSDTCSelberg\) is a recognition source; Theorem~T is a direct
+positivity theorem; \texttt{dcMasterApplied} is the theorem-level
+application of Paper~1's master theorem; and \texttt{rhConditional}
+is the theorem-grade conditional composition.
+
+\item[Gate 5: no axiom smuggling.]
+\(\GamSDTCSelberg\) is a typed structure carrier, not a Lean axiom.
+The forbidden-tokens audit excludes \texttt{axiom}, \texttt{opaque},
+\texttt{constant}, \texttt{sorry}, and \texttt{admit} from active
+Lean source.
+
+\item[Gate 6: no undisclosed cross-paper import.]
+Paper~2's use of Paper~1 is explicit.  The body reproduces the
+duality-confinement master theorem statement, and
+\texttt{dcMasterApplied} is the named Lean-side cross-paper import.
+
+\item[Gate 7: recognition-source provenance.]
+The recognition source is documented as the Selberg-class instance of
+Paper~1's SDTC structural law, and the development history records
+the three-route derivation sweep showing that framework primitives do
+not derive it.  This is the recognition-source provenance audit; it
+is the no-overreading suppression check in the Foundations-III
+audited vocabulary \cite{TsiokosFoundationsIII2026}.
+\end{description}
+
+These seven checks are part of the paper's audit presentation.  They
+do not add hypotheses to the Lean theorems, and they are not
+themselves advertised as Lean-mechanized predicates.

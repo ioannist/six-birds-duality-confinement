@@ -1,6 +1,6 @@
 % RH paper — § Conclusion
-% Section file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
+% Drafted body: compact restatement of the conditional landing chain,
+% pending extensions, and reproducibility statement.
 %
 % statements-of-record rows resolved here: none (this section is
 % conclusion / restatement; no theorem/definition rows resolve here).
@@ -8,6 +8,57 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-% TODO: drafting populates this section per
-% paper/rh/notes/drafting-plan.md and
-% paper/rh/notes/section-outline.md.
+The paper has established the RH closure in its conditional form.  If
+\(\Sel\) is a saturated completed Selberg trace closure satisfying
+the standing Foundations-II admissibility assumption, and if the
+Selberg-class recognition source \(\GamSDTCSelberg\) is supplied by
+the SDTC structural law of Paper 1 \cite{TsiokosSDTC2026}, then every
+typed nontrivial zero in \(\Znt\) lies on the critical line:
+\[
+  \rho\in\Znt \quad\Longrightarrow\quad \Real(\rho)=\frac12 .
+\]
+The proof is the two-step landing chain developed above.  The
+recognition source supplies domination records for \(\AZ\); Paper 1's
+duality-confinement membrane theorem converts those records into
+\(\AZ=0\); and translation theorem T converts \(\AZ=0\) into the
+critical-line statement on the typed zero ledger.
+
+The conditional structure is essential.  Outside the Six Birds
+framework, the result should be read as the implication
+\[
+  \GamSDTCSelberg \Longrightarrow \mathrm{RH}
+\]
+on the typed zero ledger, not as an unconditional proof of RH in
+standard ZFC.  Acceptance of the conclusion turns on two supplied
+pieces of formed-layer structure: the recognition source
+\(\GamSDTCSelberg\), which is closure content of the formed self-dual
+Selberg trace layer, and the admissibility of \(\Sel\), recorded by
+the \(\mathrm{Audit}_L\) field of the shell.  The theorem is therefore
+sharp as a conditional theorem and deliberately does not collapse
+those hypotheses into unmentioned background assumptions.
+
+Three extension targets remain.  First, a substantive Lean derivation
+of the admissibility of \(\Sel\) from the seven Foundations-II schemas
+would replace the construction-time audit field by derived predicates.
+Second, the typed real-coordinate carrier should be connected inside
+the formal system to the classical function \(\Real(\rho)\) by
+analytic-number-theoretic infrastructure, lifting the real-part
+abstraction disclosed earlier.  Third, the analogous program for
+primitive Selberg-class \(L\)-functions would require a separate
+typed shell, admissibility verification, and recognition-source
+provenance argument for each \(L\).  Thus the paper explicitly defers
+unconditional standard-ZFC RH, any claim to circumvent classical RH
+attack barriers in their native sense, and GRH for general primitive
+\(L\)-functions.
+
+Code and data availability: the Lean mechanization and paper sources
+are in the same public repository as Paper 1,
+\url{https://github.com/ioannist/six-birds-duality-confinement}.  The
+per-paper RH manifest is \path{lean/manifests/rh_manifest.toml}, and
+the RH math source of record is
+\path{anti_loc/extracted_math/rh_construction.md}.  The recognition
+source carrier is encoded inline in
+\path{lean/SixBirdsDualityConfinement/RH/RHConditional.lean}.  Phase H
+of the mechanization closed on 2026-05-23 with the full validator
+chain green, including the manifest checks, Lean build, axiom audit,
+and forbidden-token audit.
