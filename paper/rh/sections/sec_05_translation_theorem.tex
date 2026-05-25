@@ -39,49 +39,28 @@ Equivalently, the anti-invariant zero ledger vanishes if and only if
 every typed zero lies on the critical line \(\Fix(\JL)\).
 \end{theorem}
 
-The plain mathematical content is a direct positivity argument.  For
-each typed zero \(\rho\), the summand
-\[
-  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}
-  =
-  m_{\rho}\left|\psimRH(\rho)\right|^{2}
-\]
-is nonnegative, and the multiplicity \(m_{\rho}\) is positive by the
-definition of \(\Znt\).  Thus a zero value of \(\AZ\) can only occur
-when every squared displacement is zero.  Conversely, if every typed
-zero has \(\Real(\rho)=1/2\), then every displacement term is zero and
-the entire sum defining \(\AZ\) is zero.  The forward and reverse
-directions are short enough to be written out explicitly; they are the
-content of the next pass of this section.
+Theorem T is what makes the conditional landing chain land on RH
+rather than on an internal trace statement.  The trace-side output
+of the later argument is \(\AZ=0\); Theorem T converts that output
+into the assertion that every \(\rho\in\Znt\) satisfies
+\(\Real(\rho)=1/2\), which is precisely RH on the typed zero ledger
+of \(\Sel\).  No recognition-source content is used in this
+translation: T depends only on \(\Znt\), the positive multiplicities
+\(m_{\rho}\), the readout \(\psimRH\), and the definition of
+\(\AZ\), and its positivity is the elementary positivity of a finite
+multiplicity-weighted sum of squares.  The recognition source enters
+later, in the conditional reason for \(\AZ=0\); once that vanishing
+is available, the theorem above completes the conversion to the
+critical-line statement.
 
-This theorem is what makes the conditional landing chain land on RH
-rather than on an internal trace statement.  The trace-side output of
-the later argument is \(\AZ=0\).  Theorem T converts that output into
-the assertion that every \(\rho\in\Znt\) satisfies
-\(\Real(\rho)=1/2\), which is precisely RH on the typed zero ledger of
-\(\Sel\).  No recognition-source content is used in this translation:
-Theorem T depends only on \(\Znt\), the positive multiplicities
-\(m_{\rho}\), the readout \(\psimRH\), and the definition of \(\AZ\).
-
-Theorem T is therefore a translation theorem rather than the place
-where the conditional content enters: it does not assume RH, does
-not use the recognition source, and does not invoke a trace-formula
-positivity theorem.  Its positivity is the elementary positivity of
-a finite multiplicity-weighted sum of squares.  The later sections
-supply the structural reason for \(\AZ=0\) under the conditional
-hypothesis; once \(\AZ=0\) is available, the theorem above contains
-the entire conversion to the right-hand side.
-
-Both halves admit short positivity-based proofs; Lean checks each
-half by composing the \texttt{AntiInvariantZeroLedger} interface
-fields with faithful semantic alignment to the displayed
-statements.  As recorded in the formalization appendix, the Lean
-proof composes the structure fields that supply the
-multiplicity-weighted-sum positivity content (vanishing summand from
-vanishing sum, vanishing displacement from vanishing summand, and
-their converses); the underlying finite-sum and scalar arithmetic
-are part of the typed interface rather than derivations from lower
-arithmetic primitives.
+The two halves are short positivity arguments, written out below.
+Lean checks each by composing the \texttt{AntiInvariantZeroLedger}
+interface fields with faithful semantic alignment to the
+statements: the structure supplies the multiplicity-weighted-sum
+positivity content (vanishing summand from vanishing sum, vanishing
+displacement from vanishing summand, and their converses), and the
+underlying finite-sum and scalar arithmetic are part of the typed
+interface rather than derivations from lower arithmetic primitives.
 
 \begin{theorem}[Translation theorem T, forward direction]
 \label{thm:rh:translation-T-forward}

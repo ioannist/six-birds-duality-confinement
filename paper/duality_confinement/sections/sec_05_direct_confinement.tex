@@ -45,17 +45,13 @@ Hence the complement of \(\Fix(J)\) has \(\mu\)-measure zero.
 
 In the finite weighted case, the same proof says that every visible
 object with positive weight lies in \(\Fix(J)\).  Lean checks the
-separation--confinement theorem as a typed-bridge composition: the
-measure-theoretic reading of ``\(\psim\) vanishes
-\(\mu\)-almost everywhere'' is supplied as two explicit hypotheses
-on the typed cone, namely the implication
-\(\mathtt{mu\_zero\_of\_ae}\) (\(\psim\)-vanishing a.e.\ to
-\(\mu(X\setminus\Fix(J))=0\)) and the visible-support refinement
-\(\mathtt{visible\_zero\_of\_ae}\) (\(\psim\)-vanishing a.e.\ to
-pointwise vanishing on visible support).  Lean composes these
-bridge hypotheses with the trace identity and separation; the
-formalization appendix records the declaration-level
-correspondence.
+theorem as a typed-bridge composition: the measure-theoretic reading
+of ``\(\psim\) vanishes \(\mu\)-almost everywhere'' is supplied as
+two explicit hypotheses on the typed cone---one giving
+\(\mu(X\setminus\Fix(J))=0\) and one giving pointwise vanishing on
+the visible support---and Lean composes these with the trace
+identity and separation.  The formalization appendix records the
+declaration-level correspondence and the hypothesis signatures.
 
 \begin{theorem}[Quantitative confinement]
 \label{thm:duality_confinement:quantitative-confinement}
@@ -93,14 +89,12 @@ The trace identity identifies the final integral with
 \(m(\varepsilon)^2\) gives the displayed bound.
 \end{proof}
 
-Lean records the quantitative-confinement bound via a typed
-Markov interface: the Markov-style scalar step
-(``\(m(\varepsilon)^2\,\mu(E_\varepsilon) \leq \trace\AX\) follows
-from the integrand lower bound and the trace identity'') is
-supplied as a typed hypothesis on the modulus side rather than
-derived from an ordered-scalar primitive, and the theorem composes
-it with the trace identity.  The formalization appendix records
-the declaration-level correspondence.
+Lean records the bound through a typed Markov interface: the
+Markov-style scalar step is supplied as a hypothesis on the modulus
+side rather than derived from an ordered-scalar primitive, and the
+theorem composes that hypothesis with the trace identity.  The
+formalization appendix records the declaration-level
+correspondence.
 
 \Cref{sec:master_theorem} will combine these direct consequences
 with a domination squeeze: once a sequence of records

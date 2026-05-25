@@ -43,29 +43,7 @@ Then \(\AX=0\) in the typed positive cone.  Consequently,
 \]
 \end{theorem}
 
-The plain mathematical reading is an operator-style squeeze.  Trace
-monotonicity turns \(\AX\preceq B_n\) into
-\[
-  0\leq \trace\AX\leq \trace B_n
-\]
-for every \(n\).  The vanishing trace budget for \(B_n\) therefore
-forces \(\trace\AX=0\).  Positivity in the cone then gives
-\(\AX=0\), and the separation--confinement theorem converts this
-algebraic collapse into the displayed measure conclusion.
-
-The theorem is stated and mechanized at the typed positive-cone
-level.  The cone records exactly the primitives used by the proof:
-the order \(\preceq\), the trace functional \(\trace\), trace
-monotonicity, and the positivity-to-zero principle.  Operator-
-theoretic generality remains an open extension: a full treatment
-over trace-class operators on Hilbert space would require the
-trace-norm topology, Hilbert--Schmidt and Schatten-ideal
-infrastructure, and the corresponding analytic closure lemmas.  The
-present theorem is therefore the verified typed-cone squeeze theorem
-needed by the SDTC apparatus, not a claim to have mechanized that
-larger operator-theoretic setting.
-
-The proof composes the apparatus of
+The proof is an operator-style squeeze, composing the apparatus of
 \Cref{sec:anti_invariant_ledger,sec:direct_confinement,sec:domination}
 with the direct-confinement consequence of
 \Cref{thm:duality_confinement:separation-confinement}.
@@ -109,14 +87,18 @@ That theorem in turn rests on the trace identity
 \(\trace\AX\) with the squared-norm integral of \(\psim\).
 \end{proof}
 
-Lean proves the duality-confinement membrane theorem at this typed
-positive-cone level; the formalization appendix records the
-declaration-level correspondence.  A fully operator-theoretic
-treatment would require the trace-class topology, Schatten-ideal
-calculus, and the analytic lemmas justifying the trace and
-positivity steps; here those ingredients are represented by the
-typed-cone interface, and operator-theoretic generality remains an
-open extension.
+The theorem is stated and mechanized at the typed positive-cone
+level.  The cone records exactly the primitives used by the proof:
+the order \(\preceq\), the trace functional \(\trace\), trace
+monotonicity, and the positivity-to-zero principle.  Lean proves
+the membrane theorem at this level; the formalization appendix
+records the declaration-level correspondence.  A fully
+operator-theoretic treatment would require the trace-class
+topology, Hilbert--Schmidt and Schatten-ideal infrastructure, and
+the corresponding analytic closure lemmas; that operator-theoretic
+generality remains an open extension, and the present theorem is
+the verified typed-cone squeeze theorem needed by the SDTC
+apparatus.
 
 \paragraph{Worked single-substrate validation.}
 The master theorem applies to any involutive object ledger whose
