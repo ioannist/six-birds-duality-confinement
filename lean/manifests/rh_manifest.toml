@@ -123,3 +123,93 @@ lean_subproject = "."
 lean_module = "SixBirdsDualityConfinement.RH.RHConditional"
 lean_decl = "SixBirdsDualityConfinement.RH.RHConditional.rhConditional"
 notes = ""
+
+[[definition]]
+paper_label = "def:rh:aor-sel-instance"
+paper_section = "AORInstance"
+description = "AOR-instance wrapper SelAORInstance(shell, gamma) carrying a constructed AORInstanceCarrier value. Eight AOR field categories are encoded inside the AORInstanceCarrier; the wrapper has one Lean field `carrier`."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.SelAORInstance"
+notes = "Definition entry. Discharges field is populated by the discharge theorems in subsequent dispatches. The default-shape constructor `defaultCarrier` provides documentary tag labels for the six lightweight categories with `discharges := []` and `nonclaims_nonempty := True`."
+
+[[claim]]
+paper_label = "thm:rh:aor-mechanical-records"
+paper_section = "AORInstance"
+description = "Umbrella mechanical-records discharge: six DischargeAtoms tagging the five RH definition rows (by_construction) plus translationT (zero on Δ_target with [Δ_transport] forced secondary)."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorMechanicalRecords"
+notes = "Literal-data def returning List DischargeAtom; primary/secondaries/status per the math-extract table at rh_aor_instance.md lines 219-227."
+
+[[claim]]
+paper_label = "thm:rh:aor-recognition-discharge"
+paper_section = "AORInstance"
+description = "Recognition-source discharge: 4 atoms (Δ_source/bridged; Δ_target/bridged; Δ_role/bridged; Δ_limit/asymptotic_budgeted) tagging Γ_{SDTC-Selberg}."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorRecognitionDischarge"
+notes = "Literal-data def returning List DischargeAtom (4 atoms); typed-bridge composition over gamma's domination_records and tr_B_n_tends_zero. Δ_limit at asymptotic_budgeted with trace-vanishing as witness payload."
+
+[[claim]]
+paper_label = "thm:rh:aor-gamma-bridge-discharge"
+paper_section = "AORInstance"
+description = "Bridge-fields discharge: 5 atoms (3 transport atoms field-by-field: same_readout/zero, visible_zero_of_ae/bridged, mu_zero_of_ae/bridged; plus 2 forced secondaries role/bridged and target/bridged)."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorGammaBridgeDischarge"
+notes = "Literal-data def returning List DischargeAtom (5 atoms); typed-bridge composition over gamma's bridge propositions. The per-component status split is the AOR-primitive triple's encoding of mixed zero/bridged behavior."
+
+[[claim]]
+paper_label = "thm:rh:aor-auditL-discharge"
+paper_section = "AORInstance"
+description = "Admissibility-audit discharge: 1 atom (Δ_meta/bridged) witnessed by shell.Audit_L_witness and shell.Audit_L_channel_status."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorAuditLDischarge"
+notes = "Literal-data def returning List DischargeAtom (1 atom); construction-time admissibility hypothesis carried by the shell, not derived in this paper."
+
+[[claim]]
+paper_label = "thm:rh:aor-dc-master-import-discharge"
+paper_section = "AORInstance"
+description = "Cross-paper master-theorem import discharge: 4 atoms (Δ_transport/approved_other as the Paper 1 import; plus 3 forced secondaries source/role/target at bridged)."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorDCMasterImportDischarge"
+notes = "Literal-data def returning List DischargeAtom (4 atoms); approved_other status for the cross-paper Lean import via DCMasterApplied.dcMasterApplied."
+
+[[claim]]
+paper_label = "thm:rh:aor-real-coordinate-discharge"
+paper_section = "AORInstance"
+description = "Typed real-coordinate discharge: 2 paired atoms (Δ_presentation/outside_scope for the supplied RealCoordinate parameter; Δ_presentation/nonclaim for the analytic identification with classical Re(ρ))."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorRealCoordinateDischarge"
+notes = "Literal-data def returning List DischargeAtom (2 atoms); paired outside_scope + nonclaim per the AOR cost-table pattern for presentation residuals."
+
+[[claim]]
+paper_label = "thm:rh:aor-translation-interface-discharge"
+paper_section = "AORInstance"
+description = "Translation-interface discharge: 2 atoms (Δ_target/zero with [Δ_transport] forced secondary; plus Δ_transport/zero secondary atom)."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorTranslationInterfaceDischarge"
+notes = "Literal-data def returning List DischargeAtom (2 atoms); typed-interface composition over AntiInvariantZeroLedger fields via TranslationT.translationT."
+
+[[claim]]
+paper_label = "thm:rh:aor-instance"
+paper_section = "AORInstance"
+description = "Main RH AOR-instance theorem: RefStableAOR (assembledCarrier shell gamma). Returns only the record-level membership predicate; the critical-line consequence remains the separate conclusion of RHConditional.rhConditional."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorInstance"
+notes = "Typed-bridge composition; assembles the seven discharge lists (mechanical-records + 6 substantive discharges, total 24 atoms) into the carrier's discharge register and proves RefStableAOR by case analysis. Axiom closure: [propext] (within trust base)."

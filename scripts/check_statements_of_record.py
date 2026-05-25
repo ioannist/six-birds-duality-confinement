@@ -116,6 +116,7 @@ EXPECTED_SOURCE_FILES = {
     },
     "rh": {
         "anti_loc/extracted_math/rh_construction.md",
+        "anti_loc/extracted_math/rh_aor_instance.md",
         "paper/rh/main.tex",
     },
 }

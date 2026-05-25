@@ -1,26 +1,31 @@
 schema_version: 1
-status: Phase H synced 2026-05-23 (24 rows). 22 mechanized items at lean_coverage
-  definition/theorem with faithful semantic alignment; 1 support_only (def:duality_confinement:defected-budget)
-  at not_mechanized; 1 recognition_source (obl:rh:gamma-sdtc-selberg) at recognition_source
-  with typed-structure carrier in RHConditional.lean.
-total_rows: 24
+status: AOR-instance recasting complete 2026-05-25 (33 rows). 31 mechanized items
+  at lean_coverage definition/theorem with faithful semantic alignment;
+  1 support_only (def:duality_confinement:defected-budget) at not_mechanized;
+  1 recognition_source (obl:rh:gamma-sdtc-selberg) at recognition_source with
+  typed-structure carrier in RHConditional.lean. The 9 AOR-instance rows under
+  section AORInstance were landed via 5 sequential codex dispatches; the main
+  AOR-instance theorem `aorInstance` has axiom closure [propext] (within trust
+  base). The critical-line consequence of `thm:rh:aor-instance` is paper-level
+  only and remains the conclusion of `RHConditional.rhConditional`.
+total_rows: 33
 target_paper_counts:
   duality_confinement: 13
-  rh: 11
+  rh: 20
 target_destination_counts:
-  body: 23
+  body: 32
   appendix: 1
 proof_presentation_counts:
-  definition_entry: 11
-  lean_substantive: 12
+  definition_entry: 12
+  lean_substantive: 20
   appendix_only: 1
 lean_coverage_counts:
-  definition: 10
-  theorem: 12
+  definition: 11
+  theorem: 20
   not_mechanized: 1
   recognition_source: 1
 semantic_alignment_counts:
-  faithful: 22
+  faithful: 31
   not_applicable: 2
 rows:
 - paper_label: def:duality_confinement:involutive-object-ledger
@@ -409,3 +414,175 @@ rows:
     carrier''s bridge fields and then `translationTForward`. Body and App D use
     "Lean composes the conditional landing chain … typed-bridge composition"
     wording per the proof-presentation policy.'
+- paper_label: def:rh:aor-sel-instance
+  env_kind: definition
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 113
+  source_section: AORInstance
+  theorem_title: AOR-instance carrier wrapper SelAORInstance for the Selberg shell
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.SelAORInstance
+  semantic_alignment: faithful
+  notes: Definition entry. Wraps SatSelShell + GammaSdtcSelberg with a constructed
+    eight-field AORInstanceCarrier value (carrier_id, observations, routes, sources,
+    interfaces, constraints are lightweight typed tags; discharges and
+    nonclaims_nonempty are load-bearing). Minimal AOR primitives live in
+    SixBirdsDualityConfinement.RH.AORPrimitives (infrastructure, no paper_label).
+    A `defaultCarrier` helper provides documentary tag labels with discharges := []
+    and nonclaims_nonempty := True; the discharge atoms are populated by the
+    seven discharge theorems in subsequent rows.
+- paper_label: thm:rh:aor-mechanical-records
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 199
+  source_section: AORInstance
+  theorem_title: Mechanical AOR records umbrella (six DischargeAtoms)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorMechanicalRecords
+  semantic_alignment: faithful
+  notes: 'Typed-interface composition; literal-data def returning a List DischargeAtom
+    of six atoms. Five definition-side rows discharge at status `by_construction`
+    (primaries Δ_role | Δ_role | Δ_presentation | Δ_presentation | Δ_meta with empty
+    forced_secondaries); translationT discharges at Δ_target with [Δ_transport]
+    forced secondary at status `zero`. Atom ordering and contents match the
+    math-extract table at rh_aor_instance.md lines 219-227.'
+- paper_label: thm:rh:aor-recognition-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 250
+  source_section: AORInstance
+  theorem_title: Recognition-source discharge (Δ_source/bridged + asymptotic_budgeted limit)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorRecognitionDischarge
+  semantic_alignment: faithful
+  notes: 'Typed-bridge composition; literal-data def returning 4 DischargeAtoms.
+    Primary Δ_source/bridged plus forced secondaries Δ_target/bridged, Δ_role/bridged,
+    Δ_limit/asymptotic_budgeted (trace-vanishing as witness payload per AOR cost
+    table). Lean-source domination records are over gamma.A.A_X (the abstract DC
+    ledger); shell A_Z reading obtained downstream via aorGammaBridgeDischarge.'
+- paper_label: thm:rh:aor-gamma-bridge-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 296
+  source_section: AORInstance
+  theorem_title: Bridge-fields discharge (Δ_transport zero/bridged components)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorGammaBridgeDischarge
+  semantic_alignment: faithful
+  notes: 'Typed-bridge composition; literal-data def returning 5 DischargeAtoms.
+    Three Δ_transport atoms field-by-field (same_readout at zero;
+    visible_zero_of_ae at bridged; mu_zero_of_ae at bridged) plus two forced
+    secondaries (Δ_role at bridged, Δ_target at bridged). Per-component status
+    encoded via split atoms (the primitive triple does not support nested
+    component statuses).'
+- paper_label: thm:rh:aor-auditL-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 330
+  source_section: AORInstance
+  theorem_title: Admissibility-audit discharge (Audit_L as Δ_meta/bridged)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorAuditLDischarge
+  semantic_alignment: faithful
+  notes: 'Typed-bridge composition; literal-data def returning 1 DischargeAtom
+    (Δ_meta/bridged) witnessed by shell.Audit_L_witness and the recorded
+    shell.Audit_L_channel_status. Admissibility is supplied as construction-time
+    Foundations-II hypothesis, not derived; the paper does not assert any
+    particular F2ChannelStatus equation such as = activeProjection.'
+- paper_label: thm:rh:aor-dc-master-import-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 363
+  source_section: AORInstance
+  theorem_title: Cross-paper master-theorem import discharge (approved_other)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorDCMasterImportDischarge
+  semantic_alignment: faithful
+  notes: 'Typed import projection; literal-data def returning 4 DischargeAtoms.
+    Primary Δ_transport at approved_other (the cited Paper 1 import via
+    DCMasterApplied.dcMasterApplied) plus 3 forced secondaries Δ_source,
+    Δ_role, Δ_target all at bridged. Matches the cross-paper one-way citation
+    rule.'
+- paper_label: thm:rh:aor-real-coordinate-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 393
+  source_section: AORInstance
+  theorem_title: Typed real-coordinate discharge (Δ_presentation outside_scope + nonclaim)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorRealCoordinateDischarge
+  semantic_alignment: faithful
+  notes: 'Typed-interface composition; literal-data def returning 2 paired
+    DischargeAtoms (Δ_presentation/outside_scope for the supplied RealCoordinate
+    parameter; Δ_presentation/nonclaim for the analytic identification with
+    classical Re(ρ)). Paired statuses follow the AOR cost-table pattern for
+    presentation residuals discharged outside their formal scope.'
+- paper_label: thm:rh:aor-translation-interface-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 430
+  source_section: AORInstance
+  theorem_title: Translation-interface discharge (Δ_target/zero + Δ_transport/zero)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorTranslationInterfaceDischarge
+  semantic_alignment: faithful
+  notes: 'Typed-interface composition; literal-data def returning 2 DischargeAtoms.
+    Primary Δ_target/zero with [Δ_transport] forced secondary, plus the
+    Δ_transport/zero secondary atom realizing the forced-secondary type. Both
+    closed at zero by the AntiInvariantZeroLedger typed-interface composition of
+    TranslationT.translationT.'
+- paper_label: thm:rh:aor-instance
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 453
+  source_section: AORInstance
+  theorem_title: 'RH AOR-instance theorem: Sel in RefStableAOR^ref scope S_RH'
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorInstance
+  semantic_alignment: faithful
+  notes: 'Typed-bridge composition; the Lean theorem returns only RefStableAOR
+    (assembledCarrier shell gamma), where assembledCarrier concatenates the 7
+    discharge lists (24 atoms total) into the carrier register. Proof: case
+    analysis over the discharge list to verify each forced-secondary type is
+    realized as some atom''s primary type. The critical-line consequence
+    (every rho in Z_nt has Re(rho) = 1/2) is paper-level only, obtained
+    separately via RHConditional.rhConditional and the same closure stack.
+    Axiom closure [propext] only (within trust base). AOR meta-theory
+    (Tsiokos2026AOR refinement-stable characterisation) cited at paper level,
+    not re-derived.'
