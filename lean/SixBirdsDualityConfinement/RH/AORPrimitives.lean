@@ -5,8 +5,9 @@ Minimal AOR meta-theory primitives used by `RH.AORInstance`.
 
 This module defines five primitives for the AOR-instance recasting:
 the residual-type and discharge-status enums, the typed discharge
-record, the eight-field AOR-instance carrier, and the `RefStableAOR`
-membership predicate. The minimal scope is intentional: the full AOR
+record, the AOR-instance carrier with eight AOR field categories plus a
+nonclaim-register witness, and the `RefStableAOR` membership predicate.
+The minimal scope is intentional: the full AOR
 meta-theory of Tsiokos2026AOR (eight-stratum decomposition, twelve-type
 atlas, 132-entry cost table, hierarchy theorems) is cited at paper
 level and not re-derived here.
@@ -53,11 +54,12 @@ structure DischargeAtom : Type where
   deriving DecidableEq
 
 /--
-Eight-field carrier for the local RH AOR instance.
+Carrier for the local RH AOR instance.
 
-The first six fields are lightweight typed tags. The load-bearing fields are
-the residual-discharge register and the nonclaim-register population
-requirement.
+The first six fields are lightweight typed tags. The remaining AOR field
+categories are the residual-discharge register and the nonclaim register.
+The auxiliary `nonclaims_nonempty` field is the structural witness that the
+nonclaim register is populated.
 -/
 structure AORInstanceCarrier : Type where
   carrier_id : String
@@ -67,7 +69,8 @@ structure AORInstanceCarrier : Type where
   interfaces : List String
   constraints : List String
   discharges : List DischargeAtom
-  nonclaims_nonempty : Prop
+  nonclaims : List String
+  nonclaims_nonempty : nonclaims ≠ []
 
 /--
 Local refinement-stable AOR predicate for the RH carrier.
@@ -78,7 +81,7 @@ the nonclaim register must also be populated. Closed-status checking is
 vacuous because every local `DischargeStatus` constructor is closed.
 -/
 def RefStableAOR (carrier : AORInstanceCarrier) : Prop :=
-  carrier.nonclaims_nonempty ∧
+  carrier.nonclaims ≠ [] ∧
     ∀ atom : DischargeAtom, atom ∈ carrier.discharges →
       ∀ secondary : ResidualType, secondary ∈ atom.forced_secondaries →
         ∃ witness : DischargeAtom,

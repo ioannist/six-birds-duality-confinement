@@ -224,8 +224,8 @@ emits a `DischargeAtom` with primary `Δ_target`, forced-secondary
 `[Δ_transport]`, and status `zero` (atom proof shape is shared with
 `thm:rh:aor-translation-interface-discharge` below).
 
-**Mechanization.** A theorem returning a `List DischargeAtom` of six
-atoms, provable by direct construction:
+**Mechanization.** A `def` returning a literal `List DischargeAtom`
+of six atoms, classified per the table below:
 
 | Row | primary | forced_secondaries | status |
 |---|---|---|---|
@@ -288,9 +288,16 @@ status to `summable` or `contractive` per the AOR soundness chain
 (Tsiokos2026AOR `thm:aor:asymptotic-soundness`); the present paper
 declares the weakest sufficient status only.
 
-**Mechanization.** A theorem returning a `List DischargeAtom` of
-four atoms, provable by direct projection from `gamma.B_n`,
-`gamma.domination_records`, and `gamma.tr_B_n_tends_zero`.
+**Mechanization.** A `def` returning a literal `List DischargeAtom`
+of four atoms, indexed by `shell` and `gamma` but not computed from
+their fields. The four atoms tag the recognition-source content as
+the AOR-primitive triple `(primary, forced_secondaries, status)`
+with the values stated in the Statement above. The connection to
+`gamma.B_n`, `gamma.domination_records`, and `gamma.tr_B_n_tends_zero`
+is paper-level: those gamma fields ARE the recognition-source
+content that this classification tags. The Lean substantive
+composition (consuming the atom list to discharge `RefStableAOR`)
+lives in `thm:rh:aor-instance`.
 
 ---
 
@@ -320,12 +327,16 @@ where the theorem needs them (`same_readout`, discharged at status
 equality `A_Z = 0` (`mu_zero_of_ae`, bridged). The role and target
 forced secondaries are discharged by the same typed bridge.
 
-**Mechanization.** A theorem returning a `List DischargeAtom` of
-five atoms, provable by direct projection from `gamma.same_readout`,
-`gamma.visible_zero_of_ae`, `gamma.mu_zero_of_ae`. The
-field-by-field atom split keeps the per-component status
-(`zero` for `same_readout`, `bridged` for the others) representable
-in the primitive triple.
+**Mechanization.** A `def` returning a literal `List DischargeAtom`
+of five atoms, indexed by `shell` and `gamma` but not computed from
+their fields. The field-by-field atom split keeps the per-component
+status (`zero` for `same_readout`, `bridged` for the others)
+representable in the primitive triple. The connection to
+`gamma.same_readout`, `gamma.visible_zero_of_ae`, and
+`gamma.mu_zero_of_ae` is paper-level: those bridge propositions ARE
+the content that this classification tags as a Δ_transport
+discharge with forced secondaries Δ_role and Δ_target. The Lean
+substantive composition lives in `thm:rh:aor-instance`.
 
 ---
 
@@ -354,10 +365,14 @@ therefore `bridged`: the carrier provides the admissibility witness
 and the recorded channel-status field, while the paper registers a
 nonclaim of a separate derivation of that status.
 
-**Mechanization.** A theorem returning a singleton `List
-DischargeAtom` with primary `ResidualType.meta` and status
-`DischargeStatus.bridged`, provable by direct projection from
-`shell.Audit_L_witness` and `shell.Audit_L_channel_status`.
+**Mechanization.** A `def` returning a literal singleton `List
+DischargeAtom` with primary `ResidualType.meta`,
+forced_secondaries `[]`, and status `DischargeStatus.bridged`,
+indexed by `shell` and `gamma` but not computed from
+`shell.Audit_L_witness` or `shell.Audit_L_channel_status`. The
+connection to those shell fields is paper-level: the recorded
+admissibility witness and channel status ARE the meta-audit content
+that this classification tags as Δ_meta/bridged.
 
 ---
 
@@ -384,9 +399,13 @@ per the AOR cost table (Tsiokos2026AOR `def:aor:cost-table`); the
 forced secondaries are listed in Tsiokos2026AOR
 `thm:aor:forced-residual` for the primary `Δ_transport`.
 
-**Mechanization.** A theorem returning a `List DischargeAtom` of
-four atoms, provable by direct citation projection from
-`DCMasterApplied.dcMasterApplied`.
+**Mechanization.** A `def` returning a literal `List DischargeAtom`
+of four atoms, indexed by `shell` and `gamma` but not invoking or
+witnessing `DCMasterApplied.dcMasterApplied`. The connection to the
+cross-paper import is paper-level: the cited Paper 1 master
+theorem (via `dcMasterApplied`) IS the imported content that this
+classification tags as Δ_transport/approved_other with three forced
+secondaries.
 
 ---
 
@@ -415,13 +434,16 @@ identification but by emitting the paired `outside_scope` and
 `nonclaim` discharge atoms; the corresponding nonclaim register
 entry is added to the carrier's nonclaim register.
 
-**Mechanization.** A theorem returning a `List DischargeAtom` of two
-atoms — `(primary = ResidualType.presentation,
+**Mechanization.** A `def` returning a literal `List DischargeAtom`
+of two atoms — `(primary = ResidualType.presentation,
 forced_secondaries = [], status = DischargeStatus.outside_scope)`
 and `(primary = ResidualType.presentation,
 forced_secondaries = [], status = DischargeStatus.nonclaim)` —
-provable by direct projection referring to the `R` parameter on
-`shell` and the paired nonclaim register entry.
+indexed by `shell` and `gamma` but not computed from the `R :
+Involution.RealCoordinate` parameter. The connection is paper-level:
+`R` IS the typed real-coordinate carrier that this classification
+tags as paired presentation discharges, and the paired
+nonclaim-register entry lives in the carrier's `nonclaims` list.
 
 ---
 
@@ -442,10 +464,15 @@ target-readout and transport obligations are not external analytic
 claims; they are the internal typed-interface content of
 `thm:rh:translation-T-forward` and `thm:rh:translation-T-reverse`.
 
-**Mechanization.** A theorem returning a `List DischargeAtom` of
-two atoms (the primary `Δ_target` atom and its forced secondary
-`Δ_transport` atom), both at status `zero`. Provable by direct
-projection of `TranslationT.translationT`.
+**Mechanization.** A `def` returning a literal `List DischargeAtom`
+of two atoms (the primary `Δ_target` atom with forced_secondaries
+`[Δ_transport]` and the matching `Δ_transport` witness atom), both
+at status `zero`, indexed by `shell` and `gamma` but not invoking
+`TranslationT.translationT`. The connection is paper-level: the
+typed-interface composition over `AntiInvariantZeroLedger` fields
+that justifies the zero status IS the content of
+`TranslationT.translationT`; the classification tags that content
+as a Δ_target/zero discharge with a Δ_transport forced secondary.
 
 ---
 

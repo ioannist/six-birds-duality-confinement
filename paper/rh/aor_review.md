@@ -388,3 +388,106 @@ resolving the carrier-shape contradiction; and (b) save this audit
 file at the location the extract references. With those two narrow
 fixes, the extract is the agreed scaffolding plan for the upcoming
 Codex Lean dispatches.
+
+---
+
+## Round 4 verdict — REVISE (followed by revision pass)
+
+After the AOR-instance Lean mechanization landed as commit
+`bcc7ff0`, a second-pass review surfaced these findings:
+
+### Axis A — REVISE
+Forced-secondary rule under-encoded: recognition, bridge, and
+DC-import primaries emitted their forced secondaries as separate
+atoms with empty secondary lists, but the extract describes these
+as forced secondaries OF the primary residuals. Fix: put the
+forced lists on the primary atoms while keeping the witness atoms.
+
+### Axis B — REVISE
+1. Proof had 21 rcases for a 24-atom register (Lean deduplicates
+   equal list members). Cosmetic finding; mathematical content
+   unchanged. **Disposition: skipped** — occurrence-level not
+   required for `RefStableAOR`'s set-of-primaries semantics.
+2. `nonclaims_nonempty := True` is a tautological register
+   witness. Fix: store an actual nonclaim list and prove it
+   nonempty.
+
+### Axis C — PASS
+All eight theorem declarations clean; `aorInstance` axiom closure
+`[propext]` within trust base; zero forbidden tokens.
+
+### Axis D — REVISE
+The discharge defs do not use the gamma/shell fields the extract
+claimed they project from (recognition: no
+`gamma.B_n`/`gamma.domination_records`/`gamma.tr_B_n_tends_zero`;
+bridge: no `gamma.same_readout`/`.visible_zero_of_ae`/`.mu_zero_of_ae`;
+auditL: no `shell.Audit_L_witness`/`.Audit_L_channel_status`;
+DC-import: no `DCMasterApplied.dcMasterApplied`;
+translation: no `TranslationT.translationT`). Fix: either add
+witness/spec theorems, OR revise extract/registry wording to
+"literal AOR classification indexed by shell/gamma."
+
+### Axis E — PASS
+Minimal scope preserved; `RefStableAOR` local syntactic predicate;
+no AOR meta-theory imports; RH conditional not promoted to
+unconditional.
+
+### Axis F — REVISE
+1. Seven entries marked `status = "theorem"` but Lean uses `def`s.
+   Fix: convert to definition coverage or add theorem wrappers.
+2. Source line anchors loose (e.g., `def:rh:aor-sel-instance`
+   pointed at line 113; label starts at line 131).
+
+### Disposition
+
+A revision pass addressed all REVISE findings without rollback:
+
+1. **Fix Dispatch 6** (codex, same RH session): replaced
+   `nonclaims_nonempty : Prop` in `AORInstanceCarrier` with paired
+   `nonclaims : List String` + `nonclaims_nonempty : nonclaims ≠ []`
+   structural witness. Updated `RefStableAOR` accordingly.
+   `deriving DecidableEq` added to ResidualType, DischargeStatus,
+   DischargeAtom for downstream `decide` proofs.
+
+2. **Fix Dispatch 7** (codex, same RH session): populated
+   forced_secondaries on the four primary atoms (recognition source
+   `[target, role, limit]`; bridge same_readout `[role, target]`;
+   DC-import `[source, role, target]`; translation
+   `[transport]` — already correct). Populated `defaultCarrier.nonclaims`
+   with nine documentary entries from `rem:rh:aor-partial-status`.
+   Refit `aorInstance` proof: case-on-secondary-type pattern with
+   explicit witness atom per residual type (7 cases). Axiom closure
+   remains `[propext]`.
+
+3. **Axis D + F-1 fix** (Claude, no codex): rather than add witness
+   theorems, revised extract and registry to honest
+   "literal AOR classification" framing. The discharge defs return
+   fixed-shape literal lists indexed by shell/gamma but not
+   computed from their fields; substantive composition lives in
+   aorInstance. Manifest/SoR `status` changed from `theorem` to
+   `definition` for the seven list-producing defs; `[[claim]]` →
+   `[[definition]]` in the manifest; `lean_coverage: theorem` →
+   `definition` in the SoR. The aorInstance row stays as `theorem`.
+
+4. **Axis F-2 fix**: re-anchored all AOR rows' `line_start` /
+   `line_end` to the actual extract heading lines (def:rh:aor-sel-instance
+   was off by 18; others off by 1-2). Inventory `kind = "theorem"`
+   changed to `"definition"` for the seven discharge entries.
+
+Per-entry status after revision:
+
+| Label | kind/coverage | status |
+|---|---|---|
+| def:rh:aor-sel-instance | definition | wrapper structure |
+| thm:rh:aor-mechanical-records | definition | literal classification (6 atoms) |
+| thm:rh:aor-recognition-discharge | definition | literal classification (4 atoms) |
+| thm:rh:aor-gamma-bridge-discharge | definition | literal classification (5 atoms) |
+| thm:rh:aor-auditL-discharge | definition | literal classification (1 atom) |
+| thm:rh:aor-dc-master-import-discharge | definition | literal classification (4 atoms) |
+| thm:rh:aor-real-coordinate-discharge | definition | literal classification (2 paired atoms) |
+| thm:rh:aor-translation-interface-discharge | definition | literal classification (2 atoms) |
+| thm:rh:aor-instance | theorem | RefStableAOR membership proof |
+
+Validators green; axiom closure of `aorInstance` is `[propext]`
+(within trust base). The mechanization is now claim-tight as the
+implementation of the extract.

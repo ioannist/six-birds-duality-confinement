@@ -65,7 +65,17 @@ def defaultCarrier
         "gamma.A.A_X preceq gamma.B_n n",
         "gamma.tr_B_n_tends_zero" ]
     discharges := []
-    nonclaims_nonempty := True }
+    nonclaims :=
+      [ "AOR-instance reading restricted to typed zero ledger of Sel",
+        "No AOR membership for primitive Selberg-class L-functions other than zeta",
+        "No AOR membership for weak or distributional zero-counting functionals",
+        "No AOR membership for trace shells lacking Audit_L_witness",
+        "No AOR membership for carriers outside the typed real-coordinate presentation",
+        "GammaSdtcSelberg is a typed structural hypothesis, not a Lean postulate",
+        "Bridge propositions are Prop-valued typed hypotheses, not data-bearing R-records",
+        "Audit_L admissibility is construction-time hypothesis, not derived",
+        "RealCoordinate analytic identification with classical Re(rho) is outside scope" ]
+    nonclaims_nonempty := by decide }
 
 /--
 Mechanical AOR discharge atoms for the definition-side RH rows and Theorem T.
@@ -113,7 +123,10 @@ def aorRecognitionDischarge
     List AORPrimitives.DischargeAtom :=
   [ -- provenance record
     { primary := AORPrimitives.ResidualType.source
-      forced_secondaries := []
+      forced_secondaries :=
+        [ AORPrimitives.ResidualType.target,
+          AORPrimitives.ResidualType.role,
+          AORPrimitives.ResidualType.limit ]
       status := AORPrimitives.DischargeStatus.bridged },
     -- abstract DC-ledger target of domination records
     { primary := AORPrimitives.ResidualType.target
@@ -136,7 +149,9 @@ def aorGammaBridgeDischarge
     List AORPrimitives.DischargeAtom :=
   [ -- same_readout component
     { primary := AORPrimitives.ResidualType.transport
-      forced_secondaries := []
+      forced_secondaries :=
+        [ AORPrimitives.ResidualType.role,
+          AORPrimitives.ResidualType.target ]
       status := AORPrimitives.DischargeStatus.zero },
     -- visible_zero_of_ae component
     { primary := AORPrimitives.ResidualType.transport
@@ -173,7 +188,10 @@ def aorDCMasterImportDischarge
     List AORPrimitives.DischargeAtom :=
   [ -- Paper 1 import
     { primary := AORPrimitives.ResidualType.transport
-      forced_secondaries := []
+      forced_secondaries :=
+        [ AORPrimitives.ResidualType.source,
+          AORPrimitives.ResidualType.role,
+          AORPrimitives.ResidualType.target ]
       status := AORPrimitives.DischargeStatus.approved_other },
     -- forced secondary: Paper 1 provenance
     { primary := AORPrimitives.ResidualType.source
@@ -250,22 +268,65 @@ theorem aorInstance
   constructor
   · simp [assembledCarrier, defaultCarrier]
   · intro atom hatom secondary hsec
-    simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
-      aorRecognitionDischarge, aorGammaBridgeDischarge, aorAuditLDischarge,
-      aorDCMasterImportDischarge, aorRealCoordinateDischarge,
-      aorTranslationInterfaceDischarge] at hatom hsec
-    rcases hatom with
-      h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h | h |
-      h | h | h
-    all_goals
-      subst atom
-      simp at hsec
-    all_goals
-      subst secondary
-      exact
+    cases secondary
+    · exact
+        ⟨{ primary := AORPrimitives.ResidualType.source
+           forced_secondaries := []
+           status := AORPrimitives.DischargeStatus.bridged },
+          by
+            simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
+              aorRecognitionDischarge, aorGammaBridgeDischarge,
+              aorAuditLDischarge, aorDCMasterImportDischarge,
+              aorRealCoordinateDischarge, aorTranslationInterfaceDischarge]⟩
+    · exact
         ⟨{ primary := AORPrimitives.ResidualType.transport
            forced_secondaries := []
            status := AORPrimitives.DischargeStatus.zero },
+          by
+            simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
+              aorRecognitionDischarge, aorGammaBridgeDischarge,
+              aorAuditLDischarge, aorDCMasterImportDischarge,
+              aorRealCoordinateDischarge, aorTranslationInterfaceDischarge]⟩
+    · exact
+        ⟨{ primary := AORPrimitives.ResidualType.role
+           forced_secondaries := []
+           status := AORPrimitives.DischargeStatus.by_construction },
+          by
+            simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
+              aorRecognitionDischarge, aorGammaBridgeDischarge,
+              aorAuditLDischarge, aorDCMasterImportDischarge,
+              aorRealCoordinateDischarge, aorTranslationInterfaceDischarge]⟩
+    · exact
+        ⟨{ primary := AORPrimitives.ResidualType.target
+           forced_secondaries := []
+           status := AORPrimitives.DischargeStatus.bridged },
+          by
+            simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
+              aorRecognitionDischarge, aorGammaBridgeDischarge,
+              aorAuditLDischarge, aorDCMasterImportDischarge,
+              aorRealCoordinateDischarge, aorTranslationInterfaceDischarge]⟩
+    · exact
+        ⟨{ primary := AORPrimitives.ResidualType.limit
+           forced_secondaries := []
+           status := AORPrimitives.DischargeStatus.asymptotic_budgeted },
+          by
+            simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
+              aorRecognitionDischarge, aorGammaBridgeDischarge,
+              aorAuditLDischarge, aorDCMasterImportDischarge,
+              aorRealCoordinateDischarge, aorTranslationInterfaceDischarge]⟩
+    · exact
+        ⟨{ primary := AORPrimitives.ResidualType.presentation
+           forced_secondaries := []
+           status := AORPrimitives.DischargeStatus.by_construction },
+          by
+            simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
+              aorRecognitionDischarge, aorGammaBridgeDischarge,
+              aorAuditLDischarge, aorDCMasterImportDischarge,
+              aorRealCoordinateDischarge, aorTranslationInterfaceDischarge]⟩
+    · exact
+        ⟨{ primary := AORPrimitives.ResidualType.«meta»
+           forced_secondaries := []
+           status := AORPrimitives.DischargeStatus.by_construction },
           by
             simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
               aorRecognitionDischarge, aorGammaBridgeDischarge,

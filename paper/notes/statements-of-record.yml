@@ -1,13 +1,17 @@
 schema_version: 1
-status: AOR-instance recasting complete 2026-05-25 (33 rows). 31 mechanized items
-  at lean_coverage definition/theorem with faithful semantic alignment;
-  1 support_only (def:duality_confinement:defected-budget) at not_mechanized;
-  1 recognition_source (obl:rh:gamma-sdtc-selberg) at recognition_source with
+status: AOR-instance recasting + review-revision pass complete 2026-05-25
+  (33 rows). 31 mechanized items at lean_coverage definition/theorem with
+  faithful semantic alignment; 1 support_only
+  (def:duality_confinement:defected-budget) at not_mechanized; 1
+  recognition_source (obl:rh:gamma-sdtc-selberg) at recognition_source with
   typed-structure carrier in RHConditional.lean. The 9 AOR-instance rows under
-  section AORInstance were landed via 5 sequential codex dispatches; the main
-  AOR-instance theorem `aorInstance` has axiom closure [propext] (within trust
-  base). The critical-line consequence of `thm:rh:aor-instance` is paper-level
-  only and remains the conclusion of `RHConditional.rhConditional`.
+  section AORInstance were landed via 5 sequential codex dispatches plus a
+  2-dispatch revision pass addressing review findings (forced-secondaries on
+  primary atoms, structural nonclaims_nonempty, literal-classification framing
+  for 7 discharge-list defs). The main AOR-instance theorem `aorInstance` has
+  axiom closure [propext] (within trust base) and proves only the record-level
+  RefStableAOR predicate; the critical-line consequence of `thm:rh:aor-instance`
+  is paper-level only and remains the conclusion of `RHConditional.rhConditional`.
 total_rows: 33
 target_paper_counts:
   duality_confinement: 13
@@ -16,12 +20,12 @@ target_destination_counts:
   body: 32
   appendix: 1
 proof_presentation_counts:
-  definition_entry: 12
-  lean_substantive: 20
+  definition_entry: 19
+  lean_substantive: 13
   appendix_only: 1
 lean_coverage_counts:
-  definition: 11
-  theorem: 20
+  definition: 18
+  theorem: 13
   not_mechanized: 1
   recognition_source: 1
 semantic_alignment_counts:
@@ -417,7 +421,7 @@ rows:
 - paper_label: def:rh:aor-sel-instance
   env_kind: definition
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 113
+  source_line: 131
   source_section: AORInstance
   theorem_title: AOR-instance carrier wrapper SelAORInstance for the Selberg shell
   target_paper: rh
@@ -427,106 +431,118 @@ rows:
   lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.SelAORInstance
   semantic_alignment: faithful
-  notes: Definition entry. Wraps SatSelShell + GammaSdtcSelberg with a constructed
-    eight-field AORInstanceCarrier value (carrier_id, observations, routes, sources,
-    interfaces, constraints are lightweight typed tags; discharges and
-    nonclaims_nonempty are load-bearing). Minimal AOR primitives live in
-    SixBirdsDualityConfinement.RH.AORPrimitives (infrastructure, no paper_label).
-    A `defaultCarrier` helper provides documentary tag labels with discharges := []
-    and nonclaims_nonempty := True; the discharge atoms are populated by the
-    seven discharge theorems in subsequent rows.
+  notes: 'Definition entry. Wraps SatSelShell + GammaSdtcSelberg with a constructed
+    AORInstanceCarrier value (carrier_id, observations, routes, sources,
+    interfaces, constraints are lightweight typed tags; discharges, nonclaims, and
+    the structural nonclaims_nonempty witness are the load-bearing fields).
+    Minimal AOR primitives live in SixBirdsDualityConfinement.RH.AORPrimitives
+    (infrastructure, no paper_label). The `defaultCarrier` helper provides
+    documentary tag labels with `discharges := []` and a non-empty
+    `nonclaims` list (of type List String) discharged by `decide`; the discharge
+    atoms are populated by the seven discharge defs below and assembled by
+    assembledCarrier for the main aorInstance theorem.'
 - paper_label: thm:rh:aor-mechanical-records
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 199
+  source_line: 200
   source_section: AORInstance
   theorem_title: Mechanical AOR records umbrella (six DischargeAtoms)
   target_paper: rh
   target_destination: body
   target_section_hint: sec:rh-aor-instance
-  proof_presentation: lean_substantive
-  lean_coverage: theorem
+  proof_presentation: definition_entry
+  lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorMechanicalRecords
   semantic_alignment: faithful
-  notes: 'Typed-interface composition; literal-data def returning a List DischargeAtom
-    of six atoms. Five definition-side rows discharge at status `by_construction`
-    (primaries Δ_role | Δ_role | Δ_presentation | Δ_presentation | Δ_meta with empty
-    forced_secondaries); translationT discharges at Δ_target with [Δ_transport]
-    forced secondary at status `zero`. Atom ordering and contents match the
-    math-extract table at rh_aor_instance.md lines 219-227.'
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of six atoms, indexed by shell/gamma but not computed from them. Five
+    definition-side rows are classified at status `by_construction` (primaries
+    Δ_role | Δ_role | Δ_presentation | Δ_presentation | Δ_meta with empty
+    forced_secondaries); translationT is classified at Δ_target with [Δ_transport]
+    forced secondary at status `zero`. Substantive composition lives in
+    aorInstance, which consumes the classification to discharge RefStableAOR.'
 - paper_label: thm:rh:aor-recognition-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 250
+  source_line: 251
   source_section: AORInstance
   theorem_title: Recognition-source discharge (Δ_source/bridged + asymptotic_budgeted limit)
   target_paper: rh
   target_destination: body
   target_section_hint: sec:rh-aor-instance
-  proof_presentation: lean_substantive
-  lean_coverage: theorem
+  proof_presentation: definition_entry
+  lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorRecognitionDischarge
   semantic_alignment: faithful
-  notes: 'Typed-bridge composition; literal-data def returning 4 DischargeAtoms.
-    Primary Δ_source/bridged plus forced secondaries Δ_target/bridged, Δ_role/bridged,
-    Δ_limit/asymptotic_budgeted (trace-vanishing as witness payload per AOR cost
-    table). Lean-source domination records are over gamma.A.A_X (the abstract DC
-    ledger); shell A_Z reading obtained downstream via aorGammaBridgeDischarge.'
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 4 atoms indexed by shell/gamma but not computed from them. Primary
+    Δ_source/bridged carries forced secondaries [Δ_target, Δ_role, Δ_limit] on the
+    primary atom (as required by RefStableAOR''s forced-secondary check), with
+    matching witness atoms at Δ_target/bridged, Δ_role/bridged, and
+    Δ_limit/asymptotic_budgeted. Trace-vanishing is the paper-level witness
+    payload for Δ_limit; the def does not project gamma.tr_B_n_tends_zero.
+    Substantive composition lives in aorInstance.'
 - paper_label: thm:rh:aor-gamma-bridge-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 296
+  source_line: 297
   source_section: AORInstance
   theorem_title: Bridge-fields discharge (Δ_transport zero/bridged components)
   target_paper: rh
   target_destination: body
   target_section_hint: sec:rh-aor-instance
-  proof_presentation: lean_substantive
-  lean_coverage: theorem
+  proof_presentation: definition_entry
+  lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorGammaBridgeDischarge
   semantic_alignment: faithful
-  notes: 'Typed-bridge composition; literal-data def returning 5 DischargeAtoms.
-    Three Δ_transport atoms field-by-field (same_readout at zero;
-    visible_zero_of_ae at bridged; mu_zero_of_ae at bridged) plus two forced
-    secondaries (Δ_role at bridged, Δ_target at bridged). Per-component status
-    encoded via split atoms (the primitive triple does not support nested
-    component statuses).'
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 5 atoms indexed by shell/gamma but not computed from them. Three Δ_transport
+    atoms tag the bridge fields field-by-field (same_readout at zero with forced
+    secondaries [Δ_role, Δ_target] on the primary; visible_zero_of_ae at bridged;
+    mu_zero_of_ae at bridged), plus two witness atoms at Δ_role/bridged and
+    Δ_target/bridged. The def does not project gamma''s bridge propositions; the
+    per-component status split encodes mixed zero/bridged behavior via separate
+    atoms.'
 - paper_label: thm:rh:aor-auditL-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 330
+  source_line: 332
   source_section: AORInstance
   theorem_title: Admissibility-audit discharge (Audit_L as Δ_meta/bridged)
   target_paper: rh
   target_destination: body
   target_section_hint: sec:rh-aor-instance
-  proof_presentation: lean_substantive
-  lean_coverage: theorem
+  proof_presentation: definition_entry
+  lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorAuditLDischarge
   semantic_alignment: faithful
-  notes: 'Typed-bridge composition; literal-data def returning 1 DischargeAtom
-    (Δ_meta/bridged) witnessed by shell.Audit_L_witness and the recorded
-    shell.Audit_L_channel_status. Admissibility is supplied as construction-time
-    Foundations-II hypothesis, not derived; the paper does not assert any
-    particular F2ChannelStatus equation such as = activeProjection.'
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 1 atom indexed by shell/gamma but not computed from them. The atom tags the
+    shell''s admissibility audit (carried at construction time by
+    shell.Audit_L_witness and the recorded shell.Audit_L_channel_status) as
+    Δ_meta/bridged. The def does not project those fields; admissibility is
+    supplied as construction-time Foundations-II hypothesis; the paper does not
+    assert any particular F2ChannelStatus equation such as = activeProjection.'
 - paper_label: thm:rh:aor-dc-master-import-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 363
+  source_line: 364
   source_section: AORInstance
   theorem_title: Cross-paper master-theorem import discharge (approved_other)
   target_paper: rh
   target_destination: body
   target_section_hint: sec:rh-aor-instance
-  proof_presentation: lean_substantive
-  lean_coverage: theorem
+  proof_presentation: definition_entry
+  lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorDCMasterImportDischarge
   semantic_alignment: faithful
-  notes: 'Typed import projection; literal-data def returning 4 DischargeAtoms.
-    Primary Δ_transport at approved_other (the cited Paper 1 import via
-    DCMasterApplied.dcMasterApplied) plus 3 forced secondaries Δ_source,
-    Δ_role, Δ_target all at bridged. Matches the cross-paper one-way citation
-    rule.'
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 4 atoms indexed by shell/gamma but not computed from them. Primary
+    Δ_transport at approved_other carries forced secondaries [Δ_source, Δ_role,
+    Δ_target] on the primary atom, with matching witness atoms at Δ_source/bridged,
+    Δ_role/bridged, Δ_target/bridged. The def does not invoke or witness
+    DCMasterApplied.dcMasterApplied; the approved_other status records the
+    cross-paper one-way citation rule at the paper level.'
 - paper_label: thm:rh:aor-real-coordinate-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
@@ -536,37 +552,41 @@ rows:
   target_paper: rh
   target_destination: body
   target_section_hint: sec:rh-aor-instance
-  proof_presentation: lean_substantive
-  lean_coverage: theorem
+  proof_presentation: definition_entry
+  lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorRealCoordinateDischarge
   semantic_alignment: faithful
-  notes: 'Typed-interface composition; literal-data def returning 2 paired
-    DischargeAtoms (Δ_presentation/outside_scope for the supplied RealCoordinate
-    parameter; Δ_presentation/nonclaim for the analytic identification with
-    classical Re(ρ)). Paired statuses follow the AOR cost-table pattern for
-    presentation residuals discharged outside their formal scope.'
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 2 paired atoms indexed by shell/gamma but not computed from them. Tags the
+    typed RealCoordinate parameter R (carried by shell) as
+    Δ_presentation/outside_scope paired with Δ_presentation/nonclaim per the AOR
+    cost-table pattern for presentation residuals discharged outside their formal
+    scope. The def does not project R; the classical analytic identification with
+    Re(ρ) is registered as nonclaim.'
 - paper_label: thm:rh:aor-translation-interface-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 430
+  source_line: 428
   source_section: AORInstance
   theorem_title: Translation-interface discharge (Δ_target/zero + Δ_transport/zero)
   target_paper: rh
   target_destination: body
   target_section_hint: sec:rh-aor-instance
-  proof_presentation: lean_substantive
-  lean_coverage: theorem
+  proof_presentation: definition_entry
+  lean_coverage: definition
   lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorTranslationInterfaceDischarge
   semantic_alignment: faithful
-  notes: 'Typed-interface composition; literal-data def returning 2 DischargeAtoms.
-    Primary Δ_target/zero with [Δ_transport] forced secondary, plus the
-    Δ_transport/zero secondary atom realizing the forced-secondary type. Both
-    closed at zero by the AntiInvariantZeroLedger typed-interface composition of
-    TranslationT.translationT.'
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 2 atoms indexed by shell/gamma but not computed from them. Primary
+    Δ_target/zero carries [Δ_transport] forced secondary on the primary atom,
+    with matching Δ_transport/zero witness atom. The def does not reference
+    TranslationT.translationT; the paper-level AntiInvariantZeroLedger
+    typed-interface composition justifies the zero status. Substantive
+    composition lives in aorInstance.'
 - paper_label: thm:rh:aor-instance
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 453
+  source_line: 452
   source_section: AORInstance
   theorem_title: 'RH AOR-instance theorem: Sel in RefStableAOR^ref scope S_RH'
   target_paper: rh
