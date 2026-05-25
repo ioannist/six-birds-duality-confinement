@@ -78,33 +78,39 @@ Required primitives:
   closed discharge status. A discharge witness for a record is a
   finite list of `DischargeAtom` values; each compound record below
   emits multiple atoms.
-- `AORInstanceCarrier` — a typed wrapper structure with eight
-  fields, mirroring the eight AOR field categories of Tsiokos2026AOR
+- `AORInstanceCarrier` — a typed wrapper structure with nine
+  fields total: the eight AOR field categories of Tsiokos2026AOR
   (carrier identifier, observations, routes, sources, interfaces,
-  constraints, residual discharges, nonclaim register). Two of these
-  are load-bearing in the minimal scope: `discharges :
-  List DischargeAtom` (the residual-discharge register) and
-  `nonclaims_nonempty : Prop` (the nonclaim register populated for
-  every declared scope boundary). The other six fields are
-  lightweight typed tags (e.g., `carrier_id : String`,
-  `observations : List String`, `routes : List String`,
-  `sources : List String`, `interfaces : List String`,
-  `constraints : List String`) that record the AOR field-category
-  labels assigned to the underlying `shell` and `gamma` records but
-  do not carry independent Lean-substantive content; the load-bearing
-  content lives in the existing `shell` and `gamma` records that the
-  AOR-instance wrapper takes as inputs. The eight-field shape keeps
-  the AOR-instance object structurally honest while letting the
-  Minimal scope avoid re-encoding the substantive observation,
-  route, source, interface, and constraint data already declared on
-  `shell` and `gamma`.
+  constraints, residual discharges, nonclaim register), plus the
+  structural `nonclaims_nonempty` witness paired with the nonclaim
+  register. Three fields are load-bearing in the minimal scope:
+  `discharges : List DischargeAtom` (the residual-discharge
+  register), `nonclaims : List String` (the nonclaim register), and
+  `nonclaims_nonempty : nonclaims ≠ []` (the structural proof that
+  the nonclaim register is populated for every declared scope
+  boundary). The other six fields are lightweight typed tags
+  (`carrier_id : String`, `observations : List String`,
+  `routes : List String`, `sources : List String`,
+  `interfaces : List String`, `constraints : List String`) that
+  record the AOR field-category labels assigned to the underlying
+  `shell` and `gamma` records but do not carry independent
+  Lean-substantive content; the load-bearing content lives in the
+  existing `shell` and `gamma` records that the AOR-instance
+  wrapper takes as inputs. The nine-field shape keeps the
+  AOR-instance object structurally honest, makes the nonclaim
+  register a real audit channel rather than a black-box `Prop`,
+  and lets the Minimal scope avoid re-encoding the substantive
+  observation, route, source, interface, and constraint data
+  already declared on `shell` and `gamma`.
 - `RefStableAOR` — a `Prop`-valued predicate over an
   `AORInstanceCarrier`. The predicate is satisfied when every
   declared `DischargeAtom` in `discharges` has a closed status from
   the enum above (every status in this paper's enum is closed by
-  construction), the forced-secondary types declared on each atom
-  are also present in the discharge list as atoms with their own
-  closed statuses, and `nonclaims_nonempty` holds. This is the
+  construction), every forced-secondary type declared on a primary
+  atom is realized as some other atom's primary type in the same
+  discharge list, and the carrier's `nonclaims` list is non-empty
+  (carried by the structural `nonclaims_nonempty : nonclaims ≠ []`
+  field). This is the
   record-level reading: `RefStableAOR` is a local syntactic
   predicate over the carrier's typed discharge list. It is **not**
   the AOR meta-theory's full refinement-stable characterisation
@@ -177,23 +183,34 @@ categories from existing data already declared on `shell` and
 This is a definition, not a derivation. It places existing typed
 records into the AOR field order; no new analytic content is
 introduced. Lean realises `SelAORInstance` as a wrapper structure
-in `SixBirdsDualityConfinement.RH.AORInstance` containing the two
-inputs `shell` and `gamma`, plus a constructed value of the
-eight-field `AORInstanceCarrier` of `AORPrimitives`:
+in `SixBirdsDualityConfinement.RH.AORInstance` indexed by `shell`
+and `gamma` with a single field `carrier : AORInstanceCarrier`.
+A companion `def defaultCarrier shell gamma : AORInstanceCarrier`
+provides a documentary default-shape carrier with:
 - the six lightweight tag/list fields (`carrier_id`,
   `observations`, `routes`, `sources`, `interfaces`,
-  `constraints`) are populated with String/`List String` labels
-  derived from the eight AOR field categories listed above, and
-- the two load-bearing fields (`discharges : List DischargeAtom`
-  and `nonclaims_nonempty : Prop`) are populated from the discharge
-  theorems below and from the carrier's nonclaim register.
+  `constraints`) populated with `String` / `List String` labels
+  derived from the eight AOR field categories listed above;
+- `discharges := []` (the discharge atoms come from the
+  discharge defs below and are assembled in `assembledCarrier`); and
+- `nonclaims : List String` populated with nine documentary
+  entries drawn from `rem:rh:aor-partial-status`, paired with the
+  structural `nonclaims_nonempty : nonclaims ≠ []` witness
+  discharged by `decide`.
+
+A second companion `def assembledCarrier shell gamma :
+AORInstanceCarrier` builds the carrier consumed by the main
+AOR-instance theorem by record-updating `defaultCarrier` with
+`discharges := mechanicalRecords ++ recognitionDischarge ++ ...`
+(concatenation of all seven discharge defs in document order).
 
 The substantive content (the actual observations, routes, sources,
 interfaces, constraints) lives in the existing `shell` and `gamma`
-records that the wrapper takes as inputs; the six tag fields record
-which `shell`/`gamma` items occupy which AOR category, while the
-two load-bearing fields carry the typed discharge and nonclaim data
-that `RefStableAOR` consumes.
+records that `SelAORInstance` takes as inputs; the six tag fields
+record which `shell`/`gamma` items occupy which AOR category, while
+the load-bearing fields (`discharges`, `nonclaims`, and the
+structural `nonclaims_nonempty` witness) carry the typed discharge
+and nonclaim data that `RefStableAOR` consumes.
 
 ---
 
@@ -485,10 +502,22 @@ as a Δ_target/zero discharge with a Δ_transport forced secondary.
 `thm:rh:aor-real-coordinate-discharge`, and
 `thm:rh:aor-translation-interface-discharge`, the saturated completed
 Selberg trace shell satisfies the record-level `RefStableAOR`
-predicate on the RH scope:
+predicate on the assembled-carrier shape:
 ```
-RefStableAOR (SelAORInstance(shell, gamma))
+RefStableAOR (assembledCarrier shell gamma)
 ```
+where `assembledCarrier shell gamma` is the
+`AORInstanceCarrier` value obtained from `defaultCarrier shell gamma`
+by overwriting its `discharges` field with the concatenation of the
+seven discharge lists above (in document order:
+mechanicalRecords ++ recognitionDischarge ++ gammaBridgeDischarge ++
+auditLDischarge ++ dcMasterImportDischarge ++
+realCoordinateDischarge ++ translationInterfaceDischarge). The
+wrapper structure `SelAORInstance shell gamma` of
+`def:rh:aor-sel-instance` is the typed slot for that assembled
+carrier; the Lean theorem is stated directly over `assembledCarrier`
+to keep the proof's case analysis aligned with the literal discharge
+list.
 
 **Statement (paper-level consequence).** At the record level of this
 AOR instance, the typed zero ledger of `Sel` has no nontrivial zeros
@@ -497,27 +526,34 @@ Lean output of the AOR-instance theorem: it is the conclusion of
 `thm:rh:conditional` read in the AOR membership register, obtained
 through the same closure stack (recognition source → DC master
 theorem → translation theorem T forward). The Lean realisation
-returns only `RefStableAOR (SelAORInstance shell gamma)`; the
+returns only `RefStableAOR (assembledCarrier shell gamma)`; the
 paper-level critical-line reading is a downstream paper-prose
 consequence composed from `RHConditional.rhConditional`.
 
-**Proof.** The seven discharge theorems above each produce a finite
-`List DischargeAtom`. The concatenation of those lists populates the
-`discharges` field of the `SelAORInstance` carrier with closed
-discharge atoms for every primary type asserted as load-bearing in
-the AOR-instance object definition. The forced-secondary atoms are
-listed alongside their primaries. The `nonclaims_nonempty` field is
-discharged by the nonclaim register, populated with the entries of
-`sec:scope_and_nonclaims` plus the AOR-instance-specific nonclaims
-of `rem:rh:aor-partial-status`. By the `RefStableAOR` predicate
-definition (every declared atom is closed; every forced-secondary
-atom is present and closed; the nonclaim register is non-empty), the
-carrier satisfies `RefStableAOR`. The paper-level critical-line
-consequence stated above follows separately: translation theorem T
-converts `A_Z = 0` (obtained through the same closure stack as
-`thm:rh:conditional`) into the critical-line statement on `Z_nt`,
-and the AOR-instance recasting therefore inherits the same
-conclusion at the record level.
+**Proof.** The seven discharge defs above each produce a literal
+`List DischargeAtom`. Their concatenation populates the `discharges`
+field of `assembledCarrier shell gamma`. The proof of `RefStableAOR`
+proceeds by case analysis on the secondary residual type (the
+`secondary` variable introduced by the universally quantified
+forced-secondary clause): for each of the seven `ResidualType`
+constructors, the proof exhibits an explicit witness atom from the
+assembled discharge list whose primary type matches that
+constructor. The case analysis is on the secondary type rather than
+on the atom (or atom/secondary pair) because `RefStableAOR`'s
+forced-secondary clause is set-theoretic over primary types: only
+membership of SOME atom with the right primary in the discharge
+list is required. The witness atoms picked match the audit semantics
+of the requesting primary (e.g., the `role` witness is picked from
+the bridged role atoms of recognition / bridge / DC-import, not from
+the `by_construction` role atoms of mechanical records, to keep the
+audit class aligned). The structural `nonclaims_nonempty :
+nonclaims ≠ []` clause is discharged by `decide` on the concrete
+nine-entry `nonclaims` list of `defaultCarrier`. The paper-level
+critical-line consequence stated above follows separately:
+translation theorem T converts `A_Z = 0` (obtained through the same
+closure stack as `thm:rh:conditional`) into the critical-line
+statement on `Z_nt`, and the AOR-instance recasting therefore
+inherits the same conclusion at the record level.
 
 **Scope of the membership predicate.** `RefStableAOR` in this paper
 is the local syntactic predicate over the carrier's typed discharge
@@ -531,7 +567,7 @@ assignment, not a derivation of the AOR refinement-stable
 characterisation.
 
 **Mechanization.** A theorem returning a single value of type
-`RefStableAOR (SelAORInstance shell gamma)`. The proof composes the
+`RefStableAOR (assembledCarrier shell gamma)`. The proof composes the
 discharge lists of the seven theorems above into the carrier's
 residual-discharge register and discharges the `RefStableAOR`
 predicate by structural composition. Provable as a typed-interface

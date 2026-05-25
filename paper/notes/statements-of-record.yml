@@ -421,7 +421,7 @@ rows:
 - paper_label: def:rh:aor-sel-instance
   env_kind: definition
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 131
+  source_line: 137
   source_section: AORInstance
   theorem_title: AOR-instance carrier wrapper SelAORInstance for the Selberg shell
   target_paper: rh
@@ -444,7 +444,7 @@ rows:
 - paper_label: thm:rh:aor-mechanical-records
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 200
+  source_line: 217
   source_section: AORInstance
   theorem_title: Mechanical AOR records umbrella (six DischargeAtoms)
   target_paper: rh
@@ -464,7 +464,7 @@ rows:
 - paper_label: thm:rh:aor-recognition-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 251
+  source_line: 268
   source_section: AORInstance
   theorem_title: Recognition-source discharge (Δ_source/bridged + asymptotic_budgeted limit)
   target_paper: rh
@@ -485,7 +485,7 @@ rows:
 - paper_label: thm:rh:aor-gamma-bridge-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 297
+  source_line: 321
   source_section: AORInstance
   theorem_title: Bridge-fields discharge (Δ_transport zero/bridged components)
   target_paper: rh
@@ -506,7 +506,7 @@ rows:
 - paper_label: thm:rh:aor-auditL-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 332
+  source_line: 360
   source_section: AORInstance
   theorem_title: Admissibility-audit discharge (Audit_L as Δ_meta/bridged)
   target_paper: rh
@@ -526,7 +526,7 @@ rows:
 - paper_label: thm:rh:aor-dc-master-import-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 364
+  source_line: 396
   source_section: AORInstance
   theorem_title: Cross-paper master-theorem import discharge (approved_other)
   target_paper: rh
@@ -546,7 +546,7 @@ rows:
 - paper_label: thm:rh:aor-real-coordinate-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 393
+  source_line: 429
   source_section: AORInstance
   theorem_title: Typed real-coordinate discharge (Δ_presentation outside_scope + nonclaim)
   target_paper: rh
@@ -566,7 +566,7 @@ rows:
 - paper_label: thm:rh:aor-translation-interface-discharge
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 428
+  source_line: 467
   source_section: AORInstance
   theorem_title: Translation-interface discharge (Δ_target/zero + Δ_transport/zero)
   target_paper: rh
@@ -586,7 +586,7 @@ rows:
 - paper_label: thm:rh:aor-instance
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_aor_instance.md
-  source_line: 452
+  source_line: 496
   source_section: AORInstance
   theorem_title: 'RH AOR-instance theorem: Sel in RefStableAOR^ref scope S_RH'
   target_paper: rh
@@ -598,11 +598,18 @@ rows:
   semantic_alignment: faithful
   notes: 'Typed-bridge composition; the Lean theorem returns only RefStableAOR
     (assembledCarrier shell gamma), where assembledCarrier concatenates the 7
-    discharge lists (24 atoms total) into the carrier register. Proof: case
-    analysis over the discharge list to verify each forced-secondary type is
-    realized as some atom''s primary type. The critical-line consequence
-    (every rho in Z_nt has Re(rho) = 1/2) is paper-level only, obtained
-    separately via RHConditional.rhConditional and the same closure stack.
-    Axiom closure [propext] only (within trust base). AOR meta-theory
-    (Tsiokos2026AOR refinement-stable characterisation) cited at paper level,
-    not re-derived.'
+    discharge lists (24 atoms total) into the carrier register. Proof structure:
+    case analysis on the secondary residual type (seven cases, one per
+    ResidualType constructor), exhibiting an explicit witness atom from the
+    assembled discharge list for each case. The case analysis is on `secondary`
+    rather than on `atom` because RefStableAOR''s forced-secondary clause is
+    set-theoretic over primary types; the audit-class of each witness is chosen
+    to match the requesting primary''s status (e.g., role witness is picked
+    from the bridged role atoms of recognition/bridge/DC-import, not from the
+    by_construction role atoms of mechanical records). The structural
+    nonclaims_nonempty clause is discharged by `decide` on the concrete
+    nine-entry nonclaims list. The critical-line consequence (every rho in Z_nt
+    has Re(rho) = 1/2) is paper-level only, obtained separately via
+    RHConditional.rhConditional and the same closure stack. Axiom closure
+    [propext] only (within trust base). AOR meta-theory (Tsiokos2026AOR
+    refinement-stable characterisation) cited at paper level, not re-derived.'

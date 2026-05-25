@@ -290,7 +290,7 @@ theorem aorInstance
     · exact
         ⟨{ primary := AORPrimitives.ResidualType.role
            forced_secondaries := []
-           status := AORPrimitives.DischargeStatus.by_construction },
+           status := AORPrimitives.DischargeStatus.bridged },
           by
             simp [assembledCarrier, defaultCarrier, aorMechanicalRecords,
               aorRecognitionDischarge, aorGammaBridgeDischarge,

@@ -5,6 +5,8 @@ import SixBirdsDualityConfinement.RH.SatSelShell
 import SixBirdsDualityConfinement.RH.TranslationT
 import SixBirdsDualityConfinement.RH.DCMasterApplied
 import SixBirdsDualityConfinement.RH.RHConditional
+import SixBirdsDualityConfinement.RH.AORPrimitives
+import SixBirdsDualityConfinement.RH.AORInstance
 
 /-!
 Umbrella module for the RH paper axis (Paper 2).
