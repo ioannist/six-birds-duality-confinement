@@ -13,9 +13,9 @@ Fix an involutive object ledger
 \(\IOL=(X,J,\mu,\psi,Y,\Jiso)\).  The preceding section supplied
 the carrier-side involution \(J\) and the response-side involution
 \(\Jiso\).  This section extracts the part of the readout that
-changes sign under the duality and turns that part into a positive
-observable.  The isometric involution \(\Jiso\) splits the response space \(Y\)
-into invariant and anti-invariant directions, and the confinement
+changes sign under the duality and turns it into a positive
+observable.  The isometric involution \(\Jiso\) splits \(Y\) into
+invariant and anti-invariant directions, and the confinement
 mechanism reads only the second component: the direction in which
 the response is reversed by the involution.
 
@@ -42,11 +42,11 @@ carrier involution:
   =
   -\psim(x).
 \]
-Thus \(\psim\) is the component of the observable that can detect
-departure from the fixed locus.  If \(x\in\Fix(J)\), then the same
+So \(\psim\) is the component of the observable that can detect
+departure from the fixed locus.  If \(x\in\Fix(J)\), the same
 identity gives \(\psim(x)=-\psim(x)\), hence \(\psim(x)=0\) over a
 real response space.  The converse need not hold automatically; it
-is precisely the separation condition defined below.
+is exactly the separation condition defined below.
 
 The positive object associated with \(\psim\) is introduced in a
 typed positive cone rather than as a trace-class operator: an
@@ -167,22 +167,22 @@ typed \texttt{AntiInvariantLedger} field \texttt{trace\_identity}
 rather than as an independent analytic derivation; the formalization
 appendix records the declaration-level correspondence.
 
-One further encoding disclosure belongs here.  The anti-invariant
+A further encoding disclosure belongs here.  The anti-invariant
 readout \(\psim\) is realized in Lean as an independent typed field
 of both the separating-readout and anti-invariant-ledger carriers,
 supplied together with a coherence hypothesis that the two
 occurrences agree.  Lean does not construct \(\psim\) as the
 projection \(\Pminus\psi\) and does not derive the equivariance
-identity \(\psim(Jx)=-\psim(x)\) from equivariance of \(\psi\):
-the projection definition and the resulting equivariance are
-paper-side content carried over to the Lean carriers as
-typed-interface data.  This matches the typed-cone scope of the
-formalization, which does not encode the response-side projector
-\(\Pminus\); the formalization appendix records the disclosure
-alongside the per-row coverage table.
+identity \(\psim(Jx)=-\psim(x)\) from equivariance of \(\psi\): the
+projection definition and the resulting equivariance are paper-side
+content, carried over to the Lean carriers as typed-interface data.
+This matches the typed-cone scope of the formalization, which does
+not encode the response-side projector \(\Pminus\); the
+formalization appendix records the disclosure alongside the per-row
+coverage table.
 
-Consequently, vanishing of \(\trace\AX\), vanishing of \(\AX\), and
-vanishing of \(\psim\) almost everywhere are equivalent under the
+Vanishing of \(\trace\AX\), vanishing of \(\AX\), and vanishing of
+\(\psim\) almost everywhere are therefore equivalent under the
 trace identity and the positivity axioms of the cone.  Combining
-this with separating readout is the direct route to the fixed-locus
-confinement statement proved in the next section.
+this with a separating readout is the direct route to the
+fixed-locus confinement statement proved in the next section.

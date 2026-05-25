@@ -7,7 +7,7 @@ This appendix records how the Lean development is cited in the
 paper.  Body prose uses paper-level mathematical names and
 distinguishes a theorem proved in Lean, a definition realized as a
 Lean structure, a statement tracked through an explicit hypothesis,
-and material that has no Lean coverage.  Lean declarations and
+and material with no Lean coverage.  Lean declarations and
 module-level bookkeeping appear here.
 
 \subsection*{Disclosure discipline}
@@ -76,9 +76,9 @@ entry. \\
 
 The per-axis manifest enumerates the formally tracked entries of
 this paper; the per-row coverage table below renders that manifest
-in mathematical language.  The validator also audits theorem dependencies against the
-project trust base.  For this paper the permitted axiom closure is the
-standard Lean core list
+in mathematical language.  The validator also audits theorem
+dependencies against the project trust base.  For this paper the
+permitted axiom closure is the standard Lean core list
 \(\texttt{Classical.choice}\), \(\texttt{propext}\),
 \(\texttt{Quot.sound}\), \(\texttt{choice}\), and
 \(\texttt{funext}\).
@@ -86,55 +86,57 @@ standard Lean core list
 \subsection*{Typed positive-cone encoding}
 
 The formalization uses a mathlib-free typed positive cone as the
-common substrate for \(\AX\), the bounds \(B_n\), the carrier currency
-\(\Kminus\), and the tail terms \(T_n\).  This cone records exactly
-the primitives used by the arguments in the paper: an order
-\(\preceq\), a trace functional \(\trace\), trace monotonicity under
-the order, and the positivity-to-zero principle that a positive
-element with zero trace is the zero element.  The trace identity for
-the anti-invariant ledger is encoded at this level: the Gram-type
-construction of \(\AX\) is bundled with the assertion that
-\(\trace\AX\) is the integral of \(\|\psim(x)\|^2\).
+common substrate for \(\AX\), the bounds \(B_n\), the carrier
+currency \(\Kminus\), and the tail terms \(T_n\).  The cone records
+exactly the primitives used by the arguments in the paper: an order
+\(\preceq\), a trace functional \(\trace\), trace monotonicity
+under the order, and the positivity-to-zero principle that a
+positive element with zero trace is the zero element.  The trace
+identity for the anti-invariant ledger is encoded at this level:
+the Gram-type construction of \(\AX\) is bundled with the assertion
+that \(\trace\AX\) is the integral of \(\|\psim(x)\|^2\).
 
 This abstraction is narrower than a full Hilbert-space operator
-theory; it is the formal substrate for the membrane argument
+theory.  It is the formal substrate for the membrane argument
 because the proof of the master theorem uses only order, trace
-monotonicity, scalar squeezing, and positivity-to-zero, and it does
-not formalize trace-class operators, Hilbert-Schmidt maps, Schatten
-ideals, or trace-norm topology.  Realizing the same theorem inside the
-full positive trace-class cone remains an operator-theoretic extension
-of the present work, not a hidden claim of the Lean development.
+monotonicity, scalar squeezing, and positivity-to-zero; it does not
+formalize trace-class operators, Hilbert-Schmidt maps, Schatten
+ideals, or trace-norm topology.  Realizing the same theorem inside
+the full positive trace-class cone remains an operator-theoretic
+extension of the present work, not a hidden claim of the Lean
+development.
 
 \subsection*{Response-space typed carrier}
 
-The body definition (\Cref{def:duality_confinement:involutive-object-ledger})
-takes the response space \(Y\) to be a real Hilbert space, with
-\(\Jiso\) a linear isometric involution on \(Y\).  In the Lean
-formalization, \(Y\) is realized as a typed carrier with the
-primitives actually used by the arguments above: an addition
-\(\mathtt{add}\), a scalar action \(\mathtt{smul}\) over a typed
-\(\mathtt{Scalar}\) type, an inner product \(\mathtt{inner}\), a
-norm \(\mathtt{norm}\), the involution \(\mathtt{J\_iso}\), and the
-typed laws \(\mathtt{J\_iso\_involutive}\),
-\(\mathtt{J\_iso\_linear}\), \(\mathtt{J\_iso\_isometry}\),
-together with a readout \(\mathtt{psi}\) and its equivariance field
-\(\mathtt{psi\_equivariant}\).  This is sufficient for the proof
-steps in the paper, which use these primitives only.  The full
-axiomatic stack of a real Hilbert space (completeness, polarization
+The body definition
+(\Cref{def:duality_confinement:involutive-object-ledger}) takes the
+response space \(Y\) to be a real Hilbert space, with \(\Jiso\) a
+linear isometric involution on \(Y\).  In the Lean formalization,
+\(Y\) is realized as a typed carrier with the primitives used by
+the arguments above: an addition \(\mathtt{add}\), a scalar action
+\(\mathtt{smul}\) over a typed \(\mathtt{Scalar}\) type, an inner
+product \(\mathtt{inner}\), a norm \(\mathtt{norm}\), the
+involution \(\mathtt{J\_iso}\), and the typed laws
+\(\mathtt{J\_iso\_involutive}\), \(\mathtt{J\_iso\_linear}\),
+\(\mathtt{J\_iso\_isometry}\), together with a readout
+\(\mathtt{psi}\) and its equivariance field
+\(\mathtt{psi\_equivariant}\).  This suffices for the proof steps
+in the paper, which use these primitives only.  The full axiomatic
+stack of a real Hilbert space---completeness, polarization
 identity, parallelogram law, full bilinear/inner-product axioms,
 \(\mathbb{R}\)-vector-space axioms beyond the bundled addition and
-scalar action) is not encoded in Lean.  Realizing \(Y\) as a fully
-axiomatized real Hilbert space inside Lean is an operator-theoretic
-extension of the present work, not a hidden claim of the typed
-carrier.
+scalar action---is not encoded in Lean.  Realizing \(Y\) as a
+fully axiomatized real Hilbert space inside Lean is an
+operator-theoretic extension of the present work, not a hidden
+claim of the typed carrier.
 
 \subsection*{Representation notes}
 
 \paragraph{Douglas factorization.}
 The domination section uses the classical Douglas factorization as
 operator-theoretic motivation.  In the mathlib-free typed-cone Lean
-encoding, however, the factorization theorem is represented by a
-typed \texttt{DouglasData} carrier.  The carrier records the
+encoding the factorization theorem is represented by a typed
+\texttt{DouglasData} carrier.  The carrier records the
 operator-square-root presentation \(A=V^*V\), \(K=W^*W\), the
 domination relation \(A\preceq K\), the equivalent contractive
 factor witness \(T\) satisfying \(V=TW\), and, as fields, the two
@@ -143,7 +145,7 @@ of the Douglas equivalence.  Downstream theorems read the
 implication between domination and factorization from these typed
 fields.
 
-Thus the paper's disclosure is: Lean packages the Douglas
+The corresponding disclosure is that Lean packages the Douglas
 equivalence at the typed-cone level by storing both directions as
 typed fields of \texttt{DouglasData}, and \texttt{douglasDomination}
 repackages those fields into the
@@ -151,8 +153,8 @@ repackages those fields into the
 form used by the bridge apparatus.  This is faithful to the
 classical Douglas factorization (Douglas 1966) as the underlying
 mathematical content, but it is a typed-carrier packaging rather
-than a Lean development of the full Hilbert-space operator theorem
-and not a Lean derivation of the equivalence from
+than a Lean development of the full Hilbert-space operator
+theorem, and not a Lean derivation of the equivalence from
 operator-square-root primitives.
 
 \paragraph{AM--GM in the scalar trace budget.}
@@ -181,24 +183,23 @@ non-negativity of squares, and the derivation of
 \paragraph{Anti-invariant readout as typed field.}
 The body definition of the anti-invariant readout is
 \(\psim(x)=\Pminus\psi(x)\), and equivariance of \(\psi\) under the
-involution then forces \(\psim(Jx)=-\psim(x)\).  In the
-mathlib-free typed-cone encoding the response-side projector
-\(\Pminus\) is not represented, so \(\psim\) is realized in Lean as
-an independent typed field of the separating-readout carrier and of
-the anti-invariant-ledger carrier.  The two occurrences are linked
-by a coherence hypothesis that they agree pointwise on the carrier,
-and downstream theorems consume \(\psim\) only through these typed
+involution forces \(\psim(Jx)=-\psim(x)\).  In the mathlib-free
+typed-cone encoding the response-side projector \(\Pminus\) is not
+represented, so \(\psim\) is realized in Lean as an independent
+typed field of the separating-readout carrier and of the
+anti-invariant-ledger carrier.  The two occurrences are linked by a
+coherence hypothesis that they agree pointwise on the carrier, and
+downstream theorems consume \(\psim\) only through these typed
 fields.
 
-Accordingly, the projection definition
-\(\psim=\Pminus\psi\) and the resulting equivariance identity
-\(\psim(Jx)=-\psim(x)\) are paper-side mathematical content and are
-not derived inside Lean from the ledger's \(\psi\) and \(\Jiso\)
-fields.  A future strengthening would add a response-side
-\(\Pminus\) primitive (or an anti-action on the readout codomain)
-sufficient to derive the projection identity and equivariance
-internally; in the present typed-cone scope these are carried as
-typed-interface data.
+The projection definition \(\psim=\Pminus\psi\) and the resulting
+equivariance identity \(\psim(Jx)=-\psim(x)\) are therefore
+paper-side mathematical content, not derived inside Lean from the
+ledger's \(\psi\) and \(\Jiso\) fields.  A future strengthening
+would add a response-side \(\Pminus\) primitive (or an anti-action
+on the readout codomain) sufficient to derive the projection
+identity and equivariance internally; in the present typed-cone
+scope these are carried as typed-interface data.
 
 \begin{landscape}
 \begin{table}[H]
@@ -320,22 +321,21 @@ namespace prefix.}
 \end{landscape}
 
 \Cref{tab:dc-formalization-coverage} records the per-row coverage
-for the thirteen inventory entries of this paper.  Three rows
-require the representation discipline stated above: Douglas
-factorization is the typed-cone form recorded by the
-\texttt{DouglasData} carrier; the optimized scalar trace budget is
-tracked over the \texttt{am\_gm\_optimization} hypothesis; and the
-defected obstruction budget is support-only material with no Lean
-citation.  In addition, the anti-invariant-readout typed-field
-disclosure above applies across the separating-readout,
-anti-invariant-ledger, and direct-confinement entries: \(\psim\)
-itself is supplied as a typed field with a coherence hypothesis
-between its two occurrences, and the projection identity
-\(\psim=\Pminus\psi\) and equivariance
-\(\psim(Jx)=-\psim(x)\) are paper-side content rather than
-Lean-derived from \(\psi\) and \(\Jiso\).  The remaining ten rows
-are direct definition entries or faithful theorem entries in the
-typed positive-cone formalization, so all twelve mechanize-now
+for the thirteen inventory entries.  Three rows require the
+representation discipline stated above: Douglas factorization is
+the typed-cone form recorded by the \texttt{DouglasData} carrier;
+the optimized scalar trace budget is tracked over the
+\texttt{am\_gm\_optimization} hypothesis; and the defected
+obstruction budget is support-only material with no Lean citation.
+In addition, the anti-invariant-readout typed-field disclosure
+above applies across the separating-readout, anti-invariant-ledger,
+and direct-confinement entries: \(\psim\) is supplied as a typed
+field with a coherence hypothesis between its two occurrences,
+while the projection identity \(\psim=\Pminus\psi\) and
+equivariance \(\psim(Jx)=-\psim(x)\) are paper-side content rather
+than Lean-derived from \(\psi\) and \(\Jiso\).  The remaining ten
+rows are direct definition entries or faithful theorem entries in
+the typed positive-cone formalization, so all twelve mechanize-now
 entries carry faithful semantic alignment under these disclosures.
 The real-part abstraction used for the Riemann-hypothesis zero
 ledger is the corresponding representation note for

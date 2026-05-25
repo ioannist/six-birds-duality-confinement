@@ -12,11 +12,11 @@
 
 The master theorem is stated for a sequence of ambient domination
 records \(\AX\preceq B_n\) whose traces vanish.  In applications,
-the available records often arrive in a less direct form.  One has
+the available records often arrive in a less direct form: one has
 finite-window ledgers \(A_{X,n}\), transports \(\iota_n\) that
 place those finite objects into the completed ambient cone, and
 tail terms \(T_n\) measuring what the window has not yet captured.
-The exhaustive moving ledger formalizes exactly this
+The exhaustive moving ledger formalizes this
 finite-window-plus-tail situation.
 
 \begin{definition}[Exhaustive moving ledger]
@@ -45,9 +45,9 @@ approximation to the completed anti-invariant ledger \(\AX\).  The
 transport \(\iota_n\) moves that truncated positive element into
 the ambient cone where it can be compared with \(\AX\), and the
 tail \(T_n\) records the residual positive contribution not
-captured by the window.  The point of the definition is not to
-choose a particular analytic truncation; it is to isolate the
-trace-theoretic data needed for the same squeeze mechanism used in
+captured by the window.  The definition does not pick a particular
+analytic truncation; it isolates the trace-theoretic data needed
+for the same squeeze mechanism used in
 \Cref{sec:master_theorem}.
 
 Vanishing-exhaustiveness says that the transported upper bound and
@@ -182,15 +182,15 @@ with equality at the displayed value of \(t\).  If one of
 letting \(t\) tend to \(0\) or to \(+\infty\), as appropriate.
 \end{proof}
 
-In our typed-scalar encoding, the AM--GM step in the proof of the
-optimized scalar trace budget is taken as a typed-scalar hypothesis
-rather than derived from a quadratic-non-negativity axiom on a
-typed real-arithmetic structure.  The optimized scalar trace budget
-is thus tracked by the formalization harness as a typed projection
-over the AM--GM hypothesis; a substantive Lean derivation would
-require extending the abstract-scalar encoding with sufficient
-arithmetic to express the inequality
-\((\sqrt{a}-\sqrt{b})^2\geq0\).
+In the typed-scalar encoding used here, the AM--GM step in the
+proof of the optimized scalar trace budget is taken as a
+typed-scalar hypothesis rather than derived from a
+quadratic-non-negativity axiom on a typed real-arithmetic structure.
+The optimized scalar trace budget is therefore tracked by the
+formalization harness as a typed projection over the AM--GM
+hypothesis; a substantive Lean derivation would require extending
+the abstract-scalar encoding with sufficient arithmetic to express
+the inequality \((\sqrt{a}-\sqrt{b})^2\geq0\).
 
 The next section gives the scope fence around these abstractions:
 the typed-cone level of the master theorem, the AM--GM hypothesis
