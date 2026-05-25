@@ -77,8 +77,12 @@ substantive theorem derivation. \\
 
 The validator audits the theorem rows against the project trust base
 and checks that no forbidden Lean tokens appear in the source tree.
-The coverage table in the next pass renders the eleven RH inventory
-rows using the modes in \Cref{tab:rh-lean-disclosure-discipline}.
+The first coverage table in the next pass renders the eleven original
+RH inventory rows using the modes in
+\Cref{tab:rh-lean-disclosure-discipline}; a second table records the
+nine additional entries introduced by the AOR-instance recasting of
+\Cref{sec:rh-aor-instance}, including the partial-status disclosure
+for the main AOR-instance theorem.
 
 \subsection*{Typed positive-cone encoding}
 
@@ -310,6 +314,161 @@ entries have faithful semantic alignment; the recognition-source
 row's alignment is marked not applicable because it is a typed
 hypothesis carrier.  \nolinkurl{RH.DCMasterApplied.dcMasterApplied}
 is the only Lean-side dependency on \cite{TsiokosSDTC2026}.
+
+\subsection*{AOR-instance coverage}
+
+The AOR-instance recasting of \Cref{sec:rh-aor-instance} adds nine
+entries to the formalization: one definition (the per-shell
+AOR-instance carrier \texttt{SelAORInstance} together with the
+canonical assembled value \texttt{assembledCarrier}), seven
+literal-data discharge definitions (one per atom of the
+twelve-type residual classification consumed by the Selberg shell),
+and one composing theorem (the main AOR-instance assertion
+\texttt{aorInstance}).  All nine entries live in the Lean module
+\nolinkurl{RH.AORInstance}.
+
+Two disclosure points apply uniformly to the seven discharge rows.
+First, each discharge is realized in Lean as a \texttt{def} that
+returns a literal classification record indexed by the shell and the
+recognition source but not computed from PDE-style data; this matches
+the body presentation of \Cref{def:rh:aor-sel-instance}, in which the
+eight-stratum / twelve-type residual atlas is read off carrier fields
+rather than derived.  Second, the substantive recognition-source and
+translation-interface discharges are deferred to
+\citet{TsiokosSDTC2026} and \Cref{sec:translation_theorem}
+respectively, so the seven discharge entries are typed-interface
+records of the AOR-instance object, not independent derivations.
+
+The main AOR-instance theorem
+\nolinkurl{RH.AORInstance.aorInstance} composes the seven literal
+discharges through the local refinement-stable AOR predicate
+\nolinkurl{RH.AORPrimitives.RefStableAOR}; its conclusion is the
+\texttt{Prop}-valued statement
+\(\mathrm{RefStableAOR}(\texttt{assembledCarrier}\,\Sel\,\gamma)\),
+which is the local syntactic predicate over the carrier fields and
+\emph{not} the full audit-closure refinement-stable
+characterisation of \citet{TsiokosAOR2026}.  The
+\texttt{nonclaims\_nonempty} structural witness is supplied by the
+discharge definitions; the proof obligation per atom dispatches by
+primary residual type through the seven discharge defs and routes
+each forced-secondary entry through the literal classification.  No
+substantive PDE-style audit content is added.
+
+\begin{landscape}
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}
+  >{\raggedright\arraybackslash}p{0.20\linewidth}
+  >{\raggedright\arraybackslash}p{0.20\linewidth}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}p{0.16\linewidth}
+  >{\raggedright\arraybackslash}p{0.08\linewidth}
+  >{\raggedright\arraybackslash}p{0.07\linewidth}@{}}
+\toprule
+Paper label & Paper-prose name & Lean declaration &
+Proof mode & Coverage & Status \\
+\midrule
+\nolinkurl{def:rh:aor-sel-instance} &
+AOR-instance object on the Selberg shell &
+\nolinkurl{RH.AORInstance.SelAORInstance};
+canonical value \nolinkurl{RH.AORInstance.assembledCarrier} &
+definition entry; literal classification record &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-mechanical-records} &
+mechanical AOR records on \(\Sel\) &
+\nolinkurl{RH.AORInstance.aorMechanicalRecords} &
+definition entry; literal data, returns the mechanical-stratum
+discharge list &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-recognition-discharge} &
+recognition-source residual discharge &
+\nolinkurl{RH.AORInstance.aorRecognitionDischarge} &
+definition entry; literal data with status
+\texttt{approved\_other}, deferred to \cite{TsiokosSDTC2026} &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-gamma-bridge-discharge} &
+\(\GamSDTCSelberg\) bridge-field discharge &
+\nolinkurl{RH.AORInstance.aorGammaBridgeDischarge} &
+definition entry; literal data with status \texttt{bridged} on the
+carrier bridge propositions &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-auditL-discharge} &
+\(\mathrm{Audit}_L\) admissibility discharge &
+\nolinkurl{RH.AORInstance.aorAuditLDischarge} &
+definition entry; literal data with status \texttt{by\_construction}
+on the audit field of \(\Sel\) &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-dc-master-import-discharge} &
+duality-confinement master-theorem import discharge &
+\nolinkurl{RH.AORInstance.aorDCMasterImportDischarge} &
+definition entry; literal data with status \texttt{approved\_other},
+deferred to \cite{TsiokosSDTC2026} &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-real-coordinate-discharge} &
+typed real-coordinate identification discharge &
+\nolinkurl{RH.AORInstance.aorRealCoordinateDischarge} &
+definition entry; literal data with status \texttt{by\_construction};
+A3 representation note applies &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-translation-interface-discharge} &
+translation-theorem typed-interface discharge &
+\nolinkurl{RH.AORInstance.aorTranslationInterfaceDischarge} &
+definition entry; literal data with status
+\texttt{by\_construction}; substantive content lives in
+\Cref{sec:translation_theorem} &
+definition &
+faithful \\
+
+\nolinkurl{thm:rh:aor-instance} &
+AOR-instance theorem,
+\(\Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}}\) &
+\nolinkurl{RH.AORInstance.aorInstance} &
+lean substantive; case-on-secondary-type dispatch through the seven
+literal discharge defs, projecting through local
+\nolinkurl{RH.AORPrimitives.RefStableAOR} &
+theorem &
+partial \\
+\bottomrule
+\end{tabularx}
+\caption{Per-row Lean coverage for the nine AOR-instance entries
+added by \Cref{sec:rh-aor-instance}.  Lean declarations omit the
+common \texttt{SixBirdsDualityConfinement.} namespace prefix.  The
+\texttt{aorInstance} theorem is marked partial because its
+conclusion is the local \nolinkurl{RH.AORPrimitives.RefStableAOR}
+predicate over the carrier fields rather than the full audit-closure
+refinement-stable characterisation of \citet{TsiokosAOR2026}, and
+the substantive recognition-source and translation-interface
+discharges remain deferred to their respective source theorems.}
+\label{tab:rh-formalization-coverage-aor}
+\end{table}
+\end{landscape}
+
+\Cref{tab:rh-formalization-coverage-aor} records the per-row coverage
+for the nine AOR-instance entries.  All eight definition rows have
+faithful semantic alignment with their paper-side classification
+records; the \texttt{aorInstance} theorem row is marked partial in
+the status column to disclose that the Lean assertion is a local
+syntactic membership claim, not a derivation of the full
+audit-closure refinement-stable property.  The partial status
+matches the body partial-status remark \Cref{rem:rh:aor-partial-status}
+and tracks the same scope boundaries listed in
+\Cref{sec:scope_and_nonclaims} (NC-10, NC-11).
 
 \subsection*{No-smuggling gates}
 
