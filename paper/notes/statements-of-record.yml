@@ -224,7 +224,13 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.DualityConfinement.DefectedBudget.optimizedTraceBudget
   semantic_alignment: faithful
-  notes: See audit_summary §A2 for AM-GM mechanization approach.
+  notes: Mode is `lean_substantive (harness-tracked over explicit AM-GM hypothesis)`;
+    the `optimizedTraceBudget` theorem returns the supplied `am_gm_optimization`
+    and `fixed_ledger_squeeze` hypotheses unchanged, so the AM-GM step is paper-
+    side content tracked by the formalization harness, not a Lean derivation of
+    AM-GM. Body and App D use "tracked by the formalization harness" wording per
+    the proof-presentation policy. See audit_summary §A2 for the AM-GM
+    mechanization approach.
 - paper_label: def:rh:fe-involution
   env_kind: definition
   source_file: anti_loc/extracted_math/rh_construction.md

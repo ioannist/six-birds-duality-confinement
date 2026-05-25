@@ -35,15 +35,34 @@ bookkeeping appear here.
 \toprule
 Mode & Permitted wording & Use in this paper \\
 \midrule
-\texttt{lean\_substantive} &
+\texttt{lean\_substantive} (pure derivation) &
 ``Lean proves the result,'' ``a Lean derivation establishes the
 statement,'' or equivalent wording. &
-Used only when the Lean theorem has faithful semantic alignment with
-the paper statement.  In this paper this covers Theorem~T
-(\texttt{translationTForward}, \texttt{translationTReverse}, and
-\texttt{translationT}), the RH-specific bridge
-\texttt{dcMasterApplied}, and the conditional landing chain
-\texttt{rhConditional}. \\
+Used only when the Lean theorem derives the paper statement from
+typed primitives within its declared scope, with no typed carrier
+or bridge hypothesis carrying load-bearing content.  No theorem
+row of this paper currently sits in the pure-derivation form; all
+theorem rows are typed-interface or typed-bridge compositions, per
+the next two cells. \\
+\texttt{lean\_substantive} (typed-interface composition) &
+``Lean checks/records/composes the statement [via the typed
+\textlangle Carrier\textrangle\ fields].'' &
+Used when the Lean theorem composes the paper statement over
+typed-interface fields rather than deriving it from primitives.
+In this paper this covers Theorem~T
+(\texttt{translationTForward}, \texttt{translationTReverse},
+\texttt{translationT}), all composing fields of
+\texttt{AntiInvariantZeroLedger}. \\
+\texttt{lean\_substantive} (typed-bridge composition) &
+``Lean composes the statement through the typed bridge carrier
+\textlangle name\textrangle\ / bridge fields.'' &
+Used when the Lean theorem composes the paper statement through
+bridge propositions of a typed recognition-source carrier.  In
+this paper this is the citation form for \texttt{dcMasterApplied}
+and \texttt{rhConditional}, both of which compose Paper~1's master
+theorem with the bridge fields (\texttt{same\_readout},
+\texttt{visible\_zero\_of\_ae}, \texttt{mu\_zero\_of\_ae}) carried
+by \texttt{GammaSdtcSelberg}. \\
 \texttt{definition\_entry} &
 ``realized in Lean as the corresponding structure or definition.'' &
 Used for the functional-equation involution, the anti-invariant

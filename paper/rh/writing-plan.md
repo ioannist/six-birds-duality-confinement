@@ -214,15 +214,19 @@ Plus the always-live: `reference_codex_cli.md`,
   - `def:rh:sat-sel-shell` discloses the admissibility-as-
     Foundations-II-hypothesis encoding (the opaque `Audit_L`
     field; not derived in this paper).
-  - `thm:rh:dc-master-applied` uses the cross-paper-import
-    rebinding wording: "Lean derives the RH-specific application
-    of the master theorem as `dcMasterApplied`, instantiating
-    Paper 1 [1]'s `masterTheorem` via the bridge parameter
-    `mu_zero_of_ae`".
-  - `thm:rh:conditional` uses the conditional-theorem framing:
-    "Lean proves the conditional landing chain as `rhConditional`,
-    with the recognition source supplied as an explicit hypothesis
-    parameter `γ : GammaSdtcSelberg shell`".
+  - `thm:rh:dc-master-applied` uses the typed-bridge composition
+    wording: "Lean checks the RH-specific application of the master
+    theorem as `dcMasterApplied`, composing Paper 1 [1]'s
+    `masterTheorem` with the bridge fields `same_readout`,
+    `visible_zero_of_ae`, and `mu_zero_of_ae` carried by the
+    `GammaSdtcSelberg` record" (not a direct instantiation of the
+    abstract DC ledger on the shell).
+  - `thm:rh:conditional` uses the typed-bridge conditional-theorem
+    framing: "Lean composes the conditional landing chain as
+    `rhConditional`, taking the recognition source as the explicit
+    hypothesis parameter `γ : GammaSdtcSelberg shell` and applying
+    `dcMasterApplied` through its bridge fields followed by
+    `translationTForward`".
 
 ## Mode swap (one-time, before first drafting dispatch)
 
