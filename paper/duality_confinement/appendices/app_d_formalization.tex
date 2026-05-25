@@ -96,6 +96,29 @@ ideals, or trace-norm topology.  Realizing the same theorem inside the
 full positive trace-class cone remains an operator-theoretic extension
 of the present work, not a hidden claim of the Lean development.
 
+\subsection*{Response-space typed carrier}
+
+The body definition (\Cref{def:duality_confinement:involutive-object-ledger})
+takes the response space \(Y\) to be a real Hilbert space, with
+\(\Jiso\) a linear isometric involution on \(Y\).  In the Lean
+formalization, \(Y\) is realized as a typed carrier with the
+primitives actually used by the arguments above: an addition
+\(\mathtt{add}\), a scalar action \(\mathtt{smul}\) over a typed
+\(\mathtt{Scalar}\) type, an inner product \(\mathtt{inner}\), a
+norm \(\mathtt{norm}\), the involution \(\mathtt{J\_iso}\), and the
+typed laws \(\mathtt{J\_iso\_involutive}\),
+\(\mathtt{J\_iso\_linear}\), \(\mathtt{J\_iso\_isometry}\),
+together with a readout \(\mathtt{psi}\) and its equivariance field
+\(\mathtt{psi\_equivariant}\).  This is sufficient for the proof
+steps in the paper, which use these primitives only.  The full
+axiomatic stack of a real Hilbert space (completeness, polarization
+identity, parallelogram law, full bilinear/inner-product axioms,
+\(\mathbb{R}\)-vector-space axioms beyond the bundled addition and
+scalar action) is not encoded in Lean.  Realizing \(Y\) as a fully
+axiomatized real Hilbert space inside Lean is an operator-theoretic
+extension of the present work, not a hidden claim of the typed
+carrier.
+
 \subsection*{Representation notes}
 
 \paragraph{Douglas factorization.}
@@ -104,16 +127,24 @@ operator-theoretic motivation.  In the mathlib-free typed-cone Lean
 encoding, however, the factorization theorem is represented by a
 typed \texttt{DouglasData} carrier.  The carrier records the
 operator-square-root presentation \(A=V^*V\), \(K=W^*W\), the
-domination relation \(A\preceq K\), and the equivalent contractive
-factor witness \(T\) satisfying \(V=TW\).  Downstream theorems read
-the implication between domination and factorization from this typed
-carrier.
+domination relation \(A\preceq K\), the equivalent contractive
+factor witness \(T\) satisfying \(V=TW\), and, as fields, the two
+directions \texttt{order\_to\_factor} and \texttt{factor\_to\_order}
+of the Douglas equivalence.  Downstream theorems read the
+implication between domination and factorization from these typed
+fields.
 
-Thus the paper's disclosure is: Lean derives Douglas factorization at
-the typed-cone level.  This is faithful to the classical Douglas
-factorization (Douglas 1966) as the underlying mathematical content,
-but it is a typed-cone packaging rather than a Lean development of the
-full Hilbert-space operator theorem.
+Thus the paper's disclosure is: Lean packages the Douglas
+equivalence at the typed-cone level by storing both directions as
+typed fields of \texttt{DouglasData}, and \texttt{douglasDomination}
+repackages those fields into the
+\(\mathtt{Nonempty\ Domination}\leftrightarrow\mathtt{Nonempty\ ContractiveFactor}\)
+form used by the bridge apparatus.  This is faithful to the
+classical Douglas factorization (Douglas 1966) as the underlying
+mathematical content, but it is a typed-carrier packaging rather
+than a Lean development of the full Hilbert-space operator theorem
+and not a Lean derivation of the equivalence from
+operator-square-root primitives.
 
 \paragraph{AM--GM in the scalar trace budget.}
 The optimized scalar trace budget depends on the elementary
@@ -207,7 +238,8 @@ faithful \\
 \nolinkurl{thm:duality_confinement:separation-confinement} &
 separation--confinement theorem &
 \nolinkurl{DualityConfinement.DirectConfinement.separationConfinement} &
-lean substantive &
+lean substantive; measure-reading bridges
+supplied as typed hypotheses &
 theorem &
 faithful \\
 
@@ -228,7 +260,8 @@ faithful \\
 \nolinkurl{thm:duality_confinement:douglas-domination} &
 Douglas factorization, typed-cone form &
 \nolinkurl{DualityConfinement.Domination.douglasDomination} &
-lean substantive; \S A1 &
+lean substantive; typed-carrier packaging via
+\texttt{DouglasData} fields (\S A1) &
 theorem &
 faithful \\
 

@@ -169,18 +169,22 @@ added as a metalogical postulate.
 
 The present paper imports the duality-confinement master theorem
 from \cite{TsiokosSDTC2026}.  The Lean theorem
-\texttt{dcMasterApplied} imports the declaration
-\texttt{masterTheorem} from the module
-\nolinkurl{DualityConfinement.MasterTheorem} of that source and
-instantiates it on the Selberg-class data.  The parameter substitution is the
-formal version of the body proof: \(\Sel\) plays the role of
-\(\IOL\), \(\AZ\) plays the role of \(\AX\), \(\JL\) plays the
-role of \(J\), \(\psimRH\) plays the role of \(\psim\), and the
-multiplicity-weighted zero measure plays the role of \(\mu\).  The
-bridge parameter \texttt{mu\_zero\_of\_ae} carries the
-shell-specific separation data into the master theorem's
-hypotheses.  This is a one-way Lean import, matching the
-paper-level dependency on the SDTC apparatus of
+\texttt{dcMasterApplied} imports \texttt{masterTheorem} from the
+module \nolinkurl{DualityConfinement.MasterTheorem} of that source
+and composes it through a typed-bridge interface: the DC apparatus
+(involutive object ledger, separating readout, anti-invariant
+ledger, completed-domination records, typed-cone primitives) is
+supplied as input rather than constructed from \(\Sel\), and three
+bridge fields link the apparatus to the shell---a same-readout
+coherence, a visible-support refinement, and the implication
+\(\mathtt{mu\_zero\_of\_ae}\) translating ``\(\psim\) vanishes
+\(\mu\)-almost everywhere'' into the shell equality \(\AZ=0\).  The
+body-level role assignment (\(\Sel\leftrightarrow\IOL\),
+\(\AZ\leftrightarrow\AX\), \(\JL\leftrightarrow J\),
+\(\psimRH\leftrightarrow\psim\), zero measure \(\leftrightarrow\mu\))
+is the mathematical interpretation of this bridge interface, not a
+Lean derivation of the role assignment.  This is a one-way Lean
+import, matching the paper-level dependency on the SDTC apparatus of
 \cite{TsiokosSDTC2026}.
 
 \begin{landscape}
@@ -269,8 +273,7 @@ not applicable \\
 \nolinkurl{thm:rh:dc-master-applied} &
 duality-confinement master theorem applied to \(\Sel\) &
 \nolinkurl{RH.DCMasterApplied.dcMasterApplied} &
-lean substantive; imports \texttt{masterTheorem} of
-\cite{TsiokosSDTC2026} via \texttt{mu\_zero\_of\_ae} &
+lean substantive; typed-bridge composition over carrier fields &
 theorem &
 faithful \\
 
@@ -291,24 +294,21 @@ this paper.  Lean declarations omit the common
 \end{landscape}
 
 \Cref{tab:rh-formalization-coverage} records the per-row coverage
-for the eleven inventory entries of this paper.  Three rows carry
-explicit encoding-disclosure notes: A3 for the nontrivial-zero
-ledger, admissibility as the \(\mathrm{Audit}_L\) hypothesis for
-\(\Sel\), and typed-structure-carrier treatment for
-\(\GamSDTCSelberg\).  All ten mechanize-now entries have faithful
-semantic alignment.  The single recognition-source row has
-semantic alignment marked not applicable because it is a typed
-hypothesis carrier, not a theorem.  The cross-paper Lean import in
-\nolinkurl{RH.DCMasterApplied.dcMasterApplied} is the only
-Lean-side dependency of the present paper on
-\cite{TsiokosSDTC2026}.
+for the eleven inventory entries.  Encoding-disclosure notes apply
+to several rows (A3 for the nontrivial-zero ledger,
+\(\mathrm{Audit}_L\) admissibility for \(\Sel\),
+typed-structure-carrier for \(\GamSDTCSelberg\), and typed-bridge
+composition for \texttt{dcMasterApplied}).  All ten mechanize-now
+entries have faithful semantic alignment; the recognition-source
+row's alignment is marked not applicable because it is a typed
+hypothesis carrier.  \nolinkurl{RH.DCMasterApplied.dcMasterApplied}
+is the only Lean-side dependency on \cite{TsiokosSDTC2026}.
 
 \subsection*{No-smuggling gates}
 
-The final audit layer is paper-side discipline rather than a family
-of Lean predicates.  It checks that the conditional theorem says
-exactly what its hypotheses support and that no structural input has
-been hidden inside the prose.
+The final audit layer is paper-side discipline that checks the
+conditional theorem says exactly what its hypotheses support, with
+no structural input hidden in the prose.
 
 \begin{description}[leftmargin=0pt,labelsep=0.75em,itemsep=0.35em]
 \item[Gate 1: no overreading.]

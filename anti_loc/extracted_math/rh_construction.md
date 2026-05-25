@@ -227,38 +227,67 @@ involution `J_L`, zero ledger `Z_ζ^{nt}`, anti-invariant ledger
   content is part of what closure formation per Foundations I
   structurally provides, not separately derivable.
 
-**Mechanization encoding**: encode `Γ_{SDTC-Selberg}` as a typed
-`structure` carrier in
-`lean/SixBirdsDualityConfinement/RH/RecognitionSource.lean` with a
-single `Prop` field that the conditional theorem (`thm:rh:conditional`)
-takes as an explicit hypothesis parameter. The forbidden-tokens rule
+**Mechanization encoding (as landed)**: `Γ_{SDTC-Selberg}` is
+realized as a typed `structure` carrier named `GammaSdtcSelberg`,
+declared **inline** in
+`lean/SixBirdsDualityConfinement/RH/RHConditional.lean` (its only
+consumer; placement convention from kickoff §12 — a type lives next
+to its only consumer). It is not a standalone `RecognitionSource.lean`
+module. The forbidden-tokens rule
 bans `axiom`/`opaque`/`constant`/`sorry`/`admit` anywhere in
 `lean/SixBirdsDualityConfinement/*`; the recognition source is NOT
 declared with `axiom`. Inventory `intended_status` is
 `out_of_scope_recognition_source`.
 
-**Pattern** (Lean sketch):
+**Bridge-carrier shape (as landed)**: the carrier supplies, in one
+record, the full duality-confinement apparatus needed by
+`DCMasterApplied.dcMasterApplied` **together with** the bridge
+propositions that link the apparatus to the shell's `A_Z` ledger.
+The shape is (approximately):
 ```
-structure GammaSdtcSelberg (shell : SatSelShell) : Prop where
-  dominationRecords :
-    ∃ B : Nat → PositiveCone,
-      (∀ n, shell.A_Z ⪯ B n) ∧ TraceTendstoZero B
+structure GammaSdtcSelberg
+    {R : Involution.RealCoordinate}
+    (shell : SatSelShell R) where
+  ledger : DualityConfinement.Involution.InvolutiveObjectLedger
+  sep    : DualityConfinement.Separation.SeparatingReadout ledger
+  A      : DualityConfinement.AntiInvariantLedger.AntiInvariantLedger ledger
+  -- Bridge propositions to the shell:
+  same_readout       : ∀ x, A.psi_minus x = sep.psi_minus x
+  mu_zero_of_ae      : A.psi_minus_ae_zero → shell.A_Z.A_Z = shell.A_Z.zero
+  visible_zero_of_ae : A.psi_minus_ae_zero →
+                         ∀ x, x ∈ ledger.mu_support →
+                           A.psi_minus x = sep.zero_Y
+  -- Domination records and typed-cone scaffolding:
+  B_n                  : Nat → A.Cone
+  domination_records   : ∀ n, A.preceq A.A_X (B_n n)
+  B_n_positive         : ∀ n, A.Positive (B_n n)
+  tr_B_n_tends_zero    : Prop
+  h_tr_B_n_tends_zero  : tr_B_n_tends_zero
+  TraceNonnegative     : A.TraceValue → Prop
+  positive_trace_nonnegative : ∀ C, A.Positive C → TraceNonnegative (A.tr C)
+  TraceZero            : A.TraceValue
+  squeeze_trace_zero   : (TraceNonnegative (A.tr A.A_X)) →
+                           (∀ n, A.TraceLE (A.tr A.A_X) (A.tr (B_n n))) →
+                             (∀ n, A.Positive (B_n n)) →
+                               tr_B_n_tends_zero →
+                                 A.tr A.A_X = TraceZero
+  trace_zero_positive_zero : A.tr A.A_X = TraceZero → A.A_X = A.zero
 ```
 
-Downstream theorems take `(γ : GammaSdtcSelberg shell)` as explicit
-parameter; the proof unwraps the `dominationRecords` witness and
-feeds it to the master theorem.
+The bridge propositions (`same_readout`, `mu_zero_of_ae`,
+`visible_zero_of_ae`) are typed hypotheses, not derivations: the
+DC apparatus data is supplied together with the assertion that it
+coheres with the shell, not constructed from the shell.
 
-**Note on module placement**: this module does NOT appear in
-`section_module_map.toml` because the obligation row in the
-inventory has `intended_status = out_of_scope_recognition_source`,
-which the validator chain treats as a non-queueable item. Add
-`RecognitionSource.lean` to the repo (and to the `RH.lean`
-umbrella's import list) as part of the `RHConditional` dispatch, OR
-introduce it as a separate dispatch before `DCMasterApplied` if that
-dispatch needs to reference it. Either order satisfies the
-constraint that the conditional theorem takes a `γ` value as
-hypothesis parameter.
+Downstream, `rhConditional` takes `(γ : GammaSdtcSelberg shell)` as
+explicit parameter; the proof feeds `γ.sep`, `γ.A`, and the bridge
+fields to `dcMasterApplied`, yielding `shell.A_Z.A_Z = shell.A_Z.zero`,
+and then applies `translationTForward`.
+
+**Note on module placement**: no separate
+`RecognitionSource.lean` module exists or appears in
+`section_module_map.toml`. The carrier is declared inline in
+`RHConditional.lean` per the placement convention above.
 
 ---
 
@@ -288,14 +317,21 @@ content of `def:rh:psi-minus-rh`.
 **Provenance**: step 454 P2; proposal §7.1 step 2; appendix A
 "Duality-confinement application".
 
-**Mechanization note**: this is the load-bearing application of the
-duality-confinement axis's master theorem to the RH-specific setup.
-The Lean module instantiates the abstract involutive object ledger
-from the duality-confinement axis with the RH-specific data and
-invokes the master theorem. The domination records appear as a
-hypothesis (parameter) of this theorem; the source of those records
-is `obl:rh:gamma-sdtc-selberg`, supplied at the next step
-(`thm:rh:conditional`).
+**Mechanization note (as landed)**: this is the load-bearing
+application of the duality-confinement axis's master theorem to the
+RH-specific setup. The Lean module does **not** instantiate the
+abstract involutive object ledger of the DC axis directly on
+`Sel^!_{ζ,tr}`. Instead, `DCMasterApplied.dcMasterApplied` composes
+`thm:duality_confinement:master-theorem` through a typed-bridge
+interface: the DC apparatus (involutive object ledger, separating
+readout, anti-invariant ledger) is taken as input, and three bridge
+fields (`same_readout`, `mu_zero_of_ae`, `visible_zero_of_ae`)
+connect that apparatus to the shell's `A_Z` ledger. The body-level
+role assignment `(Sel ↔ IOL, A_Z ↔ A_X, J_L ↔ J, ψ_-^RH ↔ ψ_-)` is
+the mathematical interpretation of the bridge interface, not a Lean
+derivation of the role assignment. The DC apparatus together with
+the bridge fields is supplied by `obl:rh:gamma-sdtc-selberg` at the
+next step (`thm:rh:conditional`).
 
 ---
 

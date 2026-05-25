@@ -87,6 +87,28 @@ of \Cref{obl:rh:gamma-sdtc-selberg}.  Once the records give
 Paper 1 forces \(\AZ=0\).
 \end{proof}
 
+A disclosure about the Lean formulation belongs here.  In Lean, the
+application is not realized by re-instantiating the abstract
+involutive object ledger of Paper 1 on the shell.  Instead it is
+realized as a typed-bridge composition over the recognition-source
+carrier \(\gamma:\GamSDTCSelberg\,\mathit{shell}\) of
+\Cref{obl:rh:gamma-sdtc-selberg}.  The carrier supplies the
+duality-confinement apparatus (an involutive object ledger, a
+separating readout, an anti-invariant ledger, completed-domination
+records, and the typed-cone primitives) together with explicit
+bridge propositions linking that apparatus to the shell: a
+same-readout coherence between the separation and
+anti-invariant-ledger readouts, a visible-support refinement, and
+the implication \(\mathtt{mu\_zero\_of\_ae}\) translating
+``\(\psim\) vanishes \(\mu\)-almost everywhere'' into the shell
+equality \(\AZ=0\).  These bridge propositions are typed hypotheses,
+not derivations: the DC apparatus and its readout-side data are
+supplied alongside the assertion that they cohere with the shell,
+not constructed from the shell.  The Lean theorem composes Paper 1's
+master theorem with these bridge fields to obtain
+\(\AZ=0\); the formalization appendix records the declaration-level
+correspondence and the bridge-field signatures.
+
 The bridge theorem is therefore the point at which the conditional
 input from \(\GamSDTCSelberg\) becomes the concrete ledger equality
 \(\AZ=0\).  In the notation of Paper 1, the fixed-locus consequence
@@ -95,12 +117,6 @@ would say that the typed zero-ledger mass is confined to
 paper, Theorem T gives the sharper pointwise formulation on the
 finite typed ledger: every \(\rho\in\Znt\) has
 \(\Real(\rho)=1/2\).
-
-Lean derives this RH-specific application of the master theorem, as
-recorded in the formalization appendix.  The formal proof imports the
-Paper 1 master theorem and instantiates it on the typed zero ledger
-through the bridge parameter carrying the shell-specific measure and
-readout data into the master theorem's hypotheses.
 
 The headline conditional theorem composes \(\GamSDTCSelberg\), the
 bridge theorem above, and the forward direction of Theorem T.
@@ -171,10 +187,11 @@ This framework rendering is not load-bearing for the proof above; it
 records the same conditional theorem in the audited judgment
 vocabulary used by Foundations III.
 
-Lean proves the conditional landing chain (per the formalization
+Lean composes the conditional landing chain (per the formalization
 appendix): the formal realization takes a value of the
 typed-structure carrier representing \(\GamSDTCSelberg\) as input,
-applies \Cref{thm:rh:dc-master-applied}, and then applies
+applies \Cref{thm:rh:dc-master-applied} through that carrier's
+bridge fields to obtain \(\AZ=0\) on the shell, and then applies
 \Cref{thm:rh:translation-T-forward}.
 
 The scope, nonclaim discipline, structural-program positioning, and

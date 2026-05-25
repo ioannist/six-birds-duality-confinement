@@ -44,9 +44,18 @@ Hence the complement of \(\Fix(J)\) has \(\mu\)-measure zero.
 \end{proof}
 
 In the finite weighted case, the same proof says that every visible
-object with positive weight lies in \(\Fix(J)\).  Lean proves the
-separation--confinement theorem; the formalization appendix records
-the declaration-level correspondence.
+object with positive weight lies in \(\Fix(J)\).  Lean checks the
+separation--confinement theorem as a typed-bridge composition: the
+measure-theoretic reading of ``\(\psim\) vanishes
+\(\mu\)-almost everywhere'' is supplied as two explicit hypotheses
+on the typed cone, namely the implication
+\(\mathtt{mu\_zero\_of\_ae}\) (\(\psim\)-vanishing a.e.\ to
+\(\mu(X\setminus\Fix(J))=0\)) and the visible-support refinement
+\(\mathtt{visible\_zero\_of\_ae}\) (\(\psim\)-vanishing a.e.\ to
+pointwise vanishing on visible support).  Lean composes these
+bridge hypotheses with the trace identity and separation; the
+formalization appendix records the declaration-level
+correspondence.
 
 \begin{theorem}[Quantitative confinement]
 \label{thm:duality_confinement:quantitative-confinement}

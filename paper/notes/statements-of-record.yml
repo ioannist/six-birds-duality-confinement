@@ -79,7 +79,10 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.DualityConfinement.AntiInvariantLedger.traceIdentity
   semantic_alignment: faithful
-  notes: ''
+  notes: Typed-interface composition; trace identity is a constructor unfolding from
+    the AntiInvariantLedger field `trace_identity`, not an analytic derivation. Body
+    and App D use the "Lean records … as constructor unfolding" wording per the
+    proof-presentation policy.
 - paper_label: thm:duality_confinement:separation-confinement
   env_kind: theorem
   source_file: anti_loc/extracted_math/duality_confinement_master.md
@@ -93,7 +96,10 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.DualityConfinement.DirectConfinement.separationConfinement
   semantic_alignment: faithful
-  notes: ''
+  notes: Typed-interface composition; the measure-reading bridges `mu_zero_of_ae`
+    and `visible_zero_of_ae` are supplied as typed hypotheses on the typed cone.
+    Body and App D use the "Lean checks … composing bridges" wording per the
+    proof-presentation policy.
 - paper_label: thm:duality_confinement:quantitative-confinement
   env_kind: theorem
   source_file: anti_loc/extracted_math/duality_confinement_master.md
@@ -107,7 +113,10 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.DualityConfinement.DirectConfinement.quantitativeConfinement
   semantic_alignment: faithful
-  notes: ''
+  notes: Typed-interface composition; the Markov-style scalar step is supplied as
+    the typed `markov_bound` hypothesis rather than derived from ordered-scalar
+    primitives. Body and App D use the "Lean checks … via typed Markov interface"
+    wording per the proof-presentation policy.
 - paper_label: def:duality_confinement:completed-domination-bridge
   env_kind: definition
   source_file: anti_loc/extracted_math/duality_confinement_master.md
@@ -135,8 +144,12 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.DualityConfinement.Domination.douglasDomination
   semantic_alignment: faithful
-  notes: See audit_summary §A1 for typed-cone encoding choice (Domination ↔ ContractiveFactor
-    definitional equivalence).
+  notes: Typed-interface composition; the Douglas equivalence is packaged as the
+    `order_to_factor` and `factor_to_order` fields of the typed `DouglasData`
+    carrier, and `douglasDomination` repackages those fields. Body and App D use
+    "Lean packages the Douglas equivalence … via DouglasData fields" wording per
+    the proof-presentation policy. See audit_summary §A1 for the typed-cone
+    encoding choice (Domination ↔ ContractiveFactor definitional equivalence).
 - paper_label: thm:duality_confinement:master-theorem
   env_kind: theorem
   source_file: anti_loc/extracted_math/duality_confinement_master.md
@@ -178,7 +191,11 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.DualityConfinement.ExhaustiveSqueeze.exhaustiveSqueeze
   semantic_alignment: faithful
-  notes: ''
+  notes: Typed-interface composition; the ambient bound is consumed directly as
+    the moving-ledger's `exhaustive_bound` field (the reduction from moving bound
+    to ambient bound is an interface assumption, not derived from monotonicity-of-
+    transport primitives). Body and App D use the "Lean checks … via moving-ledger
+    field" wording per the proof-presentation policy.
 - paper_label: def:duality_confinement:defected-budget
   env_kind: definition
   source_file: anti_loc/extracted_math/duality_confinement_master.md
@@ -291,7 +308,12 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.RH.TranslationT.translationTForward
   semantic_alignment: faithful
-  notes: ''
+  notes: Typed-interface composition; the implication is stored as fields of
+    `AntiInvariantZeroLedger` (e.g., `zero_sum_to_zero_term`,
+    `zero_term_to_critical_line`) and `translationTForward` composes those fields,
+    not derived from typed scalar arithmetic. Body and App D use the "Lean checks
+    … via AntiInvariantZeroLedger fields" wording per the proof-presentation
+    policy.
 - paper_label: thm:rh:translation-T-reverse
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_construction.md
@@ -305,7 +327,9 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.RH.TranslationT.translationTReverse
   semantic_alignment: faithful
-  notes: ''
+  notes: Typed-interface composition; composed from fields of
+    `AntiInvariantZeroLedger`. See `translation-T-forward` for the parallel
+    disclosure.
 - paper_label: thm:rh:translation-T
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_construction.md
@@ -319,7 +343,8 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.RH.TranslationT.translationT
   semantic_alignment: faithful
-  notes: ''
+  notes: Typed-interface composition; combination of the forward and reverse
+    typed-interface compositions above.
 - paper_label: obl:rh:gamma-sdtc-selberg
   env_kind: obligation
   source_file: anti_loc/extracted_math/rh_construction.md
@@ -351,7 +376,14 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.RH.DCMasterApplied.dcMasterApplied
   semantic_alignment: faithful
-  notes: Instantiates duality_confinement axis master theorem on the RH-specific ledger.
+  notes: Typed-bridge composition; does NOT instantiate the abstract DC ledger
+    directly on the shell. Instead `dcMasterApplied` composes `masterTheorem` over
+    the bridge fields `same_readout`, `mu_zero_of_ae`, `visible_zero_of_ae`
+    carried by the `GammaSdtcSelberg` record. The body-level role assignment
+    (Sel ↔ IOL, A_Z ↔ A_X, J_L ↔ J, ψ_-^RH ↔ ψ_-) is the mathematical
+    interpretation of the bridge interface, not a Lean-derived instantiation.
+    Body and App D use "Lean checks … typed-bridge composition" wording per the
+    proof-presentation policy.
 - paper_label: thm:rh:conditional
   env_kind: theorem
   source_file: anti_loc/extracted_math/rh_construction.md
@@ -365,5 +397,9 @@ rows:
   lean_coverage: theorem
   lean_decl: SixBirdsDualityConfinement.RH.RHConditional.rhConditional
   semantic_alignment: faithful
-  notes: Headline theorem; takes obl:rh:gamma-sdtc-selberg as explicit hypothesis
-    parameter.
+  notes: 'Headline theorem; typed-bridge composition. Takes
+    obl:rh:gamma-sdtc-selberg as explicit hypothesis parameter
+    `γ : GammaSdtcSelberg shell`; composes `dcMasterApplied` through the
+    carrier''s bridge fields and then `translationTForward`. Body and App D use
+    "Lean composes the conditional landing chain … typed-bridge composition"
+    wording per the proof-presentation policy.'
