@@ -1,10 +1,4 @@
 % RH paper — § The conditional landing chain
-% Pass A drafted: Paper 1 master-theorem reproduction and the
-% RH-specific bridge theorem. Pass B adds the headline conditional.
-%
-% statements-of-record rows resolved here: see
-% paper/rh/notes/section-outline.md (this file's row) and
-% paper/notes/statements-of-record.yml (target_section_hint field).
 
 \section{The conditional landing chain}
 \label{sec:landing_chain}
@@ -76,22 +70,23 @@ Then \(\AZ=0\) in the typed positive cone associated to \(\Sel\).
 \end{theorem}
 
 \begin{proof}[Proof sketch]
-This is the duality-confinement membrane theorem of Paper 1
-\cite{TsiokosSDTC2026} applied under the substitutions just listed.
+This is the duality-confinement membrane theorem of
+\citet{TsiokosSDTC2026} applied under the substitutions just listed.
 The qualitative-separation hypothesis is the concrete calculation of
 \Cref{def:rh:psi-minus-rh}: \(\psimRH(s)=0\) exactly on
 \(\Fix(\JL)\), and \(\psimRH(\JL(s))=-\psimRH(s)\).  The domination
 records are precisely the records supplied by the recognition source
 of \Cref{obl:rh:gamma-sdtc-selberg}.  Once the records give
-\(\AZ\preceq B_n\) and \(\trace B_n\to0\), the typed-cone squeeze of
-Paper 1 forces \(\AZ=0\).
+\(\AZ\preceq B_n\) and \(\trace B_n\to0\), the typed-cone squeeze
+forces \(\AZ=0\).
 \end{proof}
 
 A disclosure about the Lean formulation belongs here.  In Lean, the
 application is not realized by re-instantiating the abstract
-involutive object ledger of Paper 1 on the shell.  Instead it is
-realized as a typed-bridge composition over the recognition-source
-carrier \(\gamma:\GamSDTCSelberg\,\mathit{shell}\) of
+involutive object ledger of \citet{TsiokosSDTC2026} on the shell.
+Instead it is realized as a typed-bridge composition over the
+recognition-source carrier
+\(\gamma:\GamSDTCSelberg\,\mathit{shell}\) of
 \Cref{obl:rh:gamma-sdtc-selberg}.  The carrier supplies the
 duality-confinement apparatus (an involutive object ledger, a
 separating readout, an anti-invariant ledger, completed-domination
@@ -104,15 +99,15 @@ the implication \(\mathtt{mu\_zero\_of\_ae}\) translating
 equality \(\AZ=0\).  These bridge propositions are typed hypotheses,
 not derivations: the DC apparatus and its readout-side data are
 supplied alongside the assertion that they cohere with the shell,
-not constructed from the shell.  The Lean theorem composes Paper 1's
-master theorem with these bridge fields to obtain
+not constructed from the shell.  The Lean theorem composes the
+imported master theorem with these bridge fields to obtain
 \(\AZ=0\); the formalization appendix records the declaration-level
 correspondence and the bridge-field signatures.
 
 The bridge theorem is therefore the point at which the conditional
 input from \(\GamSDTCSelberg\) becomes the concrete ledger equality
-\(\AZ=0\).  In the notation of Paper 1, the fixed-locus consequence
-would say that the typed zero-ledger mass is confined to
+\(\AZ=0\).  In the duality-confinement notation, the fixed-locus
+consequence would say that the typed zero-ledger mass is confined to
 \(\Fix(\JL)\), the critical line.  In the notation of the present
 paper, Theorem T gives the sharper pointwise formulation on the
 finite typed ledger: every \(\rho\in\Znt\) has
@@ -125,10 +120,10 @@ bridge theorem above, and the forward direction of Theorem T.
 \label{thm:rh:conditional}
 Let \(\Sel\) be a saturated completed Selberg trace closure.  Under
 the standing assumption that \(\Sel\) is Foundations-II admissible,
-and given the recognition source \(\GamSDTCSelberg\), the
+and given the recognition source \(\GamSDTCSelberg\)---the
 Selberg-class instance of Self-Dual Trace Confinement supplied by
-Paper 1 \cite{TsiokosSDTC2026}, the Riemann hypothesis holds on the
-typed zero ledger \(\Znt\) of \(\Sel\): every typed nontrivial zero
+\citet{TsiokosSDTC2026}---the Riemann hypothesis holds on the typed
+zero ledger \(\Znt\) of \(\Sel\): every typed nontrivial zero
 \(\rho\in\Znt\) satisfies
 \[
   \Real(\rho)=\frac{1}{2}.

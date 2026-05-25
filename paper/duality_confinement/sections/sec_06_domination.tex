@@ -105,16 +105,13 @@ developing the full Hilbert-space proof inside the typed calculus.
 
 Lean records the Douglas equivalence at the typed-cone level as a
 packaged interface: the typed \texttt{DouglasData} carrier stores
-both directions of the equivalence as its
-\texttt{order\_to\_factor} and \texttt{factor\_to\_order} fields,
-and the Lean theorem repackages those fields into the
-domination--factorization correspondence used by the bridge
-apparatus.  The formalization appendix records the declaration-level
-correspondence and the carrier packaging.  This is faithful to the
-classical operator-theoretic content, but it is not a claim that
-the full operator theorem has been re-proved inside Lean: the
-equivalence is supplied as typed-carrier data, not derived from
-operator-square-root primitives in the typed cone.  The bridge
-framework can therefore realize exact completed-domination bridges
-from operator-square-root data whenever the typed-cone carrier
+both directions as \texttt{order\_to\_factor} and
+\texttt{factor\_to\_order} fields, and the Lean theorem repackages
+them into the domination--factorization correspondence used by the
+bridge apparatus.  The equivalence is supplied as typed-carrier
+data rather than derived from operator-square-root primitives in
+the typed cone, so the bridge framework can realize exact
+completed-domination bridges whenever the typed-cone carrier
 supplies the domination and contractive-factor witnesses together.
+The formalization appendix records the declaration-level
+correspondence.

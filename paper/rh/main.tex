@@ -39,6 +39,9 @@
 \floatname{algorithm}{Algorithm}
 
 \urlstyle{same}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\-\do\:}
+\makeatother
 \captionsetup{
   font=small,
   labelfont=bf,
@@ -107,9 +110,9 @@ theorem T proves that the anti-invariant zero ledger vanishes,
 \(A_Z(\zeta)=0\), if and only if every typed nontrivial zero has real
 part \(1/2\).  The conditional landing chain then uses the
 Selberg-class instance of Self-Dual Trace Confinement supplied by
-Paper 1: its recognition source gives domination records whose
-vanishing trace forces \(A_Z(\zeta)=0\), and theorem T converts that
-ledger collapse into the critical-line statement.
+\citet{TsiokosSDTC2026}: its recognition source gives domination
+records whose vanishing trace forces \(A_Z(\zeta)=0\), and theorem
+T converts that ledger collapse into the critical-line statement.
 
 The outside-Six-Birds reading is the conditional theorem
 \(\Gamma_{\mathrm{SDTC}\text{-}\mathrm{Selberg}}\Rightarrow
@@ -120,10 +123,12 @@ a typed real-coordinate carrier whose identification with the
 classical real part of a zeta zero is fixed by construction-parameter
 assignment.  The recognition source is encoded in Lean as a typed
 structure carrier, not as a Lean axiom.  The mathlib-free
-formalization covers ten theorem or definition entries with faithful
-semantic alignment---including the translation theorem, the
-duality-confinement bridge, and the conditional landing chain---and
-the recognition-source carrier.
+formalization includes ten theorems and definitions---the
+translation theorem, the duality-confinement bridge, the conditional
+landing chain, and supporting structure---together with the
+recognition-source carrier, each faithful to its paper-side
+statement under the disclosures recorded in the formalization
+appendix.
 \end{abstract}
 
 \medskip

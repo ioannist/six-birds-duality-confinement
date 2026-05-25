@@ -1,15 +1,4 @@
 % Duality Confinement paper — App D Formalization
-% Appendix file scaffold. No body prose yet. Drafting follows
-% paper/writing-plan.md per the Phase 9 dispatch table.
-%
-% This appendix renders the per-row Lean-coverage table for all 13
-% DC inventory rows (12 mechanize_now + 1 support_only) plus the
-% Lean-disclosure wording-discipline table per
-% paper/notes/proof-presentation-policy.md. The three representation
-% notes from anti_loc/extracted_math/audit_summary.md (§A1 Douglas
-% factorization typed-cone encoding; §A2 AM-GM as typed-Scalar
-% axiom; §A3 real-part-type abstraction cross-referenced from
-% Paper 2) are disclosed here.
 
 \section{Lean formalization}
 \label{app:formalization}
@@ -23,7 +12,7 @@ module-level bookkeeping appear here.
 
 \subsection*{Disclosure discipline}
 
-\begin{table}[H]
+\begin{table}[!htbp]
 \centering
 \small
 \begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.23\linewidth}
@@ -67,13 +56,13 @@ moving ledgers.  Definitions are not described as proved. \\
 ``tracked by the formalization harness.'' &
 Used when the formal object is a typed projection over an explicit
 hypothesis.  Here the optimized scalar trace budget is the
-applicable case: its AM--GM step is supplied as a typed-Scalar
+applicable case: its AM--GM step is supplied as a typed-scalar
 hypothesis. \\
 \texttt{typed\_carrier} &
 ``encoded as a structural recognition-source carrier.'' &
 Included for completeness.  No inventory entry of this paper has
-this mode; the Selberg recognition-source carrier belongs to the
-sibling RH closure paper. \\
+this mode; the Selberg recognition-source carrier belongs to
+\citet{TsiokosRHviaSDTC2026}. \\
 \texttt{support\_only} &
 No Lean mention. &
 Used for the defected obstruction budget.  It is paper-side
@@ -227,103 +216,105 @@ typed-interface data.
 Paper label & Paper-prose name & Lean declaration &
 Proof mode & Coverage & Alignment \\
 \midrule
-\nolinkurl{def:duality_confinement:involutive-object-ledger} &
+\nolinkurl{def:involutive-object-ledger} &
 involutive object ledger &
-\nolinkurl{DualityConfinement.Involution.InvolutiveObjectLedger} &
+\nolinkurl{Involution.InvolutiveObjectLedger} &
 definition entry &
 definition &
 faithful \\
 
-\nolinkurl{def:duality_confinement:separating-readout} &
+\nolinkurl{def:separating-readout} &
 separating anti-invariant readout &
-\nolinkurl{DualityConfinement.Separation.SeparatingReadout} &
+\nolinkurl{Separation.SeparatingReadout} &
 definition entry &
 definition &
 faithful \\
 
-\nolinkurl{def:duality_confinement:anti-invariant-ledger} &
+\nolinkurl{def:anti-invariant-ledger} &
 anti-invariant object ledger &
-\nolinkurl{DualityConfinement.AntiInvariantLedger.AntiInvariantLedger} &
+\nolinkurl{AntiInvariantLedger.AntiInvariantLedger} &
 definition entry &
 definition &
 faithful \\
 
-\nolinkurl{lem:duality_confinement:trace-identity} &
+\nolinkurl{lem:trace-identity} &
 trace identity &
-\nolinkurl{DualityConfinement.AntiInvariantLedger.traceIdentity} &
+\nolinkurl{AntiInvariantLedger.traceIdentity} &
 lean substantive &
 theorem &
 faithful \\
 
-\nolinkurl{thm:duality_confinement:separation-confinement} &
+\nolinkurl{thm:separation-confinement} &
 separation--confinement theorem &
-\nolinkurl{DualityConfinement.DirectConfinement.separationConfinement} &
+\nolinkurl{DirectConfinement.separationConfinement} &
 lean substantive; measure-reading bridges
 supplied as typed hypotheses &
 theorem &
 faithful \\
 
-\nolinkurl{thm:duality_confinement:quantitative-confinement} &
+\nolinkurl{thm:quantitative-confinement} &
 quantitative confinement bound &
-\nolinkurl{DualityConfinement.DirectConfinement.quantitativeConfinement} &
+\nolinkurl{DirectConfinement.quantitativeConfinement} &
 lean substantive; Markov step supplied as typed interface &
 theorem &
 faithful \\
 
-\nolinkurl{def:duality_confinement:completed-domination-bridge} &
+\nolinkurl{def:completed-domination-bridge} &
 completed domination bridge &
-\nolinkurl{DualityConfinement.Domination.CompletedDominationBridge} &
+\nolinkurl{Domination.CompletedDominationBridge} &
 definition entry &
 definition &
 faithful \\
 
-\nolinkurl{thm:duality_confinement:douglas-domination} &
+\nolinkurl{thm:douglas-domination} &
 Douglas factorization, typed-cone form &
-\nolinkurl{DualityConfinement.Domination.douglasDomination} &
+\nolinkurl{Domination.douglasDomination} &
 lean substantive; typed-carrier packaging via
 \texttt{DouglasData} fields (\S A1) &
 theorem &
 faithful \\
 
-\nolinkurl{thm:duality_confinement:master-theorem} &
+\nolinkurl{thm:master-theorem} &
 duality-confinement membrane theorem &
-\nolinkurl{DualityConfinement.MasterTheorem.masterTheorem} &
+\nolinkurl{MasterTheorem.masterTheorem} &
 lean substantive &
 theorem &
 faithful \\
 
-\nolinkurl{def:duality_confinement:exhaustive-moving-ledger} &
+\nolinkurl{def:exhaustive-moving-ledger} &
 exhaustive moving ledger &
-\nolinkurl{DualityConfinement.ExhaustiveSqueeze.ExhaustiveMovingLedger} &
+\nolinkurl{ExhaustiveSqueeze.ExhaustiveMovingLedger} &
 definition entry &
 definition &
 faithful \\
 
-\nolinkurl{thm:duality_confinement:exhaustive-squeeze} &
+\nolinkurl{thm:exhaustive-squeeze} &
 exhaustive ledger squeeze &
-\nolinkurl{DualityConfinement.ExhaustiveSqueeze.exhaustiveSqueeze} &
+\nolinkurl{ExhaustiveSqueeze.exhaustiveSqueeze} &
 lean substantive; ambient bound supplied as moving-ledger field &
 theorem &
 faithful \\
 
-\nolinkurl{def:duality_confinement:defected-budget} &
+\nolinkurl{def:defected-budget} &
 defected obstruction budget &
 \emph{none; support only} &
 no body Lean citation &
 not mechanized &
 n/a \\
 
-\nolinkurl{prop:duality_confinement:optimized-trace-budget} &
+\nolinkurl{prop:optimized-trace-budget} &
 optimized scalar trace budget &
-\nolinkurl{DualityConfinement.DefectedBudget.optimizedTraceBudget} &
+\nolinkurl{DefectedBudget.optimizedTraceBudget} &
 tracked by harness; \S A2 &
 theorem &
 faithful \\
 \bottomrule
 \end{tabularx}
 \caption{Formalization coverage for the thirteen inventory entries
-of this paper.  Lean declarations omit the common
-\texttt{SixBirdsDualityConfinement.} namespace prefix.}
+of this paper.  Paper labels are shown without the common
+\texttt{duality\_confinement:} prefix; Lean declarations are shown
+without the common \texttt{SixBirdsDualityConfinement.DualityConfinement.}
+namespace prefix.}
 \label{tab:dc-formalization-coverage}
 \end{table}
 \end{landscape}
@@ -347,6 +338,6 @@ are direct definition entries or faithful theorem entries in the
 typed positive-cone formalization, so all twelve mechanize-now
 entries carry faithful semantic alignment under these disclosures.
 The real-part abstraction used for the Riemann-hypothesis zero
-ledger is the corresponding representation note for the RH-side
-development; that note and the recognition-source carrier row both
-belong to the RH-side formalization appendix.
+ledger is the corresponding representation note for
+\citet{TsiokosRHviaSDTC2026}; that note and the recognition-source
+carrier row both belong to its formalization appendix.
