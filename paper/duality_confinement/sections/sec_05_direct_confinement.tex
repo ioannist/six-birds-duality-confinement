@@ -45,13 +45,15 @@ the complement of \(\Fix(J)\) has \(\mu\)-measure zero.
 
 In the finite weighted case, the same proof says that every visible
 object with positive weight lies in \(\Fix(J)\).  Lean checks the
-theorem as a typed-bridge composition: the measure-theoretic reading
-of ``\(\psim\) vanishes \(\mu\)-almost everywhere'' is supplied as
-two explicit hypotheses on the typed cone---one giving
+theorem as a typed-bridge composition: the measure-theoretic
+reading of ``\(\psim\) vanishes \(\mu\)-almost everywhere'' is
+supplied as two explicit hypotheses on the typed cone---one giving
 \(\mu(X\setminus\Fix(J))=0\) and one giving pointwise vanishing on
 the visible support---and Lean composes these with the trace
-identity and separation.  The formalization appendix records the
-declaration-level correspondence and the hypothesis signatures.
+identity and separation.  These are the Lean bridge fields
+\texttt{mu\_zero\_of\_ae} and \texttt{visible\_zero\_of\_ae}; the
+formalization appendix records the declaration-level correspondence
+and the hypothesis signatures.
 
 \begin{theorem}[Quantitative confinement]
 \label{thm:duality_confinement:quantitative-confinement}

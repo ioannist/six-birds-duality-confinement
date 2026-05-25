@@ -133,29 +133,31 @@ claim of the typed carrier.
 \subsection*{Representation notes}
 
 \paragraph{Douglas factorization.}
-The domination section uses the classical Douglas factorization as
-operator-theoretic motivation.  In the mathlib-free typed-cone Lean
-encoding the factorization theorem is represented by a typed
-\texttt{DouglasData} carrier.  The carrier records the
-operator-square-root presentation \(A=V^*V\), \(K=W^*W\), the
-domination relation \(A\preceq K\), the equivalent contractive
-factor witness \(T\) satisfying \(V=TW\), and, as fields, the two
-directions \texttt{order\_to\_factor} and \texttt{factor\_to\_order}
-of the Douglas equivalence.  Downstream theorems read the
-implication between domination and factorization from these typed
-fields.
+The classical mathematical content here is Douglas factorization
+\citep{Douglas1966}: for bounded positive operators \(A=V^*V\) and
+\(K=W^*W\) on a Hilbert space, domination \(A\preceq K\) is
+equivalent to the existence of a contraction \(T\) with \(V=TW\).
+The domination section uses this as operator-theoretic motivation.
+
+In the mathlib-free typed-cone Lean encoding the factorization
+theorem is represented by a typed \texttt{DouglasData} carrier.
+The carrier records the operator-square-root presentation
+\(A=V^*V\), \(K=W^*W\), the domination relation \(A\preceq K\),
+the equivalent contractive factor witness \(T\) satisfying
+\(V=TW\), and, as fields, the two directions
+\texttt{order\_to\_factor} and \texttt{factor\_to\_order} of the
+Douglas equivalence.  Downstream theorems read the implication
+between domination and factorization from these typed fields.
 
 The corresponding disclosure is that Lean packages the Douglas
 equivalence at the typed-cone level by storing both directions as
-typed fields of \texttt{DouglasData}, and \texttt{douglasDomination}
-repackages those fields into the
+typed fields of \texttt{DouglasData}, and
+\texttt{douglasDomination} repackages those fields into the
 \(\mathtt{Nonempty\ Domination}\leftrightarrow\mathtt{Nonempty\ ContractiveFactor}\)
-form used by the bridge apparatus.  This is faithful to the
-classical Douglas factorization (Douglas 1966) as the underlying
-mathematical content, but it is a typed-carrier packaging rather
-than a Lean development of the full Hilbert-space operator
-theorem, and not a Lean derivation of the equivalence from
-operator-square-root primitives.
+form used by the bridge apparatus.  This is a typed-carrier
+packaging rather than a Lean development of the full Hilbert-space
+operator theorem, and not a Lean derivation of the equivalence
+from operator-square-root primitives.
 
 \paragraph{AM--GM in the scalar trace budget.}
 The optimized scalar trace budget depends on the elementary
@@ -321,12 +323,15 @@ namespace prefix.}
 \end{landscape}
 
 \Cref{tab:dc-formalization-coverage} records the per-row coverage
-for the thirteen inventory entries.  Three rows require the
-representation discipline stated above: Douglas factorization is
-the typed-cone form recorded by the \texttt{DouglasData} carrier;
-the optimized scalar trace budget is tracked over the
-\texttt{am\_gm\_optimization} hypothesis; and the defected
-obstruction budget is support-only material with no Lean citation.
+for the thirteen inventory entries: the twelve mechanized entries
+referenced in the abstract, together with the support-only
+defected-obstruction-budget row that carries no Lean citation.
+Three rows require the representation discipline stated above:
+Douglas factorization is the typed-cone form recorded by the
+\texttt{DouglasData} carrier; the optimized scalar trace budget is
+tracked over the \texttt{am\_gm\_optimization} hypothesis; and the
+defected obstruction budget is support-only material with no Lean
+citation.
 In addition, the anti-invariant-readout typed-field disclosure
 above applies across the separating-readout, anti-invariant-ledger,
 and direct-confinement entries: \(\psim\) is supplied as a typed
