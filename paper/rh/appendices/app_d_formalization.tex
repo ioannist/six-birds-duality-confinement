@@ -88,27 +88,25 @@ for the main AOR-instance theorem.
 
 The formalization uses the same mathlib-free typed positive-cone
 interface as \cite{TsiokosSDTC2026}.  The interface records exactly
-the primitives
-used by the arguments: an order \(\preceq\), a trace functional
-\(\trace\), trace monotonicity under the order, nonnegativity of the
-relevant scalar summands, and the positivity-to-zero principles that
-turn vanishing trace or vanishing square into vanishing obstruction.
-No full Hilbert-space operator theory is imported.  The point of the
-encoding is to isolate the trace-order content needed by the
-duality-confinement membrane theorem and by the RH translation
-argument.
+the primitives used by the arguments: an order \(\preceq\), a trace
+functional \(\trace\), trace monotonicity under the order,
+nonnegativity of the relevant scalar summands, and the
+positivity-to-zero principles that turn vanishing trace or vanishing
+square into vanishing obstruction.  No full Hilbert-space operator
+theory is imported; the point of the encoding is to isolate the
+trace-order content needed by the duality-confinement membrane
+theorem and by the RH translation argument.
 
 In the present paper this typed cone is the substrate on which the
 anti-invariant zero ledger \(\AZ\) lives.  Theorem~T is a finite
-typed-multiset argument over this cone: \(\AZ\) is the
+typed-multiset argument over the cone: \(\AZ\) is the
 multiplicity-weighted sum of squared anti-invariant readout values,
 so \(\AZ=0\) is equivalent to every typed zero lying on the critical
 line.  The bridge theorem \texttt{dcMasterApplied} then applies the
 master theorem of \cite{TsiokosSDTC2026} to this RH-specific typed
-cone.  A full
-operator-theoretic realization over trace-class operators or over the
-classical Selberg trace formula apparatus is an extension target, not
-a hidden claim of the Lean development.
+cone.  A full operator-theoretic realization over trace-class
+operators or over the classical Selberg trace formula apparatus is
+an extension target, not a hidden claim of the Lean development.
 
 \subsection*{Representation note A3: real-part coordinate}
 
@@ -321,23 +319,24 @@ The AOR-instance recasting of \Cref{sec:rh-aor-instance} adds nine
 entries to the formalization: one definition (the per-shell
 AOR-instance carrier \texttt{SelAORInstance} together with the
 canonical assembled value \texttt{assembledCarrier}), seven
-literal-data discharge definitions (one per atom of the
-twelve-type residual classification consumed by the Selberg shell),
-and one composing theorem (the main AOR-instance assertion
-\texttt{aorInstance}).  All nine entries live in the Lean module
-\nolinkurl{RH.AORInstance}.
+literal-data discharge definitions covering the atoms of the
+twelve-type residual classification that the Selberg shell
+consumes, and one composing theorem (the main AOR-instance
+assertion \texttt{aorInstance}).  All nine entries live in the Lean
+module \nolinkurl{RH.AORInstance}.
 
 Two disclosure points apply uniformly to the seven discharge rows.
-First, each discharge is realized in Lean as a \texttt{def} that
-returns a literal classification record indexed by the shell and the
-recognition source but not computed from PDE-style data; this matches
-the body presentation of \Cref{def:rh:aor-sel-instance}, in which the
-eight-stratum / twelve-type residual atlas is read off carrier fields
-rather than derived.  Second, the substantive recognition-source and
-translation-interface discharges are deferred to
-\citet{TsiokosSDTC2026} and \Cref{sec:translation_theorem}
-respectively, so the seven discharge entries are typed-interface
-records of the AOR-instance object, not independent derivations.
+First, each discharge is realized in Lean as a \texttt{def}
+returning a literal classification record indexed by the shell and
+the recognition source but not computed from PDE-style data; this
+matches the body presentation of \Cref{def:rh:aor-sel-instance}, in
+which the eight-stratum / twelve-type residual atlas is read off
+carrier fields rather than derived.  Second, the substantive
+recognition-source and translation-interface discharges are
+deferred to \citet{TsiokosSDTC2026} and
+\Cref{sec:translation_theorem} respectively, so the seven discharge
+entries are typed-interface records of the AOR-instance object,
+not independent derivations.
 
 The main AOR-instance theorem
 \nolinkurl{RH.AORInstance.aorInstance} composes the seven literal
@@ -473,8 +472,8 @@ and tracks the same scope boundaries listed in
 \subsection*{No-smuggling gates}
 
 The final audit layer is paper-side discipline that checks the
-conditional theorem says exactly what its hypotheses support, with
-no structural input hidden in the prose.
+conditional theorem says only what its hypotheses support, with no
+structural input hidden in the prose.
 
 \begin{description}[leftmargin=0pt,labelsep=0.75em,itemsep=0.35em]
 \item[Gate 1: no overreading.]
@@ -490,7 +489,7 @@ the typed real-coordinate identification, and the typed positive-cone
 primitives.
 
 \item[Gate 3: no hidden mechanism.]
-The proof composition is explicit.  The recognition source supplies
+The proof composition is explicit: the recognition source supplies
 domination records, \Cref{thm:rh:dc-master-applied} yields
 \(\AZ=0\), and \Cref{thm:rh:translation-T-forward} yields the
 critical-line statement on \(\Znt\).
@@ -510,7 +509,7 @@ The forbidden-tokens audit excludes \texttt{axiom}, \texttt{opaque},
 Lean source.
 
 \item[Gate 6: no undisclosed cross-paper import.]
-The use of \cite{TsiokosSDTC2026} is explicit.  The body reproduces
+The use of \cite{TsiokosSDTC2026} is explicit: the body reproduces
 the duality-confinement master theorem statement, and
 \texttt{dcMasterApplied} is the named Lean-side cross-paper import.
 

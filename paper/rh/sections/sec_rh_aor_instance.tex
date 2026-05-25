@@ -112,15 +112,15 @@ has the following typed fields.
 \end{enumerate}
 \end{definition}
 
-This definition does not add analytic-number-theoretic data.  It
-places the paper's existing typed records into the AOR field order.
-The carrier is the same shell used in \Cref{thm:rh:conditional}.
+This definition adds no analytic-number-theoretic data; it places
+the paper's existing typed records into the AOR field order.  The
+carrier is the same shell used in \Cref{thm:rh:conditional}.
 
 \subsection{Mechanical records as membership components}
 
-The definition-side records of the RH paper are mechanical in the AOR
-sense.  They introduce typed objects and target records; they do not
-supply the recognition content.
+The definition-side records of the RH paper are mechanical in the
+AOR sense: they introduce typed objects and target records but do
+not supply the recognition content.
 
 \begin{theorem}[Mechanical AOR records for \(\Sel\)]
 \label{thm:rh:aor-mechanical-records}
@@ -156,9 +156,9 @@ definition-side carrier plus the typed-interface translation theorem.
 
 \subsection{Substantive and typed-interface discharges}
 
-The remaining records are the records that connect the abstract
-duality-confinement apparatus to the Selberg shell and to the RH
-readout.  Each receives an AOR residual type and status.
+The remaining records connect the abstract duality-confinement
+apparatus to the Selberg shell and to the RH readout.  Each
+receives an AOR residual type and status.
 
 \begin{theorem}[Recognition-source discharge]
 \label{thm:rh:aor-recognition-discharge}
@@ -346,19 +346,19 @@ formalization scope.  This is precisely the AOR-membership reading of
 \end{proof}
 
 Lean records this AOR-instance theorem as
-\nolinkurl{RH.AORInstance.aorInstance}, returning a value of the local
-\nolinkurl{RH.AORPrimitives.RefStableAOR} predicate applied to a
-\nolinkurl{RH.AORInstance.assembledCarrier} value built by
+\nolinkurl{RH.AORInstance.aorInstance}, returning a value of the
+local \nolinkurl{RH.AORPrimitives.RefStableAOR} predicate applied
+to a \nolinkurl{RH.AORInstance.assembledCarrier} value built by
 concatenating the seven discharge lists.  The proof is by case
 analysis on the secondary residual type, exhibiting an explicit
-witness atom from the assembled discharge list for each of the seven
-local residual types.  The axiom closure is the singleton
+witness atom from the assembled discharge list for each of the
+seven local residual types.  The axiom closure is the singleton
 \(\{\,\texttt{propext}\,\}\), within the project trust base.  The
-Lean theorem returns only the record-level \(\mathrm{RefStableAOR}\)
-predicate; the critical-line consequence stated above remains the
-conclusion of \Cref{thm:rh:conditional} obtained through the same
-closure stack.  The formalization appendix records the
-declaration-level correspondence.
+Lean theorem returns only the record-level
+\(\mathrm{RefStableAOR}\) predicate; the critical-line consequence
+stated above remains the conclusion of \Cref{thm:rh:conditional},
+obtained through the same closure stack.  The formalization
+appendix records the declaration-level correspondence.
 
 \subsection{Partial-status disclosure}
 

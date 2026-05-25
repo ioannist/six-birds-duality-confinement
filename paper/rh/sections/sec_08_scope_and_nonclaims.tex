@@ -11,10 +11,9 @@
 
 Several scope boundaries deserve explicit statement so that the
 conditional landing chain of \Cref{sec:landing_chain} remains sharp.
-The point of this section is not to weaken the theorem just proved,
-but to identify exactly which structural content is assumed, which
-encoding choices are made, and which extensions remain outside the
-present paper.
+The point is not to weaken the theorem just proved, but to identify
+which structural content is assumed, which encoding choices are
+made, and which extensions remain outside the present paper.
 
 \paragraph{NC-1. Conditional structure.}
 The headline result is a Six Birds-native conditional theorem under
@@ -35,15 +34,15 @@ conditional implication.
 The recognition source \(\GamSDTCSelberg\) is the Selberg-class
 instance of the Self-Dual Trace Confinement structural law of
 \citet{TsiokosSDTC2026}.  It is not derived from framework
-primitives.  The three-route sweep over candidate primitive paths,
-discussed in \Cref{sec:recognition_source}, documents that none of
+primitives; the three-route sweep over candidate primitive paths
+discussed in \Cref{sec:recognition_source} documents that none of
 them produces the trace-vanishing domination sequence.  In the
 formalization the recognition source is encoded as a typed structure
 carrier, not as a Lean axiom; the source tree's forbidden-tokens
 rule bans \texttt{axiom}, \texttt{opaque}, \texttt{constant},
-\texttt{sorry}, and \texttt{admit}.  Thus the formal statement does
-not assert that the recognition source holds outright; it states what
-follows from a value of the typed carrier.
+\texttt{sorry}, and \texttt{admit}.  The formal statement therefore
+does not assert that the recognition source holds outright; it
+states what follows from a value of the typed carrier.
 
 \paragraph{NC-3. Parameter identification.}
 The typed zero ledger \(\Znt\) is a typed multiset parameter of the
@@ -62,14 +61,13 @@ encoding, not a change to the mathematical content being represented.
 Admissibility of the saturated completed Selberg trace closure
 \(\Sel\) with respect to the seven Foundations-II admissibility
 schemas is carried by the audit field of \(\Sel\), as described in
-\Cref{def:rh:sat-sel-shell} \cite{TsiokosFoundationsII2026}.  It is a
-construction-time hypothesis of the typed shell, not a theorem
-derived in this paper.  A substantive formal derivation would require
-unfolding the seven schemas as predicates and verifying the completed
-Selberg trace instance field by field.
-Until that extension is supplied, the paper treats admissibility as
-part of the shell data rather than as an independently derived
-analytic theorem.
+\Cref{def:rh:sat-sel-shell} \cite{TsiokosFoundationsII2026}.  It is
+a construction-time hypothesis of the typed shell, not a theorem
+derived here.  A substantive formal derivation would require
+unfolding the seven schemas as predicates and verifying the
+completed Selberg trace instance field by field.  Until that
+extension is supplied, admissibility is treated as part of the
+shell data rather than as an independently derived analytic theorem.
 
 \paragraph{NC-5. Classical-barrier framing.}
 The Six Birds approach shares the spirit of the classical RH attack
@@ -92,20 +90,20 @@ on a claimed resolution of any classical program.
 Generalizing to the Riemann hypothesis for primitive Selberg-class
 \(L\)-functions is an extension target.  The SDTC structural law
 would need to be instantiated for each \(L\) of interest, with a
-separate analysis of the typed-shell admissibility and
+separate analysis of typed-shell admissibility and
 recognition-source provenance for that \(L\).  This paper
 instantiates the law for \(L=\zeta\) only; GRH is out of scope.
-In particular, no assertion is made here about Dirichlet, modular,
-automorphic, or other primitive Selberg-class \(L\)-functions.
+No assertion is made here about Dirichlet, modular, automorphic, or
+other primitive Selberg-class \(L\)-functions.
 
 \paragraph{NC-7. Simple zeros and density results.}
-The paper makes no claims about multiplicity one for nontrivial
-zeros and no zero-density claims.  The typed multiset \(\Znt\)
-admits arbitrary positive integer multiplicities \(m_{\rho}>0\).
-The conditional landing chain delivers the critical-line statement
-on the typed zero ledger; simple-zero conjectures, Lindelöf-type
-statements, and zero-density refinements are distinct questions with
-their own structural status.
+No claim is made about multiplicity one for nontrivial zeros, and
+no zero-density claim is made.  The typed multiset \(\Znt\) admits
+arbitrary positive integer multiplicities \(m_{\rho}>0\); the
+conditional landing chain delivers the critical-line statement on
+the typed zero ledger, while simple-zero conjectures, Lindelöf-type
+statements, and zero-density refinements are distinct questions
+with their own structural status.
 
 \paragraph{NC-8. Three-route derivation sweep.}
 The non-derivability of \(\GamSDTCSelberg\) from framework
@@ -159,4 +157,4 @@ structural content supplied by \citet{TsiokosSDTC2026}, and the
 conditional landing chain converts that supplied content into a
 critical-line statement on the typed zero ledger of \(\Sel\).  The
 boundaries above identify what is supplied, what is encoded, and
-what remains open extension.
+what remains an open extension.

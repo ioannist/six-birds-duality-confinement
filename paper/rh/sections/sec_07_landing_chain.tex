@@ -3,13 +3,12 @@
 \section{The conditional landing chain}
 \label{sec:landing_chain}
 
-The previous section identified the structural input needed by the RH
-closure: the recognition source \(\GamSDTCSelberg\) supplies a
+The previous section identified the structural input needed by the
+RH closure: the recognition source \(\GamSDTCSelberg\) supplies a
 sequence of domination records for the anti-invariant zero ledger
-\(\AZ\).  The present section begins the landing chain by importing the one
-abstract theorem from \cite{TsiokosSDTC2026} that acts on such a
-sequence.  That paper states the following duality-confinement
-membrane theorem, reproduced verbatim here for reference.
+\(\AZ\).  The landing chain begins by importing the one abstract
+theorem from \cite{TsiokosSDTC2026} that acts on such a sequence,
+reproduced verbatim here for reference.
 
 \begin{theorem}[Duality-confinement membrane theorem]
 Let \(\IOL\) be an involutive object ledger with carrier \(X\),
@@ -32,20 +31,20 @@ Then \(\AX=0\) in the typed positive cone.  Consequently,
 \]
 \end{theorem}
 
-Two points about the imported theorem are important for the RH
-application.  First, it is a typed positive-cone statement: it needs
-an order \(\preceq\), a trace functional \(\trace\), and a separating
+Two points about the imported theorem matter for the RH application.
+First, it is a typed positive-cone statement: it needs an order
+\(\preceq\), a trace functional \(\trace\), and a separating
 anti-invariant readout, but it does not ask for an independent
 classical analytic proof of RH.  Second, the theorem consumes
 domination records; it does not supply their source.  In the present
-paper that source is exactly \(\GamSDTCSelberg\), introduced in
+paper that source is \(\GamSDTCSelberg\), introduced in
 \Cref{sec:recognition_source}.
 
-We now apply this theorem to the Selberg-class instance.  The
-abstract involutive object ledger becomes the saturated completed
-Selberg trace closure \(\Sel\) restricted to its typed zero ledger.
-The abstract carrier \(X\) is the zero-carrier underlying \(\Znt\);
-the involution \(J\) becomes the functional-equation involution
+Applying the theorem to the Selberg-class instance, the abstract
+involutive object ledger becomes the saturated completed Selberg
+trace closure \(\Sel\) restricted to its typed zero ledger.  The
+abstract carrier \(X\) is the zero-carrier underlying \(\Znt\); the
+involution \(J\) becomes the functional-equation involution
 \(\JL\); the measure \(\mu\) becomes the multiplicity-weighted zero
 measure; the separating readout \(\psim\) becomes the signed
 real-part displacement \(\psimRH\); and the anti-invariant ledger
@@ -81,10 +80,10 @@ of \Cref{obl:rh:gamma-sdtc-selberg}.  Once the records give
 forces \(\AZ=0\).
 \end{proof}
 
-A disclosure about the Lean formulation belongs here.  In Lean, the
+A disclosure about the Lean formulation belongs here.  In Lean the
 application is not realized by re-instantiating the abstract
-involutive object ledger of \citet{TsiokosSDTC2026} on the shell.
-Instead it is realized as a typed-bridge composition over the
+involutive object ledger of \citet{TsiokosSDTC2026} on the shell;
+instead it is realized as a typed-bridge composition over the
 recognition-source carrier
 \(\gamma:\GamSDTCSelberg\,\mathit{shell}\) of
 \Cref{obl:rh:gamma-sdtc-selberg}.  The carrier supplies the
@@ -104,14 +103,13 @@ imported master theorem with these bridge fields to obtain
 \(\AZ=0\); the formalization appendix records the declaration-level
 correspondence and the bridge-field signatures.
 
-The bridge theorem is therefore the point at which the conditional
-input from \(\GamSDTCSelberg\) becomes the concrete ledger equality
-\(\AZ=0\).  In the duality-confinement notation, the fixed-locus
-consequence would say that the typed zero-ledger mass is confined to
-\(\Fix(\JL)\), the critical line.  In the notation of the present
-paper, Theorem T gives the sharper pointwise formulation on the
-finite typed ledger: every \(\rho\in\Znt\) has
-\(\Real(\rho)=1/2\).
+The bridge theorem is the point at which the conditional input from
+\(\GamSDTCSelberg\) becomes the concrete ledger equality \(\AZ=0\).
+In the duality-confinement notation, the fixed-locus consequence
+says that the typed zero-ledger mass is confined to \(\Fix(\JL)\),
+the critical line.  In the notation of the present paper, Theorem T
+gives the sharper pointwise formulation on the finite typed ledger:
+every \(\rho\in\Znt\) has \(\Real(\rho)=1/2\).
 
 The headline conditional theorem composes \(\GamSDTCSelberg\), the
 bridge theorem above, and the forward direction of Theorem T.
@@ -154,8 +152,8 @@ The same composition admits an equivalent audit-closure rendering.
 In the language of \citet{TsiokosAOR2026}, the recognition source
 \(\GamSDTCSelberg\), the bridge theorem
 \Cref{thm:rh:dc-master-applied}, and translation theorem T jointly
-certify the shell as a refinement-stable audited-operational-realisability
-instance,
+certify the shell as a refinement-stable
+audited-operational-realisability instance,
 \[
   \Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}},
 \]
@@ -170,7 +168,7 @@ membership reading is not an additional theorem about \(\Sel\); it
 is the formed-layer certification that the conditional landing
 chain delivers its conclusion through an audit-closed apparatus,
 with the critical-line statement \(\Real(\rho)=1/2\) on \(\Znt\) as
-the typed-zero-ledger readout.
+the readout.
 
 The conditional structure of this result is essential.  Three
 hypotheses are in force: the standing Foundations-II admissibility
@@ -188,7 +186,7 @@ formalization preserves this conditional structure: the landing
 chain takes a value of the recognition-source carrier as an
 explicit hypothesis parameter.
 
-The same conclusion can also be rendered in the framework's BirdInt
+The same conclusion can be rendered in the framework's BirdInt
 judgment form.  A BirdInt judgment is a framework-relative typed
 sequent: it packages a source, a formed layer, an instrument, and a
 proposition together with the audit data that records the judgment's
@@ -200,9 +198,9 @@ judgment reads schematically as
   \bigl(\forall\,\rho\in\Znt,\ \Real(\rho)=\tfrac{1}{2}\bigr)
   : \mathrm{accepted}.
 \]
-This framework rendering is not load-bearing for the proof above; it
-records the same conditional theorem in the audited judgment
-vocabulary used by Foundations III.
+This rendering is not load-bearing for the proof above; it records
+the same conditional theorem in the audited judgment vocabulary
+used by Foundations III.
 
 Lean composes the conditional landing chain (per the formalization
 appendix): the formal realization takes a value of the

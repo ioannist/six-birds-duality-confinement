@@ -9,18 +9,18 @@
 \section{The recognition source}
 \label{sec:recognition_source}
 
-\Cref{sec:translation_theorem} reduced RH on the typed zero ledger of
-\(\Sel\) to the trace-side statement \(\AZ=0\).  The remaining
+\Cref{sec:translation_theorem} reduced RH on the typed zero ledger
+of \(\Sel\) to the trace-side statement \(\AZ=0\).  The remaining
 structural question is where that trace-side vanishing comes from.
 The answer in this paper is a named recognition source: the
 Selberg-class instance of Self-Dual Trace Confinement,
 \(\GamSDTCSelberg\).  The SDTC structural-law framing is supplied
-by \cite{TsiokosSDTC2026}; the present paper specializes that
-framing to the saturated completed Selberg trace closure \(\Sel\).
+by \cite{TsiokosSDTC2026}; the present paper specializes it to the
+saturated completed Selberg trace closure \(\Sel\).
 
 The recognition source supplies structural content of the formed
 layer rather than a calculation internal to the proof of Theorem T.
-In this case the content is the completed domination-record sequence
+Here the content is the completed domination-record sequence
 required by the duality-confinement master theorem.  Once that
 sequence is available, the master theorem forces \(\AZ=0\), and
 Theorem T converts \(\AZ=0\) into the critical-line statement.
@@ -45,33 +45,32 @@ specialized involution, zero ledger, and anti-invariant ledger.
 
 The definition records the load-bearing field of the recognition
 source: the existence of the domination sequence.  The provenance of
-that field is also part of the source.  It is the Selberg-class
-instance of the SDTC structural law; it sits in the V-Differential
-trace-state-only column; it is attached to the shell \(\Sel\), its
+that field is also part of the source: it is the Selberg-class
+instance of the SDTC structural law, sitting in the V-Differential
+trace-state-only column and attached to the shell \(\Sel\), its
 trace instrument, its functional-equation involution \(\JL\), its
 zero ledger \(\Znt\), and its anti-invariant ledger \(\AZ\).  These
 provenance components matter because the source is not an unnamed
-black box.  It is a typed recognition object whose mathematical role
-is exactly to provide the domination records that the abstract
+black box: it is a typed recognition object whose mathematical role
+is to provide the domination records that the abstract
 duality-confinement apparatus requires.
 
-An important encoding disclosure is required here.  In the Lean
-formalization, \(\GamSDTCSelberg\) is realized as a typed structure
-carrier: a record packaging, in one place, the entire
-duality-confinement apparatus needed by the bridge theorem
-(involutive object ledger, separating anti-invariant readout,
-anti-invariant ledger, completed-domination records, and the
-typed-cone primitives \(\preceq\), \(\trace\), positivity-to-zero)
-\emph{together with} the bridge propositions that link this
-apparatus to the shell's anti-invariant zero ledger.  The bridge
-propositions---in particular the implication from the abstract
-``\(\psi_-\) vanishes \(\mu\)-a.e.''  to
-``\(\AZ = 0\) on the shell''---are
-typed hypotheses, not derivations: the apparatus data is supplied
-together with the assertion that it is coherent with the shell, not
-constructed from the shell.  The carrier is declared inline in the
-conditional-landing-chain module, following the placement convention
-that a type lives next to its only consumer.
+An encoding disclosure is needed here.  In the Lean formalization,
+\(\GamSDTCSelberg\) is realized as a typed structure carrier: a
+record packaging, in one place, the entire duality-confinement
+apparatus needed by the bridge theorem (involutive object ledger,
+separating anti-invariant readout, anti-invariant ledger,
+completed-domination records, and the typed-cone primitives
+\(\preceq\), \(\trace\), positivity-to-zero) \emph{together with}
+the bridge propositions that link this apparatus to the shell's
+anti-invariant zero ledger.  The bridge propositions---in
+particular the implication from the abstract
+``\(\psi_-\) vanishes \(\mu\)-a.e.'' to ``\(\AZ = 0\) on the
+shell''---are typed hypotheses, not derivations: the apparatus data
+is supplied together with the assertion that it is coherent with
+the shell, not constructed from the shell.  The carrier is declared
+inline in the conditional-landing-chain module, following the
+placement convention that a type lives next to its only consumer.
 
 The carrier is not a Lean axiom.  The project's forbidden-tokens
 rule bans \texttt{axiom}, \texttt{opaque}, \texttt{constant},
@@ -101,7 +100,7 @@ uses the domination records it carries in the conditional landing
 chain.
 
 With \(\GamSDTCSelberg\) in place, the remaining composition is
-straightforward: apply the duality-confinement master theorem to the
+direct: apply the duality-confinement master theorem to the
 domination records to obtain \(\AZ=0\), then apply Theorem T in the
 forward direction to obtain the critical-line statement on \(\Znt\).
 That composition is the subject of \Cref{sec:landing_chain}.
