@@ -186,21 +186,14 @@ formalization preserves this conditional structure: the landing
 chain takes a value of the recognition-source carrier as an
 explicit hypothesis parameter.
 
-The same conclusion can be rendered in the framework's BirdInt
-judgment form.  A BirdInt judgment is a framework-relative typed
-sequent: it packages a source, a formed layer, an instrument, and a
-proposition together with the audit data that records the judgment's
-status \cite{TsiokosFoundationsIII2026}.  In the present case the
-judgment reads schematically as
-\[
-  \GamSDTCSelberg;\ \Sel;\ \Itr
-  \;\vdash\;
-  \bigl(\forall\,\rho\in\Znt,\ \Real(\rho)=\tfrac{1}{2}\bigr)
-  : \mathrm{accepted}.
-\]
-This rendering is not load-bearing for the proof above; it records
-the same conditional theorem in the audited judgment vocabulary
-used by Foundations III.
+In the BirdInt judgment vocabulary of
+\cite{TsiokosFoundationsIII2026}, the same conditional theorem is
+the accepted judgment
+\(\GamSDTCSelberg;\,\Sel;\,\Itr \vdash
+  (\forall\,\rho\in\Znt,\ \Real(\rho)=1/2) : \mathrm{accepted}\),
+where \(\Itr\) is the saturated Selberg trace instrument of
+\Cref{def:rh:sat-sel-shell}; this rendering is decorative and not
+used in the proof above.
 
 Lean composes the conditional landing chain (per the formalization
 appendix): the formal realization takes a value of the
