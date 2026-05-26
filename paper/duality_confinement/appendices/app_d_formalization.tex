@@ -101,7 +101,8 @@ theory.  It is the formal substrate for the membrane argument
 because the proof of the master theorem uses only order, trace
 monotonicity, scalar squeezing, and positivity-to-zero; it does not
 formalize trace-class operators, Hilbert-Schmidt maps, Schatten
-ideals, or trace-norm topology.  Realizing the same theorem inside
+ideals, or trace-norm topology
+\citep{Simon2005,ReedSimon1980}.  Realizing the same theorem inside
 the full positive trace-class cone remains an operator-theoretic
 extension of the present work, not a hidden claim of the Lean
 development.
@@ -125,10 +126,10 @@ in the paper, which use these primitives only.  The full axiomatic
 stack of a real Hilbert space---completeness, polarization
 identity, parallelogram law, full bilinear/inner-product axioms,
 \(\mathbb{R}\)-vector-space axioms beyond the bundled addition and
-scalar action---is not encoded in Lean.  Realizing \(Y\) as a
-fully axiomatized real Hilbert space inside Lean is an
-operator-theoretic extension of the present work, not a hidden
-claim of the typed carrier.
+scalar action \citep{ReedSimon1980,Conway1990}---is not encoded in
+Lean.  Realizing \(Y\) as a fully axiomatized real Hilbert space
+inside Lean is an operator-theoretic extension of the present
+work, not a hidden claim of the typed carrier.
 
 \subsection*{Representation notes}
 
@@ -166,12 +167,12 @@ optimization
   \inf_{t>0}\bigl((1+t)a+(1+t^{-1})b\bigr)
     = \bigl(\sqrt a+\sqrt b\bigr)^2 .
 \]
-In ordinary real arithmetic this follows from the AM--GM inequality,
-or equivalently from non-negativity of
-\((\sqrt a-\sqrt b)^2\).  The abstract scalar encoding used here is
-weaker: it provides the scalar interface needed by the trace-budget
-statement but does not supply enough ordered real arithmetic to derive
-AM--GM substantively.
+In ordinary real arithmetic this follows from the AM--GM inequality
+\citep{HardyLittlewoodPolya1952}, or equivalently from
+non-negativity of \((\sqrt a-\sqrt b)^2\).  The abstract scalar
+encoding used here is weaker: it provides the scalar interface
+needed by the trace-budget statement but does not supply enough
+ordered real arithmetic to derive AM--GM substantively.
 
 Accordingly, the Lean-side statement uses an explicit
 \texttt{am\_gm\_optimization} hypothesis.  The optimized scalar trace
