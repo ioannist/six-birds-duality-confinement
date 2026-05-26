@@ -197,11 +197,15 @@ Lean derivation of the role assignment.  This is a one-way Lean
 import, matching the paper-level dependency on the SDTC apparatus of
 \cite{TsiokosSDTC2026}.
 
+\clearpage
+\begingroup
+\setlength{\vfuzz}{30pt}
 \begin{landscape}
-\begin{table}[H]
+\begin{table}[p]
 \centering
-\footnotesize
-\setlength{\tabcolsep}{4pt}
+\tiny
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{0.88}
 \begin{tabularx}{\linewidth}{@{}
   >{\raggedright\arraybackslash}p{0.16\linewidth}
   >{\raggedright\arraybackslash}p{0.16\linewidth}
@@ -363,7 +367,7 @@ each forced-secondary entry through the literal classification.  No
 substantive PDE-style audit content is added.
 
 \begin{landscape}
-\begin{table}[H]
+\begin{table}[!ht]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
@@ -454,18 +458,16 @@ theorem &
 partial \\
 \bottomrule
 \end{tabularx}
-\caption{Per-row Lean coverage for the nine AOR-instance entries
-added by \Cref{sec:rh-aor-instance}.  Lean declarations omit the
-common \texttt{SixBirdsDualityConfinement.} namespace prefix.  The
-\texttt{aorInstance} theorem is marked partial because its
-conclusion is the local \nolinkurl{RH.AORPrimitives.RefStableAOR}
-predicate over the carrier fields rather than the full audit-closure
-refinement-stable characterisation of \citet{TsiokosAOR2026}, and
-the substantive recognition-source and translation-interface
-discharges remain deferred to their respective source theorems.}
+\caption{Lean coverage for the nine AOR-instance entries added by
+\Cref{sec:rh-aor-instance}.  Declarations omit the common namespace
+prefix.  The partial status on \texttt{aorInstance} records that Lean
+proves the local carrier predicate, not the full AOR
+refinement-stable characterisation.}
 \label{tab:rh-formalization-coverage-aor}
 \end{table}
 \end{landscape}
+\endgroup
+\clearpage
 
 \Cref{tab:rh-formalization-coverage-aor} records the per-row coverage
 for the nine AOR-instance entries.  All eight definition rows have
