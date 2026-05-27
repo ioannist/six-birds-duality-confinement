@@ -46,6 +46,10 @@ downstream theorems. \\
 ``tracked by the formalization harness.'' &
 Used for AOR discharge entries that are literal-data records rather
 than substantive theorem derivations. \\
+\texttt{support\_only} &
+No Lean mention. &
+Included for completeness.  No inventory entry of this paper has
+this mode. \\
 \bottomrule
 \end{tabularx}
 \caption{Lean-disclosure wording used by the RH paper.}
@@ -53,7 +57,11 @@ than substantive theorem derivations. \\
 \end{table}
 
 The validator audits theorem rows against the project trust base and
-checks that no forbidden Lean tokens appear in the source tree.
+checks that no forbidden Lean tokens appear in the source tree.  The
+permitted axiom closure is the standard Lean core list
+\(\texttt{Classical.choice}\), \(\texttt{propext}\),
+\(\texttt{Quot.sound}\), \(\texttt{choice}\), and
+\(\texttt{funext}\).
 \Cref{tab:rh-formalization-coverage,tab:rh-formalization-coverage-aor}
 record the RH inventory rows and the AOR-instance entries using the
 modes above.
@@ -88,6 +96,19 @@ is instantiated.  It is not a derived Lean predicate; deriving it would
 require real- and complex-analytic infrastructure outside the
 mathlib-free development.  This is the A3 representation note referenced
 from \Cref{sec:involution_and_ledger,sec:discussion}.
+
+\subsection*{Representation note: admissibility as \(\mathrm{Audit}_L\)}
+
+The paper definition of the SAT-SEL shell \(\Sel\) requires
+admissibility under the seven Foundations-II audit schemas.  In the
+Lean development this admissibility is not a separately-derived
+predicate but is carried by the \(\mathrm{Audit}_L\) field of the
+\nolinkurl{SatSelShell} structure: a value of \nolinkurl{SatSelShell}
+packages the shell data together with a typed proof object asserting
+audit-closure under the seven schemas.  Downstream theorems consume
+this field as a hypothesis rather than rederiving it.  This is the
+admissibility representation note referenced from
+\Cref{sec:sat_sel_shell}.
 
 \subsection*{Recognition-source carrier (typed bridge)}
 

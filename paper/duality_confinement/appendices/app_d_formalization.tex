@@ -20,31 +20,32 @@ appear here.
 Mode & Permitted wording & Use in this paper \\
 \midrule
 \texttt{lean\_substantive} (pure derivation) &
-``Lean proves the result,'' ``Lean verifies the statement,'' or
-equivalent wording. &
+``Verified in Lean as \textlangle declaration\textrangle.'' &
 Used when the Lean theorem derives the paper statement from
-typed-cone primitives within its declared scope.  Here this applies to
-the master theorem (\Cref{thm:duality_confinement:master-theorem});
+typed-cone primitives within its declared scope.  Here this applies
+to the master theorem (\Cref{thm:duality_confinement:master-theorem});
 the typed positive-cone scope is stated explicitly. \\
-\texttt{lean\_substantive} (typed-interface composition) &
-``Lean checks/records/composes the statement [via the typed
-\textlangle Carrier\textrangle\ fields / over the bridge hypothesis
-\textlangle name\textrangle\ / as a typed-interface composition].''
-&
+\texttt{lean\_substantive} (typed-interface / typed-bridge composition) &
+``Verified in Lean as \textlangle declaration\textrangle\ via
+typed-interface composition over the \textlangle Carrier\textrangle\
+fields,'' or ``\dots\ via typed-bridge composition over the
+\textlangle Carrier\textrangle.'' &
 Used when the theorem composes typed hypotheses, constructor fields,
 or carrier data rather than deriving all content from primitives:
 trace identity, direct confinement, quantitative confinement, Douglas
 factorization, and exhaustive squeeze. \\
 \texttt{definition\_entry} &
-``realized in Lean as the corresponding structure or definition.'' &
+``Realized in Lean as \textlangle declaration\textrangle.'' &
 Used for paper definitions; definitions are not described as proved. \\
 \texttt{harness\_tracked} &
-``tracked by the formalization harness.'' &
+``Tracked in the formalization harness as \textlangle declaration\textrangle.'' &
 Used for a typed projection over an explicit hypothesis.  Here the
 optimized scalar trace budget supplies AM--GM as a typed-scalar
 hypothesis. \\
 \texttt{typed\_carrier} &
-``encoded as a structural recognition-source carrier.'' &
+``Encoded in Lean as a typed structure carrier
+\textlangle declaration\textrangle, not as a Lean axiom; downstream
+theorems take a value of this carrier as an explicit hypothesis.'' &
 Included for completeness.  No inventory entry of this paper has
 this mode; the Selberg recognition-source carrier belongs to
 \citet{TsiokosRHviaSDTC2026}. \\
