@@ -1,11 +1,5 @@
 % RH paper — § Introduction
-% Drafted body for the introduction. This section is framing only and
-% forward-references the definitions and theorem statements resolved in
-% §§3--7.
-%
-% statements-of-record rows resolved here: none (this section is
-% framing only; theorem/definition rows resolve in §3–§7 per
-% paper/notes/statements-of-record.yml target_section_hint fields).
+% statements-of-record rows resolved here: none.
 
 \section{Introduction}
 \label{sec:intro}
@@ -115,20 +109,15 @@ positive ledger statement produced by the duality-confinement
 mechanism into the number-theoretic critical-line statement.
 
 The paper's scope is correspondingly narrow.  The main result is
-conditional on \(\GamSDTCSelberg\); no unconditional RH claim in
-standard ZFC is made, and \(\GamSDTCSelberg\) is not claimed to be
-derivable from framework primitives.  The recognition source is not
-installed as a Lean axiom: it is represented as a typed structure
-carrier whose fields record the required domination data, and the
-project-wide source rule bans the tokens \texttt{axiom},
-\texttt{opaque}, \texttt{constant}, \texttt{sorry}, and
-\texttt{admit}.  The conditional theorem takes a value of that
-carrier as an explicit hypothesis.  The formal encoding
-parameterizes the real-part coordinate by a typed real-coordinate
-carrier; its identification with the classical real part of a
-nontrivial zero of \(\zeta\) is fixed by construction-parameter
-assignment when the shell is instantiated, and a Lean-side
-derivation of that identification is left as a future extension.
+conditional on \(\GamSDTCSelberg\); no unconditional RH claim in standard
+ZFC is made, and \(\GamSDTCSelberg\) is not claimed to be derivable
+from framework primitives.  The conditional theorem takes a value of
+the recognition source as an explicit hypothesis.  The
+real-part coordinate of a typed zero is represented by a parameter;
+under construction-parameter assignment when the shell is
+instantiated, this parameter is identified with the classical real
+part of a nontrivial zero of \(\zeta\).  Deriving this identification
+from analytic-number-theoretic infrastructure is left as a future extension.
 Admissibility of \(\Sel\) under the seven Foundations-II schemas is
 carried as an audit witness in the shell, not derived here.  The
 classical RH programs named above are neither refuted nor
@@ -151,10 +140,6 @@ conditional landing chain in both its critical-line and
 AOR-realisability forms; \Cref{sec:rh-aor-instance} then unfolds the
 realisability form into the eight-stratum / twelve-type residual
 classification used by \citet{TsiokosAOR2026}.
-\Cref{sec:scope_and_nonclaims} records the
-nonclaims explicitly, and \Cref{sec:discussion,sec:conclusion} place
-the result in the broader structural program.  The formalization
-appendix records the twenty mechanized RH entries (ten for the
-landing chain itself, nine for the realisability-instance reading,
-plus the recognition-source carrier) and the representation notes
-needed to read the Lean coverage correctly.
+\Cref{sec:scope_and_nonclaims} records the nonclaims explicitly, and
+\Cref{sec:discussion,sec:conclusion} place the result in the broader
+structural program.  Appendix~\ref{app:formalization} documents the Lean formalization.

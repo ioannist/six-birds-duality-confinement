@@ -3,12 +3,11 @@
 \section{The conditional landing chain}
 \label{sec:landing_chain}
 
-The previous section identified the structural input needed by the
-RH closure: the recognition source \(\GamSDTCSelberg\) supplies a
-sequence of domination records for the anti-invariant zero ledger
-\(\AZ\).  The landing chain begins by importing the one abstract
-theorem from \cite{TsiokosSDTC2026} that acts on such a sequence,
-reproduced verbatim here for reference.
+The previous section identified the structural input needed by the RH
+closure: \(\GamSDTCSelberg\) supplies domination records for
+\(\AZ\).  The landing chain imports the abstract theorem from
+\cite{TsiokosSDTC2026} that acts on such records, reproduced verbatim
+here for reference.
 
 \begin{theorem}[Duality-confinement membrane theorem]
 Let \(\IOL\) be an involutive object ledger with carrier \(X\),
@@ -31,26 +30,18 @@ Then \(\AX=0\) in the typed positive cone.  Consequently,
 \]
 \end{theorem}
 
-Two points about the imported theorem matter for the RH application.
-First, it is a typed positive-cone statement: it needs an order
-\(\preceq\), a trace functional \(\trace\), and a separating
-anti-invariant readout, but it does not ask for an independent
-classical analytic proof of RH.  Second, the theorem consumes
-domination records; it does not supply their source.  In the present
-paper that source is \(\GamSDTCSelberg\), introduced in
-\Cref{sec:recognition_source}.
+For the RH application, the theorem needs an order \(\preceq\), a
+trace functional \(\trace\), and a separating anti-invariant readout.
+It consumes domination records; their source here is
+\(\GamSDTCSelberg\), introduced in \Cref{sec:recognition_source}.
 
-Applying the theorem to the Selberg-class instance, the abstract
-involutive object ledger becomes the saturated completed Selberg
-trace closure \(\Sel\) restricted to its typed zero ledger.  The
-abstract carrier \(X\) is the zero-carrier underlying \(\Znt\); the
-involution \(J\) becomes the functional-equation involution
-\(\JL\); the measure \(\mu\) becomes the multiplicity-weighted zero
-measure; the separating readout \(\psim\) becomes the signed
-real-part displacement \(\psimRH\); and the anti-invariant ledger
-\(\AX\) becomes the anti-invariant zero ledger \(\AZ\).
+For the Selberg-class instance, the abstract ledger is \(\Sel\)
+restricted to its typed zero ledger: \(X\) is the zero-carrier
+underlying \(\Znt\), \(J\) is \(\JL\), \(\mu\) is the
+multiplicity-weighted zero measure, \(\psim\) is \(\psimRH\), and
+\(\AX\) is \(\AZ\).
 
-\begin{theorem}[Duality-confinement master theorem, applied to \(\Sel\)]
+\begin{theorem}[Duality-confinement master theorem, applied to \(\Sel\)\footnote{Verified in Lean as \nolinkurl{RH.DCMasterApplied.dcMasterApplied} via typed-bridge composition over the recognition-source carrier; see App~\ref{app:formalization}.}]
 \label{thm:rh:dc-master-applied}
 Let \(\Sel\) be the saturated completed Selberg trace closure with
 functional-equation involution \(\JL\), separating anti-invariant
@@ -80,41 +71,19 @@ of \Cref{obl:rh:gamma-sdtc-selberg}.  Once the records give
 forces \(\AZ=0\).
 \end{proof}
 
-A disclosure about the Lean formulation belongs here.  In Lean the
-application is not realized by re-instantiating the abstract
-involutive object ledger of \citet{TsiokosSDTC2026} on the shell;
-instead it is realized as a typed-bridge composition over the
-recognition-source carrier
-\(\gamma:\GamSDTCSelberg\,\mathit{shell}\) of
-\Cref{obl:rh:gamma-sdtc-selberg}.  The carrier supplies the
-duality-confinement apparatus (an involutive object ledger, a
-separating readout, an anti-invariant ledger, completed-domination
-records, and the typed-cone primitives) together with explicit
-bridge propositions linking that apparatus to the shell: a
-same-readout coherence between the separation and
-anti-invariant-ledger readouts, a visible-support refinement, and
-the implication \(\mathtt{mu\_zero\_of\_ae}\) translating
-``\(\psim\) vanishes \(\mu\)-almost everywhere'' into the shell
-equality \(\AZ=0\).  These bridge propositions are typed hypotheses,
-not derivations: the DC apparatus and its readout-side data are
-supplied alongside the assertion that they cohere with the shell,
-not constructed from the shell.  The Lean theorem composes the
-imported master theorem with these bridge fields to obtain
-\(\AZ=0\); the formalization appendix records the declaration-level
-correspondence and the bridge-field signatures.
+The hypotheses of the membrane theorem are satisfied under these
+substitutions.  Qualitative separation follows from
+\Cref{def:rh:psi-minus-rh}: \(\psimRH(s)=0\) iff \(\Real(s)=1/2\),
+and \(\psimRH(\JL(s))=-\psimRH(s)\).  The domination records are
+those supplied by \Cref{obl:rh:gamma-sdtc-selberg}.  The passage from
+``\(\psim\) vanishes \(\mu\)-almost everywhere'' to the shell equality
+\(\AZ=0\) is a coherence assumption of the recognition source.
 
-The bridge theorem is the point at which the conditional input from
-\(\GamSDTCSelberg\) becomes the concrete ledger equality \(\AZ=0\).
-In the duality-confinement notation, the fixed-locus consequence
-says that the typed zero-ledger mass is confined to \(\Fix(\JL)\),
-the critical line.  In the notation of the present paper, Theorem T
-gives the sharper pointwise formulation on the finite typed ledger:
-every \(\rho\in\Znt\) has \(\Real(\rho)=1/2\).
+Thus the conditional input from \(\GamSDTCSelberg\) becomes
+\(\AZ=0\), and Theorem T turns this into
+\(\forall\,\rho\in\Znt,\ \Real(\rho)=1/2\).
 
-The headline conditional theorem composes \(\GamSDTCSelberg\), the
-bridge theorem above, and the forward direction of Theorem T.
-
-\begin{theorem}[Conditional landing chain]
+\begin{theorem}[Conditional landing chain\footnote{Verified in Lean as \nolinkurl{RH.RHConditional.rhConditional}, taking a value of \nolinkurl{GammaSdtcSelberg shell} as an explicit hypothesis; see App~\ref{app:formalization}.}]
 \label{thm:rh:conditional}
 Let \(\Sel\) be a saturated completed Selberg trace closure.  Under
 the standing assumption that \(\Sel\) is Foundations-II admissible,
@@ -148,60 +117,19 @@ therefore gives \(\AZ=0\) in the typed positive cone associated to
 \]
 \end{proof}
 
-The same composition admits an equivalent audit-closure rendering.
-In the language of \citet{TsiokosAOR2026}, the recognition source
-\(\GamSDTCSelberg\), the bridge theorem
-\Cref{thm:rh:dc-master-applied}, and translation theorem T jointly
-certify the shell as a refinement-stable
-audited-operational-realisability instance,
-\[
-  \Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}},
-\]
-of which the critical-line statement on \(\Znt\) is the
-typed-zero-ledger readout.  \Cref{sec:rh-aor-instance} unfolds this
-form: the eight-stratum / twelve-type residual atlas of the AOR
-meta-theory is consumed by the literal classification record
-assembled from the shell, the recognition source, and the bridge
-fields, and the AOR-instance theorem composes the seven discharge
-atoms through the local refinement-stable predicate.  The
-membership reading is not an additional theorem about \(\Sel\); it
-is the formed-layer certification that the conditional landing
-chain delivers its conclusion through an audit-closed apparatus,
-with the critical-line statement \(\Real(\rho)=1/2\) on \(\Znt\) as
-the readout.
-
-The conditional structure of this result is essential.  Three
-hypotheses are in force: the standing Foundations-II admissibility
-of \(\Sel\) (\Cref{def:rh:sat-sel-shell}); the Six Birds
-closure-content discipline that treats \(\GamSDTCSelberg\) as
-supplied structural content of the formed self-dual Selberg trace
-layer; and the typed real-coordinate identification described in
+The conditional structure is essential.  The hypotheses are the
+standing Foundations-II admissibility of \(\Sel\)
+(\Cref{def:rh:sat-sel-shell}), the closure-content discipline that
+treats \(\GamSDTCSelberg\) as supplied structural content, and the
+typed real-coordinate identification of
 \Cref{sec:involution_and_ledger}.  Outside the Six Birds framing the
 theorem reads as the conditional implication
 \[
   \GamSDTCSelberg \Longrightarrow \mathrm{RH},
 \]
-not as an unconditional proof of RH in standard ZFC.  The
-formalization preserves this conditional structure: the landing
-chain takes a value of the recognition-source carrier as an
-explicit hypothesis parameter.
+not as an unconditional proof of RH in standard ZFC.
 
-In the BirdInt judgment vocabulary of
-\cite{TsiokosFoundationsIII2026}, the same conditional theorem is
-the accepted judgment
-\(\GamSDTCSelberg;\,\Sel;\,\Itr \vdash
-  (\forall\,\rho\in\Znt,\ \Real(\rho)=1/2) : \mathrm{accepted}\),
-where \(\Itr\) is the saturated Selberg trace instrument of
-\Cref{def:rh:sat-sel-shell}; this rendering is decorative and not
-used in the proof above.
+An audit-closure reading of the same composition is given in
+\Cref{sec:rh-aor-instance}.
 
-Lean composes the conditional landing chain (per the formalization
-appendix): the formal realization takes a value of the
-typed-structure carrier representing \(\GamSDTCSelberg\) as input,
-applies \Cref{thm:rh:dc-master-applied} through that carrier's
-bridge fields to obtain \(\AZ=0\) on the shell, and then applies
-\Cref{thm:rh:translation-T-forward}.
-
-The scope, nonclaim discipline, structural-program positioning, and
-pending formalization extensions are the subject of
-\Cref{sec:scope_and_nonclaims} and the sections that follow.
+The scope and nonclaim discipline are the subject of \Cref{sec:scope_and_nonclaims}.

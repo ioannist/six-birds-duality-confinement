@@ -9,64 +9,37 @@
 \label{sec:conclusion}
 
 The paper has established the RH closure in its conditional form.
-If \(\Sel\) is a saturated completed Selberg trace closure
-satisfying the standing Foundations-II admissibility assumption, and
-if the Selberg-class recognition source \(\GamSDTCSelberg\) is
-supplied by the SDTC structural law of \citet{TsiokosSDTC2026}, then
-the conditional landing chain certifies the shell as a
-refinement-stable audited-operational-realisability instance in the
-sense of \citet{TsiokosAOR2026},
-\[
-  \Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}},
-\]
-of which the critical-line statement on the typed zero ledger
-\(\Znt\) is the readout:
-\[
-  \rho\in\Znt \quad\Longrightarrow\quad \Real(\rho)=\frac12 .
-\]
-The proof is the two-step landing chain developed above.  The
-recognition source supplies domination records for \(\AZ\); the
-duality-confinement membrane theorem of \citet{TsiokosSDTC2026}
-converts those records into \(\AZ=0\); translation theorem T
-converts \(\AZ=0\) into the critical-line statement on the typed
-zero ledger; and the AOR-instance theorem
-(\Cref{thm:rh:aor-instance}) certifies that the same composition
-discharges every atom of the eight-stratum / twelve-type residual
-atlas of the audit-closure meta-theory, with the seven discharge
-records assembled literally from the shell, the recognition source,
-and the bridge fields.
+Under the standing Foundations-II admissibility assumption on
+\(\Sel\), and with the Selberg-class recognition source
+\(\GamSDTCSelberg\) supplied by the SDTC structural law of
+\citet{TsiokosSDTC2026}, the conditional landing chain certifies
+\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}}\)
+in the sense of \citet{TsiokosAOR2026}.  Its typed-ledger readout is
+\(\rho\in\Znt \Rightarrow \Real(\rho)=1/2\).  The recognition source
+supplies domination records for \(\AZ\); the duality-confinement
+membrane theorem converts those records into \(\AZ=0\); translation
+theorem T converts \(\AZ=0\) into the critical-line statement; and
+\Cref{thm:rh:aor-instance} records that the same composition
+discharges the audit-closure residual atlas.
 
 The conditional structure is essential.  Outside the Six Birds
-framework, the result reads as the implication
-\[
-  \GamSDTCSelberg \Longrightarrow \mathrm{RH}
-\]
-on the typed zero ledger, with \(\mathrm{RH}\) delivered as the
-typed-ledger readout of the audit-closed realisability instance.
-It is not an unconditional proof of RH in standard ZFC.  Acceptance
-turns on two supplied pieces of formed-layer structure: the
-recognition source \(\GamSDTCSelberg\), which is closure content of
-the formed self-dual Selberg trace layer, and the admissibility of
-\(\Sel\), recorded by the \(\mathrm{Audit}_L\) field of the shell.
-The theorem is therefore sharp as a conditional theorem; the
-AOR-realisability framing names the audit-closure stratum at which
-the closure delivers its conclusion, but does not collapse these
-hypotheses into unmentioned background assumptions.  In the Lean
-development the realisability-instance theorem is recorded as
-partial because its conclusion is the local syntactic membership
-predicate over the carrier fields rather than the full audit-closure
-characterisation; the substantive recognition-source and
-translation-interface discharges remain deferred to
-\citet{TsiokosSDTC2026} and \Cref{sec:translation_theorem}.
+framework, the result reads as
+\(\GamSDTCSelberg\Longrightarrow\mathrm{RH}\) on the typed zero
+ledger; it is not an unconditional proof of RH in standard ZFC.
+Acceptance turns on two supplied pieces of formed-layer structure:
+the recognition source \(\GamSDTCSelberg\), and the admissibility of
+\(\Sel\) recorded by the \(\mathrm{Audit}_L\) field.  The
+AOR-realisability framing gives the audit-closure reading of that
+conclusion, but does not collapse these hypotheses into unmentioned
+background assumptions.
 
-Three extension targets remain.  First, a substantive Lean
-derivation of the admissibility of \(\Sel\) from the seven
-Foundations-II schemas would replace the construction-time audit
-field by derived predicates.  Second, the typed real-coordinate
-carrier should be connected inside the formal system to the
-classical function \(\Real(\rho)\) through analytic-number-theoretic
-infrastructure, lifting the real-part abstraction disclosed earlier.
-Third, the analogous program for primitive Selberg-class
+Three extension targets remain.  First, the admissibility of
+\(\Sel\) from the seven Foundations-II schemas would be derived
+rather than carried as a standing hypothesis.  Second, the typed
+real-coordinate parameter would be connected to the classical
+function \(\Real(\rho)\) through analytic-number-theoretic
+infrastructure, lifting the real-part representation choice disclosed
+earlier.  Third, the analogous program for primitive Selberg-class
 \(L\)-functions would require a separate typed shell, admissibility
 verification, and recognition-source provenance argument for each
 \(L\).  The paper accordingly defers unconditional standard-ZFC RH,
@@ -80,7 +53,4 @@ per-paper RH manifest is \path{lean/manifests/rh_manifest.toml}, and
 the RH math source of record is
 \path{anti_loc/extracted_math/rh_construction.md}.  The recognition
 source carrier is encoded inline in
-\path{lean/SixBirdsDualityConfinement/RH/RHConditional.lean}.  Phase H
-of the mechanization closed on 2026-05-23 with the full validator
-chain passing, including the manifest checks, Lean build, axiom audit,
-and forbidden-token audit.
+\path{lean/SixBirdsDualityConfinement/RH/RHConditional.lean}.

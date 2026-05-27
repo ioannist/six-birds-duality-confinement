@@ -21,7 +21,7 @@ Selberg trace'' records the substrate being organized---the
 completed zeta function together with the trace-relevant data
 through which the later domination records are stated.
 
-\begin{definition}[Saturated completed Selberg trace closure]
+\begin{definition}[Saturated completed Selberg trace closure\footnote{Realized in Lean as \nolinkurl{RH.SatSelShell.SatSelShell}; admissibility under the seven Foundations-II schemas is carried by the \(\mathrm{Audit}_L\) field, recorded in App~\ref{app:formalization}.}]
 \label{def:rh:sat-sel-shell}
 The saturated completed Selberg trace closure \(\Sel\) is a typed
 shell consisting of the following thirteen fields:
@@ -68,16 +68,12 @@ trace functional to the positive cone, records which
 instrument-relative observations are available, and carries the
 admissibility status of the shell.
 
-An encoding disclosure attaches to this definition.  The
-admissibility of \(\Sel\) with respect to the seven Foundations-II
-schemas is encoded as a Foundations-II-level hypothesis carried by
-\(\mathrm{Audit}_{L}\) \cite{TsiokosFoundationsII2026}; it is not
-derived in this paper from a separate construction of the completed
-Selberg trace instance.  A substantive formal derivation would
-require unfolding those seven schemas as explicit predicates and
-verifying each one for the completed-zeta trace shell.  Here
-admissibility is a standing assumption of the typed shell, recorded
-at construction time in the audit field.
+The admissibility of \(\Sel\) under the seven Foundations-II schemas
+\cite{TsiokosFoundationsII2026} is a standing hypothesis of the shell,
+witnessed by the field \(\mathrm{Audit}_{L}\); we do not derive it
+here.  A derivation would require unfolding the seven schemas as
+explicit predicates and verifying each one for the completed-zeta
+trace shell.
 
 The terminology refers to the classical Selberg trace-formula
 machinery from Selberg's original work \citep{Selberg1956} and

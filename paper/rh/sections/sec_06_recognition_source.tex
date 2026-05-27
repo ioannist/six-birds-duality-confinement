@@ -1,10 +1,5 @@
 % RH paper — § The recognition source
-% Drafted body introducing \GamSDTCSelberg as a typed structure
-% carrier / structural hypothesis, not as a derivable theorem.
-%
-% statements-of-record rows resolved here: see
-% paper/rh/notes/section-outline.md (this file's row) and
-% paper/notes/statements-of-record.yml (target_section_hint field).
+% statements-of-record rows resolved here: obl:rh:gamma-sdtc-selberg.
 
 \section{The recognition source}
 \label{sec:recognition_source}
@@ -25,7 +20,7 @@ required by the duality-confinement master theorem.  Once that
 sequence is available, the master theorem forces \(\AZ=0\), and
 Theorem T converts \(\AZ=0\) into the critical-line statement.
 
-\begin{definition}[The recognition source \(\GamSDTCSelberg\)]
+\begin{definition}[The recognition source \(\GamSDTCSelberg\)\footnote{Encoded in Lean as a typed structure carrier \nolinkurl{RH.RHConditional.GammaSdtcSelberg}, not as a Lean axiom; downstream theorems take a value of this carrier as an explicit hypothesis. See App~\ref{app:formalization}.}]
 \label{obl:rh:gamma-sdtc-selberg}
 On the saturated completed Selberg trace closure \(\Sel\), the
 recognition source \(\GamSDTCSelberg\) supplies a sequence of
@@ -55,43 +50,17 @@ black box: it is a typed recognition object whose mathematical role
 is to provide the domination records that the abstract
 duality-confinement apparatus requires.
 
-An encoding disclosure is needed here.  In the Lean formalization,
-\(\GamSDTCSelberg\) is realized as a typed structure carrier: a
-record packaging, in one place, the entire duality-confinement
-apparatus needed by the bridge theorem (involutive object ledger,
-separating anti-invariant readout, anti-invariant ledger,
-completed-domination records, and the typed-cone primitives
-\(\preceq\), \(\trace\), positivity-to-zero) \emph{together with}
-the bridge propositions that link this apparatus to the shell's
-anti-invariant zero ledger.  The bridge propositions---in
-particular the implication from the abstract
-``\(\psi_-\) vanishes \(\mu\)-a.e.'' to ``\(\AZ = 0\) on the
-shell''---are typed hypotheses, not derivations: the apparatus data
-is supplied together with the assertion that it is coherent with
-the shell, not constructed from the shell.  The carrier is declared
-inline in the conditional-landing-chain module, following the
-placement convention that a type lives next to its only consumer.
-
-The carrier is not a Lean axiom.  The project's forbidden-tokens
-rule bans \texttt{axiom}, \texttt{opaque}, \texttt{constant},
-\texttt{sorry}, and \texttt{admit} throughout the source tree.  The
-recognition source is therefore supplied as a typed structural
-hypothesis, not a postulated logical axiom, and the conditional
-landing-chain theorem takes a value of this carrier as an explicit
-hypothesis parameter,
-\[
-  \gamma : \texttt{GammaSdtcSelberg}\ \texttt{shell}.
-\]
+The conditional landing chain (\Cref{sec:landing_chain}) takes a
+value of the recognition source as an explicit hypothesis.
 
 Three candidate routes for deriving \(\GamSDTCSelberg\) from
 framework primitives were considered---the primitive role inventory,
 the audited interaction calculus, and the closure-formation
 discipline---and each was found insufficient to produce the
-trace-vanishing domination sequence.  This is documented at the
-paper level, not as a Lean-mechanized claim; it supports the
+trace-vanishing domination sequence.  This supports the
 recognition-source framing by confirming that the SDTC content is
-closure content of the formed layer rather than a separately
-derivable consequence of the primitive vocabulary.
+closure content of the formed layer rather than a separately derivable
+consequence of the primitive vocabulary.
 \citet{TsiokosSDTC2026} names Self-Dual Trace Confinement as the
 structural law for involutive self-dual formed closures and supplies
 the abstract duality-confinement apparatus; the present paper

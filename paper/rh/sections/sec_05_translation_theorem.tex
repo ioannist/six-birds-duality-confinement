@@ -26,7 +26,7 @@ assignment described there, the typed statement is the corresponding
 classical assertion about the real parts of nontrivial zeros of
 \(\zeta\).
 
-\begin{theorem}[Translation theorem T]
+\begin{theorem}[Translation theorem T\footnote{Verified in Lean as \nolinkurl{RH.TranslationT.translationT} via typed-interface composition over the \nolinkurl{AntiInvariantZeroLedger} fields; see App~\ref{app:formalization}.}]
 \label{thm:rh:translation-T}
 On the typed zero ledger \(\Znt\) of the saturated completed Selberg
 trace closure \(\Sel\),
@@ -53,15 +53,9 @@ later, as the conditional reason for \(\AZ=0\); once that vanishing
 is available, the theorem completes the conversion to the
 critical-line statement.
 
-The two halves are short positivity arguments, written out below.
-Lean checks each by composing the \texttt{AntiInvariantZeroLedger}
-interface fields: the structure supplies the multiplicity-weighted-sum
-positivity content (vanishing summand from vanishing sum, vanishing
-displacement from vanishing summand, and their converses), and the
-underlying finite-sum and scalar arithmetic are part of the typed
-interface rather than derivations from lower arithmetic primitives.
+The two halves below are short positivity arguments.
 
-\begin{theorem}[Translation theorem T, forward direction]
+\begin{theorem}[Translation theorem T, forward direction\footnote{Verified in Lean as \nolinkurl{RH.TranslationT.translationTForward} via typed-interface composition over the \nolinkurl{AntiInvariantZeroLedger} fields; see App~\ref{app:formalization}.}]
 \label{thm:rh:translation-T-forward}
 On the typed zero ledger \(\Znt\) of \(\Sel\), if \(\AZ=0\), then
 \[
@@ -90,7 +84,7 @@ must vanish.  Thus \(\Real(\rho)-1/2=0\), and hence
 \(\Real(\rho)=1/2\).
 \end{proof}
 
-\begin{theorem}[Translation theorem T, reverse direction]
+\begin{theorem}[Translation theorem T, reverse direction\footnote{Verified in Lean as \nolinkurl{RH.TranslationT.translationTReverse} via typed-interface composition over the \nolinkurl{AntiInvariantZeroLedger} fields; see App~\ref{app:formalization}.}]
 \label{thm:rh:translation-T-reverse}
 On the typed zero ledger \(\Znt\) of \(\Sel\), if
 \[

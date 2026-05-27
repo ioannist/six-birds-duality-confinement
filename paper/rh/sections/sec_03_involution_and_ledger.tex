@@ -1,11 +1,6 @@
 % RH paper — § Involution and ledger
-% Pass A drafted: functional-equation involution and RH readout.
-% Pass B adds the typed zero ledger, anti-invariant zero ledger, and
-% real-part-coordinate abstraction disclosure.
-%
-% statements-of-record rows resolved here: see
-% paper/rh/notes/section-outline.md (this file's row) and
-% paper/notes/statements-of-record.yml (target_section_hint field).
+% statements-of-record rows resolved here: def:rh:fe-involution, def:rh:psi-minus-rh,
+% def:rh:nontrivial-zero-ledger, def:rh:anti-invariant-zero-ledger.
 
 \section{Involution and ledger}
 \label{sec:involution_and_ledger}
@@ -34,12 +29,10 @@ Thus \(\JL\) is reflection across the vertical line
 \(\Real(s)=1/2\).
 \end{definition}
 
-This definition uses only the affine symmetry \(s\mapsto 1-\bar{s}\);
-it makes no assertion yet about which points are zeros.  The purpose
-is to isolate the geometric symmetry that any zero ledger will
-inherit once the completed zeta substrate is placed in the saturated
-trace shell.  Points on opposite sides of the critical line are
-interchanged; points on the critical line are unchanged.
+This definition only isolates the affine symmetry \(s\mapsto
+1-\bar{s}\); it makes no assertion about which points are zeros.
+Points on opposite sides of the critical line are interchanged, while
+points on the critical line are unchanged.
 
 The map \(\JL\) is an involution by direct calculation:
 \[
@@ -76,13 +69,10 @@ horizontal displacement from the critical line,
 \]
 \end{definition}
 
-The qualifier ``signed'' matters: the absolute distance to the
-critical line would lose the side on which \(s\) lies, whereas the
-structural argument needs a quantity that reverses sign under the
-involution.  The readout \(\psimRH\) is positive to the right of the
-critical line, negative to the left, and zero exactly on the line.
-It is therefore a scalar witness for the failure of a point to be
-fixed by \(\JL\).
+The qualifier ``signed'' matters: the structural argument needs a
+quantity that reverses sign under the involution.  The readout
+\(\psimRH\) is positive to the right of the critical line, negative
+to the left, and zero exactly on the line.
 
 This readout separates the two sides of the critical line and
 vanishes exactly on \(\Fix(\JL)\): the condition \(\psimRH(s)=0\) is
@@ -102,29 +92,16 @@ one has
 Thus the readout detects the anti-invariant component of a point with
 respect to reflection across the critical line.
 
-This is the concrete RH specialization of the abstract separating
-readout used in the duality-confinement apparatus.  On the RH side
-the response is one-dimensional and real-valued: the information
-retained is the signed real-part displacement from \(1/2\).  Forcing
-the squared aggregate of this readout to vanish therefore suffices
-to force each zero in the ledger onto the fixed locus, provided the
-ledger has positive multiplicities.  That aggregate is introduced
-after the zero ledger itself is in place.
+This is the RH specialization of the abstract separating readout used
+in the duality-confinement apparatus.  Forcing the squared aggregate
+of this readout to vanish will force each zero in the ledger onto the
+fixed locus, provided the ledger has positive multiplicities.  That
+aggregate is introduced after the zero ledger itself is in place.
 
-The formalization appendix records these two definitions as
-definition entries for the RH axis.  Lean checks the accompanying
-involutivity, fixed-locus characterization, vanishing condition, and
-anti-invariance calculation as stated above.  These definition-side
-proofs orient the typed picture; the conditional landing chain
-(\Cref{sec:landing_chain}) does not consume them, but instead
-imports the duality-confinement master theorem and composes it with
-Theorem~T through a typed bridge carrier described in the
-formalization appendix.
+With the involution and readout in place, the remaining objects are the
+typed multiset of nontrivial zeros and the scalar built from it.
 
-With the involution and readout in place, the remaining objects are
-the typed multiset of nontrivial zeros and the scalar built from it.
-
-\begin{definition}[Nontrivial-zero ledger]
+\begin{definition}[Nontrivial-zero ledger\footnote{Realized in Lean as \nolinkurl{RH.ZeroLedger.NontrivialZeroLedger}; the typed real-coordinate representation is recorded in App~\ref{app:formalization} (A3).}]
 \label{def:rh:nontrivial-zero-ledger}
 Let
 \[
@@ -191,22 +168,15 @@ fixed-locus calculation above that is the assertion that every typed
 zero lies on the critical line.  \Cref{sec:translation_theorem}
 packages this positivity argument as Theorem T.
 
-An encoding disclosure belongs here.  In the formalization, the
-real-part coordinate is parameterized by a typed real-coordinate
-carrier rather than by the standard real numbers with their full
-analytic infrastructure.  The identification of this typed
-coordinate with the \(\mathbb{R}\)-valued real part of a classical
-nontrivial zero of \(\zeta\) is fixed by construction-parameter
-assignment when the saturated Selberg trace shell is instantiated;
-it is not derived as an internal Lean predicate.  The mathlib-free
-constraint forbids importing the analytic \(\mathbb{R}\)-typed
-machinery needed for such a derivation, and a substantive Lean
-identification is left as an extension.  The mathematical content is
-unchanged: RH on the typed zero ledger says that every such
-real-part coordinate equals \(1/2\), and the user-supplied
-assignment makes that typed statement equivalent to the classical
-RH statement.
+A representation note belongs here.  The real-part coordinate of a
+typed zero is a parameter of the shell; under construction-parameter
+assignment when the shell is instantiated, this parameter is
+identified with the classical real part of a nontrivial zero of
+\(\zeta\).  Under that identification, RH on the typed zero ledger
+says that every such real-part coordinate equals \(1/2\), which is the
+classical RH statement.  A derivation of this identification from
+analytic-number-theoretic infrastructure is left as a future extension.
 
-The saturated completed Selberg trace closure \(\Sel\), which
-packages these typed objects together with the trace instrument and
-audit data, is the subject of \Cref{sec:sat_sel_shell}.
+The saturated completed Selberg trace closure \(\Sel\), which packages
+these typed objects together with the trace instrument and audit data,
+is the subject of \Cref{sec:sat_sel_shell}.
