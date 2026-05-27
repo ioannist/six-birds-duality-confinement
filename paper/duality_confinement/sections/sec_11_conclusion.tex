@@ -23,32 +23,28 @@ develops the corresponding typed machinery: involutive object
 ledgers, anti-invariant ledgers with trace identity and separating
 readout, completed-domination bridges with typed-cone Douglas
 factorization, exhaustive moving ledgers, and optimized scalar
-trace budgets.  The formalization tracks this apparatus at the
-typed positive-cone level with faithful semantic alignment for all
-twelve mechanized entries.
+trace budgets.  The development is formalized in Lean as a
+mathlib-free mechanization at the typed positive-cone level
+(Appendix~\ref{app:formalization}).
 
-Two formal extensions remain open.  First, the typed positive cone
+Two extensions remain open.  First, the typed positive cone
 should be realized as the full positive trace-class cone on a
 Hilbert space, with the trace-norm topology, Hilbert--Schmidt and
 Schatten infrastructure, and the classical operator-theoretic
 lemmas made explicit \citep{Simon2005,ReedSimon1980}.  Second, the
 optimized scalar trace budget should be strengthened by deriving
 AM--GM \citep{HardyLittlewoodPolya1952} inside a typed
-real-arithmetic structure rather than taking that step as a
-typed-scalar hypothesis.
+real-arithmetic structure rather than taking the inequality as a
+scalar hypothesis.
 
 No single-substrate validation is used here.  The present paper is
 the abstract apparatus layer; substrate-specific applications must
 supply their own involutive ledger, separating readout, and
 recognition source.
 
-Code and data availability.  The Lean mechanization is available at
-the public repository
+Code and data availability.  The source repository is available at
 \url{https://github.com/ioannist/six-birds-duality-confinement}.
 The math source-of-record for the paper's claims is the artifact at
 \path{anti_loc/extracted_math/duality_confinement_master.md} within
-that repository.  The per-paper formal manifest enumerating the
-formally tracked entries is at
-\path{lean/manifests/duality_confinement_manifest.toml}.  The
-mechanization was closed on 2026-05-23 with the full validator
-chain passing, including the per-theorem axiom audit.
+that repository.  The per-paper manifest is at
+\path{lean/manifests/duality_confinement_manifest.toml}.

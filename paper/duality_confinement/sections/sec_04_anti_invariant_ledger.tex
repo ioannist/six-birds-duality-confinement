@@ -59,10 +59,9 @@ monotone,
 and a positive element of trace zero is the zero element.  The
 classical model is the cone of positive trace-class operators on a
 Hilbert space; the typed abstraction records only the order, trace,
-and positivity facts used by the confinement proof.  The
-formalization appendix records the encoding choice.
+and positivity facts used by the confinement proof.
 
-\begin{definition}[Anti-invariant object ledger]
+\begin{definition}[Anti-invariant object ledger\protect\footnote{Realized in Lean as \nolinkurl{AntiInvariantLedger.AntiInvariantLedger}; see App~\ref{app:formalization}.}]
 \label{def:duality_confinement:anti-invariant-ledger}
 The \emph{anti-invariant object ledger} of \(\IOL\) is the positive
 cone element
@@ -136,7 +135,7 @@ The next statement is the trace identity relating \(\trace\AX\) to
 the integral of \(\|\psim(x)\|^2\); together with separation, it is
 what turns vanishing of \(\AX\) into fixed-locus confinement.
 
-\begin{lemma}[Trace identity]
+\begin{lemma}[Trace identity\protect\footnote{Verified in Lean as \nolinkurl{AntiInvariantLedger.traceIdentity} via constructor unfolding from the typed \nolinkurl{AntiInvariantLedger} field; see App~\ref{app:formalization}.}]
 \label{lem:duality_confinement:trace-identity}
 Let \(\AX\) be the anti-invariant ledger of an involutive object
 ledger \(\IOL\), with anti-invariant readout \(\psim\).  Then
@@ -158,28 +157,9 @@ the trace of each rank-one operator \(\psim(x)\psim(x)^*\) gives
 \(\mu\) gives the displayed identity.  Thus the right-hand side
 measures the mean-square amplitude of the anti-invariant readout.
 
-In the typed positive cone the same identity is built into the
-construction of \(\AX\): the cone packages the Gram-type element
-together with a trace functional arranged so that \(\trace\AX\)
-unfolds to the squared-norm integral above.  Lean records the
-identity in this formulation as a constructor unfolding from the
-typed \texttt{AntiInvariantLedger} field \texttt{trace\_identity}
-rather than as an independent analytic derivation; the formalization
-appendix records the declaration-level correspondence.
-
-A further encoding disclosure belongs here.  The anti-invariant
-readout \(\psim\) is realized in Lean as an independent typed field
-of both the separating-readout and anti-invariant-ledger carriers,
-supplied together with a coherence hypothesis that the two
-occurrences agree.  Lean does not construct \(\psim\) as the
-projection \(\Pminus\psi\) and does not derive the equivariance
-identity \(\psim(Jx)=-\psim(x)\) from equivariance of \(\psi\): the
-projection definition and the resulting equivariance are paper-side
-content, carried over to the Lean carriers as typed-interface data.
-This matches the typed-cone scope of the formalization, which does
-not encode the response-side projector \(\Pminus\); the
-formalization appendix records the disclosure alongside the per-row
-coverage table.
+In the typed positive cone, \(\AX\) and the trace functional are
+arranged so that \(\trace\AX\) is the displayed integral by
+construction.
 
 Vanishing of \(\trace\AX\), vanishing of \(\AX\), and vanishing of
 \(\psim\) almost everywhere are therefore equivalent under the

@@ -21,7 +21,7 @@ terms, this is the apparatus theorem for the SDTC structural law
 mathematical consequence once the source has supplied the required
 sequence.
 
-\begin{theorem}[Duality-confinement membrane theorem]
+\begin{theorem}[Duality-confinement membrane theorem\protect\footnote{Verified in Lean as \nolinkurl{MasterTheorem.masterTheorem}; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:master-theorem}
 Let \(\IOL\) be an involutive object ledger with carrier \(X\),
 involution \(J\), measure \(\mu\), anti-invariant readout
@@ -85,18 +85,14 @@ That theorem in turn rests on the trace identity
 \(\trace\AX\) with the squared-norm integral of \(\psim\).
 \end{proof}
 
-The theorem is stated and mechanized at the typed positive-cone
-level.  The cone records exactly the primitives used by the proof:
-the order \(\preceq\), the trace functional \(\trace\), trace
-monotonicity, and the positivity-to-zero principle.  Lean proves
-the membrane theorem at this level; the formalization appendix
-records the declaration-level correspondence.  A fully
-operator-theoretic treatment would require the trace-class
-topology, Hilbert--Schmidt and Schatten-ideal infrastructure, and
-the corresponding analytic closure lemmas
-\citep{Simon2005,ReedSimon1980}; that operator-theoretic generality
-remains an open extension.  The present theorem is the verified
-typed-cone squeeze theorem needed by the SDTC apparatus.
+The theorem is stated at the typed positive-cone level.  The cone
+records exactly the primitives used by the proof: the order
+\(\preceq\), the trace functional \(\trace\), trace monotonicity, and
+the positivity-to-zero principle.  A fully operator-theoretic
+treatment would require the trace-class topology, Hilbert--Schmidt
+and Schatten-ideal infrastructure, and the corresponding analytic
+closure lemmas \citep{Simon2005,ReedSimon1980}; that
+operator-theoretic generality remains an open extension.
 
 \paragraph{Worked single-substrate validation.}
 The master theorem applies to any involutive object ledger whose

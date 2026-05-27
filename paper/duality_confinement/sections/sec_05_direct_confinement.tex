@@ -19,7 +19,7 @@ scale.  These are the consequence step used later by the master
 theorem, which adds the separate squeeze argument that forces
 \(\AX=0\).
 
-\begin{theorem}[Separation--confinement]
+\begin{theorem}[Separation--confinement\protect\footnote{Verified in Lean as \nolinkurl{DirectConfinement.separationConfinement} via typed-bridge composition over the measure-reading bridges \nolinkurl{mu_zero_of_ae} and \nolinkurl{visible_zero_of_ae}; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:separation-confinement}
 Let \(\IOL\) be an involutive object ledger with anti-invariant
 ledger \(\AX\) and qualitatively separating anti-invariant readout
@@ -44,18 +44,9 @@ the complement of \(\Fix(J)\) has \(\mu\)-measure zero.
 \end{proof}
 
 In the finite weighted case, the same proof says that every visible
-object with positive weight lies in \(\Fix(J)\).  Lean checks the
-theorem as a typed-bridge composition: the measure-theoretic
-reading of ``\(\psim\) vanishes \(\mu\)-almost everywhere'' is
-supplied as two explicit hypotheses on the typed cone---one giving
-\(\mu(X\setminus\Fix(J))=0\) and one giving pointwise vanishing on
-the visible support---and Lean composes these with the trace
-identity and separation.  These are the Lean bridge fields
-\texttt{mu\_zero\_of\_ae} and \texttt{visible\_zero\_of\_ae}; the
-formalization appendix records the declaration-level correspondence
-and the hypothesis signatures.
+object with positive weight lies in \(\Fix(J)\).
 
-\begin{theorem}[Quantitative confinement]
+\begin{theorem}[Quantitative confinement\protect\footnote{Verified in Lean as \nolinkurl{DirectConfinement.quantitativeConfinement} via typed-bridge composition with a Markov-step hypothesis; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:quantitative-confinement}
 Let \(\IOL\) be an involutive object ledger with anti-invariant
 ledger \(\AX\) and quantitatively separating anti-invariant readout
@@ -90,13 +81,6 @@ The trace identity identifies the final integral with
 \(\trace\AX\).  Since \(m(\varepsilon)>0\), division by
 \(m(\varepsilon)^2\) gives the displayed bound.
 \end{proof}
-
-Lean records the bound through a typed Markov interface: the
-Markov-style scalar step is supplied as a hypothesis on the modulus
-side rather than derived from an ordered-scalar primitive, and the
-theorem composes that hypothesis with the trace identity.  The
-formalization appendix records the declaration-level
-correspondence.
 
 \Cref{sec:master_theorem} combines these direct consequences with
 a domination squeeze: once a sequence of records

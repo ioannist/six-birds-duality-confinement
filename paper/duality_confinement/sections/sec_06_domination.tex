@@ -58,9 +58,8 @@ If both terms can be arranged so that the trace of their sum tends
 to zero along a sequence, trace monotonicity in the typed positive
 cone gives the squeeze input needed later.
 
-The formalization appendix records this bridge as a definition
-entry.  No proof is attached to the bridge itself; its content is
-the explicit bookkeeping of the domination relation and the defect.
+No proof is attached to the bridge itself; its content is the explicit
+bookkeeping of the domination relation and the defect.
 Proof work begins when one explains how such relations are
 recognized or transported.  In the operator-theoretic setting used
 as motivation here, exact bridges are represented through
@@ -74,7 +73,7 @@ a Hilbert-space operator equivalence.  In the present paper it is
 used only through the typed-cone formulation needed by the bridge
 apparatus.
 
-\begin{theorem}[Douglas factorization, typed-cone form]
+\begin{theorem}[Douglas factorization, typed-cone form\protect\footnote{Verified in Lean as \nolinkurl{Domination.douglasDomination} via typed-carrier packaging in the \nolinkurl{DouglasData} structure; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:douglas-domination}
 Let \(A=V^*V\) and \(K=W^*W\) be bounded positive operators on the
 same response space, represented as positive elements of the typed
@@ -103,16 +102,3 @@ domination witness and the contractive-factor witness together, so
 downstream arguments may pass between the two forms without
 developing the full Hilbert-space proof inside the typed calculus.
 \end{proof}
-
-Lean records the Douglas equivalence at the typed-cone level as a
-packaged interface: the typed \texttt{DouglasData} carrier stores
-both directions as \texttt{order\_to\_factor} and
-\texttt{factor\_to\_order} fields, and the Lean theorem repackages
-them into the domination--factorization correspondence used by the
-bridge apparatus.  The equivalence is supplied as typed-carrier
-data rather than derived from operator-square-root primitives in
-the typed cone, so the bridge framework realizes exact
-completed-domination bridges whenever the typed-cone carrier
-supplies the domination and contractive-factor witnesses together.
-The formalization appendix records the declaration-level
-correspondence.
