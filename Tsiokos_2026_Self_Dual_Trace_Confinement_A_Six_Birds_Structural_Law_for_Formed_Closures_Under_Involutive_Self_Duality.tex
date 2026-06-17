@@ -139,7 +139,7 @@ generalizations such as CPT symmetry,
 gauge invariance, quantum self-adjointness, and function-field RH
 are presented as structural predictions, not theorems; the paper
 develops the abstract apparatus layer and names the hypotheses any
-single-substrate validation must supply.
+substrate-specific application must supply.
 \end{abstract}
 
 \medskip
@@ -384,7 +384,7 @@ want to localize; \(J:X\to X\) is a symmetry with
 \(\Jiso:Y\to Y\) is the corresponding symmetry of responses; and
 \(\psi:X\to Y\) is the observable.
 
-\begin{definition}[Involutive object ledger\protect\footnote{Realized in Lean as \nolinkurl{Involution.InvolutiveObjectLedger}; see App~\ref{app:formalization}.}]
+\begin{definition}[Involutive object ledger\protect\footnote{Realized in the Lean formalization; see App~\ref{app:formalization}.}]
 \label{def:duality_confinement:involutive-object-ledger}
 An \emph{involutive object ledger} is a tuple
 \[
@@ -496,9 +496,9 @@ on the critical strip has fixed locus the critical line
 \(\operatorname{Re}(s)=1/2\).  Specializing \(X\) to the visible
 multiset of nontrivial zeros with \(\mu\) the multiplicity-weighted
 measure makes \(\operatorname{Re}(s)-1/2\) the sign-changing
-displacement from the fixed line.  The worked single-substrate
-validation of that instance is developed in
-\citet{TsiokosRHviaSDTC2026}; no result from there is used here.
+displacement from the fixed line.  The sibling paper on the worked
+single-substrate RH application develops that instance in detail; no
+result from that paper is used here.
 
 The mathematical work begins once this ledger is equipped with its
 anti-invariant projection, trace ledger, and separation hypotheses.
@@ -559,7 +559,7 @@ classical model is the cone of positive trace-class operators on a
 Hilbert space; the typed abstraction records only the order, trace,
 and positivity facts used by the confinement proof.
 
-\begin{definition}[Anti-invariant object ledger\protect\footnote{Realized in Lean as \nolinkurl{AntiInvariantLedger.AntiInvariantLedger}; see App~\ref{app:formalization}.}]
+\begin{definition}[Anti-invariant object ledger\protect\footnote{Realized in the Lean formalization; see App~\ref{app:formalization}.}]
 \label{def:duality_confinement:anti-invariant-ledger}
 The \emph{anti-invariant object ledger} of \(\IOL\) is the positive
 cone element
@@ -633,7 +633,7 @@ The next statement is the trace identity relating \(\trace\AX\) to
 the integral of \(\|\psim(x)\|^2\); together with separation, it is
 what turns vanishing of \(\AX\) into fixed-locus confinement.
 
-\begin{lemma}[Trace identity\protect\footnote{Verified in Lean as \nolinkurl{AntiInvariantLedger.traceIdentity} via constructor unfolding from the typed \nolinkurl{AntiInvariantLedger} field; see App~\ref{app:formalization}.}]
+\begin{lemma}[Trace identity\protect\footnote{Recorded in the Lean formalization by constructor unfolding from the typed anti-invariant-ledger field; see App~\ref{app:formalization}.}]
 \label{lem:duality_confinement:trace-identity}
 Let \(\AX\) be the anti-invariant ledger of an involutive object
 ledger \(\IOL\), with anti-invariant readout \(\psim\).  Then
@@ -686,7 +686,7 @@ scale.  Together these furnish the consequence step used later by the
 master theorem, which adds the separate squeeze argument that forces
 \(\AX=0\).
 
-\begin{theorem}[Separation--confinement\protect\footnote{Verified in Lean as \nolinkurl{DirectConfinement.separationConfinement} via typed-bridge composition over the measure-reading bridges \nolinkurl{mu_zero_of_ae} and \nolinkurl{visible_zero_of_ae}; see App~\ref{app:formalization}.}]
+\begin{theorem}[Separation--confinement\protect\footnote{Checked in the Lean formalization by typed-bridge composition over the measure-reading bridges; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:separation-confinement}
 Let \(\IOL\) be an involutive object ledger with anti-invariant
 ledger \(\AX\) and qualitatively separating anti-invariant readout
@@ -713,7 +713,7 @@ the complement of \(\Fix(J)\) has \(\mu\)-measure zero.
 In the finite weighted case, the same proof says that every visible
 object with positive weight lies in \(\Fix(J)\).
 
-\begin{theorem}[Quantitative confinement\protect\footnote{Verified in Lean as \nolinkurl{DirectConfinement.quantitativeConfinement} via typed-bridge composition with a Markov-step hypothesis; see App~\ref{app:formalization}.}]
+\begin{theorem}[Quantitative confinement\protect\footnote{Checked in the Lean formalization by typed-bridge composition with a Markov-step hypothesis; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:quantitative-confinement}
 Let \(\IOL\) be an involutive object ledger with anti-invariant
 ledger \(\AX\) and quantitatively separating anti-invariant readout
@@ -825,7 +825,7 @@ a Hilbert-space operator equivalence.  In the present paper it is
 used only through the typed-cone formulation needed by the bridge
 apparatus.
 
-\begin{theorem}[Douglas factorization, typed-cone form\protect\footnote{Verified in Lean as \nolinkurl{Domination.douglasDomination} via typed-carrier packaging in the \nolinkurl{DouglasData} structure; see App~\ref{app:formalization}.}]
+\begin{theorem}[Douglas factorization, typed-cone form\protect\footnote{Packaged in the Lean formalization through the typed Douglas-data carrier; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:douglas-domination}
 Let \(A=V^*V\) and \(K=W^*W\) be bounded positive operators on the
 same response space, represented as positive elements of the typed
@@ -871,7 +871,7 @@ terms, this is the apparatus theorem for the SDTC structural law
 mathematical consequence once the source has supplied the required
 sequence.
 
-\begin{theorem}[Duality-confinement membrane theorem\protect\footnote{Verified in Lean as \nolinkurl{MasterTheorem.masterTheorem}; see App~\ref{app:formalization}.}]
+\begin{theorem}[Duality-confinement membrane theorem\protect\footnote{Verified in the Lean formalization at the typed positive-cone level; see App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:master-theorem}
 Let \(\IOL\) be an involutive object ledger with carrier \(X\),
 involution \(J\), measure \(\mu\), anti-invariant readout
@@ -943,22 +943,20 @@ and Schatten-ideal infrastructure, and the corresponding analytic
 closure lemmas \citep{Simon2005,ReedSimon1980}; that
 operator-theoretic generality remains an open extension.
 
-\paragraph{Worked single-substrate validation.}
+\paragraph{Worked single-substrate application.}
 The master theorem applies to any involutive object ledger whose
 recognition source supplies the domination records required by the
 squeeze hypothesis.  This paper develops the typed apparatus and
-proves the squeeze.  A worked single-substrate validation,
-instantiating the apparatus on the saturated completed Selberg trace
-closure of the Riemann zeta function and applying the master theorem
-to the corresponding zero ledger, is given in
-\citet{TsiokosRHviaSDTC2026}.  That paper specifies the involution
-\(J_L(s)=1-\bar{s}\), identifies its fixed locus with the critical
-line, treats the saturated Selberg trace shell as the typed
-substrate, and uses the Selberg-class instance of the SDTC
-recognition source.  Its main theorem is conditional on the standard
-Six Birds closure assumption and that Selberg-class instance of
-SDTC; it imports the master theorem as stated in this section.  No
-result from \citet{TsiokosRHviaSDTC2026} is used here.
+proves the squeeze.  The sibling paper on the worked
+single-substrate RH application instantiates the apparatus on the
+saturated completed Selberg trace closure of the Riemann zeta
+function and applies the master theorem to the corresponding zero
+ledger.  That paper specifies the involution \(J_L(s)=1-\bar{s}\),
+identifies its fixed locus with the critical line, treats the
+saturated Selberg trace shell as the typed substrate, and uses the
+Selberg-class instance of the SDTC recognition source.  The
+reference is orienting only: no result from the sibling paper is
+used here.
 
 The next section develops refinements, including exhaustive moving
 ledgers and optimized scalar trace budgets, that adapt the master
@@ -1008,7 +1006,7 @@ increasing carrier subspaces, and approximation schemes where the
 completed ledger is controlled by a transported finite piece plus a
 trace-vanishing tail.
 
-\begin{theorem}[Exhaustive ledger squeeze\protect\footnote{Verified in Lean as \nolinkurl{ExhaustiveSqueeze.exhaustiveSqueeze}; the ambient bound is supplied as a moving-ledger field. See App~\ref{app:formalization}.}]
+\begin{theorem}[Exhaustive ledger squeeze\protect\footnote{Checked in the Lean formalization; the ambient bound is supplied as a moving-ledger field. See App~\ref{app:formalization}.}]
 \label{thm:duality_confinement:exhaustive-squeeze}
 Let \(\IOL\) be an involutive object ledger with anti-invariant
 ledger \(\AX\).  If \(\IOL\) admits a vanishing-exhaustive moving
@@ -1072,7 +1070,7 @@ defect \(E_{\mathrm{br},n}\); the reciprocal \(t^{-1}\) is the usual
 two-term balancing factor.  The load-bearing scalar result is the
 optimized trace estimate that follows.
 
-\begin{proposition}[Optimized scalar trace budget\protect\footnote{Tracked in the formalization harness as \nolinkurl{DefectedBudget.optimizedTraceBudget}; the AM--GM step is supplied as a typed-scalar hypothesis. See App~\ref{app:formalization}.}]
+\begin{proposition}[Optimized scalar trace budget\protect\footnote{Tracked by the formalization harness; the AM--GM step is supplied as a typed-scalar hypothesis. See App~\ref{app:formalization}.}]
 \label{prop:duality_confinement:optimized-trace-budget}
 For a defected obstruction budget at level \(n\), set
 \[
@@ -1176,7 +1174,7 @@ involutive self-duality at the formed-layer level implies
 fixed-locus confinement; their plausibility comes from consistency
 with observed physical and mathematical symmetries.  They are not
 established results in this paper, and each remains a
-single-substrate validation problem outside the abstract apparatus
+substrate-specific verification problem outside the abstract apparatus
 developed here.
 
 \paragraph{No novelty is claimed for standard operator theory.}
@@ -1210,7 +1208,7 @@ further thought: a common structural pattern behind several
 self-dual settings, the relation between the typed-cone squeeze and
 standard operator-theoretic squeeze arguments, and the extensions
 needed to move from the present apparatus to broader
-single-substrate validations.
+substrate-specific applications.
 
 \paragraph{Cross-substrate structural pointers.}
 The examples below are structural predictions of the
@@ -1224,7 +1222,7 @@ For quantum self-adjointness, the candidate involution is Hermitian
 conjugation \(T\mapsto T^*\) on an operator ledger
 \citep{ReedSimon1975,Hall2013}.  The fixed locus is the self-adjoint
 part \(T=T^*\), and the natural anti-invariant readout is the
-skew-Hermitian component.  The required single-substrate validation
+skew-Hermitian component.  The required substrate-specific verification
 would show that this skew component is separating and that the
 formed quantum closure supplies trace-vanishing domination records
 for it.
@@ -1267,7 +1265,7 @@ still requires its own formed-layer ledger, separation proof, and
 recognition source.
 
 These five examples share a shape but not a proof.  Each would
-require a separate validation establishing the involution and
+require a separate verification establishing the involution and
 fixed locus as data of a formed-layer involutive object ledger,
 proving the readout's separating property, and supplying the
 domination records required by the master theorem.  Until those
@@ -1313,8 +1311,8 @@ enough typed real-arithmetic structure to express
 and derive AM--GM internally rather than using it as a supplied
 scalar fact.
 
-The third extension target is additional single-substrate
-validation.  The Riemann-zero ledger is the guiding analytic
+The third extension target is additional substrate-specific
+application.  The Riemann-zero ledger is the guiding analytic
 instance; the structural pointers above suggest other candidates,
 but each must be developed on its own terms.  A natural sequence
 would begin with function-field RH and then proceed to quantum
@@ -1353,8 +1351,8 @@ trace budgets.  The development is formalized in Lean as a
 mathlib-free mechanization at the typed positive-cone level
 (Appendix~\ref{app:formalization}).
 
-Two apparatus-layer extensions remain open.  First, the typed positive cone
-should be realized as the full positive trace-class cone on a
+Two apparatus-layer extensions remain open.  First, the typed
+positive cone should be realized as the full positive trace-class cone on a
 Hilbert space, with the trace-norm topology, Hilbert--Schmidt and
 Schatten infrastructure, and the classical operator-theoretic
 lemmas made explicit \citep{Simon2005,ReedSimon1980}.  Second, the
@@ -1363,17 +1361,19 @@ AM--GM \citep{HardyLittlewoodPolya1952} inside a typed
 real-arithmetic structure rather than taking the inequality as a
 scalar hypothesis.
 
-No single-substrate validation is used here.  The present paper is
-the abstract apparatus layer; substrate-specific applications must
-supply their own involutive ledger, separating readout, and
-recognition source.
+No substrate-specific application is used in the proof of this paper.
+The present paper is the abstract apparatus layer;
+substrate-specific applications must supply their own involutive
+ledger, separating readout, domination records, and recognition
+source.
 
 Code and data availability.  The source repository is available at
 \url{https://github.com/ioannist/six-birds-duality-confinement}.
-The math source-of-record for the paper's claims is the artifact at
-\path{anti_loc/extracted_math/duality_confinement_master.md} within
-that repository.  The per-paper manifest is at
-\path{lean/manifests/duality_confinement_manifest.toml}.
+The canonical manuscript source is
+\path{paper/duality_confinement/main.tex}.  Formalized support is
+tracked by
+\path{lean/manifests/duality_confinement_manifest.toml} and the
+Duality Confinement Lean modules.
  
 \appendix
 
@@ -1426,7 +1426,7 @@ hypothesis. \\
 theorems take a value of this carrier as an explicit hypothesis.'' &
 Included for completeness.  No inventory entry of this paper has
 this mode; the Selberg recognition-source carrier belongs to
-\citet{TsiokosRHviaSDTC2026}. \\
+the sibling RH formalization. \\
 \texttt{support\_only} &
 No Lean mention. &
 Used for the defected obstruction budget.  It is paper-side
@@ -1683,18 +1683,19 @@ rows are direct definition entries or faithful theorem entries in
 the typed positive-cone formalization, so all twelve mechanize-now
 entries carry faithful semantic alignment under these disclosures.
 The real-part abstraction used for the Riemann-hypothesis zero
-ledger is the corresponding representation note for
-\citet{TsiokosRHviaSDTC2026}; that note and the recognition-source
-carrier row both belong to its formalization appendix.
+ledger is the corresponding representation note for the sibling RH
+formalization; that note and the recognition-source carrier row both
+belong to its formalization appendix.
 
 \subsection*{Code and data availability}
 
 The source repository is available at
 \url{https://github.com/ioannist/six-birds-duality-confinement}.
-The math source of record for this paper is
-\path{anti_loc/extracted_math/duality_confinement_master.md} within
-that repository, and the per-paper formal manifest is
-\path{lean/manifests/duality_confinement_manifest.toml}.
+The canonical manuscript source is
+\path{paper/duality_confinement/main.tex}.  Formalized support is
+tracked by
+\path{lean/manifests/duality_confinement_manifest.toml} and the
+Duality Confinement Lean modules.
  
 \clearpage
 \bibliographystyle{plainnat}

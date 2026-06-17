@@ -1,79 +1,86 @@
-# six-birds-duality-confinement
+# Six Birds Duality Confinement
 
-Repo for two papers in the Six Birds series:
+This repository contains the public support surface for two papers in
+the Six Birds series: modular LaTeX sources, tracked flattened
+manuscript sources, Lean 4 mechanization, formalization inventories,
+validation manifests, scripts, and vendored Foundations dependencies.
 
-1. **Duality Confinement** — anchor proposal:
-   `anti_loc/paper_proposal_self_dual_trace_confinement.md`
-2. **Riemann Hypothesis (RH) via SDTC + Selberg** — anchor proposal:
-   `anti_loc/paper_proposal_rh_via_sdtc_selberg.md`
+## Papers
 
-The two axes share the vendored Foundations I/II/III Lean tracks and
-the writing-side terminology/macros surface; per-axis paper sources,
-Lean modules, and per-axis manifests/queues live under their own
-subdirectories.
+- **Self-Dual Trace Confinement: A Six Birds Structural Law for Formed
+  Closures Under Involutive Self-Duality**
+  DOI: [10.5281/zenodo.20713517](https://doi.org/10.5281/zenodo.20713517)
+- **Riemann Hypothesis via Self-Dual Trace Confinement: A Conditional
+  Closure**
+  DOI: [10.5281/zenodo.20713535](https://doi.org/10.5281/zenodo.20713535)
 
-## Status
+## What This Repository Provides
 
-Scaffolding only. No math has been extracted, mechanized, or drafted.
-See `PLAN_mechanization.md` for the phased plan.
+- Modular LaTeX sources for the Duality Confinement and RH papers under
+  `paper/duality_confinement/` and `paper/rh/`.
+- Tracked flattened manuscript sources at the repository root for
+  submission and archive workflows.
+- Shared bibliography, notation, and paper-support records under
+  `paper/`.
+- Lean 4 mechanization under `lean/`, with separate Duality
+  Confinement and RH axes.
+- Formalization inventories and traceability queues under
+  `formalization/`.
+- Validation and build-support scripts under `scripts/`.
+- Vendored Six Birds Foundations dependencies under
+  `vendor/foundations/`.
 
-## Layout
+Internal research archives, local process notes, and draft-preparation
+artifacts are ignored locally and are not part of the intended public
+support surface.
 
-```
-anti_loc/
-  paper_proposal_self_dual_trace_confinement.md   # Paper 1 anchor
-  paper_proposal_rh_via_sdtc_selberg.md           # Paper 2 anchor
-  thread_rh/                                      # RH cascade (steps + manager log)
-  extracted_math/                                 # Phase A output target
+## Build
 
-paper/
-  duality_confinement/    # Paper 1 LaTeX (from paper-template)
-  rh/                     # Paper 2 LaTeX (from paper-template)
-  notation_and_terminology.md  # Shared notation governance (stub)
-  references.bib               # Shared Tsiokos-only bibliography
-  writing-plan.md              # Drafting-arc runbook (stub)
-
-lean/
-  lakefile.toml                                # SixBirdsDualityConfinement
-  lean-toolchain                               # leanprover/lean4:v4.28.0
-  SixBirdsDualityConfinement/
-    ImportedFoundations.lean                   # F1/F2/F3 drift canary
-    FoundationsICompat.lean                    # F1 alias surface
-    Terminology.lean                           # F2/F3 alias surface
-    DualityConfinement.lean                    # axis-1 umbrella (empty)
-    RH.lean                                    # axis-2 umbrella (empty)
-    DualityConfinement/                        # per-section modules (empty)
-    RH/                                        # per-section modules (empty)
-  manifests/                                   # schema-only stubs
-
-vendor/foundations/
-  six-birds-theory/         # Foundations I (locally adapted, no mathlib)
-  six-birds-foundations-ii/ # Foundations II (canonical)
-  six-birds-foundations-iii/# Foundations III (prepublication snapshot)
-
-formalization/
-  inventory/                # paper inventories + boundary + foundations cross-walk
-  traceability/             # per-axis mechanization queues
-
-scripts/                    # python validators + paper_lint.sh
-Makefile                    # paper-build / paper-preflight / paper-clean
-```
-
-## Build (when ready)
+Build both paper PDFs:
 
 ```bash
-# Lean
-cd lean && lake build
-
-# Papers
 make paper-build
-make paper-preflight     # also runs validator chain
 ```
 
-## Workflow
+Run the full paper preflight gate:
 
-Phased per `PLAN_mechanization.md`:
-extract math from `anti_loc/thread_rh/steps/` → consolidate per axis →
-audit → mechanize one subsection per codex dispatch → draft papers.
+```bash
+make paper-preflight
+```
 
-Drafting is downstream of mechanization, not a prerequisite to it.
+Build the Lean project:
+
+```bash
+cd lean
+lake build
+```
+
+Run the Lean and inventory validators without rebuilding Lean:
+
+```bash
+python3 scripts/check_lean.py --skip-build
+```
+
+## Repository Layout
+
+- `paper/duality_confinement/` - modular source for the Self-Dual Trace
+  Confinement paper.
+- `paper/rh/` - modular source for the conditional RH paper.
+- `paper/references.bib` - shared bibliography.
+- `paper/notation_and_terminology.md` - shared notation and terminology
+  support.
+- `lean/` - Lean 4 project and validation manifests.
+- `formalization/inventory/` - paper inventories, boundaries, and
+  imported-foundations cross-walks.
+- `formalization/traceability/` - per-axis statement queues.
+- `scripts/` - deterministic validators and build-support scripts.
+- `vendor/foundations/` - vendored upstream Foundations tracks required
+  by the local Lake project.
+
+## Notes
+
+- The LaTeX toolchain requires `latexmk` and a TeX distribution with the
+  packages used by the manuscripts.
+- The Lean toolchain is pinned in `lean/lean-toolchain`.
+- Vendored third-party or upstream project files retain their upstream
+  license terms.

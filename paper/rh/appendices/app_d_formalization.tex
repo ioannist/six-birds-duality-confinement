@@ -292,7 +292,7 @@ The theorem \nolinkurl{RH.AORInstance.aorInstance} composes the seven
 literal discharges through the local \texttt{RefStableAOR} predicate on
 the assembled carrier.  This is a local syntactic predicate over carrier
 fields, not the full audit-closure refinement-stable characterisation of
-\citet{TsiokosAOR2026}.  The proof dispatches by primary residual type
+\citet{TsiokosAOR2026}.  The proof splits by primary residual type
 and routes forced-secondary entries through the literal classifications.
 
 \begin{landscape}
@@ -379,9 +379,9 @@ faithful \\
 
 \nolinkurl{thm:rh:aor-instance} &
 AOR-instance theorem,
-\(\Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}}\) &
+\(\Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\) &
 \nolinkurl{RH.AORInstance.aorInstance} &
-lean substantive; case-on-secondary-type dispatch through the seven
+lean substantive; case split on secondary type through the seven
 literal discharge defs, projecting through local
 \nolinkurl{RH.AORPrimitives.RefStableAOR} &
 theorem &
@@ -432,12 +432,12 @@ domination records, \Cref{thm:rh:dc-master-applied} yields
 \(\AZ=0\), and \Cref{thm:rh:translation-T-forward} yields the
 critical-line statement on \(\Znt\).
 
-\item[Gate 4: no conflation of grades.]
-Recognition-source content and theorem-grade content are separated.
+\item[Gate 4: no conflation of roles.]
+Recognition-source content and proved theorem content are separated.
 \(\GamSDTCSelberg\) is a recognition source; Theorem~T is a direct
 positivity theorem; \texttt{dcMasterApplied} is the theorem-level
 application of the master theorem of \cite{TsiokosSDTC2026}; and
-\texttt{rhConditional} is the theorem-grade conditional
+\texttt{rhConditional} is the conditional theorem
 composition.
 
 \item[Gate 5: no axiom smuggling.]

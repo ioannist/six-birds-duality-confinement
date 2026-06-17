@@ -20,11 +20,30 @@ lake-manifest.json
 # Per-environment secrets (Zenodo API token, etc.)
 .env
 
-# codex CLI internal marker file (zero bytes; per-environment)
+# Local workflow marker file (zero bytes; per-environment)
 /.codex
 
-# Claude Code harness scratch (per-environment)
+# Local agent/workflow state
+/.agents/
+/.codex/
+
+# Local harness scratch (per-environment)
 /.claude/
+
+# Internal research/discussion archive; not part of the public paper support surface.
+# These paths may still be tracked until repository history is cleaned separately.
+anti_loc/
+PLAN_mechanization.md
+reviews/
+**/.*thread_id*
+lean/*RUNBOOK.md
+lean/*kickoff.md
+scripts/build_*_prompt.py
+paper/writing-plan.md
+paper/**/writing-plan.md
+paper/**/notes/drafting-plan.md
+paper/rh/aor_thread.md
+paper/rh/aor_review.md
 
 # LaTeX build artifacts (paper/ and any latex-build subtrees)
 build/

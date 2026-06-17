@@ -30,9 +30,8 @@ lake build
 
 This builds the umbrella `SixBirdsDualityConfinement`, which
 transitively builds the alignment trio and the two per-axis umbrellas
-(`DualityConfinement.lean`, `RH.lean`). Per-section modules under
-each umbrella's subdirectory are added by codex as Phase G dispatches
-land.
+(`DualityConfinement.lean`, `RH.lean`) together with the per-section
+modules imported by those umbrellas.
 
 ## Full check
 

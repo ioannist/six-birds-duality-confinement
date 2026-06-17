@@ -7,7 +7,7 @@
 both its critical-line and audit-closure forms: the same composition
 of \(\GamSDTCSelberg\), \Cref{thm:rh:dc-master-applied}, and
 translation theorem T delivers \(\Real(\rho)=1/2\) on \(\Znt\) and
-certifies the shell as a refinement-stable
+records the shell as a local refinement-stable
 audited-operational-realisability instance,
 \[
   \Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}.
@@ -21,15 +21,16 @@ statement on \(\Znt\) remains the typed-zero-ledger readout.
 
 The AOR meta-theory of \citet{TsiokosAOR2026} accepts a carrier when
 its observations, routes, sources, bridges, residuals, nonclaims, and
-meta-audits are typed and statused.  Here the carrier is the formed
-shell \(\Sel\) with its zero ledger, trace instrument, involution,
-visibility data, and admissibility field.  The domination records from
+meta-audits are typed and statused.  This paper uses that vocabulary
+locally: the carrier is the formed shell \(\Sel\) with its zero
+ledger, trace instrument, involution, visibility data, and
+admissibility field.  The domination records from
 \(\GamSDTCSelberg\), the duality-confinement step yielding \(\AZ=0\),
 and Theorem T's conversion all live inside this typed scope.
 
 \subsection{The Selberg trace shell as an AOR-instance object}
 
-\begin{definition}[The AOR instance object attached to \(\Sel\)\footnote{Realized in Lean as \nolinkurl{RH.AORInstance.SelAORInstance} with the canonical assembled value \nolinkurl{RH.AORInstance.assembledCarrier}; see App~\ref{app:formalization}.}]
+\begin{definition}[The AOR instance object attached to \(\Sel\)\footnote{Realized in the Lean formalization with a canonical assembled carrier; see App~\ref{app:formalization}.}]
 \label{def:rh:aor-sel-instance}
 Let \(\mathfrak S_{\mathrm{RH}}\) be the scope consisting of the
 saturated completed Selberg trace shell \(\Sel\), the completed zeta
@@ -93,7 +94,7 @@ The definition-side records of the RH paper are mechanical in the
 AOR sense: they introduce typed objects and target records but do
 not supply the recognition content.
 
-\begin{theorem}[Mechanical AOR records for \(\Sel\)\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorMechanicalRecords}, a literal-data definition returning the mechanical-stratum discharge list; see App~\ref{app:formalization}.}]
+\begin{theorem}[Mechanical AOR records for \(\Sel\)\footnote{Tracked by the formalization harness as a literal-data definition returning the mechanical-stratum discharge list; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-mechanical-records}
 For the scope \(\mathfrak S_{\mathrm{RH}}\), the following records are
 AOR-mechanical:
@@ -131,7 +132,7 @@ The remaining records connect the abstract duality-confinement
 apparatus to the Selberg shell and RH readout.  Each receives an AOR
 residual type and status.
 
-\begin{theorem}[Recognition-source discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorRecognitionDischarge}, a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
+\begin{theorem}[Recognition-source discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-recognition-discharge}
 The record \(\GamSDTCSelberg\) has primary residual type
 \(\Delta_{\mathrm{source}}\).  Its forced secondary residuals are
@@ -158,7 +159,7 @@ the source is supplied as formed-layer recognition content, not
 derived from the definition-side fields of \(\Sel\).
 \end{proof}
 
-\begin{theorem}[Bridge-field discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorGammaBridgeDischarge}, a literal-data definition with status \texttt{bridged} on the carrier bridge propositions; see App~\ref{app:formalization}.}]
+\begin{theorem}[Bridge-field discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{bridged} on the carrier bridge propositions; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-gamma-bridge-discharge}
 The structural-coherence assumptions carried by the recognition source
 discharge the typed-interface residuals between the abstract DC
@@ -183,7 +184,7 @@ typed fields, and the role and target mismatches are statused by those
 same fields.
 \end{proof}
 
-\begin{theorem}[Admissibility-audit discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorAuditLDischarge}, a literal-data definition with status \texttt{by\_construction} on the audit field of \(\Sel\); see App~\ref{app:formalization}.}]
+\begin{theorem}[Admissibility-audit discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction} on the audit field of \(\Sel\); see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-auditL-discharge}
 The \(\mathrm{Audit}_{L}\) field of \(\Sel\) has primary residual type
 \(\Delta_{\mathrm{meta}}\).  It is discharged by a bridged
@@ -203,7 +204,7 @@ predicates.  The correct status is therefore bridged:
 paper registers a nonclaim of a separate derivation of that status.
 \end{proof}
 
-\begin{theorem}[Cross-paper master-theorem discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorDCMasterImportDischarge}, a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
+\begin{theorem}[Cross-paper master-theorem discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-dc-master-import-discharge}
 The use of the duality-confinement master theorem of
 \citet{TsiokosSDTC2026} is an
@@ -227,7 +228,7 @@ shell equality \(\AZ=0\) after applying the bridge fields of
 untracked import.
 \end{proof}
 
-\begin{theorem}[Typed real-coordinate discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorRealCoordinateDischarge}, a literal-data definition with status \texttt{by\_construction}; the A3 representation note applies. See App~\ref{app:formalization}.}]
+\begin{theorem}[Typed real-coordinate discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction}; the A3 representation note applies. See App~\ref{app:formalization}.}]
 \label{thm:rh:aor-real-coordinate-discharge}
 The typed real-coordinate parameter used by the RH shell has primary
 residual type \(\Delta_{\mathrm{presentation}}\).  The identification
@@ -250,7 +251,7 @@ construction-parameter record together with the nonclaim of an
 internal derivation of the classical identification.
 \end{proof}
 
-\begin{theorem}[Translation-interface discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorTranslationInterfaceDischarge}, a literal-data definition with status \texttt{by\_construction}; substantive content lives in \Cref{sec:translation_theorem}. See App~\ref{app:formalization}.}]
+\begin{theorem}[Translation-interface discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction}; substantive content lives in \Cref{sec:translation_theorem}. See App~\ref{app:formalization}.}]
 \label{thm:rh:aor-translation-interface-discharge}
 Translation theorem T has primary residual type
 \(\Delta_{\mathrm{target}}\) and secondary type
@@ -272,7 +273,7 @@ claims; they are the internal typed-interface content of
 
 \subsection{AOR-instance theorem}
 
-\begin{theorem}[RH AOR-instance theorem\footnote{Verified in Lean as \nolinkurl{RH.AORInstance.aorInstance} against the local \nolinkurl{RH.AORPrimitives.RefStableAOR} predicate over the assembled-carrier fields; the partial alignment relative to the full audit-closure refinement-stable characterisation of \citet{TsiokosAOR2026} is recorded in App~\ref{app:formalization}.}]
+\begin{theorem}[RH AOR-instance theorem\footnote{Verified in the Lean formalization against the local refinement-stable AOR predicate over the assembled-carrier fields; the partial alignment relative to the full audit-closure refinement-stable characterisation of \citet{TsiokosAOR2026} is recorded in App~\ref{app:formalization}.}]
 \label{thm:rh:aor-instance}
 Under the discharges recorded in
 \Cref{thm:rh:aor-mechanical-records,%
@@ -282,8 +283,8 @@ thm:rh:aor-auditL-discharge,%
 thm:rh:aor-dc-master-import-discharge,%
 thm:rh:aor-real-coordinate-discharge,%
 thm:rh:aor-translation-interface-discharge}, the saturated completed
-Selberg trace shell is a refinement-stable AOR instance on the RH
-scope:
+Selberg trace shell is a local refinement-stable AOR instance on the
+RH scope:
 \[
   \Sel\in
   \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}.
@@ -307,10 +308,12 @@ then converts \(\AZ=0\) into the statement
 \[
   \forall\,\rho\in\Znt,\quad \Real(\rho)=\frac12.
 \]
-Thus every residual native to \(\mathfrak S_{\mathrm{RH}}\) is either
-zero, bridged, approved, or registered as outside the stronger
-analytic scope.  This is precisely the AOR-membership reading of
-\Cref{thm:rh:conditional}.
+Thus every listed residual in the local wrapper for
+\(\mathfrak S_{\mathrm{RH}}\) is either zero, bridged, approved,
+carried by construction, or registered as outside the stronger
+analytic scope.  This is the AOR-membership reading of
+\Cref{thm:rh:conditional}; it does not upgrade the conditional chain
+to an unconditional analytic theorem.
 \end{proof}
 
 \subsection{Partial-status disclosure}

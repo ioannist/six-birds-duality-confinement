@@ -140,11 +140,10 @@ source gives domination records whose vanishing trace forces
 \(\AZ=0\), and theorem T converts that ledger collapse into the
 critical-line statement.
 Stated in the audit-closure language of \citet{TsiokosAOR2026},
-the landing chain certifies the saturated trace shell as a
+the same conditional chain is recorded as a local
 refinement-stable audited-operational-realisability instance,
-\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}}\),
-of which the critical-line statement on the typed zero ledger is
-the readout.
+\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\),
+whose typed-zero-ledger readout is the critical-line statement.
 
 Outside Six Birds, the result is the conditional theorem
 \(\Gamma_{\mathrm{SDTC}\text{-}\mathrm{Selberg}}\Rightarrow
@@ -216,8 +215,9 @@ anti-invariant readout is the signed real-part displacement
 These objects are defined in \Cref{sec:involution_and_ledger}; the
 shell \(\Sel\) is defined in \Cref{sec:sat_sel_shell}.
 
-The main theorem is conditional.  Under the standard Six Birds
-closure assumption on \(\Sel\), and given the recognition source
+The main theorem is conditional.  Given the shell-side closure
+hypothesis recorded by the Foundations-II admissibility field of
+\(\Sel\), together with the recognition source
 \(\GamSDTCSelberg\), the Riemann hypothesis holds on the typed zero
 ledger of \(\Sel\).  A recognition source here means a named
 structural hypothesis supplied as content of the formed layer, not
@@ -236,15 +236,15 @@ then forces \(\AZ=0\) in the typed positive cone, and the
 translation theorem of the present paper converts that vanishing
 into \(\Real(\rho)=1/2\) for every \(\rho\in\Znt\).  Stated in the
 audit-closure language of \citet{TsiokosAOR2026}, the same
-composition certifies the shell as a refinement-stable
+composition is recorded as a local refinement-stable
 audited-operational-realisability instance
 \[
-  \Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}},
+  \Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}},
 \]
-of which the critical-line statement on \(\Znt\) is the
-typed-zero-ledger readout; \Cref{sec:rh-aor-instance} unfolds the
+whose typed-zero-ledger readout is the critical-line statement on
+\(\Znt\); \Cref{sec:rh-aor-instance} unfolds the
 eight-stratum / twelve-type residual classification through which
-the landing chain dispatches.  Outside the Six Birds framing the
+the landing chain is organized.  Outside the Six Birds framing the
 result therefore reads as the conditional theorem
 \[
   \GamSDTCSelberg \Longrightarrow \mathrm{RH},
@@ -369,7 +369,8 @@ not a hidden list of zero locations.  \citet{TsiokosSDTC2026}
 identifies Self-Dual Trace Confinement, \(\GamSDTC\), as the
 V-Differential trace-state-only law for involutive self-dual formed
 closures; the present paper is the worked single-substrate
-validation of that law for \(\Sel\).
+application of that apparatus to \(\Sel\), conditional on the
+Selberg-class recognition source.
 
 Within the broader Six Birds program, SDTC sits beside parallel
 internal developments that address other formed-layer closures---in
@@ -508,7 +509,7 @@ aggregate is introduced after the zero ledger itself is in place.
 With the involution and readout in place, the remaining objects are the
 typed multiset of nontrivial zeros and the scalar built from it.
 
-\begin{definition}[Nontrivial-zero ledger\footnote{Realized in Lean as \nolinkurl{RH.ZeroLedger.NontrivialZeroLedger}; the typed real-coordinate representation is recorded in App~\ref{app:formalization} (A3).}]
+\begin{definition}[Nontrivial-zero ledger\footnote{Realized in the Lean formalization; the typed real-coordinate representation is recorded in App~\ref{app:formalization} (A3).}]
 \label{def:rh:nontrivial-zero-ledger}
 Let
 \[
@@ -604,7 +605,7 @@ Selberg trace'' records the substrate being organized---the
 completed zeta function together with the trace-relevant data
 through which the later domination records are stated.
 
-\begin{definition}[Saturated completed Selberg trace closure\footnote{Realized in Lean as \nolinkurl{RH.SatSelShell.SatSelShell}; admissibility under the seven Foundations-II schemas is carried by the \(\mathrm{Audit}_L\) field, recorded in App~\ref{app:formalization}.}]
+\begin{definition}[Saturated completed Selberg trace closure\footnote{Realized in the Lean formalization; admissibility under the seven Foundations-II schemas is carried by the \(\mathrm{Audit}_L\) field, recorded in App~\ref{app:formalization}.}]
 \label{def:rh:sat-sel-shell}
 The saturated completed Selberg trace closure \(\Sel\) is a typed
 shell consisting of the following thirteen fields:
@@ -697,7 +698,7 @@ assignment described there, the typed statement is the corresponding
 classical assertion about the real parts of nontrivial zeros of
 \(\zeta\).
 
-\begin{theorem}[Translation theorem T\footnote{Verified in Lean as \nolinkurl{RH.TranslationT.translationT} via typed-interface composition over the \nolinkurl{AntiInvariantZeroLedger} fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
 \label{thm:rh:translation-T}
 On the typed zero ledger \(\Znt\) of the saturated completed Selberg
 trace closure \(\Sel\),
@@ -732,7 +733,7 @@ critical-line statement.
 
 The two halves below are short positivity arguments.
 
-\begin{theorem}[Translation theorem T, forward direction\footnote{Verified in Lean as \nolinkurl{RH.TranslationT.translationTForward} via typed-interface composition over the \nolinkurl{AntiInvariantZeroLedger} fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T, forward direction\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
 \label{thm:rh:translation-T-forward}
 On the typed zero ledger \(\Znt\) of \(\Sel\), if \(\AZ=0\), then
 \[
@@ -761,7 +762,7 @@ must vanish.  Thus \(\Real(\rho)-1/2=0\), and hence
 \(\Real(\rho)=1/2\).
 \end{proof}
 
-\begin{theorem}[Translation theorem T, reverse direction\footnote{Verified in Lean as \nolinkurl{RH.TranslationT.translationTReverse} via typed-interface composition over the \nolinkurl{AntiInvariantZeroLedger} fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T, reverse direction\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
 \label{thm:rh:translation-T-reverse}
 On the typed zero ledger \(\Znt\) of \(\Sel\), if
 \[
@@ -818,7 +819,7 @@ required by the duality-confinement master theorem.  Once that
 sequence is available, the master theorem forces \(\AZ=0\), and
 Theorem T converts \(\AZ=0\) into the critical-line statement.
 
-\begin{definition}[The recognition source \(\GamSDTCSelberg\)\footnote{Encoded in Lean as a typed structure carrier \nolinkurl{RH.RHConditional.GammaSdtcSelberg}, not as a Lean axiom; downstream theorems take a value of this carrier as an explicit hypothesis. See App~\ref{app:formalization}.}]
+\begin{definition}[The recognition source \(\GamSDTCSelberg\)\footnote{Encoded in the Lean formalization as a typed structure carrier, not as a Lean axiom; downstream theorems take a value of this carrier as an explicit hypothesis. See App~\ref{app:formalization}.}]
 \label{obl:rh:gamma-sdtc-selberg}
 On the saturated completed Selberg trace closure \(\Sel\), the
 recognition source \(\GamSDTCSelberg\) supplies a sequence of
@@ -882,7 +883,7 @@ closure: \(\GamSDTCSelberg\) supplies domination records for
 \cite{TsiokosSDTC2026} that acts on such records, reproduced verbatim
 here for reference.
 
-\begin{theorem*}[Duality-confinement membrane theorem, \cite{TsiokosSDTC2026}\footnote{Imported in Lean as a cross-paper reference to \texttt{masterTheorem} from \nolinkurl{DualityConfinement.MasterTheorem} in \cite{TsiokosSDTC2026}; the bridge to the RH ledger is recorded in App~\ref{app:formalization}.}]
+\begin{theorem*}[Duality-confinement membrane theorem, \cite{TsiokosSDTC2026}\footnote{Imported in the Lean formalization as a cross-paper reference; the bridge to the RH ledger is recorded in App~\ref{app:formalization}.}]
 Let \(\IOL\) be an involutive object ledger with carrier \(X\),
 involution \(J\), measure \(\mu\), anti-invariant readout
 \(\psim\), and anti-invariant ledger \(\AX\).  Assume that
@@ -914,7 +915,7 @@ underlying \(\Znt\), \(J\) is \(\JL\), \(\mu\) is the
 multiplicity-weighted zero measure, \(\psim\) is \(\psimRH\), and
 \(\AX\) is \(\AZ\).
 
-\begin{theorem}[Duality-confinement master theorem, applied to \(\Sel\)\footnote{Verified in Lean as \nolinkurl{RH.DCMasterApplied.dcMasterApplied} via typed-bridge composition over the recognition-source carrier; see App~\ref{app:formalization}.}]
+\begin{theorem}[Duality-confinement master theorem, applied to \(\Sel\)\footnote{Checked in the Lean formalization by typed-bridge composition over the recognition-source carrier; see App~\ref{app:formalization}.}]
 \label{thm:rh:dc-master-applied}
 Let \(\Sel\) be the saturated completed Selberg trace closure with
 functional-equation involution \(\JL\), separating anti-invariant
@@ -956,7 +957,7 @@ Thus the conditional input from \(\GamSDTCSelberg\) becomes
 \(\AZ=0\), and Theorem T turns this into
 \(\forall\,\rho\in\Znt,\ \Real(\rho)=1/2\).
 
-\begin{theorem}[Conditional landing chain\footnote{Verified in Lean as \nolinkurl{RH.RHConditional.rhConditional}, taking a value of \nolinkurl{GammaSdtcSelberg shell} as an explicit hypothesis; see App~\ref{app:formalization}.}]
+\begin{theorem}[Conditional landing chain\footnote{Composed in the Lean formalization with a value of the recognition-source carrier as an explicit hypothesis; see App~\ref{app:formalization}.}]
 \label{thm:rh:conditional}
 Let \(\Sel\) be a saturated completed Selberg trace closure.  Under
 the standing assumption that \(\Sel\) is Foundations-II admissible,
@@ -1015,7 +1016,7 @@ The scope and nonclaim discipline are the subject of \Cref{sec:scope_and_nonclai
 both its critical-line and audit-closure forms: the same composition
 of \(\GamSDTCSelberg\), \Cref{thm:rh:dc-master-applied}, and
 translation theorem T delivers \(\Real(\rho)=1/2\) on \(\Znt\) and
-certifies the shell as a refinement-stable
+records the shell as a local refinement-stable
 audited-operational-realisability instance,
 \[
   \Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}.
@@ -1029,15 +1030,16 @@ statement on \(\Znt\) remains the typed-zero-ledger readout.
 
 The AOR meta-theory of \citet{TsiokosAOR2026} accepts a carrier when
 its observations, routes, sources, bridges, residuals, nonclaims, and
-meta-audits are typed and statused.  Here the carrier is the formed
-shell \(\Sel\) with its zero ledger, trace instrument, involution,
-visibility data, and admissibility field.  The domination records from
+meta-audits are typed and statused.  This paper uses that vocabulary
+locally: the carrier is the formed shell \(\Sel\) with its zero
+ledger, trace instrument, involution, visibility data, and
+admissibility field.  The domination records from
 \(\GamSDTCSelberg\), the duality-confinement step yielding \(\AZ=0\),
 and Theorem T's conversion all live inside this typed scope.
 
 \subsection{The Selberg trace shell as an AOR-instance object}
 
-\begin{definition}[The AOR instance object attached to \(\Sel\)\footnote{Realized in Lean as \nolinkurl{RH.AORInstance.SelAORInstance} with the canonical assembled value \nolinkurl{RH.AORInstance.assembledCarrier}; see App~\ref{app:formalization}.}]
+\begin{definition}[The AOR instance object attached to \(\Sel\)\footnote{Realized in the Lean formalization with a canonical assembled carrier; see App~\ref{app:formalization}.}]
 \label{def:rh:aor-sel-instance}
 Let \(\mathfrak S_{\mathrm{RH}}\) be the scope consisting of the
 saturated completed Selberg trace shell \(\Sel\), the completed zeta
@@ -1096,7 +1098,7 @@ The definition-side records of the RH paper are mechanical in the
 AOR sense: they introduce typed objects and target records but do
 not supply the recognition content.
 
-\begin{theorem}[Mechanical AOR records for \(\Sel\)\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorMechanicalRecords}, a literal-data definition returning the mechanical-stratum discharge list; see App~\ref{app:formalization}.}]
+\begin{theorem}[Mechanical AOR records for \(\Sel\)\footnote{Tracked by the formalization harness as a literal-data definition returning the mechanical-stratum discharge list; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-mechanical-records}
 For the scope \(\mathfrak S_{\mathrm{RH}}\), the following records are
 AOR-mechanical:
@@ -1134,7 +1136,7 @@ The remaining records connect the abstract duality-confinement
 apparatus to the Selberg shell and RH readout.  Each receives an AOR
 residual type and status.
 
-\begin{theorem}[Recognition-source discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorRecognitionDischarge}, a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
+\begin{theorem}[Recognition-source discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-recognition-discharge}
 The record \(\GamSDTCSelberg\) has primary residual type
 \(\Delta_{\mathrm{source}}\).  Its forced secondary residuals are
@@ -1161,7 +1163,7 @@ the source is supplied as formed-layer recognition content, not
 derived from the definition-side fields of \(\Sel\).
 \end{proof}
 
-\begin{theorem}[Bridge-field discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorGammaBridgeDischarge}, a literal-data definition with status \texttt{bridged} on the carrier bridge propositions; see App~\ref{app:formalization}.}]
+\begin{theorem}[Bridge-field discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{bridged} on the carrier bridge propositions; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-gamma-bridge-discharge}
 The structural-coherence assumptions carried by the recognition source
 discharge the typed-interface residuals between the abstract DC
@@ -1186,7 +1188,7 @@ typed fields, and the role and target mismatches are statused by those
 same fields.
 \end{proof}
 
-\begin{theorem}[Admissibility-audit discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorAuditLDischarge}, a literal-data definition with status \texttt{by\_construction} on the audit field of \(\Sel\); see App~\ref{app:formalization}.}]
+\begin{theorem}[Admissibility-audit discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction} on the audit field of \(\Sel\); see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-auditL-discharge}
 The \(\mathrm{Audit}_{L}\) field of \(\Sel\) has primary residual type
 \(\Delta_{\mathrm{meta}}\).  It is discharged by a bridged
@@ -1206,7 +1208,7 @@ predicates.  The correct status is therefore bridged:
 paper registers a nonclaim of a separate derivation of that status.
 \end{proof}
 
-\begin{theorem}[Cross-paper master-theorem discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorDCMasterImportDischarge}, a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
+\begin{theorem}[Cross-paper master-theorem discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
 \label{thm:rh:aor-dc-master-import-discharge}
 The use of the duality-confinement master theorem of
 \citet{TsiokosSDTC2026} is an
@@ -1230,7 +1232,7 @@ shell equality \(\AZ=0\) after applying the bridge fields of
 untracked import.
 \end{proof}
 
-\begin{theorem}[Typed real-coordinate discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorRealCoordinateDischarge}, a literal-data definition with status \texttt{by\_construction}; the A3 representation note applies. See App~\ref{app:formalization}.}]
+\begin{theorem}[Typed real-coordinate discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction}; the A3 representation note applies. See App~\ref{app:formalization}.}]
 \label{thm:rh:aor-real-coordinate-discharge}
 The typed real-coordinate parameter used by the RH shell has primary
 residual type \(\Delta_{\mathrm{presentation}}\).  The identification
@@ -1253,7 +1255,7 @@ construction-parameter record together with the nonclaim of an
 internal derivation of the classical identification.
 \end{proof}
 
-\begin{theorem}[Translation-interface discharge\footnote{Tracked in the formalization harness as \nolinkurl{RH.AORInstance.aorTranslationInterfaceDischarge}, a literal-data definition with status \texttt{by\_construction}; substantive content lives in \Cref{sec:translation_theorem}. See App~\ref{app:formalization}.}]
+\begin{theorem}[Translation-interface discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction}; substantive content lives in \Cref{sec:translation_theorem}. See App~\ref{app:formalization}.}]
 \label{thm:rh:aor-translation-interface-discharge}
 Translation theorem T has primary residual type
 \(\Delta_{\mathrm{target}}\) and secondary type
@@ -1275,12 +1277,12 @@ claims; they are the internal typed-interface content of
 
 \subsection{AOR-instance theorem}
 
-\begin{theorem}[RH AOR-instance theorem\footnote{Verified in Lean as \nolinkurl{RH.AORInstance.aorInstance} against the local \nolinkurl{RH.AORPrimitives.RefStableAOR} predicate over the assembled-carrier fields; the partial alignment relative to the full audit-closure refinement-stable characterisation of \citet{TsiokosAOR2026} is recorded in App~\ref{app:formalization}.}]
+\begin{theorem}[RH AOR-instance theorem\footnote{Verified in the Lean formalization against the local refinement-stable AOR predicate over the assembled-carrier fields; the partial alignment relative to the full audit-closure refinement-stable characterisation of \citet{TsiokosAOR2026} is recorded in App~\ref{app:formalization}.}]
 \label{thm:rh:aor-instance}
 Under the discharges recorded in
 \Cref{thm:rh:aor-mechanical-records,thm:rh:aor-recognition-discharge,thm:rh:aor-gamma-bridge-discharge,thm:rh:aor-auditL-discharge,thm:rh:aor-dc-master-import-discharge,thm:rh:aor-real-coordinate-discharge,thm:rh:aor-translation-interface-discharge}, the saturated completed
-Selberg trace shell is a refinement-stable AOR instance on the RH
-scope:
+Selberg trace shell is a local refinement-stable AOR instance on the
+RH scope:
 \[
   \Sel\in
   \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}.
@@ -1304,10 +1306,12 @@ then converts \(\AZ=0\) into the statement
 \[
   \forall\,\rho\in\Znt,\quad \Real(\rho)=\frac12.
 \]
-Thus every residual native to \(\mathfrak S_{\mathrm{RH}}\) is either
-zero, bridged, approved, or registered as outside the stronger
-analytic scope.  This is precisely the AOR-membership reading of
-\Cref{thm:rh:conditional}.
+Thus every listed residual in the local wrapper for
+\(\mathfrak S_{\mathrm{RH}}\) is either zero, bridged, approved,
+carried by construction, or registered as outside the stronger
+analytic scope.  This is the AOR-membership reading of
+\Cref{thm:rh:conditional}; it does not upgrade the conditional chain
+to an unconditional analytic theorem.
 \end{proof}
 
 \subsection{Partial-status disclosure}
@@ -1341,9 +1345,10 @@ which structural content is assumed, which encoding choices are
 made, and which extensions remain outside the present paper.
 
 \paragraph{NC-1. Conditional structure.}
-The main result is a Six Birds-native conditional theorem under
-the standard Six Birds closure assumption.  Outside the Six Birds
-framing, it reads as
+The main result is a Six Birds-native conditional theorem under the
+shell-side closure hypothesis recorded by the Foundations-II
+admissibility field of \(\Sel\), together with the recognition source
+\(\GamSDTCSelberg\).  Outside the Six Birds framing, it reads as
 \[
   \GamSDTCSelberg \Longrightarrow \mathrm{RH}.
 \]
@@ -1449,9 +1454,9 @@ the Foundations-III audited judgment vocabulary
 
 \paragraph{NC-10. Scope of the realisability-instance form.}
 The realisability-instance form
-\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}}\)
+\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\)
 delivered by \Cref{thm:rh:conditional,thm:rh:aor-instance} is a
-statement about the typed zero ledger of \(\Sel\) under
+local statement about the typed zero ledger of \(\Sel\) under
 \(\GamSDTCSelberg\); the discharge atoms of the eight-stratum /
 twelve-type residual atlas are assembled literally from the shell,
 the recognition source, and the bridge fields, so the
@@ -1509,13 +1514,13 @@ the recognition source \(\GamSDTCSelberg\) supplies the domination
 records for \(\AZ\), and the bridge theorem
 \Cref{thm:rh:dc-master-applied} applies the
 \cite{TsiokosSDTC2026} master theorem to \(\Sel\).  The present
-paper is therefore the worked single-substrate validation of SDTC
-on the saturated Selberg trace shell, on the same pattern as the
-other formed-layer developments named above.  The unconditional
-analytic content of any one of those tracks is not derived from a
-common primitive calculus; it is closure content of its formed
-layer, supplied as recognition source.  This is why the parallels
-are useful but not load-bearing: they show the paper is following a
+paper is therefore the worked single-substrate application of the
+SDTC apparatus on the saturated Selberg trace shell, conditional on
+the Selberg-class recognition source.  The unconditional analytic
+content of any one of the broader formed-layer tracks is not derived
+from a common primitive calculus; it is closure content of its formed
+layer, supplied as recognition source.  This is why the parallels are
+useful but not load-bearing: they show the paper is following a
 stable formed-layer pattern inside the Six Birds program, while the
 actual RH argument still depends only on the RH-specific shell, the
 SDTC apparatus of \citet{TsiokosSDTC2026}, and the Selberg-class
@@ -1559,28 +1564,29 @@ For an outside-Six-Birds reader, the comparison point is not
 whether the classical programs have failed and the present method
 bypasses them.  It is that the paper proves a conditional theorem
 about a different object: the typed Selberg-class trace shell under
-the standard Six Birds closure assumption and the recognition source
+its Foundations-II admissibility field and the recognition source
 \(\GamSDTCSelberg\).  Acceptance turns on whether one accepts that
-formed-layer recognition source as the correct structural input,
-not on a claimed classical proof of Weil positivity, a spectral
-operator, or a de Branges-space positivity theorem.
+formed-layer recognition source and shell admissibility as the
+correct structural inputs, not on a claimed classical proof of Weil
+positivity, a spectral operator, or a de Branges-space positivity
+theorem.
 
 \paragraph{Realisability stratum of the conclusion.}
 The audit-closure framing of \citet{TsiokosAOR2026} fixes the
 stratum at which the conditional landing chain delivers its
 conclusion.  The eight-stratum / twelve-type residual atlas of the
-AOR meta-theory partitions every audit obligation that a formed-layer
-closure must discharge to count as a refinement-stable realisability
-instance; in the present setting the seven discharge atoms named in
-\Cref{def:rh:aor-sel-instance} are precisely the audit obligations
+AOR meta-theory partitions the audit obligations that a formed-layer
+closure must status to count as a refinement-stable realisability
+instance.  In the present setting, the seven discharge atoms named in
+\Cref{def:rh:aor-sel-instance} are the local audit obligations
 incurred by the recognition source \(\GamSDTCSelberg\), the bridge
-theorem \Cref{thm:rh:dc-master-applied}, and the translation theorem
-T, and the AOR-instance theorem records that no residue remains
-outside the deferred-by-construction discharges named there.  The
-realisability-instance form is therefore not a separate result
-about \(\Sel\) but the audit-stratum certificate of the same
-conditional landing chain; the critical-line statement on \(\Znt\)
-is its typed-zero-ledger readout.
+theorem \Cref{thm:rh:dc-master-applied}, and translation theorem T.
+The AOR-instance theorem records that these local obligations are
+classified as zero, bridged, approved, by construction, or explicitly
+outside the stronger analytic scope.  The realisability-instance
+form is therefore not a separate result about \(\Sel\), but the
+audit-stratum rendering of the same conditional landing chain; the
+critical-line statement on \(\Znt\) is its typed-zero-ledger readout.
 
 \paragraph{Future work.}
 Three extension targets are natural.  First, the admissibility of
@@ -1621,9 +1627,10 @@ The paper has established the RH closure in its conditional form.
 Under the standing Foundations-II admissibility assumption on
 \(\Sel\), and with the Selberg-class recognition source
 \(\GamSDTCSelberg\) supplied by the SDTC structural law of
-\citet{TsiokosSDTC2026}, the conditional landing chain certifies
-\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}}\)
-in the sense of \citet{TsiokosAOR2026}.  Its typed-ledger readout is
+\citet{TsiokosSDTC2026}, the conditional landing chain records
+\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\)
+as a local AOR-instance wrapper in the sense of
+\citet{TsiokosAOR2026}.  Its typed-ledger readout is
 \(\rho\in\Znt \Rightarrow \Real(\rho)=1/2\).  The recognition source
 supplies domination records for \(\AZ\); the duality-confinement
 membrane theorem converts those records into \(\AZ=0\); translation
@@ -1657,9 +1664,9 @@ sense, and GRH for general primitive \(L\)-functions.
 
 Code and data availability.  The source repository is available at
 \url{https://github.com/ioannist/six-birds-duality-confinement}.  The
-per-paper RH manifest is \path{lean/manifests/rh_manifest.toml}, and
-the RH math source of record is
-\path{anti_loc/extracted_math/rh_construction.md}.
+canonical manuscript source is \path{paper/rh/main.tex}.  Formalized
+support is tracked by \path{lean/manifests/rh_manifest.toml} and the
+RH Lean modules.
  
 \appendix
 
@@ -1956,7 +1963,7 @@ The theorem \nolinkurl{RH.AORInstance.aorInstance} composes the seven
 literal discharges through the local \texttt{RefStableAOR} predicate on
 the assembled carrier.  This is a local syntactic predicate over carrier
 fields, not the full audit-closure refinement-stable characterisation of
-\citet{TsiokosAOR2026}.  The proof dispatches by primary residual type
+\citet{TsiokosAOR2026}.  The proof splits by primary residual type
 and routes forced-secondary entries through the literal classifications.
 
 \begin{landscape}
@@ -2043,9 +2050,9 @@ faithful \\
 
 \nolinkurl{thm:rh:aor-instance} &
 AOR-instance theorem,
-\(\Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{S_{\mathrm{RH}}}\) &
+\(\Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\) &
 \nolinkurl{RH.AORInstance.aorInstance} &
-lean substantive; case-on-secondary-type dispatch through the seven
+lean substantive; case split on secondary type through the seven
 literal discharge defs, projecting through local
 \nolinkurl{RH.AORPrimitives.RefStableAOR} &
 theorem &
@@ -2096,12 +2103,12 @@ domination records, \Cref{thm:rh:dc-master-applied} yields
 \(\AZ=0\), and \Cref{thm:rh:translation-T-forward} yields the
 critical-line statement on \(\Znt\).
 
-\item[Gate 4: no conflation of grades.]
-Recognition-source content and theorem-grade content are separated.
+\item[Gate 4: no conflation of roles.]
+Recognition-source content and proved theorem content are separated.
 \(\GamSDTCSelberg\) is a recognition source; Theorem~T is a direct
 positivity theorem; \texttt{dcMasterApplied} is the theorem-level
 application of the master theorem of \cite{TsiokosSDTC2026}; and
-\texttt{rhConditional} is the theorem-grade conditional
+\texttt{rhConditional} is the conditional theorem
 composition.
 
 \item[Gate 5: no axiom smuggling.]
