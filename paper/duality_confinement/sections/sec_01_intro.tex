@@ -1,0 +1,132 @@
+% Duality Confinement paper — § Introduction
+% Drafted body for the introduction.
+%
+% statements-of-record rows resolved here: none. This section frames
+% the paper, forward-references definitions and theorem statements in
+% §§3--8, and sets the scope fence used later.
+
+\section{Introduction}
+\label{sec:intro}
+
+When must an operator-valued obstruction associated with an
+involutive system vanish?  The simplest form of the question is
+familiar.  Suppose a space of objects carries an involution \(J\),
+so that applying \(J\) twice returns the original object, and
+suppose the objects are observed through a Hilbert-valued readout
+\(\psi\) whose response space carries a compatible isometric
+involution \(\Jiso\).  The response then splits into invariant and
+anti-invariant parts.  The anti-invariant projector is
+\[
+  \Pminus = \frac{I_Y-\Jiso}{2},
+\]
+and the corresponding anti-invariant readout is
+\[
+  \psim(x) = \Pminus \psi(x).
+\]
+This readout detects the part of the object that changes sign under
+the duality.  If its vanishing set is exactly the fixed locus
+\(\Fix(J)\), then showing \(\psim=0\) in the appropriate measured
+sense is the same as showing that visible mass is confined to
+\(\Fix(J)\).
+
+The obstruction studied in this paper is the positive operator
+formed from that anti-invariant readout,
+\[
+  \AX = \int_X \psim(x)\psim(x)^*\,d\mu(x).
+\]
+In classical analytic language one would place \(\AX\) in a positive
+trace-class cone and use the trace identity
+\[
+  \trace \AX = \int_X \|\psim(x)\|^2\,d\mu(x),
+\]
+so \(\AX\) vanishes precisely when the anti-invariant readout
+vanishes almost everywhere, modulo the usual positivity hypotheses.
+The abstract argument is an operator squeeze: if there is a sequence
+of positive bounds \(B_n\) with
+\[
+  \AX \preceq B_n
+  \qquad\text{and}\qquad
+  \trace B_n \to 0,
+\]
+then monotonicity of the trace gives \(0 \leq \trace \AX \leq
+\trace B_n\) for all \(n\), hence \(\trace \AX=0\), and positivity
+forces \(\AX=0\).  Separation of the readout then converts
+\(\AX=0\) into the confinement statement
+\[
+  \mu\bigl(X\setminus \Fix(J)\bigr)=0.
+\]
+The remaining sections make each part of this preview precise:
+the involutive object ledger in \Cref{sec:involutive_ledger}, the
+anti-invariant ledger and separating readout in
+\Cref{sec:anti_invariant_ledger}, the direct confinement results in
+\Cref{sec:direct_confinement}, and the full squeeze theorem in
+\Cref{sec:master_theorem}.
+
+The Six Birds framework gives this argument a structural
+interpretation.  Six Birds Theory is used here as a typed, audited
+calculus for naming structural data in a formed closure: a typed
+presentation of a mathematical substrate together with the assumption
+that its carriers, observables, comparison maps, and audit data have
+been admissibly closed under the framework's formation discipline.
+Within that vocabulary, the tuple
+\[
+  \IOL=(X,J,\mu,\psi,Y,\Jiso)
+\]
+is called an involutive object ledger.  In ordinary terms, it is a
+measure space or finite weighted carrier with an involution, together
+with an equivariant Hilbert-valued observable.  The paper's central
+structural assertion is named Self-Dual Trace Confinement,
+\(\GamSDTC\), abbreviated SDTC: a formed closure with genuine
+involutive self-duality and a
+separating anti-invariant readout cannot host visible mass away from
+the fixed locus of that duality.
+
+SDTC is named as a recognition source: an explicit structural
+hypothesis about the substrate, supplied as content of the formed
+layer rather than proved from earlier framework primitives.  The
+paper plays two roles.  It states the SDTC structural law and the
+closure shape in which it applies, and it proves the
+duality-confinement membrane theorem: once domination records
+\(\AX \preceq B_n\) with \(\trace B_n\to0\) are available,
+fixed-locus confinement follows from the typed positive-cone
+squeeze sketched above.
+
+A useful mental model is the functional-equation symmetry of the
+Riemann zeta function.  The involution
+\[
+  J_L(s)=1-\bar{s}
+\]
+on the complex plane has critical-line fixed locus
+\(\Re(s)=1/2\), and the signed real-part displacement
+\(\Re(s)-1/2\) is its anti-invariant coordinate.  The example serves
+as a guide to the shape of the abstraction---an involution, a
+fixed locus, an anti-invariant readout, and a positive ledger
+measuring mass away from the fixed locus.  No result about
+\(\zeta\) is used below.
+
+The typed cone records only what the squeeze proof needs: the order
+\(\preceq\), the trace functional \(\trace\), trace monotonicity,
+and the principle that a positive element of trace zero is the zero
+element.  A full operator-theoretic realization over trace-class
+operators, Hilbert--Schmidt operators, Schatten ideals, or the
+trace-norm topology \citep{Simon2005,ReedSimon1980} is not developed
+here; extending the theorem to that operator-theoretic setting is an
+open extension.
+
+The classical ingredients in the apparatus---Loewner order
+\citep{Loewner1934,Bhatia1997}, trace functionals
+\citep{Simon2005}, Markov-style estimates \citep{Folland1999},
+AM--GM optimization \citep{HardyLittlewoodPolya1952}, and Douglas
+factorization \citep{Douglas1966}---are not claimed as novel.  What
+is new is the structural packaging: the anti-invariant ledger, the
+domination-record discipline, and the master theorem that converts
+vanishing trace budgets into fixed-locus confinement.  The optimized
+scalar trace budget in \Cref{sec:exhaustive_squeeze_and_budgets}
+takes the AM--GM step as a typed-scalar hypothesis; a substantive
+derivation inside the abstract scalar encoding would require
+additional typed real-arithmetic structure.
+
+Cross-substrate examples such as CPT symmetry, gauge invariance,
+particle--antiparticle duality, quantum self-adjointness, and
+function-field analogues are structural predictions and validation
+targets for future work, not theorems established here.

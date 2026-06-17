@@ -1,0 +1,75 @@
+% RH paper — § The recognition source
+% statements-of-record rows resolved here: obl:rh:gamma-sdtc-selberg.
+
+\section{The recognition source}
+\label{sec:recognition_source}
+
+\Cref{sec:translation_theorem} reduced RH on the typed zero ledger
+of \(\Sel\) to the trace-side statement \(\AZ=0\).  The remaining
+structural question is where that trace-side vanishing comes from.
+The answer in this paper is a named recognition source: the
+Selberg-class instance of Self-Dual Trace Confinement,
+\(\GamSDTCSelberg\).  The SDTC structural-law framing is supplied
+by \cite{TsiokosSDTC2026}; the present paper specializes it to the
+saturated completed Selberg trace closure \(\Sel\).
+
+The recognition source supplies structural content of the formed
+layer rather than a calculation internal to the proof of Theorem T.
+Here the content is the completed domination-record sequence
+required by the duality-confinement master theorem.  Once that
+sequence is available, the master theorem forces \(\AZ=0\), and
+Theorem T converts \(\AZ=0\) into the critical-line statement.
+
+\begin{definition}[The recognition source \(\GamSDTCSelberg\)\footnote{Encoded in the Lean formalization as a typed structure carrier, not as a Lean axiom; downstream theorems take a value of this carrier as an explicit hypothesis. See App~\ref{app:formalization}.}]
+\label{obl:rh:gamma-sdtc-selberg}
+On the saturated completed Selberg trace closure \(\Sel\), the
+recognition source \(\GamSDTCSelberg\) supplies a sequence of
+completed domination records \(B_n\) in the typed positive cone of
+\(\Sel\) such that
+\[
+  0\preceq B_n,\qquad
+  \AZ\preceq B_n,\qquad
+  \trace(B_n)\to 0
+  \quad\text{as } n\to\infty.
+\]
+Equivalently, \(\GamSDTCSelberg\) asserts that the
+duality-confinement domination hypothesis holds for the RH ledger
+inside \(\Sel\), with \(\JL\), \(\Znt\), and \(\AZ\) as the
+specialized involution, zero ledger, and anti-invariant ledger.
+\end{definition}
+
+The definition records the load-bearing field of the recognition
+source: the existence of the domination sequence.  The provenance of
+that field is also part of the source: it is the Selberg-class
+instance of the SDTC structural law, sitting in the V-Differential
+trace-state-only column and attached to the shell \(\Sel\), its
+trace instrument, its functional-equation involution \(\JL\), its
+zero ledger \(\Znt\), and its anti-invariant ledger \(\AZ\).  These
+provenance components matter because the source is not an unnamed
+black box: it is a typed recognition object whose mathematical role
+is to provide the domination records that the abstract
+duality-confinement apparatus requires.
+
+The conditional landing chain (\Cref{sec:landing_chain}) takes a
+value of the recognition source as an explicit hypothesis.
+
+Three candidate routes for deriving \(\GamSDTCSelberg\) from
+framework primitives were considered---the primitive role inventory,
+the audited interaction calculus, and the closure-formation
+discipline---and each was found insufficient to produce the
+trace-vanishing domination sequence.  This supports the
+recognition-source framing by confirming that the SDTC content is
+closure content of the formed layer rather than a separately derivable
+consequence of the primitive vocabulary.
+\citet{TsiokosSDTC2026} names Self-Dual Trace Confinement as the
+structural law for involutive self-dual formed closures and supplies
+the abstract duality-confinement apparatus; the present paper
+instantiates the Selberg-class recognition source on \(\Sel\) and
+uses the domination records it carries in the conditional landing
+chain.
+
+With \(\GamSDTCSelberg\) in place, the remaining composition is
+direct: apply the duality-confinement master theorem to the
+domination records to obtain \(\AZ=0\), then apply Theorem T in the
+forward direction to obtain the critical-line statement on \(\Znt\).
+That composition is the subject of \Cref{sec:landing_chain}.

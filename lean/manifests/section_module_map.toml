@@ -1,0 +1,30 @@
+# Paper section title → Lean module path mapping.
+#
+# Used by scripts/build_codex_prompt.py to derive the target Lean module
+# for any paper subsection in either axis. Section titles are matched
+# verbatim against the `section` field in the per-axis paper inventory
+# (formalization/inventory/<axis>_paper_inventory.toml) for entries with
+# `intended_status = mechanize_now`.
+#
+# If a section is renamed in the source paper, update both the
+# inventory toml and this map in lockstep.
+
+[duality_confinement]
+"Involution" = "SixBirdsDualityConfinement.DualityConfinement.Involution"
+"Separation" = "SixBirdsDualityConfinement.DualityConfinement.Separation"
+"AntiInvariantLedger" = "SixBirdsDualityConfinement.DualityConfinement.AntiInvariantLedger"
+"DirectConfinement" = "SixBirdsDualityConfinement.DualityConfinement.DirectConfinement"
+"Domination" = "SixBirdsDualityConfinement.DualityConfinement.Domination"
+"MasterTheorem" = "SixBirdsDualityConfinement.DualityConfinement.MasterTheorem"
+"ExhaustiveSqueeze" = "SixBirdsDualityConfinement.DualityConfinement.ExhaustiveSqueeze"
+"DefectedBudget" = "SixBirdsDualityConfinement.DualityConfinement.DefectedBudget"
+
+[rh]
+"Involution" = "SixBirdsDualityConfinement.RH.Involution"
+"ZeroLedger" = "SixBirdsDualityConfinement.RH.ZeroLedger"
+"AntiInvariantZeroLedger" = "SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger"
+"SatSelShell" = "SixBirdsDualityConfinement.RH.SatSelShell"
+"TranslationT" = "SixBirdsDualityConfinement.RH.TranslationT"
+"DCMasterApplied" = "SixBirdsDualityConfinement.RH.DCMasterApplied"
+"RHConditional" = "SixBirdsDualityConfinement.RH.RHConditional"
+"AORInstance" = "SixBirdsDualityConfinement.RH.AORInstance"

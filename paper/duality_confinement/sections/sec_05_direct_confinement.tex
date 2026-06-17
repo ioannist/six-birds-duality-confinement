@@ -1,0 +1,91 @@
+% Duality Confinement paper — § Direct confinement
+% Drafted body for the two direct consequences of trace identity
+% plus separating readout.
+%
+% statements-of-record rows resolved here:
+% thm:duality_confinement:separation-confinement;
+% thm:duality_confinement:quantitative-confinement.
+
+\section{Direct confinement}
+\label{sec:direct_confinement}
+
+With the trace identity in place, the separating-readout conditions
+give two confinement consequences.  The first is qualitative: if
+the anti-invariant ledger vanishes, then visible mass cannot remain
+away from the fixed locus.  The second is quantitative: if the
+readout grows at least by a modulus away from \(\Fix(J)\), then the
+trace of \(\AX\) bounds the amount of visible mass at that distance
+scale.  Together these furnish the consequence step used later by the
+master theorem, which adds the separate squeeze argument that forces
+\(\AX=0\).
+
+\begin{theorem}[Separation--confinement\protect\footnote{Checked in the Lean formalization by typed-bridge composition over the measure-reading bridges; see App~\ref{app:formalization}.}]
+\label{thm:duality_confinement:separation-confinement}
+Let \(\IOL\) be an involutive object ledger with anti-invariant
+ledger \(\AX\) and qualitatively separating anti-invariant readout
+\(\psim\).  If \(\AX=0\) in the typed positive cone, then
+\[
+  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
+\]
+\end{theorem}
+
+\begin{proof}
+By \Cref{lem:duality_confinement:trace-identity},
+\[
+  \trace\AX=\int_X\|\psim(x)\|^2\,d\mu(x).
+\]
+Since \(\AX=0\), the left-hand side is zero.  The integrand on the
+right is nonnegative, so the integral can vanish only when
+\(\|\psim(x)\|=0\) for \(\mu\)-almost every visible point.
+Qualitative separation
+(\Cref{def:duality_confinement:separating-readout}) identifies the
+zero set of \(\psim\) with \(\Fix(J)\) on the visible support, so
+the complement of \(\Fix(J)\) has \(\mu\)-measure zero.
+\end{proof}
+
+In the finite weighted case, the same proof says that every visible
+object with positive weight lies in \(\Fix(J)\).
+
+\begin{theorem}[Quantitative confinement\protect\footnote{Checked in the Lean formalization by typed-bridge composition with a Markov-step hypothesis; see App~\ref{app:formalization}.}]
+\label{thm:duality_confinement:quantitative-confinement}
+Let \(\IOL\) be an involutive object ledger with anti-invariant
+ledger \(\AX\) and quantitatively separating anti-invariant readout
+\(\psim\) with modulus \(m\).  Then, for every
+\(\varepsilon>0\),
+\[
+  \mu\bigl(\{x\in X:\dist(x,\Fix(J))\geq\varepsilon\}\bigr)
+  \leq
+  \frac{\trace\AX}{m(\varepsilon)^2}.
+\]
+\end{theorem}
+
+\begin{proof}
+Fix \(\varepsilon>0\), and set
+\[
+  E_\varepsilon=\{x\in X:\dist(x,\Fix(J))\geq\varepsilon\}.
+\]
+Quantitative separation gives
+\[
+  \|\psim(x)\|\geq m(\varepsilon)
+  \qquad (x\in E_\varepsilon).
+\]
+A Markov-style integration step \citep{Folland1999} then yields
+\[
+  m(\varepsilon)^2\,\mu(E_\varepsilon)
+  \leq
+  \int_{E_\varepsilon}\|\psim(x)\|^2\,d\mu(x)
+  \leq
+  \int_X\|\psim(x)\|^2\,d\mu(x).
+\]
+The trace identity identifies the final integral with
+\(\trace\AX\).  Since \(m(\varepsilon)>0\), division by
+\(m(\varepsilon)^2\) gives the displayed bound.
+\end{proof}
+
+\Cref{sec:master_theorem} combines these direct consequences with
+a domination squeeze: once a sequence of records
+\(\AX\preceq B_n\) with \(\trace B_n\to0\) forces \(\AX=0\),
+\Cref{thm:duality_confinement:separation-confinement} converts that
+algebraic collapse into fixed-locus confinement.  The quantitative
+bound above supplies the scale-sensitive refinement when one works
+with finite-window or approximate data.

@@ -1,0 +1,615 @@
+schema_version: 1
+status: AOR-instance recasting + review-revision pass complete 2026-05-25
+  (33 rows). 31 mechanized items at lean_coverage definition/theorem with
+  faithful semantic alignment; 1 support_only
+  (def:duality_confinement:defected-budget) at not_mechanized; 1
+  recognition_source (obl:rh:gamma-sdtc-selberg) at recognition_source with
+  typed-structure carrier in RHConditional.lean. The 9 AOR-instance rows under
+  section AORInstance were landed via 5 sequential codex dispatches plus a
+  2-dispatch revision pass addressing review findings (forced-secondaries on
+  primary atoms, structural nonclaims_nonempty, literal-classification framing
+  for 7 discharge-list defs). The main AOR-instance theorem `aorInstance` has
+  axiom closure [propext] (within trust base) and proves only the record-level
+  RefStableAOR predicate; the critical-line consequence of `thm:rh:aor-instance`
+  is paper-level only and remains the conclusion of `RHConditional.rhConditional`.
+total_rows: 33
+target_paper_counts:
+  duality_confinement: 13
+  rh: 20
+target_destination_counts:
+  body: 32
+  appendix: 1
+proof_presentation_counts:
+  definition_entry: 19
+  lean_substantive: 13
+  appendix_only: 1
+lean_coverage_counts:
+  definition: 18
+  theorem: 13
+  not_mechanized: 1
+  recognition_source: 1
+semantic_alignment_counts:
+  faithful: 31
+  not_applicable: 2
+rows:
+- paper_label: def:duality_confinement:involutive-object-ledger
+  env_kind: definition
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 21
+  source_section: Involution
+  theorem_title: Involutive object ledger
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:involutive_ledger
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.Involution.InvolutiveObjectLedger
+  semantic_alignment: faithful
+  notes: Mechanize_now per inventory; populated by codex during Phase G.
+- paper_label: def:duality_confinement:separating-readout
+  env_kind: definition
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 60
+  source_section: Separation
+  theorem_title: Separating anti-invariant readout (qualitative and quantitative)
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:anti_invariant_ledger
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.Separation.SeparatingReadout
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: def:duality_confinement:anti-invariant-ledger
+  env_kind: definition
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 42
+  source_section: AntiInvariantLedger
+  theorem_title: Anti-invariant object ledger A_X
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:anti_invariant_ledger
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.AntiInvariantLedger.AntiInvariantLedger
+  semantic_alignment: faithful
+  notes: Typed positive cone encoding with explicit trace functional (see audit_summary
+    §A1).
+- paper_label: lem:duality_confinement:trace-identity
+  env_kind: lemma
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 90
+  source_section: AntiInvariantLedger
+  theorem_title: Trace identity tr A_X = ∫ ‖ψ_-‖² dμ
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:anti_invariant_ledger
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.AntiInvariantLedger.traceIdentity
+  semantic_alignment: faithful
+  notes: Typed-interface composition; trace identity is a constructor unfolding from
+    the AntiInvariantLedger field `trace_identity`, not an analytic derivation. Body
+    and App D use the "Lean records … as constructor unfolding" wording per the
+    proof-presentation policy.
+- paper_label: thm:duality_confinement:separation-confinement
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 117
+  source_section: DirectConfinement
+  theorem_title: Separation implies fixed-locus confinement
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:direct_confinement
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.DirectConfinement.separationConfinement
+  semantic_alignment: faithful
+  notes: Typed-interface composition; the measure-reading bridges `mu_zero_of_ae`
+    and `visible_zero_of_ae` are supplied as typed hypotheses on the typed cone.
+    Body and App D use the "Lean checks … composing bridges" wording per the
+    proof-presentation policy.
+- paper_label: thm:duality_confinement:quantitative-confinement
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 137
+  source_section: DirectConfinement
+  theorem_title: Quantitative confinement via Markov
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:direct_confinement
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.DirectConfinement.quantitativeConfinement
+  semantic_alignment: faithful
+  notes: Typed-interface composition; the Markov-style scalar step is supplied as
+    the typed `markov_bound` hypothesis rather than derived from ordered-scalar
+    primitives. Body and App D use the "Lean checks … via typed Markov interface"
+    wording per the proof-presentation policy.
+- paper_label: def:duality_confinement:completed-domination-bridge
+  env_kind: definition
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 156
+  source_section: Domination
+  theorem_title: Completed domination bridge
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:domination
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.Domination.CompletedDominationBridge
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: thm:duality_confinement:douglas-domination
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 177
+  source_section: Domination
+  theorem_title: Douglas factorization
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:domination
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.Domination.douglasDomination
+  semantic_alignment: faithful
+  notes: Typed-interface composition; the Douglas equivalence is packaged as the
+    `order_to_factor` and `factor_to_order` fields of the typed `DouglasData`
+    carrier, and `douglasDomination` repackages those fields. Body and App D use
+    "Lean packages the Douglas equivalence … via DouglasData fields" wording per
+    the proof-presentation policy. See audit_summary §A1 for the typed-cone
+    encoding choice (Domination ↔ ContractiveFactor definitional equivalence).
+- paper_label: thm:duality_confinement:master-theorem
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 199
+  source_section: MasterTheorem
+  theorem_title: Duality-confinement membrane theorem (master)
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:master_theorem
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.MasterTheorem.masterTheorem
+  semantic_alignment: faithful
+  notes: Load-bearing master theorem; reused by RH axis as thm:rh:dc-master-applied.
+- paper_label: def:duality_confinement:exhaustive-moving-ledger
+  env_kind: definition
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 234
+  source_section: ExhaustiveSqueeze
+  theorem_title: Exhaustive moving ledger
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:exhaustive_squeeze_and_budgets
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.ExhaustiveSqueeze.ExhaustiveMovingLedger
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: thm:duality_confinement:exhaustive-squeeze
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 254
+  source_section: ExhaustiveSqueeze
+  theorem_title: Exhaustive ledger squeeze
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:exhaustive_squeeze_and_budgets
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.ExhaustiveSqueeze.exhaustiveSqueeze
+  semantic_alignment: faithful
+  notes: Typed-interface composition; the ambient bound is consumed directly as
+    the moving-ledger's `exhaustive_bound` field (the reduction from moving bound
+    to ambient bound is an interface assumption, not derived from monotonicity-of-
+    transport primitives). Body and App D use the "Lean checks … via moving-ledger
+    field" wording per the proof-presentation policy.
+- paper_label: def:duality_confinement:defected-budget
+  env_kind: definition
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 274
+  source_section: DefectedBudget
+  theorem_title: Defected obstruction budget
+  target_paper: duality_confinement
+  target_destination: appendix
+  target_section_hint: sec:exhaustive_squeeze_and_budgets
+  proof_presentation: definition_entry
+  lean_coverage: not_mechanized
+  lean_decl: ''
+  semantic_alignment: not_applicable
+  notes: support_only per inventory; recorded for completeness because prop:optimized-trace-budget
+    references the shape.
+- paper_label: prop:duality_confinement:optimized-trace-budget
+  env_kind: proposition
+  source_file: anti_loc/extracted_math/duality_confinement_master.md
+  source_line: 292
+  source_section: DefectedBudget
+  theorem_title: Optimized scalar trace budget (AM-GM)
+  target_paper: duality_confinement
+  target_destination: body
+  target_section_hint: sec:exhaustive_squeeze_and_budgets
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.DualityConfinement.DefectedBudget.optimizedTraceBudget
+  semantic_alignment: faithful
+  notes: Mode is `lean_substantive (harness-tracked over explicit AM-GM hypothesis)`;
+    the `optimizedTraceBudget` theorem returns the supplied `am_gm_optimization`
+    and `fixed_ledger_squeeze` hypotheses unchanged, so the AM-GM step is paper-
+    side content tracked by the formalization harness, not a Lean derivation of
+    AM-GM. Body and App D use "tracked by the formalization harness" wording per
+    the proof-presentation policy. See audit_summary §A2 for the AM-GM
+    mechanization approach.
+- paper_label: def:rh:fe-involution
+  env_kind: definition
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 20
+  source_section: Involution
+  theorem_title: Functional-equation involution J_L(s) = 1 - s̄
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:involution_and_ledger
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.Involution.feInvolution
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: def:rh:psi-minus-rh
+  env_kind: definition
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 38
+  source_section: Involution
+  theorem_title: Separating anti-invariant readout ψ_-(s) = Re(s) - 1/2
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:involution_and_ledger
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.Involution.psiMinusRh
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: def:rh:nontrivial-zero-ledger
+  env_kind: definition
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 52
+  source_section: ZeroLedger
+  theorem_title: Nontrivial zero ledger Z_ζ^nt
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:involution_and_ledger
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.ZeroLedger.NontrivialZeroLedger
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: def:rh:anti-invariant-zero-ledger
+  env_kind: definition
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 72
+  source_section: AntiInvariantZeroLedger
+  theorem_title: Anti-invariant zero ledger A_Z(ζ)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:involution_and_ledger
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger.AntiInvariantZeroLedger
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: def:rh:sat-sel-shell
+  env_kind: definition
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 90
+  source_section: SatSelShell
+  theorem_title: Saturated completed Selberg trace closure Sel^!_{ζ,tr}
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:sat_sel_shell
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.SatSelShell.SatSelShell
+  semantic_alignment: faithful
+  notes: ''
+- paper_label: thm:rh:translation-T-forward
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 134
+  source_section: TranslationT
+  theorem_title: 'Theorem T forward: A_Z(ζ) = 0 ⟹ RH'
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:translation_theorem
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.TranslationT.translationTForward
+  semantic_alignment: faithful
+  notes: Typed-interface composition; the implication is stored as fields of
+    `AntiInvariantZeroLedger` (e.g., `zero_sum_to_zero_term`,
+    `zero_term_to_critical_line`) and `translationTForward` composes those fields,
+    not derived from typed scalar arithmetic. Body and App D use the "Lean checks
+    … via AntiInvariantZeroLedger fields" wording per the proof-presentation
+    policy.
+- paper_label: thm:rh:translation-T-reverse
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 152
+  source_section: TranslationT
+  theorem_title: 'Theorem T reverse: RH ⟹ A_Z(ζ) = 0'
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:translation_theorem
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.TranslationT.translationTReverse
+  semantic_alignment: faithful
+  notes: Typed-interface composition; composed from fields of
+    `AntiInvariantZeroLedger`. See `translation-T-forward` for the parallel
+    disclosure.
+- paper_label: thm:rh:translation-T
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 166
+  source_section: TranslationT
+  theorem_title: 'Theorem T: A_Z(ζ) = 0 ⟺ RH'
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:translation_theorem
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.TranslationT.translationT
+  semantic_alignment: faithful
+  notes: Typed-interface composition; combination of the forward and reverse
+    typed-interface compositions above.
+- paper_label: obl:rh:gamma-sdtc-selberg
+  env_kind: obligation
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 184
+  source_section: RecognitionSource
+  theorem_title: Γ_{SDTC-Selberg} recognition source (typed structure carrier)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:recognition_source
+  proof_presentation: appendix_only
+  lean_coverage: recognition_source
+  lean_decl: SixBirdsDualityConfinement.RH.RHConditional.GammaSdtcSelberg
+  semantic_alignment: not_applicable
+  notes: Out of scope for Lean derivation per RH proposal §11.4. Encoded as typed
+    structure carrier named GammaSdtcSelberg, declared inline in
+    lean/SixBirdsDualityConfinement/RH/RHConditional.lean (the conditional theorem
+    is its only consumer). The conditional theorem takes a value of this structure
+    as explicit hypothesis parameter. NOT a Lean `axiom`.
+- paper_label: thm:rh:dc-master-applied
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 224
+  source_section: DCMasterApplied
+  theorem_title: Duality-confinement master applied to Sel^!_{ζ,tr}
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:landing_chain
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.DCMasterApplied.dcMasterApplied
+  semantic_alignment: faithful
+  notes: Typed-bridge composition; does NOT instantiate the abstract DC ledger
+    directly on the shell. Instead `dcMasterApplied` composes `masterTheorem` over
+    the bridge fields `same_readout`, `mu_zero_of_ae`, `visible_zero_of_ae`
+    carried by the `GammaSdtcSelberg` record. The body-level role assignment
+    (Sel ↔ IOL, A_Z ↔ A_X, J_L ↔ J, ψ_-^RH ↔ ψ_-) is the mathematical
+    interpretation of the bridge interface, not a Lean-derived instantiation.
+    Body and App D use "Lean checks … typed-bridge composition" wording per the
+    proof-presentation policy.
+- paper_label: thm:rh:conditional
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_construction.md
+  source_line: 254
+  source_section: RHConditional
+  theorem_title: 'Conditional theorem: Γ_{SDTC-Selberg} ⟹ RH'
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:landing_chain
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.RHConditional.rhConditional
+  semantic_alignment: faithful
+  notes: 'Headline theorem; typed-bridge composition. Takes
+    obl:rh:gamma-sdtc-selberg as explicit hypothesis parameter
+    `γ : GammaSdtcSelberg shell`; composes `dcMasterApplied` through the
+    carrier''s bridge fields and then `translationTForward`. Body and App D use
+    "Lean composes the conditional landing chain … typed-bridge composition"
+    wording per the proof-presentation policy.'
+- paper_label: def:rh:aor-sel-instance
+  env_kind: definition
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 137
+  source_section: AORInstance
+  theorem_title: AOR-instance carrier wrapper SelAORInstance for the Selberg shell
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.SelAORInstance
+  semantic_alignment: faithful
+  notes: 'Definition entry. Wraps SatSelShell + GammaSdtcSelberg with a constructed
+    AORInstanceCarrier value (carrier_id, observations, routes, sources,
+    interfaces, constraints are lightweight typed tags; discharges, nonclaims, and
+    the structural nonclaims_nonempty witness are the load-bearing fields).
+    Minimal AOR primitives live in SixBirdsDualityConfinement.RH.AORPrimitives
+    (infrastructure, no paper_label). The `defaultCarrier` helper provides
+    documentary tag labels with `discharges := []` and a non-empty
+    `nonclaims` list (of type List String) discharged by `decide`; the discharge
+    atoms are populated by the seven discharge defs below and assembled by
+    assembledCarrier for the main aorInstance theorem.'
+- paper_label: thm:rh:aor-mechanical-records
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 217
+  source_section: AORInstance
+  theorem_title: Mechanical AOR records umbrella (six DischargeAtoms)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorMechanicalRecords
+  semantic_alignment: faithful
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of six atoms, indexed by shell/gamma but not computed from them. Five
+    definition-side rows are classified at status `by_construction` (primaries
+    Δ_role | Δ_role | Δ_presentation | Δ_presentation | Δ_meta with empty
+    forced_secondaries); translationT is classified at Δ_target with [Δ_transport]
+    forced secondary at status `zero`. Substantive composition lives in
+    aorInstance, which consumes the classification to discharge RefStableAOR.'
+- paper_label: thm:rh:aor-recognition-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 268
+  source_section: AORInstance
+  theorem_title: Recognition-source discharge (Δ_source/bridged + asymptotic_budgeted limit)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorRecognitionDischarge
+  semantic_alignment: faithful
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 4 atoms indexed by shell/gamma but not computed from them. Primary
+    Δ_source/bridged carries forced secondaries [Δ_target, Δ_role, Δ_limit] on the
+    primary atom (as required by RefStableAOR''s forced-secondary check), with
+    matching witness atoms at Δ_target/bridged, Δ_role/bridged, and
+    Δ_limit/asymptotic_budgeted. Trace-vanishing is the paper-level witness
+    payload for Δ_limit; the def does not project gamma.tr_B_n_tends_zero.
+    Substantive composition lives in aorInstance.'
+- paper_label: thm:rh:aor-gamma-bridge-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 321
+  source_section: AORInstance
+  theorem_title: Bridge-fields discharge (Δ_transport zero/bridged components)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorGammaBridgeDischarge
+  semantic_alignment: faithful
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 5 atoms indexed by shell/gamma but not computed from them. Three Δ_transport
+    atoms tag the bridge fields field-by-field (same_readout at zero with forced
+    secondaries [Δ_role, Δ_target] on the primary; visible_zero_of_ae at bridged;
+    mu_zero_of_ae at bridged), plus two witness atoms at Δ_role/bridged and
+    Δ_target/bridged. The def does not project gamma''s bridge propositions; the
+    per-component status split encodes mixed zero/bridged behavior via separate
+    atoms.'
+- paper_label: thm:rh:aor-auditL-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 360
+  source_section: AORInstance
+  theorem_title: Admissibility-audit discharge (Audit_L as Δ_meta/bridged)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorAuditLDischarge
+  semantic_alignment: faithful
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 1 atom indexed by shell/gamma but not computed from them. The atom tags the
+    shell''s admissibility audit (carried at construction time by
+    shell.Audit_L_witness and the recorded shell.Audit_L_channel_status) as
+    Δ_meta/bridged. The def does not project those fields; admissibility is
+    supplied as construction-time Foundations-II hypothesis; the paper does not
+    assert any particular F2ChannelStatus equation such as = activeProjection.'
+- paper_label: thm:rh:aor-dc-master-import-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 396
+  source_section: AORInstance
+  theorem_title: Cross-paper master-theorem import discharge (approved_other)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorDCMasterImportDischarge
+  semantic_alignment: faithful
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 4 atoms indexed by shell/gamma but not computed from them. Primary
+    Δ_transport at approved_other carries forced secondaries [Δ_source, Δ_role,
+    Δ_target] on the primary atom, with matching witness atoms at Δ_source/bridged,
+    Δ_role/bridged, Δ_target/bridged. The def does not invoke or witness
+    DCMasterApplied.dcMasterApplied; the approved_other status records the
+    cross-paper one-way citation rule at the paper level.'
+- paper_label: thm:rh:aor-real-coordinate-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 429
+  source_section: AORInstance
+  theorem_title: Typed real-coordinate discharge (Δ_presentation outside_scope + nonclaim)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorRealCoordinateDischarge
+  semantic_alignment: faithful
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 2 paired atoms indexed by shell/gamma but not computed from them. Tags the
+    typed RealCoordinate parameter R (carried by shell) as
+    Δ_presentation/outside_scope paired with Δ_presentation/nonclaim per the AOR
+    cost-table pattern for presentation residuals discharged outside their formal
+    scope. The def does not project R; the classical analytic identification with
+    Re(ρ) is registered as nonclaim.'
+- paper_label: thm:rh:aor-translation-interface-discharge
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 467
+  source_section: AORInstance
+  theorem_title: Translation-interface discharge (Δ_target/zero + Δ_transport/zero)
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: definition_entry
+  lean_coverage: definition
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorTranslationInterfaceDischarge
+  semantic_alignment: faithful
+  notes: 'Literal AOR classification: def returning a fixed-shape List DischargeAtom
+    of 2 atoms indexed by shell/gamma but not computed from them. Primary
+    Δ_target/zero carries [Δ_transport] forced secondary on the primary atom,
+    with matching Δ_transport/zero witness atom. The def does not reference
+    TranslationT.translationT; the paper-level AntiInvariantZeroLedger
+    typed-interface composition justifies the zero status. Substantive
+    composition lives in aorInstance.'
+- paper_label: thm:rh:aor-instance
+  env_kind: theorem
+  source_file: anti_loc/extracted_math/rh_aor_instance.md
+  source_line: 496
+  source_section: AORInstance
+  theorem_title: 'RH AOR-instance theorem: Sel in RefStableAOR^ref scope S_RH'
+  target_paper: rh
+  target_destination: body
+  target_section_hint: sec:rh-aor-instance
+  proof_presentation: lean_substantive
+  lean_coverage: theorem
+  lean_decl: SixBirdsDualityConfinement.RH.AORInstance.aorInstance
+  semantic_alignment: faithful
+  notes: 'Typed-bridge composition; the Lean theorem returns only RefStableAOR
+    (assembledCarrier shell gamma), where assembledCarrier concatenates the 7
+    discharge lists (24 atoms total) into the carrier register. Proof structure:
+    case analysis on the secondary residual type (seven cases, one per
+    ResidualType constructor), exhibiting an explicit witness atom from the
+    assembled discharge list for each case. The case analysis is on `secondary`
+    rather than on `atom` because RefStableAOR''s forced-secondary clause is
+    set-theoretic over primary types; the audit-class of each witness is chosen
+    to match the requesting primary''s status (e.g., role witness is picked
+    from the bridged role atoms of recognition/bridge/DC-import, not from the
+    by_construction role atoms of mechanical records). The structural
+    nonclaims_nonempty clause is discharged by `decide` on the concrete
+    nine-entry nonclaims list. The critical-line consequence (every rho in Z_nt
+    has Re(rho) = 1/2) is paper-level only, obtained separately via
+    RHConditional.rhConditional and the same closure stack. Axiom closure
+    [propext] only (within trust base). AOR meta-theory (Tsiokos2026AOR
+    refinement-stable characterisation) cited at paper level, not re-derived.'

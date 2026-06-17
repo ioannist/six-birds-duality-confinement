@@ -1,0 +1,320 @@
+% Duality Confinement paper — App D Formalization
+
+\section{Lean formalization}
+\label{app:formalization}
+
+This appendix records the Lean-disclosure discipline for the paper.
+Body prose uses mathematical names; Lean declarations, coverage modes,
+representation notes, trust-base information, and code availability
+appear here.
+
+\subsection*{Disclosure discipline}
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.23\linewidth}
+  >{\raggedright\arraybackslash}p{0.28\linewidth}
+  >{\raggedright\arraybackslash}X}
+\toprule
+Mode & Permitted wording & Use in this paper \\
+\midrule
+\texttt{lean\_substantive} (pure derivation) &
+``Verified in Lean as \textlangle declaration\textrangle.'' &
+Used when the Lean theorem derives the paper statement from
+typed-cone primitives within its declared scope.  Here this applies
+to the master theorem (\Cref{thm:duality_confinement:master-theorem});
+the typed positive-cone scope is stated explicitly. \\
+\texttt{lean\_substantive} (typed-interface / typed-bridge composition) &
+``Verified in Lean as \textlangle declaration\textrangle\ via
+typed-interface composition over the \textlangle Carrier\textrangle\
+fields,'' or ``\dots\ via typed-bridge composition over the
+\textlangle Carrier\textrangle.'' &
+Used when the theorem composes typed hypotheses, constructor fields,
+or carrier data rather than deriving all content from primitives:
+trace identity, direct confinement, quantitative confinement, Douglas
+factorization, and exhaustive squeeze. \\
+\texttt{definition\_entry} &
+``Realized in Lean as \textlangle declaration\textrangle.'' &
+Used for paper definitions; definitions are not described as proved. \\
+\texttt{harness\_tracked} &
+``Tracked in the formalization harness as \textlangle declaration\textrangle.'' &
+Used for a typed projection over an explicit hypothesis.  Here the
+optimized scalar trace budget supplies AM--GM as a typed-scalar
+hypothesis. \\
+\texttt{typed\_carrier} &
+``Encoded in Lean as a typed structure carrier
+\textlangle declaration\textrangle, not as a Lean axiom; downstream
+theorems take a value of this carrier as an explicit hypothesis.'' &
+Included for completeness.  No inventory entry of this paper has
+this mode; the Selberg recognition-source carrier belongs to
+the sibling RH formalization. \\
+\texttt{support\_only} &
+No Lean mention. &
+Used for the defected obstruction budget.  It is paper-side
+motivation for the optimized scalar trace budget and has no manifest
+entry. \\
+\bottomrule
+\end{tabularx}
+\caption{Lean-disclosure wording used by this paper.}
+\label{tab:lean-disclosure-discipline}
+\end{table}
+
+The per-axis manifest enumerates the tracked entries; the coverage
+table below renders it in mathematical language.  The validator also
+audits theorem dependencies against the project trust base.  The
+permitted axiom closure is the standard Lean core list
+\(\texttt{Classical.choice}\), \(\texttt{propext}\),
+\(\texttt{Quot.sound}\), \(\texttt{choice}\), and
+\(\texttt{funext}\).
+
+\subsection*{Typed positive-cone encoding}
+
+The formalization uses a mathlib-free typed positive cone for \(\AX\),
+the bounds \(B_n\), the carrier currency \(\Kminus\), and the tails
+\(T_n\).  The cone records exactly the primitives used in the paper:
+an order \(\preceq\), a trace functional \(\trace\), trace monotonicity,
+and the positivity-to-zero principle.  The trace identity is encoded
+at this level: the Gram-type construction of \(\AX\) is bundled with
+the assertion that \(\trace\AX\) is the integral of
+\(\|\psim(x)\|^2\).
+
+This is narrower than full Hilbert-space operator theory.  The master
+theorem uses only order, trace monotonicity, scalar squeezing, and
+positivity-to-zero; it does not formalize trace-class operators,
+Hilbert-Schmidt maps, Schatten ideals, or trace-norm topology
+\citep{Simon2005,ReedSimon1980}.  Realizing the theorem in the full
+positive trace-class cone is an operator-theoretic extension, not a
+hidden Lean claim.
+
+\subsection*{Response-space typed carrier}
+
+The body definition
+(\Cref{def:duality_confinement:involutive-object-ledger}) takes \(Y\)
+to be a real Hilbert space with \(\Jiso\) a linear isometric
+involution.  In Lean, \(Y\) is a typed carrier with the primitives used
+above: \(\mathtt{add}\), \(\mathtt{smul}\) over a typed
+\(\mathtt{Scalar}\), \(\mathtt{inner}\), \(\mathtt{norm}\),
+\(\mathtt{J\_iso}\), the laws \(\mathtt{J\_iso\_involutive}\),
+\(\mathtt{J\_iso\_linear}\), \(\mathtt{J\_iso\_isometry}\), and the
+readout/equivariance fields \(\mathtt{psi}\) and
+\(\mathtt{psi\_equivariant}\).  The full Hilbert-space stack
+(\citealp{ReedSimon1980,Conway1990}) is not encoded: completeness,
+polarization, parallelogram law, full inner-product axioms, and
+\(\mathbb{R}\)-vector-space axioms beyond the bundled addition and
+scalar action remain operator-theoretic extensions.
+
+\subsection*{Representation notes}
+
+\paragraph{Douglas factorization.}
+The classical mathematical content here is Douglas factorization
+\citep{Douglas1966}: for bounded positive operators \(A=V^*V\) and
+\(K=W^*W\) on a Hilbert space, domination \(A\preceq K\) is
+equivalent to the existence of a contraction \(T\) with \(V=TW\).
+The domination section uses this as operator-theoretic motivation.
+
+In the mathlib-free typed-cone encoding this theorem is represented
+by a typed \texttt{DouglasData} carrier.  The carrier records
+\(A=V^*V\), \(K=W^*W\), the domination relation \(A\preceq K\), the
+contractive factor witness \(T\) with \(V=TW\), and the two fields
+\texttt{order\_to\_factor} and \texttt{factor\_to\_order}.  Downstream
+theorems read the domination--factorization implication from these
+fields.
+
+Thus \texttt{douglasDomination} repackages stored carrier fields into
+the
+\(\mathtt{Nonempty\ Domination}\leftrightarrow\mathtt{Nonempty\ ContractiveFactor}\)
+form used by the bridge apparatus.  This is typed-carrier packaging,
+not a Lean development of the full Hilbert-space theorem from
+operator-square-root primitives.
+
+\paragraph{AM--GM in the scalar trace budget.}
+The optimized scalar trace budget depends on the elementary
+optimization
+\[
+  \inf_{t>0}\bigl((1+t)a+(1+t^{-1})b\bigr)
+    = \bigl(\sqrt a+\sqrt b\bigr)^2 .
+\]
+In ordinary real arithmetic this follows from the AM--GM inequality
+\citep{HardyLittlewoodPolya1952}, or equivalently from
+non-negativity of \((\sqrt a-\sqrt b)^2\).  The abstract scalar
+encoding used here is weaker: it provides the scalar interface
+needed by the trace-budget statement but does not supply enough
+ordered real arithmetic to derive AM--GM substantively.
+
+Accordingly, the Lean-side statement uses an explicit
+\texttt{am\_gm\_optimization} hypothesis.  The optimized scalar trace
+budget is tracked as a typed projection over that hypothesis, not as a
+substantive Lean derivation of AM--GM.  A future strengthening would
+add typed real-arithmetic structure for square roots, non-negativity
+of squares, and the derivation of \((\sqrt a-\sqrt b)^2\geq0\).
+
+\paragraph{Anti-invariant readout as typed field.}
+The body defines \(\psim(x)=\Pminus\psi(x)\), and equivariance of
+\(\psi\) forces \(\psim(Jx)=-\psim(x)\).  The mathlib-free typed-cone
+encoding does not represent \(\Pminus\), so \(\psim\) is an
+independent typed field of the separating-readout and
+anti-invariant-ledger carriers.  A coherence hypothesis identifies the
+two occurrences pointwise, and downstream theorems consume \(\psim\)
+through these fields.
+
+The projection identity and anti-equivariance are therefore paper-side
+mathematics, not derived inside Lean from the ledger's \(\psi\) and
+\(\Jiso\) fields.  A future strengthening would add a response-side
+\(\Pminus\) primitive, or an anti-action on the readout codomain, so
+that the projection and equivariance identities can be derived rather
+than supplied as typed-interface data.
+
+\begin{landscape}
+\begin{table}[H]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{@{}
+  >{\raggedright\arraybackslash}p{0.17\linewidth}
+  >{\raggedright\arraybackslash}p{0.14\linewidth}
+  >{\raggedright\arraybackslash}X
+  >{\raggedright\arraybackslash}p{0.12\linewidth}
+  >{\raggedright\arraybackslash}p{0.08\linewidth}
+  >{\raggedright\arraybackslash}p{0.07\linewidth}@{}}
+\toprule
+Paper label & Paper-prose name & Lean declaration &
+Proof mode & Coverage & Alignment \\
+\midrule
+\nolinkurl{def:involutive-object-ledger} &
+involutive object ledger &
+\nolinkurl{Involution.InvolutiveObjectLedger} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{def:separating-readout} &
+separating anti-invariant readout &
+\nolinkurl{Separation.SeparatingReadout} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{def:anti-invariant-ledger} &
+anti-invariant object ledger &
+\nolinkurl{AntiInvariantLedger.AntiInvariantLedger} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{lem:trace-identity} &
+trace identity &
+\nolinkurl{AntiInvariantLedger.traceIdentity} &
+lean substantive &
+theorem &
+faithful \\
+
+\nolinkurl{thm:separation-confinement} &
+separation--confinement theorem &
+\nolinkurl{DirectConfinement.separationConfinement} &
+lean substantive; measure-reading bridges
+supplied as typed hypotheses &
+theorem &
+faithful \\
+
+\nolinkurl{thm:quantitative-confinement} &
+quantitative confinement bound &
+\nolinkurl{DirectConfinement.quantitativeConfinement} &
+lean substantive; Markov step supplied as typed interface &
+theorem &
+faithful \\
+
+\nolinkurl{def:completed-domination-bridge} &
+completed domination bridge &
+\nolinkurl{Domination.CompletedDominationBridge} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{thm:douglas-domination} &
+Douglas factorization, typed-cone form &
+\nolinkurl{Domination.douglasDomination} &
+lean substantive; typed-carrier packaging via
+\texttt{DouglasData} fields (\S A1) &
+theorem &
+faithful \\
+
+\nolinkurl{thm:master-theorem} &
+duality-confinement membrane theorem &
+\nolinkurl{MasterTheorem.masterTheorem} &
+lean substantive &
+theorem &
+faithful \\
+
+\nolinkurl{def:exhaustive-moving-ledger} &
+exhaustive moving ledger &
+\nolinkurl{ExhaustiveSqueeze.ExhaustiveMovingLedger} &
+definition entry &
+definition &
+faithful \\
+
+\nolinkurl{thm:exhaustive-squeeze} &
+exhaustive ledger squeeze &
+\nolinkurl{ExhaustiveSqueeze.exhaustiveSqueeze} &
+lean substantive; ambient bound supplied as moving-ledger field &
+theorem &
+faithful \\
+
+\nolinkurl{def:defected-budget} &
+defected obstruction budget &
+\emph{none; support only} &
+no body Lean citation &
+not mechanized &
+n/a \\
+
+\nolinkurl{prop:optimized-trace-budget} &
+optimized scalar trace budget &
+\nolinkurl{DefectedBudget.optimizedTraceBudget} &
+tracked by harness; \S A2 &
+theorem &
+faithful \\
+\bottomrule
+\end{tabularx}
+\caption{Formalization coverage for the thirteen inventory entries
+of this paper.  Paper labels are shown without the common
+\texttt{duality\_confinement:} prefix; Lean declarations are shown
+without the common \texttt{SixBirdsDualityConfinement.DualityConfinement.}
+namespace prefix.}
+\label{tab:dc-formalization-coverage}
+\end{table}
+\end{landscape}
+
+\Cref{tab:dc-formalization-coverage} records the per-row coverage
+for the thirteen inventory entries: the twelve mechanized entries
+referenced in the abstract, together with the support-only
+defected-obstruction-budget row that carries no Lean citation.
+Three rows require the representation discipline stated above:
+Douglas factorization is the typed-cone form recorded by the
+\texttt{DouglasData} carrier; the optimized scalar trace budget is
+tracked over the \texttt{am\_gm\_optimization} hypothesis; and the
+defected obstruction budget is support-only material with no Lean
+citation.
+In addition, the anti-invariant-readout typed-field disclosure
+above applies across the separating-readout, anti-invariant-ledger,
+and direct-confinement entries: \(\psim\) is supplied as a typed
+field with a coherence hypothesis between its two occurrences,
+while the projection identity \(\psim=\Pminus\psi\) and
+equivariance \(\psim(Jx)=-\psim(x)\) are paper-side content rather
+than Lean-derived from \(\psi\) and \(\Jiso\).  The remaining ten
+rows are direct definition entries or faithful theorem entries in
+the typed positive-cone formalization, so all twelve mechanize-now
+entries carry faithful semantic alignment under these disclosures.
+The real-part abstraction used for the Riemann-hypothesis zero
+ledger is the corresponding representation note for the sibling RH
+formalization; that note and the recognition-source carrier row both
+belong to its formalization appendix.
+
+\subsection*{Code and data availability}
+
+The source repository is available at
+\url{https://github.com/ioannist/six-birds-duality-confinement}.
+The canonical manuscript source is
+\path{paper/duality_confinement/main.tex}.  Formalized support is
+tracked by
+\path{lean/manifests/duality_confinement_manifest.toml} and the
+Duality Confinement Lean modules.

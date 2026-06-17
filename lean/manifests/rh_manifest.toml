@@ -1,0 +1,215 @@
+# Lean validation manifest for the RH paper axis.
+#
+# Each entry corresponds to a paper_label from
+# formalization/inventory/rh_paper_inventory.toml whose intended_status
+# is "mechanize_now". The manifest is populated incrementally as codex
+# produces Lean realizations.
+#
+# Status meanings (verbatim from F2/F3):
+# - definition:   paper definition has a Lean definition-like declaration
+# - theorem:      paper claim has a Lean theorem/lemma whose dependency audit passes
+# - axiomatic:    declaration is or depends on project-local axioms (NOT allowed in this repo)
+# - partial:      declaration mechanizes only a supporting fragment
+# - unformalized: no Lean correspondent is present yet
+#
+# Schema (per entry):
+#   paper_label    = "<kind>:rh:<short-name>"
+#   paper_section  = "<section title>"
+#   description    = "<one-line summary>"
+#   status         = "<one of the values above>"
+#   lean_subproject = "."
+#   lean_module    = "SixBirdsDualityConfinement.RH.<Section>"
+#   lean_decl      = "SixBirdsDualityConfinement.RH.<Section>.<name>"
+#   notes          = ""
+
+# TODO: populate after Phase C from the per-axis paper inventory.
+
+[[definition]]
+paper_label = "def:rh:fe-involution"
+paper_section = "Involution"
+description = "Functional-equation involution J_L(s) = 1 - conj(s), with critical-line fixed locus and involutivity."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.Involution"
+lean_decl = "SixBirdsDualityConfinement.RH.Involution.feInvolution"
+notes = ""
+
+[[definition]]
+paper_label = "def:rh:psi-minus-rh"
+paper_section = "Involution"
+description = "Separating anti-invariant readout psi_-(s) = Re(s) - 1/2 for the RH involution."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.Involution"
+lean_decl = "SixBirdsDualityConfinement.RH.Involution.psiMinusRh"
+notes = ""
+
+[[definition]]
+paper_label = "def:rh:nontrivial-zero-ledger"
+paper_section = "ZeroLedger"
+description = "Typed finite nontrivial-zero ledger for Lambda_zeta with critical-strip points, positive multiplicities, and singleton measure."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.ZeroLedger"
+lean_decl = "SixBirdsDualityConfinement.RH.ZeroLedger.NontrivialZeroLedger"
+notes = ""
+
+[[definition]]
+paper_label = "def:rh:anti-invariant-zero-ledger"
+paper_section = "AntiInvariantZeroLedger"
+description = "Typed scalar finite sum A_Z(zeta) of multiplicity-weighted squared centered real parts, with nonnegativity data."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger"
+lean_decl = "SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger.AntiInvariantZeroLedger"
+notes = ""
+
+[[definition]]
+paper_label = "def:rh:sat-sel-shell"
+paper_section = "SatSelShell"
+description = "Saturated completed Selberg trace closure shell bundling history, trace, quotients, J_L, Lambda_L, Z_nt, A_Z, visibility, and audit data."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.SatSelShell"
+lean_decl = "SixBirdsDualityConfinement.RH.SatSelShell.SatSelShell"
+notes = ""
+
+[[claim]]
+paper_label = "thm:rh:translation-T-forward"
+paper_section = "TranslationT"
+description = "Forward Theorem T direction: A_Z(zeta) = 0 implies every typed nontrivial zero has real part 1/2."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.TranslationT"
+lean_decl = "SixBirdsDualityConfinement.RH.TranslationT.translationTForward"
+notes = ""
+
+[[claim]]
+paper_label = "thm:rh:translation-T-reverse"
+paper_section = "TranslationT"
+description = "Reverse Theorem T direction: if every typed nontrivial zero has real part 1/2, then A_Z(zeta) = 0."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.TranslationT"
+lean_decl = "SixBirdsDualityConfinement.RH.TranslationT.translationTReverse"
+notes = ""
+
+[[claim]]
+paper_label = "thm:rh:translation-T"
+paper_section = "TranslationT"
+description = "Theorem T equivalence between vanishing A_Z(zeta) and the RH ledger statement."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.TranslationT"
+lean_decl = "SixBirdsDualityConfinement.RH.TranslationT.translationT"
+notes = ""
+
+[[claim]]
+paper_label = "thm:rh:dc-master-applied"
+paper_section = "DCMasterApplied"
+description = "Application of the duality-confinement master theorem to the RH zero ledger, yielding A_Z(zeta) = 0 from completed domination records."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.DCMasterApplied"
+lean_decl = "SixBirdsDualityConfinement.RH.DCMasterApplied.dcMasterApplied"
+notes = ""
+
+[[claim]]
+paper_label = "thm:rh:conditional"
+paper_section = "RHConditional"
+description = "Conditional RH theorem: Gamma_{SDTC-Selberg} for a saturated Selberg shell implies every typed zero has real part 1/2."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.RHConditional"
+lean_decl = "SixBirdsDualityConfinement.RH.RHConditional.rhConditional"
+notes = ""
+
+[[definition]]
+paper_label = "def:rh:aor-sel-instance"
+paper_section = "AORInstance"
+description = "AOR-instance wrapper SelAORInstance(shell, gamma) carrying a constructed AORInstanceCarrier value. Eight AOR field categories are encoded inside the AORInstanceCarrier; the wrapper has one Lean field `carrier`."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.SelAORInstance"
+notes = "Definition entry. Discharges field is populated by the discharge defs below and assembled by assembledCarrier. The default-shape constructor `defaultCarrier` provides documentary tag labels for the six lightweight categories with `discharges := []` and a populated `nonclaims : List String` with structural non-emptiness witness."
+
+[[definition]]
+paper_label = "thm:rh:aor-mechanical-records"
+paper_section = "AORInstance"
+description = "Umbrella mechanical-records discharge: six DischargeAtoms tagging the five RH definition rows (by_construction) plus translationT (zero on Δ_target with [Δ_transport] forced secondary)."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorMechanicalRecords"
+notes = "Literal-data def returning List DischargeAtom; primary/secondaries/status per the math-extract table at rh_aor_instance.md lines 219-227."
+
+[[definition]]
+paper_label = "thm:rh:aor-recognition-discharge"
+paper_section = "AORInstance"
+description = "Recognition-source discharge: 4 atoms (Δ_source/bridged; Δ_target/bridged; Δ_role/bridged; Δ_limit/asymptotic_budgeted) tagging Γ_{SDTC-Selberg}."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorRecognitionDischarge"
+notes = "Literal AOR classification: def returning a fixed-shape List DischargeAtom (4 atoms) indexed by shell/gamma but not computed from them. The atoms tag Γ_{SDTC-Selberg}'s recognition content as a primary Δ_source/bridged atom with three forced secondaries (Δ_target, Δ_role, Δ_limit). The Δ_limit/asymptotic_budgeted witness payload is tr_B_n_tends_zero at the paper level; the def does not project that field. Substantive composition lives in aorInstance, which uses the classification to discharge RefStableAOR."
+
+[[definition]]
+paper_label = "thm:rh:aor-gamma-bridge-discharge"
+paper_section = "AORInstance"
+description = "Bridge-fields discharge: 5 atoms (3 transport atoms field-by-field: same_readout/zero, visible_zero_of_ae/bridged, mu_zero_of_ae/bridged; plus 2 forced secondaries role/bridged and target/bridged)."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorGammaBridgeDischarge"
+notes = "Literal AOR classification: def returning a fixed-shape List DischargeAtom (5 atoms) indexed by shell/gamma but not computed from them. The atoms tag gamma's bridge fields (same_readout / visible_zero_of_ae / mu_zero_of_ae) plus their forced secondaries (Δ_role, Δ_target). The def does not project gamma's bridge propositions; the per-component status split (zero for same_readout, bridged for the others) is the AOR-primitive triple's encoding of mixed component behavior."
+
+[[definition]]
+paper_label = "thm:rh:aor-auditL-discharge"
+paper_section = "AORInstance"
+description = "Admissibility-audit discharge: 1 atom (Δ_meta/bridged) witnessed by shell.Audit_L_witness and shell.Audit_L_channel_status."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorAuditLDischarge"
+notes = "Literal AOR classification: def returning a fixed-shape List DischargeAtom (1 atom) indexed by shell/gamma but not computed from them. The atom tags the shell's admissibility audit (carried at construction time by shell.Audit_L_witness and the recorded shell.Audit_L_channel_status) as Δ_meta/bridged. The def does not project those fields; admissibility is supplied as construction-time Foundations-II hypothesis."
+
+[[definition]]
+paper_label = "thm:rh:aor-dc-master-import-discharge"
+paper_section = "AORInstance"
+description = "Cross-paper master-theorem import discharge: 4 atoms (Δ_transport/approved_other as the Paper 1 import; plus 3 forced secondaries source/role/target at bridged)."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorDCMasterImportDischarge"
+notes = "Literal AOR classification: def returning a fixed-shape List DischargeAtom (4 atoms) indexed by shell/gamma but not computed from them. The atoms tag the cross-paper import of Paper 1's masterTheorem (via DCMasterApplied.dcMasterApplied) as primary Δ_transport/approved_other plus three forced secondaries (Δ_source, Δ_role, Δ_target). The def does not invoke or witness DCMasterApplied.dcMasterApplied; the approved_other status records the paper-level citation."
+
+[[definition]]
+paper_label = "thm:rh:aor-real-coordinate-discharge"
+paper_section = "AORInstance"
+description = "Typed real-coordinate discharge: 2 paired atoms (Δ_presentation/outside_scope for the supplied RealCoordinate parameter; Δ_presentation/nonclaim for the analytic identification with classical Re(ρ))."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorRealCoordinateDischarge"
+notes = "Literal AOR classification: def returning a fixed-shape List DischargeAtom (2 atoms) indexed by shell/gamma but not computed from them. The atoms tag the typed RealCoordinate parameter R (carried by shell) as a paired Δ_presentation/outside_scope + Δ_presentation/nonclaim discharge per the AOR cost-table pattern. The def does not project R; the classical analytic identification with Re(ρ) is registered as nonclaim."
+
+[[definition]]
+paper_label = "thm:rh:aor-translation-interface-discharge"
+paper_section = "AORInstance"
+description = "Translation-interface discharge: 2 atoms (Δ_target/zero with [Δ_transport] forced secondary; plus Δ_transport/zero secondary atom)."
+status = "definition"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorTranslationInterfaceDischarge"
+notes = "Literal AOR classification: def returning a fixed-shape List DischargeAtom (2 atoms) indexed by shell/gamma but not computed from them. The atoms tag translation theorem T as primary Δ_target/zero with [Δ_transport] forced secondary, plus a Δ_transport/zero secondary atom. The def does not reference TranslationT.translationT; the AntiInvariantZeroLedger typed-interface composition is paper-level content."
+
+[[claim]]
+paper_label = "thm:rh:aor-instance"
+paper_section = "AORInstance"
+description = "Main RH AOR-instance theorem: RefStableAOR (assembledCarrier shell gamma). Returns only the record-level membership predicate; the critical-line consequence remains the separate conclusion of RHConditional.rhConditional."
+status = "theorem"
+lean_subproject = "."
+lean_module = "SixBirdsDualityConfinement.RH.AORInstance"
+lean_decl = "SixBirdsDualityConfinement.RH.AORInstance.aorInstance"
+notes = "Typed-bridge composition; assembles the seven discharge lists (mechanical-records + 6 substantive discharges, total 24 atoms) into the carrier's discharge register and proves RefStableAOR by case analysis. Axiom closure: [propext] (within trust base)."

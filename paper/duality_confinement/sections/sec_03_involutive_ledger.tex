@@ -1,0 +1,145 @@
+% Duality Confinement paper — § Involutive object ledger
+% Drafted body for the involutive-object-ledger definition.
+%
+% statements-of-record rows resolved here:
+% def:duality_confinement:involutive-object-ledger.
+
+\section{Involutive object ledger}
+\label{sec:involutive_ledger}
+
+The first piece of apparatus is the object on which the confinement
+argument is allowed to operate.  The framework section explained
+that SDTC is a structural law over a formed layer.  For the present
+paper, the mathematical data inside such a layer are concrete: a
+carrier of visible objects, an involution on that carrier, a
+positive measure or finite weight system, and a Hilbert-valued
+observable compatible with the involution.  Throughout, this package
+is denoted
+\[
+  \IOL=(X,J,\mu,\psi,Y,\Jiso).
+\]
+Read first as ordinary analysis: \(X\) is the space whose mass we
+want to localize; \(J:X\to X\) is a symmetry with
+\(J^2=\mathrm{id}_X\); \(\mu\) says which objects are visible;
+\(Y\) is the response space in which the objects are observed;
+\(\Jiso:Y\to Y\) is the corresponding symmetry of responses; and
+\(\psi:X\to Y\) is the observable.
+
+\begin{definition}[Involutive object ledger\protect\footnote{Realized in the Lean formalization; see App~\ref{app:formalization}.}]
+\label{def:duality_confinement:involutive-object-ledger}
+An \emph{involutive object ledger} is a tuple
+\[
+  \IOL=(X,J,\mu,\psi,Y,\Jiso)
+\]
+consisting of the following data:
+\begin{enumerate}
+  \item a visible carrier \(X\);
+  \item an involution \(J:X\to X\), so \(J(Jx)=x\) for every
+    \(x\in X\);
+  \item a positive measure, or in the finite case a positive weight
+    system, \(\mu\) on \(X\);
+  \item a real Hilbert response space \(Y\);
+  \item a linear isometric involution \(\Jiso:Y\to Y\);
+  \item a measurable readout \(\psi:X\to Y\) satisfying the
+    equivariance condition
+    \[
+      \psi(Jx)=\Jiso\psi(x)
+      \qquad (x\in X).
+    \]
+\end{enumerate}
+The fixed locus of the ledger involution is
+\[
+  \Fix(J)=\{x\in X: Jx=x\}.
+\]
+\end{definition}
+
+The definition separates carrier-side symmetry from response-side
+symmetry: \(J\) acts on the objects whose mass is being studied,
+while \(\Jiso\) acts on the Hilbert space in which those objects
+are read.  The equivariance condition says that observing an
+object after applying the carrier involution is the same as
+observing first and then applying the response involution.  Here
+``linear isometric involution'' for \(\Jiso\) means
+\[
+  \Jiso^2=I_Y,
+  \qquad
+  \langle \Jiso v,\Jiso w\rangle_Y=\langle v,w\rangle_Y
+  \quad(v,w\in Y).
+\]
+In topological or measure-theoretic examples the displayed maps are
+normally assumed measurable, and often \(\mu\) is \(J\)-invariant
+or at least \(J\)-quasi-invariant.  The abstract ledger definition
+records only the positive measured carrier and the equivariant
+readout; later hypotheses, such as separation and trace-class
+positivity, state the additional structure needed for a particular
+confinement argument.
+
+The convention covers both finite and analytic situations.  In a
+finite ledger, \(X\) may be a finite list of roots, defects, modes,
+or objects, and \(\mu(x)>0\) is the weight assigned to an object
+visible to the argument.  In a continuous ledger, \(\mu\) is a
+positive measure on the carrier, and the statements are read modulo
+null sets where appropriate.  The phrase ``visible support'' always
+means the part of \(X\) carrying positive \(\mu\)-mass:
+positive-weight points in the finite case and non-null measurable
+regions in the measure-theoretic case.  This is the only part of
+the carrier that the confinement theorem can see; objects outside
+the visible support may exist as elements of \(X\), but they play
+no role in the measure conclusion
+\(\mu(X\setminus\Fix(J))=0\).
+
+The fixed locus \(\Fix(J)\) is the target of the confinement
+conclusion.  In a topological example it is usually a closed
+subspace, but no topology is needed to name it: it is the set of
+points left unchanged by \(J\).  The ledger terminology
+emphasizes that \(\mu\) is not merely background measure; it is the
+accounting device that tells the theorem which visible objects
+remain after the obstruction has been squeezed to zero.  The
+anti-invariant projection associated with \(\Jiso\) and the positive
+ledger built from it are introduced in
+\Cref{sec:anti_invariant_ledger}.
+
+A simple model is complex conjugation.  Let \(X\) be a bounded
+measurable region in \(\mathbb{C}\), stable under conjugation, with
+\(\mu\) the restricted planar Lebesgue measure.  Put
+\[
+  J(z)=\overline{z},\qquad
+  Y=\mathbb{R}^2,\qquad
+  \Jiso(u,v)=(u,-v),
+\]
+and let
+\[
+  \psi(z)=(\operatorname{Re}z,\operatorname{Im}z).
+\]
+Then
+\[
+  \psi(Jz)
+  =
+  (\operatorname{Re}z,-\operatorname{Im}z)
+  =
+  \Jiso\psi(z),
+\]
+so the readout is equivariant.  The fixed locus is the real axis
+inside \(X\); the coordinate that changes sign is the imaginary
+coordinate, so mass away from the real axis is exactly the mass
+visible to the sign-changing part of the readout.  The toy model
+contains no analysis, but it displays the geometry of the
+definition: a duality, a fixed locus, and an observable whose
+coordinates respect the duality.
+
+The same pattern explains the motivating analytic example.  In the
+functional-equation symmetry of the completed Riemann zeta function
+\citep{TitchmarshHeathBrown1986}, the involution
+\[
+  J_L(s)=1-\overline{s}
+\]
+on the critical strip has fixed locus the critical line
+\(\operatorname{Re}(s)=1/2\).  Specializing \(X\) to the visible
+multiset of nontrivial zeros with \(\mu\) the multiplicity-weighted
+measure makes \(\operatorname{Re}(s)-1/2\) the sign-changing
+displacement from the fixed line.  The sibling paper on the worked
+single-substrate RH application develops that instance in detail; no
+result from that paper is used here.
+
+The mathematical work begins once this ledger is equipped with its
+anti-invariant projection, trace ledger, and separation hypotheses.

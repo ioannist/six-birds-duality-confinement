@@ -1,0 +1,182 @@
+% RH paper — § Involution and ledger
+% statements-of-record rows resolved here: def:rh:fe-involution, def:rh:psi-minus-rh,
+% def:rh:nontrivial-zero-ledger, def:rh:anti-invariant-zero-ledger.
+
+\section{Involution and ledger}
+\label{sec:involution_and_ledger}
+
+The first ingredients of the RH closure are the
+functional-equation involution and its anti-invariant readout.  Both
+are elementary objects on the complex plane.  Their role in the
+structural argument is not to add analytic depth, but to place the
+critical line inside the involutive-ledger pattern described in
+\Cref{sec:framework}: an involution, a fixed locus, and a scalar
+quantity that changes sign under the involution.  At this point the
+ordinary functional-equation symmetry of the completed zeta function
+becomes a typed datum of the closure.
+
+\begin{definition}[Functional-equation involution \(\JL\)]
+\label{def:rh:fe-involution}
+The functional-equation involution on the complex plane is
+\[
+  \JL(s) = 1-\bar{s}.
+\]
+Equivalently, if \(s=x+iy\), then
+\[
+  \JL(s) = 1-x+iy.
+\]
+Thus \(\JL\) is reflection across the vertical line
+\(\Real(s)=1/2\).
+\end{definition}
+
+This definition only isolates the affine symmetry \(s\mapsto
+1-\bar{s}\); it makes no assertion about which points are zeros.
+Points on opposite sides of the critical line are interchanged, while
+points on the critical line are unchanged.
+
+The map \(\JL\) is an involution by direct calculation:
+\[
+  \JL(\JL(s))
+    = \JL(1-\bar{s})
+    = 1-\overline{1-\bar{s}}
+    = 1-(1-s)
+    = s.
+\]
+Hence \(\JL^{2}=\mathrm{id}_{\mathbb{C}}\).  The same coordinate formula gives
+the fixed locus.  Writing \(s=x+iy\), the equation \(\JL(s)=s\) is
+\[
+  1-x+iy = x+iy,
+\]
+which is equivalent to \(x=1/2\).  Therefore
+\[
+  \Fix(\JL)
+    =
+  \{\,s\in\mathbb{C} : \Real(s)=1/2\,\},
+\]
+the critical line.  Conversely, any point with real part \(1/2\) is unchanged by
+\(\JL\), so the displayed set is exactly the fixed locus.  The
+critical-line condition is therefore equivalent to the statement
+that a point is fixed by the functional-equation involution; this
+is the form used later, when RH on the typed zero ledger is read as
+the statement that every ledger point lies in \(\Fix(\JL)\).
+
+\begin{definition}[Anti-invariant readout \(\psimRH\)]
+\label{def:rh:psi-minus-rh}
+The anti-invariant readout associated with \(\JL\) is the signed
+horizontal displacement from the critical line,
+\[
+  \psimRH(s)=\Real(s)-\frac{1}{2}.
+\]
+\end{definition}
+
+The qualifier ``signed'' matters: the structural argument needs a
+quantity that reverses sign under the involution.  The readout
+\(\psimRH\) is positive to the right of the critical line, negative
+to the left, and zero exactly on the line.
+
+This readout separates the two sides of the critical line and
+vanishes exactly on \(\Fix(\JL)\): the condition \(\psimRH(s)=0\) is
+\(\Real(s)=1/2\), the fixed-locus condition above.  It is also
+anti-invariant under \(\JL\).  Since \(\Real(1-\bar{s})=1-\Real(s)\),
+one has
+\[
+\begin{aligned}
+  \psimRH(\JL(s))
+    &= \Real(1-\bar{s})-\frac{1}{2}  \\
+    &= 1-\Real(s)-\frac{1}{2}        \\
+    &= \frac{1}{2}-\Real(s)          \\
+    &= -\bigl(\Real(s)-\frac{1}{2}\bigr) \\
+    &= -\psimRH(s).
+\end{aligned}
+\]
+Thus the readout detects the anti-invariant component of a point with
+respect to reflection across the critical line.
+
+This is the RH specialization of the abstract separating readout used
+in the duality-confinement apparatus.  Forcing the squared aggregate
+of this readout to vanish will force each zero in the ledger onto the
+fixed locus, provided the ledger has positive multiplicities.  That
+aggregate is introduced after the zero ledger itself is in place.
+
+With the involution and readout in place, the remaining objects are the
+typed multiset of nontrivial zeros and the scalar built from it.
+
+\begin{definition}[Nontrivial-zero ledger\footnote{Realized in the Lean formalization; the typed real-coordinate representation is recorded in App~\ref{app:formalization} (A3).}]
+\label{def:rh:nontrivial-zero-ledger}
+Let
+\[
+  \Lzeta(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)
+\]
+denote the completed Riemann zeta function
+\citep{TitchmarshHeathBrown1986,Edwards1974}.  The nontrivial-zero
+ledger of \(\Lzeta\) is the typed multiset
+\[
+  \Znt
+    =
+  \bigl\{\,(\rho,m_{\rho}) :
+      \rho\in\mathbb{C},
+      \Lzeta(\rho)=0,
+      0<\Real(\rho)<1,
+      m_{\rho}>0
+  \,\bigr\}_{\mathrm{multi}},
+\]
+where \(m_{\rho}\) is the positive integer multiplicity of \(\rho\)
+as a zero of \(\Lzeta\).  The associated atomic ledger measure is
+\(\mu_{L}(\{\rho\})=m_{\rho}\).
+\end{definition}
+
+\(\Znt\) is a multiset rather than a set: if a zero occurs with
+multiplicity \(m_{\rho}\), the ledger records that multiplicity as
+part of the data.  The completed function \(\Lzeta\) has the same
+zeros in the critical strip as the Riemann zeta function; the
+trivial zeros at the negative even integers are outside this ledger,
+removed from the zero side by the completion factor.  No simplicity
+assumption is made: although nontrivial zeros are widely expected to
+be simple, all arguments below allow arbitrary positive integer
+multiplicities.
+
+\begin{definition}[Anti-invariant zero ledger]
+\label{def:rh:anti-invariant-zero-ledger}
+The anti-invariant zero ledger of \(\zeta\) is the
+multiplicity-weighted scalar
+\[
+  \AZ
+    =
+  \sum_{\rho\in\Znt}
+    m_{\rho}\,
+    \left|\Real(\rho)-\frac{1}{2}\right|^{2}.
+\]
+Equivalently, using the readout from
+\Cref{def:rh:psi-minus-rh},
+\[
+  \AZ
+    =
+  \sum_{\rho\in\Znt}
+    m_{\rho}\,\left|\psimRH(\rho)\right|^{2},
+\]
+with summation over the typed multiset \(\Znt\), hence with
+multiplicity.
+\end{definition}
+
+Each summand \(m_{\rho}|\psimRH(\rho)|^{2}\) is nonnegative: the
+multiplicity is positive by definition, and the squared real-part
+displacement is nonnegative.  Hence \(\AZ\) is a nonnegative scalar.
+On a finite typed multiset, \(\AZ=0\) can occur only if every
+summand vanishes; since \(m_{\rho}>0\), this is equivalent to
+\(\psimRH(\rho)=0\) for every typed zero \(\rho\), and by the
+fixed-locus calculation above that is the assertion that every typed
+zero lies on the critical line.  \Cref{sec:translation_theorem}
+packages this positivity argument as Theorem T.
+
+A representation note belongs here.  The real-part coordinate of a
+typed zero is a parameter of the shell; under construction-parameter
+assignment when the shell is instantiated, this parameter is
+identified with the classical real part of a nontrivial zero of
+\(\zeta\).  Under that identification, RH on the typed zero ledger
+says that every such real-part coordinate equals \(1/2\), which is the
+classical RH statement.  A derivation of this identification from
+analytic-number-theoretic infrastructure is left as a future extension.
+
+The saturated completed Selberg trace closure \(\Sel\), which packages
+these typed objects together with the trace instrument and audit data,
+is the subject of \Cref{sec:sat_sel_shell}.

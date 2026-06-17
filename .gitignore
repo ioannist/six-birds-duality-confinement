@@ -1,0 +1,58 @@
+# Python bytecode caches
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Editor / OS noise
+.DS_Store
+*.swp
+*.swo
+
+# Lake build artifacts (do not check vendored Foundations' lake builds either)
+.lake/
+lake-manifest.json
+*.olean
+*.ilean
+
+# Foundation validator scratch logs (regenerated per run)
+**/.validate-logs/
+
+# Per-environment secrets (Zenodo API token, etc.)
+.env
+
+# Local workflow marker file (zero bytes; per-environment)
+/.codex
+
+# Local agent/workflow state
+/.agents/
+/.codex/
+
+# Local harness scratch (per-environment)
+/.claude/
+
+# Internal research/discussion archive; not part of the public paper support surface.
+# These paths may still be tracked until repository history is cleaned separately.
+anti_loc/
+PLAN_mechanization.md
+reviews/
+**/.*thread_id*
+lean/*RUNBOOK.md
+lean/*kickoff.md
+scripts/build_*_prompt.py
+paper/writing-plan.md
+paper/**/writing-plan.md
+paper/**/notes/drafting-plan.md
+paper/rh/aor_thread.md
+paper/rh/aor_review.md
+
+# LaTeX build artifacts (paper/ and any latex-build subtrees)
+build/
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc

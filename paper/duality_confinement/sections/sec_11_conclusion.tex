@@ -1,0 +1,52 @@
+% Duality Confinement paper — § Conclusion
+% Drafted body: headline restatement, pending extensions, companion
+% paper pointer, and code/data availability.
+%
+% statements-of-record rows resolved here: none (this section is
+% conclusion / restatement; no theorem/definition rows resolve here).
+
+\section{Conclusion}
+\label{sec:conclusion}
+
+This paper names \(\GamSDTC\) as the structural law for formed
+closures with genuine involutive self-duality: visible mass is
+confined to the fixed locus of the duality.  Its apparatus is the
+duality-confinement membrane theorem, which converts a
+vanishing-trace domination sequence
+\[
+  \AX\preceq B_n,
+  \qquad
+  \trace B_n\to0,
+\]
+into \(\AX=0\), hence confinement on \(\Fix(J)\).  The body
+develops the corresponding typed machinery: involutive object
+ledgers, anti-invariant ledgers with trace identity and separating
+readout, completed-domination bridges with typed-cone Douglas
+factorization, exhaustive moving ledgers, and optimized scalar
+trace budgets.  The development is formalized in Lean as a
+mathlib-free mechanization at the typed positive-cone level
+(Appendix~\ref{app:formalization}).
+
+Two apparatus-layer extensions remain open.  First, the typed
+positive cone should be realized as the full positive trace-class cone on a
+Hilbert space, with the trace-norm topology, Hilbert--Schmidt and
+Schatten infrastructure, and the classical operator-theoretic
+lemmas made explicit \citep{Simon2005,ReedSimon1980}.  Second, the
+optimized scalar trace budget should be strengthened by deriving
+AM--GM \citep{HardyLittlewoodPolya1952} inside a typed
+real-arithmetic structure rather than taking the inequality as a
+scalar hypothesis.
+
+No substrate-specific application is used in the proof of this paper.
+The present paper is the abstract apparatus layer;
+substrate-specific applications must supply their own involutive
+ledger, separating readout, domination records, and recognition
+source.
+
+Code and data availability.  The source repository is available at
+\url{https://github.com/ioannist/six-birds-duality-confinement}.
+The canonical manuscript source is
+\path{paper/duality_confinement/main.tex}.  Formalized support is
+tracked by
+\path{lean/manifests/duality_confinement_manifest.toml} and the
+Duality Confinement Lean modules.
