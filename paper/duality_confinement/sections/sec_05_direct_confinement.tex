@@ -1,91 +1,89 @@
-% Duality Confinement paper — § Direct confinement
-% Drafted body for the two direct consequences of trace identity
-% plus separating readout.
-%
-% statements-of-record rows resolved here:
-% thm:duality_confinement:separation-confinement;
-% thm:duality_confinement:quantitative-confinement.
-
 \section{Direct confinement}
 \label{sec:direct_confinement}
 
-With the trace identity in place, the separating-readout conditions
-give two confinement consequences.  The first is qualitative: if
-the anti-invariant ledger vanishes, then visible mass cannot remain
-away from the fixed locus.  The second is quantitative: if the
-readout grows at least by a modulus away from \(\Fix(J)\), then the
-trace of \(\AX\) bounds the amount of visible mass at that distance
-scale.  Together these furnish the consequence step used later by the
-master theorem, which adds the separate squeeze argument that forces
-\(\AX=0\).
+The trace identity turns information about \(\AX\) into information
+about where the mass of \(\mu\) lies.  The qualitative statement uses
+\(\AX=0\); the quantitative one uses only the size of \(\trace\AX\).
 
-\begin{theorem}[Separation--confinement\protect\footnote{Checked in the Lean formalization by typed-bridge composition over the measure-reading bridges; see App~\ref{app:formalization}.}]
+\begin{theorem}[Separation--confinement]
 \label{thm:duality_confinement:separation-confinement}
-Let \(\IOL\) be an involutive object ledger with anti-invariant
-ledger \(\AX\) and qualitatively separating anti-invariant readout
-\(\psim\).  If \(\AX=0\) in the typed positive cone, then
-\[
-  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
-\]
+Let \(\IOL\) be an involutive object ledger with
+\(\int_X\|\psim\|^2\,d\mu<\infty\), and suppose \(\AX=0\).  Then
+\(\psim(x)=0\) for \(\mu\)-almost every \(x\).  If moreover \(\psim\)
+is qualitatively separating, then \(Jx=x\) for \(\mu\)-almost every
+\(x\); that is, \(X\setminus\Fix(J)\) is \(\mu\)-null.  In the finite
+weighted case, every object of positive weight is fixed by \(J\).
 \end{theorem}
 
 \begin{proof}
 By \Cref{lem:duality_confinement:trace-identity},
-\[
-  \trace\AX=\int_X\|\psim(x)\|^2\,d\mu(x).
-\]
-Since \(\AX=0\), the left-hand side is zero.  The integrand on the
-right is nonnegative, so the integral can vanish only when
-\(\|\psim(x)\|=0\) for \(\mu\)-almost every visible point.
-Qualitative separation
-(\Cref{def:duality_confinement:separating-readout}) identifies the
-zero set of \(\psim\) with \(\Fix(J)\) on the visible support, so
-the complement of \(\Fix(J)\) has \(\mu\)-measure zero.
+\(\int_X\|\psim\|^2\,d\mu=\trace\AX=0\).  The integrand is nonnegative
+and measurable, so \(\|\psim(x)\|=0\) for \(\mu\)-almost every \(x\).
+If \(\psim\) is qualitatively separating, the set of \(x\) at which the
+separation equivalence fails is also \(\mu\)-null; outside the union of
+the two null sets, \(\psim(x)=0\) and hence \(Jx=x\).  In the finite
+case the null sets contain no object of positive weight.
 \end{proof}
 
-In the finite weighted case, the same proof says that every visible
-object with positive weight lies in \(\Fix(J)\).
-
-\begin{theorem}[Quantitative confinement\protect\footnote{Checked in the Lean formalization by typed-bridge composition with a Markov-step hypothesis; see App~\ref{app:formalization}.}]
+\begin{theorem}[Quantitative confinement]
 \label{thm:duality_confinement:quantitative-confinement}
-Let \(\IOL\) be an involutive object ledger with anti-invariant
-ledger \(\AX\) and quantitatively separating anti-invariant readout
-\(\psim\) with modulus \(m\).  Then, for every
+Let \(\IOL\) be an involutive object ledger on a metric space \(X\),
+with \(\int_X\|\psim\|^2\,d\mu<\infty\) and with \(\psim\)
+quantitatively separating with modulus \(m\).  Then, for every
 \(\varepsilon>0\),
 \[
-  \mu\bigl(\{x\in X:\dist(x,\Fix(J))\geq\varepsilon\}\bigr)
+  \mu^*\bigl(\{x\in X:\dist(x,\Fix(J))\geq\varepsilon\}\bigr)
   \leq
-  \frac{\trace\AX}{m(\varepsilon)^2}.
+  \frac{\trace\AX}{m(\varepsilon)^2},
 \]
+where \(\mu^*\) is the outer measure of \(\mu\); it equals \(\mu\) on
+measurable sets.  The same bound holds with \(\dist(\cdot,\Fix(J))\)
+replaced by any function \(\delta:X\to[0,\infty]\) such that
+\(\delta(x)\geq\varepsilon\) implies \(\|\psim(x)\|\geq m(\varepsilon)\).
 \end{theorem}
 
 \begin{proof}
-Fix \(\varepsilon>0\), and set
+Fix \(\varepsilon>0\) and put
+\(E_\varepsilon=\{x:\dist(x,\Fix(J))\geq\varepsilon\}\) and
+\(F_\varepsilon=\{x:\|\psim(x)\|\geq m(\varepsilon)\}\).  Quantitative
+separation gives \(E_\varepsilon\subseteq F_\varepsilon\), and
+\(F_\varepsilon\) is measurable because \(\psim\) is strongly
+measurable (up to a \(\mu\)-null set if \(\psi\) is only almost
+everywhere strongly measurable, which does not affect the bound).  Markov's inequality \citep{Folland1999} and
+the trace identity give
 \[
-  E_\varepsilon=\{x\in X:\dist(x,\Fix(J))\geq\varepsilon\}.
+  m(\varepsilon)^2\,\mu(F_\varepsilon)
+  \leq\int_{F_\varepsilon}\|\psim\|^2\,d\mu
+  \leq\int_X\|\psim\|^2\,d\mu=\trace\AX .
 \]
-Quantitative separation gives
-\[
-  \|\psim(x)\|\geq m(\varepsilon)
-  \qquad (x\in E_\varepsilon).
-\]
-A Markov-style integration step \citep{Folland1999} then yields
-\[
-  m(\varepsilon)^2\,\mu(E_\varepsilon)
-  \leq
-  \int_{E_\varepsilon}\|\psim(x)\|^2\,d\mu(x)
-  \leq
-  \int_X\|\psim(x)\|^2\,d\mu(x).
-\]
-The trace identity identifies the final integral with
-\(\trace\AX\).  Since \(m(\varepsilon)>0\), division by
-\(m(\varepsilon)^2\) gives the displayed bound.
+Since \(m(\varepsilon)>0\), dividing and using
+\(\mu^*(E_\varepsilon)\leq\mu(F_\varepsilon)\) gives the bound.  The
+proof used the metric only through the inclusion
+\(E_\varepsilon\subseteq F_\varepsilon\), which holds for any
+\(\delta\) as in the statement.
 \end{proof}
 
-\Cref{sec:master_theorem} combines these direct consequences with
-a domination squeeze: once a sequence of records
-\(\AX\preceq B_n\) with \(\trace B_n\to0\) forces \(\AX=0\),
-\Cref{thm:duality_confinement:separation-confinement} converts that
-algebraic collapse into fixed-locus confinement.  The quantitative
-bound above supplies the scale-sensitive refinement when one works
-with finite-window or approximate data.
+\begin{example}[Complex conjugation, continued]
+In the example of \Cref{sec:involutive_ledger},
+\(\Pminus(u,v)=(0,v)\), so \(\psim(z)=(0,\operatorname{Im}z)\) and
+\[
+  \AX=\Bigl(\int_X(\operatorname{Im}z)^2\,d\mu(z)\Bigr)
+  \begin{pmatrix}0&0\\0&1\end{pmatrix},
+\]
+provided the integral is finite.  If \(X\) is a disc centred on the
+real axis, then \(\operatorname{Re}z\in X\) for every \(z\in X\), so
+\(\dist(z,X\cap\mathbb R)=|\operatorname{Im}z|\); the readout is then
+quantitatively separating with \(m(\varepsilon)=\varepsilon\), and
+\Cref{thm:duality_confinement:quantitative-confinement} becomes the
+familiar Markov--Chebyshev bound
+\(\mu\{|\operatorname{Im}z|\geq\varepsilon\}\leq
+\varepsilon^{-2}\int_X(\operatorname{Im}z)^2\,d\mu\).
+\end{example}
+
+The confinement theorem of \Cref{sec:master_theorem} supplies the
+missing input \(\AX=0\): it derives it from domination by operators of
+vanishing trace, after which
+\Cref{thm:duality_confinement:separation-confinement} applies.  The
+quantitative theorem is useful when only an upper bound on
+\(\trace\AX\) is available, as in
+\Cref{prop:duality_confinement:optimized-trace-budget}.

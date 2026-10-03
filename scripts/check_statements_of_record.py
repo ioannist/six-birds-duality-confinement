@@ -99,10 +99,8 @@ ALLOWED_SEMANTIC_ALIGNMENT = {
     "projection_packaged",
     "not_applicable",
 }
-# Allowed source_file values per target_paper. For this project, the source-of-
-# record is the math artifact at anti_loc/extracted_math/, not LaTeX. Once
-# paper LaTeX is drafted under a future post-prep workflow, the LaTeX path will
-# also become an allowed value.
+# Historical extracted-math files remain allowed for provenance. Current
+# manuscript rows should point to their editable modular TeX sources.
 EXPECTED_SOURCE_FILES = {
     "duality_confinement": {
         "anti_loc/extracted_math/duality_confinement_master.md",
@@ -406,9 +404,16 @@ def check_source_line_sanity(rows: list[dict]) -> list[str]:
         expected_source = EXPECTED_SOURCE_FILES.get(target_paper)
         if expected_source is None:
             continue
-        if row.get("source_file") not in expected_source:
+        source_file = str(row.get("source_file", ""))
+        modular_source = (
+            target_paper in {"rh", "duality_confinement"}
+            and source_file.startswith(f"paper/{target_paper}/")
+            and source_file.endswith(".tex")
+            and (ROOT / source_file).is_file()
+        )
+        if source_file not in expected_source and not modular_source:
             errors.append(
-                f"source sanity: row {label}: source_file={row.get('source_file')!r}, "
+                f"source sanity: row {label}: source_file={source_file!r}, "
                 f"expected one of {sorted(expected_source)!r} for target_paper={target_paper!r}"
             )
         source_line = row.get("source_line")

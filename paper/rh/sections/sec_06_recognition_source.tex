@@ -1,75 +1,100 @@
-% RH paper — § The recognition source
-% statements-of-record rows resolved here: obl:rh:gamma-sdtc-selberg.
-
 \section{The recognition source}
 \label{sec:recognition_source}
 
-\Cref{sec:translation_theorem} reduced RH on the typed zero ledger
-of \(\Sel\) to the trace-side statement \(\AZ=0\).  The remaining
-structural question is where that trace-side vanishing comes from.
-The answer in this paper is a named recognition source: the
-Selberg-class instance of Self-Dual Trace Confinement,
-\(\GamSDTCSelberg\).  The SDTC structural-law framing is supplied
-by \cite{TsiokosSDTC2026}; the present paper specializes it to the
-saturated completed Selberg trace closure \(\Sel\).
+By Theorem~T, the Riemann hypothesis is the statement \(\AZ=0\).  The
+duality-confinement route asks for this vanishing to come from
+domination records of vanishing trace.  The following hypothesis
+states what the conditional theorem of \Cref{sec:landing_chain}
+consumes; the formal record carries in addition some structure that no
+proof uses (weights, a response involution, a quantitative separation
+modulus), listed in \Cref{app:formalization}.  It is phrased with an auxiliary
+ledger in the abstract form of the duality-confinement theorem
+\citep[Remark~7.2]{TsiokosSDTC2026}, because the formal statement
+allows the domination records to live in any ordered set with a trace,
+not only among operators.
 
-The recognition source supplies structural content of the formed
-layer rather than a calculation internal to the proof of Theorem T.
-Here the content is the completed domination-record sequence
-required by the duality-confinement master theorem.  Once that
-sequence is available, the master theorem forces \(\AZ=0\), and
-Theorem T converts \(\AZ=0\) into the critical-line statement.
-
-\begin{definition}[The recognition source \(\GamSDTCSelberg\)\footnote{Encoded in the Lean formalization as a typed structure carrier, not as a Lean axiom; downstream theorems take a value of this carrier as an explicit hypothesis. See App~\ref{app:formalization}.}]
+\begin{obligation}[The recognition source \(\GamSDTCSelberg\)]
 \label{obl:rh:gamma-sdtc-selberg}
-On the saturated completed Selberg trace closure \(\Sel\), the
-recognition source \(\GamSDTCSelberg\) supplies a sequence of
-completed domination records \(B_n\) in the typed positive cone of
-\(\Sel\) such that
-\[
-  0\preceq B_n,\qquad
-  \AZ\preceq B_n,\qquad
-  \trace(B_n)\to 0
-  \quad\text{as } n\to\infty.
-\]
-Equivalently, \(\GamSDTCSelberg\) asserts that the
-duality-confinement domination hypothesis holds for the RH ledger
-inside \(\Sel\), with \(\JL\), \(\Znt\), and \(\AZ\) as the
-specialized involution, zero ledger, and anti-invariant ledger.
-\end{definition}
+Let \(\Sel\) be a shell.  We say that the recognition source
+\(\GamSDTCSelberg\) \emph{holds for} \(\Sel\) if there exist the
+following data.
+\begin{enumerate}[label=\textup{(\roman*)}]
+  \item \emph{An auxiliary ledger.}  A finite set \(X\) with an involution \(J\) (the map
+    \(\rho\mapsto x_\rho\) of item (iv) need not be injective), a set of \emph{visible} objects, a response set
+    \(Y\) with a zero element, and a readout
+    \(\psim:X\to Y\) that is separating on visible objects:
+    for visible \(x\), \(\psim(x)=0\) if and only if \(Jx=x\).
+  \item \emph{An ordered set with a trace.}  A set \(C\) with a
+    relation \(\preceq\), a subset of positive elements, a zero element,
+    a distinguished positive element \(\AX\), and a map
+    \(\tau:C\to\mathbb R\) that is monotone for \(\preceq\) and
+    nonnegative on positive elements, with \(\tau(\AX)=0\) only if
+    \(\AX\) equals the zero element.
+  \item[(ii\('\))] \emph{A link between the two.}  If \(\AX\) is the zero
+    element, then \(\psim(x)=0\) at every visible \(x\).
+  \item \emph{Domination records of vanishing trace.}  Positive
+    elements \(B_n\in C\) with \(\AX\preceq B_n\) for all \(n\) and
+    \(\tau(B_n)\to0\).
+  \item \emph{A bridge to the zeros.}  For each represented zero
+    \(\rho\) of \(\Sel\), a visible object \(x_\rho\in X\), and a map
+    \(e:R\to Y\) on the shell's coordinates with \(e(r)=0\) only if
+    \(r=0\), such that
+    \[
+      \psim(x_\rho)=e\Bigl(c(\rho)-\frac12\Bigr).
+    \]
+\end{enumerate}
+\end{obligation}
 
-The definition records the load-bearing field of the recognition
-source: the existence of the domination sequence.  The provenance of
-that field is also part of the source: it is the Selberg-class
-instance of the SDTC structural law, sitting in the V-Differential
-trace-state-only column and attached to the shell \(\Sel\), its
-trace instrument, its functional-equation involution \(\JL\), its
-zero ledger \(\Znt\), and its anti-invariant ledger \(\AZ\).  These
-provenance components matter because the source is not an unnamed
-black box: it is a typed recognition object whose mathematical role
-is to provide the domination records that the abstract
-duality-confinement apparatus requires.
+Items (i)--(iii) are an instance of the duality-confinement setting in
+its abstract form: the domination records and the trace squeeze force
+\(\AX\) to vanish, and item (ii\('\)) then gives \(\psim=0\) at every visible
+object.  None of this involves the zeta function, and neither \(\AZ\) nor \(q\)
+appears in the hypothesis; the zeros enter only through item (iv), which asserts that the auxiliary readout at the
+object attached to \(\rho\) encodes the displacement coordinate
+\(c(\rho)-\frac12\).  In this abstract form the link between
+\(\AX\) and \(\psim\) is part of the data (item (ii\('\))) rather than a
+consequence of a construction, and the next proposition shows that the
+hypothesis is exactly as strong as the critical-line statement for the
+represented zeros.  The operator form, in which \(\AX\) is the Gram
+operator of the readout, is \Cref{thm:rh:concrete-window-dc}.  Nothing in the
+hypothesis requires the auxiliary ledger to be constructed from
+zeta-function data, and its intended provenance---an instance of the
+companion paper's structural law obtained from a trace formula---is
+not established here.
 
-The conditional landing chain (\Cref{sec:landing_chain}) takes a
-value of the recognition source as an explicit hypothesis.
+The next proposition measures the strength of the hypothesis.
 
-Three candidate routes for deriving \(\GamSDTCSelberg\) from
-framework primitives were considered---the primitive role inventory,
-the audited interaction calculus, and the closure-formation
-discipline---and each was found insufficient to produce the
-trace-vanishing domination sequence.  This supports the
-recognition-source framing by confirming that the SDTC content is
-closure content of the formed layer rather than a separately derivable
-consequence of the primitive vocabulary.
-\citet{TsiokosSDTC2026} names Self-Dual Trace Confinement as the
-structural law for involutive self-dual formed closures and supplies
-the abstract duality-confinement apparatus; the present paper
-instantiates the Selberg-class recognition source on \(\Sel\) and
-uses the domination records it carries in the conditional landing
-chain.
+\begin{proposition}[Calibration of the recognition source]
+\label{prop:rh:gamma-calibration}
+For every shell \(\Sel\), \(\GamSDTCSelberg\) holds for \(\Sel\) if and
+only if \(c(\rho)=\frac12\) for every represented zero
+\(\rho\).  In particular, \(\GamSDTCSelberg\) holds for the bare shell if and only
+if the Riemann hypothesis holds.
+\end{proposition}
 
-With \(\GamSDTCSelberg\) in place, the remaining composition is
-direct: apply the duality-confinement master theorem to the
-domination records to obtain \(\AZ=0\), then apply Theorem T in the
-forward direction to obtain the critical-line statement on \(\Znt\).
-That composition is the subject of \Cref{sec:landing_chain}.
+\begin{proof}
+If \(\GamSDTCSelberg\) holds, \Cref{thm:rh:conditional} below gives
+\(c(\rho)=\frac12\) for every represented zero.
+Conversely, suppose \(c(\rho)=\frac12\) for all represented
+zeros.  Take \(X\) a single visible point with \(J\) the identity,
+\(Y=\mathbb R\), \(\psim=0\), \(C=\mathbb R\) with the usual order and positive elements
+\([0,\infty)\),
+\(\AX=0\), \(B_n=0\), \(\tau\) the identity, \(x_\rho\) the point, and \(e:R\to\mathbb R\) with \(e(0)=0\) and \(e(r)=1\) for \(r\neq0\)
+(a classical case distinction on the abstract set \(R\)).  Items (i)--(iii) hold trivially, \(e(r)=0\) only for \(r=0\), and item (iv)
+holds because \(c(\rho)-\frac12=0\) by the coordinate
+laws, so \(e(c(\rho)-\frac12)=0=\psim(x_\rho)\).  On the
+bare shell, \(c(\rho)=\Real\rho\) and the represented zeros
+are the nontrivial zeros, so the condition is the Riemann hypothesis
+(\Cref{thm:rh:translation-T}).
+\end{proof}
+
+Thus the recognition source, as a type of data, is exactly as strong as
+the critical-line statement it is used to prove, and on the bare shell
+establishing it is no easier than proving the Riemann
+hypothesis.  Its intended content is not its logical
+strength but its provenance: the conditional theorem becomes a proof
+only if the data are produced by an independent argument, for instance
+from a trace formula, in which item (iv) is a consequence rather than
+an assumption.  \Cref{thm:rh:concrete-window-dc} shows that the same
+calibration holds for a non-degenerate version built from the actual
+zeros.

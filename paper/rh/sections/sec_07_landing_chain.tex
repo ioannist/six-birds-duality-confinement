@@ -1,135 +1,129 @@
-% RH paper — § The conditional landing chain
-
 \section{The conditional landing chain}
 \label{sec:landing_chain}
 
-The previous section identified the structural input needed by the RH
-closure: \(\GamSDTCSelberg\) supplies domination records for
-\(\AZ\).  The landing chain imports the abstract theorem from
-\cite{TsiokosSDTC2026} that acts on such records, reproduced verbatim
-here for reference.
+This section proves the conditional theorems and the concrete
+calibration.  The reader may keep the bare shell in mind throughout: for
+it \(c(\rho)=\Real\rho\), the represented zeros are all nontrivial
+zeros, and \Cref{thm:rh:conditional,thm:rh:full-classical} say the same
+thing.  The duality-confinement theorem is used in the abstract
+form of the companion paper \citep[Remark~7.2]{TsiokosSDTC2026}: if
+\(a\) is a positive element of an ordered set, \(\tau\) is a
+nonnegative monotone real trace with \(\tau(a)=0\) only if \(a=0\), and
+\(a\preceq b_n\) with \(\tau(b_n)\to0\), then \(a=0\), because
+\(0\leq\tau(a)\leq\tau(b_n)\to0\).
 
-\begin{theorem*}[Duality-confinement membrane theorem, \cite{TsiokosSDTC2026}\footnote{Imported in the Lean formalization as a cross-paper reference; the bridge to the RH ledger is recorded in App~\ref{app:formalization}.}]
-Let \(\IOL\) be an involutive object ledger with carrier \(X\),
-involution \(J\), measure \(\mu\), anti-invariant readout
-\(\psim\), and anti-invariant ledger \(\AX\).  Assume that
-\(\psim\) is qualitatively separating.  Suppose there is a sequence
-of positive cone elements \(B_n\) such that
-\[
-  \AX\preceq B_n
-  \qquad (n=1,2,\ldots)
-\]
-and
-\[
-  \trace B_n\to0
-  \qquad (n\to\infty).
-\]
-Then \(\AX=0\) in the typed positive cone.  Consequently,
-\[
-  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
-\]
-\end{theorem*}
-
-For the RH application, the theorem needs an order \(\preceq\), a
-trace functional \(\trace\), and a separating anti-invariant readout.
-It consumes domination records; their source here is
-\(\GamSDTCSelberg\), introduced in \Cref{sec:recognition_source}.
-
-For the Selberg-class instance, the abstract ledger is \(\Sel\)
-restricted to its typed zero ledger: \(X\) is the zero-carrier
-underlying \(\Znt\), \(J\) is \(\JL\), \(\mu\) is the
-multiplicity-weighted zero measure, \(\psim\) is \(\psimRH\), and
-\(\AX\) is \(\AZ\).
-
-\begin{theorem}[Duality-confinement master theorem, applied to \(\Sel\)\footnote{Checked in the Lean formalization by typed-bridge composition over the recognition-source carrier; see App~\ref{app:formalization}.}]
+\begin{theorem}[Duality-confinement theorem applied to \(\Sel\)]
 \label{thm:rh:dc-master-applied}
-Let \(\Sel\) be the saturated completed Selberg trace closure with
-functional-equation involution \(\JL\), separating anti-invariant
-readout \(\psimRH\), and anti-invariant zero ledger \(\AZ\).  Suppose
-there is a sequence \(B_n\) of positive cone elements such that
-\[
-  \AZ\preceq B_n
-  \qquad (n=1,2,\ldots)
-\]
-and
-\[
-  \trace B_n\to0
-  \qquad (n\to\infty).
-\]
-Then \(\AZ=0\) in the typed positive cone associated to \(\Sel\).
+Let \(\Sel\) be a shell for which \(\GamSDTCSelberg\) holds
+(\Cref{obl:rh:gamma-sdtc-selberg}).  Then the
+anti-invariant ledger of the represented zeros vanishes: \(\AZ=0\).
 \end{theorem}
 
 \begin{proof}
-This is the duality-confinement membrane theorem of
-\citet{TsiokosSDTC2026} applied under the substitutions just listed.
-The qualitative-separation hypothesis is the concrete calculation of
-\Cref{def:rh:psi-minus-rh}: \(\psimRH(s)=0\) exactly on
-\(\Fix(\JL)\), and \(\psimRH(\JL(s))=-\psimRH(s)\).  The domination
-records are precisely the records supplied by the recognition source
-of \Cref{obl:rh:gamma-sdtc-selberg}.  Once the records give
-\(\AZ\preceq B_n\) and \(\trace B_n\to0\), the typed-cone squeeze
-forces \(\AZ=0\).
+By items (ii) and (iii) and the abstract squeeze, \(\AX\) is the zero
+element; by item (ii\('\)), \(\psim(x)=0\) at every visible object \(x\).
+For a represented zero \(\rho\), the object \(x_\rho\) is visible, so
+by item (iv) \(e(c(\rho)-\frac12)=\psim(x_\rho)=0\), and
+hence \(c(\rho)=\frac12\).  (Separation, item (i), gives the equivalent
+statement that \(x_\rho\) is fixed by \(J\); it is not needed for the
+conclusion.)  Every summand of \(\AZ\) therefore vanishes, and
+\(\AZ=0\) by \Cref{thm:rh:translation-T-reverse} applied to the represented zeros.
 \end{proof}
 
-The hypotheses of the membrane theorem are satisfied under these
-substitutions.  Qualitative separation follows from
-\Cref{def:rh:psi-minus-rh}: \(\psimRH(s)=0\) iff \(\Real(s)=1/2\),
-and \(\psimRH(\JL(s))=-\psimRH(s)\).  The domination records are
-those supplied by \Cref{obl:rh:gamma-sdtc-selberg}.  The passage from
-``\(\psim\) vanishes \(\mu\)-almost everywhere'' to the shell equality
-\(\AZ=0\) is a coherence assumption of the recognition source.
+The companion theorem enters this proof only through the abstract
+squeeze; the link from \(\AX\) to the readout is item (ii\('\)) and the
+link to the zeros is item (iv), both of which are assumed.
 
-Thus the conditional input from \(\GamSDTCSelberg\) becomes
-\(\AZ=0\), and Theorem T turns this into
-\(\forall\,\rho\in\Znt,\ \Real(\rho)=1/2\).
-
-\begin{theorem}[Conditional landing chain\footnote{Composed in the Lean formalization with a value of the recognition-source carrier as an explicit hypothesis; see App~\ref{app:formalization}.}]
+\begin{theorem}[Conditional landing chain]
 \label{thm:rh:conditional}
-Let \(\Sel\) be a saturated completed Selberg trace closure.  Under
-the standing assumption that \(\Sel\) is Foundations-II admissible,
-and given the recognition source \(\GamSDTCSelberg\)---the
-Selberg-class instance of Self-Dual Trace Confinement supplied by
-\citet{TsiokosSDTC2026}---the Riemann hypothesis holds on the typed
-zero ledger \(\Znt\) of \(\Sel\): every typed nontrivial zero
-\(\rho\in\Znt\) satisfies
-\[
-  \Real(\rho)=\frac{1}{2}.
-\]
+Let \(\Sel\) be a shell for which \(\GamSDTCSelberg\) holds.  Then every represented zero \(\rho\) of \(\Sel\)
+satisfies \(c(\rho)=\frac12\).  On the bare shell this says
+\(\Real\rho=\frac12\) for every nontrivial zero \(\rho\).
 \end{theorem}
 
 \begin{proof}
-The proof is a direct three-step chain.  First, the recognition
-source \(\GamSDTCSelberg\), as stated in
-\Cref{obl:rh:gamma-sdtc-selberg}, supplies a sequence \(B_n\) of
-positive cone elements with
-\[
-  \AZ\preceq B_n,
-  \qquad
-  \trace B_n\to0.
-\]
-Second, \Cref{thm:rh:dc-master-applied} applies the
-duality-confinement master theorem to this Selberg-class instance and
-therefore gives \(\AZ=0\) in the typed positive cone associated to
-\(\Sel\).  Third, the forward direction of translation theorem T,
-\Cref{thm:rh:translation-T-forward}, converts \(\AZ=0\) into
-\[
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
-\]
+\Cref{thm:rh:dc-master-applied} gives \(\AZ=0\), and the forward
+direction of Theorem~T (\Cref{thm:rh:translation-T-forward}), applied
+to the represented zeros, gives the conclusion.
 \end{proof}
 
-The conditional structure is essential.  The hypotheses are the
-standing Foundations-II admissibility of \(\Sel\)
-(\Cref{def:rh:sat-sel-shell}), the closure-content discipline that
-treats \(\GamSDTCSelberg\) as supplied structural content, and the
-typed real-coordinate identification of
-\Cref{sec:involution_and_ledger}.  Outside the Six Birds framing the
-theorem reads as the conditional implication
-\[
-  \GamSDTCSelberg \Longrightarrow \mathrm{RH},
-\]
-not as an unconditional proof of RH in standard ZFC.
+\begin{theorem}[Full classical conditional Riemann hypothesis]
+\label{thm:rh:full-classical}
+Let \(\Sel\) be a shell with coordinate system \(R\), and suppose that
+\(\GamSDTCSelberg\) holds for \(\Sel\) and that there is a
+\emph{classical-zero identification}: a map \(t:R\to\mathbb R\) with \(t(\frac12)=\frac12\)
+such that for every nontrivial zero \(s\) of \(\zeta\) there is a
+represented zero \(\rho\) with \(t(c(\rho))=\Real s\).
+Then the Riemann hypothesis holds.  For the bare shell, \(t\) is the
+identity.
+\end{theorem}
 
-An audit-closure reading of the same composition is given in
-\Cref{sec:rh-aor-instance}.
+\begin{proof}
+By \Cref{thm:rh:conditional}, \(c(\rho)=\frac12\) for every
+represented zero, so \(\Real s=t(\frac12)=\frac12\) for every nontrivial
+zero \(s\).  The Riemann hypothesis follows, because every zero of \(\zeta\) other
+than the trivial zeros lies in the strip \(0<\Real s<1\) (proof of
+\Cref{thm:rh:translation-T}).
+\end{proof}
 
-The scope and nonclaim discipline are the subject of \Cref{sec:scope_and_nonclaims}.
+Taken together with \Cref{prop:rh:gamma-calibration}, these theorems
+say that the Riemann hypothesis is equivalent to the statement that \(\GamSDTCSelberg\) holds for the bare shell.  The recognition source
+used there is degenerate: a single object carries the readout.  The
+next theorem applies the operator form of the duality-confinement
+theorem to the actual zeros, with the zeros themselves as objects.
+  Let
+\((W_n)_{n\geq1}\) be finite sets of nontrivial zeros, each closed under
+\(\JL\), such that every nontrivial zero lies in \(W_n\) for all large
+\(n\); such a sequence exists because the nontrivial zeros are countable and
+each orbit of \(\JL\) has one or two elements (take \(W_n\) to be the
+union of the orbits of the first \(n\) zeros in an enumeration).  On
+\(W_n\) take the finite weighted ledger of the companion
+paper with unit weights, response space \(\mathbb R\), response
+involution \(v\mapsto-v\), involution \(\JL\) and readout
+\(\psimRH(\rho)=\Real\rho-\frac12\).  Its operator is multiplication by the unit-weight window sum
+\(A_{W_n}=\sum_{\rho\in W_n}(\Real\rho-\frac12)^2\), and its readout is
+separating: it vanishes exactly at the fixed points of \(\JL\).  The
+response space is one-dimensional, so the operators are scalars and the
+theorem is the simplest case of the duality-confinement theorem; what
+it adds to \Cref{prop:rh:gamma-calibration} is that the objects are the
+actual zeros and the bridge is an identity rather than an
+assumption.
+
+\begin{theorem}[Concrete window form]
+\label{thm:rh:concrete-window-dc}
+With the windows \(W_n\) above, the following are equivalent:
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item for every \(n\) there are real numbers \(b_{n,k}\geq A_{W_n}\)
+    with \(b_{n,k}\to0\) as \(k\to\infty\);
+  \item there are real numbers \(b_n\geq A_{W_n}\) with \(b_n\to0\);
+  \item the Riemann hypothesis.
+\end{enumerate}
+In (a) and (b) the numbers \(b\) are the traces of positive operators
+on \(\mathbb R\) dominating the window operators, so (a) is the
+hypothesis of the duality-confinement theorem for each window, and the
+implication (a)\(\Rightarrow\)(c) is proved by that theorem.
+\end{theorem}
+
+\begin{proof}
+(a)\(\Rightarrow\)(c): for each \(n\), \(0\leq A_{W_n}\leq b_{n,k}\to0\), so
+\(A_{W_n}=0\); this is the duality-confinement theorem for this finite
+weighted ledger \citep[Theorem~7.1]{TsiokosSDTC2026}, and since the readout
+is separating every zero in \(W_n\) is fixed by \(\JL\), that is, lies on
+the critical line; every nontrivial zero lies in some
+window, and \Cref{thm:rh:translation-T} gives the Riemann hypothesis.
+(b)\(\Rightarrow\)(c): if some nontrivial zero \(\rho_0\) were off the
+line, it would lie in \(W_n\) for all large \(n\), so
+\(b_n\geq A_{W_n}\geq(\Real\rho_0-\frac12)^2>0\) for all large \(n\),
+contradicting \(b_n\to0\).  (c)\(\Rightarrow\)(a) and
+(c)\(\Rightarrow\)(b): under the Riemann hypothesis every window sum is
+zero, and the zero numbers dominate it.
+\end{proof}
+
+Unwound, condition (a) says that every window sum is zero and
+condition (b) that the window sums tend to zero; the theorem makes
+explicit that, for the actual zeros, domination records of vanishing
+trace are nothing more than such upper bounds, and that they exist
+exactly when the window sums vanish.  A
+proof of the Riemann hypothesis along this route therefore needs an
+independent source of such bounds; \Cref{sec:finite_windows} examines
+some candidate sources.

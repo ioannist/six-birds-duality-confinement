@@ -1,109 +1,43 @@
-% RH paper — § Framework
-% Drafted body for the Six Birds framework positioning section.
-%
-% statements-of-record rows resolved here: none (this section is
-% Six Birds framework positioning; theorem/definition rows resolve
-% in §3–§7 per paper/notes/statements-of-record.yml).
-
+% No numbered results (statements-of-record rows resolved here: none).
 \section{Framework}
 \label{sec:framework}
 
-The framework context for this paper is the Six Birds organization of
-formed-layer structural laws, specialized to the Riemann-zeta
-substrate.  Six Birds Theory is used here as a typed and audited
-calculus for closure formation in mathematical structures.  One
-starts with a substrate---here the completed Riemann zeta function
-together with its trace-relevant data---and records the carriers,
-observables, comparison maps, quotient maps, and audit information
-visible at the layer being studied.  When this typed record is
-declared admissibly closed under the framework's formation
-discipline, we call it a formed closure.  The present paper's formed
-closure is the saturated completed Selberg trace closure \(\Sel\),
-defined in \Cref{sec:sat_sel_shell}: the typed shell on which the
-zero ledger, trace instrument, functional-equation involution, and
-audit data all live.
+This section explains the framework terms used in the paper.  No
+proof depends on them, and a reader interested only in the
+mathematics may skip to \Cref{sec:involution_and_ledger}.
 
-The admissibility and recordkeeping vocabulary are inherited from the
-Six Birds foundations.  Foundations II supplies the schema-level
-discipline used to state that a typed shell carries the required
-admissibility data, including the lawful trace instrument and the
-visibility bookkeeping attached to it \cite{TsiokosFoundationsII2026}.
-Foundations III supplies the audited judgment vocabulary used later
-when the conditional landing chain is rendered as a framework-relative
-claim \cite{TsiokosFoundationsIII2026}.  The underlying point is
-simpler than the terminology: the framework does not replace the
-classical zeta function, its functional equation, or the zero set.
-It fixes a typed layer at which those data are organized and states
-which structural facts are treated as available at that layer.
+The author's Six Birds framework \citep{TsiokosFoundationsI2026}
+describes a mathematical theory as the collection of fixed points of
+an idempotent completion rule; later papers add a discipline for which
+candidate objects are admissible \citep{TsiokosFoundationsII2026} and
+a finite vocabulary for what an observer can see and certify
+\citep{TsiokosFoundationsIII2026}.  Within it, a \emph{structural law}
+is a named hypothesis asserting that a specified class of structures
+carries certain data, and the data it asserts are called its
+\emph{recognition source}.  The point of the naming is bookkeeping:
+every result that uses the hypothesis can be seen to use it.
 
-Throughout the paper, closure content is treated as a structural
-fact of the formed layer rather than something that must be
-re-derived from lower framework primitives.  A recognition source
-is the name for such supplied content: an explicit hypothesis about
-the substrate, with typed fields recording the data it supplies.
-For this paper the recognition source is \(\GamSDTCSelberg\), which
-supplies the domination-record sequence on \(\Sel\) that the
-duality-confinement mechanism consumes.  Translation theorem T
-(\Cref{sec:translation_theorem}) is an ordinary theorem about
-\(\AZ\): it says that \(\AZ=0\) is equivalent to the typed RH
-statement.  \(\GamSDTCSelberg\), by contrast, is not proved here;
-it is the named structural source whose presence makes the
-conditional landing chain run.
+The structural law relevant here is Self-Dual Trace Confinement
+(SDTC) of the companion paper \citep{TsiokosSDTC2026}, in the setting
+recalled in \Cref{sec:intro} (a strongly measurable observable in a
+real Hilbert space intertwining an involution with a linear isometric
+involution): in a specified class of closures with a genuine involutive self-duality, observed
+through a separating odd readout, the structure supplies positive trace-class operators \(B_n\) with
+\(\AX\preceq B_n\) and \(\trace B_n\to0\), where \(\AX\) is the Gram
+operator of the square-integrable odd readout.
+That paper proves the corresponding confinement theorem and its
+converse, and shows that for a single ledger with a separating readout
+the hypothesis is equivalent to confinement.  The present paper
+specializes the hypothesis to the zeros of the zeta function, where it
+is called \(\GamSDTCSelberg\): the subscript records that its intended
+source is a trace formula of Selberg type, which is not constructed
+here.  Consistently with the companion paper, \(\GamSDTCSelberg\) turns out to be equivalent to the Riemann hypothesis
+on the bare shell of all nontrivial zeros with their real parts
+(\Cref{sec:recognition_source,sec:landing_chain}).
 
-The V-Differential classification organizes such structural laws by
-the determining-state information the formed layer may expose.  A
-determining state is the internal state through which observable
-behavior is required to factor; in a trace-state-only column, the
-layer may expose trace observables on a typed positive cone but not
-a richer witness that would solve the target problem directly.  For
-the RH closure, the visible currency is \(\AZ\), the order
-\(\preceq\), and the trace functional \(\trace\); the admissible
-content has the form of trace domination records
-\[
-  \AZ \preceq B_n,
-  \qquad
-  \trace B_n \to 0,
-\]
-not a hidden list of zero locations.  \citet{TsiokosSDTC2026}
-identifies Self-Dual Trace Confinement, \(\GamSDTC\), as the
-V-Differential trace-state-only law for involutive self-dual formed
-closures; the present paper is the worked single-substrate
-application of that apparatus to \(\Sel\), conditional on the
-Selberg-class recognition source.
-
-Within the broader Six Birds program, SDTC sits beside parallel
-internal developments that address other formed-layer closures---in
-particular the incompressible Navier--Stokes regularity closure and
-the PvNP closure---using the same architecture: a recognition source
-supplies structural content of the formed layer, and an apparatus
-theorem extracts the advertised mathematical consequence once that
-content is present.  These developments are mentioned only to
-position SDTC inside the program; none is an input to the RH
-construction in this paper, and no result from them is used below.
-
-The cross-paper dependency is one-way.  \citet{TsiokosSDTC2026}
-develops the abstract apparatus---the involutive object ledger, the
-separating anti-invariant readout, the typed positive cone,
-completed domination records, and the duality-confinement membrane
-theorem.  The present paper imports that development substantively
-for three items: the master theorem (reproduced where invoked in
-\Cref{sec:landing_chain}), the SDTC structural-law framing, and the
-V-Differential trace-state-only placement of the RH instance.  The
-duality-confinement paper is self-contained and does not depend on
-results derived here.
-
-With this framework in place, the next sections stay close to the
-mathematics.  \Cref{sec:involution_and_ledger} defines the
-functional-equation involution \(\JL(s)=1-\bar{s}\), the
-anti-invariant readout \(\psimRH(s)=\Real(s)-1/2\), the typed
-nontrivial-zero ledger \(\Znt\), and the scalar ledger \(\AZ\).
-\Cref{sec:sat_sel_shell} packages these objects into \(\Sel\).
-\Cref{sec:translation_theorem} proves that \(\AZ=0\) is exactly the
-RH statement on the typed zero ledger, while
-\Cref{sec:recognition_source} and \Cref{sec:landing_chain} explain
-how \(\GamSDTCSelberg\) supplies the domination records and how the
-master theorem converts them into \(\AZ=0\).  The framework
-vocabulary in this section is just the organization needed to read
-that chain: formed closure, closure content, trace-state-only
-visibility, recognition source, and the one-way import from
-\citet{TsiokosSDTC2026}.
+Two further companion papers supply vocabulary used in
+\Cref{sec:rh-aor-instance,sec:finite_windows}: an audit calculus for
+classifying the hypotheses of an argument \citep{TsiokosAOR2026}, and
+a residual operator measuring what a probe fails to see
+\citep{TsiokosXiCompanion2026}.  Only elementary special cases of the
+latter are used, and they are defined where needed.

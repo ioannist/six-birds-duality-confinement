@@ -1,5 +1,5 @@
 $out_dir = 'build';
 $aux_dir = 'build';
 
-# After successful build, flatten .tex into a single file in build/
-$success_cmd = 'latexpand %S -o %Y/%R_flat.tex';
+# After a successful build, synchronize the local standalone source and PDF.
+$success_cmd = 'python3 ../../scripts/sync_paper.py rh';

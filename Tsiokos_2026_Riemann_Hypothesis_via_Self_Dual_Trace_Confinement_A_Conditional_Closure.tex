@@ -1,3 +1,5 @@
+% Generated from paper/rh/main.tex by scripts/sync_paper.py.
+% Edit the modular sources and regenerate this copy.
 \documentclass[11pt]{article}
 
 \usepackage[T1]{fontenc}
@@ -20,6 +22,9 @@
 \usepackage[numbers]{natbib}
 \usepackage{doi}
 \usepackage{xurl}
+\usepackage{longtable}
+\usepackage{needspace}
+\usepackage{aliascnt}
 \usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{orcidlink}
@@ -51,20 +56,25 @@
 \newcommand{\GamSDTC}{\Gamma_{\mathrm{SDTC}}}
 
 \newcommand{\SiblingDC}{[1]}
- 
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem*{theorem*}{Theorem}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\sharedtheorem}[2]{\newaliascnt{#1}{theorem}\newtheorem{#1}[#1]{#2}\aliascntresetthe{#1}}
+\sharedtheorem{lemma}{Lemma}
+\sharedtheorem{proposition}{Proposition}
+\sharedtheorem{corollary}{Corollary}
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{remark}[theorem]{Remark}
+\sharedtheorem{definition}{Definition}
+\sharedtheorem{obligation}{Hypothesis}
+\sharedtheorem{classification}{Record}
+\sharedtheorem{remark}{Remark}
+\newtheorem*{example}{Example}
 \floatstyle{ruled}
 \newfloat{algorithm}{tbp}{loa}
 \floatname{algorithm}{Algorithm}
 
 \urlstyle{same}
+\DeclareRobustCommand{\leanid}[1]{{\def\UrlBreaks{\do\.\do\_}\def\UrlBigBreaks{}\def\UrlNoBreaks{}\nolinkurl{#1}}}
 \makeatletter
 \g@addto@macro\UrlBreaks{\do\-\do\:}
 \makeatother
@@ -89,6 +99,12 @@
 \crefname{definition}{definition}{definitions}
 \Crefname{definition}{Definition}{Definitions}
 \crefname{remark}{remark}{remarks}
+\crefname{appendix}{Appendix}{Appendices}
+\Crefname{appendix}{Appendix}{Appendices}
+\crefname{obligation}{hypothesis}{hypotheses}
+\Crefname{obligation}{Hypothesis}{Hypotheses}
+\crefname{classification}{record}{records}
+\Crefname{classification}{Record}{Records}
 \Crefname{remark}{Remark}{Remarks}
 \setlist[enumerate]{leftmargin=*, itemsep=2pt, topsep=4pt}
 \setlength{\droptitle}{-3.2em}
@@ -105,14 +121,14 @@
 \interfootnotelinepenalty=10000
 \allowdisplaybreaks[2]
 \fancypagestyle{firstpage}{\fancyhf{}
-  \fancyfoot[C]{\scriptsize Automorph Inc., Wilmington, DE, USA \quad \texttt{ioannis@automorph.io} \quad DOI: 10.5281/zenodo.20713535\\[1pt]\textcopyright\ 2026 \quad CC-BY 4.0 \quad Preprint --- not peer reviewed.}
+  \fancyfoot[C]{\scriptsize Automorph Inc., Wilmington, DE, USA \quad \texttt{ioannis@automorph.io} \quad DOI: 10.5281/zenodo.23086975\\[1pt]\textcopyright\ 2026 \quad CC-BY 4.0 \quad Preprint --- not peer reviewed.}
   \renewcommand{\headrulewidth}{0pt}
   \renewcommand{\footrulewidth}{0pt}
 }
 
 \title{Riemann Hypothesis via Self-Dual Trace Confinement: A Conditional Closure}
 \author{Ioannis Tsiokos\,\orcidlink{0009-0009-7659-5964}}
-\date{\today}
+\date{Version 3: October 1, 2026\\[2pt] \footnotesize (Version 1: June 17, 2026)}
 \hypersetup{
 pdftitle={Riemann Hypothesis via Self-Dual Trace Confinement: A Conditional Closure},
   pdfauthor={Ioannis Tsiokos},
@@ -125,2026 +141,1494 @@ pdftitle={Riemann Hypothesis via Self-Dual Trace Confinement: A Conditional Clos
 \thispagestyle{firstpage}
 
 \begin{abstract}
-This paper gives a conditional Six Birds closure of the Riemann
-hypothesis by moving the question from classical analytic number
-theory to a formed-layer trace setting.  The substrate is the
-saturated completed Selberg trace closure of the completed Riemann
-zeta function, equipped with the functional-equation involution and
-with a typed ledger of nontrivial zeros.  A translation theorem T
-shows that the anti-invariant zero ledger of the completed zeta
-shell vanishes, \(\AZ=0\), if and only if every typed nontrivial
-zero has real part \(1/2\).  The conditional
-landing chain uses the Selberg-class instance of Self-Dual Trace
-Confinement supplied by \citet{TsiokosSDTC2026}: its recognition
-source gives domination records whose vanishing trace forces
-\(\AZ=0\), and theorem T converts that ledger collapse into the
-critical-line statement.
-Stated in the audit-closure language of \citet{TsiokosAOR2026},
-the same conditional chain is recorded as a local
-refinement-stable audited-operational-realisability instance,
-\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\),
-whose typed-zero-ledger readout is the critical-line statement.
-
-Outside Six Birds, the result is the conditional theorem
-\(\Gamma_{\mathrm{SDTC}\text{-}\mathrm{Selberg}}\Rightarrow
-\mathrm{RH}\) on the typed zero ledger.  This is not an unconditional
-proof of the Riemann hypothesis in standard ZFC.
-The shell's admissibility is a standing Foundations-II hypothesis, and
-the real-part coordinate of a typed zero is a representation parameter
-identified with the classical real part by construction-parameter
-assignment.  The development is formalized in Lean as a mathlib-free
-mechanization (Appendix~\ref{app:formalization}).
+For any positive integer weights \(m_\rho\), the Riemann hypothesis is
+equivalent to the vanishing of \(\AZ=\sum_\rho m_\rho(\Real\rho-\frac12)^2\)
+over the nontrivial zeros.  A companion paper proves a
+duality-confinement theorem: for a strongly measurable observable with
+values in a real Hilbert space that intertwines an involution with a
+linear isometric involution and has square-integrable odd part, the
+Gram operator of the odd part vanishes whenever it is dominated by
+positive trace-class operators of vanishing trace.  This paper applies
+the theorem to the reflection \(s\mapsto1-\bar s\) in the critical line
+and measures what the application is worth.  A named hypothesis
+\(\GamSDTCSelberg\) on a shell of represented zeros, supplying
+domination records and a bridge to the zeros' coordinates, implies that
+every represented zero has coordinate \(\frac12\); together with a map
+from coordinates to the reals that sends \(\frac12\) to \(\frac12\) and
+carries the represented zeros onto the real parts of all nontrivial
+zeros, it implies the Riemann hypothesis.  Conversely, the hypothesis
+holds exactly when every represented zero has coordinate \(\frac12\), so
+on the bare shell of all nontrivial zeros with their real parts it is
+equivalent to the Riemann hypothesis; so is the concrete version on
+finite windows of actual zeros that are closed under
+\(s\mapsto1-\bar s\), carry unit weights and eventually contain every
+zero.  The conditional theorem is therefore a reformulation, not
+evidence.  By elementary linear algebra we also show that, for windows
+closed under \(s\mapsto1-s\) with symmetric positive weights that
+eventually contain every zero, several natural bounds for the window
+sums are again equivalent to the Riemann hypothesis, and that on a
+nonempty window operator-level transport bounds for the identity
+target cannot tend to zero.  No arithmetic estimate is supplied, and no
+unconditional result is claimed.  The mathematical statements are
+formalized in Lean~4 with Mathlib, using its statement of the Riemann
+hypothesis; Appendix~A gives the scope.
 \end{abstract}
 
 \medskip
-\noindent\textbf{Keywords.} Riemann hypothesis; conditional theorem; Selberg-class trace; self-dual trace confinement; closure formation; Six Birds Theory; audited operational realisability; Lean formalization.
-
-
+\noindent\textbf{Keywords.} Riemann hypothesis; zeros of the zeta function; conditional theorem; positive operators; self-dual trace confinement; Six Birds Theory; Lean formalization.
 
 \section{Introduction}
 \label{sec:intro}
 
-What would it take to settle whether all nontrivial zeros of the
-Riemann zeta function lie on the critical line?  In its standard
-form, the Riemann hypothesis~\citep{Riemann1859} asserts that every
-nontrivial zero \(\rho\) of \(\zeta\) satisfies
+The Riemann hypothesis \citep{Riemann1859} asserts that every
+nontrivial zero \(\rho\) of the Riemann zeta function satisfies
+\(\Real\rho=\frac12\).  Because the nontrivial zeros are the zeros of
+the completed zeta function
+\(\Lzeta(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)\) in the strip
+\(0<\Real s<1\), the hypothesis can be restated as the vanishing of a
+single nonnegative quantity,
 \[
-  \Real(\rho)=\frac12.
+  \AZ=\sum_{\rho}m_\rho\Bigl(\Real\rho-\frac12\Bigr)^2
+  \in[0,\infty],
 \]
-Classical attacks on this statement seek an unconditional proof
-inside the analytic-number-theoretic substrate itself: spectral
-Hilbert--P\'olya programs \citep{BerryKeating1990,Odlyzko1987},
-adelic and noncommutative-geometric approaches
-\citep{Connes1999}, Hilbert spaces of entire functions
-\citep{deBranges1968,deBranges1986}, Weil-positivity formulations
-\citep{Weil1952,Bombieri2000}, and related programs all work within
-their own classical carriers.  This paper
-takes a different route.  It asks whether RH can be read as the
-vanishing of a positive typed quantity and then made to vanish by a
-structural closure mechanism.  The quantity is the anti-invariant zero
-ledger
+the sum running over the nontrivial zeros \(\rho\) with positive
+weights \(m_\rho\) (for instance their multiplicities).  This
+reformulation is elementary (\Cref{thm:rh:translation-T}); its
+interest here is that it places the Riemann hypothesis inside the
+setting of a companion paper \citep{TsiokosSDTC2026}.  There \(J\) is
+an involution of a measure space \(X\), \(\psi\) is a strongly
+measurable observable with values in a real Hilbert space that
+intertwines \(J\) with a linear isometric involution, and its odd part
+\(\psim\) is square-integrable and vanishes exactly on the fixed locus
+of \(J\).  The Gram operator \(\AX=\int_X\psim\psim^*\) is then shown to
+vanish---and the mass to lie on the fixed locus---as soon as it is
+dominated by positive trace-class operators of vanishing trace; the
+proof is a one-line trace squeeze.  The global square-integrability hypothesis would require \(\AZ<\infty\),
+which is not known to hold unconditionally; the
+applications below use either an abstract form of the theorem or
+finite windows of zeros, where no such issue arises.  For the zeros of \(\zeta\) the relevant
+involution is
 \[
-  \AZ=\sum_{\rho\in \Znt} m_\rho\,
-       \left|\Real(\rho)-\frac12\right|^2,
+  \JL(s)=1-\bar s,
 \]
-where \(\Znt\) is the multiplicity-weighted ledger of nontrivial zeros
-of the completed zeta function.  Its vanishing is, by a direct
-positive-sum calculation, equivalent to the critical-line statement.
-The remaining question is not how to prove RH by one of the classical
-routes above, but how a formed closure can force \(\AZ\) to vanish.
+reflection in the critical line, which maps zeros to zeros by the
+functional equation and the reflection principle; its fixed locus is
+the critical line, and the odd readout is \(\psimRH(s)=\Real s-\frac12\).
 
-The framework used here is Six Birds Theory, a typed and audited
-calculus for naming closure formation in mathematical structures.  A
-formed closure, in the sense used in this paper, is a typed presentation
-of a mathematical substrate together with the assumption that its
-carriers, observables, comparison maps, and audit data have been
-admissibly closed under the framework's formation discipline.  The
-substrate for the present paper is the saturated completed Selberg trace
-closure \(\Sel\): a typed shell aggregating the completed zeta data, a
-lawful trace instrument \(\Itr\), the functional-equation symmetry, the
-nontrivial-zero ledger, the anti-invariant zero ledger, visibility data,
-and audit provenance.  The functional-equation involution is
-\[
-  \JL(s)=1-\bar{s},
-\]
-whose fixed locus is the critical line.  The corresponding
-anti-invariant readout is the signed real-part displacement
-\[
-  \psimRH(s)=\Real(s)-\frac12.
-\]
-These objects are defined in \Cref{sec:involution_and_ledger}; the
-shell \(\Sel\) is defined in \Cref{sec:sat_sel_shell}.
+This paper examines that route carefully.  Its conclusions are as
+follows.
 
-The main theorem is conditional.  Given the shell-side closure
-hypothesis recorded by the Foundations-II admissibility field of
-\(\Sel\), together with the recognition source
-\(\GamSDTCSelberg\), the Riemann hypothesis holds on the typed zero
-ledger of \(\Sel\).  A recognition source here means a named
-structural hypothesis supplied as content of the formed layer, not
-a theorem derived from lower framework primitives.  In this
-instance, \(\GamSDTCSelberg\) is the Selberg-class instance of
-Self-Dual Trace Confinement developed in \cite{TsiokosSDTC2026},
-and it supplies on the formed Selberg trace layer a sequence of
-completed domination records
-\[
-  \AZ \preceq B_n,
-  \qquad
-  \trace B_n \to 0.
-\]
-The duality-confinement membrane theorem of \cite{TsiokosSDTC2026}
-then forces \(\AZ=0\) in the typed positive cone, and the
-translation theorem of the present paper converts that vanishing
-into \(\Real(\rho)=1/2\) for every \(\rho\in\Znt\).  Stated in the
-audit-closure language of \citet{TsiokosAOR2026}, the same
-composition is recorded as a local refinement-stable
-audited-operational-realisability instance
-\[
-  \Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}},
-\]
-whose typed-zero-ledger readout is the critical-line statement on
-\(\Znt\); \Cref{sec:rh-aor-instance} unfolds the
-eight-stratum / twelve-type residual classification through which
-the landing chain is organized.  Outside the Six Birds framing the
-result therefore reads as the conditional theorem
-\[
-  \GamSDTCSelberg \Longrightarrow \mathrm{RH},
-\]
-with \(\mathrm{RH}\) delivered as the typed-ledger readout of the
-audit-closed realisability instance.  It is not an unconditional
-standard-ZFC proof of RH, and the AOR-realisability framing does
-not remove the recognition-source requirement.
+\begin{enumerate}
+  \item \emph{A conditional theorem.}  A named hypothesis
+    \(\GamSDTCSelberg\) (\Cref{obl:rh:gamma-sdtc-selberg}) supplies
+    positive domination records of vanishing trace for an auxiliary
+    duality-confinement ledger, together with a bridge encoding, at each represented zero \(\rho\) of a
+    shell (\Cref{sec:sat_sel_shell}), the displacement coordinate
+    \(c(\rho)-\frac12\) in that ledger's odd readout.  Under
+    this hypothesis every represented zero has coordinate
+    \(c(\rho)=\frac12\) (\Cref{thm:rh:conditional}).  If,
+    in addition, a map from coordinates to real numbers, sending
+    \(\frac12\) to \(\frac12\), carries the represented zeros onto the
+    real parts of all nontrivial zeros, then the Riemann hypothesis
+    holds (\Cref{thm:rh:full-classical}).
+  \item \emph{A calibration of the hypothesis.}  For every shell, the hypothesis holds exactly when every represented zero
+    has coordinate \(\frac12\); a one-point ledger suffices
+    (\Cref{prop:rh:gamma-calibration}).  On the bare shell, whose
+    represented zeros are the nontrivial zeros with their real parts as
+    coordinates, the hypothesis is therefore equivalent to the Riemann
+    hypothesis.  The same is true of the operator form, with the actual zeros as
+    objects, in which the duality-confinement theorem is applied to a
+    sequence of finite windows of actual zeros,
+    each closed under \(\JL\), that eventually contains every zero
+    (\Cref{thm:rh:concrete-window-dc}).  The conditional theorem
+    is therefore a reformulation of the Riemann hypothesis in the
+    language of domination records, not evidence for it.
+  \item \emph{Finite windows.}  On a finite window \(W\) of zeros
+    closed under the functional equation, with weights invariant under
+    it, the window sum \(\sum_{\rho\in W}m_\rho(\Real\rho-\frac12)^2\)
+    is the squared norm of a vector that is invisible to the natural
+    invariant probe (\Cref{sec:finite_windows}).  This identifies several ``payments''---upper bounds for the window
+    sums, or for operators dominating them, that one might hope to
+    establish independently.
+    These facts are elementary.  Along windows that eventually contain
+    every zero, each of several natural payment conditions is again
+    equivalent to the Riemann hypothesis; and on a nonempty window, operator-level transport bounds for the
+    identity target, of the form made precise in
+    \Cref{prop:rh:window-obstructions}, cannot tend to zero.
+\end{enumerate}
 
-The translation step is elementary.  \Cref{sec:translation_theorem}
-proves Theorem T:
-\[
-  \AZ=0
-  \quad\Longleftrightarrow\quad
-  \forall \rho\in\Znt,\ \Real(\rho)=\frac12.
-\]
-The forward direction uses only that each summand
-\(m_\rho |\Real(\rho)-1/2|^2\) is nonnegative and that
-\(m_\rho>0\): if the total sum is zero, every squared distance from
-the critical line is zero.  The reverse direction is substitution.
-Theorem T carries no recognition-source content; it translates the
-positive ledger statement produced by the duality-confinement
-mechanism into the number-theoretic critical-line statement.
+No unconditional statement about the zeros of \(\zeta\) is claimed.
+Two features should be said at the outset.  First, no quantitative or prime-side input is used or supplied beyond
+the classical zero-free half-plane.  The arguments use
+only analytic facts about \(\zeta\)---the functional equation and
+conjugation symmetry, countability of the zeros, the poles and non-vanishing of the Gamma factor, and the absence of zeros with \(\Real s\geq1\)---and
+for any countable set of points in the strip with positive weights and
+the same symmetries they prove the corresponding statements, with that
+set's own critical-line property in place of the Riemann hypothesis.  Second, the functional-analytic content of the
+companion theorem is not exercised: the conditional theorem uses an
+abstract trace squeeze, and the concrete form uses operators on
+\(\mathbb R\), that is, real numbers.  What the paper contributes is a
+precise account of what a proof along these lines would have to supply,
+and a demonstration that the obvious candidates are no easier than the
+Riemann hypothesis itself.  The classical programs aimed at the Riemann
+hypothesis---spectral interpretations \citep{BerryKeating1990},
+trace formulas in noncommutative geometry \citep{Connes1999}, Hilbert
+spaces of entire functions \citep{deBranges1968,deBranges1986}, and
+Weil's positivity criterion \citep{Weil1952,Bombieri2000} and Li's
+criterion \citep{Li1997}---are not used, and nothing here offers an
+alternative to them.
 
-The paper's scope is correspondingly narrow.  The main result is
-conditional on \(\GamSDTCSelberg\); no unconditional RH claim in standard
-ZFC is made, and \(\GamSDTCSelberg\) is not claimed to be derivable
-from framework primitives.  The conditional theorem takes a value of
-the recognition source as an explicit hypothesis.  The
-real-part coordinate of a typed zero is represented by a parameter;
-under construction-parameter assignment when the shell is
-instantiated, this parameter is identified with the classical real
-part of a nontrivial zero of \(\zeta\).  Deriving this identification
-from analytic-number-theoretic infrastructure is left as a future extension.
-Admissibility of \(\Sel\) under the seven Foundations-II schemas is
-carried as an audit witness in the shell, not derived here.  The
-classical RH programs named above are neither refuted nor
-circumvented in their native sense: they aim at unconditional RH
-within their classical substrates, while the present paper
-establishes a conditional formed-layer result on the typed Selberg
-trace shell.  The generalized Riemann hypothesis lies outside the
-scope; the construction is instantiated for \(L=\zeta\) only.
+The mathematical statements of
+\Cref{sec:involution_and_ledger,sec:sat_sel_shell,sec:translation_theorem,sec:recognition_source,sec:landing_chain,sec:finite_windows}
+are formalized in Lean~4 with the Mathlib library, and the Riemann
+hypothesis in the conclusions is Mathlib's statement of it; the records
+of \Cref{sec:rh-aor-instance} are formalized as lists of labels, and
+the remarks are not formalized (\Cref{app:formalization}).  The
+conditional theorem is stated for a \emph{shell}, a record whose
+fields name the data an intended trace-formula realization would
+provide (\Cref{sec:sat_sel_shell}); beyond the represented zeros and
+their coordinates these data carry no analytic content.
 
-The remainder of the paper follows this division of labor.
-\Cref{sec:framework} gives the minimal Six Birds background needed for
-the closure reading.  \Cref{sec:involution_and_ledger} constructs the
-functional-equation involution, the anti-invariant readout, the
-nontrivial-zero ledger, and \(\AZ\).  \Cref{sec:sat_sel_shell}
-packages the saturated Selberg trace closure.  \Cref{sec:translation_theorem}
-proves Theorem T.  \Cref{sec:recognition_source} states the recognition
-source and its provenance, and \Cref{sec:landing_chain} composes it
-with the duality-confinement master theorem and Theorem T to obtain the
-conditional landing chain in both its critical-line and
-AOR-realisability forms; \Cref{sec:rh-aor-instance} then unfolds the
-realisability form into the eight-stratum / twelve-type residual
-classification used by \citet{TsiokosAOR2026}.
-\Cref{sec:scope_and_nonclaims} records the nonclaims explicitly, and
-\Cref{sec:discussion,sec:conclusion} place the result in the broader
-structural program.  Appendix~\ref{app:formalization} documents the formalization.
- 
-
-\section{Framework}
+\paragraph{Organization.}
+\Cref{sec:framework} explains the framework vocabulary.
+\Cref{sec:involution_and_ledger} defines the involution, the readout
+and the zero ledgers; \Cref{sec:sat_sel_shell} describes the shell;
+\Cref{sec:translation_theorem} proves that the ledger vanishes exactly
+when the zeros lie on the critical line.
+\Cref{sec:recognition_source,sec:landing_chain} state the hypothesis
+\(\GamSDTCSelberg\), prove the conditional theorems and their
+calibration.  \Cref{sec:rh-aor-instance} records a classification of
+the argument's hypotheses in the audit vocabulary of a further
+companion paper.  \Cref{sec:finite_windows} treats finite windows.
+\Cref{sec:scope_and_nonclaims,sec:discussion,sec:conclusion} discuss
+scope and context.
+ \section{Framework}
 \label{sec:framework}
 
-The framework context for this paper is the Six Birds organization of
-formed-layer structural laws, specialized to the Riemann-zeta
-substrate.  Six Birds Theory is used here as a typed and audited
-calculus for closure formation in mathematical structures.  One
-starts with a substrate---here the completed Riemann zeta function
-together with its trace-relevant data---and records the carriers,
-observables, comparison maps, quotient maps, and audit information
-visible at the layer being studied.  When this typed record is
-declared admissibly closed under the framework's formation
-discipline, we call it a formed closure.  The present paper's formed
-closure is the saturated completed Selberg trace closure \(\Sel\),
-defined in \Cref{sec:sat_sel_shell}: the typed shell on which the
-zero ledger, trace instrument, functional-equation involution, and
-audit data all live.
+This section explains the framework terms used in the paper.  No
+proof depends on them, and a reader interested only in the
+mathematics may skip to \Cref{sec:involution_and_ledger}.
 
-The admissibility and recordkeeping vocabulary are inherited from the
-Six Birds foundations.  Foundations II supplies the schema-level
-discipline used to state that a typed shell carries the required
-admissibility data, including the lawful trace instrument and the
-visibility bookkeeping attached to it \cite{TsiokosFoundationsII2026}.
-Foundations III supplies the audited judgment vocabulary used later
-when the conditional landing chain is rendered as a framework-relative
-claim \cite{TsiokosFoundationsIII2026}.  The underlying point is
-simpler than the terminology: the framework does not replace the
-classical zeta function, its functional equation, or the zero set.
-It fixes a typed layer at which those data are organized and states
-which structural facts are treated as available at that layer.
+The author's Six Birds framework \citep{TsiokosFoundationsI2026}
+describes a mathematical theory as the collection of fixed points of
+an idempotent completion rule; later papers add a discipline for which
+candidate objects are admissible \citep{TsiokosFoundationsII2026} and
+a finite vocabulary for what an observer can see and certify
+\citep{TsiokosFoundationsIII2026}.  Within it, a \emph{structural law}
+is a named hypothesis asserting that a specified class of structures
+carries certain data, and the data it asserts are called its
+\emph{recognition source}.  The point of the naming is bookkeeping:
+every result that uses the hypothesis can be seen to use it.
 
-Throughout the paper, closure content is treated as a structural
-fact of the formed layer rather than something that must be
-re-derived from lower framework primitives.  A recognition source
-is the name for such supplied content: an explicit hypothesis about
-the substrate, with typed fields recording the data it supplies.
-For this paper the recognition source is \(\GamSDTCSelberg\), which
-supplies the domination-record sequence on \(\Sel\) that the
-duality-confinement mechanism consumes.  Translation theorem T
-(\Cref{sec:translation_theorem}) is an ordinary theorem about
-\(\AZ\): it says that \(\AZ=0\) is equivalent to the typed RH
-statement.  \(\GamSDTCSelberg\), by contrast, is not proved here;
-it is the named structural source whose presence makes the
-conditional landing chain run.
+The structural law relevant here is Self-Dual Trace Confinement
+(SDTC) of the companion paper \citep{TsiokosSDTC2026}, in the setting
+recalled in \Cref{sec:intro} (a strongly measurable observable in a
+real Hilbert space intertwining an involution with a linear isometric
+involution): in a specified class of closures with a genuine involutive self-duality, observed
+through a separating odd readout, the structure supplies positive trace-class operators \(B_n\) with
+\(\AX\preceq B_n\) and \(\trace B_n\to0\), where \(\AX\) is the Gram
+operator of the square-integrable odd readout.
+That paper proves the corresponding confinement theorem and its
+converse, and shows that for a single ledger with a separating readout
+the hypothesis is equivalent to confinement.  The present paper
+specializes the hypothesis to the zeros of the zeta function, where it
+is called \(\GamSDTCSelberg\): the subscript records that its intended
+source is a trace formula of Selberg type, which is not constructed
+here.  Consistently with the companion paper, \(\GamSDTCSelberg\) turns out to be equivalent to the Riemann hypothesis
+on the bare shell of all nontrivial zeros with their real parts
+(\Cref{sec:recognition_source,sec:landing_chain}).
 
-The V-Differential classification organizes such structural laws by
-the determining-state information the formed layer may expose.  A
-determining state is the internal state through which observable
-behavior is required to factor; in a trace-state-only column, the
-layer may expose trace observables on a typed positive cone but not
-a richer witness that would solve the target problem directly.  For
-the RH closure, the visible currency is \(\AZ\), the order
-\(\preceq\), and the trace functional \(\trace\); the admissible
-content has the form of trace domination records
-\[
-  \AZ \preceq B_n,
-  \qquad
-  \trace B_n \to 0,
-\]
-not a hidden list of zero locations.  \citet{TsiokosSDTC2026}
-identifies Self-Dual Trace Confinement, \(\GamSDTC\), as the
-V-Differential trace-state-only law for involutive self-dual formed
-closures; the present paper is the worked single-substrate
-application of that apparatus to \(\Sel\), conditional on the
-Selberg-class recognition source.
-
-Within the broader Six Birds program, SDTC sits beside parallel
-internal developments that address other formed-layer closures---in
-particular the incompressible Navier--Stokes regularity closure and
-the PvNP closure---using the same architecture: a recognition source
-supplies structural content of the formed layer, and an apparatus
-theorem extracts the advertised mathematical consequence once that
-content is present.  These developments are mentioned only to
-position SDTC inside the program; none is an input to the RH
-construction in this paper, and no result from them is used below.
-
-The cross-paper dependency is one-way.  \citet{TsiokosSDTC2026}
-develops the abstract apparatus---the involutive object ledger, the
-separating anti-invariant readout, the typed positive cone,
-completed domination records, and the duality-confinement membrane
-theorem.  The present paper imports that development substantively
-for three items: the master theorem (reproduced where invoked in
-\Cref{sec:landing_chain}), the SDTC structural-law framing, and the
-V-Differential trace-state-only placement of the RH instance.  The
-duality-confinement paper is self-contained and does not depend on
-results derived here.
-
-With this framework in place, the next sections stay close to the
-mathematics.  \Cref{sec:involution_and_ledger} defines the
-functional-equation involution \(\JL(s)=1-\bar{s}\), the
-anti-invariant readout \(\psimRH(s)=\Real(s)-1/2\), the typed
-nontrivial-zero ledger \(\Znt\), and the scalar ledger \(\AZ\).
-\Cref{sec:sat_sel_shell} packages these objects into \(\Sel\).
-\Cref{sec:translation_theorem} proves that \(\AZ=0\) is exactly the
-RH statement on the typed zero ledger, while
-\Cref{sec:recognition_source} and \Cref{sec:landing_chain} explain
-how \(\GamSDTCSelberg\) supplies the domination records and how the
-master theorem converts them into \(\AZ=0\).  The framework
-vocabulary in this section is just the organization needed to read
-that chain: formed closure, closure content, trace-state-only
-visibility, recognition source, and the one-way import from
-\citet{TsiokosSDTC2026}.
- 
-
-\section{Involution and ledger}
+Two further companion papers supply vocabulary used in
+\Cref{sec:rh-aor-instance,sec:finite_windows}: an audit calculus for
+classifying the hypotheses of an argument \citep{TsiokosAOR2026}, and
+a residual operator measuring what a probe fails to see
+\citep{TsiokosXiCompanion2026}.  Only elementary special cases of the
+latter are used, and they are defined where needed.
+ \section{Involution and ledger}
 \label{sec:involution_and_ledger}
 
-The first ingredients of the RH closure are the
-functional-equation involution and its anti-invariant readout.  Both
-are elementary objects on the complex plane.  Their role in the
-structural argument is not to add analytic depth, but to place the
-critical line inside the involutive-ledger pattern described in
-\Cref{sec:framework}: an involution, a fixed locus, and a scalar
-quantity that changes sign under the involution.  At this point the
-ordinary functional-equation symmetry of the completed zeta function
-becomes a typed datum of the closure.
+This section introduces the functional-equation involution, its odd
+readout, and the two zero ledgers.  Everything here is elementary; the
+point is to place the critical line in the pattern of an involution,
+its fixed locus, and a readout that changes sign.
 
 \begin{definition}[Functional-equation involution \(\JL\)]
 \label{def:rh:fe-involution}
-The functional-equation involution on the complex plane is
+The functional-equation involution is the map
+\(\JL:\mathbb C\to\mathbb C\),
 \[
-  \JL(s) = 1-\bar{s}.
+  \JL(s)=1-\bar s .
 \]
-Equivalently, if \(s=x+iy\), then
-\[
-  \JL(s) = 1-x+iy.
-\]
-Thus \(\JL\) is reflection across the vertical line
-\(\Real(s)=1/2\).
+If \(s=x+iy\), then \(\JL(s)=(1-x)+iy\): the map is reflection in the
+vertical line \(\Real s=\frac12\).
 \end{definition}
 
-This definition only isolates the affine symmetry \(s\mapsto
-1-\bar{s}\); it makes no assertion about which points are zeros.
-Points on opposite sides of the critical line are interchanged, while
-points on the critical line are unchanged.
-
-The map \(\JL\) is an involution by direct calculation:
-\[
-  \JL(\JL(s))
-    = \JL(1-\bar{s})
-    = 1-\overline{1-\bar{s}}
-    = 1-(1-s)
-    = s.
-\]
-Hence \(\JL^{2}=\mathrm{id}_{\mathbb{C}}\).  The same coordinate formula gives
-the fixed locus.  Writing \(s=x+iy\), the equation \(\JL(s)=s\) is
-\[
-  1-x+iy = x+iy,
-\]
-which is equivalent to \(x=1/2\).  Therefore
-\[
-  \Fix(\JL)
-    =
-  \{\,s\in\mathbb{C} : \Real(s)=1/2\,\},
-\]
-the critical line.  Conversely, any point with real part \(1/2\) is unchanged by
-\(\JL\), so the displayed set is exactly the fixed locus.  The
-critical-line condition is therefore equivalent to the statement
-that a point is fixed by the functional-equation involution; this
-is the form used later, when RH on the typed zero ledger is read as
-the statement that every ledger point lies in \(\Fix(\JL)\).
+Directly from the formula, \(\JL(\JL(s))=1-\overline{1-\bar s}=s\), and
+\(\JL(s)=s\) if and only if \(\Real s=\frac12\).  Thus \(\JL\) is an
+involution whose fixed locus is the critical line.  The completed zeta
+function satisfies \(\Lzeta(1-s)=\Lzeta(s)\) and
+\(\Lzeta(\bar s)=\overline{\Lzeta(s)}\)
+\citep{TitchmarshHeathBrown1986,Edwards1974}, so \(\JL\) maps zeros of
+\(\Lzeta\) to zeros of \(\Lzeta\), preserving the strip
+\(0<\Real s<1\).
 
 \begin{definition}[Anti-invariant readout \(\psimRH\)]
 \label{def:rh:psi-minus-rh}
-The anti-invariant readout associated with \(\JL\) is the signed
-horizontal displacement from the critical line,
+The anti-invariant readout of \(\JL\) is the signed horizontal
+displacement from the critical line,
 \[
-  \psimRH(s)=\Real(s)-\frac{1}{2}.
+  \psimRH(s)=\Real s-\frac12 .
 \]
 \end{definition}
 
-The qualifier ``signed'' matters: the structural argument needs a
-quantity that reverses sign under the involution.  The readout
-\(\psimRH\) is positive to the right of the critical line, negative
-to the left, and zero exactly on the line.
+Since \(\Real\JL(s)=1-\Real s\), the readout is odd:
+\(\psimRH(\JL(s))=-\psimRH(s)\).  It vanishes exactly on the fixed locus
+of \(\JL\), so it is separating in the sense of the companion paper.
 
-This readout separates the two sides of the critical line and
-vanishes exactly on \(\Fix(\JL)\): the condition \(\psimRH(s)=0\) is
-\(\Real(s)=1/2\), the fixed-locus condition above.  It is also
-anti-invariant under \(\JL\).  Since \(\Real(1-\bar{s})=1-\Real(s)\),
-one has
-\[
-\begin{aligned}
-  \psimRH(\JL(s))
-    &= \Real(1-\bar{s})-\frac{1}{2}  \\
-    &= 1-\Real(s)-\frac{1}{2}        \\
-    &= \frac{1}{2}-\Real(s)          \\
-    &= -\bigl(\Real(s)-\frac{1}{2}\bigr) \\
-    &= -\psimRH(s).
-\end{aligned}
-\]
-Thus the readout detects the anti-invariant component of a point with
-respect to reflection across the critical line.
-
-This is the RH specialization of the abstract separating readout used
-in the duality-confinement apparatus.  Forcing the squared aggregate
-of this readout to vanish will force each zero in the ledger onto the
-fixed locus, provided the ledger has positive multiplicities.  That
-aggregate is introduced after the zero ledger itself is in place.
-
-With the involution and readout in place, the remaining objects are the
-typed multiset of nontrivial zeros and the scalar built from it.
-
-\begin{definition}[Nontrivial-zero ledger\footnote{Realized in the Lean formalization; the typed real-coordinate representation is recorded in App~\ref{app:formalization} (A3).}]
+\begin{definition}[Nontrivial-zero ledger]
 \label{def:rh:nontrivial-zero-ledger}
-Let
-\[
-  \Lzeta(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)
-\]
-denote the completed Riemann zeta function
-\citep{TitchmarshHeathBrown1986,Edwards1974}.  The nontrivial-zero
-ledger of \(\Lzeta\) is the typed multiset
-\[
-  \Znt
-    =
-  \bigl\{\,(\rho,m_{\rho}) :
-      \rho\in\mathbb{C},
-      \Lzeta(\rho)=0,
-      0<\Real(\rho)<1,
-      m_{\rho}>0
-  \,\bigr\}_{\mathrm{multi}},
-\]
-where \(m_{\rho}\) is the positive integer multiplicity of \(\rho\)
-as a zero of \(\Lzeta\).  The associated atomic ledger measure is
-\(\mu_{L}(\{\rho\})=m_{\rho}\).
+The \emph{nontrivial zeros} are the zeros \(\rho\) of \(\Lzeta\) with
+\(0<\Real\rho<1\); they are exactly the zeros of \(\zeta\) in that
+strip.  A \emph{nontrivial-zero ledger} is the set \(\Znt\) of
+nontrivial zeros together with positive integer weights
+\(m_\rho\) \((\rho\in\Znt)\).  The natural choice of \(m_\rho\) is the
+multiplicity of \(\rho\) as a zero of \(\Lzeta\); every result below holds for arbitrary positive integer weights, and the formal development uses
+unit weights where a choice is needed.
 \end{definition}
-
-\(\Znt\) is a multiset rather than a set: if a zero occurs with
-multiplicity \(m_{\rho}\), the ledger records that multiplicity as
-part of the data.  The completed function \(\Lzeta\) has the same
-zeros in the critical strip as the Riemann zeta function; the
-trivial zeros at the negative even integers are outside this ledger,
-removed from the zero side by the completion factor.  No simplicity
-assumption is made: although nontrivial zeros are widely expected to
-be simple, all arguments below allow arbitrary positive integer
-multiplicities.
 
 \begin{definition}[Anti-invariant zero ledger]
 \label{def:rh:anti-invariant-zero-ledger}
-The anti-invariant zero ledger of \(\zeta\) is the
-multiplicity-weighted scalar
+The \emph{anti-invariant zero ledger} is the extended nonnegative sum
 \[
-  \AZ
-    =
-  \sum_{\rho\in\Znt}
-    m_{\rho}\,
-    \left|\Real(\rho)-\frac{1}{2}\right|^{2}.
+  \AZ=\sum_{\rho\in\Znt}m_\rho\,\bigl|\psimRH(\rho)\bigr|^2
+     =\sum_{\rho\in\Znt}m_\rho\Bigl(\Real\rho-\frac12\Bigr)^2
+  \in[0,\infty],
 \]
-Equivalently, using the readout from
-\Cref{def:rh:psi-minus-rh},
-\[
-  \AZ
-    =
-  \sum_{\rho\in\Znt}
-    m_{\rho}\,\left|\psimRH(\rho)\right|^{2},
-\]
-with summation over the typed multiset \(\Znt\), hence with
-multiplicity.
+defined as the supremum of its finite partial sums.
 \end{definition}
 
-Each summand \(m_{\rho}|\psimRH(\rho)|^{2}\) is nonnegative: the
-multiplicity is positive by definition, and the squared real-part
-displacement is nonnegative.  Hence \(\AZ\) is a nonnegative scalar.
-On a finite typed multiset, \(\AZ=0\) can occur only if every
-summand vanishes; since \(m_{\rho}>0\), this is equivalent to
-\(\psimRH(\rho)=0\) for every typed zero \(\rho\), and by the
-fixed-locus calculation above that is the assertion that every typed
-zero lies on the critical line.  \Cref{sec:translation_theorem}
-packages this positivity argument as Theorem T.
-
-A representation note belongs here.  The real-part coordinate of a
-typed zero is a parameter of the shell; under construction-parameter
-assignment when the shell is instantiated, this parameter is
-identified with the classical real part of a nontrivial zero of
-\(\zeta\).  Under that identification, RH on the typed zero ledger
-says that every such real-part coordinate equals \(1/2\), which is the
-classical RH statement.  A derivation of this identification from
-analytic-number-theoretic infrastructure is left as a future extension.
-
-The saturated completed Selberg trace closure \(\Sel\), which packages
-these typed objects together with the trace instrument and audit data,
-is the subject of \Cref{sec:sat_sel_shell}.
- 
-
-\section{The saturated Selberg trace closure}
+No convergence assumption is needed: the value \(+\infty\) is allowed,
+and it is only the vanishing of \(\AZ\) that matters.  Because every
+summand is nonnegative and every weight is positive, \(\AZ=0\) exactly
+when every nontrivial zero lies on the critical line;
+\Cref{sec:translation_theorem} states this as Theorem~T.  For a finite
+set \(W\subseteq\Znt\), the \emph{window sum}
+\(A_W=\sum_{\rho\in W}m_\rho(\Real\rho-\frac12)^2\) is a real number
+bounded by \(\AZ\); windows are the subject of
+\Cref{sec:finite_windows}.
+ \section{The saturated Selberg trace shell}
 \label{sec:sat_sel_shell}
 
-With the functional-equation involution, the anti-invariant readout,
-and the typed zero ledger in place, the formed-layer object of this
-paper can be named: the saturated completed Selberg trace closure
-\(\Sel\).  Concretely, \(\Sel\) is a typed shell that packages, in
-one structure, the carriers, trace instrument, quotient data, zero
-ledger, and audit data needed to apply the duality-confinement
-mechanism to the Riemann-zeta substrate.  The word ``saturated''
-records the closure status of the shell; the phrase ``completed
-Selberg trace'' records the substrate being organized---the
-completed zeta function together with the trace-relevant data
-through which the later domination records are stated.
+The conditional theorem of \Cref{sec:landing_chain} is stated for a
+record that collects, under one name, the data an intended
+trace-formula realization of the zeros would provide.  We call it the
+saturated completed Selberg trace shell and write \(\Sel\).  The name records the intended realization, through a trace formula of
+Selberg type \citep{Selberg1956,Hejhal1976,Iwaniec2002}.  Spectral realizations of the zeros of \(\zeta\) exist---Connes' trace
+formula \citep{Connes1999} and Meyer's spectral interpretation
+\citep{Meyer2005}, which realizes Weil's explicit formula
+\citep{Weil1952} as a trace formula---but none is known to come with a self-adjoint operator \(H\) such that
+every nontrivial zero is \(\frac12+i\lambda\) with \(\lambda\) in the spectrum
+of \(H\), which would prove the Riemann hypothesis.  (For the Selberg zeta function of a compact hyperbolic
+surface, self-adjointness of the Laplacian places the zeros coming from
+eigenvalues \(\lambda\geq\frac14\) on the critical line, while eigenvalues
+in \((0,\frac14)\) give finitely many real exceptional zeros.)  Nothing of this kind is constructed or used here.
 
-\begin{definition}[Saturated completed Selberg trace closure\footnote{Realized in the Lean formalization; admissibility under the seven Foundations-II schemas is carried by the \(\mathrm{Audit}_L\) field, recorded in App~\ref{app:formalization}.}]
+\begin{definition}[Saturated completed Selberg trace shell]
 \label{def:rh:sat-sel-shell}
-The saturated completed Selberg trace closure \(\Sel\) is a typed
-shell consisting of the following thirteen fields:
+A \emph{saturated completed Selberg trace shell} \(\Sel\) consists of
+the following data:
 \begin{enumerate}[label=\textup{(\arabic*)}]
-  \item \(H_L\), the completed \(L\)-history carrier;
-  \item \(\Itr\), a lawful trace instrument;
-  \item \(\mathrm{EQ}_{\mathrm{tr}}\), the saturated trace-observable
-        family;
-  \item \(\mathrm{EM}_{\mathrm{zero}}\), the predictive verifier
-        events for the zero-side data;
-  \item \(Q_L\), the current quotient carrier \(H_L/{\sim_Q}\);
-  \item \(M_L\), the predictive quotient carrier \(H_L/{\sim_M}\);
-  \item \(\pi_L : M_L\to Q_L\), the comparison map between the two
-        quotient sides;
-  \item \(\JL\), the functional-equation involution from
-        \Cref{def:rh:fe-involution};
-  \item \(\Lambda_L\), the completed \(L\)-function, specialized here
-        to \(\Lzeta\);
-  \item \(\Znt\), the nontrivial-zero ledger from
-        \Cref{def:rh:nontrivial-zero-ledger};
-  \item \(\AZ\), the anti-invariant zero ledger from
-        \Cref{def:rh:anti-invariant-zero-ledger};
-  \item \(\mathrm{Vis}_{L}\), the instrument-relative visibility map;
-  \item \(\mathrm{Audit}_{L}\), the audit provenance and admissibility
-        field for the shell.
+  \item sets \(H_L\), \(\Itr\), \(\mathrm{EQ}_{\mathrm{tr}}\) and
+        \(\mathrm{EM}_{\mathrm{zero}}\), naming a history carrier, a
+        trace instrument, trace observables and verifier events;
+  \item sets \(Q_L\) and \(M_L\) with a map \(\pi_L:M_L\to Q_L\),
+        naming a current and a predictive quotient and their
+        comparison;
+  \item a \emph{coordinate system}: a set \(R\) with elements \(0\) and
+        \(\frac12\) and operations \(x\mapsto-x\), \((x,y)\mapsto x-y\) and
+        \(x\mapsto1-x\), such that \(x\mapsto1-x\) is an involution whose
+        only fixed point is \(\frac12\), \(x-\frac12=0\) if and only if
+        \(x=\frac12\), and \((1-x)-\frac12=-(x-\frac12)\); the
+        \emph{points} of the shell are pairs \(s=(x(s),y(s))\in R^2\), and the \emph{coordinate} of a point \(s\) is \(x(s)\);
+  \item the functional-equation involution
+        \(\JL(s)=(1-x(s),y(s))\) on points,
+        whose fixed points are those with \(x(s)=\frac12\),
+        a set \(V\) with a subset of \emph{zero values}, and a function
+        \(\Lambda_L\) from points to \(V\) (the intended completed zeta
+        function);
+  \item a zero ledger: an element \(1\in R\), a relation \(<\) on \(R\)
+        (no laws are imposed on it), a set of \emph{represented zeros}
+        with an injective map \(\rho\mapsto\) point, and positive integer
+        weights \(m_\rho\); we write \(c(\rho)\) for the coordinate of the
+        point of \(\rho\).  It is required that every represented zero satisfies
+        \(0<c(\rho)<1\) and \(\Lambda_L(\rho)\) is a zero
+        value, and every point \(s\) with \(0<x(s)<1\) and
+        \(\Lambda_L(s)\) a zero value is represented;
+  \item a function \(q:R\to[0,\infty]\) vanishing exactly at \(0\) (the
+        intended square), and the anti-invariant ledger
+        \(\AZ=\sum_\rho m_\rho\,q(c(\rho)-\frac12)\) of the
+        represented zeros, an extended nonnegative sum;
+  \item a visibility relation \(\mathrm{Vis}_L\) between histories and
+        instruments, and an audit marker \(\mathrm{Audit}_L\).
 \end{enumerate}
-The standing assumption attached to \(\Sel\) is that this shell is
-admissible for the relevant Foundations-II formation schemas.
 \end{definition}
 
-The fields group into three roles.  The history-and-quotient block
-\(H_L,\mathrm{EQ}_{\mathrm{tr}},\mathrm{EM}_{\mathrm{zero}},Q_L,M_L,\pi_L\)
-records which typed carrier is being studied, which trace
-observables are available, which verifier events have been retained,
-and how the current and predictive quotient views are compared.
-These are formed-layer bookkeeping rather than a new construction of
-\(\zeta\).  The load-bearing RH objects are \(\JL\),
-\(\Lambda_L=\Lzeta\), \(\Znt\), and \(\AZ\); they are the fields
-through which translation theorem T speaks, with \(\AZ=0\) the
-trace-side statement that converts to the critical-line statement on
-\(\Znt\).  The instrument-and-audit block \(\Itr\),
-\(\mathrm{Vis}_{L}\), and \(\mathrm{Audit}_{L}\) attaches the lawful
-trace functional to the positive cone, records which
-instrument-relative observations are available, and carries the
-admissibility status of the shell.
-
-The admissibility of \(\Sel\) under the seven Foundations-II schemas
-\cite{TsiokosFoundationsII2026} is a standing hypothesis of the shell,
-witnessed by the field \(\mathrm{Audit}_{L}\); we do not derive it
-here.  A derivation would require unfolding the seven schemas as
-explicit predicates and verifying each one for the completed-zeta
-trace shell.
-
-The terminology refers to the classical Selberg trace-formula
-machinery from Selberg's original work \citep{Selberg1956} and
-later expositions, including Hejhal's \emph{The Selberg Trace
-Formula for \(PSL(2,\mathbb{R})\)} \citep{Hejhal1976,Hejhal1983},
-Iwaniec's \emph{Spectral Methods of Automorphic Forms}
-\citep{Iwaniec2002}, and the Iwaniec--Kowalski analytic-number-theory
-text \citep{IwaniecKowalski2004}.  The typed shell above records
-what the duality-confinement mechanism needs from the Selberg trace
-setting; the full analytic trace-formula apparatus is not
-redeveloped here.
-
-The next section proves translation theorem T: \(\AZ=0\) is
-equivalent to the RH statement on the typed zero ledger of \(\Sel\).
-With that translation in place and the recognition source supplied
-in \Cref{sec:recognition_source}, the conditional landing chain
-applies the duality-confinement master theorem of
-\cite{TsiokosSDTC2026}.
- 
-
-\section{Translation theorem T}
+Of these data, the proofs in this paper use only the represented zeros,
+their weights and coordinates, the law ``\(x-\frac12=0\) if and only if
+\(x=\frac12\)'', and \(q\).  The remaining laws and data describe the
+intended realization and serve to specify the bare shell below; the
+operation \(x\mapsto1-x\) is a formal symbol subject only to the laws
+listed.  Items (1), (2) and (7) are names: the shell imposes no laws on them, and in particular
+it does not assert that the trace instrument satisfies a trace formula,
+that the quotients have any universal property, or that the shell is
+admissible in the sense of the framework's formation rules
+\citep{TsiokosFoundationsII2026}; the audit marker records a status,
+not a proof of admissibility.  A shell is useful precisely because it
+separates the zeros it represents from the actual zero set: the conditional theorem speaks about represented zeros and their
+coordinates, and \Cref{thm:rh:full-classical} adds the hypothesis that a
+map from coordinates to the reals, sending \(\frac12\) to \(\frac12\),
+carries them onto the real parts of all nontrivial zeros.  One shell is always available: the \emph{bare shell}, with
+\(R=\mathbb R\) and its usual operations, element \(1\) and order, points
+\(\mathbb C\), \(V=\mathbb C\) with zero value \(0\), \(\Lambda_L=\Lzeta\),
+represented zeros exactly the nontrivial zeros of
+\Cref{def:rh:nontrivial-zero-ledger} with unit weights, \(q(x)=x^2\),
+and trivial documentary fields (1), (2) and (7).  For it
+\(c(\rho)=\Real\rho\) and \(\AZ\) is the ledger of
+\Cref{def:rh:anti-invariant-zero-ledger}.
+ \section{Translation theorem T}
 \label{sec:translation_theorem}
 
-With the saturated trace shell \(\Sel\) in hand, the next step is to
-translate the typed-ledger statement \(\AZ=0\) into the
-number-theoretic critical-line statement.  The translation is
-elementary, using only the definition of \(\AZ\) as a
-multiplicity-weighted sum of squared signed displacements from the
-critical line.  Its role is structural: the duality-confinement
-mechanism will later deliver \(\AZ=0\), and translation theorem T is
-the bridge that turns this ledger vanishing into the RH statement on
-the typed zero ledger.
+The next theorem translates the vanishing of the anti-invariant ledger
+into the critical-line statement.  It is a positivity argument.  We
+state it for the nontrivial-zero ledger of
+\Cref{def:rh:nontrivial-zero-ledger}; the identical argument applies to
+the ledger of represented zeros of any shell, which is how it is used
+in \Cref{sec:landing_chain}.
 
-The theorem is stated on the zero ledger carried by \(\Sel\).  The
-real-part coordinate is the typed coordinate fixed in
-\Cref{sec:involution_and_ledger}; under the construction-parameter
-assignment described there, the typed statement is the corresponding
-classical assertion about the real parts of nontrivial zeros of
-\(\zeta\).
-
-\begin{theorem}[Translation theorem T\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T]
 \label{thm:rh:translation-T}
-On the typed zero ledger \(\Znt\) of the saturated completed Selberg
-trace closure \(\Sel\),
+For any positive weights \(m_\rho\),
 \[
   \AZ=0
   \quad\Longleftrightarrow\quad
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
+  \Real\rho=\frac12\ \text{ for every }\rho\in\Znt .
 \]
-Equivalently, the anti-invariant zero ledger vanishes if and only if
-every typed zero lies on the critical line \(\Fix(\JL)\).
+Consequently \(\AZ=0\) if and only if the Riemann hypothesis holds.
 \end{theorem}
 
 \begin{proof}
-Combine
-\Cref{thm:rh:translation-T-forward,thm:rh:translation-T-reverse},
-which give the two directions of the biconditional.
+The two directions are
+\Cref{thm:rh:translation-T-forward,thm:rh:translation-T-reverse}.  The
+nontrivial zeros are exactly the zeros of \(\zeta\) in the strip
+\(0<\Real s<1\), because \(\pi^{-s/2}\Gamma(s/2)\) has neither zeros
+nor poles there; and every zero of \(\zeta\) other than the trivial zeros \(-2,-4,\ldots\)
+lies in that strip.  For the latter, the classical facts used are
+\citep{TitchmarshHeathBrown1986}: \(\zeta\) has no zeros with
+\(\Real s\geq1\); \(\zeta(0)=-\frac12\); \(\Lzeta(s)=\Lzeta(1-s)\); and
+\(\pi^{-s/2}\Gamma(s/2)\) never vanishes and is finite except at
+\(s=0,-2,-4,\ldots\).  If \(\zeta(s)=0\) with \(\Real s\leq0\), then
+\(s\neq0\), and if \(s\) is not a trivial zero the factor at \(s\) is
+finite and nonzero, so \(\Lzeta(s)=0\), hence \(\Lzeta(1-s)=0\); since
+\(\Real(1-s)\geq1\) and \(1-s\neq1\), the factor at \(1-s\) is finite and
+nonzero, so \(\zeta(1-s)=0\), a contradiction.  Hence the critical-line
+statement on \(\Znt\) is the Riemann hypothesis.
 \end{proof}
 
-Theorem T is what makes the conditional landing chain land on RH
-rather than on an internal trace statement.  The trace-side output
-of the later argument is \(\AZ=0\); Theorem T converts that output
-into the assertion that every \(\rho\in\Znt\) satisfies
-\(\Real(\rho)=1/2\), which is RH on the typed zero ledger of
-\(\Sel\).  No recognition-source content is used in this
-translation: T depends only on \(\Znt\), the positive multiplicities
-\(m_{\rho}\), the readout \(\psimRH\), and the definition of
-\(\AZ\), and its positivity is the elementary positivity of a finite
-multiplicity-weighted sum of squares.  The recognition source enters
-later, as the conditional reason for \(\AZ=0\); once that vanishing
-is available, the theorem completes the conversion to the
-critical-line statement.
-
-The two halves below are short positivity arguments.
-
-\begin{theorem}[Translation theorem T, forward direction\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T, forward direction]
 \label{thm:rh:translation-T-forward}
-On the typed zero ledger \(\Znt\) of \(\Sel\), if \(\AZ=0\), then
-\[
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
-\]
+If \(\AZ=0\), then \(\Real\rho=\frac12\) for every \(\rho\in\Znt\).
 \end{theorem}
 
 \begin{proof}
-By definition,
-\[
-  \AZ
-    =
-  \sum_{\rho\in\Znt}
-    m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}.
-\]
-For every typed zero \(\rho\), the multiplicity satisfies
-\(m_{\rho}>0\) and the square \(\left|\Real(\rho)-1/2\right|^{2}\)
-is nonnegative, so every summand is nonnegative.  If \(\AZ=0\), the
-finite sum of these nonnegative summands is zero, so each summand
-is zero:
-\[
-  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}=0
-\]
-for each \(\rho\in\Znt\).  Since \(m_{\rho}>0\), the squared factor
-must vanish.  Thus \(\Real(\rho)-1/2=0\), and hence
-\(\Real(\rho)=1/2\).
+Each summand \(m_\rho(\Real\rho-\frac12)^2\) is nonnegative and is at
+most the extended sum \(\AZ\).  If \(\AZ=0\), each summand is therefore
+zero, and since \(m_\rho>0\) we get \((\Real\rho-\frac12)^2=0\).
 \end{proof}
 
-\begin{theorem}[Translation theorem T, reverse direction\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T, reverse direction]
 \label{thm:rh:translation-T-reverse}
-On the typed zero ledger \(\Znt\) of \(\Sel\), if
-\[
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2},
-\]
-then \(\AZ=0\).
+If \(\Real\rho=\frac12\) for every \(\rho\in\Znt\), then \(\AZ=0\).
 \end{theorem}
 
 \begin{proof}
-Assume that every \(\rho\in\Znt\) satisfies \(\Real(\rho)=1/2\).
-Then
-\[
-  \Real(\rho)-\frac{1}{2}=0
-\]
-for every typed zero, and therefore
-\[
-  \left|\Real(\rho)-\frac{1}{2}\right|^{2}=0.
-\]
-Each summand in the definition of \(\AZ\) is consequently
-\[
-  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}
-    =
-  m_{\rho}\cdot 0
-    =
-  0.
-\]
-Thus \(\AZ\) is a finite sum of zero summands, so \(\AZ=0\).
+Every summand vanishes, so every partial sum vanishes, and so does
+their supremum.
 \end{proof}
 
-Together, the two halves give the biconditional of
-\Cref{thm:rh:translation-T}: \(\AZ=0\) if and only if every typed
-zero lies on the critical line.  The remaining structural task is
-to supply the recognition source that delivers \(\AZ=0\) through
-the duality-confinement mechanism; this is the subject of
-\Cref{sec:recognition_source,sec:landing_chain}.
- 
-
-\section{The recognition source}
+The equivalence between \(\AZ=0\) and the critical-line statement uses
+nothing about the zeros beyond positivity of the weights; only its
+identification with the Riemann hypothesis uses the analytic facts
+recalled in the proof.  Its role is to let the rest of the paper work with the single
+quantity \(\AZ\), or with its finite window sums, instead of with the
+zero set.
+ \section{The recognition source}
 \label{sec:recognition_source}
 
-\Cref{sec:translation_theorem} reduced RH on the typed zero ledger
-of \(\Sel\) to the trace-side statement \(\AZ=0\).  The remaining
-structural question is where that trace-side vanishing comes from.
-The answer in this paper is a named recognition source: the
-Selberg-class instance of Self-Dual Trace Confinement,
-\(\GamSDTCSelberg\).  The SDTC structural-law framing is supplied
-by \cite{TsiokosSDTC2026}; the present paper specializes it to the
-saturated completed Selberg trace closure \(\Sel\).
+By Theorem~T, the Riemann hypothesis is the statement \(\AZ=0\).  The
+duality-confinement route asks for this vanishing to come from
+domination records of vanishing trace.  The following hypothesis
+states what the conditional theorem of \Cref{sec:landing_chain}
+consumes; the formal record carries in addition some structure that no
+proof uses (weights, a response involution, a quantitative separation
+modulus), listed in \Cref{app:formalization}.  It is phrased with an auxiliary
+ledger in the abstract form of the duality-confinement theorem
+\citep[Remark~7.2]{TsiokosSDTC2026}, because the formal statement
+allows the domination records to live in any ordered set with a trace,
+not only among operators.
 
-The recognition source supplies structural content of the formed
-layer rather than a calculation internal to the proof of Theorem T.
-Here the content is the completed domination-record sequence
-required by the duality-confinement master theorem.  Once that
-sequence is available, the master theorem forces \(\AZ=0\), and
-Theorem T converts \(\AZ=0\) into the critical-line statement.
-
-\begin{definition}[The recognition source \(\GamSDTCSelberg\)\footnote{Encoded in the Lean formalization as a typed structure carrier, not as a Lean axiom; downstream theorems take a value of this carrier as an explicit hypothesis. See App~\ref{app:formalization}.}]
+\begin{obligation}[The recognition source \(\GamSDTCSelberg\)]
 \label{obl:rh:gamma-sdtc-selberg}
-On the saturated completed Selberg trace closure \(\Sel\), the
-recognition source \(\GamSDTCSelberg\) supplies a sequence of
-completed domination records \(B_n\) in the typed positive cone of
-\(\Sel\) such that
-\[
-  0\preceq B_n,\qquad
-  \AZ\preceq B_n,\qquad
-  \trace(B_n)\to 0
-  \quad\text{as } n\to\infty.
-\]
-Equivalently, \(\GamSDTCSelberg\) asserts that the
-duality-confinement domination hypothesis holds for the RH ledger
-inside \(\Sel\), with \(\JL\), \(\Znt\), and \(\AZ\) as the
-specialized involution, zero ledger, and anti-invariant ledger.
-\end{definition}
+Let \(\Sel\) be a shell.  We say that the recognition source
+\(\GamSDTCSelberg\) \emph{holds for} \(\Sel\) if there exist the
+following data.
+\begin{enumerate}[label=\textup{(\roman*)}]
+  \item \emph{An auxiliary ledger.}  A finite set \(X\) with an involution \(J\) (the map
+    \(\rho\mapsto x_\rho\) of item (iv) need not be injective), a set of \emph{visible} objects, a response set
+    \(Y\) with a zero element, and a readout
+    \(\psim:X\to Y\) that is separating on visible objects:
+    for visible \(x\), \(\psim(x)=0\) if and only if \(Jx=x\).
+  \item \emph{An ordered set with a trace.}  A set \(C\) with a
+    relation \(\preceq\), a subset of positive elements, a zero element,
+    a distinguished positive element \(\AX\), and a map
+    \(\tau:C\to\mathbb R\) that is monotone for \(\preceq\) and
+    nonnegative on positive elements, with \(\tau(\AX)=0\) only if
+    \(\AX\) equals the zero element.
+  \item[(ii\('\))] \emph{A link between the two.}  If \(\AX\) is the zero
+    element, then \(\psim(x)=0\) at every visible \(x\).
+  \item \emph{Domination records of vanishing trace.}  Positive
+    elements \(B_n\in C\) with \(\AX\preceq B_n\) for all \(n\) and
+    \(\tau(B_n)\to0\).
+  \item \emph{A bridge to the zeros.}  For each represented zero
+    \(\rho\) of \(\Sel\), a visible object \(x_\rho\in X\), and a map
+    \(e:R\to Y\) on the shell's coordinates with \(e(r)=0\) only if
+    \(r=0\), such that
+    \[
+      \psim(x_\rho)=e\Bigl(c(\rho)-\frac12\Bigr).
+    \]
+\end{enumerate}
+\end{obligation}
 
-The definition records the load-bearing field of the recognition
-source: the existence of the domination sequence.  The provenance of
-that field is also part of the source: it is the Selberg-class
-instance of the SDTC structural law, sitting in the V-Differential
-trace-state-only column and attached to the shell \(\Sel\), its
-trace instrument, its functional-equation involution \(\JL\), its
-zero ledger \(\Znt\), and its anti-invariant ledger \(\AZ\).  These
-provenance components matter because the source is not an unnamed
-black box: it is a typed recognition object whose mathematical role
-is to provide the domination records that the abstract
-duality-confinement apparatus requires.
+Items (i)--(iii) are an instance of the duality-confinement setting in
+its abstract form: the domination records and the trace squeeze force
+\(\AX\) to vanish, and item (ii\('\)) then gives \(\psim=0\) at every visible
+object.  None of this involves the zeta function, and neither \(\AZ\) nor \(q\)
+appears in the hypothesis; the zeros enter only through item (iv), which asserts that the auxiliary readout at the
+object attached to \(\rho\) encodes the displacement coordinate
+\(c(\rho)-\frac12\).  In this abstract form the link between
+\(\AX\) and \(\psim\) is part of the data (item (ii\('\))) rather than a
+consequence of a construction, and the next proposition shows that the
+hypothesis is exactly as strong as the critical-line statement for the
+represented zeros.  The operator form, in which \(\AX\) is the Gram
+operator of the readout, is \Cref{thm:rh:concrete-window-dc}.  Nothing in the
+hypothesis requires the auxiliary ledger to be constructed from
+zeta-function data, and its intended provenance---an instance of the
+companion paper's structural law obtained from a trace formula---is
+not established here.
 
-The conditional landing chain (\Cref{sec:landing_chain}) takes a
-value of the recognition source as an explicit hypothesis.
+The next proposition measures the strength of the hypothesis.
 
-Three candidate routes for deriving \(\GamSDTCSelberg\) from
-framework primitives were considered---the primitive role inventory,
-the audited interaction calculus, and the closure-formation
-discipline---and each was found insufficient to produce the
-trace-vanishing domination sequence.  This supports the
-recognition-source framing by confirming that the SDTC content is
-closure content of the formed layer rather than a separately derivable
-consequence of the primitive vocabulary.
-\citet{TsiokosSDTC2026} names Self-Dual Trace Confinement as the
-structural law for involutive self-dual formed closures and supplies
-the abstract duality-confinement apparatus; the present paper
-instantiates the Selberg-class recognition source on \(\Sel\) and
-uses the domination records it carries in the conditional landing
-chain.
+\begin{proposition}[Calibration of the recognition source]
+\label{prop:rh:gamma-calibration}
+For every shell \(\Sel\), \(\GamSDTCSelberg\) holds for \(\Sel\) if and
+only if \(c(\rho)=\frac12\) for every represented zero
+\(\rho\).  In particular, \(\GamSDTCSelberg\) holds for the bare shell if and only
+if the Riemann hypothesis holds.
+\end{proposition}
 
-With \(\GamSDTCSelberg\) in place, the remaining composition is
-direct: apply the duality-confinement master theorem to the
-domination records to obtain \(\AZ=0\), then apply Theorem T in the
-forward direction to obtain the critical-line statement on \(\Znt\).
-That composition is the subject of \Cref{sec:landing_chain}.
- 
+\begin{proof}
+If \(\GamSDTCSelberg\) holds, \Cref{thm:rh:conditional} below gives
+\(c(\rho)=\frac12\) for every represented zero.
+Conversely, suppose \(c(\rho)=\frac12\) for all represented
+zeros.  Take \(X\) a single visible point with \(J\) the identity,
+\(Y=\mathbb R\), \(\psim=0\), \(C=\mathbb R\) with the usual order and positive elements
+\([0,\infty)\),
+\(\AX=0\), \(B_n=0\), \(\tau\) the identity, \(x_\rho\) the point, and \(e:R\to\mathbb R\) with \(e(0)=0\) and \(e(r)=1\) for \(r\neq0\)
+(a classical case distinction on the abstract set \(R\)).  Items (i)--(iii) hold trivially, \(e(r)=0\) only for \(r=0\), and item (iv)
+holds because \(c(\rho)-\frac12=0\) by the coordinate
+laws, so \(e(c(\rho)-\frac12)=0=\psim(x_\rho)\).  On the
+bare shell, \(c(\rho)=\Real\rho\) and the represented zeros
+are the nontrivial zeros, so the condition is the Riemann hypothesis
+(\Cref{thm:rh:translation-T}).
+\end{proof}
 
-\section{The conditional landing chain}
+Thus the recognition source, as a type of data, is exactly as strong as
+the critical-line statement it is used to prove, and on the bare shell
+establishing it is no easier than proving the Riemann
+hypothesis.  Its intended content is not its logical
+strength but its provenance: the conditional theorem becomes a proof
+only if the data are produced by an independent argument, for instance
+from a trace formula, in which item (iv) is a consequence rather than
+an assumption.  \Cref{thm:rh:concrete-window-dc} shows that the same
+calibration holds for a non-degenerate version built from the actual
+zeros.
+ \section{The conditional landing chain}
 \label{sec:landing_chain}
 
-The previous section identified the structural input needed by the RH
-closure: \(\GamSDTCSelberg\) supplies domination records for
-\(\AZ\).  The landing chain imports the abstract theorem from
-\cite{TsiokosSDTC2026} that acts on such records, reproduced verbatim
-here for reference.
+This section proves the conditional theorems and the concrete
+calibration.  The reader may keep the bare shell in mind throughout: for
+it \(c(\rho)=\Real\rho\), the represented zeros are all nontrivial
+zeros, and \Cref{thm:rh:conditional,thm:rh:full-classical} say the same
+thing.  The duality-confinement theorem is used in the abstract
+form of the companion paper \citep[Remark~7.2]{TsiokosSDTC2026}: if
+\(a\) is a positive element of an ordered set, \(\tau\) is a
+nonnegative monotone real trace with \(\tau(a)=0\) only if \(a=0\), and
+\(a\preceq b_n\) with \(\tau(b_n)\to0\), then \(a=0\), because
+\(0\leq\tau(a)\leq\tau(b_n)\to0\).
 
-\begin{theorem*}[Duality-confinement membrane theorem, \cite{TsiokosSDTC2026}\footnote{Imported in the Lean formalization as a cross-paper reference; the bridge to the RH ledger is recorded in App~\ref{app:formalization}.}]
-Let \(\IOL\) be an involutive object ledger with carrier \(X\),
-involution \(J\), measure \(\mu\), anti-invariant readout
-\(\psim\), and anti-invariant ledger \(\AX\).  Assume that
-\(\psim\) is qualitatively separating.  Suppose there is a sequence
-of positive cone elements \(B_n\) such that
-\[
-  \AX\preceq B_n
-  \qquad (n=1,2,\ldots)
-\]
-and
-\[
-  \trace B_n\to0
-  \qquad (n\to\infty).
-\]
-Then \(\AX=0\) in the typed positive cone.  Consequently,
-\[
-  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
-\]
-\end{theorem*}
-
-For the RH application, the theorem needs an order \(\preceq\), a
-trace functional \(\trace\), and a separating anti-invariant readout.
-It consumes domination records; their source here is
-\(\GamSDTCSelberg\), introduced in \Cref{sec:recognition_source}.
-
-For the Selberg-class instance, the abstract ledger is \(\Sel\)
-restricted to its typed zero ledger: \(X\) is the zero-carrier
-underlying \(\Znt\), \(J\) is \(\JL\), \(\mu\) is the
-multiplicity-weighted zero measure, \(\psim\) is \(\psimRH\), and
-\(\AX\) is \(\AZ\).
-
-\begin{theorem}[Duality-confinement master theorem, applied to \(\Sel\)\footnote{Checked in the Lean formalization by typed-bridge composition over the recognition-source carrier; see App~\ref{app:formalization}.}]
+\begin{theorem}[Duality-confinement theorem applied to \(\Sel\)]
 \label{thm:rh:dc-master-applied}
-Let \(\Sel\) be the saturated completed Selberg trace closure with
-functional-equation involution \(\JL\), separating anti-invariant
-readout \(\psimRH\), and anti-invariant zero ledger \(\AZ\).  Suppose
-there is a sequence \(B_n\) of positive cone elements such that
-\[
-  \AZ\preceq B_n
-  \qquad (n=1,2,\ldots)
-\]
-and
-\[
-  \trace B_n\to0
-  \qquad (n\to\infty).
-\]
-Then \(\AZ=0\) in the typed positive cone associated to \(\Sel\).
+Let \(\Sel\) be a shell for which \(\GamSDTCSelberg\) holds
+(\Cref{obl:rh:gamma-sdtc-selberg}).  Then the
+anti-invariant ledger of the represented zeros vanishes: \(\AZ=0\).
 \end{theorem}
 
 \begin{proof}
-This is the duality-confinement membrane theorem of
-\citet{TsiokosSDTC2026} applied under the substitutions just listed.
-The qualitative-separation hypothesis is the concrete calculation of
-\Cref{def:rh:psi-minus-rh}: \(\psimRH(s)=0\) exactly on
-\(\Fix(\JL)\), and \(\psimRH(\JL(s))=-\psimRH(s)\).  The domination
-records are precisely the records supplied by the recognition source
-of \Cref{obl:rh:gamma-sdtc-selberg}.  Once the records give
-\(\AZ\preceq B_n\) and \(\trace B_n\to0\), the typed-cone squeeze
-forces \(\AZ=0\).
+By items (ii) and (iii) and the abstract squeeze, \(\AX\) is the zero
+element; by item (ii\('\)), \(\psim(x)=0\) at every visible object \(x\).
+For a represented zero \(\rho\), the object \(x_\rho\) is visible, so
+by item (iv) \(e(c(\rho)-\frac12)=\psim(x_\rho)=0\), and
+hence \(c(\rho)=\frac12\).  (Separation, item (i), gives the equivalent
+statement that \(x_\rho\) is fixed by \(J\); it is not needed for the
+conclusion.)  Every summand of \(\AZ\) therefore vanishes, and
+\(\AZ=0\) by \Cref{thm:rh:translation-T-reverse} applied to the represented zeros.
 \end{proof}
 
-The hypotheses of the membrane theorem are satisfied under these
-substitutions.  Qualitative separation follows from
-\Cref{def:rh:psi-minus-rh}: \(\psimRH(s)=0\) iff \(\Real(s)=1/2\),
-and \(\psimRH(\JL(s))=-\psimRH(s)\).  The domination records are
-those supplied by \Cref{obl:rh:gamma-sdtc-selberg}.  The passage from
-``\(\psim\) vanishes \(\mu\)-almost everywhere'' to the shell equality
-\(\AZ=0\) is a coherence assumption of the recognition source.
+The companion theorem enters this proof only through the abstract
+squeeze; the link from \(\AX\) to the readout is item (ii\('\)) and the
+link to the zeros is item (iv), both of which are assumed.
 
-Thus the conditional input from \(\GamSDTCSelberg\) becomes
-\(\AZ=0\), and Theorem T turns this into
-\(\forall\,\rho\in\Znt,\ \Real(\rho)=1/2\).
-
-\begin{theorem}[Conditional landing chain\footnote{Composed in the Lean formalization with a value of the recognition-source carrier as an explicit hypothesis; see App~\ref{app:formalization}.}]
+\begin{theorem}[Conditional landing chain]
 \label{thm:rh:conditional}
-Let \(\Sel\) be a saturated completed Selberg trace closure.  Under
-the standing assumption that \(\Sel\) is Foundations-II admissible,
-and given the recognition source \(\GamSDTCSelberg\)---the
-Selberg-class instance of Self-Dual Trace Confinement supplied by
-\citet{TsiokosSDTC2026}---the Riemann hypothesis holds on the typed
-zero ledger \(\Znt\) of \(\Sel\): every typed nontrivial zero
-\(\rho\in\Znt\) satisfies
-\[
-  \Real(\rho)=\frac{1}{2}.
-\]
+Let \(\Sel\) be a shell for which \(\GamSDTCSelberg\) holds.  Then every represented zero \(\rho\) of \(\Sel\)
+satisfies \(c(\rho)=\frac12\).  On the bare shell this says
+\(\Real\rho=\frac12\) for every nontrivial zero \(\rho\).
 \end{theorem}
 
 \begin{proof}
-The proof is a direct three-step chain.  First, the recognition
-source \(\GamSDTCSelberg\), as stated in
-\Cref{obl:rh:gamma-sdtc-selberg}, supplies a sequence \(B_n\) of
-positive cone elements with
-\[
-  \AZ\preceq B_n,
-  \qquad
-  \trace B_n\to0.
-\]
-Second, \Cref{thm:rh:dc-master-applied} applies the
-duality-confinement master theorem to this Selberg-class instance and
-therefore gives \(\AZ=0\) in the typed positive cone associated to
-\(\Sel\).  Third, the forward direction of translation theorem T,
-\Cref{thm:rh:translation-T-forward}, converts \(\AZ=0\) into
-\[
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
-\]
+\Cref{thm:rh:dc-master-applied} gives \(\AZ=0\), and the forward
+direction of Theorem~T (\Cref{thm:rh:translation-T-forward}), applied
+to the represented zeros, gives the conclusion.
 \end{proof}
 
-The conditional structure is essential.  The hypotheses are the
-standing Foundations-II admissibility of \(\Sel\)
-(\Cref{def:rh:sat-sel-shell}), the closure-content discipline that
-treats \(\GamSDTCSelberg\) as supplied structural content, and the
-typed real-coordinate identification of
-\Cref{sec:involution_and_ledger}.  Outside the Six Birds framing the
-theorem reads as the conditional implication
-\[
-  \GamSDTCSelberg \Longrightarrow \mathrm{RH},
-\]
-not as an unconditional proof of RH in standard ZFC.
+\begin{theorem}[Full classical conditional Riemann hypothesis]
+\label{thm:rh:full-classical}
+Let \(\Sel\) be a shell with coordinate system \(R\), and suppose that
+\(\GamSDTCSelberg\) holds for \(\Sel\) and that there is a
+\emph{classical-zero identification}: a map \(t:R\to\mathbb R\) with \(t(\frac12)=\frac12\)
+such that for every nontrivial zero \(s\) of \(\zeta\) there is a
+represented zero \(\rho\) with \(t(c(\rho))=\Real s\).
+Then the Riemann hypothesis holds.  For the bare shell, \(t\) is the
+identity.
+\end{theorem}
 
-An audit-closure reading of the same composition is given in
-\Cref{sec:rh-aor-instance}.
+\begin{proof}
+By \Cref{thm:rh:conditional}, \(c(\rho)=\frac12\) for every
+represented zero, so \(\Real s=t(\frac12)=\frac12\) for every nontrivial
+zero \(s\).  The Riemann hypothesis follows, because every zero of \(\zeta\) other
+than the trivial zeros lies in the strip \(0<\Real s<1\) (proof of
+\Cref{thm:rh:translation-T}).
+\end{proof}
 
-The scope and nonclaim discipline are the subject of \Cref{sec:scope_and_nonclaims}.
- 
+Taken together with \Cref{prop:rh:gamma-calibration}, these theorems
+say that the Riemann hypothesis is equivalent to the statement that \(\GamSDTCSelberg\) holds for the bare shell.  The recognition source
+used there is degenerate: a single object carries the readout.  The
+next theorem applies the operator form of the duality-confinement
+theorem to the actual zeros, with the zeros themselves as objects.
+  Let
+\((W_n)_{n\geq1}\) be finite sets of nontrivial zeros, each closed under
+\(\JL\), such that every nontrivial zero lies in \(W_n\) for all large
+\(n\); such a sequence exists because the nontrivial zeros are countable and
+each orbit of \(\JL\) has one or two elements (take \(W_n\) to be the
+union of the orbits of the first \(n\) zeros in an enumeration).  On
+\(W_n\) take the finite weighted ledger of the companion
+paper with unit weights, response space \(\mathbb R\), response
+involution \(v\mapsto-v\), involution \(\JL\) and readout
+\(\psimRH(\rho)=\Real\rho-\frac12\).  Its operator is multiplication by the unit-weight window sum
+\(A_{W_n}=\sum_{\rho\in W_n}(\Real\rho-\frac12)^2\), and its readout is
+separating: it vanishes exactly at the fixed points of \(\JL\).  The
+response space is one-dimensional, so the operators are scalars and the
+theorem is the simplest case of the duality-confinement theorem; what
+it adds to \Cref{prop:rh:gamma-calibration} is that the objects are the
+actual zeros and the bridge is an identity rather than an
+assumption.
 
-\section{The realisability-instance form of the landing chain}
+\begin{theorem}[Concrete window form]
+\label{thm:rh:concrete-window-dc}
+With the windows \(W_n\) above, the following are equivalent:
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item for every \(n\) there are real numbers \(b_{n,k}\geq A_{W_n}\)
+    with \(b_{n,k}\to0\) as \(k\to\infty\);
+  \item there are real numbers \(b_n\geq A_{W_n}\) with \(b_n\to0\);
+  \item the Riemann hypothesis.
+\end{enumerate}
+In (a) and (b) the numbers \(b\) are the traces of positive operators
+on \(\mathbb R\) dominating the window operators, so (a) is the
+hypothesis of the duality-confinement theorem for each window, and the
+implication (a)\(\Rightarrow\)(c) is proved by that theorem.
+\end{theorem}
+
+\begin{proof}
+(a)\(\Rightarrow\)(c): for each \(n\), \(0\leq A_{W_n}\leq b_{n,k}\to0\), so
+\(A_{W_n}=0\); this is the duality-confinement theorem for this finite
+weighted ledger \citep[Theorem~7.1]{TsiokosSDTC2026}, and since the readout
+is separating every zero in \(W_n\) is fixed by \(\JL\), that is, lies on
+the critical line; every nontrivial zero lies in some
+window, and \Cref{thm:rh:translation-T} gives the Riemann hypothesis.
+(b)\(\Rightarrow\)(c): if some nontrivial zero \(\rho_0\) were off the
+line, it would lie in \(W_n\) for all large \(n\), so
+\(b_n\geq A_{W_n}\geq(\Real\rho_0-\frac12)^2>0\) for all large \(n\),
+contradicting \(b_n\to0\).  (c)\(\Rightarrow\)(a) and
+(c)\(\Rightarrow\)(b): under the Riemann hypothesis every window sum is
+zero, and the zero numbers dominate it.
+\end{proof}
+
+Unwound, condition (a) says that every window sum is zero and
+condition (b) that the window sums tend to zero; the theorem makes
+explicit that, for the actual zeros, domination records of vanishing
+trace are nothing more than such upper bounds, and that they exist
+exactly when the window sums vanish.  A
+proof of the Riemann hypothesis along this route therefore needs an
+independent source of such bounds; \Cref{sec:finite_windows} examines
+some candidate sources.
+ \section{A classification of the hypotheses}
 \label{sec:rh-aor-instance}
 
-\Cref{sec:landing_chain} stated the conditional landing chain in
-both its critical-line and audit-closure forms: the same composition
-of \(\GamSDTCSelberg\), \Cref{thm:rh:dc-master-applied}, and
-translation theorem T delivers \(\Real(\rho)=1/2\) on \(\Znt\) and
-records the shell as a local refinement-stable
-audited-operational-realisability instance,
-\[
-  \Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}.
-\]
-The present section fixes the scope \(\mathfrak S_{\mathrm{RH}}\), the
-AOR-instance object \(C_{\mathrm{RH}}(\Sel,\GamSDTCSelberg)\), the
-seven discharge atoms, and the refinement-stability witness; the critical-line
-statement on \(\Znt\) remains the typed-zero-ledger readout.
+A companion paper on audited operational realisability (AOR)
+\citep{TsiokosAOR2026} provides a vocabulary for classifying the
+ingredients of an argument: each ingredient receives a \emph{residual
+type} describing what kind of gap it closes (a missing source, a
+transport between settings, a presentation choice, a meta-level
+condition, and so on) and a \emph{status} describing how the gap is
+closed (by construction, by a supplied bridge, by another paper, or
+not at all).  This section records such a classification for the
+argument of \Cref{sec:landing_chain}.  It is bookkeeping: it proves nothing about the zeros, can be skipped
+by a reader interested only in the mathematics, and does not establish
+membership of the
+argument in the stronger, proof-carrying notion of realisability of
+that paper.
 
-\subsection{Carrier locality}
-
-The AOR meta-theory of \citet{TsiokosAOR2026} accepts a carrier when
-its observations, routes, sources, bridges, residuals, nonclaims, and
-meta-audits are typed and statused.  This paper uses that vocabulary
-locally: the carrier is the formed shell \(\Sel\) with its zero
-ledger, trace instrument, involution, visibility data, and
-admissibility field.  The domination records from
-\(\GamSDTCSelberg\), the duality-confinement step yielding \(\AZ=0\),
-and Theorem T's conversion all live inside this typed scope.
-
-\subsection{The Selberg trace shell as an AOR-instance object}
-
-\begin{definition}[The AOR instance object attached to \(\Sel\)\footnote{Realized in the Lean formalization with a canonical assembled carrier; see App~\ref{app:formalization}.}]
+\begin{definition}[The AOR instance object attached to \(\Sel\)]
 \label{def:rh:aor-sel-instance}
-Let \(\mathfrak S_{\mathrm{RH}}\) be the scope consisting of the
-saturated completed Selberg trace shell \(\Sel\), the completed zeta
-function \(\Lzeta\), the typed nontrivial-zero ledger \(\Znt\), the
-functional-equation involution \(\JL\), the anti-invariant readout
-\(\psimRH\), the anti-invariant zero ledger \(\AZ\), the trace
-instrument \(\Itr\), the audit field \(\mathrm{Audit}_{L}\), the
-recognition source \(\GamSDTCSelberg\), the duality-confinement
-master theorem, and translation theorem T.  The AOR instance object
-\[
-  C_{\mathrm{RH}}(\Sel,\GamSDTCSelberg)
-\]
-has the following typed fields.
-\begin{enumerate}[label=\textup{(\arabic*)}]
-  \item The carrier is the zero side of \(\Sel\), with current and
-        predictive quotient data inherited from the fields \(Q_L\),
-        \(M_L\), and \(\pi_L:M_L\to Q_L\) of
-        \Cref{def:rh:sat-sel-shell}.
-  \item The observations are the zero ledger \(\Znt\), the
-        anti-invariant displacement \(\psimRH\), the zero-ledger
-        readout \(\AZ\), and the visibility data \(\mathrm{Vis}_{L}\).
-  \item The routes are the functional-equation involution \(\JL\), the
-        comparison map \(\pi_L\), the anti-invariant projection
-        implicit in the anti-invariant-zero-ledger interface reading
-        of \(\psimRH\), and the typed bridge from the
-        abstract DC apparatus to the shell.
-  \item The source records are the admissibility witness
-        \(\mathrm{Audit}_{L}\), the Selberg-class recognition source
-        \(\GamSDTCSelberg\), and the completed domination sequence
-        \(B_n\).
-  \item The interface records are the structural-coherence assumptions
-        of the recognition source linking the abstract DC apparatus to
-        the shell.
-  \item The constraints are positivity in the typed cone, the order
-        \(\preceq\), trace monotonicity, the DC-ledger domination
-        carried by \(\GamSDTCSelberg\), and the asymptotic trace
-        condition.
-  \item The residual statuses are the discharge records listed in
-        \Cref{thm:rh:aor-recognition-discharge,thm:rh:aor-gamma-bridge-discharge,thm:rh:aor-auditL-discharge,thm:rh:aor-dc-master-import-discharge,thm:rh:aor-real-coordinate-discharge,thm:rh:aor-translation-interface-discharge}.
-  \item The nonclaim register is the register of
-        \Cref{sec:scope_and_nonclaims}, including the conditional
-        status of the recognition source, the Foundations-II
-        admissibility hypothesis, the typed real-coordinate
-        disclosure, and the absence of any GRH or standard-ZFC
-        unconditional claim.
-\end{enumerate}
+Let \(\mathfrak S_{\mathrm{RH}}\) be the scope consisting of the shell
+\(\Sel\), the objects of \Cref{sec:involution_and_ledger}, the
+recognition source \(\GamSDTCSelberg\), the duality-confinement theorem
+and Theorem~T.  The AOR instance object
+\(C_{\mathrm{RH}}(\Sel,\GamSDTCSelberg)\) is the list of the following
+entries, each with a residual type and a status:
+the carrier (the zero side of \(\Sel\) with its quotients); the
+observations (\(\Znt\), \(\psimRH\), \(\AZ\), \(\mathrm{Vis}_L\)); the
+routes (\(\JL\), \(\pi_L\), and the bridge from the auxiliary ledger to
+the shell); the sources (\(\mathrm{Audit}_L\), \(\GamSDTCSelberg\) and
+its records \(B_n\)); the constraints (positivity, order, trace
+monotonicity, domination, the trace limit); the records \labelcref{thm:rh:aor-mechanical-records,thm:rh:aor-recognition-discharge,thm:rh:aor-gamma-bridge-discharge,thm:rh:aor-auditL-discharge,thm:rh:aor-dc-master-import-discharge,thm:rh:aor-real-coordinate-discharge,thm:rh:aor-translation-interface-discharge}
+below; and the non-claims of \Cref{sec:scope_and_nonclaims}.
 \end{definition}
 
-This definition adds no analytic-number-theoretic data; it places the
-paper's typed records into the AOR field order.  The carrier is the
-same shell used in \Cref{thm:rh:conditional}.
+Each record below is a short list of \emph{atoms}.  An atom consists of
+a \emph{primary} residual type (the kind of gap the entry closes), a
+list of \emph{forced secondary} types (further kinds of gap that the
+entry is declared to bring with it, each of which must be recorded in
+its own right), and a status.  The statuses used are: \emph{by construction} (a definition),
+\emph{zero} (proved, so that no gap remains), \emph{bridged} (supplied
+as a hypothesis), \emph{asymptotically budgeted} (a limit supplied as a
+hypothesis), \emph{proved in another paper}, \emph{outside scope}, and
+\emph{non-claim}.  \Cref{thm:rh:aor-instance} below is a consistency
+check on these lists: it says that every kind of gap an entry declares
+is itself recorded by some entry, and nothing more.
 
-\subsection{Mechanical records as membership components}
-
-The definition-side records of the RH paper are mechanical in the
-AOR sense: they introduce typed objects and target records but do
-not supply the recognition content.
-
-\begin{theorem}[Mechanical AOR records for \(\Sel\)\footnote{Tracked by the formalization harness as a literal-data definition returning the mechanical-stratum discharge list; see App~\ref{app:formalization}.}]
+\begin{classification}[Mechanical records]
 \label{thm:rh:aor-mechanical-records}
-For the scope \(\mathfrak S_{\mathrm{RH}}\), the following records are
-AOR-mechanical:
-\[
-\begin{gathered}
-  \text{\Cref{def:rh:fe-involution}, }
-  \text{\Cref{def:rh:psi-minus-rh}, }
-  \text{\Cref{def:rh:nontrivial-zero-ledger},} \\
-  \text{\Cref{def:rh:anti-invariant-zero-ledger}, }
-  \text{\Cref{def:rh:sat-sel-shell}, }
-  \text{\Cref{thm:rh:translation-T}.}
-\end{gathered}
-\]
-The five definition-side rows discharge by construction.  Translation
-theorem T discharges as typed-interface composition over the fields of
-the anti-invariant zero ledger.
-\end{theorem}
+The mechanical record has six atoms, one for each of
+\Cref{def:rh:fe-involution,def:rh:psi-minus-rh,def:rh:nontrivial-zero-ledger,def:rh:anti-invariant-zero-ledger,def:rh:sat-sel-shell}
+and \Cref{thm:rh:translation-T}.  The five definition atoms have
+primary types role (involution), role (readout), presentation (zero
+ledger), presentation (anti-invariant ledger) and meta (shell), each
+with status by construction and no forced secondaries; the atom for
+Theorem~T has primary type target, forced secondary transport, and
+status zero.  None uses recognition-source content.
+\end{classification}
 
-\begin{proof}
-The functional-equation involution, the anti-invariant readout, the
-nontrivial-zero ledger, the anti-invariant zero ledger, and the
-saturated trace shell are introduced as typed records.  They therefore
-supply target, role, and presentation data by construction.  Theorem T
-then works entirely inside those records: its forward direction reads
-\(\AZ=0\) and returns the typed critical-line statement on \(\Znt\);
-its reverse direction reads the critical-line statement and returns
-\(\AZ=0\).  No recognition-source content is used in the proof of
-Theorem T.  Thus the mechanical part of the AOR instance is the
-definition-side carrier plus the typed-interface translation theorem.
-\end{proof}
-
-\subsection{Substantive and typed-interface discharges}
-
-The remaining records connect the abstract duality-confinement
-apparatus to the Selberg shell and RH readout.  Each receives an AOR
-residual type and status.
-
-\begin{theorem}[Recognition-source discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
+\begin{classification}[Recognition-source record]
 \label{thm:rh:aor-recognition-discharge}
-The record \(\GamSDTCSelberg\) has primary residual type
-\(\Delta_{\mathrm{source}}\).  Its forced secondary residuals are
-\(\Delta_{\mathrm{target}}\), \(\Delta_{\mathrm{role}}\), and the
-asymptotic trace form of \(\Delta_{\mathrm{limit}}\).  It is
-discharged by a bridged recognition-source status: the source supplies
-typed completed-domination records \(B_n\) with
-\[
-  \AZ\preceq B_n,
-  \qquad
-  \trace B_n\to0.
-\]
-\end{theorem}
+\(\GamSDTCSelberg\) is recorded by an atom with primary type source,
+forced secondaries target, role and limit, and status bridged: it is
+supplied, not derived.  Three further atoms record the secondaries:
+target and role, bridged, and limit, asymptotically budgeted.
+\end{classification}
 
-\begin{proof}
-The recognition source is the provenance record for the domination
-sequence.  Without it, the proof has no source for the inequalities
-\(\AZ\preceq B_n\) or for the asymptotic trace ledger.  The target is
-\(\AZ\), the role is ``domination source for the self-dual trace
-closure,'' and the limit component is the typed convergence
-\(\trace B_n\to0\).  These fields are carried by
-\(\GamSDTCSelberg\).  The discharge is bridged rather than zero because
-the source is supplied as formed-layer recognition content, not
-derived from the definition-side fields of \(\Sel\).
-\end{proof}
-
-\begin{theorem}[Bridge-field discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{bridged} on the carrier bridge propositions; see App~\ref{app:formalization}.}]
+\begin{classification}[Bridge-field record]
 \label{thm:rh:aor-gamma-bridge-discharge}
-The structural-coherence assumptions carried by the recognition source
-discharge the typed-interface residuals between the abstract DC
-apparatus and the shell \(\Sel\).  The primary residual type is
-\(\Delta_{\mathrm{transport}}\).  The forced secondary types are
-\(\Delta_{\mathrm{role}}\) and \(\Delta_{\mathrm{target}}\).  The
-status is bridged, with the readout-coherence component discharged at
-zero.
-\end{theorem}
+The bridge between the auxiliary ledger and the shell (item (iv) of
+\Cref{obl:rh:gamma-sdtc-selberg} with the readout-coherence fields) is
+recorded by transport atoms---one with forced secondaries role and
+target and status zero, two bridged---and bridged atoms for role and
+target.
+\end{classification}
 
-\begin{proof}
-The abstract DC apparatus speaks about an involutive object ledger,
-its anti-invariant readout, its anti-invariant ledger, and a
-measure-theoretic fixed-locus consequence.  The RH shell speaks about
-\(\JL\), \(\psimRH\), \(\AZ\), and the typed zero ledger.  The bridge
-fields assert that the readouts are the same where the theorem needs
-them, that the visible-zero side refines the shell support, and that
-the abstract conclusion ``\(\psim\) vanishes \(\mu\)-almost
-everywhere'' yields the concrete shell equality \(\AZ=0\).  Thus the
-transport from abstract DC output to RH shell output is bridged by the
-typed fields, and the role and target mismatches are statused by those
-same fields.
-\end{proof}
-
-\begin{theorem}[Admissibility-audit discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction} on the audit field of \(\Sel\); see App~\ref{app:formalization}.}]
+\begin{classification}[Admissibility-audit record]
 \label{thm:rh:aor-auditL-discharge}
-The \(\mathrm{Audit}_{L}\) field of \(\Sel\) has primary residual type
-\(\Delta_{\mathrm{meta}}\).  It is discharged by a bridged
-construction-time admissibility witness for the seven Foundations-II
-formation schemas.  The discharge does not derive admissibility inside
-this paper.
-\end{theorem}
+The audit marker \(\mathrm{Audit}_L\) is recorded by one atom of
+primary type meta and status bridged.  Admissibility of an intended
+trace-formula realization under the framework's formation rules is not
+established.
+\end{classification}
 
-\begin{proof}
-The shell definition records \(\mathrm{Audit}_{L}\) as the
-admissibility field for the saturated completed Selberg trace closure.
-AOR membership requires that the carrier's closure apparatus be
-meta-audited.  In the present paper that meta-audit is supplied as a
-construction-time hypothesis rather than unfolded into derived
-predicates.  The correct status is therefore bridged:
-\(\mathrm{Audit}_{L}\) carries the admissibility status, while the
-paper registers a nonclaim of a separate derivation of that status.
-\end{proof}
-
-\begin{theorem}[Cross-paper master-theorem discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{approved\_other} deferred to \cite{TsiokosSDTC2026}; see App~\ref{app:formalization}.}]
+\begin{classification}[Cross-paper record]
 \label{thm:rh:aor-dc-master-import-discharge}
-The use of the duality-confinement master theorem of
-\citet{TsiokosSDTC2026} is an
-\(\mathrm{approved\_other}\) discharge.  Its primary residual type is
-\(\Delta_{\mathrm{transport}}\) from the domination records to the
-equality \(\AZ=0\); its secondary types are
-\(\Delta_{\mathrm{source}}\), \(\Delta_{\mathrm{role}}\), and
-\(\Delta_{\mathrm{target}}\).
-\end{theorem}
+The use of the duality-confinement theorem of \citet{TsiokosSDTC2026}
+is recorded by an atom of primary type transport with forced
+secondaries source, role and target and status proved in another
+paper, and bridged atoms for source, role and target.
+\end{classification}
 
-\begin{proof}
-The master theorem is not reproved in this paper.  It is imported as
-the abstract typed positive-cone theorem of \citet{TsiokosSDTC2026}.
-The imported theorem consumes positive domination records and a
-vanishing trace budget and returns the zero anti-invariant ledger.
-The source record is the citation to that theorem, the role record is
-``duality-confinement membrane theorem,'' and the target record is the
-shell equality \(\AZ=0\) after applying the bridge fields of
-\Cref{thm:rh:aor-gamma-bridge-discharge}.  Hence the use is
-\(\mathrm{approved\_other}\) with typed bridge composition, not an
-untracked import.
-\end{proof}
-
-\begin{theorem}[Typed real-coordinate discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction}; the A3 representation note applies. See App~\ref{app:formalization}.}]
+\begin{classification}[Real-coordinate record]
 \label{thm:rh:aor-real-coordinate-discharge}
-The typed real-coordinate parameter used by the RH shell has primary
-residual type \(\Delta_{\mathrm{presentation}}\).  The identification
-of that parameter with the classical real-part function
-\(\Real(\rho)\) is carried by construction-parameter assignment and is
-statused as \(\mathrm{outside\_scope}/\mathrm{nonclaim}\) for a
-substantive analytic derivation outside the present paper.
-\end{theorem}
+The abstract real coordinate of a general shell is recorded by two
+atoms of primary type presentation, with statuses outside scope and
+non-claim.  Its identification with \(\Real\rho\) is the separate
+hypothesis of \Cref{thm:rh:full-classical}; for the bare shell it holds
+by construction.
+\end{classification}
 
-\begin{proof}
-The paper statement writes \(\Real(\rho)-1/2\).  The shell supplies the
-operations and positivity principles needed by Theorem T through its
-typed real-coordinate parameter.  The construction-parameter assignment
-says that, when the shell is instantiated, this parameter is the
-classical real part of the zero.  The present paper does not derive
-that analytic identification from the classical analytic infrastructure.
-Therefore the
-presentation residual is not ignored: it is closed by the explicit
-construction-parameter record together with the nonclaim of an
-internal derivation of the classical identification.
-\end{proof}
-
-\begin{theorem}[Translation-interface discharge\footnote{Tracked by the formalization harness as a literal-data definition with status \texttt{by\_construction}; substantive content lives in \Cref{sec:translation_theorem}. See App~\ref{app:formalization}.}]
+\begin{classification}[Translation record]
 \label{thm:rh:aor-translation-interface-discharge}
-Translation theorem T has primary residual type
-\(\Delta_{\mathrm{target}}\) and secondary type
-\(\Delta_{\mathrm{transport}}\).  Both are discharged by construction
-over the fields of the anti-invariant zero ledger.  The theorem
-transports the typed equality \(\AZ=0\) to the typed critical-line
-readout on \(\Znt\), and conversely.
-\end{theorem}
+Theorem~T is recorded by an atom of primary type target with forced
+secondary transport, and an atom of primary type transport, both with
+status zero.
+\end{classification}
 
-\begin{proof}
-The proof of Theorem T is a positive-sum argument over the declared
-ledger.  The target \(\AZ\) is a finite typed sum of nonnegative
-multiplicity-weighted square displacements, and the zero target is
-equivalent to the vanishing of every displacement.  Thus the
-target-readout and transport obligations are not external analytic
-claims; they are the internal typed-interface content of
-\Cref{thm:rh:translation-T-forward,thm:rh:translation-T-reverse}.
-\end{proof}
-
-\subsection{AOR-instance theorem}
-
-\begin{theorem}[RH AOR-instance theorem\footnote{Verified in the Lean formalization against the local refinement-stable AOR predicate over the assembled-carrier fields; the partial alignment relative to the full audit-closure refinement-stable characterisation of \citet{TsiokosAOR2026} is recorded in App~\ref{app:formalization}.}]
+\begin{theorem}[Local register completeness]
 \label{thm:rh:aor-instance}
-Under the discharges recorded in
-\Cref{thm:rh:aor-mechanical-records,thm:rh:aor-recognition-discharge,thm:rh:aor-gamma-bridge-discharge,thm:rh:aor-auditL-discharge,thm:rh:aor-dc-master-import-discharge,thm:rh:aor-real-coordinate-discharge,thm:rh:aor-translation-interface-discharge}, the saturated completed
-Selberg trace shell is a local refinement-stable AOR instance on the
-RH scope:
-\[
-  \Sel\in
-  \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}.
-\]
-Consequently, at the record level of this AOR instance, the typed zero
-ledger of \(\Sel\) has no nontrivial zeros off the fixed locus
-\(\Fix(\JL)\).
+In the concatenation \(C_{\mathrm{RH}}(\Sel,\GamSDTCSelberg)\) of
+\Cref{thm:rh:aor-mechanical-records,thm:rh:aor-recognition-discharge,thm:rh:aor-gamma-bridge-discharge,thm:rh:aor-auditL-discharge,thm:rh:aor-dc-master-import-discharge,thm:rh:aor-real-coordinate-discharge,thm:rh:aor-translation-interface-discharge},
+the list of non-claims is nonempty, and every forced secondary type of
+every atom occurs as the primary type of some atom.  In the terminology of \citet{TsiokosAOR2026}, the register
+is locally complete on \(\mathfrak S_{\mathrm{RH}}\).
 \end{theorem}
 
 \begin{proof}
-The definition-side rows provide the carrier, target, role, and
-presentation records.  The recognition source provides the
-domination-record source.  Its structural-coherence assumptions carry
-the abstract DC conclusion to the shell equality \(\AZ=0\).  The
-\(\mathrm{Audit}_{L}\) field supplies the admissibility
-status of the shell.  The master theorem of \citet{TsiokosSDTC2026}
-is an accepted typed-cone import.  The real-coordinate presentation
-residual and the admissibility-as-hypothesis residual are both
-explicitly statused rather than suppressed.  Translation theorem T
-then converts \(\AZ=0\) into the statement
-\[
-  \forall\,\rho\in\Znt,\quad \Real(\rho)=\frac12.
-\]
-Thus every listed residual in the local wrapper for
-\(\mathfrak S_{\mathrm{RH}}\) is either zero, bridged, approved,
-carried by construction, or registered as outside the stronger
-analytic scope.  This is the AOR-membership reading of
-\Cref{thm:rh:conditional}; it does not upgrade the conditional chain
-to an unconditional analytic theorem.
+The non-claim list is nonempty by construction.  The
+forced secondary types that occur are transport, target, role,
+limit and source.  Each occurs as a primary type: transport in the bridge-field record,
+target, role and limit in the recognition-source record, and source in
+the recognition-source and cross-paper records.
 \end{proof}
 
-\subsection{Partial-status disclosure}
-
-\begin{remark}[Partial status of the AOR-instance wrapper]
+\begin{remark}[Partial status of the classification]
 \label{rem:rh:aor-partial-status}
-The present AOR-instance theorem is a paper-level classification of
-the existing closure records.  The partial alignment relative to the
-full audit-closure refinement-stable characterisation of
-\citet{TsiokosAOR2026} is the substance of this remark: at the
-AOR-instance level, the discharges are recorded literally as
-classification data, and the substantive analytic-content checks
-remain deferred to their source theorems.  The seven per-row
-discharges of
-\Cref{thm:rh:aor-mechanical-records,thm:rh:aor-recognition-discharge,thm:rh:aor-gamma-bridge-discharge,thm:rh:aor-auditL-discharge,thm:rh:aor-dc-master-import-discharge,thm:rh:aor-real-coordinate-discharge,thm:rh:aor-translation-interface-discharge} record the classification
-statuses used by \Cref{thm:rh:aor-instance}.  Promotion of the
-recognition source, coherence assumptions, admissibility witness, and
-real-coordinate assignment to data-bearing AOR records is deferred.
-This disclosure is part of the AOR status and is not a weakening of
-\Cref{thm:rh:conditional}.
+\Cref{thm:rh:aor-instance} is a statement about a finite list of
+labels; it uses no domination record, bridge or trace limit, and it
+does not imply the critical-line statement.  The proof-carrying notion
+of realisability of \citet{TsiokosAOR2026} requires stored proofs for
+each obligation and quantitative payment hypotheses, which are not
+supplied here; membership of the argument in that notion remains open.
 \end{remark}
- 
+ \section{Finite windows}
+\label{sec:finite_windows}
 
-\section{Scope and non-claims}
+By \Cref{thm:rh:concrete-window-dc}, a proof along the duality-confinement
+route needs upper bounds tending to zero for the window sums \(A_W\).
+This section records some elementary facts about natural candidates
+for such bounds.  The main point is \Cref{prop:rh:window-identities}(b):
+the symmetric probe \(L_W(x)=\sum x_\rho\) sees nothing of the odd
+displacement vector, by symmetry alone, so its residual charge is the
+whole window sum; the equivalences of
+\Cref{prop:rh:window-equivalences} are then tautologies forced by this
+choice of probe, and carry no information about \(\zeta\).  Only the oddness of the displacement under the
+functional-equation map is used here; no fixed locus is involved.
+
+\paragraph{Setting.}
+Throughout, \(\sigma(\rho)=1-\rho\) is the functional-equation map on
+the nontrivial zeros (not to be confused with the reflection \(\JL\) in
+the critical line), a finite set \(W\) of nontrivial
+zeros is \emph{reflected} if \(\sigma(W)=W\), and the positive integer
+weights satisfy \(m_{\sigma(\rho)}=m_\rho\).  A sequence \((W_n)\) of
+finite sets is \emph{exhaustive} if every nontrivial zero lies in
+\(W_n\) for all large \(n\); exhaustive sequences of reflected windows
+exist because the nontrivial zeros are countable and each orbit of
+\(\sigma\) has at most two elements.  These windows differ from those of
+\Cref{thm:rh:concrete-window-dc}, which are closed under
+\(\JL(\rho)=1-\bar\rho\) and use unit weights; windows closed under both
+reflections also exist, since the two reflections commute and each
+orbit of the group they generate has at most four elements.  On the Euclidean
+space \(\mathbb R^W\) put
+\[
+  v_W(\rho)=\sqrt{m_\rho}\Bigl(\Real\rho-\frac12\Bigr),
+  \qquad
+  L_W(x)=\sum_{\rho\in W}x_\rho ,
+\]
+the \emph{displacement vector} and the \emph{invariant probe}.  For a linear map \(L\) from \(\mathbb R^W\) to a finite-dimensional
+real inner product space, let \(L^+\) be its Moore--Penrose pseudoinverse and
+\[
+  \Xi(L)=I-L^+L ,
+\]
+the orthogonal projection onto \(\ker L\); \(L^+L\) is the orthogonal
+projection onto \((\ker L)^\perp\).  For a vector \(v\), the
+\emph{residual charge} \(\langle v,\Xi(L)v\rangle=\|\Xi(L)v\|^2\) measures
+the part of \(v\) that the probe \(L\) does not see.  We call \(LL^*\) the \emph{native currency} of \(L\).  (These are the
+identity-audit cases of the residual, native currency and decoder
+\(L^+\) of the companion paper \citep{TsiokosXiCompanion2026}.)  A \emph{payment} for a window sum is an upper bound for it,
+or for a quadratic form dominating it, that one hopes to derive
+independently.  Operator inequalities \(S\preceq T\) are in the sense of
+quadratic forms.
+
+\begin{proposition}[Window identities]
+\label{prop:rh:window-identities}
+Let \(W\) be a reflected window with symmetric positive weights.
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item \(\|v_W\|^2=A_W\), and \(A_W\leq\AZ\).
+  \item \(L_Wv_W=0\).  Consequently
+    \(\langle v_W,\Xi(L_W)v_W\rangle=A_W\): the invariant probe sees
+    nothing of the displacement, and the residual charge is the whole
+    window sum.
+  \item For every linear map \(L\) on \(\mathbb R^W\),
+    \(\langle v_W,(L^+(LL^*)(L^+)^*+\Xi(L))v_W\rangle=A_W\).  Changing the
+    probe moves charge between the decoded native currency and the
+    residual, but never changes their total.
+  \item Let \(P_W\) be the orthogonal projection onto \(\ker L_W\), a probe
+    determined by the window alone (it does not depend on the
+    displacements).  Then
+    \(\langle v_W,\Xi(P_W)v_W\rangle=0\) and
+    \(\langle v_W,P_WP_W^*v_W\rangle=A_W\).  In particular, a window
+    containing a zero off the critical line has zero residual charge for this probe and strictly positive native currency.
+\end{enumerate}
+Part (d) shows that residual charge depends on the probe; the
+equivalences of \Cref{prop:rh:window-equivalences} concern the
+invariant probe \(L_W\).
+\end{proposition}
+
+\begin{proof}
+(a) is the definition of \(v_W\) and of the extended sum.  (b): the
+reflection pairs \(\rho\) with \(1-\rho\), which has the opposite
+displacement and the same weight; the only fixed point \(\rho=\frac12\)
+has displacement zero.  So the terms of \(L_Wv_W\) cancel, \(v_W\) lies in
+\(\ker L_W\), and \(\Xi(L_W)v_W=v_W\).  (c): \(L^+(LL^*)(L^+)^*=L^+L\) is
+the orthogonal projection onto \((\ker L)^\perp\), so the operator in
+(c) is the identity.  (d): \(\ker P_W=(\ker L_W)^\perp\), which is
+orthogonal to \(v_W\) by (b); and \(P_WP_W^*=P_W\) fixes \(v_W\).
+\end{proof}
+
+\begin{proposition}[Two elementary limitations]
+\label{prop:rh:window-obstructions}
+Let \(W\) be a nonempty window.
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item \emph{Operator transport bounds for the identity target cannot
+    vanish.}  This part does not use the zeros at all, and the same
+    argument works for any finite-dimensional target of \(L\).  Let
+    \(L:\mathbb R^W\to\mathbb R\) be linear, and suppose
+    \(LL^*\preceq\Theta\), \(\Xi(L)\preceq\Omega\) and
+    \(L^+\Theta(L^+)^*+\Omega\preceq H\cdot I\) for operators
+    \(\Theta,\Omega\) and a real number \(H\).  Then \(H\geq1\).
+  \item \emph{The probe cannot be coercive on its own residual.}  If
+    \(c\|x\|\leq|L_W x|\) for some \(c>0\) and all \(x\) in the range of
+    \(\Xi(L_W)\), then \(L_W\) is injective.  Hence no such \(c\) exists when \(W\) has at
+    least two elements.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Conjugating \(LL^*\preceq\Theta\) by \(L^+\) and adding
+\(\Xi(L)\preceq\Omega\) gives
+\(I=L^+L+\Xi(L)\preceq L^+\Theta(L^+)^*+\Omega\preceq H\cdot I\), and
+\(\mathbb R^W\neq0\).  (b) The range of \(\Xi(L_W)\) is \(\ker L_W\), on
+which \(L_W\) vanishes; the inequality forces \(\ker L_W=0\).  A nonzero
+linear functional on \(\mathbb R^W\) is injective only if
+\(\dim\mathbb R^W=1\).
+\end{proof}
+
+Here the \emph{identity target} is the map \(I\) on \(\mathbb R^W\) whose
+values the payment is meant to control, and a \emph{transport bound} is
+the scalar \(H\) in an inequality of the form in (a), which dominates the
+decoded native budget plus the residual bound by \(H\cdot I\).  Part (b) says that coercivity on the residual forces \(L_W\) to be
+injective, which fails as soon as \(W\) has at least two elements,
+because then \(\ker L_W\neq0\).  Part (a) says only that
+the identity operator is not small: a transport
+bound of the form in (a), which dominates the identity target as an
+operator rather than on the actual displacement vector \(v_W\), cannot
+tend to zero.
+
+\begin{proposition}[Payments that restate the Riemann hypothesis]
+\label{prop:rh:window-equivalences}
+Let \((W_n)\) be an exhaustive sequence of reflected windows with
+symmetric positive weights, and write \(v_n=v_{W_n}\), \(L_n=L_{W_n}\),
+\(A_n=A_{W_n}\).  Each of the following is equivalent to the Riemann
+hypothesis:
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item \(\langle v_n,\Xi(L_n)v_n\rangle=0\) for every \(n\);
+  \item there are \(b_n\to0\) with \(\langle v_n,\Xi(L_n)v_n\rangle\leq b_n\);
+  \item there are operators \(\Omega_n\succeq\Xi(L_n)\) and \(b_n\to0\)
+    with \(\langle v_n,\Omega_nv_n\rangle\leq b_n\);
+  \item for a fixed real number \(q<1\),
+    \(\langle v_n,\Xi(L_n)v_n\rangle\leq q\,A_n\) for every \(n\);
+  \item \(\sum_n A_n<\infty\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+By \Cref{prop:rh:window-identities}(b), the residual charge in (a),
+(b) and (d) equals \(A_n\), and in (c) it is at most
+\(\langle v_n,\Omega_nv_n\rangle\).  If some zero \(\rho_0\) is off the
+critical line, it lies in \(W_n\) for all large \(n\), and then
+\(A_n\geq(\Real\rho_0-\frac12)^2>0\) for all large \(n\); this
+contradicts each of (a)--(e) (for (d), \(A_n\leq qA_n\) forces
+\(A_n=0\); for (e), the terms of a convergent series tend to zero).
+Conversely, under the Riemann hypothesis every \(A_n\) is zero, and
+(a)--(e) hold with \(\Omega_n=\Xi(L_n)\) and \(b_n=0\).
+\end{proof}
+
+The proposition does not say that the Riemann hypothesis is hard; it
+says that, on actual zero windows, bounding the residual charge,
+bounding any operator above it, asking for a uniform residual gap, or
+asking for summable window sums is each the Riemann hypothesis in
+another form.  An argument along these lines becomes a proof only if
+the bound is derived from zeta-function data by a route that does not
+already presuppose it.
+ \section{Scope and non-claims}
 \label{sec:scope_and_nonclaims}
 
-Several scope boundaries deserve explicit statement so that the
-conditional landing chain of \Cref{sec:landing_chain} remains sharp.
-The point is not to weaken the theorem just proved, but to identify
-which structural content is assumed, which encoding choices are
-made, and which extensions remain outside the present paper.
+\paragraph{No unconditional claim.}
+No statement about the location of the zeros of \(\zeta\) is proved.
+The conditional theorems assume \(\GamSDTCSelberg\), and
+\Cref{thm:rh:full-classical} also assumes a classical-zero
+identification.  By \Cref{prop:rh:gamma-calibration} and
+\Cref{thm:rh:concrete-window-dc}, on the bare shell of all nontrivial zeros with their real parts, and
+for windows that eventually
+contain every zero, these hypotheses, as types of data, are equivalent
+to the Riemann hypothesis; the conditional theorems
+are reformulations and provide no evidence for it.
 
-\paragraph{NC-1. Conditional structure.}
-The main result is a Six Birds-native conditional theorem under the
-shell-side closure hypothesis recorded by the Foundations-II
-admissibility field of \(\Sel\), together with the recognition source
-\(\GamSDTCSelberg\).  Outside the Six Birds framing, it reads as
-\[
-  \GamSDTCSelberg \Longrightarrow \mathrm{RH}.
-\]
-That is, given the Selberg-class recognition source, the conditional
-landing chain gives RH on the typed zero ledger of \(\Sel\).  This
-paper does not claim a standard-ZFC unconditional proof of the
-Riemann hypothesis.  Every later use of ``RH'' in this paper should
-therefore be read either as the typed-ledger statement under the
-construction-parameter identification, or as the conclusion of this
-conditional implication.
+\paragraph{The recognition source is not constructed.}
+The intended provenance of \(\GamSDTCSelberg\)---a trace formula of
+Selberg type for the zeros of \(\zeta\), realizing the structural law
+of the companion paper---is not established, and no trace identity
+between spectral and arithmetic data is used.  The shell's name
+records that intention only (\Cref{sec:sat_sel_shell}).
 
-\paragraph{NC-2. Recognition-source provenance.}
-The recognition source \(\GamSDTCSelberg\) is the Selberg-class
-instance of the Self-Dual Trace Confinement structural law of
-\citet{TsiokosSDTC2026}.  It is not derived from framework
-primitives; the three-route sweep over candidate primitive paths
-discussed in \Cref{sec:recognition_source} documents that none of
-them produces the trace-vanishing domination sequence.
+\paragraph{Admissibility is not established.}
+The framework's formation rules \citep{TsiokosFoundationsII2026} would
+require an intended trace-formula realization of the shell to be
+admissible; this is not verified, and the shell's audit marker is a
+label, not a proof.
 
-\paragraph{NC-3. Parameter identification.}
-The typed zero ledger \(\Znt\) is a typed multiset parameter of the
-shell.  The formal encoding parameterizes the real-part coordinate by
-a typed real-coordinate carrier, and the identification of that
-coordinate with the classical \(\Real(\rho)\) for a nontrivial zero
-\(\rho\) of \(\zeta\) is made by construction-parameter assignment,
-as disclosed in \Cref{sec:involution_and_ledger}.  Under that
-assignment, the conclusion \(\Real(\rho)=1/2\) on the typed ledger is
-the usual RH statement.  A formal derivation of this identification
-from analytic-number-theoretic infrastructure is an open extension.
-This is a math representation choice, not a change to the
-mathematical content being represented.
+\paragraph{The classification is bookkeeping.}
+The register of \Cref{sec:rh-aor-instance} is a finite list of labels.
+Its completeness (\Cref{thm:rh:aor-instance}) does not imply the
+critical-line statement, and the stronger, proof-carrying notion of
+realisability of \citet{TsiokosAOR2026} is not established for this
+argument.
 
-\paragraph{NC-4. Admissibility as hypothesis.}
-Admissibility of the saturated completed Selberg trace closure
-\(\Sel\) with respect to the seven Foundations-II admissibility
-schemas is carried by the audit field of \(\Sel\), as described in
-\Cref{def:rh:sat-sel-shell} \cite{TsiokosFoundationsII2026}.  It is
-a construction-time hypothesis of the typed shell, not a theorem
-derived here.  A substantive formal derivation would require
-unfolding the seven schemas as predicates and verifying the
-completed Selberg trace instance field by field.  Until that
-extension is supplied, admissibility is treated as part of the
-shell data rather than as an independently derived analytic theorem.
-
-\paragraph{NC-5. Classical-barrier framing.}
-The Six Birds approach shares the spirit of the classical RH attack
-programs but is structurally distinct from them: Hilbert--P\'olya's
-spectral framing \citep{BerryKeating1990,Odlyzko1987}, Connes'
-adelic and noncommutative-geometric framing
-\citep{Connes1999,Connes2016}, de Branges' Hilbert spaces of entire
-functions \citep{deBranges1968,deBranges1986,deBranges1994},
-Beurling--Nyman positivity
-\citep{Nyman1950,Beurling1955,BaezDuarte2003}, and Weil's
-number-theoretic positivity \citep{Weil1952,Bombieri2000} all aim at
-unconditional RH within their respective classical substrates.  The
-present paper instead establishes a conditional result on the typed
-Selberg-class trace shell, with the closure-content recognition
-source supplied separately.  The classical programs are neither
-circumvented nor refuted; they address a different mathematical
-object.  In particular, Weil positivity is readout-level and
-target-adjacent in the V-Differential classification rather than the
-source-level recognition content used here.  Acceptance of the
-present theorem turns on the stated recognition source rather than
-on a claimed resolution of any classical program.
-
-\paragraph{NC-6. GRH is out of scope.}
-Generalizing to the Riemann hypothesis for primitive Selberg-class
-\(L\)-functions \citep{Selberg1992,KaczorowskiPerelli1999} is an
-extension target.  The SDTC structural law would need to be
-instantiated for each \(L\) of interest, with a separate analysis
-of typed-shell admissibility and recognition-source provenance for
-that \(L\).  This paper instantiates the law for \(L=\zeta\) only;
-GRH is out of scope.  No assertion is made here about
-Dirichlet \citep{Davenport2000}, modular \citep{Iwaniec1997},
-automorphic \citep{CogdellKimMurty2004}, or other primitive
-Selberg-class \(L\)-functions.
-
-\paragraph{NC-7. Simple zeros and density results.}
-No claim is made about multiplicity one for nontrivial zeros, and
-no zero-density claim is made.  The typed multiset \(\Znt\) admits
-arbitrary positive integer multiplicities \(m_{\rho}>0\); the
-conditional landing chain delivers the critical-line statement on
-the typed zero ledger, while simple-zero conjectures
-\citep{Montgomery1973,ConreyGhoshGonek1998}, Lindel\"of-type
-statements \citep{TitchmarshHeathBrown1986,Ivic1985}, and
-zero-density refinements \citep{Montgomery1971,Ivic1985} are
-distinct questions with their own structural status.
-
-\paragraph{NC-8. Three-route derivation sweep.}
-The recognition source \(\GamSDTCSelberg\) is not derivable from
-framework primitives.  The three candidate primitive paths
-considered in \Cref{sec:recognition_source} were each found
-insufficient to produce the trace-vanishing domination sequence.
-This marks the epistemic status of the source as closure content
-rather than a primitive theorem.
-
-\paragraph{NC-9. No-smuggling gates.}
-The conditional closure passes the six no-smuggling audit gates
-plus Gate 7, the recognition-source provenance audit.
-Appendix~\ref{app:formalization} records the seven checks alongside
-the Foundations-III audited judgment vocabulary
-\cite{TsiokosFoundationsIII2026}.
-
-\paragraph{NC-10. Scope of the realisability-instance form.}
-The realisability-instance form
-\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\)
-delivered by \Cref{thm:rh:conditional,thm:rh:aor-instance} is a
-local statement about the typed zero ledger of \(\Sel\) under
-\(\GamSDTCSelberg\); the discharge atoms of the eight-stratum /
-twelve-type residual atlas are assembled literally from the shell,
-the recognition source, and the bridge fields, so the
-classification carries the same conditional content as
-\(\GamSDTCSelberg \Rightarrow \mathrm{RH}\) and inherits every
-preceding scope boundary unchanged.
-
-\paragraph{NC-11. Realisability is the readout's stratum, not a
-new hypothesis discharge.}
-The audit-closure rendering does not remove or substitute for any
-load-bearing hypothesis of the conditional landing chain.
-\(\GamSDTCSelberg\) and Foundations-II admissibility of \(\Sel\)
-remain the supplied structural content; the realisability-instance
-form names the audit-closure stratum at which the conditional
-landing chain delivers its conclusion, with the critical-line
-statement on \(\Znt\) as its typed-zero-ledger readout.  No
-unconditional RH claim in standard ZFC follows from the
-realisability framing, and no classical analytic input is claimed to
-be replaced or strengthened by it.
-
-These boundaries are part of the conditional claim, not retreats
-from it.  The recognition source \(\GamSDTCSelberg\) is the
-structural content supplied by \citet{TsiokosSDTC2026}, and the
-conditional landing chain converts that supplied content into a
-critical-line statement on the typed zero ledger of \(\Sel\).  The
-boundaries above identify what is supplied, what is encoded, and
-what remains an open extension.
- 
-
-\section{Discussion}
+\paragraph{Other \(L\)-functions and finer questions.}
+Only the Riemann zeta function is treated.  Nothing is claimed about
+the generalized Riemann hypothesis for Dirichlet, modular or other
+\(L\)-functions of the Selberg class
+\citep{Selberg1992,KaczorowskiPerelli1999}, about simplicity of the
+zeros \citep{Montgomery1973,ConreyGhoshGonek1998}, or about zero
+density \citep{Montgomery1971,Ivic1985}.
+ \section{Discussion}
 \label{sec:discussion}
 
-The conditional landing chain invites three lines of further
-thought: where it sits in the broader Six Birds program of
-formed-layer structural laws, how it compares with classical
-approaches to RH, and which extensions remain open after the present
-formalization.
+\paragraph{What the route requires.}
+The duality-confinement route reduces the Riemann hypothesis to upper
+bounds tending to zero for the window sums \(A_W\), or for operators
+dominating the associated ledgers.  For windows closed under the
+reflection \(s\mapsto1-\bar s\) (\Cref{thm:rh:concrete-window-dc}), or under the map \(s\mapsto1-s\) with invariant weights
+(\Cref{prop:rh:window-equivalences}), and along windows that eventually
+contain every zero, the existence of such bounds is the Riemann
+hypothesis itself, whatever form the bounds take among those
+considered.  What would be new is a source of bounds: an argument, for
+instance from an explicit formula or a trace formula, that produces
+them from zeta-function data without presupposing the conclusion.
+\Cref{prop:rh:window-obstructions} records the elementary fact that an operator-level transport bound for
+the identity target, of the form stated there, cannot tend to zero on a
+nonempty window, so a payment of that kind must be evaluated on the
+actual displacement vector.
 
-\paragraph{Structural parallels.}
-The structural template used here is not isolated.  Parallel
-internal Six Birds developments organize other formed closures
-along the same shape: the substrate is first organized as a formed
-closure, a recognition source names the structural content supplied
-by that closure, and an apparatus theorem extracts the advertised
-mathematical consequence once that content is present.  Those
-developments are mentioned here only as structural parallels, not
-as inputs to the RH argument.
+\paragraph{Relation to classical programs.}
+Several classical approaches seek a positivity statement equivalent to
+the Riemann hypothesis: Weil's criterion, which asks for positivity of
+a quadratic functional built from the explicit formula
+\citep{Weil1952,Bombieri2000}, and Li's criterion \citep{Li1997}; the Nyman--Beurling criterion
+\citep{Nyman1950,Beurling1955,BaezDuarte2003}; de Branges' spaces of
+entire functions \citep{deBranges1968,deBranges1986}; and spectral
+interpretations of the zeros \citep{BerryKeating1990,Connes1999}.  The window sums of this paper are also positivity data, but of a much
+cruder kind: they are the squared displacements themselves, and, unlike Weil's functional, which is built from the explicit
+formula relating zeros to primes, they involve no primes.  A bound
+for them that did not presuppose the Riemann hypothesis would presumably
+have to come from a deeper source of this kind; nothing in the present paper
+supplies one.
 
-The SDTC structural law used in this paper is the involutive
-self-dual member of that family \cite{TsiokosSDTC2026}.  Its
-apparatus is the duality-confinement membrane theorem: given a
-separating anti-invariant readout and a vanishing trace domination
-sequence, the anti-invariant ledger collapses.  In the RH instance,
-the recognition source \(\GamSDTCSelberg\) supplies the domination
-records for \(\AZ\), and the bridge theorem
-\Cref{thm:rh:dc-master-applied} applies the
-\cite{TsiokosSDTC2026} master theorem to \(\Sel\).  The present
-paper is therefore the worked single-substrate application of the
-SDTC apparatus on the saturated Selberg trace shell, conditional on
-the Selberg-class recognition source.  The unconditional analytic
-content of any one of the broader formed-layer tracks is not derived
-from a common primitive calculus; it is closure content of its formed
-layer, supplied as recognition source.  This is why the parallels are
-useful but not load-bearing: they show the paper is following a
-stable formed-layer pattern inside the Six Birds program, while the
-actual RH argument still depends only on the RH-specific shell, the
-SDTC apparatus of \citet{TsiokosSDTC2026}, and the Selberg-class
-recognition source.
+\paragraph{Relation to the companion papers.}
+The duality-confinement theorem is proved in \citet{TsiokosSDTC2026};
+this paper is its application to the zeros of \(\zeta\), and
+\Cref{thm:rh:concrete-window-dc} is the zeta-specific case of the
+converse proved there.  The residual operator of \Cref{sec:finite_windows} is the
+identity-audit case of the adequacy residual of
+\citet{TsiokosXiCompanion2026}, which in the companion Navier--Stokes
+paper \citep{TsiokosNavier2026} is applied to a physical target; the
+metatheory paper \citep{TsiokosMetaTheory2026} relates the two
+applications through a common Gaussian observation.  None of these
+connections supplies a payment for either problem.
 
-\paragraph{Classical RH programs.}
-The comparison with classical RH approaches should be made at the
-right level.  The present paper does not circumvent or refute the
-classical programs.  Hilbert--P\'olya's spectral framing
-\citep{BerryKeating1990} seeks an unconditional spectral
-interpretation of the zero set.  Connes' adelic and
-noncommutative-geometric framing \citep{Connes1999} seeks an
-unconditional trace-formula interpretation in a different
-geometric substrate.  De Branges' Hilbert spaces of entire functions
-program \citep{deBranges1986} seeks an unconditional positivity
-mechanism in its own functional-analytic setting.  Beurling--Nyman
-\citep{Beurling1955,BaezDuarte2003} seeks an unconditional density
-criterion in \(L^{p}\)-type spaces.  Weil's number-theoretic
-positivity framing \citep{Weil1952,Bombieri2000} seeks
-unconditional positivity through the explicit formula.  These are
-all programs aimed at unconditional RH inside classical
-mathematical substrates.
-
-The conditional theorem here lives at a different layer.  Its
-substrate is the typed saturated trace shell \(\Sel\), and its
-load-bearing hypothesis is \(\GamSDTCSelberg\), the recognition source
-that supplies domination records as closure content.  That distinction
-is sharpest in the comparison with Weil positivity.  Weil-style
-positivity is close in spirit to the target: it sees the
-explicit-formula positivity phenomena that a successful RH argument
-must control.  In the V-Differential classification, however, this is
-readout-level or target-adjacent content.  It does not by itself
-become the source-level content required by the duality-confinement
-mechanism, namely the formed-layer existence of completed domination
-records \(\AZ\preceq B_n\) with \(\trace B_n\to0\).  Classical
-positivity content may illuminate the right trace quantities, but it
-does not by itself supply the recognition source used by the
-conditional landing chain.
-
-For an outside-Six-Birds reader, the comparison point is not
-whether the classical programs have failed and the present method
-bypasses them.  It is that the paper proves a conditional theorem
-about a different object: the typed Selberg-class trace shell under
-its Foundations-II admissibility field and the recognition source
-\(\GamSDTCSelberg\).  Acceptance turns on whether one accepts that
-formed-layer recognition source and shell admissibility as the
-correct structural inputs, not on a claimed classical proof of Weil
-positivity, a spectral operator, or a de Branges-space positivity
-theorem.
-
-\paragraph{Realisability stratum of the conclusion.}
-The audit-closure framing of \citet{TsiokosAOR2026} fixes the
-stratum at which the conditional landing chain delivers its
-conclusion.  The eight-stratum / twelve-type residual atlas of the
-AOR meta-theory partitions the audit obligations that a formed-layer
-closure must status to count as a refinement-stable realisability
-instance.  In the present setting, the seven discharge atoms named in
-\Cref{def:rh:aor-sel-instance} are the local audit obligations
-incurred by the recognition source \(\GamSDTCSelberg\), the bridge
-theorem \Cref{thm:rh:dc-master-applied}, and translation theorem T.
-The AOR-instance theorem records that these local obligations are
-classified as zero, bridged, approved, by construction, or explicitly
-outside the stronger analytic scope.  The realisability-instance
-form is therefore not a separate result about \(\Sel\), but the
-audit-stratum rendering of the same conditional landing chain; the
-critical-line statement on \(\Znt\) is its typed-zero-ledger readout.
-
-\paragraph{Future work.}
-Three extension targets are natural.  First, the admissibility of
-\(\Sel\) should be derived rather than carried as construction-time
-audit data.  A stronger development would unfold the seven
-Foundations-II schemas as predicates and verify them for the
-completed Selberg trace instance, replacing the construction-time
-hypothesis by a derived formed-layer admissibility theorem; this
-would not change Theorem T or the conditional landing chain.
-
-Second, the real-coordinate parameter identification should be
-formalized at the analytic level.  A stronger development would
-connect the typed zero ledger \(\Znt\) and its real-coordinate
-field to the nontrivial zeros of \(\zeta\) through
-analytic-number-theoretic infrastructure, lifting the real-part
-abstraction boundary disclosed in \Cref{sec:involution_and_ledger}.
-
-Third, the natural generalization is to primitive Selberg-class
-\(L\)-functions.  The functional-equation involution, completed
-\(L\)-function, nontrivial-zero ledger, and anti-invariant ledger
-all have evident analogues, but the analogy is not itself a
-theorem: each \(L\) needs its own typed shell, admissibility
-verification, and recognition-source provenance argument.  The
-resulting statement is a per-\(L\) conditional landing chain for
-the corresponding generalized Riemann hypothesis, not an automatic
-GRH theorem obtained by changing notation.
-
-The admissibility derivation and the real-coordinate identification
-are closest to the existing formalization; the GRH extension is
-structurally specified by the SDTC pattern, but its substantive
-realization is a per-\(L\) development problem.
- 
-
-\section{Conclusion}
+\paragraph{Further directions.}
+Three questions remain open: to construct a recognition source from a
+trace formula, which would turn \Cref{thm:rh:full-classical} into a
+proof; to verify the framework's admissibility conditions for such a
+construction; and to treat other \(L\)-functions, each of which needs
+its own ledger and source.
+ \section{Conclusion}
 \label{sec:conclusion}
 
-The paper has established the RH closure in its conditional form.
-Under the standing Foundations-II admissibility assumption on
-\(\Sel\), and with the Selberg-class recognition source
-\(\GamSDTCSelberg\) supplied by the SDTC structural law of
-\citet{TsiokosSDTC2026}, the conditional landing chain records
-\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\)
-as a local AOR-instance wrapper in the sense of
-\citet{TsiokosAOR2026}.  Its typed-ledger readout is
-\(\rho\in\Znt \Rightarrow \Real(\rho)=1/2\).  The recognition source
-supplies domination records for \(\AZ\); the duality-confinement
-membrane theorem converts those records into \(\AZ=0\); translation
-theorem T converts \(\AZ=0\) into the critical-line statement; and
-\Cref{thm:rh:aor-instance} records that the same composition
-discharges the audit-closure residual atlas.
+The Riemann hypothesis is the vanishing of the positive ledger
+\(\AZ=\sum_\rho m_\rho(\Real\rho-\frac12)^2\) of squared displacements of
+the nontrivial zeros from the fixed line of the involution
+\(s\mapsto1-\bar s\).  If a recognition source supplies domination
+records of vanishing trace together with a bridge encoding these displacements in an auxiliary
+readout, the duality-confinement theorem places every represented zero on the
+critical line of its coordinates, and, with a map from coordinates to the reals that sends \(\frac12\) to
+\(\frac12\) and carries the represented zeros onto the real parts of all
+nontrivial zeros, the Riemann hypothesis follows.  On any shell this
+hypothesis is equivalent to the critical-line statement for the
+represented zeros, hence on the bare shell to the Riemann hypothesis, and so
+is its concrete form on finite windows closed under the reflection
+\(s\mapsto1-\bar s\), with unit weights, that eventually contain every
+zero.  For windows closed under \(s\mapsto1-s\), with invariant weights, an
+operator-level transport bound for the full identity target cannot
+tend to zero on a nonempty window, and several natural forms of a
+payment for the window sums along windows that eventually contain
+every zero are again equivalent to the Riemann hypothesis.  These facts are elementary; they use analytic properties of \(\zeta\)
+such as the functional equation and the zero-free half-plane
+\(\Real s\geq1\), but no quantitative or prime-side input.  The paper thereby
+describes what a proof along this route would need, shows that the
+obvious candidates are no easier than the Riemann hypothesis, and does
+not claim to supply one.  The mathematical statements are formalized in Lean~4 with Mathlib
+(\Cref{app:formalization}).
 
-The conditional structure is essential.  Outside the Six Birds
-framework, the result reads as
-\(\GamSDTCSelberg\Longrightarrow\mathrm{RH}\) on the typed zero
-ledger; it is not an unconditional proof of RH in standard ZFC.
-Acceptance turns on two supplied pieces of formed-layer structure:
-the recognition source \(\GamSDTCSelberg\), and the admissibility of
-\(\Sel\) recorded by the \(\mathrm{Audit}_L\) field.  The
-AOR-realisability framing gives the audit-closure reading of that
-conclusion, but does not collapse these hypotheses into unmentioned
-background assumptions.
-
-Three extension targets remain.  First, the admissibility of
-\(\Sel\) under the seven Foundations-II schemas would be derived
-rather than carried as a standing hypothesis.  Second, the typed
-real-coordinate parameter would be connected to the classical
-function \(\Real(\rho)\) through analytic-number-theoretic
-infrastructure, lifting the real-part representation choice disclosed
-earlier.  Third, the analogous program for primitive Selberg-class
-\(L\)-functions would require a separate typed shell, admissibility
-verification, and recognition-source provenance argument for each
-\(L\).  The paper accordingly defers unconditional standard-ZFC RH,
-any claim to circumvent classical RH attack barriers in their native
-sense, and GRH for general primitive \(L\)-functions.
-
-Code and data availability.  The source repository is available at
-\url{https://github.com/ioannist/six-birds-duality-confinement}.  The
-canonical manuscript source is \path{paper/rh/main.tex}.  Formalized
-support is tracked by \path{lean/manifests/rh_manifest.toml} and the
-RH Lean modules.
- 
 \appendix
-
-
-\section{Lean formalization}
+\crefalias{section}{appendix}
+\section{Formal verification}
 \label{app:formalization}
 
-This appendix records how the Lean development is cited by the RH
-paper.  The governing rule is that the prose must distinguish a
-theorem proved in Lean, a definition realized as a Lean structure, a
-recognition source encoded as a typed carrier, and material merely
-tracked by the formalization harness.  The body sections use
-paper-level mathematical names except where a disclosure explicitly
-requires Lean syntax; full Lean identifiers and module-level
-bookkeeping appear here.
+The theorems, propositions and definitions of this paper are formally
+verified in the Lean~4 proof assistant (version 4.28.0) with the Mathlib library (revision
+\leanid{8f9d9cff6bd728b17a24e163c9402775d9e6a365}).  The Riemann
+hypothesis in the conclusions is Mathlib's predicate
+\texttt{RiemannHypothesis}: every zero of \texttt{riemannZeta} that is
+not a trivial zero and not equal to \(1\) has real part \(\frac12\).
+This appendix describes how the objects of the paper are represented
+and lists the Lean theorem behind each numbered result.
 
-\subsection*{Disclosure discipline}
+\subsection*{Representation}
 
-\begin{table}[!htbp]
-\centering
-\small
-\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.23\linewidth}
-  >{\raggedright\arraybackslash}p{0.30\linewidth}
-  >{\raggedright\arraybackslash}X}
+The actual nontrivial zeros are the complex numbers \(s\) with
+\texttt{completedRiemannZeta}\,\(s=0\) and \(0<\Real s<1\); the
+anti-invariant ledger is a sum in \([0,\infty]\) over them with arbitrary
+positive natural weights.  A shell is a Lean structure whose zero ledger
+uses an abstract real coordinate; its trace, quotient, visibility and
+audit fields are arbitrary types without laws, as stated in
+\Cref{sec:sat_sel_shell}.  The bare shell instantiates the coordinate as
+\(\mathbb R\) and the zero ledger as the actual nontrivial zeros with
+unit weights.  The recognition source \(\GamSDTCSelberg\) is a Lean
+structure whose fields are the data of
+\Cref{obl:rh:gamma-sdtc-selberg}; it is not an axiom, and every theorem
+that uses it takes an element of it (data witnessing the hypothesis)
+as an explicit argument.  Its
+auxiliary ledger is expressed in the abstract, library-free interface
+of the first formulation of the companion paper, which also carries some unused structure (weights, a response involution, a
+quantitative separation modulus).  The formal and the written versions
+of the hypothesis are equivalent: each holds for a shell exactly when
+every represented zero has coordinate \(\frac12\), by
+\Cref{prop:rh:gamma-calibration} and its formal counterpart.  The concrete window form
+(\Cref{thm:rh:concrete-window-dc}) uses instead the Mathlib operator
+formulation of the companion paper's Version~3, with positive operators
+on \(\mathbb R\) and the linear-algebra trace.
+
+\subsection*{What is not formally verified}
+
+The classical facts cited in the text about the functional equation,
+the location of zeros of \(\zeta\) outside the critical strip and the
+countability of the zeros are taken from, or derived from, Mathlib's
+formal development of the zeta function wherever the proofs use them.  Not verified are: \Cref{rem:rh:aor-partial-status}, which is a scope
+statement about the stronger notion of realisability; the framework
+material of \Cref{sec:framework}; and the discussion of
+provenance and admissibility.  The identification, stated in
+\Cref{sec:finite_windows}, of the companion paper's residual and
+decoder at identity audit with \(\Xi(L)\) and \(L^+\) is formally
+verified (see \Cref{prop:rh:window-identities} in the table).
+
+\Needspace{16\baselineskip}
+\subsection*{Correspondence}
+
+{\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.21\linewidth}
+  >{\raggedright\arraybackslash}p{0.74\linewidth}@{}}
+\caption{Numbered results and the Lean declarations that prove or
+realize them; names are relative to the namespace
+\texttt{SixBirdsDualityConfinement.RH}.}\label{tab:rh-formalization-coverage}\\
 \toprule
-Mode & Permitted wording & Use in this paper \\
+Result & Lean declarations \\
 \midrule
-\texttt{lean\_substantive} &
-``Verified in Lean as \textlangle declaration\textrangle,'' with
-``typed-interface'' or ``typed-bridge'' qualification when the proof
-uses carrier fields. &
-Used for Theorem~T, \texttt{dcMasterApplied}, \texttt{rhConditional},
-and \texttt{aorInstance}.  Theorem~T composes
-\texttt{AntiInvariantZeroLedger} fields; the landing-chain theorems
-compose through the \texttt{GammaSdtcSelberg} bridge carrier; the
-AOR-instance theorem proves the local \texttt{RefStableAOR} predicate. \\
-\texttt{definition\_entry} &
-``realized in Lean as the corresponding structure or definition.'' &
-Used for the RH definitions and the AOR-instance wrapper.  Definitions
-are not described as proved. \\
-\texttt{typed\_carrier} &
-``encoded as a typed structure carrier'' and explicitly ``not a Lean
-axiom.'' &
-Used for the recognition source \(\GamSDTCSelberg\); the carrier
-records supplied formed-layer content and is passed explicitly to
-downstream theorems. \\
-\texttt{harness\_tracked} &
-``tracked by the formalization harness.'' &
-Used for AOR discharge entries that are literal-data records rather
-than substantive theorem derivations. \\
-\texttt{support\_only} &
-No Lean mention. &
-Included for completeness.  No inventory entry of this paper has
-this mode. \\
-\bottomrule
-\end{tabularx}
-\caption{Lean-disclosure wording used by the RH paper.}
-\label{tab:rh-lean-disclosure-discipline}
-\end{table}
-
-The validator audits theorem rows against the project trust base and
-checks that no forbidden Lean tokens appear in the source tree.  The
-permitted axiom closure is the standard Lean core list
-\(\texttt{Classical.choice}\), \(\texttt{propext}\),
-\(\texttt{Quot.sound}\), \(\texttt{choice}\), and
-\(\texttt{funext}\).
-\Cref{tab:rh-formalization-coverage,tab:rh-formalization-coverage-aor}
-record the RH inventory rows and the AOR-instance entries using the
-modes above.
-
-\subsection*{Typed positive-cone encoding}
-
-The formalization uses the same mathlib-free typed positive-cone
-interface as \cite{TsiokosSDTC2026}: an order \(\preceq\), a trace
-functional \(\trace\), trace monotonicity, nonnegativity of the scalar
-summands, and positivity-to-zero principles.  This is the substrate on
-which \(\AZ\) lives.  Theorem~T is a finite typed-multiset argument over
-the cone, and \texttt{dcMasterApplied} applies the master theorem of
-\cite{TsiokosSDTC2026} to the RH-specific cone.  Full operator-theoretic
-realizations over trace-class operators \citep{Simon2005} or the
-classical Selberg trace formula apparatus \citep{Hejhal1976,Hejhal1983}
-remain extension targets.
-
-\subsection*{Representation note A3: real-part coordinate}
-
-The paper definition of \(\AZ\) uses \(\Real(\rho)-1/2\).  In the
-mathlib-free Lean development, the real-part coordinate is parameterized
-by \texttt{RealCoordinate}, not by the standard \(\mathbb{R}\) with
-analytic-number-theoretic infrastructure.  The carrier supplies the
-algebraic structure needed here: \(1/2\), subtraction from \(1/2\),
-squaring, nonnegativity of squares, and the implication that a zero
-square displacement forces equality with \(1/2\).
-
-The identification of \texttt{RealCoordinate} with the actual
-\(\mathbb{R}\)-valued real part of a classical nontrivial zero of
-\(\zeta\) is fixed by construction-parameter assignment when \(\Sel\)
-is instantiated.  It is not a derived Lean predicate; deriving it would
-require real- and complex-analytic infrastructure outside the
-mathlib-free development.  This is the A3 representation note referenced
-from \Cref{sec:involution_and_ledger,sec:discussion}.
-
-\subsection*{Representation note: admissibility as \(\mathrm{Audit}_L\)}
-
-The paper definition of the SAT-SEL shell \(\Sel\) requires
-admissibility under the seven Foundations-II audit schemas.  In the
-Lean development this admissibility is not a separately-derived
-predicate but is carried by the \(\mathrm{Audit}_L\) field of the
-\nolinkurl{SatSelShell} structure: a value of \nolinkurl{SatSelShell}
-packages the shell data together with a typed proof object asserting
-audit-closure under the seven schemas.  Downstream theorems consume
-this field as a hypothesis rather than rederiving it.  This is the
-admissibility representation note referenced from
-\Cref{sec:sat_sel_shell}.
-
-\subsection*{Recognition-source carrier (typed bridge)}
-
-The recognition source \(\GamSDTCSelberg\) is realized in Lean as the
-typed structure carrier \nolinkurl{GammaSdtcSelberg}.  The record packages
-the duality-confinement apparatus needed by the bridge theorem
-(involutive object ledger, separating anti-invariant readout,
-anti-invariant ledger, completed-domination records, and typed-cone
-primitives) together with the bridge propositions
-\nolinkurl{same_readout}, \nolinkurl{mu_zero_of_ae}, and
-\nolinkurl{visible_zero_of_ae}.  These propositions assert coherence
-with the shell, including the implication from \(\psim\) vanishing
-\(\mu\)-almost everywhere to \(\AZ=0\).  They are typed hypotheses, not
-derivations from the shell's own data.  The domination-record content
-witnesses
-\[
-  \AZ \preceq B_n,
-  \qquad
-  \trace B_n \to 0 .
-\]
-
-The carrier is declared inline in \texttt{RHConditional.lean}, its only
-consumer.  It is not a Lean axiom: the project-wide forbidden-tokens
-rule bans \texttt{axiom}, \texttt{opaque}, \texttt{constant},
-\texttt{sorry}, and \texttt{admit}.  The theorem
-\texttt{rhConditional} therefore takes
-\(\gamma : \texttt{GammaSdtcSelberg shell}\) as an explicit hypothesis
-parameter.  This mirrors the body discipline: formed-layer closure
-content is named as a recognition source, not added as a metalogical
-postulate.
-
-\subsection*{Cross-paper Lean import}
-
-The Lean theorem \texttt{dcMasterApplied} imports
-\texttt{masterTheorem} from
-\nolinkurl{DualityConfinement.MasterTheorem} in
-\cite{TsiokosSDTC2026}.  The DC apparatus is supplied as input rather
-than constructed from \(\Sel\), and the bridge fields express
-same-readout coherence, visible-support refinement, and
-\(\mathtt{mu\_zero\_of\_ae}\), which translates ``\(\psim\) vanishes
-\(\mu\)-almost everywhere'' into \(\AZ=0\).  The body-level role
-assignment (\(\Sel\leftrightarrow\IOL\), \(\AZ\leftrightarrow\AX\),
-\(\JL\leftrightarrow J\), \(\psimRH\leftrightarrow\psim\), zero measure
-\(\leftrightarrow\mu\)) is the mathematical interpretation of this
-bridge interface.  This is a one-way Lean import.
-
-\clearpage
-\begingroup
-\setlength{\vfuzz}{30pt}
-\begin{landscape}
-\begin{table}[!ht]
-\centering
-\tiny
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{0.88}
-\begin{tabularx}{\linewidth}{@{}
-  >{\raggedright\arraybackslash}p{0.16\linewidth}
-  >{\raggedright\arraybackslash}p{0.16\linewidth}
-  >{\raggedright\arraybackslash}X
-  >{\raggedright\arraybackslash}p{0.18\linewidth}
-  >{\raggedright\arraybackslash}p{0.09\linewidth}
-  >{\raggedright\arraybackslash}p{0.07\linewidth}@{}}
+\endfirsthead
 \toprule
-Paper label & Paper-prose name & Lean declaration &
-Proof mode & Coverage & Alignment \\
+Result & Lean declarations (continued) \\
 \midrule
-\nolinkurl{def:rh:fe-involution} &
-functional-equation involution \(\JL\) &
-\nolinkurl{RH.Involution.feInvolution} &
-definition entry &
-definition &
-faithful \\
-
-\nolinkurl{def:rh:psi-minus-rh} &
-anti-invariant readout \(\psimRH(s)=\Real(s)-1/2\) &
-\nolinkurl{RH.Involution.psiMinusRh} &
-definition entry &
-definition &
-faithful \\
-
-\nolinkurl{def:rh:nontrivial-zero-ledger} &
-nontrivial-zero ledger \(\Znt\) &
-\nolinkurl{RH.ZeroLedger.NontrivialZeroLedger} &
-definition entry; A3 real-part abstraction &
-definition &
-faithful \\
-
-\nolinkurl{def:rh:anti-invariant-zero-ledger} &
-anti-invariant zero ledger \(\AZ\) &
-\nolinkurl{RH.AntiInvariantZeroLedger.AntiInvariantZeroLedger} &
-definition entry &
-definition &
-faithful \\
-
-\nolinkurl{def:rh:sat-sel-shell} &
-saturated completed Selberg trace closure \(\Sel\) &
-\nolinkurl{RH.SatSelShell.SatSelShell} &
-definition entry; admissibility as \(\mathrm{Audit}_L\) hypothesis &
-definition &
-faithful \\
-
-\nolinkurl{thm:rh:translation-T-forward} &
-Theorem~T, forward direction &
-\nolinkurl{RH.TranslationT.translationTForward} &
-lean substantive; typed-interface composition over
-\texttt{AntiInvariantZeroLedger} fields &
-theorem &
-faithful \\
-
-\nolinkurl{thm:rh:translation-T-reverse} &
-Theorem~T, reverse direction &
-\nolinkurl{RH.TranslationT.translationTReverse} &
-lean substantive; typed-interface composition over
-\texttt{AntiInvariantZeroLedger} fields &
-theorem &
-faithful \\
-
-\nolinkurl{thm:rh:translation-T} &
-translation theorem T, biconditional &
-\nolinkurl{RH.TranslationT.translationT} &
-lean substantive; typed-interface composition over
-\texttt{AntiInvariantZeroLedger} fields &
-theorem &
-faithful \\
-
-\nolinkurl{obl:rh:gamma-sdtc-selberg} &
-recognition source \(\GamSDTCSelberg\) &
-\nolinkurl{RH.RHConditional.GammaSdtcSelberg} &
-typed-bridge carrier (DC apparatus + bridge propositions); not a
-Lean axiom; inline in \texttt{RHConditional.lean} &
-recognition source &
-not applicable \\
-
-\nolinkurl{thm:rh:dc-master-applied} &
-duality-confinement master theorem applied to \(\Sel\) &
-\nolinkurl{RH.DCMasterApplied.dcMasterApplied} &
-lean substantive; typed-bridge composition over carrier fields &
-theorem &
-faithful \\
-
-\nolinkurl{thm:rh:conditional} &
-conditional landing chain &
-\nolinkurl{RH.RHConditional.rhConditional} &
-lean substantive; takes
-\(\gamma : \texttt{GammaSdtcSelberg shell}\) explicitly &
-theorem &
-faithful \\
+\endhead
 \bottomrule
-\end{tabularx}
-\caption{Per-row Lean coverage for the eleven inventory entries of
-this paper.  Lean declarations omit the common
-\texttt{SixBirdsDualityConfinement.} namespace prefix.}
-\label{tab:rh-formalization-coverage}
-\end{table}
-\end{landscape}
+\endfoot
+\Cref{def:rh:fe-involution,def:rh:psi-minus-rh}
+  & \leanid{ActualInvolution.J}, \leanid{ActualInvolution.J_involutive},
+    \leanid{ActualInvolution.J_fixed_iff}, \leanid{ActualInvolution.J_zero};
+    shell form \leanid{Involution.feInvolution}, \leanid{Involution.psiMinusRh} \\ \addlinespace
+\Cref{def:rh:nontrivial-zero-ledger,def:rh:anti-invariant-zero-ledger}
+  & \leanid{ClassicalZeroLedger.NontrivialZero},
+    \leanid{ClassicalZeroLedger.antiInvariantSum};
+    shell form \leanid{ZeroLedger.NontrivialZeroLedger},
+    \leanid{AntiInvariantZeroLedger.AntiInvariantZeroLedger} \\ \addlinespace
+\Cref{def:rh:sat-sel-shell}
+  & \leanid{SatSelShell.SatSelShell}; bare shell
+    \leanid{ClassicalBareShell.bareShell} \\ \addlinespace
+\Cref{thm:rh:translation-T,thm:rh:translation-T-forward,thm:rh:translation-T-reverse}
+  & \leanid{ClassicalZeroLedger.antiInvariantSum_eq_zero_iff},
+    \leanid{ClassicalZeroLedger.antiInvariantSum_eq_zero_iff_criticalStripRH},
+    \leanid{FullClassicalRHBridge.criticalStripRH_iff_riemannHypothesis};
+    shell form \leanid{TranslationT.translationT},
+    \leanid{TranslationT.translationTForward},
+    \leanid{TranslationT.translationTReverse} \\ \addlinespace
+\Cref{obl:rh:gamma-sdtc-selberg}
+  & \leanid{RHConditional.GammaSdtcSelberg} (a structure; its elements are the data (i)--(iv)) \\ \addlinespace
+\Cref{prop:rh:gamma-calibration}
+  & \leanid{BareSourceConverse.gamma_nonempty_iff_shell_criticalLine},
+    \leanid{BareSourceConverse.gamma_nonempty_iff_criticalStripRH},
+    \leanid{BareSourceConverse.gammaOfRH} \\ \addlinespace
+\Cref{thm:rh:dc-master-applied}
+  & \leanid{DCMasterApplied.dcMasterAppliedRealTrace} \\ \addlinespace
+\Cref{thm:rh:conditional}
+  & \leanid{RHConditional.rhConditional},
+    \leanid{RHConditional.rhConditionalClassical} \\ \addlinespace
+\Cref{thm:rh:full-classical}
+  & \leanid{FullClassicalRHBridge.rhConditionalFullClassical},
+    \leanid{RHConditional.ClassicalZeroIdentification} \\ \addlinespace
+\Cref{thm:rh:concrete-window-dc}
+  & \leanid{ConcreteZeroWindowDC.windowRecords_family_iff_riemannHypothesis}, \leanid{ConcreteZeroWindowDC.movingWindowRecords_iff_riemannHypothesis};
+    \leanid{ConcreteZeroWindowDC.windowPsi_separates},
+    \leanid{ConcreteZeroWindowDC.weightedLedger_eq_energy},
+    \leanid{ConcreteZeroWindowDC.windowRecords_iff_fixed} \\ \addlinespace
+\Cref{def:rh:aor-sel-instance} and
+\Cref{thm:rh:aor-mechanical-records,thm:rh:aor-recognition-discharge,thm:rh:aor-gamma-bridge-discharge,thm:rh:aor-auditL-discharge,thm:rh:aor-dc-master-import-discharge,thm:rh:aor-real-coordinate-discharge,thm:rh:aor-translation-interface-discharge}
+  & \leanid{AORInstance.assembledCarrier}, \leanid{AORInstance.aorMechanicalRecords},
+    \leanid{AORInstance.aorRecognitionDischarge},
+    \leanid{AORInstance.aorGammaBridgeDischarge},
+    \leanid{AORInstance.aorAuditLDischarge},
+    \leanid{AORInstance.aorDCMasterImportDischarge},
+    \leanid{AORInstance.aorRealCoordinateDischarge},
+    \leanid{AORInstance.aorTranslationInterfaceDischarge} (literal lists) \\ \addlinespace
+\Cref{thm:rh:aor-instance}
+  & \leanid{AORInstance.aorInstance} \\ \addlinespace
+\Cref{prop:rh:window-identities}
+  & \leanid{FiniteZeroWindows.displacementVector_norm_sq},
+    \leanid{FiniteZeroWindows.finite_window_le_global_classical_ledger},
+    \leanid{FiniteZeroWindows.invariantProbe_displacement_zero},
+    \leanid{FiniteZeroWindows.fixedTarget_window_quadratic_eq_windowEnergy},
+    \leanid{FiniteZeroWindows.window_complete_currency_eq_windowEnergy},
+    \leanid{FiniteZeroWindows.blindSubspaceNative_actual_residual_zero},
+    \leanid{FiniteZeroWindows.blindSubspaceNative_actual_currency_eq_windowEnergy},
+    \leanid{FiniteZeroWindows.blindSubspaceNative_offLine_control};
+    residual as projection and decoder as pseudoinverse:
+    \leanid{SixBirdsNeedles.XiCore.auditResidual_id_eq_hilbertKernelXi},
+    \leanid{SixBirdsNeedles.XiCore.adjoint_pinv_gram_eq_pinv} (from the
+    companion Needles library), \leanid{ConcreteWindowXI.identity_auditDecoder_comp} \\ \addlinespace
+\Cref{prop:rh:window-obstructions}
+  & \leanid{FiniteZeroWindows.window_fullReadout_transport_floor},
+    \leanid{FiniteZeroWindows.native_coercive_on_own_residual_forces_injective},
+    \leanid{ConcreteWindowXI.invariantProbe_not_injective}, \leanid{ConcreteWindowXI.invariantProbe_no_residual_coercivity} \\ \addlinespace
+\Cref{prop:rh:window-equivalences}
+  & \leanid{FiniteZeroWindows.exhaustive_fixedTarget_xi_zero_iff_criticalStripRH},
+    \leanid{FiniteZeroWindows.exists_vanishing_fixedTarget_xi_budget_iff_criticalStripRH},
+    \leanid{FiniteZeroWindows.exists_operatorResidualBudget_iff_criticalStripRH},
+    \leanid{FiniteZeroWindows.subunit_fixedTarget_xi_gap_iff_criticalStripRH},
+    \leanid{FiniteZeroWindows.summable_windowEnergy_iff_criticalStripRH};
+    with \leanid{FullClassicalRHBridge.criticalStripRH_iff_riemannHypothesis} \\
+\end{longtable}
+}
 
-\Cref{tab:rh-formalization-coverage} records the eleven inventory
-entries.  The disclosure notes are A3 for \(\Znt\),
-\(\mathrm{Audit}_L\) admissibility for \(\Sel\), typed-carrier status
-for \(\GamSDTCSelberg\), and typed-bridge composition for
-\texttt{dcMasterApplied}.  All theorem/definition entries are faithful;
-the recognition-source row is not applicable because it is a typed
-hypothesis carrier.  The only Lean-side dependency on
-\cite{TsiokosSDTC2026} is
-\nolinkurl{RH.DCMasterApplied.dcMasterApplied}.
+In \Cref{sec:finite_windows} the formal statements use the reflection
+\(\rho\mapsto1-\rho\) and positive weights symmetric under it; those for
+\Cref{thm:rh:concrete-window-dc} use the involution \(\JL\) and unit
+weights.  Statements whose Lean conclusion is the critical-strip form of
+the Riemann hypothesis are combined with
+\leanid{FullClassicalRHBridge.criticalStripRH_iff_riemannHypothesis}.
 
-\subsection*{AOR-instance coverage}
+\subsection*{Trust base and availability}
 
-The AOR-instance recasting of \Cref{sec:rh-aor-instance} adds nine
-entries: \texttt{SelAORInstance} and the assembled carrier, seven
-literal-data discharge definitions, and the composing theorem
-\texttt{aorInstance}.  All live in \nolinkurl{RH.AORInstance}.  Each
-discharge definition returns one or more \texttt{DischargeAtom} values
-read from the Selberg-shell carrier fields; atoms outside the
-Selberg-shell consumption set do not appear in the assembled list.
-The substantive recognition-source and translation-interface content is
-deferred to \citet{TsiokosSDTC2026} and
-\Cref{sec:translation_theorem}, respectively.
+Every declaration listed depends only on the standard axioms
+\texttt{propext}, \texttt{Classical.choice} and \texttt{Quot.sound}; no
+\texttt{sorry} and no additional axioms occur.  The development is
+available at
+\url{https://github.com/ioannist/six-birds-duality-confinement}; it
+also contains further finite-window and Gaussian-observation results
+not used in this paper.
+ \section{Version history}
+\label{app:version-history}
+\begingroup\small
 
-The theorem \nolinkurl{RH.AORInstance.aorInstance} composes the seven
-literal discharges through the local \texttt{RefStableAOR} predicate on
-the assembled carrier.  This is a local syntactic predicate over carrier
-fields, not the full audit-closure refinement-stable characterisation of
-\citet{TsiokosAOR2026}.  The proof splits by primary residual type
-and routes forced-secondary entries through the literal classifications.
+Every numbered result of Version~1 keeps its number and place in later
+versions, and its name except where noted below.
 
-\begin{landscape}
-\begin{table}[!ht]
-\centering
-\scriptsize
-\setlength{\tabcolsep}{3pt}
-\renewcommand{\arraystretch}{0.84}
-\begin{tabularx}{\linewidth}{@{}
-  >{\raggedright\arraybackslash}p{0.20\linewidth}
-  >{\raggedright\arraybackslash}p{0.20\linewidth}
-  >{\raggedright\arraybackslash}X
-  >{\raggedright\arraybackslash}p{0.16\linewidth}
-  >{\raggedright\arraybackslash}p{0.08\linewidth}
-  >{\raggedright\arraybackslash}p{0.07\linewidth}@{}}
-\toprule
-Paper label & Paper-prose name & Lean declaration &
-Proof mode & Coverage & Align. \\
-\midrule
-\nolinkurl{def:rh:aor-sel-instance} &
-AOR-instance object on the Selberg shell &
-\nolinkurl{RH.AORInstance.SelAORInstance};
-canonical value \nolinkurl{RH.AORInstance.assembledCarrier} &
-definition entry; literal classification record &
-definition &
-faithful \\
+\subsection*{Version 3 (October 1, 2026)}
 
-\nolinkurl{thm:rh:aor-mechanical-records} &
-mechanical AOR records on \(\Sel\) &
-\nolinkurl{RH.AORInstance.aorMechanicalRecords} &
-harness tracked; literal data, returns the mechanical-stratum
-discharge list &
-definition &
-faithful \\
+\begin{itemize}
+  \item The paper was rewritten for readers outside the framework; it
+    now says plainly that the conditional theorem is a reformulation of
+    the Riemann hypothesis, not evidence for it.  Discussion of the formal
+    development was moved to \Cref{app:formalization}; the numbered
+    lists of non-claims and ``no-smuggling gates'' and the reference to
+    a ``V-Differential'' classification, which is not defined in the
+    cited literature, were removed; the account of a three-route
+    derivation attempt for the recognition source was removed.
+  \item \Cref{def:rh:nontrivial-zero-ledger} now allows arbitrary
+    positive weights, with multiplicities as the natural choice;
+    Version~2 required multiplicities, which the formal development does
+    not use.  \Cref{thm:rh:translation-T} is stated for the actual
+    nontrivial zeros and includes the equivalence with the Riemann
+    hypothesis; the shell version is described in the text.
+  \item \Cref{obl:rh:gamma-sdtc-selberg} is now stated in mathematical
+    terms and displayed as a hypothesis (it was labelled
+    ``Obligation'').  The new \Cref{prop:rh:gamma-calibration} states that for every shell it
+    is equivalent to the critical-line statement for the represented
+    zeros, hence on the bare shell to the Riemann hypothesis; Version~2
+    stated the bare-shell case in prose.  \Cref{def:rh:sat-sel-shell}
+    now states the coordinate system and zero ledger of a shell
+    explicitly.
+  \item The new \Cref{thm:rh:concrete-window-dc} applies the
+    duality-confinement theorem, in the concrete operator form of the
+    companion paper's Version~3, to finite reflection-closed windows of
+    actual zeros that eventually contain every zero, and proves that the
+    resulting domination records exist if and only if the Riemann
+    hypothesis holds.
+  \item The AOR classification (\Cref{sec:rh-aor-instance}) was
+    condensed.  Items~8.2--8.8, which record classification labels and
+    were displayed as theorems, are now displayed as ``Records'' and
+    describe the recorded lists exactly; \Cref{thm:rh:aor-instance} now
+    includes the non-emptiness of the non-claim list.  The section was
+    renamed ``A classification of the hypotheses''.
+  \item The finite-window material of the Version~2 discussion was
+    reorganized into the new \Cref{sec:finite_windows}, with the new
+    \Cref{prop:rh:window-identities,prop:rh:window-obstructions,prop:rh:window-equivalences}
+    and complete proofs.
+  \item Names shortened: \Cref{def:rh:sat-sel-shell} (formerly
+    ``Saturated completed Selberg trace shell interface''),
+    \Cref{thm:rh:dc-master-applied} (formerly ``Duality-confinement
+    master theorem, applied to'' the shell),
+    \Cref{thm:rh:full-classical} (formerly ``Full classical conditional
+    RH''), Records~8.2--8.8 (formerly ``Mechanical AOR records'',
+    ``Recognition-source discharge'', ``Bridge-field discharge'',
+    ``Admissibility-audit status record'', ``Cross-paper master-theorem
+    discharge'', ``Typed real-coordinate discharge'',
+    ``Translation-interface discharge''), \Cref{thm:rh:aor-instance} (formerly ``RH local-register theorem''),
+    and \Cref{rem:rh:aor-partial-status} (formerly ``Partial status of
+    the AOR-instance wrapper'').
+  \item Cross-references now name the kind of result they point to;
+    bibliography entries were corrected.
+\end{itemize}
 
-\nolinkurl{thm:rh:aor-recognition-discharge} &
-recognition-source residual discharge &
-\nolinkurl{RH.AORInstance.aorRecognitionDischarge} &
-harness tracked; literal data with status
-\texttt{approved\_other}, deferred to \cite{TsiokosSDTC2026} &
-definition &
-faithful \\
+\subsection*{Version 2 (September 28, 2026)}
 
-\nolinkurl{thm:rh:aor-gamma-bridge-discharge} &
-\(\GamSDTCSelberg\) bridge-field discharge &
-\nolinkurl{RH.AORInstance.aorGammaBridgeDischarge} &
-harness tracked; literal data with status \texttt{bridged} on the
-carrier bridge propositions &
-definition &
-faithful \\
+Version~1 described the argument as a refinement-stable
+audited-operational-realisability instance and identified the shell's
+real-part coordinate with the classical real part by construction.
+Version~2 replaced the first claim by the local-register statement,
+which is what was proved; made the identification an explicit
+hypothesis, constructed it for the bare shell, and proved the passage
+from the critical strip to the full Riemann hypothesis; recorded that on
+the bare shell the recognition source exists exactly under the Riemann
+hypothesis; added the finite-window analysis and the comparison with
+the companion Navier--Stokes and metatheory papers; and moved the formal
+development from a library-free encoding to Mathlib, correcting the
+description of what it proves.
+\par\endgroup
 
-\nolinkurl{thm:rh:aor-auditL-discharge} &
-\(\mathrm{Audit}_L\) admissibility discharge &
-\nolinkurl{RH.AORInstance.aorAuditLDischarge} &
-harness tracked; literal data with status \texttt{by\_construction}
-on the audit field of \(\Sel\) &
-definition &
-faithful \\
-
-\nolinkurl{thm:rh:aor-dc-master-import-discharge} &
-duality-confinement master-theorem import discharge &
-\nolinkurl{RH.AORInstance.aorDCMasterImportDischarge} &
-harness tracked; literal data with status \texttt{approved\_other},
-deferred to \cite{TsiokosSDTC2026} &
-definition &
-faithful \\
-
-\nolinkurl{thm:rh:aor-real-coordinate-discharge} &
-typed real-coordinate identification discharge &
-\nolinkurl{RH.AORInstance.aorRealCoordinateDischarge} &
-harness tracked; literal data with status \texttt{by\_construction};
-A3 representation note applies &
-definition &
-faithful \\
-
-\nolinkurl{thm:rh:aor-translation-interface-discharge} &
-translation-theorem typed-interface discharge &
-\nolinkurl{RH.AORInstance.aorTranslationInterfaceDischarge} &
-harness tracked; literal data with status
-\texttt{by\_construction}; substantive content lives in
-\Cref{sec:translation_theorem} &
-definition &
-faithful \\
-
-\nolinkurl{thm:rh:aor-instance} &
-AOR-instance theorem,
-\(\Sel \in \mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\) &
-\nolinkurl{RH.AORInstance.aorInstance} &
-lean substantive; case split on secondary type through the seven
-literal discharge defs, projecting through local
-\nolinkurl{RH.AORPrimitives.RefStableAOR} &
-theorem &
-partial \\
-\bottomrule
-\end{tabularx}
-\caption{Lean coverage for the nine AOR-instance entries added by
-\Cref{sec:rh-aor-instance}.  Declarations omit the common namespace
-prefix.  The partial status on \texttt{aorInstance} records that Lean
-proves the local carrier predicate, not the full AOR
-refinement-stable characterisation.}
-\label{tab:rh-formalization-coverage-aor}
-\end{table}
-\end{landscape}
-\endgroup
-\clearpage
-
-\Cref{tab:rh-formalization-coverage-aor} records the nine AOR-instance
-entries.  The eight definition rows are faithful to their paper-side
-classification records; \texttt{aorInstance} is marked partial because
-it proves the local carrier predicate, not the full AOR
-refinement-stable property.  This matches
-\Cref{rem:rh:aor-partial-status} and the scope boundaries in
-\Cref{sec:scope_and_nonclaims} (NC-10, NC-11).
-
-\subsection*{No-smuggling gates}
-
-The final audit layer is paper-side discipline that checks the
-conditional theorem says only what its hypotheses support, with no
-structural input hidden in the prose.
-
-\begin{description}[leftmargin=0pt,labelsep=0.75em,itemsep=0.35em]
-\item[Gate 1: no overreading.]
-The conclusion is conditional on \(\GamSDTCSelberg\) and on
-Foundations-II admissibility of \(\Sel\).  The typed-ledger
-conclusion is exactly the parameterized statement
-\(\rho\in\Znt \Rightarrow \Real(\rho)=1/2\).
-
-\item[Gate 2: no undisclosed hypothesis.]
-Every load-bearing assumption is named: the recognition source
-\(\GamSDTCSelberg\), the \(\mathrm{Audit}_L\) admissibility field,
-the typed real-coordinate identification, and the typed positive-cone
-primitives.
-
-\item[Gate 3: no hidden mechanism.]
-The proof composition is explicit: the recognition source supplies
-domination records, \Cref{thm:rh:dc-master-applied} yields
-\(\AZ=0\), and \Cref{thm:rh:translation-T-forward} yields the
-critical-line statement on \(\Znt\).
-
-\item[Gate 4: no conflation of roles.]
-Recognition-source content and proved theorem content are separated.
-\(\GamSDTCSelberg\) is a recognition source; Theorem~T is a direct
-positivity theorem; \texttt{dcMasterApplied} is the theorem-level
-application of the master theorem of \cite{TsiokosSDTC2026}; and
-\texttt{rhConditional} is the conditional theorem
-composition.
-
-\item[Gate 5: no axiom smuggling.]
-\(\GamSDTCSelberg\) is a typed structure carrier, not a Lean axiom.
-The forbidden-tokens audit excludes \texttt{axiom}, \texttt{opaque},
-\texttt{constant}, \texttt{sorry}, and \texttt{admit} from active
-Lean source.
-
-\item[Gate 6: no undisclosed cross-paper import.]
-The use of \cite{TsiokosSDTC2026} is explicit: the body reproduces
-the duality-confinement master theorem statement, and
-\texttt{dcMasterApplied} is the named Lean-side cross-paper import.
-
-\item[Gate 7: recognition-source provenance.]
-The recognition source is documented as the Selberg-class instance
-of the SDTC structural law of \cite{TsiokosSDTC2026}, and the
-three-route derivation sweep summarized in
-\Cref{sec:recognition_source} confirms that framework primitives do
-not derive it.  This is the recognition-source provenance audit; it
-is the no-overreading suppression check in the Foundations-III
-audited vocabulary \cite{TsiokosFoundationsIII2026}.
-\end{description}
-
-These seven checks are part of the paper's audit presentation.  They
-do not add hypotheses to the Lean theorems, and they are not
-themselves advertised as Lean-mechanized predicates.
-
-\subsection*{Code and data availability}
-
-The Lean development and paper sources are available at
-\url{https://github.com/ioannist/six-birds-duality-confinement}.  The
-RH manifest is \path{lean/manifests/rh_manifest.toml}, and the RH Lean
-axis source is \path{lean/SixBirdsDualityConfinement/RH/}.
- 
 \clearpage
 \bibliographystyle{plainnat}
-\bibliography{references}
+\begin{thebibliography}{31}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[B{\'a}ez-Duarte(2003)]{BaezDuarte2003}
+Luis B{\'a}ez-Duarte.
+\newblock A strengthening of the {Nyman}--{Beurling} criterion for the {Riemann} hypothesis.
+\newblock \emph{Rendiconti Lincei. Matematica e Applicazioni}, 14\penalty0 (1):\penalty0 5--11, 2003.
+
+\bibitem[Berry and Keating(1990)]{BerryKeating1990}
+M.~V. Berry and J.~P. Keating.
+\newblock A rule for quantizing chaos?
+\newblock \emph{Journal of Physics A: Mathematical and General}, 23\penalty0 (21):\penalty0 4839--4849, 1990.
+\newblock \doi{10.1088/0305-4470/23/21/024}.
+
+\bibitem[Beurling(1955)]{Beurling1955}
+Arne Beurling.
+\newblock A closure problem related to the {Riemann} zeta-function.
+\newblock \emph{Proceedings of the National Academy of Sciences of the United States of America}, 41\penalty0 (5):\penalty0 312--314, 1955.
+\newblock \doi{10.1073/pnas.41.5.312}.
+
+\bibitem[Bombieri(2000)]{Bombieri2000}
+Enrico Bombieri.
+\newblock Remarks on {Weil}'s quadratic functional in the theory of prime numbers, {I}.
+\newblock \emph{Rendiconti Lincei. Matematica e Applicazioni}, 11\penalty0 (3):\penalty0 183--233, 2000.
+
+\bibitem[Connes(1999)]{Connes1999}
+Alain Connes.
+\newblock Trace formula in noncommutative geometry and the zeros of the {Riemann} zeta function.
+\newblock \emph{Selecta Mathematica, New Series}, 5\penalty0 (1):\penalty0 29--106, 1999.
+\newblock \doi{10.1007/s000290050042}.
+
+\bibitem[Conrey et~al.(1998)Conrey, Ghosh, and Gonek]{ConreyGhoshGonek1998}
+J.~Brian Conrey, Amit Ghosh, and Steve~M. Gonek.
+\newblock Simple zeros of the {Riemann} zeta-function.
+\newblock \emph{Proceedings of the London Mathematical Society}, 76\penalty0 (3):\penalty0 497--522, 1998.
+\newblock \doi{10.1112/S0024611598000306}.
+
+\bibitem[de~Branges(1968)]{deBranges1968}
+Louis de~Branges.
+\newblock \emph{{Hilbert} Spaces of Entire Functions}.
+\newblock Prentice-Hall, Englewood Cliffs, NJ, 1968.
+
+\bibitem[de~Branges(1986)]{deBranges1986}
+Louis de~Branges.
+\newblock The {Riemann} hypothesis for {Hilbert} spaces of entire functions.
+\newblock \emph{Bulletin of the American Mathematical Society}, 15\penalty0 (1):\penalty0 1--17, 1986.
+\newblock \doi{10.1090/S0273-0979-1986-15429-7}.
+
+\bibitem[Edwards(1974)]{Edwards1974}
+Harold~M. Edwards.
+\newblock \emph{{Riemann}'s Zeta Function}.
+\newblock Academic Press, New York, 1974.
+
+\bibitem[Hejhal(1976)]{Hejhal1976}
+Dennis~A. Hejhal.
+\newblock \emph{The {Selberg} Trace Formula for {PSL}(2,{R}), Volume 1}, volume 548 of \emph{Lecture Notes in Mathematics}.
+\newblock Springer, Berlin, Heidelberg, 1976.
+\newblock \doi{10.1007/BFb0079608}.
+
+\bibitem[Ivi{\'c}(1985)]{Ivic1985}
+Aleksandar Ivi{\'c}.
+\newblock \emph{The {Riemann} Zeta-Function: The Theory of the {Riemann} Zeta-Function with Applications}.
+\newblock John Wiley \& Sons, New York, 1985.
+\newblock ISBN 978-0-471-80634-9.
+
+\bibitem[Iwaniec(2002)]{Iwaniec2002}
+Henryk Iwaniec.
+\newblock \emph{Spectral Methods of Automorphic Forms}, volume~53 of \emph{Graduate Studies in Mathematics}.
+\newblock American Mathematical Society, Providence, RI, second edition, 2002.
+\newblock ISBN 978-0-8218-3160-1.
+
+\bibitem[Kaczorowski and Perelli(1999)]{KaczorowskiPerelli1999}
+Jerzy Kaczorowski and Alberto Perelli.
+\newblock The {Selberg} class: A survey.
+\newblock In K{\'a}lm{\'a}n Gy{\H{o}}ry, Henryk Iwaniec, and Jerzy Urbanowicz, editors, \emph{Number Theory in Progress}, volume~2, pages 953--992. Walter de Gruyter, Berlin and New York, 1999.
+\newblock \doi{10.1515/9783110285581.953}.
+
+\bibitem[Li(1997)]{Li1997}
+Xian-Jin Li.
+\newblock The positivity of a sequence of numbers and the {Riemann} hypothesis.
+\newblock \emph{Journal of Number Theory}, 65\penalty0 (2):\penalty0 325--333, 1997.
+\newblock \doi{10.1006/jnth.1997.2137}.
+
+\bibitem[Meyer(2005)]{Meyer2005}
+Ralf Meyer.
+\newblock A spectral interpretation for the zeros of the {Riemann} zeta function.
+\newblock In \emph{Mathematisches Institut, Georg-August-Universit{\"a}t G{\"o}ttingen: Seminars Winter Term 2004/2005}, pages 117--137. Universit{\"a}tsdrucke G{\"o}ttingen, G{\"o}ttingen, 2005.
+
+\bibitem[Montgomery(1971)]{Montgomery1971}
+Hugh~L. Montgomery.
+\newblock \emph{Topics in Multiplicative Number Theory}, volume 227 of \emph{Lecture Notes in Mathematics}.
+\newblock Springer, Berlin, Heidelberg, 1971.
+\newblock \doi{10.1007/BFb0060851}.
+
+\bibitem[Montgomery(1973)]{Montgomery1973}
+Hugh~L. Montgomery.
+\newblock The pair correlation of zeros of the zeta function.
+\newblock In \emph{Analytic Number Theory}, volume~24 of \emph{Proceedings of Symposia in Pure Mathematics}, pages 181--193, Providence, RI, 1973. American Mathematical Society.
+
+\bibitem[Nyman(1950)]{Nyman1950}
+Bertil Nyman.
+\newblock \emph{On the One-Dimensional Translation Group and Semi-Group in Certain Function Spaces}.
+\newblock PhD thesis, University of Uppsala, 1950.
+
+\bibitem[Riemann(1859)]{Riemann1859}
+Bernhard Riemann.
+\newblock {Ueber die Anzahl der Primzahlen unter einer gegebenen Gr{\"o}sse}.
+\newblock \emph{Monatsberichte der K{\"o}niglich Preu{\ss}ischen Akademie der Wissenschaften zu Berlin}, pages 671--680, 1859.
+
+\bibitem[Selberg(1956)]{Selberg1956}
+Atle Selberg.
+\newblock Harmonic analysis and discontinuous groups in weakly symmetric {Riemannian} spaces with applications to {Dirichlet} series.
+\newblock \emph{The Journal of the Indian Mathematical Society}, 20:\penalty0 47--87, 1956.
+
+\bibitem[Selberg(1992)]{Selberg1992}
+Atle Selberg.
+\newblock Old and new conjectures and results about a class of {Dirichlet} series.
+\newblock In Enrico Bombieri et~al., editors, \emph{Proceedings of the Amalfi Conference on Analytic Number Theory}, pages 367--385, Salerno, 1992. Universit{\`a} di Salerno.
+
+\bibitem[Titchmarsh(1986)]{TitchmarshHeathBrown1986}
+E.~C. Titchmarsh.
+\newblock \emph{The Theory of the {Riemann} Zeta-Function}.
+\newblock Oxford University Press, Oxford, second edition, 1986.
+\newblock ISBN 978-0-19-853369-6.
+\newblock Revised by D. R. Heath-Brown.
+
+\bibitem[Tsiokos(2026{\natexlab{a}})]{TsiokosAOR2026}
+Ioannis Tsiokos.
+\newblock Audited operational realisability: Canonical inference closure and evidence-preserving composition.
+\newblock \doi{10.5281/zenodo.23086977}, 2026{\natexlab{a}}.
+\newblock Version 3, October 1, 2026.
+
+\bibitem[Tsiokos(2026{\natexlab{b}})]{TsiokosFoundationsI2026}
+Ioannis Tsiokos.
+\newblock {Six Birds: Foundations of Emergence Calculus}.
+\newblock \href{https://arxiv.org/abs/2602.00134}{arXiv:2602.00134}, 2026{\natexlab{b}}.
+
+\bibitem[Tsiokos(2026{\natexlab{c}})]{TsiokosFoundationsII2026}
+Ioannis Tsiokos.
+\newblock {Six Birds Foundations II: Admissibility, Meta-Theory, and the Exact-Six Program}.
+\newblock \doi{10.5281/zenodo.19672278}, 2026{\natexlab{c}}.
+
+\bibitem[Tsiokos(2026{\natexlab{d}})]{TsiokosFoundationsIII2026}
+Ioannis Tsiokos.
+\newblock {Six Birds Foundations III: A Finite Audited Interaction Calculus for SBT}.
+\newblock \doi{10.5281/zenodo.20124595}, 2026{\natexlab{d}}.
+
+\bibitem[Tsiokos(2026{\natexlab{e}})]{TsiokosMetaTheory2026}
+Ioannis Tsiokos.
+\newblock Three conditional {Clay}-problem closures: A shared {Gaussian} observation and a common vocabulary.
+\newblock \doi{10.5281/zenodo.23086999}, 2026{\natexlab{e}}.
+\newblock Version 4, October 1, 2026.
+
+\bibitem[Tsiokos(2026{\natexlab{f}})]{TsiokosNavier2026}
+Ioannis Tsiokos.
+\newblock A conditional spectral-closure theorem for three-dimensional {Navier--Stokes}.
+\newblock \doi{10.5281/zenodo.23086987}, 2026{\natexlab{f}}.
+\newblock Version 4, October 1, 2026.
+
+\bibitem[Tsiokos(2026{\natexlab{g}})]{TsiokosSDTC2026}
+Ioannis Tsiokos.
+\newblock Self-dual trace confinement: A {Six Birds} structural law for formed closures under involutive self-duality.
+\newblock \doi{10.5281/zenodo.23086972}, 2026{\natexlab{g}}.
+\newblock Version 3, October 1, 2026.
+
+\bibitem[Tsiokos(2026{\natexlab{h}})]{TsiokosXiCompanion2026}
+Ioannis Tsiokos.
+\newblock Adequacy residuals and blind-spot currency.
+\newblock \doi{10.5281/zenodo.23086980}, 2026{\natexlab{h}}.
+\newblock Version 4, October 1, 2026.
+
+\bibitem[Weil(1952)]{Weil1952}
+Andr{\'e} Weil.
+\newblock Sur les ``formules explicites'' de la th{\'e}orie des nombres premiers.
+\newblock \emph{Meddelanden fr{\aa}n Lunds Universitets Matematiska Seminarium}, Tome suppl{\'e}mentaire:\penalty0 252--265, 1952.
+
+\end{thebibliography}
+
 
 \end{document}

@@ -23,6 +23,7 @@ import argparse
 import csv
 import io
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -46,15 +47,28 @@ RH_SECTIONS: list[tuple[int, int, str]] = []
 
 # Curated intended_status per paper_label. Defaults applied by kind below for any
 # label not listed here. Populate as labels emerge in the paper drafts.
-STATUS_OVERRIDES: dict[str, str] = {}
+STATUS_OVERRIDES: dict[str, str] = {
+    "def:duality_confinement:defected-budget": "support_only",
+    # Formalized as AbstractSqueeze.abstract_trace_squeeze.
+    "rem:duality_confinement:abstract-cone": "mechanize_now",
+}
 
 
-def find_section(axis: str, line: int) -> str:
+def find_section(axis: str, line: int, source_file: str) -> str:
+    path = ROOT / source_file
+    if path.is_file():
+        title = ""
+        for text in path.read_text(encoding="utf-8").splitlines()[:line]:
+            match = re.search(r"\\(?:section|subsection)\{([^{}]+)\}", text)
+            if match:
+                title = match.group(1)
+        if title:
+            return title
     sections = DC_SECTIONS if axis == "duality_confinement" else RH_SECTIONS
     for start, end, name in sections:
         if start <= line <= end:
             return name
-    return "<unknown>"
+    return path.stem
 
 
 def default_status(env_kind: str) -> str:
@@ -167,7 +181,7 @@ def collect_entries() -> tuple[list[dict], list[dict]]:
         entry = {
             "paper_label": label,
             "kind": kind,
-            "section": find_section(axis, line),
+            "section": find_section(axis, line, str(record["source_file"])),
             "intended_status": intended_status(label, kind),
             "required": True,
             "line_start": line,

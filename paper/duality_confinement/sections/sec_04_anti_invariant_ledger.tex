@@ -1,121 +1,104 @@
-% Duality Confinement paper — § Anti-invariant ledger and separation
-% Drafted body, pass A: projector, readout, typed cone, ledger,
-% and separation definitions.  Pass B appends the trace identity.
-%
-% statements-of-record rows resolved here in pass A:
-% def:duality_confinement:anti-invariant-ledger;
-% def:duality_confinement:separating-readout.
-
 \section{Anti-invariant ledger and separation}
 \label{sec:anti_invariant_ledger}
 
-Fix an involutive object ledger
-\(\IOL=(X,J,\mu,\psi,Y,\Jiso)\).  The preceding section supplied
-the carrier-side involution \(J\) and the response-side involution
-\(\Jiso\).  This section extracts the part of the readout that
-changes sign under the duality and turns it into a positive
-observable.  The isometric involution \(\Jiso\) splits \(Y\) into
-invariant and anti-invariant directions, and the confinement
-mechanism reads only the second component: the direction in which
-the response is reversed by the involution.
+Fix an involutive object ledger \(\IOL=(X,J,\mu,\psi,Y,\Jiso)\).  This
+section extracts the odd part of the readout, builds the positive
+operator \(\AX\) from it, and computes its trace.
 
-The anti-invariant projector is
+\paragraph{The odd readout.}
+Because \(\Jiso\) is a linear isometric involution it is self-adjoint:
+\(\Jiso^*=\Jiso^{-1}=\Jiso\).  Hence
 \[
-  \Pminus=\frac{I_Y-\Jiso}{2}.
+  \Pminus=\tfrac12\,(I_Y-\Jiso)
 \]
-Since \(\Jiso^2=I_Y\), this is the orthogonal projection onto the
-subspace of vectors \(v\in Y\) satisfying \(\Jiso v=-v\).  Applying
-it to the ledger readout gives the anti-invariant readout
+satisfies \(\Pminus^2=\Pminus=\Pminus^*\); it is the orthogonal
+projection onto the \((-1)\)-eigenspace \(\{v\in Y:\Jiso v=-v\}\).
+The \emph{anti-invariant} (or odd) readout is
 \[
-  \psim(x)=\Pminus\psi(x).
+  \psim(x)=\Pminus\psi(x)\qquad(x\in X).
 \]
-Equivariance of \(\psi\) makes this readout odd with respect to the
-carrier involution:
+It is strongly measurable, and by equivariance
 \[
-  \psim(Jx)
-  =
-  \Pminus\psi(Jx)
-  =
-  \Pminus\Jiso\psi(x)
-  =
-  -\Pminus\psi(x)
-  =
-  -\psim(x).
+  \psim(Jx)=\Pminus\Jiso\psi(x)=-\Pminus\psi(x)=-\psim(x),
 \]
-So \(\psim\) is the component of the observable that can detect
-departure from the fixed locus.  If \(x\in\Fix(J)\), the same
-identity gives \(\psim(x)=-\psim(x)\), hence \(\psim(x)=0\) over a
-real response space.  The converse need not hold automatically; it
-is exactly the separation condition defined below.
+because \(\Pminus\Jiso=-\Pminus\).  In particular, if \(Jx=x\) then
+\(\psim(x)=-\psim(x)\), so \(\psim(x)=0\): the odd readout vanishes on
+the fixed locus.  The converse is the separation property defined
+below.  Only this vanishing is used later: none of the results needs
+\(J\) to be an involution, and all of them hold for any map
+\(J:X\to X\) with \(\psi\circ J=\Jiso\circ\psi\).  The involutive
+setting is the one in which the fixed locus has the meaning of a
+self-dual locus, and we keep it for that reason.
 
-The positive object associated with \(\psim\) is introduced in a
-typed positive cone rather than as a trace-class operator: an
-ordered setting with a positive order \(\preceq\), a trace
-functional \(\trace\), and two positivity principles.  Trace is
-monotone,
-\[
-  A\preceq B \quad\Longrightarrow\quad \trace A\leq \trace B,
-\]
-and a positive element of trace zero is the zero element.  The
-classical model is the cone of positive trace-class operators on a
-Hilbert space; the typed abstraction records only the order, trace,
-and positivity facts used by the confinement proof.
+\paragraph{Positive and trace-class operators.}
+On a real Hilbert space an operator \(T\) is \emph{positive}, written
+\(T\succeq0\), if it is self-adjoint and \(\langle Th,h\rangle\geq0\)
+for all \(h\); the Loewner order is \(A\preceq B\) if and only if
+\(B-A\succeq0\).  For \(v\in Y\) write \(vv^*\) for the rank-one
+operator \(h\mapsto\langle v,h\rangle v\); it is positive.  Let
+\(\mathcal S_1(Y)\) denote the trace class with its norm
+\(\|\cdot\|_1\).  We use four standard facts
+\citep{Simon2005,ReedSimon1980}:
+\begin{enumerate}[label=(T\arabic*)]
+  \item \(\mathcal S_1(Y)\) is a Banach space, and the trace is a
+    continuous linear functional with \(|\trace T|\leq\|T\|_1\); for
+    \(v\in Y\), \(\|vv^*\|_1=\trace(vv^*)=\|v\|^2\).
+  \item For \(h,k\in Y\), the map \(T\mapsto\langle Th,k\rangle\) is a
+    continuous linear functional on \(\mathcal S_1(Y)\).
+  \item If \(T\succeq0\) is trace-class, then
+    \(\trace T=\sum_i\langle Te_i,e_i\rangle\geq0\) for every
+    orthonormal basis \((e_i)\), and \(\trace T=0\) implies \(T=0\).
+  \item If \(0\preceq A\preceq B\) and \(B\) is trace-class, then \(A\)
+    is trace-class and \(\trace A\leq\trace B\).
+\end{enumerate}
+These are usually stated for complex Hilbert spaces; for a real
+Hilbert space they follow by passing to the complexification
+\(Y\otimes_{\mathbb R}\mathbb C\), which preserves positivity of
+self-adjoint operators, the trace norm and the trace.  When \(Y\) is
+finite-dimensional every operator is trace-class and (T1)--(T4) are
+facts of linear algebra.  The formal verification
+(\Cref{app:formalization}) does not use (T1)--(T4): it proves the
+results with the trace of a positive operator defined as
+\(\sum_i\langle Te_i,e_i\rangle\in[0,\infty]\).  By (T3) this agrees
+with the trace on positive trace-class operators, and a positive
+operator for which it is finite is trace-class
+\citep{ReedSimon1980}.
 
-\begin{definition}[Anti-invariant object ledger\protect\footnote{Realized in the Lean formalization; see App~\ref{app:formalization}.}]
+\begin{definition}[Anti-invariant object ledger]
 \label{def:duality_confinement:anti-invariant-ledger}
-The \emph{anti-invariant object ledger} of \(\IOL\) is the positive
-cone element
+Assume \(\int_X\|\psim(x)\|^2\,d\mu(x)<\infty\).  The
+\emph{anti-invariant object ledger} of \(\IOL\) is the operator
 \[
-  \AX
-  :=
-  \int_X \psim(x)\psim(x)^*\,d\mu(x),
-  \qquad
-  \psim(x)=\Pminus\psi(x).
+  \AX=\int_X \psim(x)\,\psim(x)^*\,d\mu(x),
 \]
-Equivalently, \(\AX\) is the Gram-type positive element generated
-by integrating the anti-invariant readout against the object-ledger
-measure \(\mu\).
+the integral being a Bochner integral in \(\mathcal S_1(Y)\).
 \end{definition}
 
-In a finite weighted ledger, the same formula reads
+The integral exists by \Cref{lem:duality_confinement:trace-identity}
+below.  For a finite weighted ledger it is the finite sum
 \[
-  \AX=\sum_{x\in X}\mu(x)\,\psim(x)\psim(x)^*.
+  \AX=\sum_{x\in X}\mu(x)\,\psim(x)\psim(x)^*,
 \]
-This finite expression is the easiest way to see positivity: every
-summand is a rank-one positive contribution from the part of the
-readout that changes sign under the involution.  In a
-measure-theoretic ledger, the integral notation records the
-corresponding positive accumulation over the visible support of
-\(\mu\).
-
-In the classical trace-class reading the displayed integral is a
-positive operator on \(Y\) assembled from rank-one positive
-operators \(\psim(x)\psim(x)^*\).  In the typed-cone reading the
-integral notation specifies the positive element \(\AX\) together
-with the trace and order structure needed to compare \(\AX\) with
-later domination bounds.  The abstraction preserves the algebra of
-positive operators that enters the master theorem without claiming a
-development of the full analytic theory of trace-class operators.
+a nonnegative combination of rank-one positive operators, one for each
+visible object, each recording the part of the readout of that object
+that changes sign under the duality.
 
 \begin{definition}[Separating anti-invariant readout]
 \label{def:duality_confinement:separating-readout}
-The anti-invariant readout \(\psim\) is
-\emph{qualitatively separating} when, on the visible support of
-\(\mu\),
+The odd readout \(\psim\) is \emph{qualitatively separating} if, for
+\(\mu\)-almost every \(x\in X\),
 \[
   \psim(x)=0
   \quad\Longleftrightarrow\quad
   x\in\Fix(J).
 \]
-In the finite weighted case this means the equivalence holds for
-every \(x\in X\) with positive weight.  In the measure-theoretic
-case it means the equivalence holds outside a \(\mu\)-null set.
+In the finite weighted case this means that the equivalence holds at
+every object of positive weight.
 
-It is \emph{quantitatively separating} with modulus \(m\) when
-\[
-  m:(0,\infty)\to(0,\infty)
-\]
-and, for every \(\varepsilon>0\) and every \(x\in X\),
+Suppose in addition that \(X\) is a metric space.  The odd readout is
+\emph{quantitatively separating} with modulus
+\(m:(0,\infty)\to(0,\infty)\) if, for every \(\varepsilon>0\) and every
+\(x\in X\),
 \[
   \dist(x,\Fix(J))\geq\varepsilon
   \quad\Longrightarrow\quad
@@ -123,53 +106,74 @@ and, for every \(\varepsilon>0\) and every \(x\in X\),
 \]
 \end{definition}
 
-Qualitative separation says that vanishing of the anti-invariant
-readout identifies the fixed locus.  Quantitative separation says
-more: once a point is at least \(\varepsilon\) away from
-\(\Fix(J)\), the anti-invariant readout is bounded below by a
-positive amount depending only on that distance scale.  The modulus
-is often chosen nondecreasing in applications, but the confinement
-estimate only needs the displayed positive lower bound.
+Since \(\psim\) always vanishes on \(\Fix(J)\), qualitative separation
+only adds the implication \(\psim(x)=0\Rightarrow Jx=x\).  Quantitative
+separation says that points at distance at least \(\varepsilon\) from the
+fixed locus have odd readout at least \(m(\varepsilon)\) in norm
+(with the convention \(\dist(x,\varnothing)=+\infty\)).  It implies
+that \(\psim(x)=0\) only if \(x\) lies in the closure of \(\Fix(J)\), so
+it implies qualitative separation when \(\Fix(J)\) is closed, for
+instance when \(J\) is continuous.  The metric enters only through the function \(x\mapsto\dist(x,\Fix(J))\);
+in \Cref{thm:duality_confinement:quantitative-confinement} it may be
+replaced by any function \(\delta:X\to[0,\infty]\) for which the
+displayed implication holds.
 
-The next statement is the trace identity relating \(\trace\AX\) to
-the integral of \(\|\psim(x)\|^2\); together with separation, it is
-what turns vanishing of \(\AX\) into fixed-locus confinement.
-
-\begin{lemma}[Trace identity\protect\footnote{Recorded in the Lean formalization by constructor unfolding from the typed anti-invariant-ledger field; see App~\ref{app:formalization}.}]
+\begin{lemma}[Trace identity]
 \label{lem:duality_confinement:trace-identity}
-Let \(\AX\) be the anti-invariant ledger of an involutive object
-ledger \(\IOL\), with anti-invariant readout \(\psim\).  Then
+Let \(\IOL\) be an involutive object ledger with
+\(\int_X\|\psim\|^2\,d\mu<\infty\).  Then the map
+\(x\mapsto\psim(x)\psim(x)^*\) is Bochner integrable in
+\(\mathcal S_1(Y)\), the operator \(\AX\) is positive and trace-class,
 \[
-  \trace\AX
-  =
-  \int_X \|\psim(x)\|^2\,d\mu(x).
+  \langle\AX h,k\rangle=\int_X\langle\psim(x),h\rangle\,
+  \langle\psim(x),k\rangle\,d\mu(x)\qquad(h,k\in Y),
+\]
+and
+\[
+  \trace\AX=\int_X\|\psim(x)\|^2\,d\mu(x).
 \]
 \end{lemma}
 
 \begin{proof}
-In the classical operator-theoretic regime, where
-\[
-  \AX=\int_X \psim(x)\psim(x)^*\,d\mu(x)
-\]
-is a positive trace-class operator on \(Y\), the identity is the
-standard rank-one trace computation \citep{ReedSimon1980,Simon2005}.
-Taking the trace of each rank-one operator
-\(\psim(x)\psim(x)^*\) gives \(\|\psim(x)\|^2\), and integration
-against the positive measure \(\mu\) gives the displayed identity.
-The right-hand side accordingly measures the mean-square amplitude of
-the anti-invariant readout.
+For \(u,v\in Y\) we have \(uu^*-vv^*=u(u-v)^*+(u-v)v^*\), and a
+rank-one operator \(ab^*\) has trace norm \(\|a\|\,\|b\|\).  Hence
+\(\|uu^*-vv^*\|_1\leq(\|u\|+\|v\|)\,\|u-v\|\), so \(v\mapsto vv^*\) is
+continuous from \(Y\) to \(\mathcal S_1(Y)\).  Composed with the
+strongly measurable map \(\psim\), it gives a strongly measurable map
+\(x\mapsto\psim(x)\psim(x)^*\) whose norm
+\(\|\psim(x)\psim(x)^*\|_1=\|\psim(x)\|^2\) is integrable by (T1).
+The map is therefore Bochner integrable and \(\AX\in\mathcal S_1(Y)\).
 
-In the typed positive cone, the same identity is recorded as a
-structural axiom of the cone rather than derived: the cone is
-specified by the order, trace, and positivity facts used by the
-confinement proof, and the value of \(\trace\) on the generator
-\(\int_X\psim(x)\psim(x)^*\,d\mu(x)\) is one of those facts.  The
-lemma packages that axiom for use alongside the classical
-operator-theoretic derivation.  Either way, the identity holds.
+Continuous linear functionals commute with Bochner integrals.  Applying
+this to the functionals of (T2) gives the displayed formula for
+\(\langle\AX h,k\rangle\).  Its right-hand side is symmetric in \(h\)
+and \(k\), and for \(h=k\) it equals
+\(\int_X\langle\psim,h\rangle^2\,d\mu\geq0\); so \(\AX\) is positive.
+Applying the same principle to the trace, which is a continuous linear
+functional by (T1), and using \(\trace(vv^*)=\|v\|^2\), gives
+\(\trace\AX=\int_X\|\psim\|^2\,d\mu\).
 \end{proof}
 
-Vanishing of \(\trace\AX\), vanishing of \(\AX\), and vanishing of
-\(\psim\) almost everywhere are therefore equivalent under the
-trace identity and the positivity axioms of the cone.  Combining
-this with a separating readout is the direct route to the
-fixed-locus confinement statement proved in the next section.
+By (T3) and the trace identity, the following are equivalent:
+\(\AX=0\); \(\trace\AX=0\); \(\psim(x)=0\) for \(\mu\)-almost every
+\(x\).  The last equivalence holds because the integral of the
+nonnegative function \(\|\psim\|^2\) vanishes exactly when the function
+vanishes almost everywhere.
+
+\begin{remark}[Analysis operator]
+\label{rem:duality_confinement:analysis-operator}
+Under the hypothesis of \Cref{lem:duality_confinement:trace-identity},
+define \(V:Y\to L^2(X,\mu)\) by \((Vh)(x)=\langle\psim(x),h\rangle\).
+By the Cauchy--Schwarz inequality
+\(\|Vh\|^2\leq\|h\|^2\int_X\|\psim\|^2\,d\mu\), so \(V\) is bounded, and
+by the lemma \(\langle\AX h,h\rangle=\|Vh\|^2=\langle V^*Vh,h\rangle\).
+Two self-adjoint operators with the same quadratic form are equal, so
+\[
+  \AX=V^*V.
+\]
+In particular \(V\) is a Hilbert--Schmidt operator with
+\(\|V\|_{\mathrm{HS}}^2=\trace V^*V=\trace\AX=\int_X\|\psim\|^2\,d\mu\).
+Thus \(\AX\) is the Gram operator of the odd readout, and domination
+questions about \(\AX\) are questions about \(V\); see
+\Cref{sec:domination}.
+\end{remark}

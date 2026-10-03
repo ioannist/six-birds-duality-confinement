@@ -1,0 +1,93 @@
+\section{Version history}
+\label{app:version-history}
+
+Every numbered result of Version~1 keeps its number and place in later
+versions, and its name except where noted below.
+
+\subsection*{Version 3 (October 1, 2026)}
+
+\begin{itemize}
+  \item The results are now stated and proved for positive trace-class
+    operators on an arbitrary real Hilbert space.  Version~2 stated
+    them for an abstract ``typed positive cone'' and described the
+    trace-class case as an open extension.  The trace identity
+    (\Cref{lem:duality_confinement:trace-identity}) is now proved from
+    Bochner integration in the trace class; Version~2 took it as part
+    of the data.
+  \item The readout in \Cref{def:duality_confinement:involutive-object-ledger}
+    is required to be strongly measurable; together with
+    \(\int_X\|\psim\|^2\,d\mu<\infty\) this makes the Bochner integral
+    defining \(\AX\) exist.
+    \Cref{def:duality_confinement:anti-invariant-ledger,def:duality_confinement:completed-domination-bridge,def:duality_confinement:exhaustive-moving-ledger,def:duality_confinement:defected-budget}
+    now specify the operators involved (positive trace-class operators,
+    bounded transports between Hilbert spaces).
+  \item The confinement conclusions are stated as ``\(Jx=x\) for
+    \(\mu\)-almost every \(x\)'', which needs no measurability of
+    \(\Fix(J)\); Version~2 assumed \(X\setminus\Fix(J)\) measurable.
+    \Cref{thm:duality_confinement:quantitative-confinement} is stated
+    for outer measure, so the far set need not be measurable, and it
+    holds for any displacement function \(\delta\) in place of the
+    distance, provided \(\delta(x)\geq\varepsilon\) implies
+    \(\|\psim(x)\|\geq m(\varepsilon)>0\).
+  \item \Cref{thm:duality_confinement:master-theorem} now includes its
+    converse: trace-vanishing domination records exist if and only if
+    the odd readout vanishes almost everywhere.  The abstract,
+    \Cref{sec:intro,sec:framework,sec:master_theorem,sec:scope} now
+    state the consequences: the theorem does not make confinement
+    easier to prove, its role is to fix the form of a bridge argument,
+    and SDTC cannot hold for all involutive ledgers (the
+    complex-conjugation example is a counterexample).  Version~2 did
+    not state the converse or these consequences.
+  \item \Cref{thm:duality_confinement:douglas-domination} is stated for
+    bounded operators between real Hilbert spaces, with a complete proof
+    and a precise account of Douglas's original formulation; its name
+    changed from ``Douglas factorization, typed-cone form'' to
+    ``Douglas factorization''.  The new
+    \Cref{rem:duality_confinement:analysis-operator} identifies \(\AX\)
+    with \(V^*V\) for the analysis operator \(V\) of the odd readout.
+  \item \Cref{prop:duality_confinement:optimized-trace-budget} is proved
+    over the real numbers, including the cases \(a=0\) or \(b=0\), and
+    now includes the consequence for sequences of budgets.  Version~2
+    treated the arithmetic--geometric mean step as a hypothesis on an
+    abstract scalar type.
+  \item The formal verification was extended: every theorem, lemma
+    and proposition is now proved in Lean~4 with Mathlib for real Hilbert
+    spaces of arbitrary dimension, as is the abstract squeeze
+    (\Cref{rem:duality_confinement:abstract-cone}).
+    \Cref{app:formalization} was rewritten accordingly.
+  \item The exposition was rewritten for readers outside the framework:
+    the introduction states the results with their hypotheses,
+    \Cref{sec:framework} explains the framework terms, and worked
+    examples were added (complex conjugation, self-adjointness of
+    matrices).  The Version~2 reference to a ``V-Differential''
+    classification, which is not defined in the cited literature, was
+    removed, as was a paragraph on charge conjugation, CPT and gauge
+    symmetries that made no claim.  The discussion of curves over finite
+    fields now states
+    that the Riemann hypothesis there is a theorem of Weil, attributes
+    the elementary method to Stepanov and its general form to Bombieri,
+    and presents that setting as a test case rather than a prediction.
+  \item Cross-references now name the kind of result they point to;
+    in Version~2 references to definitions, lemmas, propositions and
+    remarks were printed as ``Theorem''.  The DOI of
+    \citet{Stepanov1969} in the bibliography was corrected.
+\end{itemize}
+
+\subsection*{Version 2 (September 28, 2026)}
+
+\begin{itemize}
+  \item The hypotheses of the measure-theoretic conclusions were made
+    explicit: integrability of \(\|\psim\|^2\), the trace identity, and
+    the passage from almost-everywhere vanishing to a measure
+    statement.
+  \item The defected obstruction budget was restated as a family of
+    domination records for the same operator \(\AX\), one for each
+    \(t>0\), which is what the trace bound of
+    \Cref{prop:duality_confinement:optimized-trace-budget} requires.
+  \item The description of the formal verification was corrected to
+    distinguish the results derived in Lean from those whose inputs are
+    supplied as hypotheses, and a numerical form of the trace squeeze
+    was added.
+  \item The description of the companion Riemann-hypothesis paper was
+    corrected to state which of its hypotheses are supplied.
+\end{itemize}

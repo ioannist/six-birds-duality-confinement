@@ -1,146 +1,126 @@
-% RH paper — § Introduction
-% statements-of-record rows resolved here: none.
-
+% No numbered results (statements-of-record rows resolved here: none).
 \section{Introduction}
 \label{sec:intro}
 
-What would it take to settle whether all nontrivial zeros of the
-Riemann zeta function lie on the critical line?  In its standard
-form, the Riemann hypothesis~\citep{Riemann1859} asserts that every
-nontrivial zero \(\rho\) of \(\zeta\) satisfies
+The Riemann hypothesis \citep{Riemann1859} asserts that every
+nontrivial zero \(\rho\) of the Riemann zeta function satisfies
+\(\Real\rho=\frac12\).  Because the nontrivial zeros are the zeros of
+the completed zeta function
+\(\Lzeta(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)\) in the strip
+\(0<\Real s<1\), the hypothesis can be restated as the vanishing of a
+single nonnegative quantity,
 \[
-  \Real(\rho)=\frac12.
+  \AZ=\sum_{\rho}m_\rho\Bigl(\Real\rho-\frac12\Bigr)^2
+  \in[0,\infty],
 \]
-Classical attacks on this statement seek an unconditional proof
-inside the analytic-number-theoretic substrate itself: spectral
-Hilbert--P\'olya programs \citep{BerryKeating1990,Odlyzko1987},
-adelic and noncommutative-geometric approaches
-\citep{Connes1999}, Hilbert spaces of entire functions
-\citep{deBranges1968,deBranges1986}, Weil-positivity formulations
-\citep{Weil1952,Bombieri2000}, and related programs all work within
-their own classical carriers.  This paper
-takes a different route.  It asks whether RH can be read as the
-vanishing of a positive typed quantity and then made to vanish by a
-structural closure mechanism.  The quantity is the anti-invariant zero
-ledger
+the sum running over the nontrivial zeros \(\rho\) with positive
+weights \(m_\rho\) (for instance their multiplicities).  This
+reformulation is elementary (\Cref{thm:rh:translation-T}); its
+interest here is that it places the Riemann hypothesis inside the
+setting of a companion paper \citep{TsiokosSDTC2026}.  There \(J\) is
+an involution of a measure space \(X\), \(\psi\) is a strongly
+measurable observable with values in a real Hilbert space that
+intertwines \(J\) with a linear isometric involution, and its odd part
+\(\psim\) is square-integrable and vanishes exactly on the fixed locus
+of \(J\).  The Gram operator \(\AX=\int_X\psim\psim^*\) is then shown to
+vanish---and the mass to lie on the fixed locus---as soon as it is
+dominated by positive trace-class operators of vanishing trace; the
+proof is a one-line trace squeeze.  The global square-integrability hypothesis would require \(\AZ<\infty\),
+which is not known to hold unconditionally; the
+applications below use either an abstract form of the theorem or
+finite windows of zeros, where no such issue arises.  For the zeros of \(\zeta\) the relevant
+involution is
 \[
-  \AZ=\sum_{\rho\in \Znt} m_\rho\,
-       \left|\Real(\rho)-\frac12\right|^2,
+  \JL(s)=1-\bar s,
 \]
-where \(\Znt\) is the multiplicity-weighted ledger of nontrivial zeros
-of the completed zeta function.  Its vanishing is, by a direct
-positive-sum calculation, equivalent to the critical-line statement.
-The remaining question is not how to prove RH by one of the classical
-routes above, but how a formed closure can force \(\AZ\) to vanish.
+reflection in the critical line, which maps zeros to zeros by the
+functional equation and the reflection principle; its fixed locus is
+the critical line, and the odd readout is \(\psimRH(s)=\Real s-\frac12\).
 
-The framework used here is Six Birds Theory, a typed and audited
-calculus for naming closure formation in mathematical structures.  A
-formed closure, in the sense used in this paper, is a typed presentation
-of a mathematical substrate together with the assumption that its
-carriers, observables, comparison maps, and audit data have been
-admissibly closed under the framework's formation discipline.  The
-substrate for the present paper is the saturated completed Selberg trace
-closure \(\Sel\): a typed shell aggregating the completed zeta data, a
-lawful trace instrument \(\Itr\), the functional-equation symmetry, the
-nontrivial-zero ledger, the anti-invariant zero ledger, visibility data,
-and audit provenance.  The functional-equation involution is
-\[
-  \JL(s)=1-\bar{s},
-\]
-whose fixed locus is the critical line.  The corresponding
-anti-invariant readout is the signed real-part displacement
-\[
-  \psimRH(s)=\Real(s)-\frac12.
-\]
-These objects are defined in \Cref{sec:involution_and_ledger}; the
-shell \(\Sel\) is defined in \Cref{sec:sat_sel_shell}.
+This paper examines that route carefully.  Its conclusions are as
+follows.
 
-The main theorem is conditional.  Given the shell-side closure
-hypothesis recorded by the Foundations-II admissibility field of
-\(\Sel\), together with the recognition source
-\(\GamSDTCSelberg\), the Riemann hypothesis holds on the typed zero
-ledger of \(\Sel\).  A recognition source here means a named
-structural hypothesis supplied as content of the formed layer, not
-a theorem derived from lower framework primitives.  In this
-instance, \(\GamSDTCSelberg\) is the Selberg-class instance of
-Self-Dual Trace Confinement developed in \cite{TsiokosSDTC2026},
-and it supplies on the formed Selberg trace layer a sequence of
-completed domination records
-\[
-  \AZ \preceq B_n,
-  \qquad
-  \trace B_n \to 0.
-\]
-The duality-confinement membrane theorem of \cite{TsiokosSDTC2026}
-then forces \(\AZ=0\) in the typed positive cone, and the
-translation theorem of the present paper converts that vanishing
-into \(\Real(\rho)=1/2\) for every \(\rho\in\Znt\).  Stated in the
-audit-closure language of \citet{TsiokosAOR2026}, the same
-composition is recorded as a local refinement-stable
-audited-operational-realisability instance
-\[
-  \Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}},
-\]
-whose typed-zero-ledger readout is the critical-line statement on
-\(\Znt\); \Cref{sec:rh-aor-instance} unfolds the
-eight-stratum / twelve-type residual classification through which
-the landing chain is organized.  Outside the Six Birds framing the
-result therefore reads as the conditional theorem
-\[
-  \GamSDTCSelberg \Longrightarrow \mathrm{RH},
-\]
-with \(\mathrm{RH}\) delivered as the typed-ledger readout of the
-audit-closed realisability instance.  It is not an unconditional
-standard-ZFC proof of RH, and the AOR-realisability framing does
-not remove the recognition-source requirement.
+\begin{enumerate}
+  \item \emph{A conditional theorem.}  A named hypothesis
+    \(\GamSDTCSelberg\) (\Cref{obl:rh:gamma-sdtc-selberg}) supplies
+    positive domination records of vanishing trace for an auxiliary
+    duality-confinement ledger, together with a bridge encoding, at each represented zero \(\rho\) of a
+    shell (\Cref{sec:sat_sel_shell}), the displacement coordinate
+    \(c(\rho)-\frac12\) in that ledger's odd readout.  Under
+    this hypothesis every represented zero has coordinate
+    \(c(\rho)=\frac12\) (\Cref{thm:rh:conditional}).  If,
+    in addition, a map from coordinates to real numbers, sending
+    \(\frac12\) to \(\frac12\), carries the represented zeros onto the
+    real parts of all nontrivial zeros, then the Riemann hypothesis
+    holds (\Cref{thm:rh:full-classical}).
+  \item \emph{A calibration of the hypothesis.}  For every shell, the hypothesis holds exactly when every represented zero
+    has coordinate \(\frac12\); a one-point ledger suffices
+    (\Cref{prop:rh:gamma-calibration}).  On the bare shell, whose
+    represented zeros are the nontrivial zeros with their real parts as
+    coordinates, the hypothesis is therefore equivalent to the Riemann
+    hypothesis.  The same is true of the operator form, with the actual zeros as
+    objects, in which the duality-confinement theorem is applied to a
+    sequence of finite windows of actual zeros,
+    each closed under \(\JL\), that eventually contains every zero
+    (\Cref{thm:rh:concrete-window-dc}).  The conditional theorem
+    is therefore a reformulation of the Riemann hypothesis in the
+    language of domination records, not evidence for it.
+  \item \emph{Finite windows.}  On a finite window \(W\) of zeros
+    closed under the functional equation, with weights invariant under
+    it, the window sum \(\sum_{\rho\in W}m_\rho(\Real\rho-\frac12)^2\)
+    is the squared norm of a vector that is invisible to the natural
+    invariant probe (\Cref{sec:finite_windows}).  This identifies several ``payments''---upper bounds for the window
+    sums, or for operators dominating them, that one might hope to
+    establish independently.
+    These facts are elementary.  Along windows that eventually contain
+    every zero, each of several natural payment conditions is again
+    equivalent to the Riemann hypothesis; and on a nonempty window, operator-level transport bounds for the
+    identity target, of the form made precise in
+    \Cref{prop:rh:window-obstructions}, cannot tend to zero.
+\end{enumerate}
 
-The translation step is elementary.  \Cref{sec:translation_theorem}
-proves Theorem T:
-\[
-  \AZ=0
-  \quad\Longleftrightarrow\quad
-  \forall \rho\in\Znt,\ \Real(\rho)=\frac12.
-\]
-The forward direction uses only that each summand
-\(m_\rho |\Real(\rho)-1/2|^2\) is nonnegative and that
-\(m_\rho>0\): if the total sum is zero, every squared distance from
-the critical line is zero.  The reverse direction is substitution.
-Theorem T carries no recognition-source content; it translates the
-positive ledger statement produced by the duality-confinement
-mechanism into the number-theoretic critical-line statement.
+No unconditional statement about the zeros of \(\zeta\) is claimed.
+Two features should be said at the outset.  First, no quantitative or prime-side input is used or supplied beyond
+the classical zero-free half-plane.  The arguments use
+only analytic facts about \(\zeta\)---the functional equation and
+conjugation symmetry, countability of the zeros, the poles and non-vanishing of the Gamma factor, and the absence of zeros with \(\Real s\geq1\)---and
+for any countable set of points in the strip with positive weights and
+the same symmetries they prove the corresponding statements, with that
+set's own critical-line property in place of the Riemann hypothesis.  Second, the functional-analytic content of the
+companion theorem is not exercised: the conditional theorem uses an
+abstract trace squeeze, and the concrete form uses operators on
+\(\mathbb R\), that is, real numbers.  What the paper contributes is a
+precise account of what a proof along these lines would have to supply,
+and a demonstration that the obvious candidates are no easier than the
+Riemann hypothesis itself.  The classical programs aimed at the Riemann
+hypothesis---spectral interpretations \citep{BerryKeating1990},
+trace formulas in noncommutative geometry \citep{Connes1999}, Hilbert
+spaces of entire functions \citep{deBranges1968,deBranges1986}, and
+Weil's positivity criterion \citep{Weil1952,Bombieri2000} and Li's
+criterion \citep{Li1997}---are not used, and nothing here offers an
+alternative to them.
 
-The paper's scope is correspondingly narrow.  The main result is
-conditional on \(\GamSDTCSelberg\); no unconditional RH claim in standard
-ZFC is made, and \(\GamSDTCSelberg\) is not claimed to be derivable
-from framework primitives.  The conditional theorem takes a value of
-the recognition source as an explicit hypothesis.  The
-real-part coordinate of a typed zero is represented by a parameter;
-under construction-parameter assignment when the shell is
-instantiated, this parameter is identified with the classical real
-part of a nontrivial zero of \(\zeta\).  Deriving this identification
-from analytic-number-theoretic infrastructure is left as a future extension.
-Admissibility of \(\Sel\) under the seven Foundations-II schemas is
-carried as an audit witness in the shell, not derived here.  The
-classical RH programs named above are neither refuted nor
-circumvented in their native sense: they aim at unconditional RH
-within their classical substrates, while the present paper
-establishes a conditional formed-layer result on the typed Selberg
-trace shell.  The generalized Riemann hypothesis lies outside the
-scope; the construction is instantiated for \(L=\zeta\) only.
+The mathematical statements of
+\Cref{sec:involution_and_ledger,sec:sat_sel_shell,sec:translation_theorem,sec:recognition_source,sec:landing_chain,sec:finite_windows}
+are formalized in Lean~4 with the Mathlib library, and the Riemann
+hypothesis in the conclusions is Mathlib's statement of it; the records
+of \Cref{sec:rh-aor-instance} are formalized as lists of labels, and
+the remarks are not formalized (\Cref{app:formalization}).  The
+conditional theorem is stated for a \emph{shell}, a record whose
+fields name the data an intended trace-formula realization would
+provide (\Cref{sec:sat_sel_shell}); beyond the represented zeros and
+their coordinates these data carry no analytic content.
 
-The remainder of the paper follows this division of labor.
-\Cref{sec:framework} gives the minimal Six Birds background needed for
-the closure reading.  \Cref{sec:involution_and_ledger} constructs the
-functional-equation involution, the anti-invariant readout, the
-nontrivial-zero ledger, and \(\AZ\).  \Cref{sec:sat_sel_shell}
-packages the saturated Selberg trace closure.  \Cref{sec:translation_theorem}
-proves Theorem T.  \Cref{sec:recognition_source} states the recognition
-source and its provenance, and \Cref{sec:landing_chain} composes it
-with the duality-confinement master theorem and Theorem T to obtain the
-conditional landing chain in both its critical-line and
-AOR-realisability forms; \Cref{sec:rh-aor-instance} then unfolds the
-realisability form into the eight-stratum / twelve-type residual
-classification used by \citet{TsiokosAOR2026}.
-\Cref{sec:scope_and_nonclaims} records the nonclaims explicitly, and
-\Cref{sec:discussion,sec:conclusion} place the result in the broader
-structural program.  Appendix~\ref{app:formalization} documents the formalization.
+\paragraph{Organization.}
+\Cref{sec:framework} explains the framework vocabulary.
+\Cref{sec:involution_and_ledger} defines the involution, the readout
+and the zero ledgers; \Cref{sec:sat_sel_shell} describes the shell;
+\Cref{sec:translation_theorem} proves that the ledger vanishes exactly
+when the zeros lie on the critical line.
+\Cref{sec:recognition_source,sec:landing_chain} state the hypothesis
+\(\GamSDTCSelberg\), prove the conditional theorems and their
+calibration.  \Cref{sec:rh-aor-instance} records a classification of
+the argument's hypotheses in the audit vocabulary of a further
+companion paper.  \Cref{sec:finite_windows} treats finite windows.
+\Cref{sec:scope_and_nonclaims,sec:discussion,sec:conclusion} discuss
+scope and context.

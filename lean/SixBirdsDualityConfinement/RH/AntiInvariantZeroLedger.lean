@@ -1,56 +1,59 @@
 import SixBirdsDualityConfinement.RH.ZeroLedger
+import Mathlib.MeasureTheory.Measure.MeasureSpace
 
 /-!
 # RH paper — `AntiInvariantZeroLedger`
 
-Multiplicity-weighted anti-invariant zero ledger `A_Z(zeta)` over the typed
-zero ledger, with the abstract scalar and positivity interfaces used by the
-translation theorem.
+The ledger is an actual extended nonnegative sum over the entire typed zero
+carrier. A faithful squared-readout map is the only algebraic interface;
+positivity, summand detection, and both directions of Translation T are
+proved below instead of being fields of the ledger.
 -/
+
+noncomputable section
+open scoped ENNReal
 
 namespace SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger
 
-universe u v w q
+universe u v w
 
-/--
-The anti-invariant zero ledger
-`A_Z(zeta) = Sigma_{rho in Z_zeta^nt} m_rho * |Re(rho) - 1/2|^2`.
-
-The scalar arithmetic is kept typed and abstract.  The finite sum is
-over the support list carried by the nontrivial-zero ledger, and the
-term formula records the multiplicity-weighted squared centered real
-part.  The nonnegativity and zero-term interfaces are construction
-data for the later translation theorem.
--/
 structure AntiInvariantZeroLedger
     {R : Involution.RealCoordinate.{u}}
     (Z : ZeroLedger.NontrivialZeroLedger.{u, v, w} R) where
-  Scalar : Type q
-  zero : Scalar
-  add : Scalar → Scalar → Scalar
-  le : Scalar → Scalar → Prop
-  abs_sq : R.Real → Scalar
-  nat_mul : Nat → Scalar → Scalar
-  term : Z.Z_zeta_nt → Scalar
-  term_formula :
-    ∀ ρ : Z.Z_zeta_nt,
-      term ρ = nat_mul (Z.m_rho ρ) (abs_sq (R.sub (Z.rho ρ).re R.half))
-  finite_sum : List Z.Z_zeta_nt → Scalar
-  finite_sum_empty : finite_sum [] = zero
-  finite_sum_cons :
-    ∀ (ρ : Z.Z_zeta_nt) (tail : List Z.Z_zeta_nt),
-      finite_sum (ρ :: tail) = add (term ρ) (finite_sum tail)
-  A_Z : Scalar
-  A_Z_formula : A_Z = finite_sum Z.support
-  term_nonnegative : ∀ ρ : Z.Z_zeta_nt, le zero (term ρ)
-  A_Z_nonnegative : le zero A_Z
-  sum_zero_imp_term_zero :
-    A_Z = zero → ∀ ρ : Z.Z_zeta_nt, term ρ = zero
-  term_zero_imp_on_line :
-    ∀ ρ : Z.Z_zeta_nt, term ρ = zero → (Z.rho ρ).re = R.half
-  term_zero_of_on_line :
-    ∀ ρ : Z.Z_zeta_nt, (Z.rho ρ).re = R.half → term ρ = zero
-  A_Z_eq_zero_of_terms_zero :
-    (∀ ρ : Z.Z_zeta_nt, term ρ = zero) → A_Z = zero
+  /-- Realizes the squared horizontal displacement as a nonnegative value. -/
+  abs_sq : R.Real → ℝ≥0∞
+  abs_sq_zero_iff : ∀ x : R.Real, abs_sq x = 0 ↔ x = R.zero
+
+def AntiInvariantZeroLedger.term {R : Involution.RealCoordinate.{u}}
+    {Z : ZeroLedger.NontrivialZeroLedger.{u, v, w} R}
+    (A : AntiInvariantZeroLedger Z) (ρ : Z.Z_zeta_nt) : ℝ≥0∞ :=
+  (Z.m_rho ρ : ℝ≥0∞) * A.abs_sq (R.sub (Z.rho ρ).re R.half)
+
+def AntiInvariantZeroLedger.A_Z {R : Involution.RealCoordinate.{u}}
+    {Z : ZeroLedger.NontrivialZeroLedger.{u, v, w} R}
+    (A : AntiInvariantZeroLedger Z) : ℝ≥0∞ :=
+  ∑' ρ : Z.Z_zeta_nt, A.term ρ
+
+def AntiInvariantZeroLedger.zero {R : Involution.RealCoordinate.{u}}
+    {Z : ZeroLedger.NontrivialZeroLedger.{u, v, w} R}
+    (_A : AntiInvariantZeroLedger Z) : ℝ≥0∞ := 0
+
+theorem AntiInvariantZeroLedger.term_zero_iff_on_line {R : Involution.RealCoordinate.{u}}
+    {Z : ZeroLedger.NontrivialZeroLedger.{u, v, w} R}
+    (A : AntiInvariantZeroLedger Z) (ρ : Z.Z_zeta_nt) :
+    A.term ρ = 0 ↔ (Z.rho ρ).re = R.half := by
+  unfold AntiInvariantZeroLedger.term
+  rw [mul_eq_zero]
+  have hm : (Z.m_rho ρ : ℝ≥0∞) ≠ 0 := by
+    exact_mod_cast (Nat.ne_of_gt (Z.m_rho_positive ρ))
+  simp only [hm, false_or]
+  exact (A.abs_sq_zero_iff _).trans (R.sub_half_eq_zero_iff _)
+
+theorem AntiInvariantZeroLedger.sum_zero_iff_on_line {R : Involution.RealCoordinate.{u}}
+    {Z : ZeroLedger.NontrivialZeroLedger.{u, v, w} R}
+    (A : AntiInvariantZeroLedger Z) :
+    A.A_Z = A.zero ↔ ∀ ρ : Z.Z_zeta_nt, (Z.rho ρ).re = R.half := by
+  simp only [AntiInvariantZeroLedger.A_Z, AntiInvariantZeroLedger.zero, ENNReal.tsum_eq_zero]
+  exact forall_congr' fun ρ => A.term_zero_iff_on_line ρ
 
 end SixBirdsDualityConfinement.RH.AntiInvariantZeroLedger

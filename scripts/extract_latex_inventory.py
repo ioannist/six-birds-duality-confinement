@@ -47,6 +47,7 @@ THEOREM_ENVS = (
     "warning",
     "obligation",
     "nonclaim",
+    "classification",
 )
 FORMALIZATION_CATEGORIES = {
     "lean_definition",
@@ -69,12 +70,16 @@ LABEL_KIND_PREFIXES = {
     "warning": {"warn"},
     "obligation": {"obl"},
     "nonclaim": {"nonclaim"},
+    # Classification records keep their stable theorem-style labels.
+    "classification": {"thm"},
 }
 PAPER_AXES_SET = {"duality_confinement", "rh"}
-LABEL_SHORT_NAME_RE = re.compile(r"^[a-z0-9][a-z0-9-]*[a-z0-9]$")
+# Existing public RH labels contain T and L capitals. Preserve those stable
+# identifiers while still requiring a letter/digit at each end.
+LABEL_SHORT_NAME_RE = re.compile(r"^[A-Za-z0-9][A-Za-z0-9-]*[A-Za-z0-9]$")
 
 BEGIN_RE = re.compile(
-    r"\\begin\{(?P<kind>definition|theorem|lemma|proposition|corollary|remark|warning|obligation|nonclaim)\}"
+    r"\\begin\{(?P<kind>definition|theorem|lemma|proposition|corollary|remark|warning|obligation|nonclaim|classification)\}"
     r"(?:\[(?P<title>.*?)\])?"
 )
 REF_RE = re.compile(r"\\(?:ref|Cref|cref|eqref)\{([^}]+)\}")
@@ -121,18 +126,23 @@ def read_text(path: Path) -> str:
 
 
 def target_files() -> list[tuple[str, Path]]:
-    """Return (axis, path) for each duality_confinement paper axis."""
+    """Return the editable modular files for each paper axis."""
     out: list[tuple[str, Path]] = []
     for axis, path in PAPER_AXES.items():
         if path.exists():
             out.append((axis, path))
+            for directory in ("sections", "appendices"):
+                out.extend((axis, item) for item in sorted((path.parent / directory).glob("*.tex")))
     return out
 
 
 def extract_refs(raw: str) -> list[str]:
     refs: list[str] = []
     seen: set[str] = set()
-    for match in REF_RE.finditer(raw):
+    # TeX joins a line ending in `%` directly to the next line. Several
+    # multi-label Cref calls use that spelling; parse the effective input.
+    effective = re.sub(r"%[^\n]*\n", "", raw)
+    for match in REF_RE.finditer(effective):
         for part in match.group(1).split(","):
             label = part.strip()
             if label and label not in seen:
@@ -392,7 +402,7 @@ def validate(
             )
         if not LABEL_SHORT_NAME_RE.fullmatch(short_name):
             errors.append(
-                f"label {label!r} at {location} short-name {short_name!r} is not kebab-case alphanumeric"
+                f"label {label!r} at {location} short-name {short_name!r} is not a valid stable label"
             )
 
     if require_boundary:

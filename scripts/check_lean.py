@@ -25,6 +25,7 @@ import re
 import shutil
 import subprocess
 import sys
+import tomllib
 from pathlib import Path
 
 
@@ -47,6 +48,7 @@ FORBIDDEN_EXTERNAL_REFS = (
     "../" + "six-birds-",
     "/home" + "/repos/",
 )
+NEEDLES_DEPENDENCY_PATH = "../" + "../" + "six-birds-needles/lean"
 
 
 def rel(path: Path) -> str:
@@ -169,6 +171,18 @@ def check_no_external_refs() -> list[str]:
     errors: list[str] = []
     for path in active_source_files():
         text = path.read_text(encoding="utf-8")
+        if path == LEAN_DIR / "lakefile.toml":
+            # This declared package edge is intentional and is checked by Lake.
+            # Keep the general scan for all other external source references.
+            try:
+                requirements = tomllib.loads(text).get("require", [])
+            except tomllib.TOMLDecodeError as exc:
+                errors.append(f"{rel(path)} is invalid TOML: {exc}")
+                continue
+            if any(req.get("name") == "SixBirdsNeedles" and
+                   req.get("path") == NEEDLES_DEPENDENCY_PATH
+                   for req in requirements):
+                text = text.replace(f'path = "{NEEDLES_DEPENDENCY_PATH}"', "", 1)
         for ref in FORBIDDEN_EXTERNAL_REFS:
             if ref in text:
                 errors.append(f"{rel(path)} contains forbidden external reference `{ref}`")

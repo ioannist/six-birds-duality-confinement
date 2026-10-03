@@ -1,0 +1,160 @@
+\section{Finite windows}
+\label{sec:finite_windows}
+
+By \Cref{thm:rh:concrete-window-dc}, a proof along the duality-confinement
+route needs upper bounds tending to zero for the window sums \(A_W\).
+This section records some elementary facts about natural candidates
+for such bounds.  The main point is \Cref{prop:rh:window-identities}(b):
+the symmetric probe \(L_W(x)=\sum x_\rho\) sees nothing of the odd
+displacement vector, by symmetry alone, so its residual charge is the
+whole window sum; the equivalences of
+\Cref{prop:rh:window-equivalences} are then tautologies forced by this
+choice of probe, and carry no information about \(\zeta\).  Only the oddness of the displacement under the
+functional-equation map is used here; no fixed locus is involved.
+
+\paragraph{Setting.}
+Throughout, \(\sigma(\rho)=1-\rho\) is the functional-equation map on
+the nontrivial zeros (not to be confused with the reflection \(\JL\) in
+the critical line), a finite set \(W\) of nontrivial
+zeros is \emph{reflected} if \(\sigma(W)=W\), and the positive integer
+weights satisfy \(m_{\sigma(\rho)}=m_\rho\).  A sequence \((W_n)\) of
+finite sets is \emph{exhaustive} if every nontrivial zero lies in
+\(W_n\) for all large \(n\); exhaustive sequences of reflected windows
+exist because the nontrivial zeros are countable and each orbit of
+\(\sigma\) has at most two elements.  These windows differ from those of
+\Cref{thm:rh:concrete-window-dc}, which are closed under
+\(\JL(\rho)=1-\bar\rho\) and use unit weights; windows closed under both
+reflections also exist, since the two reflections commute and each
+orbit of the group they generate has at most four elements.  On the Euclidean
+space \(\mathbb R^W\) put
+\[
+  v_W(\rho)=\sqrt{m_\rho}\Bigl(\Real\rho-\frac12\Bigr),
+  \qquad
+  L_W(x)=\sum_{\rho\in W}x_\rho ,
+\]
+the \emph{displacement vector} and the \emph{invariant probe}.  For a linear map \(L\) from \(\mathbb R^W\) to a finite-dimensional
+real inner product space, let \(L^+\) be its Moore--Penrose pseudoinverse and
+\[
+  \Xi(L)=I-L^+L ,
+\]
+the orthogonal projection onto \(\ker L\); \(L^+L\) is the orthogonal
+projection onto \((\ker L)^\perp\).  For a vector \(v\), the
+\emph{residual charge} \(\langle v,\Xi(L)v\rangle=\|\Xi(L)v\|^2\) measures
+the part of \(v\) that the probe \(L\) does not see.  We call \(LL^*\) the \emph{native currency} of \(L\).  (These are the
+identity-audit cases of the residual, native currency and decoder
+\(L^+\) of the companion paper \citep{TsiokosXiCompanion2026}.)  A \emph{payment} for a window sum is an upper bound for it,
+or for a quadratic form dominating it, that one hopes to derive
+independently.  Operator inequalities \(S\preceq T\) are in the sense of
+quadratic forms.
+
+\begin{proposition}[Window identities]
+\label{prop:rh:window-identities}
+Let \(W\) be a reflected window with symmetric positive weights.
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item \(\|v_W\|^2=A_W\), and \(A_W\leq\AZ\).
+  \item \(L_Wv_W=0\).  Consequently
+    \(\langle v_W,\Xi(L_W)v_W\rangle=A_W\): the invariant probe sees
+    nothing of the displacement, and the residual charge is the whole
+    window sum.
+  \item For every linear map \(L\) on \(\mathbb R^W\),
+    \(\langle v_W,(L^+(LL^*)(L^+)^*+\Xi(L))v_W\rangle=A_W\).  Changing the
+    probe moves charge between the decoded native currency and the
+    residual, but never changes their total.
+  \item Let \(P_W\) be the orthogonal projection onto \(\ker L_W\), a probe
+    determined by the window alone (it does not depend on the
+    displacements).  Then
+    \(\langle v_W,\Xi(P_W)v_W\rangle=0\) and
+    \(\langle v_W,P_WP_W^*v_W\rangle=A_W\).  In particular, a window
+    containing a zero off the critical line has zero residual charge for this probe and strictly positive native currency.
+\end{enumerate}
+Part (d) shows that residual charge depends on the probe; the
+equivalences of \Cref{prop:rh:window-equivalences} concern the
+invariant probe \(L_W\).
+\end{proposition}
+
+\begin{proof}
+(a) is the definition of \(v_W\) and of the extended sum.  (b): the
+reflection pairs \(\rho\) with \(1-\rho\), which has the opposite
+displacement and the same weight; the only fixed point \(\rho=\frac12\)
+has displacement zero.  So the terms of \(L_Wv_W\) cancel, \(v_W\) lies in
+\(\ker L_W\), and \(\Xi(L_W)v_W=v_W\).  (c): \(L^+(LL^*)(L^+)^*=L^+L\) is
+the orthogonal projection onto \((\ker L)^\perp\), so the operator in
+(c) is the identity.  (d): \(\ker P_W=(\ker L_W)^\perp\), which is
+orthogonal to \(v_W\) by (b); and \(P_WP_W^*=P_W\) fixes \(v_W\).
+\end{proof}
+
+\begin{proposition}[Two elementary limitations]
+\label{prop:rh:window-obstructions}
+Let \(W\) be a nonempty window.
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item \emph{Operator transport bounds for the identity target cannot
+    vanish.}  This part does not use the zeros at all, and the same
+    argument works for any finite-dimensional target of \(L\).  Let
+    \(L:\mathbb R^W\to\mathbb R\) be linear, and suppose
+    \(LL^*\preceq\Theta\), \(\Xi(L)\preceq\Omega\) and
+    \(L^+\Theta(L^+)^*+\Omega\preceq H\cdot I\) for operators
+    \(\Theta,\Omega\) and a real number \(H\).  Then \(H\geq1\).
+  \item \emph{The probe cannot be coercive on its own residual.}  If
+    \(c\|x\|\leq|L_W x|\) for some \(c>0\) and all \(x\) in the range of
+    \(\Xi(L_W)\), then \(L_W\) is injective.  Hence no such \(c\) exists when \(W\) has at
+    least two elements.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) Conjugating \(LL^*\preceq\Theta\) by \(L^+\) and adding
+\(\Xi(L)\preceq\Omega\) gives
+\(I=L^+L+\Xi(L)\preceq L^+\Theta(L^+)^*+\Omega\preceq H\cdot I\), and
+\(\mathbb R^W\neq0\).  (b) The range of \(\Xi(L_W)\) is \(\ker L_W\), on
+which \(L_W\) vanishes; the inequality forces \(\ker L_W=0\).  A nonzero
+linear functional on \(\mathbb R^W\) is injective only if
+\(\dim\mathbb R^W=1\).
+\end{proof}
+
+Here the \emph{identity target} is the map \(I\) on \(\mathbb R^W\) whose
+values the payment is meant to control, and a \emph{transport bound} is
+the scalar \(H\) in an inequality of the form in (a), which dominates the
+decoded native budget plus the residual bound by \(H\cdot I\).  Part (b) says that coercivity on the residual forces \(L_W\) to be
+injective, which fails as soon as \(W\) has at least two elements,
+because then \(\ker L_W\neq0\).  Part (a) says only that
+the identity operator is not small: a transport
+bound of the form in (a), which dominates the identity target as an
+operator rather than on the actual displacement vector \(v_W\), cannot
+tend to zero.
+
+\begin{proposition}[Payments that restate the Riemann hypothesis]
+\label{prop:rh:window-equivalences}
+Let \((W_n)\) be an exhaustive sequence of reflected windows with
+symmetric positive weights, and write \(v_n=v_{W_n}\), \(L_n=L_{W_n}\),
+\(A_n=A_{W_n}\).  Each of the following is equivalent to the Riemann
+hypothesis:
+\begin{enumerate}[label=\textup{(\alph*)}]
+  \item \(\langle v_n,\Xi(L_n)v_n\rangle=0\) for every \(n\);
+  \item there are \(b_n\to0\) with \(\langle v_n,\Xi(L_n)v_n\rangle\leq b_n\);
+  \item there are operators \(\Omega_n\succeq\Xi(L_n)\) and \(b_n\to0\)
+    with \(\langle v_n,\Omega_nv_n\rangle\leq b_n\);
+  \item for a fixed real number \(q<1\),
+    \(\langle v_n,\Xi(L_n)v_n\rangle\leq q\,A_n\) for every \(n\);
+  \item \(\sum_n A_n<\infty\).
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+By \Cref{prop:rh:window-identities}(b), the residual charge in (a),
+(b) and (d) equals \(A_n\), and in (c) it is at most
+\(\langle v_n,\Omega_nv_n\rangle\).  If some zero \(\rho_0\) is off the
+critical line, it lies in \(W_n\) for all large \(n\), and then
+\(A_n\geq(\Real\rho_0-\frac12)^2>0\) for all large \(n\); this
+contradicts each of (a)--(e) (for (d), \(A_n\leq qA_n\) forces
+\(A_n=0\); for (e), the terms of a convergent series tend to zero).
+Conversely, under the Riemann hypothesis every \(A_n\) is zero, and
+(a)--(e) hold with \(\Omega_n=\Xi(L_n)\) and \(b_n=0\).
+\end{proof}
+
+The proposition does not say that the Riemann hypothesis is hard; it
+says that, on actual zero windows, bounding the residual charge,
+bounding any operator above it, asking for a uniform residual gap, or
+asking for summable window sums is each the Riemann hypothesis in
+another form.  An argument along these lines becomes a proof only if
+the bound is derived from zeta-function data by a route that does not
+already presuppose it.

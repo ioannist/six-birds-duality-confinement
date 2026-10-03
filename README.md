@@ -49,6 +49,21 @@ make paper-preflight
 
 Build the Lean project:
 
+The current Lean project also requires a separately prepared sibling
+`../six-birds-needles/` checkout. Its required AOR, XI, and MainCore
+sources include uncommitted additions that are absent from its current
+public base commit; cloning that commit alone is insufficient. The exact
+82-file source snapshot is recorded in
+`formalization/inventory/needles_dependency.sha256`. Prepare those sources
+separately and verify them before building:
+
+```bash
+cd ../six-birds-needles/lean
+sha256sum --check ../../six-birds-duality-confinement/formalization/inventory/needles_dependency.sha256
+```
+
+From this repository's root:
+
 ```bash
 cd lean
 lake build

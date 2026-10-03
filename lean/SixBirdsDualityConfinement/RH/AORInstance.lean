@@ -7,13 +7,13 @@ import SixBirdsDualityConfinement.RH.RHConditional
 AOR-instance recasting of the conditional landing chain of
 `RHConditional`. Provides the `SelAORInstance` wrapper structure
 (def:rh:aor-sel-instance), the mechanical-records umbrella theorem
-(thm:rh:aor-mechanical-records), six substantive-discharge theorems
+(thm:rh:aor-mechanical-records), six substantive-discharge lists
 classifying the recognition source, the bridge fields, the `Audit_L`
 admissibility witness, the cross-paper master-theorem import, the
 typed real-coordinate carrier, and translation theorem T against the
 twelve-type residual atlas, and the main composition theorem
-(thm:rh:aor-instance) stating `SelAORInstance shell gamma ∈
-RefStableAOR^ref_{S_RH}`.
+(thm:rh:aor-instance) establishing `LocalRegisterComplete` for the
+assembled carrier.
 
 The discharges are typed-bridge / typed-interface compositions over
 the existing `GammaSdtcSelberg`, `SatSelShell`, `DCMasterApplied`,
@@ -57,13 +57,15 @@ def defaultCarrier
         "Audit_L_channel_status",
         "Gamma_SDTC_Selberg",
         "domination sequence (gamma.B_n, gamma.domination_records)" ]
-    interfaces := ["same_readout", "visible_zero_of_ae", "mu_zero_of_ae"]
+    interfaces :=
+      ["same_readout", "visible_zero_of_ae", "zero_object",
+       "zero_object_visible", "encode_faithful", "readout_formula"]
     constraints :=
       [ "typed-cone positivity",
         "preceq",
         "trace monotonicity",
         "gamma.A.A_X preceq gamma.B_n n",
-        "gamma.tr_B_n_tends_zero" ]
+        "gamma.trace_decay (real Tendsto)" ]
     discharges := []
     nonclaims :=
       [ "AOR-instance reading restricted to typed zero ledger of Sel",
@@ -157,7 +159,7 @@ def aorGammaBridgeDischarge
     { primary := AORPrimitives.ResidualType.transport
       forced_secondaries := []
       status := AORPrimitives.DischargeStatus.bridged },
-    -- mu_zero_of_ae component
+    -- zero-object visibility and readout-equation components
     { primary := AORPrimitives.ResidualType.transport
       forced_secondaries := []
       status := AORPrimitives.DischargeStatus.bridged },
@@ -255,7 +257,7 @@ def assembledCarrier
 /--
 Main local AOR-instance theorem for the RH carrier.
 
-The theorem proves only the record-level `RefStableAOR` predicate for the
+The theorem proves only the record-level `LocalRegisterComplete` predicate for the
 assembled carrier. The critical-line statement remains the separate conclusion
 of `RHConditional.rhConditional`.
 -/
@@ -263,8 +265,8 @@ theorem aorInstance
     {R : Involution.RealCoordinate.{u}}
     (shell : SatSelShell.SatSelShell R)
     (gamma : RHConditional.GammaSdtcSelberg.{u, x, y, z, cone, trace, scale} shell) :
-    AORPrimitives.RefStableAOR (assembledCarrier shell gamma) := by
-  unfold AORPrimitives.RefStableAOR
+    AORPrimitives.LocalRegisterComplete (assembledCarrier shell gamma) := by
+  unfold AORPrimitives.LocalRegisterComplete
   constructor
   · simp [assembledCarrier, defaultCarrier]
   · intro atom hatom secondary hsec

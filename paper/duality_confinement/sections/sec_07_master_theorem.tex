@@ -1,113 +1,92 @@
-% Duality Confinement paper — § The duality-confinement membrane theorem
-% Drafted body, pass A: master theorem statement and typed-cone
-% abstraction disclosure. Pass B appends the proof sketch and the
-% sanctioned forward reference.
-%
-% statements-of-record rows resolved here:
-% thm:duality_confinement:master-theorem.
-
 \section{The duality-confinement membrane theorem}
 \label{sec:master_theorem}
 
-This section states the main result: the duality-confinement
-membrane theorem, also called the master theorem.  It takes the
-apparatus built in the preceding sections and turns a sequence of
-domination records into fixed-locus confinement.  The input is
-algebraic and trace-theoretic---\(\AX\) is dominated by positive
-bounds \(B_n\) whose traces tend to zero---and the output is
-geometric: visible mass is confined to \(\Fix(J)\).  In framework
-terms, this is the apparatus theorem for the SDTC structural law
-\(\GamSDTC\): it does not derive the recognition source, only the
-mathematical consequence once the source has supplied the required
-sequence.
+This section proves the confinement theorem.  Its input is a sequence
+of domination records whose traces vanish; its output is the
+almost-everywhere vanishing of the odd readout and, when the readout is
+separating, confinement of the mass of \(\mu\) to the fixed locus.  In the
+framework's companion papers a positive budget of this kind, bounding
+a carrier-side quantity at every stage, is called a \emph{membrane}
+\citep{TsiokosNeedleKiller2026}; the theorem's name records that it is
+the step turning such budgets into confinement.  In the vocabulary of
+\Cref{sec:framework}, it is the mathematical consequence of the
+structural law \(\GamSDTC\): it does not produce the domination
+records, it uses them.
 
-\begin{theorem}[Duality-confinement membrane theorem\protect\footnote{Verified in the Lean formalization at the typed positive-cone level; see App~\ref{app:formalization}.}]
+\begin{theorem}[Duality-confinement membrane theorem]
 \label{thm:duality_confinement:master-theorem}
-Let \(\IOL\) be an involutive object ledger with carrier \(X\),
-involution \(J\), measure \(\mu\), anti-invariant readout
-\(\psim\), and anti-invariant ledger \(\AX\).  Assume that
-\(\psim\) is qualitatively separating.  Suppose there is a sequence
-of positive cone elements \(B_n\) such that
+Let \(\IOL=(X,J,\mu,\psi,Y,\Jiso)\) be an involutive object ledger with
+\(\int_X\|\psim\|^2\,d\mu<\infty\).  Suppose there are positive
+trace-class operators \(B_n\) on \(Y\) such that
 \[
-  \AX\preceq B_n
-  \qquad (n=1,2,\ldots)
+  \AX\preceq B_n\quad(n=1,2,\ldots)
+  \qquad\text{and}\qquad
+  \trace B_n\to0\quad(n\to\infty).
 \]
-and
-\[
-  \trace B_n\to0
-  \qquad (n\to\infty).
-\]
-Then \(\AX=0\) in the typed positive cone.  Consequently,
-\[
-  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
-\]
+Then \(\AX=0\) and \(\psim(x)=0\) for \(\mu\)-almost every \(x\).  If,
+in addition, \(\psim\) is qualitatively separating, then \(Jx=x\) for
+\(\mu\)-almost every \(x\), so the mass of \(\mu\) is confined to
+\(\Fix(J)\); in the finite weighted case, every object of positive
+weight is fixed by \(J\).
+
+Conversely, if \(\psim(x)=0\) for \(\mu\)-almost every \(x\)---in
+particular, if \(Jx=x\) for \(\mu\)-almost every \(x\)---then
+\(\AX=0\), and the constant sequence \(B_n=0\) satisfies the
+hypotheses.
 \end{theorem}
 
-The proof is an operator-style squeeze, composing the apparatus of
-\Cref{sec:anti_invariant_ledger,sec:direct_confinement,sec:domination}
-with the direct-confinement consequence of
-\Cref{thm:duality_confinement:separation-confinement}.
-
 \begin{proof}
-The argument has four steps.  First, trace monotonicity in the
-typed positive cone turns each domination record into a scalar
-inequality:
+By \Cref{lem:duality_confinement:trace-identity}, \(\AX\) is positive
+and trace-class.  For each \(n\), (T4) applied to
+\(0\preceq\AX\preceq B_n\) gives
 \[
-  \AX\preceq B_n
-  \quad\Longrightarrow\quad
-  \trace\AX\leq\trace B_n.
+  0\leq\trace\AX\leq\trace B_n .
 \]
-Since \(\AX\) is positive, \(\trace\AX\geq0\), so for every \(n\),
-\[
-  0\leq\trace\AX\leq\trace B_n.
-\]
-
-Second, the vanishing trace budget for the bounds gives the
-squeeze.  The scalar quantity \(\trace\AX\) is independent of
-\(n\), while \(\trace B_n\) tends to zero, so \(\trace\AX=0\).
-
-Third, positivity-to-zero in the typed positive cone converts
-trace-zero positivity into equality in the cone: \(\AX=0\).  This
-is the point at which the proof uses the typed-cone abstraction
-rather than a full trace-class operator theory.  In a classical
-positive trace-class cone, the corresponding statement is that a
-positive trace-class operator with trace zero is the zero operator.
-
-Fourth, qualitative separation converts algebraic vanishing into
-confinement.  With \(\AX=0\), the separation--confinement theorem
-gives
-\[
-  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
-\]
-That theorem in turn rests on the trace identity
-\Cref{lem:duality_confinement:trace-identity}, which identifies
-\(\trace\AX\) with the squared-norm integral of \(\psim\).
+The middle quantity does not depend on \(n\) and the right-hand side
+tends to zero, so \(\trace\AX=0\).  By (T3), \(\AX=0\).  The remaining
+direct assertions are
+\Cref{thm:duality_confinement:separation-confinement}.  For the
+converse, \(\psim\) vanishes on \(\Fix(J)\), so almost-everywhere
+fixedness implies \(\psim=0\) almost everywhere; then
+\(\trace\AX=\int_X\|\psim\|^2\,d\mu=0\), so \(\AX=0\) by (T3), and
+\(\AX\preceq0\).
 \end{proof}
 
-The theorem is stated at the typed positive-cone level.  The cone
-records exactly the primitives used by the proof: the order
-\(\preceq\), the trace functional \(\trace\), trace monotonicity, and
-the positivity-to-zero principle.  A fully operator-theoretic
-treatment would require the trace-class topology, Hilbert--Schmidt
-and Schatten-ideal infrastructure, and the corresponding analytic
-closure lemmas \citep{Simon2005,ReedSimon1980}; that
-operator-theoretic generality remains an open extension.
+The converse shows that, for a given ledger, trace-vanishing domination
+records exist if and only if \(\psim\) vanishes almost everywhere, and
+hence, for a separating readout, if and only if the mass is confined to
+the fixed locus.  The hypothesis is therefore equivalent to the
+conclusion, and the theorem does not make confinement easier to prove.
+Its role is to fix the form in which confinement is to be established
+when \(\AX\) is known only through a bridge
+\(\AX\preceq\Kminus+E\) to operators computed from other data
+(\Cref{sec:domination}): then trace bounds on \(\Kminus\) and \(E\),
+rather than on \(\AX\) itself, are what must be proved.
 
-\paragraph{Worked single-substrate application.}
-The master theorem applies to any involutive object ledger whose
-recognition source supplies the domination records required by the
-squeeze hypothesis.  This paper develops the typed apparatus and
-proves the squeeze.  The sibling paper on the worked
-single-substrate RH application instantiates the apparatus on the
-saturated completed Selberg trace closure of the Riemann zeta
-function and applies the master theorem to the corresponding zero
-ledger.  That paper specifies the involution \(J_L(s)=1-\bar{s}\),
-identifies its fixed locus with the critical line, treats the
-saturated Selberg trace shell as the typed substrate, and uses the
-Selberg-class instance of the SDTC recognition source.  The
-reference is orienting only: no result from the sibling paper is
-used here.
+Two features of the proof are worth isolating.  First, it uses \(\AX\)
+only through four properties: \(\AX\) is positive; the trace is
+monotone for the Loewner order; the trace of a positive operator is
+nonnegative; and a positive operator of trace zero is zero.  Second,
+the geometric conclusion enters only at the end, through the trace
+identity and separation.  The first observation gives an abstract form
+of the theorem.
 
-The next section develops refinements, including exhaustive moving
-ledgers and optimized scalar trace budgets, that adapt the master
-theorem to finite-window and tail-defect situations.
+\begin{remark}[Abstract form]
+\label{rem:duality_confinement:abstract-cone}
+Let \(C\) be a set with a distinguished element \(0\), a relation
+\(\preceq\), a subset of \emph{positive} elements, and a map
+\(\tau:C\to\mathbb R\) such that \(\tau(c)\geq0\) for every positive
+\(c\), and \(a\preceq b\) implies \(\tau(a)\leq\tau(b)\).
+Let \(a\in C\) be positive with \(\tau(a)=0\) only if \(a=0\).  If
+\(a\preceq b_n\) for all \(n\) and \(\tau(b_n)\to0\), then \(a=0\): indeed \(0\leq\tau(a)\leq\tau(b_n)\to0\).  \Cref{thm:duality_confinement:master-theorem} is
+the case of positive trace-class operators with the Loewner order and
+the operator trace.
+\end{remark}
+
+\paragraph{Where the theorem is used.}
+A companion paper \citep{TsiokosRHviaSDTC2026} considers the
+involution \(s\mapsto1-\bar s\) on the zeros of the Riemann zeta
+function.  It states, as an explicit hypothesis, a recognition source
+supplying domination records for an odd readout of the zeros, and
+applies the fixed-locus conclusion of the theorem to that ledger.  The
+present paper uses nothing from that work.

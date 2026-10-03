@@ -1,54 +1,28 @@
-% RH paper — § Conclusion
-% Drafted body: compact restatement of the conditional landing chain,
-% pending extensions, and reproducibility statement.
-%
-% statements-of-record rows resolved here: none (this section is
-% conclusion / restatement; no theorem/definition rows resolve here).
-
+% No numbered results (statements-of-record rows resolved here: none).
 \section{Conclusion}
 \label{sec:conclusion}
 
-The paper has established the RH closure in its conditional form.
-Under the standing Foundations-II admissibility assumption on
-\(\Sel\), and with the Selberg-class recognition source
-\(\GamSDTCSelberg\) supplied by the SDTC structural law of
-\citet{TsiokosSDTC2026}, the conditional landing chain records
-\(\Sel\in\mathrm{RefStableAOR}^{\mathrm{ref}}_{\mathfrak S_{\mathrm{RH}}}\)
-as a local AOR-instance wrapper in the sense of
-\citet{TsiokosAOR2026}.  Its typed-ledger readout is
-\(\rho\in\Znt \Rightarrow \Real(\rho)=1/2\).  The recognition source
-supplies domination records for \(\AZ\); the duality-confinement
-membrane theorem converts those records into \(\AZ=0\); translation
-theorem T converts \(\AZ=0\) into the critical-line statement; and
-\Cref{thm:rh:aor-instance} records that the same composition
-discharges the audit-closure residual atlas.
-
-The conditional structure is essential.  Outside the Six Birds
-framework, the result reads as
-\(\GamSDTCSelberg\Longrightarrow\mathrm{RH}\) on the typed zero
-ledger; it is not an unconditional proof of RH in standard ZFC.
-Acceptance turns on two supplied pieces of formed-layer structure:
-the recognition source \(\GamSDTCSelberg\), and the admissibility of
-\(\Sel\) recorded by the \(\mathrm{Audit}_L\) field.  The
-AOR-realisability framing gives the audit-closure reading of that
-conclusion, but does not collapse these hypotheses into unmentioned
-background assumptions.
-
-Three extension targets remain.  First, the admissibility of
-\(\Sel\) under the seven Foundations-II schemas would be derived
-rather than carried as a standing hypothesis.  Second, the typed
-real-coordinate parameter would be connected to the classical
-function \(\Real(\rho)\) through analytic-number-theoretic
-infrastructure, lifting the real-part representation choice disclosed
-earlier.  Third, the analogous program for primitive Selberg-class
-\(L\)-functions would require a separate typed shell, admissibility
-verification, and recognition-source provenance argument for each
-\(L\).  The paper accordingly defers unconditional standard-ZFC RH,
-any claim to circumvent classical RH attack barriers in their native
-sense, and GRH for general primitive \(L\)-functions.
-
-Code and data availability.  The source repository is available at
-\url{https://github.com/ioannist/six-birds-duality-confinement}.  The
-canonical manuscript source is \path{paper/rh/main.tex}.  Formalized
-support is tracked by \path{lean/manifests/rh_manifest.toml} and the
-RH Lean modules.
+The Riemann hypothesis is the vanishing of the positive ledger
+\(\AZ=\sum_\rho m_\rho(\Real\rho-\frac12)^2\) of squared displacements of
+the nontrivial zeros from the fixed line of the involution
+\(s\mapsto1-\bar s\).  If a recognition source supplies domination
+records of vanishing trace together with a bridge encoding these displacements in an auxiliary
+readout, the duality-confinement theorem places every represented zero on the
+critical line of its coordinates, and, with a map from coordinates to the reals that sends \(\frac12\) to
+\(\frac12\) and carries the represented zeros onto the real parts of all
+nontrivial zeros, the Riemann hypothesis follows.  On any shell this
+hypothesis is equivalent to the critical-line statement for the
+represented zeros, hence on the bare shell to the Riemann hypothesis, and so
+is its concrete form on finite windows closed under the reflection
+\(s\mapsto1-\bar s\), with unit weights, that eventually contain every
+zero.  For windows closed under \(s\mapsto1-s\), with invariant weights, an
+operator-level transport bound for the full identity target cannot
+tend to zero on a nonempty window, and several natural forms of a
+payment for the window sums along windows that eventually contain
+every zero are again equivalent to the Riemann hypothesis.  These facts are elementary; they use analytic properties of \(\zeta\)
+such as the functional equation and the zero-free half-plane
+\(\Real s\geq1\), but no quantitative or prime-side input.  The paper thereby
+describes what a proof along this route would need, shows that the
+obvious candidates are no easier than the Riemann hypothesis, and does
+not claim to supply one.  The mathematical statements are formalized in Lean~4 with Mathlib
+(\Cref{app:formalization}).

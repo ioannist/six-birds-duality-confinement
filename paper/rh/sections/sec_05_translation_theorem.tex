@@ -1,128 +1,66 @@
-% RH paper — § Translation theorem T
-% Pass A drafted: biconditional statement and role in the landing chain.
-% Pass B adds the forward and reverse positivity proofs.
-%
-% statements-of-record rows resolved here: see
-% paper/rh/notes/section-outline.md (this file's row) and
-% paper/notes/statements-of-record.yml (target_section_hint field).
-
 \section{Translation theorem T}
 \label{sec:translation_theorem}
 
-With the saturated trace shell \(\Sel\) in hand, the next step is to
-translate the typed-ledger statement \(\AZ=0\) into the
-number-theoretic critical-line statement.  The translation is
-elementary, using only the definition of \(\AZ\) as a
-multiplicity-weighted sum of squared signed displacements from the
-critical line.  Its role is structural: the duality-confinement
-mechanism will later deliver \(\AZ=0\), and translation theorem T is
-the bridge that turns this ledger vanishing into the RH statement on
-the typed zero ledger.
+The next theorem translates the vanishing of the anti-invariant ledger
+into the critical-line statement.  It is a positivity argument.  We
+state it for the nontrivial-zero ledger of
+\Cref{def:rh:nontrivial-zero-ledger}; the identical argument applies to
+the ledger of represented zeros of any shell, which is how it is used
+in \Cref{sec:landing_chain}.
 
-The theorem is stated on the zero ledger carried by \(\Sel\).  The
-real-part coordinate is the typed coordinate fixed in
-\Cref{sec:involution_and_ledger}; under the construction-parameter
-assignment described there, the typed statement is the corresponding
-classical assertion about the real parts of nontrivial zeros of
-\(\zeta\).
-
-\begin{theorem}[Translation theorem T\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T]
 \label{thm:rh:translation-T}
-On the typed zero ledger \(\Znt\) of the saturated completed Selberg
-trace closure \(\Sel\),
+For any positive weights \(m_\rho\),
 \[
   \AZ=0
   \quad\Longleftrightarrow\quad
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
+  \Real\rho=\frac12\ \text{ for every }\rho\in\Znt .
 \]
-Equivalently, the anti-invariant zero ledger vanishes if and only if
-every typed zero lies on the critical line \(\Fix(\JL)\).
+Consequently \(\AZ=0\) if and only if the Riemann hypothesis holds.
 \end{theorem}
 
 \begin{proof}
-Combine
-\Cref{thm:rh:translation-T-forward,thm:rh:translation-T-reverse},
-which give the two directions of the biconditional.
+The two directions are
+\Cref{thm:rh:translation-T-forward,thm:rh:translation-T-reverse}.  The
+nontrivial zeros are exactly the zeros of \(\zeta\) in the strip
+\(0<\Real s<1\), because \(\pi^{-s/2}\Gamma(s/2)\) has neither zeros
+nor poles there; and every zero of \(\zeta\) other than the trivial zeros \(-2,-4,\ldots\)
+lies in that strip.  For the latter, the classical facts used are
+\citep{TitchmarshHeathBrown1986}: \(\zeta\) has no zeros with
+\(\Real s\geq1\); \(\zeta(0)=-\frac12\); \(\Lzeta(s)=\Lzeta(1-s)\); and
+\(\pi^{-s/2}\Gamma(s/2)\) never vanishes and is finite except at
+\(s=0,-2,-4,\ldots\).  If \(\zeta(s)=0\) with \(\Real s\leq0\), then
+\(s\neq0\), and if \(s\) is not a trivial zero the factor at \(s\) is
+finite and nonzero, so \(\Lzeta(s)=0\), hence \(\Lzeta(1-s)=0\); since
+\(\Real(1-s)\geq1\) and \(1-s\neq1\), the factor at \(1-s\) is finite and
+nonzero, so \(\zeta(1-s)=0\), a contradiction.  Hence the critical-line
+statement on \(\Znt\) is the Riemann hypothesis.
 \end{proof}
 
-Theorem T is what makes the conditional landing chain land on RH
-rather than on an internal trace statement.  The trace-side output
-of the later argument is \(\AZ=0\); Theorem T converts that output
-into the assertion that every \(\rho\in\Znt\) satisfies
-\(\Real(\rho)=1/2\), which is RH on the typed zero ledger of
-\(\Sel\).  No recognition-source content is used in this
-translation: T depends only on \(\Znt\), the positive multiplicities
-\(m_{\rho}\), the readout \(\psimRH\), and the definition of
-\(\AZ\), and its positivity is the elementary positivity of a finite
-multiplicity-weighted sum of squares.  The recognition source enters
-later, as the conditional reason for \(\AZ=0\); once that vanishing
-is available, the theorem completes the conversion to the
-critical-line statement.
-
-The two halves below are short positivity arguments.
-
-\begin{theorem}[Translation theorem T, forward direction\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T, forward direction]
 \label{thm:rh:translation-T-forward}
-On the typed zero ledger \(\Znt\) of \(\Sel\), if \(\AZ=0\), then
-\[
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2}.
-\]
+If \(\AZ=0\), then \(\Real\rho=\frac12\) for every \(\rho\in\Znt\).
 \end{theorem}
 
 \begin{proof}
-By definition,
-\[
-  \AZ
-    =
-  \sum_{\rho\in\Znt}
-    m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}.
-\]
-For every typed zero \(\rho\), the multiplicity satisfies
-\(m_{\rho}>0\) and the square \(\left|\Real(\rho)-1/2\right|^{2}\)
-is nonnegative, so every summand is nonnegative.  If \(\AZ=0\), the
-finite sum of these nonnegative summands is zero, so each summand
-is zero:
-\[
-  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}=0
-\]
-for each \(\rho\in\Znt\).  Since \(m_{\rho}>0\), the squared factor
-must vanish.  Thus \(\Real(\rho)-1/2=0\), and hence
-\(\Real(\rho)=1/2\).
+Each summand \(m_\rho(\Real\rho-\frac12)^2\) is nonnegative and is at
+most the extended sum \(\AZ\).  If \(\AZ=0\), each summand is therefore
+zero, and since \(m_\rho>0\) we get \((\Real\rho-\frac12)^2=0\).
 \end{proof}
 
-\begin{theorem}[Translation theorem T, reverse direction\footnote{Checked in the Lean formalization by typed-interface composition over the anti-invariant-zero-ledger fields; see App~\ref{app:formalization}.}]
+\begin{theorem}[Translation theorem T, reverse direction]
 \label{thm:rh:translation-T-reverse}
-On the typed zero ledger \(\Znt\) of \(\Sel\), if
-\[
-  \forall\,\rho\in\Znt,\ \Real(\rho)=\frac{1}{2},
-\]
-then \(\AZ=0\).
+If \(\Real\rho=\frac12\) for every \(\rho\in\Znt\), then \(\AZ=0\).
 \end{theorem}
 
 \begin{proof}
-Assume that every \(\rho\in\Znt\) satisfies \(\Real(\rho)=1/2\).
-Then
-\[
-  \Real(\rho)-\frac{1}{2}=0
-\]
-for every typed zero, and therefore
-\[
-  \left|\Real(\rho)-\frac{1}{2}\right|^{2}=0.
-\]
-Each summand in the definition of \(\AZ\) is consequently
-\[
-  m_{\rho}\left|\Real(\rho)-\frac{1}{2}\right|^{2}
-    =
-  m_{\rho}\cdot 0
-    =
-  0.
-\]
-Thus \(\AZ\) is a finite sum of zero summands, so \(\AZ=0\).
+Every summand vanishes, so every partial sum vanishes, and so does
+their supremum.
 \end{proof}
 
-Together, the two halves give the biconditional of
-\Cref{thm:rh:translation-T}: \(\AZ=0\) if and only if every typed
-zero lies on the critical line.  The remaining structural task is
-to supply the recognition source that delivers \(\AZ=0\) through
-the duality-confinement mechanism; this is the subject of
-\Cref{sec:recognition_source,sec:landing_chain}.
+The equivalence between \(\AZ=0\) and the critical-line statement uses
+nothing about the zeros beyond positivity of the weights; only its
+identification with the Riemann hypothesis uses the analytic facts
+recalled in the proof.  Its role is to let the rest of the paper work with the single
+quantity \(\AZ\), or with its finite window sums, instead of with the
+zero set.

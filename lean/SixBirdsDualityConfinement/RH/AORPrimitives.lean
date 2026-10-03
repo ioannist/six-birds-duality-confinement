@@ -6,13 +6,13 @@ Minimal AOR meta-theory primitives used by `RH.AORInstance`.
 This module defines five primitives for the AOR-instance recasting:
 the residual-type and discharge-status enums, the typed discharge
 record, the AOR-instance carrier with eight AOR field categories plus a
-nonclaim-register witness, and the `RefStableAOR` membership predicate.
+nonclaim-register witness, and the `LocalRegisterComplete` predicate.
 The minimal scope is intentional: the full AOR
 meta-theory of Tsiokos2026AOR (eight-stratum decomposition, twelve-type
 atlas, 132-entry cost table, hierarchy theorems) is cited at paper
 level and not re-derived here.
 
-The `RefStableAOR` predicate below is the local syntactic predicate over
+The `LocalRegisterComplete` predicate below is the local syntactic predicate over
 the carrier's typed discharge list. It is not the AOR meta-theory's full
 refinement-stable characterisation theorem.
 -/
@@ -34,7 +34,7 @@ inductive ResidualType : Type where
 Closed discharge statuses used by the RH AOR-instance discharges.
 
 The local enum deliberately has no open status; every constructor is treated
-as closed by construction by `RefStableAOR`.
+as closed by construction by `LocalRegisterComplete`.
 -/
 inductive DischargeStatus : Type where
   | zero : DischargeStatus
@@ -73,14 +73,14 @@ structure AORInstanceCarrier : Type where
   nonclaims_nonempty : nonclaims ≠ []
 
 /--
-Local refinement-stable AOR predicate for the RH carrier.
+Local syntactic register predicate for the RH carrier.
 
 Every forced secondary residual type declared by a discharge atom must be
 realized as the primary residual type of some atom in the same discharge list;
 the nonclaim register must also be populated. Closed-status checking is
 vacuous because every local `DischargeStatus` constructor is closed.
 -/
-def RefStableAOR (carrier : AORInstanceCarrier) : Prop :=
+def LocalRegisterComplete (carrier : AORInstanceCarrier) : Prop :=
   carrier.nonclaims ≠ [] ∧
     ∀ atom : DischargeAtom, atom ∈ carrier.discharges →
       ∀ secondary : ResidualType, secondary ∈ atom.forced_secondaries →

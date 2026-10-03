@@ -1,166 +1,176 @@
-% Duality Confinement paper — § Exhaustive squeeze and defected budgets
-% Drafted body, pass A: exhaustive moving ledger definition and
-% exhaustive squeeze theorem. Pass B appends defected budgets and the
-% optimized scalar trace budget.
-%
-% statements-of-record rows resolved here in pass A:
-% def:duality_confinement:exhaustive-moving-ledger;
-% thm:duality_confinement:exhaustive-squeeze.
-
 \section{Exhaustive squeeze and defected budgets}
 \label{sec:exhaustive_squeeze_and_budgets}
 
-The master theorem is stated for ambient domination records
-\(\AX\preceq B_n\) whose traces vanish.  In applications, the records
-often arrive less directly: finite-window ledgers \(A_{X,n}\),
-transports \(\iota_n\) into the completed ambient cone, and tails
-\(T_n\) measuring what the window has not captured.  The exhaustive
-moving ledger formalizes this finite-window-plus-tail situation.
+In applications the domination records are rarely available on \(Y\)
+itself.  More often one controls a finite piece of the problem---a
+window, a truncation, a finite-dimensional subspace---and must account
+separately for what the piece misses.  This section records the two
+refinements of the confinement theorem needed in that situation.
+Throughout, \(\IOL\) is an involutive object ledger with
+\(\int_X\|\psim\|^2\,d\mu<\infty\).
 
 \begin{definition}[Exhaustive moving ledger]
 \label{def:duality_confinement:exhaustive-moving-ledger}
-An \emph{exhaustive moving ledger} over an involutive object ledger
-\(\IOL\) consists of a sequence of positive cone elements
-\(A_{X,n}\), inclusion transports \(\iota_n\), and positive tails
-\(T_n\) with \(0\preceq T_n\), such that, for every \(n\),
+An \emph{exhaustive moving ledger} for \(\AX\) consists of, for each
+\(n\geq1\), a real Hilbert space \(Y_n\), a bounded operator
+\(\iota_n:Y_n\to Y\), a positive trace-class operator \(A_{X,n}\) on
+\(Y_n\) and a positive trace-class operator \(T_n\) on \(Y\), such that
 \[
-  \AX\preceq \iota_n A_{X,n}\iota_n^*+T_n.
+  \AX\preceq\iota_nA_{X,n}\iota_n^*+T_n\qquad(n\geq1).
 \]
-It is \emph{vanishing-exhaustive} when there are positive bounds
-\(B_n\) satisfying
+It is \emph{vanishing-exhaustive} if there are positive trace-class
+operators \(B_n\) on \(Y_n\) with \(A_{X,n}\preceq B_n\) and
 \[
-  A_{X,n}\preceq B_n
-\]
-and
-\[
-  \trace(\iota_n B_n\iota_n^*)+\trace T_n\to0
-  \qquad (n\to\infty).
+  \trace(\iota_nB_n\iota_n^*)+\trace T_n\to0\qquad(n\to\infty).
 \]
 \end{definition}
 
-The finite-window term \(A_{X,n}\) approximates the completed ledger
-\(\AX\); \(\iota_n\) transports it into the ambient cone, and \(T_n\)
-records the residual positive contribution not captured by the
-window.  The definition does not choose a particular analytic
-truncation.  It isolates the trace-theoretic data needed for the
-squeeze mechanism of \Cref{sec:master_theorem}:
-the transported upper bound and the tail become invisible to the
-trace in the limit.  This covers progressively finer finite windows,
-increasing carrier subspaces, and approximation schemes where the
-completed ledger is controlled by a transported finite piece plus a
-trace-vanishing tail.
+The operator \(A_{X,n}\) is the part of the ledger seen by the
+\(n\)-th window, \(\iota_n\) transports it into \(Y\), and \(T_n\) is a
+positive tail accounting for what the window misses.  Despite the
+name, no exhaustion, monotonicity or convergence of the windows is
+required; the name reflects the typical use, illustrated next.
 
-\begin{theorem}[Exhaustive ledger squeeze\protect\footnote{Checked in the Lean formalization; the ambient bound is supplied as a moving-ledger field. See App~\ref{app:formalization}.}]
+\begin{theorem}[Exhaustive ledger squeeze]
 \label{thm:duality_confinement:exhaustive-squeeze}
-Let \(\IOL\) be an involutive object ledger with anti-invariant
-ledger \(\AX\).  If \(\IOL\) admits a vanishing-exhaustive moving
-ledger, then \(\AX=0\).  If, moreover, the anti-invariant readout
-\(\psim\) is qualitatively separating, then
-\[
-  \mu\bigl(X\setminus\Fix(J)\bigr)=0.
-\]
+If \(\AX\) admits a vanishing-exhaustive moving ledger, then
+\(\AX=0\) and \(\psim(x)=0\) for \(\mu\)-almost every \(x\).  If, in
+addition, \(\psim\) is qualitatively separating, then \(Jx=x\) for
+\(\mu\)-almost every \(x\).
 \end{theorem}
 
 \begin{proof}
-For each \(n\), exhaustiveness gives
+Conjugation preserves the Loewner order: if \(A\preceq B\) on \(Y_n\),
+then for \(h\in Y\),
+\(\langle\iota_n(B-A)\iota_n^*h,h\rangle
+=\langle(B-A)\iota_n^*h,\iota_n^*h\rangle\geq0\), so
+\(\iota_nA\iota_n^*\preceq\iota_nB\iota_n^*\).  Hence
 \[
-  \AX\preceq \iota_n A_{X,n}\iota_n^*+T_n.
+  \AX\preceq\iota_nA_{X,n}\iota_n^*+T_n
+  \preceq\iota_nB_n\iota_n^*+T_n=:B_n' .
 \]
-The transported domination bound \(A_{X,n}\preceq B_n\) gives
-\[
-  \iota_n A_{X,n}\iota_n^*
-  \preceq
-  \iota_n B_n\iota_n^*.
-\]
-By trace monotonicity in the typed positive cone,
-\[
-  0\leq\trace\AX
-  \leq
-  \trace(\iota_n B_n\iota_n^*)+\trace T_n.
-\]
-The right-hand side tends to zero by vanishing-exhaustiveness, so
-\(\trace\AX=0\).  Positivity-to-zero in the cone gives
-\(\AX=0\).  If \(\psim\) is qualitatively separating, then
-\Cref{thm:duality_confinement:separation-confinement} gives the
-displayed fixed-locus confinement.
+Each \(B_n'\) is positive and trace-class, because the trace class is
+an ideal, and \(\trace B_n'\to0\) by hypothesis.
+\Cref{thm:duality_confinement:master-theorem} applied to the sequence
+\((B_n')\) gives the conclusions.
 \end{proof}
 
-The exhaustive squeeze covers records that vanish only after
-transport and tail control.  The defected-budget refinement below
-tracks two residual mechanisms---a source or membrane defect and a
-bridge or domination defect---and re-weights them by a positive
-scalar before minimizing the trace.
+\Cref{thm:duality_confinement:exhaustive-squeeze} is
+\Cref{thm:duality_confinement:master-theorem} applied to the records
+\(B_n'\); its content is bookkeeping, recording the data an
+application typically computes.
+
+\begin{example}[Finite-dimensional windows]
+Let \(Y\) be separable, and let \(P_n\) be orthogonal projections onto
+finite-dimensional subspaces \(Y_n\subseteq Y\) with \(P_n\to I\)
+strongly, let \(\iota_n\) be the
+inclusion of \(Y_n\), so that \(\iota_n\iota_n^*=P_n\), and put
+\(Q_n=I-P_n\).  With \(\AX=V^*V\) as in
+\Cref{rem:duality_confinement:analysis-operator}, the case \(t=1\) of
+the operator inequality displayed below, applied to
+\(V=VP_n+VQ_n\), gives
+\[
+  \AX\preceq2P_n\AX P_n+2Q_n\AX Q_n .
+\]
+So the compressions \(A_{X,n}=2\,\iota_n^*\AX\iota_n\) and the tails
+\(T_n=2Q_n\AX Q_n\) form an exhaustive moving ledger.  The tails
+satisfy \(\trace T_n=2\|VQ_n\|_{\mathrm{HS}}^2\to0\) by dominated
+convergence, because \(V\) is Hilbert--Schmidt.  Whether the window
+bounds \(B_n\) can be chosen with \(\trace(\iota_nB_n\iota_n^*)\to0\) is
+the substantive question in any application.
+\end{example}
+
+The second refinement concerns a bound with two error terms of
+different origin.  Such bounds come from the operator form of the
+elementary inequality \((\alpha+\beta)^2\leq(1+t)\alpha^2+(1+t^{-1})\beta^2\):
+for bounded operators \(V_1,V_2\) and \(t>0\),
+\[
+  (1+t)V_1^*V_1+(1+t^{-1})V_2^*V_2-(V_1+V_2)^*(V_1+V_2)
+  =\bigl(\sqrt tV_1-V_2/\sqrt t\bigr)^*\bigl(\sqrt tV_1-V_2/\sqrt t\bigr)
+  \succeq0 .
+\]
+So if the analysis operator of \Cref{rem:duality_confinement:analysis-operator}
+splits as \(V=V_1+V_2\), then \(\AX\) is dominated, for every \(t>0\),
+by \((1+t)V_1^*V_1+(1+t^{-1})V_2^*V_2\).
 
 \begin{definition}[Defected obstruction budget]
 \label{def:duality_confinement:defected-budget}
-A \emph{defected obstruction budget} at level \(n\) is a domination
-record of the form
+A \emph{defected obstruction budget} for \(\AX\) consists of positive
+trace-class operators \(\Kminus\), \(E_{\mathrm{src}}\) and
+\(E_{\mathrm{br}}\) on \(Y\) such that
 \[
   \AX
   \preceq
-  (1+t)\bigl(\Kminus_{n}+E_{\mathrm{src},n}\bigr)
-  +(1+t^{-1})E_{\mathrm{br},n},
+  (1+t)\bigl(\Kminus+E_{\mathrm{src}}\bigr)+(1+t^{-1})E_{\mathrm{br}}
+  \qquad\text{for every }t>0 .
 \]
-where \(t>0\), where \(E_{\mathrm{src},n}\) is a source defect, and
-where \(E_{\mathrm{br},n}\) is a bridge defect.  Both defects are
-positive cone elements.  The unparameterized budget is obtained by
-setting \(t=1\), which adds the two defect contributions without
-optimization.
+Here \(E_{\mathrm{src}}\) is a source defect and \(E_{\mathrm{br}}\) a
+bridge defect.  A \emph{sequence} of defected obstruction budgets is a
+sequence \((\Kminus_n,E_{\mathrm{src},n},E_{\mathrm{br},n})\), each a
+defected obstruction budget for the same operator \(\AX\).
 \end{definition}
 
-The parameter \(t\) allocates weight between the source-side
-contribution \(\Kminus_{n}+E_{\mathrm{src},n}\) and the bridge
-defect \(E_{\mathrm{br},n}\); the reciprocal \(t^{-1}\) is the usual
-two-term balancing factor.  The load-bearing scalar result is the
-optimized trace estimate that follows.
+The operators \(\Kminus\) and \(E_{\mathrm{src}}\) enter only through
+their sum; they are kept apart because in applications they have
+different origins, a computed main term and a defect in its source.
 
-\begin{proposition}[Optimized scalar trace budget\protect\footnote{Tracked by the formalization harness; the AM--GM step is supplied as a typed-scalar hypothesis. See App~\ref{app:formalization}.}]
+The choice \(t=1\) gives the unweighted bound
+\(2(\Kminus+E_{\mathrm{src}})+2E_{\mathrm{br}}\); the next proposition
+optimizes over \(t\).
+
+\begin{proposition}[Optimized scalar trace budget]
 \label{prop:duality_confinement:optimized-trace-budget}
-For a defected obstruction budget at level \(n\), set
+Let \((\Kminus,E_{\mathrm{src}},E_{\mathrm{br}})\) be a defected
+obstruction budget for \(\AX\), and put
+\(a=\trace(\Kminus+E_{\mathrm{src}})\) and \(b=\trace E_{\mathrm{br}}\).
+Then \(a,b\geq0\),
 \[
-  a_n=\trace(\Kminus_{n}+E_{\mathrm{src},n}),
-  \qquad
-  b_n=\trace E_{\mathrm{br},n},
+  \inf_{t>0}\bigl[(1+t)a+(1+t^{-1})b\bigr]
+  =\bigl(\sqrt a+\sqrt b\bigr)^2,
 \]
-with \(a_n,b_n\geq0\).  Then
+the infimum being attained at \(t=\sqrt{b/a}\) when \(a,b>0\), and
 \[
-  \inf_{t>0}
-  \bigl[(1+t)a_n+(1+t^{-1})b_n\bigr]
-  =
-  \bigl(\sqrt{a_n}+\sqrt{b_n}\bigr)^2.
+  \trace\AX\leq\bigl(\sqrt a+\sqrt b\bigr)^2 .
 \]
-In particular, if \(a_n\to0\) and \(b_n\to0\), then the optimized
-trace budget tends to zero.
+Consequently, if \((\Kminus_n,E_{\mathrm{src},n},E_{\mathrm{br},n})\)
+is a sequence of defected obstruction budgets for \(\AX\) with
+\(a_n=\trace(\Kminus_n+E_{\mathrm{src},n})\to0\) and
+\(b_n=\trace E_{\mathrm{br},n}\to0\), then all conclusions of
+\Cref{thm:duality_confinement:master-theorem} hold.
 \end{proposition}
 
 \begin{proof}
-For \(a_n,b_n>0\), minimize
+The traces \(a\) and \(b\) are nonnegative by (T3).  For \(t>0\),
 \[
-  (1+t)a_n+(1+t^{-1})b_n
-  =
-  a_n+b_n+t a_n+\frac{b_n}{t}
+  (1+t)a+(1+t^{-1})b-\bigl(\sqrt a+\sqrt b\bigr)^2
+  =ta+\frac bt-2\sqrt{ab}
+  =\Bigl(\sqrt{ta}-\sqrt{b/t}\Bigr)^2\geq0,
 \]
-over \(t>0\).  The derivative vanishes at
-\[
-  t=\sqrt{\frac{b_n}{a_n}}.
-\]
-Substitution gives
-\[
-  a_n+b_n+2\sqrt{a_n b_n}
-  =
-  \bigl(\sqrt{a_n}+\sqrt{b_n}\bigr)^2.
-\]
-Equivalently, the AM--GM inequality
-\citep{HardyLittlewoodPolya1952} applied to \(t a_n\) and
-\(b_n/t\) gives
-\[
-  t a_n+\frac{b_n}{t}\geq2\sqrt{a_n b_n},
-\]
-with equality at the displayed value of \(t\).  If one of
-\(a_n,b_n\) is zero, the same value is obtained as an infimum by
-letting \(t\) tend to \(0\) or to \(+\infty\), as appropriate.
+with equality when \(ta=b/t\), that is, at \(t=\sqrt{b/a}\) if
+\(a,b>0\).  If \(a=0\) the budget equals \(b+b/t\), which decreases to
+\(b=(\sqrt a+\sqrt b)^2\) as \(t\to\infty\); if \(b=0\) it equals
+\(a+ta\), which decreases to \(a\) as \(t\to0\).  This proves the
+formula for the infimum.  For each \(t>0\), (T4) and linearity of the
+trace give \(\trace\AX\leq(1+t)a+(1+t^{-1})b\); taking the infimum
+gives \(\trace\AX\leq(\sqrt a+\sqrt b)^2\).  For a sequence of budgets,
+\(0\leq\trace\AX\leq(\sqrt{a_n}+\sqrt{b_n})^2\to0\), so
+\(\trace\AX=0\), hence \(\AX=0\) by (T3), and the remaining
+conclusions follow from
+\Cref{thm:duality_confinement:separation-confinement}.
 \end{proof}
 
-The next section gives the scope fence around the typed-cone level,
-the AM--GM hypothesis, cross-substrate predictions, and SDTC as a
-named structural law.
+When \(\AX=V^*V\) and \(V=V_1+V_2\) with
+\(\Kminus+E_{\mathrm{src}}=V_1^*V_1\) and \(E_{\mathrm{br}}=V_2^*V_2\),
+as in the operator inequality above, the bound
+\(\trace\AX\leq(\sqrt a+\sqrt b)^2\) is the triangle inequality
+\(\|V\|_{\mathrm{HS}}\leq\|V_1\|_{\mathrm{HS}}+\|V_2\|_{\mathrm{HS}}\),
+and the optimization over \(t\) is a standard proof of it.  The
+proposition applies more generally, to any family of bounds of the
+displayed form.
+
+For a single budget, combining the proposition with
+\Cref{thm:duality_confinement:quantitative-confinement} gives the
+explicit bound
+\(\mu^*\{x:\dist(x,\Fix(J))\geq\varepsilon\}\leq
+(\sqrt a+\sqrt b)^2/m(\varepsilon)^2\) whenever \(\psim\) is
+quantitatively separating with modulus \(m\).

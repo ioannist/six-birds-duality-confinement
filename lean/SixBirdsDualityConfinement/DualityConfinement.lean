@@ -6,6 +6,7 @@ import SixBirdsDualityConfinement.DualityConfinement.Domination
 import SixBirdsDualityConfinement.DualityConfinement.MasterTheorem
 import SixBirdsDualityConfinement.DualityConfinement.ExhaustiveSqueeze
 import SixBirdsDualityConfinement.DualityConfinement.DefectedBudget
+import SixBirdsDualityConfinement.DualityConfinement.Concrete
 
 /-!
 Umbrella module for the Duality Confinement paper axis (Paper 1).
